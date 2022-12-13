@@ -826,8 +826,6 @@ class Authority(pulumi.CustomResource):
             pool="ca-pool",
             certificate_authority_id="my-certificate-authority-root",
             location="us-central1",
-            deletion_protection=False,
-            ignore_active_certificates_on_deletion=True,
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
@@ -855,7 +853,10 @@ class Authority(pulumi.CustomResource):
             ),
             key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
-            ))
+            ),
+            deletion_protection=False,
+            skip_grace_period=True,
+            ignore_active_certificates_on_deletion=True)
         default = gcp.certificateauthority.Authority("default",
             pool="ca-pool",
             certificate_authority_id="my-certificate-authority-sub",
@@ -1088,8 +1089,6 @@ class Authority(pulumi.CustomResource):
             pool="ca-pool",
             certificate_authority_id="my-certificate-authority-root",
             location="us-central1",
-            deletion_protection=False,
-            ignore_active_certificates_on_deletion=True,
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
@@ -1117,7 +1116,10 @@ class Authority(pulumi.CustomResource):
             ),
             key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
                 algorithm="RSA_PKCS1_4096_SHA256",
-            ))
+            ),
+            deletion_protection=False,
+            skip_grace_period=True,
+            ignore_active_certificates_on_deletion=True)
         default = gcp.certificateauthority.Authority("default",
             pool="ca-pool",
             certificate_authority_id="my-certificate-authority-sub",

@@ -27,6 +27,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? Description;
         /// <summary>
+        /// Additional actions that are performed on headers. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.SecurityPolicyRuleHeaderAction? HeaderAction;
+        /// <summary>
         /// A match condition that incoming traffic is evaluated against.
         /// If it evaluates to true, the corresponding `action` is enforced. Structure is documented below.
         /// </summary>
@@ -60,6 +64,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? description,
 
+            Outputs.SecurityPolicyRuleHeaderAction? headerAction,
+
             Outputs.SecurityPolicyRuleMatch match,
 
             Outputs.SecurityPolicyRulePreconfiguredWafConfig? preconfiguredWafConfig,
@@ -74,6 +80,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         {
             Action = action;
             Description = description;
+            HeaderAction = headerAction;
             Match = match;
             PreconfiguredWafConfig = preconfiguredWafConfig;
             Preview = preview;

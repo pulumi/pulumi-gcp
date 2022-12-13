@@ -543,13 +543,42 @@ class FeatureMembershipConfigmanagementPolicyControllerMonitoring(dict):
 
 @pulumi.output_type
 class FeatureMembershipMesh(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "controlPlane":
+            suggest = "control_plane"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureMembershipMesh. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureMembershipMesh.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureMembershipMesh.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 control_plane: Optional[str] = None,
                  management: Optional[str] = None):
         """
+        :param str control_plane: Whether to automatically manage Service Mesh Control Plane. Can either be `AUTOMATIC` or `MANUAL`.
         :param str management: Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
         """
+        if control_plane is not None:
+            pulumi.set(__self__, "control_plane", control_plane)
         if management is not None:
             pulumi.set(__self__, "management", management)
+
+    @property
+    @pulumi.getter(name="controlPlane")
+    def control_plane(self) -> Optional[str]:
+        """
+        Whether to automatically manage Service Mesh Control Plane. Can either be `AUTOMATIC` or `MANUAL`.
+        """
+        return pulumi.get(self, "control_plane")
 
     @property
     @pulumi.getter

@@ -257,7 +257,7 @@ type Cluster struct {
 	// nested `cidrBlocks` attribute to disallow external access (except
 	// the cluster node IPs, which GKE automatically whitelists).
 	// Structure is documented below.
-	MasterAuthorizedNetworksConfig ClusterMasterAuthorizedNetworksConfigPtrOutput `pulumi:"masterAuthorizedNetworksConfig"`
+	MasterAuthorizedNetworksConfig ClusterMasterAuthorizedNetworksConfigOutput `pulumi:"masterAuthorizedNetworksConfig"`
 	// The current version of the master in the cluster. This may
 	// be different than the `minMasterVersion` set in the config if the master
 	// has been updated by GKE.
@@ -363,7 +363,8 @@ type Cluster struct {
 	// resources with no default node pool, this should be set to `true`, alongside
 	// setting `initialNodeCount` to at least `1`.
 	RemoveDefaultNodePool pulumi.BoolPtrOutput `pulumi:"removeDefaultNodePool"`
-	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+	// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+	// for how these labels are applied to clusters, node pools and nodes.
 	ResourceLabels pulumi.StringMapOutput `pulumi:"resourceLabels"`
 	// Configuration for the
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
@@ -653,7 +654,8 @@ type clusterState struct {
 	// resources with no default node pool, this should be set to `true`, alongside
 	// setting `initialNodeCount` to at least `1`.
 	RemoveDefaultNodePool *bool `pulumi:"removeDefaultNodePool"`
-	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+	// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+	// for how these labels are applied to clusters, node pools and nodes.
 	ResourceLabels map[string]string `pulumi:"resourceLabels"`
 	// Configuration for the
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
@@ -915,7 +917,8 @@ type ClusterState struct {
 	// resources with no default node pool, this should be set to `true`, alongside
 	// setting `initialNodeCount` to at least `1`.
 	RemoveDefaultNodePool pulumi.BoolPtrInput
-	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+	// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+	// for how these labels are applied to clusters, node pools and nodes.
 	ResourceLabels pulumi.StringMapInput
 	// Configuration for the
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
@@ -1172,7 +1175,8 @@ type clusterArgs struct {
 	// resources with no default node pool, this should be set to `true`, alongside
 	// setting `initialNodeCount` to at least `1`.
 	RemoveDefaultNodePool *bool `pulumi:"removeDefaultNodePool"`
-	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+	// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+	// for how these labels are applied to clusters, node pools and nodes.
 	ResourceLabels map[string]string `pulumi:"resourceLabels"`
 	// Configuration for the
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
@@ -1415,7 +1419,8 @@ type ClusterArgs struct {
 	// resources with no default node pool, this should be set to `true`, alongside
 	// setting `initialNodeCount` to at least `1`.
 	RemoveDefaultNodePool pulumi.BoolPtrInput
-	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+	// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+	// for how these labels are applied to clusters, node pools and nodes.
 	ResourceLabels pulumi.StringMapInput
 	// Configuration for the
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
@@ -1742,10 +1747,8 @@ func (o ClusterOutput) MasterAuth() ClusterMasterAuthOutput {
 // nested `cidrBlocks` attribute to disallow external access (except
 // the cluster node IPs, which GKE automatically whitelists).
 // Structure is documented below.
-func (o ClusterOutput) MasterAuthorizedNetworksConfig() ClusterMasterAuthorizedNetworksConfigPtrOutput {
-	return o.ApplyT(func(v *Cluster) ClusterMasterAuthorizedNetworksConfigPtrOutput {
-		return v.MasterAuthorizedNetworksConfig
-	}).(ClusterMasterAuthorizedNetworksConfigPtrOutput)
+func (o ClusterOutput) MasterAuthorizedNetworksConfig() ClusterMasterAuthorizedNetworksConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterMasterAuthorizedNetworksConfigOutput { return v.MasterAuthorizedNetworksConfig }).(ClusterMasterAuthorizedNetworksConfigOutput)
 }
 
 // The current version of the master in the cluster. This may
@@ -1922,7 +1925,8 @@ func (o ClusterOutput) RemoveDefaultNodePool() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.RemoveDefaultNodePool }).(pulumi.BoolPtrOutput)
 }
 
-// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+// for how these labels are applied to clusters, node pools and nodes.
 func (o ClusterOutput) ResourceLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.ResourceLabels }).(pulumi.StringMapOutput)
 }

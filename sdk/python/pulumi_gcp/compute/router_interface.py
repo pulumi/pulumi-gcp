@@ -18,9 +18,11 @@ class RouterInterfaceArgs:
                  interconnect_attachment: Optional[pulumi.Input[str]] = None,
                  ip_range: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 private_ip_address: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  redundant_interface: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 subnetwork: Optional[pulumi.Input[str]] = None,
                  vpn_tunnel: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RouterInterface resource.
@@ -28,23 +30,24 @@ class RouterInterfaceArgs:
                Changing this forces a new interface to be created.
         :param pulumi.Input[str] interconnect_attachment: The name or resource link to the
                VLAN interconnect for this interface. Changing this forces a new interface to
-               be created. Only one of `vpn_tunnel` and `interconnect_attachment` can be
-               specified.
+               be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         :param pulumi.Input[str] ip_range: IP address and range of the interface. The IP range must be
                in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
         :param pulumi.Input[str] name: A unique name for the interface, required by GCE. Changing
                this forces a new interface to be created.
-        :param pulumi.Input[str] project: The ID of the project in which this interface's router belongs. If it
-               is not provided, the provider project is used. Changing this forces a new interface to be created.
+        :param pulumi.Input[str] private_ip_address: The regional private internal IP address that is used
+               to establish BGP sessions to a VM instance acting as a third-party Router Appliance. Changing this forces a new interface to be created.
+        :param pulumi.Input[str] project: The ID of the project in which this interface's routerbelongs.
+               If it is not provided, the provider project is used. Changing this forces a new interface to be created.
         :param pulumi.Input[str] redundant_interface: The name of the interface that is redundant to
-               this interface. Changing this forces a new interface to
-               be created.
-        :param pulumi.Input[str] region: The region this interface's router sits in. If not specified,
-               the project region will be used. Changing this forces a new interface to be
-               created.
+               this interface. Changing this forces a new interface to be created.
+        :param pulumi.Input[str] region: The region this interface's router sits in.
+               If not specified, the project region will be used. Changing this forces a new interface to be created.
+        :param pulumi.Input[str] subnetwork: The URI of the subnetwork resource that this interface
+               belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         :param pulumi.Input[str] vpn_tunnel: The name or resource link to the VPN tunnel this
                interface will be linked to. Changing this forces a new interface to be created. Only
-               one of `vpn_tunnel` and `interconnect_attachment` can be specified.
+               one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         """
         pulumi.set(__self__, "router", router)
         if interconnect_attachment is not None:
@@ -53,12 +56,16 @@ class RouterInterfaceArgs:
             pulumi.set(__self__, "ip_range", ip_range)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if private_ip_address is not None:
+            pulumi.set(__self__, "private_ip_address", private_ip_address)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if redundant_interface is not None:
             pulumi.set(__self__, "redundant_interface", redundant_interface)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
         if vpn_tunnel is not None:
             pulumi.set(__self__, "vpn_tunnel", vpn_tunnel)
 
@@ -81,8 +88,7 @@ class RouterInterfaceArgs:
         """
         The name or resource link to the
         VLAN interconnect for this interface. Changing this forces a new interface to
-        be created. Only one of `vpn_tunnel` and `interconnect_attachment` can be
-        specified.
+        be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         """
         return pulumi.get(self, "interconnect_attachment")
 
@@ -117,11 +123,24 @@ class RouterInterfaceArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="privateIpAddress")
+    def private_ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The regional private internal IP address that is used
+        to establish BGP sessions to a VM instance acting as a third-party Router Appliance. Changing this forces a new interface to be created.
+        """
+        return pulumi.get(self, "private_ip_address")
+
+    @private_ip_address.setter
+    def private_ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_ip_address", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the project in which this interface's router belongs. If it
-        is not provided, the provider project is used. Changing this forces a new interface to be created.
+        The ID of the project in which this interface's routerbelongs.
+        If it is not provided, the provider project is used. Changing this forces a new interface to be created.
         """
         return pulumi.get(self, "project")
 
@@ -134,8 +153,7 @@ class RouterInterfaceArgs:
     def redundant_interface(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the interface that is redundant to
-        this interface. Changing this forces a new interface to
-        be created.
+        this interface. Changing this forces a new interface to be created.
         """
         return pulumi.get(self, "redundant_interface")
 
@@ -147,9 +165,8 @@ class RouterInterfaceArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        The region this interface's router sits in. If not specified,
-        the project region will be used. Changing this forces a new interface to be
-        created.
+        The region this interface's router sits in.
+        If not specified, the project region will be used. Changing this forces a new interface to be created.
         """
         return pulumi.get(self, "region")
 
@@ -158,12 +175,25 @@ class RouterInterfaceArgs:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter
+    def subnetwork(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the subnetwork resource that this interface
+        belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @subnetwork.setter
+    def subnetwork(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subnetwork", value)
+
+    @property
     @pulumi.getter(name="vpnTunnel")
     def vpn_tunnel(self) -> Optional[pulumi.Input[str]]:
         """
         The name or resource link to the VPN tunnel this
         interface will be linked to. Changing this forces a new interface to be created. Only
-        one of `vpn_tunnel` and `interconnect_attachment` can be specified.
+        one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         """
         return pulumi.get(self, "vpn_tunnel")
 
@@ -178,34 +208,37 @@ class _RouterInterfaceState:
                  interconnect_attachment: Optional[pulumi.Input[str]] = None,
                  ip_range: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 private_ip_address: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  redundant_interface: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
+                 subnetwork: Optional[pulumi.Input[str]] = None,
                  vpn_tunnel: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RouterInterface resources.
         :param pulumi.Input[str] interconnect_attachment: The name or resource link to the
                VLAN interconnect for this interface. Changing this forces a new interface to
-               be created. Only one of `vpn_tunnel` and `interconnect_attachment` can be
-               specified.
+               be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         :param pulumi.Input[str] ip_range: IP address and range of the interface. The IP range must be
                in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
         :param pulumi.Input[str] name: A unique name for the interface, required by GCE. Changing
                this forces a new interface to be created.
-        :param pulumi.Input[str] project: The ID of the project in which this interface's router belongs. If it
-               is not provided, the provider project is used. Changing this forces a new interface to be created.
+        :param pulumi.Input[str] private_ip_address: The regional private internal IP address that is used
+               to establish BGP sessions to a VM instance acting as a third-party Router Appliance. Changing this forces a new interface to be created.
+        :param pulumi.Input[str] project: The ID of the project in which this interface's routerbelongs.
+               If it is not provided, the provider project is used. Changing this forces a new interface to be created.
         :param pulumi.Input[str] redundant_interface: The name of the interface that is redundant to
-               this interface. Changing this forces a new interface to
-               be created.
-        :param pulumi.Input[str] region: The region this interface's router sits in. If not specified,
-               the project region will be used. Changing this forces a new interface to be
-               created.
+               this interface. Changing this forces a new interface to be created.
+        :param pulumi.Input[str] region: The region this interface's router sits in.
+               If not specified, the project region will be used. Changing this forces a new interface to be created.
         :param pulumi.Input[str] router: The name of the router this interface will be attached to.
                Changing this forces a new interface to be created.
+        :param pulumi.Input[str] subnetwork: The URI of the subnetwork resource that this interface
+               belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         :param pulumi.Input[str] vpn_tunnel: The name or resource link to the VPN tunnel this
                interface will be linked to. Changing this forces a new interface to be created. Only
-               one of `vpn_tunnel` and `interconnect_attachment` can be specified.
+               one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         """
         if interconnect_attachment is not None:
             pulumi.set(__self__, "interconnect_attachment", interconnect_attachment)
@@ -213,6 +246,8 @@ class _RouterInterfaceState:
             pulumi.set(__self__, "ip_range", ip_range)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if private_ip_address is not None:
+            pulumi.set(__self__, "private_ip_address", private_ip_address)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if redundant_interface is not None:
@@ -221,6 +256,8 @@ class _RouterInterfaceState:
             pulumi.set(__self__, "region", region)
         if router is not None:
             pulumi.set(__self__, "router", router)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
         if vpn_tunnel is not None:
             pulumi.set(__self__, "vpn_tunnel", vpn_tunnel)
 
@@ -230,8 +267,7 @@ class _RouterInterfaceState:
         """
         The name or resource link to the
         VLAN interconnect for this interface. Changing this forces a new interface to
-        be created. Only one of `vpn_tunnel` and `interconnect_attachment` can be
-        specified.
+        be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         """
         return pulumi.get(self, "interconnect_attachment")
 
@@ -266,11 +302,24 @@ class _RouterInterfaceState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="privateIpAddress")
+    def private_ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The regional private internal IP address that is used
+        to establish BGP sessions to a VM instance acting as a third-party Router Appliance. Changing this forces a new interface to be created.
+        """
+        return pulumi.get(self, "private_ip_address")
+
+    @private_ip_address.setter
+    def private_ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_ip_address", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the project in which this interface's router belongs. If it
-        is not provided, the provider project is used. Changing this forces a new interface to be created.
+        The ID of the project in which this interface's routerbelongs.
+        If it is not provided, the provider project is used. Changing this forces a new interface to be created.
         """
         return pulumi.get(self, "project")
 
@@ -283,8 +332,7 @@ class _RouterInterfaceState:
     def redundant_interface(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the interface that is redundant to
-        this interface. Changing this forces a new interface to
-        be created.
+        this interface. Changing this forces a new interface to be created.
         """
         return pulumi.get(self, "redundant_interface")
 
@@ -296,9 +344,8 @@ class _RouterInterfaceState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        The region this interface's router sits in. If not specified,
-        the project region will be used. Changing this forces a new interface to be
-        created.
+        The region this interface's router sits in.
+        If not specified, the project region will be used. Changing this forces a new interface to be created.
         """
         return pulumi.get(self, "region")
 
@@ -320,12 +367,25 @@ class _RouterInterfaceState:
         pulumi.set(self, "router", value)
 
     @property
+    @pulumi.getter
+    def subnetwork(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the subnetwork resource that this interface
+        belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @subnetwork.setter
+    def subnetwork(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subnetwork", value)
+
+    @property
     @pulumi.getter(name="vpnTunnel")
     def vpn_tunnel(self) -> Optional[pulumi.Input[str]]:
         """
         The name or resource link to the VPN tunnel this
         interface will be linked to. Changing this forces a new interface to be created. Only
-        one of `vpn_tunnel` and `interconnect_attachment` can be specified.
+        one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         """
         return pulumi.get(self, "vpn_tunnel")
 
@@ -342,10 +402,12 @@ class RouterInterface(pulumi.CustomResource):
                  interconnect_attachment: Optional[pulumi.Input[str]] = None,
                  ip_range: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 private_ip_address: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  redundant_interface: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
+                 subnetwork: Optional[pulumi.Input[str]] = None,
                  vpn_tunnel: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -379,25 +441,26 @@ class RouterInterface(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] interconnect_attachment: The name or resource link to the
                VLAN interconnect for this interface. Changing this forces a new interface to
-               be created. Only one of `vpn_tunnel` and `interconnect_attachment` can be
-               specified.
+               be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         :param pulumi.Input[str] ip_range: IP address and range of the interface. The IP range must be
                in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
         :param pulumi.Input[str] name: A unique name for the interface, required by GCE. Changing
                this forces a new interface to be created.
-        :param pulumi.Input[str] project: The ID of the project in which this interface's router belongs. If it
-               is not provided, the provider project is used. Changing this forces a new interface to be created.
+        :param pulumi.Input[str] private_ip_address: The regional private internal IP address that is used
+               to establish BGP sessions to a VM instance acting as a third-party Router Appliance. Changing this forces a new interface to be created.
+        :param pulumi.Input[str] project: The ID of the project in which this interface's routerbelongs.
+               If it is not provided, the provider project is used. Changing this forces a new interface to be created.
         :param pulumi.Input[str] redundant_interface: The name of the interface that is redundant to
-               this interface. Changing this forces a new interface to
-               be created.
-        :param pulumi.Input[str] region: The region this interface's router sits in. If not specified,
-               the project region will be used. Changing this forces a new interface to be
-               created.
+               this interface. Changing this forces a new interface to be created.
+        :param pulumi.Input[str] region: The region this interface's router sits in.
+               If not specified, the project region will be used. Changing this forces a new interface to be created.
         :param pulumi.Input[str] router: The name of the router this interface will be attached to.
                Changing this forces a new interface to be created.
+        :param pulumi.Input[str] subnetwork: The URI of the subnetwork resource that this interface
+               belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         :param pulumi.Input[str] vpn_tunnel: The name or resource link to the VPN tunnel this
                interface will be linked to. Changing this forces a new interface to be created. Only
-               one of `vpn_tunnel` and `interconnect_attachment` can be specified.
+               one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         """
         ...
     @overload
@@ -450,10 +513,12 @@ class RouterInterface(pulumi.CustomResource):
                  interconnect_attachment: Optional[pulumi.Input[str]] = None,
                  ip_range: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 private_ip_address: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  redundant_interface: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
+                 subnetwork: Optional[pulumi.Input[str]] = None,
                  vpn_tunnel: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -467,12 +532,14 @@ class RouterInterface(pulumi.CustomResource):
             __props__.__dict__["interconnect_attachment"] = interconnect_attachment
             __props__.__dict__["ip_range"] = ip_range
             __props__.__dict__["name"] = name
+            __props__.__dict__["private_ip_address"] = private_ip_address
             __props__.__dict__["project"] = project
             __props__.__dict__["redundant_interface"] = redundant_interface
             __props__.__dict__["region"] = region
             if router is None and not opts.urn:
                 raise TypeError("Missing required property 'router'")
             __props__.__dict__["router"] = router
+            __props__.__dict__["subnetwork"] = subnetwork
             __props__.__dict__["vpn_tunnel"] = vpn_tunnel
         super(RouterInterface, __self__).__init__(
             'gcp:compute/routerInterface:RouterInterface',
@@ -487,10 +554,12 @@ class RouterInterface(pulumi.CustomResource):
             interconnect_attachment: Optional[pulumi.Input[str]] = None,
             ip_range: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            private_ip_address: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             redundant_interface: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             router: Optional[pulumi.Input[str]] = None,
+            subnetwork: Optional[pulumi.Input[str]] = None,
             vpn_tunnel: Optional[pulumi.Input[str]] = None) -> 'RouterInterface':
         """
         Get an existing RouterInterface resource's state with the given name, id, and optional extra
@@ -501,25 +570,26 @@ class RouterInterface(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] interconnect_attachment: The name or resource link to the
                VLAN interconnect for this interface. Changing this forces a new interface to
-               be created. Only one of `vpn_tunnel` and `interconnect_attachment` can be
-               specified.
+               be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         :param pulumi.Input[str] ip_range: IP address and range of the interface. The IP range must be
                in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
         :param pulumi.Input[str] name: A unique name for the interface, required by GCE. Changing
                this forces a new interface to be created.
-        :param pulumi.Input[str] project: The ID of the project in which this interface's router belongs. If it
-               is not provided, the provider project is used. Changing this forces a new interface to be created.
+        :param pulumi.Input[str] private_ip_address: The regional private internal IP address that is used
+               to establish BGP sessions to a VM instance acting as a third-party Router Appliance. Changing this forces a new interface to be created.
+        :param pulumi.Input[str] project: The ID of the project in which this interface's routerbelongs.
+               If it is not provided, the provider project is used. Changing this forces a new interface to be created.
         :param pulumi.Input[str] redundant_interface: The name of the interface that is redundant to
-               this interface. Changing this forces a new interface to
-               be created.
-        :param pulumi.Input[str] region: The region this interface's router sits in. If not specified,
-               the project region will be used. Changing this forces a new interface to be
-               created.
+               this interface. Changing this forces a new interface to be created.
+        :param pulumi.Input[str] region: The region this interface's router sits in.
+               If not specified, the project region will be used. Changing this forces a new interface to be created.
         :param pulumi.Input[str] router: The name of the router this interface will be attached to.
                Changing this forces a new interface to be created.
+        :param pulumi.Input[str] subnetwork: The URI of the subnetwork resource that this interface
+               belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         :param pulumi.Input[str] vpn_tunnel: The name or resource link to the VPN tunnel this
                interface will be linked to. Changing this forces a new interface to be created. Only
-               one of `vpn_tunnel` and `interconnect_attachment` can be specified.
+               one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -528,10 +598,12 @@ class RouterInterface(pulumi.CustomResource):
         __props__.__dict__["interconnect_attachment"] = interconnect_attachment
         __props__.__dict__["ip_range"] = ip_range
         __props__.__dict__["name"] = name
+        __props__.__dict__["private_ip_address"] = private_ip_address
         __props__.__dict__["project"] = project
         __props__.__dict__["redundant_interface"] = redundant_interface
         __props__.__dict__["region"] = region
         __props__.__dict__["router"] = router
+        __props__.__dict__["subnetwork"] = subnetwork
         __props__.__dict__["vpn_tunnel"] = vpn_tunnel
         return RouterInterface(resource_name, opts=opts, __props__=__props__)
 
@@ -541,14 +613,13 @@ class RouterInterface(pulumi.CustomResource):
         """
         The name or resource link to the
         VLAN interconnect for this interface. Changing this forces a new interface to
-        be created. Only one of `vpn_tunnel` and `interconnect_attachment` can be
-        specified.
+        be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         """
         return pulumi.get(self, "interconnect_attachment")
 
     @property
     @pulumi.getter(name="ipRange")
-    def ip_range(self) -> pulumi.Output[Optional[str]]:
+    def ip_range(self) -> pulumi.Output[str]:
         """
         IP address and range of the interface. The IP range must be
         in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
@@ -565,11 +636,20 @@ class RouterInterface(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="privateIpAddress")
+    def private_ip_address(self) -> pulumi.Output[Optional[str]]:
+        """
+        The regional private internal IP address that is used
+        to establish BGP sessions to a VM instance acting as a third-party Router Appliance. Changing this forces a new interface to be created.
+        """
+        return pulumi.get(self, "private_ip_address")
+
+    @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The ID of the project in which this interface's router belongs. If it
-        is not provided, the provider project is used. Changing this forces a new interface to be created.
+        The ID of the project in which this interface's routerbelongs.
+        If it is not provided, the provider project is used. Changing this forces a new interface to be created.
         """
         return pulumi.get(self, "project")
 
@@ -578,8 +658,7 @@ class RouterInterface(pulumi.CustomResource):
     def redundant_interface(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the interface that is redundant to
-        this interface. Changing this forces a new interface to
-        be created.
+        this interface. Changing this forces a new interface to be created.
         """
         return pulumi.get(self, "redundant_interface")
 
@@ -587,9 +666,8 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        The region this interface's router sits in. If not specified,
-        the project region will be used. Changing this forces a new interface to be
-        created.
+        The region this interface's router sits in.
+        If not specified, the project region will be used. Changing this forces a new interface to be created.
         """
         return pulumi.get(self, "region")
 
@@ -603,12 +681,21 @@ class RouterInterface(pulumi.CustomResource):
         return pulumi.get(self, "router")
 
     @property
+    @pulumi.getter
+    def subnetwork(self) -> pulumi.Output[Optional[str]]:
+        """
+        The URI of the subnetwork resource that this interface
+        belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @property
     @pulumi.getter(name="vpnTunnel")
     def vpn_tunnel(self) -> pulumi.Output[Optional[str]]:
         """
         The name or resource link to the VPN tunnel this
         interface will be linked to. Changing this forces a new interface to be created. Only
-        one of `vpn_tunnel` and `interconnect_attachment` can be specified.
+        one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         """
         return pulumi.get(self, "vpn_tunnel")
 

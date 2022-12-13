@@ -40,6 +40,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
  * import com.pulumi.gcp.alloydb.Instance;
  * import com.pulumi.gcp.alloydb.InstanceArgs;
+ * import com.pulumi.gcp.alloydb.inputs.InstanceMachineConfigArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -92,6 +93,9 @@ import javax.annotation.Nullable;
  *             .cluster(defaultCluster.name())
  *             .instanceId(&#34;alloydb-instance&#34;)
  *             .instanceType(&#34;PRIMARY&#34;)
+ *             .machineConfig(InstanceMachineConfigArgs.builder()
+ *                 .cpuCount(2)
+ *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .dependsOn(vpcConnection)

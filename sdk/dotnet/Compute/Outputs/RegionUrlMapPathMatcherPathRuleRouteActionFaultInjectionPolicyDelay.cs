@@ -19,9 +19,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly Outputs.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay FixedDelay;
         /// <summary>
-        /// The percentage of traffic (connections/operations/requests) on which delay will
-        /// be introduced as part of fault injection. The value must be between 0.0 and
-        /// 100.0 inclusive.
+        /// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+        /// The value must be between 0.0 and 100.0 inclusive.
         /// </summary>
         public readonly double Percentage;
 

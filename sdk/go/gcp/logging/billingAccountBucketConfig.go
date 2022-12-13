@@ -69,6 +69,10 @@ type BillingAccountBucketConfig struct {
 	BillingAccount pulumi.StringOutput `pulumi:"billingAccount"`
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId pulumi.StringOutput `pulumi:"bucketId"`
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+	// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+	// updating the log bucket. Changing the KMS key is allowed.
+	CmekSettings BillingAccountBucketConfigCmekSettingsPtrOutput `pulumi:"cmekSettings"`
 	// Describes this bucket.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
@@ -123,6 +127,10 @@ type billingAccountBucketConfigState struct {
 	BillingAccount *string `pulumi:"billingAccount"`
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId *string `pulumi:"bucketId"`
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+	// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+	// updating the log bucket. Changing the KMS key is allowed.
+	CmekSettings *BillingAccountBucketConfigCmekSettings `pulumi:"cmekSettings"`
 	// Describes this bucket.
 	Description *string `pulumi:"description"`
 	// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
@@ -140,6 +148,10 @@ type BillingAccountBucketConfigState struct {
 	BillingAccount pulumi.StringPtrInput
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId pulumi.StringPtrInput
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+	// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+	// updating the log bucket. Changing the KMS key is allowed.
+	CmekSettings BillingAccountBucketConfigCmekSettingsPtrInput
 	// Describes this bucket.
 	Description pulumi.StringPtrInput
 	// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
@@ -161,6 +173,10 @@ type billingAccountBucketConfigArgs struct {
 	BillingAccount string `pulumi:"billingAccount"`
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId string `pulumi:"bucketId"`
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+	// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+	// updating the log bucket. Changing the KMS key is allowed.
+	CmekSettings *BillingAccountBucketConfigCmekSettings `pulumi:"cmekSettings"`
 	// Describes this bucket.
 	Description *string `pulumi:"description"`
 	// The location of the bucket.
@@ -175,6 +191,10 @@ type BillingAccountBucketConfigArgs struct {
 	BillingAccount pulumi.StringInput
 	// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 	BucketId pulumi.StringInput
+	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+	// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+	// updating the log bucket. Changing the KMS key is allowed.
+	CmekSettings BillingAccountBucketConfigCmekSettingsPtrInput
 	// Describes this bucket.
 	Description pulumi.StringPtrInput
 	// The location of the bucket.
@@ -278,6 +298,15 @@ func (o BillingAccountBucketConfigOutput) BillingAccount() pulumi.StringOutput {
 // The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
 func (o BillingAccountBucketConfigOutput) BucketId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BillingAccountBucketConfig) pulumi.StringOutput { return v.BucketId }).(pulumi.StringOutput)
+}
+
+// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+// updating the log bucket. Changing the KMS key is allowed.
+func (o BillingAccountBucketConfigOutput) CmekSettings() BillingAccountBucketConfigCmekSettingsPtrOutput {
+	return o.ApplyT(func(v *BillingAccountBucketConfig) BillingAccountBucketConfigCmekSettingsPtrOutput {
+		return v.CmekSettings
+	}).(BillingAccountBucketConfigCmekSettingsPtrOutput)
 }
 
 // Describes this bucket.

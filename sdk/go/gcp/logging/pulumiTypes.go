@@ -10,6 +10,188 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type BillingAccountBucketConfigCmekSettings struct {
+	KmsKeyName        string  `pulumi:"kmsKeyName"`
+	KmsKeyVersionName *string `pulumi:"kmsKeyVersionName"`
+	// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
+	Name             *string `pulumi:"name"`
+	ServiceAccountId *string `pulumi:"serviceAccountId"`
+}
+
+// BillingAccountBucketConfigCmekSettingsInput is an input type that accepts BillingAccountBucketConfigCmekSettingsArgs and BillingAccountBucketConfigCmekSettingsOutput values.
+// You can construct a concrete instance of `BillingAccountBucketConfigCmekSettingsInput` via:
+//
+//	BillingAccountBucketConfigCmekSettingsArgs{...}
+type BillingAccountBucketConfigCmekSettingsInput interface {
+	pulumi.Input
+
+	ToBillingAccountBucketConfigCmekSettingsOutput() BillingAccountBucketConfigCmekSettingsOutput
+	ToBillingAccountBucketConfigCmekSettingsOutputWithContext(context.Context) BillingAccountBucketConfigCmekSettingsOutput
+}
+
+type BillingAccountBucketConfigCmekSettingsArgs struct {
+	KmsKeyName        pulumi.StringInput    `pulumi:"kmsKeyName"`
+	KmsKeyVersionName pulumi.StringPtrInput `pulumi:"kmsKeyVersionName"`
+	// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
+	Name             pulumi.StringPtrInput `pulumi:"name"`
+	ServiceAccountId pulumi.StringPtrInput `pulumi:"serviceAccountId"`
+}
+
+func (BillingAccountBucketConfigCmekSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingAccountBucketConfigCmekSettings)(nil)).Elem()
+}
+
+func (i BillingAccountBucketConfigCmekSettingsArgs) ToBillingAccountBucketConfigCmekSettingsOutput() BillingAccountBucketConfigCmekSettingsOutput {
+	return i.ToBillingAccountBucketConfigCmekSettingsOutputWithContext(context.Background())
+}
+
+func (i BillingAccountBucketConfigCmekSettingsArgs) ToBillingAccountBucketConfigCmekSettingsOutputWithContext(ctx context.Context) BillingAccountBucketConfigCmekSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountBucketConfigCmekSettingsOutput)
+}
+
+func (i BillingAccountBucketConfigCmekSettingsArgs) ToBillingAccountBucketConfigCmekSettingsPtrOutput() BillingAccountBucketConfigCmekSettingsPtrOutput {
+	return i.ToBillingAccountBucketConfigCmekSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i BillingAccountBucketConfigCmekSettingsArgs) ToBillingAccountBucketConfigCmekSettingsPtrOutputWithContext(ctx context.Context) BillingAccountBucketConfigCmekSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountBucketConfigCmekSettingsOutput).ToBillingAccountBucketConfigCmekSettingsPtrOutputWithContext(ctx)
+}
+
+// BillingAccountBucketConfigCmekSettingsPtrInput is an input type that accepts BillingAccountBucketConfigCmekSettingsArgs, BillingAccountBucketConfigCmekSettingsPtr and BillingAccountBucketConfigCmekSettingsPtrOutput values.
+// You can construct a concrete instance of `BillingAccountBucketConfigCmekSettingsPtrInput` via:
+//
+//	        BillingAccountBucketConfigCmekSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type BillingAccountBucketConfigCmekSettingsPtrInput interface {
+	pulumi.Input
+
+	ToBillingAccountBucketConfigCmekSettingsPtrOutput() BillingAccountBucketConfigCmekSettingsPtrOutput
+	ToBillingAccountBucketConfigCmekSettingsPtrOutputWithContext(context.Context) BillingAccountBucketConfigCmekSettingsPtrOutput
+}
+
+type billingAccountBucketConfigCmekSettingsPtrType BillingAccountBucketConfigCmekSettingsArgs
+
+func BillingAccountBucketConfigCmekSettingsPtr(v *BillingAccountBucketConfigCmekSettingsArgs) BillingAccountBucketConfigCmekSettingsPtrInput {
+	return (*billingAccountBucketConfigCmekSettingsPtrType)(v)
+}
+
+func (*billingAccountBucketConfigCmekSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BillingAccountBucketConfigCmekSettings)(nil)).Elem()
+}
+
+func (i *billingAccountBucketConfigCmekSettingsPtrType) ToBillingAccountBucketConfigCmekSettingsPtrOutput() BillingAccountBucketConfigCmekSettingsPtrOutput {
+	return i.ToBillingAccountBucketConfigCmekSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *billingAccountBucketConfigCmekSettingsPtrType) ToBillingAccountBucketConfigCmekSettingsPtrOutputWithContext(ctx context.Context) BillingAccountBucketConfigCmekSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountBucketConfigCmekSettingsPtrOutput)
+}
+
+type BillingAccountBucketConfigCmekSettingsOutput struct{ *pulumi.OutputState }
+
+func (BillingAccountBucketConfigCmekSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingAccountBucketConfigCmekSettings)(nil)).Elem()
+}
+
+func (o BillingAccountBucketConfigCmekSettingsOutput) ToBillingAccountBucketConfigCmekSettingsOutput() BillingAccountBucketConfigCmekSettingsOutput {
+	return o
+}
+
+func (o BillingAccountBucketConfigCmekSettingsOutput) ToBillingAccountBucketConfigCmekSettingsOutputWithContext(ctx context.Context) BillingAccountBucketConfigCmekSettingsOutput {
+	return o
+}
+
+func (o BillingAccountBucketConfigCmekSettingsOutput) ToBillingAccountBucketConfigCmekSettingsPtrOutput() BillingAccountBucketConfigCmekSettingsPtrOutput {
+	return o.ToBillingAccountBucketConfigCmekSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o BillingAccountBucketConfigCmekSettingsOutput) ToBillingAccountBucketConfigCmekSettingsPtrOutputWithContext(ctx context.Context) BillingAccountBucketConfigCmekSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BillingAccountBucketConfigCmekSettings) *BillingAccountBucketConfigCmekSettings {
+		return &v
+	}).(BillingAccountBucketConfigCmekSettingsPtrOutput)
+}
+
+func (o BillingAccountBucketConfigCmekSettingsOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v BillingAccountBucketConfigCmekSettings) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+func (o BillingAccountBucketConfigCmekSettingsOutput) KmsKeyVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingAccountBucketConfigCmekSettings) *string { return v.KmsKeyVersionName }).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
+func (o BillingAccountBucketConfigCmekSettingsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingAccountBucketConfigCmekSettings) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o BillingAccountBucketConfigCmekSettingsOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingAccountBucketConfigCmekSettings) *string { return v.ServiceAccountId }).(pulumi.StringPtrOutput)
+}
+
+type BillingAccountBucketConfigCmekSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (BillingAccountBucketConfigCmekSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BillingAccountBucketConfigCmekSettings)(nil)).Elem()
+}
+
+func (o BillingAccountBucketConfigCmekSettingsPtrOutput) ToBillingAccountBucketConfigCmekSettingsPtrOutput() BillingAccountBucketConfigCmekSettingsPtrOutput {
+	return o
+}
+
+func (o BillingAccountBucketConfigCmekSettingsPtrOutput) ToBillingAccountBucketConfigCmekSettingsPtrOutputWithContext(ctx context.Context) BillingAccountBucketConfigCmekSettingsPtrOutput {
+	return o
+}
+
+func (o BillingAccountBucketConfigCmekSettingsPtrOutput) Elem() BillingAccountBucketConfigCmekSettingsOutput {
+	return o.ApplyT(func(v *BillingAccountBucketConfigCmekSettings) BillingAccountBucketConfigCmekSettings {
+		if v != nil {
+			return *v
+		}
+		var ret BillingAccountBucketConfigCmekSettings
+		return ret
+	}).(BillingAccountBucketConfigCmekSettingsOutput)
+}
+
+func (o BillingAccountBucketConfigCmekSettingsPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingAccountBucketConfigCmekSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o BillingAccountBucketConfigCmekSettingsPtrOutput) KmsKeyVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingAccountBucketConfigCmekSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyVersionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
+func (o BillingAccountBucketConfigCmekSettingsPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingAccountBucketConfigCmekSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o BillingAccountBucketConfigCmekSettingsPtrOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BillingAccountBucketConfigCmekSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
 type BillingAccountSinkBigqueryOptions struct {
 	// Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
 	// By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
@@ -284,6 +466,188 @@ func (o BillingAccountSinkExclusionArrayOutput) Index(i pulumi.IntInput) Billing
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BillingAccountSinkExclusion {
 		return vs[0].([]BillingAccountSinkExclusion)[vs[1].(int)]
 	}).(BillingAccountSinkExclusionOutput)
+}
+
+type FolderBucketConfigCmekSettings struct {
+	KmsKeyName        string  `pulumi:"kmsKeyName"`
+	KmsKeyVersionName *string `pulumi:"kmsKeyVersionName"`
+	// The resource name of the bucket. For example: "folders/my-folder-id/locations/my-location/buckets/my-bucket-id"
+	Name             *string `pulumi:"name"`
+	ServiceAccountId *string `pulumi:"serviceAccountId"`
+}
+
+// FolderBucketConfigCmekSettingsInput is an input type that accepts FolderBucketConfigCmekSettingsArgs and FolderBucketConfigCmekSettingsOutput values.
+// You can construct a concrete instance of `FolderBucketConfigCmekSettingsInput` via:
+//
+//	FolderBucketConfigCmekSettingsArgs{...}
+type FolderBucketConfigCmekSettingsInput interface {
+	pulumi.Input
+
+	ToFolderBucketConfigCmekSettingsOutput() FolderBucketConfigCmekSettingsOutput
+	ToFolderBucketConfigCmekSettingsOutputWithContext(context.Context) FolderBucketConfigCmekSettingsOutput
+}
+
+type FolderBucketConfigCmekSettingsArgs struct {
+	KmsKeyName        pulumi.StringInput    `pulumi:"kmsKeyName"`
+	KmsKeyVersionName pulumi.StringPtrInput `pulumi:"kmsKeyVersionName"`
+	// The resource name of the bucket. For example: "folders/my-folder-id/locations/my-location/buckets/my-bucket-id"
+	Name             pulumi.StringPtrInput `pulumi:"name"`
+	ServiceAccountId pulumi.StringPtrInput `pulumi:"serviceAccountId"`
+}
+
+func (FolderBucketConfigCmekSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderBucketConfigCmekSettings)(nil)).Elem()
+}
+
+func (i FolderBucketConfigCmekSettingsArgs) ToFolderBucketConfigCmekSettingsOutput() FolderBucketConfigCmekSettingsOutput {
+	return i.ToFolderBucketConfigCmekSettingsOutputWithContext(context.Background())
+}
+
+func (i FolderBucketConfigCmekSettingsArgs) ToFolderBucketConfigCmekSettingsOutputWithContext(ctx context.Context) FolderBucketConfigCmekSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderBucketConfigCmekSettingsOutput)
+}
+
+func (i FolderBucketConfigCmekSettingsArgs) ToFolderBucketConfigCmekSettingsPtrOutput() FolderBucketConfigCmekSettingsPtrOutput {
+	return i.ToFolderBucketConfigCmekSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i FolderBucketConfigCmekSettingsArgs) ToFolderBucketConfigCmekSettingsPtrOutputWithContext(ctx context.Context) FolderBucketConfigCmekSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderBucketConfigCmekSettingsOutput).ToFolderBucketConfigCmekSettingsPtrOutputWithContext(ctx)
+}
+
+// FolderBucketConfigCmekSettingsPtrInput is an input type that accepts FolderBucketConfigCmekSettingsArgs, FolderBucketConfigCmekSettingsPtr and FolderBucketConfigCmekSettingsPtrOutput values.
+// You can construct a concrete instance of `FolderBucketConfigCmekSettingsPtrInput` via:
+//
+//	        FolderBucketConfigCmekSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type FolderBucketConfigCmekSettingsPtrInput interface {
+	pulumi.Input
+
+	ToFolderBucketConfigCmekSettingsPtrOutput() FolderBucketConfigCmekSettingsPtrOutput
+	ToFolderBucketConfigCmekSettingsPtrOutputWithContext(context.Context) FolderBucketConfigCmekSettingsPtrOutput
+}
+
+type folderBucketConfigCmekSettingsPtrType FolderBucketConfigCmekSettingsArgs
+
+func FolderBucketConfigCmekSettingsPtr(v *FolderBucketConfigCmekSettingsArgs) FolderBucketConfigCmekSettingsPtrInput {
+	return (*folderBucketConfigCmekSettingsPtrType)(v)
+}
+
+func (*folderBucketConfigCmekSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FolderBucketConfigCmekSettings)(nil)).Elem()
+}
+
+func (i *folderBucketConfigCmekSettingsPtrType) ToFolderBucketConfigCmekSettingsPtrOutput() FolderBucketConfigCmekSettingsPtrOutput {
+	return i.ToFolderBucketConfigCmekSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *folderBucketConfigCmekSettingsPtrType) ToFolderBucketConfigCmekSettingsPtrOutputWithContext(ctx context.Context) FolderBucketConfigCmekSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderBucketConfigCmekSettingsPtrOutput)
+}
+
+type FolderBucketConfigCmekSettingsOutput struct{ *pulumi.OutputState }
+
+func (FolderBucketConfigCmekSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderBucketConfigCmekSettings)(nil)).Elem()
+}
+
+func (o FolderBucketConfigCmekSettingsOutput) ToFolderBucketConfigCmekSettingsOutput() FolderBucketConfigCmekSettingsOutput {
+	return o
+}
+
+func (o FolderBucketConfigCmekSettingsOutput) ToFolderBucketConfigCmekSettingsOutputWithContext(ctx context.Context) FolderBucketConfigCmekSettingsOutput {
+	return o
+}
+
+func (o FolderBucketConfigCmekSettingsOutput) ToFolderBucketConfigCmekSettingsPtrOutput() FolderBucketConfigCmekSettingsPtrOutput {
+	return o.ToFolderBucketConfigCmekSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o FolderBucketConfigCmekSettingsOutput) ToFolderBucketConfigCmekSettingsPtrOutputWithContext(ctx context.Context) FolderBucketConfigCmekSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FolderBucketConfigCmekSettings) *FolderBucketConfigCmekSettings {
+		return &v
+	}).(FolderBucketConfigCmekSettingsPtrOutput)
+}
+
+func (o FolderBucketConfigCmekSettingsOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v FolderBucketConfigCmekSettings) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+func (o FolderBucketConfigCmekSettingsOutput) KmsKeyVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FolderBucketConfigCmekSettings) *string { return v.KmsKeyVersionName }).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the bucket. For example: "folders/my-folder-id/locations/my-location/buckets/my-bucket-id"
+func (o FolderBucketConfigCmekSettingsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FolderBucketConfigCmekSettings) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o FolderBucketConfigCmekSettingsOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FolderBucketConfigCmekSettings) *string { return v.ServiceAccountId }).(pulumi.StringPtrOutput)
+}
+
+type FolderBucketConfigCmekSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (FolderBucketConfigCmekSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FolderBucketConfigCmekSettings)(nil)).Elem()
+}
+
+func (o FolderBucketConfigCmekSettingsPtrOutput) ToFolderBucketConfigCmekSettingsPtrOutput() FolderBucketConfigCmekSettingsPtrOutput {
+	return o
+}
+
+func (o FolderBucketConfigCmekSettingsPtrOutput) ToFolderBucketConfigCmekSettingsPtrOutputWithContext(ctx context.Context) FolderBucketConfigCmekSettingsPtrOutput {
+	return o
+}
+
+func (o FolderBucketConfigCmekSettingsPtrOutput) Elem() FolderBucketConfigCmekSettingsOutput {
+	return o.ApplyT(func(v *FolderBucketConfigCmekSettings) FolderBucketConfigCmekSettings {
+		if v != nil {
+			return *v
+		}
+		var ret FolderBucketConfigCmekSettings
+		return ret
+	}).(FolderBucketConfigCmekSettingsOutput)
+}
+
+func (o FolderBucketConfigCmekSettingsPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FolderBucketConfigCmekSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o FolderBucketConfigCmekSettingsPtrOutput) KmsKeyVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FolderBucketConfigCmekSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyVersionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the bucket. For example: "folders/my-folder-id/locations/my-location/buckets/my-bucket-id"
+func (o FolderBucketConfigCmekSettingsPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FolderBucketConfigCmekSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o FolderBucketConfigCmekSettingsPtrOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FolderBucketConfigCmekSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountId
+	}).(pulumi.StringPtrOutput)
 }
 
 type FolderSinkBigqueryOptions struct {
@@ -1633,6 +1997,188 @@ func (o MetricMetricDescriptorLabelArrayOutput) Index(i pulumi.IntInput) MetricM
 	}).(MetricMetricDescriptorLabelOutput)
 }
 
+type OrganizationBucketConfigCmekSettings struct {
+	KmsKeyName        string  `pulumi:"kmsKeyName"`
+	KmsKeyVersionName *string `pulumi:"kmsKeyVersionName"`
+	// The resource name of the bucket. For example: "organizations/my-organization-id/locations/my-location/buckets/my-bucket-id"
+	Name             *string `pulumi:"name"`
+	ServiceAccountId *string `pulumi:"serviceAccountId"`
+}
+
+// OrganizationBucketConfigCmekSettingsInput is an input type that accepts OrganizationBucketConfigCmekSettingsArgs and OrganizationBucketConfigCmekSettingsOutput values.
+// You can construct a concrete instance of `OrganizationBucketConfigCmekSettingsInput` via:
+//
+//	OrganizationBucketConfigCmekSettingsArgs{...}
+type OrganizationBucketConfigCmekSettingsInput interface {
+	pulumi.Input
+
+	ToOrganizationBucketConfigCmekSettingsOutput() OrganizationBucketConfigCmekSettingsOutput
+	ToOrganizationBucketConfigCmekSettingsOutputWithContext(context.Context) OrganizationBucketConfigCmekSettingsOutput
+}
+
+type OrganizationBucketConfigCmekSettingsArgs struct {
+	KmsKeyName        pulumi.StringInput    `pulumi:"kmsKeyName"`
+	KmsKeyVersionName pulumi.StringPtrInput `pulumi:"kmsKeyVersionName"`
+	// The resource name of the bucket. For example: "organizations/my-organization-id/locations/my-location/buckets/my-bucket-id"
+	Name             pulumi.StringPtrInput `pulumi:"name"`
+	ServiceAccountId pulumi.StringPtrInput `pulumi:"serviceAccountId"`
+}
+
+func (OrganizationBucketConfigCmekSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationBucketConfigCmekSettings)(nil)).Elem()
+}
+
+func (i OrganizationBucketConfigCmekSettingsArgs) ToOrganizationBucketConfigCmekSettingsOutput() OrganizationBucketConfigCmekSettingsOutput {
+	return i.ToOrganizationBucketConfigCmekSettingsOutputWithContext(context.Background())
+}
+
+func (i OrganizationBucketConfigCmekSettingsArgs) ToOrganizationBucketConfigCmekSettingsOutputWithContext(ctx context.Context) OrganizationBucketConfigCmekSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationBucketConfigCmekSettingsOutput)
+}
+
+func (i OrganizationBucketConfigCmekSettingsArgs) ToOrganizationBucketConfigCmekSettingsPtrOutput() OrganizationBucketConfigCmekSettingsPtrOutput {
+	return i.ToOrganizationBucketConfigCmekSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i OrganizationBucketConfigCmekSettingsArgs) ToOrganizationBucketConfigCmekSettingsPtrOutputWithContext(ctx context.Context) OrganizationBucketConfigCmekSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationBucketConfigCmekSettingsOutput).ToOrganizationBucketConfigCmekSettingsPtrOutputWithContext(ctx)
+}
+
+// OrganizationBucketConfigCmekSettingsPtrInput is an input type that accepts OrganizationBucketConfigCmekSettingsArgs, OrganizationBucketConfigCmekSettingsPtr and OrganizationBucketConfigCmekSettingsPtrOutput values.
+// You can construct a concrete instance of `OrganizationBucketConfigCmekSettingsPtrInput` via:
+//
+//	        OrganizationBucketConfigCmekSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type OrganizationBucketConfigCmekSettingsPtrInput interface {
+	pulumi.Input
+
+	ToOrganizationBucketConfigCmekSettingsPtrOutput() OrganizationBucketConfigCmekSettingsPtrOutput
+	ToOrganizationBucketConfigCmekSettingsPtrOutputWithContext(context.Context) OrganizationBucketConfigCmekSettingsPtrOutput
+}
+
+type organizationBucketConfigCmekSettingsPtrType OrganizationBucketConfigCmekSettingsArgs
+
+func OrganizationBucketConfigCmekSettingsPtr(v *OrganizationBucketConfigCmekSettingsArgs) OrganizationBucketConfigCmekSettingsPtrInput {
+	return (*organizationBucketConfigCmekSettingsPtrType)(v)
+}
+
+func (*organizationBucketConfigCmekSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationBucketConfigCmekSettings)(nil)).Elem()
+}
+
+func (i *organizationBucketConfigCmekSettingsPtrType) ToOrganizationBucketConfigCmekSettingsPtrOutput() OrganizationBucketConfigCmekSettingsPtrOutput {
+	return i.ToOrganizationBucketConfigCmekSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *organizationBucketConfigCmekSettingsPtrType) ToOrganizationBucketConfigCmekSettingsPtrOutputWithContext(ctx context.Context) OrganizationBucketConfigCmekSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationBucketConfigCmekSettingsPtrOutput)
+}
+
+type OrganizationBucketConfigCmekSettingsOutput struct{ *pulumi.OutputState }
+
+func (OrganizationBucketConfigCmekSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationBucketConfigCmekSettings)(nil)).Elem()
+}
+
+func (o OrganizationBucketConfigCmekSettingsOutput) ToOrganizationBucketConfigCmekSettingsOutput() OrganizationBucketConfigCmekSettingsOutput {
+	return o
+}
+
+func (o OrganizationBucketConfigCmekSettingsOutput) ToOrganizationBucketConfigCmekSettingsOutputWithContext(ctx context.Context) OrganizationBucketConfigCmekSettingsOutput {
+	return o
+}
+
+func (o OrganizationBucketConfigCmekSettingsOutput) ToOrganizationBucketConfigCmekSettingsPtrOutput() OrganizationBucketConfigCmekSettingsPtrOutput {
+	return o.ToOrganizationBucketConfigCmekSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationBucketConfigCmekSettingsOutput) ToOrganizationBucketConfigCmekSettingsPtrOutputWithContext(ctx context.Context) OrganizationBucketConfigCmekSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationBucketConfigCmekSettings) *OrganizationBucketConfigCmekSettings {
+		return &v
+	}).(OrganizationBucketConfigCmekSettingsPtrOutput)
+}
+
+func (o OrganizationBucketConfigCmekSettingsOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v OrganizationBucketConfigCmekSettings) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+func (o OrganizationBucketConfigCmekSettingsOutput) KmsKeyVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationBucketConfigCmekSettings) *string { return v.KmsKeyVersionName }).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the bucket. For example: "organizations/my-organization-id/locations/my-location/buckets/my-bucket-id"
+func (o OrganizationBucketConfigCmekSettingsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationBucketConfigCmekSettings) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o OrganizationBucketConfigCmekSettingsOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationBucketConfigCmekSettings) *string { return v.ServiceAccountId }).(pulumi.StringPtrOutput)
+}
+
+type OrganizationBucketConfigCmekSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (OrganizationBucketConfigCmekSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationBucketConfigCmekSettings)(nil)).Elem()
+}
+
+func (o OrganizationBucketConfigCmekSettingsPtrOutput) ToOrganizationBucketConfigCmekSettingsPtrOutput() OrganizationBucketConfigCmekSettingsPtrOutput {
+	return o
+}
+
+func (o OrganizationBucketConfigCmekSettingsPtrOutput) ToOrganizationBucketConfigCmekSettingsPtrOutputWithContext(ctx context.Context) OrganizationBucketConfigCmekSettingsPtrOutput {
+	return o
+}
+
+func (o OrganizationBucketConfigCmekSettingsPtrOutput) Elem() OrganizationBucketConfigCmekSettingsOutput {
+	return o.ApplyT(func(v *OrganizationBucketConfigCmekSettings) OrganizationBucketConfigCmekSettings {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationBucketConfigCmekSettings
+		return ret
+	}).(OrganizationBucketConfigCmekSettingsOutput)
+}
+
+func (o OrganizationBucketConfigCmekSettingsPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationBucketConfigCmekSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OrganizationBucketConfigCmekSettingsPtrOutput) KmsKeyVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationBucketConfigCmekSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyVersionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the bucket. For example: "organizations/my-organization-id/locations/my-location/buckets/my-bucket-id"
+func (o OrganizationBucketConfigCmekSettingsPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationBucketConfigCmekSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OrganizationBucketConfigCmekSettingsPtrOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationBucketConfigCmekSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
 type OrganizationSinkBigqueryOptions struct {
 	// Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
 	// By default, Logging creates dated tables based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
@@ -1907,6 +2453,248 @@ func (o OrganizationSinkExclusionArrayOutput) Index(i pulumi.IntInput) Organizat
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrganizationSinkExclusion {
 		return vs[0].([]OrganizationSinkExclusion)[vs[1].(int)]
 	}).(OrganizationSinkExclusionOutput)
+}
+
+type ProjectBucketConfigCmekSettings struct {
+	// The resource name for the configured Cloud KMS key.
+	// KMS key name format:
+	// `'projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]'`
+	// To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
+	// The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
+	// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+	// The CryptoKeyVersion resource name for the configured Cloud KMS key.
+	// KMS key name format:
+	// `'projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]'`
+	// For example:
+	// "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+	// This is a read-only field used to convey the specific configured CryptoKeyVersion of kmsKey that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
+	KmsKeyVersionName *string `pulumi:"kmsKeyVersionName"`
+	// The resource name of the CMEK settings.
+	Name *string `pulumi:"name"`
+	// The service account associated with a project for which CMEK will apply.
+	// Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
+	// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+	ServiceAccountId *string `pulumi:"serviceAccountId"`
+}
+
+// ProjectBucketConfigCmekSettingsInput is an input type that accepts ProjectBucketConfigCmekSettingsArgs and ProjectBucketConfigCmekSettingsOutput values.
+// You can construct a concrete instance of `ProjectBucketConfigCmekSettingsInput` via:
+//
+//	ProjectBucketConfigCmekSettingsArgs{...}
+type ProjectBucketConfigCmekSettingsInput interface {
+	pulumi.Input
+
+	ToProjectBucketConfigCmekSettingsOutput() ProjectBucketConfigCmekSettingsOutput
+	ToProjectBucketConfigCmekSettingsOutputWithContext(context.Context) ProjectBucketConfigCmekSettingsOutput
+}
+
+type ProjectBucketConfigCmekSettingsArgs struct {
+	// The resource name for the configured Cloud KMS key.
+	// KMS key name format:
+	// `'projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]'`
+	// To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
+	// The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
+	// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+	// The CryptoKeyVersion resource name for the configured Cloud KMS key.
+	// KMS key name format:
+	// `'projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]'`
+	// For example:
+	// "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+	// This is a read-only field used to convey the specific configured CryptoKeyVersion of kmsKey that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
+	KmsKeyVersionName pulumi.StringPtrInput `pulumi:"kmsKeyVersionName"`
+	// The resource name of the CMEK settings.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The service account associated with a project for which CMEK will apply.
+	// Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
+	// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+	ServiceAccountId pulumi.StringPtrInput `pulumi:"serviceAccountId"`
+}
+
+func (ProjectBucketConfigCmekSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectBucketConfigCmekSettings)(nil)).Elem()
+}
+
+func (i ProjectBucketConfigCmekSettingsArgs) ToProjectBucketConfigCmekSettingsOutput() ProjectBucketConfigCmekSettingsOutput {
+	return i.ToProjectBucketConfigCmekSettingsOutputWithContext(context.Background())
+}
+
+func (i ProjectBucketConfigCmekSettingsArgs) ToProjectBucketConfigCmekSettingsOutputWithContext(ctx context.Context) ProjectBucketConfigCmekSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectBucketConfigCmekSettingsOutput)
+}
+
+func (i ProjectBucketConfigCmekSettingsArgs) ToProjectBucketConfigCmekSettingsPtrOutput() ProjectBucketConfigCmekSettingsPtrOutput {
+	return i.ToProjectBucketConfigCmekSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i ProjectBucketConfigCmekSettingsArgs) ToProjectBucketConfigCmekSettingsPtrOutputWithContext(ctx context.Context) ProjectBucketConfigCmekSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectBucketConfigCmekSettingsOutput).ToProjectBucketConfigCmekSettingsPtrOutputWithContext(ctx)
+}
+
+// ProjectBucketConfigCmekSettingsPtrInput is an input type that accepts ProjectBucketConfigCmekSettingsArgs, ProjectBucketConfigCmekSettingsPtr and ProjectBucketConfigCmekSettingsPtrOutput values.
+// You can construct a concrete instance of `ProjectBucketConfigCmekSettingsPtrInput` via:
+//
+//	        ProjectBucketConfigCmekSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProjectBucketConfigCmekSettingsPtrInput interface {
+	pulumi.Input
+
+	ToProjectBucketConfigCmekSettingsPtrOutput() ProjectBucketConfigCmekSettingsPtrOutput
+	ToProjectBucketConfigCmekSettingsPtrOutputWithContext(context.Context) ProjectBucketConfigCmekSettingsPtrOutput
+}
+
+type projectBucketConfigCmekSettingsPtrType ProjectBucketConfigCmekSettingsArgs
+
+func ProjectBucketConfigCmekSettingsPtr(v *ProjectBucketConfigCmekSettingsArgs) ProjectBucketConfigCmekSettingsPtrInput {
+	return (*projectBucketConfigCmekSettingsPtrType)(v)
+}
+
+func (*projectBucketConfigCmekSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectBucketConfigCmekSettings)(nil)).Elem()
+}
+
+func (i *projectBucketConfigCmekSettingsPtrType) ToProjectBucketConfigCmekSettingsPtrOutput() ProjectBucketConfigCmekSettingsPtrOutput {
+	return i.ToProjectBucketConfigCmekSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *projectBucketConfigCmekSettingsPtrType) ToProjectBucketConfigCmekSettingsPtrOutputWithContext(ctx context.Context) ProjectBucketConfigCmekSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectBucketConfigCmekSettingsPtrOutput)
+}
+
+type ProjectBucketConfigCmekSettingsOutput struct{ *pulumi.OutputState }
+
+func (ProjectBucketConfigCmekSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectBucketConfigCmekSettings)(nil)).Elem()
+}
+
+func (o ProjectBucketConfigCmekSettingsOutput) ToProjectBucketConfigCmekSettingsOutput() ProjectBucketConfigCmekSettingsOutput {
+	return o
+}
+
+func (o ProjectBucketConfigCmekSettingsOutput) ToProjectBucketConfigCmekSettingsOutputWithContext(ctx context.Context) ProjectBucketConfigCmekSettingsOutput {
+	return o
+}
+
+func (o ProjectBucketConfigCmekSettingsOutput) ToProjectBucketConfigCmekSettingsPtrOutput() ProjectBucketConfigCmekSettingsPtrOutput {
+	return o.ToProjectBucketConfigCmekSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectBucketConfigCmekSettingsOutput) ToProjectBucketConfigCmekSettingsPtrOutputWithContext(ctx context.Context) ProjectBucketConfigCmekSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectBucketConfigCmekSettings) *ProjectBucketConfigCmekSettings {
+		return &v
+	}).(ProjectBucketConfigCmekSettingsPtrOutput)
+}
+
+// The resource name for the configured Cloud KMS key.
+// KMS key name format:
+// `'projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]'`
+// To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
+// The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
+// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+func (o ProjectBucketConfigCmekSettingsOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v ProjectBucketConfigCmekSettings) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+// The CryptoKeyVersion resource name for the configured Cloud KMS key.
+// KMS key name format:
+// `'projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]'`
+// For example:
+// "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+// This is a read-only field used to convey the specific configured CryptoKeyVersion of kmsKey that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
+func (o ProjectBucketConfigCmekSettingsOutput) KmsKeyVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectBucketConfigCmekSettings) *string { return v.KmsKeyVersionName }).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the CMEK settings.
+func (o ProjectBucketConfigCmekSettingsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectBucketConfigCmekSettings) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The service account associated with a project for which CMEK will apply.
+// Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
+// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+func (o ProjectBucketConfigCmekSettingsOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectBucketConfigCmekSettings) *string { return v.ServiceAccountId }).(pulumi.StringPtrOutput)
+}
+
+type ProjectBucketConfigCmekSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (ProjectBucketConfigCmekSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectBucketConfigCmekSettings)(nil)).Elem()
+}
+
+func (o ProjectBucketConfigCmekSettingsPtrOutput) ToProjectBucketConfigCmekSettingsPtrOutput() ProjectBucketConfigCmekSettingsPtrOutput {
+	return o
+}
+
+func (o ProjectBucketConfigCmekSettingsPtrOutput) ToProjectBucketConfigCmekSettingsPtrOutputWithContext(ctx context.Context) ProjectBucketConfigCmekSettingsPtrOutput {
+	return o
+}
+
+func (o ProjectBucketConfigCmekSettingsPtrOutput) Elem() ProjectBucketConfigCmekSettingsOutput {
+	return o.ApplyT(func(v *ProjectBucketConfigCmekSettings) ProjectBucketConfigCmekSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectBucketConfigCmekSettings
+		return ret
+	}).(ProjectBucketConfigCmekSettingsOutput)
+}
+
+// The resource name for the configured Cloud KMS key.
+// KMS key name format:
+// `'projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]'`
+// To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
+// The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
+// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+func (o ProjectBucketConfigCmekSettingsPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectBucketConfigCmekSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The CryptoKeyVersion resource name for the configured Cloud KMS key.
+// KMS key name format:
+// `'projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]'`
+// For example:
+// "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+// This is a read-only field used to convey the specific configured CryptoKeyVersion of kmsKey that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
+func (o ProjectBucketConfigCmekSettingsPtrOutput) KmsKeyVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectBucketConfigCmekSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyVersionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the CMEK settings.
+func (o ProjectBucketConfigCmekSettingsPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectBucketConfigCmekSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service account associated with a project for which CMEK will apply.
+// Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
+// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+func (o ProjectBucketConfigCmekSettingsPtrOutput) ServiceAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectBucketConfigCmekSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountId
+	}).(pulumi.StringPtrOutput)
 }
 
 type ProjectSinkBigqueryOptions struct {
@@ -2186,10 +2974,14 @@ func (o ProjectSinkExclusionArrayOutput) Index(i pulumi.IntInput) ProjectSinkExc
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountBucketConfigCmekSettingsInput)(nil)).Elem(), BillingAccountBucketConfigCmekSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountBucketConfigCmekSettingsPtrInput)(nil)).Elem(), BillingAccountBucketConfigCmekSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountSinkBigqueryOptionsInput)(nil)).Elem(), BillingAccountSinkBigqueryOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountSinkBigqueryOptionsPtrInput)(nil)).Elem(), BillingAccountSinkBigqueryOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountSinkExclusionInput)(nil)).Elem(), BillingAccountSinkExclusionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountSinkExclusionArrayInput)(nil)).Elem(), BillingAccountSinkExclusionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderBucketConfigCmekSettingsInput)(nil)).Elem(), FolderBucketConfigCmekSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderBucketConfigCmekSettingsPtrInput)(nil)).Elem(), FolderBucketConfigCmekSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FolderSinkBigqueryOptionsInput)(nil)).Elem(), FolderSinkBigqueryOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FolderSinkBigqueryOptionsPtrInput)(nil)).Elem(), FolderSinkBigqueryOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FolderSinkExclusionInput)(nil)).Elem(), FolderSinkExclusionArgs{})
@@ -2206,18 +2998,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricMetricDescriptorPtrInput)(nil)).Elem(), MetricMetricDescriptorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricMetricDescriptorLabelInput)(nil)).Elem(), MetricMetricDescriptorLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricMetricDescriptorLabelArrayInput)(nil)).Elem(), MetricMetricDescriptorLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationBucketConfigCmekSettingsInput)(nil)).Elem(), OrganizationBucketConfigCmekSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationBucketConfigCmekSettingsPtrInput)(nil)).Elem(), OrganizationBucketConfigCmekSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSinkBigqueryOptionsInput)(nil)).Elem(), OrganizationSinkBigqueryOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSinkBigqueryOptionsPtrInput)(nil)).Elem(), OrganizationSinkBigqueryOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSinkExclusionInput)(nil)).Elem(), OrganizationSinkExclusionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSinkExclusionArrayInput)(nil)).Elem(), OrganizationSinkExclusionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectBucketConfigCmekSettingsInput)(nil)).Elem(), ProjectBucketConfigCmekSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectBucketConfigCmekSettingsPtrInput)(nil)).Elem(), ProjectBucketConfigCmekSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectSinkBigqueryOptionsInput)(nil)).Elem(), ProjectSinkBigqueryOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectSinkBigqueryOptionsPtrInput)(nil)).Elem(), ProjectSinkBigqueryOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectSinkExclusionInput)(nil)).Elem(), ProjectSinkExclusionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectSinkExclusionArrayInput)(nil)).Elem(), ProjectSinkExclusionArray{})
+	pulumi.RegisterOutputType(BillingAccountBucketConfigCmekSettingsOutput{})
+	pulumi.RegisterOutputType(BillingAccountBucketConfigCmekSettingsPtrOutput{})
 	pulumi.RegisterOutputType(BillingAccountSinkBigqueryOptionsOutput{})
 	pulumi.RegisterOutputType(BillingAccountSinkBigqueryOptionsPtrOutput{})
 	pulumi.RegisterOutputType(BillingAccountSinkExclusionOutput{})
 	pulumi.RegisterOutputType(BillingAccountSinkExclusionArrayOutput{})
+	pulumi.RegisterOutputType(FolderBucketConfigCmekSettingsOutput{})
+	pulumi.RegisterOutputType(FolderBucketConfigCmekSettingsPtrOutput{})
 	pulumi.RegisterOutputType(FolderSinkBigqueryOptionsOutput{})
 	pulumi.RegisterOutputType(FolderSinkBigqueryOptionsPtrOutput{})
 	pulumi.RegisterOutputType(FolderSinkExclusionOutput{})
@@ -2234,10 +3034,14 @@ func init() {
 	pulumi.RegisterOutputType(MetricMetricDescriptorPtrOutput{})
 	pulumi.RegisterOutputType(MetricMetricDescriptorLabelOutput{})
 	pulumi.RegisterOutputType(MetricMetricDescriptorLabelArrayOutput{})
+	pulumi.RegisterOutputType(OrganizationBucketConfigCmekSettingsOutput{})
+	pulumi.RegisterOutputType(OrganizationBucketConfigCmekSettingsPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationSinkBigqueryOptionsOutput{})
 	pulumi.RegisterOutputType(OrganizationSinkBigqueryOptionsPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationSinkExclusionOutput{})
 	pulumi.RegisterOutputType(OrganizationSinkExclusionArrayOutput{})
+	pulumi.RegisterOutputType(ProjectBucketConfigCmekSettingsOutput{})
+	pulumi.RegisterOutputType(ProjectBucketConfigCmekSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ProjectSinkBigqueryOptionsOutput{})
 	pulumi.RegisterOutputType(ProjectSinkBigqueryOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ProjectSinkExclusionOutput{})

@@ -10,6 +10,11 @@ export type Channel = import("./channel").Channel;
 export const Channel: typeof import("./channel").Channel = null as any;
 utilities.lazyLoad(exports, ["Channel"], () => require("./channel"));
 
+export { GoogleChannelConfigArgs, GoogleChannelConfigState } from "./googleChannelConfig";
+export type GoogleChannelConfig = import("./googleChannelConfig").GoogleChannelConfig;
+export const GoogleChannelConfig: typeof import("./googleChannelConfig").GoogleChannelConfig = null as any;
+utilities.lazyLoad(exports, ["GoogleChannelConfig"], () => require("./googleChannelConfig"));
+
 export { TriggerArgs, TriggerState } from "./trigger";
 export type Trigger = import("./trigger").Trigger;
 export const Trigger: typeof import("./trigger").Trigger = null as any;
@@ -22,6 +27,8 @@ const _module = {
         switch (type) {
             case "gcp:eventarc/channel:Channel":
                 return new Channel(name, <any>undefined, { urn })
+            case "gcp:eventarc/googleChannelConfig:GoogleChannelConfig":
+                return new GoogleChannelConfig(name, <any>undefined, { urn })
             case "gcp:eventarc/trigger:Trigger":
                 return new Trigger(name, <any>undefined, { urn })
             default:
@@ -30,4 +37,5 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "eventarc/channel", _module)
+pulumi.runtime.registerResourceModule("gcp", "eventarc/googleChannelConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "eventarc/trigger", _module)

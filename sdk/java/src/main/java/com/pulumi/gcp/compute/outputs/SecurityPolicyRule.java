@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.compute.outputs.SecurityPolicyRuleHeaderAction;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyRuleMatch;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyRulePreconfiguredWafConfig;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyRuleRateLimitOptions;
@@ -32,6 +33,11 @@ public final class SecurityPolicyRule {
      * 
      */
     private @Nullable String description;
+    /**
+     * @return Additional actions that are performed on headers. Structure is documented below.
+     * 
+     */
+    private @Nullable SecurityPolicyRuleHeaderAction headerAction;
     /**
      * @return A match condition that incoming traffic is evaluated against.
      * If it evaluates to true, the corresponding `action` is enforced. Structure is documented below.
@@ -85,6 +91,13 @@ public final class SecurityPolicyRule {
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
+    }
+    /**
+     * @return Additional actions that are performed on headers. Structure is documented below.
+     * 
+     */
+    public Optional<SecurityPolicyRuleHeaderAction> headerAction() {
+        return Optional.ofNullable(this.headerAction);
     }
     /**
      * @return A match condition that incoming traffic is evaluated against.
@@ -143,6 +156,7 @@ public final class SecurityPolicyRule {
     public static final class Builder {
         private String action;
         private @Nullable String description;
+        private @Nullable SecurityPolicyRuleHeaderAction headerAction;
         private SecurityPolicyRuleMatch match;
         private @Nullable SecurityPolicyRulePreconfiguredWafConfig preconfiguredWafConfig;
         private @Nullable Boolean preview;
@@ -154,6 +168,7 @@ public final class SecurityPolicyRule {
     	      Objects.requireNonNull(defaults);
     	      this.action = defaults.action;
     	      this.description = defaults.description;
+    	      this.headerAction = defaults.headerAction;
     	      this.match = defaults.match;
     	      this.preconfiguredWafConfig = defaults.preconfiguredWafConfig;
     	      this.preview = defaults.preview;
@@ -170,6 +185,11 @@ public final class SecurityPolicyRule {
         @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder headerAction(@Nullable SecurityPolicyRuleHeaderAction headerAction) {
+            this.headerAction = headerAction;
             return this;
         }
         @CustomType.Setter
@@ -206,6 +226,7 @@ public final class SecurityPolicyRule {
             final var o = new SecurityPolicyRule();
             o.action = action;
             o.description = description;
+            o.headerAction = headerAction;
             o.match = match;
             o.preconfiguredWafConfig = preconfiguredWafConfig;
             o.preview = preview;

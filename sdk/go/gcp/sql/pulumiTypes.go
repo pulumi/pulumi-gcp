@@ -973,8 +973,9 @@ type DatabaseInstanceSettings struct {
 	// The name of server instance collation.
 	Collation *string `pulumi:"collation"`
 	// Specifies if connections must use Cloud SQL connectors.
-	ConnectorEnforcement *string                                `pulumi:"connectorEnforcement"`
-	DatabaseFlags        []DatabaseInstanceSettingsDatabaseFlag `pulumi:"databaseFlags"`
+	ConnectorEnforcement  *string                                        `pulumi:"connectorEnforcement"`
+	DatabaseFlags         []DatabaseInstanceSettingsDatabaseFlag         `pulumi:"databaseFlags"`
+	DenyMaintenancePeriod *DatabaseInstanceSettingsDenyMaintenancePeriod `pulumi:"denyMaintenancePeriod"`
 	// Enables auto-resizing of the storage size. Defaults to `true`.
 	DiskAutoresize *bool `pulumi:"diskAutoresize"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
@@ -1029,8 +1030,9 @@ type DatabaseInstanceSettingsArgs struct {
 	// The name of server instance collation.
 	Collation pulumi.StringPtrInput `pulumi:"collation"`
 	// Specifies if connections must use Cloud SQL connectors.
-	ConnectorEnforcement pulumi.StringPtrInput                          `pulumi:"connectorEnforcement"`
-	DatabaseFlags        DatabaseInstanceSettingsDatabaseFlagArrayInput `pulumi:"databaseFlags"`
+	ConnectorEnforcement  pulumi.StringPtrInput                                 `pulumi:"connectorEnforcement"`
+	DatabaseFlags         DatabaseInstanceSettingsDatabaseFlagArrayInput        `pulumi:"databaseFlags"`
+	DenyMaintenancePeriod DatabaseInstanceSettingsDenyMaintenancePeriodPtrInput `pulumi:"denyMaintenancePeriod"`
 	// Enables auto-resizing of the storage size. Defaults to `true`.
 	DiskAutoresize pulumi.BoolPtrInput `pulumi:"diskAutoresize"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
@@ -1175,6 +1177,12 @@ func (o DatabaseInstanceSettingsOutput) ConnectorEnforcement() pulumi.StringPtrO
 
 func (o DatabaseInstanceSettingsOutput) DatabaseFlags() DatabaseInstanceSettingsDatabaseFlagArrayOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) []DatabaseInstanceSettingsDatabaseFlag { return v.DatabaseFlags }).(DatabaseInstanceSettingsDatabaseFlagArrayOutput)
+}
+
+func (o DatabaseInstanceSettingsOutput) DenyMaintenancePeriod() DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettingsDenyMaintenancePeriod {
+		return v.DenyMaintenancePeriod
+	}).(DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput)
 }
 
 // Enables auto-resizing of the storage size. Defaults to `true`.
@@ -1350,6 +1358,15 @@ func (o DatabaseInstanceSettingsPtrOutput) DatabaseFlags() DatabaseInstanceSetti
 		}
 		return v.DatabaseFlags
 	}).(DatabaseInstanceSettingsDatabaseFlagArrayOutput)
+}
+
+func (o DatabaseInstanceSettingsPtrOutput) DenyMaintenancePeriod() DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *DatabaseInstanceSettingsDenyMaintenancePeriod {
+		if v == nil {
+			return nil
+		}
+		return v.DenyMaintenancePeriod
+	}).(DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput)
 }
 
 // Enables auto-resizing of the storage size. Defaults to `true`.
@@ -2173,6 +2190,181 @@ func (o DatabaseInstanceSettingsDatabaseFlagArrayOutput) Index(i pulumi.IntInput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseInstanceSettingsDatabaseFlag {
 		return vs[0].([]DatabaseInstanceSettingsDatabaseFlag)[vs[1].(int)]
 	}).(DatabaseInstanceSettingsDatabaseFlagOutput)
+}
+
+type DatabaseInstanceSettingsDenyMaintenancePeriod struct {
+	// "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+	EndDate string `pulumi:"endDate"`
+	// "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+	StartDate string `pulumi:"startDate"`
+	// Time in UTC when the "deny maintenance period" starts on startDate and ends on endDate. The time is in format: HH:mm:SS, i.e., 00:00:00
+	Time string `pulumi:"time"`
+}
+
+// DatabaseInstanceSettingsDenyMaintenancePeriodInput is an input type that accepts DatabaseInstanceSettingsDenyMaintenancePeriodArgs and DatabaseInstanceSettingsDenyMaintenancePeriodOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsDenyMaintenancePeriodInput` via:
+//
+//	DatabaseInstanceSettingsDenyMaintenancePeriodArgs{...}
+type DatabaseInstanceSettingsDenyMaintenancePeriodInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsDenyMaintenancePeriodOutput() DatabaseInstanceSettingsDenyMaintenancePeriodOutput
+	ToDatabaseInstanceSettingsDenyMaintenancePeriodOutputWithContext(context.Context) DatabaseInstanceSettingsDenyMaintenancePeriodOutput
+}
+
+type DatabaseInstanceSettingsDenyMaintenancePeriodArgs struct {
+	// "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+	EndDate pulumi.StringInput `pulumi:"endDate"`
+	// "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+	StartDate pulumi.StringInput `pulumi:"startDate"`
+	// Time in UTC when the "deny maintenance period" starts on startDate and ends on endDate. The time is in format: HH:mm:SS, i.e., 00:00:00
+	Time pulumi.StringInput `pulumi:"time"`
+}
+
+func (DatabaseInstanceSettingsDenyMaintenancePeriodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsDenyMaintenancePeriod)(nil)).Elem()
+}
+
+func (i DatabaseInstanceSettingsDenyMaintenancePeriodArgs) ToDatabaseInstanceSettingsDenyMaintenancePeriodOutput() DatabaseInstanceSettingsDenyMaintenancePeriodOutput {
+	return i.ToDatabaseInstanceSettingsDenyMaintenancePeriodOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsDenyMaintenancePeriodArgs) ToDatabaseInstanceSettingsDenyMaintenancePeriodOutputWithContext(ctx context.Context) DatabaseInstanceSettingsDenyMaintenancePeriodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsDenyMaintenancePeriodOutput)
+}
+
+func (i DatabaseInstanceSettingsDenyMaintenancePeriodArgs) ToDatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput() DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput {
+	return i.ToDatabaseInstanceSettingsDenyMaintenancePeriodPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsDenyMaintenancePeriodArgs) ToDatabaseInstanceSettingsDenyMaintenancePeriodPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsDenyMaintenancePeriodOutput).ToDatabaseInstanceSettingsDenyMaintenancePeriodPtrOutputWithContext(ctx)
+}
+
+// DatabaseInstanceSettingsDenyMaintenancePeriodPtrInput is an input type that accepts DatabaseInstanceSettingsDenyMaintenancePeriodArgs, DatabaseInstanceSettingsDenyMaintenancePeriodPtr and DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsDenyMaintenancePeriodPtrInput` via:
+//
+//	        DatabaseInstanceSettingsDenyMaintenancePeriodArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatabaseInstanceSettingsDenyMaintenancePeriodPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput() DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput
+	ToDatabaseInstanceSettingsDenyMaintenancePeriodPtrOutputWithContext(context.Context) DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput
+}
+
+type databaseInstanceSettingsDenyMaintenancePeriodPtrType DatabaseInstanceSettingsDenyMaintenancePeriodArgs
+
+func DatabaseInstanceSettingsDenyMaintenancePeriodPtr(v *DatabaseInstanceSettingsDenyMaintenancePeriodArgs) DatabaseInstanceSettingsDenyMaintenancePeriodPtrInput {
+	return (*databaseInstanceSettingsDenyMaintenancePeriodPtrType)(v)
+}
+
+func (*databaseInstanceSettingsDenyMaintenancePeriodPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceSettingsDenyMaintenancePeriod)(nil)).Elem()
+}
+
+func (i *databaseInstanceSettingsDenyMaintenancePeriodPtrType) ToDatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput() DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput {
+	return i.ToDatabaseInstanceSettingsDenyMaintenancePeriodPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseInstanceSettingsDenyMaintenancePeriodPtrType) ToDatabaseInstanceSettingsDenyMaintenancePeriodPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput)
+}
+
+type DatabaseInstanceSettingsDenyMaintenancePeriodOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsDenyMaintenancePeriodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsDenyMaintenancePeriod)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsDenyMaintenancePeriodOutput) ToDatabaseInstanceSettingsDenyMaintenancePeriodOutput() DatabaseInstanceSettingsDenyMaintenancePeriodOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsDenyMaintenancePeriodOutput) ToDatabaseInstanceSettingsDenyMaintenancePeriodOutputWithContext(ctx context.Context) DatabaseInstanceSettingsDenyMaintenancePeriodOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsDenyMaintenancePeriodOutput) ToDatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput() DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput {
+	return o.ToDatabaseInstanceSettingsDenyMaintenancePeriodPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseInstanceSettingsDenyMaintenancePeriodOutput) ToDatabaseInstanceSettingsDenyMaintenancePeriodPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceSettingsDenyMaintenancePeriod) *DatabaseInstanceSettingsDenyMaintenancePeriod {
+		return &v
+	}).(DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput)
+}
+
+// "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+func (o DatabaseInstanceSettingsDenyMaintenancePeriodOutput) EndDate() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsDenyMaintenancePeriod) string { return v.EndDate }).(pulumi.StringOutput)
+}
+
+// "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+func (o DatabaseInstanceSettingsDenyMaintenancePeriodOutput) StartDate() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsDenyMaintenancePeriod) string { return v.StartDate }).(pulumi.StringOutput)
+}
+
+// Time in UTC when the "deny maintenance period" starts on startDate and ends on endDate. The time is in format: HH:mm:SS, i.e., 00:00:00
+func (o DatabaseInstanceSettingsDenyMaintenancePeriodOutput) Time() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsDenyMaintenancePeriod) string { return v.Time }).(pulumi.StringOutput)
+}
+
+type DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceSettingsDenyMaintenancePeriod)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput) ToDatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput() DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput) ToDatabaseInstanceSettingsDenyMaintenancePeriodPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput) Elem() DatabaseInstanceSettingsDenyMaintenancePeriodOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsDenyMaintenancePeriod) DatabaseInstanceSettingsDenyMaintenancePeriod {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseInstanceSettingsDenyMaintenancePeriod
+		return ret
+	}).(DatabaseInstanceSettingsDenyMaintenancePeriodOutput)
+}
+
+// "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+func (o DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput) EndDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsDenyMaintenancePeriod) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+func (o DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsDenyMaintenancePeriod) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time in UTC when the "deny maintenance period" starts on startDate and ends on endDate. The time is in format: HH:mm:SS, i.e., 00:00:00
+func (o DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput) Time() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsDenyMaintenancePeriod) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Time
+	}).(pulumi.StringPtrOutput)
 }
 
 type DatabaseInstanceSettingsInsightsConfig struct {
@@ -4665,6 +4857,7 @@ type GetDatabaseInstanceSetting struct {
 	Collation                  string                                               `pulumi:"collation"`
 	ConnectorEnforcement       string                                               `pulumi:"connectorEnforcement"`
 	DatabaseFlags              []GetDatabaseInstanceSettingDatabaseFlag             `pulumi:"databaseFlags"`
+	DenyMaintenancePeriods     []GetDatabaseInstanceSettingDenyMaintenancePeriod    `pulumi:"denyMaintenancePeriods"`
 	DiskAutoresize             bool                                                 `pulumi:"diskAutoresize"`
 	DiskAutoresizeLimit        int                                                  `pulumi:"diskAutoresizeLimit"`
 	DiskSize                   int                                                  `pulumi:"diskSize"`
@@ -4701,6 +4894,7 @@ type GetDatabaseInstanceSettingArgs struct {
 	Collation                  pulumi.StringInput                                           `pulumi:"collation"`
 	ConnectorEnforcement       pulumi.StringInput                                           `pulumi:"connectorEnforcement"`
 	DatabaseFlags              GetDatabaseInstanceSettingDatabaseFlagArrayInput             `pulumi:"databaseFlags"`
+	DenyMaintenancePeriods     GetDatabaseInstanceSettingDenyMaintenancePeriodArrayInput    `pulumi:"denyMaintenancePeriods"`
 	DiskAutoresize             pulumi.BoolInput                                             `pulumi:"diskAutoresize"`
 	DiskAutoresizeLimit        pulumi.IntInput                                              `pulumi:"diskAutoresizeLimit"`
 	DiskSize                   pulumi.IntInput                                              `pulumi:"diskSize"`
@@ -4799,6 +4993,12 @@ func (o GetDatabaseInstanceSettingOutput) ConnectorEnforcement() pulumi.StringOu
 
 func (o GetDatabaseInstanceSettingOutput) DatabaseFlags() GetDatabaseInstanceSettingDatabaseFlagArrayOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) []GetDatabaseInstanceSettingDatabaseFlag { return v.DatabaseFlags }).(GetDatabaseInstanceSettingDatabaseFlagArrayOutput)
+}
+
+func (o GetDatabaseInstanceSettingOutput) DenyMaintenancePeriods() GetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSetting) []GetDatabaseInstanceSettingDenyMaintenancePeriod {
+		return v.DenyMaintenancePeriods
+	}).(GetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput)
 }
 
 func (o GetDatabaseInstanceSettingOutput) DiskAutoresize() pulumi.BoolOutput {
@@ -5324,6 +5524,112 @@ func (o GetDatabaseInstanceSettingDatabaseFlagArrayOutput) Index(i pulumi.IntInp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSettingDatabaseFlag {
 		return vs[0].([]GetDatabaseInstanceSettingDatabaseFlag)[vs[1].(int)]
 	}).(GetDatabaseInstanceSettingDatabaseFlagOutput)
+}
+
+type GetDatabaseInstanceSettingDenyMaintenancePeriod struct {
+	EndDate   string `pulumi:"endDate"`
+	StartDate string `pulumi:"startDate"`
+	Time      string `pulumi:"time"`
+}
+
+// GetDatabaseInstanceSettingDenyMaintenancePeriodInput is an input type that accepts GetDatabaseInstanceSettingDenyMaintenancePeriodArgs and GetDatabaseInstanceSettingDenyMaintenancePeriodOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingDenyMaintenancePeriodInput` via:
+//
+//	GetDatabaseInstanceSettingDenyMaintenancePeriodArgs{...}
+type GetDatabaseInstanceSettingDenyMaintenancePeriodInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingDenyMaintenancePeriodOutput() GetDatabaseInstanceSettingDenyMaintenancePeriodOutput
+	ToGetDatabaseInstanceSettingDenyMaintenancePeriodOutputWithContext(context.Context) GetDatabaseInstanceSettingDenyMaintenancePeriodOutput
+}
+
+type GetDatabaseInstanceSettingDenyMaintenancePeriodArgs struct {
+	EndDate   pulumi.StringInput `pulumi:"endDate"`
+	StartDate pulumi.StringInput `pulumi:"startDate"`
+	Time      pulumi.StringInput `pulumi:"time"`
+}
+
+func (GetDatabaseInstanceSettingDenyMaintenancePeriodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingDenyMaintenancePeriod)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingDenyMaintenancePeriodArgs) ToGetDatabaseInstanceSettingDenyMaintenancePeriodOutput() GetDatabaseInstanceSettingDenyMaintenancePeriodOutput {
+	return i.ToGetDatabaseInstanceSettingDenyMaintenancePeriodOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingDenyMaintenancePeriodArgs) ToGetDatabaseInstanceSettingDenyMaintenancePeriodOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingDenyMaintenancePeriodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingDenyMaintenancePeriodOutput)
+}
+
+// GetDatabaseInstanceSettingDenyMaintenancePeriodArrayInput is an input type that accepts GetDatabaseInstanceSettingDenyMaintenancePeriodArray and GetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingDenyMaintenancePeriodArrayInput` via:
+//
+//	GetDatabaseInstanceSettingDenyMaintenancePeriodArray{ GetDatabaseInstanceSettingDenyMaintenancePeriodArgs{...} }
+type GetDatabaseInstanceSettingDenyMaintenancePeriodArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput() GetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput
+	ToGetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutputWithContext(context.Context) GetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput
+}
+
+type GetDatabaseInstanceSettingDenyMaintenancePeriodArray []GetDatabaseInstanceSettingDenyMaintenancePeriodInput
+
+func (GetDatabaseInstanceSettingDenyMaintenancePeriodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingDenyMaintenancePeriod)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingDenyMaintenancePeriodArray) ToGetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput() GetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput {
+	return i.ToGetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingDenyMaintenancePeriodArray) ToGetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput)
+}
+
+type GetDatabaseInstanceSettingDenyMaintenancePeriodOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingDenyMaintenancePeriodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingDenyMaintenancePeriod)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingDenyMaintenancePeriodOutput) ToGetDatabaseInstanceSettingDenyMaintenancePeriodOutput() GetDatabaseInstanceSettingDenyMaintenancePeriodOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingDenyMaintenancePeriodOutput) ToGetDatabaseInstanceSettingDenyMaintenancePeriodOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingDenyMaintenancePeriodOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingDenyMaintenancePeriodOutput) EndDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingDenyMaintenancePeriod) string { return v.EndDate }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstanceSettingDenyMaintenancePeriodOutput) StartDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingDenyMaintenancePeriod) string { return v.StartDate }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstanceSettingDenyMaintenancePeriodOutput) Time() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingDenyMaintenancePeriod) string { return v.Time }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingDenyMaintenancePeriod)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput) ToGetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput() GetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput) ToGetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingDenyMaintenancePeriodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSettingDenyMaintenancePeriod {
+		return vs[0].([]GetDatabaseInstanceSettingDenyMaintenancePeriod)[vs[1].(int)]
+	}).(GetDatabaseInstanceSettingDenyMaintenancePeriodOutput)
 }
 
 type GetDatabaseInstanceSettingInsightsConfig struct {
@@ -6136,6 +6442,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrInput)(nil)).Elem(), DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsDatabaseFlagInput)(nil)).Elem(), DatabaseInstanceSettingsDatabaseFlagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsDatabaseFlagArrayInput)(nil)).Elem(), DatabaseInstanceSettingsDatabaseFlagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsDenyMaintenancePeriodInput)(nil)).Elem(), DatabaseInstanceSettingsDenyMaintenancePeriodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsDenyMaintenancePeriodPtrInput)(nil)).Elem(), DatabaseInstanceSettingsDenyMaintenancePeriodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsInsightsConfigInput)(nil)).Elem(), DatabaseInstanceSettingsInsightsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsInsightsConfigPtrInput)(nil)).Elem(), DatabaseInstanceSettingsInsightsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsIpConfigurationInput)(nil)).Elem(), DatabaseInstanceSettingsIpConfigurationArgs{})
@@ -6178,6 +6486,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingDatabaseFlagInput)(nil)).Elem(), GetDatabaseInstanceSettingDatabaseFlagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingDatabaseFlagArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingDatabaseFlagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingDenyMaintenancePeriodInput)(nil)).Elem(), GetDatabaseInstanceSettingDenyMaintenancePeriodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingDenyMaintenancePeriodArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingDenyMaintenancePeriodArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingInsightsConfigInput)(nil)).Elem(), GetDatabaseInstanceSettingInsightsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingInsightsConfigArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingInsightsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingIpConfigurationInput)(nil)).Elem(), GetDatabaseInstanceSettingIpConfigurationArgs{})
@@ -6212,6 +6522,8 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsDatabaseFlagOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsDatabaseFlagArrayOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsDenyMaintenancePeriodOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsDenyMaintenancePeriodPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsInsightsConfigOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsInsightsConfigPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsIpConfigurationOutput{})
@@ -6254,6 +6566,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingDatabaseFlagOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingDatabaseFlagArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingDenyMaintenancePeriodOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingDenyMaintenancePeriodArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingInsightsConfigOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingInsightsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingIpConfigurationOutput{})

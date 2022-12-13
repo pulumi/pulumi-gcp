@@ -49,8 +49,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The name or resource link to the
         /// VLAN interconnect for this interface. Changing this forces a new interface to
-        /// be created. Only one of `vpn_tunnel` and `interconnect_attachment` can be
-        /// specified.
+        /// be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         /// </summary>
         [Output("interconnectAttachment")]
         public Output<string?> InterconnectAttachment { get; private set; } = null!;
@@ -60,7 +59,7 @@ namespace Pulumi.Gcp.Compute
         /// in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
         /// </summary>
         [Output("ipRange")]
-        public Output<string?> IpRange { get; private set; } = null!;
+        public Output<string> IpRange { get; private set; } = null!;
 
         /// <summary>
         /// A unique name for the interface, required by GCE. Changing
@@ -70,24 +69,29 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the project in which this interface's router belongs. If it
-        /// is not provided, the provider project is used. Changing this forces a new interface to be created.
+        /// The regional private internal IP address that is used
+        /// to establish BGP sessions to a VM instance acting as a third-party Router Appliance. Changing this forces a new interface to be created.
+        /// </summary>
+        [Output("privateIpAddress")]
+        public Output<string?> PrivateIpAddress { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the project in which this interface's routerbelongs.
+        /// If it is not provided, the provider project is used. Changing this forces a new interface to be created.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The name of the interface that is redundant to
-        /// this interface. Changing this forces a new interface to
-        /// be created.
+        /// this interface. Changing this forces a new interface to be created.
         /// </summary>
         [Output("redundantInterface")]
         public Output<string?> RedundantInterface { get; private set; } = null!;
 
         /// <summary>
-        /// The region this interface's router sits in. If not specified,
-        /// the project region will be used. Changing this forces a new interface to be
-        /// created.
+        /// The region this interface's router sits in.
+        /// If not specified, the project region will be used. Changing this forces a new interface to be created.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -100,9 +104,16 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Router { get; private set; } = null!;
 
         /// <summary>
+        /// The URI of the subnetwork resource that this interface
+        /// belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+        /// </summary>
+        [Output("subnetwork")]
+        public Output<string?> Subnetwork { get; private set; } = null!;
+
+        /// <summary>
         /// The name or resource link to the VPN tunnel this
         /// interface will be linked to. Changing this forces a new interface to be created. Only
-        /// one of `vpn_tunnel` and `interconnect_attachment` can be specified.
+        /// one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         /// </summary>
         [Output("vpnTunnel")]
         public Output<string?> VpnTunnel { get; private set; } = null!;
@@ -156,8 +167,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The name or resource link to the
         /// VLAN interconnect for this interface. Changing this forces a new interface to
-        /// be created. Only one of `vpn_tunnel` and `interconnect_attachment` can be
-        /// specified.
+        /// be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         /// </summary>
         [Input("interconnectAttachment")]
         public Input<string>? InterconnectAttachment { get; set; }
@@ -177,24 +187,29 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the project in which this interface's router belongs. If it
-        /// is not provided, the provider project is used. Changing this forces a new interface to be created.
+        /// The regional private internal IP address that is used
+        /// to establish BGP sessions to a VM instance acting as a third-party Router Appliance. Changing this forces a new interface to be created.
+        /// </summary>
+        [Input("privateIpAddress")]
+        public Input<string>? PrivateIpAddress { get; set; }
+
+        /// <summary>
+        /// The ID of the project in which this interface's routerbelongs.
+        /// If it is not provided, the provider project is used. Changing this forces a new interface to be created.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The name of the interface that is redundant to
-        /// this interface. Changing this forces a new interface to
-        /// be created.
+        /// this interface. Changing this forces a new interface to be created.
         /// </summary>
         [Input("redundantInterface")]
         public Input<string>? RedundantInterface { get; set; }
 
         /// <summary>
-        /// The region this interface's router sits in. If not specified,
-        /// the project region will be used. Changing this forces a new interface to be
-        /// created.
+        /// The region this interface's router sits in.
+        /// If not specified, the project region will be used. Changing this forces a new interface to be created.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -207,9 +222,16 @@ namespace Pulumi.Gcp.Compute
         public Input<string> Router { get; set; } = null!;
 
         /// <summary>
+        /// The URI of the subnetwork resource that this interface
+        /// belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+        /// </summary>
+        [Input("subnetwork")]
+        public Input<string>? Subnetwork { get; set; }
+
+        /// <summary>
         /// The name or resource link to the VPN tunnel this
         /// interface will be linked to. Changing this forces a new interface to be created. Only
-        /// one of `vpn_tunnel` and `interconnect_attachment` can be specified.
+        /// one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         /// </summary>
         [Input("vpnTunnel")]
         public Input<string>? VpnTunnel { get; set; }
@@ -225,8 +247,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The name or resource link to the
         /// VLAN interconnect for this interface. Changing this forces a new interface to
-        /// be created. Only one of `vpn_tunnel` and `interconnect_attachment` can be
-        /// specified.
+        /// be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         /// </summary>
         [Input("interconnectAttachment")]
         public Input<string>? InterconnectAttachment { get; set; }
@@ -246,24 +267,29 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the project in which this interface's router belongs. If it
-        /// is not provided, the provider project is used. Changing this forces a new interface to be created.
+        /// The regional private internal IP address that is used
+        /// to establish BGP sessions to a VM instance acting as a third-party Router Appliance. Changing this forces a new interface to be created.
+        /// </summary>
+        [Input("privateIpAddress")]
+        public Input<string>? PrivateIpAddress { get; set; }
+
+        /// <summary>
+        /// The ID of the project in which this interface's routerbelongs.
+        /// If it is not provided, the provider project is used. Changing this forces a new interface to be created.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
         /// The name of the interface that is redundant to
-        /// this interface. Changing this forces a new interface to
-        /// be created.
+        /// this interface. Changing this forces a new interface to be created.
         /// </summary>
         [Input("redundantInterface")]
         public Input<string>? RedundantInterface { get; set; }
 
         /// <summary>
-        /// The region this interface's router sits in. If not specified,
-        /// the project region will be used. Changing this forces a new interface to be
-        /// created.
+        /// The region this interface's router sits in.
+        /// If not specified, the project region will be used. Changing this forces a new interface to be created.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -276,9 +302,16 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Router { get; set; }
 
         /// <summary>
+        /// The URI of the subnetwork resource that this interface
+        /// belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+        /// </summary>
+        [Input("subnetwork")]
+        public Input<string>? Subnetwork { get; set; }
+
+        /// <summary>
         /// The name or resource link to the VPN tunnel this
         /// interface will be linked to. Changing this forces a new interface to be created. Only
-        /// one of `vpn_tunnel` and `interconnect_attachment` can be specified.
+        /// one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         /// </summary>
         [Input("vpnTunnel")]
         public Input<string>? VpnTunnel { get; set; }

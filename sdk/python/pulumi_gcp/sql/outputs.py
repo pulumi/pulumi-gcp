@@ -21,6 +21,7 @@ __all__ = [
     'DatabaseInstanceSettingsBackupConfiguration',
     'DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings',
     'DatabaseInstanceSettingsDatabaseFlag',
+    'DatabaseInstanceSettingsDenyMaintenancePeriod',
     'DatabaseInstanceSettingsInsightsConfig',
     'DatabaseInstanceSettingsIpConfiguration',
     'DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork',
@@ -42,6 +43,7 @@ __all__ = [
     'GetDatabaseInstanceSettingBackupConfigurationResult',
     'GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingResult',
     'GetDatabaseInstanceSettingDatabaseFlagResult',
+    'GetDatabaseInstanceSettingDenyMaintenancePeriodResult',
     'GetDatabaseInstanceSettingInsightsConfigResult',
     'GetDatabaseInstanceSettingIpConfigurationResult',
     'GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult',
@@ -506,6 +508,8 @@ class DatabaseInstanceSettings(dict):
             suggest = "connector_enforcement"
         elif key == "databaseFlags":
             suggest = "database_flags"
+        elif key == "denyMaintenancePeriod":
+            suggest = "deny_maintenance_period"
         elif key == "diskAutoresize":
             suggest = "disk_autoresize"
         elif key == "diskAutoresizeLimit":
@@ -553,6 +557,7 @@ class DatabaseInstanceSettings(dict):
                  collation: Optional[str] = None,
                  connector_enforcement: Optional[str] = None,
                  database_flags: Optional[Sequence['outputs.DatabaseInstanceSettingsDatabaseFlag']] = None,
+                 deny_maintenance_period: Optional['outputs.DatabaseInstanceSettingsDenyMaintenancePeriod'] = None,
                  disk_autoresize: Optional[bool] = None,
                  disk_autoresize_limit: Optional[int] = None,
                  disk_size: Optional[int] = None,
@@ -604,6 +609,8 @@ class DatabaseInstanceSettings(dict):
             pulumi.set(__self__, "connector_enforcement", connector_enforcement)
         if database_flags is not None:
             pulumi.set(__self__, "database_flags", database_flags)
+        if deny_maintenance_period is not None:
+            pulumi.set(__self__, "deny_maintenance_period", deny_maintenance_period)
         if disk_autoresize is not None:
             pulumi.set(__self__, "disk_autoresize", disk_autoresize)
         if disk_autoresize_limit is not None:
@@ -695,6 +702,11 @@ class DatabaseInstanceSettings(dict):
     @pulumi.getter(name="databaseFlags")
     def database_flags(self) -> Optional[Sequence['outputs.DatabaseInstanceSettingsDatabaseFlag']]:
         return pulumi.get(self, "database_flags")
+
+    @property
+    @pulumi.getter(name="denyMaintenancePeriod")
+    def deny_maintenance_period(self) -> Optional['outputs.DatabaseInstanceSettingsDenyMaintenancePeriod']:
+        return pulumi.get(self, "deny_maintenance_period")
 
     @property
     @pulumi.getter(name="diskAutoresize")
@@ -1010,6 +1022,65 @@ class DatabaseInstanceSettingsDatabaseFlag(dict):
         the whitelist to become active.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class DatabaseInstanceSettingsDenyMaintenancePeriod(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endDate":
+            suggest = "end_date"
+        elif key == "startDate":
+            suggest = "start_date"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceSettingsDenyMaintenancePeriod. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceSettingsDenyMaintenancePeriod.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceSettingsDenyMaintenancePeriod.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_date: str,
+                 start_date: str,
+                 time: str):
+        """
+        :param str end_date: "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+        :param str start_date: "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+        :param str time: Time in UTC when the "deny maintenance period" starts on startDate and ends on endDate. The time is in format: HH:mm:SS, i.e., 00:00:00
+        """
+        pulumi.set(__self__, "end_date", end_date)
+        pulumi.set(__self__, "start_date", start_date)
+        pulumi.set(__self__, "time", time)
+
+    @property
+    @pulumi.getter(name="endDate")
+    def end_date(self) -> str:
+        """
+        "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+        """
+        return pulumi.get(self, "end_date")
+
+    @property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> str:
+        """
+        "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+        """
+        return pulumi.get(self, "start_date")
+
+    @property
+    @pulumi.getter
+    def time(self) -> str:
+        """
+        Time in UTC when the "deny maintenance period" starts on startDate and ends on endDate. The time is in format: HH:mm:SS, i.e., 00:00:00
+        """
+        return pulumi.get(self, "time")
 
 
 @pulumi.output_type
@@ -2011,6 +2082,7 @@ class GetDatabaseInstanceSettingResult(dict):
                  collation: str,
                  connector_enforcement: str,
                  database_flags: Sequence['outputs.GetDatabaseInstanceSettingDatabaseFlagResult'],
+                 deny_maintenance_periods: Sequence['outputs.GetDatabaseInstanceSettingDenyMaintenancePeriodResult'],
                  disk_autoresize: bool,
                  disk_autoresize_limit: int,
                  disk_size: int,
@@ -2033,6 +2105,7 @@ class GetDatabaseInstanceSettingResult(dict):
         pulumi.set(__self__, "collation", collation)
         pulumi.set(__self__, "connector_enforcement", connector_enforcement)
         pulumi.set(__self__, "database_flags", database_flags)
+        pulumi.set(__self__, "deny_maintenance_periods", deny_maintenance_periods)
         pulumi.set(__self__, "disk_autoresize", disk_autoresize)
         pulumi.set(__self__, "disk_autoresize_limit", disk_autoresize_limit)
         pulumi.set(__self__, "disk_size", disk_size)
@@ -2083,6 +2156,11 @@ class GetDatabaseInstanceSettingResult(dict):
     @pulumi.getter(name="databaseFlags")
     def database_flags(self) -> Sequence['outputs.GetDatabaseInstanceSettingDatabaseFlagResult']:
         return pulumi.get(self, "database_flags")
+
+    @property
+    @pulumi.getter(name="denyMaintenancePeriods")
+    def deny_maintenance_periods(self) -> Sequence['outputs.GetDatabaseInstanceSettingDenyMaintenancePeriodResult']:
+        return pulumi.get(self, "deny_maintenance_periods")
 
     @property
     @pulumi.getter(name="diskAutoresize")
@@ -2268,6 +2346,32 @@ class GetDatabaseInstanceSettingDatabaseFlagResult(dict):
     @pulumi.getter
     def value(self) -> str:
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetDatabaseInstanceSettingDenyMaintenancePeriodResult(dict):
+    def __init__(__self__, *,
+                 end_date: str,
+                 start_date: str,
+                 time: str):
+        pulumi.set(__self__, "end_date", end_date)
+        pulumi.set(__self__, "start_date", start_date)
+        pulumi.set(__self__, "time", time)
+
+    @property
+    @pulumi.getter(name="endDate")
+    def end_date(self) -> str:
+        return pulumi.get(self, "end_date")
+
+    @property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> str:
+        return pulumi.get(self, "start_date")
+
+    @property
+    @pulumi.getter
+    def time(self) -> str:
+        return pulumi.get(self, "time")
 
 
 @pulumi.output_type

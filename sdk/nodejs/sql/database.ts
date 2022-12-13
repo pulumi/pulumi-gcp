@@ -26,6 +26,26 @@ import * as utilities from "../utilities";
  * });
  * const database = new gcp.sql.Database("database", {instance: instance.name});
  * ```
+ * ### Sql Database Deletion Policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     region: "us-central1",
+ *     databaseVersion: "POSTGRES_14",
+ *     settings: {
+ *         tier: "db-g1-small",
+ *     },
+ *     deletionProtection: true,
+ * });
+ * const databaseDeletionPolicy = new gcp.sql.Database("databaseDeletionPolicy", {
+ *     instance: instance.name,
+ *     deletionPolicy: "ABANDON",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -96,6 +116,13 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly collation!: pulumi.Output<string>;
     /**
+     * The deletion policy for the database. Setting ABANDON allows the resource 
+     * to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
+     * deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
+     * values are: "ABANDON".
+     */
+    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    /**
      * The name of the Cloud SQL instance. This does not include the project
      * ID.
      */
@@ -130,6 +157,7 @@ export class Database extends pulumi.CustomResource {
             const state = argsOrState as DatabaseState | undefined;
             resourceInputs["charset"] = state ? state.charset : undefined;
             resourceInputs["collation"] = state ? state.collation : undefined;
+            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
             resourceInputs["instance"] = state ? state.instance : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -141,6 +169,7 @@ export class Database extends pulumi.CustomResource {
             }
             resourceInputs["charset"] = args ? args.charset : undefined;
             resourceInputs["collation"] = args ? args.collation : undefined;
+            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
             resourceInputs["instance"] = args ? args.instance : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -171,6 +200,13 @@ export interface DatabaseState {
      * a value of `en_US.UTF8` at creation time.
      */
     collation?: pulumi.Input<string>;
+    /**
+     * The deletion policy for the database. Setting ABANDON allows the resource 
+     * to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
+     * deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
+     * values are: "ABANDON".
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * The name of the Cloud SQL instance. This does not include the project
      * ID.
@@ -212,6 +248,13 @@ export interface DatabaseArgs {
      * a value of `en_US.UTF8` at creation time.
      */
     collation?: pulumi.Input<string>;
+    /**
+     * The deletion policy for the database. Setting ABANDON allows the resource 
+     * to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
+     * deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
+     * values are: "ABANDON".
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * The name of the Cloud SQL instance. This does not include the project
      * ID.

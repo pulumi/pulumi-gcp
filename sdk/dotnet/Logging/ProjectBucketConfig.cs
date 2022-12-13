@@ -62,6 +62,62 @@ namespace Pulumi.Gcp.Logging
     /// });
     /// ```
     /// 
+    /// Create logging bucket with customId and cmekSettings
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cmekSettings = Gcp.Logging.GetProjectCmekSettings.Invoke(new()
+    ///     {
+    ///         Project = "project_id",
+    ///     });
+    /// 
+    ///     var keyring = new Gcp.Kms.KeyRing("keyring", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var key = new Gcp.Kms.CryptoKey("key", new()
+    ///     {
+    ///         KeyRing = keyring.Id,
+    ///         RotationPeriod = "100000s",
+    ///     });
+    /// 
+    ///     var cryptoKeyBinding = new Gcp.Kms.CryptoKeyIAMBinding("cryptoKeyBinding", new()
+    ///     {
+    ///         CryptoKeyId = key.Id,
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Members = new[]
+    ///         {
+    ///             $"serviceAccount:{cmekSettings.Apply(getProjectCmekSettingsResult =&gt; getProjectCmekSettingsResult.ServiceAccountId)}",
+    ///         },
+    ///     });
+    /// 
+    ///     var example_project_bucket_cmek_settings = new Gcp.Logging.ProjectBucketConfig("example-project-bucket-cmek-settings", new()
+    ///     {
+    ///         Project = "project_id",
+    ///         Location = "us-central1",
+    ///         RetentionDays = 30,
+    ///         BucketId = "custom-bucket",
+    ///         CmekSettings = new Gcp.Logging.Inputs.ProjectBucketConfigCmekSettingsArgs
+    ///         {
+    ///             KmsKeyName = key.Id,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             cryptoKeyBinding,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported using the following format
@@ -78,6 +134,12 @@ namespace Pulumi.Gcp.Logging
         /// </summary>
         [Output("bucketId")]
         public Output<string> BucketId { get; private set; } = null!;
+
+        /// <summary>
+        /// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
+        /// </summary>
+        [Output("cmekSettings")]
+        public Output<Outputs.ProjectBucketConfigCmekSettings?> CmekSettings { get; private set; } = null!;
 
         /// <summary>
         /// Describes this bucket.
@@ -98,7 +160,7 @@ namespace Pulumi.Gcp.Logging
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
+        /// The resource name of the CMEK settings.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -168,6 +230,12 @@ namespace Pulumi.Gcp.Logging
         public Input<string> BucketId { get; set; } = null!;
 
         /// <summary>
+        /// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
+        /// </summary>
+        [Input("cmekSettings")]
+        public Input<Inputs.ProjectBucketConfigCmekSettingsArgs>? CmekSettings { get; set; }
+
+        /// <summary>
         /// Describes this bucket.
         /// </summary>
         [Input("description")]
@@ -206,6 +274,12 @@ namespace Pulumi.Gcp.Logging
         public Input<string>? BucketId { get; set; }
 
         /// <summary>
+        /// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
+        /// </summary>
+        [Input("cmekSettings")]
+        public Input<Inputs.ProjectBucketConfigCmekSettingsGetArgs>? CmekSettings { get; set; }
+
+        /// <summary>
         /// Describes this bucket.
         /// </summary>
         [Input("description")]
@@ -224,7 +298,7 @@ namespace Pulumi.Gcp.Logging
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
+        /// The resource name of the CMEK settings.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

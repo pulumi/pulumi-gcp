@@ -42,6 +42,35 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// });
     /// ```
+    /// ### Sql Database Deletion Policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+    ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         DatabaseVersion = "POSTGRES_14",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-g1-small",
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
+    /// 
+    ///     var databaseDeletionPolicy = new Gcp.Sql.Database("databaseDeletionPolicy", new()
+    ///     {
+    ///         Instance = instance.Name,
+    ///         DeletionPolicy = "ABANDON",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -89,6 +118,15 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Output("collation")]
         public Output<string> Collation { get; private set; } = null!;
+
+        /// <summary>
+        /// The deletion policy for the database. Setting ABANDON allows the resource 
+        /// to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
+        /// deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
+        /// values are: "ABANDON".
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string?> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// The name of the Cloud SQL instance. This does not include the project
@@ -184,6 +222,15 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? Collation { get; set; }
 
         /// <summary>
+        /// The deletion policy for the database. Setting ABANDON allows the resource 
+        /// to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
+        /// deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
+        /// values are: "ABANDON".
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// The name of the Cloud SQL instance. This does not include the project
         /// ID.
         /// </summary>
@@ -231,6 +278,15 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Input("collation")]
         public Input<string>? Collation { get; set; }
+
+        /// <summary>
+        /// The deletion policy for the database. Setting ABANDON allows the resource 
+        /// to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
+        /// deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
+        /// values are: "ABANDON".
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// The name of the Cloud SQL instance. This does not include the project

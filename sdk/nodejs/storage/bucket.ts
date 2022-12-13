@@ -55,14 +55,24 @@ import * as utilities from "../utilities";
  *
  * const auto_expire = new gcp.storage.Bucket("auto-expire", {
  *     forceDestroy: true,
- *     lifecycleRules: [{
- *         action: {
- *             type: "Delete",
+ *     lifecycleRules: [
+ *         {
+ *             action: {
+ *                 type: "Delete",
+ *             },
+ *             condition: {
+ *                 age: 3,
+ *             },
  *         },
- *         condition: {
- *             age: 3,
+ *         {
+ *             action: {
+ *                 type: "AbortIncompleteMultipartUpload",
+ *             },
+ *             condition: {
+ *                 age: 1,
+ *             },
  *         },
- *     }],
+ *     ],
  *     location: "US",
  * });
  * ```
@@ -123,6 +133,10 @@ export class Bucket extends pulumi.CustomResource {
         return obj['__pulumiType'] === Bucket.__pulumiType;
     }
 
+    /**
+     * The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
+     */
+    public readonly autoclass!: pulumi.Output<outputs.storage.BucketAutoclass | undefined>;
     /**
      * The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
      */
@@ -205,7 +219,7 @@ export class Bucket extends pulumi.CustomResource {
     /**
      * Configuration if the bucket acts as a website. Structure is documented below.
      */
-    public readonly website!: pulumi.Output<outputs.storage.BucketWebsite | undefined>;
+    public readonly website!: pulumi.Output<outputs.storage.BucketWebsite>;
 
     /**
      * Create a Bucket resource with the given unique name, arguments, and options.
@@ -220,6 +234,7 @@ export class Bucket extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketState | undefined;
+            resourceInputs["autoclass"] = state ? state.autoclass : undefined;
             resourceInputs["cors"] = state ? state.cors : undefined;
             resourceInputs["customPlacementConfig"] = state ? state.customPlacementConfig : undefined;
             resourceInputs["defaultEventBasedHold"] = state ? state.defaultEventBasedHold : undefined;
@@ -245,6 +260,7 @@ export class Bucket extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
+            resourceInputs["autoclass"] = args ? args.autoclass : undefined;
             resourceInputs["cors"] = args ? args.cors : undefined;
             resourceInputs["customPlacementConfig"] = args ? args.customPlacementConfig : undefined;
             resourceInputs["defaultEventBasedHold"] = args ? args.defaultEventBasedHold : undefined;
@@ -275,6 +291,10 @@ export class Bucket extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Bucket resources.
  */
 export interface BucketState {
+    /**
+     * The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
+     */
+    autoclass?: pulumi.Input<inputs.storage.BucketAutoclass>;
     /**
      * The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
      */
@@ -364,6 +384,10 @@ export interface BucketState {
  * The set of arguments for constructing a Bucket resource.
  */
 export interface BucketArgs {
+    /**
+     * The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
+     */
+    autoclass?: pulumi.Input<inputs.storage.BucketAutoclass>;
     /**
      * The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
      */

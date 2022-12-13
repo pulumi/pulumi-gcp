@@ -18,8 +18,8 @@ namespace Pulumi.Gcp.Container.Inputs
         /// is disabled. When `false`, either endpoint can be used. This field only applies
         /// to private clusters, when `enable_private_nodes` is `true`.
         /// </summary>
-        [Input("enablePrivateEndpoint", required: true)]
-        public Input<bool> EnablePrivateEndpoint { get; set; } = null!;
+        [Input("enablePrivateEndpoint")]
+        public Input<bool>? EnablePrivateEndpoint { get; set; }
 
         /// <summary>
         /// Enables the private cluster feature,
@@ -61,6 +61,12 @@ namespace Pulumi.Gcp.Container.Inputs
         /// </summary>
         [Input("privateEndpoint")]
         public Input<string>? PrivateEndpoint { get; set; }
+
+        /// <summary>
+        /// Subnetwork in cluster's network where master's endpoint will be provisioned.
+        /// </summary>
+        [Input("privateEndpointSubnetwork")]
+        public Input<string>? PrivateEndpointSubnetwork { get; set; }
 
         /// <summary>
         /// The external IP address of this cluster's master endpoint.

@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.sql.DatabaseArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseState;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -54,6 +55,48 @@ import javax.annotation.Nullable;
  * 
  *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
  *             .instance(instance.name())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Sql Database Deletion Policy
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.sql.DatabaseInstance;
+ * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.sql.Database;
+ * import com.pulumi.gcp.sql.DatabaseArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instance = new DatabaseInstance(&#34;instance&#34;, DatabaseInstanceArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .databaseVersion(&#34;POSTGRES_14&#34;)
+ *             .settings(DatabaseInstanceSettingsArgs.builder()
+ *                 .tier(&#34;db-g1-small&#34;)
+ *                 .build())
+ *             .deletionProtection(&#34;true&#34;)
+ *             .build());
+ * 
+ *         var databaseDeletionPolicy = new Database(&#34;databaseDeletionPolicy&#34;, DatabaseArgs.builder()        
+ *             .instance(instance.name())
+ *             .deletionPolicy(&#34;ABANDON&#34;)
  *             .build());
  * 
  *     }
@@ -130,6 +173,26 @@ public class Database extends com.pulumi.resources.CustomResource {
      */
     public Output<String> collation() {
         return this.collation;
+    }
+    /**
+     * The deletion policy for the database. Setting ABANDON allows the resource
+     * to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
+     * deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
+     * values are: &#34;ABANDON&#34;.
+     * 
+     */
+    @Export(name="deletionPolicy", type=String.class, parameters={})
+    private Output</* @Nullable */ String> deletionPolicy;
+
+    /**
+     * @return The deletion policy for the database. Setting ABANDON allows the resource
+     * to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
+     * deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
+     * values are: &#34;ABANDON&#34;.
+     * 
+     */
+    public Output<Optional<String>> deletionPolicy() {
+        return Codegen.optional(this.deletionPolicy);
     }
     /**
      * The name of the Cloud SQL instance. This does not include the project

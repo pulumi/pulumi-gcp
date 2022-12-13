@@ -41,6 +41,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
         /// </summary>
         public readonly string ExceedAction;
+        /// <summary>
+        /// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. Structure is documented below.
+        /// </summary>
         public readonly Outputs.SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions? ExceedRedirectOptions;
         /// <summary>
         /// Threshold at which to begin ratelimiting. Structure is documented below.

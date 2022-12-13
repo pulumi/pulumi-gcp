@@ -20,6 +20,7 @@ __all__ = [
     'DatabaseInstanceSettingsBackupConfigurationArgs',
     'DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs',
     'DatabaseInstanceSettingsDatabaseFlagArgs',
+    'DatabaseInstanceSettingsDenyMaintenancePeriodArgs',
     'DatabaseInstanceSettingsInsightsConfigArgs',
     'DatabaseInstanceSettingsIpConfigurationArgs',
     'DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs',
@@ -466,6 +467,7 @@ class DatabaseInstanceSettingsArgs:
                  collation: Optional[pulumi.Input[str]] = None,
                  connector_enforcement: Optional[pulumi.Input[str]] = None,
                  database_flags: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArgs']]]] = None,
+                 deny_maintenance_period: Optional[pulumi.Input['DatabaseInstanceSettingsDenyMaintenancePeriodArgs']] = None,
                  disk_autoresize: Optional[pulumi.Input[bool]] = None,
                  disk_autoresize_limit: Optional[pulumi.Input[int]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
@@ -517,6 +519,8 @@ class DatabaseInstanceSettingsArgs:
             pulumi.set(__self__, "connector_enforcement", connector_enforcement)
         if database_flags is not None:
             pulumi.set(__self__, "database_flags", database_flags)
+        if deny_maintenance_period is not None:
+            pulumi.set(__self__, "deny_maintenance_period", deny_maintenance_period)
         if disk_autoresize is not None:
             pulumi.set(__self__, "disk_autoresize", disk_autoresize)
         if disk_autoresize_limit is not None:
@@ -640,6 +644,15 @@ class DatabaseInstanceSettingsArgs:
     @database_flags.setter
     def database_flags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArgs']]]]):
         pulumi.set(self, "database_flags", value)
+
+    @property
+    @pulumi.getter(name="denyMaintenancePeriod")
+    def deny_maintenance_period(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsDenyMaintenancePeriodArgs']]:
+        return pulumi.get(self, "deny_maintenance_period")
+
+    @deny_maintenance_period.setter
+    def deny_maintenance_period(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsDenyMaintenancePeriodArgs']]):
+        pulumi.set(self, "deny_maintenance_period", value)
 
     @property
     @pulumi.getter(name="diskAutoresize")
@@ -1015,6 +1028,58 @@ class DatabaseInstanceSettingsDatabaseFlagArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class DatabaseInstanceSettingsDenyMaintenancePeriodArgs:
+    def __init__(__self__, *,
+                 end_date: pulumi.Input[str],
+                 start_date: pulumi.Input[str],
+                 time: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] end_date: "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+        :param pulumi.Input[str] start_date: "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+        :param pulumi.Input[str] time: Time in UTC when the "deny maintenance period" starts on startDate and ends on endDate. The time is in format: HH:mm:SS, i.e., 00:00:00
+        """
+        pulumi.set(__self__, "end_date", end_date)
+        pulumi.set(__self__, "start_date", start_date)
+        pulumi.set(__self__, "time", time)
+
+    @property
+    @pulumi.getter(name="endDate")
+    def end_date(self) -> pulumi.Input[str]:
+        """
+        "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+        """
+        return pulumi.get(self, "end_date")
+
+    @end_date.setter
+    def end_date(self, value: pulumi.Input[str]):
+        pulumi.set(self, "end_date", value)
+
+    @property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> pulumi.Input[str]:
+        """
+        "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+        """
+        return pulumi.get(self, "start_date")
+
+    @start_date.setter
+    def start_date(self, value: pulumi.Input[str]):
+        pulumi.set(self, "start_date", value)
+
+    @property
+    @pulumi.getter
+    def time(self) -> pulumi.Input[str]:
+        """
+        Time in UTC when the "deny maintenance period" starts on startDate and ends on endDate. The time is in format: HH:mm:SS, i.e., 00:00:00
+        """
+        return pulumi.get(self, "time")
+
+    @time.setter
+    def time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "time", value)
 
 
 @pulumi.input_type

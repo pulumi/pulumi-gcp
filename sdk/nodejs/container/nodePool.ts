@@ -134,8 +134,9 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly namePrefix!: pulumi.Output<string>;
     /**
-     * The network configuration of the pool. See
-     * gcp.container.Cluster for schema.
+     * The network configuration of the pool. Such as
+     * configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
+     * documented below
      */
     public readonly networkConfig!: pulumi.Output<outputs.container.NodePoolNetworkConfig>;
     /**
@@ -302,8 +303,9 @@ export interface NodePoolState {
      */
     namePrefix?: pulumi.Input<string>;
     /**
-     * The network configuration of the pool. See
-     * gcp.container.Cluster for schema.
+     * The network configuration of the pool. Such as
+     * configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
+     * documented below
      */
     networkConfig?: pulumi.Input<inputs.container.NodePoolNetworkConfig>;
     /**
@@ -401,8 +403,9 @@ export interface NodePoolArgs {
      */
     namePrefix?: pulumi.Input<string>;
     /**
-     * The network configuration of the pool. See
-     * gcp.container.Cluster for schema.
+     * The network configuration of the pool. Such as
+     * configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
+     * documented below
      */
     networkConfig?: pulumi.Input<inputs.container.NodePoolNetworkConfig>;
     /**

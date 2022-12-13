@@ -14,11 +14,16 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class GetClusterMasterAuthorizedNetworksConfigResult
     {
         public readonly ImmutableArray<Outputs.GetClusterMasterAuthorizedNetworksConfigCidrBlockResult> CidrBlocks;
+        public readonly bool GcpPublicCidrsAccessEnabled;
 
         [OutputConstructor]
-        private GetClusterMasterAuthorizedNetworksConfigResult(ImmutableArray<Outputs.GetClusterMasterAuthorizedNetworksConfigCidrBlockResult> cidrBlocks)
+        private GetClusterMasterAuthorizedNetworksConfigResult(
+            ImmutableArray<Outputs.GetClusterMasterAuthorizedNetworksConfigCidrBlockResult> cidrBlocks,
+
+            bool gcpPublicCidrsAccessEnabled)
         {
             CidrBlocks = cidrBlocks;
+            GcpPublicCidrsAccessEnabled = gcpPublicCidrsAccessEnabled;
         }
     }
 }

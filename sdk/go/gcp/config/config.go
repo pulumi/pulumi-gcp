@@ -110,6 +110,9 @@ func GetCloudResourceManagerCustomEndpoint(ctx *pulumi.Context) string {
 func GetCloudRunCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:cloudRunCustomEndpoint")
 }
+func GetCloudRunV2CustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:cloudRunV2CustomEndpoint")
+}
 func GetCloudSchedulerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:cloudSchedulerCustomEndpoint")
 }
@@ -206,6 +209,9 @@ func GetFirebaseCustomEndpoint(ctx *pulumi.Context) string {
 func GetFirebaseHostingCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:firebaseHostingCustomEndpoint")
 }
+func GetFirebaseStorageCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:firebaseStorageCustomEndpoint")
+}
 func GetFirebaserulesCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:firebaserulesCustomEndpoint")
 }
@@ -214,6 +220,9 @@ func GetFirestoreCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetGameServicesCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:gameServicesCustomEndpoint")
+}
+func GetGkeBackupCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:gkeBackupCustomEndpoint")
 }
 func GetGkeHubCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:gkeHubCustomEndpoint")

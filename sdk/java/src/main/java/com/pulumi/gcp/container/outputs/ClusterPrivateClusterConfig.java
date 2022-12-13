@@ -20,7 +20,7 @@ public final class ClusterPrivateClusterConfig {
      * to private clusters, when `enable_private_nodes` is `true`.
      * 
      */
-    private Boolean enablePrivateEndpoint;
+    private @Nullable Boolean enablePrivateEndpoint;
     /**
      * @return Enables the private cluster feature,
      * creating a private endpoint on the cluster. In a private cluster, nodes only
@@ -58,6 +58,11 @@ public final class ClusterPrivateClusterConfig {
      */
     private @Nullable String privateEndpoint;
     /**
+     * @return Subnetwork in cluster&#39;s network where master&#39;s endpoint will be provisioned.
+     * 
+     */
+    private @Nullable String privateEndpointSubnetwork;
+    /**
      * @return The external IP address of this cluster&#39;s master endpoint.
      * 
      */
@@ -71,8 +76,8 @@ public final class ClusterPrivateClusterConfig {
      * to private clusters, when `enable_private_nodes` is `true`.
      * 
      */
-    public Boolean enablePrivateEndpoint() {
-        return this.enablePrivateEndpoint;
+    public Optional<Boolean> enablePrivateEndpoint() {
+        return Optional.ofNullable(this.enablePrivateEndpoint);
     }
     /**
      * @return Enables the private cluster feature,
@@ -121,6 +126,13 @@ public final class ClusterPrivateClusterConfig {
         return Optional.ofNullable(this.privateEndpoint);
     }
     /**
+     * @return Subnetwork in cluster&#39;s network where master&#39;s endpoint will be provisioned.
+     * 
+     */
+    public Optional<String> privateEndpointSubnetwork() {
+        return Optional.ofNullable(this.privateEndpointSubnetwork);
+    }
+    /**
      * @return The external IP address of this cluster&#39;s master endpoint.
      * 
      */
@@ -137,12 +149,13 @@ public final class ClusterPrivateClusterConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean enablePrivateEndpoint;
+        private @Nullable Boolean enablePrivateEndpoint;
         private @Nullable Boolean enablePrivateNodes;
         private @Nullable ClusterPrivateClusterConfigMasterGlobalAccessConfig masterGlobalAccessConfig;
         private @Nullable String masterIpv4CidrBlock;
         private @Nullable String peeringName;
         private @Nullable String privateEndpoint;
+        private @Nullable String privateEndpointSubnetwork;
         private @Nullable String publicEndpoint;
         public Builder() {}
         public Builder(ClusterPrivateClusterConfig defaults) {
@@ -153,12 +166,13 @@ public final class ClusterPrivateClusterConfig {
     	      this.masterIpv4CidrBlock = defaults.masterIpv4CidrBlock;
     	      this.peeringName = defaults.peeringName;
     	      this.privateEndpoint = defaults.privateEndpoint;
+    	      this.privateEndpointSubnetwork = defaults.privateEndpointSubnetwork;
     	      this.publicEndpoint = defaults.publicEndpoint;
         }
 
         @CustomType.Setter
-        public Builder enablePrivateEndpoint(Boolean enablePrivateEndpoint) {
-            this.enablePrivateEndpoint = Objects.requireNonNull(enablePrivateEndpoint);
+        public Builder enablePrivateEndpoint(@Nullable Boolean enablePrivateEndpoint) {
+            this.enablePrivateEndpoint = enablePrivateEndpoint;
             return this;
         }
         @CustomType.Setter
@@ -187,6 +201,11 @@ public final class ClusterPrivateClusterConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder privateEndpointSubnetwork(@Nullable String privateEndpointSubnetwork) {
+            this.privateEndpointSubnetwork = privateEndpointSubnetwork;
+            return this;
+        }
+        @CustomType.Setter
         public Builder publicEndpoint(@Nullable String publicEndpoint) {
             this.publicEndpoint = publicEndpoint;
             return this;
@@ -199,6 +218,7 @@ public final class ClusterPrivateClusterConfig {
             o.masterIpv4CidrBlock = masterIpv4CidrBlock;
             o.peeringName = peeringName;
             o.privateEndpoint = privateEndpoint;
+            o.privateEndpointSubnetwork = privateEndpointSubnetwork;
             o.publicEndpoint = publicEndpoint;
             return o;
         }

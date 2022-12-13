@@ -67,8 +67,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
     /**
      * The name or resource link to the
      * VLAN interconnect for this interface. Changing this forces a new interface to
-     * be created. Only one of `vpn_tunnel` and `interconnect_attachment` can be
-     * specified.
+     * be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
      * 
      */
     @Export(name="interconnectAttachment", type=String.class, parameters={})
@@ -77,8 +76,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
     /**
      * @return The name or resource link to the
      * VLAN interconnect for this interface. Changing this forces a new interface to
-     * be created. Only one of `vpn_tunnel` and `interconnect_attachment` can be
-     * specified.
+     * be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
      * 
      */
     public Output<Optional<String>> interconnectAttachment() {
@@ -90,15 +88,15 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="ipRange", type=String.class, parameters={})
-    private Output</* @Nullable */ String> ipRange;
+    private Output<String> ipRange;
 
     /**
      * @return IP address and range of the interface. The IP range must be
      * in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
      * 
      */
-    public Output<Optional<String>> ipRange() {
-        return Codegen.optional(this.ipRange);
+    public Output<String> ipRange() {
+        return this.ipRange;
     }
     /**
      * A unique name for the interface, required by GCE. Changing
@@ -117,16 +115,32 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The ID of the project in which this interface&#39;s router belongs. If it
-     * is not provided, the provider project is used. Changing this forces a new interface to be created.
+     * The regional private internal IP address that is used
+     * to establish BGP sessions to a VM instance acting as a third-party Router Appliance. Changing this forces a new interface to be created.
+     * 
+     */
+    @Export(name="privateIpAddress", type=String.class, parameters={})
+    private Output</* @Nullable */ String> privateIpAddress;
+
+    /**
+     * @return The regional private internal IP address that is used
+     * to establish BGP sessions to a VM instance acting as a third-party Router Appliance. Changing this forces a new interface to be created.
+     * 
+     */
+    public Output<Optional<String>> privateIpAddress() {
+        return Codegen.optional(this.privateIpAddress);
+    }
+    /**
+     * The ID of the project in which this interface&#39;s routerbelongs.
+     * If it is not provided, the provider project is used. Changing this forces a new interface to be created.
      * 
      */
     @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
-     * @return The ID of the project in which this interface&#39;s router belongs. If it
-     * is not provided, the provider project is used. Changing this forces a new interface to be created.
+     * @return The ID of the project in which this interface&#39;s routerbelongs.
+     * If it is not provided, the provider project is used. Changing this forces a new interface to be created.
      * 
      */
     public Output<String> project() {
@@ -134,8 +148,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
     }
     /**
      * The name of the interface that is redundant to
-     * this interface. Changing this forces a new interface to
-     * be created.
+     * this interface. Changing this forces a new interface to be created.
      * 
      */
     @Export(name="redundantInterface", type=String.class, parameters={})
@@ -143,26 +156,23 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The name of the interface that is redundant to
-     * this interface. Changing this forces a new interface to
-     * be created.
+     * this interface. Changing this forces a new interface to be created.
      * 
      */
     public Output<Optional<String>> redundantInterface() {
         return Codegen.optional(this.redundantInterface);
     }
     /**
-     * The region this interface&#39;s router sits in. If not specified,
-     * the project region will be used. Changing this forces a new interface to be
-     * created.
+     * The region this interface&#39;s router sits in.
+     * If not specified, the project region will be used. Changing this forces a new interface to be created.
      * 
      */
     @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
-     * @return The region this interface&#39;s router sits in. If not specified,
-     * the project region will be used. Changing this forces a new interface to be
-     * created.
+     * @return The region this interface&#39;s router sits in.
+     * If not specified, the project region will be used. Changing this forces a new interface to be created.
      * 
      */
     public Output<String> region() {
@@ -185,9 +195,25 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
         return this.router;
     }
     /**
+     * The URI of the subnetwork resource that this interface
+     * belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+     * 
+     */
+    @Export(name="subnetwork", type=String.class, parameters={})
+    private Output</* @Nullable */ String> subnetwork;
+
+    /**
+     * @return The URI of the subnetwork resource that this interface
+     * belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
+     * 
+     */
+    public Output<Optional<String>> subnetwork() {
+        return Codegen.optional(this.subnetwork);
+    }
+    /**
      * The name or resource link to the VPN tunnel this
      * interface will be linked to. Changing this forces a new interface to be created. Only
-     * one of `vpn_tunnel` and `interconnect_attachment` can be specified.
+     * one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
      * 
      */
     @Export(name="vpnTunnel", type=String.class, parameters={})
@@ -196,7 +222,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
     /**
      * @return The name or resource link to the VPN tunnel this
      * interface will be linked to. Changing this forces a new interface to be created. Only
-     * one of `vpn_tunnel` and `interconnect_attachment` can be specified.
+     * one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
      * 
      */
     public Output<Optional<String>> vpnTunnel() {

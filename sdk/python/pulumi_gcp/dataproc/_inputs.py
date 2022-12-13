@@ -70,6 +70,8 @@ __all__ = [
     'MetastoreServiceMaintenanceWindowArgs',
     'MetastoreServiceMetadataIntegrationArgs',
     'MetastoreServiceMetadataIntegrationDataCatalogConfigArgs',
+    'MetastoreServiceNetworkConfigArgs',
+    'MetastoreServiceNetworkConfigConsumerArgs',
     'WorkflowTemplateJobArgs',
     'WorkflowTemplateJobHadoopJobArgs',
     'WorkflowTemplateJobHadoopJobLoggingConfigArgs',
@@ -4044,6 +4046,76 @@ class MetastoreServiceMetadataIntegrationDataCatalogConfigArgs:
     @enabled.setter
     def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class MetastoreServiceNetworkConfigArgs:
+    def __init__(__self__, *,
+                 consumers: pulumi.Input[Sequence[pulumi.Input['MetastoreServiceNetworkConfigConsumerArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['MetastoreServiceNetworkConfigConsumerArgs']]] consumers: The consumer-side network configuration for the Dataproc Metastore instance.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "consumers", consumers)
+
+    @property
+    @pulumi.getter
+    def consumers(self) -> pulumi.Input[Sequence[pulumi.Input['MetastoreServiceNetworkConfigConsumerArgs']]]:
+        """
+        The consumer-side network configuration for the Dataproc Metastore instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "consumers")
+
+    @consumers.setter
+    def consumers(self, value: pulumi.Input[Sequence[pulumi.Input['MetastoreServiceNetworkConfigConsumerArgs']]]):
+        pulumi.set(self, "consumers", value)
+
+
+@pulumi.input_type
+class MetastoreServiceNetworkConfigConsumerArgs:
+    def __init__(__self__, *,
+                 subnetwork: pulumi.Input[str],
+                 endpoint_uri: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] subnetwork: The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint.
+               It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network.
+               There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:
+               `projects/{projectNumber}/regions/{region_id}/subnetworks/{subnetwork_id}
+        :param pulumi.Input[str] endpoint_uri: -
+               The URI of the endpoint used to access the metastore service.
+        """
+        pulumi.set(__self__, "subnetwork", subnetwork)
+        if endpoint_uri is not None:
+            pulumi.set(__self__, "endpoint_uri", endpoint_uri)
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> pulumi.Input[str]:
+        """
+        The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint.
+        It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network.
+        There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:
+        `projects/{projectNumber}/regions/{region_id}/subnetworks/{subnetwork_id}
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @subnetwork.setter
+    def subnetwork(self, value: pulumi.Input[str]):
+        pulumi.set(self, "subnetwork", value)
+
+    @property
+    @pulumi.getter(name="endpointUri")
+    def endpoint_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        The URI of the endpoint used to access the metastore service.
+        """
+        return pulumi.get(self, "endpoint_uri")
+
+    @endpoint_uri.setter
+    def endpoint_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint_uri", value)
 
 
 @pulumi.input_type

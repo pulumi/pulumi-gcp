@@ -43,11 +43,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := certificateauthority.NewAuthority(ctx, "test-ca", &certificateauthority.AuthorityArgs{
-//				CertificateAuthorityId:             pulumi.String("my-certificate-authority"),
-//				Location:                           pulumi.String("us-central1"),
-//				Pool:                               pulumi.String(""),
-//				IgnoreActiveCertificatesOnDeletion: pulumi.Bool(true),
-//				DeletionProtection:                 pulumi.Bool(false),
+//				CertificateAuthorityId: pulumi.String("my-certificate-authority"),
+//				Location:               pulumi.String("us-central1"),
+//				Pool:                   pulumi.String(""),
 //				Config: &certificateauthority.AuthorityConfigArgs{
 //					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
 //						Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
@@ -78,6 +76,9 @@ import (
 //				KeySpec: &certificateauthority.AuthorityKeySpecArgs{
 //					Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
 //				},
+//				DeletionProtection:                 pulumi.Bool(false),
+//				SkipGracePeriod:                    pulumi.Bool(true),
+//				IgnoreActiveCertificatesOnDeletion: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -254,7 +255,6 @@ import (
 //				Pool:                   pulumi.String(""),
 //				CertificateAuthorityId: pulumi.String("my-certificate-authority"),
 //				Location:               pulumi.String("us-central1"),
-//				DeletionProtection:     pulumi.Bool(false),
 //				Config: &certificateauthority.AuthorityConfigArgs{
 //					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
 //						Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
@@ -285,6 +285,9 @@ import (
 //				KeySpec: &certificateauthority.AuthorityKeySpecArgs{
 //					Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
 //				},
+//				DeletionProtection:                 pulumi.Bool(false),
+//				SkipGracePeriod:                    pulumi.Bool(true),
+//				IgnoreActiveCertificatesOnDeletion: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -333,7 +336,6 @@ import (
 //				Pool:                   pulumi.String(""),
 //				CertificateAuthorityId: pulumi.String("my-certificate-authority"),
 //				Location:               pulumi.String("us-central1"),
-//				DeletionProtection:     pulumi.Bool(false),
 //				Config: &certificateauthority.AuthorityConfigArgs{
 //					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
 //						Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
@@ -364,6 +366,9 @@ import (
 //				KeySpec: &certificateauthority.AuthorityKeySpecArgs{
 //					Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
 //				},
+//				DeletionProtection:                 pulumi.Bool(false),
+//				SkipGracePeriod:                    pulumi.Bool(true),
+//				IgnoreActiveCertificatesOnDeletion: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -412,7 +417,6 @@ import (
 //				Pool:                   pulumi.String(""),
 //				CertificateAuthorityId: pulumi.String("my-authority"),
 //				Location:               pulumi.String("us-central1"),
-//				DeletionProtection:     pulumi.Bool(false),
 //				Config: &certificateauthority.AuthorityConfigArgs{
 //					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
 //						Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
@@ -445,6 +449,9 @@ import (
 //				KeySpec: &certificateauthority.AuthorityKeySpecArgs{
 //					Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
 //				},
+//				DeletionProtection:                 pulumi.Bool(false),
+//				SkipGracePeriod:                    pulumi.Bool(true),
+//				IgnoreActiveCertificatesOnDeletion: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

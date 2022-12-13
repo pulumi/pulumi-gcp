@@ -1402,6 +1402,8 @@ func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput) Ba
 }
 
 type FeatureMembershipMesh struct {
+	// Whether to automatically manage Service Mesh Control Plane. Can either be `AUTOMATIC` or `MANUAL`.
+	ControlPlane *string `pulumi:"controlPlane"`
 	// Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
 	Management *string `pulumi:"management"`
 }
@@ -1418,6 +1420,8 @@ type FeatureMembershipMeshInput interface {
 }
 
 type FeatureMembershipMeshArgs struct {
+	// Whether to automatically manage Service Mesh Control Plane. Can either be `AUTOMATIC` or `MANUAL`.
+	ControlPlane pulumi.StringPtrInput `pulumi:"controlPlane"`
 	// Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
 	Management pulumi.StringPtrInput `pulumi:"management"`
 }
@@ -1499,6 +1503,11 @@ func (o FeatureMembershipMeshOutput) ToFeatureMembershipMeshPtrOutputWithContext
 	}).(FeatureMembershipMeshPtrOutput)
 }
 
+// Whether to automatically manage Service Mesh Control Plane. Can either be `AUTOMATIC` or `MANUAL`.
+func (o FeatureMembershipMeshOutput) ControlPlane() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipMesh) *string { return v.ControlPlane }).(pulumi.StringPtrOutput)
+}
+
 // Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
 func (o FeatureMembershipMeshOutput) Management() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipMesh) *string { return v.Management }).(pulumi.StringPtrOutput)
@@ -1526,6 +1535,16 @@ func (o FeatureMembershipMeshPtrOutput) Elem() FeatureMembershipMeshOutput {
 		var ret FeatureMembershipMesh
 		return ret
 	}).(FeatureMembershipMeshOutput)
+}
+
+// Whether to automatically manage Service Mesh Control Plane. Can either be `AUTOMATIC` or `MANUAL`.
+func (o FeatureMembershipMeshPtrOutput) ControlPlane() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipMesh) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ControlPlane
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.

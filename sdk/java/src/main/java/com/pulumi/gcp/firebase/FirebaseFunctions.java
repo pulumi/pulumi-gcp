@@ -8,15 +8,30 @@ import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
+import com.pulumi.gcp.firebase.inputs.GetAndroidAppArgs;
+import com.pulumi.gcp.firebase.inputs.GetAndroidAppPlainArgs;
 import com.pulumi.gcp.firebase.inputs.GetWebAppArgs;
 import com.pulumi.gcp.firebase.inputs.GetWebAppConfigArgs;
 import com.pulumi.gcp.firebase.inputs.GetWebAppConfigPlainArgs;
 import com.pulumi.gcp.firebase.inputs.GetWebAppPlainArgs;
+import com.pulumi.gcp.firebase.outputs.GetAndroidAppResult;
 import com.pulumi.gcp.firebase.outputs.GetWebAppConfigResult;
 import com.pulumi.gcp.firebase.outputs.GetWebAppResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class FirebaseFunctions {
+    public static Output<GetAndroidAppResult> getAndroidApp(GetAndroidAppArgs args) {
+        return getAndroidApp(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetAndroidAppResult> getAndroidAppPlain(GetAndroidAppPlainArgs args) {
+        return getAndroidAppPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetAndroidAppResult> getAndroidApp(GetAndroidAppArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:firebase/getAndroidApp:getAndroidApp", TypeShape.of(GetAndroidAppResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetAndroidAppResult> getAndroidAppPlain(GetAndroidAppPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:firebase/getAndroidApp:getAndroidApp", TypeShape.of(GetAndroidAppResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * A Google Cloud Firebase web application instance
      * 

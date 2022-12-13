@@ -142,8 +142,6 @@ import javax.annotation.Nullable;
  *             .pool(&#34;ca-pool&#34;)
  *             .certificateAuthorityId(&#34;my-certificate-authority-root&#34;)
  *             .location(&#34;us-central1&#34;)
- *             .deletionProtection(false)
- *             .ignoreActiveCertificatesOnDeletion(true)
  *             .config(AuthorityConfigArgs.builder()
  *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
  *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
@@ -172,6 +170,9 @@ import javax.annotation.Nullable;
  *             .keySpec(AuthorityKeySpecArgs.builder()
  *                 .algorithm(&#34;RSA_PKCS1_4096_SHA256&#34;)
  *                 .build())
+ *             .deletionProtection(false)
+ *             .skipGracePeriod(true)
+ *             .ignoreActiveCertificatesOnDeletion(true)
  *             .build());
  * 
  *         var default_ = new Authority(&#34;default&#34;, AuthorityArgs.builder()        

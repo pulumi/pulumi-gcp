@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.datafusion.InstanceArgs;
 import com.pulumi.gcp.datafusion.inputs.InstanceState;
 import com.pulumi.gcp.datafusion.outputs.InstanceCryptoKeyConfig;
+import com.pulumi.gcp.datafusion.outputs.InstanceEventPublishConfig;
 import com.pulumi.gcp.datafusion.outputs.InstanceNetworkConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -68,6 +69,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.appengine.AppengineFunctions;
  * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
  * import com.pulumi.gcp.datafusion.Instance;
  * import com.pulumi.gcp.datafusion.InstanceArgs;
  * import com.pulumi.gcp.datafusion.inputs.InstanceNetworkConfigArgs;
@@ -86,20 +90,34 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = AppengineFunctions.getDefaultServiceAccount();
  * 
+ *         var network = new Network(&#34;network&#34;);
+ * 
+ *         var privateIpAlloc = new GlobalAddress(&#34;privateIpAlloc&#34;, GlobalAddressArgs.builder()        
+ *             .addressType(&#34;INTERNAL&#34;)
+ *             .purpose(&#34;VPC_PEERING&#34;)
+ *             .prefixLength(22)
+ *             .network(network.id())
+ *             .build());
+ * 
  *         var extendedInstance = new Instance(&#34;extendedInstance&#34;, InstanceArgs.builder()        
  *             .description(&#34;My Data Fusion instance&#34;)
+ *             .displayName(&#34;My Data Fusion instance&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .type(&#34;BASIC&#34;)
  *             .enableStackdriverLogging(true)
  *             .enableStackdriverMonitoring(true)
- *             .labels(Map.of(&#34;example_key&#34;, &#34;example_value&#34;))
  *             .privateInstance(true)
+ *             .version(&#34;6.6.0&#34;)
+ *             .dataprocServiceAccount(default_.email())
+ *             .labels(Map.of(&#34;example_key&#34;, &#34;example_value&#34;))
  *             .networkConfig(InstanceNetworkConfigArgs.builder()
  *                 .network(&#34;default&#34;)
- *                 .ipAllocation(&#34;10.89.48.0/22&#34;)
+ *                 .ipAllocation(Output.tuple(privateIpAlloc.address(), privateIpAlloc.prefixLength()).applyValue(values -&gt; {
+ *                     var address = values.t1;
+ *                     var prefixLength = values.t2;
+ *                     return String.format(&#34;%s/%s&#34;, address,prefixLength);
+ *                 }))
  *                 .build())
- *             .version(&#34;6.3.0&#34;)
- *             .dataprocServiceAccount(default_.email())
  *             .options(Map.of(&#34;prober_test_run&#34;, &#34;true&#34;))
  *             .build());
  * 
@@ -154,7 +172,7 @@ import javax.annotation.Nullable;
  *             .members(String.format(&#34;serviceAccount:service-%s@gcp-sa-datafusion.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
  *             .build());
  * 
- *         var basicCmek = new Instance(&#34;basicCmek&#34;, InstanceArgs.builder()        
+ *         var cmek = new Instance(&#34;cmek&#34;, InstanceArgs.builder()        
  *             .region(&#34;us-central1&#34;)
  *             .type(&#34;BASIC&#34;)
  *             .cryptoKeyConfig(InstanceCryptoKeyConfigArgs.builder()
@@ -199,6 +217,76 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Data Fusion Instance Event
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.datafusion.Instance;
+ * import com.pulumi.gcp.datafusion.InstanceArgs;
+ * import com.pulumi.gcp.datafusion.inputs.InstanceEventPublishConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var eventTopic = new Topic(&#34;eventTopic&#34;);
+ * 
+ *         var eventInstance = new Instance(&#34;eventInstance&#34;, InstanceArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .type(&#34;BASIC&#34;)
+ *             .version(&#34;6.7.0&#34;)
+ *             .eventPublishConfig(InstanceEventPublishConfigArgs.builder()
+ *                 .enabled(true)
+ *                 .topic(eventTopic.id())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Data Fusion Instance Zone
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.datafusion.Instance;
+ * import com.pulumi.gcp.datafusion.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var zone = new Instance(&#34;zone&#34;, InstanceArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .type(&#34;DEVELOPER&#34;)
+ *             .zone(&#34;us-central1-a&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -223,6 +311,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:datafusion/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
+    /**
+     * Endpoint on which the REST APIs is accessible.
+     * 
+     */
+    @Export(name="apiEndpoint", type=String.class, parameters={})
+    private Output<String> apiEndpoint;
+
+    /**
+     * @return Endpoint on which the REST APIs is accessible.
+     * 
+     */
+    public Output<String> apiEndpoint() {
+        return this.apiEndpoint;
+    }
     /**
      * The time the instance was created in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds.
      * 
@@ -282,6 +384,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * Display name for an instance.
+     * 
+     */
+    @Export(name="displayName", type=String.class, parameters={})
+    private Output</* @Nullable */ String> displayName;
+
+    /**
+     * @return Display name for an instance.
+     * 
+     */
+    public Output<Optional<String>> displayName() {
+        return Codegen.optional(this.displayName);
+    }
+    /**
      * Option to enable granular role-based access control.
      * 
      */
@@ -322,6 +438,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> enableStackdriverMonitoring() {
         return Codegen.optional(this.enableStackdriverMonitoring);
+    }
+    /**
+     * Option to enable and pass metadata for event publishing.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="eventPublishConfig", type=InstanceEventPublishConfig.class, parameters={})
+    private Output</* @Nullable */ InstanceEventPublishConfig> eventPublishConfig;
+
+    /**
+     * @return Option to enable and pass metadata for event publishing.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InstanceEventPublishConfig>> eventPublishConfig() {
+        return Codegen.optional(this.eventPublishConfig);
     }
     /**
      * Cloud Storage bucket generated by Data Fusion in the customer project.
@@ -396,6 +528,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> options() {
         return Codegen.optional(this.options);
+    }
+    /**
+     * P4 service account for the customer project.
+     * 
+     */
+    @Export(name="p4ServiceAccount", type=String.class, parameters={})
+    private Output<String> p4ServiceAccount;
+
+    /**
+     * @return P4 service account for the customer project.
+     * 
+     */
+    public Output<String> p4ServiceAccount() {
+        return this.p4ServiceAccount;
     }
     /**
      * Specifies whether the Data Fusion instance should be private. If set to
@@ -584,6 +730,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> version() {
         return this.version;
+    }
+    /**
+     * Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
+     * 
+     */
+    @Export(name="zone", type=String.class, parameters={})
+    private Output<String> zone;
+
+    /**
+     * @return Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
+     * 
+     */
+    public Output<String> zone() {
+        return this.zone;
     }
 
     /**

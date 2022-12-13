@@ -14,6 +14,8 @@ __all__ = [
     'DenyPolicyRule',
     'DenyPolicyRuleDenyRule',
     'DenyPolicyRuleDenyRuleDenialCondition',
+    'WorkforcePoolProviderOidc',
+    'WorkforcePoolProviderSaml',
     'WorkloadIdentityPoolProviderAws',
     'WorkloadIdentityPoolProviderOidc',
     'GetTestablePermissionsPermissionResult',
@@ -233,6 +235,113 @@ class DenyPolicyRuleDenyRuleDenialCondition(dict):
         This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class WorkforcePoolProviderOidc(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "issuerUri":
+            suggest = "issuer_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkforcePoolProviderOidc. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkforcePoolProviderOidc.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkforcePoolProviderOidc.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_id: str,
+                 issuer_uri: str):
+        """
+        :param str client_id: The client ID. Must match the audience claim of the JWT issued by the identity provider.
+        :param str issuer_uri: The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
+        """
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "issuer_uri", issuer_uri)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> str:
+        """
+        The client ID. Must match the audience claim of the JWT issued by the identity provider.
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="issuerUri")
+    def issuer_uri(self) -> str:
+        """
+        The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
+        """
+        return pulumi.get(self, "issuer_uri")
+
+
+@pulumi.output_type
+class WorkforcePoolProviderSaml(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "idpMetadataXml":
+            suggest = "idp_metadata_xml"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkforcePoolProviderSaml. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkforcePoolProviderSaml.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkforcePoolProviderSaml.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 idp_metadata_xml: str):
+        """
+        :param str idp_metadata_xml: SAML Identity provider configuration metadata xml doc.
+               The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
+               The max size of the acceptable xml document will be bounded to 128k characters.
+               The metadata xml document should satisfy the following constraints:
+               1) Must contain an Identity Provider Entity ID.
+               2) Must contain at least one non-expired signing key certificate.
+               3) For each signing key:
+               a) Valid from should be no more than 7 days from now.
+               b) Valid to should be no more than 10 years in the future.
+               4) Up to 3 IdP signing keys are allowed in the metadata xml.
+               When updating the provider's metadata xml, at least one non-expired signing key
+               must overlap with the existing metadata. This requirement is skipped if there are
+               no non-expired signing keys present in the existing metadata.
+        """
+        pulumi.set(__self__, "idp_metadata_xml", idp_metadata_xml)
+
+    @property
+    @pulumi.getter(name="idpMetadataXml")
+    def idp_metadata_xml(self) -> str:
+        """
+        SAML Identity provider configuration metadata xml doc.
+        The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
+        The max size of the acceptable xml document will be bounded to 128k characters.
+        The metadata xml document should satisfy the following constraints:
+        1) Must contain an Identity Provider Entity ID.
+        2) Must contain at least one non-expired signing key certificate.
+        3) For each signing key:
+        a) Valid from should be no more than 7 days from now.
+        b) Valid to should be no more than 10 years in the future.
+        4) Up to 3 IdP signing keys are allowed in the metadata xml.
+        When updating the provider's metadata xml, at least one non-expired signing key
+        must overlap with the existing metadata. This requirement is skipped if there are
+        no non-expired signing keys present in the existing metadata.
+        """
+        return pulumi.get(self, "idp_metadata_xml")
 
 
 @pulumi.output_type

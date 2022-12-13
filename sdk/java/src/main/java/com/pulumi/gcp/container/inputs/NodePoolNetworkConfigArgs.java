@@ -16,31 +16,71 @@ public final class NodePoolNetworkConfigArgs extends com.pulumi.resources.Resour
 
     public static final NodePoolNetworkConfigArgs Empty = new NodePoolNetworkConfigArgs();
 
+    /**
+     * Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+     * 
+     */
     @Import(name="createPodRange")
     private @Nullable Output<Boolean> createPodRange;
 
+    /**
+     * @return Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+     * 
+     */
     public Optional<Output<Boolean>> createPodRange() {
         return Optional.ofNullable(this.createPodRange);
     }
 
+    /**
+     * Whether nodes have internal IP addresses only.
+     * 
+     */
+    @Import(name="enablePrivateNodes")
+    private @Nullable Output<Boolean> enablePrivateNodes;
+
+    /**
+     * @return Whether nodes have internal IP addresses only.
+     * 
+     */
+    public Optional<Output<Boolean>> enablePrivateNodes() {
+        return Optional.ofNullable(this.enablePrivateNodes);
+    }
+
+    /**
+     * The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+     * 
+     */
     @Import(name="podIpv4CidrBlock")
     private @Nullable Output<String> podIpv4CidrBlock;
 
+    /**
+     * @return The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+     * 
+     */
     public Optional<Output<String>> podIpv4CidrBlock() {
         return Optional.ofNullable(this.podIpv4CidrBlock);
     }
 
-    @Import(name="podRange", required=true)
-    private Output<String> podRange;
+    /**
+     * The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+     * 
+     */
+    @Import(name="podRange")
+    private @Nullable Output<String> podRange;
 
-    public Output<String> podRange() {
-        return this.podRange;
+    /**
+     * @return The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+     * 
+     */
+    public Optional<Output<String>> podRange() {
+        return Optional.ofNullable(this.podRange);
     }
 
     private NodePoolNetworkConfigArgs() {}
 
     private NodePoolNetworkConfigArgs(NodePoolNetworkConfigArgs $) {
         this.createPodRange = $.createPodRange;
+        this.enablePrivateNodes = $.enablePrivateNodes;
         this.podIpv4CidrBlock = $.podIpv4CidrBlock;
         this.podRange = $.podRange;
     }
@@ -63,35 +103,91 @@ public final class NodePoolNetworkConfigArgs extends com.pulumi.resources.Resour
             $ = new NodePoolNetworkConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param createPodRange Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createPodRange(@Nullable Output<Boolean> createPodRange) {
             $.createPodRange = createPodRange;
             return this;
         }
 
+        /**
+         * @param createPodRange Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createPodRange(Boolean createPodRange) {
             return createPodRange(Output.of(createPodRange));
         }
 
+        /**
+         * @param enablePrivateNodes Whether nodes have internal IP addresses only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enablePrivateNodes(@Nullable Output<Boolean> enablePrivateNodes) {
+            $.enablePrivateNodes = enablePrivateNodes;
+            return this;
+        }
+
+        /**
+         * @param enablePrivateNodes Whether nodes have internal IP addresses only.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enablePrivateNodes(Boolean enablePrivateNodes) {
+            return enablePrivateNodes(Output.of(enablePrivateNodes));
+        }
+
+        /**
+         * @param podIpv4CidrBlock The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+         * 
+         * @return builder
+         * 
+         */
         public Builder podIpv4CidrBlock(@Nullable Output<String> podIpv4CidrBlock) {
             $.podIpv4CidrBlock = podIpv4CidrBlock;
             return this;
         }
 
+        /**
+         * @param podIpv4CidrBlock The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+         * 
+         * @return builder
+         * 
+         */
         public Builder podIpv4CidrBlock(String podIpv4CidrBlock) {
             return podIpv4CidrBlock(Output.of(podIpv4CidrBlock));
         }
 
-        public Builder podRange(Output<String> podRange) {
+        /**
+         * @param podRange The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder podRange(@Nullable Output<String> podRange) {
             $.podRange = podRange;
             return this;
         }
 
+        /**
+         * @param podRange The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder podRange(String podRange) {
             return podRange(Output.of(podRange));
         }
 
         public NodePoolNetworkConfigArgs build() {
-            $.podRange = Objects.requireNonNull($.podRange, "expected parameter 'podRange' to be non-null");
             return $;
         }
     }

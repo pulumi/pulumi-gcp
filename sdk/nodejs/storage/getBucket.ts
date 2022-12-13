@@ -48,6 +48,7 @@ export interface GetBucketArgs {
  * A collection of values returned by getBucket.
  */
 export interface GetBucketResult {
+    readonly autoclasses: outputs.storage.GetBucketAutoclass[];
     readonly cors: outputs.storage.GetBucketCor[];
     readonly customPlacementConfigs: outputs.storage.GetBucketCustomPlacementConfig[];
     readonly defaultEventBasedHold: boolean;

@@ -56,7 +56,10 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/appengine"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datafusion"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -68,22 +71,40 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			network, err := compute.NewNetwork(ctx, "network", nil)
+//			if err != nil {
+//				return err
+//			}
+//			privateIpAlloc, err := compute.NewGlobalAddress(ctx, "privateIpAlloc", &compute.GlobalAddressArgs{
+//				AddressType:  pulumi.String("INTERNAL"),
+//				Purpose:      pulumi.String("VPC_PEERING"),
+//				PrefixLength: pulumi.Int(22),
+//				Network:      network.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = datafusion.NewInstance(ctx, "extendedInstance", &datafusion.InstanceArgs{
 //				Description:                 pulumi.String("My Data Fusion instance"),
+//				DisplayName:                 pulumi.String("My Data Fusion instance"),
 //				Region:                      pulumi.String("us-central1"),
 //				Type:                        pulumi.String("BASIC"),
 //				EnableStackdriverLogging:    pulumi.Bool(true),
 //				EnableStackdriverMonitoring: pulumi.Bool(true),
+//				PrivateInstance:             pulumi.Bool(true),
+//				Version:                     pulumi.String("6.6.0"),
+//				DataprocServiceAccount:      pulumi.String(_default.Email),
 //				Labels: pulumi.StringMap{
 //					"example_key": pulumi.String("example_value"),
 //				},
-//				PrivateInstance: pulumi.Bool(true),
 //				NetworkConfig: &datafusion.InstanceNetworkConfigArgs{
-//					Network:      pulumi.String("default"),
-//					IpAllocation: pulumi.String("10.89.48.0/22"),
+//					Network: pulumi.String("default"),
+//					IpAllocation: pulumi.All(privateIpAlloc.Address, privateIpAlloc.PrefixLength).ApplyT(func(_args []interface{}) (string, error) {
+//						address := _args[0].(string)
+//						prefixLength := _args[1].(int)
+//						return fmt.Sprintf("%v/%v", address, prefixLength), nil
+//					}).(pulumi.StringOutput),
 //				},
-//				Version:                pulumi.String("6.3.0"),
-//				DataprocServiceAccount: pulumi.String(_default.Email),
 //				Options: pulumi.StringMap{
 //					"prober_test_run": pulumi.String("true"),
 //				},
@@ -140,7 +161,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = datafusion.NewInstance(ctx, "basicCmek", &datafusion.InstanceArgs{
+//			_, err = datafusion.NewInstance(ctx, "cmek", &datafusion.InstanceArgs{
 //				Region: pulumi.String("us-central1"),
 //				Type:   pulumi.String("BASIC"),
 //				CryptoKeyConfig: &datafusion.InstanceCryptoKeyConfigArgs{
@@ -187,6 +208,69 @@ import (
 //	}
 //
 // ```
+// ### Data Fusion Instance Event
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datafusion"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			eventTopic, err := pubsub.NewTopic(ctx, "eventTopic", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datafusion.NewInstance(ctx, "eventInstance", &datafusion.InstanceArgs{
+//				Region:  pulumi.String("us-central1"),
+//				Type:    pulumi.String("BASIC"),
+//				Version: pulumi.String("6.7.0"),
+//				EventPublishConfig: &datafusion.InstanceEventPublishConfigArgs{
+//					Enabled: pulumi.Bool(true),
+//					Topic:   eventTopic.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Data Fusion Instance Zone
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/datafusion"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := datafusion.NewInstance(ctx, "zone", &datafusion.InstanceArgs{
+//				Region: pulumi.String("us-central1"),
+//				Type:   pulumi.String("DEVELOPER"),
+//				Zone:   pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -218,6 +302,8 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// Endpoint on which the REST APIs is accessible.
+	ApiEndpoint pulumi.StringOutput `pulumi:"apiEndpoint"`
 	// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
@@ -227,12 +313,17 @@ type Instance struct {
 	DataprocServiceAccount pulumi.StringPtrOutput `pulumi:"dataprocServiceAccount"`
 	// An optional description of the instance.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Display name for an instance.
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Option to enable granular role-based access control.
 	EnableRbac pulumi.BoolPtrOutput `pulumi:"enableRbac"`
 	// Option to enable Stackdriver Logging.
 	EnableStackdriverLogging pulumi.BoolPtrOutput `pulumi:"enableStackdriverLogging"`
 	// Option to enable Stackdriver Monitoring.
 	EnableStackdriverMonitoring pulumi.BoolPtrOutput `pulumi:"enableStackdriverMonitoring"`
+	// Option to enable and pass metadata for event publishing.
+	// Structure is documented below.
+	EventPublishConfig InstanceEventPublishConfigPtrOutput `pulumi:"eventPublishConfig"`
 	// Cloud Storage bucket generated by Data Fusion in the customer project.
 	GcsBucket pulumi.StringOutput `pulumi:"gcsBucket"`
 	// The resource labels for instance to use to annotate any related underlying resources,
@@ -245,6 +336,8 @@ type Instance struct {
 	NetworkConfig InstanceNetworkConfigPtrOutput `pulumi:"networkConfig"`
 	// Map of additional options used to configure the behavior of Data Fusion instance.
 	Options pulumi.StringMapOutput `pulumi:"options"`
+	// P4 service account for the customer project.
+	P4ServiceAccount pulumi.StringOutput `pulumi:"p4ServiceAccount"`
 	// Specifies whether the Data Fusion instance should be private. If set to
 	// true, all Data Fusion nodes will have private IP addresses and will not be
 	// able to access the public internet.
@@ -284,6 +377,8 @@ type Instance struct {
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Current version of the Data Fusion.
 	Version pulumi.StringOutput `pulumi:"version"`
+	// Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
+	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
 // NewInstance registers a new resource with the given unique name, arguments, and options.
@@ -318,6 +413,8 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
+	// Endpoint on which the REST APIs is accessible.
+	ApiEndpoint *string `pulumi:"apiEndpoint"`
 	// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	CreateTime *string `pulumi:"createTime"`
 	// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
@@ -327,12 +424,17 @@ type instanceState struct {
 	DataprocServiceAccount *string `pulumi:"dataprocServiceAccount"`
 	// An optional description of the instance.
 	Description *string `pulumi:"description"`
+	// Display name for an instance.
+	DisplayName *string `pulumi:"displayName"`
 	// Option to enable granular role-based access control.
 	EnableRbac *bool `pulumi:"enableRbac"`
 	// Option to enable Stackdriver Logging.
 	EnableStackdriverLogging *bool `pulumi:"enableStackdriverLogging"`
 	// Option to enable Stackdriver Monitoring.
 	EnableStackdriverMonitoring *bool `pulumi:"enableStackdriverMonitoring"`
+	// Option to enable and pass metadata for event publishing.
+	// Structure is documented below.
+	EventPublishConfig *InstanceEventPublishConfig `pulumi:"eventPublishConfig"`
 	// Cloud Storage bucket generated by Data Fusion in the customer project.
 	GcsBucket *string `pulumi:"gcsBucket"`
 	// The resource labels for instance to use to annotate any related underlying resources,
@@ -345,6 +447,8 @@ type instanceState struct {
 	NetworkConfig *InstanceNetworkConfig `pulumi:"networkConfig"`
 	// Map of additional options used to configure the behavior of Data Fusion instance.
 	Options map[string]string `pulumi:"options"`
+	// P4 service account for the customer project.
+	P4ServiceAccount *string `pulumi:"p4ServiceAccount"`
 	// Specifies whether the Data Fusion instance should be private. If set to
 	// true, all Data Fusion nodes will have private IP addresses and will not be
 	// able to access the public internet.
@@ -384,9 +488,13 @@ type instanceState struct {
 	UpdateTime *string `pulumi:"updateTime"`
 	// Current version of the Data Fusion.
 	Version *string `pulumi:"version"`
+	// Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
+	Zone *string `pulumi:"zone"`
 }
 
 type InstanceState struct {
+	// Endpoint on which the REST APIs is accessible.
+	ApiEndpoint pulumi.StringPtrInput
 	// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	CreateTime pulumi.StringPtrInput
 	// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
@@ -396,12 +504,17 @@ type InstanceState struct {
 	DataprocServiceAccount pulumi.StringPtrInput
 	// An optional description of the instance.
 	Description pulumi.StringPtrInput
+	// Display name for an instance.
+	DisplayName pulumi.StringPtrInput
 	// Option to enable granular role-based access control.
 	EnableRbac pulumi.BoolPtrInput
 	// Option to enable Stackdriver Logging.
 	EnableStackdriverLogging pulumi.BoolPtrInput
 	// Option to enable Stackdriver Monitoring.
 	EnableStackdriverMonitoring pulumi.BoolPtrInput
+	// Option to enable and pass metadata for event publishing.
+	// Structure is documented below.
+	EventPublishConfig InstanceEventPublishConfigPtrInput
 	// Cloud Storage bucket generated by Data Fusion in the customer project.
 	GcsBucket pulumi.StringPtrInput
 	// The resource labels for instance to use to annotate any related underlying resources,
@@ -414,6 +527,8 @@ type InstanceState struct {
 	NetworkConfig InstanceNetworkConfigPtrInput
 	// Map of additional options used to configure the behavior of Data Fusion instance.
 	Options pulumi.StringMapInput
+	// P4 service account for the customer project.
+	P4ServiceAccount pulumi.StringPtrInput
 	// Specifies whether the Data Fusion instance should be private. If set to
 	// true, all Data Fusion nodes will have private IP addresses and will not be
 	// able to access the public internet.
@@ -453,6 +568,8 @@ type InstanceState struct {
 	UpdateTime pulumi.StringPtrInput
 	// Current version of the Data Fusion.
 	Version pulumi.StringPtrInput
+	// Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
+	Zone pulumi.StringPtrInput
 }
 
 func (InstanceState) ElementType() reflect.Type {
@@ -467,12 +584,17 @@ type instanceArgs struct {
 	DataprocServiceAccount *string `pulumi:"dataprocServiceAccount"`
 	// An optional description of the instance.
 	Description *string `pulumi:"description"`
+	// Display name for an instance.
+	DisplayName *string `pulumi:"displayName"`
 	// Option to enable granular role-based access control.
 	EnableRbac *bool `pulumi:"enableRbac"`
 	// Option to enable Stackdriver Logging.
 	EnableStackdriverLogging *bool `pulumi:"enableStackdriverLogging"`
 	// Option to enable Stackdriver Monitoring.
 	EnableStackdriverMonitoring *bool `pulumi:"enableStackdriverMonitoring"`
+	// Option to enable and pass metadata for event publishing.
+	// Structure is documented below.
+	EventPublishConfig *InstanceEventPublishConfig `pulumi:"eventPublishConfig"`
 	// The resource labels for instance to use to annotate any related underlying resources,
 	// such as Compute Engine VMs.
 	Labels map[string]string `pulumi:"labels"`
@@ -506,6 +628,8 @@ type instanceArgs struct {
 	Type string `pulumi:"type"`
 	// Current version of the Data Fusion.
 	Version *string `pulumi:"version"`
+	// Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
+	Zone *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -517,12 +641,17 @@ type InstanceArgs struct {
 	DataprocServiceAccount pulumi.StringPtrInput
 	// An optional description of the instance.
 	Description pulumi.StringPtrInput
+	// Display name for an instance.
+	DisplayName pulumi.StringPtrInput
 	// Option to enable granular role-based access control.
 	EnableRbac pulumi.BoolPtrInput
 	// Option to enable Stackdriver Logging.
 	EnableStackdriverLogging pulumi.BoolPtrInput
 	// Option to enable Stackdriver Monitoring.
 	EnableStackdriverMonitoring pulumi.BoolPtrInput
+	// Option to enable and pass metadata for event publishing.
+	// Structure is documented below.
+	EventPublishConfig InstanceEventPublishConfigPtrInput
 	// The resource labels for instance to use to annotate any related underlying resources,
 	// such as Compute Engine VMs.
 	Labels pulumi.StringMapInput
@@ -556,6 +685,8 @@ type InstanceArgs struct {
 	Type pulumi.StringInput
 	// Current version of the Data Fusion.
 	Version pulumi.StringPtrInput
+	// Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
+	Zone pulumi.StringPtrInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {
@@ -645,6 +776,11 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// Endpoint on which the REST APIs is accessible.
+func (o InstanceOutput) ApiEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ApiEndpoint }).(pulumi.StringOutput)
+}
+
 // The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -666,6 +802,11 @@ func (o InstanceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Display name for an instance.
+func (o InstanceOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
 // Option to enable granular role-based access control.
 func (o InstanceOutput) EnableRbac() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.EnableRbac }).(pulumi.BoolPtrOutput)
@@ -679,6 +820,12 @@ func (o InstanceOutput) EnableStackdriverLogging() pulumi.BoolPtrOutput {
 // Option to enable Stackdriver Monitoring.
 func (o InstanceOutput) EnableStackdriverMonitoring() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.EnableStackdriverMonitoring }).(pulumi.BoolPtrOutput)
+}
+
+// Option to enable and pass metadata for event publishing.
+// Structure is documented below.
+func (o InstanceOutput) EventPublishConfig() InstanceEventPublishConfigPtrOutput {
+	return o.ApplyT(func(v *Instance) InstanceEventPublishConfigPtrOutput { return v.EventPublishConfig }).(InstanceEventPublishConfigPtrOutput)
 }
 
 // Cloud Storage bucket generated by Data Fusion in the customer project.
@@ -706,6 +853,11 @@ func (o InstanceOutput) NetworkConfig() InstanceNetworkConfigPtrOutput {
 // Map of additional options used to configure the behavior of Data Fusion instance.
 func (o InstanceOutput) Options() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Options }).(pulumi.StringMapOutput)
+}
+
+// P4 service account for the customer project.
+func (o InstanceOutput) P4ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.P4ServiceAccount }).(pulumi.StringOutput)
 }
 
 // Specifies whether the Data Fusion instance should be private. If set to
@@ -778,6 +930,11 @@ func (o InstanceOutput) UpdateTime() pulumi.StringOutput {
 // Current version of the Data Fusion.
 func (o InstanceOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
+}
+
+// Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
+func (o InstanceOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }
 
 type InstanceArrayOutput struct{ *pulumi.OutputState }

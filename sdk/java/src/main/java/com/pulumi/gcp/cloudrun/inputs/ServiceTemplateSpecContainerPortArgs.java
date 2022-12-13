@@ -17,14 +17,14 @@ public final class ServiceTemplateSpecContainerPortArgs extends com.pulumi.resou
     public static final ServiceTemplateSpecContainerPortArgs Empty = new ServiceTemplateSpecContainerPortArgs();
 
     /**
-     * Port number the container listens on. This must be a valid port number, 0 &lt; x &lt; 65536.
+     * Port number the container listens on. This must be a valid port number (between 1 and 65535). Defaults to &#34;8080&#34;.
      * 
      */
     @Import(name="containerPort")
     private @Nullable Output<Integer> containerPort;
 
     /**
-     * @return Port number the container listens on. This must be a valid port number, 0 &lt; x &lt; 65536.
+     * @return Port number the container listens on. This must be a valid port number (between 1 and 65535). Defaults to &#34;8080&#34;.
      * 
      */
     public Optional<Output<Integer>> containerPort() {
@@ -88,7 +88,7 @@ public final class ServiceTemplateSpecContainerPortArgs extends com.pulumi.resou
         }
 
         /**
-         * @param containerPort Port number the container listens on. This must be a valid port number, 0 &lt; x &lt; 65536.
+         * @param containerPort Port number the container listens on. This must be a valid port number (between 1 and 65535). Defaults to &#34;8080&#34;.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class ServiceTemplateSpecContainerPortArgs extends com.pulumi.resou
         }
 
         /**
-         * @param containerPort Port number the container listens on. This must be a valid port number, 0 &lt; x &lt; 65536.
+         * @param containerPort Port number the container listens on. This must be a valid port number (between 1 and 65535). Defaults to &#34;8080&#34;.
          * 
          * @return builder
          * 

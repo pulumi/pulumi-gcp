@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.storage.BucketArgs;
 import com.pulumi.gcp.storage.inputs.BucketState;
+import com.pulumi.gcp.storage.outputs.BucketAutoclass;
 import com.pulumi.gcp.storage.outputs.BucketCor;
 import com.pulumi.gcp.storage.outputs.BucketCustomPlacementConfig;
 import com.pulumi.gcp.storage.outputs.BucketEncryption;
@@ -113,14 +114,23 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var auto_expire = new Bucket(&#34;auto-expire&#34;, BucketArgs.builder()        
  *             .forceDestroy(true)
- *             .lifecycleRules(BucketLifecycleRuleArgs.builder()
- *                 .action(BucketLifecycleRuleActionArgs.builder()
- *                     .type(&#34;Delete&#34;)
+ *             .lifecycleRules(            
+ *                 BucketLifecycleRuleArgs.builder()
+ *                     .action(BucketLifecycleRuleActionArgs.builder()
+ *                         .type(&#34;Delete&#34;)
+ *                         .build())
+ *                     .condition(BucketLifecycleRuleConditionArgs.builder()
+ *                         .age(3)
+ *                         .build())
+ *                     .build(),
+ *                 BucketLifecycleRuleArgs.builder()
+ *                     .action(BucketLifecycleRuleActionArgs.builder()
+ *                         .type(&#34;AbortIncompleteMultipartUpload&#34;)
+ *                         .build())
+ *                     .condition(BucketLifecycleRuleConditionArgs.builder()
+ *                         .age(1)
+ *                         .build())
  *                     .build())
- *                 .condition(BucketLifecycleRuleConditionArgs.builder()
- *                     .age(3)
- *                     .build())
- *                 .build())
  *             .location(&#34;US&#34;)
  *             .build());
  * 
@@ -178,6 +188,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:storage/bucket:Bucket")
 public class Bucket extends com.pulumi.resources.CustomResource {
+    /**
+     * The bucket&#39;s [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
+     * 
+     */
+    @Export(name="autoclass", type=BucketAutoclass.class, parameters={})
+    private Output</* @Nullable */ BucketAutoclass> autoclass;
+
+    /**
+     * @return The bucket&#39;s [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
+     * 
+     */
+    public Output<Optional<BucketAutoclass>> autoclass() {
+        return Codegen.optional(this.autoclass);
+    }
     /**
      * The bucket&#39;s [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
      * 
@@ -455,14 +479,14 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="website", type=BucketWebsite.class, parameters={})
-    private Output</* @Nullable */ BucketWebsite> website;
+    private Output<BucketWebsite> website;
 
     /**
      * @return Configuration if the bucket acts as a website. Structure is documented below.
      * 
      */
-    public Output<Optional<BucketWebsite>> website() {
-        return Codegen.optional(this.website);
+    public Output<BucketWebsite> website() {
+        return this.website;
     }
 
     /**

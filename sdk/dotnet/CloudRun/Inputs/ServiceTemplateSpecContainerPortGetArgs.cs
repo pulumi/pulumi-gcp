@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
     public sealed class ServiceTemplateSpecContainerPortGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Port number the container listens on. This must be a valid port number, 0 &lt; x &lt; 65536.
+        /// Port number the container listens on. This must be a valid port number (between 1 and 65535). Defaults to "8080".
         /// </summary>
         [Input("containerPort")]
         public Input<int>? ContainerPort { get; set; }

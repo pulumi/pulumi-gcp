@@ -564,6 +564,9 @@ class Instance(pulumi.CustomResource):
             cluster=default_cluster.name,
             instance_id="alloydb-instance",
             instance_type="PRIMARY",
+            machine_config=gcp.alloydb.InstanceMachineConfigArgs(
+                cpu_count=2,
+            ),
             opts=pulumi.ResourceOptions(provider=google_beta,
                 depends_on=[vpc_connection]))
         ```
@@ -638,6 +641,9 @@ class Instance(pulumi.CustomResource):
             cluster=default_cluster.name,
             instance_id="alloydb-instance",
             instance_type="PRIMARY",
+            machine_config=gcp.alloydb.InstanceMachineConfigArgs(
+                cpu_count=2,
+            ),
             opts=pulumi.ResourceOptions(provider=google_beta,
                 depends_on=[vpc_connection]))
         ```

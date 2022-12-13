@@ -16,6 +16,21 @@ public final class FeatureMembershipMeshArgs extends com.pulumi.resources.Resour
     public static final FeatureMembershipMeshArgs Empty = new FeatureMembershipMeshArgs();
 
     /**
+     * Whether to automatically manage Service Mesh Control Plane. Can either be `AUTOMATIC` or `MANUAL`.
+     * 
+     */
+    @Import(name="controlPlane")
+    private @Nullable Output<String> controlPlane;
+
+    /**
+     * @return Whether to automatically manage Service Mesh Control Plane. Can either be `AUTOMATIC` or `MANUAL`.
+     * 
+     */
+    public Optional<Output<String>> controlPlane() {
+        return Optional.ofNullable(this.controlPlane);
+    }
+
+    /**
      * Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
      * 
      */
@@ -33,6 +48,7 @@ public final class FeatureMembershipMeshArgs extends com.pulumi.resources.Resour
     private FeatureMembershipMeshArgs() {}
 
     private FeatureMembershipMeshArgs(FeatureMembershipMeshArgs $) {
+        this.controlPlane = $.controlPlane;
         this.management = $.management;
     }
 
@@ -52,6 +68,27 @@ public final class FeatureMembershipMeshArgs extends com.pulumi.resources.Resour
 
         public Builder(FeatureMembershipMeshArgs defaults) {
             $ = new FeatureMembershipMeshArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param controlPlane Whether to automatically manage Service Mesh Control Plane. Can either be `AUTOMATIC` or `MANUAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder controlPlane(@Nullable Output<String> controlPlane) {
+            $.controlPlane = controlPlane;
+            return this;
+        }
+
+        /**
+         * @param controlPlane Whether to automatically manage Service Mesh Control Plane. Can either be `AUTOMATIC` or `MANUAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder controlPlane(String controlPlane) {
+            return controlPlane(Output.of(controlPlane));
         }
 
         /**

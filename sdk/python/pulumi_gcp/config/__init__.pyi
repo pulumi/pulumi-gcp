@@ -78,6 +78,8 @@ cloudResourceManagerCustomEndpoint: Optional[str]
 
 cloudRunCustomEndpoint: Optional[str]
 
+cloudRunV2CustomEndpoint: Optional[str]
+
 cloudSchedulerCustomEndpoint: Optional[str]
 
 cloudTasksCustomEndpoint: Optional[str]
@@ -142,11 +144,15 @@ firebaseCustomEndpoint: Optional[str]
 
 firebaseHostingCustomEndpoint: Optional[str]
 
+firebaseStorageCustomEndpoint: Optional[str]
+
 firebaserulesCustomEndpoint: Optional[str]
 
 firestoreCustomEndpoint: Optional[str]
 
 gameServicesCustomEndpoint: Optional[str]
+
+gkeBackupCustomEndpoint: Optional[str]
 
 gkeHubCustomEndpoint: Optional[str]
 

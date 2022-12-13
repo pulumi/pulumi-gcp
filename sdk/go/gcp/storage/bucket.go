@@ -97,6 +97,14 @@ import (
 //							Age: pulumi.Int(3),
 //						},
 //					},
+//					&storage.BucketLifecycleRuleArgs{
+//						Action: &storage.BucketLifecycleRuleActionArgs{
+//							Type: pulumi.String("AbortIncompleteMultipartUpload"),
+//						},
+//						Condition: &storage.BucketLifecycleRuleConditionArgs{
+//							Age: pulumi.Int(1),
+//						},
+//					},
 //				},
 //				Location: pulumi.String("US"),
 //			})
@@ -158,6 +166,8 @@ import (
 type Bucket struct {
 	pulumi.CustomResourceState
 
+	// The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
+	Autoclass BucketAutoclassPtrOutput `pulumi:"autoclass"`
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors BucketCorArrayOutput `pulumi:"cors"`
 	// The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
@@ -200,7 +210,7 @@ type Bucket struct {
 	// The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
 	Versioning BucketVersioningOutput `pulumi:"versioning"`
 	// Configuration if the bucket acts as a website. Structure is documented below.
-	Website BucketWebsitePtrOutput `pulumi:"website"`
+	Website BucketWebsiteOutput `pulumi:"website"`
 }
 
 // NewBucket registers a new resource with the given unique name, arguments, and options.
@@ -235,6 +245,8 @@ func GetBucket(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Bucket resources.
 type bucketState struct {
+	// The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
+	Autoclass *BucketAutoclass `pulumi:"autoclass"`
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors []BucketCor `pulumi:"cors"`
 	// The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
@@ -281,6 +293,8 @@ type bucketState struct {
 }
 
 type BucketState struct {
+	// The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
+	Autoclass BucketAutoclassPtrInput
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors BucketCorArrayInput
 	// The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
@@ -331,6 +345,8 @@ func (BucketState) ElementType() reflect.Type {
 }
 
 type bucketArgs struct {
+	// The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
+	Autoclass *BucketAutoclass `pulumi:"autoclass"`
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors []BucketCor `pulumi:"cors"`
 	// The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
@@ -374,6 +390,8 @@ type bucketArgs struct {
 
 // The set of arguments for constructing a Bucket resource.
 type BucketArgs struct {
+	// The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
+	Autoclass BucketAutoclassPtrInput
 	// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	Cors BucketCorArrayInput
 	// The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
@@ -502,6 +520,11 @@ func (o BucketOutput) ToBucketOutputWithContext(ctx context.Context) BucketOutpu
 	return o
 }
 
+// The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
+func (o BucketOutput) Autoclass() BucketAutoclassPtrOutput {
+	return o.ApplyT(func(v *Bucket) BucketAutoclassPtrOutput { return v.Autoclass }).(BucketAutoclassPtrOutput)
+}
+
 // The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 func (o BucketOutput) Cors() BucketCorArrayOutput {
 	return o.ApplyT(func(v *Bucket) BucketCorArrayOutput { return v.Cors }).(BucketCorArrayOutput)
@@ -601,8 +624,8 @@ func (o BucketOutput) Versioning() BucketVersioningOutput {
 }
 
 // Configuration if the bucket acts as a website. Structure is documented below.
-func (o BucketOutput) Website() BucketWebsitePtrOutput {
-	return o.ApplyT(func(v *Bucket) BucketWebsitePtrOutput { return v.Website }).(BucketWebsitePtrOutput)
+func (o BucketOutput) Website() BucketWebsiteOutput {
+	return o.ApplyT(func(v *Bucket) BucketWebsiteOutput { return v.Website }).(BucketWebsiteOutput)
 }
 
 type BucketArrayOutput struct{ *pulumi.OutputState }

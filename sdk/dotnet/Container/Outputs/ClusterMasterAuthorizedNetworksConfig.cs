@@ -18,11 +18,20 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Kubernetes cluster master through HTTPS.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterMasterAuthorizedNetworksConfigCidrBlock> CidrBlocks;
+        /// <summary>
+        /// Whether Kubernetes master is
+        /// accessible via Google Compute Engine Public IPs.
+        /// </summary>
+        public readonly bool? GcpPublicCidrsAccessEnabled;
 
         [OutputConstructor]
-        private ClusterMasterAuthorizedNetworksConfig(ImmutableArray<Outputs.ClusterMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks)
+        private ClusterMasterAuthorizedNetworksConfig(
+            ImmutableArray<Outputs.ClusterMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks,
+
+            bool? gcpPublicCidrsAccessEnabled)
         {
             CidrBlocks = cidrBlocks;
+            GcpPublicCidrsAccessEnabled = gcpPublicCidrsAccessEnabled;
         }
     }
 }

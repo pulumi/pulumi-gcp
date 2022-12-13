@@ -46,7 +46,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.bigtable.inputs.TableColumnFamilyArgs;
  * import com.pulumi.gcp.bigtable.GCPolicy;
  * import com.pulumi.gcp.bigtable.GCPolicyArgs;
- * import com.pulumi.gcp.bigtable.inputs.GCPolicyMaxAgeArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -79,9 +78,16 @@ import javax.annotation.Nullable;
  *             .instanceName(instance.name())
  *             .table(table.name())
  *             .columnFamily(&#34;name&#34;)
- *             .maxAge(GCPolicyMaxAgeArgs.builder()
- *                 .duration(&#34;168h&#34;)
- *                 .build())
+ *             .deletionPolicy(&#34;ABANDON&#34;)
+ *             .gcRules(&#34;&#34;&#34;
+ *   {
+ *     &#34;rules&#34;: [
+ *       {
+ *         &#34;max_age&#34;: &#34;168h&#34;
+ *       }
+ *     ]
+ *   }
+ *             &#34;&#34;&#34;)
  *             .build());
  * 
  *     }
@@ -97,8 +103,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.bigtable.GCPolicy;
  * import com.pulumi.gcp.bigtable.GCPolicyArgs;
- * import com.pulumi.gcp.bigtable.inputs.GCPolicyMaxAgeArgs;
- * import com.pulumi.gcp.bigtable.inputs.GCPolicyMaxVersionArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -116,22 +120,27 @@ import javax.annotation.Nullable;
  *             .instanceName(google_bigtable_instance.instance().name())
  *             .table(google_bigtable_table.table().name())
  *             .columnFamily(&#34;name&#34;)
- *             .mode(&#34;UNION&#34;)
- *             .maxAge(GCPolicyMaxAgeArgs.builder()
- *                 .duration(&#34;168h&#34;)
- *                 .build())
- *             .maxVersions(GCPolicyMaxVersionArgs.builder()
- *                 .number(10)
- *                 .build())
+ *             .deletionPolicy(&#34;ABANDON&#34;)
+ *             .gcRules(&#34;&#34;&#34;
+ *   {
+ *     &#34;mode&#34;: &#34;union&#34;,
+ *     &#34;rules&#34;: [
+ *       {
+ *         &#34;max_age&#34;: &#34;168h&#34;
+ *       },
+ *       {
+ *         &#34;max_version&#34;: 10
+ *       }
+ *     ]
+ *   }
+ *             &#34;&#34;&#34;)
  *             .build());
  * 
  *     }
  * }
  * ```
  * 
- * For complex, nested policies, an optional `gc_rules` field are supported. This field
- * conflicts with `mode`, `max_age` and `max_version`. This field is a serialized JSON
- * string. Example:
+ * An example of more complex GC policy:
  * ```java
  * package generated_program;
  * 
@@ -179,26 +188,27 @@ import javax.annotation.Nullable;
  *             .instanceName(instance.id())
  *             .table(table.name())
  *             .columnFamily(&#34;cf1&#34;)
+ *             .deletionPolicy(&#34;ABANDON&#34;)
  *             .gcRules(&#34;&#34;&#34;
- * {
- *   &#34;mode&#34;: &#34;union&#34;,
- *   &#34;rules&#34;: [
- *     {
- *       &#34;max_age&#34;: &#34;10h&#34;
- *     },
- *     {
- *       &#34;mode&#34;: &#34;intersection&#34;,
- *       &#34;rules&#34;: [
- *         {
- *           &#34;max_age&#34;: &#34;2h&#34;
- *         },
- *         {
- *           &#34;max_version&#34;: 2
- *         }
- *       ]
- *     }
- *   ]
- * }
+ *   {
+ *     &#34;mode&#34;: &#34;union&#34;,
+ *     &#34;rules&#34;: [
+ *       {
+ *         &#34;max_age&#34;: &#34;10h&#34;
+ *       },
+ *       {
+ *         &#34;mode&#34;: &#34;intersection&#34;,
+ *         &#34;rules&#34;: [
+ *           {
+ *             &#34;max_age&#34;: &#34;2h&#34;
+ *           },
+ *           {
+ *             &#34;max_version&#34;: 2
+ *           }
+ *         ]
+ *       }
+ *     ]
+ *   }
  *             &#34;&#34;&#34;)
  *             .build());
  * 
@@ -249,6 +259,22 @@ public class GCPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<String> columnFamily() {
         return this.columnFamily;
+    }
+    /**
+     * The deletion policy for the GC policy.
+     * Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+     * 
+     */
+    @Export(name="deletionPolicy", type=String.class, parameters={})
+    private Output</* @Nullable */ String> deletionPolicy;
+
+    /**
+     * @return The deletion policy for the GC policy.
+     * Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+     * 
+     */
+    public Output<Optional<String>> deletionPolicy() {
+        return Codegen.optional(this.deletionPolicy);
     }
     /**
      * Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.

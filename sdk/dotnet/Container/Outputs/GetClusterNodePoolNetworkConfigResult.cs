@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class GetClusterNodePoolNetworkConfigResult
     {
         public readonly bool CreatePodRange;
+        public readonly bool EnablePrivateNodes;
         public readonly string PodIpv4CidrBlock;
         public readonly string PodRange;
 
@@ -21,11 +22,14 @@ namespace Pulumi.Gcp.Container.Outputs
         private GetClusterNodePoolNetworkConfigResult(
             bool createPodRange,
 
+            bool enablePrivateNodes,
+
             string podIpv4CidrBlock,
 
             string podRange)
         {
             CreatePodRange = createPodRange;
+            EnablePrivateNodes = enablePrivateNodes;
             PodIpv4CidrBlock = podIpv4CidrBlock;
             PodRange = podRange;
         }

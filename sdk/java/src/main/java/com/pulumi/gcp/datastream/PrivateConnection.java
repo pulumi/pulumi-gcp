@@ -10,8 +10,10 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.datastream.PrivateConnectionArgs;
 import com.pulumi.gcp.datastream.inputs.PrivateConnectionState;
+import com.pulumi.gcp.datastream.outputs.PrivateConnectionError;
 import com.pulumi.gcp.datastream.outputs.PrivateConnectionVpcPeeringConfig;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -101,6 +103,20 @@ public class PrivateConnection extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
+     * The PrivateConnection error in case of failure.
+     * 
+     */
+    @Export(name="errors", type=List.class, parameters={PrivateConnectionError.class})
+    private Output<List<PrivateConnectionError>> errors;
+
+    /**
+     * @return The PrivateConnection error in case of failure.
+     * 
+     */
+    public Output<List<PrivateConnectionError>> errors() {
+        return this.errors;
+    }
+    /**
      * Labels.
      * 
      */
@@ -171,6 +187,20 @@ public class PrivateConnection extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * State of the PrivateConnection.
+     * 
+     */
+    @Export(name="state", type=String.class, parameters={})
+    private Output<String> state;
+
+    /**
+     * @return State of the PrivateConnection.
+     * 
+     */
+    public Output<String> state() {
+        return this.state;
     }
     /**
      * The VPC Peering configuration is used to create VPC peering

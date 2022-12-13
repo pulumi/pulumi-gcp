@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Storage.Inputs
         public Input<string>? StorageClass { get; set; }
 
         /// <summary>
-        /// The type of the action of this Lifecycle Rule. Supported values include: `Delete` and `SetStorageClass`.
+        /// The type of the action of this Lifecycle Rule. Supported values include: `Delete`, `SetStorageClass` and `AbortIncompleteMultipartUpload`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

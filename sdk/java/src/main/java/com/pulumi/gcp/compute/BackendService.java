@@ -124,6 +124,46 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Backend Service Cache Include Http Headers
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.BackendServiceCdnPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.BackendServiceCdnPolicyCacheKeyPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
+ *             .cdnPolicy(BackendServiceCdnPolicyArgs.builder()
+ *                 .cacheKeyPolicy(BackendServiceCdnPolicyCacheKeyPolicyArgs.builder()
+ *                     .includeHost(true)
+ *                     .includeHttpHeaders(&#34;X-My-Header-Field&#34;)
+ *                     .includeProtocol(true)
+ *                     .includeQueryString(true)
+ *                     .build())
+ *                 .cacheMode(&#34;USE_ORIGIN_HEADERS&#34;)
+ *                 .build())
+ *             .enableCdn(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Backend Service Cache Include Named Cookies
  * ```java
  * package generated_program;

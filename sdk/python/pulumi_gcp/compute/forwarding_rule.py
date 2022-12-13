@@ -75,16 +75,13 @@ class ForwardingRuleArgs:
                can only be set to true for load balancers that have their
                loadBalancingScheme set to INTERNAL.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
-        :param pulumi.Input[str] load_balancing_scheme: This signifies what the ForwardingRule will be used for and can be
-               EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
-               Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
-               and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
-               INTERNAL is used for protocol forwarding to VMs from an internal IP address,
-               and internal TCP/UDP load balancers.
-               EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
-               INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
-               Default value is `EXTERNAL`.
-               Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
+        :param pulumi.Input[str] load_balancing_scheme: Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
+               from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
+               `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
+               `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
+               Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
+               forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
+               INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -321,16 +318,13 @@ class ForwardingRuleArgs:
     @pulumi.getter(name="loadBalancingScheme")
     def load_balancing_scheme(self) -> Optional[pulumi.Input[str]]:
         """
-        This signifies what the ForwardingRule will be used for and can be
-        EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
-        Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
-        and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
-        INTERNAL is used for protocol forwarding to VMs from an internal IP address,
-        and internal TCP/UDP load balancers.
-        EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
-        INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
-        Default value is `EXTERNAL`.
-        Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
+        Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
+        from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
+        `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
+        `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
+        Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
+        forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
+        INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -595,16 +589,13 @@ class _ForwardingRuleState:
                loadBalancingScheme set to INTERNAL.
         :param pulumi.Input[str] label_fingerprint: Used internally during label updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
-        :param pulumi.Input[str] load_balancing_scheme: This signifies what the ForwardingRule will be used for and can be
-               EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
-               Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
-               and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
-               INTERNAL is used for protocol forwarding to VMs from an internal IP address,
-               and internal TCP/UDP load balancers.
-               EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
-               INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
-               Default value is `EXTERNAL`.
-               Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
+        :param pulumi.Input[str] load_balancing_scheme: Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
+               from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
+               `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
+               `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
+               Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
+               forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
+               INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -883,16 +874,13 @@ class _ForwardingRuleState:
     @pulumi.getter(name="loadBalancingScheme")
     def load_balancing_scheme(self) -> Optional[pulumi.Input[str]]:
         """
-        This signifies what the ForwardingRule will be used for and can be
-        EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
-        Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
-        and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
-        INTERNAL is used for protocol forwarding to VMs from an internal IP address,
-        and internal TCP/UDP load balancers.
-        EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
-        INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
-        Default value is `EXTERNAL`.
-        Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
+        Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
+        from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
+        `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
+        `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
+        Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
+        forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
+        INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -1246,16 +1234,13 @@ class ForwardingRule(pulumi.CustomResource):
                can only be set to true for load balancers that have their
                loadBalancingScheme set to INTERNAL.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
-        :param pulumi.Input[str] load_balancing_scheme: This signifies what the ForwardingRule will be used for and can be
-               EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
-               Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
-               and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
-               INTERNAL is used for protocol forwarding to VMs from an internal IP address,
-               and internal TCP/UDP load balancers.
-               EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
-               INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
-               Default value is `EXTERNAL`.
-               Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
+        :param pulumi.Input[str] load_balancing_scheme: Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
+               from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
+               `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
+               `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
+               Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
+               forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
+               INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -1524,16 +1509,13 @@ class ForwardingRule(pulumi.CustomResource):
                loadBalancingScheme set to INTERNAL.
         :param pulumi.Input[str] label_fingerprint: Used internally during label updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
-        :param pulumi.Input[str] load_balancing_scheme: This signifies what the ForwardingRule will be used for and can be
-               EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
-               Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
-               and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
-               INTERNAL is used for protocol forwarding to VMs from an internal IP address,
-               and internal TCP/UDP load balancers.
-               EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
-               INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
-               Default value is `EXTERNAL`.
-               Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
+        :param pulumi.Input[str] load_balancing_scheme: Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
+               from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
+               `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
+               `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
+               Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
+               forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
+               INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -1751,16 +1733,13 @@ class ForwardingRule(pulumi.CustomResource):
     @pulumi.getter(name="loadBalancingScheme")
     def load_balancing_scheme(self) -> pulumi.Output[Optional[str]]:
         """
-        This signifies what the ForwardingRule will be used for and can be
-        EXTERNAL, EXTERNAL_MANAGED, INTERNAL, or INTERNAL_MANAGED. EXTERNAL is used for Classic
-        Cloud VPN gateways, protocol forwarding to VMs from an external IP address,
-        and HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP load balancers.
-        INTERNAL is used for protocol forwarding to VMs from an internal IP address,
-        and internal TCP/UDP load balancers.
-        EXTERNAL_MANAGED is used for regional external HTTP(S) load balancers.
-        INTERNAL_MANAGED is used for internal HTTP(S) load balancers.
-        Default value is `EXTERNAL`.
-        Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
+        Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
+        from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
+        `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
+        `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
+        Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
+        forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
+        INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
         """
         return pulumi.get(self, "load_balancing_scheme")
 

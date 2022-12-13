@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly string MasterIpv4CidrBlock;
         public readonly string PeeringName;
         public readonly string PrivateEndpoint;
+        public readonly string PrivateEndpointSubnetwork;
         public readonly string PublicEndpoint;
 
         [OutputConstructor]
@@ -35,6 +36,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string privateEndpoint,
 
+            string privateEndpointSubnetwork,
+
             string publicEndpoint)
         {
             EnablePrivateEndpoint = enablePrivateEndpoint;
@@ -43,6 +46,7 @@ namespace Pulumi.Gcp.Container.Outputs
             MasterIpv4CidrBlock = masterIpv4CidrBlock;
             PeeringName = peeringName;
             PrivateEndpoint = privateEndpoint;
+            PrivateEndpointSubnetwork = privateEndpointSubnetwork;
             PublicEndpoint = publicEndpoint;
         }
     }

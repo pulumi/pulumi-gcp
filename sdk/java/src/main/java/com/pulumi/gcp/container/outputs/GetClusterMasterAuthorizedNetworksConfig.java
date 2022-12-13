@@ -5,16 +5,21 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.GetClusterMasterAuthorizedNetworksConfigCidrBlock;
+import java.lang.Boolean;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetClusterMasterAuthorizedNetworksConfig {
     private List<GetClusterMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks;
+    private Boolean gcpPublicCidrsAccessEnabled;
 
     private GetClusterMasterAuthorizedNetworksConfig() {}
     public List<GetClusterMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks() {
         return this.cidrBlocks;
+    }
+    public Boolean gcpPublicCidrsAccessEnabled() {
+        return this.gcpPublicCidrsAccessEnabled;
     }
 
     public static Builder builder() {
@@ -27,10 +32,12 @@ public final class GetClusterMasterAuthorizedNetworksConfig {
     @CustomType.Builder
     public static final class Builder {
         private List<GetClusterMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks;
+        private Boolean gcpPublicCidrsAccessEnabled;
         public Builder() {}
         public Builder(GetClusterMasterAuthorizedNetworksConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidrBlocks = defaults.cidrBlocks;
+    	      this.gcpPublicCidrsAccessEnabled = defaults.gcpPublicCidrsAccessEnabled;
         }
 
         @CustomType.Setter
@@ -41,9 +48,15 @@ public final class GetClusterMasterAuthorizedNetworksConfig {
         public Builder cidrBlocks(GetClusterMasterAuthorizedNetworksConfigCidrBlock... cidrBlocks) {
             return cidrBlocks(List.of(cidrBlocks));
         }
+        @CustomType.Setter
+        public Builder gcpPublicCidrsAccessEnabled(Boolean gcpPublicCidrsAccessEnabled) {
+            this.gcpPublicCidrsAccessEnabled = Objects.requireNonNull(gcpPublicCidrsAccessEnabled);
+            return this;
+        }
         public GetClusterMasterAuthorizedNetworksConfig build() {
             final var o = new GetClusterMasterAuthorizedNetworksConfig();
             o.cidrBlocks = cidrBlocks;
+            o.gcpPublicCidrsAccessEnabled = gcpPublicCidrsAccessEnabled;
             return o;
         }
     }

@@ -8601,7 +8601,7 @@ export namespace cloudrun {
 
     export interface ServiceTemplateSpecContainerPort {
         /**
-         * Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+         * Port number the container listens on. This must be a valid port number (between 1 and 65535). Defaults to "8080".
          */
         containerPort?: number;
         /**
@@ -8823,6 +8823,865 @@ export namespace cloudrun {
          * but may not contain anything else (e.g. basic auth, url path, etc.)
          */
         url: string;
+    }
+
+}
+
+export namespace cloudrunv2 {
+    export interface JobBinaryAuthorization {
+        /**
+         * If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+         */
+        breakglassJustification?: string;
+        /**
+         * If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
+         */
+        useDefault?: boolean;
+    }
+
+    export interface JobCondition {
+        executionReason: string;
+        lastTransitionTime: string;
+        message: string;
+        reason: string;
+        revisionReason: string;
+        severity: string;
+        state: string;
+        type: string;
+    }
+
+    export interface JobLatestCreatedExecution {
+        completionTime: string;
+        createTime: string;
+        /**
+         * Volume's name.
+         */
+        name: string;
+    }
+
+    export interface JobTemplate {
+        /**
+         * KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
+         */
+        labels?: {[key: string]: string};
+        /**
+         * Specifies the maximum desired number of tasks the execution should run at given time. Must be <= taskCount. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
+         */
+        parallelism: number;
+        /**
+         * Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+         */
+        taskCount: number;
+        /**
+         * Describes the task(s) that will be created when executing an execution
+         * Structure is documented below.
+         */
+        template: outputs.cloudrunv2.JobTemplateTemplate;
+    }
+
+    export interface JobTemplateTemplate {
+        /**
+         * Holds the single container that defines the unit of execution for this task.
+         * Structure is documented below.
+         */
+        containers: outputs.cloudrunv2.JobTemplateTemplateContainer[];
+        /**
+         * A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+         */
+        encryptionKey?: string;
+        /**
+         * The execution environment being used to host this Task.
+         * Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+         */
+        executionEnvironment: string;
+        /**
+         * Number of retries allowed per Task, before marking this Task failed.
+         */
+        maxRetries: number;
+        /**
+         * Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
+         */
+        serviceAccount: string;
+        /**
+         * Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+         * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+         */
+        timeout: string;
+        /**
+         * A list of Volumes to make available to containers.
+         * Structure is documented below.
+         */
+        volumes?: outputs.cloudrunv2.JobTemplateTemplateVolume[];
+        /**
+         * VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+         * Structure is documented below.
+         */
+        vpcAccess?: outputs.cloudrunv2.JobTemplateTemplateVpcAccess;
+    }
+
+    export interface JobTemplateTemplateContainer {
+        /**
+         * Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         */
+        args?: string[];
+        /**
+         * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         */
+        commands?: string[];
+        /**
+         * List of environment variables to set in the container.
+         * Structure is documented below.
+         */
+        envs?: outputs.cloudrunv2.JobTemplateTemplateContainerEnv[];
+        /**
+         * URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+         */
+        image: string;
+        /**
+         * Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * Structure is documented below.
+         */
+        livenessProbe?: outputs.cloudrunv2.JobTemplateTemplateContainerLivenessProbe;
+        /**
+         * Volume's name.
+         */
+        name?: string;
+        /**
+         * List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+         * If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
+         * Structure is documented below.
+         */
+        ports?: outputs.cloudrunv2.JobTemplateTemplateContainerPort[];
+        /**
+         * Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+         * Structure is documented below.
+         */
+        resources: outputs.cloudrunv2.JobTemplateTemplateContainerResources;
+        /**
+         * Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * Structure is documented below.
+         */
+        startupProbe: outputs.cloudrunv2.JobTemplateTemplateContainerStartupProbe;
+        /**
+         * Volume to mount into the container's filesystem.
+         * Structure is documented below.
+         */
+        volumeMounts?: outputs.cloudrunv2.JobTemplateTemplateContainerVolumeMount[];
+        /**
+         * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+         */
+        workingDir?: string;
+    }
+
+    export interface JobTemplateTemplateContainerEnv {
+        /**
+         * Volume's name.
+         */
+        name: string;
+        /**
+         * The header field value
+         */
+        value?: string;
+        /**
+         * Source for the environment variable's value.
+         * Structure is documented below.
+         */
+        valueSource?: outputs.cloudrunv2.JobTemplateTemplateContainerEnvValueSource;
+    }
+
+    export interface JobTemplateTemplateContainerEnvValueSource {
+        /**
+         * Selects a secret and a specific version from Cloud Secret Manager.
+         * Structure is documented below.
+         */
+        secretKeyRef?: outputs.cloudrunv2.JobTemplateTemplateContainerEnvValueSourceSecretKeyRef;
+    }
+
+    export interface JobTemplateTemplateContainerEnvValueSourceSecretKeyRef {
+        /**
+         * The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+         */
+        secret: string;
+        /**
+         * The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+         */
+        version: string;
+    }
+
+    export interface JobTemplateTemplateContainerLivenessProbe {
+        /**
+         * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+         */
+        failureThreshold?: number;
+        /**
+         * HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+         * Structure is documented below.
+         */
+        httpGet?: outputs.cloudrunv2.JobTemplateTemplateContainerLivenessProbeHttpGet;
+        /**
+         * Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         */
+        initialDelaySeconds?: number;
+        /**
+         * How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
+         */
+        periodSeconds?: number;
+        /**
+         * TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+         * Structure is documented below.
+         */
+        tcpSocket?: outputs.cloudrunv2.JobTemplateTemplateContainerLivenessProbeTcpSocket;
+        /**
+         * Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         */
+        timeoutSeconds?: number;
+    }
+
+    export interface JobTemplateTemplateContainerLivenessProbeHttpGet {
+        /**
+         * Custom headers to set in the request. HTTP allows repeated headers.
+         * Structure is documented below.
+         */
+        httpHeaders?: outputs.cloudrunv2.JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeader[];
+        /**
+         * The relative path of the secret in the container.
+         */
+        path?: string;
+    }
+
+    export interface JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeader {
+        /**
+         * Volume's name.
+         */
+        name: string;
+        /**
+         * The header field value
+         */
+        value?: string;
+    }
+
+    export interface JobTemplateTemplateContainerLivenessProbeTcpSocket {
+        /**
+         * Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+         */
+        port?: number;
+    }
+
+    export interface JobTemplateTemplateContainerPort {
+        /**
+         * Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
+         */
+        containerPort?: number;
+        /**
+         * Volume's name.
+         */
+        name?: string;
+    }
+
+    export interface JobTemplateTemplateContainerResources {
+        /**
+         * Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+         */
+        limits: {[key: string]: string};
+    }
+
+    export interface JobTemplateTemplateContainerStartupProbe {
+        /**
+         * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+         */
+        failureThreshold?: number;
+        /**
+         * HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+         * Structure is documented below.
+         */
+        httpGet?: outputs.cloudrunv2.JobTemplateTemplateContainerStartupProbeHttpGet;
+        /**
+         * Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         */
+        initialDelaySeconds?: number;
+        /**
+         * How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
+         */
+        periodSeconds?: number;
+        /**
+         * TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+         * Structure is documented below.
+         */
+        tcpSocket?: outputs.cloudrunv2.JobTemplateTemplateContainerStartupProbeTcpSocket;
+        /**
+         * Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         */
+        timeoutSeconds?: number;
+    }
+
+    export interface JobTemplateTemplateContainerStartupProbeHttpGet {
+        /**
+         * Custom headers to set in the request. HTTP allows repeated headers.
+         * Structure is documented below.
+         */
+        httpHeaders?: outputs.cloudrunv2.JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader[];
+        /**
+         * The relative path of the secret in the container.
+         */
+        path?: string;
+    }
+
+    export interface JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader {
+        /**
+         * Volume's name.
+         */
+        name: string;
+        /**
+         * The header field value
+         */
+        value?: string;
+    }
+
+    export interface JobTemplateTemplateContainerStartupProbeTcpSocket {
+        /**
+         * Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+         */
+        port: number;
+    }
+
+    export interface JobTemplateTemplateContainerVolumeMount {
+        /**
+         * Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+         */
+        mountPath: string;
+        /**
+         * Volume's name.
+         */
+        name: string;
+    }
+
+    export interface JobTemplateTemplateVolume {
+        /**
+         * For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+         * Structure is documented below.
+         */
+        cloudSqlInstance?: outputs.cloudrunv2.JobTemplateTemplateVolumeCloudSqlInstance;
+        /**
+         * Volume's name.
+         */
+        name: string;
+        /**
+         * The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+         */
+        secret?: outputs.cloudrunv2.JobTemplateTemplateVolumeSecret;
+    }
+
+    export interface JobTemplateTemplateVolumeCloudSqlInstance {
+        /**
+         * The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+         */
+        instances?: string[];
+    }
+
+    export interface JobTemplateTemplateVolumeSecret {
+        /**
+         * Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
+         */
+        defaultMode?: number;
+        /**
+         * If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
+         * Structure is documented below.
+         */
+        items?: outputs.cloudrunv2.JobTemplateTemplateVolumeSecretItem[];
+        /**
+         * The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+         */
+        secret: string;
+    }
+
+    export interface JobTemplateTemplateVolumeSecretItem {
+        /**
+         * Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
+         */
+        mode: number;
+        /**
+         * The relative path of the secret in the container.
+         */
+        path: string;
+        /**
+         * The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+         */
+        version: string;
+    }
+
+    export interface JobTemplateTemplateVpcAccess {
+        /**
+         * VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+         */
+        connector?: string;
+        /**
+         * Traffic VPC egress settings.
+         * Possible values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`.
+         */
+        egress?: string;
+    }
+
+    export interface JobTerminalCondition {
+        executionReason: string;
+        lastTransitionTime: string;
+        message: string;
+        reason: string;
+        revisionReason: string;
+        severity: string;
+        state: string;
+        type: string;
+    }
+
+    export interface ServiceBinaryAuthorization {
+        /**
+         * If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+         */
+        breakglassJustification?: string;
+        /**
+         * If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
+         */
+        useDefault?: boolean;
+    }
+
+    export interface ServiceCondition {
+        executionReason: string;
+        lastTransitionTime: string;
+        message: string;
+        reason: string;
+        revisionReason: string;
+        severity: string;
+        state: string;
+        /**
+         * The allocation type for this traffic target.
+         * Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+         */
+        type: string;
+    }
+
+    export interface ServiceTemplate {
+        /**
+         * Holds the single container that defines the unit of execution for this task.
+         * Structure is documented below.
+         */
+        containers?: outputs.cloudrunv2.ServiceTemplateContainer[];
+        /**
+         * A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+         */
+        encryptionKey?: string;
+        /**
+         * The sandbox environment to host this Revision.
+         * Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+         */
+        executionEnvironment?: string;
+        /**
+         * Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
+         */
+        labels?: {[key: string]: string};
+        /**
+         * Sets the maximum number of requests that each serving instance can receive.
+         */
+        maxInstanceRequestConcurrency: number;
+        /**
+         * Revision to which to send this portion of traffic, if traffic allocation is by revision.
+         */
+        revision?: string;
+        /**
+         * Scaling settings for this Revision.
+         * Structure is documented below.
+         */
+        scaling: outputs.cloudrunv2.ServiceTemplateScaling;
+        /**
+         * Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
+         */
+        serviceAccount: string;
+        /**
+         * Max allowed time for an instance to respond to a request.
+         * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+         */
+        timeout: string;
+        /**
+         * A list of Volumes to make available to containers.
+         * Structure is documented below.
+         */
+        volumes?: outputs.cloudrunv2.ServiceTemplateVolume[];
+        /**
+         * VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+         * Structure is documented below.
+         */
+        vpcAccess?: outputs.cloudrunv2.ServiceTemplateVpcAccess;
+    }
+
+    export interface ServiceTemplateContainer {
+        /**
+         * Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         */
+        args?: string[];
+        /**
+         * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         */
+        commands?: string[];
+        /**
+         * List of environment variables to set in the container.
+         * Structure is documented below.
+         */
+        envs?: outputs.cloudrunv2.ServiceTemplateContainerEnv[];
+        /**
+         * URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+         */
+        image: string;
+        /**
+         * Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * Structure is documented below.
+         */
+        livenessProbe?: outputs.cloudrunv2.ServiceTemplateContainerLivenessProbe;
+        /**
+         * Volume's name.
+         */
+        name?: string;
+        /**
+         * List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+         * If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
+         * Structure is documented below.
+         */
+        ports: outputs.cloudrunv2.ServiceTemplateContainerPort[];
+        /**
+         * Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+         * Structure is documented below.
+         */
+        resources: outputs.cloudrunv2.ServiceTemplateContainerResources;
+        /**
+         * Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         * Structure is documented below.
+         */
+        startupProbe: outputs.cloudrunv2.ServiceTemplateContainerStartupProbe;
+        /**
+         * Volume to mount into the container's filesystem.
+         * Structure is documented below.
+         */
+        volumeMounts?: outputs.cloudrunv2.ServiceTemplateContainerVolumeMount[];
+        /**
+         * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+         */
+        workingDir?: string;
+    }
+
+    export interface ServiceTemplateContainerEnv {
+        /**
+         * Volume's name.
+         */
+        name: string;
+        /**
+         * The header field value
+         */
+        value?: string;
+        /**
+         * Source for the environment variable's value.
+         * Structure is documented below.
+         */
+        valueSource?: outputs.cloudrunv2.ServiceTemplateContainerEnvValueSource;
+    }
+
+    export interface ServiceTemplateContainerEnvValueSource {
+        /**
+         * Selects a secret and a specific version from Cloud Secret Manager.
+         * Structure is documented below.
+         */
+        secretKeyRef?: outputs.cloudrunv2.ServiceTemplateContainerEnvValueSourceSecretKeyRef;
+    }
+
+    export interface ServiceTemplateContainerEnvValueSourceSecretKeyRef {
+        /**
+         * The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+         */
+        secret: string;
+        /**
+         * The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+         */
+        version?: string;
+    }
+
+    export interface ServiceTemplateContainerLivenessProbe {
+        /**
+         * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+         */
+        failureThreshold?: number;
+        /**
+         * HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+         * Structure is documented below.
+         */
+        httpGet?: outputs.cloudrunv2.ServiceTemplateContainerLivenessProbeHttpGet;
+        /**
+         * Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         */
+        initialDelaySeconds?: number;
+        /**
+         * How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
+         */
+        periodSeconds?: number;
+        /**
+         * TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+         * Structure is documented below.
+         */
+        tcpSocket?: outputs.cloudrunv2.ServiceTemplateContainerLivenessProbeTcpSocket;
+        /**
+         * Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         */
+        timeoutSeconds?: number;
+    }
+
+    export interface ServiceTemplateContainerLivenessProbeHttpGet {
+        /**
+         * Custom headers to set in the request. HTTP allows repeated headers.
+         * Structure is documented below.
+         */
+        httpHeaders?: outputs.cloudrunv2.ServiceTemplateContainerLivenessProbeHttpGetHttpHeader[];
+        /**
+         * The relative path of the secret in the container.
+         */
+        path?: string;
+    }
+
+    export interface ServiceTemplateContainerLivenessProbeHttpGetHttpHeader {
+        /**
+         * Volume's name.
+         */
+        name: string;
+        /**
+         * The header field value
+         */
+        value?: string;
+    }
+
+    export interface ServiceTemplateContainerLivenessProbeTcpSocket {
+        /**
+         * Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+         */
+        port?: number;
+    }
+
+    export interface ServiceTemplateContainerPort {
+        /**
+         * Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
+         */
+        containerPort?: number;
+        /**
+         * Volume's name.
+         */
+        name: string;
+    }
+
+    export interface ServiceTemplateContainerResources {
+        /**
+         * Determines whether CPU should be throttled or not outside of requests.
+         */
+        cpuIdle?: boolean;
+        /**
+         * Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+         */
+        limits: {[key: string]: string};
+    }
+
+    export interface ServiceTemplateContainerStartupProbe {
+        /**
+         * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+         */
+        failureThreshold?: number;
+        /**
+         * HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+         * Structure is documented below.
+         */
+        httpGet?: outputs.cloudrunv2.ServiceTemplateContainerStartupProbeHttpGet;
+        /**
+         * Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         */
+        initialDelaySeconds?: number;
+        /**
+         * How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
+         */
+        periodSeconds?: number;
+        /**
+         * TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+         * Structure is documented below.
+         */
+        tcpSocket?: outputs.cloudrunv2.ServiceTemplateContainerStartupProbeTcpSocket;
+        /**
+         * Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         */
+        timeoutSeconds?: number;
+    }
+
+    export interface ServiceTemplateContainerStartupProbeHttpGet {
+        /**
+         * Custom headers to set in the request. HTTP allows repeated headers.
+         * Structure is documented below.
+         */
+        httpHeaders?: outputs.cloudrunv2.ServiceTemplateContainerStartupProbeHttpGetHttpHeader[];
+        /**
+         * The relative path of the secret in the container.
+         */
+        path?: string;
+    }
+
+    export interface ServiceTemplateContainerStartupProbeHttpGetHttpHeader {
+        /**
+         * Volume's name.
+         */
+        name: string;
+        /**
+         * The header field value
+         */
+        value?: string;
+    }
+
+    export interface ServiceTemplateContainerStartupProbeTcpSocket {
+        /**
+         * Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+         */
+        port: number;
+    }
+
+    export interface ServiceTemplateContainerVolumeMount {
+        /**
+         * Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+         */
+        mountPath: string;
+        /**
+         * Volume's name.
+         */
+        name: string;
+    }
+
+    export interface ServiceTemplateScaling {
+        /**
+         * Maximum number of serving instances that this resource should have.
+         */
+        maxInstanceCount?: number;
+        /**
+         * Minimum number of serving instances that this resource should have.
+         */
+        minInstanceCount?: number;
+    }
+
+    export interface ServiceTemplateVolume {
+        /**
+         * For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+         * Structure is documented below.
+         */
+        cloudSqlInstance?: outputs.cloudrunv2.ServiceTemplateVolumeCloudSqlInstance;
+        /**
+         * Volume's name.
+         */
+        name: string;
+        /**
+         * The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+         */
+        secret?: outputs.cloudrunv2.ServiceTemplateVolumeSecret;
+    }
+
+    export interface ServiceTemplateVolumeCloudSqlInstance {
+        /**
+         * The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+         */
+        instances?: string[];
+    }
+
+    export interface ServiceTemplateVolumeSecret {
+        /**
+         * Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
+         */
+        defaultMode?: number;
+        /**
+         * If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
+         * Structure is documented below.
+         */
+        items?: outputs.cloudrunv2.ServiceTemplateVolumeSecretItem[];
+        /**
+         * The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+         */
+        secret: string;
+    }
+
+    export interface ServiceTemplateVolumeSecretItem {
+        /**
+         * Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
+         */
+        mode: number;
+        /**
+         * The relative path of the secret in the container.
+         */
+        path: string;
+        /**
+         * The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+         */
+        version?: string;
+    }
+
+    export interface ServiceTemplateVpcAccess {
+        /**
+         * VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+         */
+        connector?: string;
+        /**
+         * Traffic VPC egress settings.
+         * Possible values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`.
+         */
+        egress?: string;
+    }
+
+    export interface ServiceTerminalCondition {
+        executionReason: string;
+        lastTransitionTime: string;
+        message: string;
+        reason: string;
+        revisionReason: string;
+        severity: string;
+        state: string;
+        /**
+         * The allocation type for this traffic target.
+         * Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+         */
+        type: string;
+    }
+
+    export interface ServiceTraffic {
+        /**
+         * Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
+         */
+        percent: number;
+        /**
+         * Revision to which to send this portion of traffic, if traffic allocation is by revision.
+         */
+        revision?: string;
+        /**
+         * Indicates a string to be part of the URI to exclusively reference this target.
+         */
+        tag?: string;
+        /**
+         * The allocation type for this traffic target.
+         * Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+         */
+        type?: string;
+    }
+
+    export interface ServiceTrafficStatus {
+        /**
+         * Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
+         */
+        percent: number;
+        /**
+         * Revision to which to send this portion of traffic, if traffic allocation is by revision.
+         */
+        revision: string;
+        /**
+         * Indicates a string to be part of the URI to exclusively reference this target.
+         */
+        tag: string;
+        /**
+         * The allocation type for this traffic target.
+         * Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+         */
+        type: string;
+        uri: string;
     }
 
 }
@@ -10112,6 +10971,11 @@ export namespace compute {
          */
         includeHost?: boolean;
         /**
+         * Allows HTTP request headers (by name) to be used in the
+         * cache key.
+         */
+        includeHttpHeaders?: string[];
+        /**
          * Names of cookies to include in cache keys.
          */
         includeNamedCookies?: string[];
@@ -10732,6 +11596,7 @@ export namespace compute {
 
     export interface GetBackendServiceCdnPolicyCacheKeyPolicy {
         includeHost: boolean;
+        includeHttpHeaders: string[];
         includeNamedCookies: string[];
         includeProtocol: boolean;
         includeQueryString: boolean;
@@ -15118,6 +15983,21 @@ export namespace compute {
 
     export interface RegionUrlMapDefaultRouteAction {
         /**
+         * The specification for allowing client side cross-origin requests. Please see
+         * [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+         * Structure is documented below.
+         */
+        corsPolicy?: outputs.compute.RegionUrlMapDefaultRouteActionCorsPolicy;
+        /**
+         * The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+         * As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service.
+         * Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
+         * timeout and retryPolicy is ignored by clients that are configured with a faultInjectionPolicy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection.
+         * Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: [Routing and traffic management features](https://cloud.google.com/load-balancing/docs/features#routing-traffic-management).
+         * Structure is documented below.
+         */
+        faultInjectionPolicy?: outputs.compute.RegionUrlMapDefaultRouteActionFaultInjectionPolicy;
+        /**
          * Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
          * The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
          * Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
@@ -15130,11 +16010,117 @@ export namespace compute {
          */
         retryPolicy?: outputs.compute.RegionUrlMapDefaultRouteActionRetryPolicy;
         /**
+         * Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as end-of-stream) up until the response has been processed. Timeout includes all retries.
+         * If not specified, this field uses the largest timeout among all backend services associated with the route.
+         * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+         * Structure is documented below.
+         */
+        timeout?: outputs.compute.RegionUrlMapDefaultRouteActionTimeout;
+        /**
+         * The spec to modify the URL of the request, before forwarding the request to the matched service.
+         * urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers.
+         * Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+         * Structure is documented below.
+         */
+        urlRewrite?: outputs.compute.RegionUrlMapDefaultRouteActionUrlRewrite;
+        /**
          * A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number.
          * After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
          * Structure is documented below.
          */
         weightedBackendServices?: outputs.compute.RegionUrlMapDefaultRouteActionWeightedBackendService[];
+    }
+
+    export interface RegionUrlMapDefaultRouteActionCorsPolicy {
+        /**
+         * In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header.
+         * Default is false.
+         */
+        allowCredentials?: boolean;
+        /**
+         * Specifies the content for the Access-Control-Allow-Headers header.
+         */
+        allowHeaders?: string[];
+        /**
+         * Specifies the content for the Access-Control-Allow-Methods header.
+         */
+        allowMethods?: string[];
+        /**
+         * Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+         * please see en.cppreference.com/w/cpp/regex/ecmascript
+         * An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+         */
+        allowOriginRegexes?: string[];
+        /**
+         * Specifies the list of origins that will be allowed to do CORS requests.
+         * An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+         */
+        allowOrigins?: string[];
+        /**
+         * If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+         */
+        disabled?: boolean;
+        /**
+         * Specifies the content for the Access-Control-Expose-Headers header.
+         */
+        exposeHeaders?: string[];
+        /**
+         * Specifies how long results of a preflight request can be cached in seconds.
+         * This translates to the Access-Control-Max-Age header.
+         */
+        maxAge?: number;
+    }
+
+    export interface RegionUrlMapDefaultRouteActionFaultInjectionPolicy {
+        /**
+         * The specification for how client requests are aborted as part of fault injection.
+         * Structure is documented below.
+         */
+        abort?: outputs.compute.RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbort;
+        /**
+         * The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+         * Structure is documented below.
+         */
+        delay?: outputs.compute.RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelay;
+    }
+
+    export interface RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbort {
+        /**
+         * The HTTP status code used to abort the request.
+         * The value must be between 200 and 599 inclusive.
+         */
+        httpStatus?: number;
+        /**
+         * The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+         * The value must be between 0.0 and 100.0 inclusive.
+         */
+        percentage?: number;
+    }
+
+    export interface RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelay {
+        /**
+         * Specifies the value of the fixed delay interval.
+         * Structure is documented below.
+         */
+        fixedDelay?: outputs.compute.RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay;
+        /**
+         * The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+         * The value must be between 0.0 and 100.0 inclusive.
+         */
+        percentage?: number;
+    }
+
+    export interface RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+         * represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+         */
+        nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+         * Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+         */
+        seconds?: string;
     }
 
     export interface RegionUrlMapDefaultRouteActionRequestMirrorPolicy {
@@ -15186,6 +16172,32 @@ export namespace compute {
          * Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
          */
         seconds?: string;
+    }
+
+    export interface RegionUrlMapDefaultRouteActionTimeout {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+         * represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+         */
+        nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+         * Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+         */
+        seconds?: string;
+    }
+
+    export interface RegionUrlMapDefaultRouteActionUrlRewrite {
+        /**
+         * Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite.
+         * The value must be from 1 to 255 characters.
+         */
+        hostRewrite?: string;
+        /**
+         * Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite.
+         * The value must be from 1 to 1024 characters.
+         */
+        pathPrefixRewrite?: string;
     }
 
     export interface RegionUrlMapDefaultRouteActionWeightedBackendService {
@@ -15459,19 +16471,17 @@ export namespace compute {
 
     export interface RegionUrlMapPathMatcherPathRuleRouteAction {
         /**
-         * The specification for allowing client side cross-origin requests. Please see W3C
-         * Recommendation for Cross Origin Resource Sharing
+         * The specification for allowing client side cross-origin requests. Please see
+         * [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
          * Structure is documented below.
          */
         corsPolicy?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy;
         /**
-         * The specification for fault injection introduced into traffic to test the
-         * resiliency of clients to backend service failure. As part of fault injection,
-         * when clients send requests to a backend service, delays can be introduced by
-         * Loadbalancer on a percentage of requests before sending those request to the
-         * backend service. Similarly requests from clients can be aborted by the
-         * Loadbalancer for a percentage of requests. timeout and retryPolicy will be
-         * ignored by clients that are configured with a fault_injection_policy.
+         * The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+         * As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service.
+         * Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
+         * timeout and retryPolicy is ignored by clients that are configured with a faultInjectionPolicy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection.
+         * Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: [Routing and traffic management features](https://cloud.google.com/load-balancing/docs/features#routing-traffic-management).
          * Structure is documented below.
          */
         faultInjectionPolicy?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy;
@@ -15488,16 +16498,16 @@ export namespace compute {
          */
         retryPolicy?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy;
         /**
-         * Specifies the timeout for the selected route. Timeout is computed from the time
-         * the request is has been fully processed (i.e. end-of-stream) up until the
-         * response has been completely processed. Timeout includes all retries. If not
-         * specified, the default value is 15 seconds.
+         * Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as end-of-stream) up until the response has been processed. Timeout includes all retries.
+         * If not specified, this field uses the largest timeout among all backend services associated with the route.
+         * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
          * Structure is documented below.
          */
         timeout?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionTimeout;
         /**
-         * The spec to modify the URL of the request, prior to forwarding the request to
-         * the matched service
+         * The spec to modify the URL of the request, before forwarding the request to the matched service.
+         * urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers.
+         * Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
          * Structure is documented below.
          */
         urlRewrite?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite;
@@ -15511,9 +16521,8 @@ export namespace compute {
 
     export interface RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy {
         /**
-         * In response to a preflight request, setting this to true indicates that the
-         * actual request can include user credentials. This translates to the Access-
-         * Control-Allow-Credentials header. Defaults to false.
+         * In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header.
+         * Default is false.
          */
         allowCredentials?: boolean;
         /**
@@ -15525,18 +16534,18 @@ export namespace compute {
          */
         allowMethods?: string[];
         /**
-         * Specifies the regular expression patterns that match allowed origins. For
-         * regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
-         * An origin is allowed if it matches either allowOrigins or allow_origin_regex.
+         * Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+         * please see en.cppreference.com/w/cpp/regex/ecmascript
+         * An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
          */
         allowOriginRegexes?: string[];
         /**
-         * Specifies the list of origins that will be allowed to do CORS requests. An
-         * origin is allowed if it matches either allowOrigins or allow_origin_regex.
+         * Specifies the list of origins that will be allowed to do CORS requests.
+         * An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
          */
         allowOrigins?: string[];
         /**
-         * If true, specifies the CORS policy is disabled.
+         * If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
          */
         disabled: boolean;
         /**
@@ -15544,22 +16553,20 @@ export namespace compute {
          */
         exposeHeaders?: string[];
         /**
-         * Specifies how long the results of a preflight request can be cached. This
-         * translates to the content for the Access-Control-Max-Age header.
+         * Specifies how long results of a preflight request can be cached in seconds.
+         * This translates to the Access-Control-Max-Age header.
          */
         maxAge?: number;
     }
 
     export interface RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy {
         /**
-         * The specification for how client requests are aborted as part of fault
-         * injection.
+         * The specification for how client requests are aborted as part of fault injection.
          * Structure is documented below.
          */
         abort?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort;
         /**
-         * The specification for how client requests are delayed as part of fault
-         * injection, before being sent to a backend service.
+         * The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
          * Structure is documented below.
          */
         delay?: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay;
@@ -15567,14 +16574,13 @@ export namespace compute {
 
     export interface RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort {
         /**
-         * The HTTP status code used to abort the request. The value must be between 200
-         * and 599 inclusive.
+         * The HTTP status code used to abort the request.
+         * The value must be between 200 and 599 inclusive.
          */
         httpStatus: number;
         /**
-         * The percentage of traffic (connections/operations/requests) on which delay will
-         * be introduced as part of fault injection. The value must be between 0.0 and
-         * 100.0 inclusive.
+         * The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+         * The value must be between 0.0 and 100.0 inclusive.
          */
         percentage: number;
     }
@@ -15586,9 +16592,8 @@ export namespace compute {
          */
         fixedDelay: outputs.compute.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay;
         /**
-         * The percentage of traffic (connections/operations/requests) on which delay will
-         * be introduced as part of fault injection. The value must be between 0.0 and
-         * 100.0 inclusive.
+         * The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+         * The value must be between 0.0 and 100.0 inclusive.
          */
         percentage: number;
     }
@@ -15672,15 +16677,13 @@ export namespace compute {
 
     export interface RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite {
         /**
-         * Prior to forwarding the request to the selected service, the request's host
-         * header is replaced with contents of hostRewrite. The value must be between 1 and
-         * 255 characters.
+         * Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite.
+         * The value must be from 1 to 255 characters.
          */
         hostRewrite?: string;
         /**
-         * Prior to forwarding the request to the selected backend service, the matching
-         * portion of the request's path is replaced by pathPrefixRewrite. The value must
-         * be between 1 and 1024 characters.
+         * Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite.
+         * The value must be from 1 to 1024 characters.
          */
         pathPrefixRewrite?: string;
     }
@@ -16102,19 +17105,17 @@ export namespace compute {
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteAction {
         /**
-         * The specification for allowing client side cross-origin requests. Please see W3C
-         * Recommendation for Cross Origin Resource Sharing
+         * The specification for allowing client side cross-origin requests. Please see
+         * [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
          * Structure is documented below.
          */
         corsPolicy?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy;
         /**
-         * The specification for fault injection introduced into traffic to test the
-         * resiliency of clients to backend service failure. As part of fault injection,
-         * when clients send requests to a backend service, delays can be introduced by
-         * Loadbalancer on a percentage of requests before sending those request to the
-         * backend service. Similarly requests from clients can be aborted by the
-         * Loadbalancer for a percentage of requests. timeout and retryPolicy will be
-         * ignored by clients that are configured with a fault_injection_policy.
+         * The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+         * As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service.
+         * Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
+         * timeout and retryPolicy is ignored by clients that are configured with a faultInjectionPolicy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection.
+         * Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: [Routing and traffic management features](https://cloud.google.com/load-balancing/docs/features#routing-traffic-management).
          * Structure is documented below.
          */
         faultInjectionPolicy?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy;
@@ -16131,16 +17132,16 @@ export namespace compute {
          */
         retryPolicy?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy;
         /**
-         * Specifies the timeout for the selected route. Timeout is computed from the time
-         * the request is has been fully processed (i.e. end-of-stream) up until the
-         * response has been completely processed. Timeout includes all retries. If not
-         * specified, the default value is 15 seconds.
+         * Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as end-of-stream) up until the response has been processed. Timeout includes all retries.
+         * If not specified, this field uses the largest timeout among all backend services associated with the route.
+         * Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
          * Structure is documented below.
          */
         timeout?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionTimeout;
         /**
-         * The spec to modify the URL of the request, prior to forwarding the request to
-         * the matched service
+         * The spec to modify the URL of the request, before forwarding the request to the matched service.
+         * urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers.
+         * Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
          * Structure is documented below.
          */
         urlRewrite?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite;
@@ -16154,9 +17155,8 @@ export namespace compute {
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy {
         /**
-         * In response to a preflight request, setting this to true indicates that the
-         * actual request can include user credentials. This translates to the Access-
-         * Control-Allow-Credentials header. Defaults to false.
+         * In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header.
+         * Default is false.
          */
         allowCredentials?: boolean;
         /**
@@ -16168,18 +17168,18 @@ export namespace compute {
          */
         allowMethods?: string[];
         /**
-         * Specifies the regular expression patterns that match allowed origins. For
-         * regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
-         * An origin is allowed if it matches either allowOrigins or allow_origin_regex.
+         * Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+         * please see en.cppreference.com/w/cpp/regex/ecmascript
+         * An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
          */
         allowOriginRegexes?: string[];
         /**
-         * Specifies the list of origins that will be allowed to do CORS requests. An
-         * origin is allowed if it matches either allowOrigins or allow_origin_regex.
+         * Specifies the list of origins that will be allowed to do CORS requests.
+         * An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
          */
         allowOrigins?: string[];
         /**
-         * If true, specifies the CORS policy is disabled.
+         * If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
          */
         disabled?: boolean;
         /**
@@ -16187,22 +17187,20 @@ export namespace compute {
          */
         exposeHeaders?: string[];
         /**
-         * Specifies how long the results of a preflight request can be cached. This
-         * translates to the content for the Access-Control-Max-Age header.
+         * Specifies how long results of a preflight request can be cached in seconds.
+         * This translates to the Access-Control-Max-Age header.
          */
         maxAge?: number;
     }
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy {
         /**
-         * The specification for how client requests are aborted as part of fault
-         * injection.
+         * The specification for how client requests are aborted as part of fault injection.
          * Structure is documented below.
          */
         abort?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort;
         /**
-         * The specification for how client requests are delayed as part of fault
-         * injection, before being sent to a backend service.
+         * The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
          * Structure is documented below.
          */
         delay?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay;
@@ -16210,14 +17208,13 @@ export namespace compute {
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort {
         /**
-         * The HTTP status code used to abort the request. The value must be between 200
-         * and 599 inclusive.
+         * The HTTP status code used to abort the request.
+         * The value must be between 200 and 599 inclusive.
          */
         httpStatus?: number;
         /**
-         * The percentage of traffic (connections/operations/requests) on which delay will
-         * be introduced as part of fault injection. The value must be between 0.0 and
-         * 100.0 inclusive.
+         * The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+         * The value must be between 0.0 and 100.0 inclusive.
          */
         percentage?: number;
     }
@@ -16229,9 +17226,8 @@ export namespace compute {
          */
         fixedDelay?: outputs.compute.RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelay;
         /**
-         * The percentage of traffic (connections/operations/requests) on which delay will
-         * be introduced as part of fault injection. The value must be between 0.0 and
-         * 100.0 inclusive.
+         * The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+         * The value must be between 0.0 and 100.0 inclusive.
          */
         percentage?: number;
     }
@@ -16315,15 +17311,13 @@ export namespace compute {
 
     export interface RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite {
         /**
-         * Prior to forwarding the request to the selected service, the request's host
-         * header is replaced with contents of hostRewrite. The value must be between 1 and
-         * 255 characters.
+         * Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite.
+         * The value must be from 1 to 255 characters.
          */
         hostRewrite?: string;
         /**
-         * Prior to forwarding the request to the selected backend service, the matching
-         * portion of the request's path is replaced by pathPrefixRewrite. The value must
-         * be between 1 and 1024 characters.
+         * Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite.
+         * The value must be from 1 to 1024 characters.
          */
         pathPrefixRewrite?: string;
     }
@@ -17023,6 +18017,13 @@ export namespace compute {
         contentTypes: string[];
     }
 
+    export interface SecurityPolicyRecaptchaOptionsConfig {
+        /**
+         * A field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+         */
+        redirectSiteKey: string;
+    }
+
     export interface SecurityPolicyRule {
         /**
          * Action to take when `match` matches the request. Valid values:
@@ -17037,6 +18038,10 @@ export namespace compute {
          * An optional description of this rule. Max size is 64.
          */
         description?: string;
+        /**
+         * Additional actions that are performed on headers. Structure is documented below.
+         */
+        headerAction?: outputs.compute.SecurityPolicyRuleHeaderAction;
         /**
          * A match condition that incoming traffic is evaluated against.
          * If it evaluates to true, the corresponding `action` is enforced. Structure is documented below.
@@ -17064,6 +18069,24 @@ export namespace compute {
          * Can be specified if the `action` is "redirect". Cannot be specified for other actions. Structure is documented below.
          */
         redirectOptions?: outputs.compute.SecurityPolicyRuleRedirectOptions;
+    }
+
+    export interface SecurityPolicyRuleHeaderAction {
+        /**
+         * The list of request headers to add or overwrite if they're already present. Structure is documented below.
+         */
+        requestHeadersToAdds: outputs.compute.SecurityPolicyRuleHeaderActionRequestHeadersToAdd[];
+    }
+
+    export interface SecurityPolicyRuleHeaderActionRequestHeadersToAdd {
+        /**
+         * The name of the header to set.
+         */
+        headerName: string;
+        /**
+         * The value to set the named header to.
+         */
+        headerValue?: string;
     }
 
     export interface SecurityPolicyRuleMatch {
@@ -17215,6 +18238,9 @@ export namespace compute {
          * Valid options are "deny()" where valid values for status are 403, 404, 429, and 502.
          */
         exceedAction: string;
+        /**
+         * Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. Structure is documented below.
+         */
         exceedRedirectOptions?: outputs.compute.SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions;
         /**
          * Threshold at which to begin ratelimiting. Structure is documented below.
@@ -20472,6 +21498,11 @@ export namespace container {
          * Kubernetes cluster master through HTTPS.
          */
         cidrBlocks?: outputs.container.ClusterMasterAuthorizedNetworksConfigCidrBlock[];
+        /**
+         * Whether Kubernetes master is
+         * accessible via Google Compute Engine Public IPs.
+         */
+        gcpPublicCidrsAccessEnabled: boolean;
     }
 
     export interface ClusterMasterAuthorizedNetworksConfigCidrBlock {
@@ -20631,6 +21662,11 @@ export namespace container {
          * The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
          */
         reservationAffinity?: outputs.container.ClusterNodeConfigReservationAffinity;
+        /**
+         * The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+         * for how these labels are applied to clusters, node pools and nodes.
+         */
+        resourceLabels?: {[key: string]: string};
         sandboxConfig?: outputs.container.ClusterNodeConfigSandboxConfig;
         /**
          * The service account to be used by the Node VMs.
@@ -20930,13 +21966,20 @@ export namespace container {
          */
         createPodRange?: boolean;
         /**
+         * Enables the private cluster feature,
+         * creating a private endpoint on the cluster. In a private cluster, nodes only
+         * have RFC 1918 private addresses and communicate with the master's private
+         * endpoint via private networking.
+         */
+        enablePrivateNodes: boolean;
+        /**
          * The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
          */
         podIpv4CidrBlock: string;
         /**
          * The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
          */
-        podRange: string;
+        podRange?: string;
     }
 
     export interface ClusterNodePoolNodeConfig {
@@ -21046,6 +22089,11 @@ export namespace container {
          * The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
          */
         reservationAffinity?: outputs.container.ClusterNodePoolNodeConfigReservationAffinity;
+        /**
+         * The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+         * for how these labels are applied to clusters, node pools and nodes.
+         */
+        resourceLabels?: {[key: string]: string};
         sandboxConfig?: outputs.container.ClusterNodePoolNodeConfigSandboxConfig;
         /**
          * The service account to be used by the Node VMs.
@@ -21300,7 +22348,7 @@ export namespace container {
          * is disabled. When `false`, either endpoint can be used. This field only applies
          * to private clusters, when `enablePrivateNodes` is `true`.
          */
-        enablePrivateEndpoint: boolean;
+        enablePrivateEndpoint?: boolean;
         /**
          * Enables the private cluster feature,
          * creating a private endpoint on the cluster. In a private cluster, nodes only
@@ -21332,6 +22380,10 @@ export namespace container {
          * The internal IP address of this cluster's master endpoint.
          */
         privateEndpoint: string;
+        /**
+         * Subnetwork in cluster's network where master's endpoint will be provisioned.
+         */
+        privateEndpointSubnetwork?: string;
         /**
          * The external IP address of this cluster's master endpoint.
          */
@@ -21608,6 +22660,7 @@ export namespace container {
 
     export interface GetClusterMasterAuthorizedNetworksConfig {
         cidrBlocks: outputs.container.GetClusterMasterAuthorizedNetworksConfigCidrBlock[];
+        gcpPublicCidrsAccessEnabled: boolean;
     }
 
     export interface GetClusterMasterAuthorizedNetworksConfigCidrBlock {
@@ -21654,6 +22707,7 @@ export namespace container {
         oauthScopes: string[];
         preemptible: boolean;
         reservationAffinities: outputs.container.GetClusterNodeConfigReservationAffinity[];
+        resourceLabels: {[key: string]: string};
         sandboxConfigs: outputs.container.GetClusterNodeConfigSandboxConfig[];
         serviceAccount: string;
         shieldedInstanceConfigs: outputs.container.GetClusterNodeConfigShieldedInstanceConfig[];
@@ -21779,6 +22833,7 @@ export namespace container {
 
     export interface GetClusterNodePoolNetworkConfig {
         createPodRange: boolean;
+        enablePrivateNodes: boolean;
         podIpv4CidrBlock: string;
         podRange: string;
     }
@@ -21804,6 +22859,7 @@ export namespace container {
         oauthScopes: string[];
         preemptible: boolean;
         reservationAffinities: outputs.container.GetClusterNodePoolNodeConfigReservationAffinity[];
+        resourceLabels: {[key: string]: string};
         sandboxConfigs: outputs.container.GetClusterNodePoolNodeConfigSandboxConfig[];
         serviceAccount: string;
         shieldedInstanceConfigs: outputs.container.GetClusterNodePoolNodeConfigShieldedInstanceConfig[];
@@ -21919,6 +22975,7 @@ export namespace container {
         masterIpv4CidrBlock: string;
         peeringName: string;
         privateEndpoint: string;
+        privateEndpointSubnetwork: string;
         publicEndpoint: string;
     }
 
@@ -22003,9 +23060,22 @@ export namespace container {
     }
 
     export interface NodePoolNetworkConfig {
+        /**
+         * Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
+         */
         createPodRange?: boolean;
+        /**
+         * Whether nodes have internal IP addresses only.
+         */
+        enablePrivateNodes: boolean;
+        /**
+         * The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+         */
         podIpv4CidrBlock: string;
-        podRange: string;
+        /**
+         * The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
+         */
+        podRange?: string;
     }
 
     export interface NodePoolNodeConfig {
@@ -22029,6 +23099,7 @@ export namespace container {
         oauthScopes: string[];
         preemptible?: boolean;
         reservationAffinity?: outputs.container.NodePoolNodeConfigReservationAffinity;
+        resourceLabels?: {[key: string]: string};
         sandboxConfig?: outputs.container.NodePoolNodeConfigSandboxConfig;
         serviceAccount: string;
         shieldedInstanceConfig: outputs.container.NodePoolNodeConfigShieldedInstanceConfig;
@@ -22488,6 +23559,17 @@ export namespace datafusion {
          * The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
          */
         keyReference: string;
+    }
+
+    export interface InstanceEventPublishConfig {
+        /**
+         * Option to enable Event Publishing.
+         */
+        enabled: boolean;
+        /**
+         * The resource name of the Pub/Sub topic. Format: projects/{projectId}/topics/{topic_id}
+         */
+        topic: string;
     }
 
     export interface InstanceNetworkConfig {
@@ -24894,6 +25976,29 @@ export namespace dataproc {
         enabled: boolean;
     }
 
+    export interface MetastoreServiceNetworkConfig {
+        /**
+         * The consumer-side network configuration for the Dataproc Metastore instance.
+         * Structure is documented below.
+         */
+        consumers: outputs.dataproc.MetastoreServiceNetworkConfigConsumer[];
+    }
+
+    export interface MetastoreServiceNetworkConfigConsumer {
+        /**
+         * -
+         * The URI of the endpoint used to access the metastore service.
+         */
+        endpointUri: string;
+        /**
+         * The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint.
+         * It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network.
+         * There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:
+         * `projects/{projectNumber}/regions/{region_id}/subnetworks/{subnetwork_id}
+         */
+        subnetwork: string;
+    }
+
     export interface WorkflowTemplateJob {
         /**
          * Optional. Job is a Hadoop job.
@@ -26086,6 +27191,11 @@ export namespace datastream {
          * A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
          */
         privateConnection: string;
+    }
+
+    export interface PrivateConnectionError {
+        details?: {[key: string]: string};
+        message?: string;
     }
 
     export interface PrivateConnectionVpcPeeringConfig {
@@ -27910,6 +29020,119 @@ export namespace gameservices {
 
 }
 
+export namespace gkebackup {
+    export interface BackupPlanBackupConfig {
+        /**
+         * If True, include all namespaced resources.
+         */
+        allNamespaces?: boolean;
+        /**
+         * This defines a customer managed encryption key that will be used to encrypt the "config"
+         * portion (the Kubernetes resources) of Backups created via this plan.
+         * Structure is documented below.
+         */
+        encryptionKey?: outputs.gkebackup.BackupPlanBackupConfigEncryptionKey;
+        /**
+         * This flag specifies whether Kubernetes Secret resources should be included
+         * when they fall into the scope of Backups.
+         */
+        includeSecrets: boolean;
+        /**
+         * This flag specifies whether volume data should be backed up when PVCs are
+         * included in the scope of a Backup.
+         */
+        includeVolumeData: boolean;
+        /**
+         * A list of namespaced Kubernetes Resources.
+         * Structure is documented below.
+         */
+        selectedApplications?: outputs.gkebackup.BackupPlanBackupConfigSelectedApplications;
+        /**
+         * If set, include just the resources in the listed namespaces.
+         * Structure is documented below.
+         */
+        selectedNamespaces?: outputs.gkebackup.BackupPlanBackupConfigSelectedNamespaces;
+    }
+
+    export interface BackupPlanBackupConfigEncryptionKey {
+        /**
+         * Google Cloud KMS encryption key. Format: projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*
+         */
+        gcpKmsEncryptionKey: string;
+    }
+
+    export interface BackupPlanBackupConfigSelectedApplications {
+        /**
+         * A list of namespaced Kubernetes resources.
+         * Structure is documented below.
+         */
+        namespacedNames: outputs.gkebackup.BackupPlanBackupConfigSelectedApplicationsNamespacedName[];
+    }
+
+    export interface BackupPlanBackupConfigSelectedApplicationsNamespacedName {
+        /**
+         * The name of a Kubernetes Resource.
+         */
+        name: string;
+        /**
+         * The namespace of a Kubernetes Resource.
+         */
+        namespace: string;
+    }
+
+    export interface BackupPlanBackupConfigSelectedNamespaces {
+        /**
+         * A list of Kubernetes Namespaces.
+         */
+        namespaces: string[];
+    }
+
+    export interface BackupPlanBackupSchedule {
+        /**
+         * A standard cron string that defines a repeating schedule for
+         * creating Backups via this BackupPlan.
+         * If this is defined, then backupRetainDays must also be defined.
+         */
+        cronSchedule?: string;
+        /**
+         * This flag denotes whether automatic Backup creation is paused for this BackupPlan.
+         */
+        paused: boolean;
+    }
+
+    export interface BackupPlanRetentionPolicy {
+        /**
+         * Minimum age for a Backup created via this BackupPlan (in days).
+         * Must be an integer value between 0-90 (inclusive).
+         * A Backup created under this BackupPlan will not be deletable
+         * until it reaches Backup's (create time + backup_delete_lock_days).
+         * Updating this field of a BackupPlan does not affect existing Backups.
+         * Backups created after a successful update will inherit this new value.
+         */
+        backupDeleteLockDays: number;
+        /**
+         * The default maximum age of a Backup created via this BackupPlan.
+         * This field MUST be an integer value >= 0 and <= 365. If specified,
+         * a Backup created under this BackupPlan will be automatically deleted
+         * after its age reaches (createTime + backupRetainDays).
+         * If not specified, Backups created under this BackupPlan will NOT be
+         * subject to automatic deletion. Updating this field does NOT affect
+         * existing Backups under it. Backups created AFTER a successful update
+         * will automatically pick up the new value.
+         * NOTE: backupRetainDays must be >= backupDeleteLockDays.
+         * If cronSchedule is defined, then this must be <= 360 * the creation interval.]
+         */
+        backupRetainDays: number;
+        /**
+         * This flag denotes whether the retention policy of this BackupPlan is locked.
+         * If set to True, no further update is allowed on this policy, including
+         * the locked field itself.
+         */
+        locked: boolean;
+    }
+
+}
+
 export namespace gkehub {
     export interface FeatureMembershipConfigmanagement {
         /**
@@ -28047,6 +29270,10 @@ export namespace gkehub {
     }
 
     export interface FeatureMembershipMesh {
+        /**
+         * Whether to automatically manage Service Mesh Control Plane. Can either be `AUTOMATIC` or `MANUAL`.
+         */
+        controlPlane?: string;
         /**
          * Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
          */
@@ -28426,6 +29653,36 @@ export namespace iam {
     export interface GetWorkloadIdentityPoolProviderOidc {
         allowedAudiences: string[];
         issuerUri: string;
+    }
+
+    export interface WorkforcePoolProviderOidc {
+        /**
+         * The client ID. Must match the audience claim of the JWT issued by the identity provider.
+         */
+        clientId: string;
+        /**
+         * The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
+         */
+        issuerUri: string;
+    }
+
+    export interface WorkforcePoolProviderSaml {
+        /**
+         * SAML Identity provider configuration metadata xml doc.
+         * The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
+         * The max size of the acceptable xml document will be bounded to 128k characters.
+         * The metadata xml document should satisfy the following constraints:
+         * 1) Must contain an Identity Provider Entity ID.
+         * 2) Must contain at least one non-expired signing key certificate.
+         * 3) For each signing key:
+         * a) Valid from should be no more than 7 days from now.
+         * b) Valid to should be no more than 10 years in the future.
+         * 4) Up to 3 IdP signing keys are allowed in the metadata xml.
+         * When updating the provider's metadata xml, at least one non-expired signing key
+         * must overlap with the existing metadata. This requirement is skipped if there are
+         * no non-expired signing keys present in the existing metadata.
+         */
+        idpMetadataXml: string;
     }
 
     export interface WorkloadIdentityPoolProviderAws {
@@ -29140,6 +30397,16 @@ export namespace kms {
 }
 
 export namespace logging {
+    export interface BillingAccountBucketConfigCmekSettings {
+        kmsKeyName: string;
+        kmsKeyVersionName: string;
+        /**
+         * The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
+         */
+        name: string;
+        serviceAccountId: string;
+    }
+
     export interface BillingAccountSinkBigqueryOptions {
         /**
          * Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
@@ -29168,6 +30435,16 @@ export namespace logging {
          * A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
          */
         name: string;
+    }
+
+    export interface FolderBucketConfigCmekSettings {
+        kmsKeyName: string;
+        kmsKeyVersionName: string;
+        /**
+         * The resource name of the bucket. For example: "folders/my-folder-id/locations/my-location/buckets/my-bucket-id"
+         */
+        name: string;
+        serviceAccountId: string;
     }
 
     export interface FolderSinkBigqueryOptions {
@@ -29311,6 +30588,16 @@ export namespace logging {
         valueType?: string;
     }
 
+    export interface OrganizationBucketConfigCmekSettings {
+        kmsKeyName: string;
+        kmsKeyVersionName: string;
+        /**
+         * The resource name of the bucket. For example: "organizations/my-organization-id/locations/my-location/buckets/my-bucket-id"
+         */
+        name: string;
+        serviceAccountId: string;
+    }
+
     export interface OrganizationSinkBigqueryOptions {
         /**
          * Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
@@ -29339,6 +30626,37 @@ export namespace logging {
          * A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
          */
         name: string;
+    }
+
+    export interface ProjectBucketConfigCmekSettings {
+        /**
+         * The resource name for the configured Cloud KMS key.
+         * KMS key name format:
+         * `'projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]'`
+         * To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
+         * The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
+         * See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+         */
+        kmsKeyName: string;
+        /**
+         * The CryptoKeyVersion resource name for the configured Cloud KMS key.
+         * KMS key name format:
+         * `'projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]'`
+         * For example:
+         * "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+         * This is a read-only field used to convey the specific configured CryptoKeyVersion of kmsKey that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
+         */
+        kmsKeyVersionName: string;
+        /**
+         * The resource name of the CMEK settings.
+         */
+        name: string;
+        /**
+         * The service account associated with a project for which CMEK will apply.
+         * Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
+         * See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+         */
+        serviceAccountId: string;
     }
 
     export interface ProjectSinkBigqueryOptions {
@@ -30989,6 +32307,70 @@ export namespace networkservices {
          * This is the resource name of the secret version in the format `projects/*&#47;secrets/*&#47;versions/*` where the `*` values are replaced by the project, secret, and version you require.
          */
         secretAccessKeyVersion: string;
+    }
+
+    export interface EdgeCacheOriginOriginOverrideAction {
+        /**
+         * The header actions, including adding and removing
+         * headers, for request handled by this origin.
+         * Structure is documented below.
+         */
+        headerAction?: outputs.networkservices.EdgeCacheOriginOriginOverrideActionHeaderAction;
+        /**
+         * The URL rewrite configuration for request that are
+         * handled by this origin.
+         * Structure is documented below.
+         */
+        urlRewrite?: outputs.networkservices.EdgeCacheOriginOriginOverrideActionUrlRewrite;
+    }
+
+    export interface EdgeCacheOriginOriginOverrideActionHeaderAction {
+        /**
+         * Describes a header to add.
+         * You may add a maximum of 5 request headers.
+         * Structure is documented below.
+         */
+        requestHeadersToAdds?: outputs.networkservices.EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd[];
+    }
+
+    export interface EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd {
+        /**
+         * The name of the header to add.
+         */
+        headerName: string;
+        /**
+         * The value of the header to add.
+         */
+        headerValue: string;
+        /**
+         * Whether to replace all existing headers with the same name.
+         * By default, added header values are appended
+         * to the response or request headers with the
+         * same field names. The added values are
+         * separated by commas.
+         * To overwrite existing values, set `replace` to `true`.
+         */
+        replace?: boolean;
+    }
+
+    export interface EdgeCacheOriginOriginOverrideActionUrlRewrite {
+        /**
+         * Prior to forwarding the request to the selected
+         * origin, the request's host header is replaced with
+         * contents of the hostRewrite.
+         * This value must be between 1 and 255 characters.
+         */
+        hostRewrite?: string;
+    }
+
+    export interface EdgeCacheOriginOriginRedirect {
+        /**
+         * The set of redirect response codes that the CDN
+         * follows. Values of
+         * [RedirectConditions](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins#redirectconditions)
+         * are accepted.
+         */
+        redirectConditions?: string[];
     }
 
     export interface EdgeCacheOriginTimeout {
@@ -35059,6 +36441,24 @@ export namespace secretmanager {
 }
 
 export namespace securitycenter {
+    export interface InstanceIamBindingCondition {
+        /**
+         * An optional description of the instance.
+         */
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface InstanceIamMemberCondition {
+        /**
+         * An optional description of the instance.
+         */
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface NotificationConfigStreamingConfig {
         /**
          * Expression that defines the filter to apply across create/update
@@ -35371,6 +36771,7 @@ export namespace sql {
          */
         connectorEnforcement: string;
         databaseFlags?: outputs.sql.DatabaseInstanceSettingsDatabaseFlag[];
+        denyMaintenancePeriod?: outputs.sql.DatabaseInstanceSettingsDenyMaintenancePeriod;
         /**
          * Enables auto-resizing of the storage size. Defaults to `true`.
          */
@@ -35478,6 +36879,21 @@ export namespace sql {
          * the whitelist to become active.
          */
         value: string;
+    }
+
+    export interface DatabaseInstanceSettingsDenyMaintenancePeriod {
+        /**
+         * "deny maintenance period" end date. If the year of the end date is empty, the year of the start date also must be empty. In this case, it means the no maintenance interval recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+         */
+        endDate: string;
+        /**
+         * "deny maintenance period" start date. If the year of the start date is empty, the year of the end date also must be empty. In this case, it means the deny maintenance period recurs every year. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+         */
+        startDate: string;
+        /**
+         * Time in UTC when the "deny maintenance period" starts on startDate and ends on endDate. The time is in format: HH:mm:SS, i.e., 00:00:00
+         */
+        time: string;
     }
 
     export interface DatabaseInstanceSettingsInsightsConfig {
@@ -35696,6 +37112,7 @@ export namespace sql {
         collation: string;
         connectorEnforcement: string;
         databaseFlags: outputs.sql.GetDatabaseInstanceSettingDatabaseFlag[];
+        denyMaintenancePeriods: outputs.sql.GetDatabaseInstanceSettingDenyMaintenancePeriod[];
         diskAutoresize: boolean;
         diskAutoresizeLimit: number;
         diskSize: number;
@@ -35738,6 +37155,12 @@ export namespace sql {
          */
         name: string;
         value: string;
+    }
+
+    export interface GetDatabaseInstanceSettingDenyMaintenancePeriod {
+        endDate: string;
+        startDate: string;
+        time: string;
     }
 
     export interface GetDatabaseInstanceSettingInsightsConfig {
@@ -35831,6 +37254,13 @@ export namespace sql {
 }
 
 export namespace storage {
+    export interface BucketAutoclass {
+        /**
+         * While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
+         */
+        enabled: boolean;
+    }
+
     export interface BucketCor {
         /**
          * The value, in seconds, to return in the [Access-Control-Max-Age header](https://www.w3.org/TR/cors/#access-control-max-age-response-header) used in preflight responses.
@@ -35908,7 +37338,7 @@ export namespace storage {
          */
         storageClass?: string;
         /**
-         * The type of the action of this Lifecycle Rule. Supported values include: `Delete` and `SetStorageClass`.
+         * The type of the action of this Lifecycle Rule. Supported values include: `Delete`, `SetStorageClass` and `AbortIncompleteMultipartUpload`.
          */
         type: string;
     }
@@ -35996,7 +37426,7 @@ export namespace storage {
 
     export interface BucketVersioning {
         /**
-         * While set to `true`, versioning is fully enabled for this bucket.
+         * While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
          */
         enabled: boolean;
     }
@@ -36017,6 +37447,10 @@ export namespace storage {
     export interface DefaultObjectAccessControlProjectTeam {
         projectNumber?: string;
         team?: string;
+    }
+
+    export interface GetBucketAutoclass {
+        enabled: boolean;
     }
 
     export interface GetBucketCor {
@@ -36473,6 +37907,18 @@ export namespace vertex {
         kmsKeyName: string;
     }
 
+    export interface AiFeatureStoreEntityTypeIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface AiFeatureStoreEntityTypeIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface AiFeatureStoreEntityTypeMonitoringConfig {
         /**
          * Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
@@ -36566,6 +38012,100 @@ export namespace vertex {
         fixedNodeCount: number;
     }
 
+    export interface AiIndexDeployedIndex {
+        deployedIndexId: string;
+        indexEndpoint: string;
+    }
+
+    export interface AiIndexIndexStat {
+        shardsCount: number;
+        vectorsCount: string;
+    }
+
+    export interface AiIndexMetadata {
+        /**
+         * The configuration of the Matching Engine Index.
+         * Structure is documented below.
+         */
+        config?: outputs.vertex.AiIndexMetadataConfig;
+        /**
+         * Allows inserting, updating  or deleting the contents of the Matching Engine Index.
+         * The string must be a valid Cloud Storage directory path. If this
+         * field is set when calling IndexService.UpdateIndex, then no other
+         * Index field can be also updated as part of the same call.
+         * The expected structure and format of the files this URI points to is
+         * described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
+         */
+        contentsDeltaUri?: string;
+        /**
+         * If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
+         * then existing content of the Index will be replaced by the data from the contentsDeltaUri.
+         */
+        isCompleteOverwrite?: boolean;
+    }
+
+    export interface AiIndexMetadataConfig {
+        /**
+         * The configuration with regard to the algorithms used for efficient search.
+         * Structure is documented below.
+         */
+        algorithmConfig?: outputs.vertex.AiIndexMetadataConfigAlgorithmConfig;
+        /**
+         * The default number of neighbors to find via approximate search before exact reordering is
+         * performed. Exact reordering is a procedure where results returned by an
+         * approximate search algorithm are reordered via a more expensive distance computation.
+         * Required if tree-AH algorithm is used.
+         */
+        approximateNeighborsCount?: number;
+        /**
+         * The number of dimensions of the input vectors.
+         */
+        dimensions: number;
+        /**
+         * The distance measure used in nearest neighbor search. The value must be one of the followings:
+         * * SQUARED_L2_DISTANCE: Euclidean (L_2) Distance
+         * * L1_DISTANCE: Manhattan (L_1) Distance
+         * * COSINE_DISTANCE: Cosine Distance. Defined as 1 - cosine similarity.
+         * * DOT_PRODUCT_DISTANCE: Dot Product Distance. Defined as a negative of the dot product
+         */
+        distanceMeasureType?: string;
+        /**
+         * Type of normalization to be carried out on each vector. The value must be one of the followings:
+         * * UNIT_L2_NORM: Unit L2 normalization type
+         * * NONE: No normalization type is specified.
+         */
+        featureNormType?: string;
+    }
+
+    export interface AiIndexMetadataConfigAlgorithmConfig {
+        /**
+         * Configuration options for using brute force search, which simply implements the
+         * standard linear search in the database for each query.
+         */
+        bruteForceConfig?: outputs.vertex.AiIndexMetadataConfigAlgorithmConfigBruteForceConfig;
+        /**
+         * Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
+         * Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+         * Structure is documented below.
+         */
+        treeAhConfig?: outputs.vertex.AiIndexMetadataConfigAlgorithmConfigTreeAhConfig;
+    }
+
+    export interface AiIndexMetadataConfigAlgorithmConfigBruteForceConfig {
+    }
+
+    export interface AiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
+        /**
+         * Number of embeddings on each leaf node. The default value is 1000 if not set.
+         */
+        leafNodeEmbeddingCount?: number;
+        /**
+         * The default percentage of leaf nodes that any query may be searched. Must be in
+         * range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+         */
+        leafNodesToSearchPercent?: number;
+    }
+
     export interface AiMetadataStoreEncryptionSpec {
         /**
          * Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
@@ -36576,6 +38116,14 @@ export namespace vertex {
 
     export interface AiMetadataStoreState {
         diskUtilizationBytes: string;
+    }
+
+    export interface AiTensorboardEncryptionSpec {
+        /**
+         * The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
+         * Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
+         */
+        kmsKeyName: string;
     }
 
 }

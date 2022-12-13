@@ -542,12 +542,28 @@ class FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs:
 @pulumi.input_type
 class FeatureMembershipMeshArgs:
     def __init__(__self__, *,
+                 control_plane: Optional[pulumi.Input[str]] = None,
                  management: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] control_plane: Whether to automatically manage Service Mesh Control Plane. Can either be `AUTOMATIC` or `MANUAL`.
         :param pulumi.Input[str] management: Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
         """
+        if control_plane is not None:
+            pulumi.set(__self__, "control_plane", control_plane)
         if management is not None:
             pulumi.set(__self__, "management", management)
+
+    @property
+    @pulumi.getter(name="controlPlane")
+    def control_plane(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to automatically manage Service Mesh Control Plane. Can either be `AUTOMATIC` or `MANUAL`.
+        """
+        return pulumi.get(self, "control_plane")
+
+    @control_plane.setter
+    def control_plane(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "control_plane", value)
 
     @property
     @pulumi.getter

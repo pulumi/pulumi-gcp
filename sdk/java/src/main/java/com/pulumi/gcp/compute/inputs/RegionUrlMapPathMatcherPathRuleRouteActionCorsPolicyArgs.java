@@ -19,18 +19,16 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs exte
     public static final RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs Empty = new RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs();
 
     /**
-     * In response to a preflight request, setting this to true indicates that the
-     * actual request can include user credentials. This translates to the Access-
-     * Control-Allow-Credentials header. Defaults to false.
+     * In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header.
+     * Default is false.
      * 
      */
     @Import(name="allowCredentials")
     private @Nullable Output<Boolean> allowCredentials;
 
     /**
-     * @return In response to a preflight request, setting this to true indicates that the
-     * actual request can include user credentials. This translates to the Access-
-     * Control-Allow-Credentials header. Defaults to false.
+     * @return In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header.
+     * Default is false.
      * 
      */
     public Optional<Output<Boolean>> allowCredentials() {
@@ -68,18 +66,18 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs exte
     }
 
     /**
-     * Specifies the regular expression patterns that match allowed origins. For
-     * regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
-     * An origin is allowed if it matches either allow_origins or allow_origin_regex.
+     * Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+     * please see en.cppreference.com/w/cpp/regex/ecmascript
+     * An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
      * 
      */
     @Import(name="allowOriginRegexes")
     private @Nullable Output<List<String>> allowOriginRegexes;
 
     /**
-     * @return Specifies the regular expression patterns that match allowed origins. For
-     * regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
-     * An origin is allowed if it matches either allow_origins or allow_origin_regex.
+     * @return Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+     * please see en.cppreference.com/w/cpp/regex/ecmascript
+     * An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
      * 
      */
     public Optional<Output<List<String>>> allowOriginRegexes() {
@@ -87,16 +85,16 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs exte
     }
 
     /**
-     * Specifies the list of origins that will be allowed to do CORS requests. An
-     * origin is allowed if it matches either allow_origins or allow_origin_regex.
+     * Specifies the list of origins that will be allowed to do CORS requests.
+     * An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
      * 
      */
     @Import(name="allowOrigins")
     private @Nullable Output<List<String>> allowOrigins;
 
     /**
-     * @return Specifies the list of origins that will be allowed to do CORS requests. An
-     * origin is allowed if it matches either allow_origins or allow_origin_regex.
+     * @return Specifies the list of origins that will be allowed to do CORS requests.
+     * An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
      * 
      */
     public Optional<Output<List<String>>> allowOrigins() {
@@ -104,14 +102,14 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs exte
     }
 
     /**
-     * If true, specifies the CORS policy is disabled.
+     * If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
      * 
      */
     @Import(name="disabled", required=true)
     private Output<Boolean> disabled;
 
     /**
-     * @return If true, specifies the CORS policy is disabled.
+     * @return If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
      * 
      */
     public Output<Boolean> disabled() {
@@ -134,16 +132,16 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs exte
     }
 
     /**
-     * Specifies how long the results of a preflight request can be cached. This
-     * translates to the content for the Access-Control-Max-Age header.
+     * Specifies how long results of a preflight request can be cached in seconds.
+     * This translates to the Access-Control-Max-Age header.
      * 
      */
     @Import(name="maxAge")
     private @Nullable Output<Integer> maxAge;
 
     /**
-     * @return Specifies how long the results of a preflight request can be cached. This
-     * translates to the content for the Access-Control-Max-Age header.
+     * @return Specifies how long results of a preflight request can be cached in seconds.
+     * This translates to the Access-Control-Max-Age header.
      * 
      */
     public Optional<Output<Integer>> maxAge() {
@@ -182,9 +180,8 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs exte
         }
 
         /**
-         * @param allowCredentials In response to a preflight request, setting this to true indicates that the
-         * actual request can include user credentials. This translates to the Access-
-         * Control-Allow-Credentials header. Defaults to false.
+         * @param allowCredentials In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header.
+         * Default is false.
          * 
          * @return builder
          * 
@@ -195,9 +192,8 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs exte
         }
 
         /**
-         * @param allowCredentials In response to a preflight request, setting this to true indicates that the
-         * actual request can include user credentials. This translates to the Access-
-         * Control-Allow-Credentials header. Defaults to false.
+         * @param allowCredentials In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header.
+         * Default is false.
          * 
          * @return builder
          * 
@@ -269,9 +265,9 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs exte
         }
 
         /**
-         * @param allowOriginRegexes Specifies the regular expression patterns that match allowed origins. For
-         * regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
-         * An origin is allowed if it matches either allow_origins or allow_origin_regex.
+         * @param allowOriginRegexes Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+         * please see en.cppreference.com/w/cpp/regex/ecmascript
+         * An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
          * 
          * @return builder
          * 
@@ -282,9 +278,9 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs exte
         }
 
         /**
-         * @param allowOriginRegexes Specifies the regular expression patterns that match allowed origins. For
-         * regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
-         * An origin is allowed if it matches either allow_origins or allow_origin_regex.
+         * @param allowOriginRegexes Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+         * please see en.cppreference.com/w/cpp/regex/ecmascript
+         * An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
          * 
          * @return builder
          * 
@@ -294,9 +290,9 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs exte
         }
 
         /**
-         * @param allowOriginRegexes Specifies the regular expression patterns that match allowed origins. For
-         * regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
-         * An origin is allowed if it matches either allow_origins or allow_origin_regex.
+         * @param allowOriginRegexes Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+         * please see en.cppreference.com/w/cpp/regex/ecmascript
+         * An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
          * 
          * @return builder
          * 
@@ -306,8 +302,8 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs exte
         }
 
         /**
-         * @param allowOrigins Specifies the list of origins that will be allowed to do CORS requests. An
-         * origin is allowed if it matches either allow_origins or allow_origin_regex.
+         * @param allowOrigins Specifies the list of origins that will be allowed to do CORS requests.
+         * An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
          * 
          * @return builder
          * 
@@ -318,8 +314,8 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs exte
         }
 
         /**
-         * @param allowOrigins Specifies the list of origins that will be allowed to do CORS requests. An
-         * origin is allowed if it matches either allow_origins or allow_origin_regex.
+         * @param allowOrigins Specifies the list of origins that will be allowed to do CORS requests.
+         * An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
          * 
          * @return builder
          * 
@@ -329,8 +325,8 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs exte
         }
 
         /**
-         * @param allowOrigins Specifies the list of origins that will be allowed to do CORS requests. An
-         * origin is allowed if it matches either allow_origins or allow_origin_regex.
+         * @param allowOrigins Specifies the list of origins that will be allowed to do CORS requests.
+         * An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
          * 
          * @return builder
          * 
@@ -340,7 +336,7 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs exte
         }
 
         /**
-         * @param disabled If true, specifies the CORS policy is disabled.
+         * @param disabled If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
          * 
          * @return builder
          * 
@@ -351,7 +347,7 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs exte
         }
 
         /**
-         * @param disabled If true, specifies the CORS policy is disabled.
+         * @param disabled If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
          * 
          * @return builder
          * 
@@ -392,8 +388,8 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs exte
         }
 
         /**
-         * @param maxAge Specifies how long the results of a preflight request can be cached. This
-         * translates to the content for the Access-Control-Max-Age header.
+         * @param maxAge Specifies how long results of a preflight request can be cached in seconds.
+         * This translates to the Access-Control-Max-Age header.
          * 
          * @return builder
          * 
@@ -404,8 +400,8 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs exte
         }
 
         /**
-         * @param maxAge Specifies how long the results of a preflight request can be cached. This
-         * translates to the content for the Access-Control-Max-Age header.
+         * @param maxAge Specifies how long results of a preflight request can be cached in seconds.
+         * This translates to the Access-Control-Max-Age header.
          * 
          * @return builder
          * 

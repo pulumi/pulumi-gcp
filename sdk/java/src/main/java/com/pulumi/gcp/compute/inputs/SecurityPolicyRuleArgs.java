@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleHeaderActionArgs;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchArgs;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRulePreconfiguredWafConfigArgs;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleRateLimitOptionsArgs;
@@ -59,6 +60,21 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Additional actions that are performed on headers. Structure is documented below.
+     * 
+     */
+    @Import(name="headerAction")
+    private @Nullable Output<SecurityPolicyRuleHeaderActionArgs> headerAction;
+
+    /**
+     * @return Additional actions that are performed on headers. Structure is documented below.
+     * 
+     */
+    public Optional<Output<SecurityPolicyRuleHeaderActionArgs>> headerAction() {
+        return Optional.ofNullable(this.headerAction);
     }
 
     /**
@@ -162,6 +178,7 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
     private SecurityPolicyRuleArgs(SecurityPolicyRuleArgs $) {
         this.action = $.action;
         this.description = $.description;
+        this.headerAction = $.headerAction;
         this.match = $.match;
         this.preconfiguredWafConfig = $.preconfiguredWafConfig;
         this.preview = $.preview;
@@ -238,6 +255,27 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param headerAction Additional actions that are performed on headers. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headerAction(@Nullable Output<SecurityPolicyRuleHeaderActionArgs> headerAction) {
+            $.headerAction = headerAction;
+            return this;
+        }
+
+        /**
+         * @param headerAction Additional actions that are performed on headers. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headerAction(SecurityPolicyRuleHeaderActionArgs headerAction) {
+            return headerAction(Output.of(headerAction));
         }
 
         /**

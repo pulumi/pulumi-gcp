@@ -147,6 +147,162 @@ func (o InstanceCryptoKeyConfigPtrOutput) KeyReference() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+type InstanceEventPublishConfig struct {
+	// Option to enable Event Publishing.
+	Enabled bool `pulumi:"enabled"`
+	// The resource name of the Pub/Sub topic. Format: projects/{projectId}/topics/{topic_id}
+	Topic string `pulumi:"topic"`
+}
+
+// InstanceEventPublishConfigInput is an input type that accepts InstanceEventPublishConfigArgs and InstanceEventPublishConfigOutput values.
+// You can construct a concrete instance of `InstanceEventPublishConfigInput` via:
+//
+//	InstanceEventPublishConfigArgs{...}
+type InstanceEventPublishConfigInput interface {
+	pulumi.Input
+
+	ToInstanceEventPublishConfigOutput() InstanceEventPublishConfigOutput
+	ToInstanceEventPublishConfigOutputWithContext(context.Context) InstanceEventPublishConfigOutput
+}
+
+type InstanceEventPublishConfigArgs struct {
+	// Option to enable Event Publishing.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The resource name of the Pub/Sub topic. Format: projects/{projectId}/topics/{topic_id}
+	Topic pulumi.StringInput `pulumi:"topic"`
+}
+
+func (InstanceEventPublishConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceEventPublishConfig)(nil)).Elem()
+}
+
+func (i InstanceEventPublishConfigArgs) ToInstanceEventPublishConfigOutput() InstanceEventPublishConfigOutput {
+	return i.ToInstanceEventPublishConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceEventPublishConfigArgs) ToInstanceEventPublishConfigOutputWithContext(ctx context.Context) InstanceEventPublishConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceEventPublishConfigOutput)
+}
+
+func (i InstanceEventPublishConfigArgs) ToInstanceEventPublishConfigPtrOutput() InstanceEventPublishConfigPtrOutput {
+	return i.ToInstanceEventPublishConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceEventPublishConfigArgs) ToInstanceEventPublishConfigPtrOutputWithContext(ctx context.Context) InstanceEventPublishConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceEventPublishConfigOutput).ToInstanceEventPublishConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceEventPublishConfigPtrInput is an input type that accepts InstanceEventPublishConfigArgs, InstanceEventPublishConfigPtr and InstanceEventPublishConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceEventPublishConfigPtrInput` via:
+//
+//	        InstanceEventPublishConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceEventPublishConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceEventPublishConfigPtrOutput() InstanceEventPublishConfigPtrOutput
+	ToInstanceEventPublishConfigPtrOutputWithContext(context.Context) InstanceEventPublishConfigPtrOutput
+}
+
+type instanceEventPublishConfigPtrType InstanceEventPublishConfigArgs
+
+func InstanceEventPublishConfigPtr(v *InstanceEventPublishConfigArgs) InstanceEventPublishConfigPtrInput {
+	return (*instanceEventPublishConfigPtrType)(v)
+}
+
+func (*instanceEventPublishConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceEventPublishConfig)(nil)).Elem()
+}
+
+func (i *instanceEventPublishConfigPtrType) ToInstanceEventPublishConfigPtrOutput() InstanceEventPublishConfigPtrOutput {
+	return i.ToInstanceEventPublishConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceEventPublishConfigPtrType) ToInstanceEventPublishConfigPtrOutputWithContext(ctx context.Context) InstanceEventPublishConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceEventPublishConfigPtrOutput)
+}
+
+type InstanceEventPublishConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceEventPublishConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceEventPublishConfig)(nil)).Elem()
+}
+
+func (o InstanceEventPublishConfigOutput) ToInstanceEventPublishConfigOutput() InstanceEventPublishConfigOutput {
+	return o
+}
+
+func (o InstanceEventPublishConfigOutput) ToInstanceEventPublishConfigOutputWithContext(ctx context.Context) InstanceEventPublishConfigOutput {
+	return o
+}
+
+func (o InstanceEventPublishConfigOutput) ToInstanceEventPublishConfigPtrOutput() InstanceEventPublishConfigPtrOutput {
+	return o.ToInstanceEventPublishConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceEventPublishConfigOutput) ToInstanceEventPublishConfigPtrOutputWithContext(ctx context.Context) InstanceEventPublishConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceEventPublishConfig) *InstanceEventPublishConfig {
+		return &v
+	}).(InstanceEventPublishConfigPtrOutput)
+}
+
+// Option to enable Event Publishing.
+func (o InstanceEventPublishConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v InstanceEventPublishConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The resource name of the Pub/Sub topic. Format: projects/{projectId}/topics/{topic_id}
+func (o InstanceEventPublishConfigOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceEventPublishConfig) string { return v.Topic }).(pulumi.StringOutput)
+}
+
+type InstanceEventPublishConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceEventPublishConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceEventPublishConfig)(nil)).Elem()
+}
+
+func (o InstanceEventPublishConfigPtrOutput) ToInstanceEventPublishConfigPtrOutput() InstanceEventPublishConfigPtrOutput {
+	return o
+}
+
+func (o InstanceEventPublishConfigPtrOutput) ToInstanceEventPublishConfigPtrOutputWithContext(ctx context.Context) InstanceEventPublishConfigPtrOutput {
+	return o
+}
+
+func (o InstanceEventPublishConfigPtrOutput) Elem() InstanceEventPublishConfigOutput {
+	return o.ApplyT(func(v *InstanceEventPublishConfig) InstanceEventPublishConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceEventPublishConfig
+		return ret
+	}).(InstanceEventPublishConfigOutput)
+}
+
+// Option to enable Event Publishing.
+func (o InstanceEventPublishConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceEventPublishConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The resource name of the Pub/Sub topic. Format: projects/{projectId}/topics/{topic_id}
+func (o InstanceEventPublishConfigPtrOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceEventPublishConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Topic
+	}).(pulumi.StringPtrOutput)
+}
+
 type InstanceNetworkConfig struct {
 	// The IP range in CIDR notation to use for the managed Data Fusion instance
 	// nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
@@ -318,10 +474,14 @@ func (o InstanceNetworkConfigPtrOutput) Network() pulumi.StringPtrOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCryptoKeyConfigInput)(nil)).Elem(), InstanceCryptoKeyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCryptoKeyConfigPtrInput)(nil)).Elem(), InstanceCryptoKeyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEventPublishConfigInput)(nil)).Elem(), InstanceEventPublishConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEventPublishConfigPtrInput)(nil)).Elem(), InstanceEventPublishConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigInput)(nil)).Elem(), InstanceNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigPtrInput)(nil)).Elem(), InstanceNetworkConfigArgs{})
 	pulumi.RegisterOutputType(InstanceCryptoKeyConfigOutput{})
 	pulumi.RegisterOutputType(InstanceCryptoKeyConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstanceEventPublishConfigOutput{})
+	pulumi.RegisterOutputType(InstanceEventPublishConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkConfigOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkConfigPtrOutput{})
 }

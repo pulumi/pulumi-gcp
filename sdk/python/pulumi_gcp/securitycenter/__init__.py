@@ -5,6 +5,9 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .instance_iam_binding import *
+from .instance_iam_member import *
+from .instance_iam_policy import *
 from .notification_config import *
 from .source import *
 from .source_iam_binding import *

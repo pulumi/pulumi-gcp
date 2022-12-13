@@ -14,6 +14,8 @@ namespace Pulumi.Gcp.Compute
     /// see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
     /// and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
     /// 
+    /// Security Policy is used by google_compute_backend_service.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -66,6 +68,109 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### With ReCAPTCHA Configuration Options
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.Recaptcha.EnterpriseKey("primary", new()
+    ///     {
+    ///         DisplayName = "display-name",
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Project = "my-project-name",
+    ///         WebSettings = new Gcp.Recaptcha.Inputs.EnterpriseKeyWebSettingsArgs
+    ///         {
+    ///             IntegrationType = "INVISIBLE",
+    ///             AllowAllDomains = true,
+    ///             AllowedDomains = new[]
+    ///             {
+    ///                 "localhost",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.Compute.SecurityPolicy("policy", new()
+    ///     {
+    ///         Description = "basic security policy",
+    ///         Type = "CLOUD_ARMOR",
+    ///         RecaptchaOptionsConfig = new Gcp.Compute.Inputs.SecurityPolicyRecaptchaOptionsConfigArgs
+    ///         {
+    ///             RedirectSiteKey = primary.Name,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### With Header Actions
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var policy = new Gcp.Compute.SecurityPolicy("policy", new()
+    ///     {
+    ///         Rules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.SecurityPolicyRuleArgs
+    ///             {
+    ///                 Action = "allow",
+    ///                 Description = "default rule",
+    ///                 Match = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchArgs
+    ///                 {
+    ///                     Config = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchConfigArgs
+    ///                     {
+    ///                         SrcIpRanges = new[]
+    ///                         {
+    ///                             "*",
+    ///                         },
+    ///                     },
+    ///                     VersionedExpr = "SRC_IPS_V1",
+    ///                 },
+    ///                 Priority = 2147483647,
+    ///             },
+    ///             new Gcp.Compute.Inputs.SecurityPolicyRuleArgs
+    ///             {
+    ///                 Action = "allow",
+    ///                 HeaderAction = new Gcp.Compute.Inputs.SecurityPolicyRuleHeaderActionArgs
+    ///                 {
+    ///                     RequestHeadersToAdds = new[]
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs
+    ///                         {
+    ///                             HeaderName = "reCAPTCHA-Warning",
+    ///                             HeaderValue = "high",
+    ///                         },
+    ///                         new Gcp.Compute.Inputs.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs
+    ///                         {
+    ///                             HeaderName = "X-Resource",
+    ///                             HeaderValue = "test",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Match = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchArgs
+    ///                 {
+    ///                     Expr = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchExprArgs
+    ///                     {
+    ///                         Expression = "request.path.matches(\"/login.html\") &amp;&amp; token.recaptcha_session.score &lt; 0.2",
+    ///                     },
+    ///                 },
+    ///                 Priority = 1000,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/securityPolicy:SecurityPolicy")]
     public partial class SecurityPolicy : global::Pulumi.CustomResource
@@ -107,6 +212,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
+        /// </summary>
+        [Output("recaptchaOptionsConfig")]
+        public Output<Outputs.SecurityPolicyRecaptchaOptionsConfig?> RecaptchaOptionsConfig { get; private set; } = null!;
 
         /// <summary>
         /// The set of rules that belong to this policy. There must always be a default
@@ -206,6 +317,12 @@ namespace Pulumi.Gcp.Compute
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
+        /// </summary>
+        [Input("recaptchaOptionsConfig")]
+        public Input<Inputs.SecurityPolicyRecaptchaOptionsConfigArgs>? RecaptchaOptionsConfig { get; set; }
+
         [Input("rules")]
         private InputList<Inputs.SecurityPolicyRuleArgs>? _rules;
 
@@ -271,6 +388,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
+        /// </summary>
+        [Input("recaptchaOptionsConfig")]
+        public Input<Inputs.SecurityPolicyRecaptchaOptionsConfigGetArgs>? RecaptchaOptionsConfig { get; set; }
 
         [Input("rules")]
         private InputList<Inputs.SecurityPolicyRuleGetArgs>? _rules;

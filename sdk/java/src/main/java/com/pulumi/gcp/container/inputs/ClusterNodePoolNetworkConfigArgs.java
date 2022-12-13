@@ -32,6 +32,27 @@ public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources
     }
 
     /**
+     * Enables the private cluster feature,
+     * creating a private endpoint on the cluster. In a private cluster, nodes only
+     * have RFC 1918 private addresses and communicate with the master&#39;s private
+     * endpoint via private networking.
+     * 
+     */
+    @Import(name="enablePrivateNodes")
+    private @Nullable Output<Boolean> enablePrivateNodes;
+
+    /**
+     * @return Enables the private cluster feature,
+     * creating a private endpoint on the cluster. In a private cluster, nodes only
+     * have RFC 1918 private addresses and communicate with the master&#39;s private
+     * endpoint via private networking.
+     * 
+     */
+    public Optional<Output<Boolean>> enablePrivateNodes() {
+        return Optional.ofNullable(this.enablePrivateNodes);
+    }
+
+    /**
      * The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
      * 
      */
@@ -50,21 +71,22 @@ public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources
      * The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
      * 
      */
-    @Import(name="podRange", required=true)
-    private Output<String> podRange;
+    @Import(name="podRange")
+    private @Nullable Output<String> podRange;
 
     /**
      * @return The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
      * 
      */
-    public Output<String> podRange() {
-        return this.podRange;
+    public Optional<Output<String>> podRange() {
+        return Optional.ofNullable(this.podRange);
     }
 
     private ClusterNodePoolNetworkConfigArgs() {}
 
     private ClusterNodePoolNetworkConfigArgs(ClusterNodePoolNetworkConfigArgs $) {
         this.createPodRange = $.createPodRange;
+        this.enablePrivateNodes = $.enablePrivateNodes;
         this.podIpv4CidrBlock = $.podIpv4CidrBlock;
         this.podRange = $.podRange;
     }
@@ -109,6 +131,33 @@ public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources
         }
 
         /**
+         * @param enablePrivateNodes Enables the private cluster feature,
+         * creating a private endpoint on the cluster. In a private cluster, nodes only
+         * have RFC 1918 private addresses and communicate with the master&#39;s private
+         * endpoint via private networking.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enablePrivateNodes(@Nullable Output<Boolean> enablePrivateNodes) {
+            $.enablePrivateNodes = enablePrivateNodes;
+            return this;
+        }
+
+        /**
+         * @param enablePrivateNodes Enables the private cluster feature,
+         * creating a private endpoint on the cluster. In a private cluster, nodes only
+         * have RFC 1918 private addresses and communicate with the master&#39;s private
+         * endpoint via private networking.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enablePrivateNodes(Boolean enablePrivateNodes) {
+            return enablePrivateNodes(Output.of(enablePrivateNodes));
+        }
+
+        /**
          * @param podIpv4CidrBlock The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
          * 
          * @return builder
@@ -135,7 +184,7 @@ public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder podRange(Output<String> podRange) {
+        public Builder podRange(@Nullable Output<String> podRange) {
             $.podRange = podRange;
             return this;
         }
@@ -151,7 +200,6 @@ public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources
         }
 
         public ClusterNodePoolNetworkConfigArgs build() {
-            $.podRange = Objects.requireNonNull($.podRange, "expected parameter 'podRange' to be non-null");
             return $;
         }
     }

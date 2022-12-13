@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingActiveDirectoryConfig;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingBackupConfiguration;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingDatabaseFlag;
+import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingDenyMaintenancePeriod;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingInsightsConfig;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingIpConfiguration;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingLocationPreference;
@@ -29,6 +30,7 @@ public final class GetDatabaseInstanceSetting {
     private String collation;
     private String connectorEnforcement;
     private List<GetDatabaseInstanceSettingDatabaseFlag> databaseFlags;
+    private List<GetDatabaseInstanceSettingDenyMaintenancePeriod> denyMaintenancePeriods;
     private Boolean diskAutoresize;
     private Integer diskAutoresizeLimit;
     private Integer diskSize;
@@ -66,6 +68,9 @@ public final class GetDatabaseInstanceSetting {
     }
     public List<GetDatabaseInstanceSettingDatabaseFlag> databaseFlags() {
         return this.databaseFlags;
+    }
+    public List<GetDatabaseInstanceSettingDenyMaintenancePeriod> denyMaintenancePeriods() {
+        return this.denyMaintenancePeriods;
     }
     public Boolean diskAutoresize() {
         return this.diskAutoresize;
@@ -129,6 +134,7 @@ public final class GetDatabaseInstanceSetting {
         private String collation;
         private String connectorEnforcement;
         private List<GetDatabaseInstanceSettingDatabaseFlag> databaseFlags;
+        private List<GetDatabaseInstanceSettingDenyMaintenancePeriod> denyMaintenancePeriods;
         private Boolean diskAutoresize;
         private Integer diskAutoresizeLimit;
         private Integer diskSize;
@@ -154,6 +160,7 @@ public final class GetDatabaseInstanceSetting {
     	      this.collation = defaults.collation;
     	      this.connectorEnforcement = defaults.connectorEnforcement;
     	      this.databaseFlags = defaults.databaseFlags;
+    	      this.denyMaintenancePeriods = defaults.denyMaintenancePeriods;
     	      this.diskAutoresize = defaults.diskAutoresize;
     	      this.diskAutoresizeLimit = defaults.diskAutoresizeLimit;
     	      this.diskSize = defaults.diskSize;
@@ -214,6 +221,14 @@ public final class GetDatabaseInstanceSetting {
         }
         public Builder databaseFlags(GetDatabaseInstanceSettingDatabaseFlag... databaseFlags) {
             return databaseFlags(List.of(databaseFlags));
+        }
+        @CustomType.Setter
+        public Builder denyMaintenancePeriods(List<GetDatabaseInstanceSettingDenyMaintenancePeriod> denyMaintenancePeriods) {
+            this.denyMaintenancePeriods = Objects.requireNonNull(denyMaintenancePeriods);
+            return this;
+        }
+        public Builder denyMaintenancePeriods(GetDatabaseInstanceSettingDenyMaintenancePeriod... denyMaintenancePeriods) {
+            return denyMaintenancePeriods(List.of(denyMaintenancePeriods));
         }
         @CustomType.Setter
         public Builder diskAutoresize(Boolean diskAutoresize) {
@@ -317,6 +332,7 @@ public final class GetDatabaseInstanceSetting {
             o.collation = collation;
             o.connectorEnforcement = connectorEnforcement;
             o.databaseFlags = databaseFlags;
+            o.denyMaintenancePeriods = denyMaintenancePeriods;
             o.diskAutoresize = diskAutoresize;
             o.diskAutoresizeLimit = diskAutoresizeLimit;
             o.diskSize = diskSize;

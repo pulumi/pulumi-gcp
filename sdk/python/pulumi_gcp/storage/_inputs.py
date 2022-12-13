@@ -10,6 +10,7 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'BucketAutoclassArgs',
     'BucketCorArgs',
     'BucketCustomPlacementConfigArgs',
     'BucketEncryptionArgs',
@@ -44,6 +45,28 @@ __all__ = [
     'TransferJobTransferSpecPosixDataSourceArgs',
     'TransferJobTransferSpecTransferOptionsArgs',
 ]
+
+@pulumi.input_type
+class BucketAutoclassArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enabled: While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
 
 @pulumi.input_type
 class BucketCorArgs:
@@ -303,7 +326,7 @@ class BucketLifecycleRuleActionArgs:
                  type: pulumi.Input[str],
                  storage_class: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] type: The type of the action of this Lifecycle Rule. Supported values include: `Delete` and `SetStorageClass`.
+        :param pulumi.Input[str] type: The type of the action of this Lifecycle Rule. Supported values include: `Delete`, `SetStorageClass` and `AbortIncompleteMultipartUpload`.
         :param pulumi.Input[str] storage_class: The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         """
         pulumi.set(__self__, "type", type)
@@ -314,7 +337,7 @@ class BucketLifecycleRuleActionArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The type of the action of this Lifecycle Rule. Supported values include: `Delete` and `SetStorageClass`.
+        The type of the action of this Lifecycle Rule. Supported values include: `Delete`, `SetStorageClass` and `AbortIncompleteMultipartUpload`.
         """
         return pulumi.get(self, "type")
 
@@ -639,7 +662,7 @@ class BucketVersioningArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
-        :param pulumi.Input[bool] enabled: While set to `true`, versioning is fully enabled for this bucket.
+        :param pulumi.Input[bool] enabled: While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -647,7 +670,7 @@ class BucketVersioningArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
         """
-        While set to `true`, versioning is fully enabled for this bucket.
+        While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
         """
         return pulumi.get(self, "enabled")
 

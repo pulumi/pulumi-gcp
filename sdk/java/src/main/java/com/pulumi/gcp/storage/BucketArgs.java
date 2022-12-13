@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.storage.inputs.BucketAutoclassArgs;
 import com.pulumi.gcp.storage.inputs.BucketCorArgs;
 import com.pulumi.gcp.storage.inputs.BucketCustomPlacementConfigArgs;
 import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
@@ -25,6 +26,21 @@ import javax.annotation.Nullable;
 public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final BucketArgs Empty = new BucketArgs();
+
+    /**
+     * The bucket&#39;s [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
+     * 
+     */
+    @Import(name="autoclass")
+    private @Nullable Output<BucketAutoclassArgs> autoclass;
+
+    /**
+     * @return The bucket&#39;s [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
+     * 
+     */
+    public Optional<Output<BucketAutoclassArgs>> autoclass() {
+        return Optional.ofNullable(this.autoclass);
+    }
 
     /**
      * The bucket&#39;s [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
@@ -305,6 +321,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
     private BucketArgs() {}
 
     private BucketArgs(BucketArgs $) {
+        this.autoclass = $.autoclass;
         this.cors = $.cors;
         this.customPlacementConfig = $.customPlacementConfig;
         this.defaultEventBasedHold = $.defaultEventBasedHold;
@@ -341,6 +358,27 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(BucketArgs defaults) {
             $ = new BucketArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoclass The bucket&#39;s [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoclass(@Nullable Output<BucketAutoclassArgs> autoclass) {
+            $.autoclass = autoclass;
+            return this;
+        }
+
+        /**
+         * @param autoclass The bucket&#39;s [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoclass(BucketAutoclassArgs autoclass) {
+            return autoclass(Output.of(autoclass));
         }
 
         /**

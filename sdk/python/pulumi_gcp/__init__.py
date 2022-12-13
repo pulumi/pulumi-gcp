@@ -62,6 +62,8 @@ if typing.TYPE_CHECKING:
     cloudids = __cloudids
     import pulumi_gcp.cloudrun as __cloudrun
     cloudrun = __cloudrun
+    import pulumi_gcp.cloudrunv2 as __cloudrunv2
+    cloudrunv2 = __cloudrunv2
     import pulumi_gcp.cloudscheduler as __cloudscheduler
     cloudscheduler = __cloudscheduler
     import pulumi_gcp.cloudtasks as __cloudtasks
@@ -118,6 +120,8 @@ if typing.TYPE_CHECKING:
     folder = __folder
     import pulumi_gcp.gameservices as __gameservices
     gameservices = __gameservices
+    import pulumi_gcp.gkebackup as __gkebackup
+    gkebackup = __gkebackup
     import pulumi_gcp.gkehub as __gkehub
     gkehub = __gkehub
     import pulumi_gcp.healthcare as __healthcare
@@ -225,6 +229,7 @@ else:
     cloudidentity = _utilities.lazy_import('pulumi_gcp.cloudidentity')
     cloudids = _utilities.lazy_import('pulumi_gcp.cloudids')
     cloudrun = _utilities.lazy_import('pulumi_gcp.cloudrun')
+    cloudrunv2 = _utilities.lazy_import('pulumi_gcp.cloudrunv2')
     cloudscheduler = _utilities.lazy_import('pulumi_gcp.cloudscheduler')
     cloudtasks = _utilities.lazy_import('pulumi_gcp.cloudtasks')
     composer = _utilities.lazy_import('pulumi_gcp.composer')
@@ -253,6 +258,7 @@ else:
     firestore = _utilities.lazy_import('pulumi_gcp.firestore')
     folder = _utilities.lazy_import('pulumi_gcp.folder')
     gameservices = _utilities.lazy_import('pulumi_gcp.gameservices')
+    gkebackup = _utilities.lazy_import('pulumi_gcp.gkebackup')
     gkehub = _utilities.lazy_import('pulumi_gcp.gkehub')
     healthcare = _utilities.lazy_import('pulumi_gcp.healthcare')
     iam = _utilities.lazy_import('pulumi_gcp.iam')
@@ -1423,6 +1429,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.cloudrun",
   "classes": {
    "gcp:cloudrun/service:Service": "Service"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudrunv2/job",
+  "fqn": "pulumi_gcp.cloudrunv2",
+  "classes": {
+   "gcp:cloudrunv2/job:Job": "Job"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudrunv2/service",
+  "fqn": "pulumi_gcp.cloudrunv2",
+  "classes": {
+   "gcp:cloudrunv2/service:Service": "Service"
   }
  },
  {
@@ -3227,6 +3249,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "eventarc/googleChannelConfig",
+  "fqn": "pulumi_gcp.eventarc",
+  "classes": {
+   "gcp:eventarc/googleChannelConfig:GoogleChannelConfig": "GoogleChannelConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "eventarc/trigger",
   "fqn": "pulumi_gcp.eventarc",
   "classes": {
@@ -3295,6 +3325,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.firebase",
   "classes": {
    "gcp:firebase/projectLocation:ProjectLocation": "ProjectLocation"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "firebase/storageBucket",
+  "fqn": "pulumi_gcp.firebase",
+  "classes": {
+   "gcp:firebase/storageBucket:StorageBucket": "StorageBucket"
   }
  },
  {
@@ -3423,6 +3461,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.gameservices",
   "classes": {
    "gcp:gameservices/realm:Realm": "Realm"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gkebackup/backupPlan",
+  "fqn": "pulumi_gcp.gkebackup",
+  "classes": {
+   "gcp:gkebackup/backupPlan:BackupPlan": "BackupPlan"
   }
  },
  {
@@ -3647,6 +3693,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.iam",
   "classes": {
    "gcp:iam/workforcePool:WorkforcePool": "WorkforcePool"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iam/workforcePoolProvider",
+  "fqn": "pulumi_gcp.iam",
+  "classes": {
+   "gcp:iam/workforcePoolProvider:WorkforcePoolProvider": "WorkforcePoolProvider"
   }
  },
  {
@@ -4835,6 +4889,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "securitycenter/instanceIamBinding",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/instanceIamBinding:InstanceIamBinding": "InstanceIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/instanceIamMember",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/instanceIamMember:InstanceIamMember": "InstanceIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/instanceIamPolicy",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/instanceIamPolicy:InstanceIamPolicy": "InstanceIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "securitycenter/notificationConfig",
   "fqn": "pulumi_gcp.securitycenter",
   "classes": {
@@ -5387,6 +5465,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "vertex/aiFeatureStoreEntityTypeIamBinding",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiFeatureStoreEntityTypeIamBinding:AiFeatureStoreEntityTypeIamBinding": "AiFeatureStoreEntityTypeIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiFeatureStoreEntityTypeIamMember",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiFeatureStoreEntityTypeIamMember:AiFeatureStoreEntityTypeIamMember": "AiFeatureStoreEntityTypeIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiFeatureStoreEntityTypeIamPolicy",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiFeatureStoreEntityTypeIamPolicy:AiFeatureStoreEntityTypeIamPolicy": "AiFeatureStoreEntityTypeIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "vertex/aiFeatureStoreIamBinding",
   "fqn": "pulumi_gcp.vertex",
   "classes": {
@@ -5411,10 +5513,26 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "vertex/aiIndex",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiIndex:AiIndex": "AiIndex"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "vertex/aiMetadataStore",
   "fqn": "pulumi_gcp.vertex",
   "classes": {
    "gcp:vertex/aiMetadataStore:AiMetadataStore": "AiMetadataStore"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiTensorboard",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiTensorboard:AiTensorboard": "AiTensorboard"
   }
  },
  {

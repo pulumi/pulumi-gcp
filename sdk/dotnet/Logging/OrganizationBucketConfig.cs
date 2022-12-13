@@ -59,6 +59,14 @@ namespace Pulumi.Gcp.Logging
         public Output<string> BucketId { get; private set; } = null!;
 
         /// <summary>
+        /// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+        /// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+        /// updating the log bucket. Changing the KMS key is allowed.
+        /// </summary>
+        [Output("cmekSettings")]
+        public Output<Outputs.OrganizationBucketConfigCmekSettings?> CmekSettings { get; private set; } = null!;
+
+        /// <summary>
         /// Describes this bucket.
         /// </summary>
         [Output("description")]
@@ -147,6 +155,14 @@ namespace Pulumi.Gcp.Logging
         public Input<string> BucketId { get; set; } = null!;
 
         /// <summary>
+        /// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+        /// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+        /// updating the log bucket. Changing the KMS key is allowed.
+        /// </summary>
+        [Input("cmekSettings")]
+        public Input<Inputs.OrganizationBucketConfigCmekSettingsArgs>? CmekSettings { get; set; }
+
+        /// <summary>
         /// Describes this bucket.
         /// </summary>
         [Input("description")]
@@ -183,6 +199,14 @@ namespace Pulumi.Gcp.Logging
         /// </summary>
         [Input("bucketId")]
         public Input<string>? BucketId { get; set; }
+
+        /// <summary>
+        /// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+        /// key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+        /// updating the log bucket. Changing the KMS key is allowed.
+        /// </summary>
+        [Input("cmekSettings")]
+        public Input<Inputs.OrganizationBucketConfigCmekSettingsGetArgs>? CmekSettings { get; set; }
 
         /// <summary>
         /// Describes this bucket.

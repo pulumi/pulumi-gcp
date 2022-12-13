@@ -49,6 +49,10 @@ public final class SecurityPolicyRuleRateLimitOptions {
      * 
      */
     private String exceedAction;
+    /**
+     * @return Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. Structure is documented below.
+     * 
+     */
     private @Nullable SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions exceedRedirectOptions;
     /**
      * @return Threshold at which to begin ratelimiting. Structure is documented below.
@@ -103,6 +107,10 @@ public final class SecurityPolicyRuleRateLimitOptions {
     public String exceedAction() {
         return this.exceedAction;
     }
+    /**
+     * @return Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. Structure is documented below.
+     * 
+     */
     public Optional<SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions> exceedRedirectOptions() {
         return Optional.ofNullable(this.exceedRedirectOptions);
     }

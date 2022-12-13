@@ -18,6 +18,7 @@ __all__ = [
     'ConnectionProfileOracleProfileArgs',
     'ConnectionProfilePostgresqlProfileArgs',
     'ConnectionProfilePrivateConnectivityArgs',
+    'PrivateConnectionErrorArgs',
     'PrivateConnectionVpcPeeringConfigArgs',
 ]
 
@@ -575,6 +576,35 @@ class ConnectionProfilePrivateConnectivityArgs:
     @private_connection.setter
     def private_connection(self, value: pulumi.Input[str]):
         pulumi.set(self, "private_connection", value)
+
+
+@pulumi.input_type
+class PrivateConnectionErrorArgs:
+    def __init__(__self__, *,
+                 details: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 message: Optional[pulumi.Input[str]] = None):
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        return pulumi.get(self, "details")
+
+    @details.setter
+    def details(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "details", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
 
 
 @pulumi.input_type

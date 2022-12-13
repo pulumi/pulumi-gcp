@@ -1202,6 +1202,24 @@ class BackendService(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
+        ### Backend Service Cache Include Http Headers
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.BackendService("default",
+            cdn_policy=gcp.compute.BackendServiceCdnPolicyArgs(
+                cache_key_policy=gcp.compute.BackendServiceCdnPolicyCacheKeyPolicyArgs(
+                    include_host=True,
+                    include_http_headers=["X-My-Header-Field"],
+                    include_protocol=True,
+                    include_query_string=True,
+                ),
+                cache_mode="USE_ORIGIN_HEADERS",
+            ),
+            enable_cdn=True)
+        ```
         ### Backend Service Cache Include Named Cookies
 
         ```python
@@ -1390,6 +1408,24 @@ class BackendService(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
+        ### Backend Service Cache Include Http Headers
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.BackendService("default",
+            cdn_policy=gcp.compute.BackendServiceCdnPolicyArgs(
+                cache_key_policy=gcp.compute.BackendServiceCdnPolicyCacheKeyPolicyArgs(
+                    include_host=True,
+                    include_http_headers=["X-My-Header-Field"],
+                    include_protocol=True,
+                    include_query_string=True,
+                ),
+                cache_mode="USE_ORIGIN_HEADERS",
+            ),
+            enable_cdn=True)
+        ```
         ### Backend Service Cache Include Named Cookies
 
         ```python

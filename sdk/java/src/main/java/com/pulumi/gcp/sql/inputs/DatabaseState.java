@@ -62,6 +62,27 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The deletion policy for the database. Setting ABANDON allows the resource
+     * to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
+     * deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
+     * values are: &#34;ABANDON&#34;.
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return The deletion policy for the database. Setting ABANDON allows the resource
+     * to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
+     * deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
+     * values are: &#34;ABANDON&#34;.
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
      * The name of the Cloud SQL instance. This does not include the project
      * ID.
      * 
@@ -132,6 +153,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
     private DatabaseState(DatabaseState $) {
         this.charset = $.charset;
         this.collation = $.collation;
+        this.deletionPolicy = $.deletionPolicy;
         this.instance = $.instance;
         this.name = $.name;
         this.project = $.project;
@@ -212,6 +234,33 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder collation(String collation) {
             return collation(Output.of(collation));
+        }
+
+        /**
+         * @param deletionPolicy The deletion policy for the database. Setting ABANDON allows the resource
+         * to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
+         * deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
+         * values are: &#34;ABANDON&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy The deletion policy for the database. Setting ABANDON allows the resource
+         * to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
+         * deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
+         * values are: &#34;ABANDON&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**

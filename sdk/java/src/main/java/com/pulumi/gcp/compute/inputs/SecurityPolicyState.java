@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyAdaptiveProtectionConfigArgs;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyAdvancedOptionsConfigArgs;
+import com.pulumi.gcp.compute.inputs.SecurityPolicyRecaptchaOptionsConfigArgs;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleArgs;
 import java.lang.String;
 import java.util.List;
@@ -114,6 +115,21 @@ public final class SecurityPolicyState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
+     * 
+     */
+    @Import(name="recaptchaOptionsConfig")
+    private @Nullable Output<SecurityPolicyRecaptchaOptionsConfigArgs> recaptchaOptionsConfig;
+
+    /**
+     * @return [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
+     * 
+     */
+    public Optional<Output<SecurityPolicyRecaptchaOptionsConfigArgs>> recaptchaOptionsConfig() {
+        return Optional.ofNullable(this.recaptchaOptionsConfig);
+    }
+
+    /**
      * The set of rules that belong to this policy. There must always be a default
      * rule (rule with priority 2147483647 and match &#34;\*&#34;). If no rules are provided when creating a
      * security policy, a default rule with action &#34;allow&#34; will be added. Structure is documented below.
@@ -171,6 +187,7 @@ public final class SecurityPolicyState extends com.pulumi.resources.ResourceArgs
         this.fingerprint = $.fingerprint;
         this.name = $.name;
         this.project = $.project;
+        this.recaptchaOptionsConfig = $.recaptchaOptionsConfig;
         this.rules = $.rules;
         this.selfLink = $.selfLink;
         this.type = $.type;
@@ -322,6 +339,27 @@ public final class SecurityPolicyState extends com.pulumi.resources.ResourceArgs
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param recaptchaOptionsConfig [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recaptchaOptionsConfig(@Nullable Output<SecurityPolicyRecaptchaOptionsConfigArgs> recaptchaOptionsConfig) {
+            $.recaptchaOptionsConfig = recaptchaOptionsConfig;
+            return this;
+        }
+
+        /**
+         * @param recaptchaOptionsConfig [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recaptchaOptionsConfig(SecurityPolicyRecaptchaOptionsConfigArgs recaptchaOptionsConfig) {
+            return recaptchaOptionsConfig(Output.of(recaptchaOptionsConfig));
         }
 
         /**

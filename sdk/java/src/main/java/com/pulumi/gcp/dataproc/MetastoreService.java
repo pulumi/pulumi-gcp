@@ -14,6 +14,7 @@ import com.pulumi.gcp.dataproc.outputs.MetastoreServiceEncryptionConfig;
 import com.pulumi.gcp.dataproc.outputs.MetastoreServiceHiveMetastoreConfig;
 import com.pulumi.gcp.dataproc.outputs.MetastoreServiceMaintenanceWindow;
 import com.pulumi.gcp.dataproc.outputs.MetastoreServiceMetadataIntegration;
+import com.pulumi.gcp.dataproc.outputs.MetastoreServiceNetworkConfig;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -22,6 +23,12 @@ import javax.annotation.Nullable;
 
 /**
  * A managed metastore service that serves metadata queries.
+ * 
+ * To get more information about Service, see:
+ * 
+ * * [API documentation](https://cloud.google.com/dataproc-metastore/docs/reference/rest/v1/projects.locations.services)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/dataproc-metastore/docs/overview)
  * 
  * ## Example Usage
  * ### Dataproc Metastore Service Basic
@@ -121,6 +128,61 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Dataproc Metastore Service Private Service Connect
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.dataproc.MetastoreService;
+ * import com.pulumi.gcp.dataproc.MetastoreServiceArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceNetworkConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var net = new Network(&#34;net&#34;, NetworkArgs.builder()        
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var subnet = new Subnetwork(&#34;subnet&#34;, SubnetworkArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .network(net.id())
+ *             .ipCidrRange(&#34;10.0.0.0/22&#34;)
+ *             .privateIpGoogleAccess(true)
+ *             .build());
+ * 
+ *         var default_ = new MetastoreService(&#34;default&#34;, MetastoreServiceArgs.builder()        
+ *             .serviceId(&#34;metastore-srv&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
+ *                 .version(&#34;3.1.2&#34;)
+ *                 .build())
+ *             .networkConfig(MetastoreServiceNetworkConfigArgs.builder()
+ *                 .consumers(MetastoreServiceNetworkConfigConsumerArgs.builder()
+ *                     .subnetwork(subnet.id())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -192,6 +254,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.encryptionConfig);
     }
     /**
+     * - 
      * The URI of the endpoint used to access the metastore service.
      * 
      */
@@ -199,7 +262,8 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
     private Output<String> endpointUri;
 
     /**
-     * @return The URI of the endpoint used to access the metastore service.
+     * @return -
+     * The URI of the endpoint used to access the metastore service.
      * 
      */
     public Output<String> endpointUri() {
@@ -314,6 +378,22 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      */
     public Output<String> network() {
         return this.network;
+    }
+    /**
+     * The configuration specifying the network settings for the Dataproc Metastore service.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="networkConfig", type=MetastoreServiceNetworkConfig.class, parameters={})
+    private Output</* @Nullable */ MetastoreServiceNetworkConfig> networkConfig;
+
+    /**
+     * @return The configuration specifying the network settings for the Dataproc Metastore service.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<MetastoreServiceNetworkConfig>> networkConfig() {
+        return Codegen.optional(this.networkConfig);
     }
     /**
      * The TCP port at which the metastore service is reached. Default: 9083.

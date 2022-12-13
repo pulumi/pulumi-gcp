@@ -116,6 +116,9 @@ public final class Config {
     public Optional<String> cloudRunCustomEndpoint() {
         return Codegen.stringProp("cloudRunCustomEndpoint").config(config).get();
     }
+    public Optional<String> cloudRunV2CustomEndpoint() {
+        return Codegen.stringProp("cloudRunV2CustomEndpoint").config(config).get();
+    }
     public Optional<String> cloudSchedulerCustomEndpoint() {
         return Codegen.stringProp("cloudSchedulerCustomEndpoint").config(config).get();
     }
@@ -212,6 +215,9 @@ public final class Config {
     public Optional<String> firebaseHostingCustomEndpoint() {
         return Codegen.stringProp("firebaseHostingCustomEndpoint").config(config).get();
     }
+    public Optional<String> firebaseStorageCustomEndpoint() {
+        return Codegen.stringProp("firebaseStorageCustomEndpoint").config(config).get();
+    }
     public Optional<String> firebaserulesCustomEndpoint() {
         return Codegen.stringProp("firebaserulesCustomEndpoint").config(config).get();
     }
@@ -220,6 +226,9 @@ public final class Config {
     }
     public Optional<String> gameServicesCustomEndpoint() {
         return Codegen.stringProp("gameServicesCustomEndpoint").config(config).get();
+    }
+    public Optional<String> gkeBackupCustomEndpoint() {
+        return Codegen.stringProp("gkeBackupCustomEndpoint").config(config).get();
     }
     public Optional<String> gkeHubCustomEndpoint() {
         return Codegen.stringProp("gkeHubCustomEndpoint").config(config).get();

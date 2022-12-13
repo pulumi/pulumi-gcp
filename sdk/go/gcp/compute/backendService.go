@@ -27,6 +27,42 @@ import (
 // state as plain-text.
 //
 // ## Example Usage
+// ### Backend Service Cache Include Http Headers
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
+//					CacheKeyPolicy: &compute.BackendServiceCdnPolicyCacheKeyPolicyArgs{
+//						IncludeHost: pulumi.Bool(true),
+//						IncludeHttpHeaders: pulumi.StringArray{
+//							pulumi.String("X-My-Header-Field"),
+//						},
+//						IncludeProtocol:    pulumi.Bool(true),
+//						IncludeQueryString: pulumi.Bool(true),
+//					},
+//					CacheMode: pulumi.String("USE_ORIGIN_HEADERS"),
+//				},
+//				EnableCdn: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Backend Service Cache Include Named Cookies
 //
 // ```go

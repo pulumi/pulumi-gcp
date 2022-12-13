@@ -46,6 +46,7 @@ public final class NodePoolNodeConfig {
     private @Nullable List<String> oauthScopes;
     private @Nullable Boolean preemptible;
     private @Nullable NodePoolNodeConfigReservationAffinity reservationAffinity;
+    private @Nullable Map<String,String> resourceLabels;
     private @Nullable NodePoolNodeConfigSandboxConfig sandboxConfig;
     private @Nullable String serviceAccount;
     private @Nullable NodePoolNodeConfigShieldedInstanceConfig shieldedInstanceConfig;
@@ -115,6 +116,9 @@ public final class NodePoolNodeConfig {
     public Optional<NodePoolNodeConfigReservationAffinity> reservationAffinity() {
         return Optional.ofNullable(this.reservationAffinity);
     }
+    public Map<String,String> resourceLabels() {
+        return this.resourceLabels == null ? Map.of() : this.resourceLabels;
+    }
     public Optional<NodePoolNodeConfigSandboxConfig> sandboxConfig() {
         return Optional.ofNullable(this.sandboxConfig);
     }
@@ -166,6 +170,7 @@ public final class NodePoolNodeConfig {
         private @Nullable List<String> oauthScopes;
         private @Nullable Boolean preemptible;
         private @Nullable NodePoolNodeConfigReservationAffinity reservationAffinity;
+        private @Nullable Map<String,String> resourceLabels;
         private @Nullable NodePoolNodeConfigSandboxConfig sandboxConfig;
         private @Nullable String serviceAccount;
         private @Nullable NodePoolNodeConfigShieldedInstanceConfig shieldedInstanceConfig;
@@ -196,6 +201,7 @@ public final class NodePoolNodeConfig {
     	      this.oauthScopes = defaults.oauthScopes;
     	      this.preemptible = defaults.preemptible;
     	      this.reservationAffinity = defaults.reservationAffinity;
+    	      this.resourceLabels = defaults.resourceLabels;
     	      this.sandboxConfig = defaults.sandboxConfig;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.shieldedInstanceConfig = defaults.shieldedInstanceConfig;
@@ -312,6 +318,11 @@ public final class NodePoolNodeConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder resourceLabels(@Nullable Map<String,String> resourceLabels) {
+            this.resourceLabels = resourceLabels;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sandboxConfig(@Nullable NodePoolNodeConfigSandboxConfig sandboxConfig) {
             this.sandboxConfig = sandboxConfig;
             return this;
@@ -374,6 +385,7 @@ public final class NodePoolNodeConfig {
             o.oauthScopes = oauthScopes;
             o.preemptible = preemptible;
             o.reservationAffinity = reservationAffinity;
+            o.resourceLabels = resourceLabels;
             o.sandboxConfig = sandboxConfig;
             o.serviceAccount = serviceAccount;
             o.shieldedInstanceConfig = shieldedInstanceConfig;

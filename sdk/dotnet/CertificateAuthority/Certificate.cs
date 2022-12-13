@@ -36,8 +36,6 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///         CertificateAuthorityId = "my-certificate-authority",
     ///         Location = "us-central1",
     ///         Pool = "",
-    ///         IgnoreActiveCertificatesOnDeletion = true,
-    ///         DeletionProtection = false,
     ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
     ///         {
     ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
@@ -79,6 +77,9 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///         {
     ///             Algorithm = "RSA_PKCS1_4096_SHA256",
     ///         },
+    ///         DeletionProtection = false,
+    ///         SkipGracePeriod = true,
+    ///         IgnoreActiveCertificatesOnDeletion = true,
     ///     });
     /// 
     ///     var @default = new Gcp.CertificateAuthority.Certificate("default", new()
@@ -271,7 +272,6 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///         Pool = "",
     ///         CertificateAuthorityId = "my-certificate-authority",
     ///         Location = "us-central1",
-    ///         DeletionProtection = false,
     ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
     ///         {
     ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
@@ -313,6 +313,9 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///         {
     ///             Algorithm = "RSA_PKCS1_4096_SHA256",
     ///         },
+    ///         DeletionProtection = false,
+    ///         SkipGracePeriod = true,
+    ///         IgnoreActiveCertificatesOnDeletion = true,
     ///     });
     /// 
     ///     var @default = new Gcp.CertificateAuthority.Certificate("default", new()
@@ -342,7 +345,6 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///         Pool = "",
     ///         CertificateAuthorityId = "my-certificate-authority",
     ///         Location = "us-central1",
-    ///         DeletionProtection = false,
     ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
     ///         {
     ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
@@ -384,6 +386,9 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///         {
     ///             Algorithm = "RSA_PKCS1_4096_SHA256",
     ///         },
+    ///         DeletionProtection = false,
+    ///         SkipGracePeriod = true,
+    ///         IgnoreActiveCertificatesOnDeletion = true,
     ///     });
     /// 
     ///     var @default = new Gcp.CertificateAuthority.Certificate("default", new()
@@ -417,7 +422,6 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///         Pool = "",
     ///         CertificateAuthorityId = "my-authority",
     ///         Location = "us-central1",
-    ///         DeletionProtection = false,
     ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
     ///         {
     ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
@@ -461,6 +465,9 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///         {
     ///             Algorithm = "RSA_PKCS1_4096_SHA256",
     ///         },
+    ///         DeletionProtection = false,
+    ///         SkipGracePeriod = true,
+    ///         IgnoreActiveCertificatesOnDeletion = true,
     ///     });
     /// 
     ///     var @default = new Gcp.CertificateAuthority.Certificate("default", new()

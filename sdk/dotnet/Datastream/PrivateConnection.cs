@@ -75,6 +75,12 @@ namespace Pulumi.Gcp.Datastream
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// The PrivateConnection error in case of failure.
+        /// </summary>
+        [Output("errors")]
+        public Output<ImmutableArray<Outputs.PrivateConnectionError>> Errors { get; private set; } = null!;
+
+        /// <summary>
         /// Labels.
         /// </summary>
         [Output("labels")]
@@ -104,6 +110,12 @@ namespace Pulumi.Gcp.Datastream
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// State of the PrivateConnection.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
 
         /// <summary>
         /// The VPC Peering configuration is used to create VPC peering
@@ -218,6 +230,18 @@ namespace Pulumi.Gcp.Datastream
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("errors")]
+        private InputList<Inputs.PrivateConnectionErrorGetArgs>? _errors;
+
+        /// <summary>
+        /// The PrivateConnection error in case of failure.
+        /// </summary>
+        public InputList<Inputs.PrivateConnectionErrorGetArgs> Errors
+        {
+            get => _errors ?? (_errors = new InputList<Inputs.PrivateConnectionErrorGetArgs>());
+            set => _errors = value;
+        }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -254,6 +278,12 @@ namespace Pulumi.Gcp.Datastream
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// State of the PrivateConnection.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
 
         /// <summary>
         /// The VPC Peering configuration is used to create VPC peering

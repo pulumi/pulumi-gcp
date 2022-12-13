@@ -428,6 +428,759 @@ func (o EdgeCacheOriginAwsV4AuthenticationPtrOutput) SecretAccessKeyVersion() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+type EdgeCacheOriginOriginOverrideAction struct {
+	// The header actions, including adding and removing
+	// headers, for request handled by this origin.
+	// Structure is documented below.
+	HeaderAction *EdgeCacheOriginOriginOverrideActionHeaderAction `pulumi:"headerAction"`
+	// The URL rewrite configuration for request that are
+	// handled by this origin.
+	// Structure is documented below.
+	UrlRewrite *EdgeCacheOriginOriginOverrideActionUrlRewrite `pulumi:"urlRewrite"`
+}
+
+// EdgeCacheOriginOriginOverrideActionInput is an input type that accepts EdgeCacheOriginOriginOverrideActionArgs and EdgeCacheOriginOriginOverrideActionOutput values.
+// You can construct a concrete instance of `EdgeCacheOriginOriginOverrideActionInput` via:
+//
+//	EdgeCacheOriginOriginOverrideActionArgs{...}
+type EdgeCacheOriginOriginOverrideActionInput interface {
+	pulumi.Input
+
+	ToEdgeCacheOriginOriginOverrideActionOutput() EdgeCacheOriginOriginOverrideActionOutput
+	ToEdgeCacheOriginOriginOverrideActionOutputWithContext(context.Context) EdgeCacheOriginOriginOverrideActionOutput
+}
+
+type EdgeCacheOriginOriginOverrideActionArgs struct {
+	// The header actions, including adding and removing
+	// headers, for request handled by this origin.
+	// Structure is documented below.
+	HeaderAction EdgeCacheOriginOriginOverrideActionHeaderActionPtrInput `pulumi:"headerAction"`
+	// The URL rewrite configuration for request that are
+	// handled by this origin.
+	// Structure is documented below.
+	UrlRewrite EdgeCacheOriginOriginOverrideActionUrlRewritePtrInput `pulumi:"urlRewrite"`
+}
+
+func (EdgeCacheOriginOriginOverrideActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeCacheOriginOriginOverrideAction)(nil)).Elem()
+}
+
+func (i EdgeCacheOriginOriginOverrideActionArgs) ToEdgeCacheOriginOriginOverrideActionOutput() EdgeCacheOriginOriginOverrideActionOutput {
+	return i.ToEdgeCacheOriginOriginOverrideActionOutputWithContext(context.Background())
+}
+
+func (i EdgeCacheOriginOriginOverrideActionArgs) ToEdgeCacheOriginOriginOverrideActionOutputWithContext(ctx context.Context) EdgeCacheOriginOriginOverrideActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginOriginOverrideActionOutput)
+}
+
+func (i EdgeCacheOriginOriginOverrideActionArgs) ToEdgeCacheOriginOriginOverrideActionPtrOutput() EdgeCacheOriginOriginOverrideActionPtrOutput {
+	return i.ToEdgeCacheOriginOriginOverrideActionPtrOutputWithContext(context.Background())
+}
+
+func (i EdgeCacheOriginOriginOverrideActionArgs) ToEdgeCacheOriginOriginOverrideActionPtrOutputWithContext(ctx context.Context) EdgeCacheOriginOriginOverrideActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginOriginOverrideActionOutput).ToEdgeCacheOriginOriginOverrideActionPtrOutputWithContext(ctx)
+}
+
+// EdgeCacheOriginOriginOverrideActionPtrInput is an input type that accepts EdgeCacheOriginOriginOverrideActionArgs, EdgeCacheOriginOriginOverrideActionPtr and EdgeCacheOriginOriginOverrideActionPtrOutput values.
+// You can construct a concrete instance of `EdgeCacheOriginOriginOverrideActionPtrInput` via:
+//
+//	        EdgeCacheOriginOriginOverrideActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type EdgeCacheOriginOriginOverrideActionPtrInput interface {
+	pulumi.Input
+
+	ToEdgeCacheOriginOriginOverrideActionPtrOutput() EdgeCacheOriginOriginOverrideActionPtrOutput
+	ToEdgeCacheOriginOriginOverrideActionPtrOutputWithContext(context.Context) EdgeCacheOriginOriginOverrideActionPtrOutput
+}
+
+type edgeCacheOriginOriginOverrideActionPtrType EdgeCacheOriginOriginOverrideActionArgs
+
+func EdgeCacheOriginOriginOverrideActionPtr(v *EdgeCacheOriginOriginOverrideActionArgs) EdgeCacheOriginOriginOverrideActionPtrInput {
+	return (*edgeCacheOriginOriginOverrideActionPtrType)(v)
+}
+
+func (*edgeCacheOriginOriginOverrideActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeCacheOriginOriginOverrideAction)(nil)).Elem()
+}
+
+func (i *edgeCacheOriginOriginOverrideActionPtrType) ToEdgeCacheOriginOriginOverrideActionPtrOutput() EdgeCacheOriginOriginOverrideActionPtrOutput {
+	return i.ToEdgeCacheOriginOriginOverrideActionPtrOutputWithContext(context.Background())
+}
+
+func (i *edgeCacheOriginOriginOverrideActionPtrType) ToEdgeCacheOriginOriginOverrideActionPtrOutputWithContext(ctx context.Context) EdgeCacheOriginOriginOverrideActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginOriginOverrideActionPtrOutput)
+}
+
+type EdgeCacheOriginOriginOverrideActionOutput struct{ *pulumi.OutputState }
+
+func (EdgeCacheOriginOriginOverrideActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeCacheOriginOriginOverrideAction)(nil)).Elem()
+}
+
+func (o EdgeCacheOriginOriginOverrideActionOutput) ToEdgeCacheOriginOriginOverrideActionOutput() EdgeCacheOriginOriginOverrideActionOutput {
+	return o
+}
+
+func (o EdgeCacheOriginOriginOverrideActionOutput) ToEdgeCacheOriginOriginOverrideActionOutputWithContext(ctx context.Context) EdgeCacheOriginOriginOverrideActionOutput {
+	return o
+}
+
+func (o EdgeCacheOriginOriginOverrideActionOutput) ToEdgeCacheOriginOriginOverrideActionPtrOutput() EdgeCacheOriginOriginOverrideActionPtrOutput {
+	return o.ToEdgeCacheOriginOriginOverrideActionPtrOutputWithContext(context.Background())
+}
+
+func (o EdgeCacheOriginOriginOverrideActionOutput) ToEdgeCacheOriginOriginOverrideActionPtrOutputWithContext(ctx context.Context) EdgeCacheOriginOriginOverrideActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheOriginOriginOverrideAction) *EdgeCacheOriginOriginOverrideAction {
+		return &v
+	}).(EdgeCacheOriginOriginOverrideActionPtrOutput)
+}
+
+// The header actions, including adding and removing
+// headers, for request handled by this origin.
+// Structure is documented below.
+func (o EdgeCacheOriginOriginOverrideActionOutput) HeaderAction() EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput {
+	return o.ApplyT(func(v EdgeCacheOriginOriginOverrideAction) *EdgeCacheOriginOriginOverrideActionHeaderAction {
+		return v.HeaderAction
+	}).(EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput)
+}
+
+// The URL rewrite configuration for request that are
+// handled by this origin.
+// Structure is documented below.
+func (o EdgeCacheOriginOriginOverrideActionOutput) UrlRewrite() EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput {
+	return o.ApplyT(func(v EdgeCacheOriginOriginOverrideAction) *EdgeCacheOriginOriginOverrideActionUrlRewrite {
+		return v.UrlRewrite
+	}).(EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput)
+}
+
+type EdgeCacheOriginOriginOverrideActionPtrOutput struct{ *pulumi.OutputState }
+
+func (EdgeCacheOriginOriginOverrideActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeCacheOriginOriginOverrideAction)(nil)).Elem()
+}
+
+func (o EdgeCacheOriginOriginOverrideActionPtrOutput) ToEdgeCacheOriginOriginOverrideActionPtrOutput() EdgeCacheOriginOriginOverrideActionPtrOutput {
+	return o
+}
+
+func (o EdgeCacheOriginOriginOverrideActionPtrOutput) ToEdgeCacheOriginOriginOverrideActionPtrOutputWithContext(ctx context.Context) EdgeCacheOriginOriginOverrideActionPtrOutput {
+	return o
+}
+
+func (o EdgeCacheOriginOriginOverrideActionPtrOutput) Elem() EdgeCacheOriginOriginOverrideActionOutput {
+	return o.ApplyT(func(v *EdgeCacheOriginOriginOverrideAction) EdgeCacheOriginOriginOverrideAction {
+		if v != nil {
+			return *v
+		}
+		var ret EdgeCacheOriginOriginOverrideAction
+		return ret
+	}).(EdgeCacheOriginOriginOverrideActionOutput)
+}
+
+// The header actions, including adding and removing
+// headers, for request handled by this origin.
+// Structure is documented below.
+func (o EdgeCacheOriginOriginOverrideActionPtrOutput) HeaderAction() EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput {
+	return o.ApplyT(func(v *EdgeCacheOriginOriginOverrideAction) *EdgeCacheOriginOriginOverrideActionHeaderAction {
+		if v == nil {
+			return nil
+		}
+		return v.HeaderAction
+	}).(EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput)
+}
+
+// The URL rewrite configuration for request that are
+// handled by this origin.
+// Structure is documented below.
+func (o EdgeCacheOriginOriginOverrideActionPtrOutput) UrlRewrite() EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput {
+	return o.ApplyT(func(v *EdgeCacheOriginOriginOverrideAction) *EdgeCacheOriginOriginOverrideActionUrlRewrite {
+		if v == nil {
+			return nil
+		}
+		return v.UrlRewrite
+	}).(EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput)
+}
+
+type EdgeCacheOriginOriginOverrideActionHeaderAction struct {
+	// Describes a header to add.
+	// You may add a maximum of 5 request headers.
+	// Structure is documented below.
+	RequestHeadersToAdds []EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd `pulumi:"requestHeadersToAdds"`
+}
+
+// EdgeCacheOriginOriginOverrideActionHeaderActionInput is an input type that accepts EdgeCacheOriginOriginOverrideActionHeaderActionArgs and EdgeCacheOriginOriginOverrideActionHeaderActionOutput values.
+// You can construct a concrete instance of `EdgeCacheOriginOriginOverrideActionHeaderActionInput` via:
+//
+//	EdgeCacheOriginOriginOverrideActionHeaderActionArgs{...}
+type EdgeCacheOriginOriginOverrideActionHeaderActionInput interface {
+	pulumi.Input
+
+	ToEdgeCacheOriginOriginOverrideActionHeaderActionOutput() EdgeCacheOriginOriginOverrideActionHeaderActionOutput
+	ToEdgeCacheOriginOriginOverrideActionHeaderActionOutputWithContext(context.Context) EdgeCacheOriginOriginOverrideActionHeaderActionOutput
+}
+
+type EdgeCacheOriginOriginOverrideActionHeaderActionArgs struct {
+	// Describes a header to add.
+	// You may add a maximum of 5 request headers.
+	// Structure is documented below.
+	RequestHeadersToAdds EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayInput `pulumi:"requestHeadersToAdds"`
+}
+
+func (EdgeCacheOriginOriginOverrideActionHeaderActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeCacheOriginOriginOverrideActionHeaderAction)(nil)).Elem()
+}
+
+func (i EdgeCacheOriginOriginOverrideActionHeaderActionArgs) ToEdgeCacheOriginOriginOverrideActionHeaderActionOutput() EdgeCacheOriginOriginOverrideActionHeaderActionOutput {
+	return i.ToEdgeCacheOriginOriginOverrideActionHeaderActionOutputWithContext(context.Background())
+}
+
+func (i EdgeCacheOriginOriginOverrideActionHeaderActionArgs) ToEdgeCacheOriginOriginOverrideActionHeaderActionOutputWithContext(ctx context.Context) EdgeCacheOriginOriginOverrideActionHeaderActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginOriginOverrideActionHeaderActionOutput)
+}
+
+func (i EdgeCacheOriginOriginOverrideActionHeaderActionArgs) ToEdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput() EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput {
+	return i.ToEdgeCacheOriginOriginOverrideActionHeaderActionPtrOutputWithContext(context.Background())
+}
+
+func (i EdgeCacheOriginOriginOverrideActionHeaderActionArgs) ToEdgeCacheOriginOriginOverrideActionHeaderActionPtrOutputWithContext(ctx context.Context) EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginOriginOverrideActionHeaderActionOutput).ToEdgeCacheOriginOriginOverrideActionHeaderActionPtrOutputWithContext(ctx)
+}
+
+// EdgeCacheOriginOriginOverrideActionHeaderActionPtrInput is an input type that accepts EdgeCacheOriginOriginOverrideActionHeaderActionArgs, EdgeCacheOriginOriginOverrideActionHeaderActionPtr and EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput values.
+// You can construct a concrete instance of `EdgeCacheOriginOriginOverrideActionHeaderActionPtrInput` via:
+//
+//	        EdgeCacheOriginOriginOverrideActionHeaderActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type EdgeCacheOriginOriginOverrideActionHeaderActionPtrInput interface {
+	pulumi.Input
+
+	ToEdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput() EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput
+	ToEdgeCacheOriginOriginOverrideActionHeaderActionPtrOutputWithContext(context.Context) EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput
+}
+
+type edgeCacheOriginOriginOverrideActionHeaderActionPtrType EdgeCacheOriginOriginOverrideActionHeaderActionArgs
+
+func EdgeCacheOriginOriginOverrideActionHeaderActionPtr(v *EdgeCacheOriginOriginOverrideActionHeaderActionArgs) EdgeCacheOriginOriginOverrideActionHeaderActionPtrInput {
+	return (*edgeCacheOriginOriginOverrideActionHeaderActionPtrType)(v)
+}
+
+func (*edgeCacheOriginOriginOverrideActionHeaderActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeCacheOriginOriginOverrideActionHeaderAction)(nil)).Elem()
+}
+
+func (i *edgeCacheOriginOriginOverrideActionHeaderActionPtrType) ToEdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput() EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput {
+	return i.ToEdgeCacheOriginOriginOverrideActionHeaderActionPtrOutputWithContext(context.Background())
+}
+
+func (i *edgeCacheOriginOriginOverrideActionHeaderActionPtrType) ToEdgeCacheOriginOriginOverrideActionHeaderActionPtrOutputWithContext(ctx context.Context) EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput)
+}
+
+type EdgeCacheOriginOriginOverrideActionHeaderActionOutput struct{ *pulumi.OutputState }
+
+func (EdgeCacheOriginOriginOverrideActionHeaderActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeCacheOriginOriginOverrideActionHeaderAction)(nil)).Elem()
+}
+
+func (o EdgeCacheOriginOriginOverrideActionHeaderActionOutput) ToEdgeCacheOriginOriginOverrideActionHeaderActionOutput() EdgeCacheOriginOriginOverrideActionHeaderActionOutput {
+	return o
+}
+
+func (o EdgeCacheOriginOriginOverrideActionHeaderActionOutput) ToEdgeCacheOriginOriginOverrideActionHeaderActionOutputWithContext(ctx context.Context) EdgeCacheOriginOriginOverrideActionHeaderActionOutput {
+	return o
+}
+
+func (o EdgeCacheOriginOriginOverrideActionHeaderActionOutput) ToEdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput() EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput {
+	return o.ToEdgeCacheOriginOriginOverrideActionHeaderActionPtrOutputWithContext(context.Background())
+}
+
+func (o EdgeCacheOriginOriginOverrideActionHeaderActionOutput) ToEdgeCacheOriginOriginOverrideActionHeaderActionPtrOutputWithContext(ctx context.Context) EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheOriginOriginOverrideActionHeaderAction) *EdgeCacheOriginOriginOverrideActionHeaderAction {
+		return &v
+	}).(EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput)
+}
+
+// Describes a header to add.
+// You may add a maximum of 5 request headers.
+// Structure is documented below.
+func (o EdgeCacheOriginOriginOverrideActionHeaderActionOutput) RequestHeadersToAdds() EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutput {
+	return o.ApplyT(func(v EdgeCacheOriginOriginOverrideActionHeaderAction) []EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd {
+		return v.RequestHeadersToAdds
+	}).(EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutput)
+}
+
+type EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput struct{ *pulumi.OutputState }
+
+func (EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeCacheOriginOriginOverrideActionHeaderAction)(nil)).Elem()
+}
+
+func (o EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput) ToEdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput() EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput {
+	return o
+}
+
+func (o EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput) ToEdgeCacheOriginOriginOverrideActionHeaderActionPtrOutputWithContext(ctx context.Context) EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput {
+	return o
+}
+
+func (o EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput) Elem() EdgeCacheOriginOriginOverrideActionHeaderActionOutput {
+	return o.ApplyT(func(v *EdgeCacheOriginOriginOverrideActionHeaderAction) EdgeCacheOriginOriginOverrideActionHeaderAction {
+		if v != nil {
+			return *v
+		}
+		var ret EdgeCacheOriginOriginOverrideActionHeaderAction
+		return ret
+	}).(EdgeCacheOriginOriginOverrideActionHeaderActionOutput)
+}
+
+// Describes a header to add.
+// You may add a maximum of 5 request headers.
+// Structure is documented below.
+func (o EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput) RequestHeadersToAdds() EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutput {
+	return o.ApplyT(func(v *EdgeCacheOriginOriginOverrideActionHeaderAction) []EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd {
+		if v == nil {
+			return nil
+		}
+		return v.RequestHeadersToAdds
+	}).(EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutput)
+}
+
+type EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd struct {
+	// The name of the header to add.
+	HeaderName string `pulumi:"headerName"`
+	// The value of the header to add.
+	HeaderValue string `pulumi:"headerValue"`
+	// Whether to replace all existing headers with the same name.
+	// By default, added header values are appended
+	// to the response or request headers with the
+	// same field names. The added values are
+	// separated by commas.
+	// To overwrite existing values, set `replace` to `true`.
+	Replace *bool `pulumi:"replace"`
+}
+
+// EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddInput is an input type that accepts EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs and EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutput values.
+// You can construct a concrete instance of `EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddInput` via:
+//
+//	EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs{...}
+type EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddInput interface {
+	pulumi.Input
+
+	ToEdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutput() EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutput
+	ToEdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutputWithContext(context.Context) EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutput
+}
+
+type EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs struct {
+	// The name of the header to add.
+	HeaderName pulumi.StringInput `pulumi:"headerName"`
+	// The value of the header to add.
+	HeaderValue pulumi.StringInput `pulumi:"headerValue"`
+	// Whether to replace all existing headers with the same name.
+	// By default, added header values are appended
+	// to the response or request headers with the
+	// same field names. The added values are
+	// separated by commas.
+	// To overwrite existing values, set `replace` to `true`.
+	Replace pulumi.BoolPtrInput `pulumi:"replace"`
+}
+
+func (EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd)(nil)).Elem()
+}
+
+func (i EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs) ToEdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutput() EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutput {
+	return i.ToEdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutputWithContext(context.Background())
+}
+
+func (i EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs) ToEdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutputWithContext(ctx context.Context) EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutput)
+}
+
+// EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayInput is an input type that accepts EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArray and EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutput values.
+// You can construct a concrete instance of `EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayInput` via:
+//
+//	EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArray{ EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs{...} }
+type EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayInput interface {
+	pulumi.Input
+
+	ToEdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutput() EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutput
+	ToEdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutputWithContext(context.Context) EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutput
+}
+
+type EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArray []EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddInput
+
+func (EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd)(nil)).Elem()
+}
+
+func (i EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArray) ToEdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutput() EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutput {
+	return i.ToEdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutputWithContext(context.Background())
+}
+
+func (i EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArray) ToEdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutputWithContext(ctx context.Context) EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutput)
+}
+
+type EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutput struct{ *pulumi.OutputState }
+
+func (EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd)(nil)).Elem()
+}
+
+func (o EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutput) ToEdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutput() EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutput {
+	return o
+}
+
+func (o EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutput) ToEdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutputWithContext(ctx context.Context) EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutput {
+	return o
+}
+
+// The name of the header to add.
+func (o EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutput) HeaderName() pulumi.StringOutput {
+	return o.ApplyT(func(v EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd) string { return v.HeaderName }).(pulumi.StringOutput)
+}
+
+// The value of the header to add.
+func (o EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutput) HeaderValue() pulumi.StringOutput {
+	return o.ApplyT(func(v EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd) string {
+		return v.HeaderValue
+	}).(pulumi.StringOutput)
+}
+
+// Whether to replace all existing headers with the same name.
+// By default, added header values are appended
+// to the response or request headers with the
+// same field names. The added values are
+// separated by commas.
+// To overwrite existing values, set `replace` to `true`.
+func (o EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutput) Replace() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd) *bool { return v.Replace }).(pulumi.BoolPtrOutput)
+}
+
+type EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutput struct{ *pulumi.OutputState }
+
+func (EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd)(nil)).Elem()
+}
+
+func (o EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutput) ToEdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutput() EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutput {
+	return o
+}
+
+func (o EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutput) ToEdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutputWithContext(ctx context.Context) EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutput {
+	return o
+}
+
+func (o EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutput) Index(i pulumi.IntInput) EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd {
+		return vs[0].([]EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd)[vs[1].(int)]
+	}).(EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutput)
+}
+
+type EdgeCacheOriginOriginOverrideActionUrlRewrite struct {
+	// Prior to forwarding the request to the selected
+	// origin, the request's host header is replaced with
+	// contents of the hostRewrite.
+	// This value must be between 1 and 255 characters.
+	HostRewrite *string `pulumi:"hostRewrite"`
+}
+
+// EdgeCacheOriginOriginOverrideActionUrlRewriteInput is an input type that accepts EdgeCacheOriginOriginOverrideActionUrlRewriteArgs and EdgeCacheOriginOriginOverrideActionUrlRewriteOutput values.
+// You can construct a concrete instance of `EdgeCacheOriginOriginOverrideActionUrlRewriteInput` via:
+//
+//	EdgeCacheOriginOriginOverrideActionUrlRewriteArgs{...}
+type EdgeCacheOriginOriginOverrideActionUrlRewriteInput interface {
+	pulumi.Input
+
+	ToEdgeCacheOriginOriginOverrideActionUrlRewriteOutput() EdgeCacheOriginOriginOverrideActionUrlRewriteOutput
+	ToEdgeCacheOriginOriginOverrideActionUrlRewriteOutputWithContext(context.Context) EdgeCacheOriginOriginOverrideActionUrlRewriteOutput
+}
+
+type EdgeCacheOriginOriginOverrideActionUrlRewriteArgs struct {
+	// Prior to forwarding the request to the selected
+	// origin, the request's host header is replaced with
+	// contents of the hostRewrite.
+	// This value must be between 1 and 255 characters.
+	HostRewrite pulumi.StringPtrInput `pulumi:"hostRewrite"`
+}
+
+func (EdgeCacheOriginOriginOverrideActionUrlRewriteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeCacheOriginOriginOverrideActionUrlRewrite)(nil)).Elem()
+}
+
+func (i EdgeCacheOriginOriginOverrideActionUrlRewriteArgs) ToEdgeCacheOriginOriginOverrideActionUrlRewriteOutput() EdgeCacheOriginOriginOverrideActionUrlRewriteOutput {
+	return i.ToEdgeCacheOriginOriginOverrideActionUrlRewriteOutputWithContext(context.Background())
+}
+
+func (i EdgeCacheOriginOriginOverrideActionUrlRewriteArgs) ToEdgeCacheOriginOriginOverrideActionUrlRewriteOutputWithContext(ctx context.Context) EdgeCacheOriginOriginOverrideActionUrlRewriteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginOriginOverrideActionUrlRewriteOutput)
+}
+
+func (i EdgeCacheOriginOriginOverrideActionUrlRewriteArgs) ToEdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput() EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput {
+	return i.ToEdgeCacheOriginOriginOverrideActionUrlRewritePtrOutputWithContext(context.Background())
+}
+
+func (i EdgeCacheOriginOriginOverrideActionUrlRewriteArgs) ToEdgeCacheOriginOriginOverrideActionUrlRewritePtrOutputWithContext(ctx context.Context) EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginOriginOverrideActionUrlRewriteOutput).ToEdgeCacheOriginOriginOverrideActionUrlRewritePtrOutputWithContext(ctx)
+}
+
+// EdgeCacheOriginOriginOverrideActionUrlRewritePtrInput is an input type that accepts EdgeCacheOriginOriginOverrideActionUrlRewriteArgs, EdgeCacheOriginOriginOverrideActionUrlRewritePtr and EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput values.
+// You can construct a concrete instance of `EdgeCacheOriginOriginOverrideActionUrlRewritePtrInput` via:
+//
+//	        EdgeCacheOriginOriginOverrideActionUrlRewriteArgs{...}
+//
+//	or:
+//
+//	        nil
+type EdgeCacheOriginOriginOverrideActionUrlRewritePtrInput interface {
+	pulumi.Input
+
+	ToEdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput() EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput
+	ToEdgeCacheOriginOriginOverrideActionUrlRewritePtrOutputWithContext(context.Context) EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput
+}
+
+type edgeCacheOriginOriginOverrideActionUrlRewritePtrType EdgeCacheOriginOriginOverrideActionUrlRewriteArgs
+
+func EdgeCacheOriginOriginOverrideActionUrlRewritePtr(v *EdgeCacheOriginOriginOverrideActionUrlRewriteArgs) EdgeCacheOriginOriginOverrideActionUrlRewritePtrInput {
+	return (*edgeCacheOriginOriginOverrideActionUrlRewritePtrType)(v)
+}
+
+func (*edgeCacheOriginOriginOverrideActionUrlRewritePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeCacheOriginOriginOverrideActionUrlRewrite)(nil)).Elem()
+}
+
+func (i *edgeCacheOriginOriginOverrideActionUrlRewritePtrType) ToEdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput() EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput {
+	return i.ToEdgeCacheOriginOriginOverrideActionUrlRewritePtrOutputWithContext(context.Background())
+}
+
+func (i *edgeCacheOriginOriginOverrideActionUrlRewritePtrType) ToEdgeCacheOriginOriginOverrideActionUrlRewritePtrOutputWithContext(ctx context.Context) EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput)
+}
+
+type EdgeCacheOriginOriginOverrideActionUrlRewriteOutput struct{ *pulumi.OutputState }
+
+func (EdgeCacheOriginOriginOverrideActionUrlRewriteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeCacheOriginOriginOverrideActionUrlRewrite)(nil)).Elem()
+}
+
+func (o EdgeCacheOriginOriginOverrideActionUrlRewriteOutput) ToEdgeCacheOriginOriginOverrideActionUrlRewriteOutput() EdgeCacheOriginOriginOverrideActionUrlRewriteOutput {
+	return o
+}
+
+func (o EdgeCacheOriginOriginOverrideActionUrlRewriteOutput) ToEdgeCacheOriginOriginOverrideActionUrlRewriteOutputWithContext(ctx context.Context) EdgeCacheOriginOriginOverrideActionUrlRewriteOutput {
+	return o
+}
+
+func (o EdgeCacheOriginOriginOverrideActionUrlRewriteOutput) ToEdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput() EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput {
+	return o.ToEdgeCacheOriginOriginOverrideActionUrlRewritePtrOutputWithContext(context.Background())
+}
+
+func (o EdgeCacheOriginOriginOverrideActionUrlRewriteOutput) ToEdgeCacheOriginOriginOverrideActionUrlRewritePtrOutputWithContext(ctx context.Context) EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheOriginOriginOverrideActionUrlRewrite) *EdgeCacheOriginOriginOverrideActionUrlRewrite {
+		return &v
+	}).(EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput)
+}
+
+// Prior to forwarding the request to the selected
+// origin, the request's host header is replaced with
+// contents of the hostRewrite.
+// This value must be between 1 and 255 characters.
+func (o EdgeCacheOriginOriginOverrideActionUrlRewriteOutput) HostRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EdgeCacheOriginOriginOverrideActionUrlRewrite) *string { return v.HostRewrite }).(pulumi.StringPtrOutput)
+}
+
+type EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput struct{ *pulumi.OutputState }
+
+func (EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeCacheOriginOriginOverrideActionUrlRewrite)(nil)).Elem()
+}
+
+func (o EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput) ToEdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput() EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput {
+	return o
+}
+
+func (o EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput) ToEdgeCacheOriginOriginOverrideActionUrlRewritePtrOutputWithContext(ctx context.Context) EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput {
+	return o
+}
+
+func (o EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput) Elem() EdgeCacheOriginOriginOverrideActionUrlRewriteOutput {
+	return o.ApplyT(func(v *EdgeCacheOriginOriginOverrideActionUrlRewrite) EdgeCacheOriginOriginOverrideActionUrlRewrite {
+		if v != nil {
+			return *v
+		}
+		var ret EdgeCacheOriginOriginOverrideActionUrlRewrite
+		return ret
+	}).(EdgeCacheOriginOriginOverrideActionUrlRewriteOutput)
+}
+
+// Prior to forwarding the request to the selected
+// origin, the request's host header is replaced with
+// contents of the hostRewrite.
+// This value must be between 1 and 255 characters.
+func (o EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput) HostRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EdgeCacheOriginOriginOverrideActionUrlRewrite) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostRewrite
+	}).(pulumi.StringPtrOutput)
+}
+
+type EdgeCacheOriginOriginRedirect struct {
+	// The set of redirect response codes that the CDN
+	// follows. Values of
+	// [RedirectConditions](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins#redirectconditions)
+	// are accepted.
+	RedirectConditions []string `pulumi:"redirectConditions"`
+}
+
+// EdgeCacheOriginOriginRedirectInput is an input type that accepts EdgeCacheOriginOriginRedirectArgs and EdgeCacheOriginOriginRedirectOutput values.
+// You can construct a concrete instance of `EdgeCacheOriginOriginRedirectInput` via:
+//
+//	EdgeCacheOriginOriginRedirectArgs{...}
+type EdgeCacheOriginOriginRedirectInput interface {
+	pulumi.Input
+
+	ToEdgeCacheOriginOriginRedirectOutput() EdgeCacheOriginOriginRedirectOutput
+	ToEdgeCacheOriginOriginRedirectOutputWithContext(context.Context) EdgeCacheOriginOriginRedirectOutput
+}
+
+type EdgeCacheOriginOriginRedirectArgs struct {
+	// The set of redirect response codes that the CDN
+	// follows. Values of
+	// [RedirectConditions](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins#redirectconditions)
+	// are accepted.
+	RedirectConditions pulumi.StringArrayInput `pulumi:"redirectConditions"`
+}
+
+func (EdgeCacheOriginOriginRedirectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeCacheOriginOriginRedirect)(nil)).Elem()
+}
+
+func (i EdgeCacheOriginOriginRedirectArgs) ToEdgeCacheOriginOriginRedirectOutput() EdgeCacheOriginOriginRedirectOutput {
+	return i.ToEdgeCacheOriginOriginRedirectOutputWithContext(context.Background())
+}
+
+func (i EdgeCacheOriginOriginRedirectArgs) ToEdgeCacheOriginOriginRedirectOutputWithContext(ctx context.Context) EdgeCacheOriginOriginRedirectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginOriginRedirectOutput)
+}
+
+func (i EdgeCacheOriginOriginRedirectArgs) ToEdgeCacheOriginOriginRedirectPtrOutput() EdgeCacheOriginOriginRedirectPtrOutput {
+	return i.ToEdgeCacheOriginOriginRedirectPtrOutputWithContext(context.Background())
+}
+
+func (i EdgeCacheOriginOriginRedirectArgs) ToEdgeCacheOriginOriginRedirectPtrOutputWithContext(ctx context.Context) EdgeCacheOriginOriginRedirectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginOriginRedirectOutput).ToEdgeCacheOriginOriginRedirectPtrOutputWithContext(ctx)
+}
+
+// EdgeCacheOriginOriginRedirectPtrInput is an input type that accepts EdgeCacheOriginOriginRedirectArgs, EdgeCacheOriginOriginRedirectPtr and EdgeCacheOriginOriginRedirectPtrOutput values.
+// You can construct a concrete instance of `EdgeCacheOriginOriginRedirectPtrInput` via:
+//
+//	        EdgeCacheOriginOriginRedirectArgs{...}
+//
+//	or:
+//
+//	        nil
+type EdgeCacheOriginOriginRedirectPtrInput interface {
+	pulumi.Input
+
+	ToEdgeCacheOriginOriginRedirectPtrOutput() EdgeCacheOriginOriginRedirectPtrOutput
+	ToEdgeCacheOriginOriginRedirectPtrOutputWithContext(context.Context) EdgeCacheOriginOriginRedirectPtrOutput
+}
+
+type edgeCacheOriginOriginRedirectPtrType EdgeCacheOriginOriginRedirectArgs
+
+func EdgeCacheOriginOriginRedirectPtr(v *EdgeCacheOriginOriginRedirectArgs) EdgeCacheOriginOriginRedirectPtrInput {
+	return (*edgeCacheOriginOriginRedirectPtrType)(v)
+}
+
+func (*edgeCacheOriginOriginRedirectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeCacheOriginOriginRedirect)(nil)).Elem()
+}
+
+func (i *edgeCacheOriginOriginRedirectPtrType) ToEdgeCacheOriginOriginRedirectPtrOutput() EdgeCacheOriginOriginRedirectPtrOutput {
+	return i.ToEdgeCacheOriginOriginRedirectPtrOutputWithContext(context.Background())
+}
+
+func (i *edgeCacheOriginOriginRedirectPtrType) ToEdgeCacheOriginOriginRedirectPtrOutputWithContext(ctx context.Context) EdgeCacheOriginOriginRedirectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EdgeCacheOriginOriginRedirectPtrOutput)
+}
+
+type EdgeCacheOriginOriginRedirectOutput struct{ *pulumi.OutputState }
+
+func (EdgeCacheOriginOriginRedirectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeCacheOriginOriginRedirect)(nil)).Elem()
+}
+
+func (o EdgeCacheOriginOriginRedirectOutput) ToEdgeCacheOriginOriginRedirectOutput() EdgeCacheOriginOriginRedirectOutput {
+	return o
+}
+
+func (o EdgeCacheOriginOriginRedirectOutput) ToEdgeCacheOriginOriginRedirectOutputWithContext(ctx context.Context) EdgeCacheOriginOriginRedirectOutput {
+	return o
+}
+
+func (o EdgeCacheOriginOriginRedirectOutput) ToEdgeCacheOriginOriginRedirectPtrOutput() EdgeCacheOriginOriginRedirectPtrOutput {
+	return o.ToEdgeCacheOriginOriginRedirectPtrOutputWithContext(context.Background())
+}
+
+func (o EdgeCacheOriginOriginRedirectOutput) ToEdgeCacheOriginOriginRedirectPtrOutputWithContext(ctx context.Context) EdgeCacheOriginOriginRedirectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdgeCacheOriginOriginRedirect) *EdgeCacheOriginOriginRedirect {
+		return &v
+	}).(EdgeCacheOriginOriginRedirectPtrOutput)
+}
+
+// The set of redirect response codes that the CDN
+// follows. Values of
+// [RedirectConditions](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins#redirectconditions)
+// are accepted.
+func (o EdgeCacheOriginOriginRedirectOutput) RedirectConditions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EdgeCacheOriginOriginRedirect) []string { return v.RedirectConditions }).(pulumi.StringArrayOutput)
+}
+
+type EdgeCacheOriginOriginRedirectPtrOutput struct{ *pulumi.OutputState }
+
+func (EdgeCacheOriginOriginRedirectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EdgeCacheOriginOriginRedirect)(nil)).Elem()
+}
+
+func (o EdgeCacheOriginOriginRedirectPtrOutput) ToEdgeCacheOriginOriginRedirectPtrOutput() EdgeCacheOriginOriginRedirectPtrOutput {
+	return o
+}
+
+func (o EdgeCacheOriginOriginRedirectPtrOutput) ToEdgeCacheOriginOriginRedirectPtrOutputWithContext(ctx context.Context) EdgeCacheOriginOriginRedirectPtrOutput {
+	return o
+}
+
+func (o EdgeCacheOriginOriginRedirectPtrOutput) Elem() EdgeCacheOriginOriginRedirectOutput {
+	return o.ApplyT(func(v *EdgeCacheOriginOriginRedirect) EdgeCacheOriginOriginRedirect {
+		if v != nil {
+			return *v
+		}
+		var ret EdgeCacheOriginOriginRedirect
+		return ret
+	}).(EdgeCacheOriginOriginRedirectOutput)
+}
+
+// The set of redirect response codes that the CDN
+// follows. Values of
+// [RedirectConditions](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins#redirectconditions)
+// are accepted.
+func (o EdgeCacheOriginOriginRedirectPtrOutput) RedirectConditions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EdgeCacheOriginOriginRedirect) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectConditions
+	}).(pulumi.StringArrayOutput)
+}
+
 type EdgeCacheOriginTimeout struct {
 	// The maximum duration to wait for a single origin connection to be established, including DNS lookup, TLS handshake and TCP/QUIC connection establishment.
 	// Defaults to 5 seconds. The timeout must be a value between 1s and 15s.
@@ -4905,6 +5658,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheKeysetValidationSharedKeyArrayInput)(nil)).Elem(), EdgeCacheKeysetValidationSharedKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginAwsV4AuthenticationInput)(nil)).Elem(), EdgeCacheOriginAwsV4AuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginAwsV4AuthenticationPtrInput)(nil)).Elem(), EdgeCacheOriginAwsV4AuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginOriginOverrideActionInput)(nil)).Elem(), EdgeCacheOriginOriginOverrideActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginOriginOverrideActionPtrInput)(nil)).Elem(), EdgeCacheOriginOriginOverrideActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginOriginOverrideActionHeaderActionInput)(nil)).Elem(), EdgeCacheOriginOriginOverrideActionHeaderActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginOriginOverrideActionHeaderActionPtrInput)(nil)).Elem(), EdgeCacheOriginOriginOverrideActionHeaderActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddInput)(nil)).Elem(), EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayInput)(nil)).Elem(), EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginOriginOverrideActionUrlRewriteInput)(nil)).Elem(), EdgeCacheOriginOriginOverrideActionUrlRewriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginOriginOverrideActionUrlRewritePtrInput)(nil)).Elem(), EdgeCacheOriginOriginOverrideActionUrlRewriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginOriginRedirectInput)(nil)).Elem(), EdgeCacheOriginOriginRedirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginOriginRedirectPtrInput)(nil)).Elem(), EdgeCacheOriginOriginRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginTimeoutInput)(nil)).Elem(), EdgeCacheOriginTimeoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheOriginTimeoutPtrInput)(nil)).Elem(), EdgeCacheOriginTimeoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceLogConfigInput)(nil)).Elem(), EdgeCacheServiceLogConfigArgs{})
@@ -4955,6 +5718,16 @@ func init() {
 	pulumi.RegisterOutputType(EdgeCacheKeysetValidationSharedKeyArrayOutput{})
 	pulumi.RegisterOutputType(EdgeCacheOriginAwsV4AuthenticationOutput{})
 	pulumi.RegisterOutputType(EdgeCacheOriginAwsV4AuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(EdgeCacheOriginOriginOverrideActionOutput{})
+	pulumi.RegisterOutputType(EdgeCacheOriginOriginOverrideActionPtrOutput{})
+	pulumi.RegisterOutputType(EdgeCacheOriginOriginOverrideActionHeaderActionOutput{})
+	pulumi.RegisterOutputType(EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput{})
+	pulumi.RegisterOutputType(EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddOutput{})
+	pulumi.RegisterOutputType(EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutput{})
+	pulumi.RegisterOutputType(EdgeCacheOriginOriginOverrideActionUrlRewriteOutput{})
+	pulumi.RegisterOutputType(EdgeCacheOriginOriginOverrideActionUrlRewritePtrOutput{})
+	pulumi.RegisterOutputType(EdgeCacheOriginOriginRedirectOutput{})
+	pulumi.RegisterOutputType(EdgeCacheOriginOriginRedirectPtrOutput{})
 	pulumi.RegisterOutputType(EdgeCacheOriginTimeoutOutput{})
 	pulumi.RegisterOutputType(EdgeCacheOriginTimeoutPtrOutput{})
 	pulumi.RegisterOutputType(EdgeCacheServiceLogConfigOutput{})

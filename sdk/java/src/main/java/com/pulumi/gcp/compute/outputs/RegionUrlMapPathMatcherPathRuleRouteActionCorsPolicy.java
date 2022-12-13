@@ -15,9 +15,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy {
     /**
-     * @return In response to a preflight request, setting this to true indicates that the
-     * actual request can include user credentials. This translates to the Access-
-     * Control-Allow-Credentials header. Defaults to false.
+     * @return In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header.
+     * Default is false.
      * 
      */
     private @Nullable Boolean allowCredentials;
@@ -32,20 +31,20 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy {
      */
     private @Nullable List<String> allowMethods;
     /**
-     * @return Specifies the regular expression patterns that match allowed origins. For
-     * regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
-     * An origin is allowed if it matches either allow_origins or allow_origin_regex.
+     * @return Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+     * please see en.cppreference.com/w/cpp/regex/ecmascript
+     * An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
      * 
      */
     private @Nullable List<String> allowOriginRegexes;
     /**
-     * @return Specifies the list of origins that will be allowed to do CORS requests. An
-     * origin is allowed if it matches either allow_origins or allow_origin_regex.
+     * @return Specifies the list of origins that will be allowed to do CORS requests.
+     * An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
      * 
      */
     private @Nullable List<String> allowOrigins;
     /**
-     * @return If true, specifies the CORS policy is disabled.
+     * @return If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
      * 
      */
     private Boolean disabled;
@@ -55,17 +54,16 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy {
      */
     private @Nullable List<String> exposeHeaders;
     /**
-     * @return Specifies how long the results of a preflight request can be cached. This
-     * translates to the content for the Access-Control-Max-Age header.
+     * @return Specifies how long results of a preflight request can be cached in seconds.
+     * This translates to the Access-Control-Max-Age header.
      * 
      */
     private @Nullable Integer maxAge;
 
     private RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy() {}
     /**
-     * @return In response to a preflight request, setting this to true indicates that the
-     * actual request can include user credentials. This translates to the Access-
-     * Control-Allow-Credentials header. Defaults to false.
+     * @return In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header.
+     * Default is false.
      * 
      */
     public Optional<Boolean> allowCredentials() {
@@ -86,24 +84,24 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy {
         return this.allowMethods == null ? List.of() : this.allowMethods;
     }
     /**
-     * @return Specifies the regular expression patterns that match allowed origins. For
-     * regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
-     * An origin is allowed if it matches either allow_origins or allow_origin_regex.
+     * @return Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+     * please see en.cppreference.com/w/cpp/regex/ecmascript
+     * An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
      * 
      */
     public List<String> allowOriginRegexes() {
         return this.allowOriginRegexes == null ? List.of() : this.allowOriginRegexes;
     }
     /**
-     * @return Specifies the list of origins that will be allowed to do CORS requests. An
-     * origin is allowed if it matches either allow_origins or allow_origin_regex.
+     * @return Specifies the list of origins that will be allowed to do CORS requests.
+     * An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
      * 
      */
     public List<String> allowOrigins() {
         return this.allowOrigins == null ? List.of() : this.allowOrigins;
     }
     /**
-     * @return If true, specifies the CORS policy is disabled.
+     * @return If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
      * 
      */
     public Boolean disabled() {
@@ -117,8 +115,8 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy {
         return this.exposeHeaders == null ? List.of() : this.exposeHeaders;
     }
     /**
-     * @return Specifies how long the results of a preflight request can be cached. This
-     * translates to the content for the Access-Control-Max-Age header.
+     * @return Specifies how long results of a preflight request can be cached in seconds.
+     * This translates to the Access-Control-Max-Age header.
      * 
      */
     public Optional<Integer> maxAge() {

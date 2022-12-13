@@ -11,8 +11,10 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'BillingAccountBucketConfigCmekSettings',
     'BillingAccountSinkBigqueryOptions',
     'BillingAccountSinkExclusion',
+    'FolderBucketConfigCmekSettings',
     'FolderSinkBigqueryOptions',
     'FolderSinkExclusion',
     'MetricBucketOptions',
@@ -21,11 +23,76 @@ __all__ = [
     'MetricBucketOptionsLinearBuckets',
     'MetricMetricDescriptor',
     'MetricMetricDescriptorLabel',
+    'OrganizationBucketConfigCmekSettings',
     'OrganizationSinkBigqueryOptions',
     'OrganizationSinkExclusion',
+    'ProjectBucketConfigCmekSettings',
     'ProjectSinkBigqueryOptions',
     'ProjectSinkExclusion',
 ]
+
+@pulumi.output_type
+class BillingAccountBucketConfigCmekSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+        elif key == "kmsKeyVersionName":
+            suggest = "kms_key_version_name"
+        elif key == "serviceAccountId":
+            suggest = "service_account_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BillingAccountBucketConfigCmekSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BillingAccountBucketConfigCmekSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BillingAccountBucketConfigCmekSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_name: str,
+                 kms_key_version_name: Optional[str] = None,
+                 name: Optional[str] = None,
+                 service_account_id: Optional[str] = None):
+        """
+        :param str name: The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+        if kms_key_version_name is not None:
+            pulumi.set(__self__, "kms_key_version_name", kms_key_version_name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if service_account_id is not None:
+            pulumi.set(__self__, "service_account_id", service_account_id)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        return pulumi.get(self, "kms_key_name")
+
+    @property
+    @pulumi.getter(name="kmsKeyVersionName")
+    def kms_key_version_name(self) -> Optional[str]:
+        return pulumi.get(self, "kms_key_version_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="serviceAccountId")
+    def service_account_id(self) -> Optional[str]:
+        return pulumi.get(self, "service_account_id")
+
 
 @pulumi.output_type
 class BillingAccountSinkBigqueryOptions(dict):
@@ -121,6 +188,69 @@ class BillingAccountSinkExclusion(dict):
         If set to True, then this exclusion is disabled and it does not exclude any log entries.
         """
         return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
+class FolderBucketConfigCmekSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+        elif key == "kmsKeyVersionName":
+            suggest = "kms_key_version_name"
+        elif key == "serviceAccountId":
+            suggest = "service_account_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FolderBucketConfigCmekSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FolderBucketConfigCmekSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FolderBucketConfigCmekSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_name: str,
+                 kms_key_version_name: Optional[str] = None,
+                 name: Optional[str] = None,
+                 service_account_id: Optional[str] = None):
+        """
+        :param str name: The resource name of the bucket. For example: "folders/my-folder-id/locations/my-location/buckets/my-bucket-id"
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+        if kms_key_version_name is not None:
+            pulumi.set(__self__, "kms_key_version_name", kms_key_version_name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if service_account_id is not None:
+            pulumi.set(__self__, "service_account_id", service_account_id)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        return pulumi.get(self, "kms_key_name")
+
+    @property
+    @pulumi.getter(name="kmsKeyVersionName")
+    def kms_key_version_name(self) -> Optional[str]:
+        return pulumi.get(self, "kms_key_version_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The resource name of the bucket. For example: "folders/my-folder-id/locations/my-location/buckets/my-bucket-id"
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="serviceAccountId")
+    def service_account_id(self) -> Optional[str]:
+        return pulumi.get(self, "service_account_id")
 
 
 @pulumi.output_type
@@ -611,6 +741,69 @@ class MetricMetricDescriptorLabel(dict):
 
 
 @pulumi.output_type
+class OrganizationBucketConfigCmekSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+        elif key == "kmsKeyVersionName":
+            suggest = "kms_key_version_name"
+        elif key == "serviceAccountId":
+            suggest = "service_account_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OrganizationBucketConfigCmekSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OrganizationBucketConfigCmekSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OrganizationBucketConfigCmekSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_name: str,
+                 kms_key_version_name: Optional[str] = None,
+                 name: Optional[str] = None,
+                 service_account_id: Optional[str] = None):
+        """
+        :param str name: The resource name of the bucket. For example: "organizations/my-organization-id/locations/my-location/buckets/my-bucket-id"
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+        if kms_key_version_name is not None:
+            pulumi.set(__self__, "kms_key_version_name", kms_key_version_name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if service_account_id is not None:
+            pulumi.set(__self__, "service_account_id", service_account_id)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        return pulumi.get(self, "kms_key_name")
+
+    @property
+    @pulumi.getter(name="kmsKeyVersionName")
+    def kms_key_version_name(self) -> Optional[str]:
+        return pulumi.get(self, "kms_key_version_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The resource name of the bucket. For example: "organizations/my-organization-id/locations/my-location/buckets/my-bucket-id"
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="serviceAccountId")
+    def service_account_id(self) -> Optional[str]:
+        return pulumi.get(self, "service_account_id")
+
+
+@pulumi.output_type
 class OrganizationSinkBigqueryOptions(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -704,6 +897,105 @@ class OrganizationSinkExclusion(dict):
         If set to True, then this exclusion is disabled and it does not exclude any log entries.
         """
         return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
+class ProjectBucketConfigCmekSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+        elif key == "kmsKeyVersionName":
+            suggest = "kms_key_version_name"
+        elif key == "serviceAccountId":
+            suggest = "service_account_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProjectBucketConfigCmekSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProjectBucketConfigCmekSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProjectBucketConfigCmekSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_name: str,
+                 kms_key_version_name: Optional[str] = None,
+                 name: Optional[str] = None,
+                 service_account_id: Optional[str] = None):
+        """
+        :param str kms_key_name: The resource name for the configured Cloud KMS key.
+               KMS key name format:
+               `'projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]'`
+               To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
+               The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
+               See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+        :param str kms_key_version_name: The CryptoKeyVersion resource name for the configured Cloud KMS key.
+               KMS key name format:
+               `'projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]'`
+               For example:
+               "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+               This is a read-only field used to convey the specific configured CryptoKeyVersion of kms_key that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
+        :param str name: The resource name of the CMEK settings.
+        :param str service_account_id: The service account associated with a project for which CMEK will apply.
+               Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
+               See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+        if kms_key_version_name is not None:
+            pulumi.set(__self__, "kms_key_version_name", kms_key_version_name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if service_account_id is not None:
+            pulumi.set(__self__, "service_account_id", service_account_id)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        """
+        The resource name for the configured Cloud KMS key.
+        KMS key name format:
+        `'projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]'`
+        To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
+        The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
+        See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @property
+    @pulumi.getter(name="kmsKeyVersionName")
+    def kms_key_version_name(self) -> Optional[str]:
+        """
+        The CryptoKeyVersion resource name for the configured Cloud KMS key.
+        KMS key name format:
+        `'projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]'`
+        For example:
+        "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+        This is a read-only field used to convey the specific configured CryptoKeyVersion of kms_key that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
+        """
+        return pulumi.get(self, "kms_key_version_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The resource name of the CMEK settings.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="serviceAccountId")
+    def service_account_id(self) -> Optional[str]:
+        """
+        The service account associated with a project for which CMEK will apply.
+        Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
+        See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+        """
+        return pulumi.get(self, "service_account_id")
 
 
 @pulumi.output_type

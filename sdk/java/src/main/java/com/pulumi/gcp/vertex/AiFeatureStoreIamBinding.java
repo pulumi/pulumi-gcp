@@ -17,74 +17,29 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A collection of DataItems and Annotations on them.
- * 
- * To get more information about Featurestore, see:
- * 
- * * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/vertex-ai/docs)
- * 
- * ## Example Usage
- * ### Vertex Ai Featurestore
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.vertex.AiFeatureStore;
- * import com.pulumi.gcp.vertex.AiFeatureStoreArgs;
- * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEncryptionSpecArgs;
- * import com.pulumi.gcp.vertex.inputs.AiFeatureStoreOnlineServingConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var featurestore = new AiFeatureStore(&#34;featurestore&#34;, AiFeatureStoreArgs.builder()        
- *             .encryptionSpec(AiFeatureStoreEncryptionSpecArgs.builder()
- *                 .kmsKeyName(&#34;kms-name&#34;)
- *                 .build())
- *             .forceDestroy(true)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *             .onlineServingConfig(AiFeatureStoreOnlineServingConfigArgs.builder()
- *                 .fixedNodeCount(2)
- *                 .build())
- *             .region(&#34;us-central1&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Import
  * 
- * Featurestore can be imported using any of these accepted formats
+ * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms* projects/{{project}}/locations/{{region}}/featurestores/{{name}} * {{project}}/{{region}}/{{name}} * {{region}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Vertex AI featurestore IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:vertex/aiFeatureStoreIamBinding:AiFeatureStoreIamBinding default projects/{{project}}/locations/{{region}}/featurestores/{{name}}
+ *  $ pulumi import gcp:vertex/aiFeatureStoreIamBinding:AiFeatureStoreIamBinding editor &#34;projects/{{project}}/locations/{{region}}/featurestores/{{featurestore}} roles/viewer user:jane@example.com&#34;
  * ```
  * 
- * ```sh
- *  $ pulumi import gcp:vertex/aiFeatureStoreIamBinding:AiFeatureStoreIamBinding default {{project}}/{{region}}/{{name}}
- * ```
+ *  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:vertex/aiFeatureStoreIamBinding:AiFeatureStoreIamBinding default {{region}}/{{name}}
+ *  $ pulumi import gcp:vertex/aiFeatureStoreIamBinding:AiFeatureStoreIamBinding editor &#34;projects/{{project}}/locations/{{region}}/featurestores/{{featurestore}} roles/viewer&#34;
  * ```
  * 
+ *  IAM policy imports use the identifier of the resource in question, e.g.
+ * 
  * ```sh
- *  $ pulumi import gcp:vertex/aiFeatureStoreIamBinding:AiFeatureStoreIamBinding default {{name}}
+ *  $ pulumi import gcp:vertex/aiFeatureStoreIamBinding:AiFeatureStoreIamBinding editor projects/{{project}}/locations/{{region}}/featurestores/{{featurestore}}
  * ```
+ * 
+ *  -&gt; **Custom Roles**If you&#39;re importing a IAM resource with a custom role, make sure to use the
+ * 
+ * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
 @ResourceType(type="gcp:vertex/aiFeatureStoreIamBinding:AiFeatureStoreIamBinding")
@@ -95,15 +50,31 @@ public class AiFeatureStoreIamBinding extends com.pulumi.resources.CustomResourc
     public Output<Optional<AiFeatureStoreIamBindingCondition>> condition() {
         return Codegen.optional(this.condition);
     }
+    /**
+     * (Computed) The etag of the IAM policy.
+     * 
+     */
     @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
+    /**
+     * @return (Computed) The etag of the IAM policy.
+     * 
+     */
     public Output<String> etag() {
         return this.etag;
     }
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="featurestore", type=String.class, parameters={})
     private Output<String> featurestore;
 
+    /**
+     * @return Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> featurestore() {
         return this.featurestore;
     }
@@ -115,7 +86,7 @@ public class AiFeatureStoreIamBinding extends com.pulumi.resources.CustomResourc
     }
     /**
      * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      * 
      */
     @Export(name="project", type=String.class, parameters={})
@@ -123,29 +94,45 @@ public class AiFeatureStoreIamBinding extends com.pulumi.resources.CustomResourc
 
     /**
      * @return The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The region of the dataset. eg us-central1
+     * The region of the dataset. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+     * region is specified, it is taken from the provider configuration.
      * 
      */
     @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
-     * @return The region of the dataset. eg us-central1
+     * @return The region of the dataset. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
+     * the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
+     * region is specified, it is taken from the provider configuration.
      * 
      */
     public Output<String> region() {
         return this.region;
     }
+    /**
+     * The role that should be applied. Only one
+     * `gcp.vertex.AiFeatureStoreIamBinding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     * 
+     */
     @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
+    /**
+     * @return The role that should be applied. Only one
+     * `gcp.vertex.AiFeatureStoreIamBinding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     * 
+     */
     public Output<String> role() {
         return this.role;
     }

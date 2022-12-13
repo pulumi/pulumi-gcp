@@ -14,13 +14,21 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     public sealed class FeatureMembershipMesh
     {
         /// <summary>
+        /// Whether to automatically manage Service Mesh Control Plane. Can either be `AUTOMATIC` or `MANUAL`.
+        /// </summary>
+        public readonly string? ControlPlane;
+        /// <summary>
         /// Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
         /// </summary>
         public readonly string? Management;
 
         [OutputConstructor]
-        private FeatureMembershipMesh(string? management)
+        private FeatureMembershipMesh(
+            string? controlPlane,
+
+            string? management)
         {
+            ControlPlane = controlPlane;
             Management = management;
         }
     }

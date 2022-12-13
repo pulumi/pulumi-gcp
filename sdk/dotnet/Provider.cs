@@ -117,6 +117,9 @@ namespace Pulumi.Gcp
         [Output("cloudRunCustomEndpoint")]
         public Output<string?> CloudRunCustomEndpoint { get; private set; } = null!;
 
+        [Output("cloudRunV2CustomEndpoint")]
+        public Output<string?> CloudRunV2CustomEndpoint { get; private set; } = null!;
+
         [Output("cloudSchedulerCustomEndpoint")]
         public Output<string?> CloudSchedulerCustomEndpoint { get; private set; } = null!;
 
@@ -210,6 +213,9 @@ namespace Pulumi.Gcp
         [Output("firebaseHostingCustomEndpoint")]
         public Output<string?> FirebaseHostingCustomEndpoint { get; private set; } = null!;
 
+        [Output("firebaseStorageCustomEndpoint")]
+        public Output<string?> FirebaseStorageCustomEndpoint { get; private set; } = null!;
+
         [Output("firebaserulesCustomEndpoint")]
         public Output<string?> FirebaserulesCustomEndpoint { get; private set; } = null!;
 
@@ -218,6 +224,9 @@ namespace Pulumi.Gcp
 
         [Output("gameServicesCustomEndpoint")]
         public Output<string?> GameServicesCustomEndpoint { get; private set; } = null!;
+
+        [Output("gkeBackupCustomEndpoint")]
+        public Output<string?> GkeBackupCustomEndpoint { get; private set; } = null!;
 
         [Output("gkeHubCustomEndpoint")]
         public Output<string?> GkeHubCustomEndpoint { get; private set; } = null!;
@@ -514,6 +523,9 @@ namespace Pulumi.Gcp
         [Input("cloudRunCustomEndpoint")]
         public Input<string>? CloudRunCustomEndpoint { get; set; }
 
+        [Input("cloudRunV2CustomEndpoint")]
+        public Input<string>? CloudRunV2CustomEndpoint { get; set; }
+
         [Input("cloudSchedulerCustomEndpoint")]
         public Input<string>? CloudSchedulerCustomEndpoint { get; set; }
 
@@ -610,6 +622,9 @@ namespace Pulumi.Gcp
         [Input("firebaseHostingCustomEndpoint")]
         public Input<string>? FirebaseHostingCustomEndpoint { get; set; }
 
+        [Input("firebaseStorageCustomEndpoint")]
+        public Input<string>? FirebaseStorageCustomEndpoint { get; set; }
+
         [Input("firebaserulesCustomEndpoint")]
         public Input<string>? FirebaserulesCustomEndpoint { get; set; }
 
@@ -618,6 +633,9 @@ namespace Pulumi.Gcp
 
         [Input("gameServicesCustomEndpoint")]
         public Input<string>? GameServicesCustomEndpoint { get; set; }
+
+        [Input("gkeBackupCustomEndpoint")]
+        public Input<string>? GkeBackupCustomEndpoint { get; set; }
 
         [Input("gkeHubCustomEndpoint")]
         public Input<string>? GkeHubCustomEndpoint { get; set; }

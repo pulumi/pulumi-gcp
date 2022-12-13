@@ -787,7 +787,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="masterAuthorizedNetworksConfig", type=ClusterMasterAuthorizedNetworksConfig.class, parameters={})
-    private Output</* @Nullable */ ClusterMasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfig;
+    private Output<ClusterMasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfig;
 
     /**
      * @return The desired
@@ -797,8 +797,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    public Output<Optional<ClusterMasterAuthorizedNetworksConfig>> masterAuthorizedNetworksConfig() {
-        return Codegen.optional(this.masterAuthorizedNetworksConfig);
+    public Output<ClusterMasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfig() {
+        return this.masterAuthorizedNetworksConfig;
     }
     /**
      * The current version of the master in the cluster. This may
@@ -1235,14 +1235,16 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.removeDefaultNodePool);
     }
     /**
-     * The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+     * The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+     * for how these labels are applied to clusters, node pools and nodes.
      * 
      */
     @Export(name="resourceLabels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> resourceLabels;
 
     /**
-     * @return The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+     * @return The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+     * for how these labels are applied to clusters, node pools and nodes.
      * 
      */
     public Output<Optional<Map<String,String>>> resourceLabels() {

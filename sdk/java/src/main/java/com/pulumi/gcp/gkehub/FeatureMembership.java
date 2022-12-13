@@ -191,6 +191,7 @@ import javax.annotation.Nullable;
  *             .membership(membership.membershipId())
  *             .mesh(FeatureMembershipMeshArgs.builder()
  *                 .management(&#34;MANAGEMENT_AUTOMATIC&#34;)
+ *                 .controlPlane(&#34;AUTOMATIC&#34;)
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)

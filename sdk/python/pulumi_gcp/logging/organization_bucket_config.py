@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['OrganizationBucketConfigArgs', 'OrganizationBucketConfig']
 
@@ -17,6 +19,7 @@ class OrganizationBucketConfigArgs:
                  bucket_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  organization: pulumi.Input[str],
+                 cmek_settings: Optional[pulumi.Input['OrganizationBucketConfigCmekSettingsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None):
         """
@@ -24,12 +27,17 @@ class OrganizationBucketConfigArgs:
         :param pulumi.Input[str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
         :param pulumi.Input[str] location: The location of the bucket. The supported locations are: "global" "us-central1"
         :param pulumi.Input[str] organization: The parent resource that contains the logging bucket.
+        :param pulumi.Input['OrganizationBucketConfigCmekSettingsArgs'] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+               key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+               updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[str] description: Describes this bucket.
         :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
         """
         pulumi.set(__self__, "bucket_id", bucket_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "organization", organization)
+        if cmek_settings is not None:
+            pulumi.set(__self__, "cmek_settings", cmek_settings)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if retention_days is not None:
@@ -72,6 +80,20 @@ class OrganizationBucketConfigArgs:
         pulumi.set(self, "organization", value)
 
     @property
+    @pulumi.getter(name="cmekSettings")
+    def cmek_settings(self) -> Optional[pulumi.Input['OrganizationBucketConfigCmekSettingsArgs']]:
+        """
+        The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+        key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+        updating the log bucket. Changing the KMS key is allowed.
+        """
+        return pulumi.get(self, "cmek_settings")
+
+    @cmek_settings.setter
+    def cmek_settings(self, value: Optional[pulumi.Input['OrganizationBucketConfigCmekSettingsArgs']]):
+        pulumi.set(self, "cmek_settings", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -100,6 +122,7 @@ class OrganizationBucketConfigArgs:
 class _OrganizationBucketConfigState:
     def __init__(__self__, *,
                  bucket_id: Optional[pulumi.Input[str]] = None,
+                 cmek_settings: Optional[pulumi.Input['OrganizationBucketConfigCmekSettingsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  lifecycle_state: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -109,6 +132,9 @@ class _OrganizationBucketConfigState:
         """
         Input properties used for looking up and filtering OrganizationBucketConfig resources.
         :param pulumi.Input[str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
+        :param pulumi.Input['OrganizationBucketConfigCmekSettingsArgs'] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+               key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+               updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[str] description: Describes this bucket.
         :param pulumi.Input[str] lifecycle_state: The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
         :param pulumi.Input[str] location: The location of the bucket. The supported locations are: "global" "us-central1"
@@ -118,6 +144,8 @@ class _OrganizationBucketConfigState:
         """
         if bucket_id is not None:
             pulumi.set(__self__, "bucket_id", bucket_id)
+        if cmek_settings is not None:
+            pulumi.set(__self__, "cmek_settings", cmek_settings)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if lifecycle_state is not None:
@@ -142,6 +170,20 @@ class _OrganizationBucketConfigState:
     @bucket_id.setter
     def bucket_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bucket_id", value)
+
+    @property
+    @pulumi.getter(name="cmekSettings")
+    def cmek_settings(self) -> Optional[pulumi.Input['OrganizationBucketConfigCmekSettingsArgs']]:
+        """
+        The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+        key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+        updating the log bucket. Changing the KMS key is allowed.
+        """
+        return pulumi.get(self, "cmek_settings")
+
+    @cmek_settings.setter
+    def cmek_settings(self, value: Optional[pulumi.Input['OrganizationBucketConfigCmekSettingsArgs']]):
+        pulumi.set(self, "cmek_settings", value)
 
     @property
     @pulumi.getter
@@ -222,6 +264,7 @@ class OrganizationBucketConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_id: Optional[pulumi.Input[str]] = None,
+                 cmek_settings: Optional[pulumi.Input[pulumi.InputType['OrganizationBucketConfigCmekSettingsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  organization: Optional[pulumi.Input[str]] = None,
@@ -259,6 +302,9 @@ class OrganizationBucketConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
+        :param pulumi.Input[pulumi.InputType['OrganizationBucketConfigCmekSettingsArgs']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+               key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+               updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[str] description: Describes this bucket.
         :param pulumi.Input[str] location: The location of the bucket. The supported locations are: "global" "us-central1"
         :param pulumi.Input[str] organization: The parent resource that contains the logging bucket.
@@ -315,6 +361,7 @@ class OrganizationBucketConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_id: Optional[pulumi.Input[str]] = None,
+                 cmek_settings: Optional[pulumi.Input[pulumi.InputType['OrganizationBucketConfigCmekSettingsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  organization: Optional[pulumi.Input[str]] = None,
@@ -331,6 +378,7 @@ class OrganizationBucketConfig(pulumi.CustomResource):
             if bucket_id is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket_id'")
             __props__.__dict__["bucket_id"] = bucket_id
+            __props__.__dict__["cmek_settings"] = cmek_settings
             __props__.__dict__["description"] = description
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -352,6 +400,7 @@ class OrganizationBucketConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket_id: Optional[pulumi.Input[str]] = None,
+            cmek_settings: Optional[pulumi.Input[pulumi.InputType['OrganizationBucketConfigCmekSettingsArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             lifecycle_state: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -366,6 +415,9 @@ class OrganizationBucketConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
+        :param pulumi.Input[pulumi.InputType['OrganizationBucketConfigCmekSettingsArgs']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+               key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+               updating the log bucket. Changing the KMS key is allowed.
         :param pulumi.Input[str] description: Describes this bucket.
         :param pulumi.Input[str] lifecycle_state: The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
         :param pulumi.Input[str] location: The location of the bucket. The supported locations are: "global" "us-central1"
@@ -378,6 +430,7 @@ class OrganizationBucketConfig(pulumi.CustomResource):
         __props__ = _OrganizationBucketConfigState.__new__(_OrganizationBucketConfigState)
 
         __props__.__dict__["bucket_id"] = bucket_id
+        __props__.__dict__["cmek_settings"] = cmek_settings
         __props__.__dict__["description"] = description
         __props__.__dict__["lifecycle_state"] = lifecycle_state
         __props__.__dict__["location"] = location
@@ -393,6 +446,16 @@ class OrganizationBucketConfig(pulumi.CustomResource):
         The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
         """
         return pulumi.get(self, "bucket_id")
+
+    @property
+    @pulumi.getter(name="cmekSettings")
+    def cmek_settings(self) -> pulumi.Output[Optional['outputs.OrganizationBucketConfigCmekSettings']]:
+        """
+        The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+        key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+        updating the log bucket. Changing the KMS key is allowed.
+        """
+        return pulumi.get(self, "cmek_settings")
 
     @property
     @pulumi.getter

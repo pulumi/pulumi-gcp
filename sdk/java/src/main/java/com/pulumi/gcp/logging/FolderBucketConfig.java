@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.logging.FolderBucketConfigArgs;
 import com.pulumi.gcp.logging.inputs.FolderBucketConfigState;
+import com.pulumi.gcp.logging.outputs.FolderBucketConfigCmekSettings;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
@@ -86,6 +87,24 @@ public class FolderBucketConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<String> bucketId() {
         return this.bucketId;
+    }
+    /**
+     * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+     * key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+     * updating the log bucket. Changing the KMS key is allowed.
+     * 
+     */
+    @Export(name="cmekSettings", type=FolderBucketConfigCmekSettings.class, parameters={})
+    private Output</* @Nullable */ FolderBucketConfigCmekSettings> cmekSettings;
+
+    /**
+     * @return The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK
+     * key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by
+     * updating the log bucket. Changing the KMS key is allowed.
+     * 
+     */
+    public Output<Optional<FolderBucketConfigCmekSettings>> cmekSettings() {
+        return Codegen.optional(this.cmekSettings);
     }
     /**
      * Describes this bucket.

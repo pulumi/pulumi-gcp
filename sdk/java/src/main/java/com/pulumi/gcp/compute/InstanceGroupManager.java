@@ -275,6 +275,30 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
         return this.instanceGroup;
     }
     /**
+     * Pagination behavior of the `listManagedInstances` API
+     * method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+     * If `PAGELESS` (default), Pagination is disabled for the group&#39;s `listManagedInstances` API method.
+     * `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+     * response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+     * respected.
+     * 
+     */
+    @Export(name="listManagedInstancesResults", type=String.class, parameters={})
+    private Output</* @Nullable */ String> listManagedInstancesResults;
+
+    /**
+     * @return Pagination behavior of the `listManagedInstances` API
+     * method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
+     * If `PAGELESS` (default), Pagination is disabled for the group&#39;s `listManagedInstances` API method.
+     * `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
+     * response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
+     * respected.
+     * 
+     */
+    public Output<Optional<String>> listManagedInstancesResults() {
+        return Codegen.optional(this.listManagedInstancesResults);
+    }
+    /**
      * - Version name.
      * 
      */

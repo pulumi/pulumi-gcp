@@ -18,6 +18,14 @@ public final class ClusterNodePoolNetworkConfig {
      */
     private @Nullable Boolean createPodRange;
     /**
+     * @return Enables the private cluster feature,
+     * creating a private endpoint on the cluster. In a private cluster, nodes only
+     * have RFC 1918 private addresses and communicate with the master&#39;s private
+     * endpoint via private networking.
+     * 
+     */
+    private @Nullable Boolean enablePrivateNodes;
+    /**
      * @return The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
      * 
      */
@@ -26,7 +34,7 @@ public final class ClusterNodePoolNetworkConfig {
      * @return The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
      * 
      */
-    private String podRange;
+    private @Nullable String podRange;
 
     private ClusterNodePoolNetworkConfig() {}
     /**
@@ -35,6 +43,16 @@ public final class ClusterNodePoolNetworkConfig {
      */
     public Optional<Boolean> createPodRange() {
         return Optional.ofNullable(this.createPodRange);
+    }
+    /**
+     * @return Enables the private cluster feature,
+     * creating a private endpoint on the cluster. In a private cluster, nodes only
+     * have RFC 1918 private addresses and communicate with the master&#39;s private
+     * endpoint via private networking.
+     * 
+     */
+    public Optional<Boolean> enablePrivateNodes() {
+        return Optional.ofNullable(this.enablePrivateNodes);
     }
     /**
      * @return The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
@@ -47,8 +65,8 @@ public final class ClusterNodePoolNetworkConfig {
      * @return The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
      * 
      */
-    public String podRange() {
-        return this.podRange;
+    public Optional<String> podRange() {
+        return Optional.ofNullable(this.podRange);
     }
 
     public static Builder builder() {
@@ -61,12 +79,14 @@ public final class ClusterNodePoolNetworkConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean createPodRange;
+        private @Nullable Boolean enablePrivateNodes;
         private @Nullable String podIpv4CidrBlock;
-        private String podRange;
+        private @Nullable String podRange;
         public Builder() {}
         public Builder(ClusterNodePoolNetworkConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createPodRange = defaults.createPodRange;
+    	      this.enablePrivateNodes = defaults.enablePrivateNodes;
     	      this.podIpv4CidrBlock = defaults.podIpv4CidrBlock;
     	      this.podRange = defaults.podRange;
         }
@@ -77,18 +97,24 @@ public final class ClusterNodePoolNetworkConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder enablePrivateNodes(@Nullable Boolean enablePrivateNodes) {
+            this.enablePrivateNodes = enablePrivateNodes;
+            return this;
+        }
+        @CustomType.Setter
         public Builder podIpv4CidrBlock(@Nullable String podIpv4CidrBlock) {
             this.podIpv4CidrBlock = podIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
-        public Builder podRange(String podRange) {
-            this.podRange = Objects.requireNonNull(podRange);
+        public Builder podRange(@Nullable String podRange) {
+            this.podRange = podRange;
             return this;
         }
         public ClusterNodePoolNetworkConfig build() {
             final var o = new ClusterNodePoolNetworkConfig();
             o.createPodRange = createPodRange;
+            o.enablePrivateNodes = enablePrivateNodes;
             o.podIpv4CidrBlock = podIpv4CidrBlock;
             o.podRange = podRange;
             return o;

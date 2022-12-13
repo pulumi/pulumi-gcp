@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.ClusterMasterAuthorizedNetworksConfigCidrBlockArgs;
+import java.lang.Boolean;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -33,10 +34,28 @@ public final class ClusterMasterAuthorizedNetworksConfigArgs extends com.pulumi.
         return Optional.ofNullable(this.cidrBlocks);
     }
 
+    /**
+     * Whether Kubernetes master is
+     * accessible via Google Compute Engine Public IPs.
+     * 
+     */
+    @Import(name="gcpPublicCidrsAccessEnabled")
+    private @Nullable Output<Boolean> gcpPublicCidrsAccessEnabled;
+
+    /**
+     * @return Whether Kubernetes master is
+     * accessible via Google Compute Engine Public IPs.
+     * 
+     */
+    public Optional<Output<Boolean>> gcpPublicCidrsAccessEnabled() {
+        return Optional.ofNullable(this.gcpPublicCidrsAccessEnabled);
+    }
+
     private ClusterMasterAuthorizedNetworksConfigArgs() {}
 
     private ClusterMasterAuthorizedNetworksConfigArgs(ClusterMasterAuthorizedNetworksConfigArgs $) {
         this.cidrBlocks = $.cidrBlocks;
+        this.gcpPublicCidrsAccessEnabled = $.gcpPublicCidrsAccessEnabled;
     }
 
     public static Builder builder() {
@@ -89,6 +108,29 @@ public final class ClusterMasterAuthorizedNetworksConfigArgs extends com.pulumi.
          */
         public Builder cidrBlocks(ClusterMasterAuthorizedNetworksConfigCidrBlockArgs... cidrBlocks) {
             return cidrBlocks(List.of(cidrBlocks));
+        }
+
+        /**
+         * @param gcpPublicCidrsAccessEnabled Whether Kubernetes master is
+         * accessible via Google Compute Engine Public IPs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcpPublicCidrsAccessEnabled(@Nullable Output<Boolean> gcpPublicCidrsAccessEnabled) {
+            $.gcpPublicCidrsAccessEnabled = gcpPublicCidrsAccessEnabled;
+            return this;
+        }
+
+        /**
+         * @param gcpPublicCidrsAccessEnabled Whether Kubernetes master is
+         * accessible via Google Compute Engine Public IPs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcpPublicCidrsAccessEnabled(Boolean gcpPublicCidrsAccessEnabled) {
+            return gcpPublicCidrsAccessEnabled(Output.of(gcpPublicCidrsAccessEnabled));
         }
 
         public ClusterMasterAuthorizedNetworksConfigArgs build() {

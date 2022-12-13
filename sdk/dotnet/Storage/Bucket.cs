@@ -93,6 +93,17 @@ namespace Pulumi.Gcp.Storage
     ///                     Age = 3,
     ///                 },
     ///             },
+    ///             new Gcp.Storage.Inputs.BucketLifecycleRuleArgs
+    ///             {
+    ///                 Action = new Gcp.Storage.Inputs.BucketLifecycleRuleActionArgs
+    ///                 {
+    ///                     Type = "AbortIncompleteMultipartUpload",
+    ///                 },
+    ///                 Condition = new Gcp.Storage.Inputs.BucketLifecycleRuleConditionArgs
+    ///                 {
+    ///                     Age = 1,
+    ///                 },
+    ///             },
     ///         },
     ///         Location = "US",
     ///     });
@@ -137,6 +148,12 @@ namespace Pulumi.Gcp.Storage
     [GcpResourceType("gcp:storage/bucket:Bucket")]
     public partial class Bucket : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
+        /// </summary>
+        [Output("autoclass")]
+        public Output<Outputs.BucketAutoclass?> Autoclass { get; private set; } = null!;
+
         /// <summary>
         /// The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         /// </summary>
@@ -258,7 +275,7 @@ namespace Pulumi.Gcp.Storage
         /// Configuration if the bucket acts as a website. Structure is documented below.
         /// </summary>
         [Output("website")]
-        public Output<Outputs.BucketWebsite?> Website { get; private set; } = null!;
+        public Output<Outputs.BucketWebsite> Website { get; private set; } = null!;
 
 
         /// <summary>
@@ -306,6 +323,12 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class BucketArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
+        /// </summary>
+        [Input("autoclass")]
+        public Input<Inputs.BucketAutoclassArgs>? Autoclass { get; set; }
+
         [Input("cors")]
         private InputList<Inputs.BucketCorArgs>? _cors;
 
@@ -443,6 +466,12 @@ namespace Pulumi.Gcp.Storage
 
     public sealed class BucketState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The bucket's [Autoclass](https://cloud.google.com/storage/docs/autoclass) configuration.  Structure is documented below.
+        /// </summary>
+        [Input("autoclass")]
+        public Input<Inputs.BucketAutoclassGetArgs>? Autoclass { get; set; }
+
         [Input("cors")]
         private InputList<Inputs.BucketCorGetArgs>? _cors;
 

@@ -13,6 +13,11 @@ __all__ = [
     'EdgeCacheKeysetPublicKeyArgs',
     'EdgeCacheKeysetValidationSharedKeyArgs',
     'EdgeCacheOriginAwsV4AuthenticationArgs',
+    'EdgeCacheOriginOriginOverrideActionArgs',
+    'EdgeCacheOriginOriginOverrideActionHeaderActionArgs',
+    'EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs',
+    'EdgeCacheOriginOriginOverrideActionUrlRewriteArgs',
+    'EdgeCacheOriginOriginRedirectArgs',
     'EdgeCacheOriginTimeoutArgs',
     'EdgeCacheServiceLogConfigArgs',
     'EdgeCacheServiceRoutingArgs',
@@ -183,6 +188,201 @@ class EdgeCacheOriginAwsV4AuthenticationArgs:
     @secret_access_key_version.setter
     def secret_access_key_version(self, value: pulumi.Input[str]):
         pulumi.set(self, "secret_access_key_version", value)
+
+
+@pulumi.input_type
+class EdgeCacheOriginOriginOverrideActionArgs:
+    def __init__(__self__, *,
+                 header_action: Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionArgs']] = None,
+                 url_rewrite: Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionUrlRewriteArgs']] = None):
+        """
+        :param pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionArgs'] header_action: The header actions, including adding and removing
+               headers, for request handled by this origin.
+               Structure is documented below.
+        :param pulumi.Input['EdgeCacheOriginOriginOverrideActionUrlRewriteArgs'] url_rewrite: The URL rewrite configuration for request that are
+               handled by this origin.
+               Structure is documented below.
+        """
+        if header_action is not None:
+            pulumi.set(__self__, "header_action", header_action)
+        if url_rewrite is not None:
+            pulumi.set(__self__, "url_rewrite", url_rewrite)
+
+    @property
+    @pulumi.getter(name="headerAction")
+    def header_action(self) -> Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionArgs']]:
+        """
+        The header actions, including adding and removing
+        headers, for request handled by this origin.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "header_action")
+
+    @header_action.setter
+    def header_action(self, value: Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionArgs']]):
+        pulumi.set(self, "header_action", value)
+
+    @property
+    @pulumi.getter(name="urlRewrite")
+    def url_rewrite(self) -> Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionUrlRewriteArgs']]:
+        """
+        The URL rewrite configuration for request that are
+        handled by this origin.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "url_rewrite")
+
+    @url_rewrite.setter
+    def url_rewrite(self, value: Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionUrlRewriteArgs']]):
+        pulumi.set(self, "url_rewrite", value)
+
+
+@pulumi.input_type
+class EdgeCacheOriginOriginOverrideActionHeaderActionArgs:
+    def __init__(__self__, *,
+                 request_headers_to_adds: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs']]] request_headers_to_adds: Describes a header to add.
+               You may add a maximum of 5 request headers.
+               Structure is documented below.
+        """
+        if request_headers_to_adds is not None:
+            pulumi.set(__self__, "request_headers_to_adds", request_headers_to_adds)
+
+    @property
+    @pulumi.getter(name="requestHeadersToAdds")
+    def request_headers_to_adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs']]]]:
+        """
+        Describes a header to add.
+        You may add a maximum of 5 request headers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "request_headers_to_adds")
+
+    @request_headers_to_adds.setter
+    def request_headers_to_adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs']]]]):
+        pulumi.set(self, "request_headers_to_adds", value)
+
+
+@pulumi.input_type
+class EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs:
+    def __init__(__self__, *,
+                 header_name: pulumi.Input[str],
+                 header_value: pulumi.Input[str],
+                 replace: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] header_name: The name of the header to add.
+        :param pulumi.Input[str] header_value: The value of the header to add.
+        :param pulumi.Input[bool] replace: Whether to replace all existing headers with the same name.
+               By default, added header values are appended
+               to the response or request headers with the
+               same field names. The added values are
+               separated by commas.
+               To overwrite existing values, set `replace` to `true`.
+        """
+        pulumi.set(__self__, "header_name", header_name)
+        pulumi.set(__self__, "header_value", header_value)
+        if replace is not None:
+            pulumi.set(__self__, "replace", replace)
+
+    @property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> pulumi.Input[str]:
+        """
+        The name of the header to add.
+        """
+        return pulumi.get(self, "header_name")
+
+    @header_name.setter
+    def header_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "header_name", value)
+
+    @property
+    @pulumi.getter(name="headerValue")
+    def header_value(self) -> pulumi.Input[str]:
+        """
+        The value of the header to add.
+        """
+        return pulumi.get(self, "header_value")
+
+    @header_value.setter
+    def header_value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "header_value", value)
+
+    @property
+    @pulumi.getter
+    def replace(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to replace all existing headers with the same name.
+        By default, added header values are appended
+        to the response or request headers with the
+        same field names. The added values are
+        separated by commas.
+        To overwrite existing values, set `replace` to `true`.
+        """
+        return pulumi.get(self, "replace")
+
+    @replace.setter
+    def replace(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "replace", value)
+
+
+@pulumi.input_type
+class EdgeCacheOriginOriginOverrideActionUrlRewriteArgs:
+    def __init__(__self__, *,
+                 host_rewrite: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] host_rewrite: Prior to forwarding the request to the selected
+               origin, the request's host header is replaced with
+               contents of the hostRewrite.
+               This value must be between 1 and 255 characters.
+        """
+        if host_rewrite is not None:
+            pulumi.set(__self__, "host_rewrite", host_rewrite)
+
+    @property
+    @pulumi.getter(name="hostRewrite")
+    def host_rewrite(self) -> Optional[pulumi.Input[str]]:
+        """
+        Prior to forwarding the request to the selected
+        origin, the request's host header is replaced with
+        contents of the hostRewrite.
+        This value must be between 1 and 255 characters.
+        """
+        return pulumi.get(self, "host_rewrite")
+
+    @host_rewrite.setter
+    def host_rewrite(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host_rewrite", value)
+
+
+@pulumi.input_type
+class EdgeCacheOriginOriginRedirectArgs:
+    def __init__(__self__, *,
+                 redirect_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redirect_conditions: The set of redirect response codes that the CDN
+               follows. Values of
+               [RedirectConditions](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins#redirectconditions)
+               are accepted.
+        """
+        if redirect_conditions is not None:
+            pulumi.set(__self__, "redirect_conditions", redirect_conditions)
+
+    @property
+    @pulumi.getter(name="redirectConditions")
+    def redirect_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The set of redirect response codes that the CDN
+        follows. Values of
+        [RedirectConditions](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheOrigins#redirectconditions)
+        are accepted.
+        """
+        return pulumi.get(self, "redirect_conditions")
+
+    @redirect_conditions.setter
+    def redirect_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "redirect_conditions", value)
 
 
 @pulumi.input_type

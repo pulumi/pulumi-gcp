@@ -97,11 +97,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := certificateauthority.NewAuthority(ctx, "root-ca", &certificateauthority.AuthorityArgs{
-//				Pool:                               pulumi.String("ca-pool"),
-//				CertificateAuthorityId:             pulumi.String("my-certificate-authority-root"),
-//				Location:                           pulumi.String("us-central1"),
-//				DeletionProtection:                 pulumi.Bool(false),
-//				IgnoreActiveCertificatesOnDeletion: pulumi.Bool(true),
+//				Pool:                   pulumi.String("ca-pool"),
+//				CertificateAuthorityId: pulumi.String("my-certificate-authority-root"),
+//				Location:               pulumi.String("us-central1"),
 //				Config: &certificateauthority.AuthorityConfigArgs{
 //					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
 //						Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
@@ -132,6 +130,9 @@ import (
 //				KeySpec: &certificateauthority.AuthorityKeySpecArgs{
 //					Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
 //				},
+//				DeletionProtection:                 pulumi.Bool(false),
+//				SkipGracePeriod:                    pulumi.Bool(true),
+//				IgnoreActiveCertificatesOnDeletion: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

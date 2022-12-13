@@ -360,7 +360,7 @@ namespace Pulumi.Gcp.Container
         /// Structure is documented below.
         /// </summary>
         [Output("masterAuthorizedNetworksConfig")]
-        public Output<Outputs.ClusterMasterAuthorizedNetworksConfig?> MasterAuthorizedNetworksConfig { get; private set; } = null!;
+        public Output<Outputs.ClusterMasterAuthorizedNetworksConfig> MasterAuthorizedNetworksConfig { get; private set; } = null!;
 
         /// <summary>
         /// The current version of the master in the cluster. This may
@@ -558,7 +558,8 @@ namespace Pulumi.Gcp.Container
         public Output<bool?> RemoveDefaultNodePool { get; private set; } = null!;
 
         /// <summary>
-        /// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+        /// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+        /// for how these labels are applied to clusters, node pools and nodes.
         /// </summary>
         [Output("resourceLabels")]
         public Output<ImmutableDictionary<string, string>?> ResourceLabels { get; private set; } = null!;
@@ -1115,7 +1116,8 @@ namespace Pulumi.Gcp.Container
         private InputMap<string>? _resourceLabels;
 
         /// <summary>
-        /// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+        /// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+        /// for how these labels are applied to clusters, node pools and nodes.
         /// </summary>
         public InputMap<string> ResourceLabels
         {
@@ -1637,7 +1639,8 @@ namespace Pulumi.Gcp.Container
         private InputMap<string>? _resourceLabels;
 
         /// <summary>
-        /// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+        /// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+        /// for how these labels are applied to clusters, node pools and nodes.
         /// </summary>
         public InputMap<string> ResourceLabels
         {

@@ -21,6 +21,7 @@ class SecurityPolicyArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 recaptcha_options_config: Optional[pulumi.Input['SecurityPolicyRecaptchaOptionsConfigArgs']] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
@@ -32,6 +33,7 @@ class SecurityPolicyArgs:
         :param pulumi.Input[str] name: The name of the security policy.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input['SecurityPolicyRecaptchaOptionsConfigArgs'] recaptcha_options_config: [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]] rules: The set of rules that belong to this policy. There must always be a default
                rule (rule with priority 2147483647 and match "\\*"). If no rules are provided when creating a
                security policy, a default rule with action "allow" will be added. Structure is documented below.
@@ -47,6 +49,8 @@ class SecurityPolicyArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if recaptcha_options_config is not None:
+            pulumi.set(__self__, "recaptcha_options_config", recaptcha_options_config)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if type is not None:
@@ -115,6 +119,18 @@ class SecurityPolicyArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="recaptchaOptionsConfig")
+    def recaptcha_options_config(self) -> Optional[pulumi.Input['SecurityPolicyRecaptchaOptionsConfigArgs']]:
+        """
+        [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
+        """
+        return pulumi.get(self, "recaptcha_options_config")
+
+    @recaptcha_options_config.setter
+    def recaptcha_options_config(self, value: Optional[pulumi.Input['SecurityPolicyRecaptchaOptionsConfigArgs']]):
+        pulumi.set(self, "recaptcha_options_config", value)
+
+    @property
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]]:
         """
@@ -150,6 +166,7 @@ class _SecurityPolicyState:
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 recaptcha_options_config: Optional[pulumi.Input['SecurityPolicyRecaptchaOptionsConfigArgs']] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
@@ -163,6 +180,7 @@ class _SecurityPolicyState:
         :param pulumi.Input[str] name: The name of the security policy.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input['SecurityPolicyRecaptchaOptionsConfigArgs'] recaptcha_options_config: [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]] rules: The set of rules that belong to this policy. There must always be a default
                rule (rule with priority 2147483647 and match "\\*"). If no rules are provided when creating a
                security policy, a default rule with action "allow" will be added. Structure is documented below.
@@ -181,6 +199,8 @@ class _SecurityPolicyState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if recaptcha_options_config is not None:
+            pulumi.set(__self__, "recaptcha_options_config", recaptcha_options_config)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if self_link is not None:
@@ -263,6 +283,18 @@ class _SecurityPolicyState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="recaptchaOptionsConfig")
+    def recaptcha_options_config(self) -> Optional[pulumi.Input['SecurityPolicyRecaptchaOptionsConfigArgs']]:
+        """
+        [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
+        """
+        return pulumi.get(self, "recaptcha_options_config")
+
+    @recaptcha_options_config.setter
+    def recaptcha_options_config(self, value: Optional[pulumi.Input['SecurityPolicyRecaptchaOptionsConfigArgs']]):
+        pulumi.set(self, "recaptcha_options_config", value)
+
+    @property
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]]:
         """
@@ -311,6 +343,7 @@ class SecurityPolicy(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 recaptcha_options_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyRecaptchaOptionsConfigArgs']]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -318,6 +351,8 @@ class SecurityPolicy(pulumi.CustomResource):
         A Security Policy defines an IP blacklist or whitelist that protects load balanced Google Cloud services by denying or permitting traffic from specified IP ranges. For more information
         see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
         and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
+
+        Security Policy is used by google_compute_backend_service.
 
         ## Example Usage
 
@@ -350,6 +385,71 @@ class SecurityPolicy(pulumi.CustomResource):
             ),
         ])
         ```
+        ### With ReCAPTCHA Configuration Options
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.recaptcha.EnterpriseKey("primary",
+            display_name="display-name",
+            labels={
+                "label-one": "value-one",
+            },
+            project="my-project-name",
+            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
+                integration_type="INVISIBLE",
+                allow_all_domains=True,
+                allowed_domains=["localhost"],
+            ))
+        policy = gcp.compute.SecurityPolicy("policy",
+            description="basic security policy",
+            type="CLOUD_ARMOR",
+            recaptcha_options_config=gcp.compute.SecurityPolicyRecaptchaOptionsConfigArgs(
+                redirect_site_key=primary.name,
+            ))
+        ```
+        ### With Header Actions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy = gcp.compute.SecurityPolicy("policy", rules=[
+            gcp.compute.SecurityPolicyRuleArgs(
+                action="allow",
+                description="default rule",
+                match=gcp.compute.SecurityPolicyRuleMatchArgs(
+                    config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
+                        src_ip_ranges=["*"],
+                    ),
+                    versioned_expr="SRC_IPS_V1",
+                ),
+                priority=2147483647,
+            ),
+            gcp.compute.SecurityPolicyRuleArgs(
+                action="allow",
+                header_action=gcp.compute.SecurityPolicyRuleHeaderActionArgs(
+                    request_headers_to_adds=[
+                        gcp.compute.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs(
+                            header_name="reCAPTCHA-Warning",
+                            header_value="high",
+                        ),
+                        gcp.compute.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs(
+                            header_name="X-Resource",
+                            header_value="test",
+                        ),
+                    ],
+                ),
+                match=gcp.compute.SecurityPolicyRuleMatchArgs(
+                    expr=gcp.compute.SecurityPolicyRuleMatchExprArgs(
+                        expression="request.path.matches(\\"/login.html\\") && token.recaptcha_session.score < 0.2",
+                    ),
+                ),
+                priority=1000,
+            ),
+        ])
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -360,6 +460,7 @@ class SecurityPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the security policy.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['SecurityPolicyRecaptchaOptionsConfigArgs']] recaptcha_options_config: [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]] rules: The set of rules that belong to this policy. There must always be a default
                rule (rule with priority 2147483647 and match "\\*"). If no rules are provided when creating a
                security policy, a default rule with action "allow" will be added. Structure is documented below.
@@ -375,6 +476,8 @@ class SecurityPolicy(pulumi.CustomResource):
         A Security Policy defines an IP blacklist or whitelist that protects load balanced Google Cloud services by denying or permitting traffic from specified IP ranges. For more information
         see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
         and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
+
+        Security Policy is used by google_compute_backend_service.
 
         ## Example Usage
 
@@ -404,6 +507,71 @@ class SecurityPolicy(pulumi.CustomResource):
                     versioned_expr="SRC_IPS_V1",
                 ),
                 priority=2147483647,
+            ),
+        ])
+        ```
+        ### With ReCAPTCHA Configuration Options
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.recaptcha.EnterpriseKey("primary",
+            display_name="display-name",
+            labels={
+                "label-one": "value-one",
+            },
+            project="my-project-name",
+            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
+                integration_type="INVISIBLE",
+                allow_all_domains=True,
+                allowed_domains=["localhost"],
+            ))
+        policy = gcp.compute.SecurityPolicy("policy",
+            description="basic security policy",
+            type="CLOUD_ARMOR",
+            recaptcha_options_config=gcp.compute.SecurityPolicyRecaptchaOptionsConfigArgs(
+                redirect_site_key=primary.name,
+            ))
+        ```
+        ### With Header Actions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy = gcp.compute.SecurityPolicy("policy", rules=[
+            gcp.compute.SecurityPolicyRuleArgs(
+                action="allow",
+                description="default rule",
+                match=gcp.compute.SecurityPolicyRuleMatchArgs(
+                    config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
+                        src_ip_ranges=["*"],
+                    ),
+                    versioned_expr="SRC_IPS_V1",
+                ),
+                priority=2147483647,
+            ),
+            gcp.compute.SecurityPolicyRuleArgs(
+                action="allow",
+                header_action=gcp.compute.SecurityPolicyRuleHeaderActionArgs(
+                    request_headers_to_adds=[
+                        gcp.compute.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs(
+                            header_name="reCAPTCHA-Warning",
+                            header_value="high",
+                        ),
+                        gcp.compute.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs(
+                            header_name="X-Resource",
+                            header_value="test",
+                        ),
+                    ],
+                ),
+                match=gcp.compute.SecurityPolicyRuleMatchArgs(
+                    expr=gcp.compute.SecurityPolicyRuleMatchExprArgs(
+                        expression="request.path.matches(\\"/login.html\\") && token.recaptcha_session.score < 0.2",
+                    ),
+                ),
+                priority=1000,
             ),
         ])
         ```
@@ -428,6 +596,7 @@ class SecurityPolicy(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 recaptcha_options_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyRecaptchaOptionsConfigArgs']]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -444,6 +613,7 @@ class SecurityPolicy(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["recaptcha_options_config"] = recaptcha_options_config
             __props__.__dict__["rules"] = rules
             __props__.__dict__["type"] = type
             __props__.__dict__["fingerprint"] = None
@@ -464,6 +634,7 @@ class SecurityPolicy(pulumi.CustomResource):
             fingerprint: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            recaptcha_options_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyRecaptchaOptionsConfigArgs']]] = None,
             rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'SecurityPolicy':
@@ -482,6 +653,7 @@ class SecurityPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the security policy.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['SecurityPolicyRecaptchaOptionsConfigArgs']] recaptcha_options_config: [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]] rules: The set of rules that belong to this policy. There must always be a default
                rule (rule with priority 2147483647 and match "\\*"). If no rules are provided when creating a
                security policy, a default rule with action "allow" will be added. Structure is documented below.
@@ -498,6 +670,7 @@ class SecurityPolicy(pulumi.CustomResource):
         __props__.__dict__["fingerprint"] = fingerprint
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["recaptcha_options_config"] = recaptcha_options_config
         __props__.__dict__["rules"] = rules
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["type"] = type
@@ -552,6 +725,14 @@ class SecurityPolicy(pulumi.CustomResource):
         is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="recaptchaOptionsConfig")
+    def recaptcha_options_config(self) -> pulumi.Output[Optional['outputs.SecurityPolicyRecaptchaOptionsConfig']]:
+        """
+        [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
+        """
+        return pulumi.get(self, "recaptcha_options_config")
 
     @property
     @pulumi.getter

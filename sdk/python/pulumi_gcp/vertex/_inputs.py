@@ -19,6 +19,8 @@ __all__ = [
     'AiEndpointDeployedModelPrivateEndpointArgs',
     'AiEndpointEncryptionSpecArgs',
     'AiFeatureStoreEncryptionSpecArgs',
+    'AiFeatureStoreEntityTypeIamBindingConditionArgs',
+    'AiFeatureStoreEntityTypeIamMemberConditionArgs',
     'AiFeatureStoreEntityTypeMonitoringConfigArgs',
     'AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs',
     'AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs',
@@ -27,8 +29,16 @@ __all__ = [
     'AiFeatureStoreIamBindingConditionArgs',
     'AiFeatureStoreIamMemberConditionArgs',
     'AiFeatureStoreOnlineServingConfigArgs',
+    'AiIndexDeployedIndexArgs',
+    'AiIndexIndexStatArgs',
+    'AiIndexMetadataArgs',
+    'AiIndexMetadataConfigArgs',
+    'AiIndexMetadataConfigAlgorithmConfigArgs',
+    'AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs',
+    'AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs',
     'AiMetadataStoreEncryptionSpecArgs',
     'AiMetadataStoreStateArgs',
+    'AiTensorboardEncryptionSpecArgs',
 ]
 
 @pulumi.input_type
@@ -465,6 +475,84 @@ class AiFeatureStoreEncryptionSpecArgs:
 
 
 @pulumi.input_type
+class AiFeatureStoreEntityTypeIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class AiFeatureStoreEntityTypeIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
 class AiFeatureStoreEntityTypeMonitoringConfigArgs:
     def __init__(__self__, *,
                  categorical_threshold_config: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs']] = None,
@@ -811,6 +899,331 @@ class AiFeatureStoreOnlineServingConfigArgs:
 
 
 @pulumi.input_type
+class AiIndexDeployedIndexArgs:
+    def __init__(__self__, *,
+                 deployed_index_id: Optional[pulumi.Input[str]] = None,
+                 index_endpoint: Optional[pulumi.Input[str]] = None):
+        if deployed_index_id is not None:
+            pulumi.set(__self__, "deployed_index_id", deployed_index_id)
+        if index_endpoint is not None:
+            pulumi.set(__self__, "index_endpoint", index_endpoint)
+
+    @property
+    @pulumi.getter(name="deployedIndexId")
+    def deployed_index_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "deployed_index_id")
+
+    @deployed_index_id.setter
+    def deployed_index_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deployed_index_id", value)
+
+    @property
+    @pulumi.getter(name="indexEndpoint")
+    def index_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "index_endpoint")
+
+    @index_endpoint.setter
+    def index_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "index_endpoint", value)
+
+
+@pulumi.input_type
+class AiIndexIndexStatArgs:
+    def __init__(__self__, *,
+                 shards_count: Optional[pulumi.Input[int]] = None,
+                 vectors_count: Optional[pulumi.Input[str]] = None):
+        if shards_count is not None:
+            pulumi.set(__self__, "shards_count", shards_count)
+        if vectors_count is not None:
+            pulumi.set(__self__, "vectors_count", vectors_count)
+
+    @property
+    @pulumi.getter(name="shardsCount")
+    def shards_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "shards_count")
+
+    @shards_count.setter
+    def shards_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "shards_count", value)
+
+    @property
+    @pulumi.getter(name="vectorsCount")
+    def vectors_count(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "vectors_count")
+
+    @vectors_count.setter
+    def vectors_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vectors_count", value)
+
+
+@pulumi.input_type
+class AiIndexMetadataArgs:
+    def __init__(__self__, *,
+                 config: Optional[pulumi.Input['AiIndexMetadataConfigArgs']] = None,
+                 contents_delta_uri: Optional[pulumi.Input[str]] = None,
+                 is_complete_overwrite: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input['AiIndexMetadataConfigArgs'] config: The configuration of the Matching Engine Index.
+               Structure is documented below.
+        :param pulumi.Input[str] contents_delta_uri: Allows inserting, updating  or deleting the contents of the Matching Engine Index.
+               The string must be a valid Cloud Storage directory path. If this
+               field is set when calling IndexService.UpdateIndex, then no other
+               Index field can be also updated as part of the same call.
+               The expected structure and format of the files this URI points to is
+               described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
+        :param pulumi.Input[bool] is_complete_overwrite: If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
+               then existing content of the Index will be replaced by the data from the contentsDeltaUri.
+        """
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if contents_delta_uri is not None:
+            pulumi.set(__self__, "contents_delta_uri", contents_delta_uri)
+        if is_complete_overwrite is not None:
+            pulumi.set(__self__, "is_complete_overwrite", is_complete_overwrite)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[pulumi.Input['AiIndexMetadataConfigArgs']]:
+        """
+        The configuration of the Matching Engine Index.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[pulumi.Input['AiIndexMetadataConfigArgs']]):
+        pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter(name="contentsDeltaUri")
+    def contents_delta_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Allows inserting, updating  or deleting the contents of the Matching Engine Index.
+        The string must be a valid Cloud Storage directory path. If this
+        field is set when calling IndexService.UpdateIndex, then no other
+        Index field can be also updated as part of the same call.
+        The expected structure and format of the files this URI points to is
+        described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
+        """
+        return pulumi.get(self, "contents_delta_uri")
+
+    @contents_delta_uri.setter
+    def contents_delta_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "contents_delta_uri", value)
+
+    @property
+    @pulumi.getter(name="isCompleteOverwrite")
+    def is_complete_overwrite(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
+        then existing content of the Index will be replaced by the data from the contentsDeltaUri.
+        """
+        return pulumi.get(self, "is_complete_overwrite")
+
+    @is_complete_overwrite.setter
+    def is_complete_overwrite(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_complete_overwrite", value)
+
+
+@pulumi.input_type
+class AiIndexMetadataConfigArgs:
+    def __init__(__self__, *,
+                 dimensions: pulumi.Input[int],
+                 algorithm_config: Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigArgs']] = None,
+                 approximate_neighbors_count: Optional[pulumi.Input[int]] = None,
+                 distance_measure_type: Optional[pulumi.Input[str]] = None,
+                 feature_norm_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] dimensions: The number of dimensions of the input vectors.
+        :param pulumi.Input['AiIndexMetadataConfigAlgorithmConfigArgs'] algorithm_config: The configuration with regard to the algorithms used for efficient search.
+               Structure is documented below.
+        :param pulumi.Input[int] approximate_neighbors_count: The default number of neighbors to find via approximate search before exact reordering is
+               performed. Exact reordering is a procedure where results returned by an
+               approximate search algorithm are reordered via a more expensive distance computation.
+               Required if tree-AH algorithm is used.
+        :param pulumi.Input[str] distance_measure_type: The distance measure used in nearest neighbor search. The value must be one of the followings:
+               * SQUARED_L2_DISTANCE: Euclidean (L_2) Distance
+               * L1_DISTANCE: Manhattan (L_1) Distance
+               * COSINE_DISTANCE: Cosine Distance. Defined as 1 - cosine similarity.
+               * DOT_PRODUCT_DISTANCE: Dot Product Distance. Defined as a negative of the dot product
+        :param pulumi.Input[str] feature_norm_type: Type of normalization to be carried out on each vector. The value must be one of the followings:
+               * UNIT_L2_NORM: Unit L2 normalization type
+               * NONE: No normalization type is specified.
+        """
+        pulumi.set(__self__, "dimensions", dimensions)
+        if algorithm_config is not None:
+            pulumi.set(__self__, "algorithm_config", algorithm_config)
+        if approximate_neighbors_count is not None:
+            pulumi.set(__self__, "approximate_neighbors_count", approximate_neighbors_count)
+        if distance_measure_type is not None:
+            pulumi.set(__self__, "distance_measure_type", distance_measure_type)
+        if feature_norm_type is not None:
+            pulumi.set(__self__, "feature_norm_type", feature_norm_type)
+
+    @property
+    @pulumi.getter
+    def dimensions(self) -> pulumi.Input[int]:
+        """
+        The number of dimensions of the input vectors.
+        """
+        return pulumi.get(self, "dimensions")
+
+    @dimensions.setter
+    def dimensions(self, value: pulumi.Input[int]):
+        pulumi.set(self, "dimensions", value)
+
+    @property
+    @pulumi.getter(name="algorithmConfig")
+    def algorithm_config(self) -> Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigArgs']]:
+        """
+        The configuration with regard to the algorithms used for efficient search.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "algorithm_config")
+
+    @algorithm_config.setter
+    def algorithm_config(self, value: Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigArgs']]):
+        pulumi.set(self, "algorithm_config", value)
+
+    @property
+    @pulumi.getter(name="approximateNeighborsCount")
+    def approximate_neighbors_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The default number of neighbors to find via approximate search before exact reordering is
+        performed. Exact reordering is a procedure where results returned by an
+        approximate search algorithm are reordered via a more expensive distance computation.
+        Required if tree-AH algorithm is used.
+        """
+        return pulumi.get(self, "approximate_neighbors_count")
+
+    @approximate_neighbors_count.setter
+    def approximate_neighbors_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "approximate_neighbors_count", value)
+
+    @property
+    @pulumi.getter(name="distanceMeasureType")
+    def distance_measure_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The distance measure used in nearest neighbor search. The value must be one of the followings:
+        * SQUARED_L2_DISTANCE: Euclidean (L_2) Distance
+        * L1_DISTANCE: Manhattan (L_1) Distance
+        * COSINE_DISTANCE: Cosine Distance. Defined as 1 - cosine similarity.
+        * DOT_PRODUCT_DISTANCE: Dot Product Distance. Defined as a negative of the dot product
+        """
+        return pulumi.get(self, "distance_measure_type")
+
+    @distance_measure_type.setter
+    def distance_measure_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "distance_measure_type", value)
+
+    @property
+    @pulumi.getter(name="featureNormType")
+    def feature_norm_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of normalization to be carried out on each vector. The value must be one of the followings:
+        * UNIT_L2_NORM: Unit L2 normalization type
+        * NONE: No normalization type is specified.
+        """
+        return pulumi.get(self, "feature_norm_type")
+
+    @feature_norm_type.setter
+    def feature_norm_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "feature_norm_type", value)
+
+
+@pulumi.input_type
+class AiIndexMetadataConfigAlgorithmConfigArgs:
+    def __init__(__self__, *,
+                 brute_force_config: Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs']] = None,
+                 tree_ah_config: Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs']] = None):
+        """
+        :param pulumi.Input['AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs'] brute_force_config: Configuration options for using brute force search, which simply implements the
+               standard linear search in the database for each query.
+        :param pulumi.Input['AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs'] tree_ah_config: Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
+               Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+               Structure is documented below.
+        """
+        if brute_force_config is not None:
+            pulumi.set(__self__, "brute_force_config", brute_force_config)
+        if tree_ah_config is not None:
+            pulumi.set(__self__, "tree_ah_config", tree_ah_config)
+
+    @property
+    @pulumi.getter(name="bruteForceConfig")
+    def brute_force_config(self) -> Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs']]:
+        """
+        Configuration options for using brute force search, which simply implements the
+        standard linear search in the database for each query.
+        """
+        return pulumi.get(self, "brute_force_config")
+
+    @brute_force_config.setter
+    def brute_force_config(self, value: Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs']]):
+        pulumi.set(self, "brute_force_config", value)
+
+    @property
+    @pulumi.getter(name="treeAhConfig")
+    def tree_ah_config(self) -> Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs']]:
+        """
+        Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
+        Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tree_ah_config")
+
+    @tree_ah_config.setter
+    def tree_ah_config(self, value: Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs']]):
+        pulumi.set(self, "tree_ah_config", value)
+
+
+@pulumi.input_type
+class AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs:
+    def __init__(__self__, *,
+                 leaf_node_embedding_count: Optional[pulumi.Input[int]] = None,
+                 leaf_nodes_to_search_percent: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] leaf_node_embedding_count: Number of embeddings on each leaf node. The default value is 1000 if not set.
+        :param pulumi.Input[int] leaf_nodes_to_search_percent: The default percentage of leaf nodes that any query may be searched. Must be in
+               range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+        """
+        if leaf_node_embedding_count is not None:
+            pulumi.set(__self__, "leaf_node_embedding_count", leaf_node_embedding_count)
+        if leaf_nodes_to_search_percent is not None:
+            pulumi.set(__self__, "leaf_nodes_to_search_percent", leaf_nodes_to_search_percent)
+
+    @property
+    @pulumi.getter(name="leafNodeEmbeddingCount")
+    def leaf_node_embedding_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of embeddings on each leaf node. The default value is 1000 if not set.
+        """
+        return pulumi.get(self, "leaf_node_embedding_count")
+
+    @leaf_node_embedding_count.setter
+    def leaf_node_embedding_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "leaf_node_embedding_count", value)
+
+    @property
+    @pulumi.getter(name="leafNodesToSearchPercent")
+    def leaf_nodes_to_search_percent(self) -> Optional[pulumi.Input[int]]:
+        """
+        The default percentage of leaf nodes that any query may be searched. Must be in
+        range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+        """
+        return pulumi.get(self, "leaf_nodes_to_search_percent")
+
+    @leaf_nodes_to_search_percent.setter
+    def leaf_nodes_to_search_percent(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "leaf_nodes_to_search_percent", value)
+
+
+@pulumi.input_type
 class AiMetadataStoreEncryptionSpecArgs:
     def __init__(__self__, *,
                  kms_key_name: Optional[pulumi.Input[str]] = None):
@@ -850,5 +1263,29 @@ class AiMetadataStoreStateArgs:
     @disk_utilization_bytes.setter
     def disk_utilization_bytes(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "disk_utilization_bytes", value)
+
+
+@pulumi.input_type
+class AiTensorboardEncryptionSpecArgs:
+    def __init__(__self__, *,
+                 kms_key_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] kms_key_name: The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
+               Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> pulumi.Input[str]:
+        """
+        The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
+        Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "kms_key_name", value)
 
 

@@ -6,6 +6,7 @@ package com.pulumi.gcp.datafusion;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.datafusion.inputs.InstanceCryptoKeyConfigArgs;
+import com.pulumi.gcp.datafusion.inputs.InstanceEventPublishConfigArgs;
 import com.pulumi.gcp.datafusion.inputs.InstanceNetworkConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -67,6 +68,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Display name for an instance.
+     * 
+     */
+    @Import(name="displayName")
+    private @Nullable Output<String> displayName;
+
+    /**
+     * @return Display name for an instance.
+     * 
+     */
+    public Optional<Output<String>> displayName() {
+        return Optional.ofNullable(this.displayName);
+    }
+
+    /**
      * Option to enable granular role-based access control.
      * 
      */
@@ -109,6 +125,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> enableStackdriverMonitoring() {
         return Optional.ofNullable(this.enableStackdriverMonitoring);
+    }
+
+    /**
+     * Option to enable and pass metadata for event publishing.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="eventPublishConfig")
+    private @Nullable Output<InstanceEventPublishConfigArgs> eventPublishConfig;
+
+    /**
+     * @return Option to enable and pass metadata for event publishing.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceEventPublishConfigArgs>> eventPublishConfig() {
+        return Optional.ofNullable(this.eventPublishConfig);
     }
 
     /**
@@ -276,15 +309,32 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.version);
     }
 
+    /**
+     * Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
+     * 
+     */
+    @Import(name="zone")
+    private @Nullable Output<String> zone;
+
+    /**
+     * @return Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
+     * 
+     */
+    public Optional<Output<String>> zone() {
+        return Optional.ofNullable(this.zone);
+    }
+
     private InstanceArgs() {}
 
     private InstanceArgs(InstanceArgs $) {
         this.cryptoKeyConfig = $.cryptoKeyConfig;
         this.dataprocServiceAccount = $.dataprocServiceAccount;
         this.description = $.description;
+        this.displayName = $.displayName;
         this.enableRbac = $.enableRbac;
         this.enableStackdriverLogging = $.enableStackdriverLogging;
         this.enableStackdriverMonitoring = $.enableStackdriverMonitoring;
+        this.eventPublishConfig = $.eventPublishConfig;
         this.labels = $.labels;
         this.name = $.name;
         this.networkConfig = $.networkConfig;
@@ -294,6 +344,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.region = $.region;
         this.type = $.type;
         this.version = $.version;
+        this.zone = $.zone;
     }
 
     public static Builder builder() {
@@ -380,6 +431,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param displayName Display name for an instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder displayName(@Nullable Output<String> displayName) {
+            $.displayName = displayName;
+            return this;
+        }
+
+        /**
+         * @param displayName Display name for an instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder displayName(String displayName) {
+            return displayName(Output.of(displayName));
+        }
+
+        /**
          * @param enableRbac Option to enable granular role-based access control.
          * 
          * @return builder
@@ -440,6 +512,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder enableStackdriverMonitoring(Boolean enableStackdriverMonitoring) {
             return enableStackdriverMonitoring(Output.of(enableStackdriverMonitoring));
+        }
+
+        /**
+         * @param eventPublishConfig Option to enable and pass metadata for event publishing.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eventPublishConfig(@Nullable Output<InstanceEventPublishConfigArgs> eventPublishConfig) {
+            $.eventPublishConfig = eventPublishConfig;
+            return this;
+        }
+
+        /**
+         * @param eventPublishConfig Option to enable and pass metadata for event publishing.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eventPublishConfig(InstanceEventPublishConfigArgs eventPublishConfig) {
+            return eventPublishConfig(Output.of(eventPublishConfig));
         }
 
         /**
@@ -659,6 +754,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder version(String version) {
             return version(Output.of(version));
+        }
+
+        /**
+         * @param zone Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zone(@Nullable Output<String> zone) {
+            $.zone = zone;
+            return this;
+        }
+
+        /**
+         * @param zone Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zone(String zone) {
+            return zone(Output.of(zone));
         }
 
         public InstanceArgs build() {

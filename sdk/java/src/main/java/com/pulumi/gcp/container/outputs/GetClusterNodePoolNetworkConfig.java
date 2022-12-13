@@ -11,12 +11,16 @@ import java.util.Objects;
 @CustomType
 public final class GetClusterNodePoolNetworkConfig {
     private Boolean createPodRange;
+    private Boolean enablePrivateNodes;
     private String podIpv4CidrBlock;
     private String podRange;
 
     private GetClusterNodePoolNetworkConfig() {}
     public Boolean createPodRange() {
         return this.createPodRange;
+    }
+    public Boolean enablePrivateNodes() {
+        return this.enablePrivateNodes;
     }
     public String podIpv4CidrBlock() {
         return this.podIpv4CidrBlock;
@@ -35,12 +39,14 @@ public final class GetClusterNodePoolNetworkConfig {
     @CustomType.Builder
     public static final class Builder {
         private Boolean createPodRange;
+        private Boolean enablePrivateNodes;
         private String podIpv4CidrBlock;
         private String podRange;
         public Builder() {}
         public Builder(GetClusterNodePoolNetworkConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createPodRange = defaults.createPodRange;
+    	      this.enablePrivateNodes = defaults.enablePrivateNodes;
     	      this.podIpv4CidrBlock = defaults.podIpv4CidrBlock;
     	      this.podRange = defaults.podRange;
         }
@@ -48,6 +54,11 @@ public final class GetClusterNodePoolNetworkConfig {
         @CustomType.Setter
         public Builder createPodRange(Boolean createPodRange) {
             this.createPodRange = Objects.requireNonNull(createPodRange);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enablePrivateNodes(Boolean enablePrivateNodes) {
+            this.enablePrivateNodes = Objects.requireNonNull(enablePrivateNodes);
             return this;
         }
         @CustomType.Setter
@@ -63,6 +74,7 @@ public final class GetClusterNodePoolNetworkConfig {
         public GetClusterNodePoolNetworkConfig build() {
             final var o = new GetClusterNodePoolNetworkConfig();
             o.createPodRange = createPodRange;
+            o.enablePrivateNodes = enablePrivateNodes;
             o.podIpv4CidrBlock = podIpv4CidrBlock;
             o.podRange = podRange;
             return o;

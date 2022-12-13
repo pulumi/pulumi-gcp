@@ -119,8 +119,9 @@ type NodePool struct {
 	// Creates a unique name for the node pool beginning
 	// with the specified prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringOutput `pulumi:"namePrefix"`
-	// The network configuration of the pool. See
-	// container.Cluster for schema.
+	// The network configuration of the pool. Such as
+	// configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
+	// documented below
 	NetworkConfig NodePoolNetworkConfigOutput `pulumi:"networkConfig"`
 	// Parameters used in creating the node pool. See
 	// container.Cluster for schema.
@@ -218,8 +219,9 @@ type nodePoolState struct {
 	// Creates a unique name for the node pool beginning
 	// with the specified prefix. Conflicts with `name`.
 	NamePrefix *string `pulumi:"namePrefix"`
-	// The network configuration of the pool. See
-	// container.Cluster for schema.
+	// The network configuration of the pool. Such as
+	// configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
+	// documented below
 	NetworkConfig *NodePoolNetworkConfig `pulumi:"networkConfig"`
 	// Parameters used in creating the node pool. See
 	// container.Cluster for schema.
@@ -286,8 +288,9 @@ type NodePoolState struct {
 	// Creates a unique name for the node pool beginning
 	// with the specified prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringPtrInput
-	// The network configuration of the pool. See
-	// container.Cluster for schema.
+	// The network configuration of the pool. Such as
+	// configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
+	// documented below
 	NetworkConfig NodePoolNetworkConfigPtrInput
 	// Parameters used in creating the node pool. See
 	// container.Cluster for schema.
@@ -354,8 +357,9 @@ type nodePoolArgs struct {
 	// Creates a unique name for the node pool beginning
 	// with the specified prefix. Conflicts with `name`.
 	NamePrefix *string `pulumi:"namePrefix"`
-	// The network configuration of the pool. See
-	// container.Cluster for schema.
+	// The network configuration of the pool. Such as
+	// configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
+	// documented below
 	NetworkConfig *NodePoolNetworkConfig `pulumi:"networkConfig"`
 	// Parameters used in creating the node pool. See
 	// container.Cluster for schema.
@@ -418,8 +422,9 @@ type NodePoolArgs struct {
 	// Creates a unique name for the node pool beginning
 	// with the specified prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringPtrInput
-	// The network configuration of the pool. See
-	// container.Cluster for schema.
+	// The network configuration of the pool. Such as
+	// configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
+	// documented below
 	NetworkConfig NodePoolNetworkConfigPtrInput
 	// Parameters used in creating the node pool. See
 	// container.Cluster for schema.
@@ -601,8 +606,9 @@ func (o NodePoolOutput) NamePrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.NamePrefix }).(pulumi.StringOutput)
 }
 
-// The network configuration of the pool. See
-// container.Cluster for schema.
+// The network configuration of the pool. Such as
+// configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
+// documented below
 func (o NodePoolOutput) NetworkConfig() NodePoolNetworkConfigOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolNetworkConfigOutput { return v.NetworkConfig }).(NodePoolNetworkConfigOutput)
 }

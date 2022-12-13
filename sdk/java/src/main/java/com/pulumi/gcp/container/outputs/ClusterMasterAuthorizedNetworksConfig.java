@@ -5,8 +5,10 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.ClusterMasterAuthorizedNetworksConfigCidrBlock;
+import java.lang.Boolean;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -17,6 +19,12 @@ public final class ClusterMasterAuthorizedNetworksConfig {
      * 
      */
     private @Nullable List<ClusterMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks;
+    /**
+     * @return Whether Kubernetes master is
+     * accessible via Google Compute Engine Public IPs.
+     * 
+     */
+    private @Nullable Boolean gcpPublicCidrsAccessEnabled;
 
     private ClusterMasterAuthorizedNetworksConfig() {}
     /**
@@ -26,6 +34,14 @@ public final class ClusterMasterAuthorizedNetworksConfig {
      */
     public List<ClusterMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks() {
         return this.cidrBlocks == null ? List.of() : this.cidrBlocks;
+    }
+    /**
+     * @return Whether Kubernetes master is
+     * accessible via Google Compute Engine Public IPs.
+     * 
+     */
+    public Optional<Boolean> gcpPublicCidrsAccessEnabled() {
+        return Optional.ofNullable(this.gcpPublicCidrsAccessEnabled);
     }
 
     public static Builder builder() {
@@ -38,10 +54,12 @@ public final class ClusterMasterAuthorizedNetworksConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<ClusterMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks;
+        private @Nullable Boolean gcpPublicCidrsAccessEnabled;
         public Builder() {}
         public Builder(ClusterMasterAuthorizedNetworksConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidrBlocks = defaults.cidrBlocks;
+    	      this.gcpPublicCidrsAccessEnabled = defaults.gcpPublicCidrsAccessEnabled;
         }
 
         @CustomType.Setter
@@ -52,9 +70,15 @@ public final class ClusterMasterAuthorizedNetworksConfig {
         public Builder cidrBlocks(ClusterMasterAuthorizedNetworksConfigCidrBlock... cidrBlocks) {
             return cidrBlocks(List.of(cidrBlocks));
         }
+        @CustomType.Setter
+        public Builder gcpPublicCidrsAccessEnabled(@Nullable Boolean gcpPublicCidrsAccessEnabled) {
+            this.gcpPublicCidrsAccessEnabled = gcpPublicCidrsAccessEnabled;
+            return this;
+        }
         public ClusterMasterAuthorizedNetworksConfig build() {
             final var o = new ClusterMasterAuthorizedNetworksConfig();
             o.cidrBlocks = cidrBlocks;
+            o.gcpPublicCidrsAccessEnabled = gcpPublicCidrsAccessEnabled;
             return o;
         }
     }

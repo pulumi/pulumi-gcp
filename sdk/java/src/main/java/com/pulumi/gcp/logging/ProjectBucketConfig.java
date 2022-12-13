@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.logging.ProjectBucketConfigArgs;
 import com.pulumi.gcp.logging.inputs.ProjectBucketConfigState;
+import com.pulumi.gcp.logging.outputs.ProjectBucketConfigCmekSettings;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
@@ -95,6 +96,73 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * Create logging bucket with customId and cmekSettings
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.logging.LoggingFunctions;
+ * import com.pulumi.gcp.logging.inputs.GetProjectCmekSettingsArgs;
+ * import com.pulumi.gcp.kms.KeyRing;
+ * import com.pulumi.gcp.kms.KeyRingArgs;
+ * import com.pulumi.gcp.kms.CryptoKey;
+ * import com.pulumi.gcp.kms.CryptoKeyArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+ * import com.pulumi.gcp.logging.ProjectBucketConfig;
+ * import com.pulumi.gcp.logging.ProjectBucketConfigArgs;
+ * import com.pulumi.gcp.logging.inputs.ProjectBucketConfigCmekSettingsArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var cmekSettings = LoggingFunctions.getProjectCmekSettings(GetProjectCmekSettingsArgs.builder()
+ *             .project(&#34;project_id&#34;)
+ *             .build());
+ * 
+ *         var keyring = new KeyRing(&#34;keyring&#34;, KeyRingArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .build());
+ * 
+ *         var key = new CryptoKey(&#34;key&#34;, CryptoKeyArgs.builder()        
+ *             .keyRing(keyring.id())
+ *             .rotationPeriod(&#34;100000s&#34;)
+ *             .build());
+ * 
+ *         var cryptoKeyBinding = new CryptoKeyIAMBinding(&#34;cryptoKeyBinding&#34;, CryptoKeyIAMBindingArgs.builder()        
+ *             .cryptoKeyId(key.id())
+ *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
+ *             .members(String.format(&#34;serviceAccount:%s&#34;, cmekSettings.applyValue(getProjectCmekSettingsResult -&gt; getProjectCmekSettingsResult.serviceAccountId())))
+ *             .build());
+ * 
+ *         var example_project_bucket_cmek_settings = new ProjectBucketConfig(&#34;example-project-bucket-cmek-settings&#34;, ProjectBucketConfigArgs.builder()        
+ *             .project(&#34;project_id&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .retentionDays(30)
+ *             .bucketId(&#34;custom-bucket&#34;)
+ *             .cmekSettings(ProjectBucketConfigCmekSettingsArgs.builder()
+ *                 .kmsKeyName(key.id())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(cryptoKeyBinding)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * This resource can be imported using the following format
@@ -119,6 +187,20 @@ public class ProjectBucketConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<String> bucketId() {
         return this.bucketId;
+    }
+    /**
+     * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
+     * 
+     */
+    @Export(name="cmekSettings", type=ProjectBucketConfigCmekSettings.class, parameters={})
+    private Output</* @Nullable */ ProjectBucketConfigCmekSettings> cmekSettings;
+
+    /**
+     * @return The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
+     * 
+     */
+    public Output<Optional<ProjectBucketConfigCmekSettings>> cmekSettings() {
+        return Codegen.optional(this.cmekSettings);
     }
     /**
      * Describes this bucket.
@@ -163,14 +245,14 @@ public class ProjectBucketConfig extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * The resource name of the bucket. For example: &#34;projects/my-project-id/locations/my-location/buckets/my-bucket-id&#34;
+     * The resource name of the CMEK settings.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The resource name of the bucket. For example: &#34;projects/my-project-id/locations/my-location/buckets/my-bucket-id&#34;
+     * @return The resource name of the CMEK settings.
      * 
      */
     public Output<String> name() {

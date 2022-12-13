@@ -1066,14 +1066,16 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+     * The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+     * for how these labels are applied to clusters, node pools and nodes.
      * 
      */
     @Import(name="resourceLabels")
     private @Nullable Output<Map<String,String>> resourceLabels;
 
     /**
-     * @return The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+     * @return The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+     * for how these labels are applied to clusters, node pools and nodes.
      * 
      */
     public Optional<Output<Map<String,String>>> resourceLabels() {
@@ -2619,7 +2621,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceLabels The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+         * @param resourceLabels The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+         * for how these labels are applied to clusters, node pools and nodes.
          * 
          * @return builder
          * 
@@ -2630,7 +2633,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceLabels The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
+         * @param resourceLabels The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
+         * for how these labels are applied to clusters, node pools and nodes.
          * 
          * @return builder
          * 

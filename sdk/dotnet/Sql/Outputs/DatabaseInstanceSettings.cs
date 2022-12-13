@@ -38,6 +38,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string? ConnectorEnforcement;
         public readonly ImmutableArray<Outputs.DatabaseInstanceSettingsDatabaseFlag> DatabaseFlags;
+        public readonly Outputs.DatabaseInstanceSettingsDenyMaintenancePeriod? DenyMaintenancePeriod;
         /// <summary>
         /// Enables auto-resizing of the storage size. Defaults to `true`.
         /// </summary>
@@ -96,6 +97,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             ImmutableArray<Outputs.DatabaseInstanceSettingsDatabaseFlag> databaseFlags,
 
+            Outputs.DatabaseInstanceSettingsDenyMaintenancePeriod? denyMaintenancePeriod,
+
             bool? diskAutoresize,
 
             int? diskAutoresizeLimit,
@@ -133,6 +136,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             Collation = collation;
             ConnectorEnforcement = connectorEnforcement;
             DatabaseFlags = databaseFlags;
+            DenyMaintenancePeriod = denyMaintenancePeriod;
             DiskAutoresize = diskAutoresize;
             DiskAutoresizeLimit = diskAutoresizeLimit;
             DiskSize = diskSize;

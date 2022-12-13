@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DenyPolicy{}
 	case "gcp:iam/workforcePool:WorkforcePool":
 		r = &WorkforcePool{}
+	case "gcp:iam/workforcePoolProvider:WorkforcePoolProvider":
+		r = &WorkforcePoolProvider{}
 	case "gcp:iam/workloadIdentityPool:WorkloadIdentityPool":
 		r = &WorkloadIdentityPool{}
 	case "gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider":
@@ -50,6 +52,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"iam/workforcePool",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iam/workforcePoolProvider",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

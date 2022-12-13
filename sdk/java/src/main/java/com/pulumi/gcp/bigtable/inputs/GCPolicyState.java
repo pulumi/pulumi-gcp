@@ -34,6 +34,23 @@ public final class GCPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The deletion policy for the GC policy.
+     * Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return The deletion policy for the GC policy.
+     * Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
      * Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
      * 
      */
@@ -142,6 +159,7 @@ public final class GCPolicyState extends com.pulumi.resources.ResourceArgs {
 
     private GCPolicyState(GCPolicyState $) {
         this.columnFamily = $.columnFamily;
+        this.deletionPolicy = $.deletionPolicy;
         this.gcRules = $.gcRules;
         this.instanceName = $.instanceName;
         this.maxAge = $.maxAge;
@@ -188,6 +206,29 @@ public final class GCPolicyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder columnFamily(String columnFamily) {
             return columnFamily(Output.of(columnFamily));
+        }
+
+        /**
+         * @param deletionPolicy The deletion policy for the GC policy.
+         * Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy The deletion policy for the GC policy.
+         * Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**

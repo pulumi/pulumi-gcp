@@ -17,7 +17,7 @@ public final class BucketLifecycleRuleAction {
      */
     private @Nullable String storageClass;
     /**
-     * @return The type of the action of this Lifecycle Rule. Supported values include: `Delete` and `SetStorageClass`.
+     * @return The type of the action of this Lifecycle Rule. Supported values include: `Delete`, `SetStorageClass` and `AbortIncompleteMultipartUpload`.
      * 
      */
     private String type;
@@ -31,7 +31,7 @@ public final class BucketLifecycleRuleAction {
         return Optional.ofNullable(this.storageClass);
     }
     /**
-     * @return The type of the action of this Lifecycle Rule. Supported values include: `Delete` and `SetStorageClass`.
+     * @return The type of the action of this Lifecycle Rule. Supported values include: `Delete`, `SetStorageClass` and `AbortIncompleteMultipartUpload`.
      * 
      */
     public String type() {

@@ -77,6 +77,10 @@ namespace Pulumi.Gcp.Alloydb
     ///         Cluster = defaultCluster.Name,
     ///         InstanceId = "alloydb-instance",
     ///         InstanceType = "PRIMARY",
+    ///         MachineConfig = new Gcp.Alloydb.Inputs.InstanceMachineConfigArgs
+    ///         {
+    ///             CpuCount = 2,
+    ///         },
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = google_beta,

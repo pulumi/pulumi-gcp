@@ -18,6 +18,7 @@ public final class GetClusterPrivateClusterConfig {
     private String masterIpv4CidrBlock;
     private String peeringName;
     private String privateEndpoint;
+    private String privateEndpointSubnetwork;
     private String publicEndpoint;
 
     private GetClusterPrivateClusterConfig() {}
@@ -39,6 +40,9 @@ public final class GetClusterPrivateClusterConfig {
     public String privateEndpoint() {
         return this.privateEndpoint;
     }
+    public String privateEndpointSubnetwork() {
+        return this.privateEndpointSubnetwork;
+    }
     public String publicEndpoint() {
         return this.publicEndpoint;
     }
@@ -58,6 +62,7 @@ public final class GetClusterPrivateClusterConfig {
         private String masterIpv4CidrBlock;
         private String peeringName;
         private String privateEndpoint;
+        private String privateEndpointSubnetwork;
         private String publicEndpoint;
         public Builder() {}
         public Builder(GetClusterPrivateClusterConfig defaults) {
@@ -68,6 +73,7 @@ public final class GetClusterPrivateClusterConfig {
     	      this.masterIpv4CidrBlock = defaults.masterIpv4CidrBlock;
     	      this.peeringName = defaults.peeringName;
     	      this.privateEndpoint = defaults.privateEndpoint;
+    	      this.privateEndpointSubnetwork = defaults.privateEndpointSubnetwork;
     	      this.publicEndpoint = defaults.publicEndpoint;
         }
 
@@ -105,6 +111,11 @@ public final class GetClusterPrivateClusterConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder privateEndpointSubnetwork(String privateEndpointSubnetwork) {
+            this.privateEndpointSubnetwork = Objects.requireNonNull(privateEndpointSubnetwork);
+            return this;
+        }
+        @CustomType.Setter
         public Builder publicEndpoint(String publicEndpoint) {
             this.publicEndpoint = Objects.requireNonNull(publicEndpoint);
             return this;
@@ -117,6 +128,7 @@ public final class GetClusterPrivateClusterConfig {
             o.masterIpv4CidrBlock = masterIpv4CidrBlock;
             o.peeringName = peeringName;
             o.privateEndpoint = privateEndpoint;
+            o.privateEndpointSubnetwork = privateEndpointSubnetwork;
             o.publicEndpoint = publicEndpoint;
             return o;
         }

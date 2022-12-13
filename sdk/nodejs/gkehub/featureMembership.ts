@@ -100,6 +100,7 @@ import * as utilities from "../utilities";
  *     membership: membership.membershipId,
  *     mesh: {
  *         management: "MANAGEMENT_AUTOMATIC",
+ *         controlPlane: "AUTOMATIC",
  *     },
  * }, {
  *     provider: google_beta,

@@ -33,6 +33,23 @@ public final class BackendServiceCdnPolicyCacheKeyPolicyArgs extends com.pulumi.
     }
 
     /**
+     * Allows HTTP request headers (by name) to be used in the
+     * cache key.
+     * 
+     */
+    @Import(name="includeHttpHeaders")
+    private @Nullable Output<List<String>> includeHttpHeaders;
+
+    /**
+     * @return Allows HTTP request headers (by name) to be used in the
+     * cache key.
+     * 
+     */
+    public Optional<Output<List<String>>> includeHttpHeaders() {
+        return Optional.ofNullable(this.includeHttpHeaders);
+    }
+
+    /**
      * Names of cookies to include in cache keys.
      * 
      */
@@ -137,6 +154,7 @@ public final class BackendServiceCdnPolicyCacheKeyPolicyArgs extends com.pulumi.
 
     private BackendServiceCdnPolicyCacheKeyPolicyArgs(BackendServiceCdnPolicyCacheKeyPolicyArgs $) {
         this.includeHost = $.includeHost;
+        this.includeHttpHeaders = $.includeHttpHeaders;
         this.includeNamedCookies = $.includeNamedCookies;
         this.includeProtocol = $.includeProtocol;
         this.includeQueryString = $.includeQueryString;
@@ -181,6 +199,40 @@ public final class BackendServiceCdnPolicyCacheKeyPolicyArgs extends com.pulumi.
          */
         public Builder includeHost(Boolean includeHost) {
             return includeHost(Output.of(includeHost));
+        }
+
+        /**
+         * @param includeHttpHeaders Allows HTTP request headers (by name) to be used in the
+         * cache key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeHttpHeaders(@Nullable Output<List<String>> includeHttpHeaders) {
+            $.includeHttpHeaders = includeHttpHeaders;
+            return this;
+        }
+
+        /**
+         * @param includeHttpHeaders Allows HTTP request headers (by name) to be used in the
+         * cache key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeHttpHeaders(List<String> includeHttpHeaders) {
+            return includeHttpHeaders(Output.of(includeHttpHeaders));
+        }
+
+        /**
+         * @param includeHttpHeaders Allows HTTP request headers (by name) to be used in the
+         * cache key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeHttpHeaders(String... includeHttpHeaders) {
+            return includeHttpHeaders(List.of(includeHttpHeaders));
         }
 
         /**

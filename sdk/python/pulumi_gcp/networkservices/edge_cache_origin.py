@@ -23,6 +23,8 @@ class EdgeCacheOriginArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  max_attempts: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 origin_override_action: Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionArgs']] = None,
+                 origin_redirect: Optional[pulumi.Input['EdgeCacheOriginOriginRedirectArgs']] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
@@ -53,6 +55,11 @@ class EdgeCacheOriginArgs:
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
+        :param pulumi.Input['EdgeCacheOriginOriginOverrideActionArgs'] origin_override_action: The override actions, including url rewrites and header
+               additions, for requests that use this origin.
+               Structure is documented below.
+        :param pulumi.Input['EdgeCacheOriginOriginRedirectArgs'] origin_redirect: Follow redirects from this origin.
+               Structure is documented below.
         :param pulumi.Input[int] port: The port to connect to the origin on.
                Defaults to port 443 for HTTP2 and HTTPS protocols, and port 80 for HTTP.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -90,6 +97,10 @@ class EdgeCacheOriginArgs:
             pulumi.set(__self__, "max_attempts", max_attempts)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if origin_override_action is not None:
+            pulumi.set(__self__, "origin_override_action", origin_override_action)
+        if origin_redirect is not None:
+            pulumi.set(__self__, "origin_redirect", origin_redirect)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if project is not None:
@@ -202,6 +213,33 @@ class EdgeCacheOriginArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="originOverrideAction")
+    def origin_override_action(self) -> Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionArgs']]:
+        """
+        The override actions, including url rewrites and header
+        additions, for requests that use this origin.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "origin_override_action")
+
+    @origin_override_action.setter
+    def origin_override_action(self, value: Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionArgs']]):
+        pulumi.set(self, "origin_override_action", value)
+
+    @property
+    @pulumi.getter(name="originRedirect")
+    def origin_redirect(self) -> Optional[pulumi.Input['EdgeCacheOriginOriginRedirectArgs']]:
+        """
+        Follow redirects from this origin.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "origin_redirect")
+
+    @origin_redirect.setter
+    def origin_redirect(self, value: Optional[pulumi.Input['EdgeCacheOriginOriginRedirectArgs']]):
+        pulumi.set(self, "origin_redirect", value)
+
+    @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
@@ -290,6 +328,8 @@ class _EdgeCacheOriginState:
                  max_attempts: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  origin_address: Optional[pulumi.Input[str]] = None,
+                 origin_override_action: Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionArgs']] = None,
+                 origin_redirect: Optional[pulumi.Input['EdgeCacheOriginOriginRedirectArgs']] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
@@ -320,6 +360,11 @@ class _EdgeCacheOriginState:
                This address will be used as the origin for cache requests - e.g. FQDN: media-backend.example.com, IPv4: 35.218.1.1, IPv6: 2607:f8b0:4012:809::200e, Cloud Storage: gs://bucketname
                When providing an FQDN (hostname), it must be publicly resolvable (e.g. via Google public DNS) and IP addresses must be publicly routable.  It must not contain a protocol (e.g., https://) and it must not contain any slashes.
                If a Cloud Storage bucket is provided, it must be in the canonical "gs://bucketname" format. Other forms, such as "storage.googleapis.com", will be rejected.
+        :param pulumi.Input['EdgeCacheOriginOriginOverrideActionArgs'] origin_override_action: The override actions, including url rewrites and header
+               additions, for requests that use this origin.
+               Structure is documented below.
+        :param pulumi.Input['EdgeCacheOriginOriginRedirectArgs'] origin_redirect: Follow redirects from this origin.
+               Structure is documented below.
         :param pulumi.Input[int] port: The port to connect to the origin on.
                Defaults to port 443 for HTTP2 and HTTPS protocols, and port 80 for HTTP.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -358,6 +403,10 @@ class _EdgeCacheOriginState:
             pulumi.set(__self__, "name", name)
         if origin_address is not None:
             pulumi.set(__self__, "origin_address", origin_address)
+        if origin_override_action is not None:
+            pulumi.set(__self__, "origin_override_action", origin_override_action)
+        if origin_redirect is not None:
+            pulumi.set(__self__, "origin_redirect", origin_redirect)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if project is not None:
@@ -470,6 +519,33 @@ class _EdgeCacheOriginState:
         pulumi.set(self, "origin_address", value)
 
     @property
+    @pulumi.getter(name="originOverrideAction")
+    def origin_override_action(self) -> Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionArgs']]:
+        """
+        The override actions, including url rewrites and header
+        additions, for requests that use this origin.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "origin_override_action")
+
+    @origin_override_action.setter
+    def origin_override_action(self, value: Optional[pulumi.Input['EdgeCacheOriginOriginOverrideActionArgs']]):
+        pulumi.set(self, "origin_override_action", value)
+
+    @property
+    @pulumi.getter(name="originRedirect")
+    def origin_redirect(self) -> Optional[pulumi.Input['EdgeCacheOriginOriginRedirectArgs']]:
+        """
+        Follow redirects from this origin.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "origin_redirect")
+
+    @origin_redirect.setter
+    def origin_redirect(self, value: Optional[pulumi.Input['EdgeCacheOriginOriginRedirectArgs']]):
+        pulumi.set(self, "origin_redirect", value)
+
+    @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
@@ -560,6 +636,8 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                  max_attempts: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  origin_address: Optional[pulumi.Input[str]] = None,
+                 origin_override_action: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginOverrideActionArgs']]] = None,
+                 origin_redirect: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginRedirectArgs']]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
@@ -587,7 +665,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         fallback = gcp.networkservices.EdgeCacheOrigin("fallback",
-            origin_address="gs://media-edge-fallback",
+            origin_address="fallback.example.com",
             description="The default bucket for media edge test",
             max_attempts=3,
             protocol="HTTP",
@@ -603,6 +681,27 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                 max_attempts_timeout="20s",
                 response_timeout="60s",
                 read_timeout="5s",
+            ),
+            origin_override_action=gcp.networkservices.EdgeCacheOriginOriginOverrideActionArgs(
+                url_rewrite=gcp.networkservices.EdgeCacheOriginOriginOverrideActionUrlRewriteArgs(
+                    host_rewrite="example.com",
+                ),
+                header_action=gcp.networkservices.EdgeCacheOriginOriginOverrideActionHeaderActionArgs(
+                    request_headers_to_adds=[gcp.networkservices.EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs(
+                        header_name="x-header",
+                        header_value="value",
+                        replace=True,
+                    )],
+                ),
+            ),
+            origin_redirect=gcp.networkservices.EdgeCacheOriginOriginRedirectArgs(
+                redirect_conditions=[
+                    "MOVED_PERMANENTLY",
+                    "FOUND",
+                    "SEE_OTHER",
+                    "TEMPORARY_REDIRECT",
+                    "PERMANENT_REDIRECT",
+                ],
             ))
         default = gcp.networkservices.EdgeCacheOrigin("default",
             origin_address="gs://media-edge-default",
@@ -681,6 +780,11 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                This address will be used as the origin for cache requests - e.g. FQDN: media-backend.example.com, IPv4: 35.218.1.1, IPv6: 2607:f8b0:4012:809::200e, Cloud Storage: gs://bucketname
                When providing an FQDN (hostname), it must be publicly resolvable (e.g. via Google public DNS) and IP addresses must be publicly routable.  It must not contain a protocol (e.g., https://) and it must not contain any slashes.
                If a Cloud Storage bucket is provided, it must be in the canonical "gs://bucketname" format. Other forms, such as "storage.googleapis.com", will be rejected.
+        :param pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginOverrideActionArgs']] origin_override_action: The override actions, including url rewrites and header
+               additions, for requests that use this origin.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginRedirectArgs']] origin_redirect: Follow redirects from this origin.
+               Structure is documented below.
         :param pulumi.Input[int] port: The port to connect to the origin on.
                Defaults to port 443 for HTTP2 and HTTPS protocols, and port 80 for HTTP.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -732,7 +836,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         fallback = gcp.networkservices.EdgeCacheOrigin("fallback",
-            origin_address="gs://media-edge-fallback",
+            origin_address="fallback.example.com",
             description="The default bucket for media edge test",
             max_attempts=3,
             protocol="HTTP",
@@ -748,6 +852,27 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                 max_attempts_timeout="20s",
                 response_timeout="60s",
                 read_timeout="5s",
+            ),
+            origin_override_action=gcp.networkservices.EdgeCacheOriginOriginOverrideActionArgs(
+                url_rewrite=gcp.networkservices.EdgeCacheOriginOriginOverrideActionUrlRewriteArgs(
+                    host_rewrite="example.com",
+                ),
+                header_action=gcp.networkservices.EdgeCacheOriginOriginOverrideActionHeaderActionArgs(
+                    request_headers_to_adds=[gcp.networkservices.EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs(
+                        header_name="x-header",
+                        header_value="value",
+                        replace=True,
+                    )],
+                ),
+            ),
+            origin_redirect=gcp.networkservices.EdgeCacheOriginOriginRedirectArgs(
+                redirect_conditions=[
+                    "MOVED_PERMANENTLY",
+                    "FOUND",
+                    "SEE_OTHER",
+                    "TEMPORARY_REDIRECT",
+                    "PERMANENT_REDIRECT",
+                ],
             ))
         default = gcp.networkservices.EdgeCacheOrigin("default",
             origin_address="gs://media-edge-default",
@@ -823,6 +948,8 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                  max_attempts: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  origin_address: Optional[pulumi.Input[str]] = None,
+                 origin_override_action: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginOverrideActionArgs']]] = None,
+                 origin_redirect: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginRedirectArgs']]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
@@ -846,6 +973,8 @@ class EdgeCacheOrigin(pulumi.CustomResource):
             if origin_address is None and not opts.urn:
                 raise TypeError("Missing required property 'origin_address'")
             __props__.__dict__["origin_address"] = origin_address
+            __props__.__dict__["origin_override_action"] = origin_override_action
+            __props__.__dict__["origin_redirect"] = origin_redirect
             __props__.__dict__["port"] = port
             __props__.__dict__["project"] = project
             __props__.__dict__["protocol"] = protocol
@@ -868,6 +997,8 @@ class EdgeCacheOrigin(pulumi.CustomResource):
             max_attempts: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             origin_address: Optional[pulumi.Input[str]] = None,
+            origin_override_action: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginOverrideActionArgs']]] = None,
+            origin_redirect: Optional[pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginRedirectArgs']]] = None,
             port: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
@@ -903,6 +1034,11 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                This address will be used as the origin for cache requests - e.g. FQDN: media-backend.example.com, IPv4: 35.218.1.1, IPv6: 2607:f8b0:4012:809::200e, Cloud Storage: gs://bucketname
                When providing an FQDN (hostname), it must be publicly resolvable (e.g. via Google public DNS) and IP addresses must be publicly routable.  It must not contain a protocol (e.g., https://) and it must not contain any slashes.
                If a Cloud Storage bucket is provided, it must be in the canonical "gs://bucketname" format. Other forms, such as "storage.googleapis.com", will be rejected.
+        :param pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginOverrideActionArgs']] origin_override_action: The override actions, including url rewrites and header
+               additions, for requests that use this origin.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['EdgeCacheOriginOriginRedirectArgs']] origin_redirect: Follow redirects from this origin.
+               Structure is documented below.
         :param pulumi.Input[int] port: The port to connect to the origin on.
                Defaults to port 443 for HTTP2 and HTTPS protocols, and port 80 for HTTP.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -938,6 +1074,8 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         __props__.__dict__["max_attempts"] = max_attempts
         __props__.__dict__["name"] = name
         __props__.__dict__["origin_address"] = origin_address
+        __props__.__dict__["origin_override_action"] = origin_override_action
+        __props__.__dict__["origin_redirect"] = origin_redirect
         __props__.__dict__["port"] = port
         __props__.__dict__["project"] = project
         __props__.__dict__["protocol"] = protocol
@@ -1016,6 +1154,25 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         If a Cloud Storage bucket is provided, it must be in the canonical "gs://bucketname" format. Other forms, such as "storage.googleapis.com", will be rejected.
         """
         return pulumi.get(self, "origin_address")
+
+    @property
+    @pulumi.getter(name="originOverrideAction")
+    def origin_override_action(self) -> pulumi.Output[Optional['outputs.EdgeCacheOriginOriginOverrideAction']]:
+        """
+        The override actions, including url rewrites and header
+        additions, for requests that use this origin.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "origin_override_action")
+
+    @property
+    @pulumi.getter(name="originRedirect")
+    def origin_redirect(self) -> pulumi.Output[Optional['outputs.EdgeCacheOriginOriginRedirect']]:
+        """
+        Follow redirects from this origin.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "origin_redirect")
 
     @property
     @pulumi.getter

@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly string? StorageClass;
         /// <summary>
-        /// The type of the action of this Lifecycle Rule. Supported values include: `Delete` and `SetStorageClass`.
+        /// The type of the action of this Lifecycle Rule. Supported values include: `Delete`, `SetStorageClass` and `AbortIncompleteMultipartUpload`.
         /// </summary>
         public readonly string Type;
 

@@ -35,6 +35,11 @@ export type WorkforcePool = import("./workforcePool").WorkforcePool;
 export const WorkforcePool: typeof import("./workforcePool").WorkforcePool = null as any;
 utilities.lazyLoad(exports, ["WorkforcePool"], () => require("./workforcePool"));
 
+export { WorkforcePoolProviderArgs, WorkforcePoolProviderState } from "./workforcePoolProvider";
+export type WorkforcePoolProvider = import("./workforcePoolProvider").WorkforcePoolProvider;
+export const WorkforcePoolProvider: typeof import("./workforcePoolProvider").WorkforcePoolProvider = null as any;
+utilities.lazyLoad(exports, ["WorkforcePoolProvider"], () => require("./workforcePoolProvider"));
+
 export { WorkloadIdentityPoolArgs, WorkloadIdentityPoolState } from "./workloadIdentityPool";
 export type WorkloadIdentityPool = import("./workloadIdentityPool").WorkloadIdentityPool;
 export const WorkloadIdentityPool: typeof import("./workloadIdentityPool").WorkloadIdentityPool = null as any;
@@ -54,6 +59,8 @@ const _module = {
                 return new DenyPolicy(name, <any>undefined, { urn })
             case "gcp:iam/workforcePool:WorkforcePool":
                 return new WorkforcePool(name, <any>undefined, { urn })
+            case "gcp:iam/workforcePoolProvider:WorkforcePoolProvider":
+                return new WorkforcePoolProvider(name, <any>undefined, { urn })
             case "gcp:iam/workloadIdentityPool:WorkloadIdentityPool":
                 return new WorkloadIdentityPool(name, <any>undefined, { urn })
             case "gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider":
@@ -65,5 +72,6 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "iam/denyPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/workforcePool", _module)
+pulumi.runtime.registerResourceModule("gcp", "iam/workforcePoolProvider", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/workloadIdentityPool", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/workloadIdentityPoolProvider", _module)

@@ -75,6 +75,9 @@ import (
 //				Cluster:      defaultCluster.Name,
 //				InstanceId:   pulumi.String("alloydb-instance"),
 //				InstanceType: pulumi.String("PRIMARY"),
+//				MachineConfig: &alloydb.InstanceMachineConfigArgs{
+//					CpuCount: pulumi.Int(2),
+//				},
 //			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
 //				vpcConnection,
 //			}))

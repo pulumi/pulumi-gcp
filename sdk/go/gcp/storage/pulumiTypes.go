@@ -10,6 +10,143 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type BucketAutoclass struct {
+	// While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// BucketAutoclassInput is an input type that accepts BucketAutoclassArgs and BucketAutoclassOutput values.
+// You can construct a concrete instance of `BucketAutoclassInput` via:
+//
+//	BucketAutoclassArgs{...}
+type BucketAutoclassInput interface {
+	pulumi.Input
+
+	ToBucketAutoclassOutput() BucketAutoclassOutput
+	ToBucketAutoclassOutputWithContext(context.Context) BucketAutoclassOutput
+}
+
+type BucketAutoclassArgs struct {
+	// While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (BucketAutoclassArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketAutoclass)(nil)).Elem()
+}
+
+func (i BucketAutoclassArgs) ToBucketAutoclassOutput() BucketAutoclassOutput {
+	return i.ToBucketAutoclassOutputWithContext(context.Background())
+}
+
+func (i BucketAutoclassArgs) ToBucketAutoclassOutputWithContext(ctx context.Context) BucketAutoclassOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketAutoclassOutput)
+}
+
+func (i BucketAutoclassArgs) ToBucketAutoclassPtrOutput() BucketAutoclassPtrOutput {
+	return i.ToBucketAutoclassPtrOutputWithContext(context.Background())
+}
+
+func (i BucketAutoclassArgs) ToBucketAutoclassPtrOutputWithContext(ctx context.Context) BucketAutoclassPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketAutoclassOutput).ToBucketAutoclassPtrOutputWithContext(ctx)
+}
+
+// BucketAutoclassPtrInput is an input type that accepts BucketAutoclassArgs, BucketAutoclassPtr and BucketAutoclassPtrOutput values.
+// You can construct a concrete instance of `BucketAutoclassPtrInput` via:
+//
+//	        BucketAutoclassArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketAutoclassPtrInput interface {
+	pulumi.Input
+
+	ToBucketAutoclassPtrOutput() BucketAutoclassPtrOutput
+	ToBucketAutoclassPtrOutputWithContext(context.Context) BucketAutoclassPtrOutput
+}
+
+type bucketAutoclassPtrType BucketAutoclassArgs
+
+func BucketAutoclassPtr(v *BucketAutoclassArgs) BucketAutoclassPtrInput {
+	return (*bucketAutoclassPtrType)(v)
+}
+
+func (*bucketAutoclassPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketAutoclass)(nil)).Elem()
+}
+
+func (i *bucketAutoclassPtrType) ToBucketAutoclassPtrOutput() BucketAutoclassPtrOutput {
+	return i.ToBucketAutoclassPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketAutoclassPtrType) ToBucketAutoclassPtrOutputWithContext(ctx context.Context) BucketAutoclassPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketAutoclassPtrOutput)
+}
+
+type BucketAutoclassOutput struct{ *pulumi.OutputState }
+
+func (BucketAutoclassOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketAutoclass)(nil)).Elem()
+}
+
+func (o BucketAutoclassOutput) ToBucketAutoclassOutput() BucketAutoclassOutput {
+	return o
+}
+
+func (o BucketAutoclassOutput) ToBucketAutoclassOutputWithContext(ctx context.Context) BucketAutoclassOutput {
+	return o
+}
+
+func (o BucketAutoclassOutput) ToBucketAutoclassPtrOutput() BucketAutoclassPtrOutput {
+	return o.ToBucketAutoclassPtrOutputWithContext(context.Background())
+}
+
+func (o BucketAutoclassOutput) ToBucketAutoclassPtrOutputWithContext(ctx context.Context) BucketAutoclassPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketAutoclass) *BucketAutoclass {
+		return &v
+	}).(BucketAutoclassPtrOutput)
+}
+
+// While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
+func (o BucketAutoclassOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v BucketAutoclass) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type BucketAutoclassPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketAutoclassPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketAutoclass)(nil)).Elem()
+}
+
+func (o BucketAutoclassPtrOutput) ToBucketAutoclassPtrOutput() BucketAutoclassPtrOutput {
+	return o
+}
+
+func (o BucketAutoclassPtrOutput) ToBucketAutoclassPtrOutputWithContext(ctx context.Context) BucketAutoclassPtrOutput {
+	return o
+}
+
+func (o BucketAutoclassPtrOutput) Elem() BucketAutoclassOutput {
+	return o.ApplyT(func(v *BucketAutoclass) BucketAutoclass {
+		if v != nil {
+			return *v
+		}
+		var ret BucketAutoclass
+		return ret
+	}).(BucketAutoclassOutput)
+}
+
+// While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
+func (o BucketAutoclassPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BucketAutoclass) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type BucketCor struct {
 	// The value, in seconds, to return in the [Access-Control-Max-Age header](https://www.w3.org/TR/cors/#access-control-max-age-response-header) used in preflight responses.
 	MaxAgeSeconds *int `pulumi:"maxAgeSeconds"`
@@ -863,7 +1000,7 @@ func (o BucketLifecycleRuleArrayOutput) Index(i pulumi.IntInput) BucketLifecycle
 type BucketLifecycleRuleAction struct {
 	// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
 	StorageClass *string `pulumi:"storageClass"`
-	// The type of the action of this Lifecycle Rule. Supported values include: `Delete` and `SetStorageClass`.
+	// The type of the action of this Lifecycle Rule. Supported values include: `Delete`, `SetStorageClass` and `AbortIncompleteMultipartUpload`.
 	Type string `pulumi:"type"`
 }
 
@@ -881,7 +1018,7 @@ type BucketLifecycleRuleActionInput interface {
 type BucketLifecycleRuleActionArgs struct {
 	// The target [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects affected by this Lifecycle Rule. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
 	StorageClass pulumi.StringPtrInput `pulumi:"storageClass"`
-	// The type of the action of this Lifecycle Rule. Supported values include: `Delete` and `SetStorageClass`.
+	// The type of the action of this Lifecycle Rule. Supported values include: `Delete`, `SetStorageClass` and `AbortIncompleteMultipartUpload`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -916,7 +1053,7 @@ func (o BucketLifecycleRuleActionOutput) StorageClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleAction) *string { return v.StorageClass }).(pulumi.StringPtrOutput)
 }
 
-// The type of the action of this Lifecycle Rule. Supported values include: `Delete` and `SetStorageClass`.
+// The type of the action of this Lifecycle Rule. Supported values include: `Delete`, `SetStorageClass` and `AbortIncompleteMultipartUpload`.
 func (o BucketLifecycleRuleActionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleAction) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1536,7 +1673,7 @@ func (o BucketRetentionPolicyPtrOutput) RetentionPeriod() pulumi.IntPtrOutput {
 }
 
 type BucketVersioning struct {
-	// While set to `true`, versioning is fully enabled for this bucket.
+	// While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -1552,7 +1689,7 @@ type BucketVersioningInput interface {
 }
 
 type BucketVersioningArgs struct {
-	// While set to `true`, versioning is fully enabled for this bucket.
+	// While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -1633,7 +1770,7 @@ func (o BucketVersioningOutput) ToBucketVersioningPtrOutputWithContext(ctx conte
 	}).(BucketVersioningPtrOutput)
 }
 
-// While set to `true`, versioning is fully enabled for this bucket.
+// While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
 func (o BucketVersioningOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v BucketVersioning) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -1662,7 +1799,7 @@ func (o BucketVersioningPtrOutput) Elem() BucketVersioningOutput {
 	}).(BucketVersioningOutput)
 }
 
-// While set to `true`, versioning is fully enabled for this bucket.
+// While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
 func (o BucketVersioningPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BucketVersioning) *bool {
 		if v == nil {
@@ -5158,6 +5295,100 @@ func (o TransferJobTransferSpecTransferOptionsPtrOutput) OverwriteWhen() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetBucketAutoclass struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetBucketAutoclassInput is an input type that accepts GetBucketAutoclassArgs and GetBucketAutoclassOutput values.
+// You can construct a concrete instance of `GetBucketAutoclassInput` via:
+//
+//	GetBucketAutoclassArgs{...}
+type GetBucketAutoclassInput interface {
+	pulumi.Input
+
+	ToGetBucketAutoclassOutput() GetBucketAutoclassOutput
+	ToGetBucketAutoclassOutputWithContext(context.Context) GetBucketAutoclassOutput
+}
+
+type GetBucketAutoclassArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetBucketAutoclassArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketAutoclass)(nil)).Elem()
+}
+
+func (i GetBucketAutoclassArgs) ToGetBucketAutoclassOutput() GetBucketAutoclassOutput {
+	return i.ToGetBucketAutoclassOutputWithContext(context.Background())
+}
+
+func (i GetBucketAutoclassArgs) ToGetBucketAutoclassOutputWithContext(ctx context.Context) GetBucketAutoclassOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketAutoclassOutput)
+}
+
+// GetBucketAutoclassArrayInput is an input type that accepts GetBucketAutoclassArray and GetBucketAutoclassArrayOutput values.
+// You can construct a concrete instance of `GetBucketAutoclassArrayInput` via:
+//
+//	GetBucketAutoclassArray{ GetBucketAutoclassArgs{...} }
+type GetBucketAutoclassArrayInput interface {
+	pulumi.Input
+
+	ToGetBucketAutoclassArrayOutput() GetBucketAutoclassArrayOutput
+	ToGetBucketAutoclassArrayOutputWithContext(context.Context) GetBucketAutoclassArrayOutput
+}
+
+type GetBucketAutoclassArray []GetBucketAutoclassInput
+
+func (GetBucketAutoclassArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketAutoclass)(nil)).Elem()
+}
+
+func (i GetBucketAutoclassArray) ToGetBucketAutoclassArrayOutput() GetBucketAutoclassArrayOutput {
+	return i.ToGetBucketAutoclassArrayOutputWithContext(context.Background())
+}
+
+func (i GetBucketAutoclassArray) ToGetBucketAutoclassArrayOutputWithContext(ctx context.Context) GetBucketAutoclassArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketAutoclassArrayOutput)
+}
+
+type GetBucketAutoclassOutput struct{ *pulumi.OutputState }
+
+func (GetBucketAutoclassOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketAutoclass)(nil)).Elem()
+}
+
+func (o GetBucketAutoclassOutput) ToGetBucketAutoclassOutput() GetBucketAutoclassOutput {
+	return o
+}
+
+func (o GetBucketAutoclassOutput) ToGetBucketAutoclassOutputWithContext(ctx context.Context) GetBucketAutoclassOutput {
+	return o
+}
+
+func (o GetBucketAutoclassOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBucketAutoclass) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetBucketAutoclassArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBucketAutoclassArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketAutoclass)(nil)).Elem()
+}
+
+func (o GetBucketAutoclassArrayOutput) ToGetBucketAutoclassArrayOutput() GetBucketAutoclassArrayOutput {
+	return o
+}
+
+func (o GetBucketAutoclassArrayOutput) ToGetBucketAutoclassArrayOutputWithContext(ctx context.Context) GetBucketAutoclassArrayOutput {
+	return o
+}
+
+func (o GetBucketAutoclassArrayOutput) Index(i pulumi.IntInput) GetBucketAutoclassOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketAutoclass {
+		return vs[0].([]GetBucketAutoclass)[vs[1].(int)]
+	}).(GetBucketAutoclassOutput)
+}
+
 type GetBucketCor struct {
 	MaxAgeSeconds   int      `pulumi:"maxAgeSeconds"`
 	Methods         []string `pulumi:"methods"`
@@ -6407,6 +6638,8 @@ func (o GetBucketWebsiteArrayOutput) Index(i pulumi.IntInput) GetBucketWebsiteOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketAutoclassInput)(nil)).Elem(), BucketAutoclassArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketAutoclassPtrInput)(nil)).Elem(), BucketAutoclassArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCorInput)(nil)).Elem(), BucketCorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCorArrayInput)(nil)).Elem(), BucketCorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCustomPlacementConfigInput)(nil)).Elem(), BucketCustomPlacementConfigArgs{})
@@ -6471,6 +6704,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecPosixDataSourcePtrInput)(nil)).Elem(), TransferJobTransferSpecPosixDataSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecTransferOptionsInput)(nil)).Elem(), TransferJobTransferSpecTransferOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecTransferOptionsPtrInput)(nil)).Elem(), TransferJobTransferSpecTransferOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketAutoclassInput)(nil)).Elem(), GetBucketAutoclassArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketAutoclassArrayInput)(nil)).Elem(), GetBucketAutoclassArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketCorInput)(nil)).Elem(), GetBucketCorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketCorArrayInput)(nil)).Elem(), GetBucketCorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketCustomPlacementConfigInput)(nil)).Elem(), GetBucketCustomPlacementConfigArgs{})
@@ -6495,6 +6730,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketVersioningArrayInput)(nil)).Elem(), GetBucketVersioningArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketWebsiteInput)(nil)).Elem(), GetBucketWebsiteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketWebsiteArrayInput)(nil)).Elem(), GetBucketWebsiteArray{})
+	pulumi.RegisterOutputType(BucketAutoclassOutput{})
+	pulumi.RegisterOutputType(BucketAutoclassPtrOutput{})
 	pulumi.RegisterOutputType(BucketCorOutput{})
 	pulumi.RegisterOutputType(BucketCorArrayOutput{})
 	pulumi.RegisterOutputType(BucketCustomPlacementConfigOutput{})
@@ -6559,6 +6796,8 @@ func init() {
 	pulumi.RegisterOutputType(TransferJobTransferSpecPosixDataSourcePtrOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecTransferOptionsOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecTransferOptionsPtrOutput{})
+	pulumi.RegisterOutputType(GetBucketAutoclassOutput{})
+	pulumi.RegisterOutputType(GetBucketAutoclassArrayOutput{})
 	pulumi.RegisterOutputType(GetBucketCorOutput{})
 	pulumi.RegisterOutputType(GetBucketCorArrayOutput{})
 	pulumi.RegisterOutputType(GetBucketCustomPlacementConfigOutput{})

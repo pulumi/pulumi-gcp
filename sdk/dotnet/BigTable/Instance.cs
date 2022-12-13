@@ -118,7 +118,8 @@ namespace Pulumi.Gcp.BigTable
     {
         /// <summary>
         /// A block of cluster configuration options. This can be specified at least once, and up 
-        /// to as many as possible within 8 cloud regions. See structure below.
+        /// to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
+        /// to default to the backend value. See structure below.
         /// </summary>
         [Output("clusters")]
         public Output<ImmutableArray<Outputs.InstanceCluster>> Clusters { get; private set; } = null!;
@@ -216,7 +217,8 @@ namespace Pulumi.Gcp.BigTable
 
         /// <summary>
         /// A block of cluster configuration options. This can be specified at least once, and up 
-        /// to as many as possible within 8 cloud regions. See structure below.
+        /// to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
+        /// to default to the backend value. See structure below.
         /// </summary>
         public InputList<Inputs.InstanceClusterArgs> Clusters
         {
@@ -285,7 +287,8 @@ namespace Pulumi.Gcp.BigTable
 
         /// <summary>
         /// A block of cluster configuration options. This can be specified at least once, and up 
-        /// to as many as possible within 8 cloud regions. See structure below.
+        /// to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
+        /// to default to the backend value. See structure below.
         /// </summary>
         public InputList<Inputs.InstanceClusterGetArgs> Clusters
         {

@@ -63,35 +63,37 @@ export class RouterInterface extends pulumi.CustomResource {
     /**
      * The name or resource link to the
      * VLAN interconnect for this interface. Changing this forces a new interface to
-     * be created. Only one of `vpnTunnel` and `interconnectAttachment` can be
-     * specified.
+     * be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
      */
     public readonly interconnectAttachment!: pulumi.Output<string | undefined>;
     /**
      * IP address and range of the interface. The IP range must be
      * in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
      */
-    public readonly ipRange!: pulumi.Output<string | undefined>;
+    public readonly ipRange!: pulumi.Output<string>;
     /**
      * A unique name for the interface, required by GCE. Changing
      * this forces a new interface to be created.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The ID of the project in which this interface's router belongs. If it
-     * is not provided, the provider project is used. Changing this forces a new interface to be created.
+     * The regional private internal IP address that is used
+     * to establish BGP sessions to a VM instance acting as a third-party Router Appliance. Changing this forces a new interface to be created.
+     */
+    public readonly privateIpAddress!: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the project in which this interface's routerbelongs.
+     * If it is not provided, the provider project is used. Changing this forces a new interface to be created.
      */
     public readonly project!: pulumi.Output<string>;
     /**
      * The name of the interface that is redundant to
-     * this interface. Changing this forces a new interface to
-     * be created.
+     * this interface. Changing this forces a new interface to be created.
      */
     public readonly redundantInterface!: pulumi.Output<string | undefined>;
     /**
-     * The region this interface's router sits in. If not specified,
-     * the project region will be used. Changing this forces a new interface to be
-     * created.
+     * The region this interface's router sits in.
+     * If not specified, the project region will be used. Changing this forces a new interface to be created.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -100,9 +102,14 @@ export class RouterInterface extends pulumi.CustomResource {
      */
     public readonly router!: pulumi.Output<string>;
     /**
+     * The URI of the subnetwork resource that this interface
+     * belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
+     */
+    public readonly subnetwork!: pulumi.Output<string | undefined>;
+    /**
      * The name or resource link to the VPN tunnel this
      * interface will be linked to. Changing this forces a new interface to be created. Only
-     * one of `vpnTunnel` and `interconnectAttachment` can be specified.
+     * one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
      */
     public readonly vpnTunnel!: pulumi.Output<string | undefined>;
 
@@ -122,10 +129,12 @@ export class RouterInterface extends pulumi.CustomResource {
             resourceInputs["interconnectAttachment"] = state ? state.interconnectAttachment : undefined;
             resourceInputs["ipRange"] = state ? state.ipRange : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["redundantInterface"] = state ? state.redundantInterface : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["router"] = state ? state.router : undefined;
+            resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
             resourceInputs["vpnTunnel"] = state ? state.vpnTunnel : undefined;
         } else {
             const args = argsOrState as RouterInterfaceArgs | undefined;
@@ -135,10 +144,12 @@ export class RouterInterface extends pulumi.CustomResource {
             resourceInputs["interconnectAttachment"] = args ? args.interconnectAttachment : undefined;
             resourceInputs["ipRange"] = args ? args.ipRange : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["privateIpAddress"] = args ? args.privateIpAddress : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["redundantInterface"] = args ? args.redundantInterface : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["router"] = args ? args.router : undefined;
+            resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
             resourceInputs["vpnTunnel"] = args ? args.vpnTunnel : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -153,8 +164,7 @@ export interface RouterInterfaceState {
     /**
      * The name or resource link to the
      * VLAN interconnect for this interface. Changing this forces a new interface to
-     * be created. Only one of `vpnTunnel` and `interconnectAttachment` can be
-     * specified.
+     * be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
      */
     interconnectAttachment?: pulumi.Input<string>;
     /**
@@ -168,20 +178,23 @@ export interface RouterInterfaceState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The ID of the project in which this interface's router belongs. If it
-     * is not provided, the provider project is used. Changing this forces a new interface to be created.
+     * The regional private internal IP address that is used
+     * to establish BGP sessions to a VM instance acting as a third-party Router Appliance. Changing this forces a new interface to be created.
+     */
+    privateIpAddress?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which this interface's routerbelongs.
+     * If it is not provided, the provider project is used. Changing this forces a new interface to be created.
      */
     project?: pulumi.Input<string>;
     /**
      * The name of the interface that is redundant to
-     * this interface. Changing this forces a new interface to
-     * be created.
+     * this interface. Changing this forces a new interface to be created.
      */
     redundantInterface?: pulumi.Input<string>;
     /**
-     * The region this interface's router sits in. If not specified,
-     * the project region will be used. Changing this forces a new interface to be
-     * created.
+     * The region this interface's router sits in.
+     * If not specified, the project region will be used. Changing this forces a new interface to be created.
      */
     region?: pulumi.Input<string>;
     /**
@@ -190,9 +203,14 @@ export interface RouterInterfaceState {
      */
     router?: pulumi.Input<string>;
     /**
+     * The URI of the subnetwork resource that this interface
+     * belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
+     */
+    subnetwork?: pulumi.Input<string>;
+    /**
      * The name or resource link to the VPN tunnel this
      * interface will be linked to. Changing this forces a new interface to be created. Only
-     * one of `vpnTunnel` and `interconnectAttachment` can be specified.
+     * one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
      */
     vpnTunnel?: pulumi.Input<string>;
 }
@@ -204,8 +222,7 @@ export interface RouterInterfaceArgs {
     /**
      * The name or resource link to the
      * VLAN interconnect for this interface. Changing this forces a new interface to
-     * be created. Only one of `vpnTunnel` and `interconnectAttachment` can be
-     * specified.
+     * be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
      */
     interconnectAttachment?: pulumi.Input<string>;
     /**
@@ -219,20 +236,23 @@ export interface RouterInterfaceArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The ID of the project in which this interface's router belongs. If it
-     * is not provided, the provider project is used. Changing this forces a new interface to be created.
+     * The regional private internal IP address that is used
+     * to establish BGP sessions to a VM instance acting as a third-party Router Appliance. Changing this forces a new interface to be created.
+     */
+    privateIpAddress?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which this interface's routerbelongs.
+     * If it is not provided, the provider project is used. Changing this forces a new interface to be created.
      */
     project?: pulumi.Input<string>;
     /**
      * The name of the interface that is redundant to
-     * this interface. Changing this forces a new interface to
-     * be created.
+     * this interface. Changing this forces a new interface to be created.
      */
     redundantInterface?: pulumi.Input<string>;
     /**
-     * The region this interface's router sits in. If not specified,
-     * the project region will be used. Changing this forces a new interface to be
-     * created.
+     * The region this interface's router sits in.
+     * If not specified, the project region will be used. Changing this forces a new interface to be created.
      */
     region?: pulumi.Input<string>;
     /**
@@ -241,9 +261,14 @@ export interface RouterInterfaceArgs {
      */
     router: pulumi.Input<string>;
     /**
+     * The URI of the subnetwork resource that this interface
+     * belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
+     */
+    subnetwork?: pulumi.Input<string>;
+    /**
      * The name or resource link to the VPN tunnel this
      * interface will be linked to. Changing this forces a new interface to be created. Only
-     * one of `vpnTunnel` and `interconnectAttachment` can be specified.
+     * one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
      */
     vpnTunnel?: pulumi.Input<string>;
 }

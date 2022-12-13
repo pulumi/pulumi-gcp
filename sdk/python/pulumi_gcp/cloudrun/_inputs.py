@@ -1995,7 +1995,7 @@ class ServiceTemplateSpecContainerPortArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[int] container_port: Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+        :param pulumi.Input[int] container_port: Port number the container listens on. This must be a valid port number (between 1 and 65535). Defaults to "8080".
         :param pulumi.Input[str] name: Volume's name.
         :param pulumi.Input[str] protocol: Protocol for port. Must be "TCP". Defaults to "TCP".
         """
@@ -2010,7 +2010,7 @@ class ServiceTemplateSpecContainerPortArgs:
     @pulumi.getter(name="containerPort")
     def container_port(self) -> Optional[pulumi.Input[int]]:
         """
-        Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+        Port number the container listens on. This must be a valid port number (between 1 and 65535). Defaults to "8080".
         """
         return pulumi.get(self, "container_port")
 

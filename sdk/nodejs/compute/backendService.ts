@@ -24,6 +24,25 @@ import * as utilities from "../utilities";
  * state as plain-text.
  *
  * ## Example Usage
+ * ### Backend Service Cache Include Http Headers
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultBackendService = new gcp.compute.BackendService("default", {
+ *     cdnPolicy: {
+ *         cacheKeyPolicy: {
+ *             includeHost: true,
+ *             includeHttpHeaders: ["X-My-Header-Field"],
+ *             includeProtocol: true,
+ *             includeQueryString: true,
+ *         },
+ *         cacheMode: "USE_ORIGIN_HEADERS",
+ *     },
+ *     enableCdn: true,
+ * });
+ * ```
  * ### Backend Service Cache Include Named Cookies
  *
  * ```typescript

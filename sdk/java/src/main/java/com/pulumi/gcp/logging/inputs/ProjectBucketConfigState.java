@@ -5,6 +5,7 @@ package com.pulumi.gcp.logging.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.logging.inputs.ProjectBucketConfigCmekSettingsArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -29,6 +30,21 @@ public final class ProjectBucketConfigState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> bucketId() {
         return Optional.ofNullable(this.bucketId);
+    }
+
+    /**
+     * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
+     * 
+     */
+    @Import(name="cmekSettings")
+    private @Nullable Output<ProjectBucketConfigCmekSettingsArgs> cmekSettings;
+
+    /**
+     * @return The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ProjectBucketConfigCmekSettingsArgs>> cmekSettings() {
+        return Optional.ofNullable(this.cmekSettings);
     }
 
     /**
@@ -77,14 +93,14 @@ public final class ProjectBucketConfigState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The resource name of the bucket. For example: &#34;projects/my-project-id/locations/my-location/buckets/my-bucket-id&#34;
+     * The resource name of the CMEK settings.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The resource name of the bucket. For example: &#34;projects/my-project-id/locations/my-location/buckets/my-bucket-id&#34;
+     * @return The resource name of the CMEK settings.
      * 
      */
     public Optional<Output<String>> name() {
@@ -125,6 +141,7 @@ public final class ProjectBucketConfigState extends com.pulumi.resources.Resourc
 
     private ProjectBucketConfigState(ProjectBucketConfigState $) {
         this.bucketId = $.bucketId;
+        this.cmekSettings = $.cmekSettings;
         this.description = $.description;
         this.lifecycleState = $.lifecycleState;
         this.location = $.location;
@@ -170,6 +187,27 @@ public final class ProjectBucketConfigState extends com.pulumi.resources.Resourc
          */
         public Builder bucketId(String bucketId) {
             return bucketId(Output.of(bucketId));
+        }
+
+        /**
+         * @param cmekSettings The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cmekSettings(@Nullable Output<ProjectBucketConfigCmekSettingsArgs> cmekSettings) {
+            $.cmekSettings = cmekSettings;
+            return this;
+        }
+
+        /**
+         * @param cmekSettings The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cmekSettings(ProjectBucketConfigCmekSettingsArgs cmekSettings) {
+            return cmekSettings(Output.of(cmekSettings));
         }
 
         /**
@@ -236,7 +274,7 @@ public final class ProjectBucketConfigState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name The resource name of the bucket. For example: &#34;projects/my-project-id/locations/my-location/buckets/my-bucket-id&#34;
+         * @param name The resource name of the CMEK settings.
          * 
          * @return builder
          * 
@@ -247,7 +285,7 @@ public final class ProjectBucketConfigState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name The resource name of the bucket. For example: &#34;projects/my-project-id/locations/my-location/buckets/my-bucket-id&#34;
+         * @param name The resource name of the CMEK settings.
          * 
          * @return builder
          * 

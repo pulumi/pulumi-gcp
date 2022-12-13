@@ -92,6 +92,14 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("reservationAffinity")]
         public Input<Inputs.NodePoolNodeConfigReservationAffinityGetArgs>? ReservationAffinity { get; set; }
 
+        [Input("resourceLabels")]
+        private InputMap<string>? _resourceLabels;
+        public InputMap<string> ResourceLabels
+        {
+            get => _resourceLabels ?? (_resourceLabels = new InputMap<string>());
+            set => _resourceLabels = value;
+        }
+
         [Input("sandboxConfig")]
         public Input<Inputs.NodePoolNodeConfigSandboxConfigGetArgs>? SandboxConfig { get; set; }
 

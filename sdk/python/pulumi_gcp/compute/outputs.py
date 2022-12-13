@@ -250,9 +250,16 @@ __all__ = [
     'RegionPerInstanceConfigPreservedState',
     'RegionPerInstanceConfigPreservedStateDisk',
     'RegionUrlMapDefaultRouteAction',
+    'RegionUrlMapDefaultRouteActionCorsPolicy',
+    'RegionUrlMapDefaultRouteActionFaultInjectionPolicy',
+    'RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbort',
+    'RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelay',
+    'RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay',
     'RegionUrlMapDefaultRouteActionRequestMirrorPolicy',
     'RegionUrlMapDefaultRouteActionRetryPolicy',
     'RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeout',
+    'RegionUrlMapDefaultRouteActionTimeout',
+    'RegionUrlMapDefaultRouteActionUrlRewrite',
     'RegionUrlMapDefaultRouteActionWeightedBackendService',
     'RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderAction',
     'RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd',
@@ -337,7 +344,10 @@ __all__ = [
     'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig',
     'SecurityPolicyAdvancedOptionsConfig',
     'SecurityPolicyAdvancedOptionsConfigJsonCustomConfig',
+    'SecurityPolicyRecaptchaOptionsConfig',
     'SecurityPolicyRule',
+    'SecurityPolicyRuleHeaderAction',
+    'SecurityPolicyRuleHeaderActionRequestHeadersToAdd',
     'SecurityPolicyRuleMatch',
     'SecurityPolicyRuleMatchConfig',
     'SecurityPolicyRuleMatchExpr',
@@ -2861,6 +2871,8 @@ class BackendServiceCdnPolicyCacheKeyPolicy(dict):
         suggest = None
         if key == "includeHost":
             suggest = "include_host"
+        elif key == "includeHttpHeaders":
+            suggest = "include_http_headers"
         elif key == "includeNamedCookies":
             suggest = "include_named_cookies"
         elif key == "includeProtocol":
@@ -2885,6 +2897,7 @@ class BackendServiceCdnPolicyCacheKeyPolicy(dict):
 
     def __init__(__self__, *,
                  include_host: Optional[bool] = None,
+                 include_http_headers: Optional[Sequence[str]] = None,
                  include_named_cookies: Optional[Sequence[str]] = None,
                  include_protocol: Optional[bool] = None,
                  include_query_string: Optional[bool] = None,
@@ -2892,6 +2905,8 @@ class BackendServiceCdnPolicyCacheKeyPolicy(dict):
                  query_string_whitelists: Optional[Sequence[str]] = None):
         """
         :param bool include_host: If true requests to different hosts will be cached separately.
+        :param Sequence[str] include_http_headers: Allows HTTP request headers (by name) to be used in the
+               cache key.
         :param Sequence[str] include_named_cookies: Names of cookies to include in cache keys.
         :param bool include_protocol: If true, http and https requests will be cached separately.
         :param bool include_query_string: If true, include query string parameters in the cache key
@@ -2913,6 +2928,8 @@ class BackendServiceCdnPolicyCacheKeyPolicy(dict):
         """
         if include_host is not None:
             pulumi.set(__self__, "include_host", include_host)
+        if include_http_headers is not None:
+            pulumi.set(__self__, "include_http_headers", include_http_headers)
         if include_named_cookies is not None:
             pulumi.set(__self__, "include_named_cookies", include_named_cookies)
         if include_protocol is not None:
@@ -2931,6 +2948,15 @@ class BackendServiceCdnPolicyCacheKeyPolicy(dict):
         If true requests to different hosts will be cached separately.
         """
         return pulumi.get(self, "include_host")
+
+    @property
+    @pulumi.getter(name="includeHttpHeaders")
+    def include_http_headers(self) -> Optional[Sequence[str]]:
+        """
+        Allows HTTP request headers (by name) to be used in the
+        cache key.
+        """
+        return pulumi.get(self, "include_http_headers")
 
     @property
     @pulumi.getter(name="includeNamedCookies")
@@ -16676,10 +16702,16 @@ class RegionUrlMapDefaultRouteAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "requestMirrorPolicy":
+        if key == "corsPolicy":
+            suggest = "cors_policy"
+        elif key == "faultInjectionPolicy":
+            suggest = "fault_injection_policy"
+        elif key == "requestMirrorPolicy":
             suggest = "request_mirror_policy"
         elif key == "retryPolicy":
             suggest = "retry_policy"
+        elif key == "urlRewrite":
+            suggest = "url_rewrite"
         elif key == "weightedBackendServices":
             suggest = "weighted_backend_services"
 
@@ -16695,26 +16727,78 @@ class RegionUrlMapDefaultRouteAction(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 cors_policy: Optional['outputs.RegionUrlMapDefaultRouteActionCorsPolicy'] = None,
+                 fault_injection_policy: Optional['outputs.RegionUrlMapDefaultRouteActionFaultInjectionPolicy'] = None,
                  request_mirror_policy: Optional['outputs.RegionUrlMapDefaultRouteActionRequestMirrorPolicy'] = None,
                  retry_policy: Optional['outputs.RegionUrlMapDefaultRouteActionRetryPolicy'] = None,
+                 timeout: Optional['outputs.RegionUrlMapDefaultRouteActionTimeout'] = None,
+                 url_rewrite: Optional['outputs.RegionUrlMapDefaultRouteActionUrlRewrite'] = None,
                  weighted_backend_services: Optional[Sequence['outputs.RegionUrlMapDefaultRouteActionWeightedBackendService']] = None):
         """
+        :param 'RegionUrlMapDefaultRouteActionCorsPolicyArgs' cors_policy: The specification for allowing client side cross-origin requests. Please see
+               [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+               Structure is documented below.
+        :param 'RegionUrlMapDefaultRouteActionFaultInjectionPolicyArgs' fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+               As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service.
+               Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
+               timeout and retryPolicy is ignored by clients that are configured with a faultInjectionPolicy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection.
+               Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: [Routing and traffic management features](https://cloud.google.com/load-balancing/docs/features#routing-traffic-management).
+               Structure is documented below.
         :param 'RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs' request_mirror_policy: Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
                The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
                Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
                Structure is documented below.
         :param 'RegionUrlMapDefaultRouteActionRetryPolicyArgs' retry_policy: Specifies the retry policy associated with this route.
                Structure is documented below.
+        :param 'RegionUrlMapDefaultRouteActionTimeoutArgs' timeout: Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as end-of-stream) up until the response has been processed. Timeout includes all retries.
+               If not specified, this field uses the largest timeout among all backend services associated with the route.
+               Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+               Structure is documented below.
+        :param 'RegionUrlMapDefaultRouteActionUrlRewriteArgs' url_rewrite: The spec to modify the URL of the request, before forwarding the request to the matched service.
+               urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers.
+               Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+               Structure is documented below.
         :param Sequence['RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs'] weighted_backend_services: A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number.
                After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
                Structure is documented below.
         """
+        if cors_policy is not None:
+            pulumi.set(__self__, "cors_policy", cors_policy)
+        if fault_injection_policy is not None:
+            pulumi.set(__self__, "fault_injection_policy", fault_injection_policy)
         if request_mirror_policy is not None:
             pulumi.set(__self__, "request_mirror_policy", request_mirror_policy)
         if retry_policy is not None:
             pulumi.set(__self__, "retry_policy", retry_policy)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+        if url_rewrite is not None:
+            pulumi.set(__self__, "url_rewrite", url_rewrite)
         if weighted_backend_services is not None:
             pulumi.set(__self__, "weighted_backend_services", weighted_backend_services)
+
+    @property
+    @pulumi.getter(name="corsPolicy")
+    def cors_policy(self) -> Optional['outputs.RegionUrlMapDefaultRouteActionCorsPolicy']:
+        """
+        The specification for allowing client side cross-origin requests. Please see
+        [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cors_policy")
+
+    @property
+    @pulumi.getter(name="faultInjectionPolicy")
+    def fault_injection_policy(self) -> Optional['outputs.RegionUrlMapDefaultRouteActionFaultInjectionPolicy']:
+        """
+        The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+        As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service.
+        Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
+        timeout and retryPolicy is ignored by clients that are configured with a faultInjectionPolicy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection.
+        Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: [Routing and traffic management features](https://cloud.google.com/load-balancing/docs/features#routing-traffic-management).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fault_injection_policy")
 
     @property
     @pulumi.getter(name="requestMirrorPolicy")
@@ -16737,6 +16821,28 @@ class RegionUrlMapDefaultRouteAction(dict):
         return pulumi.get(self, "retry_policy")
 
     @property
+    @pulumi.getter
+    def timeout(self) -> Optional['outputs.RegionUrlMapDefaultRouteActionTimeout']:
+        """
+        Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as end-of-stream) up until the response has been processed. Timeout includes all retries.
+        If not specified, this field uses the largest timeout among all backend services associated with the route.
+        Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "timeout")
+
+    @property
+    @pulumi.getter(name="urlRewrite")
+    def url_rewrite(self) -> Optional['outputs.RegionUrlMapDefaultRouteActionUrlRewrite']:
+        """
+        The spec to modify the URL of the request, before forwarding the request to the matched service.
+        urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers.
+        Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "url_rewrite")
+
+    @property
     @pulumi.getter(name="weightedBackendServices")
     def weighted_backend_services(self) -> Optional[Sequence['outputs.RegionUrlMapDefaultRouteActionWeightedBackendService']]:
         """
@@ -16745,6 +16851,322 @@ class RegionUrlMapDefaultRouteAction(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "weighted_backend_services")
+
+
+@pulumi.output_type
+class RegionUrlMapDefaultRouteActionCorsPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowCredentials":
+            suggest = "allow_credentials"
+        elif key == "allowHeaders":
+            suggest = "allow_headers"
+        elif key == "allowMethods":
+            suggest = "allow_methods"
+        elif key == "allowOriginRegexes":
+            suggest = "allow_origin_regexes"
+        elif key == "allowOrigins":
+            suggest = "allow_origins"
+        elif key == "exposeHeaders":
+            suggest = "expose_headers"
+        elif key == "maxAge":
+            suggest = "max_age"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionUrlMapDefaultRouteActionCorsPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionUrlMapDefaultRouteActionCorsPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionUrlMapDefaultRouteActionCorsPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_credentials: Optional[bool] = None,
+                 allow_headers: Optional[Sequence[str]] = None,
+                 allow_methods: Optional[Sequence[str]] = None,
+                 allow_origin_regexes: Optional[Sequence[str]] = None,
+                 allow_origins: Optional[Sequence[str]] = None,
+                 disabled: Optional[bool] = None,
+                 expose_headers: Optional[Sequence[str]] = None,
+                 max_age: Optional[int] = None):
+        """
+        :param bool allow_credentials: In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header.
+               Default is false.
+        :param Sequence[str] allow_headers: Specifies the content for the Access-Control-Allow-Headers header.
+        :param Sequence[str] allow_methods: Specifies the content for the Access-Control-Allow-Methods header.
+        :param Sequence[str] allow_origin_regexes: Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+               please see en.cppreference.com/w/cpp/regex/ecmascript
+               An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        :param Sequence[str] allow_origins: Specifies the list of origins that will be allowed to do CORS requests.
+               An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        :param bool disabled: If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+        :param Sequence[str] expose_headers: Specifies the content for the Access-Control-Expose-Headers header.
+        :param int max_age: Specifies how long results of a preflight request can be cached in seconds.
+               This translates to the Access-Control-Max-Age header.
+        """
+        if allow_credentials is not None:
+            pulumi.set(__self__, "allow_credentials", allow_credentials)
+        if allow_headers is not None:
+            pulumi.set(__self__, "allow_headers", allow_headers)
+        if allow_methods is not None:
+            pulumi.set(__self__, "allow_methods", allow_methods)
+        if allow_origin_regexes is not None:
+            pulumi.set(__self__, "allow_origin_regexes", allow_origin_regexes)
+        if allow_origins is not None:
+            pulumi.set(__self__, "allow_origins", allow_origins)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if expose_headers is not None:
+            pulumi.set(__self__, "expose_headers", expose_headers)
+        if max_age is not None:
+            pulumi.set(__self__, "max_age", max_age)
+
+    @property
+    @pulumi.getter(name="allowCredentials")
+    def allow_credentials(self) -> Optional[bool]:
+        """
+        In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header.
+        Default is false.
+        """
+        return pulumi.get(self, "allow_credentials")
+
+    @property
+    @pulumi.getter(name="allowHeaders")
+    def allow_headers(self) -> Optional[Sequence[str]]:
+        """
+        Specifies the content for the Access-Control-Allow-Headers header.
+        """
+        return pulumi.get(self, "allow_headers")
+
+    @property
+    @pulumi.getter(name="allowMethods")
+    def allow_methods(self) -> Optional[Sequence[str]]:
+        """
+        Specifies the content for the Access-Control-Allow-Methods header.
+        """
+        return pulumi.get(self, "allow_methods")
+
+    @property
+    @pulumi.getter(name="allowOriginRegexes")
+    def allow_origin_regexes(self) -> Optional[Sequence[str]]:
+        """
+        Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+        please see en.cppreference.com/w/cpp/regex/ecmascript
+        An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        """
+        return pulumi.get(self, "allow_origin_regexes")
+
+    @property
+    @pulumi.getter(name="allowOrigins")
+    def allow_origins(self) -> Optional[Sequence[str]]:
+        """
+        Specifies the list of origins that will be allowed to do CORS requests.
+        An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        """
+        return pulumi.get(self, "allow_origins")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[bool]:
+        """
+        If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter(name="exposeHeaders")
+    def expose_headers(self) -> Optional[Sequence[str]]:
+        """
+        Specifies the content for the Access-Control-Expose-Headers header.
+        """
+        return pulumi.get(self, "expose_headers")
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> Optional[int]:
+        """
+        Specifies how long results of a preflight request can be cached in seconds.
+        This translates to the Access-Control-Max-Age header.
+        """
+        return pulumi.get(self, "max_age")
+
+
+@pulumi.output_type
+class RegionUrlMapDefaultRouteActionFaultInjectionPolicy(dict):
+    def __init__(__self__, *,
+                 abort: Optional['outputs.RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbort'] = None,
+                 delay: Optional['outputs.RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelay'] = None):
+        """
+        :param 'RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbortArgs' abort: The specification for how client requests are aborted as part of fault injection.
+               Structure is documented below.
+        :param 'RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayArgs' delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+               Structure is documented below.
+        """
+        if abort is not None:
+            pulumi.set(__self__, "abort", abort)
+        if delay is not None:
+            pulumi.set(__self__, "delay", delay)
+
+    @property
+    @pulumi.getter
+    def abort(self) -> Optional['outputs.RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbort']:
+        """
+        The specification for how client requests are aborted as part of fault injection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "abort")
+
+    @property
+    @pulumi.getter
+    def delay(self) -> Optional['outputs.RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelay']:
+        """
+        The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "delay")
+
+
+@pulumi.output_type
+class RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbort(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpStatus":
+            suggest = "http_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbort. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbort.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbort.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 http_status: Optional[int] = None,
+                 percentage: Optional[float] = None):
+        """
+        :param int http_status: The HTTP status code used to abort the request.
+               The value must be between 200 and 599 inclusive.
+        :param float percentage: The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+               The value must be between 0.0 and 100.0 inclusive.
+        """
+        if http_status is not None:
+            pulumi.set(__self__, "http_status", http_status)
+        if percentage is not None:
+            pulumi.set(__self__, "percentage", percentage)
+
+    @property
+    @pulumi.getter(name="httpStatus")
+    def http_status(self) -> Optional[int]:
+        """
+        The HTTP status code used to abort the request.
+        The value must be between 200 and 599 inclusive.
+        """
+        return pulumi.get(self, "http_status")
+
+    @property
+    @pulumi.getter
+    def percentage(self) -> Optional[float]:
+        """
+        The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
+        return pulumi.get(self, "percentage")
+
+
+@pulumi.output_type
+class RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelay(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fixedDelay":
+            suggest = "fixed_delay"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelay. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelay.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelay.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fixed_delay: Optional['outputs.RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay'] = None,
+                 percentage: Optional[float] = None):
+        """
+        :param 'RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs' fixed_delay: Specifies the value of the fixed delay interval.
+               Structure is documented below.
+        :param float percentage: The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+               The value must be between 0.0 and 100.0 inclusive.
+        """
+        if fixed_delay is not None:
+            pulumi.set(__self__, "fixed_delay", fixed_delay)
+        if percentage is not None:
+            pulumi.set(__self__, "percentage", percentage)
+
+    @property
+    @pulumi.getter(name="fixedDelay")
+    def fixed_delay(self) -> Optional['outputs.RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay']:
+        """
+        Specifies the value of the fixed delay interval.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fixed_delay")
+
+    @property
+    @pulumi.getter
+    def percentage(self) -> Optional[float]:
+        """
+        The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+        The value must be between 0.0 and 100.0 inclusive.
+        """
+        return pulumi.get(self, "percentage")
+
+
+@pulumi.output_type
+class RegionUrlMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay(dict):
+    def __init__(__self__, *,
+                 nanos: Optional[int] = None,
+                 seconds: Optional[str] = None):
+        """
+        :param int nanos: Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+               represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        :param str seconds: Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+               Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[int]:
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+        represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[str]:
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        return pulumi.get(self, "seconds")
 
 
 @pulumi.output_type
@@ -16912,6 +17334,95 @@ class RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeout(dict):
         Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
         """
         return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class RegionUrlMapDefaultRouteActionTimeout(dict):
+    def __init__(__self__, *,
+                 nanos: Optional[int] = None,
+                 seconds: Optional[str] = None):
+        """
+        :param int nanos: Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+               represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        :param str seconds: Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+               Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if seconds is not None:
+            pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[int]:
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+        represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> Optional[str]:
+        """
+        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+        Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        """
+        return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class RegionUrlMapDefaultRouteActionUrlRewrite(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hostRewrite":
+            suggest = "host_rewrite"
+        elif key == "pathPrefixRewrite":
+            suggest = "path_prefix_rewrite"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionUrlMapDefaultRouteActionUrlRewrite. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionUrlMapDefaultRouteActionUrlRewrite.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionUrlMapDefaultRouteActionUrlRewrite.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 host_rewrite: Optional[str] = None,
+                 path_prefix_rewrite: Optional[str] = None):
+        """
+        :param str host_rewrite: Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite.
+               The value must be from 1 to 255 characters.
+        :param str path_prefix_rewrite: Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite.
+               The value must be from 1 to 1024 characters.
+        """
+        if host_rewrite is not None:
+            pulumi.set(__self__, "host_rewrite", host_rewrite)
+        if path_prefix_rewrite is not None:
+            pulumi.set(__self__, "path_prefix_rewrite", path_prefix_rewrite)
+
+    @property
+    @pulumi.getter(name="hostRewrite")
+    def host_rewrite(self) -> Optional[str]:
+        """
+        Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite.
+        The value must be from 1 to 255 characters.
+        """
+        return pulumi.get(self, "host_rewrite")
+
+    @property
+    @pulumi.getter(name="pathPrefixRewrite")
+    def path_prefix_rewrite(self) -> Optional[str]:
+        """
+        Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite.
+        The value must be from 1 to 1024 characters.
+        """
+        return pulumi.get(self, "path_prefix_rewrite")
 
 
 @pulumi.output_type
@@ -17838,16 +18349,14 @@ class RegionUrlMapPathMatcherPathRuleRouteAction(dict):
                  url_rewrite: Optional['outputs.RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite'] = None,
                  weighted_backend_services: Optional[Sequence['outputs.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService']] = None):
         """
-        :param 'RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs' cors_policy: The specification for allowing client side cross-origin requests. Please see W3C
-               Recommendation for Cross Origin Resource Sharing
+        :param 'RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs' cors_policy: The specification for allowing client side cross-origin requests. Please see
+               [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
                Structure is documented below.
-        :param 'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs' fault_injection_policy: The specification for fault injection introduced into traffic to test the
-               resiliency of clients to backend service failure. As part of fault injection,
-               when clients send requests to a backend service, delays can be introduced by
-               Loadbalancer on a percentage of requests before sending those request to the
-               backend service. Similarly requests from clients can be aborted by the
-               Loadbalancer for a percentage of requests. timeout and retry_policy will be
-               ignored by clients that are configured with a fault_injection_policy.
+        :param 'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs' fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+               As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service.
+               Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
+               timeout and retryPolicy is ignored by clients that are configured with a faultInjectionPolicy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection.
+               Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: [Routing and traffic management features](https://cloud.google.com/load-balancing/docs/features#routing-traffic-management).
                Structure is documented below.
         :param 'RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs' request_mirror_policy: Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
                The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
@@ -17855,13 +18364,13 @@ class RegionUrlMapPathMatcherPathRuleRouteAction(dict):
                Structure is documented below.
         :param 'RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgs' retry_policy: Specifies the retry policy associated with this route.
                Structure is documented below.
-        :param 'RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgs' timeout: Specifies the timeout for the selected route. Timeout is computed from the time
-               the request is has been fully processed (i.e. end-of-stream) up until the
-               response has been completely processed. Timeout includes all retries. If not
-               specified, the default value is 15 seconds.
+        :param 'RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgs' timeout: Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as end-of-stream) up until the response has been processed. Timeout includes all retries.
+               If not specified, this field uses the largest timeout among all backend services associated with the route.
+               Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
                Structure is documented below.
-        :param 'RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgs' url_rewrite: The spec to modify the URL of the request, prior to forwarding the request to
-               the matched service
+        :param 'RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgs' url_rewrite: The spec to modify the URL of the request, before forwarding the request to the matched service.
+               urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers.
+               Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
                Structure is documented below.
         :param Sequence['RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs'] weighted_backend_services: A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number.
                After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
@@ -17886,8 +18395,8 @@ class RegionUrlMapPathMatcherPathRuleRouteAction(dict):
     @pulumi.getter(name="corsPolicy")
     def cors_policy(self) -> Optional['outputs.RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy']:
         """
-        The specification for allowing client side cross-origin requests. Please see W3C
-        Recommendation for Cross Origin Resource Sharing
+        The specification for allowing client side cross-origin requests. Please see
+        [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
         Structure is documented below.
         """
         return pulumi.get(self, "cors_policy")
@@ -17896,13 +18405,11 @@ class RegionUrlMapPathMatcherPathRuleRouteAction(dict):
     @pulumi.getter(name="faultInjectionPolicy")
     def fault_injection_policy(self) -> Optional['outputs.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy']:
         """
-        The specification for fault injection introduced into traffic to test the
-        resiliency of clients to backend service failure. As part of fault injection,
-        when clients send requests to a backend service, delays can be introduced by
-        Loadbalancer on a percentage of requests before sending those request to the
-        backend service. Similarly requests from clients can be aborted by the
-        Loadbalancer for a percentage of requests. timeout and retry_policy will be
-        ignored by clients that are configured with a fault_injection_policy.
+        The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+        As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service.
+        Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
+        timeout and retryPolicy is ignored by clients that are configured with a faultInjectionPolicy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection.
+        Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: [Routing and traffic management features](https://cloud.google.com/load-balancing/docs/features#routing-traffic-management).
         Structure is documented below.
         """
         return pulumi.get(self, "fault_injection_policy")
@@ -17931,10 +18438,9 @@ class RegionUrlMapPathMatcherPathRuleRouteAction(dict):
     @pulumi.getter
     def timeout(self) -> Optional['outputs.RegionUrlMapPathMatcherPathRuleRouteActionTimeout']:
         """
-        Specifies the timeout for the selected route. Timeout is computed from the time
-        the request is has been fully processed (i.e. end-of-stream) up until the
-        response has been completely processed. Timeout includes all retries. If not
-        specified, the default value is 15 seconds.
+        Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as end-of-stream) up until the response has been processed. Timeout includes all retries.
+        If not specified, this field uses the largest timeout among all backend services associated with the route.
+        Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
         Structure is documented below.
         """
         return pulumi.get(self, "timeout")
@@ -17943,8 +18449,9 @@ class RegionUrlMapPathMatcherPathRuleRouteAction(dict):
     @pulumi.getter(name="urlRewrite")
     def url_rewrite(self) -> Optional['outputs.RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite']:
         """
-        The spec to modify the URL of the request, prior to forwarding the request to
-        the matched service
+        The spec to modify the URL of the request, before forwarding the request to the matched service.
+        urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers.
+        Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
         Structure is documented below.
         """
         return pulumi.get(self, "url_rewrite")
@@ -18001,20 +18508,19 @@ class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy(dict):
                  expose_headers: Optional[Sequence[str]] = None,
                  max_age: Optional[int] = None):
         """
-        :param bool disabled: If true, specifies the CORS policy is disabled.
-        :param bool allow_credentials: In response to a preflight request, setting this to true indicates that the
-               actual request can include user credentials. This translates to the Access-
-               Control-Allow-Credentials header. Defaults to false.
+        :param bool disabled: If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
+        :param bool allow_credentials: In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header.
+               Default is false.
         :param Sequence[str] allow_headers: Specifies the content for the Access-Control-Allow-Headers header.
         :param Sequence[str] allow_methods: Specifies the content for the Access-Control-Allow-Methods header.
-        :param Sequence[str] allow_origin_regexes: Specifies the regular expression patterns that match allowed origins. For
-               regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
-               An origin is allowed if it matches either allow_origins or allow_origin_regex.
-        :param Sequence[str] allow_origins: Specifies the list of origins that will be allowed to do CORS requests. An
-               origin is allowed if it matches either allow_origins or allow_origin_regex.
+        :param Sequence[str] allow_origin_regexes: Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+               please see en.cppreference.com/w/cpp/regex/ecmascript
+               An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        :param Sequence[str] allow_origins: Specifies the list of origins that will be allowed to do CORS requests.
+               An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         :param Sequence[str] expose_headers: Specifies the content for the Access-Control-Expose-Headers header.
-        :param int max_age: Specifies how long the results of a preflight request can be cached. This
-               translates to the content for the Access-Control-Max-Age header.
+        :param int max_age: Specifies how long results of a preflight request can be cached in seconds.
+               This translates to the Access-Control-Max-Age header.
         """
         pulumi.set(__self__, "disabled", disabled)
         if allow_credentials is not None:
@@ -18036,7 +18542,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy(dict):
     @pulumi.getter
     def disabled(self) -> bool:
         """
-        If true, specifies the CORS policy is disabled.
+        If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
         """
         return pulumi.get(self, "disabled")
 
@@ -18044,9 +18550,8 @@ class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy(dict):
     @pulumi.getter(name="allowCredentials")
     def allow_credentials(self) -> Optional[bool]:
         """
-        In response to a preflight request, setting this to true indicates that the
-        actual request can include user credentials. This translates to the Access-
-        Control-Allow-Credentials header. Defaults to false.
+        In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header.
+        Default is false.
         """
         return pulumi.get(self, "allow_credentials")
 
@@ -18070,9 +18575,9 @@ class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy(dict):
     @pulumi.getter(name="allowOriginRegexes")
     def allow_origin_regexes(self) -> Optional[Sequence[str]]:
         """
-        Specifies the regular expression patterns that match allowed origins. For
-        regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
-        An origin is allowed if it matches either allow_origins or allow_origin_regex.
+        Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+        please see en.cppreference.com/w/cpp/regex/ecmascript
+        An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         """
         return pulumi.get(self, "allow_origin_regexes")
 
@@ -18080,8 +18585,8 @@ class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy(dict):
     @pulumi.getter(name="allowOrigins")
     def allow_origins(self) -> Optional[Sequence[str]]:
         """
-        Specifies the list of origins that will be allowed to do CORS requests. An
-        origin is allowed if it matches either allow_origins or allow_origin_regex.
+        Specifies the list of origins that will be allowed to do CORS requests.
+        An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         """
         return pulumi.get(self, "allow_origins")
 
@@ -18097,8 +18602,8 @@ class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy(dict):
     @pulumi.getter(name="maxAge")
     def max_age(self) -> Optional[int]:
         """
-        Specifies how long the results of a preflight request can be cached. This
-        translates to the content for the Access-Control-Max-Age header.
+        Specifies how long results of a preflight request can be cached in seconds.
+        This translates to the Access-Control-Max-Age header.
         """
         return pulumi.get(self, "max_age")
 
@@ -18109,11 +18614,9 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy(dict):
                  abort: Optional['outputs.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort'] = None,
                  delay: Optional['outputs.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay'] = None):
         """
-        :param 'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs' abort: The specification for how client requests are aborted as part of fault
-               injection.
+        :param 'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs' abort: The specification for how client requests are aborted as part of fault injection.
                Structure is documented below.
-        :param 'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs' delay: The specification for how client requests are delayed as part of fault
-               injection, before being sent to a backend service.
+        :param 'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs' delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
                Structure is documented below.
         """
         if abort is not None:
@@ -18125,8 +18628,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy(dict):
     @pulumi.getter
     def abort(self) -> Optional['outputs.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort']:
         """
-        The specification for how client requests are aborted as part of fault
-        injection.
+        The specification for how client requests are aborted as part of fault injection.
         Structure is documented below.
         """
         return pulumi.get(self, "abort")
@@ -18135,8 +18637,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy(dict):
     @pulumi.getter
     def delay(self) -> Optional['outputs.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay']:
         """
-        The specification for how client requests are delayed as part of fault
-        injection, before being sent to a backend service.
+        The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
         Structure is documented below.
         """
         return pulumi.get(self, "delay")
@@ -18165,11 +18666,10 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort(dict):
                  http_status: int,
                  percentage: float):
         """
-        :param int http_status: The HTTP status code used to abort the request. The value must be between 200
-               and 599 inclusive.
-        :param float percentage: The percentage of traffic (connections/operations/requests) on which delay will
-               be introduced as part of fault injection. The value must be between 0.0 and
-               100.0 inclusive.
+        :param int http_status: The HTTP status code used to abort the request.
+               The value must be between 200 and 599 inclusive.
+        :param float percentage: The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+               The value must be between 0.0 and 100.0 inclusive.
         """
         pulumi.set(__self__, "http_status", http_status)
         pulumi.set(__self__, "percentage", percentage)
@@ -18178,8 +18678,8 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort(dict):
     @pulumi.getter(name="httpStatus")
     def http_status(self) -> int:
         """
-        The HTTP status code used to abort the request. The value must be between 200
-        and 599 inclusive.
+        The HTTP status code used to abort the request.
+        The value must be between 200 and 599 inclusive.
         """
         return pulumi.get(self, "http_status")
 
@@ -18187,9 +18687,8 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort(dict):
     @pulumi.getter
     def percentage(self) -> float:
         """
-        The percentage of traffic (connections/operations/requests) on which delay will
-        be introduced as part of fault injection. The value must be between 0.0 and
-        100.0 inclusive.
+        The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+        The value must be between 0.0 and 100.0 inclusive.
         """
         return pulumi.get(self, "percentage")
 
@@ -18219,9 +18718,8 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay(dict):
         """
         :param 'RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs' fixed_delay: Specifies the value of the fixed delay interval.
                Structure is documented below.
-        :param float percentage: The percentage of traffic (connections/operations/requests) on which delay will
-               be introduced as part of fault injection. The value must be between 0.0 and
-               100.0 inclusive.
+        :param float percentage: The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+               The value must be between 0.0 and 100.0 inclusive.
         """
         pulumi.set(__self__, "fixed_delay", fixed_delay)
         pulumi.set(__self__, "percentage", percentage)
@@ -18239,9 +18737,8 @@ class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay(dict):
     @pulumi.getter
     def percentage(self) -> float:
         """
-        The percentage of traffic (connections/operations/requests) on which delay will
-        be introduced as part of fault injection. The value must be between 0.0 and
-        100.0 inclusive.
+        The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+        The value must be between 0.0 and 100.0 inclusive.
         """
         return pulumi.get(self, "percentage")
 
@@ -18504,12 +19001,10 @@ class RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite(dict):
                  host_rewrite: Optional[str] = None,
                  path_prefix_rewrite: Optional[str] = None):
         """
-        :param str host_rewrite: Prior to forwarding the request to the selected service, the request's host
-               header is replaced with contents of hostRewrite. The value must be between 1 and
-               255 characters.
-        :param str path_prefix_rewrite: Prior to forwarding the request to the selected backend service, the matching
-               portion of the request's path is replaced by pathPrefixRewrite. The value must
-               be between 1 and 1024 characters.
+        :param str host_rewrite: Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite.
+               The value must be from 1 to 255 characters.
+        :param str path_prefix_rewrite: Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite.
+               The value must be from 1 to 1024 characters.
         """
         if host_rewrite is not None:
             pulumi.set(__self__, "host_rewrite", host_rewrite)
@@ -18520,9 +19015,8 @@ class RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite(dict):
     @pulumi.getter(name="hostRewrite")
     def host_rewrite(self) -> Optional[str]:
         """
-        Prior to forwarding the request to the selected service, the request's host
-        header is replaced with contents of hostRewrite. The value must be between 1 and
-        255 characters.
+        Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite.
+        The value must be from 1 to 255 characters.
         """
         return pulumi.get(self, "host_rewrite")
 
@@ -18530,9 +19024,8 @@ class RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite(dict):
     @pulumi.getter(name="pathPrefixRewrite")
     def path_prefix_rewrite(self) -> Optional[str]:
         """
-        Prior to forwarding the request to the selected backend service, the matching
-        portion of the request's path is replaced by pathPrefixRewrite. The value must
-        be between 1 and 1024 characters.
+        Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite.
+        The value must be from 1 to 1024 characters.
         """
         return pulumi.get(self, "path_prefix_rewrite")
 
@@ -19946,16 +20439,14 @@ class RegionUrlMapPathMatcherRouteRuleRouteAction(dict):
                  url_rewrite: Optional['outputs.RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite'] = None,
                  weighted_backend_services: Optional[Sequence['outputs.RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService']] = None):
         """
-        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyArgs' cors_policy: The specification for allowing client side cross-origin requests. Please see W3C
-               Recommendation for Cross Origin Resource Sharing
+        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyArgs' cors_policy: The specification for allowing client side cross-origin requests. Please see
+               [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
                Structure is documented below.
-        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs' fault_injection_policy: The specification for fault injection introduced into traffic to test the
-               resiliency of clients to backend service failure. As part of fault injection,
-               when clients send requests to a backend service, delays can be introduced by
-               Loadbalancer on a percentage of requests before sending those request to the
-               backend service. Similarly requests from clients can be aborted by the
-               Loadbalancer for a percentage of requests. timeout and retry_policy will be
-               ignored by clients that are configured with a fault_injection_policy.
+        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs' fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+               As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service.
+               Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
+               timeout and retryPolicy is ignored by clients that are configured with a faultInjectionPolicy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection.
+               Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: [Routing and traffic management features](https://cloud.google.com/load-balancing/docs/features#routing-traffic-management).
                Structure is documented below.
         :param 'RegionUrlMapPathMatcherRouteRuleRouteActionRequestMirrorPolicyArgs' request_mirror_policy: Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
                The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
@@ -19963,13 +20454,13 @@ class RegionUrlMapPathMatcherRouteRuleRouteAction(dict):
                Structure is documented below.
         :param 'RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArgs' retry_policy: Specifies the retry policy associated with this route.
                Structure is documented below.
-        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArgs' timeout: Specifies the timeout for the selected route. Timeout is computed from the time
-               the request is has been fully processed (i.e. end-of-stream) up until the
-               response has been completely processed. Timeout includes all retries. If not
-               specified, the default value is 15 seconds.
+        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionTimeoutArgs' timeout: Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as end-of-stream) up until the response has been processed. Timeout includes all retries.
+               If not specified, this field uses the largest timeout among all backend services associated with the route.
+               Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
                Structure is documented below.
-        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs' url_rewrite: The spec to modify the URL of the request, prior to forwarding the request to
-               the matched service
+        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs' url_rewrite: The spec to modify the URL of the request, before forwarding the request to the matched service.
+               urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers.
+               Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
                Structure is documented below.
         :param Sequence['RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs'] weighted_backend_services: A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number.
                After a backend service is identified and before forwarding the request to the backend service, advanced routing actions such as URL rewrites and header transformations are applied depending on additional settings specified in this HttpRouteAction.
@@ -19994,8 +20485,8 @@ class RegionUrlMapPathMatcherRouteRuleRouteAction(dict):
     @pulumi.getter(name="corsPolicy")
     def cors_policy(self) -> Optional['outputs.RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy']:
         """
-        The specification for allowing client side cross-origin requests. Please see W3C
-        Recommendation for Cross Origin Resource Sharing
+        The specification for allowing client side cross-origin requests. Please see
+        [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
         Structure is documented below.
         """
         return pulumi.get(self, "cors_policy")
@@ -20004,13 +20495,11 @@ class RegionUrlMapPathMatcherRouteRuleRouteAction(dict):
     @pulumi.getter(name="faultInjectionPolicy")
     def fault_injection_policy(self) -> Optional['outputs.RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy']:
         """
-        The specification for fault injection introduced into traffic to test the
-        resiliency of clients to backend service failure. As part of fault injection,
-        when clients send requests to a backend service, delays can be introduced by
-        Loadbalancer on a percentage of requests before sending those request to the
-        backend service. Similarly requests from clients can be aborted by the
-        Loadbalancer for a percentage of requests. timeout and retry_policy will be
-        ignored by clients that are configured with a fault_injection_policy.
+        The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+        As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service.
+        Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
+        timeout and retryPolicy is ignored by clients that are configured with a faultInjectionPolicy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection.
+        Fault injection is not supported with the global external HTTP(S) load balancer (classic). To see which load balancers support fault injection, see Load balancing: [Routing and traffic management features](https://cloud.google.com/load-balancing/docs/features#routing-traffic-management).
         Structure is documented below.
         """
         return pulumi.get(self, "fault_injection_policy")
@@ -20039,10 +20528,9 @@ class RegionUrlMapPathMatcherRouteRuleRouteAction(dict):
     @pulumi.getter
     def timeout(self) -> Optional['outputs.RegionUrlMapPathMatcherRouteRuleRouteActionTimeout']:
         """
-        Specifies the timeout for the selected route. Timeout is computed from the time
-        the request is has been fully processed (i.e. end-of-stream) up until the
-        response has been completely processed. Timeout includes all retries. If not
-        specified, the default value is 15 seconds.
+        Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as end-of-stream) up until the response has been processed. Timeout includes all retries.
+        If not specified, this field uses the largest timeout among all backend services associated with the route.
+        Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
         Structure is documented below.
         """
         return pulumi.get(self, "timeout")
@@ -20051,8 +20539,9 @@ class RegionUrlMapPathMatcherRouteRuleRouteAction(dict):
     @pulumi.getter(name="urlRewrite")
     def url_rewrite(self) -> Optional['outputs.RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite']:
         """
-        The spec to modify the URL of the request, prior to forwarding the request to
-        the matched service
+        The spec to modify the URL of the request, before forwarding the request to the matched service.
+        urlRewrite is the only action supported in UrlMaps for external HTTP(S) load balancers.
+        Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
         Structure is documented below.
         """
         return pulumi.get(self, "url_rewrite")
@@ -20109,20 +20598,19 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy(dict):
                  expose_headers: Optional[Sequence[str]] = None,
                  max_age: Optional[int] = None):
         """
-        :param bool allow_credentials: In response to a preflight request, setting this to true indicates that the
-               actual request can include user credentials. This translates to the Access-
-               Control-Allow-Credentials header. Defaults to false.
+        :param bool allow_credentials: In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header.
+               Default is false.
         :param Sequence[str] allow_headers: Specifies the content for the Access-Control-Allow-Headers header.
         :param Sequence[str] allow_methods: Specifies the content for the Access-Control-Allow-Methods header.
-        :param Sequence[str] allow_origin_regexes: Specifies the regular expression patterns that match allowed origins. For
-               regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
-               An origin is allowed if it matches either allow_origins or allow_origin_regex.
-        :param Sequence[str] allow_origins: Specifies the list of origins that will be allowed to do CORS requests. An
-               origin is allowed if it matches either allow_origins or allow_origin_regex.
-        :param bool disabled: If true, specifies the CORS policy is disabled.
+        :param Sequence[str] allow_origin_regexes: Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+               please see en.cppreference.com/w/cpp/regex/ecmascript
+               An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        :param Sequence[str] allow_origins: Specifies the list of origins that will be allowed to do CORS requests.
+               An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        :param bool disabled: If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
         :param Sequence[str] expose_headers: Specifies the content for the Access-Control-Expose-Headers header.
-        :param int max_age: Specifies how long the results of a preflight request can be cached. This
-               translates to the content for the Access-Control-Max-Age header.
+        :param int max_age: Specifies how long results of a preflight request can be cached in seconds.
+               This translates to the Access-Control-Max-Age header.
         """
         if allow_credentials is not None:
             pulumi.set(__self__, "allow_credentials", allow_credentials)
@@ -20145,9 +20633,8 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy(dict):
     @pulumi.getter(name="allowCredentials")
     def allow_credentials(self) -> Optional[bool]:
         """
-        In response to a preflight request, setting this to true indicates that the
-        actual request can include user credentials. This translates to the Access-
-        Control-Allow-Credentials header. Defaults to false.
+        In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header.
+        Default is false.
         """
         return pulumi.get(self, "allow_credentials")
 
@@ -20171,9 +20658,9 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy(dict):
     @pulumi.getter(name="allowOriginRegexes")
     def allow_origin_regexes(self) -> Optional[Sequence[str]]:
         """
-        Specifies the regular expression patterns that match allowed origins. For
-        regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
-        An origin is allowed if it matches either allow_origins or allow_origin_regex.
+        Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+        please see en.cppreference.com/w/cpp/regex/ecmascript
+        An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         """
         return pulumi.get(self, "allow_origin_regexes")
 
@@ -20181,8 +20668,8 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy(dict):
     @pulumi.getter(name="allowOrigins")
     def allow_origins(self) -> Optional[Sequence[str]]:
         """
-        Specifies the list of origins that will be allowed to do CORS requests. An
-        origin is allowed if it matches either allow_origins or allow_origin_regex.
+        Specifies the list of origins that will be allowed to do CORS requests.
+        An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         """
         return pulumi.get(self, "allow_origins")
 
@@ -20190,7 +20677,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy(dict):
     @pulumi.getter
     def disabled(self) -> Optional[bool]:
         """
-        If true, specifies the CORS policy is disabled.
+        If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
         """
         return pulumi.get(self, "disabled")
 
@@ -20206,8 +20693,8 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy(dict):
     @pulumi.getter(name="maxAge")
     def max_age(self) -> Optional[int]:
         """
-        Specifies how long the results of a preflight request can be cached. This
-        translates to the content for the Access-Control-Max-Age header.
+        Specifies how long results of a preflight request can be cached in seconds.
+        This translates to the Access-Control-Max-Age header.
         """
         return pulumi.get(self, "max_age")
 
@@ -20218,11 +20705,9 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy(dict):
                  abort: Optional['outputs.RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort'] = None,
                  delay: Optional['outputs.RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay'] = None):
         """
-        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs' abort: The specification for how client requests are aborted as part of fault
-               injection.
+        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs' abort: The specification for how client requests are aborted as part of fault injection.
                Structure is documented below.
-        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs' delay: The specification for how client requests are delayed as part of fault
-               injection, before being sent to a backend service.
+        :param 'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs' delay: The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
                Structure is documented below.
         """
         if abort is not None:
@@ -20234,8 +20719,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy(dict):
     @pulumi.getter
     def abort(self) -> Optional['outputs.RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort']:
         """
-        The specification for how client requests are aborted as part of fault
-        injection.
+        The specification for how client requests are aborted as part of fault injection.
         Structure is documented below.
         """
         return pulumi.get(self, "abort")
@@ -20244,8 +20728,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy(dict):
     @pulumi.getter
     def delay(self) -> Optional['outputs.RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay']:
         """
-        The specification for how client requests are delayed as part of fault
-        injection, before being sent to a backend service.
+        The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
         Structure is documented below.
         """
         return pulumi.get(self, "delay")
@@ -20274,11 +20757,10 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort(dict)
                  http_status: Optional[int] = None,
                  percentage: Optional[float] = None):
         """
-        :param int http_status: The HTTP status code used to abort the request. The value must be between 200
-               and 599 inclusive.
-        :param float percentage: The percentage of traffic (connections/operations/requests) on which delay will
-               be introduced as part of fault injection. The value must be between 0.0 and
-               100.0 inclusive.
+        :param int http_status: The HTTP status code used to abort the request.
+               The value must be between 200 and 599 inclusive.
+        :param float percentage: The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+               The value must be between 0.0 and 100.0 inclusive.
         """
         if http_status is not None:
             pulumi.set(__self__, "http_status", http_status)
@@ -20289,8 +20771,8 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort(dict)
     @pulumi.getter(name="httpStatus")
     def http_status(self) -> Optional[int]:
         """
-        The HTTP status code used to abort the request. The value must be between 200
-        and 599 inclusive.
+        The HTTP status code used to abort the request.
+        The value must be between 200 and 599 inclusive.
         """
         return pulumi.get(self, "http_status")
 
@@ -20298,9 +20780,8 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort(dict)
     @pulumi.getter
     def percentage(self) -> Optional[float]:
         """
-        The percentage of traffic (connections/operations/requests) on which delay will
-        be introduced as part of fault injection. The value must be between 0.0 and
-        100.0 inclusive.
+        The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+        The value must be between 0.0 and 100.0 inclusive.
         """
         return pulumi.get(self, "percentage")
 
@@ -20330,9 +20811,8 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay(dict)
         """
         :param 'RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs' fixed_delay: Specifies the value of the fixed delay interval.
                Structure is documented below.
-        :param float percentage: The percentage of traffic (connections/operations/requests) on which delay will
-               be introduced as part of fault injection. The value must be between 0.0 and
-               100.0 inclusive.
+        :param float percentage: The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+               The value must be between 0.0 and 100.0 inclusive.
         """
         if fixed_delay is not None:
             pulumi.set(__self__, "fixed_delay", fixed_delay)
@@ -20352,9 +20832,8 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay(dict)
     @pulumi.getter
     def percentage(self) -> Optional[float]:
         """
-        The percentage of traffic (connections/operations/requests) on which delay will
-        be introduced as part of fault injection. The value must be between 0.0 and
-        100.0 inclusive.
+        The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+        The value must be between 0.0 and 100.0 inclusive.
         """
         return pulumi.get(self, "percentage")
 
@@ -20616,12 +21095,10 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite(dict):
                  host_rewrite: Optional[str] = None,
                  path_prefix_rewrite: Optional[str] = None):
         """
-        :param str host_rewrite: Prior to forwarding the request to the selected service, the request's host
-               header is replaced with contents of hostRewrite. The value must be between 1 and
-               255 characters.
-        :param str path_prefix_rewrite: Prior to forwarding the request to the selected backend service, the matching
-               portion of the request's path is replaced by pathPrefixRewrite. The value must
-               be between 1 and 1024 characters.
+        :param str host_rewrite: Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite.
+               The value must be from 1 to 255 characters.
+        :param str path_prefix_rewrite: Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite.
+               The value must be from 1 to 1024 characters.
         """
         if host_rewrite is not None:
             pulumi.set(__self__, "host_rewrite", host_rewrite)
@@ -20632,9 +21109,8 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite(dict):
     @pulumi.getter(name="hostRewrite")
     def host_rewrite(self) -> Optional[str]:
         """
-        Prior to forwarding the request to the selected service, the request's host
-        header is replaced with contents of hostRewrite. The value must be between 1 and
-        255 characters.
+        Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite.
+        The value must be from 1 to 255 characters.
         """
         return pulumi.get(self, "host_rewrite")
 
@@ -20642,9 +21118,8 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite(dict):
     @pulumi.getter(name="pathPrefixRewrite")
     def path_prefix_rewrite(self) -> Optional[str]:
         """
-        Prior to forwarding the request to the selected backend service, the matching
-        portion of the request's path is replaced by pathPrefixRewrite. The value must
-        be between 1 and 1024 characters.
+        Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite.
+        The value must be from 1 to 1024 characters.
         """
         return pulumi.get(self, "path_prefix_rewrite")
 
@@ -23155,11 +23630,48 @@ class SecurityPolicyAdvancedOptionsConfigJsonCustomConfig(dict):
 
 
 @pulumi.output_type
+class SecurityPolicyRecaptchaOptionsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "redirectSiteKey":
+            suggest = "redirect_site_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityPolicyRecaptchaOptionsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityPolicyRecaptchaOptionsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityPolicyRecaptchaOptionsConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 redirect_site_key: str):
+        """
+        :param str redirect_site_key: A field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+        """
+        pulumi.set(__self__, "redirect_site_key", redirect_site_key)
+
+    @property
+    @pulumi.getter(name="redirectSiteKey")
+    def redirect_site_key(self) -> str:
+        """
+        A field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
+        """
+        return pulumi.get(self, "redirect_site_key")
+
+
+@pulumi.output_type
 class SecurityPolicyRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "preconfiguredWafConfig":
+        if key == "headerAction":
+            suggest = "header_action"
+        elif key == "preconfiguredWafConfig":
             suggest = "preconfigured_waf_config"
         elif key == "rateLimitOptions":
             suggest = "rate_limit_options"
@@ -23182,6 +23694,7 @@ class SecurityPolicyRule(dict):
                  match: 'outputs.SecurityPolicyRuleMatch',
                  priority: int,
                  description: Optional[str] = None,
+                 header_action: Optional['outputs.SecurityPolicyRuleHeaderAction'] = None,
                  preconfigured_waf_config: Optional['outputs.SecurityPolicyRulePreconfiguredWafConfig'] = None,
                  preview: Optional[bool] = None,
                  rate_limit_options: Optional['outputs.SecurityPolicyRuleRateLimitOptions'] = None,
@@ -23198,6 +23711,7 @@ class SecurityPolicyRule(dict):
         :param int priority: An unique positive integer indicating the priority of evaluation for a rule.
                Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
         :param str description: An optional description of this rule. Max size is 64.
+        :param 'SecurityPolicyRuleHeaderActionArgs' header_action: Additional actions that are performed on headers. Structure is documented below.
         :param 'SecurityPolicyRulePreconfiguredWafConfigArgs' preconfigured_waf_config: ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect. Structure is documented below.
         :param bool preview: When set to true, the `action` specified above is not enforced.
                Stackdriver logs for requests that trigger a preview action are annotated as such.
@@ -23209,6 +23723,8 @@ class SecurityPolicyRule(dict):
         pulumi.set(__self__, "priority", priority)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if header_action is not None:
+            pulumi.set(__self__, "header_action", header_action)
         if preconfigured_waf_config is not None:
             pulumi.set(__self__, "preconfigured_waf_config", preconfigured_waf_config)
         if preview is not None:
@@ -23258,6 +23774,14 @@ class SecurityPolicyRule(dict):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="headerAction")
+    def header_action(self) -> Optional['outputs.SecurityPolicyRuleHeaderAction']:
+        """
+        Additional actions that are performed on headers. Structure is documented below.
+        """
+        return pulumi.get(self, "header_action")
+
+    @property
     @pulumi.getter(name="preconfiguredWafConfig")
     def preconfigured_waf_config(self) -> Optional['outputs.SecurityPolicyRulePreconfiguredWafConfig']:
         """
@@ -23289,6 +23813,90 @@ class SecurityPolicyRule(dict):
         Can be specified if the `action` is "redirect". Cannot be specified for other actions. Structure is documented below.
         """
         return pulumi.get(self, "redirect_options")
+
+
+@pulumi.output_type
+class SecurityPolicyRuleHeaderAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "requestHeadersToAdds":
+            suggest = "request_headers_to_adds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityPolicyRuleHeaderAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityPolicyRuleHeaderAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityPolicyRuleHeaderAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 request_headers_to_adds: Sequence['outputs.SecurityPolicyRuleHeaderActionRequestHeadersToAdd']):
+        """
+        :param Sequence['SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs'] request_headers_to_adds: The list of request headers to add or overwrite if they're already present. Structure is documented below.
+        """
+        pulumi.set(__self__, "request_headers_to_adds", request_headers_to_adds)
+
+    @property
+    @pulumi.getter(name="requestHeadersToAdds")
+    def request_headers_to_adds(self) -> Sequence['outputs.SecurityPolicyRuleHeaderActionRequestHeadersToAdd']:
+        """
+        The list of request headers to add or overwrite if they're already present. Structure is documented below.
+        """
+        return pulumi.get(self, "request_headers_to_adds")
+
+
+@pulumi.output_type
+class SecurityPolicyRuleHeaderActionRequestHeadersToAdd(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headerName":
+            suggest = "header_name"
+        elif key == "headerValue":
+            suggest = "header_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityPolicyRuleHeaderActionRequestHeadersToAdd. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityPolicyRuleHeaderActionRequestHeadersToAdd.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityPolicyRuleHeaderActionRequestHeadersToAdd.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 header_name: str,
+                 header_value: Optional[str] = None):
+        """
+        :param str header_name: The name of the header to set.
+        :param str header_value: The value to set the named header to.
+        """
+        pulumi.set(__self__, "header_name", header_name)
+        if header_value is not None:
+            pulumi.set(__self__, "header_value", header_value)
+
+    @property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> str:
+        """
+        The name of the header to set.
+        """
+        return pulumi.get(self, "header_name")
+
+    @property
+    @pulumi.getter(name="headerValue")
+    def header_value(self) -> Optional[str]:
+        """
+        The value to set the named header to.
+        """
+        return pulumi.get(self, "header_value")
 
 
 @pulumi.output_type
@@ -23728,6 +24336,7 @@ class SecurityPolicyRuleRateLimitOptions(dict):
                exceed this 'ban_threshold'. Structure is documented below.
         :param str enforce_on_key: Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to "ALL".
         :param str enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+        :param 'SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs' exceed_redirect_options: Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. Structure is documented below.
         """
         pulumi.set(__self__, "conform_action", conform_action)
         pulumi.set(__self__, "exceed_action", exceed_action)
@@ -23806,6 +24415,9 @@ class SecurityPolicyRuleRateLimitOptions(dict):
     @property
     @pulumi.getter(name="exceedRedirectOptions")
     def exceed_redirect_options(self) -> Optional['outputs.SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions']:
+        """
+        Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. Structure is documented below.
+        """
         return pulumi.get(self, "exceed_redirect_options")
 
 
@@ -31531,12 +32143,14 @@ class GetBackendServiceCdnPolicyResult(dict):
 class GetBackendServiceCdnPolicyCacheKeyPolicyResult(dict):
     def __init__(__self__, *,
                  include_host: bool,
+                 include_http_headers: Sequence[str],
                  include_named_cookies: Sequence[str],
                  include_protocol: bool,
                  include_query_string: bool,
                  query_string_blacklists: Sequence[str],
                  query_string_whitelists: Sequence[str]):
         pulumi.set(__self__, "include_host", include_host)
+        pulumi.set(__self__, "include_http_headers", include_http_headers)
         pulumi.set(__self__, "include_named_cookies", include_named_cookies)
         pulumi.set(__self__, "include_protocol", include_protocol)
         pulumi.set(__self__, "include_query_string", include_query_string)
@@ -31547,6 +32161,11 @@ class GetBackendServiceCdnPolicyCacheKeyPolicyResult(dict):
     @pulumi.getter(name="includeHost")
     def include_host(self) -> bool:
         return pulumi.get(self, "include_host")
+
+    @property
+    @pulumi.getter(name="includeHttpHeaders")
+    def include_http_headers(self) -> Sequence[str]:
+        return pulumi.get(self, "include_http_headers")
 
     @property
     @pulumi.getter(name="includeNamedCookies")

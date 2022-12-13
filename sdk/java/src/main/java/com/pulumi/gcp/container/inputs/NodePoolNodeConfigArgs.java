@@ -170,6 +170,13 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.reservationAffinity);
     }
 
+    @Import(name="resourceLabels")
+    private @Nullable Output<Map<String,String>> resourceLabels;
+
+    public Optional<Output<Map<String,String>>> resourceLabels() {
+        return Optional.ofNullable(this.resourceLabels);
+    }
+
     @Import(name="sandboxConfig")
     private @Nullable Output<NodePoolNodeConfigSandboxConfigArgs> sandboxConfig;
 
@@ -242,6 +249,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         this.oauthScopes = $.oauthScopes;
         this.preemptible = $.preemptible;
         this.reservationAffinity = $.reservationAffinity;
+        this.resourceLabels = $.resourceLabels;
         this.sandboxConfig = $.sandboxConfig;
         this.serviceAccount = $.serviceAccount;
         this.shieldedInstanceConfig = $.shieldedInstanceConfig;
@@ -455,6 +463,15 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
 
         public Builder reservationAffinity(NodePoolNodeConfigReservationAffinityArgs reservationAffinity) {
             return reservationAffinity(Output.of(reservationAffinity));
+        }
+
+        public Builder resourceLabels(@Nullable Output<Map<String,String>> resourceLabels) {
+            $.resourceLabels = resourceLabels;
+            return this;
+        }
+
+        public Builder resourceLabels(Map<String,String> resourceLabels) {
+            return resourceLabels(Output.of(resourceLabels));
         }
 
         public Builder sandboxConfig(@Nullable Output<NodePoolNodeConfigSandboxConfigArgs> sandboxConfig) {

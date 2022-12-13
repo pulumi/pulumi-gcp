@@ -32,18 +32,16 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolic
     }
 
     /**
-     * The percentage of traffic (connections/operations/requests) on which delay will
-     * be introduced as part of fault injection. The value must be between 0.0 and
-     * 100.0 inclusive.
+     * The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+     * The value must be between 0.0 and 100.0 inclusive.
      * 
      */
     @Import(name="percentage", required=true)
     private Output<Double> percentage;
 
     /**
-     * @return The percentage of traffic (connections/operations/requests) on which delay will
-     * be introduced as part of fault injection. The value must be between 0.0 and
-     * 100.0 inclusive.
+     * @return The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+     * The value must be between 0.0 and 100.0 inclusive.
      * 
      */
     public Output<Double> percentage() {
@@ -99,9 +97,8 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolic
         }
 
         /**
-         * @param percentage The percentage of traffic (connections/operations/requests) on which delay will
-         * be introduced as part of fault injection. The value must be between 0.0 and
-         * 100.0 inclusive.
+         * @param percentage The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+         * The value must be between 0.0 and 100.0 inclusive.
          * 
          * @return builder
          * 
@@ -112,9 +109,8 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolic
         }
 
         /**
-         * @param percentage The percentage of traffic (connections/operations/requests) on which delay will
-         * be introduced as part of fault injection. The value must be between 0.0 and
-         * 100.0 inclusive.
+         * @param percentage The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+         * The value must be between 0.0 and 100.0 inclusive.
          * 
          * @return builder
          * 
