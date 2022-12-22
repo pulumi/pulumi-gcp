@@ -15,11 +15,16 @@
 package main
 
 import (
+	"github.com/google/gops/agent"
 	gcp "github.com/pulumi/pulumi-gcp/provider/v6"
 	"github.com/pulumi/pulumi-gcp/provider/v6/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
+	"log"
 )
 
 func main() {
+	if err := agent.Listen(agent.Options{}); err != nil {
+		log.Fatal(err)
+	}
 	tfgen.Main("gcp", version.Version, gcp.Provider())
 }

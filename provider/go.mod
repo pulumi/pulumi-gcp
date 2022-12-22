@@ -3,6 +3,7 @@ module github.com/pulumi/pulumi-gcp/provider/v6
 go 1.18
 
 require (
+	github.com/google/gops v0.3.26
 	github.com/hashicorp/terraform-provider-google-beta v1.20.1-0.20210315160117-642085ce9b99
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.36.0
 	github.com/pulumi/pulumi/pkg/v3 v3.50.1
