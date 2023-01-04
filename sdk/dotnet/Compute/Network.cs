@@ -102,7 +102,8 @@ namespace Pulumi.Gcp.Compute
         public Output<bool?> EnableUlaInternalIpv6 { get; private set; } = null!;
 
         /// <summary>
-        /// The gateway address for default routing out of the network. This value is selected by GCP.
+        /// The gateway address for default routing out of the network. This value
+        /// is selected by GCP.
         /// </summary>
         [Output("gatewayIpv4")]
         public Output<string> GatewayIpv4 { get; private set; } = null!;
@@ -324,7 +325,8 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? EnableUlaInternalIpv6 { get; set; }
 
         /// <summary>
-        /// The gateway address for default routing out of the network. This value is selected by GCP.
+        /// The gateway address for default routing out of the network. This value
+        /// is selected by GCP.
         /// </summary>
         [Input("gatewayIpv4")]
         public Input<string>? GatewayIpv4 { get; set; }

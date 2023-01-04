@@ -28,7 +28,6 @@ namespace Pulumi.Gcp.Redis.Inputs
         public Input<string> Day { get; set; } = null!;
 
         /// <summary>
-        /// -
         /// Output only. Duration of the maintenance window.
         /// The current window is fixed at 1 hour.
         /// A duration in seconds with up to nine fractional digits,
@@ -38,10 +37,8 @@ namespace Pulumi.Gcp.Redis.Inputs
         public Input<string>? Duration { get; set; }
 
         /// <summary>
-        /// -
-        /// Output only. The start time of any upcoming scheduled maintenance for this instance.
-        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        /// resolution and up to nine fractional digits.
+        /// Required. Start time of the window in UTC time.
+        /// Structure is documented below.
         /// </summary>
         [Input("startTime", required: true)]
         public Input<Inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs> StartTime { get; set; } = null!;

@@ -27,8 +27,7 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         public Input<string>? Intent { get; set; }
 
         /// <summary>
-        /// -
-        /// The unique identifier of this event handler.
+        /// The unique identifier of this transition route.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -12,11 +12,18 @@ namespace Pulumi.Gcp.CertificateManager.Inputs
 
     public sealed class CertificateMapGclbTargetIpConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An external IP address
+        /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
 
         [Input("ports")]
         private InputList<int>? _ports;
+
+        /// <summary>
+        /// A list of ports
+        /// </summary>
         public InputList<int> Ports
         {
             get => _ports ?? (_ports = new InputList<int>());

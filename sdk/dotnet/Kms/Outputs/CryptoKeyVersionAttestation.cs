@@ -13,9 +13,23 @@ namespace Pulumi.Gcp.Kms.Outputs
     [OutputType]
     public sealed class CryptoKeyVersionAttestation
     {
+        /// <summary>
+        /// The certificate chains needed to validate the attestation
+        /// Structure is documented below.
+        /// </summary>
         public readonly Outputs.CryptoKeyVersionAttestationCertChains? CertChains;
+        /// <summary>
+        /// The attestation data provided by the HSM when the key operation was performed.
+        /// </summary>
         public readonly string? Content;
+        /// <summary>
+        /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+        /// Structure is documented below.
+        /// </summary>
         public readonly Outputs.CryptoKeyVersionAttestationExternalProtectionLevelOptions? ExternalProtectionLevelOptions;
+        /// <summary>
+        /// The format of the attestation data.
+        /// </summary>
         public readonly string? Format;
 
         [OutputConstructor]

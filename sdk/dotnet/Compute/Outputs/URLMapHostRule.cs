@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class URLMapHostRule
     {
         /// <summary>
-        /// Description of this test case.
+        /// An optional description of this resource. Provide this property when you create
+        /// the resource.
         /// </summary>
         public readonly string? Description;
         /// <summary>

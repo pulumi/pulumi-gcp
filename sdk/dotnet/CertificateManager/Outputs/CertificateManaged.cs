@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
     public sealed class CertificateManaged
     {
         /// <summary>
-        /// -
         /// Detailed state of the latest authorization attempt for each domain
         /// specified for this Managed Certificate.
         /// Structure is documented below.
@@ -30,13 +29,11 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Domains;
         /// <summary>
-        /// -
         /// Information about issues with provisioning this Managed Certificate.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.CertificateManagedProvisioningIssue> ProvisioningIssues;
         /// <summary>
-        /// -
         /// State of the domain for managed certificate issuance.
         /// </summary>
         public readonly string? State;

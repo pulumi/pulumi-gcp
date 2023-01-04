@@ -343,7 +343,8 @@ namespace Pulumi.Gcp.Dns
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the project in which the load balancer belongs.
+        /// The ID of the project in which the resource belongs. If it
+        /// is not provided, the provider project is used.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -357,7 +358,10 @@ namespace Pulumi.Gcp.Dns
         public Output<Outputs.RecordSetRoutingPolicy?> RoutingPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Same as `rrdatas` above.
+        /// The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+        /// data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
+        /// record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
+        /// string (e.g. "first255characters\"\"morecharacters").
         /// </summary>
         [Output("rrdatas")]
         public Output<ImmutableArray<string>> Rrdatas { get; private set; } = null!;
@@ -434,7 +438,8 @@ namespace Pulumi.Gcp.Dns
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the project in which the load balancer belongs.
+        /// The ID of the project in which the resource belongs. If it
+        /// is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -451,7 +456,10 @@ namespace Pulumi.Gcp.Dns
         private InputList<string>? _rrdatas;
 
         /// <summary>
-        /// Same as `rrdatas` above.
+        /// The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+        /// data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
+        /// record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
+        /// string (e.g. "first255characters\"\"morecharacters").
         /// </summary>
         public InputList<string> Rrdatas
         {
@@ -493,7 +501,8 @@ namespace Pulumi.Gcp.Dns
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the project in which the load balancer belongs.
+        /// The ID of the project in which the resource belongs. If it
+        /// is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -510,7 +519,10 @@ namespace Pulumi.Gcp.Dns
         private InputList<string>? _rrdatas;
 
         /// <summary>
-        /// Same as `rrdatas` above.
+        /// The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+        /// data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
+        /// record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
+        /// string (e.g. "first255characters\"\"morecharacters").
         /// </summary>
         public InputList<string> Rrdatas
         {

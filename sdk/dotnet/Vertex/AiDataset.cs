@@ -46,8 +46,7 @@ namespace Pulumi.Gcp.Vertex
     public partial class AiDataset : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-        /// fractional digits.
+        /// The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -97,8 +96,7 @@ namespace Pulumi.Gcp.Vertex
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// The timestamp of when the dataset was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-        /// nine fractional digits.
+        /// The timestamp of when the dataset was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -202,8 +200,7 @@ namespace Pulumi.Gcp.Vertex
     public sealed class AiDatasetState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-        /// fractional digits.
+        /// The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -259,8 +256,7 @@ namespace Pulumi.Gcp.Vertex
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The timestamp of when the dataset was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-        /// nine fractional digits.
+        /// The timestamp of when the dataset was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

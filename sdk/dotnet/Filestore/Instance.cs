@@ -188,7 +188,8 @@ namespace Pulumi.Gcp.Filestore
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+        /// Server-specified ETag for the instance resource to prevent
+        /// simultaneous updates from overwriting each other.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -220,7 +221,7 @@ namespace Pulumi.Gcp.Filestore
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the fileshare (16 characters or less)
+        /// The resource name of the instance.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -248,7 +249,6 @@ namespace Pulumi.Gcp.Filestore
         public Output<string> Tier { get; private set; } = null!;
 
         /// <summary>
-        /// -
         /// (Optional, Deprecated)
         /// The name of the Filestore zone of the instance.
         /// </summary>
@@ -340,7 +340,7 @@ namespace Pulumi.Gcp.Filestore
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The name of the fileshare (16 characters or less)
+        /// The resource name of the instance.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -374,7 +374,6 @@ namespace Pulumi.Gcp.Filestore
         public Input<string> Tier { get; set; } = null!;
 
         /// <summary>
-        /// -
         /// (Optional, Deprecated)
         /// The name of the Filestore zone of the instance.
         /// </summary>
@@ -402,7 +401,8 @@ namespace Pulumi.Gcp.Filestore
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+        /// Server-specified ETag for the instance resource to prevent
+        /// simultaneous updates from overwriting each other.
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
@@ -440,7 +440,7 @@ namespace Pulumi.Gcp.Filestore
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The name of the fileshare (16 characters or less)
+        /// The resource name of the instance.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -474,7 +474,6 @@ namespace Pulumi.Gcp.Filestore
         public Input<string>? Tier { get; set; }
 
         /// <summary>
-        /// -
         /// (Optional, Deprecated)
         /// The name of the Filestore zone of the instance.
         /// </summary>

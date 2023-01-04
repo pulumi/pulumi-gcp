@@ -18,11 +18,17 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
         /// The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
         /// </summary>
         public readonly string Group;
+        /// <summary>
+        /// EntityKey of the member.  Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGroupMembershipsMembershipMemberKeyResult> MemberKeys;
         /// <summary>
         /// The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// EntityKey of the member.  Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGroupMembershipsMembershipPreferredMemberKeyResult> PreferredMemberKeys;
         /// <summary>
         /// The MembershipRoles that apply to the Membership. Structure is documented below.

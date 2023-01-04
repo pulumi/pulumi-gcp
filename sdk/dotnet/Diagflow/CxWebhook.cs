@@ -103,15 +103,15 @@ namespace Pulumi.Gcp.Diagflow
         public Output<bool?> EnableStackdriverLogging { get; private set; } = null!;
 
         /// <summary>
-        /// The name of Service Directory service.
+        /// Configuration for a generic web service.
         /// Structure is documented below.
         /// </summary>
         [Output("genericWebService")]
         public Output<Outputs.CxWebhookGenericWebService?> GenericWebService { get; private set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the webhook. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent
-        /// ID&gt;/webhooks/&lt;Webhook ID&gt;.
+        /// The unique identifier of the webhook.
+        /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/webhooks/&lt;Webhook ID&gt;.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -137,9 +137,7 @@ namespace Pulumi.Gcp.Diagflow
         public Output<Outputs.CxWebhookServiceDirectory?> ServiceDirectory { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-        /// be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow
-        /// ID&gt;.
+        /// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
         /// </summary>
         [Output("startFlow")]
         public Output<string> StartFlow { get; private set; } = null!;
@@ -221,7 +219,7 @@ namespace Pulumi.Gcp.Diagflow
         public Input<bool>? EnableStackdriverLogging { get; set; }
 
         /// <summary>
-        /// The name of Service Directory service.
+        /// Configuration for a generic web service.
         /// Structure is documented below.
         /// </summary>
         [Input("genericWebService")]
@@ -286,15 +284,15 @@ namespace Pulumi.Gcp.Diagflow
         public Input<bool>? EnableStackdriverLogging { get; set; }
 
         /// <summary>
-        /// The name of Service Directory service.
+        /// Configuration for a generic web service.
         /// Structure is documented below.
         /// </summary>
         [Input("genericWebService")]
         public Input<Inputs.CxWebhookGenericWebServiceGetArgs>? GenericWebService { get; set; }
 
         /// <summary>
-        /// The unique identifier of the webhook. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent
-        /// ID&gt;/webhooks/&lt;Webhook ID&gt;.
+        /// The unique identifier of the webhook.
+        /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/webhooks/&lt;Webhook ID&gt;.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -320,9 +318,7 @@ namespace Pulumi.Gcp.Diagflow
         public Input<Inputs.CxWebhookServiceDirectoryGetArgs>? ServiceDirectory { get; set; }
 
         /// <summary>
-        /// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-        /// be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow
-        /// ID&gt;.
+        /// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
         /// </summary>
         [Input("startFlow")]
         public Input<string>? StartFlow { get; set; }

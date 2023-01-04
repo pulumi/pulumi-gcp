@@ -76,7 +76,8 @@ namespace Pulumi.Gcp.Compute
     public partial class Reservation : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+        /// Full or partial URL to a parent commitment. This field displays for
+        /// reservations that are tied to a commitment.
         /// </summary>
         [Output("commitment")]
         public Output<string> Commitment { get; private set; } = null!;
@@ -260,7 +261,8 @@ namespace Pulumi.Gcp.Compute
     public sealed class ReservationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+        /// Full or partial URL to a parent commitment. This field displays for
+        /// reservations that are tied to a commitment.
         /// </summary>
         [Input("commitment")]
         public Input<string>? Commitment { get; set; }

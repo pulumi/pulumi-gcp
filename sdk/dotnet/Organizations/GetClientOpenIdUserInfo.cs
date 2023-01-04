@@ -26,6 +26,25 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
+        /// ### Exporting An Email
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var me = Gcp.Organizations.GetClientOpenIdUserInfo.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["my-email"] = me.Apply(getClientOpenIdUserInfoResult =&gt; getClientOpenIdUserInfoResult.Email),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClientOpenIdUserInfoResult> InvokeAsync(InvokeOptions? options = null)

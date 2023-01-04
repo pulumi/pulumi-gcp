@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     [OutputType]
     public sealed class CertificateRevocationDetail
     {
+        /// <summary>
+        /// Indicates why a Certificate was revoked.
+        /// </summary>
         public readonly string? RevocationState;
+        /// <summary>
+        /// The time at which this Certificate was revoked.
+        /// </summary>
         public readonly string? RevocationTime;
 
         [OutputConstructor]

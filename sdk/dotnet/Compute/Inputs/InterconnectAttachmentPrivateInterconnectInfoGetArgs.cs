@@ -12,6 +12,10 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class InterconnectAttachmentPrivateInterconnectInfoGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// 802.1q encapsulation tag to be used for traffic between
+        /// Google and the customer, going to and from this network and region.
+        /// </summary>
         [Input("tag8021q")]
         public Input<int>? Tag8021q { get; set; }
 

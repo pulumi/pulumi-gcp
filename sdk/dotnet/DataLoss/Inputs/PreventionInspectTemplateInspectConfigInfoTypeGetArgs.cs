@@ -13,8 +13,8 @@ namespace Pulumi.Gcp.DataLoss.Inputs
     public sealed class PreventionInspectTemplateInspectConfigInfoTypeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-        /// or `projects/project-id/storedInfoTypes/432452342`.
+        /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+        /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

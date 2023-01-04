@@ -178,6 +178,9 @@ namespace Pulumi.Gcp.GameServices
         public Output<ImmutableArray<Outputs.GameServerConfigFleetConfig>> FleetConfigs { get; private set; } = null!;
 
         /// <summary>
+        /// The labels associated with this game server config. Each label is a
+        /// key-value pair.
+        /// (Optional)
         /// Set of labels to group by.
         /// </summary>
         [Output("labels")]
@@ -190,6 +193,8 @@ namespace Pulumi.Gcp.GameServices
         public Output<string?> Location { get; private set; } = null!;
 
         /// <summary>
+        /// The name of the FleetConfig.
+        /// (Required)
         /// The name of the ScalingConfig
         /// </summary>
         [Output("name")]
@@ -291,6 +296,9 @@ namespace Pulumi.Gcp.GameServices
         private InputMap<string>? _labels;
 
         /// <summary>
+        /// The labels associated with this game server config. Each label is a
+        /// key-value pair.
+        /// (Optional)
         /// Set of labels to group by.
         /// </summary>
         public InputMap<string> Labels
@@ -369,6 +377,9 @@ namespace Pulumi.Gcp.GameServices
         private InputMap<string>? _labels;
 
         /// <summary>
+        /// The labels associated with this game server config. Each label is a
+        /// key-value pair.
+        /// (Optional)
         /// Set of labels to group by.
         /// </summary>
         public InputMap<string> Labels
@@ -384,6 +395,8 @@ namespace Pulumi.Gcp.GameServices
         public Input<string>? Location { get; set; }
 
         /// <summary>
+        /// The name of the FleetConfig.
+        /// (Required)
         /// The name of the ScalingConfig
         /// </summary>
         [Input("name")]

@@ -157,7 +157,7 @@ namespace Pulumi.Gcp.Apigee
         public Output<string> Environment { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the newly created attachment (output parameter).
+        /// The name of the newly created  attachment (output parameter).
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -243,7 +243,7 @@ namespace Pulumi.Gcp.Apigee
         public Input<string>? Environment { get; set; }
 
         /// <summary>
-        /// The name of the newly created attachment (output parameter).
+        /// The name of the newly created  attachment (output parameter).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

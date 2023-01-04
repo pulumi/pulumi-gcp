@@ -30,8 +30,7 @@ namespace Pulumi.Gcp.AppEngine.Outputs
         /// </summary>
         public readonly string? InitialDelay;
         /// <summary>
-        /// Path to the static files matched by the URL pattern, from the application root directory.
-        /// The path can refer to text matched in groupings in the URL pattern.
+        /// The request path.
         /// </summary>
         public readonly string Path;
         /// <summary>

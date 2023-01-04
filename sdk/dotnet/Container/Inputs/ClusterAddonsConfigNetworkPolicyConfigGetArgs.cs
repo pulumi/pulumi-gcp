@@ -13,8 +13,7 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterAddonsConfigNetworkPolicyConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The status of the Istio addon, which makes it easy to set up Istio for services in a
-        /// cluster. It is disabled by default. Set `disabled = false` to enable.
+        /// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
         /// </summary>
         [Input("disabled", required: true)]
         public Input<bool> Disabled { get; set; } = null!;

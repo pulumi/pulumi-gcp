@@ -13,6 +13,10 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     [OutputType]
     public sealed class CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage
     {
+        /// <summary>
+        /// Required. Describes how some of the technical fields in a certificate should be populated.
+        /// Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId> ObectIds;
 
         [OutputConstructor]

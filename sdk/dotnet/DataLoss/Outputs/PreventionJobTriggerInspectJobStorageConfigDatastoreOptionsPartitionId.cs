@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly string? NamespaceId;
         /// <summary>
-        /// The Google Cloud Platform project ID of the project containing the table.
+        /// The ID of the project to which the entities belong.
         /// </summary>
         public readonly string ProjectId;
 

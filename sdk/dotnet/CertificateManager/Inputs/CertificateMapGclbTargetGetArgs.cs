@@ -14,15 +14,30 @@ namespace Pulumi.Gcp.CertificateManager.Inputs
     {
         [Input("ipConfigs")]
         private InputList<Inputs.CertificateMapGclbTargetIpConfigGetArgs>? _ipConfigs;
+
+        /// <summary>
+        /// An IP configuration where this Certificate Map is serving
+        /// Structure is documented below.
+        /// </summary>
         public InputList<Inputs.CertificateMapGclbTargetIpConfigGetArgs> IpConfigs
         {
             get => _ipConfigs ?? (_ipConfigs = new InputList<Inputs.CertificateMapGclbTargetIpConfigGetArgs>());
             set => _ipConfigs = value;
         }
 
+        /// <summary>
+        /// Proxy name must be in the format projects/*/locations/*/targetHttpsProxies/*.
+        /// This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+        /// `targetSslProxy` may be set.
+        /// </summary>
         [Input("targetHttpsProxy")]
         public Input<string>? TargetHttpsProxy { get; set; }
 
+        /// <summary>
+        /// Proxy name must be in the format projects/*/locations/*/targetSslProxies/*.
+        /// This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+        /// `targetSslProxy` may be set.
+        /// </summary>
         [Input("targetSslProxy")]
         public Input<string>? TargetSslProxy { get; set; }
 

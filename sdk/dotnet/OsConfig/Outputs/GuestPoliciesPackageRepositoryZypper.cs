@@ -26,8 +26,8 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         /// </summary>
         public readonly ImmutableArray<string> GpgKeys;
         /// <summary>
-        /// Id of the artifact, which the installation and update steps of this recipe can reference.
-        /// Artifacts in a recipe cannot have the same id.
+        /// A one word, unique name for this repository. This is the repo id in the zypper config file and also the displayName
+        /// if displayName is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
         /// </summary>
         public readonly string Id;
 

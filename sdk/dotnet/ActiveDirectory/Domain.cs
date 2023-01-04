@@ -74,8 +74,8 @@ namespace Pulumi.Gcp.ActiveDirectory
         public Output<string> DomainName { get; private set; } = null!;
 
         /// <summary>
-        /// The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would
-        /// be chosen for an Active Directory set up on an internal network.
+        /// The fully-qualified domain name of the exposed domain used by clients to connect to the service.
+        /// Similar to what would be chosen for an Active Directory set up on an internal network.
         /// </summary>
         [Output("fqdn")]
         public Output<string> Fqdn { get; private set; } = null!;
@@ -94,7 +94,7 @@ namespace Pulumi.Gcp.ActiveDirectory
         public Output<ImmutableArray<string>> Locations { get; private set; } = null!;
 
         /// <summary>
-        /// The unique name of the domain using the format: 'projects/{project}/locations/global/domains/{domainName}'.
+        /// The unique name of the domain using the format: `projects/{project}/locations/global/domains/{domainName}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -261,8 +261,8 @@ namespace Pulumi.Gcp.ActiveDirectory
         public Input<string>? DomainName { get; set; }
 
         /// <summary>
-        /// The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would
-        /// be chosen for an Active Directory set up on an internal network.
+        /// The fully-qualified domain name of the exposed domain used by clients to connect to the service.
+        /// Similar to what would be chosen for an Active Directory set up on an internal network.
         /// </summary>
         [Input("fqdn")]
         public Input<string>? Fqdn { get; set; }
@@ -293,7 +293,7 @@ namespace Pulumi.Gcp.ActiveDirectory
         }
 
         /// <summary>
-        /// The unique name of the domain using the format: 'projects/{project}/locations/global/domains/{domainName}'.
+        /// The unique name of the domain using the format: `projects/{project}/locations/global/domains/{domainName}`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

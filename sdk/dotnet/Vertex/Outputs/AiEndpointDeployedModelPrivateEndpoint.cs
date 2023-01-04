@@ -13,9 +13,21 @@ namespace Pulumi.Gcp.Vertex.Outputs
     [OutputType]
     public sealed class AiEndpointDeployedModelPrivateEndpoint
     {
+        /// <summary>
+        /// Output only. Http(s) path to send explain requests.
+        /// </summary>
         public readonly string? ExplainHttpUri;
+        /// <summary>
+        /// Output only. Http(s) path to send health check requests.
+        /// </summary>
         public readonly string? HealthHttpUri;
+        /// <summary>
+        /// Output only. Http(s) path to send prediction requests.
+        /// </summary>
         public readonly string? PredictHttpUri;
+        /// <summary>
+        /// Output only. The name of the service attachment resource. Populated if private service connect is enabled.
+        /// </summary>
         public readonly string? ServiceAttachment;
 
         [OutputConstructor]

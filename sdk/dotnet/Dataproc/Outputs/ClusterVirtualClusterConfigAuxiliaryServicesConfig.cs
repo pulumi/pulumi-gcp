@@ -14,9 +14,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class ClusterVirtualClusterConfigAuxiliaryServicesConfig
     {
         /// <summary>
-        /// The config setting for metastore service with the cluster.
-        /// Structure defined below.
-        /// - - -
+        /// The Hive Metastore configuration for this workload.
         /// </summary>
         public readonly Outputs.ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig? MetastoreConfig;
         /// <summary>

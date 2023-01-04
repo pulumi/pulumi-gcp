@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         private InputList<Inputs.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs>? _infoTypes;
 
         /// <summary>
-        /// If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+        /// List of infoTypes this rule set is applied to.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs> InfoTypes

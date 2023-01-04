@@ -14,13 +14,11 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class AutoscalingPolicyWorkerConfig
     {
         /// <summary>
-        /// Maximum number of instances for this group. Note that by default, clusters will not use
-        /// secondary workers. Required for secondary workers if the minimum secondary instances is set.
-        /// Bounds: [minInstances, ). Defaults to 0.
+        /// Maximum number of instances for this group.
         /// </summary>
         public readonly int MaxInstances;
         /// <summary>
-        /// Minimum number of instances for this group. Bounds: [0, maxInstances]. Defaults to 0.
+        /// Minimum number of instances for this group. Bounds: [2, maxInstances]. Defaults to 2.
         /// </summary>
         public readonly int? MinInstances;
         /// <summary>

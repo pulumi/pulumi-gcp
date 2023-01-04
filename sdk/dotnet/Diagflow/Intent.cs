@@ -166,8 +166,9 @@ namespace Pulumi.Gcp.Diagflow
         public Output<ImmutableArray<string>> Events { get; private set; } = null!;
 
         /// <summary>
-        /// Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only
-        /// in the output.
+        /// Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
+        /// only in the output.
+        /// Structure is documented below.
         /// </summary>
         [Output("followupIntentInfos")]
         public Output<ImmutableArray<Outputs.IntentFollowupIntentInfo>> FollowupIntentInfos { get; private set; } = null!;
@@ -194,7 +195,8 @@ namespace Pulumi.Gcp.Diagflow
         public Output<bool> MlDisabled { get; private set; } = null!;
 
         /// <summary>
-        /// The unique identifier of this intent. Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
+        /// The unique identifier of this intent.
+        /// Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -229,8 +231,9 @@ namespace Pulumi.Gcp.Diagflow
         public Output<bool> ResetContexts { get; private set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents
-        /// chain for this intent. Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
+        /// The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup
+        /// intents chain for this intent.
+        /// Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
         /// </summary>
         [Output("rootFollowupIntentName")]
         public Output<string> RootFollowupIntentName { get; private set; } = null!;
@@ -451,8 +454,9 @@ namespace Pulumi.Gcp.Diagflow
         private InputList<Inputs.IntentFollowupIntentInfoGetArgs>? _followupIntentInfos;
 
         /// <summary>
-        /// Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only
-        /// in the output.
+        /// Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
+        /// only in the output.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.IntentFollowupIntentInfoGetArgs> FollowupIntentInfos
         {
@@ -488,7 +492,8 @@ namespace Pulumi.Gcp.Diagflow
         public Input<bool>? MlDisabled { get; set; }
 
         /// <summary>
-        /// The unique identifier of this intent. Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
+        /// The unique identifier of this intent.
+        /// Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -523,8 +528,9 @@ namespace Pulumi.Gcp.Diagflow
         public Input<bool>? ResetContexts { get; set; }
 
         /// <summary>
-        /// The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents
-        /// chain for this intent. Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
+        /// The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup
+        /// intents chain for this intent.
+        /// Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
         /// </summary>
         [Input("rootFollowupIntentName")]
         public Input<string>? RootFollowupIntentName { get; set; }

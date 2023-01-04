@@ -124,7 +124,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> CreationTimestamp { get; private set; } = null!;
 
         /// <summary>
-        /// User-specified description for the IP range.
+        /// An optional description of this resource.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -227,7 +227,7 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RouterBgpArgs>? Bgp { get; set; }
 
         /// <summary>
-        /// User-specified description for the IP range.
+        /// An optional description of this resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -292,7 +292,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? CreationTimestamp { get; set; }
 
         /// <summary>
-        /// User-specified description for the IP range.
+        /// An optional description of this resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

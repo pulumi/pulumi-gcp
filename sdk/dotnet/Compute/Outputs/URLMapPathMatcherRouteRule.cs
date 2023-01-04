@@ -15,9 +15,9 @@ namespace Pulumi.Gcp.Compute.Outputs
     {
         /// <summary>
         /// Specifies changes to request and response headers that need to take effect for
-        /// the selected backendService.
-        /// headerAction specified here take effect before headerAction in the enclosing
-        /// HttpRouteRule, PathMatcher and UrlMap.
+        /// the selected backendService. The headerAction specified here are applied before
+        /// the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].r
+        /// outeAction.weightedBackendService.backendServiceWeightAction[].headerAction
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.URLMapPathMatcherRouteRuleHeaderAction? HeaderAction;
@@ -53,7 +53,13 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly Outputs.URLMapPathMatcherRouteRuleRouteAction? RouteAction;
         /// <summary>
-        /// The backend service or backend bucket link that should be matched by this test.
+        /// The backend service resource to which traffic is
+        /// directed if this rule is matched. If routeAction is additionally specified,
+        /// advanced routing actions like URL Rewrites, etc. take effect prior to sending
+        /// the request to the backend. However, if service is specified, routeAction cannot
+        /// contain any weightedBackendService s. Conversely, if routeAction specifies any
+        /// weightedBackendServices, service must not be specified. Only one of urlRedirect,
+        /// service or routeAction.weightedBackendService must be set.
         /// </summary>
         public readonly string? Service;
         /// <summary>

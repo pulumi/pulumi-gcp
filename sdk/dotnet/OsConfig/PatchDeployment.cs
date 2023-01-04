@@ -378,8 +378,8 @@ namespace Pulumi.Gcp.OsConfig
     public partial class PatchDeployment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Time the patch deployment was created. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu" format,
-        /// accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        /// Time the patch deployment was created. Timestamp is in RFC3339 text format.
+        /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -405,7 +405,6 @@ namespace Pulumi.Gcp.OsConfig
         public Output<Outputs.PatchDeploymentInstanceFilter> InstanceFilter { get; private set; } = null!;
 
         /// <summary>
-        /// -
         /// The time the last patch job ran successfully.
         /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         /// </summary>
@@ -413,8 +412,8 @@ namespace Pulumi.Gcp.OsConfig
         public Output<string> LastExecuteTime { get; private set; } = null!;
 
         /// <summary>
-        /// Unique name for the patch deployment resource in a project. The patch deployment name is in the form:
-        /// projects/{project_id}/patchDeployments/{patchDeploymentId}.
+        /// Unique name for the patch deployment resource in a project.
+        /// The patch deployment name is in the form: projects/{project_id}/patchDeployments/{patchDeploymentId}.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -466,8 +465,8 @@ namespace Pulumi.Gcp.OsConfig
         public Output<Outputs.PatchDeploymentRollout?> Rollout { get; private set; } = null!;
 
         /// <summary>
-        /// Time the patch deployment was last updated. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu"
-        /// format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        /// Time the patch deployment was last updated. Timestamp is in RFC3339 text format.
+        /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -593,8 +592,8 @@ namespace Pulumi.Gcp.OsConfig
     public sealed class PatchDeploymentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Time the patch deployment was created. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu" format,
-        /// accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        /// Time the patch deployment was created. Timestamp is in RFC3339 text format.
+        /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -620,7 +619,6 @@ namespace Pulumi.Gcp.OsConfig
         public Input<Inputs.PatchDeploymentInstanceFilterGetArgs>? InstanceFilter { get; set; }
 
         /// <summary>
-        /// -
         /// The time the last patch job ran successfully.
         /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         /// </summary>
@@ -628,8 +626,8 @@ namespace Pulumi.Gcp.OsConfig
         public Input<string>? LastExecuteTime { get; set; }
 
         /// <summary>
-        /// Unique name for the patch deployment resource in a project. The patch deployment name is in the form:
-        /// projects/{project_id}/patchDeployments/{patchDeploymentId}.
+        /// Unique name for the patch deployment resource in a project.
+        /// The patch deployment name is in the form: projects/{project_id}/patchDeployments/{patchDeploymentId}.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -681,8 +679,8 @@ namespace Pulumi.Gcp.OsConfig
         public Input<Inputs.PatchDeploymentRolloutGetArgs>? Rollout { get; set; }
 
         /// <summary>
-        /// Time the patch deployment was last updated. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu"
-        /// format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        /// Time the patch deployment was last updated. Timestamp is in RFC3339 text format.
+        /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

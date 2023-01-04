@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
 
     public sealed class CertificateCertificateDescriptionSubjectDescriptionArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The serial number encoded in lowercase hexadecimal.
+        /// </summary>
         [Input("hexSerialNumber")]
         public Input<string>? HexSerialNumber { get; set; }
 
@@ -23,9 +26,15 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         [Input("lifetime")]
         public Input<string>? Lifetime { get; set; }
 
+        /// <summary>
+        /// The time at which the certificate expires.
+        /// </summary>
         [Input("notAfterTime")]
         public Input<string>? NotAfterTime { get; set; }
 
+        /// <summary>
+        /// The time at which the certificate becomes valid.
+        /// </summary>
         [Input("notBeforeTime")]
         public Input<string>? NotBeforeTime { get; set; }
 

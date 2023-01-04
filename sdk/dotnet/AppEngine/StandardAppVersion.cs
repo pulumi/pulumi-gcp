@@ -247,6 +247,10 @@ namespace Pulumi.Gcp.AppEngine
         public Output<Outputs.StandardAppVersionManualScaling?> ManualScaling { get; private set; } = null!;
 
         /// <summary>
+        /// The identifier for this object. Format specified above.
+        /// (Optional)
+        /// Name of the library. Example "django".
+        /// (Required)
         /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         /// </summary>
         [Output("name")]
@@ -639,6 +643,10 @@ namespace Pulumi.Gcp.AppEngine
         public Input<Inputs.StandardAppVersionManualScalingGetArgs>? ManualScaling { get; set; }
 
         /// <summary>
+        /// The identifier for this object. Format specified above.
+        /// (Optional)
+        /// Name of the library. Example "django".
+        /// (Required)
         /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         /// </summary>
         [Input("name")]

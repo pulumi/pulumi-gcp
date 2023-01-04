@@ -18,6 +18,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("batchNodeCount")]
         public Input<int>? BatchNodeCount { get; set; }
 
+        /// <summary>
+        /// Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0). Only one of the batch_percentage or batch_node_count can be specified.
+        /// </summary>
         [Input("batchPercentage")]
         public Input<double>? BatchPercentage { get; set; }
 

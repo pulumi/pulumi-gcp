@@ -74,8 +74,9 @@ namespace Pulumi.Gcp.GameServices
 
         /// <summary>
         /// The resource id of the game server cluster, eg:
-        /// 'projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}'. For example,
-        /// 'projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster'.
+        /// `projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}`.
+        /// For example,
+        /// `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -240,8 +241,9 @@ namespace Pulumi.Gcp.GameServices
 
         /// <summary>
         /// The resource id of the game server cluster, eg:
-        /// 'projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}'. For example,
-        /// 'projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster'.
+        /// `projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}`.
+        /// For example,
+        /// `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

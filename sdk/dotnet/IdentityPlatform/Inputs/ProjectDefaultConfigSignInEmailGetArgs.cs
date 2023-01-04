@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.IdentityPlatform.Inputs
     public sealed class ProjectDefaultConfigSignInEmailGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether anonymous user auth is enabled for the project or not.
+        /// Whether email auth is enabled for the project or not.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

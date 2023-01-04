@@ -12,9 +12,20 @@ namespace Pulumi.Gcp.Memcache.Inputs
 
     public sealed class InstanceMaintenanceScheduleGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Output only. The end time of any upcoming scheduled maintenance for this instance.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        /// resolution and up to nine fractional digits.
+        /// </summary>
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }
 
+        /// <summary>
+        /// Output only. The deadline that the maintenance schedule start time
+        /// can not go beyond, including reschedule.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        /// resolution and up to nine fractional digits.
+        /// </summary>
         [Input("scheduleDeadlineTime")]
         public Input<string>? ScheduleDeadlineTime { get; set; }
 

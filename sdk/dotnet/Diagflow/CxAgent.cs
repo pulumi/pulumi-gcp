@@ -145,9 +145,7 @@ namespace Pulumi.Gcp.Diagflow
         public Output<Outputs.CxAgentSpeechToTextSettings?> SpeechToTextSettings { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-        /// be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow
-        /// ID&gt;.
+        /// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
         /// </summary>
         [Output("startFlow")]
         public Output<string> StartFlow { get; private set; } = null!;
@@ -377,9 +375,7 @@ namespace Pulumi.Gcp.Diagflow
         public Input<Inputs.CxAgentSpeechToTextSettingsGetArgs>? SpeechToTextSettings { get; set; }
 
         /// <summary>
-        /// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-        /// be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow
-        /// ID&gt;.
+        /// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
         /// </summary>
         [Input("startFlow")]
         public Input<string>? StartFlow { get; set; }

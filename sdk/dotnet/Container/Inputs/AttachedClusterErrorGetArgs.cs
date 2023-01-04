@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class AttachedClusterErrorGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Human-friendly description of the error.
+        /// </summary>
         [Input("message")]
         public Input<string>? Message { get; set; }
 

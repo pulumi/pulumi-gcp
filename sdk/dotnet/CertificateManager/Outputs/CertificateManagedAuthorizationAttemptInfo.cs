@@ -14,24 +14,24 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
     public sealed class CertificateManagedAuthorizationAttemptInfo
     {
         /// <summary>
-        /// -
+        /// Human readable explanation about the issue. Provided to help address
+        /// the configuration issues.
+        /// Not guaranteed to be stable. For programmatic access use `reason` field.
         /// Human readable explanation for reaching the state. Provided to help
         /// address the configuration issues.
         /// Not guaranteed to be stable. For programmatic access use `failure_reason` field.
         /// </summary>
         public readonly string? Details;
         /// <summary>
-        /// -
         /// Domain name of the authorization attempt.
         /// </summary>
         public readonly string? Domain;
         /// <summary>
-        /// -
         /// Reason for failure of the authorization attempt for the domain.
         /// </summary>
         public readonly string? FailureReason;
         /// <summary>
-        /// -
+        /// A state of this Managed Certificate.
         /// State of the domain for managed certificate issuance.
         /// </summary>
         public readonly string? State;

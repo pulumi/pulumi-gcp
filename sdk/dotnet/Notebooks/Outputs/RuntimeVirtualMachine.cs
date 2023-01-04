@@ -14,12 +14,10 @@ namespace Pulumi.Gcp.Notebooks.Outputs
     public sealed class RuntimeVirtualMachine
     {
         /// <summary>
-        /// -
         /// The unique identifier of the Managed Compute Engine instance.
         /// </summary>
         public readonly string? InstanceId;
         /// <summary>
-        /// -
         /// The user-friendly name of the Managed Compute Engine instance.
         /// </summary>
         public readonly string? InstanceName;

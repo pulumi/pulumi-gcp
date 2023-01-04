@@ -109,15 +109,13 @@ namespace Pulumi.Gcp.Vertex
     public partial class AiTensorboard : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not
-        /// end with a '/'.
+        /// Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not end with a '/'.
         /// </summary>
         [Output("blobStoragePathPrefix")]
         public Output<string> BlobStoragePathPrefix { get; private set; } = null!;
 
         /// <summary>
-        /// The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-        /// nine fractional digits.
+        /// The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -173,8 +171,7 @@ namespace Pulumi.Gcp.Vertex
         public Output<string> RunCount { get; private set; } = null!;
 
         /// <summary>
-        /// The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-        /// to nine fractional digits.
+        /// The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -278,15 +275,13 @@ namespace Pulumi.Gcp.Vertex
     public sealed class AiTensorboardState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not
-        /// end with a '/'.
+        /// Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not end with a '/'.
         /// </summary>
         [Input("blobStoragePathPrefix")]
         public Input<string>? BlobStoragePathPrefix { get; set; }
 
         /// <summary>
-        /// The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-        /// nine fractional digits.
+        /// The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -348,8 +343,7 @@ namespace Pulumi.Gcp.Vertex
         public Input<string>? RunCount { get; set; }
 
         /// <summary>
-        /// The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-        /// to nine fractional digits.
+        /// The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

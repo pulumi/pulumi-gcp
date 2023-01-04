@@ -152,15 +152,14 @@ namespace Pulumi.Gcp.Vertex
     public partial class AiIndex : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-        /// fractional digits.
+        /// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had
-        /// been undeployed first.
+        /// The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
+        /// Structure is documented below.
         /// </summary>
         [Output("deployedIndexes")]
         public Output<ImmutableArray<Outputs.AiIndexDeployedIndex>> DeployedIndexes { get; private set; } = null!;
@@ -185,6 +184,7 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// Stats of the index resource.
+        /// Structure is documented below.
         /// </summary>
         [Output("indexStats")]
         public Output<ImmutableArray<Outputs.AiIndexIndexStat>> IndexStats { get; private set; } = null!;
@@ -211,8 +211,7 @@ namespace Pulumi.Gcp.Vertex
         public Output<Outputs.AiIndexMetadata?> Metadata { get; private set; } = null!;
 
         /// <summary>
-        /// Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific
-        /// to it. Unset if the Index does not have any additional information.
+        /// Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
         /// </summary>
         [Output("metadataSchemaUri")]
         public Output<string> MetadataSchemaUri { get; private set; } = null!;
@@ -237,8 +236,7 @@ namespace Pulumi.Gcp.Vertex
         public Output<string?> Region { get; private set; } = null!;
 
         /// <summary>
-        /// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-        /// fractional digits.
+        /// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -350,8 +348,7 @@ namespace Pulumi.Gcp.Vertex
     public sealed class AiIndexState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-        /// fractional digits.
+        /// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -360,8 +357,8 @@ namespace Pulumi.Gcp.Vertex
         private InputList<Inputs.AiIndexDeployedIndexGetArgs>? _deployedIndexes;
 
         /// <summary>
-        /// The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had
-        /// been undeployed first.
+        /// The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AiIndexDeployedIndexGetArgs> DeployedIndexes
         {
@@ -392,6 +389,7 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// Stats of the index resource.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AiIndexIndexStatGetArgs> IndexStats
         {
@@ -427,8 +425,7 @@ namespace Pulumi.Gcp.Vertex
         public Input<Inputs.AiIndexMetadataGetArgs>? Metadata { get; set; }
 
         /// <summary>
-        /// Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific
-        /// to it. Unset if the Index does not have any additional information.
+        /// Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
         /// </summary>
         [Input("metadataSchemaUri")]
         public Input<string>? MetadataSchemaUri { get; set; }
@@ -453,8 +450,7 @@ namespace Pulumi.Gcp.Vertex
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-        /// fractional digits.
+        /// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

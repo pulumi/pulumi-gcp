@@ -83,8 +83,9 @@ namespace Pulumi.Gcp.GameServices
         public Output<string?> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The resource id of the realm, of the form: 'projects/{project_id}/locations/{location}/realms/{realm_id}'. For example,
-        /// 'projects/my-project/locations/{location}/realms/my-realm'.
+        /// The resource id of the realm, of the form:
+        /// `projects/{project_id}/locations/{location}/realms/{realm_id}`. For
+        /// example, `projects/my-project/locations/{location}/realms/my-realm`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -240,8 +241,9 @@ namespace Pulumi.Gcp.GameServices
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The resource id of the realm, of the form: 'projects/{project_id}/locations/{location}/realms/{realm_id}'. For example,
-        /// 'projects/my-project/locations/{location}/realms/my-realm'.
+        /// The resource id of the realm, of the form:
+        /// `projects/{project_id}/locations/{location}/realms/{realm_id}`. For
+        /// example, `projects/my-project/locations/{location}/realms/my-realm`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

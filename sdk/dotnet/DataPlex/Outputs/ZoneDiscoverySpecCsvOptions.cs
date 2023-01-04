@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.DataPlex.Outputs
         /// </summary>
         public readonly string? Delimiter;
         /// <summary>
-        /// Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+        /// Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
         /// </summary>
         public readonly bool? DisableTypeInference;
         /// <summary>

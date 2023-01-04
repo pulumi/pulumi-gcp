@@ -13,6 +13,50 @@ namespace Pulumi.Gcp.CertificateManager
     /// DnsAuthorization represents a HTTP-reachable backend for a DnsAuthorization.
     /// 
     /// ## Example Usage
+    /// ### Certificate Manager Dns Authorization Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CertificateManager.DnsAuthorization("default", new()
+    ///     {
+    ///         Description = "The default dnss",
+    ///         Domain = "%{random_suffix}.hashicorptest.com",
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["recordNameToInsert"] = 
+    ///         {
+    ///             { "google_certificate_manager_dns_authorization.default.dns_resource_record.0.name", new[]
+    ///             {
+    ///                 null,
+    ///             } },
+    ///             { "value", "" },
+    ///         },
+    ///         ["recordTypeToInsert"] = 
+    ///         {
+    ///             { "google_certificate_manager_dns_authorization.default.dns_resource_record.0.type", new[]
+    ///             {
+    ///                 null,
+    ///             } },
+    ///             { "value", "" },
+    ///         },
+    ///         ["recordDataToInsert"] = 
+    ///         {
+    ///             { "google_certificate_manager_dns_authorization.default.dns_resource_record.0.data", new[]
+    ///             {
+    ///                 null,
+    ///             } },
+    ///             { "value", "" },
+    ///         },
+    ///     };
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -40,8 +84,10 @@ namespace Pulumi.Gcp.CertificateManager
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The structure describing the DNS Resource Record that needs to be added to DNS configuration for the authorization to be
-        /// usable by certificate.
+        /// The structure describing the DNS Resource Record that needs to be added
+        /// to DNS configuration for the authorization to be usable by
+        /// certificate.
+        /// Structure is documented below.
         /// </summary>
         [Output("dnsResourceRecords")]
         public Output<ImmutableArray<Outputs.DnsAuthorizationDnsResourceRecord>> DnsResourceRecords { get; private set; } = null!;
@@ -180,8 +226,10 @@ namespace Pulumi.Gcp.CertificateManager
         private InputList<Inputs.DnsAuthorizationDnsResourceRecordGetArgs>? _dnsResourceRecords;
 
         /// <summary>
-        /// The structure describing the DNS Resource Record that needs to be added to DNS configuration for the authorization to be
-        /// usable by certificate.
+        /// The structure describing the DNS Resource Record that needs to be added
+        /// to DNS configuration for the authorization to be usable by
+        /// certificate.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.DnsAuthorizationDnsResourceRecordGetArgs> DnsResourceRecords
         {

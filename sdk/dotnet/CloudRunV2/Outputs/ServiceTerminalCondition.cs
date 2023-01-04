@@ -13,12 +13,34 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
     [OutputType]
     public sealed class ServiceTerminalCondition
     {
+        /// <summary>
+        /// A reason for the execution condition.
+        /// </summary>
         public readonly string? ExecutionReason;
+        /// <summary>
+        /// Last time the condition transitioned from one status to another.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
         public readonly string? LastTransitionTime;
+        /// <summary>
+        /// Human readable message indicating details about the current status.
+        /// </summary>
         public readonly string? Message;
+        /// <summary>
+        /// A common (service-level) reason for this condition.
+        /// </summary>
         public readonly string? Reason;
+        /// <summary>
+        /// A reason for the revision condition.
+        /// </summary>
         public readonly string? RevisionReason;
+        /// <summary>
+        /// How to interpret failures of this condition, one of Error, Warning, Info
+        /// </summary>
         public readonly string? Severity;
+        /// <summary>
+        /// State of the condition.
+        /// </summary>
         public readonly string? State;
         /// <summary>
         /// The allocation type for this traffic target.

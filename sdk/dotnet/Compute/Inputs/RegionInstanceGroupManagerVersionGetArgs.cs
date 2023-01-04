@@ -13,19 +13,19 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class RegionInstanceGroupManagerVersionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// - The full URL to an instance template from which all new instances of this version will be created.
+        /// The full URL to an instance template from which all new instances of this version will be created.
         /// </summary>
         [Input("instanceTemplate", required: true)]
         public Input<string> InstanceTemplate { get; set; } = null!;
 
         /// <summary>
-        /// - Version name.
+        /// Version name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+        /// The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
         /// </summary>
         [Input("targetSize")]
         public Input<Inputs.RegionInstanceGroupManagerVersionTargetSizeGetArgs>? TargetSize { get; set; }

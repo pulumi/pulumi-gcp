@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Eventarc.Outputs
     public sealed class TriggerTransportPubsub
     {
         /// <summary>
-        /// -
         /// Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
         /// </summary>
         public readonly string? Subscription;

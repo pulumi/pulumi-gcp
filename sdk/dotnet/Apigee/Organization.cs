@@ -19,6 +19,131 @@ namespace Pulumi.Gcp.Apigee
     ///     * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
     /// 
     /// ## Example Usage
+    /// ### Apigee Organization Cloud Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var current = Gcp.Organizations.GetClientConfig.Invoke();
+    /// 
+    ///     var apigeeNetwork = new Gcp.Compute.Network("apigeeNetwork");
+    /// 
+    ///     var apigeeRange = new Gcp.Compute.GlobalAddress("apigeeRange", new()
+    ///     {
+    ///         Purpose = "VPC_PEERING",
+    ///         AddressType = "INTERNAL",
+    ///         PrefixLength = 16,
+    ///         Network = apigeeNetwork.Id,
+    ///     });
+    /// 
+    ///     var apigeeVpcConnection = new Gcp.ServiceNetworking.Connection("apigeeVpcConnection", new()
+    ///     {
+    ///         Network = apigeeNetwork.Id,
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             apigeeRange.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var org = new Gcp.Apigee.Organization("org", new()
+    ///     {
+    ///         AnalyticsRegion = "us-central1",
+    ///         ProjectId = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
+    ///         AuthorizedNetwork = apigeeNetwork.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             apigeeVpcConnection,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Apigee Organization Cloud Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var current = Gcp.Organizations.GetClientConfig.Invoke();
+    /// 
+    ///     var apigeeNetwork = new Gcp.Compute.Network("apigeeNetwork");
+    /// 
+    ///     var apigeeRange = new Gcp.Compute.GlobalAddress("apigeeRange", new()
+    ///     {
+    ///         Purpose = "VPC_PEERING",
+    ///         AddressType = "INTERNAL",
+    ///         PrefixLength = 16,
+    ///         Network = apigeeNetwork.Id,
+    ///     });
+    /// 
+    ///     var apigeeVpcConnection = new Gcp.ServiceNetworking.Connection("apigeeVpcConnection", new()
+    ///     {
+    ///         Network = apigeeNetwork.Id,
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             apigeeRange.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var apigeeKeyring = new Gcp.Kms.KeyRing("apigeeKeyring", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var apigeeKey = new Gcp.Kms.CryptoKey("apigeeKey", new()
+    ///     {
+    ///         KeyRing = apigeeKeyring.Id,
+    ///     });
+    /// 
+    ///     var apigeeSa = new Gcp.Projects.ServiceIdentity("apigeeSa", new()
+    ///     {
+    ///         Project = google_project.Project.Project_id,
+    ///         Service = google_project_service.Apigee.Service,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var apigeeSaKeyuser = new Gcp.Kms.CryptoKeyIAMBinding("apigeeSaKeyuser", new()
+    ///     {
+    ///         CryptoKeyId = apigeeKey.Id,
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Members = new[]
+    ///         {
+    ///             apigeeSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///         },
+    ///     });
+    /// 
+    ///     var org = new Gcp.Apigee.Organization("org", new()
+    ///     {
+    ///         AnalyticsRegion = "us-central1",
+    ///         DisplayName = "apigee-org",
+    ///         Description = "Auto-provisioned Apigee Org.",
+    ///         ProjectId = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
+    ///         AuthorizedNetwork = apigeeNetwork.Id,
+    ///         RuntimeDatabaseEncryptionKeyName = apigeeKey.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             apigeeVpcConnection,
+    ///             apigeeSaKeyuser,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -56,8 +181,8 @@ namespace Pulumi.Gcp.Apigee
         public Output<string> BillingType { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when 'RuntimeType'
-        /// is CLOUD. A base64-encoded string.
+        /// Output only. Base64-encoded public certificate for the root CA of the Apigee organization.
+        /// Valid only when `RuntimeType` is CLOUD. A base64-encoded string.
         /// </summary>
         [Output("caCertificate")]
         public Output<string> CaCertificate { get; private set; } = null!;
@@ -122,8 +247,8 @@ namespace Pulumi.Gcp.Apigee
         public Output<string?> RuntimeType { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation
-        /// purposes only) or paid (full subscription has been purchased).
+        /// Output only. Subscription type of the Apigee organization.
+        /// Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased).
         /// </summary>
         [Output("subscriptionType")]
         public Output<string> SubscriptionType { get; private set; } = null!;
@@ -276,8 +401,8 @@ namespace Pulumi.Gcp.Apigee
         public Input<string>? BillingType { get; set; }
 
         /// <summary>
-        /// Output only. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when 'RuntimeType'
-        /// is CLOUD. A base64-encoded string.
+        /// Output only. Base64-encoded public certificate for the root CA of the Apigee organization.
+        /// Valid only when `RuntimeType` is CLOUD. A base64-encoded string.
         /// </summary>
         [Input("caCertificate")]
         public Input<string>? CaCertificate { get; set; }
@@ -342,8 +467,8 @@ namespace Pulumi.Gcp.Apigee
         public Input<string>? RuntimeType { get; set; }
 
         /// <summary>
-        /// Output only. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation
-        /// purposes only) or paid (full subscription has been purchased).
+        /// Output only. Subscription type of the Apigee organization.
+        /// Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased).
         /// </summary>
         [Input("subscriptionType")]
         public Input<string>? SubscriptionType { get; set; }

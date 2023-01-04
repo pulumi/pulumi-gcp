@@ -31,7 +31,6 @@ namespace Pulumi.Gcp.Datastream.Inputs
         }
 
         /// <summary>
-        /// -
         /// Indicates whether the clientKey field is set.
         /// </summary>
         [Input("caCertificateSet")]
@@ -58,7 +57,6 @@ namespace Pulumi.Gcp.Datastream.Inputs
         }
 
         /// <summary>
-        /// -
         /// Indicates whether the clientCertificate field is set.
         /// </summary>
         [Input("clientCertificateSet")]
@@ -84,7 +82,6 @@ namespace Pulumi.Gcp.Datastream.Inputs
         }
 
         /// <summary>
-        /// -
         /// Indicates whether the clientKey field is set.
         /// </summary>
         [Input("clientKeySet")]

@@ -95,8 +95,7 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> Reservation { get; private set; } = null!;
 
         /// <summary>
-        /// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some
-        /// capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+        /// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -222,8 +221,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Reservation { get; set; }
 
         /// <summary>
-        /// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some
-        /// capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+        /// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

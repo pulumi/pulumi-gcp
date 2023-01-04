@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Args;
         /// <summary>
-        /// A remote or local source.
+        /// A remote or local file.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile? File;
         /// <summary>

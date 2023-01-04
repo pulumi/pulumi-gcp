@@ -14,27 +14,22 @@ namespace Pulumi.Gcp.IdentityPlatform.Outputs
     public sealed class ProjectDefaultConfigSignInHashConfig
     {
         /// <summary>
-        /// -
         /// Different password hash algorithms used in Identity Toolkit.
         /// </summary>
         public readonly string? Algorithm;
         /// <summary>
-        /// -
         /// Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
         /// </summary>
         public readonly int? MemoryCost;
         /// <summary>
-        /// -
         /// How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
         /// </summary>
         public readonly int? Rounds;
         /// <summary>
-        /// -
         /// Non-printable character to be inserted between the salt and plain text password in base64.
         /// </summary>
         public readonly string? SaltSeparator;
         /// <summary>
-        /// -
         /// Signer key in base64.
         /// </summary>
         public readonly string? SignerKey;

@@ -13,8 +13,10 @@ namespace Pulumi.Gcp.BigQuery.Inputs
     public sealed class TableExternalDataConfigurationGoogleSheetsOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Information required to partition based on ranges.
-        /// Structure is documented below.
+        /// Range of a sheet to query from. Only used when
+        /// non-empty. At least one of `range` or `skip_leading_rows` must be set.
+        /// Typical format: "sheet_name!top_left_cell_id:bottom_right_cell_id"
+        /// For example: "sheet1!A1:B20"
         /// </summary>
         [Input("range")]
         public Input<string>? Range { get; set; }

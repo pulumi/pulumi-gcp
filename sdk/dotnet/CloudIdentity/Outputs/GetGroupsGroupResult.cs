@@ -14,11 +14,28 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
     public sealed class GetGroupsGroupResult
     {
         public readonly string CreateTime;
+        /// <summary>
+        /// An extended description to help users determine the purpose of a Group.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The display name of the Group.
+        /// </summary>
         public readonly string DisplayName;
+        /// <summary>
+        /// EntityKey of the Group.  Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGroupsGroupGroupKeyResult> GroupKeys;
         public readonly string InitialGroupConfig;
+        /// <summary>
+        /// The labels that apply to the Group.
+        /// Contains 'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
+        /// 'system/groups/external': '' if the Group is an external-identity-mapped group.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
+        /// <summary>
+        /// Resource name of the Group in the format: groups/{group_id}, where `group_id` is the unique ID assigned to the Group.
+        /// </summary>
         public readonly string Name;
         /// <summary>
         /// The parent resource under which to list all Groups. Must be of the form identitysources/{identity_source_id} for external- identity-mapped groups or customers/{customer_id} for Google Groups.

@@ -13,14 +13,12 @@ namespace Pulumi.Gcp.GkeHub.Inputs
     public sealed class FeatureMembershipConfigmanagementConfigSyncGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// -
         /// (Optional) Structure is documented below.
         /// </summary>
         [Input("git")]
         public Input<Inputs.FeatureMembershipConfigmanagementConfigSyncGitGetArgs>? Git { get; set; }
 
         /// <summary>
-        /// -
         /// (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
         /// </summary>
         [Input("oci")]

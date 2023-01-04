@@ -28,14 +28,12 @@ namespace Pulumi.Gcp.Iot.Inputs
         public Input<string>? GatewayType { get; set; }
 
         /// <summary>
-        /// -
         /// The ID of the gateway the device accessed most recently.
         /// </summary>
         [Input("lastAccessedGatewayId")]
         public Input<string>? LastAccessedGatewayId { get; set; }
 
         /// <summary>
-        /// -
         /// The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
         /// </summary>
         [Input("lastAccessedGatewayTime")]

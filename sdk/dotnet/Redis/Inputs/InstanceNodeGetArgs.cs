@@ -13,11 +13,14 @@ namespace Pulumi.Gcp.Redis.Inputs
     public sealed class InstanceNodeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// an identifier for the resource with format `projects/{{project}}/locations/{{region}}/instances/{{name}}`
+        /// Node identifying string. e.g. 'node-0', 'node-1'
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        /// <summary>
+        /// Location of the node.
+        /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 

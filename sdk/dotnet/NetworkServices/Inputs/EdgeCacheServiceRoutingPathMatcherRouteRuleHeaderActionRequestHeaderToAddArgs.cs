@@ -13,8 +13,7 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
     public sealed class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Headers to remove from the response prior to sending it back to the client.
-        /// Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+        /// The name of the header to add.
         /// </summary>
         [Input("headerName", required: true)]
         public Input<string> HeaderName { get; set; } = null!;

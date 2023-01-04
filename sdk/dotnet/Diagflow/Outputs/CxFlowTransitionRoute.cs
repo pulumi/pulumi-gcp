@@ -24,8 +24,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// </summary>
         public readonly string? Intent;
         /// <summary>
-        /// -
-        /// The unique identifier of this event handler.
+        /// The unique identifier of this transition route.
         /// </summary>
         public readonly string? Name;
         /// <summary>
@@ -39,7 +38,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// </summary>
         public readonly string? TargetPage;
         /// <summary>
-        /// The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+        /// The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.CxFlowTransitionRouteTriggerFulfillment? TriggerFulfillment;

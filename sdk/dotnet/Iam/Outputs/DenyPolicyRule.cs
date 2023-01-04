@@ -19,8 +19,7 @@ namespace Pulumi.Gcp.Iam.Outputs
         /// </summary>
         public readonly Outputs.DenyPolicyRuleDenyRule? DenyRule;
         /// <summary>
-        /// Description of the expression. This is a longer text which describes the expression,
-        /// e.g. when hovered over it in a UI.
+        /// The description of the rule.
         /// </summary>
         public readonly string? Description;
 

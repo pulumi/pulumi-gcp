@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.DeploymentManager.Outputs
     public sealed class DeploymentTargetConfig
     {
         /// <summary>
-        /// The full contents of the template that you want to import.
+        /// The full YAML contents of your configuration file.
         /// </summary>
         public readonly string Content;
 

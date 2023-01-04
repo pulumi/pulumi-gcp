@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
     public sealed class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Dataset ID of the table.
+        /// The dataset ID of the table.
         /// </summary>
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
@@ -25,8 +25,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the table. If is not set a new one will be generated for you with the following format:
-        /// `dlp_googleapis_yyyy_mm_dd_[dlp_job_id]`. Pacific timezone will be used for generating the date details.
+        /// The name of the table.
         /// </summary>
         [Input("tableId", required: true)]
         public Input<string> TableId { get; set; } = null!;

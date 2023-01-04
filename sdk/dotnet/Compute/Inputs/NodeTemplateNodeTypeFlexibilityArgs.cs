@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? Cpus { get; set; }
 
         /// <summary>
-        /// -
         /// Use local SSD
         /// </summary>
         [Input("localSsd")]

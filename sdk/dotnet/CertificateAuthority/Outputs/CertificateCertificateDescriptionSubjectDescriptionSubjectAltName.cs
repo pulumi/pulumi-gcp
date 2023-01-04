@@ -13,6 +13,10 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     [OutputType]
     public sealed class CertificateCertificateDescriptionSubjectDescriptionSubjectAltName
     {
+        /// <summary>
+        /// Contains additional subject alternative name values.
+        /// Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan> CustomSans;
         /// <summary>
         /// Contains only valid, fully-qualified host names.

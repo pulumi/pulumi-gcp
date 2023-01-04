@@ -14,16 +14,16 @@ namespace Pulumi.Gcp.Datastream.Outputs
     public sealed class ConnectionProfileMysqlProfile
     {
         /// <summary>
-        /// Hostname for the SSH tunnel.
+        /// Hostname for the MySQL connection.
         /// </summary>
         public readonly string Hostname;
         /// <summary>
-        /// SSH password.
+        /// Password for the MySQL connection.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public readonly string Password;
         /// <summary>
-        /// Port for the SSH tunnel.
+        /// Port for the MySQL connection.
         /// </summary>
         public readonly int? Port;
         /// <summary>
@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Datastream.Outputs
         /// </summary>
         public readonly Outputs.ConnectionProfileMysqlProfileSslConfig? SslConfig;
         /// <summary>
-        /// Username for the SSH tunnel.
+        /// Username for the MySQL connection.
         /// </summary>
         public readonly string Username;
 

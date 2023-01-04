@@ -40,7 +40,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _instanceNames;
 
         /// <summary>
-        /// -
         /// Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
         /// </summary>
         public InputList<string> InstanceNames
@@ -50,7 +49,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         }
 
         /// <summary>
-        /// -
         /// Output only. Specifies that this instance group contains preemptible instances.
         /// </summary>
         [Input("isPreemptible")]
@@ -66,7 +64,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<Inputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs>? _managedGroupConfigs;
 
         /// <summary>
-        /// -
         /// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
         /// </summary>
         public InputList<Inputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs> ManagedGroupConfigs

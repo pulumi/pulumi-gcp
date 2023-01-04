@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class InstanceTemplateDiskSourceImageEncryptionKey
     {
         /// <summary>
-        /// The self link of the encryption key that is stored in Google Cloud KMS
+        /// The self link of the encryption key that is
+        /// stored in Google Cloud KMS.
         /// </summary>
         public readonly string KmsKeySelfLink;
         /// <summary>

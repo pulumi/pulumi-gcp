@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.AppEngine.Outputs
     public sealed class FlexibleAppVersionResourcesVolume
     {
         /// <summary>
-        /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        /// Unique name for the volume.
         /// </summary>
         public readonly string Name;
         /// <summary>

@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.BinaryAuthorization.Outputs
     public sealed class AttestorAttestationAuthorityNote
     {
         /// <summary>
-        /// -
         /// This field will contain the service account email address that
         /// this Attestor will use as the principal when querying Container
         /// Analysis. Attestor administrators must grant this service account

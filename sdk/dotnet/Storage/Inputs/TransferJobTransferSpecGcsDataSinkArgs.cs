@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Storage.Inputs
     public sealed class TransferJobTransferSpecGcsDataSinkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// S3 Bucket name.
+        /// Google Cloud Storage bucket name.
         /// </summary>
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;

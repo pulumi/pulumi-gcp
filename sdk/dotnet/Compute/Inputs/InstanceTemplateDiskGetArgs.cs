@@ -92,7 +92,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? Mode { get; set; }
 
         /// <summary>
-        /// -- A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+        /// - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
         /// </summary>
         [Input("resourcePolicies")]
         public Input<string>? ResourcePolicies { get; set; }
@@ -141,7 +141,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<Inputs.InstanceTemplateDiskSourceSnapshotEncryptionKeyGetArgs>? SourceSnapshotEncryptionKey { get; set; }
 
         /// <summary>
-        /// The type of reservation from which this instance can consume resources.
+        /// The type of GCE disk, can be either `"SCRATCH"` or
+        /// `"PERSISTENT"`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

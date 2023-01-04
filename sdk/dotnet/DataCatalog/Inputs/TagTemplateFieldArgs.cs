@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The display name for this template.
+        /// The display name for this field.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -37,7 +37,6 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
         public Input<bool>? IsRequired { get; set; }
 
         /// <summary>
-        /// -
         /// The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
         /// </summary>
         [Input("name")]

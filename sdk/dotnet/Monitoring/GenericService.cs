@@ -89,7 +89,8 @@ namespace Pulumi.Gcp.Monitoring
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+        /// The full resource name for this service. The syntax is:
+        /// projects/[PROJECT_ID]/services/[SERVICE_ID].
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -110,6 +111,7 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// Configuration for how to query telemetry on a Service.
+        /// Structure is documented below.
         /// </summary>
         [Output("telemetries")]
         public Output<ImmutableArray<Outputs.GenericServiceTelemetry>> Telemetries { get; private set; } = null!;
@@ -241,7 +243,8 @@ namespace Pulumi.Gcp.Monitoring
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+        /// The full resource name for this service. The syntax is:
+        /// projects/[PROJECT_ID]/services/[SERVICE_ID].
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -265,6 +268,7 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// Configuration for how to query telemetry on a Service.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.GenericServiceTelemetryGetArgs> Telemetries
         {

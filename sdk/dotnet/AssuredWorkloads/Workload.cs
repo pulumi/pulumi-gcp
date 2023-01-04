@@ -142,8 +142,7 @@ namespace Pulumi.Gcp.AssuredWorkloads
         public Output<ImmutableArray<Outputs.WorkloadResourceSetting>> ResourceSettings { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. The resources associated with this workload. These resources will be created when creating the workload. If
-        /// any of the projects already exist, the workload creation will fail. Always read only.
+        /// Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
         /// </summary>
         [Output("resources")]
         public Output<ImmutableArray<Outputs.WorkloadResource>> Resources { get; private set; } = null!;
@@ -350,8 +349,7 @@ namespace Pulumi.Gcp.AssuredWorkloads
         private InputList<Inputs.WorkloadResourceGetArgs>? _resources;
 
         /// <summary>
-        /// Output only. The resources associated with this workload. These resources will be created when creating the workload. If
-        /// any of the projects already exist, the workload creation will fail. Always read only.
+        /// Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
         /// </summary>
         public InputList<Inputs.WorkloadResourceGetArgs> Resources
         {

@@ -15,6 +15,9 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     {
         public readonly string? Code;
         public readonly string? Description;
+        /// <summary>
+        /// Output only. When the Feature resource was last updated.
+        /// </summary>
         public readonly string? UpdateTime;
 
         [OutputConstructor]

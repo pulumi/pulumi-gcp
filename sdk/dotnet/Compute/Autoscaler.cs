@@ -266,13 +266,19 @@ namespace Pulumi.Gcp.Compute
         public Output<string> CreationTimestamp { get; private set; } = null!;
 
         /// <summary>
+        /// A description of a scaling schedule.
+        /// (Optional)
         /// An optional description of this resource.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The identifier for this object. Format specified above.
+        /// Name of the resource. The name must be 1-63 characters long and match
+        /// the regular expression `a-z?` which means the
+        /// first character must be a lowercase letter, and all following
+        /// characters must be a dash, lowercase letter, or digit, except the last
+        /// character, which cannot be a dash.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -291,9 +297,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// Fraction of backend capacity utilization (set in HTTP(s) load
-        /// balancing configuration) that autoscaler should maintain. Must
-        /// be a positive float value. If not defined, the default is 0.8.
+        /// URL of the managed instance group that this autoscaler will scale.
         /// </summary>
         [Output("target")]
         public Output<string> Target { get; private set; } = null!;
@@ -366,13 +370,19 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.AutoscalerAutoscalingPolicyArgs> AutoscalingPolicy { get; set; } = null!;
 
         /// <summary>
+        /// A description of a scaling schedule.
+        /// (Optional)
         /// An optional description of this resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The identifier for this object. Format specified above.
+        /// Name of the resource. The name must be 1-63 characters long and match
+        /// the regular expression `a-z?` which means the
+        /// first character must be a lowercase letter, and all following
+        /// characters must be a dash, lowercase letter, or digit, except the last
+        /// character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -385,9 +395,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Fraction of backend capacity utilization (set in HTTP(s) load
-        /// balancing configuration) that autoscaler should maintain. Must
-        /// be a positive float value. If not defined, the default is 0.8.
+        /// URL of the managed instance group that this autoscaler will scale.
         /// </summary>
         [Input("target", required: true)]
         public Input<string> Target { get; set; } = null!;
@@ -424,13 +432,19 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? CreationTimestamp { get; set; }
 
         /// <summary>
+        /// A description of a scaling schedule.
+        /// (Optional)
         /// An optional description of this resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The identifier for this object. Format specified above.
+        /// Name of the resource. The name must be 1-63 characters long and match
+        /// the regular expression `a-z?` which means the
+        /// first character must be a lowercase letter, and all following
+        /// characters must be a dash, lowercase letter, or digit, except the last
+        /// character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -449,9 +463,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// Fraction of backend capacity utilization (set in HTTP(s) load
-        /// balancing configuration) that autoscaler should maintain. Must
-        /// be a positive float value. If not defined, the default is 0.8.
+        /// URL of the managed instance group that this autoscaler will scale.
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }

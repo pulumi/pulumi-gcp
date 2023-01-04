@@ -22,9 +22,10 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         private InputMap<string>? _secretEnv;
 
         /// <summary>
-        /// A list of global environment variables, which are encrypted using a Cloud Key Management
-        /// Service crypto key. These values must be specified in the build's Secret. These variables
-        /// will be available to all build steps in this build.
+        /// Map of environment variable name to its encrypted value.
+        /// Secret environment variables must be unique across all of a build's secrets,
+        /// and must be used by at least one build step. Values can be at most 64 KB in size.
+        /// There can be at most 100 secret values across all of a build's secrets.
         /// </summary>
         public InputMap<string> SecretEnv
         {

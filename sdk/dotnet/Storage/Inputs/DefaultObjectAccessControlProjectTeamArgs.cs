@@ -12,9 +12,16 @@ namespace Pulumi.Gcp.Storage.Inputs
 
     public sealed class DefaultObjectAccessControlProjectTeamArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The project team associated with the entity
+        /// </summary>
         [Input("projectNumber")]
         public Input<string>? ProjectNumber { get; set; }
 
+        /// <summary>
+        /// The team.
+        /// Possible values are `editors`, `owners`, and `viewers`.
+        /// </summary>
         [Input("team")]
         public Input<string>? Team { get; set; }
 

@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Endpoints.Outputs
     [OutputType]
     public sealed class ServiceEndpoint
     {
+        /// <summary>
+        /// The FQDN of the endpoint as described in the config.
+        /// </summary>
         public readonly string? Address;
+        /// <summary>
+        /// The simple name of the endpoint as described in the config.
+        /// </summary>
         public readonly string? Name;
 
         [OutputConstructor]

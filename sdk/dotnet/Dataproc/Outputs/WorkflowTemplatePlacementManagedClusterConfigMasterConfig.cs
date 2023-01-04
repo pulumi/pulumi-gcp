@@ -26,12 +26,10 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly string? Image;
         /// <summary>
-        /// -
         /// Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
         /// </summary>
         public readonly ImmutableArray<string> InstanceNames;
         /// <summary>
-        /// -
         /// Output only. Specifies that this instance group contains preemptible instances.
         /// </summary>
         public readonly bool? IsPreemptible;
@@ -40,7 +38,6 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly string? MachineType;
         /// <summary>
-        /// -
         /// Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
         /// </summary>
         public readonly ImmutableArray<Outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig> ManagedGroupConfigs;

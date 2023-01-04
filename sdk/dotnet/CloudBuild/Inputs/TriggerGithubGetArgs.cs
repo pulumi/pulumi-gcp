@@ -13,9 +13,8 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
     public sealed class TriggerGithubGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the volume to mount.
-        /// Volume names must be unique per build step and must be valid names for Docker volumes.
-        /// Each named volume must be used by at least two build steps.
+        /// Name of the repository. For example: The name for
+        /// https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

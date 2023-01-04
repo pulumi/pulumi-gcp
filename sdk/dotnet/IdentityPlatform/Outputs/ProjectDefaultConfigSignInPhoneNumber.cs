@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.IdentityPlatform.Outputs
     public sealed class ProjectDefaultConfigSignInPhoneNumber
     {
         /// <summary>
-        /// Whether anonymous user auth is enabled for the project or not.
+        /// Whether phone number auth is enabled for the project or not.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>

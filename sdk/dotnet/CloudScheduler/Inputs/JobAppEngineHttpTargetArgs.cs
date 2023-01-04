@@ -21,8 +21,8 @@ namespace Pulumi.Gcp.CloudScheduler.Inputs
 
         /// <summary>
         /// HTTP request body.
-        /// A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
-        /// It is an error to set body on a job with an incompatible HttpMethod.
+        /// A request body is allowed only if the HTTP method is POST or PUT.
+        /// It will result in invalid argument error to set a body on a job with an incompatible HttpMethod.
         /// A base64-encoded string.
         /// </summary>
         [Input("body")]
@@ -32,8 +32,9 @@ namespace Pulumi.Gcp.CloudScheduler.Inputs
         private InputMap<string>? _headers;
 
         /// <summary>
+        /// HTTP request headers.
         /// This map contains the header field names and values.
-        /// Repeated headers are not supported, but a header value can contain commas.
+        /// Headers can be set when the job is created.
         /// </summary>
         public InputMap<string> Headers
         {

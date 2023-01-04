@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An Apt Repository.
+        /// A package managed by Apt.
         /// </summary>
         [Input("apt")]
         public Input<Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptGetArgs>? Apt { get; set; }
@@ -49,13 +49,13 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public Input<Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmGetArgs>? Rpm { get; set; }
 
         /// <summary>
-        /// A Yum Repository.
+        /// A package managed by YUM.
         /// </summary>
         [Input("yum")]
         public Input<Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumGetArgs>? Yum { get; set; }
 
         /// <summary>
-        /// A Zypper Repository.
+        /// A package managed by Zypper.
         /// </summary>
         [Input("zypper")]
         public Input<Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperGetArgs>? Zypper { get; set; }

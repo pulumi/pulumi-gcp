@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         /// </summary>
         public readonly string? PathTemplateMatch;
         /// <summary>
-        /// The value of the header must start with the contents of prefixMatch.
+        /// For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /.
         /// </summary>
         public readonly string? PrefixMatch;
         /// <summary>

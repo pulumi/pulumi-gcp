@@ -90,7 +90,7 @@ namespace Pulumi.Gcp.ApiGateway
         public Output<string> ManagedService { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the API. Format 'projects/{{project}}/locations/global/apis/{{apiId}}'
+        /// The resource name of the API. Format `projects/{{project}}/locations/global/apis/{{apiId}}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -232,7 +232,7 @@ namespace Pulumi.Gcp.ApiGateway
         public Input<string>? ManagedService { get; set; }
 
         /// <summary>
-        /// The resource name of the API. Format 'projects/{{project}}/locations/global/apis/{{apiId}}'
+        /// The resource name of the API. Format `projects/{{project}}/locations/global/apis/{{apiId}}`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

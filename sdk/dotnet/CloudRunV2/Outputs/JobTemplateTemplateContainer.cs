@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly Outputs.JobTemplateTemplateContainerLivenessProbe? LivenessProbe;
         /// <summary>
-        /// Volume's name.
+        /// Name of the container specified as a DNS_LABEL.
         /// </summary>
         public readonly string? Name;
         /// <summary>

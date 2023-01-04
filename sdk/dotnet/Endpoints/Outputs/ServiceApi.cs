@@ -13,9 +13,21 @@ namespace Pulumi.Gcp.Endpoints.Outputs
     [OutputType]
     public sealed class ServiceApi
     {
+        /// <summary>
+        /// A list of Method objects; structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.ServiceApiMethod> Methods;
+        /// <summary>
+        /// The simple name of the endpoint as described in the config.
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+        /// </summary>
         public readonly string? Syntax;
+        /// <summary>
+        /// A version string for this api. If specified, will have the form major-version.minor-version, e.g. `1.10`.
+        /// </summary>
         public readonly string? Version;
 
         [OutputConstructor]

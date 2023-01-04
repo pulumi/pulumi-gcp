@@ -12,9 +12,15 @@ namespace Pulumi.Gcp.Vertex.Inputs
 
     public sealed class AiIndexIndexStatArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The number of shards in the Index.
+        /// </summary>
         [Input("shardsCount")]
         public Input<int>? ShardsCount { get; set; }
 
+        /// <summary>
+        /// The number of vectors in the Index.
+        /// </summary>
         [Input("vectorsCount")]
         public Input<string>? VectorsCount { get; set; }
 

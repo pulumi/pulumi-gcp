@@ -18,28 +18,30 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ArchiveUris;
         /// <summary>
-        /// The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        /// The arguments to pass to the driver.
         /// </summary>
         public readonly ImmutableArray<string> Args;
         /// <summary>
-        /// HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+        /// HCFS URIs of files to be copied to the working directory of Spark drivers and distributed tasks. Useful for naively parallel tasks.
         /// </summary>
         public readonly ImmutableArray<string> FileUris;
         /// <summary>
-        /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        /// HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
         /// </summary>
         public readonly ImmutableArray<string> JarFileUris;
         public readonly Outputs.JobSparkConfigLoggingConfig? LoggingConfig;
         /// <summary>
-        /// The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`. Conflicts with `main_jar_file_uri`
+        /// The class containing the main method of the driver. Must be in a
+        /// provided jar or jar that is already on the classpath. Conflicts with `main_jar_file_uri`
         /// </summary>
         public readonly string? MainClass;
         /// <summary>
-        /// The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with `main_class`
+        /// The HCFS URI of jar file containing
+        /// the driver jar. Conflicts with `main_class`
         /// </summary>
         public readonly string? MainJarFileUri;
         /// <summary>
-        /// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+        /// A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/spark/conf/spark-defaults.conf` and classes in user code.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Properties;
 

@@ -43,7 +43,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly Outputs.JobLoadDestinationEncryptionConfiguration? DestinationEncryptionConfiguration;
         /// <summary>
-        /// The destination table.
+        /// The destination table to load the data into.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.JobLoadDestinationTable DestinationTable;
@@ -54,8 +54,11 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly string? Encoding;
         /// <summary>
-        /// When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
-        /// Default is ','
+        /// The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character.
+        /// To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts
+        /// the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the
+        /// data in its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator.
+        /// The default value is a comma (',').
         /// </summary>
         public readonly string? FieldDelimiter;
         /// <summary>

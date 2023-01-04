@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _values;
 
         /// <summary>
-        /// Optional. Corresponds to the label values of reservation resource.
+        /// Required. List of allowed values for the parameter.
         /// </summary>
         public InputList<string> Values
         {

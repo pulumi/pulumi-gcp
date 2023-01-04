@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Iot.Outputs
     [OutputType]
     public sealed class DeviceState
     {
+        /// <summary>
+        /// The device state data.
+        /// </summary>
         public readonly string? BinaryData;
+        /// <summary>
+        /// The time at which this state version was updated in Cloud IoT Core.
+        /// </summary>
         public readonly string? UpdateTime;
 
         [OutputConstructor]

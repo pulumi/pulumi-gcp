@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public Input<Inputs.WorkflowTemplateParameterValidationRegexArgs>? Regex { get; set; }
 
         /// <summary>
-        /// Optional. Corresponds to the label values of reservation resource.
+        /// Validation based on a list of allowed values.
         /// </summary>
         [Input("values")]
         public Input<Inputs.WorkflowTemplateParameterValidationValuesArgs>? Values { get; set; }

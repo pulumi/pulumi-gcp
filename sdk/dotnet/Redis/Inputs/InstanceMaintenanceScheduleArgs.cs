@@ -13,7 +13,6 @@ namespace Pulumi.Gcp.Redis.Inputs
     public sealed class InstanceMaintenanceScheduleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// -
         /// Output only. The end time of any upcoming scheduled maintenance for this instance.
         /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         /// resolution and up to nine fractional digits.
@@ -22,7 +21,6 @@ namespace Pulumi.Gcp.Redis.Inputs
         public Input<string>? EndTime { get; set; }
 
         /// <summary>
-        /// -
         /// Output only. The deadline that the maintenance schedule start time
         /// can not go beyond, including reschedule.
         /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
@@ -32,7 +30,6 @@ namespace Pulumi.Gcp.Redis.Inputs
         public Input<string>? ScheduleDeadlineTime { get; set; }
 
         /// <summary>
-        /// -
         /// Output only. The start time of any upcoming scheduled maintenance for this instance.
         /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         /// resolution and up to nine fractional digits.

@@ -131,9 +131,7 @@ namespace Pulumi.Gcp.OsConfig
     public partial class OsPolicyAssignment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS
-        /// policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for
-        /// this field.
+        /// Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
         /// </summary>
         [Output("baseline")]
         public Output<bool> Baseline { get; private set; } = null!;
@@ -145,6 +143,8 @@ namespace Pulumi.Gcp.OsConfig
         public Output<bool> Deleted { get; private set; } = null!;
 
         /// <summary>
+        /// Policy description. Length of the description is limited to 1024 characters.
+        /// (Optional)
         /// OS policy assignment description. Length of the description is limited to 1024 characters.
         /// </summary>
         [Output("description")]
@@ -169,7 +169,7 @@ namespace Pulumi.Gcp.OsConfig
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The name of the repository.
+        /// Resource name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -187,8 +187,7 @@ namespace Pulumi.Gcp.OsConfig
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the
-        /// `rollout_state` is one of: * IN_PROGRESS * CANCELLING
+        /// Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the `rollout_state` is one of: * IN_PROGRESS * CANCELLING
         /// </summary>
         [Output("reconciling")]
         public Output<bool> Reconciling { get; private set; } = null!;
@@ -200,8 +199,7 @@ namespace Pulumi.Gcp.OsConfig
         public Output<string> RevisionCreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy
-        /// assignment
+        /// Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
         /// </summary>
         [Output("revisionId")]
         public Output<string> RevisionId { get; private set; } = null!;
@@ -213,8 +211,7 @@ namespace Pulumi.Gcp.OsConfig
         public Output<Outputs.OsPolicyAssignmentRollout> Rollout { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING,
-        /// CANCELLED, SUCCEEDED
+        /// Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING, CANCELLED, SUCCEEDED
         /// </summary>
         [Output("rolloutState")]
         public Output<string> RolloutState { get; private set; } = null!;
@@ -278,6 +275,8 @@ namespace Pulumi.Gcp.OsConfig
     public sealed class OsPolicyAssignmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Policy description. Length of the description is limited to 1024 characters.
+        /// (Optional)
         /// OS policy assignment description. Length of the description is limited to 1024 characters.
         /// </summary>
         [Input("description")]
@@ -296,7 +295,7 @@ namespace Pulumi.Gcp.OsConfig
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Required. The name of the repository.
+        /// Resource name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -340,9 +339,7 @@ namespace Pulumi.Gcp.OsConfig
     public sealed class OsPolicyAssignmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS
-        /// policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for
-        /// this field.
+        /// Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
         /// </summary>
         [Input("baseline")]
         public Input<bool>? Baseline { get; set; }
@@ -354,6 +351,8 @@ namespace Pulumi.Gcp.OsConfig
         public Input<bool>? Deleted { get; set; }
 
         /// <summary>
+        /// Policy description. Length of the description is limited to 1024 characters.
+        /// (Optional)
         /// OS policy assignment description. Length of the description is limited to 1024 characters.
         /// </summary>
         [Input("description")]
@@ -378,7 +377,7 @@ namespace Pulumi.Gcp.OsConfig
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Required. The name of the repository.
+        /// Resource name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -402,8 +401,7 @@ namespace Pulumi.Gcp.OsConfig
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the
-        /// `rollout_state` is one of: * IN_PROGRESS * CANCELLING
+        /// Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the `rollout_state` is one of: * IN_PROGRESS * CANCELLING
         /// </summary>
         [Input("reconciling")]
         public Input<bool>? Reconciling { get; set; }
@@ -415,8 +413,7 @@ namespace Pulumi.Gcp.OsConfig
         public Input<string>? RevisionCreateTime { get; set; }
 
         /// <summary>
-        /// Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy
-        /// assignment
+        /// Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
         /// </summary>
         [Input("revisionId")]
         public Input<string>? RevisionId { get; set; }
@@ -428,8 +425,7 @@ namespace Pulumi.Gcp.OsConfig
         public Input<Inputs.OsPolicyAssignmentRolloutGetArgs>? Rollout { get; set; }
 
         /// <summary>
-        /// Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING,
-        /// CANCELLED, SUCCEEDED
+        /// Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING, CANCELLED, SUCCEEDED
         /// </summary>
         [Input("rolloutState")]
         public Input<string>? RolloutState { get; set; }

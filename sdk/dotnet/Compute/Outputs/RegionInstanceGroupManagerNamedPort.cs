@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class RegionInstanceGroupManagerNamedPort
     {
         /// <summary>
-        /// - Version name.
+        /// The name of the port.
         /// </summary>
         public readonly string Name;
         /// <summary>

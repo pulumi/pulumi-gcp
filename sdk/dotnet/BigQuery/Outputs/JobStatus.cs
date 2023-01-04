@@ -13,8 +13,21 @@ namespace Pulumi.Gcp.BigQuery.Outputs
     [OutputType]
     public sealed class JobStatus
     {
+        /// <summary>
+        /// Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
+        /// Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.JobStatusErrorResult> ErrorResults;
+        /// <summary>
+        /// The first errors encountered during the running of the job. The final message
+        /// includes the number of errors that caused the process to stop. Errors here do
+        /// not necessarily mean that the job has not completed or was unsuccessful.
+        /// Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.JobStatusError> Errors;
+        /// <summary>
+        /// Running state of the job. Valid states include 'PENDING', 'RUNNING', and 'DONE'.
+        /// </summary>
         public readonly string? State;
 
         [OutputConstructor]

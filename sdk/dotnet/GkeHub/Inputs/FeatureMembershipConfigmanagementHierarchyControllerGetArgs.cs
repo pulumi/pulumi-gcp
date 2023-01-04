@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         public Input<bool>? EnablePodTreeLabels { get; set; }
 
         /// <summary>
-        /// Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+        /// Whether Hierarchy Controller is enabled in this cluster.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

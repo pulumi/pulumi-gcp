@@ -151,24 +151,46 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class GetDiskResult
     {
+        /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
         public readonly string CreationTimestamp;
+        /// <summary>
+        /// The optional description of this resource.
+        /// </summary>
         public readonly string Description;
         public readonly ImmutableArray<Outputs.GetDiskDiskEncryptionKeyResult> DiskEncryptionKeys;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The image from which to initialize this disk.
+        /// </summary>
         public readonly string Image;
         public readonly string Interface;
+        /// <summary>
+        /// The fingerprint used for optimistic locking of this resource.  Used
+        /// internally during updates.
+        /// </summary>
         public readonly string LabelFingerprint;
         /// <summary>
         /// A map of labels applied to this disk.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
+        /// <summary>
+        /// Last attach timestamp in RFC3339 text format.
+        /// </summary>
         public readonly string LastAttachTimestamp;
+        /// <summary>
+        /// Last detach timestamp in RFC3339 text format.
+        /// </summary>
         public readonly string LastDetachTimestamp;
         public readonly bool MultiWriter;
         public readonly string Name;
+        /// <summary>
+        /// Physical block size of the persistent disk, in bytes.
+        /// </summary>
         public readonly int PhysicalBlockSizeBytes;
         public readonly string? Project;
         public readonly int ProvisionedIops;
@@ -177,16 +199,54 @@ namespace Pulumi.Gcp.Compute
         /// The URI of the created resource.
         /// </summary>
         public readonly string SelfLink;
+        /// <summary>
+        /// Size of the persistent disk, specified in GB.
+        /// </summary>
         public readonly int Size;
+        /// <summary>
+        /// The source snapshot used to create this disk.
+        /// </summary>
         public readonly string Snapshot;
         public readonly string SourceDisk;
         public readonly string SourceDiskId;
+        /// <summary>
+        /// The customer-supplied encryption key of the source image.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDiskSourceImageEncryptionKeyResult> SourceImageEncryptionKeys;
+        /// <summary>
+        /// The ID value of the image used to create this disk. This value
+        /// identifies the exact image that was used to create this persistent
+        /// disk. For example, if you created the persistent disk from an image
+        /// that was later deleted and recreated under the same name, the source
+        /// image ID would identify the exact version of the image that was used.
+        /// </summary>
         public readonly string SourceImageId;
+        /// <summary>
+        /// The customer-supplied encryption key of the source snapshot.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDiskSourceSnapshotEncryptionKeyResult> SourceSnapshotEncryptionKeys;
+        /// <summary>
+        /// The unique ID of the snapshot used to create this disk. This value
+        /// identifies the exact snapshot that was used to create this persistent
+        /// disk. For example, if you created the persistent disk from a snapshot
+        /// that was later deleted and recreated under the same name, the source
+        /// snapshot ID would identify the exact version of the snapshot that was
+        /// used.
+        /// </summary>
         public readonly string SourceSnapshotId;
+        /// <summary>
+        /// URL of the disk type resource describing which disk type to use to
+        /// create the disk.
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// Links to the users of the disk (attached instances) in form:
+        /// project/zones/zone/instances/instance
+        /// </summary>
         public readonly ImmutableArray<string> Users;
+        /// <summary>
+        /// A reference to the zone where the disk resides.
+        /// </summary>
         public readonly string? Zone;
 
         [OutputConstructor]

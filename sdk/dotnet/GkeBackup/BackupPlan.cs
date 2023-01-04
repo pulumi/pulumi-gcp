@@ -281,11 +281,12 @@ namespace Pulumi.Gcp.GkeBackup
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from
-        /// overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to
-        /// perform BackupPlan updates in order to avoid race conditions: An etag is returned in the response to backupPlans.get,
-        /// and systems are expected to put that etag in the request to backupPlans.patch or backupPlans.delete to ensure that their
-        /// change will be applied to the same version of the resource.
+        /// etag is used for optimistic concurrency control as a way to help prevent simultaneous
+        /// updates of a backup plan from overwriting each other. It is strongly suggested that
+        /// systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates
+        /// in order to avoid race conditions: An etag is returned in the response to backupPlans.get,
+        /// and systems are expected to put that etag in the request to backupPlans.patch or
+        /// backupPlans.delete to ensure that their change will be applied to the same version of the resource.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -305,7 +306,7 @@ namespace Pulumi.Gcp.GkeBackup
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The name of a Kubernetes Resource.
+        /// The full name of the BackupPlan Resource.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -438,7 +439,7 @@ namespace Pulumi.Gcp.GkeBackup
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// The name of a Kubernetes Resource.
+        /// The full name of the BackupPlan Resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -501,11 +502,12 @@ namespace Pulumi.Gcp.GkeBackup
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from
-        /// overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to
-        /// perform BackupPlan updates in order to avoid race conditions: An etag is returned in the response to backupPlans.get,
-        /// and systems are expected to put that etag in the request to backupPlans.patch or backupPlans.delete to ensure that their
-        /// change will be applied to the same version of the resource.
+        /// etag is used for optimistic concurrency control as a way to help prevent simultaneous
+        /// updates of a backup plan from overwriting each other. It is strongly suggested that
+        /// systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates
+        /// in order to avoid race conditions: An etag is returned in the response to backupPlans.get,
+        /// and systems are expected to put that etag in the request to backupPlans.patch or
+        /// backupPlans.delete to ensure that their change will be applied to the same version of the resource.
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
@@ -531,7 +533,7 @@ namespace Pulumi.Gcp.GkeBackup
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The name of a Kubernetes Resource.
+        /// The full name of the BackupPlan Resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -20,7 +20,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string> Day { get; set; } = null!;
 
         /// <summary>
-        /// The start time of the schedule. The timestamp is an RFC3339 string.
+        /// Time within the window to start the operations.
+        /// It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
         /// </summary>
         [Input("startTime", required: true)]
         public Input<string> StartTime { get; set; } = null!;

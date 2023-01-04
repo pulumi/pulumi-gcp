@@ -26,7 +26,8 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+        /// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+        /// Structure is documented below.
         /// </summary>
         [Input("secret")]
         public Input<Inputs.ServiceTemplateVolumeSecretArgs>? Secret { get; set; }

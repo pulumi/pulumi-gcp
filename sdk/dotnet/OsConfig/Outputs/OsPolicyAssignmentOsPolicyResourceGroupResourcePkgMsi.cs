@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Properties;
         /// <summary>
-        /// Required. An rpm package.
+        /// Required. The MSI package.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource Source;
 

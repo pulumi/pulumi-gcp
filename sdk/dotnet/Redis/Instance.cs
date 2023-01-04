@@ -304,7 +304,6 @@ namespace Pulumi.Gcp.Redis
         public Output<string?> ConnectMode { get; private set; } = null!;
 
         /// <summary>
-        /// -
         /// Output only. The time when the policy was created.
         /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         /// resolution and up to nine fractional digits.
@@ -313,9 +312,11 @@ namespace Pulumi.Gcp.Redis
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
-        /// [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
-        /// [alternativeLocationId] and can change after a failover event.
+        /// The current zone where the Redis endpoint is placed.
+        /// For Basic Tier instances, this will always be the same as the
+        /// [locationId] provided by the user at creation time. For Standard Tier
+        /// instances, this can be either [locationId] or [alternativeLocationId]
+        /// and can change after a failover event.
         /// </summary>
         [Output("currentLocationId")]
         public Output<string> CurrentLocationId { get; private set; } = null!;
@@ -334,7 +335,8 @@ namespace Pulumi.Gcp.Redis
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
+        /// Hostname or IP address of the exposed Redis endpoint used by clients
+        /// to connect to the service.
         /// </summary>
         [Output("host")]
         public Output<string> Host { get; private set; } = null!;
@@ -383,6 +385,7 @@ namespace Pulumi.Gcp.Redis
 
         /// <summary>
         /// Output only. Info per node.
+        /// Structure is documented below.
         /// </summary>
         [Output("nodes")]
         public Output<ImmutableArray<Outputs.InstanceNode>> Nodes { get; private set; } = null!;
@@ -395,9 +398,10 @@ namespace Pulumi.Gcp.Redis
         public Output<Outputs.InstancePersistenceConfig> PersistenceConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
-        /// "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
-        /// operation.
+        /// Output only. Cloud IAM identity used by import / export operations
+        /// to transfer data to/from Cloud Storage. Format is "serviceAccount:".
+        /// The value may change over time for a given instance so should be
+        /// checked before each import/export operation.
         /// </summary>
         [Output("persistenceIamIdentity")]
         public Output<string> PersistenceIamIdentity { get; private set; } = null!;
@@ -416,16 +420,16 @@ namespace Pulumi.Gcp.Redis
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy
-        /// replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write
-        /// requests must target 'host'.
+        /// Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
+        /// Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
+        /// will exhibit some lag behind the primary. Write requests must target 'host'.
         /// </summary>
         [Output("readEndpoint")]
         public Output<string> ReadEndpoint { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
-        /// 'port'.
+        /// Output only. The port number of the exposed readonly redis endpoint. Standard tier only.
+        /// Write requests should target 'port'.
         /// </summary>
         [Output("readEndpointPort")]
         public Output<int> ReadEndpointPort { get; private set; } = null!;
@@ -494,6 +498,7 @@ namespace Pulumi.Gcp.Redis
 
         /// <summary>
         /// List of server CA certificates for the instance.
+        /// Structure is documented below.
         /// </summary>
         [Output("serverCaCerts")]
         public Output<ImmutableArray<Outputs.InstanceServerCaCert>> ServerCaCerts { get; private set; } = null!;
@@ -820,7 +825,6 @@ namespace Pulumi.Gcp.Redis
         public Input<string>? ConnectMode { get; set; }
 
         /// <summary>
-        /// -
         /// Output only. The time when the policy was created.
         /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         /// resolution and up to nine fractional digits.
@@ -829,9 +833,11 @@ namespace Pulumi.Gcp.Redis
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
-        /// [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
-        /// [alternativeLocationId] and can change after a failover event.
+        /// The current zone where the Redis endpoint is placed.
+        /// For Basic Tier instances, this will always be the same as the
+        /// [locationId] provided by the user at creation time. For Standard Tier
+        /// instances, this can be either [locationId] or [alternativeLocationId]
+        /// and can change after a failover event.
         /// </summary>
         [Input("currentLocationId")]
         public Input<string>? CurrentLocationId { get; set; }
@@ -850,7 +856,8 @@ namespace Pulumi.Gcp.Redis
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
+        /// Hostname or IP address of the exposed Redis endpoint used by clients
+        /// to connect to the service.
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
@@ -908,6 +915,7 @@ namespace Pulumi.Gcp.Redis
 
         /// <summary>
         /// Output only. Info per node.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.InstanceNodeGetArgs> Nodes
         {
@@ -923,9 +931,10 @@ namespace Pulumi.Gcp.Redis
         public Input<Inputs.InstancePersistenceConfigGetArgs>? PersistenceConfig { get; set; }
 
         /// <summary>
-        /// Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
-        /// "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
-        /// operation.
+        /// Output only. Cloud IAM identity used by import / export operations
+        /// to transfer data to/from Cloud Storage. Format is "serviceAccount:".
+        /// The value may change over time for a given instance so should be
+        /// checked before each import/export operation.
         /// </summary>
         [Input("persistenceIamIdentity")]
         public Input<string>? PersistenceIamIdentity { get; set; }
@@ -944,16 +953,16 @@ namespace Pulumi.Gcp.Redis
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy
-        /// replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write
-        /// requests must target 'host'.
+        /// Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
+        /// Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
+        /// will exhibit some lag behind the primary. Write requests must target 'host'.
         /// </summary>
         [Input("readEndpoint")]
         public Input<string>? ReadEndpoint { get; set; }
 
         /// <summary>
-        /// Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
-        /// 'port'.
+        /// Output only. The port number of the exposed readonly redis endpoint. Standard tier only.
+        /// Write requests should target 'port'.
         /// </summary>
         [Input("readEndpointPort")]
         public Input<int>? ReadEndpointPort { get; set; }
@@ -1031,6 +1040,7 @@ namespace Pulumi.Gcp.Redis
 
         /// <summary>
         /// List of server CA certificates for the instance.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.InstanceServerCaCertGetArgs> ServerCaCerts
         {

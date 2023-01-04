@@ -124,6 +124,7 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// The project team associated with the entity
+        /// Structure is documented below.
         /// </summary>
         [Output("projectTeams")]
         public Output<ImmutableArray<Outputs.ObjectAccessControlProjectTeam>> ProjectTeams { get; private set; } = null!;
@@ -277,6 +278,7 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// The project team associated with the entity
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ObjectAccessControlProjectTeamGetArgs> ProjectTeams
         {

@@ -252,9 +252,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// User-specified list of prefix groups to advertise in custom
         /// mode, which can take one of the following options:
-        /// * `ALL_SUBNETS`: Advertises all available subnets, including peer VPC subnets.
-        /// * `ALL_VPC_SUBNETS`: Advertises the router's own VPC subnets.
-        /// * `ALL_PEER_VPC_SUBNETS`: Advertises peer subnets of the router's VPC network.
         /// </summary>
         [Output("advertisedGroups")]
         public Output<ImmutableArray<string>> AdvertisedGroups { get; private set; } = null!;
@@ -308,10 +305,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> IpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// The resource that configures and manages this BGP peer. * 'MANAGED_BY_USER' is the default value and can be managed by
-        /// you or other users * 'MANAGED_BY_ATTACHMENT' is a BGP peer that is configured and managed by Cloud Interconnect,
-        /// specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type
-        /// of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
+        /// The resource that configures and manages this BGP peer.
         /// </summary>
         [Output("managementType")]
         public Output<string> ManagementType { get; private set; } = null!;
@@ -431,9 +425,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// User-specified list of prefix groups to advertise in custom
         /// mode, which can take one of the following options:
-        /// * `ALL_SUBNETS`: Advertises all available subnets, including peer VPC subnets.
-        /// * `ALL_VPC_SUBNETS`: Advertises the router's own VPC subnets.
-        /// * `ALL_PEER_VPC_SUBNETS`: Advertises peer subnets of the router's VPC network.
         /// </summary>
         public InputList<string> AdvertisedGroups
         {
@@ -572,9 +563,6 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// User-specified list of prefix groups to advertise in custom
         /// mode, which can take one of the following options:
-        /// * `ALL_SUBNETS`: Advertises all available subnets, including peer VPC subnets.
-        /// * `ALL_VPC_SUBNETS`: Advertises the router's own VPC subnets.
-        /// * `ALL_PEER_VPC_SUBNETS`: Advertises peer subnets of the router's VPC network.
         /// </summary>
         public InputList<string> AdvertisedGroups
         {
@@ -637,10 +625,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? IpAddress { get; set; }
 
         /// <summary>
-        /// The resource that configures and manages this BGP peer. * 'MANAGED_BY_USER' is the default value and can be managed by
-        /// you or other users * 'MANAGED_BY_ATTACHMENT' is a BGP peer that is configured and managed by Cloud Interconnect,
-        /// specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type
-        /// of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
+        /// The resource that configures and manages this BGP peer.
         /// </summary>
         [Input("managementType")]
         public Input<string>? ManagementType { get; set; }

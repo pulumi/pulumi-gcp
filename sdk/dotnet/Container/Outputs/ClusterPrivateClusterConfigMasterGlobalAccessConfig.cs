@@ -14,8 +14,8 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterPrivateClusterConfigMasterGlobalAccessConfig
     {
         /// <summary>
-        /// Enable the PodSecurityPolicy controller for this cluster.
-        /// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        /// Whether the cluster master is accessible globally or
+        /// not.
         /// </summary>
         public readonly bool Enabled;
 

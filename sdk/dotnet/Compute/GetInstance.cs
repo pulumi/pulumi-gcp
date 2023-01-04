@@ -180,6 +180,9 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string Description;
         public readonly string DesiredStatus;
+        /// <summary>
+        /// - Whether the instance has virtual displays enabled.
+        /// </summary>
         public readonly bool EnableDisplay;
         /// <summary>
         /// List of the type and count of accelerator cards attached to the instance. Structure is documented below.

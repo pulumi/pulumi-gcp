@@ -216,8 +216,7 @@ namespace Pulumi.Gcp.BigQuery
         public Output<bool?> MultiClusterRoutingUseAny { get; private set; } = null!;
 
         /// <summary>
-        /// The unique name of the requested app profile. Values are of the form
-        /// 'projects/&lt;project&gt;/instances/&lt;instance&gt;/appProfiles/&lt;appProfileId&gt;'.
+        /// The unique name of the requested app profile. Values are of the form `projects/&lt;project&gt;/instances/&lt;instance&gt;/appProfiles/&lt;appProfileId&gt;`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -395,8 +394,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<bool>? MultiClusterRoutingUseAny { get; set; }
 
         /// <summary>
-        /// The unique name of the requested app profile. Values are of the form
-        /// 'projects/&lt;project&gt;/instances/&lt;instance&gt;/appProfiles/&lt;appProfileId&gt;'.
+        /// The unique name of the requested app profile. Values are of the form `projects/&lt;project&gt;/instances/&lt;instance&gt;/appProfiles/&lt;appProfileId&gt;`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

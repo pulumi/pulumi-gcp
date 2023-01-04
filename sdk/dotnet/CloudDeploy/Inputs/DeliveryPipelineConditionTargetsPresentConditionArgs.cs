@@ -23,6 +23,9 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         [Input("status")]
         public Input<bool>? Status { get; set; }
 
+        /// <summary>
+        /// Output only. Most recent time at which the pipeline was updated.
+        /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
 

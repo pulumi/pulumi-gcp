@@ -176,7 +176,6 @@ namespace Pulumi.Gcp.Dataproc
         public Output<Outputs.MetastoreServiceEncryptionConfig?> EncryptionConfig { get; private set; } = null!;
 
         /// <summary>
-        /// -
         /// The URI of the endpoint used to access the metastore service.
         /// </summary>
         [Output("endpointUri")]
@@ -489,7 +488,6 @@ namespace Pulumi.Gcp.Dataproc
         public Input<Inputs.MetastoreServiceEncryptionConfigGetArgs>? EncryptionConfig { get; set; }
 
         /// <summary>
-        /// -
         /// The URI of the endpoint used to access the metastore service.
         /// </summary>
         [Input("endpointUri")]

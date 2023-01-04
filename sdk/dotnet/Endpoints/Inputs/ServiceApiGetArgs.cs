@@ -14,18 +14,31 @@ namespace Pulumi.Gcp.Endpoints.Inputs
     {
         [Input("methods")]
         private InputList<Inputs.ServiceApiMethodGetArgs>? _methods;
+
+        /// <summary>
+        /// A list of Method objects; structure is documented below.
+        /// </summary>
         public InputList<Inputs.ServiceApiMethodGetArgs> Methods
         {
             get => _methods ?? (_methods = new InputList<Inputs.ServiceApiMethodGetArgs>());
             set => _methods = value;
         }
 
+        /// <summary>
+        /// The simple name of the endpoint as described in the config.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+        /// </summary>
         [Input("syntax")]
         public Input<string>? Syntax { get; set; }
 
+        /// <summary>
+        /// A version string for this api. If specified, will have the form major-version.minor-version, e.g. `1.10`.
+        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 

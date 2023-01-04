@@ -19,7 +19,8 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.EdgeCacheServiceRoutingHostRule> HostRules;
         /// <summary>
-        /// The name of the pathMatcher associated with this hostRule.
+        /// The list of pathMatchers referenced via name by hostRules. PathMatcher is used to match the path portion of the URL when a HostRule matches the URL's host portion.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.EdgeCacheServiceRoutingPathMatcher> PathMatchers;
 

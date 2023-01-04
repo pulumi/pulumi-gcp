@@ -105,7 +105,8 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the data exchange, for example: "projects/myproject/locations/US/dataExchanges/123"
+        /// The resource name of the data exchange, for example:
+        /// "projects/myproject/locations/US/dataExchanges/123"
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -269,7 +270,8 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The resource name of the data exchange, for example: "projects/myproject/locations/US/dataExchanges/123"
+        /// The resource name of the data exchange, for example:
+        /// "projects/myproject/locations/US/dataExchanges/123"
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -13,8 +13,18 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class AttachedClusterWorkloadIdentityConfig
     {
+        /// <summary>
+        /// The ID of the OIDC Identity Provider (IdP) associated to
+        /// the Workload Identity Pool.
+        /// </summary>
         public readonly string? IdentityProvider;
+        /// <summary>
+        /// The OIDC issuer URL for this cluster.
+        /// </summary>
         public readonly string? IssuerUri;
+        /// <summary>
+        /// The Workload Identity Pool associated to the cluster.
+        /// </summary>
         public readonly string? WorkloadPool;
 
         [OutputConstructor]

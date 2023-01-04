@@ -43,6 +43,8 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. A human-readable description of scenarios this template is intended for.
+        /// (Optional)
         /// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         /// </summary>
         [Output("description")]
@@ -61,7 +63,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+        /// The location for the resource
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -143,6 +145,8 @@ namespace Pulumi.Gcp.CertificateAuthority
     public sealed class CertificateTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. A human-readable description of scenarios this template is intended for.
+        /// (Optional)
         /// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         /// </summary>
         [Input("description")]
@@ -167,7 +171,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         }
 
         /// <summary>
-        /// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+        /// The location for the resource
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -211,6 +215,8 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
+        /// Optional. A human-readable description of scenarios this template is intended for.
+        /// (Optional)
         /// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         /// </summary>
         [Input("description")]
@@ -235,7 +241,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         }
 
         /// <summary>
-        /// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+        /// The location for the resource
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

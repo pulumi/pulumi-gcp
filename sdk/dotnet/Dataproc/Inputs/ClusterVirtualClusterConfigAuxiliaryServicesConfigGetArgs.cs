@@ -13,9 +13,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class ClusterVirtualClusterConfigAuxiliaryServicesConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The config setting for metastore service with the cluster.
-        /// Structure defined below.
-        /// - - -
+        /// The Hive Metastore configuration for this workload.
         /// </summary>
         [Input("metastoreConfig")]
         public Input<Inputs.ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigGetArgs>? MetastoreConfig { get; set; }

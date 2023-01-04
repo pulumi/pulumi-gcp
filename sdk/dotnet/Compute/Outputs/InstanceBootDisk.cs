@@ -19,15 +19,16 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly bool? AutoDelete;
         /// <summary>
-        /// Name with which the attached disk will be accessible
-        /// under `/dev/disk/by-id/google-*`
+        /// Name with which attached disk will be accessible.
+        /// On the instance, this device will be `/dev/disk/by-id/google-{{device_name}}`.
         /// </summary>
         public readonly string? DeviceName;
         /// <summary>
         /// A 256-bit [customer-supplied encryption key]
         /// (&lt;https://cloud.google.com/compute/docs/disks/customer-supplied-encryption&gt;),
         /// encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-        /// to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
+        /// to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw`
+        /// may be set.
         /// </summary>
         public readonly string? DiskEncryptionKeyRaw;
         public readonly string? DiskEncryptionKeySha256;
@@ -44,14 +45,14 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? KmsKeySelfLink;
         /// <summary>
-        /// Either "READ_ONLY" or "READ_WRITE", defaults to "READ_WRITE"
-        /// If you have a persistent disk with data that you want to share
-        /// between multiple instances, detach it from any read-write instances and
-        /// attach it to one or more instances in read-only mode.
+        /// The mode in which to attach this disk, either `READ_WRITE`
+        /// or `READ_ONLY`. If not specified, the default is to attach the disk in `READ_WRITE` mode.
         /// </summary>
         public readonly string? Mode;
         /// <summary>
-        /// The name or self_link of the disk to attach to this instance.
+        /// The name or self_link of the existing disk (such as those managed by
+        /// `gcp.compute.Disk`) or disk image. To create an instance from a snapshot, first create a
+        /// `gcp.compute.Disk` from a snapshot and reference it here.
         /// </summary>
         public readonly string? Source;
 

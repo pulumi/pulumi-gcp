@@ -31,7 +31,13 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly Outputs.RegionUrlMapPathMatcherPathRuleRouteAction? RouteAction;
         /// <summary>
-        /// A reference to expected RegionBackendService resource the given URL should be mapped to.
+        /// The region backend service resource to which traffic is
+        /// directed if this rule is matched. If routeAction is additionally specified,
+        /// advanced routing actions like URL Rewrites, etc. take effect prior to sending
+        /// the request to the backend. However, if service is specified, routeAction cannot
+        /// contain any weightedBackendService s. Conversely, if routeAction specifies any
+        /// weightedBackendServices, service must not be specified. Only one of urlRedirect,
+        /// service or routeAction.weightedBackendService must be set.
         /// </summary>
         public readonly string? Service;
         /// <summary>

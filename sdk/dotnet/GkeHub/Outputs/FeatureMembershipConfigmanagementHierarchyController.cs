@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// </summary>
         public readonly bool? EnablePodTreeLabels;
         /// <summary>
-        /// Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+        /// Whether Hierarchy Controller is enabled in this cluster.
         /// </summary>
         public readonly bool? Enabled;
 

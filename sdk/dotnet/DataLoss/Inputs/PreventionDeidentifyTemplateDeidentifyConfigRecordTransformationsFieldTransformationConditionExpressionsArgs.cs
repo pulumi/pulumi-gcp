@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
     public sealed class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A collection of conditions.
+        /// Conditions to apply to the expression.
         /// Structure is documented below.
         /// </summary>
         [Input("conditions")]

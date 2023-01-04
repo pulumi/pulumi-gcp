@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         }
 
         /// <summary>
-        /// The relative path of the secret in the container.
+        /// Path to access on the HTTP server. Defaults to '/'.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }

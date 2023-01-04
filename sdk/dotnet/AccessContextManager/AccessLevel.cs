@@ -103,7 +103,7 @@ namespace Pulumi.Gcp.AccessContextManager
         public Output<Outputs.AccessLevelCustom?> Custom { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the expression
+        /// Description of the AccessLevel and its use. Does not affect behavior.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -124,7 +124,7 @@ namespace Pulumi.Gcp.AccessContextManager
         public Output<string> Parent { get; private set; } = null!;
 
         /// <summary>
-        /// Title for the expression, i.e. a short string describing its purpose.
+        /// Human readable title. Must be unique within the Policy.
         /// </summary>
         [Output("title")]
         public Output<string> Title { get; private set; } = null!;
@@ -191,7 +191,7 @@ namespace Pulumi.Gcp.AccessContextManager
         public Input<Inputs.AccessLevelCustomArgs>? Custom { get; set; }
 
         /// <summary>
-        /// Description of the expression
+        /// Description of the AccessLevel and its use. Does not affect behavior.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -212,7 +212,7 @@ namespace Pulumi.Gcp.AccessContextManager
         public Input<string> Parent { get; set; } = null!;
 
         /// <summary>
-        /// Title for the expression, i.e. a short string describing its purpose.
+        /// Human readable title. Must be unique within the Policy.
         /// </summary>
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
@@ -241,7 +241,7 @@ namespace Pulumi.Gcp.AccessContextManager
         public Input<Inputs.AccessLevelCustomGetArgs>? Custom { get; set; }
 
         /// <summary>
-        /// Description of the expression
+        /// Description of the AccessLevel and its use. Does not affect behavior.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -262,7 +262,7 @@ namespace Pulumi.Gcp.AccessContextManager
         public Input<string>? Parent { get; set; }
 
         /// <summary>
-        /// Title for the expression, i.e. a short string describing its purpose.
+        /// Human readable title. Must be unique within the Policy.
         /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }

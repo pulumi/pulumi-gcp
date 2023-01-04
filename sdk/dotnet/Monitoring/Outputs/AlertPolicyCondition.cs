@@ -45,7 +45,6 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// -
         /// The unique resource name for this condition.
         /// Its syntax is:
         /// projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]

@@ -95,8 +95,9 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.AttachedClusterAuthorization?> Authorization { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. The region where this cluster runs. For EKS clusters, this is an AWS region. For AKS clusters, this is an
-        /// Azure region.
+        /// Output only. The region where this cluster runs.
+        /// For EKS clusters, this is an AWS region. For AKS clusters,
+        /// this is an Azure region.
         /// </summary>
         [Output("clusterRegion")]
         public Output<string> ClusterRegion { get; private set; } = null!;
@@ -123,6 +124,7 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// A set of errors found in the cluster.
+        /// Structure is documented below.
         /// </summary>
         [Output("errors")]
         public Output<ImmutableArray<Outputs.AttachedClusterError>> Errors { get; private set; } = null!;
@@ -188,7 +190,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> PlatformVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the project in which the resource belongs.
+        /// The number of the Fleet host project where this cluster will be registered.
         /// If it is not provided, the provider project is used.
         /// </summary>
         [Output("project")]
@@ -201,8 +203,9 @@ namespace Pulumi.Gcp.Container
         public Output<bool> Reconciling { get; private set; } = null!;
 
         /// <summary>
-        /// The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING,
-        /// ERROR, DEGRADED
+        /// The current state of the cluster. Possible values:
+        /// STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
+        /// DEGRADED
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -221,6 +224,7 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Workload Identity settings.
+        /// Structure is documented below.
         /// </summary>
         [Output("workloadIdentityConfigs")]
         public Output<ImmutableArray<Outputs.AttachedClusterWorkloadIdentityConfig>> WorkloadIdentityConfigs { get; private set; } = null!;
@@ -364,7 +368,7 @@ namespace Pulumi.Gcp.Container
         public Input<string> PlatformVersion { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the project in which the resource belongs.
+        /// The number of the Fleet host project where this cluster will be registered.
         /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
@@ -403,8 +407,9 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.AttachedClusterAuthorizationGetArgs>? Authorization { get; set; }
 
         /// <summary>
-        /// Output only. The region where this cluster runs. For EKS clusters, this is an AWS region. For AKS clusters, this is an
-        /// Azure region.
+        /// Output only. The region where this cluster runs.
+        /// For EKS clusters, this is an AWS region. For AKS clusters,
+        /// this is an Azure region.
         /// </summary>
         [Input("clusterRegion")]
         public Input<string>? ClusterRegion { get; set; }
@@ -434,6 +439,7 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// A set of errors found in the cluster.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AttachedClusterErrorGetArgs> Errors
         {
@@ -502,7 +508,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? PlatformVersion { get; set; }
 
         /// <summary>
-        /// The ID of the project in which the resource belongs.
+        /// The number of the Fleet host project where this cluster will be registered.
         /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
@@ -515,8 +521,9 @@ namespace Pulumi.Gcp.Container
         public Input<bool>? Reconciling { get; set; }
 
         /// <summary>
-        /// The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING,
-        /// ERROR, DEGRADED
+        /// The current state of the cluster. Possible values:
+        /// STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
+        /// DEGRADED
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -538,6 +545,7 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Workload Identity settings.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AttachedClusterWorkloadIdentityConfigGetArgs> WorkloadIdentityConfigs
         {

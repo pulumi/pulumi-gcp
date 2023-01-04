@@ -12,15 +12,27 @@ namespace Pulumi.Gcp.Vertex.Inputs
 
     public sealed class AiEndpointDeployedModelPrivateEndpointGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Output only. Http(s) path to send explain requests.
+        /// </summary>
         [Input("explainHttpUri")]
         public Input<string>? ExplainHttpUri { get; set; }
 
+        /// <summary>
+        /// Output only. Http(s) path to send health check requests.
+        /// </summary>
         [Input("healthHttpUri")]
         public Input<string>? HealthHttpUri { get; set; }
 
+        /// <summary>
+        /// Output only. Http(s) path to send prediction requests.
+        /// </summary>
         [Input("predictHttpUri")]
         public Input<string>? PredictHttpUri { get; set; }
 
+        /// <summary>
+        /// Output only. The name of the service attachment resource. Populated if private service connect is enabled.
+        /// </summary>
         [Input("serviceAttachment")]
         public Input<string>? ServiceAttachment { get; set; }
 

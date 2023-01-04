@@ -13,7 +13,6 @@ namespace Pulumi.Gcp.Notebooks.Inputs
     public sealed class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// -
         /// Optional. Specifies whether the disk will be auto-deleted
         /// when the instance is deleted (but not when the disk is
         /// detached from the instance).
@@ -22,7 +21,6 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         public Input<bool>? AutoDelete { get; set; }
 
         /// <summary>
-        /// -
         /// Optional. Indicates that this is a boot disk. The virtual
         /// machine will use the first partition of the disk for its
         /// root filesystem.
@@ -31,7 +29,6 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         public Input<bool>? Boot { get; set; }
 
         /// <summary>
-        /// -
         /// Optional. Specifies a unique device name of your choice
         /// that is reflected into the /dev/disk/by-id/google-* tree
         /// of a Linux operating system running within the instance.
@@ -49,7 +46,6 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         private InputList<string>? _guestOsFeatures;
 
         /// <summary>
-        /// -
         /// Indicates a list of features to enable on the guest operating
         /// system. Applicable only for bootable images. To see a list of
         /// available features, read `https://cloud.google.com/compute/docs/
@@ -63,7 +59,6 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         }
 
         /// <summary>
-        /// -
         /// Output only. A zero-based index to this disk, where 0 is
         /// reserved for the boot disk. If you have many disks attached
         /// to an instance, each disk would have a unique index number.
@@ -95,7 +90,6 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         public Input<string>? Interface { get; set; }
 
         /// <summary>
-        /// -
         /// Type of the resource. Always compute#attachedDisk for attached
         /// disks.
         /// </summary>
@@ -106,7 +100,6 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         private InputList<string>? _licenses;
 
         /// <summary>
-        /// -
         /// Output only. Any valid publicly visible licenses.
         /// </summary>
         public InputList<string> Licenses
@@ -131,9 +124,8 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         public Input<string>? Source { get; set; }
 
         /// <summary>
-        /// Accelerator model. For valid values, see
-        /// `https://cloud.google.com/vertex-ai/docs/workbench/reference/
-        /// rest/v1/projects.locations.runtimes#AcceleratorType`
+        /// Specifies the type of the disk, either SCRATCH or PERSISTENT.
+        /// If not specified, the default is PERSISTENT.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -51,18 +51,42 @@ namespace Pulumi.Gcp.Firebase
     [OutputType]
     public sealed class GetAndroidAppResult
     {
+        /// <summary>
+        /// Immutable. The globally unique, Firebase-assigned identifier of the AndroidApp.
+        /// This identifier should be treated as an opaque token, as the data format is not specified.
+        /// </summary>
         public readonly string AppId;
         public readonly string DeletionPolicy;
+        /// <summary>
+        /// The user-assigned display name of the AndroidApp.
+        /// </summary>
         public readonly string DisplayName;
+        /// <summary>
+        /// This checksum is computed by the server based on the value of other fields, and it may be sent
+        /// with update requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
         public readonly string Etag;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The fully qualified resource name of the AndroidApp, for example:
+        /// projects/projectId/androidApps/appId
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The canonical package name of the Android app as would appear in the Google Play Developer Console.
+        /// </summary>
         public readonly string PackageName;
         public readonly string Project;
+        /// <summary>
+        /// The SHA1 certificate hashes for the AndroidApp.
+        /// </summary>
         public readonly ImmutableArray<string> Sha1Hashes;
+        /// <summary>
+        /// The SHA256 certificate hashes for the AndroidApp.
+        /// </summary>
         public readonly ImmutableArray<string> Sha256Hashes;
 
         [OutputConstructor]

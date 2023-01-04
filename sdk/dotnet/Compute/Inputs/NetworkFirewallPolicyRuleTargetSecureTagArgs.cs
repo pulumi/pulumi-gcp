@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// -
         /// [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
         /// </summary>
         [Input("state")]

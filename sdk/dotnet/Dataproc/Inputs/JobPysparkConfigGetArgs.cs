@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _args;
 
         /// <summary>
-        /// The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        /// The arguments to pass to the driver.
         /// </summary>
         public InputList<string> Args
         {
@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _fileUris;
 
         /// <summary>
-        /// HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+        /// HCFS URIs of files to be copied to the working directory of Python drivers and distributed tasks. Useful for naively parallel tasks.
         /// </summary>
         public InputList<string> FileUris
         {
@@ -52,7 +52,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _jarFileUris;
 
         /// <summary>
-        /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        /// HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
         /// </summary>
         public InputList<string> JarFileUris
         {
@@ -73,7 +73,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputMap<string>? _properties;
 
         /// <summary>
-        /// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+        /// A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/spark/conf/spark-defaults.conf` and classes in user code.
         /// </summary>
         public InputMap<string> Properties
         {

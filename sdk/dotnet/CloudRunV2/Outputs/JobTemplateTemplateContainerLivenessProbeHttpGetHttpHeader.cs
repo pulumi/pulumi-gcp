@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
     public sealed class JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeader
     {
         /// <summary>
-        /// Volume's name.
+        /// The header field name
         /// </summary>
         public readonly string Name;
         /// <summary>

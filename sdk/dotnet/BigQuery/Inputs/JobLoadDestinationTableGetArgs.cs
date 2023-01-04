@@ -13,13 +13,13 @@ namespace Pulumi.Gcp.BigQuery.Inputs
     public sealed class JobLoadDestinationTableGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the dataset containing this model.
+        /// The ID of the dataset containing this table.
         /// </summary>
         [Input("datasetId")]
         public Input<string>? DatasetId { get; set; }
 
         /// <summary>
-        /// The ID of the project containing this model.
+        /// The ID of the project containing this table.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }

@@ -13,14 +13,12 @@ namespace Pulumi.Gcp.BigQuery.Inputs
     public sealed class ConnectionAzureArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// -
         /// The name of the Azure Active Directory Application.
         /// </summary>
         [Input("application")]
         public Input<string>? Application { get; set; }
 
         /// <summary>
-        /// -
         /// The client id of the Azure Active Directory Application.
         /// </summary>
         [Input("clientId")]
@@ -33,14 +31,12 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<string> CustomerTenantId { get; set; } = null!;
 
         /// <summary>
-        /// -
         /// The object id of the Azure Active Directory Application.
         /// </summary>
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }
 
         /// <summary>
-        /// -
         /// The URL user will be redirected to after granting consent during connection setup.
         /// </summary>
         [Input("redirectUri")]

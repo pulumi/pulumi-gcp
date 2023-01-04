@@ -140,8 +140,7 @@ namespace Pulumi.Gcp.Projects
         public Output<bool> AncestorHasActiveKeyVersion { get; private set; } = null!;
 
         /// <summary>
-        /// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-        /// of the Project.
+        /// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Project.
         /// </summary>
         [Output("enrolledAncestor")]
         public Output<bool> EnrolledAncestor { get; private set; } = null!;
@@ -157,10 +156,10 @@ namespace Pulumi.Gcp.Projects
         public Output<ImmutableArray<Outputs.AccessApprovalSettingsEnrolledService>> EnrolledServices { get; private set; } = null!;
 
         /// <summary>
-        /// If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-        /// this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on it,
-        /// etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-        /// top-down.
+        /// If the field is true, that indicates that there is some configuration issue with the active_key_version
+        /// configured on this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the
+        /// correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+        /// as key versions are inherited top-down.
         /// </summary>
         [Output("invalidKeyVersion")]
         public Output<bool> InvalidKeyVersion { get; private set; } = null!;
@@ -180,7 +179,6 @@ namespace Pulumi.Gcp.Projects
         public Output<ImmutableArray<string>> NotificationEmails { get; private set; } = null!;
 
         /// <summary>
-        /// -
         /// (Optional, Deprecated)
         /// Deprecated in favor of `project_id`
         /// </summary>
@@ -278,7 +276,6 @@ namespace Pulumi.Gcp.Projects
         }
 
         /// <summary>
-        /// -
         /// (Optional, Deprecated)
         /// Deprecated in favor of `project_id`
         /// </summary>
@@ -314,8 +311,7 @@ namespace Pulumi.Gcp.Projects
         public Input<bool>? AncestorHasActiveKeyVersion { get; set; }
 
         /// <summary>
-        /// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-        /// of the Project.
+        /// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Project.
         /// </summary>
         [Input("enrolledAncestor")]
         public Input<bool>? EnrolledAncestor { get; set; }
@@ -337,10 +333,10 @@ namespace Pulumi.Gcp.Projects
         }
 
         /// <summary>
-        /// If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-        /// this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on it,
-        /// etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-        /// top-down.
+        /// If the field is true, that indicates that there is some configuration issue with the active_key_version
+        /// configured on this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the
+        /// correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+        /// as key versions are inherited top-down.
         /// </summary>
         [Input("invalidKeyVersion")]
         public Input<bool>? InvalidKeyVersion { get; set; }
@@ -366,7 +362,6 @@ namespace Pulumi.Gcp.Projects
         }
 
         /// <summary>
-        /// -
         /// (Optional, Deprecated)
         /// Deprecated in favor of `project_id`
         /// </summary>

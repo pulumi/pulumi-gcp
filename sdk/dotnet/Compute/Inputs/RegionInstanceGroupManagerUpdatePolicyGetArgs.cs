@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class RegionInstanceGroupManagerUpdatePolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// - The instance redistribution policy for regional managed instance groups. Valid values are: `"PROACTIVE"`, `"NONE"`. If `PROACTIVE` (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If `NONE`, proactive redistribution is disabled.
+        /// The instance redistribution policy for regional managed instance groups. Valid values are: `"PROACTIVE"`, `"NONE"`. If `PROACTIVE` (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If `NONE`, proactive redistribution is disabled.
         /// </summary>
         [Input("instanceRedistributionType")]
         public Input<string>? InstanceRedistributionType { get; set; }
@@ -49,13 +49,13 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int>? MinReadySec { get; set; }
 
         /// <summary>
-        /// - Minimal action to be taken on an instance. You can specify either `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+        /// Minimal action to be taken on an instance. You can specify either `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
         /// </summary>
         [Input("minimalAction", required: true)]
         public Input<string> MinimalAction { get; set; } = null!;
 
         /// <summary>
-        /// - Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+        /// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
         /// </summary>
         [Input("mostDisruptiveAllowedAction")]
         public Input<string>? MostDisruptiveAllowedAction { get; set; }
@@ -68,7 +68,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? ReplacementMethod { get; set; }
 
         /// <summary>
-        /// - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+        /// The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

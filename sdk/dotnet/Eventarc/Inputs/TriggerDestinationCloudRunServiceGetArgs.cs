@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Eventarc.Inputs
     public sealed class TriggerDestinationCloudRunServiceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+        /// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Eventarc.Inputs
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Required. Name of the GKE service.
+        /// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
         /// </summary>
         [Input("service", required: true)]
         public Input<string> Service { get; set; } = null!;

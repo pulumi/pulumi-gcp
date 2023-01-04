@@ -258,8 +258,7 @@ namespace Pulumi.Gcp.Monitoring
         public Output<Outputs.UptimeCheckConfigMonitoredResource?> MonitoredResource { get; private set; } = null!;
 
         /// <summary>
-        /// A unique resource name for this UptimeCheckConfig. The format is
-        /// projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+        /// A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -489,8 +488,7 @@ namespace Pulumi.Gcp.Monitoring
         public Input<Inputs.UptimeCheckConfigMonitoredResourceGetArgs>? MonitoredResource { get; set; }
 
         /// <summary>
-        /// A unique resource name for this UptimeCheckConfig. The format is
-        /// projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+        /// A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

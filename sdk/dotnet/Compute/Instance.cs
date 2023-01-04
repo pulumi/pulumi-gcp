@@ -214,8 +214,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> LabelFingerprint { get; private set; } = null!;
 
         /// <summary>
-        /// A set of key/value label pairs assigned to the disk. This  
-        /// field is only applicable for persistent disks.
+        /// A map of key/value label pairs to assign to the instance.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -303,7 +302,7 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.InstanceReservationAffinity> ReservationAffinity { get; private set; } = null!;
 
         /// <summary>
-        /// -- A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        /// - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         /// </summary>
         [Output("resourcePolicies")]
         public Output<string?> ResourcePolicies { get; private set; } = null!;
@@ -506,8 +505,7 @@ namespace Pulumi.Gcp.Compute
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// A set of key/value label pairs assigned to the disk. This  
-        /// field is only applicable for persistent disks.
+        /// A map of key/value label pairs to assign to the instance.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -604,7 +602,7 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.InstanceReservationAffinityArgs>? ReservationAffinity { get; set; }
 
         /// <summary>
-        /// -- A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        /// - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         /// </summary>
         [Input("resourcePolicies")]
         public Input<string>? ResourcePolicies { get; set; }
@@ -793,8 +791,7 @@ namespace Pulumi.Gcp.Compute
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// A set of key/value label pairs assigned to the disk. This  
-        /// field is only applicable for persistent disks.
+        /// A map of key/value label pairs to assign to the instance.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -897,7 +894,7 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.InstanceReservationAffinityGetArgs>? ReservationAffinity { get; set; }
 
         /// <summary>
-        /// -- A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        /// - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         /// </summary>
         [Input("resourcePolicies")]
         public Input<string>? ResourcePolicies { get; set; }

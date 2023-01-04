@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType> InfoTypes;
         /// <summary>
-        /// Apply the transformation to the entire field.
+        /// Primitive transformation to apply to the infoType.
         /// The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
         /// Structure is documented below.
         /// </summary>

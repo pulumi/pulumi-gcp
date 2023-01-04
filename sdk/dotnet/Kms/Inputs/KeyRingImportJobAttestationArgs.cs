@@ -12,9 +12,16 @@ namespace Pulumi.Gcp.Kms.Inputs
 
     public sealed class KeyRingImportJobAttestationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The attestation data provided by the HSM when the key operation was performed.
+        /// A base64-encoded string.
+        /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
 
+        /// <summary>
+        /// The format of the attestation data.
+        /// </summary>
         [Input("format")]
         public Input<string>? Format { get; set; }
 

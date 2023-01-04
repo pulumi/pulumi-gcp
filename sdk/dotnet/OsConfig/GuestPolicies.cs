@@ -276,8 +276,8 @@ namespace Pulumi.Gcp.OsConfig
         public Output<Outputs.GuestPoliciesAssignment> Assignment { get; private set; } = null!;
 
         /// <summary>
-        /// Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
-        /// "2014-10-02T15:01:23.045123456Z".
+        /// Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+        /// Example: "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -306,6 +306,11 @@ namespace Pulumi.Gcp.OsConfig
         public Output<string> GuestPolicyId { get; private set; } = null!;
 
         /// <summary>
+        /// The name of the package. A package is uniquely identified for conflict validation
+        /// by checking the package name and the manager(s) that the package targets.
+        /// (Required)
+        /// The name of the repository.
+        /// (Required)
         /// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
         /// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
         /// This means that requests to create multiple recipes with the same name and version are rejected since they
@@ -345,8 +350,8 @@ namespace Pulumi.Gcp.OsConfig
         public Output<ImmutableArray<Outputs.GuestPoliciesRecipe>> Recipes { get; private set; } = null!;
 
         /// <summary>
-        /// Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
-        /// "2014-10-02T15:01:23.045123456Z".
+        /// Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+        /// Example: "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -503,8 +508,8 @@ namespace Pulumi.Gcp.OsConfig
         public Input<Inputs.GuestPoliciesAssignmentGetArgs>? Assignment { get; set; }
 
         /// <summary>
-        /// Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
-        /// "2014-10-02T15:01:23.045123456Z".
+        /// Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+        /// Example: "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -533,6 +538,11 @@ namespace Pulumi.Gcp.OsConfig
         public Input<string>? GuestPolicyId { get; set; }
 
         /// <summary>
+        /// The name of the package. A package is uniquely identified for conflict validation
+        /// by checking the package name and the manager(s) that the package targets.
+        /// (Required)
+        /// The name of the repository.
+        /// (Required)
         /// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
         /// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
         /// This means that requests to create multiple recipes with the same name and version are rejected since they
@@ -590,8 +600,8 @@ namespace Pulumi.Gcp.OsConfig
         }
 
         /// <summary>
-        /// Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
-        /// "2014-10-02T15:01:23.045123456Z".
+        /// Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+        /// Example: "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

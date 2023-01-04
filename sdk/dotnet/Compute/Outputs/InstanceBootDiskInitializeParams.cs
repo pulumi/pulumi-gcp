@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly int? Size;
         /// <summary>
-        /// The type of reservation from which this instance can consume resources.
+        /// The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
         /// </summary>
         public readonly string? Type;
 

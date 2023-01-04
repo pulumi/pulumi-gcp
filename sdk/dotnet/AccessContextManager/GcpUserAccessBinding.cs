@@ -42,9 +42,7 @@ namespace Pulumi.Gcp.AccessContextManager
         public Output<string> GroupKey { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved
-        /// characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example:
-        /// "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
+        /// Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -140,9 +138,7 @@ namespace Pulumi.Gcp.AccessContextManager
         public Input<string>? GroupKey { get; set; }
 
         /// <summary>
-        /// Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved
-        /// characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example:
-        /// "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
+        /// Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

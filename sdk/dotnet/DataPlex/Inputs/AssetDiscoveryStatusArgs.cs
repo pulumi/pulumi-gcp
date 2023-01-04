@@ -21,6 +21,9 @@ namespace Pulumi.Gcp.DataPlex.Inputs
         [Input("message")]
         public Input<string>? Message { get; set; }
 
+        /// <summary>
+        /// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+        /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
@@ -32,6 +35,9 @@ namespace Pulumi.Gcp.DataPlex.Inputs
             set => _stats = value;
         }
 
+        /// <summary>
+        /// Output only. The time when the asset was last updated.
+        /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
 

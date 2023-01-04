@@ -402,17 +402,14 @@ namespace Pulumi.Gcp.CloudBuild
         public Output<ImmutableArray<string>> IncludedFiles { get; private set; } = null!;
 
         /// <summary>
-        /// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
-        /// Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
-        /// this location as a prefix.
+        /// The [Cloud Build location](https://cloud.google.com/build/docs/locations) for the trigger.
+        /// If not specified, "global" is used.
         /// </summary>
         [Output("location")]
         public Output<string?> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the volume to mount.
-        /// Volume names must be unique per build step and must be valid names for Docker volumes.
-        /// Each named volume must be used by at least two build steps.
+        /// Name of the trigger. Must be unique within the project.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -455,13 +452,13 @@ namespace Pulumi.Gcp.CloudBuild
         public Output<Outputs.TriggerSourceToBuild?> SourceToBuild { get; private set; } = null!;
 
         /// <summary>
-        /// Substitutions to use in a triggered build. Should only be used with triggers.run
+        /// Substitutions data for Build resource.
         /// </summary>
         [Output("substitutions")]
         public Output<ImmutableDictionary<string, string>?> Substitutions { get; private set; } = null!;
 
         /// <summary>
-        /// Tags for annotation of a Build. These are not docker tags.
+        /// Tags for annotation of a BuildTrigger
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -643,17 +640,14 @@ namespace Pulumi.Gcp.CloudBuild
         }
 
         /// <summary>
-        /// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
-        /// Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
-        /// this location as a prefix.
+        /// The [Cloud Build location](https://cloud.google.com/build/docs/locations) for the trigger.
+        /// If not specified, "global" is used.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Name of the volume to mount.
-        /// Volume names must be unique per build step and must be valid names for Docker volumes.
-        /// Each named volume must be used by at least two build steps.
+        /// Name of the trigger. Must be unique within the project.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -699,7 +693,7 @@ namespace Pulumi.Gcp.CloudBuild
         private InputMap<string>? _substitutions;
 
         /// <summary>
-        /// Substitutions to use in a triggered build. Should only be used with triggers.run
+        /// Substitutions data for Build resource.
         /// </summary>
         public InputMap<string> Substitutions
         {
@@ -711,7 +705,7 @@ namespace Pulumi.Gcp.CloudBuild
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags for annotation of a Build. These are not docker tags.
+        /// Tags for annotation of a BuildTrigger
         /// </summary>
         public InputList<string> Tags
         {
@@ -858,17 +852,14 @@ namespace Pulumi.Gcp.CloudBuild
         }
 
         /// <summary>
-        /// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
-        /// Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
-        /// this location as a prefix.
+        /// The [Cloud Build location](https://cloud.google.com/build/docs/locations) for the trigger.
+        /// If not specified, "global" is used.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Name of the volume to mount.
-        /// Volume names must be unique per build step and must be valid names for Docker volumes.
-        /// Each named volume must be used by at least two build steps.
+        /// Name of the trigger. Must be unique within the project.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -914,7 +905,7 @@ namespace Pulumi.Gcp.CloudBuild
         private InputMap<string>? _substitutions;
 
         /// <summary>
-        /// Substitutions to use in a triggered build. Should only be used with triggers.run
+        /// Substitutions data for Build resource.
         /// </summary>
         public InputMap<string> Substitutions
         {
@@ -926,7 +917,7 @@ namespace Pulumi.Gcp.CloudBuild
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags for annotation of a Build. These are not docker tags.
+        /// Tags for annotation of a BuildTrigger
         /// </summary>
         public InputList<string> Tags
         {

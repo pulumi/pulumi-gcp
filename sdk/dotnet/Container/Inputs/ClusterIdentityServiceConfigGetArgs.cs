@@ -13,8 +13,7 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterIdentityServiceConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable the PodSecurityPolicy controller for this cluster.
-        /// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        /// Whether to enable the Identity Service component. It is disabled by default. Set `enabled=true` to enable.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

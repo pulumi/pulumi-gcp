@@ -183,8 +183,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is
-        /// deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+        /// Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
         /// </summary>
         [Output("uniqueId")]
         public Output<string> UniqueId { get; private set; } = null!;
@@ -382,8 +381,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is
-        /// deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+        /// Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
         /// </summary>
         [Input("uniqueId")]
         public Input<string>? UniqueId { get; set; }

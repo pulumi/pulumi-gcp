@@ -85,6 +85,7 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// HMAC secret key material.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Output("secret")]
         public Output<string> Secret { get; private set; } = null!;
@@ -212,6 +213,7 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// HMAC secret key material.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public Input<string>? Secret
         {

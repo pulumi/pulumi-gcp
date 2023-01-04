@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Storage.Inputs
         public Input<Inputs.TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyGetArgs>? AwsAccessKey { get; set; }
 
         /// <summary>
-        /// S3 Bucket name.
+        /// Google Cloud Storage bucket name.
         /// </summary>
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;

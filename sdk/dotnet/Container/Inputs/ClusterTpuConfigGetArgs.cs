@@ -13,8 +13,10 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterTpuConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable the PodSecurityPolicy controller for this cluster.
+        /// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+        /// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
         /// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        /// not.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;

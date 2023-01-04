@@ -18,7 +18,6 @@ namespace Pulumi.Gcp.IdentityPlatform.Outputs
         /// </summary>
         public readonly string CallbackUri;
         /// <summary>
-        /// -
         /// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
         /// Structure is documented below.
         /// </summary>

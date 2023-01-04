@@ -13,7 +13,6 @@ namespace Pulumi.Gcp.CloudTasks.Inputs
     public sealed class QueueAppEngineRoutingOverrideGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// -
         /// The host that the task is sent to.
         /// </summary>
         [Input("host")]

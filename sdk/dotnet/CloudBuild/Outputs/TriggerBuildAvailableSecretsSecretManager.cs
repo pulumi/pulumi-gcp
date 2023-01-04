@@ -14,10 +14,9 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     public sealed class TriggerBuildAvailableSecretsSecretManager
     {
         /// <summary>
-        /// A list of global environment variable definitions that will exist for all build steps
-        /// in this build. If a variable is defined in both globally and in a build step,
-        /// the variable will use the build step value.
-        /// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+        /// Environment variable name to associate with the secret. Secret environment
+        /// variables must be unique across all of a build's secrets, and must be used
+        /// by at least one build step.
         /// </summary>
         public readonly string Env;
         /// <summary>

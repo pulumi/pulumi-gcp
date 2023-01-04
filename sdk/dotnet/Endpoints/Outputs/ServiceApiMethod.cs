@@ -13,9 +13,21 @@ namespace Pulumi.Gcp.Endpoints.Outputs
     [OutputType]
     public sealed class ServiceApiMethod
     {
+        /// <summary>
+        /// The simple name of the endpoint as described in the config.
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// The type URL for the request to this API.
+        /// </summary>
         public readonly string? RequestType;
+        /// <summary>
+        /// The type URL for the response from this API.
+        /// </summary>
         public readonly string? ResponseType;
+        /// <summary>
+        /// `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+        /// </summary>
         public readonly string? Syntax;
 
         [OutputConstructor]

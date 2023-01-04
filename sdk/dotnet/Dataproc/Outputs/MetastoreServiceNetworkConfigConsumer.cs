@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class MetastoreServiceNetworkConfigConsumer
     {
         /// <summary>
-        /// -
         /// The URI of the endpoint used to access the metastore service.
         /// </summary>
         public readonly string? EndpointUri;

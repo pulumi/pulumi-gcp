@@ -83,9 +83,10 @@ namespace Pulumi.Gcp.Iap
         public Output<string> ApplicationTitle { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Identifier of the brand, in the format 'projects/{project_number}/brands/{brand_id}' NOTE: The name can
-        /// also be expressed as 'projects/{project_id}/brands/{brand_id}', e.g. when importing. NOTE: The brand identification
-        /// corresponds to the project number as only one brand can be created per project.
+        /// Output only. Identifier of the brand, in the format `projects/{project_number}/brands/{brand_id}`
+        /// NOTE: The name can also be expressed as `projects/{project_id}/brands/{brand_id}`, e.g. when importing.
+        /// NOTE: The brand identification corresponds to the project number as only one
+        /// brand can be created per project.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -197,9 +198,10 @@ namespace Pulumi.Gcp.Iap
         public Input<string>? ApplicationTitle { get; set; }
 
         /// <summary>
-        /// Output only. Identifier of the brand, in the format 'projects/{project_number}/brands/{brand_id}' NOTE: The name can
-        /// also be expressed as 'projects/{project_id}/brands/{brand_id}', e.g. when importing. NOTE: The brand identification
-        /// corresponds to the project number as only one brand can be created per project.
+        /// Output only. Identifier of the brand, in the format `projects/{project_number}/brands/{brand_id}`
+        /// NOTE: The name can also be expressed as `projects/{project_id}/brands/{brand_id}`, e.g. when importing.
+        /// NOTE: The brand identification corresponds to the project number as only one
+        /// brand can be created per project.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -14,11 +14,11 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb
     {
         /// <summary>
-        /// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+        /// Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update &amp;&amp; apt-get -y install package.deb`
         /// </summary>
         public readonly bool? PullDeps;
         /// <summary>
-        /// Required. An rpm package.
+        /// Required. A deb package.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource Source;
 

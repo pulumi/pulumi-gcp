@@ -112,7 +112,8 @@ namespace Pulumi.Gcp.Firebase
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID
+        /// The fully-qualified resource name for the channel, in the format:
+        /// sites/SITE_ID/channels/CHANNEL_ID
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -266,7 +267,8 @@ namespace Pulumi.Gcp.Firebase
         }
 
         /// <summary>
-        /// The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID
+        /// The fully-qualified resource name for the channel, in the format:
+        /// sites/SITE_ID/channels/CHANNEL_ID
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

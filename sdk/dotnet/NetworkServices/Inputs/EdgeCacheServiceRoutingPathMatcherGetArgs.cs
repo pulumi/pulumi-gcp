@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+        /// The name to which this PathMatcher is referred by the HostRule.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

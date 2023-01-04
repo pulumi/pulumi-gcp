@@ -155,14 +155,16 @@ namespace Pulumi.Gcp.DataCatalog
     public partial class Entry : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
-        /// https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+        /// Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
+        /// Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+        /// Structure is documented below.
         /// </summary>
         [Output("bigqueryDateShardedSpecs")]
         public Output<ImmutableArray<Outputs.EntryBigqueryDateShardedSpec>> BigqueryDateShardedSpecs { get; private set; } = null!;
 
         /// <summary>
         /// Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
+        /// Structure is documented below.
         /// </summary>
         [Output("bigqueryTableSpecs")]
         public Output<ImmutableArray<Outputs.EntryBigqueryTableSpec>> BigqueryTableSpecs { get; private set; } = null!;
@@ -217,9 +219,9 @@ namespace Pulumi.Gcp.DataCatalog
         public Output<string> LinkedResource { get; private set; } = null!;
 
         /// <summary>
-        /// The Data Catalog resource name of the entry in URL format. Example:
-        /// projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}. Note that this Entry and its
-        /// child resources may not actually be stored in the location in this name.
+        /// The Data Catalog resource name of the entry in URL format.
+        /// Example: projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}.
+        /// Note that this Entry and its child resources may not actually be stored in the location in this name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -395,8 +397,9 @@ namespace Pulumi.Gcp.DataCatalog
         private InputList<Inputs.EntryBigqueryDateShardedSpecGetArgs>? _bigqueryDateShardedSpecs;
 
         /// <summary>
-        /// Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
-        /// https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+        /// Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
+        /// Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.EntryBigqueryDateShardedSpecGetArgs> BigqueryDateShardedSpecs
         {
@@ -409,6 +412,7 @@ namespace Pulumi.Gcp.DataCatalog
 
         /// <summary>
         /// Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.EntryBigqueryTableSpecGetArgs> BigqueryTableSpecs
         {
@@ -466,9 +470,9 @@ namespace Pulumi.Gcp.DataCatalog
         public Input<string>? LinkedResource { get; set; }
 
         /// <summary>
-        /// The Data Catalog resource name of the entry in URL format. Example:
-        /// projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}. Note that this Entry and its
-        /// child resources may not actually be stored in the location in this name.
+        /// The Data Catalog resource name of the entry in URL format.
+        /// Example: projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}.
+        /// Note that this Entry and its child resources may not actually be stored in the location in this name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

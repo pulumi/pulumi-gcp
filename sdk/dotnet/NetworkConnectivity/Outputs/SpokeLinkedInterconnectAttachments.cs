@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.NetworkConnectivity.Outputs
         /// </summary>
         public readonly bool SiteToSiteDataTransfer;
         /// <summary>
-        /// The URIs of linked VPN tunnel resources.
+        /// The URIs of linked interconnect attachment resources
         /// </summary>
         public readonly ImmutableArray<string> Uris;
 

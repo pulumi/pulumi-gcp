@@ -243,8 +243,7 @@ namespace Pulumi.Gcp.Projects
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString`
-        /// method.
+        /// Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
         /// </summary>
         [Output("keyString")]
         public Output<string> KeyString { get; private set; } = null!;
@@ -365,8 +364,7 @@ namespace Pulumi.Gcp.Projects
         private Input<string>? _keyString;
 
         /// <summary>
-        /// Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString`
-        /// method.
+        /// Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
         /// </summary>
         public Input<string>? KeyString
         {

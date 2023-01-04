@@ -13,7 +13,8 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class RegionUrlMapHostRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of this test case.
+        /// An optional description of this HostRule. Provide this property
+        /// when you create the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

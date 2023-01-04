@@ -54,9 +54,10 @@ namespace Pulumi.Gcp.Logging.Inputs
         public Input<string>? Unit { get; set; }
 
         /// <summary>
-        /// The type of data that can be assigned to the label.
-        /// Default value is `STRING`.
-        /// Possible values are `BOOL`, `INT64`, and `STRING`.
+        /// Whether the measurement is an integer, a floating-point number, etc.
+        /// Some combinations of metricKind and valueType might not be supported.
+        /// For counter metrics, set this to INT64.
+        /// Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, and `MONEY`.
         /// </summary>
         [Input("valueType", required: true)]
         public Input<string> ValueType { get; set; } = null!;

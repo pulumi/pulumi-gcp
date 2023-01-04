@@ -44,7 +44,9 @@ namespace Pulumi.Gcp.Compute
     public partial class ServiceAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// An array of the consumer forwarding rules connected to this service attachment.
+        /// An array of the consumer forwarding rules connected to this service
+        /// attachment.
+        /// Structure is documented below.
         /// </summary>
         [Output("connectedEndpoints")]
         public Output<ImmutableArray<Outputs.ServiceAttachmentConnectedEndpoint>> ConnectedEndpoints { get; private set; } = null!;
@@ -95,7 +97,8 @@ namespace Pulumi.Gcp.Compute
         public Output<bool> EnableProxyProtocol { get; private set; } = null!;
 
         /// <summary>
-        /// Fingerprint of this resource. This field is used internally during updates of this resource.
+        /// Fingerprint of this resource. This field is used internally during
+        /// updates of this resource.
         /// </summary>
         [Output("fingerprint")]
         public Output<string> Fingerprint { get; private set; } = null!;
@@ -307,7 +310,9 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.ServiceAttachmentConnectedEndpointGetArgs>? _connectedEndpoints;
 
         /// <summary>
-        /// An array of the consumer forwarding rules connected to this service attachment.
+        /// An array of the consumer forwarding rules connected to this service
+        /// attachment.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ServiceAttachmentConnectedEndpointGetArgs> ConnectedEndpoints
         {
@@ -379,7 +384,8 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? EnableProxyProtocol { get; set; }
 
         /// <summary>
-        /// Fingerprint of this resource. This field is used internally during updates of this resource.
+        /// Fingerprint of this resource. This field is used internally during
+        /// updates of this resource.
         /// </summary>
         [Input("fingerprint")]
         public Input<string>? Fingerprint { get; set; }

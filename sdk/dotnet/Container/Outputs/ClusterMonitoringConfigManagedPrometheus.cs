@@ -14,8 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterMonitoringConfigManagedPrometheus
     {
         /// <summary>
-        /// Enable the PodSecurityPolicy controller for this cluster.
-        /// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        /// Whether or not the managed collection is enabled.
         /// </summary>
         public readonly bool Enabled;
 

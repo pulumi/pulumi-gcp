@@ -12,11 +12,19 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
 
     public sealed class EntryBigqueryTableSpecGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The table source type.
+        /// </summary>
         [Input("tableSourceType")]
         public Input<string>? TableSourceType { get; set; }
 
         [Input("tableSpecs")]
         private InputList<Inputs.EntryBigqueryTableSpecTableSpecGetArgs>? _tableSpecs;
+
+        /// <summary>
+        /// Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
+        /// Structure is documented below.
+        /// </summary>
         public InputList<Inputs.EntryBigqueryTableSpecTableSpecGetArgs> TableSpecs
         {
             get => _tableSpecs ?? (_tableSpecs = new InputList<Inputs.EntryBigqueryTableSpecTableSpecGetArgs>());
@@ -25,6 +33,11 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
 
         [Input("viewSpecs")]
         private InputList<Inputs.EntryBigqueryTableSpecViewSpecGetArgs>? _viewSpecs;
+
+        /// <summary>
+        /// Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
+        /// Structure is documented below.
+        /// </summary>
         public InputList<Inputs.EntryBigqueryTableSpecViewSpecGetArgs> ViewSpecs
         {
             get => _viewSpecs ?? (_viewSpecs = new InputList<Inputs.EntryBigqueryTableSpecViewSpecGetArgs>());

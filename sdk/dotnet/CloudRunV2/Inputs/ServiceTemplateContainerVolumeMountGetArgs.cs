@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         public Input<string> MountPath { get; set; } = null!;
 
         /// <summary>
-        /// Volume's name.
+        /// This must match the Name of a Volume.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

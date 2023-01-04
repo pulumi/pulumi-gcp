@@ -13,6 +13,10 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class InterconnectAttachmentPrivateInterconnectInfo
     {
+        /// <summary>
+        /// 802.1q encapsulation tag to be used for traffic between
+        /// Google and the customer, going to and from this network and region.
+        /// </summary>
         public readonly int? Tag8021q;
 
         [OutputConstructor]

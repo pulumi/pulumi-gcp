@@ -85,8 +85,7 @@ namespace Pulumi.Gcp.DataCatalog
         public Output<string> EntryGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the entry group in URL format. Example:
-        /// projects/{project}/locations/{location}/entryGroups/{entryGroupId}
+        /// The resource name of the entry group in URL format. Example: projects/{project}/locations/{location}/entryGroups/{entryGroupId}
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -210,8 +209,7 @@ namespace Pulumi.Gcp.DataCatalog
         public Input<string>? EntryGroupId { get; set; }
 
         /// <summary>
-        /// The resource name of the entry group in URL format. Example:
-        /// projects/{project}/locations/{location}/entryGroups/{entryGroupId}
+        /// The resource name of the entry group in URL format. Example: projects/{project}/locations/{location}/entryGroups/{entryGroupId}
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

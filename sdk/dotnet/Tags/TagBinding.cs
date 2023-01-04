@@ -73,7 +73,7 @@ namespace Pulumi.Gcp.Tags
     public partial class TagBinding : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The generated id for the TagBinding. This is a string of the form: 'tagBindings/{full-resource-name}/{tag-value-name}'
+        /// The generated id for the TagBinding. This is a string of the form: `tagBindings/{full-resource-name}/{tag-value-name}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.Gcp.Tags
     public sealed class TagBindingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The generated id for the TagBinding. This is a string of the form: 'tagBindings/{full-resource-name}/{tag-value-name}'
+        /// The generated id for the TagBinding. This is a string of the form: `tagBindings/{full-resource-name}/{tag-value-name}`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

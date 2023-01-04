@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         public Input<string>? Event { get; set; }
 
         /// <summary>
-        /// -
         /// The unique identifier of this event handler.
         /// </summary>
         [Input("name")]

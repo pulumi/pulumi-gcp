@@ -18,9 +18,15 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        /// <summary>
+        /// A human-readable description of the error.
+        /// </summary>
         [Input("message")]
         public Input<string>? Message { get; set; }
 
+        /// <summary>
+        /// A short error code that summarizes the error.
+        /// </summary>
         [Input("reason")]
         public Input<string>? Reason { get; set; }
 

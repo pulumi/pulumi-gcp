@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
     {
         [Input("keyUsageOptions")]
         private InputList<Inputs.CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArgs>? _keyUsageOptions;
+
+        /// <summary>
+        /// Describes high-level ways in which a key may be used.
+        /// Structure is documented below.
+        /// </summary>
         public InputList<Inputs.CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArgs> KeyUsageOptions
         {
             get => _keyUsageOptions ?? (_keyUsageOptions = new InputList<Inputs.CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArgs>());

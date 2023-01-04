@@ -43,8 +43,6 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         /// <summary>
         /// The HTTP Status code to use for this RedirectAction.
         /// The supported values are:
-        /// - `MOVED_PERMANENTLY_DEFAULT`, which is the default value and corresponds to 301.
-        /// - `FOUND`, which corresponds to 302.
         /// </summary>
         [Input("redirectResponseCode")]
         public Input<string>? RedirectResponseCode { get; set; }

@@ -25,12 +25,10 @@ namespace Pulumi.Gcp.Iot.Outputs
         /// </summary>
         public readonly string? GatewayType;
         /// <summary>
-        /// -
         /// The ID of the gateway the device accessed most recently.
         /// </summary>
         public readonly string? LastAccessedGatewayId;
         /// <summary>
-        /// -
         /// The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
         /// </summary>
         public readonly string? LastAccessedGatewayTime;

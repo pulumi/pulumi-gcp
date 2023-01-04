@@ -184,8 +184,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-        /// and delete requests to ensure the client has an up-to-date value before proceeding.
+        /// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -221,8 +220,7 @@ namespace Pulumi.Gcp.Container
         public Output<bool> Reconciling { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. The current state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-        /// STOPPING, ERROR, DEGRADED
+        /// Output only. The current state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -420,8 +418,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-        /// and delete requests to ensure the client has an up-to-date value before proceeding.
+        /// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
@@ -457,8 +454,7 @@ namespace Pulumi.Gcp.Container
         public Input<bool>? Reconciling { get; set; }
 
         /// <summary>
-        /// Output only. The current state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-        /// STOPPING, ERROR, DEGRADED
+        /// Output only. The current state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

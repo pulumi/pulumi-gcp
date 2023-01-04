@@ -19,10 +19,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader> HttpHeaders;
         /// <summary>
-        /// The relative path of the file to map the key to.
-        /// May not be an absolute path.
-        /// May not contain the path element '..'.
-        /// May not start with the string '..'.
+        /// Path to access on the HTTP server. If set, it should not be empty string.
         /// </summary>
         public readonly string? Path;
 

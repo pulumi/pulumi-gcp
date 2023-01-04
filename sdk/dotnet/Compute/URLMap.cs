@@ -45,10 +45,10 @@ namespace Pulumi.Gcp.Compute
         public Output<string> CreationTimestamp { get; private set; } = null!;
 
         /// <summary>
-        /// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
-        /// advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
-        /// to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
-        /// Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+        /// defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
+        /// like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend.
+        /// If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService
+        /// is set, defaultRouteAction cannot contain any weightedBackendServices.
         /// Only one of defaultRouteAction or defaultUrlRedirect must be set.
         /// Structure is documented below.
         /// </summary>
@@ -56,7 +56,7 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.URLMapDefaultRouteAction?> DefaultRouteAction { get; private set; } = null!;
 
         /// <summary>
-        /// The backend service or backend bucket to use when none of the given paths match.
+        /// The backend service or backend bucket to use when none of the given rules match.
         /// </summary>
         [Output("defaultService")]
         public Output<string?> DefaultService { get; private set; } = null!;
@@ -71,22 +71,23 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.URLMapDefaultUrlRedirect?> DefaultUrlRedirect { get; private set; } = null!;
 
         /// <summary>
-        /// Description of this test case.
+        /// An optional description of this resource. Provide this property when you create
+        /// the resource.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+        /// Fingerprint of this resource. A hash of the contents stored in this object. This
+        /// field is used in optimistic locking.
         /// </summary>
         [Output("fingerprint")]
         public Output<string> Fingerprint { get; private set; } = null!;
 
         /// <summary>
         /// Specifies changes to request and response headers that need to take effect for
-        /// the selected backendService.
-        /// headerAction specified here take effect before headerAction in the enclosing
-        /// HttpRouteRule, PathMatcher and UrlMap.
+        /// the selected backendService. The headerAction specified here take effect after
+        /// headerAction specified under pathMatcher.
         /// Structure is documented below.
         /// </summary>
         [Output("headerAction")]
@@ -106,15 +107,19 @@ namespace Pulumi.Gcp.Compute
         public Output<int> MapId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the query parameter to match. The query parameter must exist in the
-        /// request, in the absence of which the request match fails.
+        /// Name of the resource. Provided by the client when the resource is created. The
+        /// name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        /// name must be 1-63 characters long and match the regular expression
+        /// `a-z?` which means the first character must be a lowercase
+        /// letter, and all following characters must be a dash, lowercase letter, or digit,
+        /// except the last character, which cannot be a dash.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the PathMatcher to use to match the path portion of the URL if the
-        /// hostRule matches the URL's host portion.
+        /// The list of named PathMatchers to use against the URL.
+        /// Structure is documented below.
         /// </summary>
         [Output("pathMatchers")]
         public Output<ImmutableArray<Outputs.URLMapPathMatcher>> PathMatchers { get; private set; } = null!;
@@ -188,10 +193,10 @@ namespace Pulumi.Gcp.Compute
     public sealed class URLMapArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
-        /// advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
-        /// to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
-        /// Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+        /// defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
+        /// like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend.
+        /// If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService
+        /// is set, defaultRouteAction cannot contain any weightedBackendServices.
         /// Only one of defaultRouteAction or defaultUrlRedirect must be set.
         /// Structure is documented below.
         /// </summary>
@@ -199,7 +204,7 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.URLMapDefaultRouteActionArgs>? DefaultRouteAction { get; set; }
 
         /// <summary>
-        /// The backend service or backend bucket to use when none of the given paths match.
+        /// The backend service or backend bucket to use when none of the given rules match.
         /// </summary>
         [Input("defaultService")]
         public Input<string>? DefaultService { get; set; }
@@ -214,16 +219,16 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.URLMapDefaultUrlRedirectArgs>? DefaultUrlRedirect { get; set; }
 
         /// <summary>
-        /// Description of this test case.
+        /// An optional description of this resource. Provide this property when you create
+        /// the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
         /// Specifies changes to request and response headers that need to take effect for
-        /// the selected backendService.
-        /// headerAction specified here take effect before headerAction in the enclosing
-        /// HttpRouteRule, PathMatcher and UrlMap.
+        /// the selected backendService. The headerAction specified here take effect after
+        /// headerAction specified under pathMatcher.
         /// Structure is documented below.
         /// </summary>
         [Input("headerAction")]
@@ -243,8 +248,12 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// The name of the query parameter to match. The query parameter must exist in the
-        /// request, in the absence of which the request match fails.
+        /// Name of the resource. Provided by the client when the resource is created. The
+        /// name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        /// name must be 1-63 characters long and match the regular expression
+        /// `a-z?` which means the first character must be a lowercase
+        /// letter, and all following characters must be a dash, lowercase letter, or digit,
+        /// except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -253,8 +262,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.URLMapPathMatcherArgs>? _pathMatchers;
 
         /// <summary>
-        /// The name of the PathMatcher to use to match the path portion of the URL if the
-        /// hostRule matches the URL's host portion.
+        /// The list of named PathMatchers to use against the URL.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.URLMapPathMatcherArgs> PathMatchers
         {
@@ -299,10 +308,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? CreationTimestamp { get; set; }
 
         /// <summary>
-        /// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
-        /// advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
-        /// to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
-        /// Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+        /// defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
+        /// like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend.
+        /// If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService
+        /// is set, defaultRouteAction cannot contain any weightedBackendServices.
         /// Only one of defaultRouteAction or defaultUrlRedirect must be set.
         /// Structure is documented below.
         /// </summary>
@@ -310,7 +319,7 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.URLMapDefaultRouteActionGetArgs>? DefaultRouteAction { get; set; }
 
         /// <summary>
-        /// The backend service or backend bucket to use when none of the given paths match.
+        /// The backend service or backend bucket to use when none of the given rules match.
         /// </summary>
         [Input("defaultService")]
         public Input<string>? DefaultService { get; set; }
@@ -325,22 +334,23 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.URLMapDefaultUrlRedirectGetArgs>? DefaultUrlRedirect { get; set; }
 
         /// <summary>
-        /// Description of this test case.
+        /// An optional description of this resource. Provide this property when you create
+        /// the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+        /// Fingerprint of this resource. A hash of the contents stored in this object. This
+        /// field is used in optimistic locking.
         /// </summary>
         [Input("fingerprint")]
         public Input<string>? Fingerprint { get; set; }
 
         /// <summary>
         /// Specifies changes to request and response headers that need to take effect for
-        /// the selected backendService.
-        /// headerAction specified here take effect before headerAction in the enclosing
-        /// HttpRouteRule, PathMatcher and UrlMap.
+        /// the selected backendService. The headerAction specified here take effect after
+        /// headerAction specified under pathMatcher.
         /// Structure is documented below.
         /// </summary>
         [Input("headerAction")]
@@ -366,8 +376,12 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? MapId { get; set; }
 
         /// <summary>
-        /// The name of the query parameter to match. The query parameter must exist in the
-        /// request, in the absence of which the request match fails.
+        /// Name of the resource. Provided by the client when the resource is created. The
+        /// name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        /// name must be 1-63 characters long and match the regular expression
+        /// `a-z?` which means the first character must be a lowercase
+        /// letter, and all following characters must be a dash, lowercase letter, or digit,
+        /// except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -376,8 +390,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.URLMapPathMatcherGetArgs>? _pathMatchers;
 
         /// <summary>
-        /// The name of the PathMatcher to use to match the path portion of the URL if the
-        /// hostRule matches the URL's host portion.
+        /// The list of named PathMatchers to use against the URL.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.URLMapPathMatcherGetArgs> PathMatchers
         {

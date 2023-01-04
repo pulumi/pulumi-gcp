@@ -157,8 +157,7 @@ namespace Pulumi.Gcp.CloudDeploy
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete
-        /// requests to ensure the client has an up-to-date value before proceeding.
+        /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -362,8 +361,7 @@ namespace Pulumi.Gcp.CloudDeploy
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete
-        /// requests to ensure the client has an up-to-date value before proceeding.
+        /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }

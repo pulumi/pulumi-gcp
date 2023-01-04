@@ -108,7 +108,7 @@ namespace Pulumi.Gcp.Monitoring
     public partial class MetricDescriptor : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A human-readable description for the label.
+        /// A detailed description of the metric, which can be used in documentation.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
@@ -148,10 +148,7 @@ namespace Pulumi.Gcp.Monitoring
         public Output<string> MetricKind { get; private set; } = null!;
 
         /// <summary>
-        /// If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that
-        /// is associated with this metric type can only be associated with one of the monitored resource types listed here. This
-        /// field allows time series to be associated with the intersection of this metric type and the monitored resource types in
-        /// this list.
+        /// If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. This field allows time series to be associated with the intersection of this metric type and the monitored resource types in this list.
         /// </summary>
         [Output("monitoredResourceTypes")]
         public Output<ImmutableArray<string>> MonitoredResourceTypes { get; private set; } = null!;
@@ -198,9 +195,8 @@ namespace Pulumi.Gcp.Monitoring
         public Output<string?> Unit { get; private set; } = null!;
 
         /// <summary>
-        /// The type of data that can be assigned to the label.
-        /// Default value is `STRING`.
-        /// Possible values are `STRING`, `BOOL`, and `INT64`.
+        /// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
+        /// Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
         /// </summary>
         [Output("valueType")]
         public Output<string> ValueType { get; private set; } = null!;
@@ -252,7 +248,7 @@ namespace Pulumi.Gcp.Monitoring
     public sealed class MetricDescriptorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A human-readable description for the label.
+        /// A detailed description of the metric, which can be used in documentation.
         /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
@@ -333,9 +329,8 @@ namespace Pulumi.Gcp.Monitoring
         public Input<string>? Unit { get; set; }
 
         /// <summary>
-        /// The type of data that can be assigned to the label.
-        /// Default value is `STRING`.
-        /// Possible values are `STRING`, `BOOL`, and `INT64`.
+        /// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
+        /// Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
         /// </summary>
         [Input("valueType", required: true)]
         public Input<string> ValueType { get; set; } = null!;
@@ -349,7 +344,7 @@ namespace Pulumi.Gcp.Monitoring
     public sealed class MetricDescriptorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A human-readable description for the label.
+        /// A detailed description of the metric, which can be used in documentation.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -398,10 +393,7 @@ namespace Pulumi.Gcp.Monitoring
         private InputList<string>? _monitoredResourceTypes;
 
         /// <summary>
-        /// If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that
-        /// is associated with this metric type can only be associated with one of the monitored resource types listed here. This
-        /// field allows time series to be associated with the intersection of this metric type and the monitored resource types in
-        /// this list.
+        /// If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. This field allows time series to be associated with the intersection of this metric type and the monitored resource types in this list.
         /// </summary>
         public InputList<string> MonitoredResourceTypes
         {
@@ -451,9 +443,8 @@ namespace Pulumi.Gcp.Monitoring
         public Input<string>? Unit { get; set; }
 
         /// <summary>
-        /// The type of data that can be assigned to the label.
-        /// Default value is `STRING`.
-        /// Possible values are `STRING`, `BOOL`, and `INT64`.
+        /// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
+        /// Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
         /// </summary>
         [Input("valueType")]
         public Input<string>? ValueType { get; set; }

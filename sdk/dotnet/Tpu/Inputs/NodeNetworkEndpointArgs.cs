@@ -12,9 +12,15 @@ namespace Pulumi.Gcp.Tpu.Inputs
 
     public sealed class NodeNetworkEndpointArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The IP address of this network endpoint.
+        /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
 
+        /// <summary>
+        /// The port of this network endpoint.
+        /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 

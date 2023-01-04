@@ -14,8 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig
     {
         /// <summary>
-        /// Enable the PodSecurityPolicy controller for this cluster.
-        /// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        /// Whether or not the Google Container Filesystem (GCFS) is enabled
         /// </summary>
         public readonly bool Enabled;
 

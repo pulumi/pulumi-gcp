@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     [OutputType]
     public sealed class CertificateCertificateDescriptionSubjectDescription
     {
+        /// <summary>
+        /// The serial number encoded in lowercase hexadecimal.
+        /// </summary>
         public readonly string? HexSerialNumber;
         /// <summary>
         /// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
@@ -20,7 +23,13 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
         /// fractional digits, terminated by 's'. Example: "3.5s".
         /// </summary>
         public readonly string? Lifetime;
+        /// <summary>
+        /// The time at which the certificate expires.
+        /// </summary>
         public readonly string? NotAfterTime;
+        /// <summary>
+        /// The time at which the certificate becomes valid.
+        /// </summary>
         public readonly string? NotBeforeTime;
         /// <summary>
         /// The subject alternative name fields.

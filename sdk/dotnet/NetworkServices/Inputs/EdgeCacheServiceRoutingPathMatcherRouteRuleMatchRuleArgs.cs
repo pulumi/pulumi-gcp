@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         public Input<string>? PathTemplateMatch { get; set; }
 
         /// <summary>
-        /// The value of the header must start with the contents of prefixMatch.
+        /// For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /.
         /// </summary>
         [Input("prefixMatch")]
         public Input<string>? PrefixMatch { get; set; }

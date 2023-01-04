@@ -37,8 +37,7 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public Input<string>? InitialDelay { get; set; }
 
         /// <summary>
-        /// Path to the static files matched by the URL pattern, from the application root directory.
-        /// The path can refer to text matched in groupings in the URL pattern.
+        /// The request path.
         /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;

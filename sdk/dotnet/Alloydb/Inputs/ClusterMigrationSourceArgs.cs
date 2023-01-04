@@ -12,12 +12,21 @@ namespace Pulumi.Gcp.Alloydb.Inputs
 
     public sealed class ClusterMigrationSourceArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The host and port of the on-premises instance in host:port format
+        /// </summary>
         [Input("hostPort")]
         public Input<string>? HostPort { get; set; }
 
+        /// <summary>
+        /// Place holder for the external source identifier(e.g DMS job name) that created the cluster.
+        /// </summary>
         [Input("referenceId")]
         public Input<string>? ReferenceId { get; set; }
 
+        /// <summary>
+        /// Type of migration source.
+        /// </summary>
         [Input("sourceType")]
         public Input<string>? SourceType { get; set; }
 

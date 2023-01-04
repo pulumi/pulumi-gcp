@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
         public Input<string> Secret { get; set; } = null!;
 
         /// <summary>
-        /// Version of the secret (version number or the string 'latest'). It is preferable to use latest version with secret volumes as secret value changes are reflected immediately.
+        /// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
         /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;

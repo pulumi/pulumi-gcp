@@ -81,18 +81,33 @@ namespace Pulumi.Gcp.Container
 
     public sealed class GetRegistryImageArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The image digest to fetch, if any.
+        /// </summary>
         [Input("digest")]
         public string? Digest { get; set; }
 
+        /// <summary>
+        /// The image name.
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// The project ID that this image is attached to.  If not provider, provider project will be used instead.
+        /// </summary>
         [Input("project")]
         public string? Project { get; set; }
 
+        /// <summary>
+        /// The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
+        /// </summary>
         [Input("region")]
         public string? Region { get; set; }
 
+        /// <summary>
+        /// The tag to fetch, if any.
+        /// </summary>
         [Input("tag")]
         public string? Tag { get; set; }
 
@@ -104,18 +119,33 @@ namespace Pulumi.Gcp.Container
 
     public sealed class GetRegistryImageInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The image digest to fetch, if any.
+        /// </summary>
         [Input("digest")]
         public Input<string>? Digest { get; set; }
 
+        /// <summary>
+        /// The image name.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The project ID that this image is attached to.  If not provider, provider project will be used instead.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// The tag to fetch, if any.
+        /// </summary>
         [Input("tag")]
         public Input<string>? Tag { get; set; }
 
@@ -134,6 +164,9 @@ namespace Pulumi.Gcp.Container
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The URL at which the image can be accessed.
+        /// </summary>
         public readonly string ImageUrl;
         public readonly string Name;
         public readonly string Project;

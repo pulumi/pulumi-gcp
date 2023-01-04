@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterClusterAutoscalingAutoProvisioningDefaults
     {
         /// <summary>
-        /// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
+        /// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         /// </summary>
         public readonly string? BootDiskKmsKey;
         /// <summary>
@@ -22,13 +22,11 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly int? DiskSize;
         /// <summary>
-        /// Type of the disk attached to each node
-        /// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+        /// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced'). Defaults to `pd-standard`
         /// </summary>
         public readonly string? DiskType;
         /// <summary>
-        /// The image type to use for this node. Note that changing the image type
-        /// will delete and recreate all nodes in the node pool.
+        /// The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. __NOTE__ : COS AND UBUNTU are deprecated as of `GKE 1.24`
         /// </summary>
         public readonly string? ImageType;
         /// <summary>
@@ -36,22 +34,17 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsManagement? Management;
         /// <summary>
-        /// Minimum CPU platform to be used by this instance.
-        /// The instance may be scheduled on the specified or newer CPU platform. Applicable
-        /// values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
-        /// [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-        /// for more information.
+        /// Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
+        /// specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such
+        /// as "Intel Haswell" or "Intel Sandy Bridge".
         /// </summary>
         public readonly string? MinCpuPlatform;
         /// <summary>
-        /// The set of Google API scopes to be made available
-        /// on all of the node VMs under the "default" service account.
-        /// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+        /// Scopes that are used by NAP and GKE Autopilot when creating node pools. Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
         /// </summary>
         public readonly ImmutableArray<string> OauthScopes;
         /// <summary>
-        /// The service account to be used by the Node VMs.
-        /// If not specified, the "default" service account is used.
+        /// The Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
         /// </summary>
         public readonly string? ServiceAccount;
         /// <summary>

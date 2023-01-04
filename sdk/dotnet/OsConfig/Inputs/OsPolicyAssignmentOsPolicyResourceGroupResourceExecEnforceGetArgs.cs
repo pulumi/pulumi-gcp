@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         }
 
         /// <summary>
-        /// A remote or local source.
+        /// A remote or local file.
         /// </summary>
         [Input("file")]
         public Input<Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGetArgs>? File { get; set; }

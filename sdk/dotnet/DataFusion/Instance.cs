@@ -366,9 +366,13 @@ namespace Pulumi.Gcp.DataFusion
         public Output<string> ServiceEndpoint { get; private set; } = null!;
 
         /// <summary>
-        /// The current state of this Data Fusion instance. - CREATING: Instance is being created - RUNNING: Instance is running and
-        /// ready for requests - FAILED: Instance creation failed - DELETING: Instance is being deleted - UPGRADING: Instance is
-        /// being upgraded - RESTARTING: Instance is being restarted
+        /// The current state of this Data Fusion instance.
+        /// * CREATING: Instance is being created
+        /// * RUNNING: Instance is running and ready for requests
+        /// * FAILED: Instance creation failed
+        /// * DELETING: Instance is being deleted
+        /// * UPGRADING: Instance is being upgraded
+        /// * RESTARTING: Instance is being restarted
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -756,9 +760,13 @@ namespace Pulumi.Gcp.DataFusion
         public Input<string>? ServiceEndpoint { get; set; }
 
         /// <summary>
-        /// The current state of this Data Fusion instance. - CREATING: Instance is being created - RUNNING: Instance is running and
-        /// ready for requests - FAILED: Instance creation failed - DELETING: Instance is being deleted - UPGRADING: Instance is
-        /// being upgraded - RESTARTING: Instance is being restarted
+        /// The current state of this Data Fusion instance.
+        /// * CREATING: Instance is being created
+        /// * RUNNING: Instance is running and ready for requests
+        /// * FAILED: Instance creation failed
+        /// * DELETING: Instance is being deleted
+        /// * UPGRADING: Instance is being upgraded
+        /// * RESTARTING: Instance is being restarted
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

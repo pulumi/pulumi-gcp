@@ -275,13 +275,16 @@ namespace Pulumi.Gcp.BigQuery
         public Output<ImmutableArray<Outputs.DatasetAccess>> Accesses { get; private set; } = null!;
 
         /// <summary>
-        /// The time when this dataset was created, in milliseconds since the epoch.
+        /// The time when this dataset was created, in milliseconds since the
+        /// epoch.
         /// </summary>
         [Output("creationTime")]
         public Output<int> CreationTime { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the dataset containing this table.
+        /// A unique ID for this dataset, without the project name. The ID
+        /// must contain only letters (a-z, A-Z), numbers (0-9), or
+        /// underscores (_). The maximum length is 1,024 characters.
         /// </summary>
         [Output("datasetId")]
         public Output<string> DatasetId { get; private set; } = null!;
@@ -343,7 +346,8 @@ namespace Pulumi.Gcp.BigQuery
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+        /// The date when this dataset or any of its tables was last modified, in
+        /// milliseconds since the epoch.
         /// </summary>
         [Output("lastModifiedTime")]
         public Output<int> LastModifiedTime { get; private set; } = null!;
@@ -434,7 +438,9 @@ namespace Pulumi.Gcp.BigQuery
         }
 
         /// <summary>
-        /// The ID of the dataset containing this table.
+        /// A unique ID for this dataset, without the project name. The ID
+        /// must contain only letters (a-z, A-Z), numbers (0-9), or
+        /// underscores (_). The maximum length is 1,024 characters.
         /// </summary>
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
@@ -537,13 +543,16 @@ namespace Pulumi.Gcp.BigQuery
         }
 
         /// <summary>
-        /// The time when this dataset was created, in milliseconds since the epoch.
+        /// The time when this dataset was created, in milliseconds since the
+        /// epoch.
         /// </summary>
         [Input("creationTime")]
         public Input<int>? CreationTime { get; set; }
 
         /// <summary>
-        /// The ID of the dataset containing this table.
+        /// A unique ID for this dataset, without the project name. The ID
+        /// must contain only letters (a-z, A-Z), numbers (0-9), or
+        /// underscores (_). The maximum length is 1,024 characters.
         /// </summary>
         [Input("datasetId")]
         public Input<string>? DatasetId { get; set; }
@@ -611,7 +620,8 @@ namespace Pulumi.Gcp.BigQuery
         }
 
         /// <summary>
-        /// The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+        /// The date when this dataset or any of its tables was last modified, in
+        /// milliseconds since the epoch.
         /// </summary>
         [Input("lastModifiedTime")]
         public Input<int>? LastModifiedTime { get; set; }

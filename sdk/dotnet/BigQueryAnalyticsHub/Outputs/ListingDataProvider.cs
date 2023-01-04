@@ -14,11 +14,11 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub.Outputs
     public sealed class ListingDataProvider
     {
         /// <summary>
-        /// Name of the listing publisher.
+        /// Name of the data provider.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Email or URL of the listing publisher.
+        /// Email or URL of the data provider.
         /// </summary>
         public readonly string? PrimaryContact;
 

@@ -14,8 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterNetworkPolicy
     {
         /// <summary>
-        /// Enable the PodSecurityPolicy controller for this cluster.
-        /// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        /// Whether network policy is enabled on the cluster.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>

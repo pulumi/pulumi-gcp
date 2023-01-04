@@ -13,8 +13,8 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable the PodSecurityPolicy controller for this cluster.
-        /// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        /// Whether the cluster master is accessible globally or
+        /// not.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;

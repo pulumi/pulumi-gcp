@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.AppEngine.Outputs
     public sealed class StandardAppVersionAutomaticScalingStandardSchedulerSettings
     {
         /// <summary>
-        /// Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
+        /// Maximum number of instances to run for this version. Set to zero to disable maxInstances configuration.
         /// </summary>
         public readonly int? MaxInstances;
         /// <summary>

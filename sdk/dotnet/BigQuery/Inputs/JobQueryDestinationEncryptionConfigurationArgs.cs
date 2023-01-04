@@ -20,7 +20,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<string> KmsKeyName { get; set; } = null!;
 
         /// <summary>
-        /// -
         /// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
         /// </summary>
         [Input("kmsKeyVersion")]

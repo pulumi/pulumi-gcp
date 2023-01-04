@@ -13,14 +13,13 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class AwsClusterFleetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// -
         /// The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/&lt;project-number&gt;/locations/global/membership/&lt;cluster-id&gt;.
         /// </summary>
         [Input("membership")]
         public Input<string>? Membership { get; set; }
 
         /// <summary>
-        /// The project for the resource
+        /// The number of the Fleet host project where this cluster will be registered.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.GkeHub.Inputs
     public sealed class FeatureMembershipConfigmanagementBinauthzGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+        /// Whether binauthz is enabled in this cluster.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

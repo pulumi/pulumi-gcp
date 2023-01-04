@@ -13,7 +13,6 @@ namespace Pulumi.Gcp.Apigee.Inputs
     public sealed class EnvironmentNodeConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// -
         /// The current total number of gateway nodes that each environment currently has across
         /// all instances.
         /// </summary>

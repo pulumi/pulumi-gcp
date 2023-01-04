@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
     {
         [Input("aiaIssuingCertificateUrls")]
         private InputList<string>? _aiaIssuingCertificateUrls;
+
+        /// <summary>
+        /// Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
+        /// </summary>
         public InputList<string> AiaIssuingCertificateUrls
         {
             get => _aiaIssuingCertificateUrls ?? (_aiaIssuingCertificateUrls = new InputList<string>());
@@ -22,6 +26,11 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
 
         [Input("authorityKeyIds")]
         private InputList<Inputs.CertificateCertificateDescriptionAuthorityKeyIdGetArgs>? _authorityKeyIds;
+
+        /// <summary>
+        /// Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+        /// Structure is documented below.
+        /// </summary>
         public InputList<Inputs.CertificateCertificateDescriptionAuthorityKeyIdGetArgs> AuthorityKeyIds
         {
             get => _authorityKeyIds ?? (_authorityKeyIds = new InputList<Inputs.CertificateCertificateDescriptionAuthorityKeyIdGetArgs>());
@@ -30,6 +39,11 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
 
         [Input("certFingerprints")]
         private InputList<Inputs.CertificateCertificateDescriptionCertFingerprintGetArgs>? _certFingerprints;
+
+        /// <summary>
+        /// The hash of the x.509 certificate.
+        /// Structure is documented below.
+        /// </summary>
         public InputList<Inputs.CertificateCertificateDescriptionCertFingerprintGetArgs> CertFingerprints
         {
             get => _certFingerprints ?? (_certFingerprints = new InputList<Inputs.CertificateCertificateDescriptionCertFingerprintGetArgs>());
@@ -38,6 +52,12 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
 
         [Input("configValues")]
         private InputList<Inputs.CertificateCertificateDescriptionConfigValueGetArgs>? _configValues;
+
+        /// <summary>
+        /// (Deprecated)
+        /// Describes some of the technical fields in a certificate.
+        /// Structure is documented below.
+        /// </summary>
         [Obsolete(@"Deprecated in favor of `x509_description`.")]
         public InputList<Inputs.CertificateCertificateDescriptionConfigValueGetArgs> ConfigValues
         {
@@ -47,6 +67,10 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
 
         [Input("crlDistributionPoints")]
         private InputList<string>? _crlDistributionPoints;
+
+        /// <summary>
+        /// Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+        /// </summary>
         public InputList<string> CrlDistributionPoints
         {
             get => _crlDistributionPoints ?? (_crlDistributionPoints = new InputList<string>());
@@ -68,6 +92,11 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
 
         [Input("subjectDescriptions")]
         private InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionGetArgs>? _subjectDescriptions;
+
+        /// <summary>
+        /// Describes some of the values in a certificate that are related to the subject and lifetime.
+        /// Structure is documented below.
+        /// </summary>
         public InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionGetArgs> SubjectDescriptions
         {
             get => _subjectDescriptions ?? (_subjectDescriptions = new InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionGetArgs>());
@@ -76,6 +105,11 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
 
         [Input("subjectKeyIds")]
         private InputList<Inputs.CertificateCertificateDescriptionSubjectKeyIdGetArgs>? _subjectKeyIds;
+
+        /// <summary>
+        /// Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+        /// Structure is documented below.
+        /// </summary>
         public InputList<Inputs.CertificateCertificateDescriptionSubjectKeyIdGetArgs> SubjectKeyIds
         {
             get => _subjectKeyIds ?? (_subjectKeyIds = new InputList<Inputs.CertificateCertificateDescriptionSubjectKeyIdGetArgs>());
@@ -84,6 +118,11 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
 
         [Input("x509Descriptions")]
         private InputList<Inputs.CertificateCertificateDescriptionX509DescriptionGetArgs>? _x509Descriptions;
+
+        /// <summary>
+        /// A structured description of the issued X.509 certificate.
+        /// Structure is documented below.
+        /// </summary>
         public InputList<Inputs.CertificateCertificateDescriptionX509DescriptionGetArgs> X509Descriptions
         {
             get => _x509Descriptions ?? (_x509Descriptions = new InputList<Inputs.CertificateCertificateDescriptionX509DescriptionGetArgs>());

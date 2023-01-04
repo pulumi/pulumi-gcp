@@ -103,13 +103,28 @@ namespace Pulumi.Gcp.GameServices
     [OutputType]
     public sealed class GetGameServerDeploymentRolloutResult
     {
+        /// <summary>
+        /// This field points to the game server config that is
+        /// applied by default to all realms and clusters. For example,
+        /// `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+        /// </summary>
         public readonly string DefaultGameServerConfig;
         public readonly string DeploymentId;
+        /// <summary>
+        /// The game_server_config_overrides contains the per game server config
+        /// overrides. The overrides are processed in the order they are listed. As
+        /// soon as a match is found for a cluster, the rest of the list is not
+        /// processed.  Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGameServerDeploymentRolloutGameServerConfigOverrideResult> GameServerConfigOverrides;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The resource id of the game server deployment
+        /// eg: `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
+        /// </summary>
         public readonly string Name;
         /// <summary>
         /// The ID of the project in which the resource belongs.

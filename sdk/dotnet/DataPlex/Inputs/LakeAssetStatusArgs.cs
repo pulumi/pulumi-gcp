@@ -18,6 +18,9 @@ namespace Pulumi.Gcp.DataPlex.Inputs
         [Input("securityPolicyApplyingAssets")]
         public Input<int>? SecurityPolicyApplyingAssets { get; set; }
 
+        /// <summary>
+        /// Output only. The time when the lake was last updated.
+        /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
 

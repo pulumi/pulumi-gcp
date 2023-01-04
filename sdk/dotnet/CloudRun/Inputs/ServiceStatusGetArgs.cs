@@ -14,23 +14,43 @@ namespace Pulumi.Gcp.CloudRun.Inputs
     {
         [Input("conditions")]
         private InputList<Inputs.ServiceStatusConditionGetArgs>? _conditions;
+
+        /// <summary>
+        /// Array of observed Service Conditions, indicating the current ready state of the service.
+        /// Structure is documented below.
+        /// </summary>
         public InputList<Inputs.ServiceStatusConditionGetArgs> Conditions
         {
             get => _conditions ?? (_conditions = new InputList<Inputs.ServiceStatusConditionGetArgs>());
             set => _conditions = value;
         }
 
+        /// <summary>
+        /// From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created
+        /// from this Service's Configuration. It might not be ready yet, for that use
+        /// LatestReadyRevisionName.
+        /// </summary>
         [Input("latestCreatedRevisionName")]
         public Input<string>? LatestCreatedRevisionName { get; set; }
 
+        /// <summary>
+        /// From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision
+        /// stamped out from this Service's Configuration that has had its "Ready" condition become
+        /// "True".
+        /// </summary>
         [Input("latestReadyRevisionName")]
         public Input<string>? LatestReadyRevisionName { get; set; }
 
+        /// <summary>
+        /// ObservedGeneration is the 'Generation' of the Route that was last processed by the
+        /// controller.
+        /// Clients polling for completed reconciliation should poll until observedGeneration =
+        /// metadata.generation and the Ready condition's status is True or False.
+        /// </summary>
         [Input("observedGeneration")]
         public Input<int>? ObservedGeneration { get; set; }
 
         /// <summary>
-        /// -
         /// URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
         /// and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
         /// but may not contain anything else (e.g. basic auth, url path, etc.)

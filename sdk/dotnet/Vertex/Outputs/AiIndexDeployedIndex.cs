@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Vertex.Outputs
     [OutputType]
     public sealed class AiIndexDeployedIndex
     {
+        /// <summary>
+        /// The ID of the DeployedIndex in the above IndexEndpoint.
+        /// </summary>
         public readonly string? DeployedIndexId;
+        /// <summary>
+        /// A resource name of the IndexEndpoint.
+        /// </summary>
         public readonly string? IndexEndpoint;
 
         [OutputConstructor]

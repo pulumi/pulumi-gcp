@@ -87,7 +87,7 @@ namespace Pulumi.Gcp.Iap
         public Output<string> Brand { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Unique identifier of the OAuth client.
+        /// The OAuth2 ID of the client.
         /// </summary>
         [Output("clientId")]
         public Output<string> ClientId { get; private set; } = null!;
@@ -100,6 +100,7 @@ namespace Pulumi.Gcp.Iap
 
         /// <summary>
         /// Output only. Client secret of the OAuth client.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Output("secret")]
         public Output<string> Secret { get; private set; } = null!;
@@ -185,7 +186,7 @@ namespace Pulumi.Gcp.Iap
         public Input<string>? Brand { get; set; }
 
         /// <summary>
-        /// Output only. Unique identifier of the OAuth client.
+        /// The OAuth2 ID of the client.
         /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
@@ -201,6 +202,7 @@ namespace Pulumi.Gcp.Iap
 
         /// <summary>
         /// Output only. Client secret of the OAuth client.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public Input<string>? Secret
         {

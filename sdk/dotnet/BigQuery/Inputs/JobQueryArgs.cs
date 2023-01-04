@@ -46,7 +46,9 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<Inputs.JobQueryDestinationEncryptionConfigurationArgs>? DestinationEncryptionConfiguration { get; set; }
 
         /// <summary>
-        /// The destination table.
+        /// Describes the table where the query results should be stored.
+        /// This property must be set for large results that exceed the maximum response size.
+        /// For queries that produce anonymous (cached) results, this field will be populated by BigQuery.
         /// Structure is documented below.
         /// </summary>
         [Input("destinationTable")]
@@ -88,8 +90,9 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<string>? Priority { get; set; }
 
         /// <summary>
-        /// Configures a query job.
-        /// Structure is documented below.
+        /// SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+        /// *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+        /// (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
         /// </summary>
         [Input("query", required: true)]
         public Input<string> Query { get; set; } = null!;
@@ -98,10 +101,11 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         private InputList<string>? _schemaUpdateOptions;
 
         /// <summary>
-        /// Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
-        /// supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
-        /// when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators.
-        /// For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified:
+        /// Allows the schema of the destination table to be updated as a side effect of the query job.
+        /// Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
+        /// when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table,
+        /// specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema.
+        /// One or more of the following values are specified:
         /// ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
         /// ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
         /// </summary>

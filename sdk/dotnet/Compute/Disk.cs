@@ -132,7 +132,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Interface { get; private set; } = null!;
 
         /// <summary>
-        /// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        /// The fingerprint used for optimistic locking of this resource.  Used
+        /// internally during updates.
         /// </summary>
         [Output("labelFingerprint")]
         public Output<string> LabelFingerprint { get; private set; } = null!;
@@ -230,14 +231,10 @@ namespace Pulumi.Gcp.Compute
         public Output<int> Size { get; private set; } = null!;
 
         /// <summary>
-        /// The source snapshot used to create this disk. You can provide this as
-        /// a partial or full URL to the resource. If the snapshot is in another
-        /// project than this disk, you must supply a full URL. For example, the
-        /// following are valid values:
-        /// * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
-        /// * `projects/project/global/snapshots/snapshot`
-        /// * `global/snapshots/snapshot`
-        /// * `snapshot`
+        /// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
+        /// snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
+        /// * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
+        /// 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
         /// </summary>
         [Output("snapshot")]
         public Output<string?> Snapshot { get; private set; } = null!;
@@ -256,8 +253,9 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> SourceDisk { get; private set; } = null!;
 
         /// <summary>
-        /// The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
-        /// the current or a previous instance of a given disk name.
+        /// The ID value of the disk used to create this image. This value may
+        /// be used to determine whether the image was taken from the current
+        /// or a previous instance of a given disk name.
         /// </summary>
         [Output("sourceDiskId")]
         public Output<string> SourceDiskId { get; private set; } = null!;
@@ -271,9 +269,11 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.DiskSourceImageEncryptionKey?> SourceImageEncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// The ID value of the image used to create this disk. This value identifies the exact image that was used to create this
-        /// persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated
-        /// under the same name, the source image ID would identify the exact version of the image that was used.
+        /// The ID value of the image used to create this disk. This value
+        /// identifies the exact image that was used to create this persistent
+        /// disk. For example, if you created the persistent disk from an image
+        /// that was later deleted and recreated under the same name, the source
+        /// image ID would identify the exact version of the image that was used.
         /// </summary>
         [Output("sourceImageId")]
         public Output<string> SourceImageId { get; private set; } = null!;
@@ -288,9 +288,12 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.DiskSourceSnapshotEncryptionKey?> SourceSnapshotEncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
-        /// this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
-        /// recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
+        /// The unique ID of the snapshot used to create this disk. This value
+        /// identifies the exact snapshot that was used to create this persistent
+        /// disk. For example, if you created the persistent disk from a snapshot
+        /// that was later deleted and recreated under the same name, the source
+        /// snapshot ID would identify the exact version of the snapshot that was
+        /// used.
         /// </summary>
         [Output("sourceSnapshotId")]
         public Output<string> SourceSnapshotId { get; private set; } = null!;
@@ -303,7 +306,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Type { get; private set; } = null!;
 
         /// <summary>
-        /// Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance
+        /// Links to the users of the disk (attached instances) in form:
+        /// project/zones/zone/instances/instance
         /// </summary>
         [Output("users")]
         public Output<ImmutableArray<string>> Users { get; private set; } = null!;
@@ -489,14 +493,10 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// The source snapshot used to create this disk. You can provide this as
-        /// a partial or full URL to the resource. If the snapshot is in another
-        /// project than this disk, you must supply a full URL. For example, the
-        /// following are valid values:
-        /// * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
-        /// * `projects/project/global/snapshots/snapshot`
-        /// * `global/snapshots/snapshot`
-        /// * `snapshot`
+        /// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
+        /// snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
+        /// * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
+        /// 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
         /// </summary>
         [Input("snapshot")]
         public Input<string>? Snapshot { get; set; }
@@ -601,7 +601,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Interface { get; set; }
 
         /// <summary>
-        /// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        /// The fingerprint used for optimistic locking of this resource.  Used
+        /// internally during updates.
         /// </summary>
         [Input("labelFingerprint")]
         public Input<string>? LabelFingerprint { get; set; }
@@ -711,14 +712,10 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// The source snapshot used to create this disk. You can provide this as
-        /// a partial or full URL to the resource. If the snapshot is in another
-        /// project than this disk, you must supply a full URL. For example, the
-        /// following are valid values:
-        /// * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
-        /// * `projects/project/global/snapshots/snapshot`
-        /// * `global/snapshots/snapshot`
-        /// * `snapshot`
+        /// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
+        /// snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
+        /// * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
+        /// 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
         /// </summary>
         [Input("snapshot")]
         public Input<string>? Snapshot { get; set; }
@@ -737,8 +734,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SourceDisk { get; set; }
 
         /// <summary>
-        /// The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
-        /// the current or a previous instance of a given disk name.
+        /// The ID value of the disk used to create this image. This value may
+        /// be used to determine whether the image was taken from the current
+        /// or a previous instance of a given disk name.
         /// </summary>
         [Input("sourceDiskId")]
         public Input<string>? SourceDiskId { get; set; }
@@ -752,9 +750,11 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.DiskSourceImageEncryptionKeyGetArgs>? SourceImageEncryptionKey { get; set; }
 
         /// <summary>
-        /// The ID value of the image used to create this disk. This value identifies the exact image that was used to create this
-        /// persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated
-        /// under the same name, the source image ID would identify the exact version of the image that was used.
+        /// The ID value of the image used to create this disk. This value
+        /// identifies the exact image that was used to create this persistent
+        /// disk. For example, if you created the persistent disk from an image
+        /// that was later deleted and recreated under the same name, the source
+        /// image ID would identify the exact version of the image that was used.
         /// </summary>
         [Input("sourceImageId")]
         public Input<string>? SourceImageId { get; set; }
@@ -769,9 +769,12 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.DiskSourceSnapshotEncryptionKeyGetArgs>? SourceSnapshotEncryptionKey { get; set; }
 
         /// <summary>
-        /// The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
-        /// this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
-        /// recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
+        /// The unique ID of the snapshot used to create this disk. This value
+        /// identifies the exact snapshot that was used to create this persistent
+        /// disk. For example, if you created the persistent disk from a snapshot
+        /// that was later deleted and recreated under the same name, the source
+        /// snapshot ID would identify the exact version of the snapshot that was
+        /// used.
         /// </summary>
         [Input("sourceSnapshotId")]
         public Input<string>? SourceSnapshotId { get; set; }
@@ -787,7 +790,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _users;
 
         /// <summary>
-        /// Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance
+        /// Links to the users of the disk (attached instances) in form:
+        /// project/zones/zone/instances/instance
         /// </summary>
         public InputList<string> Users
         {

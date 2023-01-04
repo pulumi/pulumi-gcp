@@ -39,24 +39,23 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<Inputs.URLMapPathMatcherDefaultUrlRedirectGetArgs>? DefaultUrlRedirect { get; set; }
 
         /// <summary>
-        /// Description of this test case.
+        /// An optional description of this resource. Provide this property when you create
+        /// the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
         /// Specifies changes to request and response headers that need to take effect for
-        /// the selected backendService.
-        /// headerAction specified here take effect before headerAction in the enclosing
-        /// HttpRouteRule, PathMatcher and UrlMap.
+        /// the selected backendService. HeaderAction specified here are applied after the
+        /// matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap
         /// Structure is documented below.
         /// </summary>
         [Input("headerAction")]
         public Input<Inputs.URLMapPathMatcherHeaderActionGetArgs>? HeaderAction { get; set; }
 
         /// <summary>
-        /// The name of the query parameter to match. The query parameter must exist in the
-        /// request, in the absence of which the request match fails.
+        /// The name to which this PathMatcher is referred by the HostRule.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

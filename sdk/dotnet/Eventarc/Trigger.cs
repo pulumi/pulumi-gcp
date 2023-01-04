@@ -134,8 +134,7 @@ namespace Pulumi.Gcp.Eventarc
         public Output<Outputs.TriggerDestination> Destination { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create
-        /// requests to ensure the client has an up-to-date value before proceeding.
+        /// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -147,7 +146,7 @@ namespace Pulumi.Gcp.Eventarc
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+        /// The location for the resource
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -183,8 +182,7 @@ namespace Pulumi.Gcp.Eventarc
         public Output<ImmutableArray<Outputs.TriggerTransport>> Transports { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain
-        /// unchanged until the resource is deleted.
+        /// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
@@ -266,7 +264,7 @@ namespace Pulumi.Gcp.Eventarc
         }
 
         /// <summary>
-        /// Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+        /// The location for the resource
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -352,8 +350,7 @@ namespace Pulumi.Gcp.Eventarc
         public Input<Inputs.TriggerDestinationGetArgs>? Destination { get; set; }
 
         /// <summary>
-        /// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create
-        /// requests to ensure the client has an up-to-date value before proceeding.
+        /// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
@@ -371,7 +368,7 @@ namespace Pulumi.Gcp.Eventarc
         }
 
         /// <summary>
-        /// Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+        /// The location for the resource
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -419,8 +416,7 @@ namespace Pulumi.Gcp.Eventarc
         }
 
         /// <summary>
-        /// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain
-        /// unchanged until the resource is deleted.
+        /// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }

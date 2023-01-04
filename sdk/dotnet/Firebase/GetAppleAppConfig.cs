@@ -66,7 +66,13 @@ namespace Pulumi.Gcp.Firebase
     public sealed class GetAppleAppConfigResult
     {
         public readonly string AppId;
+        /// <summary>
+        /// The content of the XML configuration file as a base64-encoded string.
+        /// </summary>
         public readonly string ConfigFileContents;
+        /// <summary>
+        /// The filename that the configuration artifact for the IosApp is typically saved as.
+        /// </summary>
         public readonly string ConfigFilename;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

@@ -88,7 +88,7 @@ namespace Pulumi.Gcp.DataPlex
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+        /// The name of the asset.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -124,8 +124,7 @@ namespace Pulumi.Gcp.DataPlex
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and
-        /// re-created with the same name.
+        /// Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
@@ -231,7 +230,7 @@ namespace Pulumi.Gcp.DataPlex
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+        /// The name of the asset.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -323,7 +322,7 @@ namespace Pulumi.Gcp.DataPlex
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+        /// The name of the asset.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -371,8 +370,7 @@ namespace Pulumi.Gcp.DataPlex
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and
-        /// re-created with the same name.
+        /// Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }

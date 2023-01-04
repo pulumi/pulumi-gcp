@@ -14,9 +14,7 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     public sealed class TriggerGitFileSource
     {
         /// <summary>
-        /// Path at which to mount the volume.
-        /// Paths must be absolute and cannot conflict with other volume paths on the same
-        /// build step or with certain reserved volume paths.
+        /// The path of the file, with the repo root as the root of the path.
         /// </summary>
         public readonly string Path;
         /// <summary>
@@ -32,7 +30,8 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// </summary>
         public readonly string? Revision;
         /// <summary>
-        /// The URI of the repo (required).
+        /// The URI of the repo (optional). If unspecified, the repo from which the trigger
+        /// invocation originated is assumed to be the repo from which to read the specified path.
         /// </summary>
         public readonly string? Uri;
 

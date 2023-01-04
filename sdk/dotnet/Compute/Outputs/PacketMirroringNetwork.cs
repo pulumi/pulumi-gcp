@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class PacketMirroringNetwork
     {
         /// <summary>
-        /// The URL of the instances where this rule should be active.
+        /// The full self_link URL of the network where this rule is active.
         /// </summary>
         public readonly string Url;
 

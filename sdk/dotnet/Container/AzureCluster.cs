@@ -153,8 +153,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> Endpoint { get; private set; } = null!;
 
         /// <summary>
-        /// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-        /// and delete requests to ensure the client has an up-to-date value before proceeding.
+        /// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -190,6 +189,8 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.AzureClusterNetworking> Networking { get; private set; } = null!;
 
         /// <summary>
+        /// The number of the Fleet host project where this cluster will be registered.
+        /// (Optional)
         /// The project for the resource
         /// </summary>
         [Output("project")]
@@ -202,14 +203,13 @@ namespace Pulumi.Gcp.Container
         public Output<bool> Reconciling { get; private set; } = null!;
 
         /// <summary>
-        /// The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/&lt;subscription-id&gt;/resourceGroups/&lt;resource-group-name&gt;`
+        /// The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-        /// STOPPING, ERROR, DEGRADED
+        /// Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -351,13 +351,15 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.AzureClusterNetworkingArgs> Networking { get; set; } = null!;
 
         /// <summary>
+        /// The number of the Fleet host project where this cluster will be registered.
+        /// (Optional)
         /// The project for the resource
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/&lt;subscription-id&gt;/resourceGroups/&lt;resource-group-name&gt;`
+        /// The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
         /// </summary>
         [Input("resourceGroupId", required: true)]
         public Input<string> ResourceGroupId { get; set; } = null!;
@@ -425,8 +427,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Endpoint { get; set; }
 
         /// <summary>
-        /// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-        /// and delete requests to ensure the client has an up-to-date value before proceeding.
+        /// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
@@ -462,6 +463,8 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.AzureClusterNetworkingGetArgs>? Networking { get; set; }
 
         /// <summary>
+        /// The number of the Fleet host project where this cluster will be registered.
+        /// (Optional)
         /// The project for the resource
         /// </summary>
         [Input("project")]
@@ -474,14 +477,13 @@ namespace Pulumi.Gcp.Container
         public Input<bool>? Reconciling { get; set; }
 
         /// <summary>
-        /// The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/&lt;subscription-id&gt;/resourceGroups/&lt;resource-group-name&gt;`
+        /// The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-        /// STOPPING, ERROR, DEGRADED
+        /// Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

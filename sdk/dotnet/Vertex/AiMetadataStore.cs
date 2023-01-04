@@ -53,8 +53,7 @@ namespace Pulumi.Gcp.Vertex
     public partial class AiMetadataStore : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-        /// nine fractional digits.
+        /// The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -93,13 +92,13 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// State information of the MetadataStore.
+        /// Structure is documented below.
         /// </summary>
         [Output("states")]
         public Output<ImmutableArray<Outputs.AiMetadataStoreState>> States { get; private set; } = null!;
 
         /// <summary>
-        /// The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-        /// to nine fractional digits.
+        /// The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -191,8 +190,7 @@ namespace Pulumi.Gcp.Vertex
     public sealed class AiMetadataStoreState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-        /// nine fractional digits.
+        /// The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -234,6 +232,7 @@ namespace Pulumi.Gcp.Vertex
 
         /// <summary>
         /// State information of the MetadataStore.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AiMetadataStoreStateGetArgs> States
         {
@@ -242,8 +241,7 @@ namespace Pulumi.Gcp.Vertex
         }
 
         /// <summary>
-        /// The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-        /// to nine fractional digits.
+        /// The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Tpu.Outputs
     [OutputType]
     public sealed class NodeNetworkEndpoint
     {
+        /// <summary>
+        /// The IP address of this network endpoint.
+        /// </summary>
         public readonly string? IpAddress;
+        /// <summary>
+        /// The port of this network endpoint.
+        /// </summary>
         public readonly int? Port;
 
         [OutputConstructor]

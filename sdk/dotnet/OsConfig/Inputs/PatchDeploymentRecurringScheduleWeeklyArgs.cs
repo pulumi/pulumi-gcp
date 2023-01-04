@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
     public sealed class PatchDeploymentRecurringScheduleWeeklyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A day of the week.
+        /// IANA Time Zone Database time zone, e.g. "America/New_York".
         /// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
         /// </summary>
         [Input("dayOfWeek", required: true)]

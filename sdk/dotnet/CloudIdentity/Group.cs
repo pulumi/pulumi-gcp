@@ -111,7 +111,8 @@ namespace Pulumi.Gcp.CloudIdentity
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name of the Group in the format: groups/{group_id}, where group_id is the unique ID assigned to the Group.
+        /// Resource name of the Group in the format: groups/{group_id}, where group_id
+        /// is the unique ID assigned to the Group.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -295,7 +296,8 @@ namespace Pulumi.Gcp.CloudIdentity
         }
 
         /// <summary>
-        /// Resource name of the Group in the format: groups/{group_id}, where group_id is the unique ID assigned to the Group.
+        /// Resource name of the Group in the format: groups/{group_id}, where group_id
+        /// is the unique ID assigned to the Group.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

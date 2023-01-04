@@ -13,8 +13,7 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterServiceExternalIpsConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable the PodSecurityPolicy controller for this cluster.
-        /// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        /// Controls whether external ips specified by a service will be allowed. It is enabled by default.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;

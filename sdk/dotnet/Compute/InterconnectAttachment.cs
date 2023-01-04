@@ -149,7 +149,8 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<string>> CandidateSubnets { get; private set; } = null!;
 
         /// <summary>
-        /// IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
+        /// IPv4 address + prefix length to be configured on Cloud Router
+        /// Interface for this interconnect attachment.
         /// </summary>
         [Output("cloudRouterIpAddress")]
         public Output<string> CloudRouterIpAddress { get; private set; } = null!;
@@ -161,7 +162,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> CreationTimestamp { get; private set; } = null!;
 
         /// <summary>
-        /// IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
+        /// IPv4 address + prefix length to be configured on the customer
+        /// router subinterface for this interconnect attachment.
         /// </summary>
         [Output("customerRouterIpAddress")]
         public Output<string> CustomerRouterIpAddress { get; private set; } = null!;
@@ -202,8 +204,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Encryption { get; private set; } = null!;
 
         /// <summary>
-        /// Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity
-        /// issues.
+        /// Google reference ID, to be used when raising support tickets with
+        /// Google or otherwise to debug backend connectivity issues.
         /// </summary>
         [Output("googleReferenceId")]
         public Output<string> GoogleReferenceId { get; private set; } = null!;
@@ -256,22 +258,25 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// [Output only for type PARTNER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to
-        /// initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
+        /// [Output only for type PARTNER. Not present for DEDICATED]. The opaque
+        /// identifier of an PARTNER attachment used to initiate provisioning with
+        /// a selected partner. Of the form "XXXXX/region/domain"
         /// </summary>
         [Output("pairingKey")]
         public Output<string> PairingKey { get; private set; } = null!;
 
         /// <summary>
-        /// [Output only for type PARTNER. Not present for DEDICATED]. Optional BGP ASN for the router that should be supplied by a
-        /// layer 3 Partner if they configured BGP on behalf of the customer.
+        /// [Output only for type PARTNER. Not present for DEDICATED]. Optional
+        /// BGP ASN for the router that should be supplied by a layer 3 Partner if
+        /// they configured BGP on behalf of the customer.
         /// </summary>
         [Output("partnerAsn")]
         public Output<string> PartnerAsn { get; private set; } = null!;
 
         /// <summary>
-        /// Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
-        /// to is of type DEDICATED.
+        /// Information specific to an InterconnectAttachment. This property
+        /// is populated if the interconnect that this is attached to is of type DEDICATED.
+        /// Structure is documented below.
         /// </summary>
         [Output("privateInterconnectInfos")]
         public Output<ImmutableArray<Outputs.InterconnectAttachmentPrivateInterconnectInfo>> PrivateInterconnectInfos { get; private set; } = null!;
@@ -577,7 +582,8 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
+        /// IPv4 address + prefix length to be configured on Cloud Router
+        /// Interface for this interconnect attachment.
         /// </summary>
         [Input("cloudRouterIpAddress")]
         public Input<string>? CloudRouterIpAddress { get; set; }
@@ -589,7 +595,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? CreationTimestamp { get; set; }
 
         /// <summary>
-        /// IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
+        /// IPv4 address + prefix length to be configured on the customer
+        /// router subinterface for this interconnect attachment.
         /// </summary>
         [Input("customerRouterIpAddress")]
         public Input<string>? CustomerRouterIpAddress { get; set; }
@@ -630,8 +637,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Encryption { get; set; }
 
         /// <summary>
-        /// Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity
-        /// issues.
+        /// Google reference ID, to be used when raising support tickets with
+        /// Google or otherwise to debug backend connectivity issues.
         /// </summary>
         [Input("googleReferenceId")]
         public Input<string>? GoogleReferenceId { get; set; }
@@ -690,15 +697,17 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// [Output only for type PARTNER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to
-        /// initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
+        /// [Output only for type PARTNER. Not present for DEDICATED]. The opaque
+        /// identifier of an PARTNER attachment used to initiate provisioning with
+        /// a selected partner. Of the form "XXXXX/region/domain"
         /// </summary>
         [Input("pairingKey")]
         public Input<string>? PairingKey { get; set; }
 
         /// <summary>
-        /// [Output only for type PARTNER. Not present for DEDICATED]. Optional BGP ASN for the router that should be supplied by a
-        /// layer 3 Partner if they configured BGP on behalf of the customer.
+        /// [Output only for type PARTNER. Not present for DEDICATED]. Optional
+        /// BGP ASN for the router that should be supplied by a layer 3 Partner if
+        /// they configured BGP on behalf of the customer.
         /// </summary>
         [Input("partnerAsn")]
         public Input<string>? PartnerAsn { get; set; }
@@ -707,8 +716,9 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.InterconnectAttachmentPrivateInterconnectInfoGetArgs>? _privateInterconnectInfos;
 
         /// <summary>
-        /// Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
-        /// to is of type DEDICATED.
+        /// Information specific to an InterconnectAttachment. This property
+        /// is populated if the interconnect that this is attached to is of type DEDICATED.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.InterconnectAttachmentPrivateInterconnectInfoGetArgs> PrivateInterconnectInfos
         {

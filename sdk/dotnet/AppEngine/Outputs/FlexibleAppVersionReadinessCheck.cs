@@ -19,11 +19,11 @@ namespace Pulumi.Gcp.AppEngine.Outputs
         /// </summary>
         public readonly string? AppStartTimeout;
         /// <summary>
-        /// Interval between health checks.
+        /// Interval between health checks.  Default: "5s".
         /// </summary>
         public readonly string? CheckInterval;
         /// <summary>
-        /// Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
+        /// Number of consecutive failed checks required before removing traffic. Default: 2.
         /// </summary>
         public readonly double? FailureThreshold;
         /// <summary>
@@ -31,12 +31,11 @@ namespace Pulumi.Gcp.AppEngine.Outputs
         /// </summary>
         public readonly string? Host;
         /// <summary>
-        /// Path to the static files matched by the URL pattern, from the application root directory.
-        /// The path can refer to text matched in groupings in the URL pattern.
+        /// The request path.
         /// </summary>
         public readonly string Path;
         /// <summary>
-        /// Number of consecutive successful checks required before considering the VM healthy. Default: 2.
+        /// Number of consecutive successful checks required before receiving traffic. Default: 2.
         /// </summary>
         public readonly double? SuccessThreshold;
         /// <summary>

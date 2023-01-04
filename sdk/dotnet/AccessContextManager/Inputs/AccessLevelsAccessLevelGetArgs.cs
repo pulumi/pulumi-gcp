@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         public Input<Inputs.AccessLevelsAccessLevelCustomGetArgs>? Custom { get; set; }
 
         /// <summary>
-        /// Description of the expression
+        /// Description of the AccessLevel and its use. Does not affect behavior.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Title for the expression, i.e. a short string describing its purpose.
+        /// Human readable title. Must be unique within the Policy.
         /// </summary>
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;

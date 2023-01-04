@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class PacketMirroringCollectorIlb
     {
         /// <summary>
-        /// The URL of the instances where this rule should be active.
+        /// The URL of the forwarding rule.
         /// </summary>
         public readonly string Url;
 

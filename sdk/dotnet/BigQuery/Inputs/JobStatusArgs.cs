@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.BigQuery.Inputs
     {
         [Input("errorResults")]
         private InputList<Inputs.JobStatusErrorResultArgs>? _errorResults;
+
+        /// <summary>
+        /// Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
+        /// Structure is documented below.
+        /// </summary>
         public InputList<Inputs.JobStatusErrorResultArgs> ErrorResults
         {
             get => _errorResults ?? (_errorResults = new InputList<Inputs.JobStatusErrorResultArgs>());
@@ -22,12 +27,22 @@ namespace Pulumi.Gcp.BigQuery.Inputs
 
         [Input("errors")]
         private InputList<Inputs.JobStatusErrorArgs>? _errors;
+
+        /// <summary>
+        /// The first errors encountered during the running of the job. The final message
+        /// includes the number of errors that caused the process to stop. Errors here do
+        /// not necessarily mean that the job has not completed or was unsuccessful.
+        /// Structure is documented below.
+        /// </summary>
         public InputList<Inputs.JobStatusErrorArgs> Errors
         {
             get => _errors ?? (_errors = new InputList<Inputs.JobStatusErrorArgs>());
             set => _errors = value;
         }
 
+        /// <summary>
+        /// Running state of the job. Valid states include 'PENDING', 'RUNNING', and 'DONE'.
+        /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 

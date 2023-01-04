@@ -18,7 +18,6 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// -
         /// [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
         /// </summary>
         public readonly string? State;

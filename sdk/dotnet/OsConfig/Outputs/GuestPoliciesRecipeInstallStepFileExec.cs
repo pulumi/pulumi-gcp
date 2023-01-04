@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     public sealed class GuestPoliciesRecipeInstallStepFileExec
     {
         /// <summary>
-        /// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+        /// A list of possible return values that the program can return to indicate a success. Defaults to [0].
         /// </summary>
         public readonly string? AllowedExitCodes;
         /// <summary>

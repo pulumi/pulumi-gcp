@@ -170,8 +170,7 @@ namespace Pulumi.Gcp.Alloydb
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or
-        /// system actions like failover or maintenance.
+        /// If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
         /// </summary>
         [Output("reconciling")]
         public Output<bool> Reconciling { get; private set; } = null!;
@@ -183,8 +182,7 @@ namespace Pulumi.Gcp.Alloydb
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is
-        /// retained until it is deleted.
+        /// Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
@@ -354,8 +352,7 @@ namespace Pulumi.Gcp.Alloydb
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or
-        /// system actions like failover or maintenance.
+        /// If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
         /// </summary>
         [Input("reconciling")]
         public Input<bool>? Reconciling { get; set; }
@@ -367,8 +364,7 @@ namespace Pulumi.Gcp.Alloydb
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is
-        /// retained until it is deleted.
+        /// Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }

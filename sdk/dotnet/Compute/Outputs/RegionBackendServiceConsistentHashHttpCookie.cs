@@ -22,8 +22,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? Path;
         /// <summary>
-        /// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
-        /// (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+        /// Lifetime of the cookie.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.RegionBackendServiceConsistentHashHttpCookieTtl? Ttl;
 

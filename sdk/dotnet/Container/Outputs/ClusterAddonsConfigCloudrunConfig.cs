@@ -14,8 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterAddonsConfigCloudrunConfig
     {
         /// <summary>
-        /// The status of the Istio addon, which makes it easy to set up Istio for services in a
-        /// cluster. It is disabled by default. Set `disabled = false` to enable.
+        /// The status of the CloudRun addon. It is disabled by default. Set `disabled=false` to enable.
         /// </summary>
         public readonly bool Disabled;
         /// <summary>

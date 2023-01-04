@@ -14,15 +14,25 @@ namespace Pulumi.Gcp.Iot.Inputs
     {
         [Input("details")]
         private InputList<ImmutableDictionary<string, object>>? _details;
+
+        /// <summary>
+        /// A list of messages that carry the error details.
+        /// </summary>
         public InputList<ImmutableDictionary<string, object>> Details
         {
             get => _details ?? (_details = new InputList<ImmutableDictionary<string, object>>());
             set => _details = value;
         }
 
+        /// <summary>
+        /// A developer-facing error message, which should be in English.
+        /// </summary>
         [Input("message")]
         public Input<string>? Message { get; set; }
 
+        /// <summary>
+        /// The status code, which should be an enum value of google.rpc.Code.
+        /// </summary>
         [Input("number")]
         public Input<int>? Number { get; set; }
 

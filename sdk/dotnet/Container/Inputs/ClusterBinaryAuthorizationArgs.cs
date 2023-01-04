@@ -13,8 +13,7 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterBinaryAuthorizationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable the PodSecurityPolicy controller for this cluster.
-        /// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        /// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

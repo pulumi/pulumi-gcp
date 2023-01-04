@@ -38,7 +38,8 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
         public Input<bool>? InvertRegex { get; set; }
 
         /// <summary>
-        /// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+        /// ID of the project that owns the Cloud Source Repository. If omitted, the
+        /// project ID requesting the build is assumed.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }

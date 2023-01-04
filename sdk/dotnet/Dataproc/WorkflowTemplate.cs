@@ -137,6 +137,10 @@ namespace Pulumi.Gcp.Dataproc
         public Output<ImmutableArray<Outputs.WorkflowTemplateJob>> Jobs { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
+        /// (Optional)
+        /// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+        /// (Optional)
         /// Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
         /// </summary>
         [Output("labels")]
@@ -149,7 +153,7 @@ namespace Pulumi.Gcp.Dataproc
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
+        /// Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -252,6 +256,10 @@ namespace Pulumi.Gcp.Dataproc
         private InputMap<string>? _labels;
 
         /// <summary>
+        /// Optional. The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
+        /// (Optional)
+        /// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+        /// (Optional)
         /// Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
         /// </summary>
         public InputMap<string> Labels
@@ -267,7 +275,7 @@ namespace Pulumi.Gcp.Dataproc
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
+        /// Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -338,6 +346,10 @@ namespace Pulumi.Gcp.Dataproc
         private InputMap<string>? _labels;
 
         /// <summary>
+        /// Optional. The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
+        /// (Optional)
+        /// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+        /// (Optional)
         /// Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
         /// </summary>
         public InputMap<string> Labels
@@ -353,7 +365,7 @@ namespace Pulumi.Gcp.Dataproc
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
+        /// Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -13,7 +13,6 @@ namespace Pulumi.Gcp.Memcache.Inputs
     public sealed class InstanceMemcacheParametersArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// -
         /// This is a unique ID associated with this set of parameters.
         /// </summary>
         [Input("id")]

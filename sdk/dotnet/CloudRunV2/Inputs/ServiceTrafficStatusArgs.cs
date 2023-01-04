@@ -19,6 +19,8 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         public Input<int>? Percent { get; set; }
 
         /// <summary>
+        /// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+        /// (Optional)
         /// Revision to which to send this portion of traffic, if traffic allocation is by revision.
         /// </summary>
         [Input("revision")]
@@ -37,6 +39,9 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// Displays the target URI.
+        /// </summary>
         [Input("uri")]
         public Input<string>? Uri { get; set; }
 

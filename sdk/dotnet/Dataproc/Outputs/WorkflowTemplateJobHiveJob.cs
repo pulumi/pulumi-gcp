@@ -18,15 +18,15 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly bool? ContinueOnFailure;
         /// <summary>
-        /// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        /// Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
         /// </summary>
         public readonly ImmutableArray<string> JarFileUris;
         /// <summary>
-        /// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+        /// Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Properties;
         /// <summary>
-        /// The HCFS URI of the script that contains SQL queries.
+        /// The HCFS URI of the script that contains Hive queries.
         /// </summary>
         public readonly string? QueryFileUri;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly Outputs.WorkflowTemplateJobHiveJobQueryList? QueryList;
         /// <summary>
-        /// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
+        /// Optional. Mapping of query variable names to values (equivalent to the Hive command: `SET name="value";`).
         /// </summary>
         public readonly ImmutableDictionary<string, string>? ScriptVariables;
 
