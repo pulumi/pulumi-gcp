@@ -11,9 +11,23 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EntryBigqueryTableSpecTableSpec {
+    /**
+     * @return If the table is a dated shard, i.e., with name pattern [prefix]YYYYMMDD, groupedEntry is the
+     * Data Catalog resource name of the date sharded grouped entry, for example,
+     * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}.
+     * Otherwise, groupedEntry is empty.
+     * 
+     */
     private @Nullable String groupedEntry;
 
     private EntryBigqueryTableSpecTableSpec() {}
+    /**
+     * @return If the table is a dated shard, i.e., with name pattern [prefix]YYYYMMDD, groupedEntry is the
+     * Data Catalog resource name of the date sharded grouped entry, for example,
+     * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}.
+     * Otherwise, groupedEntry is empty.
+     * 
+     */
     public Optional<String> groupedEntry() {
         return Optional.ofNullable(this.groupedEntry);
     }

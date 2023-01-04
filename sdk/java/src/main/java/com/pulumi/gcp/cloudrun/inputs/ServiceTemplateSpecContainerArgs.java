@@ -86,7 +86,6 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
     }
 
     /**
-     * - 
      * (Optional, Deprecated)
      * List of sources to populate environment variables in the container.
      * All invalid keys will be reported as an event when the container is starting.
@@ -104,8 +103,7 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
     private @Nullable Output<List<ServiceTemplateSpecContainerEnvFromArgs>> envFroms;
 
     /**
-     * @return -
-     * (Optional, Deprecated)
+     * @return (Optional, Deprecated)
      * List of sources to populate environment variables in the container.
      * All invalid keys will be reported as an event when the container is starting.
      * When a key exists in multiple sources, the value associated with the last source will
@@ -246,7 +244,6 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
     }
 
     /**
-     * - 
      * (Optional, Deprecated)
      * Container&#39;s working directory.
      * If not specified, the container runtime&#39;s default will be used, which
@@ -261,8 +258,7 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
     private @Nullable Output<String> workingDir;
 
     /**
-     * @return -
-     * (Optional, Deprecated)
+     * @return (Optional, Deprecated)
      * Container&#39;s working directory.
      * If not specified, the container runtime&#39;s default will be used, which
      * might be configured in the container image.
@@ -421,8 +417,7 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
         }
 
         /**
-         * @param envFroms -
-         * (Optional, Deprecated)
+         * @param envFroms (Optional, Deprecated)
          * List of sources to populate environment variables in the container.
          * All invalid keys will be reported as an event when the container is starting.
          * When a key exists in multiple sources, the value associated with the last source will
@@ -443,8 +438,7 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
         }
 
         /**
-         * @param envFroms -
-         * (Optional, Deprecated)
+         * @param envFroms (Optional, Deprecated)
          * List of sources to populate environment variables in the container.
          * All invalid keys will be reported as an event when the container is starting.
          * When a key exists in multiple sources, the value associated with the last source will
@@ -464,8 +458,7 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
         }
 
         /**
-         * @param envFroms -
-         * (Optional, Deprecated)
+         * @param envFroms (Optional, Deprecated)
          * List of sources to populate environment variables in the container.
          * All invalid keys will be reported as an event when the container is starting.
          * When a key exists in multiple sources, the value associated with the last source will
@@ -682,8 +675,7 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
         }
 
         /**
-         * @param workingDir -
-         * (Optional, Deprecated)
+         * @param workingDir (Optional, Deprecated)
          * Container&#39;s working directory.
          * If not specified, the container runtime&#39;s default will be used, which
          * might be configured in the container image.
@@ -701,8 +693,7 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
         }
 
         /**
-         * @param workingDir -
-         * (Optional, Deprecated)
+         * @param workingDir (Optional, Deprecated)
          * Container&#39;s working directory.
          * If not specified, the container runtime&#39;s default will be used, which
          * might be configured in the container image.

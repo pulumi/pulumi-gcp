@@ -13,13 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch {
     /**
-     * @return The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch.
+     * @return The value of the header should exactly match contents of exactMatch.
      * 
      */
     private @Nullable String exactMatch;
     /**
-     * @return Headers to remove from the response prior to sending it back to the client.
-     * Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+     * @return The header name to match on.
      * 
      */
     private String headerName;
@@ -35,7 +34,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMat
      */
     private @Nullable String prefixMatch;
     /**
-     * @return Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not.
+     * @return A header with the contents of headerName must exist. The match takes place whether or not the request&#39;s header has a value.
      * 
      */
     private @Nullable Boolean presentMatch;
@@ -47,15 +46,14 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMat
 
     private EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch() {}
     /**
-     * @return The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch.
+     * @return The value of the header should exactly match contents of exactMatch.
      * 
      */
     public Optional<String> exactMatch() {
         return Optional.ofNullable(this.exactMatch);
     }
     /**
-     * @return Headers to remove from the response prior to sending it back to the client.
-     * Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+     * @return The header name to match on.
      * 
      */
     public String headerName() {
@@ -77,7 +75,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMat
         return Optional.ofNullable(this.prefixMatch);
     }
     /**
-     * @return Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not.
+     * @return A header with the contents of headerName must exist. The match takes place whether or not the request&#39;s header has a value.
      * 
      */
     public Optional<Boolean> presentMatch() {

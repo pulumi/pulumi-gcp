@@ -18,23 +18,23 @@ public final class ConnectionProfilePostgresqlProfile {
      */
     private String database;
     /**
-     * @return Hostname for the SSH tunnel.
+     * @return Hostname for the PostgreSQL connection.
      * 
      */
     private String hostname;
     /**
-     * @return SSH password.
+     * @return Password for the PostgreSQL connection.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     private String password;
     /**
-     * @return Port for the SSH tunnel.
+     * @return Port for the PostgreSQL connection.
      * 
      */
     private @Nullable Integer port;
     /**
-     * @return Username for the SSH tunnel.
+     * @return Username for the PostgreSQL connection.
      * 
      */
     private String username;
@@ -48,14 +48,14 @@ public final class ConnectionProfilePostgresqlProfile {
         return this.database;
     }
     /**
-     * @return Hostname for the SSH tunnel.
+     * @return Hostname for the PostgreSQL connection.
      * 
      */
     public String hostname() {
         return this.hostname;
     }
     /**
-     * @return SSH password.
+     * @return Password for the PostgreSQL connection.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
@@ -63,14 +63,14 @@ public final class ConnectionProfilePostgresqlProfile {
         return this.password;
     }
     /**
-     * @return Port for the SSH tunnel.
+     * @return Port for the PostgreSQL connection.
      * 
      */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return Username for the SSH tunnel.
+     * @return Username for the PostgreSQL connection.
      * 
      */
     public String username() {

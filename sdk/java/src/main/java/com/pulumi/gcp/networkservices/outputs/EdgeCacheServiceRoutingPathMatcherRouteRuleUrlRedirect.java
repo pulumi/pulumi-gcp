@@ -39,8 +39,6 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect {
     /**
      * @return The HTTP Status code to use for this RedirectAction.
      * The supported values are:
-     * - `MOVED_PERMANENTLY_DEFAULT`, which is the default value and corresponds to 301.
-     * - `FOUND`, which corresponds to 302.
      * 
      */
     private @Nullable String redirectResponseCode;
@@ -86,8 +84,6 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect {
     /**
      * @return The HTTP Status code to use for this RedirectAction.
      * The supported values are:
-     * - `MOVED_PERMANENTLY_DEFAULT`, which is the default value and corresponds to 301.
-     * - `FOUND`, which corresponds to 302.
      * 
      */
     public Optional<String> redirectResponseCode() {

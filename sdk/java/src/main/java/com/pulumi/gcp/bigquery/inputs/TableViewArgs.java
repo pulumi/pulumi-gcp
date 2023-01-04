@@ -17,14 +17,14 @@ public final class TableViewArgs extends com.pulumi.resources.ResourceArgs {
     public static final TableViewArgs Empty = new TableViewArgs();
 
     /**
-     * A query whose result is persisted.
+     * A query that BigQuery executes when the view is referenced.
      * 
      */
     @Import(name="query", required=true)
     private Output<String> query;
 
     /**
-     * @return A query whose result is persisted.
+     * @return A query that BigQuery executes when the view is referenced.
      * 
      */
     public Output<String> query() {
@@ -74,7 +74,7 @@ public final class TableViewArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param query A query whose result is persisted.
+         * @param query A query that BigQuery executes when the view is referenced.
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class TableViewArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param query A query whose result is persisted.
+         * @param query A query that BigQuery executes when the view is referenced.
          * 
          * @return builder
          * 

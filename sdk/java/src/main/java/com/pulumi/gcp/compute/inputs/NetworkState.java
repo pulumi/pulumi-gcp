@@ -92,14 +92,16 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The gateway address for default routing out of the network. This value is selected by GCP.
+     * The gateway address for default routing out of the network. This value
+     * is selected by GCP.
      * 
      */
     @Import(name="gatewayIpv4")
     private @Nullable Output<String> gatewayIpv4;
 
     /**
-     * @return The gateway address for default routing out of the network. This value is selected by GCP.
+     * @return The gateway address for default routing out of the network. This value
+     * is selected by GCP.
      * 
      */
     public Optional<Output<String>> gatewayIpv4() {
@@ -363,7 +365,8 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gatewayIpv4 The gateway address for default routing out of the network. This value is selected by GCP.
+         * @param gatewayIpv4 The gateway address for default routing out of the network. This value
+         * is selected by GCP.
          * 
          * @return builder
          * 
@@ -374,7 +377,8 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gatewayIpv4 The gateway address for default routing out of the network. This value is selected by GCP.
+         * @param gatewayIpv4 The gateway address for default routing out of the network. This value
+         * is selected by GCP.
          * 
          * @return builder
          * 

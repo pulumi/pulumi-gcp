@@ -105,16 +105,14 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * A unique resource name for this UptimeCheckConfig. The format is
-     * projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+     * A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return A unique resource name for this UptimeCheckConfig. The format is
-     * projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+     * @return A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
      * 
      */
     public Optional<Output<String>> name() {
@@ -393,8 +391,7 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name A unique resource name for this UptimeCheckConfig. The format is
-         * projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+         * @param name A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
          * 
          * @return builder
          * 
@@ -405,8 +402,7 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name A unique resource name for this UptimeCheckConfig. The format is
-         * projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+         * @param name A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
          * 
          * @return builder
          * 

@@ -27,7 +27,7 @@ public final class FunctionSecretEnvironmentVariable {
      */
     private String secret;
     /**
-     * @return Version of the secret (version number or the string &#34;latest&#34;). It is preferable to use &#34;latest&#34; version with secret volumes as secret value changes are reflected immediately.
+     * @return Version of the secret (version number or the string &#34;latest&#34;). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
      * 
      */
     private String version;
@@ -55,7 +55,7 @@ public final class FunctionSecretEnvironmentVariable {
         return this.secret;
     }
     /**
-     * @return Version of the secret (version number or the string &#34;latest&#34;). It is preferable to use &#34;latest&#34; version with secret volumes as secret value changes are reflected immediately.
+     * @return Version of the secret (version number or the string &#34;latest&#34;). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
      * 
      */
     public String version() {

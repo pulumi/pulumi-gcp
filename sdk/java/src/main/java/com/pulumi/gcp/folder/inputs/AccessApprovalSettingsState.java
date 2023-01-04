@@ -53,16 +53,14 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
     }
 
     /**
-     * If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-     * of the Folder.
+     * If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Folder.
      * 
      */
     @Import(name="enrolledAncestor")
     private @Nullable Output<Boolean> enrolledAncestor;
 
     /**
-     * @return If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-     * of the Folder.
+     * @return If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Folder.
      * 
      */
     public Optional<Output<Boolean>> enrolledAncestor() {
@@ -108,20 +106,20 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
     }
 
     /**
-     * If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-     * this Folder (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the correct permissions on it,
-     * etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-     * top-down.
+     * If the field is true, that indicates that there is some configuration issue with the active_key_version
+     * configured on this Folder (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the
+     * correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+     * as key versions are inherited top-down.
      * 
      */
     @Import(name="invalidKeyVersion")
     private @Nullable Output<Boolean> invalidKeyVersion;
 
     /**
-     * @return If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-     * this Folder (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the correct permissions on it,
-     * etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-     * top-down.
+     * @return If the field is true, that indicates that there is some configuration issue with the active_key_version
+     * configured on this Folder (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the
+     * correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+     * as key versions are inherited top-down.
      * 
      */
     public Optional<Output<Boolean>> invalidKeyVersion() {
@@ -240,8 +238,7 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param enrolledAncestor If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-         * of the Folder.
+         * @param enrolledAncestor If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Folder.
          * 
          * @return builder
          * 
@@ -252,8 +249,7 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param enrolledAncestor If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-         * of the Folder.
+         * @param enrolledAncestor If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Folder.
          * 
          * @return builder
          * 
@@ -327,10 +323,10 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param invalidKeyVersion If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-         * this Folder (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the correct permissions on it,
-         * etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-         * top-down.
+         * @param invalidKeyVersion If the field is true, that indicates that there is some configuration issue with the active_key_version
+         * configured on this Folder (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the
+         * correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+         * as key versions are inherited top-down.
          * 
          * @return builder
          * 
@@ -341,10 +337,10 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param invalidKeyVersion If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-         * this Folder (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the correct permissions on it,
-         * etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-         * top-down.
+         * @param invalidKeyVersion If the field is true, that indicates that there is some configuration issue with the active_key_version
+         * configured on this Folder (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the
+         * correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+         * as key versions are inherited top-down.
          * 
          * @return builder
          * 

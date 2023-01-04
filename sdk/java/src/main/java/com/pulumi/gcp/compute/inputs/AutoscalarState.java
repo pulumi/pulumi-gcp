@@ -57,6 +57,8 @@ public final class AutoscalarState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A description of a scaling schedule.
+     * (Optional)
      * An optional description of this resource.
      * 
      */
@@ -64,7 +66,9 @@ public final class AutoscalarState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> description;
 
     /**
-     * @return An optional description of this resource.
+     * @return A description of a scaling schedule.
+     * (Optional)
+     * An optional description of this resource.
      * 
      */
     public Optional<Output<String>> description() {
@@ -72,14 +76,22 @@ public final class AutoscalarState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The identifier for this object. Format specified above.
+     * Name of the resource. The name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The identifier for this object. Format specified above.
+     * @return Name of the resource. The name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      * 
      */
     public Optional<Output<String>> name() {
@@ -119,18 +131,14 @@ public final class AutoscalarState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Fraction of backend capacity utilization (set in HTTP(s) load
-     * balancing configuration) that autoscaler should maintain. Must
-     * be a positive float value. If not defined, the default is 0.8.
+     * URL of the managed instance group that this autoscaler will scale.
      * 
      */
     @Import(name="target")
     private @Nullable Output<String> target;
 
     /**
-     * @return Fraction of backend capacity utilization (set in HTTP(s) load
-     * balancing configuration) that autoscaler should maintain. Must
-     * be a positive float value. If not defined, the default is 0.8.
+     * @return URL of the managed instance group that this autoscaler will scale.
      * 
      */
     public Optional<Output<String>> target() {
@@ -236,7 +244,9 @@ public final class AutoscalarState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description An optional description of this resource.
+         * @param description A description of a scaling schedule.
+         * (Optional)
+         * An optional description of this resource.
          * 
          * @return builder
          * 
@@ -247,7 +257,9 @@ public final class AutoscalarState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description An optional description of this resource.
+         * @param description A description of a scaling schedule.
+         * (Optional)
+         * An optional description of this resource.
          * 
          * @return builder
          * 
@@ -257,7 +269,11 @@ public final class AutoscalarState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The identifier for this object. Format specified above.
+         * @param name Name of the resource. The name must be 1-63 characters long and match
+         * the regular expression `a-z?` which means the
+         * first character must be a lowercase letter, and all following
+         * characters must be a dash, lowercase letter, or digit, except the last
+         * character, which cannot be a dash.
          * 
          * @return builder
          * 
@@ -268,7 +284,11 @@ public final class AutoscalarState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The identifier for this object. Format specified above.
+         * @param name Name of the resource. The name must be 1-63 characters long and match
+         * the regular expression `a-z?` which means the
+         * first character must be a lowercase letter, and all following
+         * characters must be a dash, lowercase letter, or digit, except the last
+         * character, which cannot be a dash.
          * 
          * @return builder
          * 
@@ -322,9 +342,7 @@ public final class AutoscalarState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param target Fraction of backend capacity utilization (set in HTTP(s) load
-         * balancing configuration) that autoscaler should maintain. Must
-         * be a positive float value. If not defined, the default is 0.8.
+         * @param target URL of the managed instance group that this autoscaler will scale.
          * 
          * @return builder
          * 
@@ -335,9 +353,7 @@ public final class AutoscalarState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param target Fraction of backend capacity utilization (set in HTTP(s) load
-         * balancing configuration) that autoscaler should maintain. Must
-         * be a positive float value. If not defined, the default is 0.8.
+         * @param target URL of the managed instance group that this autoscaler will scale.
          * 
          * @return builder
          * 

@@ -47,16 +47,16 @@ public final class RegionBackendServiceConsistentHashHttpCookieArgs extends com.
     }
 
     /**
-     * The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
-     * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+     * Lifetime of the cookie.
+     * Structure is documented below.
      * 
      */
     @Import(name="ttl")
     private @Nullable Output<RegionBackendServiceConsistentHashHttpCookieTtlArgs> ttl;
 
     /**
-     * @return The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
-     * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+     * @return Lifetime of the cookie.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<RegionBackendServiceConsistentHashHttpCookieTtlArgs>> ttl() {
@@ -132,8 +132,8 @@ public final class RegionBackendServiceConsistentHashHttpCookieArgs extends com.
         }
 
         /**
-         * @param ttl The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
-         * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+         * @param ttl Lifetime of the cookie.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -144,8 +144,8 @@ public final class RegionBackendServiceConsistentHashHttpCookieArgs extends com.
         }
 
         /**
-         * @param ttl The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
-         * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+         * @param ttl Lifetime of the cookie.
+         * Structure is documented below.
          * 
          * @return builder
          * 

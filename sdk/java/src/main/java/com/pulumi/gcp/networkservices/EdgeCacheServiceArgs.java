@@ -21,6 +21,12 @@ public final class EdgeCacheServiceArgs extends com.pulumi.resources.ResourceArg
     public static final EdgeCacheServiceArgs Empty = new EdgeCacheServiceArgs();
 
     /**
+     * A human-readable description of the hostRule.
+     * (Optional)
+     * A human-readable description of the resource.
+     * (Optional)
+     * A human-readable description of the routeRule.
+     * (Optional)
      * A human-readable description of the resource.
      * 
      */
@@ -28,7 +34,13 @@ public final class EdgeCacheServiceArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<String> description;
 
     /**
-     * @return A human-readable description of the resource.
+     * @return A human-readable description of the hostRule.
+     * (Optional)
+     * A human-readable description of the resource.
+     * (Optional)
+     * A human-readable description of the routeRule.
+     * (Optional)
+     * A human-readable description of the resource.
      * 
      */
     public Optional<Output<String>> description() {
@@ -134,14 +146,18 @@ public final class EdgeCacheServiceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+     * Name of the resource; provided by the client when the resource is created.
+     * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+     * and all following characters must be a dash, underscore, letter or digit.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+     * @return Name of the resource; provided by the client when the resource is created.
+     * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+     * and all following characters must be a dash, underscore, letter or digit.
      * 
      */
     public Optional<Output<String>> name() {
@@ -254,7 +270,13 @@ public final class EdgeCacheServiceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param description A human-readable description of the resource.
+         * @param description A human-readable description of the hostRule.
+         * (Optional)
+         * A human-readable description of the resource.
+         * (Optional)
+         * A human-readable description of the routeRule.
+         * (Optional)
+         * A human-readable description of the resource.
          * 
          * @return builder
          * 
@@ -265,7 +287,13 @@ public final class EdgeCacheServiceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param description A human-readable description of the resource.
+         * @param description A human-readable description of the hostRule.
+         * (Optional)
+         * A human-readable description of the resource.
+         * (Optional)
+         * A human-readable description of the routeRule.
+         * (Optional)
+         * A human-readable description of the resource.
          * 
          * @return builder
          * 
@@ -420,7 +448,9 @@ public final class EdgeCacheServiceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+         * @param name Name of the resource; provided by the client when the resource is created.
+         * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+         * and all following characters must be a dash, underscore, letter or digit.
          * 
          * @return builder
          * 
@@ -431,7 +461,9 @@ public final class EdgeCacheServiceArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+         * @param name Name of the resource; provided by the client when the resource is created.
+         * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+         * and all following characters must be a dash, underscore, letter or digit.
          * 
          * @return builder
          * 

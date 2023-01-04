@@ -31,8 +31,8 @@ public final class ClusterClusterAutoscaling {
      */
     private @Nullable String autoscalingProfile;
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Whether node auto-provisioning is enabled. Must be supplied for GKE Standard clusters, `true` is implied
+     * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
      * 
      */
     private @Nullable Boolean enabled;
@@ -66,8 +66,8 @@ public final class ClusterClusterAutoscaling {
         return Optional.ofNullable(this.autoscalingProfile);
     }
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Whether node auto-provisioning is enabled. Must be supplied for GKE Standard clusters, `true` is implied
+     * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
      * 
      */
     public Optional<Boolean> enabled() {

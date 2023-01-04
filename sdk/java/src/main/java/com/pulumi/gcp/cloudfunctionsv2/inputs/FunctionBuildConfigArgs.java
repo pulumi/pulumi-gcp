@@ -18,7 +18,6 @@ public final class FunctionBuildConfigArgs extends com.pulumi.resources.Resource
     public static final FunctionBuildConfigArgs Empty = new FunctionBuildConfigArgs();
 
     /**
-     * - 
      * The Cloud Build name of the latest successful
      * deployment of the function.
      * 
@@ -27,8 +26,7 @@ public final class FunctionBuildConfigArgs extends com.pulumi.resources.Resource
     private @Nullable Output<String> build;
 
     /**
-     * @return -
-     * The Cloud Build name of the latest successful
+     * @return The Cloud Build name of the latest successful
      * deployment of the function.
      * 
      */
@@ -75,14 +73,14 @@ public final class FunctionBuildConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Environment variables that shall be available during function execution.
+     * User-provided build-time environment variables for the function.
      * 
      */
     @Import(name="environmentVariables")
     private @Nullable Output<Map<String,String>> environmentVariables;
 
     /**
-     * @return Environment variables that shall be available during function execution.
+     * @return User-provided build-time environment variables for the function.
      * 
      */
     public Optional<Output<Map<String,String>>> environmentVariables() {
@@ -169,8 +167,7 @@ public final class FunctionBuildConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param build -
-         * The Cloud Build name of the latest successful
+         * @param build The Cloud Build name of the latest successful
          * deployment of the function.
          * 
          * @return builder
@@ -182,8 +179,7 @@ public final class FunctionBuildConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param build -
-         * The Cloud Build name of the latest successful
+         * @param build The Cloud Build name of the latest successful
          * deployment of the function.
          * 
          * @return builder
@@ -244,7 +240,7 @@ public final class FunctionBuildConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param environmentVariables Environment variables that shall be available during function execution.
+         * @param environmentVariables User-provided build-time environment variables for the function.
          * 
          * @return builder
          * 
@@ -255,7 +251,7 @@ public final class FunctionBuildConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param environmentVariables Environment variables that shall be available during function execution.
+         * @param environmentVariables User-provided build-time environment variables for the function.
          * 
          * @return builder
          * 

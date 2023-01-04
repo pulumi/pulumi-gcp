@@ -35,20 +35,14 @@ public final class ServiceTemplateSpecContainerLivenessProbeHttpGetArgs extends 
     }
 
     /**
-     * The relative path of the file to map the key to.
-     * May not be an absolute path.
-     * May not contain the path element &#39;..&#39;.
-     * May not start with the string &#39;..&#39;.
+     * Path to access on the HTTP server. If set, it should not be empty string.
      * 
      */
     @Import(name="path")
     private @Nullable Output<String> path;
 
     /**
-     * @return The relative path of the file to map the key to.
-     * May not be an absolute path.
-     * May not contain the path element &#39;..&#39;.
-     * May not start with the string &#39;..&#39;.
+     * @return Path to access on the HTTP server. If set, it should not be empty string.
      * 
      */
     public Optional<Output<String>> path() {
@@ -115,10 +109,7 @@ public final class ServiceTemplateSpecContainerLivenessProbeHttpGetArgs extends 
         }
 
         /**
-         * @param path The relative path of the file to map the key to.
-         * May not be an absolute path.
-         * May not contain the path element &#39;..&#39;.
-         * May not start with the string &#39;..&#39;.
+         * @param path Path to access on the HTTP server. If set, it should not be empty string.
          * 
          * @return builder
          * 
@@ -129,10 +120,7 @@ public final class ServiceTemplateSpecContainerLivenessProbeHttpGetArgs extends 
         }
 
         /**
-         * @param path The relative path of the file to map the key to.
-         * May not be an absolute path.
-         * May not contain the path element &#39;..&#39;.
-         * May not start with the string &#39;..&#39;.
+         * @param path Path to access on the HTTP server. If set, it should not be empty string.
          * 
          * @return builder
          * 

@@ -16,14 +16,16 @@ public final class InstanceTemplateDiskSourceImageEncryptionKeyArgs extends com.
     public static final InstanceTemplateDiskSourceImageEncryptionKeyArgs Empty = new InstanceTemplateDiskSourceImageEncryptionKeyArgs();
 
     /**
-     * The self link of the encryption key that is stored in Google Cloud KMS
+     * The self link of the encryption key that is
+     * stored in Google Cloud KMS.
      * 
      */
     @Import(name="kmsKeySelfLink", required=true)
     private Output<String> kmsKeySelfLink;
 
     /**
-     * @return The self link of the encryption key that is stored in Google Cloud KMS
+     * @return The self link of the encryption key that is
+     * stored in Google Cloud KMS.
      * 
      */
     public Output<String> kmsKeySelfLink() {
@@ -75,7 +77,8 @@ public final class InstanceTemplateDiskSourceImageEncryptionKeyArgs extends com.
         }
 
         /**
-         * @param kmsKeySelfLink The self link of the encryption key that is stored in Google Cloud KMS
+         * @param kmsKeySelfLink The self link of the encryption key that is
+         * stored in Google Cloud KMS.
          * 
          * @return builder
          * 
@@ -86,7 +89,8 @@ public final class InstanceTemplateDiskSourceImageEncryptionKeyArgs extends com.
         }
 
         /**
-         * @param kmsKeySelfLink The self link of the encryption key that is stored in Google Cloud KMS
+         * @param kmsKeySelfLink The self link of the encryption key that is
+         * stored in Google Cloud KMS.
          * 
          * @return builder
          * 

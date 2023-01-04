@@ -154,16 +154,14 @@ public class DataPolicy extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * Resource name of this data policy, in the format of
-     * projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
+     * Resource name of this data policy, in the format of projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Resource name of this data policy, in the format of
-     * projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
+     * @return Resource name of this data policy, in the format of projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
      * 
      */
     public Output<String> name() {

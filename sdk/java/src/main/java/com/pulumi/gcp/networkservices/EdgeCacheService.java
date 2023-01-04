@@ -493,6 +493,12 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:networkservices/edgeCacheService:EdgeCacheService")
 public class EdgeCacheService extends com.pulumi.resources.CustomResource {
     /**
+     * A human-readable description of the hostRule.
+     * (Optional)
+     * A human-readable description of the resource.
+     * (Optional)
+     * A human-readable description of the routeRule.
+     * (Optional)
      * A human-readable description of the resource.
      * 
      */
@@ -500,7 +506,13 @@ public class EdgeCacheService extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return A human-readable description of the resource.
+     * @return A human-readable description of the hostRule.
+     * (Optional)
+     * A human-readable description of the resource.
+     * (Optional)
+     * A human-readable description of the routeRule.
+     * (Optional)
+     * A human-readable description of the resource.
      * 
      */
     public Output<Optional<String>> description() {
@@ -627,14 +639,18 @@ public class EdgeCacheService extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.logConfig);
     }
     /**
-     * The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+     * Name of the resource; provided by the client when the resource is created.
+     * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+     * and all following characters must be a dash, underscore, letter or digit.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+     * @return Name of the resource; provided by the client when the resource is created.
+     * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+     * and all following characters must be a dash, underscore, letter or digit.
      * 
      */
     public Output<String> name() {

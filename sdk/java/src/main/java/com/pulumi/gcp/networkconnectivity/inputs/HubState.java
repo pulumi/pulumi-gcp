@@ -94,18 +94,14 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The VPC network associated with this hub&#39;s spokes. All of the VPN tunnels, VLAN attachments, and router appliance
-     * instances referenced by this hub&#39;s spokes must belong to this VPC network. This field is read-only. Network Connectivity
-     * Center automatically populates it based on the set of spokes attached to the hub.
+     * The VPC network associated with this hub&#39;s spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub&#39;s spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
      * 
      */
     @Import(name="routingVpcs")
     private @Nullable Output<List<HubRoutingVpcArgs>> routingVpcs;
 
     /**
-     * @return The VPC network associated with this hub&#39;s spokes. All of the VPN tunnels, VLAN attachments, and router appliance
-     * instances referenced by this hub&#39;s spokes must belong to this VPC network. This field is read-only. Network Connectivity
-     * Center automatically populates it based on the set of spokes attached to the hub.
+     * @return The VPC network associated with this hub&#39;s spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub&#39;s spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
      * 
      */
     public Optional<Output<List<HubRoutingVpcArgs>>> routingVpcs() {
@@ -128,16 +124,14 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted
-     * and another with the same name is created, the new hub is assigned a different unique_id.
+     * Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
      * 
      */
     @Import(name="uniqueId")
     private @Nullable Output<String> uniqueId;
 
     /**
-     * @return Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted
-     * and another with the same name is created, the new hub is assigned a different unique_id.
+     * @return Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
      * 
      */
     public Optional<Output<String>> uniqueId() {
@@ -297,9 +291,7 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routingVpcs The VPC network associated with this hub&#39;s spokes. All of the VPN tunnels, VLAN attachments, and router appliance
-         * instances referenced by this hub&#39;s spokes must belong to this VPC network. This field is read-only. Network Connectivity
-         * Center automatically populates it based on the set of spokes attached to the hub.
+         * @param routingVpcs The VPC network associated with this hub&#39;s spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub&#39;s spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
          * 
          * @return builder
          * 
@@ -310,9 +302,7 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routingVpcs The VPC network associated with this hub&#39;s spokes. All of the VPN tunnels, VLAN attachments, and router appliance
-         * instances referenced by this hub&#39;s spokes must belong to this VPC network. This field is read-only. Network Connectivity
-         * Center automatically populates it based on the set of spokes attached to the hub.
+         * @param routingVpcs The VPC network associated with this hub&#39;s spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub&#39;s spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
          * 
          * @return builder
          * 
@@ -322,9 +312,7 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routingVpcs The VPC network associated with this hub&#39;s spokes. All of the VPN tunnels, VLAN attachments, and router appliance
-         * instances referenced by this hub&#39;s spokes must belong to this VPC network. This field is read-only. Network Connectivity
-         * Center automatically populates it based on the set of spokes attached to the hub.
+         * @param routingVpcs The VPC network associated with this hub&#39;s spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub&#39;s spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
          * 
          * @return builder
          * 
@@ -355,8 +343,7 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uniqueId Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted
-         * and another with the same name is created, the new hub is assigned a different unique_id.
+         * @param uniqueId Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
          * 
          * @return builder
          * 
@@ -367,8 +354,7 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uniqueId Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted
-         * and another with the same name is created, the new hub is assigned a different unique_id.
+         * @param uniqueId Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
          * 
          * @return builder
          * 

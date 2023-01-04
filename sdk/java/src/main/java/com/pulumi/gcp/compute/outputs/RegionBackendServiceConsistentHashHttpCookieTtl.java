@@ -12,32 +12,34 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RegionBackendServiceConsistentHashHttpCookieTtl {
     /**
-     * @return Span of time that&#39;s a fraction of a second at nanosecond resolution. Durations
-     * less than one second are represented with a 0 `seconds` field and a positive
-     * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+     * @return Span of time that&#39;s a fraction of a second at nanosecond
+     * resolution. Durations less than one second are represented
+     * with a 0 seconds field and a positive nanos field. Must
+     * be from 0 to 999,999,999 inclusive.
      * 
      */
     private @Nullable Integer nanos;
     /**
-     * @return Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
-     * inclusive.
+     * @return Span of time at a resolution of a second.
+     * Must be from 0 to 315,576,000,000 inclusive.
      * 
      */
     private Integer seconds;
 
     private RegionBackendServiceConsistentHashHttpCookieTtl() {}
     /**
-     * @return Span of time that&#39;s a fraction of a second at nanosecond resolution. Durations
-     * less than one second are represented with a 0 `seconds` field and a positive
-     * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+     * @return Span of time that&#39;s a fraction of a second at nanosecond
+     * resolution. Durations less than one second are represented
+     * with a 0 seconds field and a positive nanos field. Must
+     * be from 0 to 999,999,999 inclusive.
      * 
      */
     public Optional<Integer> nanos() {
         return Optional.ofNullable(this.nanos);
     }
     /**
-     * @return Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
-     * inclusive.
+     * @return Span of time at a resolution of a second.
+     * Must be from 0 to 315,576,000,000 inclusive.
      * 
      */
     public Integer seconds() {

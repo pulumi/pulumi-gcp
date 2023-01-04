@@ -390,22 +390,24 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from
-     * overwriting each other. It is strongly suggested that systems make use of the &#39;etag&#39; in the read-modify-write cycle to
-     * perform BackupPlan updates in order to avoid race conditions: An etag is returned in the response to backupPlans.get,
-     * and systems are expected to put that etag in the request to backupPlans.patch or backupPlans.delete to ensure that their
-     * change will be applied to the same version of the resource.
+     * etag is used for optimistic concurrency control as a way to help prevent simultaneous
+     * updates of a backup plan from overwriting each other. It is strongly suggested that
+     * systems make use of the &#39;etag&#39; in the read-modify-write cycle to perform BackupPlan updates
+     * in order to avoid race conditions: An etag is returned in the response to backupPlans.get,
+     * and systems are expected to put that etag in the request to backupPlans.patch or
+     * backupPlans.delete to ensure that their change will be applied to the same version of the resource.
      * 
      */
     @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
-     * @return etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from
-     * overwriting each other. It is strongly suggested that systems make use of the &#39;etag&#39; in the read-modify-write cycle to
-     * perform BackupPlan updates in order to avoid race conditions: An etag is returned in the response to backupPlans.get,
-     * and systems are expected to put that etag in the request to backupPlans.patch or backupPlans.delete to ensure that their
-     * change will be applied to the same version of the resource.
+     * @return etag is used for optimistic concurrency control as a way to help prevent simultaneous
+     * updates of a backup plan from overwriting each other. It is strongly suggested that
+     * systems make use of the &#39;etag&#39; in the read-modify-write cycle to perform BackupPlan updates
+     * in order to avoid race conditions: An etag is returned in the response to backupPlans.get,
+     * and systems are expected to put that etag in the request to backupPlans.patch or
+     * backupPlans.delete to ensure that their change will be applied to the same version of the resource.
      * 
      */
     public Output<String> etag() {
@@ -444,14 +446,14 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * The name of a Kubernetes Resource.
+     * The full name of the BackupPlan Resource.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The name of a Kubernetes Resource.
+     * @return The full name of the BackupPlan Resource.
      * 
      */
     public Output<String> name() {

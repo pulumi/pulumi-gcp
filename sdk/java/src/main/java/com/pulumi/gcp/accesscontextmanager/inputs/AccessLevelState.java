@@ -54,14 +54,14 @@ public final class AccessLevelState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of the expression
+     * Description of the AccessLevel and its use. Does not affect behavior.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the expression
+     * @return Description of the AccessLevel and its use. Does not affect behavior.
      * 
      */
     public Optional<Output<String>> description() {
@@ -105,14 +105,14 @@ public final class AccessLevelState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Title for the expression, i.e. a short string describing its purpose.
+     * Human readable title. Must be unique within the Policy.
      * 
      */
     @Import(name="title")
     private @Nullable Output<String> title;
 
     /**
-     * @return Title for the expression, i.e. a short string describing its purpose.
+     * @return Human readable title. Must be unique within the Policy.
      * 
      */
     public Optional<Output<String>> title() {
@@ -197,7 +197,7 @@ public final class AccessLevelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the expression
+         * @param description Description of the AccessLevel and its use. Does not affect behavior.
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class AccessLevelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the expression
+         * @param description Description of the AccessLevel and its use. Does not affect behavior.
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class AccessLevelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param title Title for the expression, i.e. a short string describing its purpose.
+         * @param title Human readable title. Must be unique within the Policy.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class AccessLevelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param title Title for the expression, i.e. a short string describing its purpose.
+         * @param title Human readable title. Must be unique within the Policy.
          * 
          * @return builder
          * 

@@ -115,16 +115,14 @@ public final class StreamState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The geographic location where the dataset should reside.
-     * See https://cloud.google.com/bigquery/docs/locations for supported locations.
+     * The name of the location this stream is located in.
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return The geographic location where the dataset should reside.
-     * See https://cloud.google.com/bigquery/docs/locations for supported locations.
+     * @return The name of the location this stream is located in.
      * 
      */
     public Optional<Output<String>> location() {
@@ -376,8 +374,7 @@ public final class StreamState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location The geographic location where the dataset should reside.
-         * See https://cloud.google.com/bigquery/docs/locations for supported locations.
+         * @param location The name of the location this stream is located in.
          * 
          * @return builder
          * 
@@ -388,8 +385,7 @@ public final class StreamState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location The geographic location where the dataset should reside.
-         * See https://cloud.google.com/bigquery/docs/locations for supported locations.
+         * @param location The name of the location this stream is located in.
          * 
          * @return builder
          * 

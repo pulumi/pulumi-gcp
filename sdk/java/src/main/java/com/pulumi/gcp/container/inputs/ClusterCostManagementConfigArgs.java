@@ -14,16 +14,14 @@ public final class ClusterCostManagementConfigArgs extends com.pulumi.resources.
     public static final ClusterCostManagementConfigArgs Empty = new ClusterCostManagementConfigArgs();
 
     /**
-     * Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * Whether to enable the [cost allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Whether to enable the [cost allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
      * 
      */
     public Output<Boolean> enabled() {
@@ -55,8 +53,7 @@ public final class ClusterCostManagementConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enabled Enable the PodSecurityPolicy controller for this cluster.
-         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         * @param enabled Whether to enable the [cost allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
          * 
          * @return builder
          * 
@@ -67,8 +64,7 @@ public final class ClusterCostManagementConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enabled Enable the PodSecurityPolicy controller for this cluster.
-         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         * @param enabled Whether to enable the [cost allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
          * 
          * @return builder
          * 

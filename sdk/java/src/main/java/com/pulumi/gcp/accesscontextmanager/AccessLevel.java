@@ -132,14 +132,14 @@ public class AccessLevel extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.custom);
     }
     /**
-     * Description of the expression
+     * Description of the AccessLevel and its use. Does not affect behavior.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the expression
+     * @return Description of the AccessLevel and its use. Does not affect behavior.
      * 
      */
     public Output<Optional<String>> description() {
@@ -180,14 +180,14 @@ public class AccessLevel extends com.pulumi.resources.CustomResource {
         return this.parent;
     }
     /**
-     * Title for the expression, i.e. a short string describing its purpose.
+     * Human readable title. Must be unique within the Policy.
      * 
      */
     @Export(name="title", type=String.class, parameters={})
     private Output<String> title;
 
     /**
-     * @return Title for the expression, i.e. a short string describing its purpose.
+     * @return Human readable title. Must be unique within the Policy.
      * 
      */
     public Output<String> title() {

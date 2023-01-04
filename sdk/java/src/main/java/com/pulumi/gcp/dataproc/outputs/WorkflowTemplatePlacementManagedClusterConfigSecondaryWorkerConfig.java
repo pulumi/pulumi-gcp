@@ -33,14 +33,12 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
      */
     private @Nullable String image;
     /**
-     * @return -
-     * Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+     * @return Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
      * 
      */
     private @Nullable List<String> instanceNames;
     /**
-     * @return -
-     * Output only. Specifies that this instance group contains preemptible instances.
+     * @return Output only. Specifies that this instance group contains preemptible instances.
      * 
      */
     private @Nullable Boolean isPreemptible;
@@ -50,8 +48,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
      */
     private @Nullable String machineType;
     /**
-     * @return -
-     * Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+     * @return Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
      * 
      */
     private @Nullable List<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig> managedGroupConfigs;
@@ -94,16 +91,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
         return Optional.ofNullable(this.image);
     }
     /**
-     * @return -
-     * Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+     * @return Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
      * 
      */
     public List<String> instanceNames() {
         return this.instanceNames == null ? List.of() : this.instanceNames;
     }
     /**
-     * @return -
-     * Output only. Specifies that this instance group contains preemptible instances.
+     * @return Output only. Specifies that this instance group contains preemptible instances.
      * 
      */
     public Optional<Boolean> isPreemptible() {
@@ -117,8 +112,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
         return Optional.ofNullable(this.machineType);
     }
     /**
-     * @return -
-     * Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+     * @return Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
      * 
      */
     public List<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig> managedGroupConfigs() {

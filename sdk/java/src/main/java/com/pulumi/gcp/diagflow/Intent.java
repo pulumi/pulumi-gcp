@@ -230,16 +230,18 @@ public class Intent extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.events);
     }
     /**
-     * Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only
-     * in the output.
+     * Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
+     * only in the output.
+     * Structure is documented below.
      * 
      */
     @Export(name="followupIntentInfos", type=List.class, parameters={IntentFollowupIntentInfo.class})
     private Output<List<IntentFollowupIntentInfo>> followupIntentInfos;
 
     /**
-     * @return Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only
-     * in the output.
+     * @return Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
+     * only in the output.
+     * Structure is documented below.
      * 
      */
     public Output<List<IntentFollowupIntentInfo>> followupIntentInfos() {
@@ -294,14 +296,16 @@ public class Intent extends com.pulumi.resources.CustomResource {
         return this.mlDisabled;
     }
     /**
-     * The unique identifier of this intent. Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
+     * The unique identifier of this intent.
+     * Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The unique identifier of this intent. Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
+     * @return The unique identifier of this intent.
+     * Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
      * 
      */
     public Output<String> name() {
@@ -374,16 +378,18 @@ public class Intent extends com.pulumi.resources.CustomResource {
         return this.resetContexts;
     }
     /**
-     * The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents
-     * chain for this intent. Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
+     * The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup
+     * intents chain for this intent.
+     * Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
      * 
      */
     @Export(name="rootFollowupIntentName", type=String.class, parameters={})
     private Output<String> rootFollowupIntentName;
 
     /**
-     * @return The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents
-     * chain for this intent. Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
+     * @return The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup
+     * intents chain for this intent.
+     * Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
      * 
      */
     public Output<String> rootFollowupIntentName() {

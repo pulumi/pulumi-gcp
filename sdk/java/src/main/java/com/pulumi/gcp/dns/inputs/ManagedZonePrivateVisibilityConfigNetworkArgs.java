@@ -14,7 +14,7 @@ public final class ManagedZonePrivateVisibilityConfigNetworkArgs extends com.pul
     public static final ManagedZonePrivateVisibilityConfigNetworkArgs Empty = new ManagedZonePrivateVisibilityConfigNetworkArgs();
 
     /**
-     * The id or fully qualified URL of the VPC network to forward queries to.
+     * The id or fully qualified URL of the VPC network to bind to.
      * This should be formatted like `projects/{project}/global/networks/{network}` or
      * `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
      * 
@@ -23,7 +23,7 @@ public final class ManagedZonePrivateVisibilityConfigNetworkArgs extends com.pul
     private Output<String> networkUrl;
 
     /**
-     * @return The id or fully qualified URL of the VPC network to forward queries to.
+     * @return The id or fully qualified URL of the VPC network to bind to.
      * This should be formatted like `projects/{project}/global/networks/{network}` or
      * `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
      * 
@@ -57,7 +57,7 @@ public final class ManagedZonePrivateVisibilityConfigNetworkArgs extends com.pul
         }
 
         /**
-         * @param networkUrl The id or fully qualified URL of the VPC network to forward queries to.
+         * @param networkUrl The id or fully qualified URL of the VPC network to bind to.
          * This should be formatted like `projects/{project}/global/networks/{network}` or
          * `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
          * 
@@ -70,7 +70,7 @@ public final class ManagedZonePrivateVisibilityConfigNetworkArgs extends com.pul
         }
 
         /**
-         * @param networkUrl The id or fully qualified URL of the VPC network to forward queries to.
+         * @param networkUrl The id or fully qualified URL of the VPC network to bind to.
          * This should be formatted like `projects/{project}/global/networks/{network}` or
          * `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
          * 

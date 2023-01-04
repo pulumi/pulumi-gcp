@@ -19,9 +19,9 @@ import javax.annotation.Nullable;
 public final class URLMapPathMatcherRouteRule {
     /**
      * @return Specifies changes to request and response headers that need to take effect for
-     * the selected backendService.
-     * headerAction specified here take effect before headerAction in the enclosing
-     * HttpRouteRule, PathMatcher and UrlMap.
+     * the selected backendService. The headerAction specified here are applied before
+     * the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].r
+     * outeAction.weightedBackendService.backendServiceWeightAction[].headerAction
      * Structure is documented below.
      * 
      */
@@ -61,7 +61,13 @@ public final class URLMapPathMatcherRouteRule {
      */
     private @Nullable URLMapPathMatcherRouteRuleRouteAction routeAction;
     /**
-     * @return The backend service or backend bucket link that should be matched by this test.
+     * @return The backend service resource to which traffic is
+     * directed if this rule is matched. If routeAction is additionally specified,
+     * advanced routing actions like URL Rewrites, etc. take effect prior to sending
+     * the request to the backend. However, if service is specified, routeAction cannot
+     * contain any weightedBackendService s. Conversely, if routeAction specifies any
+     * weightedBackendServices, service must not be specified. Only one of urlRedirect,
+     * service or routeAction.weightedBackendService must be set.
      * 
      */
     private @Nullable String service;
@@ -77,9 +83,9 @@ public final class URLMapPathMatcherRouteRule {
     private URLMapPathMatcherRouteRule() {}
     /**
      * @return Specifies changes to request and response headers that need to take effect for
-     * the selected backendService.
-     * headerAction specified here take effect before headerAction in the enclosing
-     * HttpRouteRule, PathMatcher and UrlMap.
+     * the selected backendService. The headerAction specified here are applied before
+     * the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].r
+     * outeAction.weightedBackendService.backendServiceWeightAction[].headerAction
      * Structure is documented below.
      * 
      */
@@ -127,7 +133,13 @@ public final class URLMapPathMatcherRouteRule {
         return Optional.ofNullable(this.routeAction);
     }
     /**
-     * @return The backend service or backend bucket link that should be matched by this test.
+     * @return The backend service resource to which traffic is
+     * directed if this rule is matched. If routeAction is additionally specified,
+     * advanced routing actions like URL Rewrites, etc. take effect prior to sending
+     * the request to the backend. However, if service is specified, routeAction cannot
+     * contain any weightedBackendService s. Conversely, if routeAction specifies any
+     * weightedBackendServices, service must not be specified. Only one of urlRedirect,
+     * service or routeAction.weightedBackendService must be set.
      * 
      */
     public Optional<String> service() {

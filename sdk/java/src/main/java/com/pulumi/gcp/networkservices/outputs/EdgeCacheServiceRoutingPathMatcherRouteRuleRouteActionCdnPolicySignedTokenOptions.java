@@ -21,10 +21,9 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
      */
     private @Nullable List<String> allowedSignatureAlgorithms;
     /**
-     * @return The query parameter in which to put the generated token.
-     * If not specified, defaults to `edge-cache-token`.
-     * If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
-     * This field may only be set when the GENERATE_TOKEN_HLS_COOKIELESS or PROPAGATE_TOKEN_HLS_COOKIELESS actions are specified.
+     * @return The query parameter in which to find the token.
+     * The name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+     * Defaults to `edge-cache-token`.
      * 
      */
     private @Nullable String tokenQueryParameter;
@@ -41,10 +40,9 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
         return this.allowedSignatureAlgorithms == null ? List.of() : this.allowedSignatureAlgorithms;
     }
     /**
-     * @return The query parameter in which to put the generated token.
-     * If not specified, defaults to `edge-cache-token`.
-     * If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
-     * This field may only be set when the GENERATE_TOKEN_HLS_COOKIELESS or PROPAGATE_TOKEN_HLS_COOKIELESS actions are specified.
+     * @return The query parameter in which to find the token.
+     * The name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+     * Defaults to `edge-cache-token`.
      * 
      */
     public Optional<String> tokenQueryParameter() {

@@ -240,18 +240,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set to true if the current state of Instance does not match the user&#39;s intended state, and the service is actively
-     * updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover
-     * or maintenance.
+     * Set to true if the current state of Instance does not match the user&#39;s intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
      * 
      */
     @Import(name="reconciling")
     private @Nullable Output<Boolean> reconciling;
 
     /**
-     * @return Set to true if the current state of Instance does not match the user&#39;s intended state, and the service is actively
-     * updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover
-     * or maintenance.
+     * @return Set to true if the current state of Instance does not match the user&#39;s intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
      * 
      */
     public Optional<Output<Boolean>> reconciling() {
@@ -649,9 +645,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reconciling Set to true if the current state of Instance does not match the user&#39;s intended state, and the service is actively
-         * updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover
-         * or maintenance.
+         * @param reconciling Set to true if the current state of Instance does not match the user&#39;s intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
          * 
          * @return builder
          * 
@@ -662,9 +656,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reconciling Set to true if the current state of Instance does not match the user&#39;s intended state, and the service is actively
-         * updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover
-         * or maintenance.
+         * @param reconciling Set to true if the current state of Instance does not match the user&#39;s intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
          * 
          * @return builder
          * 

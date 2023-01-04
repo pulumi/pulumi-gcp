@@ -84,16 +84,16 @@ public final class FulfillmentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The unique identifier of the fulfillment. Format: projects/&lt;Project ID&gt;/agent/fulfillment - projects/&lt;Project
-     * ID&gt;/locations/&lt;Location ID&gt;/agent/fulfillment
+     * The unique identifier of the fulfillment.
+     * Format: projects/&lt;Project ID&gt;/agent/fulfillment - projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agent/fulfillment
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The unique identifier of the fulfillment. Format: projects/&lt;Project ID&gt;/agent/fulfillment - projects/&lt;Project
-     * ID&gt;/locations/&lt;Location ID&gt;/agent/fulfillment
+     * @return The unique identifier of the fulfillment.
+     * Format: projects/&lt;Project ID&gt;/agent/fulfillment - projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agent/fulfillment
      * 
      */
     public Optional<Output<String>> name() {
@@ -246,8 +246,8 @@ public final class FulfillmentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The unique identifier of the fulfillment. Format: projects/&lt;Project ID&gt;/agent/fulfillment - projects/&lt;Project
-         * ID&gt;/locations/&lt;Location ID&gt;/agent/fulfillment
+         * @param name The unique identifier of the fulfillment.
+         * Format: projects/&lt;Project ID&gt;/agent/fulfillment - projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agent/fulfillment
          * 
          * @return builder
          * 
@@ -258,8 +258,8 @@ public final class FulfillmentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The unique identifier of the fulfillment. Format: projects/&lt;Project ID&gt;/agent/fulfillment - projects/&lt;Project
-         * ID&gt;/locations/&lt;Location ID&gt;/agent/fulfillment
+         * @param name The unique identifier of the fulfillment.
+         * Format: projects/&lt;Project ID&gt;/agent/fulfillment - projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agent/fulfillment
          * 
          * @return builder
          * 

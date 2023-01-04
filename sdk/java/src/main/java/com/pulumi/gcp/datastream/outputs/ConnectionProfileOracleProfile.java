@@ -24,23 +24,23 @@ public final class ConnectionProfileOracleProfile {
      */
     private String databaseService;
     /**
-     * @return Hostname for the SSH tunnel.
+     * @return Hostname for the Oracle connection.
      * 
      */
     private String hostname;
     /**
-     * @return SSH password.
+     * @return Password for the Oracle connection.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     private String password;
     /**
-     * @return Port for the SSH tunnel.
+     * @return Port for the Oracle connection.
      * 
      */
     private @Nullable Integer port;
     /**
-     * @return Username for the SSH tunnel.
+     * @return Username for the Oracle connection.
      * 
      */
     private String username;
@@ -61,14 +61,14 @@ public final class ConnectionProfileOracleProfile {
         return this.databaseService;
     }
     /**
-     * @return Hostname for the SSH tunnel.
+     * @return Hostname for the Oracle connection.
      * 
      */
     public String hostname() {
         return this.hostname;
     }
     /**
-     * @return SSH password.
+     * @return Password for the Oracle connection.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
@@ -76,14 +76,14 @@ public final class ConnectionProfileOracleProfile {
         return this.password;
     }
     /**
-     * @return Port for the SSH tunnel.
+     * @return Port for the Oracle connection.
      * 
      */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return Username for the SSH tunnel.
+     * @return Username for the Oracle connection.
      * 
      */
     public String username() {

@@ -13,27 +13,21 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TriggerTriggerTemplate {
     /**
-     * @return Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-     * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-     * described at https://github.com/google/re2/wiki/Syntax
+     * @return Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+     * This field is a regular expression.
      * 
      */
     private @Nullable String branchName;
     /**
-     * @return Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+     * @return Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
      * 
      */
     private @Nullable String commitSha;
     /**
-     * @return Working directory to use when running this step&#39;s container.
-     * If this value is a relative path, it is relative to the build&#39;s working
-     * directory. If this value is absolute, it may be outside the build&#39;s working
-     * directory, in which case the contents of the path may not be persisted
-     * across build step executions, unless a `volume` for that path is specified.
-     * If the build specifies a `RepoSource` with `dir` and a step with a
-     * `dir`,
-     * which specifies an absolute path, the `RepoSource` `dir` is ignored
-     * for the step&#39;s execution.
+     * @return Directory, relative to the source root, in which to run the build.
+     * This must be a relative path. If a step&#39;s dir is specified and
+     * is an absolute path, this value is ignored for that step&#39;s
+     * execution.
      * 
      */
     private @Nullable String dir;
@@ -43,51 +37,44 @@ public final class TriggerTriggerTemplate {
      */
     private @Nullable Boolean invertRegex;
     /**
-     * @return ID of the project that owns the Cloud Source Repository.
-     * If omitted, the project ID requesting the build is assumed.
+     * @return ID of the project that owns the Cloud Source Repository. If
+     * omitted, the project ID requesting the build is assumed.
      * 
      */
     private @Nullable String projectId;
     /**
-     * @return Name of the Cloud Source Repository.
+     * @return Name of the Cloud Source Repository. If omitted, the name &#34;default&#34; is assumed.
      * 
      */
     private @Nullable String repoName;
     /**
-     * @return Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-     * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-     * described at https://github.com/google/re2/wiki/Syntax
+     * @return Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+     * This field is a regular expression.
      * 
      */
     private @Nullable String tagName;
 
     private TriggerTriggerTemplate() {}
     /**
-     * @return Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-     * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-     * described at https://github.com/google/re2/wiki/Syntax
+     * @return Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+     * This field is a regular expression.
      * 
      */
     public Optional<String> branchName() {
         return Optional.ofNullable(this.branchName);
     }
     /**
-     * @return Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+     * @return Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
      * 
      */
     public Optional<String> commitSha() {
         return Optional.ofNullable(this.commitSha);
     }
     /**
-     * @return Working directory to use when running this step&#39;s container.
-     * If this value is a relative path, it is relative to the build&#39;s working
-     * directory. If this value is absolute, it may be outside the build&#39;s working
-     * directory, in which case the contents of the path may not be persisted
-     * across build step executions, unless a `volume` for that path is specified.
-     * If the build specifies a `RepoSource` with `dir` and a step with a
-     * `dir`,
-     * which specifies an absolute path, the `RepoSource` `dir` is ignored
-     * for the step&#39;s execution.
+     * @return Directory, relative to the source root, in which to run the build.
+     * This must be a relative path. If a step&#39;s dir is specified and
+     * is an absolute path, this value is ignored for that step&#39;s
+     * execution.
      * 
      */
     public Optional<String> dir() {
@@ -101,24 +88,23 @@ public final class TriggerTriggerTemplate {
         return Optional.ofNullable(this.invertRegex);
     }
     /**
-     * @return ID of the project that owns the Cloud Source Repository.
-     * If omitted, the project ID requesting the build is assumed.
+     * @return ID of the project that owns the Cloud Source Repository. If
+     * omitted, the project ID requesting the build is assumed.
      * 
      */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
     /**
-     * @return Name of the Cloud Source Repository.
+     * @return Name of the Cloud Source Repository. If omitted, the name &#34;default&#34; is assumed.
      * 
      */
     public Optional<String> repoName() {
         return Optional.ofNullable(this.repoName);
     }
     /**
-     * @return Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-     * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-     * described at https://github.com/google/re2/wiki/Syntax
+     * @return Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+     * This field is a regular expression.
      * 
      */
     public Optional<String> tagName() {

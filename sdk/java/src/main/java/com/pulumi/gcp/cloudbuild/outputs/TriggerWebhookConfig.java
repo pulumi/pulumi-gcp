@@ -12,14 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TriggerWebhookConfig {
     /**
-     * @return Secrets to decrypt using Cloud Key Management Service.
-     * Structure is documented below.
+     * @return Resource name for the secret required as a URL parameter.
      * 
      */
     private String secret;
     /**
-     * @return -
-     * Potential issues with the underlying Pub/Sub subscription configuration.
+     * @return Potential issues with the underlying Pub/Sub subscription configuration.
      * Only populated on get requests.
      * 
      */
@@ -27,16 +25,14 @@ public final class TriggerWebhookConfig {
 
     private TriggerWebhookConfig() {}
     /**
-     * @return Secrets to decrypt using Cloud Key Management Service.
-     * Structure is documented below.
+     * @return Resource name for the secret required as a URL parameter.
      * 
      */
     public String secret() {
         return this.secret;
     }
     /**
-     * @return -
-     * Potential issues with the underlying Pub/Sub subscription configuration.
+     * @return Potential issues with the underlying Pub/Sub subscription configuration.
      * Only populated on get requests.
      * 
      */

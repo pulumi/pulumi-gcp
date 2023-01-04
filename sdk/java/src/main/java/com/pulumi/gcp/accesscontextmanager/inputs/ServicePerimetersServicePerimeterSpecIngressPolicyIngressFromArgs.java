@@ -18,18 +18,18 @@ public final class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom
     public static final ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs Empty = new ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs();
 
     /**
-     * A list of identities that are allowed access through this `EgressPolicy`.
-     * Should be in the format of email address. The email address should
-     * represent individual user or service account only.
+     * A list of identities that are allowed access through this ingress policy.
+     * Should be in the format of email address. The email address should represent
+     * individual user or service account only.
      * 
      */
     @Import(name="identities")
     private @Nullable Output<List<String>> identities;
 
     /**
-     * @return A list of identities that are allowed access through this `EgressPolicy`.
-     * Should be in the format of email address. The email address should
-     * represent individual user or service account only.
+     * @return A list of identities that are allowed access through this ingress policy.
+     * Should be in the format of email address. The email address should represent
+     * individual user or service account only.
      * 
      */
     public Optional<Output<List<String>>> identities() {
@@ -37,9 +37,9 @@ public final class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom
     }
 
     /**
-     * Specifies the type of identities that are allowed access to outside the
-     * perimeter. If left unspecified, then members of `identities` field will
-     * be allowed access.
+     * Specifies the type of identities that are allowed access from outside the
+     * perimeter. If left unspecified, then members of `identities` field will be
+     * allowed access.
      * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
      * 
      */
@@ -47,9 +47,9 @@ public final class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom
     private @Nullable Output<String> identityType;
 
     /**
-     * @return Specifies the type of identities that are allowed access to outside the
-     * perimeter. If left unspecified, then members of `identities` field will
-     * be allowed access.
+     * @return Specifies the type of identities that are allowed access from outside the
+     * perimeter. If left unspecified, then members of `identities` field will be
+     * allowed access.
      * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
      * 
      */
@@ -101,9 +101,9 @@ public final class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom
         }
 
         /**
-         * @param identities A list of identities that are allowed access through this `EgressPolicy`.
-         * Should be in the format of email address. The email address should
-         * represent individual user or service account only.
+         * @param identities A list of identities that are allowed access through this ingress policy.
+         * Should be in the format of email address. The email address should represent
+         * individual user or service account only.
          * 
          * @return builder
          * 
@@ -114,9 +114,9 @@ public final class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom
         }
 
         /**
-         * @param identities A list of identities that are allowed access through this `EgressPolicy`.
-         * Should be in the format of email address. The email address should
-         * represent individual user or service account only.
+         * @param identities A list of identities that are allowed access through this ingress policy.
+         * Should be in the format of email address. The email address should represent
+         * individual user or service account only.
          * 
          * @return builder
          * 
@@ -126,9 +126,9 @@ public final class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom
         }
 
         /**
-         * @param identities A list of identities that are allowed access through this `EgressPolicy`.
-         * Should be in the format of email address. The email address should
-         * represent individual user or service account only.
+         * @param identities A list of identities that are allowed access through this ingress policy.
+         * Should be in the format of email address. The email address should represent
+         * individual user or service account only.
          * 
          * @return builder
          * 
@@ -138,9 +138,9 @@ public final class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom
         }
 
         /**
-         * @param identityType Specifies the type of identities that are allowed access to outside the
-         * perimeter. If left unspecified, then members of `identities` field will
-         * be allowed access.
+         * @param identityType Specifies the type of identities that are allowed access from outside the
+         * perimeter. If left unspecified, then members of `identities` field will be
+         * allowed access.
          * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
          * 
          * @return builder
@@ -152,9 +152,9 @@ public final class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom
         }
 
         /**
-         * @param identityType Specifies the type of identities that are allowed access to outside the
-         * perimeter. If left unspecified, then members of `identities` field will
-         * be allowed access.
+         * @param identityType Specifies the type of identities that are allowed access from outside the
+         * perimeter. If left unspecified, then members of `identities` field will be
+         * allowed access.
          * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
          * 
          * @return builder

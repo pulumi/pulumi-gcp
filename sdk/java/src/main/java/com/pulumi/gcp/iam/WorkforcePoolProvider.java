@@ -239,35 +239,6 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      * provider should not be accepted.
      * The expression must output a boolean representing whether to allow the federation.
      * The following keywords may be referenced in the expressions:
-     * * `assertion`: JSON representing the authentication credential issued by the provider.
-     * * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`.
-     *   `google.profile_photo` and `google.display_name` are not supported.
-     * * `attribute`: The custom attributes mapped from the assertion in the `attribute_mappings`.
-     *   The maximum length of the attribute condition expression is 4096 characters.
-     *   If unspecified, all valid authentication credentials will be accepted.
-     *   The following example shows how to only allow credentials with a mapped `google.groups` value of `admins`:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
      * 
      */
     @Export(name="attributeCondition", type=String.class, parameters={})
@@ -279,35 +250,6 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
      * provider should not be accepted.
      * The expression must output a boolean representing whether to allow the federation.
      * The following keywords may be referenced in the expressions:
-     * * `assertion`: JSON representing the authentication credential issued by the provider.
-     * * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`.
-     *   `google.profile_photo` and `google.display_name` are not supported.
-     * * `attribute`: The custom attributes mapped from the assertion in the `attribute_mappings`.
-     *   The maximum length of the attribute condition expression is 4096 characters.
-     *   If unspecified, all valid authentication credentials will be accepted.
-     *   The following example shows how to only allow credentials with a mapped `google.groups` value of `admins`:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
      * 
      */
     public Output<Optional<String>> attributeCondition() {
@@ -506,16 +448,16 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * Output only. The resource name of the provider. Format:
-     * &#39;locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}&#39;
+     * Output only. The resource name of the provider.
+     * Format: `locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}`
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Output only. The resource name of the provider. Format:
-     * &#39;locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}&#39;
+     * @return Output only. The resource name of the provider.
+     * Format: `locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}`
      * 
      */
     public Output<String> name() {
@@ -572,20 +514,24 @@ public class WorkforcePoolProvider extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.saml);
     }
     /**
-     * The current state of the provider. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The provider is active and may be
-     * used to validate authentication credentials. * DELETED: The provider is soft-deleted. Soft-deleted providers are
-     * permanently deleted after approximately 30 days. You can restore a soft-deleted provider using
-     * [providers.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePoolProvider).
+     * The current state of the provider.
+     * * STATE_UNSPECIFIED: State unspecified.
+     * * ACTIVE: The provider is active and may be used to validate authentication credentials.
+     * * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently
+     *   deleted after approximately 30 days. You can restore a soft-deleted provider using
+     *   [providers.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePoolProvider).
      * 
      */
     @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**
-     * @return The current state of the provider. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The provider is active and may be
-     * used to validate authentication credentials. * DELETED: The provider is soft-deleted. Soft-deleted providers are
-     * permanently deleted after approximately 30 days. You can restore a soft-deleted provider using
-     * [providers.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePoolProvider).
+     * @return The current state of the provider.
+     * * STATE_UNSPECIFIED: State unspecified.
+     * * ACTIVE: The provider is active and may be used to validate authentication credentials.
+     * * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently
+     *   deleted after approximately 30 days. You can restore a soft-deleted provider using
+     *   [providers.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePoolProvider).
      * 
      */
     public Output<String> state() {

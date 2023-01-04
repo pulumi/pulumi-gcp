@@ -118,7 +118,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * - 
      * Output only. The time when the policy was created.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits.
@@ -128,8 +127,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> createTime;
 
     /**
-     * @return -
-     * Output only. The time when the policy was created.
+     * @return Output only. The time when the policy was created.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits.
      * 
@@ -139,18 +137,22 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
-     * [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
-     * [alternativeLocationId] and can change after a failover event.
+     * The current zone where the Redis endpoint is placed.
+     * For Basic Tier instances, this will always be the same as the
+     * [locationId] provided by the user at creation time. For Standard Tier
+     * instances, this can be either [locationId] or [alternativeLocationId]
+     * and can change after a failover event.
      * 
      */
     @Import(name="currentLocationId")
     private @Nullable Output<String> currentLocationId;
 
     /**
-     * @return The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
-     * [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
-     * [alternativeLocationId] and can change after a failover event.
+     * @return The current zone where the Redis endpoint is placed.
+     * For Basic Tier instances, this will always be the same as the
+     * [locationId] provided by the user at creation time. For Standard Tier
+     * instances, this can be either [locationId] or [alternativeLocationId]
+     * and can change after a failover event.
      * 
      */
     public Optional<Output<String>> currentLocationId() {
@@ -190,14 +192,16 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
+     * Hostname or IP address of the exposed Redis endpoint used by clients
+     * to connect to the service.
      * 
      */
     @Import(name="host")
     private @Nullable Output<String> host;
 
     /**
-     * @return Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
+     * @return Hostname or IP address of the exposed Redis endpoint used by clients
+     * to connect to the service.
      * 
      */
     public Optional<Output<String>> host() {
@@ -308,6 +312,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Output only. Info per node.
+     * Structure is documented below.
      * 
      */
     @Import(name="nodes")
@@ -315,6 +320,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Output only. Info per node.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<InstanceNodeArgs>>> nodes() {
@@ -339,18 +345,20 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
-     * &#34;serviceAccount:&#34;. The value may change over time for a given instance so should be checked before each import/export
-     * operation.
+     * Output only. Cloud IAM identity used by import / export operations
+     * to transfer data to/from Cloud Storage. Format is &#34;serviceAccount:&#34;.
+     * The value may change over time for a given instance so should be
+     * checked before each import/export operation.
      * 
      */
     @Import(name="persistenceIamIdentity")
     private @Nullable Output<String> persistenceIamIdentity;
 
     /**
-     * @return Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
-     * &#34;serviceAccount:&#34;. The value may change over time for a given instance so should be checked before each import/export
-     * operation.
+     * @return Output only. Cloud IAM identity used by import / export operations
+     * to transfer data to/from Cloud Storage. Format is &#34;serviceAccount:&#34;.
+     * The value may change over time for a given instance so should be
+     * checked before each import/export operation.
      * 
      */
     public Optional<Output<String>> persistenceIamIdentity() {
@@ -390,18 +398,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy
-     * replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write
-     * requests must target &#39;host&#39;.
+     * Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
+     * Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
+     * will exhibit some lag behind the primary. Write requests must target &#39;host&#39;.
      * 
      */
     @Import(name="readEndpoint")
     private @Nullable Output<String> readEndpoint;
 
     /**
-     * @return Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy
-     * replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write
-     * requests must target &#39;host&#39;.
+     * @return Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
+     * Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
+     * will exhibit some lag behind the primary. Write requests must target &#39;host&#39;.
      * 
      */
     public Optional<Output<String>> readEndpoint() {
@@ -409,16 +417,16 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
-     * &#39;port&#39;.
+     * Output only. The port number of the exposed readonly redis endpoint. Standard tier only.
+     * Write requests should target &#39;port&#39;.
      * 
      */
     @Import(name="readEndpointPort")
     private @Nullable Output<Integer> readEndpointPort;
 
     /**
-     * @return Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
-     * &#39;port&#39;.
+     * @return Output only. The port number of the exposed readonly redis endpoint. Standard tier only.
+     * Write requests should target &#39;port&#39;.
      * 
      */
     public Optional<Output<Integer>> readEndpointPort() {
@@ -572,6 +580,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * List of server CA certificates for the instance.
+     * Structure is documented below.
      * 
      */
     @Import(name="serverCaCerts")
@@ -579,6 +588,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return List of server CA certificates for the instance.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<InstanceServerCaCertArgs>>> serverCaCerts() {
@@ -809,8 +819,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime -
-         * Output only. The time when the policy was created.
+         * @param createTime Output only. The time when the policy was created.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
          * resolution and up to nine fractional digits.
          * 
@@ -823,8 +832,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime -
-         * Output only. The time when the policy was created.
+         * @param createTime Output only. The time when the policy was created.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
          * resolution and up to nine fractional digits.
          * 
@@ -836,9 +844,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param currentLocationId The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
-         * [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
-         * [alternativeLocationId] and can change after a failover event.
+         * @param currentLocationId The current zone where the Redis endpoint is placed.
+         * For Basic Tier instances, this will always be the same as the
+         * [locationId] provided by the user at creation time. For Standard Tier
+         * instances, this can be either [locationId] or [alternativeLocationId]
+         * and can change after a failover event.
          * 
          * @return builder
          * 
@@ -849,9 +859,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param currentLocationId The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
-         * [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
-         * [alternativeLocationId] and can change after a failover event.
+         * @param currentLocationId The current zone where the Redis endpoint is placed.
+         * For Basic Tier instances, this will always be the same as the
+         * [locationId] provided by the user at creation time. For Standard Tier
+         * instances, this can be either [locationId] or [alternativeLocationId]
+         * and can change after a failover event.
          * 
          * @return builder
          * 
@@ -905,7 +917,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param host Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
+         * @param host Hostname or IP address of the exposed Redis endpoint used by clients
+         * to connect to the service.
          * 
          * @return builder
          * 
@@ -916,7 +929,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param host Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
+         * @param host Hostname or IP address of the exposed Redis endpoint used by clients
+         * to connect to the service.
          * 
          * @return builder
          * 
@@ -1065,6 +1079,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param nodes Output only. Info per node.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1076,6 +1091,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param nodes Output only. Info per node.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1086,6 +1102,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param nodes Output only. Info per node.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1118,9 +1135,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param persistenceIamIdentity Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
-         * &#34;serviceAccount:&#34;. The value may change over time for a given instance so should be checked before each import/export
-         * operation.
+         * @param persistenceIamIdentity Output only. Cloud IAM identity used by import / export operations
+         * to transfer data to/from Cloud Storage. Format is &#34;serviceAccount:&#34;.
+         * The value may change over time for a given instance so should be
+         * checked before each import/export operation.
          * 
          * @return builder
          * 
@@ -1131,9 +1149,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param persistenceIamIdentity Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
-         * &#34;serviceAccount:&#34;. The value may change over time for a given instance so should be checked before each import/export
-         * operation.
+         * @param persistenceIamIdentity Output only. Cloud IAM identity used by import / export operations
+         * to transfer data to/from Cloud Storage. Format is &#34;serviceAccount:&#34;.
+         * The value may change over time for a given instance so should be
+         * checked before each import/export operation.
          * 
          * @return builder
          * 
@@ -1187,9 +1206,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param readEndpoint Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy
-         * replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write
-         * requests must target &#39;host&#39;.
+         * @param readEndpoint Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
+         * Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
+         * will exhibit some lag behind the primary. Write requests must target &#39;host&#39;.
          * 
          * @return builder
          * 
@@ -1200,9 +1219,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param readEndpoint Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy
-         * replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write
-         * requests must target &#39;host&#39;.
+         * @param readEndpoint Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
+         * Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
+         * will exhibit some lag behind the primary. Write requests must target &#39;host&#39;.
          * 
          * @return builder
          * 
@@ -1212,8 +1231,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param readEndpointPort Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
-         * &#39;port&#39;.
+         * @param readEndpointPort Output only. The port number of the exposed readonly redis endpoint. Standard tier only.
+         * Write requests should target &#39;port&#39;.
          * 
          * @return builder
          * 
@@ -1224,8 +1243,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param readEndpointPort Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
-         * &#39;port&#39;.
+         * @param readEndpointPort Output only. The port number of the exposed readonly redis endpoint. Standard tier only.
+         * Write requests should target &#39;port&#39;.
          * 
          * @return builder
          * 
@@ -1423,6 +1442,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param serverCaCerts List of server CA certificates for the instance.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1434,6 +1454,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param serverCaCerts List of server CA certificates for the instance.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1444,6 +1465,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param serverCaCerts List of server CA certificates for the instance.
+         * Structure is documented below.
          * 
          * @return builder
          * 

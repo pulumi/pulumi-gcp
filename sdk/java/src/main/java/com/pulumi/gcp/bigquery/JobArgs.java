@@ -22,7 +22,6 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Copies a table.
-     * Structure is documented below.
      * 
      */
     @Import(name="copy")
@@ -30,7 +29,6 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Copies a table.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<JobCopyArgs>> copy() {
@@ -39,7 +37,6 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Configures an extract job.
-     * Structure is documented below.
      * 
      */
     @Import(name="extract")
@@ -47,7 +44,6 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Configures an extract job.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<JobExtractArgs>> extract() {
@@ -101,7 +97,6 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Configures a load job.
-     * Structure is documented below.
      * 
      */
     @Import(name="load")
@@ -109,7 +104,6 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Configures a load job.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<JobLoadArgs>> load() {
@@ -150,7 +144,6 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Configures a query job.
-     * Structure is documented below.
      * 
      */
     @Import(name="query")
@@ -158,7 +151,6 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Configures a query job.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<JobQueryArgs>> query() {
@@ -199,7 +191,6 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param copy Copies a table.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -211,7 +202,6 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param copy Copies a table.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -222,7 +212,6 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param extract Configures an extract job.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -234,7 +223,6 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param extract Configures an extract job.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -308,7 +296,6 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param load Configures a load job.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -320,7 +307,6 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param load Configures a load job.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -375,7 +361,6 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param query Configures a query job.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -387,7 +372,6 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param query Configures a query job.
-         * Structure is documented below.
          * 
          * @return builder
          * 

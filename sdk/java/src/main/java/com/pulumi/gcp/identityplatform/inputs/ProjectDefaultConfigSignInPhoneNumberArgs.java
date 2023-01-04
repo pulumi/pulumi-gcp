@@ -18,14 +18,14 @@ public final class ProjectDefaultConfigSignInPhoneNumberArgs extends com.pulumi.
     public static final ProjectDefaultConfigSignInPhoneNumberArgs Empty = new ProjectDefaultConfigSignInPhoneNumberArgs();
 
     /**
-     * Whether anonymous user auth is enabled for the project or not.
+     * Whether phone number auth is enabled for the project or not.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether anonymous user auth is enabled for the project or not.
+     * @return Whether phone number auth is enabled for the project or not.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -73,7 +73,7 @@ public final class ProjectDefaultConfigSignInPhoneNumberArgs extends com.pulumi.
         }
 
         /**
-         * @param enabled Whether anonymous user auth is enabled for the project or not.
+         * @param enabled Whether phone number auth is enabled for the project or not.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class ProjectDefaultConfigSignInPhoneNumberArgs extends com.pulumi.
         }
 
         /**
-         * @param enabled Whether anonymous user auth is enabled for the project or not.
+         * @param enabled Whether phone number auth is enabled for the project or not.
          * 
          * @return builder
          * 

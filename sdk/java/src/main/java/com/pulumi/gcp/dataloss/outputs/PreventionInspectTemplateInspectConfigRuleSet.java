@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class PreventionInspectTemplateInspectConfigRuleSet {
     /**
-     * @return If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+     * @return List of infoTypes this rule set is applied to.
      * Structure is documented below.
      * 
      */
@@ -26,7 +26,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSet {
 
     private PreventionInspectTemplateInspectConfigRuleSet() {}
     /**
-     * @return If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+     * @return List of infoTypes this rule set is applied to.
      * Structure is documented below.
      * 
      */

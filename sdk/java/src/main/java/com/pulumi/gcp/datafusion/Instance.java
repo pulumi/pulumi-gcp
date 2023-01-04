@@ -624,18 +624,26 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.serviceEndpoint;
     }
     /**
-     * The current state of this Data Fusion instance. - CREATING: Instance is being created - RUNNING: Instance is running and
-     * ready for requests - FAILED: Instance creation failed - DELETING: Instance is being deleted - UPGRADING: Instance is
-     * being upgraded - RESTARTING: Instance is being restarted
+     * The current state of this Data Fusion instance.
+     * * CREATING: Instance is being created
+     * * RUNNING: Instance is running and ready for requests
+     * * FAILED: Instance creation failed
+     * * DELETING: Instance is being deleted
+     * * UPGRADING: Instance is being upgraded
+     * * RESTARTING: Instance is being restarted
      * 
      */
     @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**
-     * @return The current state of this Data Fusion instance. - CREATING: Instance is being created - RUNNING: Instance is running and
-     * ready for requests - FAILED: Instance creation failed - DELETING: Instance is being deleted - UPGRADING: Instance is
-     * being upgraded - RESTARTING: Instance is being restarted
+     * @return The current state of this Data Fusion instance.
+     * * CREATING: Instance is being created
+     * * RUNNING: Instance is running and ready for requests
+     * * FAILED: Instance creation failed
+     * * DELETING: Instance is being deleted
+     * * UPGRADING: Instance is being upgraded
+     * * RESTARTING: Instance is being restarted
      * 
      */
     public Output<String> state() {

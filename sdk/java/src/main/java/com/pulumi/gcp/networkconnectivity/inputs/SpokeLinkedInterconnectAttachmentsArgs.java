@@ -31,14 +31,14 @@ public final class SpokeLinkedInterconnectAttachmentsArgs extends com.pulumi.res
     }
 
     /**
-     * The URIs of linked VPN tunnel resources.
+     * The URIs of linked interconnect attachment resources
      * 
      */
     @Import(name="uris", required=true)
     private Output<List<String>> uris;
 
     /**
-     * @return The URIs of linked VPN tunnel resources.
+     * @return The URIs of linked interconnect attachment resources
      * 
      */
     public Output<List<String>> uris() {
@@ -92,7 +92,7 @@ public final class SpokeLinkedInterconnectAttachmentsArgs extends com.pulumi.res
         }
 
         /**
-         * @param uris The URIs of linked VPN tunnel resources.
+         * @param uris The URIs of linked interconnect attachment resources
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class SpokeLinkedInterconnectAttachmentsArgs extends com.pulumi.res
         }
 
         /**
-         * @param uris The URIs of linked VPN tunnel resources.
+         * @param uris The URIs of linked interconnect attachment resources
          * 
          * @return builder
          * 
@@ -113,7 +113,7 @@ public final class SpokeLinkedInterconnectAttachmentsArgs extends com.pulumi.res
         }
 
         /**
-         * @param uris The URIs of linked VPN tunnel resources.
+         * @param uris The URIs of linked interconnect attachment resources
          * 
          * @return builder
          * 

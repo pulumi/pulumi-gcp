@@ -141,14 +141,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:diagflow/cxPage:CxPage")
 public class CxPage extends com.pulumi.resources.CustomResource {
     /**
-     * The human-readable name of the parameter, unique within the form.
+     * The human-readable name of the page, unique within the agent.
      * 
      */
     @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
-     * @return The human-readable name of the parameter, unique within the form.
+     * @return The human-readable name of the page, unique within the agent.
      * 
      */
     public Output<String> displayName() {
@@ -239,7 +239,7 @@ public class CxPage extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.languageCode);
     }
     /**
-     * - 
+     * The unique identifier of this transition route.
      * The unique identifier of this event handler.
      * 
      */
@@ -247,7 +247,7 @@ public class CxPage extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return -
+     * @return The unique identifier of this transition route.
      * The unique identifier of this event handler.
      * 
      */

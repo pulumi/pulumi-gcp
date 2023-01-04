@@ -19,8 +19,7 @@ public final class InboundSamlConfigSpConfig {
      */
     private @Nullable String callbackUri;
     /**
-     * @return -
-     * The IDP&#39;s certificate data to verify the signature in the SAMLResponse issued by the IDP.
+     * @return The IDP&#39;s certificate data to verify the signature in the SAMLResponse issued by the IDP.
      * Structure is documented below.
      * 
      */
@@ -40,8 +39,7 @@ public final class InboundSamlConfigSpConfig {
         return Optional.ofNullable(this.callbackUri);
     }
     /**
-     * @return -
-     * The IDP&#39;s certificate data to verify the signature in the SAMLResponse issued by the IDP.
+     * @return The IDP&#39;s certificate data to verify the signature in the SAMLResponse issued by the IDP.
      * Structure is documented below.
      * 
      */

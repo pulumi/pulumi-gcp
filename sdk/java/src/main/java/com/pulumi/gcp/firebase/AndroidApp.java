@@ -78,16 +78,16 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:firebase/androidApp:AndroidApp")
 public class AndroidApp extends com.pulumi.resources.CustomResource {
     /**
-     * The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
-     * token, as the data format is not specified.
+     * The globally unique, Firebase-assigned identifier of the AndroidApp.
+     * This identifier should be treated as an opaque token, as the data format is not specified.
      * 
      */
     @Export(name="appId", type=String.class, parameters={})
     private Output<String> appId;
 
     /**
-     * @return The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
-     * token, as the data format is not specified.
+     * @return The globally unique, Firebase-assigned identifier of the AndroidApp.
+     * This identifier should be treated as an opaque token, as the data format is not specified.
      * 
      */
     public Output<String> appId() {
@@ -126,30 +126,32 @@ public class AndroidApp extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
-     * This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
-     * ensure the client has an up-to-date value before proceeding.
+     * This checksum is computed by the server based on the value of other fields, and it may be sent
+     * with update requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
     @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
-     * @return This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
-     * ensure the client has an up-to-date value before proceeding.
+     * @return This checksum is computed by the server based on the value of other fields, and it may be sent
+     * with update requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
     public Output<String> etag() {
         return this.etag;
     }
     /**
-     * The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
+     * The fully qualified resource name of the AndroidApp, for example:
+     * projects/projectId/androidApps/appId
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
+     * @return The fully qualified resource name of the AndroidApp, for example:
+     * projects/projectId/androidApps/appId
      * 
      */
     public Output<String> name() {

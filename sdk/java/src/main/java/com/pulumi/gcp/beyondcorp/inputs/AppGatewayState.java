@@ -20,6 +20,7 @@ public final class AppGatewayState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A list of connections allocated for the Gateway.
+     * Structure is documented below.
      * 
      */
     @Import(name="allocatedConnections")
@@ -27,6 +28,7 @@ public final class AppGatewayState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A list of connections allocated for the Gateway.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<AppGatewayAllocatedConnectionArgs>>> allocatedConnections() {
@@ -213,6 +215,7 @@ public final class AppGatewayState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param allocatedConnections A list of connections allocated for the Gateway.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -224,6 +227,7 @@ public final class AppGatewayState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param allocatedConnections A list of connections allocated for the Gateway.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -234,6 +238,7 @@ public final class AppGatewayState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param allocatedConnections A list of connections allocated for the Gateway.
+         * Structure is documented below.
          * 
          * @return builder
          * 

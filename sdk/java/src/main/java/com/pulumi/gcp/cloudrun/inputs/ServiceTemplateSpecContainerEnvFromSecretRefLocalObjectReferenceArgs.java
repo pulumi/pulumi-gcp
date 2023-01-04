@@ -14,14 +14,18 @@ public final class ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectRefere
     public static final ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs Empty = new ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs();
 
     /**
-     * Volume&#39;s name.
+     * Name of the referent.
+     * More info:
+     * https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Volume&#39;s name.
+     * @return Name of the referent.
+     * More info:
+     * https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
      * 
      */
     public Output<String> name() {
@@ -53,7 +57,9 @@ public final class ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectRefere
         }
 
         /**
-         * @param name Volume&#39;s name.
+         * @param name Name of the referent.
+         * More info:
+         * https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
          * 
          * @return builder
          * 
@@ -64,7 +70,9 @@ public final class ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectRefere
         }
 
         /**
-         * @param name Volume&#39;s name.
+         * @param name Name of the referent.
+         * More info:
+         * https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
          * 
          * @return builder
          * 

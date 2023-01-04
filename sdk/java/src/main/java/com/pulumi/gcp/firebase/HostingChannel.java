@@ -168,14 +168,16 @@ public class HostingChannel extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
-     * The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID
+     * The fully-qualified resource name for the channel, in the format:
+     * sites/SITE_ID/channels/CHANNEL_ID
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID
+     * @return The fully-qualified resource name for the channel, in the format:
+     * sites/SITE_ID/channels/CHANNEL_ID
      * 
      */
     public Output<String> name() {

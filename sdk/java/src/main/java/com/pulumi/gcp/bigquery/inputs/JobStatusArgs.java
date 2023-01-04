@@ -18,23 +18,55 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobStatusArgs Empty = new JobStatusArgs();
 
+    /**
+     * Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="errorResults")
     private @Nullable Output<List<JobStatusErrorResultArgs>> errorResults;
 
+    /**
+     * @return Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<List<JobStatusErrorResultArgs>>> errorResults() {
         return Optional.ofNullable(this.errorResults);
     }
 
+    /**
+     * The first errors encountered during the running of the job. The final message
+     * includes the number of errors that caused the process to stop. Errors here do
+     * not necessarily mean that the job has not completed or was unsuccessful.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="errors")
     private @Nullable Output<List<JobStatusErrorArgs>> errors;
 
+    /**
+     * @return The first errors encountered during the running of the job. The final message
+     * includes the number of errors that caused the process to stop. Errors here do
+     * not necessarily mean that the job has not completed or was unsuccessful.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<List<JobStatusErrorArgs>>> errors() {
         return Optional.ofNullable(this.errors);
     }
 
+    /**
+     * Running state of the job. Valid states include &#39;PENDING&#39;, &#39;RUNNING&#39;, and &#39;DONE&#39;.
+     * 
+     */
     @Import(name="state")
     private @Nullable Output<String> state;
 
+    /**
+     * @return Running state of the job. Valid states include &#39;PENDING&#39;, &#39;RUNNING&#39;, and &#39;DONE&#39;.
+     * 
+     */
     public Optional<Output<String>> state() {
         return Optional.ofNullable(this.state);
     }
@@ -65,37 +97,97 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
             $ = new JobStatusArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param errorResults Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder errorResults(@Nullable Output<List<JobStatusErrorResultArgs>> errorResults) {
             $.errorResults = errorResults;
             return this;
         }
 
+        /**
+         * @param errorResults Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder errorResults(List<JobStatusErrorResultArgs> errorResults) {
             return errorResults(Output.of(errorResults));
         }
 
+        /**
+         * @param errorResults Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder errorResults(JobStatusErrorResultArgs... errorResults) {
             return errorResults(List.of(errorResults));
         }
 
+        /**
+         * @param errors The first errors encountered during the running of the job. The final message
+         * includes the number of errors that caused the process to stop. Errors here do
+         * not necessarily mean that the job has not completed or was unsuccessful.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder errors(@Nullable Output<List<JobStatusErrorArgs>> errors) {
             $.errors = errors;
             return this;
         }
 
+        /**
+         * @param errors The first errors encountered during the running of the job. The final message
+         * includes the number of errors that caused the process to stop. Errors here do
+         * not necessarily mean that the job has not completed or was unsuccessful.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder errors(List<JobStatusErrorArgs> errors) {
             return errors(Output.of(errors));
         }
 
+        /**
+         * @param errors The first errors encountered during the running of the job. The final message
+         * includes the number of errors that caused the process to stop. Errors here do
+         * not necessarily mean that the job has not completed or was unsuccessful.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder errors(JobStatusErrorArgs... errors) {
             return errors(List.of(errors));
         }
 
+        /**
+         * @param state Running state of the job. Valid states include &#39;PENDING&#39;, &#39;RUNNING&#39;, and &#39;DONE&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder state(@Nullable Output<String> state) {
             $.state = state;
             return this;
         }
 
+        /**
+         * @param state Running state of the job. Valid states include &#39;PENDING&#39;, &#39;RUNNING&#39;, and &#39;DONE&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder state(String state) {
             return state(Output.of(state));
         }

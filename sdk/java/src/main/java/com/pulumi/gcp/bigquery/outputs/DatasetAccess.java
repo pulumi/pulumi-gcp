@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DatasetAccess {
     /**
-     * @return The dataset this entry applies to
+     * @return Grants all resources of particular types in a particular dataset read access to the current dataset.
      * Structure is documented below.
      * 
      */
@@ -74,7 +74,7 @@ public final class DatasetAccess {
 
     private DatasetAccess() {}
     /**
-     * @return The dataset this entry applies to
+     * @return Grants all resources of particular types in a particular dataset read access to the current dataset.
      * Structure is documented below.
      * 
      */

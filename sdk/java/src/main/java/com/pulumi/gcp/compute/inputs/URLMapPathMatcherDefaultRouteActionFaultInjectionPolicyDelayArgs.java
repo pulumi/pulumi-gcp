@@ -34,7 +34,7 @@ public final class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayA
     }
 
     /**
-     * The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+     * The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
      * The value must be between 0.0 and 100.0 inclusive.
      * 
      */
@@ -42,7 +42,7 @@ public final class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayA
     private @Nullable Output<Double> percentage;
 
     /**
-     * @return The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+     * @return The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
      * The value must be between 0.0 and 100.0 inclusive.
      * 
      */
@@ -99,7 +99,7 @@ public final class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayA
         }
 
         /**
-         * @param percentage The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+         * @param percentage The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
          * The value must be between 0.0 and 100.0 inclusive.
          * 
          * @return builder
@@ -111,7 +111,7 @@ public final class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayA
         }
 
         /**
-         * @param percentage The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+         * @param percentage The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
          * The value must be between 0.0 and 100.0 inclusive.
          * 
          * @return builder

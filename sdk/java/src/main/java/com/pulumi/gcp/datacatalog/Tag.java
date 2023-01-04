@@ -439,8 +439,8 @@ public class Tag extends com.pulumi.resources.CustomResource {
     /**
      * The resource name of the tag in URL format. Example:
      * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
-     * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id} where tag_id is a system-generated
-     * identifier. Note that this Tag may not actually be stored in the location in this name.
+     * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id}
+     * where tag_id is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
@@ -449,8 +449,8 @@ public class Tag extends com.pulumi.resources.CustomResource {
     /**
      * @return The resource name of the tag in URL format. Example:
      * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
-     * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id} where tag_id is a system-generated
-     * identifier. Note that this Tag may not actually be stored in the location in this name.
+     * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id}
+     * where tag_id is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
      * 
      */
     public Output<String> name() {

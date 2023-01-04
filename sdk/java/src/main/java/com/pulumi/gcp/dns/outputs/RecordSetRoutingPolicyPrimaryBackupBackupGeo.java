@@ -14,7 +14,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RecordSetRoutingPolicyPrimaryBackupBackupGeo {
     /**
-     * @return For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+     * @return The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
+     * Structure is document below.
      * Structure is document below.
      * 
      */
@@ -24,15 +25,12 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeo {
      * 
      */
     private String location;
-    /**
-     * @return Same as `rrdatas` above.
-     * 
-     */
     private @Nullable List<String> rrdatas;
 
     private RecordSetRoutingPolicyPrimaryBackupBackupGeo() {}
     /**
-     * @return For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+     * @return The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
+     * Structure is document below.
      * Structure is document below.
      * 
      */
@@ -46,10 +44,6 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeo {
     public String location() {
         return this.location;
     }
-    /**
-     * @return Same as `rrdatas` above.
-     * 
-     */
     public List<String> rrdatas() {
         return this.rrdatas == null ? List.of() : this.rrdatas;
     }

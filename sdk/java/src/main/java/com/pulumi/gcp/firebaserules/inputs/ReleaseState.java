@@ -32,16 +32,14 @@ public final class ReleaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated
-     * from this Release.
+     * Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
      * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
-     * @return Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated
-     * from this Release.
+     * @return Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -159,8 +157,7 @@ public final class ReleaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disabled Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated
-         * from this Release.
+         * @param disabled Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
          * 
          * @return builder
          * 
@@ -171,8 +168,7 @@ public final class ReleaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disabled Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated
-         * from this Release.
+         * @param disabled Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
          * 
          * @return builder
          * 

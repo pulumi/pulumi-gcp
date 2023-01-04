@@ -19,18 +19,20 @@ public final class KeyRingImportJobState extends com.pulumi.resources.ResourceAr
     public static final KeyRingImportJobState Empty = new KeyRingImportJobState();
 
     /**
-     * Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this
-     * statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen
-     * ImportMethod is one with a protection level of HSM.
+     * Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
+     * Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+     * Only present if the chosen ImportMethod is one with a protection level of HSM.
+     * Structure is documented below.
      * 
      */
     @Import(name="attestations")
     private @Nullable Output<List<KeyRingImportJobAttestationArgs>> attestations;
 
     /**
-     * @return Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this
-     * statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen
-     * ImportMethod is one with a protection level of HSM.
+     * @return Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
+     * Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+     * Only present if the chosen ImportMethod is one with a protection level of HSM.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<KeyRingImportJobAttestationArgs>>> attestations() {
@@ -38,14 +40,16 @@ public final class KeyRingImportJobState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The time at which this resource is scheduled for expiration and can no longer be used. This is in RFC3339 text format.
+     * The time at which this resource is scheduled for expiration and can no longer be used.
+     * This is in RFC3339 text format.
      * 
      */
     @Import(name="expireTime")
     private @Nullable Output<String> expireTime;
 
     /**
-     * @return The time at which this resource is scheduled for expiration and can no longer be used. This is in RFC3339 text format.
+     * @return The time at which this resource is scheduled for expiration and can no longer be used.
+     * This is in RFC3339 text format.
      * 
      */
     public Optional<Output<String>> expireTime() {
@@ -136,14 +140,16 @@ public final class KeyRingImportJobState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The public key with which to wrap key material prior to import. Only returned if state is &#39;ACTIVE&#39;.
+     * The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
+     * Structure is documented below.
      * 
      */
     @Import(name="publicKeys")
     private @Nullable Output<List<KeyRingImportJobPublicKeyArgs>> publicKeys;
 
     /**
-     * @return The public key with which to wrap key material prior to import. Only returned if state is &#39;ACTIVE&#39;.
+     * @return The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<KeyRingImportJobPublicKeyArgs>>> publicKeys() {
@@ -198,9 +204,10 @@ public final class KeyRingImportJobState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param attestations Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this
-         * statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen
-         * ImportMethod is one with a protection level of HSM.
+         * @param attestations Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
+         * Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+         * Only present if the chosen ImportMethod is one with a protection level of HSM.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -211,9 +218,10 @@ public final class KeyRingImportJobState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param attestations Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this
-         * statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen
-         * ImportMethod is one with a protection level of HSM.
+         * @param attestations Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
+         * Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+         * Only present if the chosen ImportMethod is one with a protection level of HSM.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -223,9 +231,10 @@ public final class KeyRingImportJobState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param attestations Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this
-         * statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen
-         * ImportMethod is one with a protection level of HSM.
+         * @param attestations Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
+         * Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+         * Only present if the chosen ImportMethod is one with a protection level of HSM.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -235,7 +244,8 @@ public final class KeyRingImportJobState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param expireTime The time at which this resource is scheduled for expiration and can no longer be used. This is in RFC3339 text format.
+         * @param expireTime The time at which this resource is scheduled for expiration and can no longer be used.
+         * This is in RFC3339 text format.
          * 
          * @return builder
          * 
@@ -246,7 +256,8 @@ public final class KeyRingImportJobState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param expireTime The time at which this resource is scheduled for expiration and can no longer be used. This is in RFC3339 text format.
+         * @param expireTime The time at which this resource is scheduled for expiration and can no longer be used.
+         * This is in RFC3339 text format.
          * 
          * @return builder
          * 
@@ -369,7 +380,8 @@ public final class KeyRingImportJobState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param publicKeys The public key with which to wrap key material prior to import. Only returned if state is &#39;ACTIVE&#39;.
+         * @param publicKeys The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -380,7 +392,8 @@ public final class KeyRingImportJobState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param publicKeys The public key with which to wrap key material prior to import. Only returned if state is &#39;ACTIVE&#39;.
+         * @param publicKeys The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -390,7 +403,8 @@ public final class KeyRingImportJobState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param publicKeys The public key with which to wrap key material prior to import. Only returned if state is &#39;ACTIVE&#39;.
+         * @param publicKeys The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
+         * Structure is documented below.
          * 
          * @return builder
          * 

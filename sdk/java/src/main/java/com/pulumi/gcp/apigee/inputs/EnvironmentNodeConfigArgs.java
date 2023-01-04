@@ -16,7 +16,6 @@ public final class EnvironmentNodeConfigArgs extends com.pulumi.resources.Resour
     public static final EnvironmentNodeConfigArgs Empty = new EnvironmentNodeConfigArgs();
 
     /**
-     * - 
      * The current total number of gateway nodes that each environment currently has across
      * all instances.
      * 
@@ -25,8 +24,7 @@ public final class EnvironmentNodeConfigArgs extends com.pulumi.resources.Resour
     private @Nullable Output<String> currentAggregateNodeCount;
 
     /**
-     * @return -
-     * The current total number of gateway nodes that each environment currently has across
+     * @return The current total number of gateway nodes that each environment currently has across
      * all instances.
      * 
      */
@@ -99,8 +97,7 @@ public final class EnvironmentNodeConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param currentAggregateNodeCount -
-         * The current total number of gateway nodes that each environment currently has across
+         * @param currentAggregateNodeCount The current total number of gateway nodes that each environment currently has across
          * all instances.
          * 
          * @return builder
@@ -112,8 +109,7 @@ public final class EnvironmentNodeConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param currentAggregateNodeCount -
-         * The current total number of gateway nodes that each environment currently has across
+         * @param currentAggregateNodeCount The current total number of gateway nodes that each environment currently has across
          * all instances.
          * 
          * @return builder

@@ -171,16 +171,14 @@ public final class LakeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. Service account associated with this lake. This service account must be authorized to access or operate on
-     * resources managed by the lake.
+     * Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
      * 
      */
     @Import(name="serviceAccount")
     private @Nullable Output<String> serviceAccount;
 
     /**
-     * @return Output only. Service account associated with this lake. This service account must be authorized to access or operate on
-     * resources managed by the lake.
+     * @return Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
      * 
      */
     public Optional<Output<String>> serviceAccount() {
@@ -203,16 +201,14 @@ public final class LakeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and
-     * re-created with the same name.
+     * Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
      * 
      */
     @Import(name="uid")
     private @Nullable Output<String> uid;
 
     /**
-     * @return Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and
-     * re-created with the same name.
+     * @return Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
      * 
      */
     public Optional<Output<String>> uid() {
@@ -502,8 +498,7 @@ public final class LakeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceAccount Output only. Service account associated with this lake. This service account must be authorized to access or operate on
-         * resources managed by the lake.
+         * @param serviceAccount Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
          * 
          * @return builder
          * 
@@ -514,8 +509,7 @@ public final class LakeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceAccount Output only. Service account associated with this lake. This service account must be authorized to access or operate on
-         * resources managed by the lake.
+         * @param serviceAccount Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
          * 
          * @return builder
          * 
@@ -546,8 +540,7 @@ public final class LakeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uid Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and
-         * re-created with the same name.
+         * @param uid Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
          * 
          * @return builder
          * 
@@ -558,8 +551,7 @@ public final class LakeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uid Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and
-         * re-created with the same name.
+         * @param uid Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
          * 
          * @return builder
          * 

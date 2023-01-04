@@ -19,7 +19,7 @@ public final class EdgeCacheServiceRoutingPathMatcher {
      */
     private @Nullable String description;
     /**
-     * @return The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+     * @return The name to which this PathMatcher is referred by the HostRule.
      * 
      */
     private String name;
@@ -39,7 +39,7 @@ public final class EdgeCacheServiceRoutingPathMatcher {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+     * @return The name to which this PathMatcher is referred by the HostRule.
      * 
      */
     public String name() {

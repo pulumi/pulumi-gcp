@@ -13,8 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterNetworkPolicy {
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Whether network policy is enabled on the cluster.
      * 
      */
     private Boolean enabled;
@@ -26,8 +25,7 @@ public final class ClusterNetworkPolicy {
 
     private ClusterNetworkPolicy() {}
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Whether network policy is enabled on the cluster.
      * 
      */
     public Boolean enabled() {

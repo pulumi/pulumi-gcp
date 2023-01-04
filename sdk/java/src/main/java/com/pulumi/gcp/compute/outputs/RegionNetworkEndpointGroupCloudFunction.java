@@ -19,10 +19,12 @@ public final class RegionNetworkEndpointGroupCloudFunction {
      */
     private @Nullable String function;
     /**
-     * @return A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
-     * on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
-     * The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
-     * App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
+     * @return A template to parse function field from a request URL. URL mask allows
+     * for routing to multiple Cloud Functions without having to create
+     * multiple Network Endpoint Groups and backend services.
+     * For example, request URLs &#34;mydomain.com/function1&#34; and &#34;mydomain.com/function2&#34;
+     * can be backed by the same Serverless NEG with URL mask &#34;/&#34;. The URL mask
+     * will parse them to { function = &#34;function1&#34; } and { function = &#34;function2&#34; } respectively.
      * 
      */
     private @Nullable String urlMask;
@@ -38,10 +40,12 @@ public final class RegionNetworkEndpointGroupCloudFunction {
         return Optional.ofNullable(this.function);
     }
     /**
-     * @return A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
-     * on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
-     * The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
-     * App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
+     * @return A template to parse function field from a request URL. URL mask allows
+     * for routing to multiple Cloud Functions without having to create
+     * multiple Network Endpoint Groups and backend services.
+     * For example, request URLs &#34;mydomain.com/function1&#34; and &#34;mydomain.com/function2&#34;
+     * can be backed by the same Serverless NEG with URL mask &#34;/&#34;. The URL mask
+     * will parse them to { function = &#34;function1&#34; } and { function = &#34;function2&#34; } respectively.
      * 
      */
     public Optional<String> urlMask() {

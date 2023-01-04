@@ -304,16 +304,14 @@ public class AppProfile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.multiClusterRoutingUseAny);
     }
     /**
-     * The unique name of the requested app profile. Values are of the form
-     * &#39;projects/&lt;project&gt;/instances/&lt;instance&gt;/appProfiles/&lt;appProfileId&gt;&#39;.
+     * The unique name of the requested app profile. Values are of the form `projects/&lt;project&gt;/instances/&lt;instance&gt;/appProfiles/&lt;appProfileId&gt;`.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The unique name of the requested app profile. Values are of the form
-     * &#39;projects/&lt;project&gt;/instances/&lt;instance&gt;/appProfiles/&lt;appProfileId&gt;&#39;.
+     * @return The unique name of the requested app profile. Values are of the form `projects/&lt;project&gt;/instances/&lt;instance&gt;/appProfiles/&lt;appProfileId&gt;`.
      * 
      */
     public Output<String> name() {

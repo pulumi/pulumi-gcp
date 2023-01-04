@@ -19,7 +19,6 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
     public static final CertificateManagedArgs Empty = new CertificateManagedArgs();
 
     /**
-     * - 
      * Detailed state of the latest authorization attempt for each domain
      * specified for this Managed Certificate.
      * Structure is documented below.
@@ -29,8 +28,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
     private @Nullable Output<List<CertificateManagedAuthorizationAttemptInfoArgs>> authorizationAttemptInfos;
 
     /**
-     * @return -
-     * Detailed state of the latest authorization attempt for each domain
+     * @return Detailed state of the latest authorization attempt for each domain
      * specified for this Managed Certificate.
      * Structure is documented below.
      * 
@@ -72,7 +70,6 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * - 
      * Information about issues with provisioning this Managed Certificate.
      * Structure is documented below.
      * 
@@ -81,8 +78,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
     private @Nullable Output<List<CertificateManagedProvisioningIssueArgs>> provisioningIssues;
 
     /**
-     * @return -
-     * Information about issues with provisioning this Managed Certificate.
+     * @return Information about issues with provisioning this Managed Certificate.
      * Structure is documented below.
      * 
      */
@@ -91,7 +87,6 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * - 
      * State of the domain for managed certificate issuance.
      * 
      */
@@ -99,8 +94,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
     private @Nullable Output<String> state;
 
     /**
-     * @return -
-     * State of the domain for managed certificate issuance.
+     * @return State of the domain for managed certificate issuance.
      * 
      */
     public Optional<Output<String>> state() {
@@ -136,8 +130,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param authorizationAttemptInfos -
-         * Detailed state of the latest authorization attempt for each domain
+         * @param authorizationAttemptInfos Detailed state of the latest authorization attempt for each domain
          * specified for this Managed Certificate.
          * Structure is documented below.
          * 
@@ -150,8 +143,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param authorizationAttemptInfos -
-         * Detailed state of the latest authorization attempt for each domain
+         * @param authorizationAttemptInfos Detailed state of the latest authorization attempt for each domain
          * specified for this Managed Certificate.
          * Structure is documented below.
          * 
@@ -163,8 +155,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param authorizationAttemptInfos -
-         * Detailed state of the latest authorization attempt for each domain
+         * @param authorizationAttemptInfos Detailed state of the latest authorization attempt for each domain
          * specified for this Managed Certificate.
          * Structure is documented below.
          * 
@@ -241,8 +232,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param provisioningIssues -
-         * Information about issues with provisioning this Managed Certificate.
+         * @param provisioningIssues Information about issues with provisioning this Managed Certificate.
          * Structure is documented below.
          * 
          * @return builder
@@ -254,8 +244,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param provisioningIssues -
-         * Information about issues with provisioning this Managed Certificate.
+         * @param provisioningIssues Information about issues with provisioning this Managed Certificate.
          * Structure is documented below.
          * 
          * @return builder
@@ -266,8 +255,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param provisioningIssues -
-         * Information about issues with provisioning this Managed Certificate.
+         * @param provisioningIssues Information about issues with provisioning this Managed Certificate.
          * Structure is documented below.
          * 
          * @return builder
@@ -278,8 +266,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param state -
-         * State of the domain for managed certificate issuance.
+         * @param state State of the domain for managed certificate issuance.
          * 
          * @return builder
          * 
@@ -290,8 +277,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param state -
-         * State of the domain for managed certificate issuance.
+         * @param state State of the domain for managed certificate issuance.
          * 
          * @return builder
          * 

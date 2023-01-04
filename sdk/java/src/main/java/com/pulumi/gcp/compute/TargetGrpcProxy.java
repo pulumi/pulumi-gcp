@@ -198,20 +198,26 @@ public class TargetGrpcProxy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
-     * This field will be ignored when inserting a TargetGrpcProxy. An up-to-date fingerprint must be provided in order to
-     * patch/update the TargetGrpcProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest
-     * fingerprint, make a get() request to retrieve the TargetGrpcProxy. A base64-encoded string.
+     * Fingerprint of this resource. A hash of the contents stored in
+     * this object. This field is used in optimistic locking. This field
+     * will be ignored when inserting a TargetGrpcProxy. An up-to-date
+     * fingerprint must be provided in order to patch/update the
+     * TargetGrpcProxy; otherwise, the request will fail with error
+     * 412 conditionNotMet. To see the latest fingerprint, make a get()
+     * request to retrieve the TargetGrpcProxy. A base64-encoded string.
      * 
      */
     @Export(name="fingerprint", type=String.class, parameters={})
     private Output<String> fingerprint;
 
     /**
-     * @return Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
-     * This field will be ignored when inserting a TargetGrpcProxy. An up-to-date fingerprint must be provided in order to
-     * patch/update the TargetGrpcProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest
-     * fingerprint, make a get() request to retrieve the TargetGrpcProxy. A base64-encoded string.
+     * @return Fingerprint of this resource. A hash of the contents stored in
+     * this object. This field is used in optimistic locking. This field
+     * will be ignored when inserting a TargetGrpcProxy. An up-to-date
+     * fingerprint must be provided in order to patch/update the
+     * TargetGrpcProxy; otherwise, the request will fail with error
+     * 412 conditionNotMet. To see the latest fingerprint, make a get()
+     * request to retrieve the TargetGrpcProxy. A base64-encoded string.
      * 
      */
     public Output<String> fingerprint() {

@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EdgeCacheServiceRoutingPathMatcherRouteRule {
     /**
-     * @return A human-readable description of the resource.
+     * @return A human-readable description of the routeRule.
      * 
      */
     private @Nullable String description;
@@ -63,7 +63,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRule {
 
     private EdgeCacheServiceRoutingPathMatcherRouteRule() {}
     /**
-     * @return A human-readable description of the resource.
+     * @return A human-readable description of the routeRule.
      * 
      */
     public Optional<String> description() {

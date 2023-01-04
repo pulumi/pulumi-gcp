@@ -13,8 +13,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterTpuConfig {
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
+     * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+     * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
      * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * not.
      * 
      */
     private Boolean enabled;
@@ -23,8 +25,10 @@ public final class ClusterTpuConfig {
 
     private ClusterTpuConfig() {}
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
+     * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+     * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
      * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * not.
      * 
      */
     public Boolean enabled() {

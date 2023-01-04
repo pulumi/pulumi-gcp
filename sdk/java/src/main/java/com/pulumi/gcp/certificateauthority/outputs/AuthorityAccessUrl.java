@@ -12,13 +12,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AuthorityAccessUrl {
+    /**
+     * @return The URL where this CertificateAuthority&#39;s CA certificate is published. This will only be
+     * set for CAs that have been activated.
+     * 
+     */
     private @Nullable String caCertificateAccessUrl;
+    /**
+     * @return The URL where this CertificateAuthority&#39;s CRLs are published. This will only be set for
+     * CAs that have been activated.
+     * 
+     */
     private @Nullable List<String> crlAccessUrls;
 
     private AuthorityAccessUrl() {}
+    /**
+     * @return The URL where this CertificateAuthority&#39;s CA certificate is published. This will only be
+     * set for CAs that have been activated.
+     * 
+     */
     public Optional<String> caCertificateAccessUrl() {
         return Optional.ofNullable(this.caCertificateAccessUrl);
     }
+    /**
+     * @return The URL where this CertificateAuthority&#39;s CRLs are published. This will only be set for
+     * CAs that have been activated.
+     * 
+     */
     public List<String> crlAccessUrls() {
         return this.crlAccessUrls == null ? List.of() : this.crlAccessUrls;
     }

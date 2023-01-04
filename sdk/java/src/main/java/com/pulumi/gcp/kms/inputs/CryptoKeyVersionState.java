@@ -33,16 +33,18 @@ public final class CryptoKeyVersionState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the
-     * key as stored on the HSM, independently of Google. Only provided for key versions with protectionLevel HSM.
+     * Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+     * Only provided for key versions with protectionLevel HSM.
+     * Structure is documented below.
      * 
      */
     @Import(name="attestations")
     private @Nullable Output<List<CryptoKeyVersionAttestationArgs>> attestations;
 
     /**
-     * @return Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the
-     * key as stored on the HSM, independently of Google. Only provided for key versions with protectionLevel HSM.
+     * @return Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+     * Only provided for key versions with protectionLevel HSM.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<CryptoKeyVersionAttestationArgs>>> attestations() {
@@ -180,8 +182,9 @@ public final class CryptoKeyVersionState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param attestations Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the
-         * key as stored on the HSM, independently of Google. Only provided for key versions with protectionLevel HSM.
+         * @param attestations Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+         * Only provided for key versions with protectionLevel HSM.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -192,8 +195,9 @@ public final class CryptoKeyVersionState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param attestations Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the
-         * key as stored on the HSM, independently of Google. Only provided for key versions with protectionLevel HSM.
+         * @param attestations Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+         * Only provided for key versions with protectionLevel HSM.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -203,8 +207,9 @@ public final class CryptoKeyVersionState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param attestations Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the
-         * key as stored on the HSM, independently of Google. Only provided for key versions with protectionLevel HSM.
+         * @param attestations Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+         * Only provided for key versions with protectionLevel HSM.
+         * Structure is documented below.
          * 
          * @return builder
          * 

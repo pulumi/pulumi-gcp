@@ -20,14 +20,14 @@ public final class JobPigConfigArgs extends com.pulumi.resources.ResourceArgs {
     public static final JobPigConfigArgs Empty = new JobPigConfigArgs();
 
     /**
-     * Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+     * Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
      * 
      */
     @Import(name="continueOnFailure")
     private @Nullable Output<Boolean> continueOnFailure;
 
     /**
-     * @return Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+     * @return Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
      * 
      */
     public Optional<Output<Boolean>> continueOnFailure() {
@@ -35,14 +35,14 @@ public final class JobPigConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * HCFS URIs of jar files to be added to the Spark CLASSPATH.
+     * HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
      * 
      */
     @Import(name="jarFileUris")
     private @Nullable Output<List<String>> jarFileUris;
 
     /**
-     * @return HCFS URIs of jar files to be added to the Spark CLASSPATH.
+     * @return HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
      * 
      */
     public Optional<Output<List<String>>> jarFileUris() {
@@ -57,14 +57,14 @@ public final class JobPigConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+     * A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site.xml`, `/etc/pig/conf/pig.properties`, and classes in user code.
      * 
      */
     @Import(name="properties")
     private @Nullable Output<Map<String,String>> properties;
 
     /**
-     * @return A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+     * @return A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site.xml`, `/etc/pig/conf/pig.properties`, and classes in user code.
      * 
      */
     public Optional<Output<Map<String,String>>> properties() {
@@ -72,7 +72,7 @@ public final class JobPigConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The HCFS URI of the script that contains SQL queries.
+     * HCFS URI of file containing Hive script to execute as the job.
      * Conflicts with `query_list`
      * 
      */
@@ -80,7 +80,7 @@ public final class JobPigConfigArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> queryFileUri;
 
     /**
-     * @return The HCFS URI of the script that contains SQL queries.
+     * @return HCFS URI of file containing Hive script to execute as the job.
      * Conflicts with `query_list`
      * 
      */
@@ -89,7 +89,7 @@ public final class JobPigConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of SQL queries or statements to execute as part of the job.
+     * The list of Hive queries or statements to execute as part of the job.
      * Conflicts with `query_file_uri`
      * 
      */
@@ -97,7 +97,7 @@ public final class JobPigConfigArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<String>> queryLists;
 
     /**
-     * @return The list of SQL queries or statements to execute as part of the job.
+     * @return The list of Hive queries or statements to execute as part of the job.
      * Conflicts with `query_file_uri`
      * 
      */
@@ -106,14 +106,14 @@ public final class JobPigConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name=&#34;value&#34;;`).
+     * Mapping of query variable names to values (equivalent to the Pig command: `name=[value]`).
      * 
      */
     @Import(name="scriptVariables")
     private @Nullable Output<Map<String,String>> scriptVariables;
 
     /**
-     * @return Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name=&#34;value&#34;;`).
+     * @return Mapping of query variable names to values (equivalent to the Pig command: `name=[value]`).
      * 
      */
     public Optional<Output<Map<String,String>>> scriptVariables() {
@@ -151,7 +151,7 @@ public final class JobPigConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param continueOnFailure Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+         * @param continueOnFailure Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class JobPigConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param continueOnFailure Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+         * @param continueOnFailure Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class JobPigConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jarFileUris HCFS URIs of jar files to be added to the Spark CLASSPATH.
+         * @param jarFileUris HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class JobPigConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jarFileUris HCFS URIs of jar files to be added to the Spark CLASSPATH.
+         * @param jarFileUris HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class JobPigConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jarFileUris HCFS URIs of jar files to be added to the Spark CLASSPATH.
+         * @param jarFileUris HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class JobPigConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param properties A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+         * @param properties A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site.xml`, `/etc/pig/conf/pig.properties`, and classes in user code.
          * 
          * @return builder
          * 
@@ -223,7 +223,7 @@ public final class JobPigConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param properties A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+         * @param properties A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site.xml`, `/etc/pig/conf/pig.properties`, and classes in user code.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class JobPigConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queryFileUri The HCFS URI of the script that contains SQL queries.
+         * @param queryFileUri HCFS URI of file containing Hive script to execute as the job.
          * Conflicts with `query_list`
          * 
          * @return builder
@@ -245,7 +245,7 @@ public final class JobPigConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queryFileUri The HCFS URI of the script that contains SQL queries.
+         * @param queryFileUri HCFS URI of file containing Hive script to execute as the job.
          * Conflicts with `query_list`
          * 
          * @return builder
@@ -256,7 +256,7 @@ public final class JobPigConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queryLists The list of SQL queries or statements to execute as part of the job.
+         * @param queryLists The list of Hive queries or statements to execute as part of the job.
          * Conflicts with `query_file_uri`
          * 
          * @return builder
@@ -268,7 +268,7 @@ public final class JobPigConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queryLists The list of SQL queries or statements to execute as part of the job.
+         * @param queryLists The list of Hive queries or statements to execute as part of the job.
          * Conflicts with `query_file_uri`
          * 
          * @return builder
@@ -279,7 +279,7 @@ public final class JobPigConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queryLists The list of SQL queries or statements to execute as part of the job.
+         * @param queryLists The list of Hive queries or statements to execute as part of the job.
          * Conflicts with `query_file_uri`
          * 
          * @return builder
@@ -290,7 +290,7 @@ public final class JobPigConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scriptVariables Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name=&#34;value&#34;;`).
+         * @param scriptVariables Mapping of query variable names to values (equivalent to the Pig command: `name=[value]`).
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class JobPigConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scriptVariables Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name=&#34;value&#34;;`).
+         * @param scriptVariables Mapping of query variable names to values (equivalent to the Pig command: `name=[value]`).
          * 
          * @return builder
          * 

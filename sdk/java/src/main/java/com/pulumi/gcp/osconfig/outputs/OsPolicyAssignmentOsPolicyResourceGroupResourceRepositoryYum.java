@@ -28,7 +28,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum 
      */
     private @Nullable List<String> gpgKeys;
     /**
-     * @return Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+     * @return Required. A one word, unique name for this repository. This is the `repo id` in the yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for resource conflicts.
      * 
      */
     private String id;
@@ -56,7 +56,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum 
         return this.gpgKeys == null ? List.of() : this.gpgKeys;
     }
     /**
-     * @return Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+     * @return Required. A one word, unique name for this repository. This is the `repo id` in the yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for resource conflicts.
      * 
      */
     public String id() {

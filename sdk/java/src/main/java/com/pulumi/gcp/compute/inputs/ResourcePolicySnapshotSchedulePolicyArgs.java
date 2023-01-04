@@ -35,14 +35,16 @@ public final class ResourcePolicySnapshotSchedulePolicyArgs extends com.pulumi.r
     }
 
     /**
-     * Specifies the frequency for the operation, using the unix-cron format.
+     * Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
+     * Structure is documented below.
      * 
      */
     @Import(name="schedule", required=true)
     private Output<ResourcePolicySnapshotSchedulePolicyScheduleArgs> schedule;
 
     /**
-     * @return Specifies the frequency for the operation, using the unix-cron format.
+     * @return Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
+     * Structure is documented below.
      * 
      */
     public Output<ResourcePolicySnapshotSchedulePolicyScheduleArgs> schedule() {
@@ -116,7 +118,8 @@ public final class ResourcePolicySnapshotSchedulePolicyArgs extends com.pulumi.r
         }
 
         /**
-         * @param schedule Specifies the frequency for the operation, using the unix-cron format.
+         * @param schedule Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -127,7 +130,8 @@ public final class ResourcePolicySnapshotSchedulePolicyArgs extends com.pulumi.r
         }
 
         /**
-         * @param schedule Specifies the frequency for the operation, using the unix-cron format.
+         * @param schedule Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
+         * Structure is documented below.
          * 
          * @return builder
          * 

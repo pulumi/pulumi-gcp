@@ -126,14 +126,16 @@ public class GenericService extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.displayName);
     }
     /**
-     * The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+     * The full resource name for this service. The syntax is:
+     * projects/[PROJECT_ID]/services/[SERVICE_ID].
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+     * @return The full resource name for this service. The syntax is:
+     * projects/[PROJECT_ID]/services/[SERVICE_ID].
      * 
      */
     public Output<String> name() {
@@ -173,6 +175,7 @@ public class GenericService extends com.pulumi.resources.CustomResource {
     }
     /**
      * Configuration for how to query telemetry on a Service.
+     * Structure is documented below.
      * 
      */
     @Export(name="telemetries", type=List.class, parameters={GenericServiceTelemetry.class})
@@ -180,6 +183,7 @@ public class GenericService extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Configuration for how to query telemetry on a Service.
+     * Structure is documented below.
      * 
      */
     public Output<List<GenericServiceTelemetry>> telemetries() {

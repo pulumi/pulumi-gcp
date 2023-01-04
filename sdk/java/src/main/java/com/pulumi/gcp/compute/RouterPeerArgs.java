@@ -44,9 +44,6 @@ public final class RouterPeerArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * User-specified list of prefix groups to advertise in custom
      * mode, which can take one of the following options:
-     * * `ALL_SUBNETS`: Advertises all available subnets, including peer VPC subnets.
-     * * `ALL_VPC_SUBNETS`: Advertises the router&#39;s own VPC subnets.
-     * * `ALL_PEER_VPC_SUBNETS`: Advertises peer subnets of the router&#39;s VPC network.
      * 
      */
     @Import(name="advertisedGroups")
@@ -55,9 +52,6 @@ public final class RouterPeerArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return User-specified list of prefix groups to advertise in custom
      * mode, which can take one of the following options:
-     * * `ALL_SUBNETS`: Advertises all available subnets, including peer VPC subnets.
-     * * `ALL_VPC_SUBNETS`: Advertises the router&#39;s own VPC subnets.
-     * * `ALL_PEER_VPC_SUBNETS`: Advertises peer subnets of the router&#39;s VPC network.
      * 
      */
     public Optional<Output<List<String>>> advertisedGroups() {
@@ -375,9 +369,6 @@ public final class RouterPeerArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param advertisedGroups User-specified list of prefix groups to advertise in custom
          * mode, which can take one of the following options:
-         * * `ALL_SUBNETS`: Advertises all available subnets, including peer VPC subnets.
-         * * `ALL_VPC_SUBNETS`: Advertises the router&#39;s own VPC subnets.
-         * * `ALL_PEER_VPC_SUBNETS`: Advertises peer subnets of the router&#39;s VPC network.
          * 
          * @return builder
          * 
@@ -390,9 +381,6 @@ public final class RouterPeerArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param advertisedGroups User-specified list of prefix groups to advertise in custom
          * mode, which can take one of the following options:
-         * * `ALL_SUBNETS`: Advertises all available subnets, including peer VPC subnets.
-         * * `ALL_VPC_SUBNETS`: Advertises the router&#39;s own VPC subnets.
-         * * `ALL_PEER_VPC_SUBNETS`: Advertises peer subnets of the router&#39;s VPC network.
          * 
          * @return builder
          * 
@@ -404,9 +392,6 @@ public final class RouterPeerArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param advertisedGroups User-specified list of prefix groups to advertise in custom
          * mode, which can take one of the following options:
-         * * `ALL_SUBNETS`: Advertises all available subnets, including peer VPC subnets.
-         * * `ALL_VPC_SUBNETS`: Advertises the router&#39;s own VPC subnets.
-         * * `ALL_PEER_VPC_SUBNETS`: Advertises peer subnets of the router&#39;s VPC network.
          * 
          * @return builder
          * 

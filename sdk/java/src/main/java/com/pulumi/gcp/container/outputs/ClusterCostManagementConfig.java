@@ -10,16 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class ClusterCostManagementConfig {
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Whether to enable the [cost allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
      * 
      */
     private Boolean enabled;
 
     private ClusterCostManagementConfig() {}
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Whether to enable the [cost allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
      * 
      */
     public Boolean enabled() {

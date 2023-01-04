@@ -11,14 +11,32 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGameServerDeploymentRolloutResult {
+    /**
+     * @return This field points to the game server config that is
+     * applied by default to all realms and clusters. For example,
+     * `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+     * 
+     */
     private String defaultGameServerConfig;
     private String deploymentId;
+    /**
+     * @return The game_server_config_overrides contains the per game server config
+     * overrides. The overrides are processed in the order they are listed. As
+     * soon as a match is found for a cluster, the rest of the list is not
+     * processed.  Structure is documented below.
+     * 
+     */
     private List<GetGameServerDeploymentRolloutGameServerConfigOverride> gameServerConfigOverrides;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return The resource id of the game server deployment
+     * eg: `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
+     * 
+     */
     private String name;
     /**
      * @return The ID of the project in which the resource belongs.
@@ -28,12 +46,25 @@ public final class GetGameServerDeploymentRolloutResult {
     private String project;
 
     private GetGameServerDeploymentRolloutResult() {}
+    /**
+     * @return This field points to the game server config that is
+     * applied by default to all realms and clusters. For example,
+     * `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+     * 
+     */
     public String defaultGameServerConfig() {
         return this.defaultGameServerConfig;
     }
     public String deploymentId() {
         return this.deploymentId;
     }
+    /**
+     * @return The game_server_config_overrides contains the per game server config
+     * overrides. The overrides are processed in the order they are listed. As
+     * soon as a match is found for a cluster, the rest of the list is not
+     * processed.  Structure is documented below.
+     * 
+     */
     public List<GetGameServerDeploymentRolloutGameServerConfigOverride> gameServerConfigOverrides() {
         return this.gameServerConfigOverrides;
     }
@@ -44,6 +75,11 @@ public final class GetGameServerDeploymentRolloutResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The resource id of the game server deployment
+     * eg: `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
+     * 
+     */
     public String name() {
         return this.name;
     }

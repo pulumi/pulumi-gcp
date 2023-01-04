@@ -14,16 +14,16 @@ public final class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilter
     public static final RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs Empty = new RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs();
 
     /**
-     * The name of the query parameter to match. The query parameter must exist in the
-     * request, in the absence of which the request match fails.
+     * Name of metadata label. The name can have a maximum length of 1024 characters
+     * and must be at least 1 character long.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the query parameter to match. The query parameter must exist in the
-     * request, in the absence of which the request match fails.
+     * @return Name of metadata label. The name can have a maximum length of 1024 characters
+     * and must be at least 1 character long.
      * 
      */
     public Output<String> name() {
@@ -73,8 +73,8 @@ public final class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilter
         }
 
         /**
-         * @param name The name of the query parameter to match. The query parameter must exist in the
-         * request, in the absence of which the request match fails.
+         * @param name Name of metadata label. The name can have a maximum length of 1024 characters
+         * and must be at least 1 character long.
          * 
          * @return builder
          * 
@@ -85,8 +85,8 @@ public final class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilter
         }
 
         /**
-         * @param name The name of the query parameter to match. The query parameter must exist in the
-         * request, in the absence of which the request match fails.
+         * @param name Name of metadata label. The name can have a maximum length of 1024 characters
+         * and must be at least 1 character long.
          * 
          * @return builder
          * 

@@ -70,14 +70,16 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A unique identifier for this group. The format is &#34;projects/{project_id_or_number}/groups/{group_id}&#34;.
+     * A unique identifier for this group. The format is
+     * &#34;projects/{project_id_or_number}/groups/{group_id}&#34;.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return A unique identifier for this group. The format is &#34;projects/{project_id_or_number}/groups/{group_id}&#34;.
+     * @return A unique identifier for this group. The format is
+     * &#34;projects/{project_id_or_number}/groups/{group_id}&#34;.
      * 
      */
     public Optional<Output<String>> name() {
@@ -221,7 +223,8 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name A unique identifier for this group. The format is &#34;projects/{project_id_or_number}/groups/{group_id}&#34;.
+         * @param name A unique identifier for this group. The format is
+         * &#34;projects/{project_id_or_number}/groups/{group_id}&#34;.
          * 
          * @return builder
          * 
@@ -232,7 +235,8 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name A unique identifier for this group. The format is &#34;projects/{project_id_or_number}/groups/{group_id}&#34;.
+         * @param name A unique identifier for this group. The format is
+         * &#34;projects/{project_id_or_number}/groups/{group_id}&#34;.
          * 
          * @return builder
          * 

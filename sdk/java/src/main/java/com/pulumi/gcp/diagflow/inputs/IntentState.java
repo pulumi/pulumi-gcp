@@ -90,16 +90,18 @@ public final class IntentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only
-     * in the output.
+     * Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
+     * only in the output.
+     * Structure is documented below.
      * 
      */
     @Import(name="followupIntentInfos")
     private @Nullable Output<List<IntentFollowupIntentInfoArgs>> followupIntentInfos;
 
     /**
-     * @return Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only
-     * in the output.
+     * @return Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
+     * only in the output.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<IntentFollowupIntentInfoArgs>>> followupIntentInfos() {
@@ -158,14 +160,16 @@ public final class IntentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The unique identifier of this intent. Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
+     * The unique identifier of this intent.
+     * Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The unique identifier of this intent. Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
+     * @return The unique identifier of this intent.
+     * Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
      * 
      */
     public Optional<Output<String>> name() {
@@ -243,16 +247,18 @@ public final class IntentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents
-     * chain for this intent. Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
+     * The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup
+     * intents chain for this intent.
+     * Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
      * 
      */
     @Import(name="rootFollowupIntentName")
     private @Nullable Output<String> rootFollowupIntentName;
 
     /**
-     * @return The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents
-     * chain for this intent. Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
+     * @return The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup
+     * intents chain for this intent.
+     * Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
      * 
      */
     public Optional<Output<String>> rootFollowupIntentName() {
@@ -439,8 +445,9 @@ public final class IntentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param followupIntentInfos Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only
-         * in the output.
+         * @param followupIntentInfos Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
+         * only in the output.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -451,8 +458,9 @@ public final class IntentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param followupIntentInfos Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only
-         * in the output.
+         * @param followupIntentInfos Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
+         * only in the output.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -462,8 +470,9 @@ public final class IntentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param followupIntentInfos Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only
-         * in the output.
+         * @param followupIntentInfos Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
+         * only in the output.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -553,7 +562,8 @@ public final class IntentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The unique identifier of this intent. Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
+         * @param name The unique identifier of this intent.
+         * Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
          * 
          * @return builder
          * 
@@ -564,7 +574,8 @@ public final class IntentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The unique identifier of this intent. Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
+         * @param name The unique identifier of this intent.
+         * Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
          * 
          * @return builder
          * 
@@ -668,8 +679,9 @@ public final class IntentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rootFollowupIntentName The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents
-         * chain for this intent. Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
+         * @param rootFollowupIntentName The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup
+         * intents chain for this intent.
+         * Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
          * 
          * @return builder
          * 
@@ -680,8 +692,9 @@ public final class IntentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rootFollowupIntentName The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents
-         * chain for this intent. Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
+         * @param rootFollowupIntentName The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup
+         * intents chain for this intent.
+         * Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
          * 
          * @return builder
          * 

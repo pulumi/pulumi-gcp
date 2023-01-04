@@ -32,14 +32,14 @@ public final class ConnectionProfilePostgresqlProfileArgs extends com.pulumi.res
     }
 
     /**
-     * Hostname for the SSH tunnel.
+     * Hostname for the PostgreSQL connection.
      * 
      */
     @Import(name="hostname", required=true)
     private Output<String> hostname;
 
     /**
-     * @return Hostname for the SSH tunnel.
+     * @return Hostname for the PostgreSQL connection.
      * 
      */
     public Output<String> hostname() {
@@ -47,7 +47,7 @@ public final class ConnectionProfilePostgresqlProfileArgs extends com.pulumi.res
     }
 
     /**
-     * SSH password.
+     * Password for the PostgreSQL connection.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
@@ -55,7 +55,7 @@ public final class ConnectionProfilePostgresqlProfileArgs extends com.pulumi.res
     private Output<String> password;
 
     /**
-     * @return SSH password.
+     * @return Password for the PostgreSQL connection.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
@@ -64,14 +64,14 @@ public final class ConnectionProfilePostgresqlProfileArgs extends com.pulumi.res
     }
 
     /**
-     * Port for the SSH tunnel.
+     * Port for the PostgreSQL connection.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return Port for the SSH tunnel.
+     * @return Port for the PostgreSQL connection.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -79,14 +79,14 @@ public final class ConnectionProfilePostgresqlProfileArgs extends com.pulumi.res
     }
 
     /**
-     * Username for the SSH tunnel.
+     * Username for the PostgreSQL connection.
      * 
      */
     @Import(name="username", required=true)
     private Output<String> username;
 
     /**
-     * @return Username for the SSH tunnel.
+     * @return Username for the PostgreSQL connection.
      * 
      */
     public Output<String> username() {
@@ -143,7 +143,7 @@ public final class ConnectionProfilePostgresqlProfileArgs extends com.pulumi.res
         }
 
         /**
-         * @param hostname Hostname for the SSH tunnel.
+         * @param hostname Hostname for the PostgreSQL connection.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class ConnectionProfilePostgresqlProfileArgs extends com.pulumi.res
         }
 
         /**
-         * @param hostname Hostname for the SSH tunnel.
+         * @param hostname Hostname for the PostgreSQL connection.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class ConnectionProfilePostgresqlProfileArgs extends com.pulumi.res
         }
 
         /**
-         * @param password SSH password.
+         * @param password Password for the PostgreSQL connection.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
@@ -176,7 +176,7 @@ public final class ConnectionProfilePostgresqlProfileArgs extends com.pulumi.res
         }
 
         /**
-         * @param password SSH password.
+         * @param password Password for the PostgreSQL connection.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
@@ -187,7 +187,7 @@ public final class ConnectionProfilePostgresqlProfileArgs extends com.pulumi.res
         }
 
         /**
-         * @param port Port for the SSH tunnel.
+         * @param port Port for the PostgreSQL connection.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class ConnectionProfilePostgresqlProfileArgs extends com.pulumi.res
         }
 
         /**
-         * @param port Port for the SSH tunnel.
+         * @param port Port for the PostgreSQL connection.
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class ConnectionProfilePostgresqlProfileArgs extends com.pulumi.res
         }
 
         /**
-         * @param username Username for the SSH tunnel.
+         * @param username Username for the PostgreSQL connection.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class ConnectionProfilePostgresqlProfileArgs extends com.pulumi.res
         }
 
         /**
-         * @param username Username for the SSH tunnel.
+         * @param username Username for the PostgreSQL connection.
          * 
          * @return builder
          * 

@@ -226,14 +226,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+     * Server-specified ETag for the instance resource to prevent
+     * simultaneous updates from overwriting each other.
      * 
      */
     @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
-     * @return Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+     * @return Server-specified ETag for the instance resource to prevent
+     * simultaneous updates from overwriting each other.
      * 
      */
     public Output<String> etag() {
@@ -300,14 +302,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * The name of the fileshare (16 characters or less)
+     * The resource name of the instance.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The name of the fileshare (16 characters or less)
+     * @return The resource name of the instance.
      * 
      */
     public Output<String> name() {
@@ -364,7 +366,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.tier;
     }
     /**
-     * - 
      * (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
      * 
@@ -377,8 +378,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> zone;
 
     /**
-     * @return -
-     * (Optional, Deprecated)
+     * @return (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
      * 
      */

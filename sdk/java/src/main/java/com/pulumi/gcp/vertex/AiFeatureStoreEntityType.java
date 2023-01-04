@@ -172,16 +172,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType")
 public class AiFeatureStoreEntityType extends com.pulumi.resources.CustomResource {
     /**
-     * The timestamp of when the featurestore was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
-     * nine fractional digits.
+     * The timestamp of when the featurestore was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
-     * @return The timestamp of when the featurestore was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
-     * nine fractional digits.
+     * @return The timestamp of when the featurestore was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     public Output<String> createTime() {
@@ -276,16 +274,14 @@ public class AiFeatureStoreEntityType extends com.pulumi.resources.CustomResourc
         return this.region;
     }
     /**
-     * The timestamp of when the featurestore was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up
-     * to nine fractional digits.
+     * The timestamp of when the featurestore was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**
-     * @return The timestamp of when the featurestore was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up
-     * to nine fractional digits.
+     * @return The timestamp of when the featurestore was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     public Output<String> updateTime() {

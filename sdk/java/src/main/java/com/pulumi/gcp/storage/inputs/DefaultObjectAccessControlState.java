@@ -141,6 +141,7 @@ public final class DefaultObjectAccessControlState extends com.pulumi.resources.
 
     /**
      * The project team associated with the entity
+     * Structure is documented below.
      * 
      */
     @Import(name="projectTeams")
@@ -148,6 +149,7 @@ public final class DefaultObjectAccessControlState extends com.pulumi.resources.
 
     /**
      * @return The project team associated with the entity
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<DefaultObjectAccessControlProjectTeamArgs>>> projectTeams() {
@@ -368,6 +370,7 @@ public final class DefaultObjectAccessControlState extends com.pulumi.resources.
 
         /**
          * @param projectTeams The project team associated with the entity
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -379,6 +382,7 @@ public final class DefaultObjectAccessControlState extends com.pulumi.resources.
 
         /**
          * @param projectTeams The project team associated with the entity
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -389,6 +393,7 @@ public final class DefaultObjectAccessControlState extends com.pulumi.resources.
 
         /**
          * @param projectTeams The project team associated with the entity
+         * Structure is documented below.
          * 
          * @return builder
          * 

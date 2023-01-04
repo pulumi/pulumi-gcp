@@ -15,14 +15,14 @@ public final class InstanceGroupManagerNamedPortArgs extends com.pulumi.resource
     public static final InstanceGroupManagerNamedPortArgs Empty = new InstanceGroupManagerNamedPortArgs();
 
     /**
-     * - Version name.
+     * The name of the port.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return - Version name.
+     * @return The name of the port.
      * 
      */
     public Output<String> name() {
@@ -72,7 +72,7 @@ public final class InstanceGroupManagerNamedPortArgs extends com.pulumi.resource
         }
 
         /**
-         * @param name - Version name.
+         * @param name The name of the port.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class InstanceGroupManagerNamedPortArgs extends com.pulumi.resource
         }
 
         /**
-         * @param name - Version name.
+         * @param name The name of the port.
          * 
          * @return builder
          * 

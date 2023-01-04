@@ -15,16 +15,32 @@ public final class CertificateRevocationDetailArgs extends com.pulumi.resources.
 
     public static final CertificateRevocationDetailArgs Empty = new CertificateRevocationDetailArgs();
 
+    /**
+     * Indicates why a Certificate was revoked.
+     * 
+     */
     @Import(name="revocationState")
     private @Nullable Output<String> revocationState;
 
+    /**
+     * @return Indicates why a Certificate was revoked.
+     * 
+     */
     public Optional<Output<String>> revocationState() {
         return Optional.ofNullable(this.revocationState);
     }
 
+    /**
+     * The time at which this Certificate was revoked.
+     * 
+     */
     @Import(name="revocationTime")
     private @Nullable Output<String> revocationTime;
 
+    /**
+     * @return The time at which this Certificate was revoked.
+     * 
+     */
     public Optional<Output<String>> revocationTime() {
         return Optional.ofNullable(this.revocationTime);
     }
@@ -54,20 +70,44 @@ public final class CertificateRevocationDetailArgs extends com.pulumi.resources.
             $ = new CertificateRevocationDetailArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param revocationState Indicates why a Certificate was revoked.
+         * 
+         * @return builder
+         * 
+         */
         public Builder revocationState(@Nullable Output<String> revocationState) {
             $.revocationState = revocationState;
             return this;
         }
 
+        /**
+         * @param revocationState Indicates why a Certificate was revoked.
+         * 
+         * @return builder
+         * 
+         */
         public Builder revocationState(String revocationState) {
             return revocationState(Output.of(revocationState));
         }
 
+        /**
+         * @param revocationTime The time at which this Certificate was revoked.
+         * 
+         * @return builder
+         * 
+         */
         public Builder revocationTime(@Nullable Output<String> revocationTime) {
             $.revocationTime = revocationTime;
             return this;
         }
 
+        /**
+         * @param revocationTime The time at which this Certificate was revoked.
+         * 
+         * @return builder
+         * 
+         */
         public Builder revocationTime(String revocationTime) {
             return revocationTime(Output.of(revocationTime));
         }

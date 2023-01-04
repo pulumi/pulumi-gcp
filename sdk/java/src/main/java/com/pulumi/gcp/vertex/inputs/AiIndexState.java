@@ -21,16 +21,14 @@ public final class AiIndexState extends com.pulumi.resources.ResourceArgs {
     public static final AiIndexState Empty = new AiIndexState();
 
     /**
-     * The timestamp of when the Index was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
-     * fractional digits.
+     * The timestamp of when the Index was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return The timestamp of when the Index was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
-     * fractional digits.
+     * @return The timestamp of when the Index was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -38,16 +36,16 @@ public final class AiIndexState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had
-     * been undeployed first.
+     * The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
+     * Structure is documented below.
      * 
      */
     @Import(name="deployedIndexes")
     private @Nullable Output<List<AiIndexDeployedIndexArgs>> deployedIndexes;
 
     /**
-     * @return The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had
-     * been undeployed first.
+     * @return The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<AiIndexDeployedIndexArgs>>> deployedIndexes() {
@@ -101,6 +99,7 @@ public final class AiIndexState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Stats of the index resource.
+     * Structure is documented below.
      * 
      */
     @Import(name="indexStats")
@@ -108,6 +107,7 @@ public final class AiIndexState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Stats of the index resource.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<AiIndexIndexStatArgs>>> indexStats() {
@@ -166,16 +166,14 @@ public final class AiIndexState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific
-     * to it. Unset if the Index does not have any additional information.
+     * Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
      * 
      */
     @Import(name="metadataSchemaUri")
     private @Nullable Output<String> metadataSchemaUri;
 
     /**
-     * @return Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific
-     * to it. Unset if the Index does not have any additional information.
+     * @return Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
      * 
      */
     public Optional<Output<String>> metadataSchemaUri() {
@@ -230,16 +228,14 @@ public final class AiIndexState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
-     * fractional digits.
+     * The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
-     * fractional digits.
+     * @return The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -284,8 +280,7 @@ public final class AiIndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime The timestamp of when the Index was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
-         * fractional digits.
+         * @param createTime The timestamp of when the Index was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
          * 
          * @return builder
          * 
@@ -296,8 +291,7 @@ public final class AiIndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime The timestamp of when the Index was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
-         * fractional digits.
+         * @param createTime The timestamp of when the Index was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
          * 
          * @return builder
          * 
@@ -307,8 +301,8 @@ public final class AiIndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deployedIndexes The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had
-         * been undeployed first.
+         * @param deployedIndexes The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -319,8 +313,8 @@ public final class AiIndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deployedIndexes The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had
-         * been undeployed first.
+         * @param deployedIndexes The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -330,8 +324,8 @@ public final class AiIndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deployedIndexes The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had
-         * been undeployed first.
+         * @param deployedIndexes The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -405,6 +399,7 @@ public final class AiIndexState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param indexStats Stats of the index resource.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -416,6 +411,7 @@ public final class AiIndexState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param indexStats Stats of the index resource.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -426,6 +422,7 @@ public final class AiIndexState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param indexStats Stats of the index resource.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -504,8 +501,7 @@ public final class AiIndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metadataSchemaUri Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific
-         * to it. Unset if the Index does not have any additional information.
+         * @param metadataSchemaUri Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
          * 
          * @return builder
          * 
@@ -516,8 +512,7 @@ public final class AiIndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metadataSchemaUri Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific
-         * to it. Unset if the Index does not have any additional information.
+         * @param metadataSchemaUri Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
          * 
          * @return builder
          * 
@@ -592,8 +587,7 @@ public final class AiIndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateTime The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
-         * fractional digits.
+         * @param updateTime The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
          * 
          * @return builder
          * 
@@ -604,8 +598,7 @@ public final class AiIndexState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateTime The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
-         * fractional digits.
+         * @param updateTime The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
          * 
          * @return builder
          * 

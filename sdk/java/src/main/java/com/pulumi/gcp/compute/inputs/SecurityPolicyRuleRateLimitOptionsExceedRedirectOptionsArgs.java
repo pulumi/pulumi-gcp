@@ -16,14 +16,14 @@ public final class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs e
     public static final SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs Empty = new SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs();
 
     /**
-     * External redirection target when &#34;EXTERNAL_302&#34; is set in &#39;type&#39;.
+     * Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
      * 
      */
     @Import(name="target")
     private @Nullable Output<String> target;
 
     /**
-     * @return External redirection target when &#34;EXTERNAL_302&#34; is set in &#39;type&#39;.
+     * @return Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
      * 
      */
     public Optional<Output<String>> target() {
@@ -31,14 +31,14 @@ public final class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs e
     }
 
     /**
-     * Type of redirect action.
+     * Type of the redirect action.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Type of redirect action.
+     * @return Type of the redirect action.
      * 
      */
     public Output<String> type() {
@@ -71,7 +71,7 @@ public final class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs e
         }
 
         /**
-         * @param target External redirection target when &#34;EXTERNAL_302&#34; is set in &#39;type&#39;.
+         * @param target Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs e
         }
 
         /**
-         * @param target External redirection target when &#34;EXTERNAL_302&#34; is set in &#39;type&#39;.
+         * @param target Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs e
         }
 
         /**
-         * @param type Type of redirect action.
+         * @param type Type of the redirect action.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs e
         }
 
         /**
-         * @param type Type of redirect action.
+         * @param type Type of the redirect action.
          * 
          * @return builder
          * 

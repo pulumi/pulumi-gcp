@@ -18,6 +18,10 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
 
     /**
      * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+     * (Required)
+     * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+     * (Required)
+     * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
      * 
      */
     @Import(name="objectIdPaths")
@@ -25,6 +29,10 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
 
     /**
      * @return An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+     * (Required)
+     * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+     * (Required)
+     * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
      * 
      */
     public Optional<Output<List<Integer>>> objectIdPaths() {
@@ -57,6 +65,10 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
 
         /**
          * @param objectIdPaths An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         * (Required)
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         * (Required)
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
          * 
          * @return builder
          * 
@@ -68,6 +80,10 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
 
         /**
          * @param objectIdPaths An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         * (Required)
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         * (Required)
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
          * 
          * @return builder
          * 
@@ -78,6 +94,10 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
 
         /**
          * @param objectIdPaths An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         * (Required)
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         * (Required)
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
          * 
          * @return builder
          * 

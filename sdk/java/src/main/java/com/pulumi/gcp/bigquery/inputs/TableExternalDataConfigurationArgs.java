@@ -23,15 +23,15 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
     public static final TableExternalDataConfigurationArgs Empty = new TableExternalDataConfigurationArgs();
 
     /**
-     * - Let BigQuery try to autodetect the schema
-     *   and format of the table.
+     * Let BigQuery try to autodetect the schema
+     * and format of the table.
      * 
      */
     @Import(name="autodetect", required=true)
     private Output<Boolean> autodetect;
 
     /**
-     * @return - Let BigQuery try to autodetect the schema
+     * @return Let BigQuery try to autodetect the schema
      * and format of the table.
      * 
      */
@@ -304,7 +304,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param autodetect - Let BigQuery try to autodetect the schema
+         * @param autodetect Let BigQuery try to autodetect the schema
          * and format of the table.
          * 
          * @return builder
@@ -316,7 +316,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param autodetect - Let BigQuery try to autodetect the schema
+         * @param autodetect Let BigQuery try to autodetect the schema
          * and format of the table.
          * 
          * @return builder

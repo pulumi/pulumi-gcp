@@ -14,9 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RegionUrlMapDefaultRouteActionWeightedBackendService {
     /**
-     * @return The full or partial URL to the RegionBackendService resource being mirrored to.
-     * The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
-     * Serverless NEG backends are not currently supported as a mirrored backend service.
+     * @return The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
      * 
      */
     private @Nullable String backendService;
@@ -39,9 +37,7 @@ public final class RegionUrlMapDefaultRouteActionWeightedBackendService {
 
     private RegionUrlMapDefaultRouteActionWeightedBackendService() {}
     /**
-     * @return The full or partial URL to the RegionBackendService resource being mirrored to.
-     * The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
-     * Serverless NEG backends are not currently supported as a mirrored backend service.
+     * @return The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
      * 
      */
     public Optional<String> backendService() {

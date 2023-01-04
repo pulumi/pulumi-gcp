@@ -35,14 +35,14 @@ public final class ServiceTemplateContainerLivenessProbeHttpGetArgs extends com.
     }
 
     /**
-     * The relative path of the secret in the container.
+     * Path to access on the HTTP server. Defaults to &#39;/&#39;.
      * 
      */
     @Import(name="path")
     private @Nullable Output<String> path;
 
     /**
-     * @return The relative path of the secret in the container.
+     * @return Path to access on the HTTP server. Defaults to &#39;/&#39;.
      * 
      */
     public Optional<Output<String>> path() {
@@ -109,7 +109,7 @@ public final class ServiceTemplateContainerLivenessProbeHttpGetArgs extends com.
         }
 
         /**
-         * @param path The relative path of the secret in the container.
+         * @param path Path to access on the HTTP server. Defaults to &#39;/&#39;.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ServiceTemplateContainerLivenessProbeHttpGetArgs extends com.
         }
 
         /**
-         * @param path The relative path of the secret in the container.
+         * @param path Path to access on the HTTP server. Defaults to &#39;/&#39;.
          * 
          * @return builder
          * 

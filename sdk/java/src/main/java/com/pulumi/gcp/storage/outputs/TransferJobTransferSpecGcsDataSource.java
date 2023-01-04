@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TransferJobTransferSpecGcsDataSource {
     /**
-     * @return S3 Bucket name.
+     * @return Google Cloud Storage bucket name.
      * 
      */
     private String bucketName;
@@ -24,7 +24,7 @@ public final class TransferJobTransferSpecGcsDataSource {
 
     private TransferJobTransferSpecGcsDataSource() {}
     /**
-     * @return S3 Bucket name.
+     * @return Google Cloud Storage bucket name.
      * 
      */
     public String bucketName() {

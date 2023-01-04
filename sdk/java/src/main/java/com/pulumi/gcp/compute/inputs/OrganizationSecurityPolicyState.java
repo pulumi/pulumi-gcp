@@ -46,14 +46,16 @@ public final class OrganizationSecurityPolicyState extends com.pulumi.resources.
     }
 
     /**
-     * Fingerprint of this resource. This field is used internally during updates of this resource.
+     * Fingerprint of this resource. This field is used internally during
+     * updates of this resource.
      * 
      */
     @Import(name="fingerprint")
     private @Nullable Output<String> fingerprint;
 
     /**
-     * @return Fingerprint of this resource. This field is used internally during updates of this resource.
+     * @return Fingerprint of this resource. This field is used internally during
+     * updates of this resource.
      * 
      */
     public Optional<Output<String>> fingerprint() {
@@ -187,7 +189,8 @@ public final class OrganizationSecurityPolicyState extends com.pulumi.resources.
         }
 
         /**
-         * @param fingerprint Fingerprint of this resource. This field is used internally during updates of this resource.
+         * @param fingerprint Fingerprint of this resource. This field is used internally during
+         * updates of this resource.
          * 
          * @return builder
          * 
@@ -198,7 +201,8 @@ public final class OrganizationSecurityPolicyState extends com.pulumi.resources.
         }
 
         /**
-         * @param fingerprint Fingerprint of this resource. This field is used internally during updates of this resource.
+         * @param fingerprint Fingerprint of this resource. This field is used internally during
+         * updates of this resource.
          * 
          * @return builder
          * 

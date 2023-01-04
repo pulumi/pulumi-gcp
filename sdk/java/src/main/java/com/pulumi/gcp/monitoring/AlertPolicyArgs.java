@@ -81,22 +81,20 @@ public final class AlertPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A short name or phrase used to identify the
-     * condition in dashboards, notifications, and
-     * incidents. To avoid confusion, don&#39;t use the same
-     * display name for multiple conditions in the same
-     * policy.
+     * A short name or phrase used to identify the policy in
+     * dashboards, notifications, and incidents. To avoid confusion, don&#39;t use
+     * the same display name for multiple policies in the same project. The
+     * name is limited to 512 Unicode characters.
      * 
      */
     @Import(name="displayName", required=true)
     private Output<String> displayName;
 
     /**
-     * @return A short name or phrase used to identify the
-     * condition in dashboards, notifications, and
-     * incidents. To avoid confusion, don&#39;t use the same
-     * display name for multiple conditions in the same
-     * policy.
+     * @return A short name or phrase used to identify the policy in
+     * dashboards, notifications, and incidents. To avoid confusion, don&#39;t use
+     * the same display name for multiple policies in the same project. The
+     * name is limited to 512 Unicode characters.
      * 
      */
     public Output<String> displayName() {
@@ -334,11 +332,10 @@ public final class AlertPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName A short name or phrase used to identify the
-         * condition in dashboards, notifications, and
-         * incidents. To avoid confusion, don&#39;t use the same
-         * display name for multiple conditions in the same
-         * policy.
+         * @param displayName A short name or phrase used to identify the policy in
+         * dashboards, notifications, and incidents. To avoid confusion, don&#39;t use
+         * the same display name for multiple policies in the same project. The
+         * name is limited to 512 Unicode characters.
          * 
          * @return builder
          * 
@@ -349,11 +346,10 @@ public final class AlertPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName A short name or phrase used to identify the
-         * condition in dashboards, notifications, and
-         * incidents. To avoid confusion, don&#39;t use the same
-         * display name for multiple conditions in the same
-         * policy.
+         * @param displayName A short name or phrase used to identify the policy in
+         * dashboards, notifications, and incidents. To avoid confusion, don&#39;t use
+         * the same display name for multiple policies in the same project. The
+         * name is limited to 512 Unicode characters.
          * 
          * @return builder
          * 

@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CxIntentTrainingPhrase {
     /**
-     * @return The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+     * @return The unique identifier of the training phrase.
      * 
      */
     private @Nullable String id;
@@ -39,7 +39,7 @@ public final class CxIntentTrainingPhrase {
 
     private CxIntentTrainingPhrase() {}
     /**
-     * @return The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+     * @return The unique identifier of the training phrase.
      * 
      */
     public Optional<String> id() {

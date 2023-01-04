@@ -43,8 +43,7 @@ public final class FunctionEventTrigger {
      */
     private @Nullable String serviceAccountEmail;
     /**
-     * @return -
-     * Output only. The resource name of the Eventarc trigger.
+     * @return Output only. The resource name of the Eventarc trigger.
      * 
      */
     private @Nullable String trigger;
@@ -98,8 +97,7 @@ public final class FunctionEventTrigger {
         return Optional.ofNullable(this.serviceAccountEmail);
     }
     /**
-     * @return -
-     * Output only. The resource name of the Eventarc trigger.
+     * @return Output only. The resource name of the Eventarc trigger.
      * 
      */
     public Optional<String> trigger() {

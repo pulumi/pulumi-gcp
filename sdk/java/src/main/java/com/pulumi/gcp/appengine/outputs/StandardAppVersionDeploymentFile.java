@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class StandardAppVersionDeploymentFile {
     /**
-     * @return Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+     * @return The identifier for this object. Format specified above.
      * 
      */
     private String name;
@@ -29,7 +29,7 @@ public final class StandardAppVersionDeploymentFile {
 
     private StandardAppVersionDeploymentFile() {}
     /**
-     * @return Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+     * @return The identifier for this object. Format specified above.
      * 
      */
     public String name() {

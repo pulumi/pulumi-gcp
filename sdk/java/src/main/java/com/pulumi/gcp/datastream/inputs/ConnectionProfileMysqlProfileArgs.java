@@ -18,14 +18,14 @@ public final class ConnectionProfileMysqlProfileArgs extends com.pulumi.resource
     public static final ConnectionProfileMysqlProfileArgs Empty = new ConnectionProfileMysqlProfileArgs();
 
     /**
-     * Hostname for the SSH tunnel.
+     * Hostname for the MySQL connection.
      * 
      */
     @Import(name="hostname", required=true)
     private Output<String> hostname;
 
     /**
-     * @return Hostname for the SSH tunnel.
+     * @return Hostname for the MySQL connection.
      * 
      */
     public Output<String> hostname() {
@@ -33,7 +33,7 @@ public final class ConnectionProfileMysqlProfileArgs extends com.pulumi.resource
     }
 
     /**
-     * SSH password.
+     * Password for the MySQL connection.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
@@ -41,7 +41,7 @@ public final class ConnectionProfileMysqlProfileArgs extends com.pulumi.resource
     private Output<String> password;
 
     /**
-     * @return SSH password.
+     * @return Password for the MySQL connection.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
@@ -50,14 +50,14 @@ public final class ConnectionProfileMysqlProfileArgs extends com.pulumi.resource
     }
 
     /**
-     * Port for the SSH tunnel.
+     * Port for the MySQL connection.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return Port for the SSH tunnel.
+     * @return Port for the MySQL connection.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -82,14 +82,14 @@ public final class ConnectionProfileMysqlProfileArgs extends com.pulumi.resource
     }
 
     /**
-     * Username for the SSH tunnel.
+     * Username for the MySQL connection.
      * 
      */
     @Import(name="username", required=true)
     private Output<String> username;
 
     /**
-     * @return Username for the SSH tunnel.
+     * @return Username for the MySQL connection.
      * 
      */
     public Output<String> username() {
@@ -125,7 +125,7 @@ public final class ConnectionProfileMysqlProfileArgs extends com.pulumi.resource
         }
 
         /**
-         * @param hostname Hostname for the SSH tunnel.
+         * @param hostname Hostname for the MySQL connection.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class ConnectionProfileMysqlProfileArgs extends com.pulumi.resource
         }
 
         /**
-         * @param hostname Hostname for the SSH tunnel.
+         * @param hostname Hostname for the MySQL connection.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class ConnectionProfileMysqlProfileArgs extends com.pulumi.resource
         }
 
         /**
-         * @param password SSH password.
+         * @param password Password for the MySQL connection.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
@@ -158,7 +158,7 @@ public final class ConnectionProfileMysqlProfileArgs extends com.pulumi.resource
         }
 
         /**
-         * @param password SSH password.
+         * @param password Password for the MySQL connection.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
@@ -169,7 +169,7 @@ public final class ConnectionProfileMysqlProfileArgs extends com.pulumi.resource
         }
 
         /**
-         * @param port Port for the SSH tunnel.
+         * @param port Port for the MySQL connection.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class ConnectionProfileMysqlProfileArgs extends com.pulumi.resource
         }
 
         /**
-         * @param port Port for the SSH tunnel.
+         * @param port Port for the MySQL connection.
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class ConnectionProfileMysqlProfileArgs extends com.pulumi.resource
         }
 
         /**
-         * @param username Username for the SSH tunnel.
+         * @param username Username for the MySQL connection.
          * 
          * @return builder
          * 
@@ -224,7 +224,7 @@ public final class ConnectionProfileMysqlProfileArgs extends com.pulumi.resource
         }
 
         /**
-         * @param username Username for the SSH tunnel.
+         * @param username Username for the MySQL connection.
          * 
          * @return builder
          * 

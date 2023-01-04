@@ -13,7 +13,15 @@ import javax.annotation.Nullable;
 public final class LakeMetastoreStatus {
     private @Nullable String endpoint;
     private @Nullable String message;
+    /**
+     * @return Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+     * 
+     */
     private @Nullable String state;
+    /**
+     * @return Output only. The time when the lake was last updated.
+     * 
+     */
     private @Nullable String updateTime;
 
     private LakeMetastoreStatus() {}
@@ -23,9 +31,17 @@ public final class LakeMetastoreStatus {
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
+    /**
+     * @return Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+     * 
+     */
     public Optional<String> state() {
         return Optional.ofNullable(this.state);
     }
+    /**
+     * @return Output only. The time when the lake was last updated.
+     * 
+     */
     public Optional<String> updateTime() {
         return Optional.ofNullable(this.updateTime);
     }

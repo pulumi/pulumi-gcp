@@ -157,14 +157,16 @@ public class Group extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.isCluster);
     }
     /**
-     * A unique identifier for this group. The format is &#34;projects/{project_id_or_number}/groups/{group_id}&#34;.
+     * A unique identifier for this group. The format is
+     * &#34;projects/{project_id_or_number}/groups/{group_id}&#34;.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return A unique identifier for this group. The format is &#34;projects/{project_id_or_number}/groups/{group_id}&#34;.
+     * @return A unique identifier for this group. The format is
+     * &#34;projects/{project_id_or_number}/groups/{group_id}&#34;.
      * 
      */
     public Output<String> name() {

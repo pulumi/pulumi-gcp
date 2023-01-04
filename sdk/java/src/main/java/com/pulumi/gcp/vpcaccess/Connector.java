@@ -212,16 +212,14 @@ public class Connector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.minThroughput);
     }
     /**
-     * Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
-     * https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}&#34;
+     * The name of the resource (Max 25 characters).
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
-     * https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}&#34;
+     * @return The name of the resource (Max 25 characters).
      * 
      */
     public Output<String> name() {

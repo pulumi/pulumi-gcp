@@ -15,9 +15,19 @@ public final class IntentFollowupIntentInfoArgs extends com.pulumi.resources.Res
 
     public static final IntentFollowupIntentInfoArgs Empty = new IntentFollowupIntentInfoArgs();
 
+    /**
+     * The unique identifier of the followup intent.
+     * Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
+     * 
+     */
     @Import(name="followupIntentName")
     private @Nullable Output<String> followupIntentName;
 
+    /**
+     * @return The unique identifier of the followup intent.
+     * Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
+     * 
+     */
     public Optional<Output<String>> followupIntentName() {
         return Optional.ofNullable(this.followupIntentName);
     }
@@ -64,11 +74,25 @@ public final class IntentFollowupIntentInfoArgs extends com.pulumi.resources.Res
             $ = new IntentFollowupIntentInfoArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param followupIntentName The unique identifier of the followup intent.
+         * Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder followupIntentName(@Nullable Output<String> followupIntentName) {
             $.followupIntentName = followupIntentName;
             return this;
         }
 
+        /**
+         * @param followupIntentName The unique identifier of the followup intent.
+         * Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder followupIntentName(String followupIntentName) {
             return followupIntentName(Output.of(followupIntentName));
         }

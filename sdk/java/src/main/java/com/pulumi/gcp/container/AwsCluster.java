@@ -250,16 +250,14 @@ public class AwsCluster extends com.pulumi.resources.CustomResource {
         return this.endpoint;
     }
     /**
-     * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-     * and delete requests to ensure the client has an up-to-date value before proceeding.
+     * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
     @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
-     * @return Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-     * and delete requests to ensure the client has an up-to-date value before proceeding.
+     * @return Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
     public Output<String> etag() {
@@ -336,6 +334,8 @@ public class AwsCluster extends com.pulumi.resources.CustomResource {
         return this.networking;
     }
     /**
+     * The number of the Fleet host project where this cluster will be registered.
+     * (Optional)
      * The project for the resource
      * 
      */
@@ -343,7 +343,9 @@ public class AwsCluster extends com.pulumi.resources.CustomResource {
     private Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The number of the Fleet host project where this cluster will be registered.
+     * (Optional)
+     * The project for the resource
      * 
      */
     public Output<String> project() {
@@ -364,16 +366,14 @@ public class AwsCluster extends com.pulumi.resources.CustomResource {
         return this.reconciling;
     }
     /**
-     * Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-     * STOPPING, ERROR, DEGRADED
+     * Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
      * 
      */
     @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**
-     * @return Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-     * STOPPING, ERROR, DEGRADED
+     * @return Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
      * 
      */
     public Output<String> state() {

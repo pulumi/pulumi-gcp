@@ -28,7 +28,8 @@ public final class FlexibleAppVersionEndpointsApiService {
      */
     private @Nullable Boolean disableTraceSampling;
     /**
-     * @return Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+     * @return Endpoints service name which is the name of the &#34;service&#34; resource in the Service Management API.
+     * For example &#34;myapi.endpoints.myproject.cloud.goog&#34;
      * 
      */
     private String name;
@@ -61,7 +62,8 @@ public final class FlexibleAppVersionEndpointsApiService {
         return Optional.ofNullable(this.disableTraceSampling);
     }
     /**
-     * @return Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+     * @return Endpoints service name which is the name of the &#34;service&#34; resource in the Service Management API.
+     * For example &#34;myapi.endpoints.myproject.cloud.goog&#34;
      * 
      */
     public String name() {

@@ -52,14 +52,20 @@ public final class InstanceGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name which the port will be mapped to.
+     * The name of the instance group. Must be 1-63
+     * characters long and comply with
+     * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+     * include lowercase letters, numbers, and hyphens.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name which the port will be mapped to.
+     * @return The name of the instance group. Must be 1-63
+     * characters long and comply with
+     * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+     * include lowercase letters, numbers, and hyphens.
      * 
      */
     public Optional<Output<String>> name() {
@@ -224,7 +230,10 @@ public final class InstanceGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name which the port will be mapped to.
+         * @param name The name of the instance group. Must be 1-63
+         * characters long and comply with
+         * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+         * include lowercase letters, numbers, and hyphens.
          * 
          * @return builder
          * 
@@ -235,7 +244,10 @@ public final class InstanceGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name which the port will be mapped to.
+         * @param name The name of the instance group. Must be 1-63
+         * characters long and comply with
+         * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+         * include lowercase letters, numbers, and hyphens.
          * 
          * @return builder
          * 

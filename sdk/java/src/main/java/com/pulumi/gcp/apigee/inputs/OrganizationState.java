@@ -66,16 +66,16 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when &#39;RuntimeType&#39;
-     * is CLOUD. A base64-encoded string.
+     * Output only. Base64-encoded public certificate for the root CA of the Apigee organization.
+     * Valid only when `RuntimeType` is CLOUD. A base64-encoded string.
      * 
      */
     @Import(name="caCertificate")
     private @Nullable Output<String> caCertificate;
 
     /**
-     * @return Output only. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when &#39;RuntimeType&#39;
-     * is CLOUD. A base64-encoded string.
+     * @return Output only. Base64-encoded public certificate for the root CA of the Apigee organization.
+     * Valid only when `RuntimeType` is CLOUD. A base64-encoded string.
      * 
      */
     public Optional<Output<String>> caCertificate() {
@@ -225,16 +225,16 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation
-     * purposes only) or paid (full subscription has been purchased).
+     * Output only. Subscription type of the Apigee organization.
+     * Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased).
      * 
      */
     @Import(name="subscriptionType")
     private @Nullable Output<String> subscriptionType;
 
     /**
-     * @return Output only. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation
-     * purposes only) or paid (full subscription has been purchased).
+     * @return Output only. Subscription type of the Apigee organization.
+     * Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased).
      * 
      */
     public Optional<Output<String>> subscriptionType() {
@@ -345,8 +345,8 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param caCertificate Output only. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when &#39;RuntimeType&#39;
-         * is CLOUD. A base64-encoded string.
+         * @param caCertificate Output only. Base64-encoded public certificate for the root CA of the Apigee organization.
+         * Valid only when `RuntimeType` is CLOUD. A base64-encoded string.
          * 
          * @return builder
          * 
@@ -357,8 +357,8 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param caCertificate Output only. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when &#39;RuntimeType&#39;
-         * is CLOUD. A base64-encoded string.
+         * @param caCertificate Output only. Base64-encoded public certificate for the root CA of the Apigee organization.
+         * Valid only when `RuntimeType` is CLOUD. A base64-encoded string.
          * 
          * @return builder
          * 
@@ -558,8 +558,8 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subscriptionType Output only. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation
-         * purposes only) or paid (full subscription has been purchased).
+         * @param subscriptionType Output only. Subscription type of the Apigee organization.
+         * Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased).
          * 
          * @return builder
          * 
@@ -570,8 +570,8 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subscriptionType Output only. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation
-         * purposes only) or paid (full subscription has been purchased).
+         * @param subscriptionType Output only. Subscription type of the Apigee organization.
+         * Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased).
          * 
          * @return builder
          * 

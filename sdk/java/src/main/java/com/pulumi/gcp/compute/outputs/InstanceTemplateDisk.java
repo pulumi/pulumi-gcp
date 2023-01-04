@@ -81,7 +81,7 @@ public final class InstanceTemplateDisk {
      */
     private @Nullable String mode;
     /**
-     * @return -- A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+     * @return - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
      * 
      */
     private @Nullable String resourcePolicies;
@@ -124,7 +124,8 @@ public final class InstanceTemplateDisk {
      */
     private @Nullable InstanceTemplateDiskSourceSnapshotEncryptionKey sourceSnapshotEncryptionKey;
     /**
-     * @return The type of reservation from which this instance can consume resources.
+     * @return The type of GCE disk, can be either `&#34;SCRATCH&#34;` or
+     * `&#34;PERSISTENT&#34;`.
      * 
      */
     private @Nullable String type;
@@ -214,7 +215,7 @@ public final class InstanceTemplateDisk {
         return Optional.ofNullable(this.mode);
     }
     /**
-     * @return -- A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+     * @return - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
      * 
      */
     public Optional<String> resourcePolicies() {
@@ -269,7 +270,8 @@ public final class InstanceTemplateDisk {
         return Optional.ofNullable(this.sourceSnapshotEncryptionKey);
     }
     /**
-     * @return The type of reservation from which this instance can consume resources.
+     * @return The type of GCE disk, can be either `&#34;SCRATCH&#34;` or
+     * `&#34;PERSISTENT&#34;`.
      * 
      */
     public Optional<String> type() {

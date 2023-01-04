@@ -17,7 +17,7 @@ public final class ServiceTemplateSpecContainerEnvFromConfigMapRefArgs extends c
     public static final ServiceTemplateSpecContainerEnvFromConfigMapRefArgs Empty = new ServiceTemplateSpecContainerEnvFromConfigMapRefArgs();
 
     /**
-     * The Secret to select from.
+     * The ConfigMap to select from.
      * Structure is documented below.
      * 
      */
@@ -25,7 +25,7 @@ public final class ServiceTemplateSpecContainerEnvFromConfigMapRefArgs extends c
     private @Nullable Output<ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs> localObjectReference;
 
     /**
-     * @return The Secret to select from.
+     * @return The ConfigMap to select from.
      * Structure is documented below.
      * 
      */
@@ -34,14 +34,14 @@ public final class ServiceTemplateSpecContainerEnvFromConfigMapRefArgs extends c
     }
 
     /**
-     * Specify whether the Secret must be defined
+     * Specify whether the ConfigMap must be defined
      * 
      */
     @Import(name="optional")
     private @Nullable Output<Boolean> optional;
 
     /**
-     * @return Specify whether the Secret must be defined
+     * @return Specify whether the ConfigMap must be defined
      * 
      */
     public Optional<Output<Boolean>> optional() {
@@ -74,7 +74,7 @@ public final class ServiceTemplateSpecContainerEnvFromConfigMapRefArgs extends c
         }
 
         /**
-         * @param localObjectReference The Secret to select from.
+         * @param localObjectReference The ConfigMap to select from.
          * Structure is documented below.
          * 
          * @return builder
@@ -86,7 +86,7 @@ public final class ServiceTemplateSpecContainerEnvFromConfigMapRefArgs extends c
         }
 
         /**
-         * @param localObjectReference The Secret to select from.
+         * @param localObjectReference The ConfigMap to select from.
          * Structure is documented below.
          * 
          * @return builder
@@ -97,7 +97,7 @@ public final class ServiceTemplateSpecContainerEnvFromConfigMapRefArgs extends c
         }
 
         /**
-         * @param optional Specify whether the Secret must be defined
+         * @param optional Specify whether the ConfigMap must be defined
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class ServiceTemplateSpecContainerEnvFromConfigMapRefArgs extends c
         }
 
         /**
-         * @param optional Specify whether the Secret must be defined
+         * @param optional Specify whether the ConfigMap must be defined
          * 
          * @return builder
          * 

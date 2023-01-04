@@ -84,6 +84,9 @@ public final class GameServerConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The labels associated with this game server config. Each label is a
+     * key-value pair.
+     * (Optional)
      * Set of labels to group by.
      * 
      */
@@ -91,7 +94,10 @@ public final class GameServerConfigArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Set of labels to group by.
+     * @return The labels associated with this game server config. Each label is a
+     * key-value pair.
+     * (Optional)
+     * Set of labels to group by.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -279,7 +285,10 @@ public final class GameServerConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param labels Set of labels to group by.
+         * @param labels The labels associated with this game server config. Each label is a
+         * key-value pair.
+         * (Optional)
+         * Set of labels to group by.
          * 
          * @return builder
          * 
@@ -290,7 +299,10 @@ public final class GameServerConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param labels Set of labels to group by.
+         * @param labels The labels associated with this game server config. Each label is a
+         * key-value pair.
+         * (Optional)
+         * Set of labels to group by.
          * 
          * @return builder
          * 

@@ -31,13 +31,12 @@ public final class RegionUrlMapPathMatcher {
      */
     private @Nullable RegionUrlMapPathMatcherDefaultUrlRedirect defaultUrlRedirect;
     /**
-     * @return Description of this test case.
+     * @return An optional description of this resource.
      * 
      */
     private @Nullable String description;
     /**
-     * @return The name of the query parameter to match. The query parameter must exist in the
-     * request, in the absence of which the request match fails.
+     * @return The name to which this PathMatcher is referred by the HostRule.
      * 
      */
     private String name;
@@ -85,15 +84,14 @@ public final class RegionUrlMapPathMatcher {
         return Optional.ofNullable(this.defaultUrlRedirect);
     }
     /**
-     * @return Description of this test case.
+     * @return An optional description of this resource.
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return The name of the query parameter to match. The query parameter must exist in the
-     * request, in the absence of which the request match fails.
+     * @return The name to which this PathMatcher is referred by the HostRule.
      * 
      */
     public String name() {

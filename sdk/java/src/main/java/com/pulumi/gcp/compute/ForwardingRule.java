@@ -1454,14 +1454,14 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.backendService);
     }
     /**
-     * [Output Only] Creation timestamp in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+     * Creation timestamp in RFC3339 text format.
      * 
      */
     @Export(name="creationTimestamp", type=String.class, parameters={})
     private Output<String> creationTimestamp;
 
     /**
-     * @return [Output Only] Creation timestamp in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+     * @return Creation timestamp in RFC3339 text format.
      * 
      */
     public Output<String> creationTimestamp() {
@@ -1788,16 +1788,14 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
         return this.pscConnectionId;
     }
     /**
-     * The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
-     * CLOSED
+     * The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED, CLOSED
      * 
      */
     @Export(name="pscConnectionStatus", type=String.class, parameters={})
     private Output<String> pscConnectionStatus;
 
     /**
-     * @return The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
-     * CLOSED
+     * @return The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED, CLOSED
      * 
      */
     public Output<String> pscConnectionStatus() {
@@ -1884,16 +1882,16 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.serviceLabel);
     }
     /**
-     * [Output Only] The internal fully qualified service name for this Forwarding Rule. This field is only used for internal
-     * load balancing.
+     * The internal fully qualified service name for this Forwarding Rule.
+     * This field is only used for INTERNAL load balancing.
      * 
      */
     @Export(name="serviceName", type=String.class, parameters={})
     private Output<String> serviceName;
 
     /**
-     * @return [Output Only] The internal fully qualified service name for this Forwarding Rule. This field is only used for internal
-     * load balancing.
+     * @return The internal fully qualified service name for this Forwarding Rule.
+     * This field is only used for INTERNAL load balancing.
      * 
      */
     public Output<String> serviceName() {

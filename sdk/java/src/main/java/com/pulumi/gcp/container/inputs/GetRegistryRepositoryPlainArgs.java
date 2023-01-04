@@ -14,16 +14,32 @@ public final class GetRegistryRepositoryPlainArgs extends com.pulumi.resources.I
 
     public static final GetRegistryRepositoryPlainArgs Empty = new GetRegistryRepositoryPlainArgs();
 
+    /**
+     * The project ID that this repository is attached to.  If not provided, provider project will be used instead.
+     * 
+     */
     @Import(name="project")
     private @Nullable String project;
 
+    /**
+     * @return The project ID that this repository is attached to.  If not provided, provider project will be used instead.
+     * 
+     */
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
+     * 
+     */
     @Import(name="region")
     private @Nullable String region;
 
+    /**
+     * @return The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
+     * 
+     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
@@ -53,11 +69,23 @@ public final class GetRegistryRepositoryPlainArgs extends com.pulumi.resources.I
             $ = new GetRegistryRepositoryPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param project The project ID that this repository is attached to.  If not provided, provider project will be used instead.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable String project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param region The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable String region) {
             $.region = region;
             return this;

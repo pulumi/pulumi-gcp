@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GuestPoliciesRecipeInstallStepFileExec {
     /**
-     * @return Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+     * @return A list of possible return values that the program can return to indicate a success. Defaults to [0].
      * 
      */
     private @Nullable String allowedExitCodes;
@@ -35,7 +35,7 @@ public final class GuestPoliciesRecipeInstallStepFileExec {
 
     private GuestPoliciesRecipeInstallStepFileExec() {}
     /**
-     * @return Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+     * @return A list of possible return values that the program can return to indicate a success. Defaults to [0].
      * 
      */
     public Optional<String> allowedExitCodes() {

@@ -95,14 +95,16 @@ public class CustomService extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.displayName);
     }
     /**
-     * The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+     * The full resource name for this service. The syntax is:
+     * projects/[PROJECT_ID]/services/[SERVICE_ID].
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+     * @return The full resource name for this service. The syntax is:
+     * projects/[PROJECT_ID]/services/[SERVICE_ID].
      * 
      */
     public Output<String> name() {

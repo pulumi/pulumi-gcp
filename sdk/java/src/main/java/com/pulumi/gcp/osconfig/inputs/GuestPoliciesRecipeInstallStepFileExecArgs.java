@@ -17,14 +17,14 @@ public final class GuestPoliciesRecipeInstallStepFileExecArgs extends com.pulumi
     public static final GuestPoliciesRecipeInstallStepFileExecArgs Empty = new GuestPoliciesRecipeInstallStepFileExecArgs();
 
     /**
-     * Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+     * A list of possible return values that the program can return to indicate a success. Defaults to [0].
      * 
      */
     @Import(name="allowedExitCodes")
     private @Nullable Output<String> allowedExitCodes;
 
     /**
-     * @return Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+     * @return A list of possible return values that the program can return to indicate a success. Defaults to [0].
      * 
      */
     public Optional<Output<String>> allowedExitCodes() {
@@ -104,7 +104,7 @@ public final class GuestPoliciesRecipeInstallStepFileExecArgs extends com.pulumi
         }
 
         /**
-         * @param allowedExitCodes Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+         * @param allowedExitCodes A list of possible return values that the program can return to indicate a success. Defaults to [0].
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class GuestPoliciesRecipeInstallStepFileExecArgs extends com.pulumi
         }
 
         /**
-         * @param allowedExitCodes Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+         * @param allowedExitCodes A list of possible return values that the program can return to indicate a success. Defaults to [0].
          * 
          * @return builder
          * 

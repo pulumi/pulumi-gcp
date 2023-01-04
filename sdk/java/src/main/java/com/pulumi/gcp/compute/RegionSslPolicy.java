@@ -108,14 +108,16 @@ public class RegionSslPolicy extends com.pulumi.resources.CustomResource {
         return this.enabledFeatures;
     }
     /**
-     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+     * Fingerprint of this resource. A hash of the contents stored in this
+     * object. This field is used in optimistic locking.
      * 
      */
     @Export(name="fingerprint", type=String.class, parameters={})
     private Output<String> fingerprint;
 
     /**
-     * @return Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+     * @return Fingerprint of this resource. A hash of the contents stored in this
+     * object. This field is used in optimistic locking.
      * 
      */
     public Output<String> fingerprint() {

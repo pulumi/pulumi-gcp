@@ -16,14 +16,16 @@ public final class CxPageEntryFulfillmentMessageArgs extends com.pulumi.resource
     public static final CxPageEntryFulfillmentMessageArgs Empty = new CxPageEntryFulfillmentMessageArgs();
 
     /**
-     * A collection of text responses.
+     * The text response message.
+     * Structure is documented below.
      * 
      */
     @Import(name="text")
     private @Nullable Output<CxPageEntryFulfillmentMessageTextArgs> text;
 
     /**
-     * @return A collection of text responses.
+     * @return The text response message.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<CxPageEntryFulfillmentMessageTextArgs>> text() {
@@ -55,7 +57,8 @@ public final class CxPageEntryFulfillmentMessageArgs extends com.pulumi.resource
         }
 
         /**
-         * @param text A collection of text responses.
+         * @param text The text response message.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -66,7 +69,8 @@ public final class CxPageEntryFulfillmentMessageArgs extends com.pulumi.resource
         }
 
         /**
-         * @param text A collection of text responses.
+         * @param text The text response message.
+         * Structure is documented below.
          * 
          * @return builder
          * 

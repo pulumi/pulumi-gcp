@@ -18,18 +18,16 @@ public final class TriggerGithubArgs extends com.pulumi.resources.ResourceArgs {
     public static final TriggerGithubArgs Empty = new TriggerGithubArgs();
 
     /**
-     * Name of the volume to mount.
-     * Volume names must be unique per build step and must be valid names for Docker volumes.
-     * Each named volume must be used by at least two build steps.
+     * Name of the repository. For example: The name for
+     * https://github.com/googlecloudplatform/cloud-builders is &#34;cloud-builders&#34;.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the volume to mount.
-     * Volume names must be unique per build step and must be valid names for Docker volumes.
-     * Each named volume must be used by at least two build steps.
+     * @return Name of the repository. For example: The name for
+     * https://github.com/googlecloudplatform/cloud-builders is &#34;cloud-builders&#34;.
      * 
      */
     public Optional<Output<String>> name() {
@@ -115,9 +113,8 @@ public final class TriggerGithubArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the volume to mount.
-         * Volume names must be unique per build step and must be valid names for Docker volumes.
-         * Each named volume must be used by at least two build steps.
+         * @param name Name of the repository. For example: The name for
+         * https://github.com/googlecloudplatform/cloud-builders is &#34;cloud-builders&#34;.
          * 
          * @return builder
          * 
@@ -128,9 +125,8 @@ public final class TriggerGithubArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the volume to mount.
-         * Volume names must be unique per build step and must be valid names for Docker volumes.
-         * Each named volume must be used by at least two build steps.
+         * @param name Name of the repository. For example: The name for
+         * https://github.com/googlecloudplatform/cloud-builders is &#34;cloud-builders&#34;.
          * 
          * @return builder
          * 

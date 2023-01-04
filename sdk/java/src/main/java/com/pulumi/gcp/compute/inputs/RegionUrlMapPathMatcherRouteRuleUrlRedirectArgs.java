@@ -17,16 +17,18 @@ public final class RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs extends com.p
     public static final RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs Empty = new RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs();
 
     /**
-     * The host that will be used in the redirect response instead of the one that was
-     * supplied in the request. The value must be between 1 and 255 characters.
+     * The host that will be used in the redirect response instead of the one
+     * that was supplied in the request. The value must be between 1 and 255
+     * characters.
      * 
      */
     @Import(name="hostRedirect")
     private @Nullable Output<String> hostRedirect;
 
     /**
-     * @return The host that will be used in the redirect response instead of the one that was
-     * supplied in the request. The value must be between 1 and 255 characters.
+     * @return The host that will be used in the redirect response instead of the one
+     * that was supplied in the request. The value must be between 1 and 255
+     * characters.
      * 
      */
     public Optional<Output<String>> hostRedirect() {
@@ -34,20 +36,22 @@ public final class RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs extends com.p
     }
 
     /**
-     * If set to true, the URL scheme in the redirected request is set to https. If set to
-     * false, the URL scheme of the redirected request will remain the same as that of the
-     * request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
-     * true for TargetHttpsProxy is not permitted. The default is set to false.
+     * If set to true, the URL scheme in the redirected request is set to https.
+     * If set to false, the URL scheme of the redirected request will remain the
+     * same as that of the request. This must only be set for UrlMaps used in
+     * TargetHttpProxys. Setting this true for TargetHttpsProxy is not
+     * permitted. The default is set to false.
      * 
      */
     @Import(name="httpsRedirect")
     private @Nullable Output<Boolean> httpsRedirect;
 
     /**
-     * @return If set to true, the URL scheme in the redirected request is set to https. If set to
-     * false, the URL scheme of the redirected request will remain the same as that of the
-     * request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
-     * true for TargetHttpsProxy is not permitted. The default is set to false.
+     * @return If set to true, the URL scheme in the redirected request is set to https.
+     * If set to false, the URL scheme of the redirected request will remain the
+     * same as that of the request. This must only be set for UrlMaps used in
+     * TargetHttpProxys. Setting this true for TargetHttpsProxy is not
+     * permitted. The default is set to false.
      * 
      */
     public Optional<Output<Boolean>> httpsRedirect() {
@@ -55,22 +59,22 @@ public final class RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs extends com.p
     }
 
     /**
-     * The path that will be used in the redirect response instead of the one that was
-     * supplied in the request. pathRedirect cannot be supplied together with
-     * prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
-     * original request will be used for the redirect. The value must be between 1 and 1024
-     * characters.
+     * The path that will be used in the redirect response instead of the one
+     * that was supplied in the request. pathRedirect cannot be supplied
+     * together with prefixRedirect. Supply one alone or neither. If neither is
+     * supplied, the path of the original request will be used for the redirect.
+     * The value must be between 1 and 1024 characters.
      * 
      */
     @Import(name="pathRedirect")
     private @Nullable Output<String> pathRedirect;
 
     /**
-     * @return The path that will be used in the redirect response instead of the one that was
-     * supplied in the request. pathRedirect cannot be supplied together with
-     * prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
-     * original request will be used for the redirect. The value must be between 1 and 1024
-     * characters.
+     * @return The path that will be used in the redirect response instead of the one
+     * that was supplied in the request. pathRedirect cannot be supplied
+     * together with prefixRedirect. Supply one alone or neither. If neither is
+     * supplied, the path of the original request will be used for the redirect.
+     * The value must be between 1 and 1024 characters.
      * 
      */
     public Optional<Output<String>> pathRedirect() {
@@ -78,22 +82,24 @@ public final class RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs extends com.p
     }
 
     /**
-     * The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
-     * retaining the remaining portion of the URL before redirecting the request.
-     * prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
-     * neither. If neither is supplied, the path of the original request will be used for
-     * the redirect. The value must be between 1 and 1024 characters.
+     * The prefix that replaces the prefixMatch specified in the
+     * HttpRouteRuleMatch, retaining the remaining portion of the URL before
+     * redirecting the request. prefixRedirect cannot be supplied together with
+     * pathRedirect. Supply one alone or neither. If neither is supplied, the
+     * path of the original request will be used for the redirect. The value
+     * must be between 1 and 1024 characters.
      * 
      */
     @Import(name="prefixRedirect")
     private @Nullable Output<String> prefixRedirect;
 
     /**
-     * @return The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
-     * retaining the remaining portion of the URL before redirecting the request.
-     * prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
-     * neither. If neither is supplied, the path of the original request will be used for
-     * the redirect. The value must be between 1 and 1024 characters.
+     * @return The prefix that replaces the prefixMatch specified in the
+     * HttpRouteRuleMatch, retaining the remaining portion of the URL before
+     * redirecting the request. prefixRedirect cannot be supplied together with
+     * pathRedirect. Supply one alone or neither. If neither is supplied, the
+     * path of the original request will be used for the redirect. The value
+     * must be between 1 and 1024 characters.
      * 
      */
     public Optional<Output<String>> prefixRedirect() {
@@ -130,9 +136,9 @@ public final class RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs extends com.p
     }
 
     /**
-     * If set to true, any accompanying query portion of the original URL is removed prior
-     * to redirecting the request. If set to false, the query portion of the original URL is
-     * retained.
+     * If set to true, any accompanying query portion of the original URL is removed
+     * prior to redirecting the request. If set to false, the query portion of the
+     * original URL is retained.
      * This field is required to ensure an empty block is not set. The normal default value is false.
      * 
      */
@@ -140,9 +146,9 @@ public final class RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs extends com.p
     private @Nullable Output<Boolean> stripQuery;
 
     /**
-     * @return If set to true, any accompanying query portion of the original URL is removed prior
-     * to redirecting the request. If set to false, the query portion of the original URL is
-     * retained.
+     * @return If set to true, any accompanying query portion of the original URL is removed
+     * prior to redirecting the request. If set to false, the query portion of the
+     * original URL is retained.
      * This field is required to ensure an empty block is not set. The normal default value is false.
      * 
      */
@@ -180,8 +186,9 @@ public final class RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs extends com.p
         }
 
         /**
-         * @param hostRedirect The host that will be used in the redirect response instead of the one that was
-         * supplied in the request. The value must be between 1 and 255 characters.
+         * @param hostRedirect The host that will be used in the redirect response instead of the one
+         * that was supplied in the request. The value must be between 1 and 255
+         * characters.
          * 
          * @return builder
          * 
@@ -192,8 +199,9 @@ public final class RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs extends com.p
         }
 
         /**
-         * @param hostRedirect The host that will be used in the redirect response instead of the one that was
-         * supplied in the request. The value must be between 1 and 255 characters.
+         * @param hostRedirect The host that will be used in the redirect response instead of the one
+         * that was supplied in the request. The value must be between 1 and 255
+         * characters.
          * 
          * @return builder
          * 
@@ -203,10 +211,11 @@ public final class RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs extends com.p
         }
 
         /**
-         * @param httpsRedirect If set to true, the URL scheme in the redirected request is set to https. If set to
-         * false, the URL scheme of the redirected request will remain the same as that of the
-         * request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
-         * true for TargetHttpsProxy is not permitted. The default is set to false.
+         * @param httpsRedirect If set to true, the URL scheme in the redirected request is set to https.
+         * If set to false, the URL scheme of the redirected request will remain the
+         * same as that of the request. This must only be set for UrlMaps used in
+         * TargetHttpProxys. Setting this true for TargetHttpsProxy is not
+         * permitted. The default is set to false.
          * 
          * @return builder
          * 
@@ -217,10 +226,11 @@ public final class RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs extends com.p
         }
 
         /**
-         * @param httpsRedirect If set to true, the URL scheme in the redirected request is set to https. If set to
-         * false, the URL scheme of the redirected request will remain the same as that of the
-         * request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
-         * true for TargetHttpsProxy is not permitted. The default is set to false.
+         * @param httpsRedirect If set to true, the URL scheme in the redirected request is set to https.
+         * If set to false, the URL scheme of the redirected request will remain the
+         * same as that of the request. This must only be set for UrlMaps used in
+         * TargetHttpProxys. Setting this true for TargetHttpsProxy is not
+         * permitted. The default is set to false.
          * 
          * @return builder
          * 
@@ -230,11 +240,11 @@ public final class RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs extends com.p
         }
 
         /**
-         * @param pathRedirect The path that will be used in the redirect response instead of the one that was
-         * supplied in the request. pathRedirect cannot be supplied together with
-         * prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
-         * original request will be used for the redirect. The value must be between 1 and 1024
-         * characters.
+         * @param pathRedirect The path that will be used in the redirect response instead of the one
+         * that was supplied in the request. pathRedirect cannot be supplied
+         * together with prefixRedirect. Supply one alone or neither. If neither is
+         * supplied, the path of the original request will be used for the redirect.
+         * The value must be between 1 and 1024 characters.
          * 
          * @return builder
          * 
@@ -245,11 +255,11 @@ public final class RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs extends com.p
         }
 
         /**
-         * @param pathRedirect The path that will be used in the redirect response instead of the one that was
-         * supplied in the request. pathRedirect cannot be supplied together with
-         * prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
-         * original request will be used for the redirect. The value must be between 1 and 1024
-         * characters.
+         * @param pathRedirect The path that will be used in the redirect response instead of the one
+         * that was supplied in the request. pathRedirect cannot be supplied
+         * together with prefixRedirect. Supply one alone or neither. If neither is
+         * supplied, the path of the original request will be used for the redirect.
+         * The value must be between 1 and 1024 characters.
          * 
          * @return builder
          * 
@@ -259,11 +269,12 @@ public final class RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs extends com.p
         }
 
         /**
-         * @param prefixRedirect The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
-         * retaining the remaining portion of the URL before redirecting the request.
-         * prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
-         * neither. If neither is supplied, the path of the original request will be used for
-         * the redirect. The value must be between 1 and 1024 characters.
+         * @param prefixRedirect The prefix that replaces the prefixMatch specified in the
+         * HttpRouteRuleMatch, retaining the remaining portion of the URL before
+         * redirecting the request. prefixRedirect cannot be supplied together with
+         * pathRedirect. Supply one alone or neither. If neither is supplied, the
+         * path of the original request will be used for the redirect. The value
+         * must be between 1 and 1024 characters.
          * 
          * @return builder
          * 
@@ -274,11 +285,12 @@ public final class RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs extends com.p
         }
 
         /**
-         * @param prefixRedirect The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
-         * retaining the remaining portion of the URL before redirecting the request.
-         * prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
-         * neither. If neither is supplied, the path of the original request will be used for
-         * the redirect. The value must be between 1 and 1024 characters.
+         * @param prefixRedirect The prefix that replaces the prefixMatch specified in the
+         * HttpRouteRuleMatch, retaining the remaining portion of the URL before
+         * redirecting the request. prefixRedirect cannot be supplied together with
+         * pathRedirect. Supply one alone or neither. If neither is supplied, the
+         * path of the original request will be used for the redirect. The value
+         * must be between 1 and 1024 characters.
          * 
          * @return builder
          * 
@@ -323,9 +335,9 @@ public final class RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs extends com.p
         }
 
         /**
-         * @param stripQuery If set to true, any accompanying query portion of the original URL is removed prior
-         * to redirecting the request. If set to false, the query portion of the original URL is
-         * retained.
+         * @param stripQuery If set to true, any accompanying query portion of the original URL is removed
+         * prior to redirecting the request. If set to false, the query portion of the
+         * original URL is retained.
          * This field is required to ensure an empty block is not set. The normal default value is false.
          * 
          * @return builder
@@ -337,9 +349,9 @@ public final class RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs extends com.p
         }
 
         /**
-         * @param stripQuery If set to true, any accompanying query portion of the original URL is removed prior
-         * to redirecting the request. If set to false, the query portion of the original URL is
-         * retained.
+         * @param stripQuery If set to true, any accompanying query portion of the original URL is removed
+         * prior to redirecting the request. If set to false, the query portion of the
+         * original URL is retained.
          * This field is required to ensure an empty block is not set. The normal default value is false.
          * 
          * @return builder

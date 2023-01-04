@@ -17,16 +17,32 @@ public final class CertificateMapGclbTargetIpConfigArgs extends com.pulumi.resou
 
     public static final CertificateMapGclbTargetIpConfigArgs Empty = new CertificateMapGclbTargetIpConfigArgs();
 
+    /**
+     * An external IP address
+     * 
+     */
     @Import(name="ipAddress")
     private @Nullable Output<String> ipAddress;
 
+    /**
+     * @return An external IP address
+     * 
+     */
     public Optional<Output<String>> ipAddress() {
         return Optional.ofNullable(this.ipAddress);
     }
 
+    /**
+     * A list of ports
+     * 
+     */
     @Import(name="ports")
     private @Nullable Output<List<Integer>> ports;
 
+    /**
+     * @return A list of ports
+     * 
+     */
     public Optional<Output<List<Integer>>> ports() {
         return Optional.ofNullable(this.ports);
     }
@@ -56,24 +72,54 @@ public final class CertificateMapGclbTargetIpConfigArgs extends com.pulumi.resou
             $ = new CertificateMapGclbTargetIpConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ipAddress An external IP address
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipAddress(@Nullable Output<String> ipAddress) {
             $.ipAddress = ipAddress;
             return this;
         }
 
+        /**
+         * @param ipAddress An external IP address
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipAddress(String ipAddress) {
             return ipAddress(Output.of(ipAddress));
         }
 
+        /**
+         * @param ports A list of ports
+         * 
+         * @return builder
+         * 
+         */
         public Builder ports(@Nullable Output<List<Integer>> ports) {
             $.ports = ports;
             return this;
         }
 
+        /**
+         * @param ports A list of ports
+         * 
+         * @return builder
+         * 
+         */
         public Builder ports(List<Integer> ports) {
             return ports(Output.of(ports));
         }
 
+        /**
+         * @param ports A list of ports
+         * 
+         * @return builder
+         * 
+         */
         public Builder ports(Integer... ports) {
             return ports(List.of(ports));
         }

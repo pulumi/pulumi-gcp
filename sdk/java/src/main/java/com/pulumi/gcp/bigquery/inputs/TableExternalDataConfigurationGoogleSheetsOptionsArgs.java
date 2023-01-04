@@ -17,16 +17,20 @@ public final class TableExternalDataConfigurationGoogleSheetsOptionsArgs extends
     public static final TableExternalDataConfigurationGoogleSheetsOptionsArgs Empty = new TableExternalDataConfigurationGoogleSheetsOptionsArgs();
 
     /**
-     * Information required to partition based on ranges.
-     * Structure is documented below.
+     * Range of a sheet to query from. Only used when
+     * non-empty. At least one of `range` or `skip_leading_rows` must be set.
+     * Typical format: &#34;sheet_name!top_left_cell_id:bottom_right_cell_id&#34;
+     * For example: &#34;sheet1!A1:B20&#34;
      * 
      */
     @Import(name="range")
     private @Nullable Output<String> range;
 
     /**
-     * @return Information required to partition based on ranges.
-     * Structure is documented below.
+     * @return Range of a sheet to query from. Only used when
+     * non-empty. At least one of `range` or `skip_leading_rows` must be set.
+     * Typical format: &#34;sheet_name!top_left_cell_id:bottom_right_cell_id&#34;
+     * For example: &#34;sheet1!A1:B20&#34;
      * 
      */
     public Optional<Output<String>> range() {
@@ -78,8 +82,10 @@ public final class TableExternalDataConfigurationGoogleSheetsOptionsArgs extends
         }
 
         /**
-         * @param range Information required to partition based on ranges.
-         * Structure is documented below.
+         * @param range Range of a sheet to query from. Only used when
+         * non-empty. At least one of `range` or `skip_leading_rows` must be set.
+         * Typical format: &#34;sheet_name!top_left_cell_id:bottom_right_cell_id&#34;
+         * For example: &#34;sheet1!A1:B20&#34;
          * 
          * @return builder
          * 
@@ -90,8 +96,10 @@ public final class TableExternalDataConfigurationGoogleSheetsOptionsArgs extends
         }
 
         /**
-         * @param range Information required to partition based on ranges.
-         * Structure is documented below.
+         * @param range Range of a sheet to query from. Only used when
+         * non-empty. At least one of `range` or `skip_leading_rows` must be set.
+         * Typical format: &#34;sheet_name!top_left_cell_id:bottom_right_cell_id&#34;
+         * For example: &#34;sheet1!A1:B20&#34;
          * 
          * @return builder
          * 

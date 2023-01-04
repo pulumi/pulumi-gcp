@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 public final class GetIstioCanonicalServiceResult {
     private String canonicalService;
     private String canonicalServiceNamespace;
+    /**
+     * @return Name used for UI elements listing this (Monitoring) Service.
+     * 
+     */
     private String displayName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,9 +27,18 @@ public final class GetIstioCanonicalServiceResult {
      */
     private String id;
     private String meshUid;
+    /**
+     * @return The full REST resource name for this channel. The syntax is:
+     * `projects/[PROJECT_ID]/services/[SERVICE_ID]`.
+     * 
+     */
     private String name;
     private @Nullable String project;
     private String serviceId;
+    /**
+     * @return Configuration for how to query telemetry on the Service. Structure is documented below.
+     * 
+     */
     private List<GetIstioCanonicalServiceTelemetry> telemetries;
     private Map<String,String> userLabels;
 
@@ -36,6 +49,10 @@ public final class GetIstioCanonicalServiceResult {
     public String canonicalServiceNamespace() {
         return this.canonicalServiceNamespace;
     }
+    /**
+     * @return Name used for UI elements listing this (Monitoring) Service.
+     * 
+     */
     public String displayName() {
         return this.displayName;
     }
@@ -49,6 +66,11 @@ public final class GetIstioCanonicalServiceResult {
     public String meshUid() {
         return this.meshUid;
     }
+    /**
+     * @return The full REST resource name for this channel. The syntax is:
+     * `projects/[PROJECT_ID]/services/[SERVICE_ID]`.
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -58,6 +80,10 @@ public final class GetIstioCanonicalServiceResult {
     public String serviceId() {
         return this.serviceId;
     }
+    /**
+     * @return Configuration for how to query telemetry on the Service. Structure is documented below.
+     * 
+     */
     public List<GetIstioCanonicalServiceTelemetry> telemetries() {
         return this.telemetries;
     }

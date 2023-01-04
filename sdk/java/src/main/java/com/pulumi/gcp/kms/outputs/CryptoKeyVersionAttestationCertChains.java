@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CryptoKeyVersionAttestationCertChains {
+    /**
+     * @return Cavium certificate chain corresponding to the attestation.
+     * 
+     */
     private @Nullable String caviumCerts;
+    /**
+     * @return Google card certificate chain corresponding to the attestation.
+     * 
+     */
     private @Nullable String googleCardCerts;
+    /**
+     * @return Google partition certificate chain corresponding to the attestation.
+     * 
+     */
     private @Nullable String googlePartitionCerts;
 
     private CryptoKeyVersionAttestationCertChains() {}
+    /**
+     * @return Cavium certificate chain corresponding to the attestation.
+     * 
+     */
     public Optional<String> caviumCerts() {
         return Optional.ofNullable(this.caviumCerts);
     }
+    /**
+     * @return Google card certificate chain corresponding to the attestation.
+     * 
+     */
     public Optional<String> googleCardCerts() {
         return Optional.ofNullable(this.googleCardCerts);
     }
+    /**
+     * @return Google partition certificate chain corresponding to the attestation.
+     * 
+     */
     public Optional<String> googlePartitionCerts() {
         return Optional.ofNullable(this.googlePartitionCerts);
     }

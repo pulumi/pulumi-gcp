@@ -47,9 +47,8 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
      */
     private @Nullable Integer filesLimitPercent;
     /**
-     * @return How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
-     * rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
-     * Default value is `TOP`.
+     * @return How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
+     * If not specified, scanning would start from the top.
      * Possible values are `TOP` and `RANDOM_START`.
      * 
      */
@@ -99,9 +98,8 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
         return Optional.ofNullable(this.filesLimitPercent);
     }
     /**
-     * @return How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
-     * rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
-     * Default value is `TOP`.
+     * @return How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
+     * If not specified, scanning would start from the top.
      * Possible values are `TOP` and `RANDOM_START`.
      * 
      */

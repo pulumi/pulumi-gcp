@@ -18,7 +18,7 @@ public final class ServiceTemplateContainerPort {
      */
     private @Nullable Integer containerPort;
     /**
-     * @return Volume&#39;s name.
+     * @return If specified, used to specify which protocol to use. Allowed values are &#34;http1&#34; and &#34;h2c&#34;.
      * 
      */
     private @Nullable String name;
@@ -32,7 +32,7 @@ public final class ServiceTemplateContainerPort {
         return Optional.ofNullable(this.containerPort);
     }
     /**
-     * @return Volume&#39;s name.
+     * @return If specified, used to specify which protocol to use. Allowed values are &#34;http1&#34; and &#34;h2c&#34;.
      * 
      */
     public Optional<String> name() {

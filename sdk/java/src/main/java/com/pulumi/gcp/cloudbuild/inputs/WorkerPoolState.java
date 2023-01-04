@@ -141,14 +141,14 @@ public final class WorkerPoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. `WorkerPool` state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+     * Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return Output only. `WorkerPool` state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+     * @return Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
      * 
      */
     public Optional<Output<String>> state() {
@@ -406,7 +406,7 @@ public final class WorkerPoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state Output only. `WorkerPool` state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+         * @param state Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
          * 
          * @return builder
          * 
@@ -417,7 +417,7 @@ public final class WorkerPoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state Output only. `WorkerPool` state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+         * @param state Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
          * 
          * @return builder
          * 

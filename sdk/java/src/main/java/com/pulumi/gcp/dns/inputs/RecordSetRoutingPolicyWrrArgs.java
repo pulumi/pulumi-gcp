@@ -19,7 +19,7 @@ public final class RecordSetRoutingPolicyWrrArgs extends com.pulumi.resources.Re
     public static final RecordSetRoutingPolicyWrrArgs Empty = new RecordSetRoutingPolicyWrrArgs();
 
     /**
-     * For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+     * The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
      * Structure is document below.
      * 
      */
@@ -27,7 +27,7 @@ public final class RecordSetRoutingPolicyWrrArgs extends com.pulumi.resources.Re
     private @Nullable Output<RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs> healthCheckedTargets;
 
     /**
-     * @return For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+     * @return The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
      * Structure is document below.
      * 
      */
@@ -92,7 +92,7 @@ public final class RecordSetRoutingPolicyWrrArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param healthCheckedTargets For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+         * @param healthCheckedTargets The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
          * Structure is document below.
          * 
          * @return builder
@@ -104,7 +104,7 @@ public final class RecordSetRoutingPolicyWrrArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param healthCheckedTargets For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+         * @param healthCheckedTargets The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
          * Structure is document below.
          * 
          * @return builder

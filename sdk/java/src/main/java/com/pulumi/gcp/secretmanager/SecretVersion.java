@@ -119,14 +119,16 @@ public class SecretVersion extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enabled);
     }
     /**
-     * The resource name of the SecretVersion. Format: &#39;projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}&#39;
+     * The resource name of the SecretVersion. Format:
+     * `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The resource name of the SecretVersion. Format: &#39;projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}&#39;
+     * @return The resource name of the SecretVersion. Format:
+     * `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
      * 
      */
     public Output<String> name() {

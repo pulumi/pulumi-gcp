@@ -222,14 +222,16 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.metadata);
     }
     /**
-     * The resource name for the endpoint in the format &#39;projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*{@literal /}endpoints/*&#39;.
+     * The resource name for the endpoint in the format
+     * `projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*{@literal /}endpoints/*`.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The resource name for the endpoint in the format &#39;projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*{@literal /}endpoints/*&#39;.
+     * @return The resource name for the endpoint in the format
+     * `projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*{@literal /}endpoints/*`.
      * 
      */
     public Output<String> name() {

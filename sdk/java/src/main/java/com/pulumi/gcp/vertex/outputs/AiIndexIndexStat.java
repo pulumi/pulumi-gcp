@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AiIndexIndexStat {
+    /**
+     * @return The number of shards in the Index.
+     * 
+     */
     private @Nullable Integer shardsCount;
+    /**
+     * @return The number of vectors in the Index.
+     * 
+     */
     private @Nullable String vectorsCount;
 
     private AiIndexIndexStat() {}
+    /**
+     * @return The number of shards in the Index.
+     * 
+     */
     public Optional<Integer> shardsCount() {
         return Optional.ofNullable(this.shardsCount);
     }
+    /**
+     * @return The number of vectors in the Index.
+     * 
+     */
     public Optional<String> vectorsCount() {
         return Optional.ofNullable(this.vectorsCount);
     }

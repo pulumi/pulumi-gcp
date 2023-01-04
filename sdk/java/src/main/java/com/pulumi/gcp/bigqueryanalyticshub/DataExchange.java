@@ -180,14 +180,16 @@ public class DataExchange extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * The resource name of the data exchange, for example: &#34;projects/myproject/locations/US/dataExchanges/123&#34;
+     * The resource name of the data exchange, for example:
+     * &#34;projects/myproject/locations/US/dataExchanges/123&#34;
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The resource name of the data exchange, for example: &#34;projects/myproject/locations/US/dataExchanges/123&#34;
+     * @return The resource name of the data exchange, for example:
+     * &#34;projects/myproject/locations/US/dataExchanges/123&#34;
      * 
      */
     public Output<String> name() {

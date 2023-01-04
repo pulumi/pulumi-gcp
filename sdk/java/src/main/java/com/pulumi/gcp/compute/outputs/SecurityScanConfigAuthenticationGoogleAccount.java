@@ -10,21 +10,21 @@ import java.util.Objects;
 @CustomType
 public final class SecurityScanConfigAuthenticationGoogleAccount {
     /**
-     * @return The password of the custom account. The credential is stored encrypted
+     * @return The password of the Google account. The credential is stored encrypted
      * in GCP.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     private String password;
     /**
-     * @return The user name of the custom account.
+     * @return The user name of the Google account.
      * 
      */
     private String username;
 
     private SecurityScanConfigAuthenticationGoogleAccount() {}
     /**
-     * @return The password of the custom account. The credential is stored encrypted
+     * @return The password of the Google account. The credential is stored encrypted
      * in GCP.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
@@ -33,7 +33,7 @@ public final class SecurityScanConfigAuthenticationGoogleAccount {
         return this.password;
     }
     /**
-     * @return The user name of the custom account.
+     * @return The user name of the Google account.
      * 
      */
     public String username() {

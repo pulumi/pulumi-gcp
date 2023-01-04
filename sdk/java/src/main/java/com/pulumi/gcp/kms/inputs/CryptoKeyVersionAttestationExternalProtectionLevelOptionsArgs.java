@@ -15,16 +15,32 @@ public final class CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs
 
     public static final CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs Empty = new CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs();
 
+    /**
+     * The path to the external key material on the EKM when using EkmConnection e.g., &#34;v0/my/key&#34;. Set this field instead of externalKeyUri when using an EkmConnection.
+     * 
+     */
     @Import(name="ekmConnectionKeyPath")
     private @Nullable Output<String> ekmConnectionKeyPath;
 
+    /**
+     * @return The path to the external key material on the EKM when using EkmConnection e.g., &#34;v0/my/key&#34;. Set this field instead of externalKeyUri when using an EkmConnection.
+     * 
+     */
     public Optional<Output<String>> ekmConnectionKeyPath() {
         return Optional.ofNullable(this.ekmConnectionKeyPath);
     }
 
+    /**
+     * The URI for an external resource that this CryptoKeyVersion represents.
+     * 
+     */
     @Import(name="externalKeyUri")
     private @Nullable Output<String> externalKeyUri;
 
+    /**
+     * @return The URI for an external resource that this CryptoKeyVersion represents.
+     * 
+     */
     public Optional<Output<String>> externalKeyUri() {
         return Optional.ofNullable(this.externalKeyUri);
     }
@@ -54,20 +70,44 @@ public final class CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs
             $ = new CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ekmConnectionKeyPath The path to the external key material on the EKM when using EkmConnection e.g., &#34;v0/my/key&#34;. Set this field instead of externalKeyUri when using an EkmConnection.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ekmConnectionKeyPath(@Nullable Output<String> ekmConnectionKeyPath) {
             $.ekmConnectionKeyPath = ekmConnectionKeyPath;
             return this;
         }
 
+        /**
+         * @param ekmConnectionKeyPath The path to the external key material on the EKM when using EkmConnection e.g., &#34;v0/my/key&#34;. Set this field instead of externalKeyUri when using an EkmConnection.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ekmConnectionKeyPath(String ekmConnectionKeyPath) {
             return ekmConnectionKeyPath(Output.of(ekmConnectionKeyPath));
         }
 
+        /**
+         * @param externalKeyUri The URI for an external resource that this CryptoKeyVersion represents.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalKeyUri(@Nullable Output<String> externalKeyUri) {
             $.externalKeyUri = externalKeyUri;
             return this;
         }
 
+        /**
+         * @param externalKeyUri The URI for an external resource that this CryptoKeyVersion represents.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalKeyUri(String externalKeyUri) {
             return externalKeyUri(Output.of(externalKeyUri));
         }

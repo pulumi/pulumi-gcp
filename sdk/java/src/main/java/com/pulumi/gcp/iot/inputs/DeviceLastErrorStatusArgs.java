@@ -19,23 +19,47 @@ public final class DeviceLastErrorStatusArgs extends com.pulumi.resources.Resour
 
     public static final DeviceLastErrorStatusArgs Empty = new DeviceLastErrorStatusArgs();
 
+    /**
+     * A list of messages that carry the error details.
+     * 
+     */
     @Import(name="details")
     private @Nullable Output<List<Map<String,Object>>> details;
 
+    /**
+     * @return A list of messages that carry the error details.
+     * 
+     */
     public Optional<Output<List<Map<String,Object>>>> details() {
         return Optional.ofNullable(this.details);
     }
 
+    /**
+     * A developer-facing error message, which should be in English.
+     * 
+     */
     @Import(name="message")
     private @Nullable Output<String> message;
 
+    /**
+     * @return A developer-facing error message, which should be in English.
+     * 
+     */
     public Optional<Output<String>> message() {
         return Optional.ofNullable(this.message);
     }
 
+    /**
+     * The status code, which should be an enum value of google.rpc.Code.
+     * 
+     */
     @Import(name="number")
     private @Nullable Output<Integer> number;
 
+    /**
+     * @return The status code, which should be an enum value of google.rpc.Code.
+     * 
+     */
     public Optional<Output<Integer>> number() {
         return Optional.ofNullable(this.number);
     }
@@ -66,33 +90,75 @@ public final class DeviceLastErrorStatusArgs extends com.pulumi.resources.Resour
             $ = new DeviceLastErrorStatusArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param details A list of messages that carry the error details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder details(@Nullable Output<List<Map<String,Object>>> details) {
             $.details = details;
             return this;
         }
 
+        /**
+         * @param details A list of messages that carry the error details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder details(List<Map<String,Object>> details) {
             return details(Output.of(details));
         }
 
+        /**
+         * @param details A list of messages that carry the error details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder details(Map<String,Object>... details) {
             return details(List.of(details));
         }
 
+        /**
+         * @param message A developer-facing error message, which should be in English.
+         * 
+         * @return builder
+         * 
+         */
         public Builder message(@Nullable Output<String> message) {
             $.message = message;
             return this;
         }
 
+        /**
+         * @param message A developer-facing error message, which should be in English.
+         * 
+         * @return builder
+         * 
+         */
         public Builder message(String message) {
             return message(Output.of(message));
         }
 
+        /**
+         * @param number The status code, which should be an enum value of google.rpc.Code.
+         * 
+         * @return builder
+         * 
+         */
         public Builder number(@Nullable Output<Integer> number) {
             $.number = number;
             return this;
         }
 
+        /**
+         * @param number The status code, which should be an enum value of google.rpc.Code.
+         * 
+         * @return builder
+         * 
+         */
         public Builder number(Integer number) {
             return number(Output.of(number));
         }

@@ -10,8 +10,8 @@ import java.util.Objects;
 @CustomType
 public final class URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel {
     /**
-     * @return The name of the query parameter to match. The query parameter must exist in the
-     * request, in the absence of which the request match fails.
+     * @return Name of metadata label. The name can have a maximum length of 1024 characters
+     * and must be at least 1 character long.
      * 
      */
     private String name;
@@ -24,8 +24,8 @@ public final class URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel 
 
     private URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel() {}
     /**
-     * @return The name of the query parameter to match. The query parameter must exist in the
-     * request, in the absence of which the request match fails.
+     * @return Name of metadata label. The name can have a maximum length of 1024 characters
+     * and must be at least 1 character long.
      * 
      */
     public String name() {

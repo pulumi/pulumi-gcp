@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec {
+    /**
+     * @return The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
+     * 
+     */
     private @Nullable String metricName;
+    /**
+     * @return The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
+     * 
+     */
     private @Nullable Integer target;
 
     private AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec() {}
+    /**
+     * @return The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
+     * 
+     */
     public Optional<String> metricName() {
         return Optional.ofNullable(this.metricName);
     }
+    /**
+     * @return The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
+     * 
+     */
     public Optional<Integer> target() {
         return Optional.ofNullable(this.target);
     }

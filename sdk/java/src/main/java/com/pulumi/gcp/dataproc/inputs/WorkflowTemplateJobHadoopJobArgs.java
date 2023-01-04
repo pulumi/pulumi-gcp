@@ -19,14 +19,14 @@ public final class WorkflowTemplateJobHadoopJobArgs extends com.pulumi.resources
     public static final WorkflowTemplateJobHadoopJobArgs Empty = new WorkflowTemplateJobHadoopJobArgs();
 
     /**
-     * Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+     * Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
      * 
      */
     @Import(name="archiveUris")
     private @Nullable Output<List<String>> archiveUris;
 
     /**
-     * @return Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+     * @return Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
      * 
      */
     public Optional<Output<List<String>>> archiveUris() {
@@ -34,14 +34,14 @@ public final class WorkflowTemplateJobHadoopJobArgs extends com.pulumi.resources
     }
 
     /**
-     * Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+     * Optional. The arguments to pass to the driver. Do not include arguments, such as `-libjars` or `-Dfoo=bar`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
      * 
      */
     @Import(name="args")
     private @Nullable Output<List<String>> args;
 
     /**
-     * @return Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+     * @return Optional. The arguments to pass to the driver. Do not include arguments, such as `-libjars` or `-Dfoo=bar`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
      * 
      */
     public Optional<Output<List<String>>> args() {
@@ -49,14 +49,14 @@ public final class WorkflowTemplateJobHadoopJobArgs extends com.pulumi.resources
     }
 
     /**
-     * Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+     * Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
      * 
      */
     @Import(name="fileUris")
     private @Nullable Output<List<String>> fileUris;
 
     /**
-     * @return Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+     * @return Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
      * 
      */
     public Optional<Output<List<String>>> fileUris() {
@@ -64,14 +64,14 @@ public final class WorkflowTemplateJobHadoopJobArgs extends com.pulumi.resources
     }
 
     /**
-     * Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+     * Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
      * 
      */
     @Import(name="jarFileUris")
     private @Nullable Output<List<String>> jarFileUris;
 
     /**
-     * @return Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+     * @return Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
      * 
      */
     public Optional<Output<List<String>>> jarFileUris() {
@@ -94,14 +94,14 @@ public final class WorkflowTemplateJobHadoopJobArgs extends com.pulumi.resources
     }
 
     /**
-     * The name of the driver&#39;s main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jar_file_uris`.
+     * The name of the driver&#39;s main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`.
      * 
      */
     @Import(name="mainClass")
     private @Nullable Output<String> mainClass;
 
     /**
-     * @return The name of the driver&#39;s main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jar_file_uris`.
+     * @return The name of the driver&#39;s main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`.
      * 
      */
     public Optional<Output<String>> mainClass() {
@@ -109,14 +109,14 @@ public final class WorkflowTemplateJobHadoopJobArgs extends com.pulumi.resources
     }
 
     /**
-     * The HCFS URI of the jar file that contains the main class.
+     * The HCFS URI of the jar file containing the main class. Examples: &#39;gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar&#39; &#39;hdfs:/tmp/test-samples/custom-wordcount.jar&#39; &#39;file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar&#39;
      * 
      */
     @Import(name="mainJarFileUri")
     private @Nullable Output<String> mainJarFileUri;
 
     /**
-     * @return The HCFS URI of the jar file that contains the main class.
+     * @return The HCFS URI of the jar file containing the main class. Examples: &#39;gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar&#39; &#39;hdfs:/tmp/test-samples/custom-wordcount.jar&#39; &#39;file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar&#39;
      * 
      */
     public Optional<Output<String>> mainJarFileUri() {
@@ -124,14 +124,14 @@ public final class WorkflowTemplateJobHadoopJobArgs extends com.pulumi.resources
     }
 
     /**
-     * Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+     * Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
      * 
      */
     @Import(name="properties")
     private @Nullable Output<Map<String,String>> properties;
 
     /**
-     * @return Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+     * @return Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
      * 
      */
     public Optional<Output<Map<String,String>>> properties() {
@@ -170,7 +170,7 @@ public final class WorkflowTemplateJobHadoopJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param archiveUris Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+         * @param archiveUris Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class WorkflowTemplateJobHadoopJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param archiveUris Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+         * @param archiveUris Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class WorkflowTemplateJobHadoopJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param archiveUris Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+         * @param archiveUris Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class WorkflowTemplateJobHadoopJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param args Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+         * @param args Optional. The arguments to pass to the driver. Do not include arguments, such as `-libjars` or `-Dfoo=bar`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class WorkflowTemplateJobHadoopJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param args Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+         * @param args Optional. The arguments to pass to the driver. Do not include arguments, such as `-libjars` or `-Dfoo=bar`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class WorkflowTemplateJobHadoopJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param args Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+         * @param args Optional. The arguments to pass to the driver. Do not include arguments, such as `-libjars` or `-Dfoo=bar`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class WorkflowTemplateJobHadoopJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param fileUris Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+         * @param fileUris Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class WorkflowTemplateJobHadoopJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param fileUris Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+         * @param fileUris Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class WorkflowTemplateJobHadoopJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param fileUris Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+         * @param fileUris Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class WorkflowTemplateJobHadoopJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param jarFileUris Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+         * @param jarFileUris Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class WorkflowTemplateJobHadoopJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param jarFileUris Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+         * @param jarFileUris Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class WorkflowTemplateJobHadoopJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param jarFileUris Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+         * @param jarFileUris Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class WorkflowTemplateJobHadoopJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param mainClass The name of the driver&#39;s main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jar_file_uris`.
+         * @param mainClass The name of the driver&#39;s main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`.
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class WorkflowTemplateJobHadoopJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param mainClass The name of the driver&#39;s main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jar_file_uris`.
+         * @param mainClass The name of the driver&#39;s main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`.
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class WorkflowTemplateJobHadoopJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param mainJarFileUri The HCFS URI of the jar file that contains the main class.
+         * @param mainJarFileUri The HCFS URI of the jar file containing the main class. Examples: &#39;gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar&#39; &#39;hdfs:/tmp/test-samples/custom-wordcount.jar&#39; &#39;file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar&#39;
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class WorkflowTemplateJobHadoopJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param mainJarFileUri The HCFS URI of the jar file that contains the main class.
+         * @param mainJarFileUri The HCFS URI of the jar file containing the main class. Examples: &#39;gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar&#39; &#39;hdfs:/tmp/test-samples/custom-wordcount.jar&#39; &#39;file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar&#39;
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class WorkflowTemplateJobHadoopJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param properties Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+         * @param properties Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class WorkflowTemplateJobHadoopJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param properties Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+         * @param properties Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
          * 
          * @return builder
          * 

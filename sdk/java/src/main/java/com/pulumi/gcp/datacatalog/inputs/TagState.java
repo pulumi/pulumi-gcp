@@ -60,8 +60,8 @@ public final class TagState extends com.pulumi.resources.ResourceArgs {
     /**
      * The resource name of the tag in URL format. Example:
      * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
-     * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id} where tag_id is a system-generated
-     * identifier. Note that this Tag may not actually be stored in the location in this name.
+     * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id}
+     * where tag_id is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
      * 
      */
     @Import(name="name")
@@ -70,8 +70,8 @@ public final class TagState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The resource name of the tag in URL format. Example:
      * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
-     * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id} where tag_id is a system-generated
-     * identifier. Note that this Tag may not actually be stored in the location in this name.
+     * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id}
+     * where tag_id is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -225,8 +225,8 @@ public final class TagState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name The resource name of the tag in URL format. Example:
          * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
-         * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id} where tag_id is a system-generated
-         * identifier. Note that this Tag may not actually be stored in the location in this name.
+         * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id}
+         * where tag_id is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
          * 
          * @return builder
          * 
@@ -239,8 +239,8 @@ public final class TagState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name The resource name of the tag in URL format. Example:
          * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
-         * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id} where tag_id is a system-generated
-         * identifier. Note that this Tag may not actually be stored in the location in this name.
+         * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id}
+         * where tag_id is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
          * 
          * @return builder
          * 

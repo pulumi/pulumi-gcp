@@ -141,18 +141,20 @@ public final class DataTransferConfigState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The resource name of the transfer config. Transfer config names have the form
-     * projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is not
-     * required. The name is ignored when creating a transfer config.
+     * The resource name of the transfer config. Transfer config names have the
+     * form projects/{projectId}/locations/{location}/transferConfigs/{configId}.
+     * Where configId is usually a uuid, but this is not required.
+     * The name is ignored when creating a transfer config.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The resource name of the transfer config. Transfer config names have the form
-     * projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is not
-     * required. The name is ignored when creating a transfer config.
+     * @return The resource name of the transfer config. Transfer config names have the
+     * form projects/{projectId}/locations/{location}/transferConfigs/{configId}.
+     * Where configId is usually a uuid, but this is not required.
+     * The name is ignored when creating a transfer config.
      * 
      */
     public Optional<Output<String>> name() {
@@ -508,9 +510,10 @@ public final class DataTransferConfigState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name The resource name of the transfer config. Transfer config names have the form
-         * projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is not
-         * required. The name is ignored when creating a transfer config.
+         * @param name The resource name of the transfer config. Transfer config names have the
+         * form projects/{projectId}/locations/{location}/transferConfigs/{configId}.
+         * Where configId is usually a uuid, but this is not required.
+         * The name is ignored when creating a transfer config.
          * 
          * @return builder
          * 
@@ -521,9 +524,10 @@ public final class DataTransferConfigState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name The resource name of the transfer config. Transfer config names have the form
-         * projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is not
-         * required. The name is ignored when creating a transfer config.
+         * @param name The resource name of the transfer config. Transfer config names have the
+         * form projects/{projectId}/locations/{location}/transferConfigs/{configId}.
+         * Where configId is usually a uuid, but this is not required.
+         * The name is ignored when creating a transfer config.
          * 
          * @return builder
          * 

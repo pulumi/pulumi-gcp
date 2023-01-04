@@ -81,16 +81,14 @@ public final class DataPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Resource name of this data policy, in the format of
-     * projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
+     * Resource name of this data policy, in the format of projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Resource name of this data policy, in the format of
-     * projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
+     * @return Resource name of this data policy, in the format of projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
      * 
      */
     public Optional<Output<String>> name() {
@@ -248,8 +246,7 @@ public final class DataPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Resource name of this data policy, in the format of
-         * projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
+         * @param name Resource name of this data policy, in the format of projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
          * 
          * @return builder
          * 
@@ -260,8 +257,7 @@ public final class DataPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Resource name of this data policy, in the format of
-         * projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
+         * @param name Resource name of this data policy, in the format of projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
          * 
          * @return builder
          * 

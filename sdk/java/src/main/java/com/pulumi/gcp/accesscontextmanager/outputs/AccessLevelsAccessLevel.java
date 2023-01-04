@@ -27,7 +27,7 @@ public final class AccessLevelsAccessLevel {
      */
     private @Nullable AccessLevelsAccessLevelCustom custom;
     /**
-     * @return Description of the expression
+     * @return Description of the AccessLevel and its use. Does not affect behavior.
      * 
      */
     private @Nullable String description;
@@ -39,7 +39,7 @@ public final class AccessLevelsAccessLevel {
      */
     private String name;
     /**
-     * @return Title for the expression, i.e. a short string describing its purpose.
+     * @return Human readable title. Must be unique within the Policy.
      * 
      */
     private String title;
@@ -63,7 +63,7 @@ public final class AccessLevelsAccessLevel {
         return Optional.ofNullable(this.custom);
     }
     /**
-     * @return Description of the expression
+     * @return Description of the AccessLevel and its use. Does not affect behavior.
      * 
      */
     public Optional<String> description() {
@@ -79,7 +79,7 @@ public final class AccessLevelsAccessLevel {
         return this.name;
     }
     /**
-     * @return Title for the expression, i.e. a short string describing its purpose.
+     * @return Human readable title. Must be unique within the Policy.
      * 
      */
     public String title() {

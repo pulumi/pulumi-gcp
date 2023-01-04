@@ -16,16 +16,32 @@ public final class AiIndexIndexStatArgs extends com.pulumi.resources.ResourceArg
 
     public static final AiIndexIndexStatArgs Empty = new AiIndexIndexStatArgs();
 
+    /**
+     * The number of shards in the Index.
+     * 
+     */
     @Import(name="shardsCount")
     private @Nullable Output<Integer> shardsCount;
 
+    /**
+     * @return The number of shards in the Index.
+     * 
+     */
     public Optional<Output<Integer>> shardsCount() {
         return Optional.ofNullable(this.shardsCount);
     }
 
+    /**
+     * The number of vectors in the Index.
+     * 
+     */
     @Import(name="vectorsCount")
     private @Nullable Output<String> vectorsCount;
 
+    /**
+     * @return The number of vectors in the Index.
+     * 
+     */
     public Optional<Output<String>> vectorsCount() {
         return Optional.ofNullable(this.vectorsCount);
     }
@@ -55,20 +71,44 @@ public final class AiIndexIndexStatArgs extends com.pulumi.resources.ResourceArg
             $ = new AiIndexIndexStatArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param shardsCount The number of shards in the Index.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shardsCount(@Nullable Output<Integer> shardsCount) {
             $.shardsCount = shardsCount;
             return this;
         }
 
+        /**
+         * @param shardsCount The number of shards in the Index.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shardsCount(Integer shardsCount) {
             return shardsCount(Output.of(shardsCount));
         }
 
+        /**
+         * @param vectorsCount The number of vectors in the Index.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vectorsCount(@Nullable Output<String> vectorsCount) {
             $.vectorsCount = vectorsCount;
             return this;
         }
 
+        /**
+         * @param vectorsCount The number of vectors in the Index.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vectorsCount(String vectorsCount) {
             return vectorsCount(Output.of(vectorsCount));
         }

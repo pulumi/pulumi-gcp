@@ -35,9 +35,19 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
         return Optional.ofNullable(this.critical);
     }
 
+    /**
+     * Required. Describes how some of the technical fields in a certificate should be populated.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="obectIds")
     private @Nullable Output<List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs>> obectIds;
 
+    /**
+     * @return Required. Describes how some of the technical fields in a certificate should be populated.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs>>> obectIds() {
         return Optional.ofNullable(this.obectIds);
     }
@@ -106,15 +116,36 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
             return critical(Output.of(critical));
         }
 
+        /**
+         * @param obectIds Required. Describes how some of the technical fields in a certificate should be populated.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder obectIds(@Nullable Output<List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs>> obectIds) {
             $.obectIds = obectIds;
             return this;
         }
 
+        /**
+         * @param obectIds Required. Describes how some of the technical fields in a certificate should be populated.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder obectIds(List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs> obectIds) {
             return obectIds(Output.of(obectIds));
         }
 
+        /**
+         * @param obectIds Required. Describes how some of the technical fields in a certificate should be populated.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder obectIds(CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs... obectIds) {
             return obectIds(List.of(obectIds));
         }

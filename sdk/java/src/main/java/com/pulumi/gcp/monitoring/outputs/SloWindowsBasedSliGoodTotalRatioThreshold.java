@@ -26,9 +26,8 @@ public final class SloWindowsBasedSliGoodTotalRatioThreshold {
      */
     private @Nullable SloWindowsBasedSliGoodTotalRatioThresholdPerformance performance;
     /**
-     * @return A duration string, e.g. 10s.
-     * Good service is defined to be the count of requests made to
-     * this service that return in no more than threshold.
+     * @return If window performance &gt;= threshold, the window is counted
+     * as good.
      * 
      */
     private @Nullable Double threshold;
@@ -51,9 +50,8 @@ public final class SloWindowsBasedSliGoodTotalRatioThreshold {
         return Optional.ofNullable(this.performance);
     }
     /**
-     * @return A duration string, e.g. 10s.
-     * Good service is defined to be the count of requests made to
-     * this service that return in no more than threshold.
+     * @return If window performance &gt;= threshold, the window is counted
+     * as good.
      * 
      */
     public Optional<Double> threshold() {

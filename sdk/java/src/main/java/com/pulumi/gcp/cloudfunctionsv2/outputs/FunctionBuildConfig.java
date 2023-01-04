@@ -14,8 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FunctionBuildConfig {
     /**
-     * @return -
-     * The Cloud Build name of the latest successful
+     * @return The Cloud Build name of the latest successful
      * deployment of the function.
      * 
      */
@@ -35,7 +34,7 @@ public final class FunctionBuildConfig {
      */
     private @Nullable String entryPoint;
     /**
-     * @return Environment variables that shall be available during function execution.
+     * @return User-provided build-time environment variables for the function.
      * 
      */
     private @Nullable Map<String,String> environmentVariables;
@@ -59,8 +58,7 @@ public final class FunctionBuildConfig {
 
     private FunctionBuildConfig() {}
     /**
-     * @return -
-     * The Cloud Build name of the latest successful
+     * @return The Cloud Build name of the latest successful
      * deployment of the function.
      * 
      */
@@ -86,7 +84,7 @@ public final class FunctionBuildConfig {
         return Optional.ofNullable(this.entryPoint);
     }
     /**
-     * @return Environment variables that shall be available during function execution.
+     * @return User-provided build-time environment variables for the function.
      * 
      */
     public Map<String,String> environmentVariables() {

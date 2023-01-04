@@ -181,6 +181,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * Cluster created from backup.
+     * Structure is documented below.
      * 
      */
     @Export(name="backupSources", type=List.class, parameters={ClusterBackupSource.class})
@@ -188,6 +189,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Cluster created from backup.
+     * Structure is documented below.
      * 
      */
     public Output<List<ClusterBackupSource>> backupSources() {
@@ -208,16 +210,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.clusterId;
     }
     /**
-     * The database engine major version. This is an output-only field and it&#39;s populated at the Cluster creation time. This
-     * field cannot be changed after cluster creation.
+     * The database engine major version. This is an output-only field and it&#39;s populated at the Cluster creation time. This field cannot be changed after cluster creation.
      * 
      */
     @Export(name="databaseVersion", type=String.class, parameters={})
     private Output<String> databaseVersion;
 
     /**
-     * @return The database engine major version. This is an output-only field and it&#39;s populated at the Cluster creation time. This
-     * field cannot be changed after cluster creation.
+     * @return The database engine major version. This is an output-only field and it&#39;s populated at the Cluster creation time. This field cannot be changed after cluster creation.
      * 
      */
     public Output<String> databaseVersion() {
@@ -254,28 +254,28 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.initialUser);
     }
     /**
-     * Labels to apply to backups created using this configuration.
+     * User-defined labels for the alloydb cluster.
      * 
      */
     @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Labels to apply to backups created using this configuration.
+     * @return User-defined labels for the alloydb cluster.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
         return Codegen.optional(this.labels);
     }
     /**
-     * The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+     * The location where the alloydb cluster should reside.
      * 
      */
     @Export(name="location", type=String.class, parameters={})
     private Output</* @Nullable */ String> location;
 
     /**
-     * @return The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+     * @return The location where the alloydb cluster should reside.
      * 
      */
     public Output<Optional<String>> location() {
@@ -283,6 +283,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * Cluster created via DMS migration.
+     * Structure is documented below.
      * 
      */
     @Export(name="migrationSources", type=List.class, parameters={ClusterMigrationSource.class})
@@ -290,6 +291,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Cluster created via DMS migration.
+     * Structure is documented below.
      * 
      */
     public Output<List<ClusterMigrationSource>> migrationSources() {

@@ -231,6 +231,10 @@ public final class StandardAppVersionState extends com.pulumi.resources.Resource
     }
 
     /**
+     * The identifier for this object. Format specified above.
+     * (Optional)
+     * Name of the library. Example &#34;django&#34;.
+     * (Required)
      * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
      * 
      */
@@ -238,7 +242,11 @@ public final class StandardAppVersionState extends com.pulumi.resources.Resource
     private @Nullable Output<String> name;
 
     /**
-     * @return Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+     * @return The identifier for this object. Format specified above.
+     * (Optional)
+     * Name of the library. Example &#34;django&#34;.
+     * (Required)
+     * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
      * 
      */
     public Optional<Output<String>> name() {
@@ -744,7 +752,11 @@ public final class StandardAppVersionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+         * @param name The identifier for this object. Format specified above.
+         * (Optional)
+         * Name of the library. Example &#34;django&#34;.
+         * (Required)
+         * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
          * 
          * @return builder
          * 
@@ -755,7 +767,11 @@ public final class StandardAppVersionState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+         * @param name The identifier for this object. Format specified above.
+         * (Optional)
+         * Name of the library. Example &#34;django&#34;.
+         * (Required)
+         * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
          * 
          * @return builder
          * 

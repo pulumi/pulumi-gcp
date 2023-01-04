@@ -19,28 +19,23 @@ public final class URLMapPathMatcherPathRuleUrlRedirect {
      */
     private @Nullable String hostRedirect;
     /**
-     * @return If set to true, the URL scheme in the redirected request is set to https. If set to
-     * false, the URL scheme of the redirected request will remain the same as that of the
-     * request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
-     * true for TargetHttpsProxy is not permitted. The default is set to false.
+     * @return If set to true, the URL scheme in the redirected request is set to https. If set
+     * to false, the URL scheme of the redirected request will remain the same as that
+     * of the request. This must only be set for UrlMaps used in TargetHttpProxys.
+     * Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
      * 
      */
     private @Nullable Boolean httpsRedirect;
     /**
      * @return The path that will be used in the redirect response instead of the one that was
-     * supplied in the request. pathRedirect cannot be supplied together with
-     * prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
-     * original request will be used for the redirect. The value must be between 1 and 1024
-     * characters.
+     * supplied in the request. Only one of pathRedirect or prefixRedirect must be
+     * specified. The value must be between 1 and 1024 characters.
      * 
      */
     private @Nullable String pathRedirect;
     /**
      * @return The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
      * retaining the remaining portion of the URL before redirecting the request.
-     * prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
-     * neither. If neither is supplied, the path of the original request will be used for
-     * the redirect. The value must be between 1 and 1024 characters.
      * 
      */
     private @Nullable String prefixRedirect;
@@ -49,18 +44,15 @@ public final class URLMapPathMatcherPathRuleUrlRedirect {
      * * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
      * * FOUND, which corresponds to 302.
      * * SEE_OTHER which corresponds to 303.
-     * * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-     *   will be retained.
-     * * PERMANENT_REDIRECT, which corresponds to 308. In this case,
-     *   the request method will be retained.
+     * * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained.
+     * * PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
      * 
      */
     private @Nullable String redirectResponseCode;
     /**
-     * @return If set to true, any accompanying query portion of the original URL is removed prior
-     * to redirecting the request. If set to false, the query portion of the original URL is
-     * retained. The default is set to false.
-     * This field is required to ensure an empty block is not set. The normal default value is false.
+     * @return If set to true, any accompanying query portion of the original URL is removed
+     * prior to redirecting the request. If set to false, the query portion of the
+     * original URL is retained. Defaults to false.
      * 
      */
     private Boolean stripQuery;
@@ -75,10 +67,10 @@ public final class URLMapPathMatcherPathRuleUrlRedirect {
         return Optional.ofNullable(this.hostRedirect);
     }
     /**
-     * @return If set to true, the URL scheme in the redirected request is set to https. If set to
-     * false, the URL scheme of the redirected request will remain the same as that of the
-     * request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
-     * true for TargetHttpsProxy is not permitted. The default is set to false.
+     * @return If set to true, the URL scheme in the redirected request is set to https. If set
+     * to false, the URL scheme of the redirected request will remain the same as that
+     * of the request. This must only be set for UrlMaps used in TargetHttpProxys.
+     * Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
      * 
      */
     public Optional<Boolean> httpsRedirect() {
@@ -86,10 +78,8 @@ public final class URLMapPathMatcherPathRuleUrlRedirect {
     }
     /**
      * @return The path that will be used in the redirect response instead of the one that was
-     * supplied in the request. pathRedirect cannot be supplied together with
-     * prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
-     * original request will be used for the redirect. The value must be between 1 and 1024
-     * characters.
+     * supplied in the request. Only one of pathRedirect or prefixRedirect must be
+     * specified. The value must be between 1 and 1024 characters.
      * 
      */
     public Optional<String> pathRedirect() {
@@ -98,9 +88,6 @@ public final class URLMapPathMatcherPathRuleUrlRedirect {
     /**
      * @return The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
      * retaining the remaining portion of the URL before redirecting the request.
-     * prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
-     * neither. If neither is supplied, the path of the original request will be used for
-     * the redirect. The value must be between 1 and 1024 characters.
      * 
      */
     public Optional<String> prefixRedirect() {
@@ -111,20 +98,17 @@ public final class URLMapPathMatcherPathRuleUrlRedirect {
      * * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
      * * FOUND, which corresponds to 302.
      * * SEE_OTHER which corresponds to 303.
-     * * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
-     *   will be retained.
-     * * PERMANENT_REDIRECT, which corresponds to 308. In this case,
-     *   the request method will be retained.
+     * * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained.
+     * * PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
      * 
      */
     public Optional<String> redirectResponseCode() {
         return Optional.ofNullable(this.redirectResponseCode);
     }
     /**
-     * @return If set to true, any accompanying query portion of the original URL is removed prior
-     * to redirecting the request. If set to false, the query portion of the original URL is
-     * retained. The default is set to false.
-     * This field is required to ensure an empty block is not set. The normal default value is false.
+     * @return If set to true, any accompanying query portion of the original URL is removed
+     * prior to redirecting the request. If set to false, the query portion of the
+     * original URL is retained. Defaults to false.
      * 
      */
     public Boolean stripQuery() {

@@ -46,7 +46,7 @@ public final class ServiceTemplateContainer {
      */
     private @Nullable ServiceTemplateContainerLivenessProbe livenessProbe;
     /**
-     * @return Volume&#39;s name.
+     * @return Name of the container specified as a DNS_LABEL.
      * 
      */
     private @Nullable String name;
@@ -120,7 +120,7 @@ public final class ServiceTemplateContainer {
         return Optional.ofNullable(this.livenessProbe);
     }
     /**
-     * @return Volume&#39;s name.
+     * @return Name of the container specified as a DNS_LABEL.
      * 
      */
     public Optional<String> name() {

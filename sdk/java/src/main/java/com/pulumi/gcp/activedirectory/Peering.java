@@ -68,23 +68,20 @@ public class Peering extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
-     * Unique name of the peering in this scope including projects and location using the form:
-     * projects/{projectId}/locations/global/peerings/{peeringId}.
+     * Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Unique name of the peering in this scope including projects and location using the form:
-     * projects/{projectId}/locations/global/peerings/{peeringId}.
+     * @return Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * - 
      * (Required)
      * 
      */
@@ -92,8 +89,7 @@ public class Peering extends com.pulumi.resources.CustomResource {
     private Output<String> peeringId;
 
     /**
-     * @return -
-     * (Required)
+     * @return (Required)
      * 
      */
     public Output<String> peeringId() {

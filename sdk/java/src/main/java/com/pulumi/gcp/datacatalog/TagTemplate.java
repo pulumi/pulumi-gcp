@@ -110,6 +110,10 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:datacatalog/tagTemplate:TagTemplate")
 public class TagTemplate extends com.pulumi.resources.CustomResource {
     /**
+     * The display name for this field.
+     * (Required)
+     * The display name of the enum value.
+     * (Optional)
      * The display name for this template.
      * 
      */
@@ -117,7 +121,11 @@ public class TagTemplate extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> displayName;
 
     /**
-     * @return The display name for this template.
+     * @return The display name for this field.
+     * (Required)
+     * The display name of the enum value.
+     * (Optional)
+     * The display name for this template.
      * 
      */
     public Output<Optional<String>> displayName() {
@@ -154,7 +162,6 @@ public class TagTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.forceDelete);
     }
     /**
-     * - 
      * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
      * 
      */
@@ -162,8 +169,7 @@ public class TagTemplate extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return -
-     * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
+     * @return The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
      * 
      */
     public Output<String> name() {

@@ -76,7 +76,7 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A server defined name for this index. Format:
-     * &#39;projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}&#39;
+     * `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
      * 
      */
     @Import(name="name")
@@ -84,7 +84,7 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A server defined name for this index. Format:
-     * &#39;projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}&#39;
+     * `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
      * 
      */
     public Optional<Output<String>> name() {
@@ -249,7 +249,7 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name A server defined name for this index. Format:
-         * &#39;projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}&#39;
+         * `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name A server defined name for this index. Format:
-         * &#39;projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}&#39;
+         * `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
          * 
          * @return builder
          * 

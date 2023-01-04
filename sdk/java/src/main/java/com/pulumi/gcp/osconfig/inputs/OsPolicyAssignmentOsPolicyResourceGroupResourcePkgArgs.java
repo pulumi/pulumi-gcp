@@ -23,14 +23,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
     public static final OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs Empty = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs();
 
     /**
-     * An Apt Repository.
+     * A package managed by Apt.
      * 
      */
     @Import(name="apt")
     private @Nullable Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs> apt;
 
     /**
-     * @return An Apt Repository.
+     * @return A package managed by Apt.
      * 
      */
     public Optional<Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs>> apt() {
@@ -113,14 +113,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
     }
 
     /**
-     * A Yum Repository.
+     * A package managed by YUM.
      * 
      */
     @Import(name="yum")
     private @Nullable Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs> yum;
 
     /**
-     * @return A Yum Repository.
+     * @return A package managed by YUM.
      * 
      */
     public Optional<Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs>> yum() {
@@ -128,14 +128,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
     }
 
     /**
-     * A Zypper Repository.
+     * A package managed by Zypper.
      * 
      */
     @Import(name="zypper")
     private @Nullable Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs> zypper;
 
     /**
-     * @return A Zypper Repository.
+     * @return A package managed by Zypper.
      * 
      */
     public Optional<Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs>> zypper() {
@@ -174,7 +174,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
         }
 
         /**
-         * @param apt An Apt Repository.
+         * @param apt A package managed by Apt.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
         }
 
         /**
-         * @param apt An Apt Repository.
+         * @param apt A package managed by Apt.
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
         }
 
         /**
-         * @param yum A Yum Repository.
+         * @param yum A package managed by YUM.
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
         }
 
         /**
-         * @param yum A Yum Repository.
+         * @param yum A package managed by YUM.
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
         }
 
         /**
-         * @param zypper A Zypper Repository.
+         * @param zypper A package managed by Zypper.
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
         }
 
         /**
-         * @param zypper A Zypper Repository.
+         * @param zypper A package managed by Zypper.
          * 
          * @return builder
          * 

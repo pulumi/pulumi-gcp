@@ -172,6 +172,8 @@ public final class AwsClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The number of the Fleet host project where this cluster will be registered.
+     * (Optional)
      * The project for the resource
      * 
      */
@@ -179,7 +181,9 @@ public final class AwsClusterArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The number of the Fleet host project where this cluster will be registered.
+     * (Optional)
+     * The project for the resource
      * 
      */
     public Optional<Output<String>> project() {
@@ -431,7 +435,9 @@ public final class AwsClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The number of the Fleet host project where this cluster will be registered.
+         * (Optional)
+         * The project for the resource
          * 
          * @return builder
          * 
@@ -442,7 +448,9 @@ public final class AwsClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The number of the Fleet host project where this cluster will be registered.
+         * (Optional)
+         * The project for the resource
          * 
          * @return builder
          * 

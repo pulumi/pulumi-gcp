@@ -19,14 +19,14 @@ public final class MetricDescriptorState extends com.pulumi.resources.ResourceAr
     public static final MetricDescriptorState Empty = new MetricDescriptorState();
 
     /**
-     * A human-readable description for the label.
+     * A detailed description of the metric, which can be used in documentation.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return A human-readable description for the label.
+     * @return A detailed description of the metric, which can be used in documentation.
      * 
      */
     public Optional<Output<String>> description() {
@@ -117,20 +117,14 @@ public final class MetricDescriptorState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that
-     * is associated with this metric type can only be associated with one of the monitored resource types listed here. This
-     * field allows time series to be associated with the intersection of this metric type and the monitored resource types in
-     * this list.
+     * If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. This field allows time series to be associated with the intersection of this metric type and the monitored resource types in this list.
      * 
      */
     @Import(name="monitoredResourceTypes")
     private @Nullable Output<List<String>> monitoredResourceTypes;
 
     /**
-     * @return If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that
-     * is associated with this metric type can only be associated with one of the monitored resource types listed here. This
-     * field allows time series to be associated with the intersection of this metric type and the monitored resource types in
-     * this list.
+     * @return If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. This field allows time series to be associated with the intersection of this metric type and the monitored resource types in this list.
      * 
      */
     public Optional<Output<List<String>>> monitoredResourceTypes() {
@@ -232,18 +226,16 @@ public final class MetricDescriptorState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The type of data that can be assigned to the label.
-     * Default value is `STRING`.
-     * Possible values are `STRING`, `BOOL`, and `INT64`.
+     * Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
+     * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
      * 
      */
     @Import(name="valueType")
     private @Nullable Output<String> valueType;
 
     /**
-     * @return The type of data that can be assigned to the label.
-     * Default value is `STRING`.
-     * Possible values are `STRING`, `BOOL`, and `INT64`.
+     * @return Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
+     * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
      * 
      */
     public Optional<Output<String>> valueType() {
@@ -286,7 +278,7 @@ public final class MetricDescriptorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description A human-readable description for the label.
+         * @param description A detailed description of the metric, which can be used in documentation.
          * 
          * @return builder
          * 
@@ -297,7 +289,7 @@ public final class MetricDescriptorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description A human-readable description for the label.
+         * @param description A detailed description of the metric, which can be used in documentation.
          * 
          * @return builder
          * 
@@ -431,10 +423,7 @@ public final class MetricDescriptorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param monitoredResourceTypes If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that
-         * is associated with this metric type can only be associated with one of the monitored resource types listed here. This
-         * field allows time series to be associated with the intersection of this metric type and the monitored resource types in
-         * this list.
+         * @param monitoredResourceTypes If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. This field allows time series to be associated with the intersection of this metric type and the monitored resource types in this list.
          * 
          * @return builder
          * 
@@ -445,10 +434,7 @@ public final class MetricDescriptorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param monitoredResourceTypes If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that
-         * is associated with this metric type can only be associated with one of the monitored resource types listed here. This
-         * field allows time series to be associated with the intersection of this metric type and the monitored resource types in
-         * this list.
+         * @param monitoredResourceTypes If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. This field allows time series to be associated with the intersection of this metric type and the monitored resource types in this list.
          * 
          * @return builder
          * 
@@ -458,10 +444,7 @@ public final class MetricDescriptorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param monitoredResourceTypes If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that
-         * is associated with this metric type can only be associated with one of the monitored resource types listed here. This
-         * field allows time series to be associated with the intersection of this metric type and the monitored resource types in
-         * this list.
+         * @param monitoredResourceTypes If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. This field allows time series to be associated with the intersection of this metric type and the monitored resource types in this list.
          * 
          * @return builder
          * 
@@ -589,9 +572,8 @@ public final class MetricDescriptorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param valueType The type of data that can be assigned to the label.
-         * Default value is `STRING`.
-         * Possible values are `STRING`, `BOOL`, and `INT64`.
+         * @param valueType Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
+         * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
          * 
          * @return builder
          * 
@@ -602,9 +584,8 @@ public final class MetricDescriptorState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param valueType The type of data that can be assigned to the label.
-         * Default value is `STRING`.
-         * Possible values are `STRING`, `BOOL`, and `INT64`.
+         * @param valueType Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
+         * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
          * 
          * @return builder
          * 

@@ -317,28 +317,34 @@ public class Dataset extends com.pulumi.resources.CustomResource {
         return this.accesses;
     }
     /**
-     * The time when this dataset was created, in milliseconds since the epoch.
+     * The time when this dataset was created, in milliseconds since the
+     * epoch.
      * 
      */
     @Export(name="creationTime", type=Integer.class, parameters={})
     private Output<Integer> creationTime;
 
     /**
-     * @return The time when this dataset was created, in milliseconds since the epoch.
+     * @return The time when this dataset was created, in milliseconds since the
+     * epoch.
      * 
      */
     public Output<Integer> creationTime() {
         return this.creationTime;
     }
     /**
-     * The ID of the dataset containing this table.
+     * A unique ID for this dataset, without the project name. The ID
+     * must contain only letters (a-z, A-Z), numbers (0-9), or
+     * underscores (_). The maximum length is 1,024 characters.
      * 
      */
     @Export(name="datasetId", type=String.class, parameters={})
     private Output<String> datasetId;
 
     /**
-     * @return The ID of the dataset containing this table.
+     * @return A unique ID for this dataset, without the project name. The ID
+     * must contain only letters (a-z, A-Z), numbers (0-9), or
+     * underscores (_). The maximum length is 1,024 characters.
      * 
      */
     public Output<String> datasetId() {
@@ -473,14 +479,16 @@ public class Dataset extends com.pulumi.resources.CustomResource {
         return this.labels;
     }
     /**
-     * The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+     * The date when this dataset or any of its tables was last modified, in
+     * milliseconds since the epoch.
      * 
      */
     @Export(name="lastModifiedTime", type=Integer.class, parameters={})
     private Output<Integer> lastModifiedTime;
 
     /**
-     * @return The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+     * @return The date when this dataset or any of its tables was last modified, in
+     * milliseconds since the epoch.
      * 
      */
     public Output<Integer> lastModifiedTime() {

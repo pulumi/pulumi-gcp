@@ -31,9 +31,17 @@ public final class DeliveryPipelineConditionTargetsPresentConditionArgs extends 
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * Output only. Most recent time at which the pipeline was updated.
+     * 
+     */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
+    /**
+     * @return Output only. Most recent time at which the pipeline was updated.
+     * 
+     */
     public Optional<Output<String>> updateTime() {
         return Optional.ofNullable(this.updateTime);
     }
@@ -86,11 +94,23 @@ public final class DeliveryPipelineConditionTargetsPresentConditionArgs extends 
             return status(Output.of(status));
         }
 
+        /**
+         * @param updateTime Output only. Most recent time at which the pipeline was updated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateTime(@Nullable Output<String> updateTime) {
             $.updateTime = updateTime;
             return this;
         }
 
+        /**
+         * @param updateTime Output only. Most recent time at which the pipeline was updated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateTime(String updateTime) {
             return updateTime(Output.of(updateTime));
         }

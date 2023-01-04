@@ -226,16 +226,14 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The size of the storage used by the backup. As backups share storage, this number is expected to change with backup
-     * creation/deletion.
+     * The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
      * 
      */
     @Import(name="storageBytes")
     private @Nullable Output<String> storageBytes;
 
     /**
-     * @return The size of the storage used by the backup. As backups share storage, this number is expected to change with backup
-     * creation/deletion.
+     * @return The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
      * 
      */
     public Optional<Output<String>> storageBytes() {
@@ -567,8 +565,7 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageBytes The size of the storage used by the backup. As backups share storage, this number is expected to change with backup
-         * creation/deletion.
+         * @param storageBytes The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
          * 
          * @return builder
          * 
@@ -579,8 +576,7 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageBytes The size of the storage used by the backup. As backups share storage, this number is expected to change with backup
-         * creation/deletion.
+         * @param storageBytes The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
          * 
          * @return builder
          * 

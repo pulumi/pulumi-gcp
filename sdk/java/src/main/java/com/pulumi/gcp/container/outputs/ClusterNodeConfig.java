@@ -49,7 +49,12 @@ public final class ClusterNodeConfig {
      */
     private @Nullable ClusterNodeConfigEphemeralStorageConfig ephemeralStorageConfig;
     /**
-     * @return ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+     * @return Parameters for the Google Container Filesystem (GCFS).
+     * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = &#34;COS_CONTAINERD&#34;` and `node_version` from GKE versions 1.19 or later to use it.
+     * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+     * A `machine_type` that has more than 16 GiB of memory is also recommended.
+     * GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
+     * Structure is documented below.
      * 
      */
     private @Nullable ClusterNodeConfigGcfsConfig gcfsConfig;
@@ -94,12 +99,13 @@ public final class ClusterNodeConfig {
      */
     private @Nullable ClusterNodeConfigLinuxNodeConfig linuxNodeConfig;
     /**
-     * @return Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+     * @return The amount of local SSD disks that will be
+     * attached to each cluster node. Defaults to 0.
      * 
      */
     private @Nullable Integer localSsdCount;
     /**
-     * @return The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
+     * @return Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
      * 
      */
     private @Nullable String loggingVariant;
@@ -178,7 +184,8 @@ public final class ClusterNodeConfig {
      */
     private @Nullable Boolean spot;
     /**
-     * @return ) - List of network tags applied to auto-provisioned node pools.
+     * @return The list of instance tags applied to all nodes. Tags are used to identify
+     * valid sources or targets for network firewalls.
      * 
      */
     private @Nullable List<String> tags;
@@ -233,7 +240,12 @@ public final class ClusterNodeConfig {
         return Optional.ofNullable(this.ephemeralStorageConfig);
     }
     /**
-     * @return ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+     * @return Parameters for the Google Container Filesystem (GCFS).
+     * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = &#34;COS_CONTAINERD&#34;` and `node_version` from GKE versions 1.19 or later to use it.
+     * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+     * A `machine_type` that has more than 16 GiB of memory is also recommended.
+     * GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
+     * Structure is documented below.
      * 
      */
     public Optional<ClusterNodeConfigGcfsConfig> gcfsConfig() {
@@ -292,14 +304,15 @@ public final class ClusterNodeConfig {
         return Optional.ofNullable(this.linuxNodeConfig);
     }
     /**
-     * @return Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+     * @return The amount of local SSD disks that will be
+     * attached to each cluster node. Defaults to 0.
      * 
      */
     public Optional<Integer> localSsdCount() {
         return Optional.ofNullable(this.localSsdCount);
     }
     /**
-     * @return The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
+     * @return Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
      * 
      */
     public Optional<String> loggingVariant() {
@@ -404,7 +417,8 @@ public final class ClusterNodeConfig {
         return Optional.ofNullable(this.spot);
     }
     /**
-     * @return ) - List of network tags applied to auto-provisioned node pools.
+     * @return The list of instance tags applied to all nodes. Tags are used to identify
+     * valid sources or targets for network firewalls.
      * 
      */
     public List<String> tags() {

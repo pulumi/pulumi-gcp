@@ -17,14 +17,14 @@ public final class ServiceTemplateSpecContainerEnvArgs extends com.pulumi.resour
     public static final ServiceTemplateSpecContainerEnvArgs Empty = new ServiceTemplateSpecContainerEnvArgs();
 
     /**
-     * Volume&#39;s name.
+     * Name of the environment variable.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Volume&#39;s name.
+     * @return Name of the environment variable.
      * 
      */
     public Optional<Output<String>> name() {
@@ -32,14 +32,28 @@ public final class ServiceTemplateSpecContainerEnvArgs extends com.pulumi.resour
     }
 
     /**
-     * The header field value.
+     * Variable references $(VAR_NAME) are expanded
+     * using the previous defined environment variables in the container and
+     * any route environment variables. If a variable cannot be resolved,
+     * the reference in the input string will be unchanged. The $(VAR_NAME)
+     * syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped
+     * references will never be expanded, regardless of whether the variable
+     * exists or not.
+     * Defaults to &#34;&#34;.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The header field value.
+     * @return Variable references $(VAR_NAME) are expanded
+     * using the previous defined environment variables in the container and
+     * any route environment variables. If a variable cannot be resolved,
+     * the reference in the input string will be unchanged. The $(VAR_NAME)
+     * syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped
+     * references will never be expanded, regardless of whether the variable
+     * exists or not.
+     * Defaults to &#34;&#34;.
      * 
      */
     public Optional<Output<String>> value() {
@@ -90,7 +104,7 @@ public final class ServiceTemplateSpecContainerEnvArgs extends com.pulumi.resour
         }
 
         /**
-         * @param name Volume&#39;s name.
+         * @param name Name of the environment variable.
          * 
          * @return builder
          * 
@@ -101,7 +115,7 @@ public final class ServiceTemplateSpecContainerEnvArgs extends com.pulumi.resour
         }
 
         /**
-         * @param name Volume&#39;s name.
+         * @param name Name of the environment variable.
          * 
          * @return builder
          * 
@@ -111,7 +125,14 @@ public final class ServiceTemplateSpecContainerEnvArgs extends com.pulumi.resour
         }
 
         /**
-         * @param value The header field value.
+         * @param value Variable references $(VAR_NAME) are expanded
+         * using the previous defined environment variables in the container and
+         * any route environment variables. If a variable cannot be resolved,
+         * the reference in the input string will be unchanged. The $(VAR_NAME)
+         * syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped
+         * references will never be expanded, regardless of whether the variable
+         * exists or not.
+         * Defaults to &#34;&#34;.
          * 
          * @return builder
          * 
@@ -122,7 +143,14 @@ public final class ServiceTemplateSpecContainerEnvArgs extends com.pulumi.resour
         }
 
         /**
-         * @param value The header field value.
+         * @param value Variable references $(VAR_NAME) are expanded
+         * using the previous defined environment variables in the container and
+         * any route environment variables. If a variable cannot be resolved,
+         * the reference in the input string will be unchanged. The $(VAR_NAME)
+         * syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped
+         * references will never be expanded, regardless of whether the variable
+         * exists or not.
+         * Defaults to &#34;&#34;.
          * 
          * @return builder
          * 

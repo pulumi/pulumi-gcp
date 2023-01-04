@@ -15,9 +15,17 @@ public final class CertificateCertificateDescriptionSubjectKeyIdArgs extends com
 
     public static final CertificateCertificateDescriptionSubjectKeyIdArgs Empty = new CertificateCertificateDescriptionSubjectKeyIdArgs();
 
+    /**
+     * Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
+     * 
+     */
     @Import(name="keyId")
     private @Nullable Output<String> keyId;
 
+    /**
+     * @return Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
+     * 
+     */
     public Optional<Output<String>> keyId() {
         return Optional.ofNullable(this.keyId);
     }
@@ -46,11 +54,23 @@ public final class CertificateCertificateDescriptionSubjectKeyIdArgs extends com
             $ = new CertificateCertificateDescriptionSubjectKeyIdArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param keyId Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyId(@Nullable Output<String> keyId) {
             $.keyId = keyId;
             return this;
         }
 
+        /**
+         * @param keyId Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyId(String keyId) {
             return keyId(Output.of(keyId));
         }

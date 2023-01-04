@@ -131,16 +131,20 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
-     * node first reach out to the first (index 0) entry.
+     * The network endpoints where TPU workers can be accessed and sent work.
+     * It is recommended that Tensorflow clients of the node first reach out
+     * to the first (index 0) entry.
+     * Structure is documented below.
      * 
      */
     @Import(name="networkEndpoints")
     private @Nullable Output<List<NodeNetworkEndpointArgs>> networkEndpoints;
 
     /**
-     * @return The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
-     * node first reach out to the first (index 0) entry.
+     * @return The network endpoints where TPU workers can be accessed and sent work.
+     * It is recommended that Tensorflow clients of the node first reach out
+     * to the first (index 0) entry.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<NodeNetworkEndpointArgs>>> networkEndpoints() {
@@ -182,16 +186,20 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
-     * Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
+     * The service account used to run the tensor flow services within the
+     * node. To share resources, including Google Cloud Storage data, with
+     * the Tensorflow job running in the Node, this account must have
+     * permissions to that data.
      * 
      */
     @Import(name="serviceAccount")
     private @Nullable Output<String> serviceAccount;
 
     /**
-     * @return The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
-     * Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
+     * @return The service account used to run the tensor flow services within the
+     * node. To share resources, including Google Cloud Storage data, with
+     * the Tensorflow job running in the Node, this account must have
+     * permissions to that data.
      * 
      */
     public Optional<Output<String>> serviceAccount() {
@@ -432,8 +440,10 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkEndpoints The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
-         * node first reach out to the first (index 0) entry.
+         * @param networkEndpoints The network endpoints where TPU workers can be accessed and sent work.
+         * It is recommended that Tensorflow clients of the node first reach out
+         * to the first (index 0) entry.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -444,8 +454,10 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkEndpoints The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
-         * node first reach out to the first (index 0) entry.
+         * @param networkEndpoints The network endpoints where TPU workers can be accessed and sent work.
+         * It is recommended that Tensorflow clients of the node first reach out
+         * to the first (index 0) entry.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -455,8 +467,10 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkEndpoints The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
-         * node first reach out to the first (index 0) entry.
+         * @param networkEndpoints The network endpoints where TPU workers can be accessed and sent work.
+         * It is recommended that Tensorflow clients of the node first reach out
+         * to the first (index 0) entry.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -512,8 +526,10 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceAccount The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
-         * Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
+         * @param serviceAccount The service account used to run the tensor flow services within the
+         * node. To share resources, including Google Cloud Storage data, with
+         * the Tensorflow job running in the Node, this account must have
+         * permissions to that data.
          * 
          * @return builder
          * 
@@ -524,8 +540,10 @@ public final class NodeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceAccount The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
-         * Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
+         * @param serviceAccount The service account used to run the tensor flow services within the
+         * node. To share resources, including Google Cloud Storage data, with
+         * the Tensorflow job running in the Node, this account must have
+         * permissions to that data.
          * 
          * @return builder
          * 

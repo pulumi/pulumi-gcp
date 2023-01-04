@@ -18,7 +18,7 @@ public final class GuestPoliciesRecipeInstallStepFileCopy {
      */
     private String artifactId;
     /**
-     * @return Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+     * @return The absolute path on the instance to put the file.
      * 
      */
     private String destination;
@@ -48,7 +48,7 @@ public final class GuestPoliciesRecipeInstallStepFileCopy {
         return this.artifactId;
     }
     /**
-     * @return Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+     * @return The absolute path on the instance to put the file.
      * 
      */
     public String destination() {

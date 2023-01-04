@@ -425,14 +425,16 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The ID of the project in which the load balancer belongs.
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
      * 
      */
     @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
-     * @return The ID of the project in which the load balancer belongs.
+     * @return The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
      * 
      */
     public Output<String> project() {
@@ -457,14 +459,20 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.routingPolicy);
     }
     /**
-     * Same as `rrdatas` above.
+     * The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+     * data contains spaces, add surrounding \&#34; if you don&#39;t want your string to get split on spaces. To specify a single
+     * record value longer than 255 characters such as a TXT record for DKIM, add \&#34;\&#34; inside the Terraform configuration
+     * string (e.g. &#34;first255characters\&#34;\&#34;morecharacters&#34;).
      * 
      */
     @Export(name="rrdatas", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> rrdatas;
 
     /**
-     * @return Same as `rrdatas` above.
+     * @return The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+     * data contains spaces, add surrounding \&#34; if you don&#39;t want your string to get split on spaces. To specify a single
+     * record value longer than 255 characters such as a TXT record for DKIM, add \&#34;\&#34; inside the Terraform configuration
+     * string (e.g. &#34;first255characters\&#34;\&#34;morecharacters&#34;).
      * 
      */
     public Output<Optional<List<String>>> rrdatas() {

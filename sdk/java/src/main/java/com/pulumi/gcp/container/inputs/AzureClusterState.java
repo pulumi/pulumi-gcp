@@ -145,16 +145,14 @@ public final class AzureClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-     * and delete requests to ensure the client has an up-to-date value before proceeding.
+     * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
     @Import(name="etag")
     private @Nullable Output<String> etag;
 
     /**
-     * @return Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-     * and delete requests to ensure the client has an up-to-date value before proceeding.
+     * @return Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
     public Optional<Output<String>> etag() {
@@ -237,6 +235,8 @@ public final class AzureClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The number of the Fleet host project where this cluster will be registered.
+     * (Optional)
      * The project for the resource
      * 
      */
@@ -244,7 +244,9 @@ public final class AzureClusterState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The number of the Fleet host project where this cluster will be registered.
+     * (Optional)
+     * The project for the resource
      * 
      */
     public Optional<Output<String>> project() {
@@ -267,14 +269,14 @@ public final class AzureClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/&lt;subscription-id&gt;/resourceGroups/&lt;resource-group-name&gt;`
+     * The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*{@literal /}resourceGroups/*`
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/&lt;subscription-id&gt;/resourceGroups/&lt;resource-group-name&gt;`
+     * @return The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*{@literal /}resourceGroups/*`
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -282,16 +284,14 @@ public final class AzureClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-     * STOPPING, ERROR, DEGRADED
+     * Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-     * STOPPING, ERROR, DEGRADED
+     * @return Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
      * 
      */
     public Optional<Output<String>> state() {
@@ -556,8 +556,7 @@ public final class AzureClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etag Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-         * and delete requests to ensure the client has an up-to-date value before proceeding.
+         * @param etag Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
          * 
          * @return builder
          * 
@@ -568,8 +567,7 @@ public final class AzureClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etag Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-         * and delete requests to ensure the client has an up-to-date value before proceeding.
+         * @param etag Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
          * 
          * @return builder
          * 
@@ -684,7 +682,9 @@ public final class AzureClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The number of the Fleet host project where this cluster will be registered.
+         * (Optional)
+         * The project for the resource
          * 
          * @return builder
          * 
@@ -695,7 +695,9 @@ public final class AzureClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The number of the Fleet host project where this cluster will be registered.
+         * (Optional)
+         * The project for the resource
          * 
          * @return builder
          * 
@@ -726,7 +728,7 @@ public final class AzureClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/&lt;subscription-id&gt;/resourceGroups/&lt;resource-group-name&gt;`
+         * @param resourceGroupId The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*{@literal /}resourceGroups/*`
          * 
          * @return builder
          * 
@@ -737,7 +739,7 @@ public final class AzureClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/&lt;subscription-id&gt;/resourceGroups/&lt;resource-group-name&gt;`
+         * @param resourceGroupId The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*{@literal /}resourceGroups/*`
          * 
          * @return builder
          * 
@@ -747,8 +749,7 @@ public final class AzureClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-         * STOPPING, ERROR, DEGRADED
+         * @param state Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
          * 
          * @return builder
          * 
@@ -759,8 +760,7 @@ public final class AzureClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-         * STOPPING, ERROR, DEGRADED
+         * @param state Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
          * 
          * @return builder
          * 

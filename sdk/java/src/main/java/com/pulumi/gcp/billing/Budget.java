@@ -448,7 +448,8 @@ public class Budget extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.displayName);
     }
     /**
-     * Resource name of the budget. The resource name implies the scope of a budget. Values are of the form
+     * Resource name of the budget. The resource name
+     * implies the scope of a budget. Values are of the form
      * billingAccounts/{billingAccountId}/budgets/{budgetId}.
      * 
      */
@@ -456,7 +457,8 @@ public class Budget extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Resource name of the budget. The resource name implies the scope of a budget. Values are of the form
+     * @return Resource name of the budget. The resource name
+     * implies the scope of a budget. Values are of the form
      * billingAccounts/{billingAccountId}/budgets/{budgetId}.
      * 
      */

@@ -18,14 +18,16 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleH
     public static final PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs Empty = new PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs();
 
     /**
-     * The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+     * The index of the submatch to extract as findings. When not specified,
+     * the entire match is returned. No more than 3 may be included.
      * 
      */
     @Import(name="groupIndexes")
     private @Nullable Output<List<Integer>> groupIndexes;
 
     /**
-     * @return The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+     * @return The index of the submatch to extract as findings. When not specified,
+     * the entire match is returned. No more than 3 may be included.
      * 
      */
     public Optional<Output<List<Integer>>> groupIndexes() {
@@ -33,16 +35,16 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleH
     }
 
     /**
-     * Pattern defining the regular expression.
-     * Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+     * Pattern defining the regular expression. Its syntax
+     * (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
      * 
      */
     @Import(name="pattern", required=true)
     private Output<String> pattern;
 
     /**
-     * @return Pattern defining the regular expression.
-     * Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+     * @return Pattern defining the regular expression. Its syntax
+     * (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
      * 
      */
     public Output<String> pattern() {
@@ -75,7 +77,8 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleH
         }
 
         /**
-         * @param groupIndexes The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+         * @param groupIndexes The index of the submatch to extract as findings. When not specified,
+         * the entire match is returned. No more than 3 may be included.
          * 
          * @return builder
          * 
@@ -86,7 +89,8 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleH
         }
 
         /**
-         * @param groupIndexes The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+         * @param groupIndexes The index of the submatch to extract as findings. When not specified,
+         * the entire match is returned. No more than 3 may be included.
          * 
          * @return builder
          * 
@@ -96,7 +100,8 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleH
         }
 
         /**
-         * @param groupIndexes The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+         * @param groupIndexes The index of the submatch to extract as findings. When not specified,
+         * the entire match is returned. No more than 3 may be included.
          * 
          * @return builder
          * 
@@ -106,8 +111,8 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleH
         }
 
         /**
-         * @param pattern Pattern defining the regular expression.
-         * Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         * @param pattern Pattern defining the regular expression. Its syntax
+         * (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
          * 
          * @return builder
          * 
@@ -118,8 +123,8 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleH
         }
 
         /**
-         * @param pattern Pattern defining the regular expression.
-         * Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         * @param pattern Pattern defining the regular expression. Its syntax
+         * (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
          * 
          * @return builder
          * 

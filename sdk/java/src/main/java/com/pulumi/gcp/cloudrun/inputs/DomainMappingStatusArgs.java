@@ -19,30 +19,74 @@ public final class DomainMappingStatusArgs extends com.pulumi.resources.Resource
 
     public static final DomainMappingStatusArgs Empty = new DomainMappingStatusArgs();
 
+    /**
+     * Array of observed DomainMappingConditions, indicating the current state
+     * of the DomainMapping.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="conditions")
     private @Nullable Output<List<DomainMappingStatusConditionArgs>> conditions;
 
+    /**
+     * @return Array of observed DomainMappingConditions, indicating the current state
+     * of the DomainMapping.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<List<DomainMappingStatusConditionArgs>>> conditions() {
         return Optional.ofNullable(this.conditions);
     }
 
+    /**
+     * The name of the route that the mapping currently points to.
+     * 
+     */
     @Import(name="mappedRouteName")
     private @Nullable Output<String> mappedRouteName;
 
+    /**
+     * @return The name of the route that the mapping currently points to.
+     * 
+     */
     public Optional<Output<String>> mappedRouteName() {
         return Optional.ofNullable(this.mappedRouteName);
     }
 
+    /**
+     * ObservedGeneration is the &#39;Generation&#39; of the DomainMapping that
+     * was last processed by the controller.
+     * 
+     */
     @Import(name="observedGeneration")
     private @Nullable Output<Integer> observedGeneration;
 
+    /**
+     * @return ObservedGeneration is the &#39;Generation&#39; of the DomainMapping that
+     * was last processed by the controller.
+     * 
+     */
     public Optional<Output<Integer>> observedGeneration() {
         return Optional.ofNullable(this.observedGeneration);
     }
 
+    /**
+     * The resource records required to configure this domain mapping. These
+     * records must be added to the domain&#39;s DNS configuration in order to
+     * serve the application via this domain mapping.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="resourceRecords")
     private @Nullable Output<List<DomainMappingStatusResourceRecordArgs>> resourceRecords;
 
+    /**
+     * @return The resource records required to configure this domain mapping. These
+     * records must be added to the domain&#39;s DNS configuration in order to
+     * serve the application via this domain mapping.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<List<DomainMappingStatusResourceRecordArgs>>> resourceRecords() {
         return Optional.ofNullable(this.resourceRecords);
     }
@@ -74,46 +118,123 @@ public final class DomainMappingStatusArgs extends com.pulumi.resources.Resource
             $ = new DomainMappingStatusArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param conditions Array of observed DomainMappingConditions, indicating the current state
+         * of the DomainMapping.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder conditions(@Nullable Output<List<DomainMappingStatusConditionArgs>> conditions) {
             $.conditions = conditions;
             return this;
         }
 
+        /**
+         * @param conditions Array of observed DomainMappingConditions, indicating the current state
+         * of the DomainMapping.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder conditions(List<DomainMappingStatusConditionArgs> conditions) {
             return conditions(Output.of(conditions));
         }
 
+        /**
+         * @param conditions Array of observed DomainMappingConditions, indicating the current state
+         * of the DomainMapping.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder conditions(DomainMappingStatusConditionArgs... conditions) {
             return conditions(List.of(conditions));
         }
 
+        /**
+         * @param mappedRouteName The name of the route that the mapping currently points to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mappedRouteName(@Nullable Output<String> mappedRouteName) {
             $.mappedRouteName = mappedRouteName;
             return this;
         }
 
+        /**
+         * @param mappedRouteName The name of the route that the mapping currently points to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mappedRouteName(String mappedRouteName) {
             return mappedRouteName(Output.of(mappedRouteName));
         }
 
+        /**
+         * @param observedGeneration ObservedGeneration is the &#39;Generation&#39; of the DomainMapping that
+         * was last processed by the controller.
+         * 
+         * @return builder
+         * 
+         */
         public Builder observedGeneration(@Nullable Output<Integer> observedGeneration) {
             $.observedGeneration = observedGeneration;
             return this;
         }
 
+        /**
+         * @param observedGeneration ObservedGeneration is the &#39;Generation&#39; of the DomainMapping that
+         * was last processed by the controller.
+         * 
+         * @return builder
+         * 
+         */
         public Builder observedGeneration(Integer observedGeneration) {
             return observedGeneration(Output.of(observedGeneration));
         }
 
+        /**
+         * @param resourceRecords The resource records required to configure this domain mapping. These
+         * records must be added to the domain&#39;s DNS configuration in order to
+         * serve the application via this domain mapping.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceRecords(@Nullable Output<List<DomainMappingStatusResourceRecordArgs>> resourceRecords) {
             $.resourceRecords = resourceRecords;
             return this;
         }
 
+        /**
+         * @param resourceRecords The resource records required to configure this domain mapping. These
+         * records must be added to the domain&#39;s DNS configuration in order to
+         * serve the application via this domain mapping.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceRecords(List<DomainMappingStatusResourceRecordArgs> resourceRecords) {
             return resourceRecords(Output.of(resourceRecords));
         }
 
+        /**
+         * @param resourceRecords The resource records required to configure this domain mapping. These
+         * records must be added to the domain&#39;s DNS configuration in order to
+         * serve the application via this domain mapping.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceRecords(DomainMappingStatusResourceRecordArgs... resourceRecords) {
             return resourceRecords(List.of(resourceRecords));
         }

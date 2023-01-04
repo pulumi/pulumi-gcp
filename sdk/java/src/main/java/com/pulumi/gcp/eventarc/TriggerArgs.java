@@ -66,14 +66,14 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+     * The location for the resource
      * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
-     * @return Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+     * @return The location for the resource
      * 
      */
     public Output<String> location() {
@@ -251,7 +251,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+         * @param location The location for the resource
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+         * @param location The location for the resource
          * 
          * @return builder
          * 

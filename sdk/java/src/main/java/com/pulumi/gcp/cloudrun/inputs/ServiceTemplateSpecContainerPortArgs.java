@@ -32,14 +32,14 @@ public final class ServiceTemplateSpecContainerPortArgs extends com.pulumi.resou
     }
 
     /**
-     * Volume&#39;s name.
+     * If specified, used to specify which protocol to use. Allowed values are &#34;http1&#34; (HTTP/1) and &#34;h2c&#34; (HTTP/2 end-to-end). Defaults to &#34;http1&#34;.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Volume&#39;s name.
+     * @return If specified, used to specify which protocol to use. Allowed values are &#34;http1&#34; (HTTP/1) and &#34;h2c&#34; (HTTP/2 end-to-end). Defaults to &#34;http1&#34;.
      * 
      */
     public Optional<Output<String>> name() {
@@ -109,7 +109,7 @@ public final class ServiceTemplateSpecContainerPortArgs extends com.pulumi.resou
         }
 
         /**
-         * @param name Volume&#39;s name.
+         * @param name If specified, used to specify which protocol to use. Allowed values are &#34;http1&#34; (HTTP/1) and &#34;h2c&#34; (HTTP/2 end-to-end). Defaults to &#34;http1&#34;.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ServiceTemplateSpecContainerPortArgs extends com.pulumi.resou
         }
 
         /**
-         * @param name Volume&#39;s name.
+         * @param name If specified, used to specify which protocol to use. Allowed values are &#34;http1&#34; (HTTP/1) and &#34;h2c&#34; (HTTP/2 end-to-end). Defaults to &#34;http1&#34;.
          * 
          * @return builder
          * 

@@ -9,9 +9,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceTemplateConfidentialInstanceConfig {
+    /**
+     * @return Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+     * 
+     */
     private Boolean enableConfidentialCompute;
 
     private GetInstanceTemplateConfidentialInstanceConfig() {}
+    /**
+     * @return Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+     * 
+     */
     public Boolean enableConfidentialCompute() {
         return this.enableConfidentialCompute;
     }

@@ -244,18 +244,16 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cloud Storage bucket and optional object path, in the form &#34;gs://bucket/path/to/somewhere/&#34;.
-     * Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
-     * this location as a prefix.
+     * The [Cloud Build location](https://cloud.google.com/build/docs/locations) for the trigger.
+     * If not specified, &#34;global&#34; is used.
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return Cloud Storage bucket and optional object path, in the form &#34;gs://bucket/path/to/somewhere/&#34;.
-     * Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
-     * this location as a prefix.
+     * @return The [Cloud Build location](https://cloud.google.com/build/docs/locations) for the trigger.
+     * If not specified, &#34;global&#34; is used.
      * 
      */
     public Optional<Output<String>> location() {
@@ -263,18 +261,14 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the volume to mount.
-     * Volume names must be unique per build step and must be valid names for Docker volumes.
-     * Each named volume must be used by at least two build steps.
+     * Name of the trigger. Must be unique within the project.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the volume to mount.
-     * Volume names must be unique per build step and must be valid names for Docker volumes.
-     * Each named volume must be used by at least two build steps.
+     * @return Name of the trigger. Must be unique within the project.
      * 
      */
     public Optional<Output<String>> name() {
@@ -368,14 +362,14 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Substitutions to use in a triggered build. Should only be used with triggers.run
+     * Substitutions data for Build resource.
      * 
      */
     @Import(name="substitutions")
     private @Nullable Output<Map<String,String>> substitutions;
 
     /**
-     * @return Substitutions to use in a triggered build. Should only be used with triggers.run
+     * @return Substitutions data for Build resource.
      * 
      */
     public Optional<Output<Map<String,String>>> substitutions() {
@@ -383,14 +377,14 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Tags for annotation of a Build. These are not docker tags.
+     * Tags for annotation of a BuildTrigger
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Tags for annotation of a Build. These are not docker tags.
+     * @return Tags for annotation of a BuildTrigger
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -805,9 +799,8 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location Cloud Storage bucket and optional object path, in the form &#34;gs://bucket/path/to/somewhere/&#34;.
-         * Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
-         * this location as a prefix.
+         * @param location The [Cloud Build location](https://cloud.google.com/build/docs/locations) for the trigger.
+         * If not specified, &#34;global&#34; is used.
          * 
          * @return builder
          * 
@@ -818,9 +811,8 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location Cloud Storage bucket and optional object path, in the form &#34;gs://bucket/path/to/somewhere/&#34;.
-         * Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
-         * this location as a prefix.
+         * @param location The [Cloud Build location](https://cloud.google.com/build/docs/locations) for the trigger.
+         * If not specified, &#34;global&#34; is used.
          * 
          * @return builder
          * 
@@ -830,9 +822,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the volume to mount.
-         * Volume names must be unique per build step and must be valid names for Docker volumes.
-         * Each named volume must be used by at least two build steps.
+         * @param name Name of the trigger. Must be unique within the project.
          * 
          * @return builder
          * 
@@ -843,9 +833,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the volume to mount.
-         * Volume names must be unique per build step and must be valid names for Docker volumes.
-         * Each named volume must be used by at least two build steps.
+         * @param name Name of the trigger. Must be unique within the project.
          * 
          * @return builder
          * 
@@ -965,7 +953,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param substitutions Substitutions to use in a triggered build. Should only be used with triggers.run
+         * @param substitutions Substitutions data for Build resource.
          * 
          * @return builder
          * 
@@ -976,7 +964,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param substitutions Substitutions to use in a triggered build. Should only be used with triggers.run
+         * @param substitutions Substitutions data for Build resource.
          * 
          * @return builder
          * 
@@ -986,7 +974,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags for annotation of a Build. These are not docker tags.
+         * @param tags Tags for annotation of a BuildTrigger
          * 
          * @return builder
          * 
@@ -997,7 +985,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags for annotation of a Build. These are not docker tags.
+         * @param tags Tags for annotation of a BuildTrigger
          * 
          * @return builder
          * 
@@ -1007,7 +995,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags for annotation of a Build. These are not docker tags.
+         * @param tags Tags for annotation of a BuildTrigger
          * 
          * @return builder
          * 

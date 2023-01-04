@@ -218,16 +218,14 @@ public class Lake extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * Output only. Service account associated with this lake. This service account must be authorized to access or operate on
-     * resources managed by the lake.
+     * Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
      * 
      */
     @Export(name="serviceAccount", type=String.class, parameters={})
     private Output<String> serviceAccount;
 
     /**
-     * @return Output only. Service account associated with this lake. This service account must be authorized to access or operate on
-     * resources managed by the lake.
+     * @return Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
      * 
      */
     public Output<String> serviceAccount() {
@@ -248,16 +246,14 @@ public class Lake extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and
-     * re-created with the same name.
+     * Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
      * 
      */
     @Export(name="uid", type=String.class, parameters={})
     private Output<String> uid;
 
     /**
-     * @return Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and
-     * re-created with the same name.
+     * @return Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
      * 
      */
     public Output<String> uid() {

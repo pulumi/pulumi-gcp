@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FeatureMembershipConfigmanagementBinauthz {
     /**
-     * @return Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+     * @return Whether binauthz is enabled in this cluster.
      * 
      */
     private @Nullable Boolean enabled;
 
     private FeatureMembershipConfigmanagementBinauthz() {}
     /**
-     * @return Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+     * @return Whether binauthz is enabled in this cluster.
      * 
      */
     public Optional<Boolean> enabled() {

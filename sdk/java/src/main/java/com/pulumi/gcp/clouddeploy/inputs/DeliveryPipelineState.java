@@ -81,16 +81,14 @@ public final class DeliveryPipelineState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete
-     * requests to ensure the client has an up-to-date value before proceeding.
+     * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
     @Import(name="etag")
     private @Nullable Output<String> etag;
 
     /**
-     * @return This checksum is computed by the server based on the value of other fields, and may be sent on update and delete
-     * requests to ensure the client has an up-to-date value before proceeding.
+     * @return This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
     public Optional<Output<String>> etag() {
@@ -348,8 +346,7 @@ public final class DeliveryPipelineState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param etag This checksum is computed by the server based on the value of other fields, and may be sent on update and delete
-         * requests to ensure the client has an up-to-date value before proceeding.
+         * @param etag This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
          * 
          * @return builder
          * 
@@ -360,8 +357,7 @@ public final class DeliveryPipelineState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param etag This checksum is computed by the server based on the value of other fields, and may be sent on update and delete
-         * requests to ensure the client has an up-to-date value before proceeding.
+         * @param etag This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
          * 
          * @return builder
          * 

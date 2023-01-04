@@ -18,14 +18,18 @@ public final class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArg
     public static final URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs Empty = new URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs();
 
     /**
-     * The full or partial URL to the BackendService resource being mirrored to.
+     * The full or partial URL to the default BackendService resource. Before forwarding the
+     * request to backendService, the loadbalancer applies any relevant headerActions
+     * specified as part of this backendServiceWeight.
      * 
      */
     @Import(name="backendService", required=true)
     private Output<String> backendService;
 
     /**
-     * @return The full or partial URL to the BackendService resource being mirrored to.
+     * @return The full or partial URL to the default BackendService resource. Before forwarding the
+     * request to backendService, the loadbalancer applies any relevant headerActions
+     * specified as part of this backendServiceWeight.
      * 
      */
     public Output<String> backendService() {
@@ -107,7 +111,9 @@ public final class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArg
         }
 
         /**
-         * @param backendService The full or partial URL to the BackendService resource being mirrored to.
+         * @param backendService The full or partial URL to the default BackendService resource. Before forwarding the
+         * request to backendService, the loadbalancer applies any relevant headerActions
+         * specified as part of this backendServiceWeight.
          * 
          * @return builder
          * 
@@ -118,7 +124,9 @@ public final class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArg
         }
 
         /**
-         * @param backendService The full or partial URL to the BackendService resource being mirrored to.
+         * @param backendService The full or partial URL to the default BackendService resource. Before forwarding the
+         * request to backendService, the loadbalancer applies any relevant headerActions
+         * specified as part of this backendServiceWeight.
          * 
          * @return builder
          * 

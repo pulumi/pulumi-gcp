@@ -12,12 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GuestPoliciesPackage {
     /**
-     * @return Default is INSTALLED. The desired state the agent should maintain for this recipe.
-     * INSTALLED: The software recipe is installed on the instance but won&#39;t be updated to new versions.
-     * INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
-     * if a higher version of the recipe is assigned to this instance.
-     * REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
-     * Default value is `INSTALLED`.
+     * @return The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
      * Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
      * 
      */
@@ -34,22 +29,15 @@ public final class GuestPoliciesPackage {
      */
     private @Nullable String manager;
     /**
-     * @return Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-     * Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-     * This means that requests to create multiple recipes with the same name and version are rejected since they
-     * could potentially have conflicting assignments.
+     * @return The name of the package. A package is uniquely identified for conflict validation
+     * by checking the package name and the manager(s) that the package targets.
      * 
      */
     private String name;
 
     private GuestPoliciesPackage() {}
     /**
-     * @return Default is INSTALLED. The desired state the agent should maintain for this recipe.
-     * INSTALLED: The software recipe is installed on the instance but won&#39;t be updated to new versions.
-     * INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
-     * if a higher version of the recipe is assigned to this instance.
-     * REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
-     * Default value is `INSTALLED`.
+     * @return The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
      * Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
      * 
      */
@@ -70,10 +58,8 @@ public final class GuestPoliciesPackage {
         return Optional.ofNullable(this.manager);
     }
     /**
-     * @return Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-     * Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-     * This means that requests to create multiple recipes with the same name and version are rejected since they
-     * could potentially have conflicting assignments.
+     * @return The name of the package. A package is uniquely identified for conflict validation
+     * by checking the package name and the manager(s) that the package targets.
      * 
      */
     public String name() {

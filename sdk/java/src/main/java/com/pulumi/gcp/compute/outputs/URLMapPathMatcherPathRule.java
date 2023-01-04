@@ -23,9 +23,9 @@ public final class URLMapPathMatcherPathRule {
      */
     private List<String> paths;
     /**
-     * @return In response to a matching matchRule, the load balancer performs advanced routing
+     * @return In response to a matching path, the load balancer performs advanced routing
      * actions like URL rewrites, header transformations, etc. prior to forwarding the
-     * request to the selected backend. If  routeAction specifies any
+     * request to the selected backend. If routeAction specifies any
      * weightedBackendServices, service must not be set. Conversely if service is set,
      * routeAction cannot contain any  weightedBackendServices. Only one of routeAction
      * or urlRedirect must be set.
@@ -34,14 +34,14 @@ public final class URLMapPathMatcherPathRule {
      */
     private @Nullable URLMapPathMatcherPathRuleRouteAction routeAction;
     /**
-     * @return The backend service or backend bucket link that should be matched by this test.
+     * @return The backend service or backend bucket to use if any of the given paths match.
      * 
      */
     private @Nullable String service;
     /**
-     * @return When this rule is matched, the request is redirected to a URL specified by
-     * urlRedirect. If urlRedirect is specified, service or routeAction must not be
-     * set.
+     * @return When a path pattern is matched, the request is redirected to a URL specified
+     * by urlRedirect. If urlRedirect is specified, service or routeAction must not
+     * be set.
      * Structure is documented below.
      * 
      */
@@ -59,9 +59,9 @@ public final class URLMapPathMatcherPathRule {
         return this.paths;
     }
     /**
-     * @return In response to a matching matchRule, the load balancer performs advanced routing
+     * @return In response to a matching path, the load balancer performs advanced routing
      * actions like URL rewrites, header transformations, etc. prior to forwarding the
-     * request to the selected backend. If  routeAction specifies any
+     * request to the selected backend. If routeAction specifies any
      * weightedBackendServices, service must not be set. Conversely if service is set,
      * routeAction cannot contain any  weightedBackendServices. Only one of routeAction
      * or urlRedirect must be set.
@@ -72,16 +72,16 @@ public final class URLMapPathMatcherPathRule {
         return Optional.ofNullable(this.routeAction);
     }
     /**
-     * @return The backend service or backend bucket link that should be matched by this test.
+     * @return The backend service or backend bucket to use if any of the given paths match.
      * 
      */
     public Optional<String> service() {
         return Optional.ofNullable(this.service);
     }
     /**
-     * @return When this rule is matched, the request is redirected to a URL specified by
-     * urlRedirect. If urlRedirect is specified, service or routeAction must not be
-     * set.
+     * @return When a path pattern is matched, the request is redirected to a URL specified
+     * by urlRedirect. If urlRedirect is specified, service or routeAction must not
+     * be set.
      * Structure is documented below.
      * 
      */

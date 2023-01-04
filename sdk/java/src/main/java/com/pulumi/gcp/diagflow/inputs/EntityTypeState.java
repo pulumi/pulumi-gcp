@@ -91,14 +91,16 @@ public final class EntityTypeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The unique identifier of the entity type. Format: projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity type ID&gt;.
+     * The unique identifier of the entity type.
+     * Format: projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity type ID&gt;.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The unique identifier of the entity type. Format: projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity type ID&gt;.
+     * @return The unique identifier of the entity type.
+     * Format: projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity type ID&gt;.
      * 
      */
     public Optional<Output<String>> name() {
@@ -259,7 +261,8 @@ public final class EntityTypeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The unique identifier of the entity type. Format: projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity type ID&gt;.
+         * @param name The unique identifier of the entity type.
+         * Format: projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity type ID&gt;.
          * 
          * @return builder
          * 
@@ -270,7 +273,8 @@ public final class EntityTypeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The unique identifier of the entity type. Format: projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity type ID&gt;.
+         * @param name The unique identifier of the entity type.
+         * Format: projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity type ID&gt;.
          * 
          * @return builder
          * 

@@ -101,16 +101,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:eventarc/channel:Channel")
 public class Channel extends com.pulumi.resources.CustomResource {
     /**
-     * Output only. The activation token for the channel. The token must be used by the provider to register the channel for
-     * publishing.
+     * Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
      * 
      */
     @Export(name="activationToken", type=String.class, parameters={})
     private Output<String> activationToken;
 
     /**
-     * @return Output only. The activation token for the channel. The token must be used by the provider to register the channel for
-     * publishing.
+     * @return Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
      * 
      */
     public Output<String> activationToken() {
@@ -187,16 +185,14 @@ public class Channel extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery.
-     * Format: `projects/{project}/topics/{topic_id}`.
+     * Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
      * 
      */
     @Export(name="pubsubTopic", type=String.class, parameters={})
     private Output<String> pubsubTopic;
 
     /**
-     * @return Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery.
-     * Format: `projects/{project}/topics/{topic_id}`.
+     * @return Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
      * 
      */
     public Output<String> pubsubTopic() {
@@ -231,16 +227,14 @@ public class Channel extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.thirdPartyProvider);
     }
     /**
-     * Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain
-     * unchanged until the resource is deleted.
+     * Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      * 
      */
     @Export(name="uid", type=String.class, parameters={})
     private Output<String> uid;
 
     /**
-     * @return Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain
-     * unchanged until the resource is deleted.
+     * @return Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      * 
      */
     public Output<String> uid() {

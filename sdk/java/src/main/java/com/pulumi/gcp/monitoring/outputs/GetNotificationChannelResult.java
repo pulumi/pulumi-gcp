@@ -15,8 +15,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNotificationChannelResult {
+    /**
+     * @return An optional human-readable description of this notification channel.
+     * 
+     */
     private String description;
     private @Nullable String displayName;
+    /**
+     * @return Whether notifications are forwarded to the described channel.
+     * 
+     */
     private Boolean enabled;
     private Boolean forceDelete;
     /**
@@ -24,21 +32,46 @@ public final class GetNotificationChannelResult {
      * 
      */
     private String id;
+    /**
+     * @return Configuration fields that define the channel and its behavior.
+     * 
+     */
     private @Nullable Map<String,String> labels;
+    /**
+     * @return The full REST resource name for this channel. The syntax is:
+     * `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`.
+     * 
+     */
     private String name;
     private @Nullable String project;
     private List<GetNotificationChannelSensitiveLabel> sensitiveLabels;
     private @Nullable String type;
+    /**
+     * @return User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor&#39;s schema, unlike the labels field.
+     * 
+     */
     private @Nullable Map<String,String> userLabels;
+    /**
+     * @return Indicates whether this channel has been verified or not.
+     * 
+     */
     private String verificationStatus;
 
     private GetNotificationChannelResult() {}
+    /**
+     * @return An optional human-readable description of this notification channel.
+     * 
+     */
     public String description() {
         return this.description;
     }
     public Optional<String> displayName() {
         return Optional.ofNullable(this.displayName);
     }
+    /**
+     * @return Whether notifications are forwarded to the described channel.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }
@@ -52,9 +85,18 @@ public final class GetNotificationChannelResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Configuration fields that define the channel and its behavior.
+     * 
+     */
     public Map<String,String> labels() {
         return this.labels == null ? Map.of() : this.labels;
     }
+    /**
+     * @return The full REST resource name for this channel. The syntax is:
+     * `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`.
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -67,9 +109,17 @@ public final class GetNotificationChannelResult {
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor&#39;s schema, unlike the labels field.
+     * 
+     */
     public Map<String,String> userLabels() {
         return this.userLabels == null ? Map.of() : this.userLabels;
     }
+    /**
+     * @return Indicates whether this channel has been verified or not.
+     * 
+     */
     public String verificationStatus() {
         return this.verificationStatus;
     }

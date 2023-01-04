@@ -15,9 +15,17 @@ public final class EntryBigqueryTableSpecViewSpecArgs extends com.pulumi.resourc
 
     public static final EntryBigqueryTableSpecViewSpecArgs Empty = new EntryBigqueryTableSpecViewSpecArgs();
 
+    /**
+     * The query that defines the table view.
+     * 
+     */
     @Import(name="viewQuery")
     private @Nullable Output<String> viewQuery;
 
+    /**
+     * @return The query that defines the table view.
+     * 
+     */
     public Optional<Output<String>> viewQuery() {
         return Optional.ofNullable(this.viewQuery);
     }
@@ -46,11 +54,23 @@ public final class EntryBigqueryTableSpecViewSpecArgs extends com.pulumi.resourc
             $ = new EntryBigqueryTableSpecViewSpecArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param viewQuery The query that defines the table view.
+         * 
+         * @return builder
+         * 
+         */
         public Builder viewQuery(@Nullable Output<String> viewQuery) {
             $.viewQuery = viewQuery;
             return this;
         }
 
+        /**
+         * @param viewQuery The query that defines the table view.
+         * 
+         * @return builder
+         * 
+         */
         public Builder viewQuery(String viewQuery) {
             return viewQuery(Output.of(viewQuery));
         }

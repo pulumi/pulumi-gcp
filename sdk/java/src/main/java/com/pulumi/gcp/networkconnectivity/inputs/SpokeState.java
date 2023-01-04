@@ -185,16 +185,14 @@ public final class SpokeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is
-     * deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+     * Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
      * 
      */
     @Import(name="uniqueId")
     private @Nullable Output<String> uniqueId;
 
     /**
-     * @return Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is
-     * deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+     * @return Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
      * 
      */
     public Optional<Output<String>> uniqueId() {
@@ -484,8 +482,7 @@ public final class SpokeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uniqueId Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is
-         * deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+         * @param uniqueId Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
          * 
          * @return builder
          * 
@@ -496,8 +493,7 @@ public final class SpokeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uniqueId Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is
-         * deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+         * @param uniqueId Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
          * 
          * @return builder
          * 

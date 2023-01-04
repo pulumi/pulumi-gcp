@@ -10,16 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class ClusterVerticalPodAutoscaling {
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Enables vertical pod autoscaling
      * 
      */
     private Boolean enabled;
 
     private ClusterVerticalPodAutoscaling() {}
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Enables vertical pod autoscaling
      * 
      */
     public Boolean enabled() {

@@ -13,12 +13,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeliveryPipelineConditionPipelineReadyCondition {
     private @Nullable Boolean status;
+    /**
+     * @return Output only. Most recent time at which the pipeline was updated.
+     * 
+     */
     private @Nullable String updateTime;
 
     private DeliveryPipelineConditionPipelineReadyCondition() {}
     public Optional<Boolean> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return Output only. Most recent time at which the pipeline was updated.
+     * 
+     */
     public Optional<String> updateTime() {
         return Optional.ofNullable(this.updateTime);
     }

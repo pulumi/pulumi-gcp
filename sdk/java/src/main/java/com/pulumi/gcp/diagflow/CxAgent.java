@@ -258,18 +258,14 @@ public class CxAgent extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.speechToTextSettings);
     }
     /**
-     * Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-     * be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow
-     * ID&gt;.
+     * Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
      * 
      */
     @Export(name="startFlow", type=String.class, parameters={})
     private Output<String> startFlow;
 
     /**
-     * @return Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-     * be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow
-     * ID&gt;.
+     * @return Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
      * 
      */
     public Output<String> startFlow() {

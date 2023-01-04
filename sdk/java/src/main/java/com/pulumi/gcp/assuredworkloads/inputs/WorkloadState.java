@@ -186,16 +186,14 @@ public final class WorkloadState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. The resources associated with this workload. These resources will be created when creating the workload. If
-     * any of the projects already exist, the workload creation will fail. Always read only.
+     * Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
      * 
      */
     @Import(name="resources")
     private @Nullable Output<List<WorkloadResourceArgs>> resources;
 
     /**
-     * @return Output only. The resources associated with this workload. These resources will be created when creating the workload. If
-     * any of the projects already exist, the workload creation will fail. Always read only.
+     * @return Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
      * 
      */
     public Optional<Output<List<WorkloadResourceArgs>>> resources() {
@@ -479,8 +477,7 @@ public final class WorkloadState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resources Output only. The resources associated with this workload. These resources will be created when creating the workload. If
-         * any of the projects already exist, the workload creation will fail. Always read only.
+         * @param resources Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
          * 
          * @return builder
          * 
@@ -491,8 +488,7 @@ public final class WorkloadState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resources Output only. The resources associated with this workload. These resources will be created when creating the workload. If
-         * any of the projects already exist, the workload creation will fail. Always read only.
+         * @param resources Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
          * 
          * @return builder
          * 
@@ -502,8 +498,7 @@ public final class WorkloadState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resources Output only. The resources associated with this workload. These resources will be created when creating the workload. If
-         * any of the projects already exist, the workload creation will fail. Always read only.
+         * @param resources Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
          * 
          * @return builder
          * 

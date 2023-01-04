@@ -102,7 +102,9 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The destination table.
+     * Describes the table where the query results should be stored.
+     * This property must be set for large results that exceed the maximum response size.
+     * For queries that produce anonymous (cached) results, this field will be populated by BigQuery.
      * Structure is documented below.
      * 
      */
@@ -110,7 +112,9 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<JobQueryDestinationTableArgs> destinationTable;
 
     /**
-     * @return The destination table.
+     * @return Describes the table where the query results should be stored.
+     * This property must be set for large results that exceed the maximum response size.
+     * For queries that produce anonymous (cached) results, this field will be populated by BigQuery.
      * Structure is documented below.
      * 
      */
@@ -204,16 +208,18 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configures a query job.
-     * Structure is documented below.
+     * SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+     * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+     * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = &#34;&#34;` and `write_disposition = &#34;&#34;`.
      * 
      */
     @Import(name="query", required=true)
     private Output<String> query;
 
     /**
-     * @return Configures a query job.
-     * Structure is documented below.
+     * @return SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+     * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+     * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = &#34;&#34;` and `write_disposition = &#34;&#34;`.
      * 
      */
     public Output<String> query() {
@@ -221,10 +227,11 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
-     * supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
-     * when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators.
-     * For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified:
+     * Allows the schema of the destination table to be updated as a side effect of the query job.
+     * Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
+     * when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table,
+     * specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema.
+     * One or more of the following values are specified:
      * ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
      * ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
      * 
@@ -233,10 +240,11 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<String>> schemaUpdateOptions;
 
     /**
-     * @return Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
-     * supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
-     * when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators.
-     * For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified:
+     * @return Allows the schema of the destination table to be updated as a side effect of the query job.
+     * Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
+     * when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table,
+     * specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema.
+     * One or more of the following values are specified:
      * ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
      * ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
      * 
@@ -487,7 +495,9 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destinationTable The destination table.
+         * @param destinationTable Describes the table where the query results should be stored.
+         * This property must be set for large results that exceed the maximum response size.
+         * For queries that produce anonymous (cached) results, this field will be populated by BigQuery.
          * Structure is documented below.
          * 
          * @return builder
@@ -499,7 +509,9 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destinationTable The destination table.
+         * @param destinationTable Describes the table where the query results should be stored.
+         * This property must be set for large results that exceed the maximum response size.
+         * For queries that produce anonymous (cached) results, this field will be populated by BigQuery.
          * Structure is documented below.
          * 
          * @return builder
@@ -625,8 +637,9 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param query Configures a query job.
-         * Structure is documented below.
+         * @param query SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+         * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+         * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = &#34;&#34;` and `write_disposition = &#34;&#34;`.
          * 
          * @return builder
          * 
@@ -637,8 +650,9 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param query Configures a query job.
-         * Structure is documented below.
+         * @param query SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+         * *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+         * (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = &#34;&#34;` and `write_disposition = &#34;&#34;`.
          * 
          * @return builder
          * 
@@ -648,10 +662,11 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schemaUpdateOptions Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
-         * supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
-         * when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators.
-         * For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified:
+         * @param schemaUpdateOptions Allows the schema of the destination table to be updated as a side effect of the query job.
+         * Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
+         * when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table,
+         * specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema.
+         * One or more of the following values are specified:
          * ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
          * ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
          * 
@@ -664,10 +679,11 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schemaUpdateOptions Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
-         * supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
-         * when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators.
-         * For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified:
+         * @param schemaUpdateOptions Allows the schema of the destination table to be updated as a side effect of the query job.
+         * Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
+         * when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table,
+         * specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema.
+         * One or more of the following values are specified:
          * ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
          * ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
          * 
@@ -679,10 +695,11 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schemaUpdateOptions Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
-         * supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
-         * when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators.
-         * For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified:
+         * @param schemaUpdateOptions Allows the schema of the destination table to be updated as a side effect of the query job.
+         * Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
+         * when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table,
+         * specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema.
+         * One or more of the following values are specified:
          * ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
          * ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
          * 

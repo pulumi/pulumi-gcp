@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppEngineServiceResult {
+    /**
+     * @return Name used for UI elements listing this (Monitoring) Service.
+     * 
+     */
     private String displayName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -21,13 +25,26 @@ public final class GetAppEngineServiceResult {
      */
     private String id;
     private String moduleId;
+    /**
+     * @return The full REST resource name for this channel. The syntax is:
+     * `projects/[PROJECT_ID]/services/[SERVICE_ID]`.
+     * 
+     */
     private String name;
     private @Nullable String project;
     private String serviceId;
+    /**
+     * @return Configuration for how to query telemetry on the Service. Structure is documented below.
+     * 
+     */
     private List<GetAppEngineServiceTelemetry> telemetries;
     private Map<String,String> userLabels;
 
     private GetAppEngineServiceResult() {}
+    /**
+     * @return Name used for UI elements listing this (Monitoring) Service.
+     * 
+     */
     public String displayName() {
         return this.displayName;
     }
@@ -41,6 +58,11 @@ public final class GetAppEngineServiceResult {
     public String moduleId() {
         return this.moduleId;
     }
+    /**
+     * @return The full REST resource name for this channel. The syntax is:
+     * `projects/[PROJECT_ID]/services/[SERVICE_ID]`.
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -50,6 +72,10 @@ public final class GetAppEngineServiceResult {
     public String serviceId() {
         return this.serviceId;
     }
+    /**
+     * @return Configuration for how to query telemetry on the Service. Structure is documented below.
+     * 
+     */
     public List<GetAppEngineServiceTelemetry> telemetries() {
         return this.telemetries;
     }

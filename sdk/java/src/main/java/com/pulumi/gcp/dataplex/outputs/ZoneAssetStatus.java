@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 public final class ZoneAssetStatus {
     private @Nullable Integer activeAssets;
     private @Nullable Integer securityPolicyApplyingAssets;
+    /**
+     * @return Output only. The time when the zone was last updated.
+     * 
+     */
     private @Nullable String updateTime;
 
     private ZoneAssetStatus() {}
@@ -23,6 +27,10 @@ public final class ZoneAssetStatus {
     public Optional<Integer> securityPolicyApplyingAssets() {
         return Optional.ofNullable(this.securityPolicyApplyingAssets);
     }
+    /**
+     * @return Output only. The time when the zone was last updated.
+     * 
+     */
     public Optional<String> updateTime() {
         return Optional.ofNullable(this.updateTime);
     }

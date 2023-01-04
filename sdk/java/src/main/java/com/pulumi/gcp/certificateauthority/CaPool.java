@@ -60,6 +60,7 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Privateca Capool All Fields
+ * 
  * ```java
  * package generated_program;
  * 
@@ -233,14 +234,16 @@ public class CaPool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
-     * String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+     * Location of the CaPool. A full list of valid locations can be found by
+     * running `gcloud privateca locations list`.
      * 
      */
     @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
-     * @return String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+     * @return Location of the CaPool. A full list of valid locations can be found by
+     * running `gcloud privateca locations list`.
      * 
      */
     public Output<String> location() {

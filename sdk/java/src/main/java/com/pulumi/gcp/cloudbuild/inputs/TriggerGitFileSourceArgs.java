@@ -16,18 +16,14 @@ public final class TriggerGitFileSourceArgs extends com.pulumi.resources.Resourc
     public static final TriggerGitFileSourceArgs Empty = new TriggerGitFileSourceArgs();
 
     /**
-     * Path at which to mount the volume.
-     * Paths must be absolute and cannot conflict with other volume paths on the same
-     * build step or with certain reserved volume paths.
+     * The path of the file, with the repo root as the root of the path.
      * 
      */
     @Import(name="path", required=true)
     private Output<String> path;
 
     /**
-     * @return Path at which to mount the volume.
-     * Paths must be absolute and cannot conflict with other volume paths on the same
-     * build step or with certain reserved volume paths.
+     * @return The path of the file, with the repo root as the root of the path.
      * 
      */
     public Output<String> path() {
@@ -73,14 +69,16 @@ public final class TriggerGitFileSourceArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The URI of the repo (required).
+     * The URI of the repo (optional). If unspecified, the repo from which the trigger
+     * invocation originated is assumed to be the repo from which to read the specified path.
      * 
      */
     @Import(name="uri")
     private @Nullable Output<String> uri;
 
     /**
-     * @return The URI of the repo (required).
+     * @return The URI of the repo (optional). If unspecified, the repo from which the trigger
+     * invocation originated is assumed to be the repo from which to read the specified path.
      * 
      */
     public Optional<Output<String>> uri() {
@@ -115,9 +113,7 @@ public final class TriggerGitFileSourceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param path Path at which to mount the volume.
-         * Paths must be absolute and cannot conflict with other volume paths on the same
-         * build step or with certain reserved volume paths.
+         * @param path The path of the file, with the repo root as the root of the path.
          * 
          * @return builder
          * 
@@ -128,9 +124,7 @@ public final class TriggerGitFileSourceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param path Path at which to mount the volume.
-         * Paths must be absolute and cannot conflict with other volume paths on the same
-         * build step or with certain reserved volume paths.
+         * @param path The path of the file, with the repo root as the root of the path.
          * 
          * @return builder
          * 
@@ -190,7 +184,8 @@ public final class TriggerGitFileSourceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param uri The URI of the repo (required).
+         * @param uri The URI of the repo (optional). If unspecified, the repo from which the trigger
+         * invocation originated is assumed to be the repo from which to read the specified path.
          * 
          * @return builder
          * 
@@ -201,7 +196,8 @@ public final class TriggerGitFileSourceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param uri The URI of the repo (required).
+         * @param uri The URI of the repo (optional). If unspecified, the repo from which the trigger
+         * invocation originated is assumed to be the repo from which to read the specified path.
          * 
          * @return builder
          * 

@@ -17,16 +17,14 @@ public final class ClusterNetworkPolicyArgs extends com.pulumi.resources.Resourc
     public static final ClusterNetworkPolicyArgs Empty = new ClusterNetworkPolicyArgs();
 
     /**
-     * Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * Whether network policy is enabled on the cluster.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Whether network policy is enabled on the cluster.
      * 
      */
     public Output<Boolean> enabled() {
@@ -74,8 +72,7 @@ public final class ClusterNetworkPolicyArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param enabled Enable the PodSecurityPolicy controller for this cluster.
-         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         * @param enabled Whether network policy is enabled on the cluster.
          * 
          * @return builder
          * 
@@ -86,8 +83,7 @@ public final class ClusterNetworkPolicyArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param enabled Enable the PodSecurityPolicy controller for this cluster.
-         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         * @param enabled Whether network policy is enabled on the cluster.
          * 
          * @return builder
          * 

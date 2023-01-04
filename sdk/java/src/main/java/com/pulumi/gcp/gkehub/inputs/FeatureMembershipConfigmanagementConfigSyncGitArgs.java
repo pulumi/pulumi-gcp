@@ -16,14 +16,14 @@ public final class FeatureMembershipConfigmanagementConfigSyncGitArgs extends co
     public static final FeatureMembershipConfigmanagementConfigSyncGitArgs Empty = new FeatureMembershipConfigmanagementConfigSyncGitArgs();
 
     /**
-     * The GCP Service Account Email used for auth when secret_type is gcpserviceaccount.
+     * The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
      * 
      */
     @Import(name="gcpServiceAccountEmail")
     private @Nullable Output<String> gcpServiceAccountEmail;
 
     /**
-     * @return The GCP Service Account Email used for auth when secret_type is gcpserviceaccount.
+     * @return The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
      * 
      */
     public Optional<Output<String>> gcpServiceAccountEmail() {
@@ -46,14 +46,14 @@ public final class FeatureMembershipConfigmanagementConfigSyncGitArgs extends co
     }
 
     /**
-     * The absolute path of the directory that contains the local resources. Default: the root directory of the image.
+     * The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
      * 
      */
     @Import(name="policyDir")
     private @Nullable Output<String> policyDir;
 
     /**
-     * @return The absolute path of the directory that contains the local resources. Default: the root directory of the image.
+     * @return The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
      * 
      */
     public Optional<Output<String>> policyDir() {
@@ -61,14 +61,14 @@ public final class FeatureMembershipConfigmanagementConfigSyncGitArgs extends co
     }
 
     /**
-     * Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
+     * Type of secret configured for access to the Git repo.
      * 
      */
     @Import(name="secretType")
     private @Nullable Output<String> secretType;
 
     /**
-     * @return Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
+     * @return Type of secret configured for access to the Git repo.
      * 
      */
     public Optional<Output<String>> secretType() {
@@ -91,14 +91,14 @@ public final class FeatureMembershipConfigmanagementConfigSyncGitArgs extends co
     }
 
     /**
-     * The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
+     * The URL of the Git repository to use as the source of truth.
      * 
      */
     @Import(name="syncRepo")
     private @Nullable Output<String> syncRepo;
 
     /**
-     * @return The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
+     * @return The URL of the Git repository to use as the source of truth.
      * 
      */
     public Optional<Output<String>> syncRepo() {
@@ -121,14 +121,14 @@ public final class FeatureMembershipConfigmanagementConfigSyncGitArgs extends co
     }
 
     /**
-     * Period in seconds(int64 format) between consecutive syncs. Default: 15.
+     * Period in seconds between consecutive syncs. Default: 15.
      * 
      */
     @Import(name="syncWaitSecs")
     private @Nullable Output<String> syncWaitSecs;
 
     /**
-     * @return Period in seconds(int64 format) between consecutive syncs. Default: 15.
+     * @return Period in seconds between consecutive syncs. Default: 15.
      * 
      */
     public Optional<Output<String>> syncWaitSecs() {
@@ -167,7 +167,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncGitArgs extends co
         }
 
         /**
-         * @param gcpServiceAccountEmail The GCP Service Account Email used for auth when secret_type is gcpserviceaccount.
+         * @param gcpServiceAccountEmail The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncGitArgs extends co
         }
 
         /**
-         * @param gcpServiceAccountEmail The GCP Service Account Email used for auth when secret_type is gcpserviceaccount.
+         * @param gcpServiceAccountEmail The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncGitArgs extends co
         }
 
         /**
-         * @param policyDir The absolute path of the directory that contains the local resources. Default: the root directory of the image.
+         * @param policyDir The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncGitArgs extends co
         }
 
         /**
-         * @param policyDir The absolute path of the directory that contains the local resources. Default: the root directory of the image.
+         * @param policyDir The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncGitArgs extends co
         }
 
         /**
-         * @param secretType Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
+         * @param secretType Type of secret configured for access to the Git repo.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncGitArgs extends co
         }
 
         /**
-         * @param secretType Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
+         * @param secretType Type of secret configured for access to the Git repo.
          * 
          * @return builder
          * 
@@ -272,7 +272,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncGitArgs extends co
         }
 
         /**
-         * @param syncRepo The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
+         * @param syncRepo The URL of the Git repository to use as the source of truth.
          * 
          * @return builder
          * 
@@ -283,7 +283,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncGitArgs extends co
         }
 
         /**
-         * @param syncRepo The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
+         * @param syncRepo The URL of the Git repository to use as the source of truth.
          * 
          * @return builder
          * 
@@ -314,7 +314,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncGitArgs extends co
         }
 
         /**
-         * @param syncWaitSecs Period in seconds(int64 format) between consecutive syncs. Default: 15.
+         * @param syncWaitSecs Period in seconds between consecutive syncs. Default: 15.
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncGitArgs extends co
         }
 
         /**
-         * @param syncWaitSecs Period in seconds(int64 format) between consecutive syncs. Default: 15.
+         * @param syncWaitSecs Period in seconds between consecutive syncs. Default: 15.
          * 
          * @return builder
          * 

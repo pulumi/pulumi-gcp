@@ -213,14 +213,16 @@ public class Routine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.arguments);
     }
     /**
-     * The time when this routine was created, in milliseconds since the epoch.
+     * The time when this routine was created, in milliseconds since the
+     * epoch.
      * 
      */
     @Export(name="creationTime", type=Integer.class, parameters={})
     private Output<Integer> creationTime;
 
     /**
-     * @return The time when this routine was created, in milliseconds since the epoch.
+     * @return The time when this routine was created, in milliseconds since the
+     * epoch.
      * 
      */
     public Output<Integer> creationTime() {
@@ -319,14 +321,16 @@ public class Routine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.language);
     }
     /**
-     * The time when this routine was modified, in milliseconds since the epoch.
+     * The time when this routine was modified, in milliseconds since the
+     * epoch.
      * 
      */
     @Export(name="lastModifiedTime", type=Integer.class, parameters={})
     private Output<Integer> lastModifiedTime;
 
     /**
-     * @return The time when this routine was modified, in milliseconds since the epoch.
+     * @return The time when this routine was modified, in milliseconds since the
+     * epoch.
      * 
      */
     public Output<Integer> lastModifiedTime() {

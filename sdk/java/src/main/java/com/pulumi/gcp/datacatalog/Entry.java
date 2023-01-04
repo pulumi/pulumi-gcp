@@ -204,16 +204,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:datacatalog/entry:Entry")
 public class Entry extends com.pulumi.resources.CustomResource {
     /**
-     * Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
-     * https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+     * Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
+     * Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+     * Structure is documented below.
      * 
      */
     @Export(name="bigqueryDateShardedSpecs", type=List.class, parameters={EntryBigqueryDateShardedSpec.class})
     private Output<List<EntryBigqueryDateShardedSpec>> bigqueryDateShardedSpecs;
 
     /**
-     * @return Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
-     * https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+     * @return Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
+     * Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+     * Structure is documented below.
      * 
      */
     public Output<List<EntryBigqueryDateShardedSpec>> bigqueryDateShardedSpecs() {
@@ -221,6 +223,7 @@ public class Entry extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
+     * Structure is documented below.
      * 
      */
     @Export(name="bigqueryTableSpecs", type=List.class, parameters={EntryBigqueryTableSpec.class})
@@ -228,6 +231,7 @@ public class Entry extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
+     * Structure is documented below.
      * 
      */
     public Output<List<EntryBigqueryTableSpec>> bigqueryTableSpecs() {
@@ -346,18 +350,18 @@ public class Entry extends com.pulumi.resources.CustomResource {
         return this.linkedResource;
     }
     /**
-     * The Data Catalog resource name of the entry in URL format. Example:
-     * projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}. Note that this Entry and its
-     * child resources may not actually be stored in the location in this name.
+     * The Data Catalog resource name of the entry in URL format.
+     * Example: projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}.
+     * Note that this Entry and its child resources may not actually be stored in the location in this name.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The Data Catalog resource name of the entry in URL format. Example:
-     * projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}. Note that this Entry and its
-     * child resources may not actually be stored in the location in this name.
+     * @return The Data Catalog resource name of the entry in URL format.
+     * Example: projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}.
+     * Note that this Entry and its child resources may not actually be stored in the location in this name.
      * 
      */
     public Output<String> name() {

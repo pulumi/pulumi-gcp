@@ -15,8 +15,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation {
     /**
-     * @return A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
-     * Structure is documented below.
+     * @return Only apply the transformation if the condition evaluates to true for the given RecordCondition. The conditions are allowed to reference fields that are not used in the actual transformation.
+     * Example Use Cases:
+     * - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range.
+     * - Redact a field if the date of birth field is greater than 85.
+     *   Structure is documented below.
      * 
      */
     private @Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition condition;
@@ -37,8 +40,11 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
     private PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation() {}
     /**
-     * @return A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
-     * Structure is documented below.
+     * @return Only apply the transformation if the condition evaluates to true for the given RecordCondition. The conditions are allowed to reference fields that are not used in the actual transformation.
+     * Example Use Cases:
+     * - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range.
+     * - Redact a field if the date of birth field is greater than 85.
+     *   Structure is documented below.
      * 
      */
     public Optional<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition> condition() {

@@ -12,7 +12,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAppleAppConfigResult {
     private String appId;
+    /**
+     * @return The content of the XML configuration file as a base64-encoded string.
+     * 
+     */
     private String configFileContents;
+    /**
+     * @return The filename that the configuration artifact for the IosApp is typically saved as.
+     * 
+     */
     private String configFilename;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -25,9 +33,17 @@ public final class GetAppleAppConfigResult {
     public String appId() {
         return this.appId;
     }
+    /**
+     * @return The content of the XML configuration file as a base64-encoded string.
+     * 
+     */
     public String configFileContents() {
         return this.configFileContents;
     }
+    /**
+     * @return The filename that the configuration artifact for the IosApp is typically saved as.
+     * 
+     */
     public String configFilename() {
         return this.configFilename;
     }

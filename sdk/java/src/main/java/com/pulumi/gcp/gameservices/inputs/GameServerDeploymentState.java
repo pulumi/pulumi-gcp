@@ -80,8 +80,9 @@ public final class GameServerDeploymentState extends com.pulumi.resources.Resour
 
     /**
      * The resource id of the game server deployment, eg:
-     * &#39;projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}&#39;. For example,
-     * &#39;projects/my-project/locations/{location}/gameServerDeployments/my-deployment&#39;.
+     * `projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}`.
+     * For example,
+     * `projects/my-project/locations/{location}/gameServerDeployments/my-deployment`.
      * 
      */
     @Import(name="name")
@@ -89,8 +90,9 @@ public final class GameServerDeploymentState extends com.pulumi.resources.Resour
 
     /**
      * @return The resource id of the game server deployment, eg:
-     * &#39;projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}&#39;. For example,
-     * &#39;projects/my-project/locations/{location}/gameServerDeployments/my-deployment&#39;.
+     * `projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}`.
+     * For example,
+     * `projects/my-project/locations/{location}/gameServerDeployments/my-deployment`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -231,8 +233,9 @@ public final class GameServerDeploymentState extends com.pulumi.resources.Resour
 
         /**
          * @param name The resource id of the game server deployment, eg:
-         * &#39;projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}&#39;. For example,
-         * &#39;projects/my-project/locations/{location}/gameServerDeployments/my-deployment&#39;.
+         * `projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}`.
+         * For example,
+         * `projects/my-project/locations/{location}/gameServerDeployments/my-deployment`.
          * 
          * @return builder
          * 
@@ -244,8 +247,9 @@ public final class GameServerDeploymentState extends com.pulumi.resources.Resour
 
         /**
          * @param name The resource id of the game server deployment, eg:
-         * &#39;projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}&#39;. For example,
-         * &#39;projects/my-project/locations/{location}/gameServerDeployments/my-deployment&#39;.
+         * `projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}`.
+         * For example,
+         * `projects/my-project/locations/{location}/gameServerDeployments/my-deployment`.
          * 
          * @return builder
          * 

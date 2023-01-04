@@ -15,14 +15,14 @@ public final class FlexibleAppVersionResourcesVolumeArgs extends com.pulumi.reso
     public static final FlexibleAppVersionResourcesVolumeArgs Empty = new FlexibleAppVersionResourcesVolumeArgs();
 
     /**
-     * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+     * Unique name for the volume.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+     * @return Unique name for the volume.
      * 
      */
     public Output<String> name() {
@@ -86,7 +86,7 @@ public final class FlexibleAppVersionResourcesVolumeArgs extends com.pulumi.reso
         }
 
         /**
-         * @param name Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+         * @param name Unique name for the volume.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class FlexibleAppVersionResourcesVolumeArgs extends com.pulumi.reso
         }
 
         /**
-         * @param name Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+         * @param name Unique name for the volume.
          * 
          * @return builder
          * 

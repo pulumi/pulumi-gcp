@@ -11,12 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceCondition {
+    /**
+     * @return A reason for the execution condition.
+     * 
+     */
     private @Nullable String executionReason;
+    /**
+     * @return Last time the condition transitioned from one status to another.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
     private @Nullable String lastTransitionTime;
+    /**
+     * @return Human readable message indicating details about the current status.
+     * 
+     */
     private @Nullable String message;
+    /**
+     * @return A common (service-level) reason for this condition.
+     * 
+     */
     private @Nullable String reason;
+    /**
+     * @return A reason for the revision condition.
+     * 
+     */
     private @Nullable String revisionReason;
+    /**
+     * @return How to interpret failures of this condition, one of Error, Warning, Info
+     * 
+     */
     private @Nullable String severity;
+    /**
+     * @return State of the condition.
+     * 
+     */
     private @Nullable String state;
     /**
      * @return The allocation type for this traffic target.
@@ -26,24 +55,53 @@ public final class ServiceCondition {
     private @Nullable String type;
 
     private ServiceCondition() {}
+    /**
+     * @return A reason for the execution condition.
+     * 
+     */
     public Optional<String> executionReason() {
         return Optional.ofNullable(this.executionReason);
     }
+    /**
+     * @return Last time the condition transitioned from one status to another.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
     public Optional<String> lastTransitionTime() {
         return Optional.ofNullable(this.lastTransitionTime);
     }
+    /**
+     * @return Human readable message indicating details about the current status.
+     * 
+     */
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
+    /**
+     * @return A common (service-level) reason for this condition.
+     * 
+     */
     public Optional<String> reason() {
         return Optional.ofNullable(this.reason);
     }
+    /**
+     * @return A reason for the revision condition.
+     * 
+     */
     public Optional<String> revisionReason() {
         return Optional.ofNullable(this.revisionReason);
     }
+    /**
+     * @return How to interpret failures of this condition, one of Error, Warning, Info
+     * 
+     */
     public Optional<String> severity() {
         return Optional.ofNullable(this.severity);
     }
+    /**
+     * @return State of the condition.
+     * 
+     */
     public Optional<String> state() {
         return Optional.ofNullable(this.state);
     }

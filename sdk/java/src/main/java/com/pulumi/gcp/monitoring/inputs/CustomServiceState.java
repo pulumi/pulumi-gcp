@@ -33,14 +33,16 @@ public final class CustomServiceState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+     * The full resource name for this service. The syntax is:
+     * projects/[PROJECT_ID]/services/[SERVICE_ID].
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+     * @return The full resource name for this service. The syntax is:
+     * projects/[PROJECT_ID]/services/[SERVICE_ID].
      * 
      */
     public Optional<Output<String>> name() {
@@ -174,7 +176,8 @@ public final class CustomServiceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+         * @param name The full resource name for this service. The syntax is:
+         * projects/[PROJECT_ID]/services/[SERVICE_ID].
          * 
          * @return builder
          * 
@@ -185,7 +188,8 @@ public final class CustomServiceState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+         * @param name The full resource name for this service. The syntax is:
+         * projects/[PROJECT_ID]/services/[SERVICE_ID].
          * 
          * @return builder
          * 

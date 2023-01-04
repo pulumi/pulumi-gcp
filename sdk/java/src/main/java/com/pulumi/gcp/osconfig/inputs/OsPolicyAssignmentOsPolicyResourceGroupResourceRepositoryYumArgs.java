@@ -62,14 +62,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumA
     }
 
     /**
-     * Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+     * Required. A one word, unique name for this repository. This is the `repo id` in the yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for resource conflicts.
      * 
      */
     @Import(name="id", required=true)
     private Output<String> id;
 
     /**
-     * @return Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+     * @return Required. A one word, unique name for this repository. This is the `repo id` in the yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for resource conflicts.
      * 
      */
     public Output<String> id() {
@@ -177,7 +177,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumA
         }
 
         /**
-         * @param id Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+         * @param id Required. A one word, unique name for this repository. This is the `repo id` in the yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for resource conflicts.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumA
         }
 
         /**
-         * @param id Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+         * @param id Required. A one word, unique name for this repository. This is the `repo id` in the yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for resource conflicts.
          * 
          * @return builder
          * 

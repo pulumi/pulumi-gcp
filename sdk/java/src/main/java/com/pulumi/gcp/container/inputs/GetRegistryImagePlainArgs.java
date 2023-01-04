@@ -14,37 +14,77 @@ public final class GetRegistryImagePlainArgs extends com.pulumi.resources.Invoke
 
     public static final GetRegistryImagePlainArgs Empty = new GetRegistryImagePlainArgs();
 
+    /**
+     * The image digest to fetch, if any.
+     * 
+     */
     @Import(name="digest")
     private @Nullable String digest;
 
+    /**
+     * @return The image digest to fetch, if any.
+     * 
+     */
     public Optional<String> digest() {
         return Optional.ofNullable(this.digest);
     }
 
+    /**
+     * The image name.
+     * 
+     */
     @Import(name="name", required=true)
     private String name;
 
+    /**
+     * @return The image name.
+     * 
+     */
     public String name() {
         return this.name;
     }
 
+    /**
+     * The project ID that this image is attached to.  If not provider, provider project will be used instead.
+     * 
+     */
     @Import(name="project")
     private @Nullable String project;
 
+    /**
+     * @return The project ID that this image is attached to.  If not provider, provider project will be used instead.
+     * 
+     */
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
+     * 
+     */
     @Import(name="region")
     private @Nullable String region;
 
+    /**
+     * @return The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
+     * 
+     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
 
+    /**
+     * The tag to fetch, if any.
+     * 
+     */
     @Import(name="tag")
     private @Nullable String tag;
 
+    /**
+     * @return The tag to fetch, if any.
+     * 
+     */
     public Optional<String> tag() {
         return Optional.ofNullable(this.tag);
     }
@@ -77,26 +117,56 @@ public final class GetRegistryImagePlainArgs extends com.pulumi.resources.Invoke
             $ = new GetRegistryImagePlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param digest The image digest to fetch, if any.
+         * 
+         * @return builder
+         * 
+         */
         public Builder digest(@Nullable String digest) {
             $.digest = digest;
             return this;
         }
 
+        /**
+         * @param name The image name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param project The project ID that this image is attached to.  If not provider, provider project will be used instead.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable String project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param region The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable String region) {
             $.region = region;
             return this;
         }
 
+        /**
+         * @param tag The tag to fetch, if any.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tag(@Nullable String tag) {
             $.tag = tag;
             return this;

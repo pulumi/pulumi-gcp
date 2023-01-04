@@ -14,9 +14,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TriggerGithub {
     /**
-     * @return Name of the volume to mount.
-     * Volume names must be unique per build step and must be valid names for Docker volumes.
-     * Each named volume must be used by at least two build steps.
+     * @return Name of the repository. For example: The name for
+     * https://github.com/googlecloudplatform/cloud-builders is &#34;cloud-builders&#34;.
      * 
      */
     private @Nullable String name;
@@ -41,9 +40,8 @@ public final class TriggerGithub {
 
     private TriggerGithub() {}
     /**
-     * @return Name of the volume to mount.
-     * Volume names must be unique per build step and must be valid names for Docker volumes.
-     * Each named volume must be used by at least two build steps.
+     * @return Name of the repository. For example: The name for
+     * https://github.com/googlecloudplatform/cloud-builders is &#34;cloud-builders&#34;.
      * 
      */
     public Optional<String> name() {

@@ -16,16 +16,32 @@ public final class PrivateConnectionErrorArgs extends com.pulumi.resources.Resou
 
     public static final PrivateConnectionErrorArgs Empty = new PrivateConnectionErrorArgs();
 
+    /**
+     * A list of messages that carry the error details.
+     * 
+     */
     @Import(name="details")
     private @Nullable Output<Map<String,String>> details;
 
+    /**
+     * @return A list of messages that carry the error details.
+     * 
+     */
     public Optional<Output<Map<String,String>>> details() {
         return Optional.ofNullable(this.details);
     }
 
+    /**
+     * A message containing more information about the error that occurred.
+     * 
+     */
     @Import(name="message")
     private @Nullable Output<String> message;
 
+    /**
+     * @return A message containing more information about the error that occurred.
+     * 
+     */
     public Optional<Output<String>> message() {
         return Optional.ofNullable(this.message);
     }
@@ -55,20 +71,44 @@ public final class PrivateConnectionErrorArgs extends com.pulumi.resources.Resou
             $ = new PrivateConnectionErrorArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param details A list of messages that carry the error details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder details(@Nullable Output<Map<String,String>> details) {
             $.details = details;
             return this;
         }
 
+        /**
+         * @param details A list of messages that carry the error details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder details(Map<String,String> details) {
             return details(Output.of(details));
         }
 
+        /**
+         * @param message A message containing more information about the error that occurred.
+         * 
+         * @return builder
+         * 
+         */
         public Builder message(@Nullable Output<String> message) {
             $.message = message;
             return this;
         }
 
+        /**
+         * @param message A message containing more information about the error that occurred.
+         * 
+         * @return builder
+         * 
+         */
         public Builder message(String message) {
             return message(Output.of(message));
         }

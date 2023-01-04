@@ -114,16 +114,16 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the Google Cloud project that this VM image belongs to.
-     * Format: projects/{project_id}
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The name of the Google Cloud project that this VM image belongs to.
-     * Format: projects/{project_id}
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Optional<Output<String>> project() {
@@ -311,8 +311,8 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The name of the Google Cloud project that this VM image belongs to.
-         * Format: projects/{project_id}
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -323,8 +323,8 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The name of the Google Cloud project that this VM image belongs to.
-         * Format: projects/{project_id}
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 

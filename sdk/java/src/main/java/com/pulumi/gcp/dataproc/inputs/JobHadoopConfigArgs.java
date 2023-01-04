@@ -64,14 +64,14 @@ public final class JobHadoopConfigArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * HCFS URIs of jar files to be added to the Spark CLASSPATH.
+     * HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
      * 
      */
     @Import(name="jarFileUris")
     private @Nullable Output<List<String>> jarFileUris;
 
     /**
-     * @return HCFS URIs of jar files to be added to the Spark CLASSPATH.
+     * @return HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
      * 
      */
     public Optional<Output<List<String>>> jarFileUris() {
@@ -116,14 +116,14 @@ public final class JobHadoopConfigArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+     * A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site` and classes in user code..
      * 
      */
     @Import(name="properties")
     private @Nullable Output<Map<String,String>> properties;
 
     /**
-     * @return A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+     * @return A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site` and classes in user code..
      * 
      */
     public Optional<Output<Map<String,String>>> properties() {
@@ -255,7 +255,7 @@ public final class JobHadoopConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param jarFileUris HCFS URIs of jar files to be added to the Spark CLASSPATH.
+         * @param jarFileUris HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class JobHadoopConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param jarFileUris HCFS URIs of jar files to be added to the Spark CLASSPATH.
+         * @param jarFileUris HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class JobHadoopConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param jarFileUris HCFS URIs of jar files to be added to the Spark CLASSPATH.
+         * @param jarFileUris HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
          * 
          * @return builder
          * 
@@ -337,7 +337,7 @@ public final class JobHadoopConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param properties A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+         * @param properties A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site` and classes in user code..
          * 
          * @return builder
          * 
@@ -348,7 +348,7 @@ public final class JobHadoopConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param properties A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+         * @param properties A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site` and classes in user code..
          * 
          * @return builder
          * 

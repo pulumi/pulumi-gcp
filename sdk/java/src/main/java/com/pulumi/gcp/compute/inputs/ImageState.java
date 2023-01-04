@@ -22,14 +22,16 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
     public static final ImageState Empty = new ImageState();
 
     /**
-     * Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
+     * Size of the image tar.gz archive stored in Google Cloud Storage (in
+     * bytes).
      * 
      */
     @Import(name="archiveSizeBytes")
     private @Nullable Output<Integer> archiveSizeBytes;
 
     /**
-     * @return Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
+     * @return Size of the image tar.gz archive stored in Google Cloud Storage (in
+     * bytes).
      * 
      */
     public Optional<Output<Integer>> archiveSizeBytes() {
@@ -149,14 +151,16 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * The fingerprint used for optimistic locking of this resource. Used
+     * internally during updates.
      * 
      */
     @Import(name="labelFingerprint")
     private @Nullable Output<String> labelFingerprint;
 
     /**
-     * @return The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * @return The fingerprint used for optimistic locking of this resource. Used
+     * internally during updates.
      * 
      */
     public Optional<Output<String>> labelFingerprint() {
@@ -381,7 +385,8 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param archiveSizeBytes Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
+         * @param archiveSizeBytes Size of the image tar.gz archive stored in Google Cloud Storage (in
+         * bytes).
          * 
          * @return builder
          * 
@@ -392,7 +397,8 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param archiveSizeBytes Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
+         * @param archiveSizeBytes Size of the image tar.gz archive stored in Google Cloud Storage (in
+         * bytes).
          * 
          * @return builder
          * 
@@ -562,7 +568,8 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labelFingerprint The fingerprint used for optimistic locking of this resource. Used internally during updates.
+         * @param labelFingerprint The fingerprint used for optimistic locking of this resource. Used
+         * internally during updates.
          * 
          * @return builder
          * 
@@ -573,7 +580,8 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labelFingerprint The fingerprint used for optimistic locking of this resource. Used internally during updates.
+         * @param labelFingerprint The fingerprint used for optimistic locking of this resource. Used
+         * internally during updates.
          * 
          * @return builder
          * 

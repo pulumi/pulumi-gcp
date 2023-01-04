@@ -14,16 +14,14 @@ public final class ClusterDefaultSnatStatusArgs extends com.pulumi.resources.Res
     public static final ClusterDefaultSnatStatusArgs Empty = new ClusterDefaultSnatStatusArgs();
 
     /**
-     * The status of the Istio addon, which makes it easy to set up Istio for services in a
-     * cluster. It is disabled by default. Set `disabled = false` to enable.
+     * Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
      * 
      */
     @Import(name="disabled", required=true)
     private Output<Boolean> disabled;
 
     /**
-     * @return The status of the Istio addon, which makes it easy to set up Istio for services in a
-     * cluster. It is disabled by default. Set `disabled = false` to enable.
+     * @return Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
      * 
      */
     public Output<Boolean> disabled() {
@@ -55,8 +53,7 @@ public final class ClusterDefaultSnatStatusArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param disabled The status of the Istio addon, which makes it easy to set up Istio for services in a
-         * cluster. It is disabled by default. Set `disabled = false` to enable.
+         * @param disabled Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
          * 
          * @return builder
          * 
@@ -67,8 +64,7 @@ public final class ClusterDefaultSnatStatusArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param disabled The status of the Istio addon, which makes it easy to set up Istio for services in a
-         * cluster. It is disabled by default. Set `disabled = false` to enable.
+         * @param disabled Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
          * 
          * @return builder
          * 

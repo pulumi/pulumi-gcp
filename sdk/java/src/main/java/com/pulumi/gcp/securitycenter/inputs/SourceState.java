@@ -54,14 +54,16 @@ public final class SourceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The resource name of this source, in the format &#39;organizations/{{organization}}/sources/{{source}}&#39;.
+     * The resource name of this source, in the format
+     * `organizations/{{organization}}/sources/{{source}}`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The resource name of this source, in the format &#39;organizations/{{organization}}/sources/{{source}}&#39;.
+     * @return The resource name of this source, in the format
+     * `organizations/{{organization}}/sources/{{source}}`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -163,7 +165,8 @@ public final class SourceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name of this source, in the format &#39;organizations/{{organization}}/sources/{{source}}&#39;.
+         * @param name The resource name of this source, in the format
+         * `organizations/{{organization}}/sources/{{source}}`.
          * 
          * @return builder
          * 
@@ -174,7 +177,8 @@ public final class SourceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name of this source, in the format &#39;organizations/{{organization}}/sources/{{source}}&#39;.
+         * @param name The resource name of this source, in the format
+         * `organizations/{{organization}}/sources/{{source}}`.
          * 
          * @return builder
          * 

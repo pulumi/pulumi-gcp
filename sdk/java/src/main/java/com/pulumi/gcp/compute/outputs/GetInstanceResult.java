@@ -61,6 +61,10 @@ public final class GetInstanceResult {
      */
     private String description;
     private String desiredStatus;
+    /**
+     * @return - Whether the instance has virtual displays enabled.
+     * 
+     */
     private Boolean enableDisplay;
     /**
      * @return List of the type and count of accelerator cards attached to the instance. Structure is documented below.
@@ -218,6 +222,10 @@ public final class GetInstanceResult {
     public String desiredStatus() {
         return this.desiredStatus;
     }
+    /**
+     * @return - Whether the instance has virtual displays enabled.
+     * 
+     */
     public Boolean enableDisplay() {
         return this.enableDisplay;
     }

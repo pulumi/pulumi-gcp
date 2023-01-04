@@ -150,14 +150,14 @@ public class Api extends com.pulumi.resources.CustomResource {
         return this.managedService;
     }
     /**
-     * The resource name of the API. Format &#39;projects/{{project}}/locations/global/apis/{{apiId}}&#39;
+     * The resource name of the API. Format `projects/{{project}}/locations/global/apis/{{apiId}}`
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The resource name of the API. Format &#39;projects/{{project}}/locations/global/apis/{{apiId}}&#39;
+     * @return The resource name of the API. Format `projects/{{project}}/locations/global/apis/{{apiId}}`
      * 
      */
     public Output<String> name() {

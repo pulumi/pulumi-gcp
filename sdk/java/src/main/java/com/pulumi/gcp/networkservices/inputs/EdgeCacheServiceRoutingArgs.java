@@ -33,14 +33,16 @@ public final class EdgeCacheServiceRoutingArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The name of the pathMatcher associated with this hostRule.
+     * The list of pathMatchers referenced via name by hostRules. PathMatcher is used to match the path portion of the URL when a HostRule matches the URL&#39;s host portion.
+     * Structure is documented below.
      * 
      */
     @Import(name="pathMatchers", required=true)
     private Output<List<EdgeCacheServiceRoutingPathMatcherArgs>> pathMatchers;
 
     /**
-     * @return The name of the pathMatcher associated with this hostRule.
+     * @return The list of pathMatchers referenced via name by hostRules. PathMatcher is used to match the path portion of the URL when a HostRule matches the URL&#39;s host portion.
+     * Structure is documented below.
      * 
      */
     public Output<List<EdgeCacheServiceRoutingPathMatcherArgs>> pathMatchers() {
@@ -107,7 +109,8 @@ public final class EdgeCacheServiceRoutingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param pathMatchers The name of the pathMatcher associated with this hostRule.
+         * @param pathMatchers The list of pathMatchers referenced via name by hostRules. PathMatcher is used to match the path portion of the URL when a HostRule matches the URL&#39;s host portion.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -118,7 +121,8 @@ public final class EdgeCacheServiceRoutingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param pathMatchers The name of the pathMatcher associated with this hostRule.
+         * @param pathMatchers The list of pathMatchers referenced via name by hostRules. PathMatcher is used to match the path portion of the URL when a HostRule matches the URL&#39;s host portion.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -128,7 +132,8 @@ public final class EdgeCacheServiceRoutingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param pathMatchers The name of the pathMatcher associated with this hostRule.
+         * @param pathMatchers The list of pathMatchers referenced via name by hostRules. PathMatcher is used to match the path portion of the URL when a HostRule matches the URL&#39;s host portion.
+         * Structure is documented below.
          * 
          * @return builder
          * 

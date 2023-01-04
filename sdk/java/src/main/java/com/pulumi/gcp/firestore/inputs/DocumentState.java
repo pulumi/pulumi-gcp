@@ -92,7 +92,7 @@ public final class DocumentState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A server defined name for this index. Format:
-     * &#39;projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}&#39;
+     * `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
      * 
      */
     @Import(name="name")
@@ -100,7 +100,7 @@ public final class DocumentState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A server defined name for this index. Format:
-     * &#39;projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}&#39;
+     * `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
      * 
      */
     public Optional<Output<String>> name() {
@@ -293,7 +293,7 @@ public final class DocumentState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name A server defined name for this index. Format:
-         * &#39;projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}&#39;
+         * `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class DocumentState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name A server defined name for this index. Format:
-         * &#39;projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}&#39;
+         * `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
          * 
          * @return builder
          * 

@@ -92,7 +92,6 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
     }
 
     /**
-     * - 
      * The Compute Engine guest attributes. (see [Project and instance
      * guest attributes](https://cloud.google.com/compute/docs/
      * storing-retrieving-metadata#guest_attributes)).
@@ -102,8 +101,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
     private @Nullable Output<Map<String,String>> guestAttributes;
 
     /**
-     * @return -
-     * The Compute Engine guest attributes. (see [Project and instance
+     * @return The Compute Engine guest attributes. (see [Project and instance
      * guest attributes](https://cloud.google.com/compute/docs/
      * storing-retrieving-metadata#guest_attributes)).
      * 
@@ -138,18 +136,24 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
     }
 
     /**
-     * Labels to apply to this disk. These can be later modified
-     * by the disks.setLabels method. This field is only
-     * applicable for persistent disks.
+     * The labels to associate with this runtime. Label **keys** must
+     * contain 1 to 63 characters, and must conform to [RFC 1035]
+     * (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+     * empty, but, if present, must contain 1 to 63 characters, and must
+     * conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+     * more than 32 labels can be associated with a cluster.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Labels to apply to this disk. These can be later modified
-     * by the disks.setLabels method. This field is only
-     * applicable for persistent disks.
+     * @return The labels to associate with this runtime. Label **keys** must
+     * contain 1 to 63 characters, and must conform to [RFC 1035]
+     * (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+     * empty, but, if present, must contain 1 to 63 characters, and must
+     * conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+     * more than 32 labels can be associated with a cluster.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -331,7 +335,6 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
     }
 
     /**
-     * - 
      * The zone where the virtual machine is located.
      * 
      */
@@ -339,8 +342,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
     private @Nullable Output<String> zone;
 
     /**
-     * @return -
-     * The zone where the virtual machine is located.
+     * @return The zone where the virtual machine is located.
      * 
      */
     public Optional<Output<String>> zone() {
@@ -490,8 +492,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
         }
 
         /**
-         * @param guestAttributes -
-         * The Compute Engine guest attributes. (see [Project and instance
+         * @param guestAttributes The Compute Engine guest attributes. (see [Project and instance
          * guest attributes](https://cloud.google.com/compute/docs/
          * storing-retrieving-metadata#guest_attributes)).
          * 
@@ -504,8 +505,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
         }
 
         /**
-         * @param guestAttributes -
-         * The Compute Engine guest attributes. (see [Project and instance
+         * @param guestAttributes The Compute Engine guest attributes. (see [Project and instance
          * guest attributes](https://cloud.google.com/compute/docs/
          * storing-retrieving-metadata#guest_attributes)).
          * 
@@ -548,9 +548,12 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
         }
 
         /**
-         * @param labels Labels to apply to this disk. These can be later modified
-         * by the disks.setLabels method. This field is only
-         * applicable for persistent disks.
+         * @param labels The labels to associate with this runtime. Label **keys** must
+         * contain 1 to 63 characters, and must conform to [RFC 1035]
+         * (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+         * empty, but, if present, must contain 1 to 63 characters, and must
+         * conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+         * more than 32 labels can be associated with a cluster.
          * 
          * @return builder
          * 
@@ -561,9 +564,12 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
         }
 
         /**
-         * @param labels Labels to apply to this disk. These can be later modified
-         * by the disks.setLabels method. This field is only
-         * applicable for persistent disks.
+         * @param labels The labels to associate with this runtime. Label **keys** must
+         * contain 1 to 63 characters, and must conform to [RFC 1035]
+         * (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+         * empty, but, if present, must contain 1 to 63 characters, and must
+         * conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+         * more than 32 labels can be associated with a cluster.
          * 
          * @return builder
          * 
@@ -807,8 +813,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
         }
 
         /**
-         * @param zone -
-         * The zone where the virtual machine is located.
+         * @param zone The zone where the virtual machine is located.
          * 
          * @return builder
          * 
@@ -819,8 +824,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
         }
 
         /**
-         * @param zone -
-         * The zone where the virtual machine is located.
+         * @param zone The zone where the virtual machine is located.
          * 
          * @return builder
          * 

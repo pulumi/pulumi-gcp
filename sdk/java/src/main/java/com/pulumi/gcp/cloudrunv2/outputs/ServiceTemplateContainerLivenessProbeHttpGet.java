@@ -20,7 +20,7 @@ public final class ServiceTemplateContainerLivenessProbeHttpGet {
      */
     private @Nullable List<ServiceTemplateContainerLivenessProbeHttpGetHttpHeader> httpHeaders;
     /**
-     * @return The relative path of the secret in the container.
+     * @return Path to access on the HTTP server. Defaults to &#39;/&#39;.
      * 
      */
     private @Nullable String path;
@@ -35,7 +35,7 @@ public final class ServiceTemplateContainerLivenessProbeHttpGet {
         return this.httpHeaders == null ? List.of() : this.httpHeaders;
     }
     /**
-     * @return The relative path of the secret in the container.
+     * @return Path to access on the HTTP server. Defaults to &#39;/&#39;.
      * 
      */
     public Optional<String> path() {

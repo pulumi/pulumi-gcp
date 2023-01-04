@@ -14,16 +14,14 @@ public final class ClusterServiceExternalIpsConfigArgs extends com.pulumi.resour
     public static final ClusterServiceExternalIpsConfigArgs Empty = new ClusterServiceExternalIpsConfigArgs();
 
     /**
-     * Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * Controls whether external ips specified by a service will be allowed. It is enabled by default.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Controls whether external ips specified by a service will be allowed. It is enabled by default.
      * 
      */
     public Output<Boolean> enabled() {
@@ -55,8 +53,7 @@ public final class ClusterServiceExternalIpsConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param enabled Enable the PodSecurityPolicy controller for this cluster.
-         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         * @param enabled Controls whether external ips specified by a service will be allowed. It is enabled by default.
          * 
          * @return builder
          * 
@@ -67,8 +64,7 @@ public final class ClusterServiceExternalIpsConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param enabled Enable the PodSecurityPolicy controller for this cluster.
-         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         * @param enabled Controls whether external ips specified by a service will be allowed. It is enabled by default.
          * 
          * @return builder
          * 

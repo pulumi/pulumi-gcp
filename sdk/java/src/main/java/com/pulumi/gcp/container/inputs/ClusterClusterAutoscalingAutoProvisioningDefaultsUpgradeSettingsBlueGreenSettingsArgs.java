@@ -31,9 +31,17 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSetti
         return Optional.ofNullable(this.nodePoolSoakDuration);
     }
 
+    /**
+     * Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+     * 
+     */
     @Import(name="standardRolloutPolicy")
     private @Nullable Output<ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs> standardRolloutPolicy;
 
+    /**
+     * @return Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+     * 
+     */
     public Optional<Output<ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs>> standardRolloutPolicy() {
         return Optional.ofNullable(this.standardRolloutPolicy);
     }
@@ -84,11 +92,23 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSetti
             return nodePoolSoakDuration(Output.of(nodePoolSoakDuration));
         }
 
+        /**
+         * @param standardRolloutPolicy Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder standardRolloutPolicy(@Nullable Output<ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs> standardRolloutPolicy) {
             $.standardRolloutPolicy = standardRolloutPolicy;
             return this;
         }
 
+        /**
+         * @param standardRolloutPolicy Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder standardRolloutPolicy(ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs standardRolloutPolicy) {
             return standardRolloutPolicy(Output.of(standardRolloutPolicy));
         }

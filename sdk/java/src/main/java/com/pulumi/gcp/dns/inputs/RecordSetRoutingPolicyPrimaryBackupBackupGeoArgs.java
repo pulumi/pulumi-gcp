@@ -18,7 +18,8 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs extends com.
     public static final RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs Empty = new RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs();
 
     /**
-     * For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+     * The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
+     * Structure is document below.
      * Structure is document below.
      * 
      */
@@ -26,7 +27,8 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs extends com.
     private @Nullable Output<RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs> healthCheckedTargets;
 
     /**
-     * @return For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+     * @return The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
+     * Structure is document below.
      * Structure is document below.
      * 
      */
@@ -49,17 +51,9 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs extends com.
         return this.location;
     }
 
-    /**
-     * Same as `rrdatas` above.
-     * 
-     */
     @Import(name="rrdatas")
     private @Nullable Output<List<String>> rrdatas;
 
-    /**
-     * @return Same as `rrdatas` above.
-     * 
-     */
     public Optional<Output<List<String>>> rrdatas() {
         return Optional.ofNullable(this.rrdatas);
     }
@@ -91,7 +85,8 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs extends com.
         }
 
         /**
-         * @param healthCheckedTargets For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+         * @param healthCheckedTargets The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
+         * Structure is document below.
          * Structure is document below.
          * 
          * @return builder
@@ -103,7 +98,8 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs extends com.
         }
 
         /**
-         * @param healthCheckedTargets For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+         * @param healthCheckedTargets The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
+         * Structure is document below.
          * Structure is document below.
          * 
          * @return builder
@@ -134,33 +130,15 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs extends com.
             return location(Output.of(location));
         }
 
-        /**
-         * @param rrdatas Same as `rrdatas` above.
-         * 
-         * @return builder
-         * 
-         */
         public Builder rrdatas(@Nullable Output<List<String>> rrdatas) {
             $.rrdatas = rrdatas;
             return this;
         }
 
-        /**
-         * @param rrdatas Same as `rrdatas` above.
-         * 
-         * @return builder
-         * 
-         */
         public Builder rrdatas(List<String> rrdatas) {
             return rrdatas(Output.of(rrdatas));
         }
 
-        /**
-         * @param rrdatas Same as `rrdatas` above.
-         * 
-         * @return builder
-         * 
-         */
         public Builder rrdatas(String... rrdatas) {
             return rrdatas(List.of(rrdatas));
         }

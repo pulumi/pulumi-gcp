@@ -10,14 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class AwsClusterControlPlaneDatabaseEncryption {
     /**
-     * @return Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+     * @return The ARN of the AWS KMS key used to encrypt cluster secrets.
      * 
      */
     private String kmsKeyArn;
 
     private AwsClusterControlPlaneDatabaseEncryption() {}
     /**
-     * @return Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+     * @return The ARN of the AWS KMS key used to encrypt cluster secrets.
      * 
      */
     public String kmsKeyArn() {

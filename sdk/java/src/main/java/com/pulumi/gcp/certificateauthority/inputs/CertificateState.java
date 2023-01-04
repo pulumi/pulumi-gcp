@@ -42,16 +42,16 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-     * this field is present.
+     * Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
+     * Structure is documented below.
      * 
      */
     @Import(name="certificateDescriptions")
     private @Nullable Output<List<CertificateCertificateDescriptionArgs>> certificateDescriptions;
 
     /**
-     * @return Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-     * this field is present.
+     * @return Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<CertificateCertificateDescriptionArgs>>> certificateDescriptions() {
@@ -99,14 +99,16 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The time that this resource was created on the server. This is in RFC3339 text format.
+     * The time that this resource was created on the server.
+     * This is in RFC3339 text format.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return The time that this resource was created on the server. This is in RFC3339 text format.
+     * @return The time that this resource was created on the server.
+     * This is in RFC3339 text format.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -114,16 +116,14 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The resource name of the issuing CertificateAuthority in the format
-     * &#39;projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*&#39;.
+     * The resource name of the issuing CertificateAuthority in the format `projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*`.
      * 
      */
     @Import(name="issuerCertificateAuthority")
     private @Nullable Output<String> issuerCertificateAuthority;
 
     /**
-     * @return The resource name of the issuing CertificateAuthority in the format
-     * &#39;projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*&#39;.
+     * @return The resource name of the issuing CertificateAuthority in the format `projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*`.
      * 
      */
     public Optional<Output<String>> issuerCertificateAuthority() {
@@ -212,16 +212,14 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
-     * 5246.
+     * The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
      * 
      */
     @Import(name="pemCertificateChains")
     private @Nullable Output<List<String>> pemCertificateChains;
 
     /**
-     * @return The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
-     * 5246.
+     * @return The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
      * 
      */
     public Optional<Output<List<String>>> pemCertificateChains() {
@@ -229,6 +227,7 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Deprecated)
      * Required. Expected to be in leaf-to-root order according to RFC 5246.
      * 
      * @deprecated
@@ -240,7 +239,8 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<String>> pemCertificates;
 
     /**
-     * @return Required. Expected to be in leaf-to-root order according to RFC 5246.
+     * @return (Deprecated)
+     * Required. Expected to be in leaf-to-root order according to RFC 5246.
      * 
      * @deprecated
      * Deprecated in favor of `pem_certificate_chain`.
@@ -299,16 +299,18 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-     * this field is present.
+     * Output only. Details regarding the revocation of this Certificate. This Certificate is
+     * considered revoked if and only if this field is present.
+     * Structure is documented below.
      * 
      */
     @Import(name="revocationDetails")
     private @Nullable Output<List<CertificateRevocationDetailArgs>> revocationDetails;
 
     /**
-     * @return Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-     * this field is present.
+     * @return Output only. Details regarding the revocation of this Certificate. This Certificate is
+     * considered revoked if and only if this field is present.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<CertificateRevocationDetailArgs>>> revocationDetails() {
@@ -316,14 +318,16 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. The time at which this CertificateAuthority was updated. This is in RFC3339 text format.
+     * Output only. The time at which this CertificateAuthority was updated.
+     * This is in RFC3339 text format.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return Output only. The time at which this CertificateAuthority was updated. This is in RFC3339 text format.
+     * @return Output only. The time at which this CertificateAuthority was updated.
+     * This is in RFC3339 text format.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -399,8 +403,8 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateDescriptions Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-         * this field is present.
+         * @param certificateDescriptions Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -411,8 +415,8 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateDescriptions Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-         * this field is present.
+         * @param certificateDescriptions Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -422,8 +426,8 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateDescriptions Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-         * this field is present.
+         * @param certificateDescriptions Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -485,7 +489,8 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime The time that this resource was created on the server. This is in RFC3339 text format.
+         * @param createTime The time that this resource was created on the server.
+         * This is in RFC3339 text format.
          * 
          * @return builder
          * 
@@ -496,7 +501,8 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime The time that this resource was created on the server. This is in RFC3339 text format.
+         * @param createTime The time that this resource was created on the server.
+         * This is in RFC3339 text format.
          * 
          * @return builder
          * 
@@ -506,8 +512,7 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param issuerCertificateAuthority The resource name of the issuing CertificateAuthority in the format
-         * &#39;projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*&#39;.
+         * @param issuerCertificateAuthority The resource name of the issuing CertificateAuthority in the format `projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*`.
          * 
          * @return builder
          * 
@@ -518,8 +523,7 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param issuerCertificateAuthority The resource name of the issuing CertificateAuthority in the format
-         * &#39;projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*&#39;.
+         * @param issuerCertificateAuthority The resource name of the issuing CertificateAuthority in the format `projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*`.
          * 
          * @return builder
          * 
@@ -640,8 +644,7 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pemCertificateChains The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
-         * 5246.
+         * @param pemCertificateChains The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
          * 
          * @return builder
          * 
@@ -652,8 +655,7 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pemCertificateChains The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
-         * 5246.
+         * @param pemCertificateChains The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
          * 
          * @return builder
          * 
@@ -663,8 +665,7 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pemCertificateChains The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
-         * 5246.
+         * @param pemCertificateChains The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
          * 
          * @return builder
          * 
@@ -674,7 +675,8 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pemCertificates Required. Expected to be in leaf-to-root order according to RFC 5246.
+         * @param pemCertificates (Deprecated)
+         * Required. Expected to be in leaf-to-root order according to RFC 5246.
          * 
          * @return builder
          * 
@@ -689,7 +691,8 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pemCertificates Required. Expected to be in leaf-to-root order according to RFC 5246.
+         * @param pemCertificates (Deprecated)
+         * Required. Expected to be in leaf-to-root order according to RFC 5246.
          * 
          * @return builder
          * 
@@ -703,7 +706,8 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pemCertificates Required. Expected to be in leaf-to-root order according to RFC 5246.
+         * @param pemCertificates (Deprecated)
+         * Required. Expected to be in leaf-to-root order according to RFC 5246.
          * 
          * @return builder
          * 
@@ -782,8 +786,9 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param revocationDetails Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-         * this field is present.
+         * @param revocationDetails Output only. Details regarding the revocation of this Certificate. This Certificate is
+         * considered revoked if and only if this field is present.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -794,8 +799,9 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param revocationDetails Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-         * this field is present.
+         * @param revocationDetails Output only. Details regarding the revocation of this Certificate. This Certificate is
+         * considered revoked if and only if this field is present.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -805,8 +811,9 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param revocationDetails Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-         * this field is present.
+         * @param revocationDetails Output only. Details regarding the revocation of this Certificate. This Certificate is
+         * considered revoked if and only if this field is present.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -816,7 +823,8 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateTime Output only. The time at which this CertificateAuthority was updated. This is in RFC3339 text format.
+         * @param updateTime Output only. The time at which this CertificateAuthority was updated.
+         * This is in RFC3339 text format.
          * 
          * @return builder
          * 
@@ -827,7 +835,8 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateTime Output only. The time at which this CertificateAuthority was updated. This is in RFC3339 text format.
+         * @param updateTime Output only. The time at which this CertificateAuthority was updated.
+         * This is in RFC3339 text format.
          * 
          * @return builder
          * 

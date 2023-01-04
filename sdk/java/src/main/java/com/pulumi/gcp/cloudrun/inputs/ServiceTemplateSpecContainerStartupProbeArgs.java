@@ -72,7 +72,7 @@ public final class ServiceTemplateSpecContainerStartupProbeArgs extends com.pulu
     /**
      * Number of seconds after the container has started before the probe is
      * initiated.
-     * Defaults to 0 seconds. Minimum value is 0. Maximum value is 3600.
+     * Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
      * 
      */
     @Import(name="initialDelaySeconds")
@@ -81,7 +81,7 @@ public final class ServiceTemplateSpecContainerStartupProbeArgs extends com.pulu
     /**
      * @return Number of seconds after the container has started before the probe is
      * initiated.
-     * Defaults to 0 seconds. Minimum value is 0. Maximum value is 3600.
+     * Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
      * 
      */
     public Optional<Output<Integer>> initialDelaySeconds() {
@@ -90,7 +90,7 @@ public final class ServiceTemplateSpecContainerStartupProbeArgs extends com.pulu
 
     /**
      * How often (in seconds) to perform the probe.
-     * Default to 10 seconds. Minimum value is 1. Maximum value is 3600.
+     * Default to 10 seconds. Minimum value is 1. Maximum value is 240.
      * 
      */
     @Import(name="periodSeconds")
@@ -98,7 +98,7 @@ public final class ServiceTemplateSpecContainerStartupProbeArgs extends com.pulu
 
     /**
      * @return How often (in seconds) to perform the probe.
-     * Default to 10 seconds. Minimum value is 1. Maximum value is 3600.
+     * Default to 10 seconds. Minimum value is 1. Maximum value is 240.
      * 
      */
     public Optional<Output<Integer>> periodSeconds() {
@@ -125,7 +125,7 @@ public final class ServiceTemplateSpecContainerStartupProbeArgs extends com.pulu
     /**
      * Number of seconds after which the probe times out.
      * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
-     * Must be smaller than period_seconds.
+     * Must be smaller than periodSeconds.
      * 
      */
     @Import(name="timeoutSeconds")
@@ -134,7 +134,7 @@ public final class ServiceTemplateSpecContainerStartupProbeArgs extends com.pulu
     /**
      * @return Number of seconds after which the probe times out.
      * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
-     * Must be smaller than period_seconds.
+     * Must be smaller than periodSeconds.
      * 
      */
     public Optional<Output<Integer>> timeoutSeconds() {
@@ -243,7 +243,7 @@ public final class ServiceTemplateSpecContainerStartupProbeArgs extends com.pulu
         /**
          * @param initialDelaySeconds Number of seconds after the container has started before the probe is
          * initiated.
-         * Defaults to 0 seconds. Minimum value is 0. Maximum value is 3600.
+         * Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class ServiceTemplateSpecContainerStartupProbeArgs extends com.pulu
         /**
          * @param initialDelaySeconds Number of seconds after the container has started before the probe is
          * initiated.
-         * Defaults to 0 seconds. Minimum value is 0. Maximum value is 3600.
+         * Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class ServiceTemplateSpecContainerStartupProbeArgs extends com.pulu
 
         /**
          * @param periodSeconds How often (in seconds) to perform the probe.
-         * Default to 10 seconds. Minimum value is 1. Maximum value is 3600.
+         * Default to 10 seconds. Minimum value is 1. Maximum value is 240.
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class ServiceTemplateSpecContainerStartupProbeArgs extends com.pulu
 
         /**
          * @param periodSeconds How often (in seconds) to perform the probe.
-         * Default to 10 seconds. Minimum value is 1. Maximum value is 3600.
+         * Default to 10 seconds. Minimum value is 1. Maximum value is 240.
          * 
          * @return builder
          * 
@@ -314,7 +314,7 @@ public final class ServiceTemplateSpecContainerStartupProbeArgs extends com.pulu
         /**
          * @param timeoutSeconds Number of seconds after which the probe times out.
          * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
-         * Must be smaller than period_seconds.
+         * Must be smaller than periodSeconds.
          * 
          * @return builder
          * 
@@ -327,7 +327,7 @@ public final class ServiceTemplateSpecContainerStartupProbeArgs extends com.pulu
         /**
          * @param timeoutSeconds Number of seconds after which the probe times out.
          * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
-         * Must be smaller than period_seconds.
+         * Must be smaller than periodSeconds.
          * 
          * @return builder
          * 

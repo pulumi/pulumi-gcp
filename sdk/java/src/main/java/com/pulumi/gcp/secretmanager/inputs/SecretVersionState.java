@@ -62,14 +62,16 @@ public final class SecretVersionState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The resource name of the SecretVersion. Format: &#39;projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}&#39;
+     * The resource name of the SecretVersion. Format:
+     * `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The resource name of the SecretVersion. Format: &#39;projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}&#39;
+     * @return The resource name of the SecretVersion. Format:
+     * `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
      * 
      */
     public Optional<Output<String>> name() {
@@ -217,7 +219,8 @@ public final class SecretVersionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name The resource name of the SecretVersion. Format: &#39;projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}&#39;
+         * @param name The resource name of the SecretVersion. Format:
+         * `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
          * 
          * @return builder
          * 
@@ -228,7 +231,8 @@ public final class SecretVersionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name The resource name of the SecretVersion. Format: &#39;projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}&#39;
+         * @param name The resource name of the SecretVersion. Format:
+         * `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
          * 
          * @return builder
          * 

@@ -239,16 +239,16 @@ public class CxEntityType extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.languageCode);
     }
     /**
-     * The unique identifier of the entity type. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent
-     * ID&gt;/entityTypes/&lt;Entity Type ID&gt;.
+     * The unique identifier of the entity type.
+     * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/entityTypes/&lt;Entity Type ID&gt;.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The unique identifier of the entity type. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent
-     * ID&gt;/entityTypes/&lt;Entity Type ID&gt;.
+     * @return The unique identifier of the entity type.
+     * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/entityTypes/&lt;Entity Type ID&gt;.
      * 
      */
     public Output<String> name() {

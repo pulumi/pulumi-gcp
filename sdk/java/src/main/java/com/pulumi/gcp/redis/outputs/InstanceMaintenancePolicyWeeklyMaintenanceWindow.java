@@ -27,8 +27,7 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindow {
      */
     private String day;
     /**
-     * @return -
-     * Output only. Duration of the maintenance window.
+     * @return Output only. Duration of the maintenance window.
      * The current window is fixed at 1 hour.
      * A duration in seconds with up to nine fractional digits,
      * terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
@@ -36,10 +35,8 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindow {
      */
     private @Nullable String duration;
     /**
-     * @return -
-     * Output only. The start time of any upcoming scheduled maintenance for this instance.
-     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
-     * resolution and up to nine fractional digits.
+     * @return Required. Start time of the window in UTC time.
+     * Structure is documented below.
      * 
      */
     private InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime startTime;
@@ -62,8 +59,7 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindow {
         return this.day;
     }
     /**
-     * @return -
-     * Output only. Duration of the maintenance window.
+     * @return Output only. Duration of the maintenance window.
      * The current window is fixed at 1 hour.
      * A duration in seconds with up to nine fractional digits,
      * terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
@@ -73,10 +69,8 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindow {
         return Optional.ofNullable(this.duration);
     }
     /**
-     * @return -
-     * Output only. The start time of any upcoming scheduled maintenance for this instance.
-     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
-     * resolution and up to nine fractional digits.
+     * @return Required. Start time of the window in UTC time.
+     * Structure is documented below.
      * 
      */
     public InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime startTime() {

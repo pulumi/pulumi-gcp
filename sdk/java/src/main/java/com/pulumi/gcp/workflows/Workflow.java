@@ -99,16 +99,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:workflows/workflow:Workflow")
 public class Workflow extends com.pulumi.resources.CustomResource {
     /**
-     * The timestamp of when the workflow was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
-     * fractional digits.
+     * The timestamp of when the workflow was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
-     * @return The timestamp of when the workflow was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
-     * fractional digits.
+     * @return The timestamp of when the workflow was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     public Output<String> createTime() {
@@ -263,16 +261,14 @@ public class Workflow extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * The timestamp of when the workflow was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
-     * nine fractional digits.
+     * The timestamp of when the workflow was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**
-     * @return The timestamp of when the workflow was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
-     * nine fractional digits.
+     * @return The timestamp of when the workflow was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     public Output<String> updateTime() {

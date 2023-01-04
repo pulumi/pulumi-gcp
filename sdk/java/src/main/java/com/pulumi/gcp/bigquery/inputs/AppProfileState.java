@@ -115,16 +115,14 @@ public final class AppProfileState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The unique name of the requested app profile. Values are of the form
-     * &#39;projects/&lt;project&gt;/instances/&lt;instance&gt;/appProfiles/&lt;appProfileId&gt;&#39;.
+     * The unique name of the requested app profile. Values are of the form `projects/&lt;project&gt;/instances/&lt;instance&gt;/appProfiles/&lt;appProfileId&gt;`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The unique name of the requested app profile. Values are of the form
-     * &#39;projects/&lt;project&gt;/instances/&lt;instance&gt;/appProfiles/&lt;appProfileId&gt;&#39;.
+     * @return The unique name of the requested app profile. Values are of the form `projects/&lt;project&gt;/instances/&lt;instance&gt;/appProfiles/&lt;appProfileId&gt;`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -341,8 +339,7 @@ public final class AppProfileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The unique name of the requested app profile. Values are of the form
-         * &#39;projects/&lt;project&gt;/instances/&lt;instance&gt;/appProfiles/&lt;appProfileId&gt;&#39;.
+         * @param name The unique name of the requested app profile. Values are of the form `projects/&lt;project&gt;/instances/&lt;instance&gt;/appProfiles/&lt;appProfileId&gt;`.
          * 
          * @return builder
          * 
@@ -353,8 +350,7 @@ public final class AppProfileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The unique name of the requested app profile. Values are of the form
-         * &#39;projects/&lt;project&gt;/instances/&lt;instance&gt;/appProfiles/&lt;appProfileId&gt;&#39;.
+         * @param name The unique name of the requested app profile. Values are of the form `projects/&lt;project&gt;/instances/&lt;instance&gt;/appProfiles/&lt;appProfileId&gt;`.
          * 
          * @return builder
          * 

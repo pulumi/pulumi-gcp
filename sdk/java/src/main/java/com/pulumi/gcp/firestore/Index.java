@@ -142,7 +142,7 @@ public class Index extends com.pulumi.resources.CustomResource {
     }
     /**
      * A server defined name for this index. Format:
-     * &#39;projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}&#39;
+     * `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
      * 
      */
     @Export(name="name", type=String.class, parameters={})
@@ -150,7 +150,7 @@ public class Index extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A server defined name for this index. Format:
-     * &#39;projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}&#39;
+     * `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
      * 
      */
     public Output<String> name() {

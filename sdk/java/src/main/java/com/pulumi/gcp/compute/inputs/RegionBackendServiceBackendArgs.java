@@ -150,16 +150,24 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
     }
 
     /**
-     * The maximum number of connections to the backend cluster.
-     * Defaults to 1024.
+     * The max number of simultaneous connections for the group. Can
+     * be used with either CONNECTION or UTILIZATION balancing modes.
+     * Cannot be set for INTERNAL backend services.
+     * For CONNECTION mode, either maxConnections or one
+     * of maxConnectionsPerInstance or maxConnectionsPerEndpoint,
+     * as appropriate for group type, must be set.
      * 
      */
     @Import(name="maxConnections")
     private @Nullable Output<Integer> maxConnections;
 
     /**
-     * @return The maximum number of connections to the backend cluster.
-     * Defaults to 1024.
+     * @return The max number of simultaneous connections for the group. Can
+     * be used with either CONNECTION or UTILIZATION balancing modes.
+     * Cannot be set for INTERNAL backend services.
+     * For CONNECTION mode, either maxConnections or one
+     * of maxConnectionsPerInstance or maxConnectionsPerEndpoint,
+     * as appropriate for group type, must be set.
      * 
      */
     public Optional<Output<Integer>> maxConnections() {
@@ -507,8 +515,12 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param maxConnections The maximum number of connections to the backend cluster.
-         * Defaults to 1024.
+         * @param maxConnections The max number of simultaneous connections for the group. Can
+         * be used with either CONNECTION or UTILIZATION balancing modes.
+         * Cannot be set for INTERNAL backend services.
+         * For CONNECTION mode, either maxConnections or one
+         * of maxConnectionsPerInstance or maxConnectionsPerEndpoint,
+         * as appropriate for group type, must be set.
          * 
          * @return builder
          * 
@@ -519,8 +531,12 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param maxConnections The maximum number of connections to the backend cluster.
-         * Defaults to 1024.
+         * @param maxConnections The max number of simultaneous connections for the group. Can
+         * be used with either CONNECTION or UTILIZATION balancing modes.
+         * Cannot be set for INTERNAL backend services.
+         * For CONNECTION mode, either maxConnections or one
+         * of maxConnectionsPerInstance or maxConnectionsPerEndpoint,
+         * as appropriate for group type, must be set.
          * 
          * @return builder
          * 

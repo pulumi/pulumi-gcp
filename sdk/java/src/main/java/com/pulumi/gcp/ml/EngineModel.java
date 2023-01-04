@@ -160,14 +160,14 @@ public class EngineModel extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
-     * The name specified for the version when it was created.
+     * The name specified for the model.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The name specified for the version when it was created.
+     * @return The name specified for the model.
      * 
      */
     public Output<String> name() {

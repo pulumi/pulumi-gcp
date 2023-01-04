@@ -111,16 +111,16 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:firebase/appleApp:AppleApp")
 public class AppleApp extends com.pulumi.resources.CustomResource {
     /**
-     * The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-     * the data format is not specified.
+     * The globally unique, Firebase-assigned identifier of the App.
+     * This identifier should be treated as an opaque token, as the data format is not specified.
      * 
      */
     @Export(name="appId", type=String.class, parameters={})
     private Output<String> appId;
 
     /**
-     * @return The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-     * the data format is not specified.
+     * @return The globally unique, Firebase-assigned identifier of the App.
+     * This identifier should be treated as an opaque token, as the data format is not specified.
      * 
      */
     public Output<String> appId() {
@@ -187,14 +187,16 @@ public class AppleApp extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
-     * The fully qualified resource name of the App, for example: projects/projectId/iosApps/appId
+     * The fully qualified resource name of the App, for example:
+     * projects/projectId/iosApps/appId
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The fully qualified resource name of the App, for example: projects/projectId/iosApps/appId
+     * @return The fully qualified resource name of the App, for example:
+     * projects/projectId/iosApps/appId
      * 
      */
     public Output<String> name() {

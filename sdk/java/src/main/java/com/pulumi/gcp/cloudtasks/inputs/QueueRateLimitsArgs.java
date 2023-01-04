@@ -17,7 +17,6 @@ public final class QueueRateLimitsArgs extends com.pulumi.resources.ResourceArgs
     public static final QueueRateLimitsArgs Empty = new QueueRateLimitsArgs();
 
     /**
-     * - 
      * The max burst size.
      * Max burst size limits how fast tasks in queue are processed when many tasks are
      * in the queue and the rate is high. This field allows the queue to have a high
@@ -29,8 +28,7 @@ public final class QueueRateLimitsArgs extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<Integer> maxBurstSize;
 
     /**
-     * @return -
-     * The max burst size.
+     * @return The max burst size.
      * Max burst size limits how fast tasks in queue are processed when many tasks are
      * in the queue and the rate is high. This field allows the queue to have a high
      * rate so processing starts shortly after a task is enqueued, but still limits
@@ -106,8 +104,7 @@ public final class QueueRateLimitsArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param maxBurstSize -
-         * The max burst size.
+         * @param maxBurstSize The max burst size.
          * Max burst size limits how fast tasks in queue are processed when many tasks are
          * in the queue and the rate is high. This field allows the queue to have a high
          * rate so processing starts shortly after a task is enqueued, but still limits
@@ -122,8 +119,7 @@ public final class QueueRateLimitsArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param maxBurstSize -
-         * The max burst size.
+         * @param maxBurstSize The max burst size.
          * Max burst size limits how fast tasks in queue are processed when many tasks are
          * in the queue and the rate is high. This field allows the queue to have a high
          * rate so processing starts shortly after a task is enqueued, but still limits

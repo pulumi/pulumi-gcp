@@ -137,14 +137,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:monitoring/metricDescriptor:MetricDescriptor")
 public class MetricDescriptor extends com.pulumi.resources.CustomResource {
     /**
-     * A human-readable description for the label.
+     * A detailed description of the metric, which can be used in documentation.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output<String> description;
 
     /**
-     * @return A human-readable description for the label.
+     * @return A detailed description of the metric, which can be used in documentation.
      * 
      */
     public Output<String> description() {
@@ -229,20 +229,14 @@ public class MetricDescriptor extends com.pulumi.resources.CustomResource {
         return this.metricKind;
     }
     /**
-     * If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that
-     * is associated with this metric type can only be associated with one of the monitored resource types listed here. This
-     * field allows time series to be associated with the intersection of this metric type and the monitored resource types in
-     * this list.
+     * If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. This field allows time series to be associated with the intersection of this metric type and the monitored resource types in this list.
      * 
      */
     @Export(name="monitoredResourceTypes", type=List.class, parameters={String.class})
     private Output<List<String>> monitoredResourceTypes;
 
     /**
-     * @return If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that
-     * is associated with this metric type can only be associated with one of the monitored resource types listed here. This
-     * field allows time series to be associated with the intersection of this metric type and the monitored resource types in
-     * this list.
+     * @return If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. This field allows time series to be associated with the intersection of this metric type and the monitored resource types in this list.
      * 
      */
     public Output<List<String>> monitoredResourceTypes() {
@@ -339,18 +333,16 @@ public class MetricDescriptor extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.unit);
     }
     /**
-     * The type of data that can be assigned to the label.
-     * Default value is `STRING`.
-     * Possible values are `STRING`, `BOOL`, and `INT64`.
+     * Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
+     * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
      * 
      */
     @Export(name="valueType", type=String.class, parameters={})
     private Output<String> valueType;
 
     /**
-     * @return The type of data that can be assigned to the label.
-     * Default value is `STRING`.
-     * Possible values are `STRING`, `BOOL`, and `INT64`.
+     * @return Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
+     * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
      * 
      */
     public Output<String> valueType() {

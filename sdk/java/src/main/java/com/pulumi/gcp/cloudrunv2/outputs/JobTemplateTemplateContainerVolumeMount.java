@@ -15,7 +15,7 @@ public final class JobTemplateTemplateContainerVolumeMount {
      */
     private String mountPath;
     /**
-     * @return Volume&#39;s name.
+     * @return This must match the Name of a Volume.
      * 
      */
     private String name;
@@ -29,7 +29,7 @@ public final class JobTemplateTemplateContainerVolumeMount {
         return this.mountPath;
     }
     /**
-     * @return Volume&#39;s name.
+     * @return This must match the Name of a Volume.
      * 
      */
     public String name() {

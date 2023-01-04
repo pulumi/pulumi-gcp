@@ -206,18 +206,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. Resource name of the service attachment created for the instance in the format:
-     * projects/*{@literal /}regions/*{@literal /}serviceAttachments/* Apigee customers can privately forward traffic to this service attachment
-     * using the PSC endpoints.
+     * Output only. Resource name of the service attachment created for the instance in
+     * the format: projects/*{@literal /}regions/*{@literal /}serviceAttachments/* Apigee customers can privately
+     * forward traffic to this service attachment using the PSC endpoints.
      * 
      */
     @Import(name="serviceAttachment")
     private @Nullable Output<String> serviceAttachment;
 
     /**
-     * @return Output only. Resource name of the service attachment created for the instance in the format:
-     * projects/*{@literal /}regions/*{@literal /}serviceAttachments/* Apigee customers can privately forward traffic to this service attachment
-     * using the PSC endpoints.
+     * @return Output only. Resource name of the service attachment created for the instance in
+     * the format: projects/*{@literal /}regions/*{@literal /}serviceAttachments/* Apigee customers can privately
+     * forward traffic to this service attachment using the PSC endpoints.
      * 
      */
     public Optional<Output<String>> serviceAttachment() {
@@ -528,9 +528,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceAttachment Output only. Resource name of the service attachment created for the instance in the format:
-         * projects/*{@literal /}regions/*{@literal /}serviceAttachments/* Apigee customers can privately forward traffic to this service attachment
-         * using the PSC endpoints.
+         * @param serviceAttachment Output only. Resource name of the service attachment created for the instance in
+         * the format: projects/*{@literal /}regions/*{@literal /}serviceAttachments/* Apigee customers can privately
+         * forward traffic to this service attachment using the PSC endpoints.
          * 
          * @return builder
          * 
@@ -541,9 +541,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceAttachment Output only. Resource name of the service attachment created for the instance in the format:
-         * projects/*{@literal /}regions/*{@literal /}serviceAttachments/* Apigee customers can privately forward traffic to this service attachment
-         * using the PSC endpoints.
+         * @param serviceAttachment Output only. Resource name of the service attachment created for the instance in
+         * the format: projects/*{@literal /}regions/*{@literal /}serviceAttachments/* Apigee customers can privately
+         * forward traffic to this service attachment using the PSC endpoints.
          * 
          * @return builder
          * 

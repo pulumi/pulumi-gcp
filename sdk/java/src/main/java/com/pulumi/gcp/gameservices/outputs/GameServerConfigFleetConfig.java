@@ -23,7 +23,7 @@ public final class GameServerConfigFleetConfig {
      */
     private String fleetSpec;
     /**
-     * @return The name of the ScalingConfig
+     * @return The name of the FleetConfig.
      * 
      */
     private @Nullable String name;
@@ -43,7 +43,7 @@ public final class GameServerConfigFleetConfig {
         return this.fleetSpec;
     }
     /**
-     * @return The name of the ScalingConfig
+     * @return The name of the FleetConfig.
      * 
      */
     public Optional<String> name() {

@@ -52,30 +52,18 @@ public final class TriggerBuildSourceRepoSourceArgs extends com.pulumi.resources
     }
 
     /**
-     * Working directory to use when running this step&#39;s container.
-     * If this value is a relative path, it is relative to the build&#39;s working
-     * directory. If this value is absolute, it may be outside the build&#39;s working
-     * directory, in which case the contents of the path may not be persisted
-     * across build step executions, unless a `volume` for that path is specified.
-     * If the build specifies a `RepoSource` with `dir` and a step with a
-     * `dir`,
-     * which specifies an absolute path, the `RepoSource` `dir` is ignored
-     * for the step&#39;s execution.
+     * Directory, relative to the source root, in which to run the build.
+     * This must be a relative path. If a step&#39;s dir is specified and is an absolute path,
+     * this value is ignored for that step&#39;s execution.
      * 
      */
     @Import(name="dir")
     private @Nullable Output<String> dir;
 
     /**
-     * @return Working directory to use when running this step&#39;s container.
-     * If this value is a relative path, it is relative to the build&#39;s working
-     * directory. If this value is absolute, it may be outside the build&#39;s working
-     * directory, in which case the contents of the path may not be persisted
-     * across build step executions, unless a `volume` for that path is specified.
-     * If the build specifies a `RepoSource` with `dir` and a step with a
-     * `dir`,
-     * which specifies an absolute path, the `RepoSource` `dir` is ignored
-     * for the step&#39;s execution.
+     * @return Directory, relative to the source root, in which to run the build.
+     * This must be a relative path. If a step&#39;s dir is specified and is an absolute path,
+     * this value is ignored for that step&#39;s execution.
      * 
      */
     public Optional<Output<String>> dir() {
@@ -241,15 +229,9 @@ public final class TriggerBuildSourceRepoSourceArgs extends com.pulumi.resources
         }
 
         /**
-         * @param dir Working directory to use when running this step&#39;s container.
-         * If this value is a relative path, it is relative to the build&#39;s working
-         * directory. If this value is absolute, it may be outside the build&#39;s working
-         * directory, in which case the contents of the path may not be persisted
-         * across build step executions, unless a `volume` for that path is specified.
-         * If the build specifies a `RepoSource` with `dir` and a step with a
-         * `dir`,
-         * which specifies an absolute path, the `RepoSource` `dir` is ignored
-         * for the step&#39;s execution.
+         * @param dir Directory, relative to the source root, in which to run the build.
+         * This must be a relative path. If a step&#39;s dir is specified and is an absolute path,
+         * this value is ignored for that step&#39;s execution.
          * 
          * @return builder
          * 
@@ -260,15 +242,9 @@ public final class TriggerBuildSourceRepoSourceArgs extends com.pulumi.resources
         }
 
         /**
-         * @param dir Working directory to use when running this step&#39;s container.
-         * If this value is a relative path, it is relative to the build&#39;s working
-         * directory. If this value is absolute, it may be outside the build&#39;s working
-         * directory, in which case the contents of the path may not be persisted
-         * across build step executions, unless a `volume` for that path is specified.
-         * If the build specifies a `RepoSource` with `dir` and a step with a
-         * `dir`,
-         * which specifies an absolute path, the `RepoSource` `dir` is ignored
-         * for the step&#39;s execution.
+         * @param dir Directory, relative to the source root, in which to run the build.
+         * This must be a relative path. If a step&#39;s dir is specified and is an absolute path,
+         * this value is ignored for that step&#39;s execution.
          * 
          * @return builder
          * 

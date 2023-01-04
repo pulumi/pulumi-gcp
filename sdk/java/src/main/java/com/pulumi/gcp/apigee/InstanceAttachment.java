@@ -181,14 +181,14 @@ public class InstanceAttachment extends com.pulumi.resources.CustomResource {
         return this.instanceId;
     }
     /**
-     * The name of the newly created attachment (output parameter).
+     * The name of the newly created  attachment (output parameter).
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The name of the newly created attachment (output parameter).
+     * @return The name of the newly created  attachment (output parameter).
      * 
      */
     public Output<String> name() {

@@ -12,9 +12,9 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RegionNetworkEndpointGroupCloudRun {
     /**
-     * @return Optional serving service.
-     * The service name must be 1-63 characters long, and comply with RFC1035.
-     * Example value: &#34;default&#34;, &#34;my-service&#34;.
+     * @return Cloud Run service is the main resource of Cloud Run.
+     * The service must be 1-63 characters long, and comply with RFC1035.
+     * Example value: &#34;run-service&#34;.
      * 
      */
     private @Nullable String service;
@@ -27,19 +27,22 @@ public final class RegionNetworkEndpointGroupCloudRun {
      */
     private @Nullable String tag;
     /**
-     * @return A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
-     * on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
-     * The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
-     * App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
+     * @return A template to parse service and tag fields from a request URL.
+     * URL mask allows for routing to multiple Run services without having
+     * to create multiple network endpoint groups and backend services.
+     * For example, request URLs &#34;foo1.domain.com/bar1&#34; and &#34;foo1.domain.com/bar2&#34;
+     * an be backed by the same Serverless Network Endpoint Group (NEG) with
+     * URL mask &#34;.domain.com/&#34;. The URL mask will parse them to { service=&#34;bar1&#34;, tag=&#34;foo1&#34; }
+     * and { service=&#34;bar2&#34;, tag=&#34;foo2&#34; } respectively.
      * 
      */
     private @Nullable String urlMask;
 
     private RegionNetworkEndpointGroupCloudRun() {}
     /**
-     * @return Optional serving service.
-     * The service name must be 1-63 characters long, and comply with RFC1035.
-     * Example value: &#34;default&#34;, &#34;my-service&#34;.
+     * @return Cloud Run service is the main resource of Cloud Run.
+     * The service must be 1-63 characters long, and comply with RFC1035.
+     * Example value: &#34;run-service&#34;.
      * 
      */
     public Optional<String> service() {
@@ -56,10 +59,13 @@ public final class RegionNetworkEndpointGroupCloudRun {
         return Optional.ofNullable(this.tag);
     }
     /**
-     * @return A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
-     * on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
-     * The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
-     * App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
+     * @return A template to parse service and tag fields from a request URL.
+     * URL mask allows for routing to multiple Run services without having
+     * to create multiple network endpoint groups and backend services.
+     * For example, request URLs &#34;foo1.domain.com/bar1&#34; and &#34;foo1.domain.com/bar2&#34;
+     * an be backed by the same Serverless Network Endpoint Group (NEG) with
+     * URL mask &#34;.domain.com/&#34;. The URL mask will parse them to { service=&#34;bar1&#34;, tag=&#34;foo1&#34; }
+     * and { service=&#34;bar2&#34;, tag=&#34;foo2&#34; } respectively.
      * 
      */
     public Optional<String> urlMask() {

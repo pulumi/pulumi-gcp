@@ -25,35 +25,6 @@ public final class WorkloadIdentityPoolProviderArgs extends com.pulumi.resources
      * provider should not be accepted.
      * The expression must output a boolean representing whether to allow the federation.
      * The following keywords may be referenced in the expressions:
-     * * `assertion`: JSON representing the authentication credential issued by the provider.
-     * * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`.
-     * * `attribute`: The custom attributes mapped from the assertion in the `attribute_mappings`.
-     *   The maximum length of the attribute condition expression is 4096 characters. If
-     *   unspecified, all valid authentication credential are accepted.
-     *   The following example shows how to only allow credentials with a mapped `google.groups`
-     *   value of `admins`:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
      * 
      */
     @Import(name="attributeCondition")
@@ -65,35 +36,6 @@ public final class WorkloadIdentityPoolProviderArgs extends com.pulumi.resources
      * provider should not be accepted.
      * The expression must output a boolean representing whether to allow the federation.
      * The following keywords may be referenced in the expressions:
-     * * `assertion`: JSON representing the authentication credential issued by the provider.
-     * * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`.
-     * * `attribute`: The custom attributes mapped from the assertion in the `attribute_mappings`.
-     *   The maximum length of the attribute condition expression is 4096 characters. If
-     *   unspecified, all valid authentication credential are accepted.
-     *   The following example shows how to only allow credentials with a mapped `google.groups`
-     *   value of `admins`:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
      * 
      */
     public Optional<Output<String>> attributeCondition() {
@@ -450,35 +392,6 @@ public final class WorkloadIdentityPoolProviderArgs extends com.pulumi.resources
          * provider should not be accepted.
          * The expression must output a boolean representing whether to allow the federation.
          * The following keywords may be referenced in the expressions:
-         * * `assertion`: JSON representing the authentication credential issued by the provider.
-         * * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`.
-         * * `attribute`: The custom attributes mapped from the assertion in the `attribute_mappings`.
-         *   The maximum length of the attribute condition expression is 4096 characters. If
-         *   unspecified, all valid authentication credential are accepted.
-         *   The following example shows how to only allow credentials with a mapped `google.groups`
-         *   value of `admins`:
-         * ```java
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *     }
-         * }
-         * ```
          * 
          * @return builder
          * 
@@ -494,35 +407,6 @@ public final class WorkloadIdentityPoolProviderArgs extends com.pulumi.resources
          * provider should not be accepted.
          * The expression must output a boolean representing whether to allow the federation.
          * The following keywords may be referenced in the expressions:
-         * * `assertion`: JSON representing the authentication credential issued by the provider.
-         * * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`.
-         * * `attribute`: The custom attributes mapped from the assertion in the `attribute_mappings`.
-         *   The maximum length of the attribute condition expression is 4096 characters. If
-         *   unspecified, all valid authentication credential are accepted.
-         *   The following example shows how to only allow credentials with a mapped `google.groups`
-         *   value of `admins`:
-         * ```java
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *     }
-         * }
-         * ```
          * 
          * @return builder
          * 

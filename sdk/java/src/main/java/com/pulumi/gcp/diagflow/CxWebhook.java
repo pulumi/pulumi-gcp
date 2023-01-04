@@ -155,7 +155,7 @@ public class CxWebhook extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableStackdriverLogging);
     }
     /**
-     * The name of Service Directory service.
+     * Configuration for a generic web service.
      * Structure is documented below.
      * 
      */
@@ -163,7 +163,7 @@ public class CxWebhook extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ CxWebhookGenericWebService> genericWebService;
 
     /**
-     * @return The name of Service Directory service.
+     * @return Configuration for a generic web service.
      * Structure is documented below.
      * 
      */
@@ -171,16 +171,16 @@ public class CxWebhook extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.genericWebService);
     }
     /**
-     * The unique identifier of the webhook. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent
-     * ID&gt;/webhooks/&lt;Webhook ID&gt;.
+     * The unique identifier of the webhook.
+     * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/webhooks/&lt;Webhook ID&gt;.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The unique identifier of the webhook. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent
-     * ID&gt;/webhooks/&lt;Webhook ID&gt;.
+     * @return The unique identifier of the webhook.
+     * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/webhooks/&lt;Webhook ID&gt;.
      * 
      */
     public Output<String> name() {
@@ -233,18 +233,14 @@ public class CxWebhook extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.serviceDirectory);
     }
     /**
-     * Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-     * be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow
-     * ID&gt;.
+     * Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
      * 
      */
     @Export(name="startFlow", type=String.class, parameters={})
     private Output<String> startFlow;
 
     /**
-     * @return Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-     * be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow
-     * ID&gt;.
+     * @return Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
      * 
      */
     public Output<String> startFlow() {

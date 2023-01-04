@@ -58,6 +58,7 @@ public final class DiskDiskEncryptionKeyArgs extends com.pulumi.resources.Resour
     /**
      * Specifies a 256-bit customer-supplied encryption key, encoded in
      * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     @Import(name="rawKey")
@@ -66,6 +67,7 @@ public final class DiskDiskEncryptionKeyArgs extends com.pulumi.resources.Resour
     /**
      * @return Specifies a 256-bit customer-supplied encryption key, encoded in
      * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Optional<Output<String>> rawKey() {
@@ -73,7 +75,6 @@ public final class DiskDiskEncryptionKeyArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * - 
      * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
      * encryption key that protects this resource.
      * 
@@ -82,8 +83,7 @@ public final class DiskDiskEncryptionKeyArgs extends com.pulumi.resources.Resour
     private @Nullable Output<String> sha256;
 
     /**
-     * @return -
-     * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+     * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
      * encryption key that protects this resource.
      * 
      */
@@ -173,6 +173,7 @@ public final class DiskDiskEncryptionKeyArgs extends com.pulumi.resources.Resour
         /**
          * @param rawKey Specifies a 256-bit customer-supplied encryption key, encoded in
          * RFC 4648 base64 to either encrypt or decrypt this resource.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
@@ -185,6 +186,7 @@ public final class DiskDiskEncryptionKeyArgs extends com.pulumi.resources.Resour
         /**
          * @param rawKey Specifies a 256-bit customer-supplied encryption key, encoded in
          * RFC 4648 base64 to either encrypt or decrypt this resource.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
@@ -194,8 +196,7 @@ public final class DiskDiskEncryptionKeyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param sha256 -
-         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+         * @param sha256 The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
          * encryption key that protects this resource.
          * 
          * @return builder
@@ -207,8 +208,7 @@ public final class DiskDiskEncryptionKeyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param sha256 -
-         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+         * @param sha256 The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
          * encryption key that protects this resource.
          * 
          * @return builder

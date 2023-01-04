@@ -100,18 +100,20 @@ public final class MetricMetricDescriptorArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The type of data that can be assigned to the label.
-     * Default value is `STRING`.
-     * Possible values are `BOOL`, `INT64`, and `STRING`.
+     * Whether the measurement is an integer, a floating-point number, etc.
+     * Some combinations of metricKind and valueType might not be supported.
+     * For counter metrics, set this to INT64.
+     * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, and `MONEY`.
      * 
      */
     @Import(name="valueType", required=true)
     private Output<String> valueType;
 
     /**
-     * @return The type of data that can be assigned to the label.
-     * Default value is `STRING`.
-     * Possible values are `BOOL`, `INT64`, and `STRING`.
+     * @return Whether the measurement is an integer, a floating-point number, etc.
+     * Some combinations of metricKind and valueType might not be supported.
+     * For counter metrics, set this to INT64.
+     * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, and `MONEY`.
      * 
      */
     public Output<String> valueType() {
@@ -267,9 +269,10 @@ public final class MetricMetricDescriptorArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param valueType The type of data that can be assigned to the label.
-         * Default value is `STRING`.
-         * Possible values are `BOOL`, `INT64`, and `STRING`.
+         * @param valueType Whether the measurement is an integer, a floating-point number, etc.
+         * Some combinations of metricKind and valueType might not be supported.
+         * For counter metrics, set this to INT64.
+         * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, and `MONEY`.
          * 
          * @return builder
          * 
@@ -280,9 +283,10 @@ public final class MetricMetricDescriptorArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param valueType The type of data that can be assigned to the label.
-         * Default value is `STRING`.
-         * Possible values are `BOOL`, `INT64`, and `STRING`.
+         * @param valueType Whether the measurement is an integer, a floating-point number, etc.
+         * Some combinations of metricKind and valueType might not be supported.
+         * For counter metrics, set this to INT64.
+         * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, and `MONEY`.
          * 
          * @return builder
          * 

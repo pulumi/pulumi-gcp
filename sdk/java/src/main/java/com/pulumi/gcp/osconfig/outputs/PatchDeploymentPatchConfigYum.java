@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PatchDeploymentPatchConfigYum {
     /**
-     * @return List of KBs to exclude from update.
+     * @return List of packages to exclude from update. These packages will be excluded.
      * 
      */
     private @Nullable List<String> excludes;
@@ -38,7 +38,7 @@ public final class PatchDeploymentPatchConfigYum {
 
     private PatchDeploymentPatchConfigYum() {}
     /**
-     * @return List of KBs to exclude from update.
+     * @return List of packages to exclude from update. These packages will be excluded.
      * 
      */
     public List<String> excludes() {

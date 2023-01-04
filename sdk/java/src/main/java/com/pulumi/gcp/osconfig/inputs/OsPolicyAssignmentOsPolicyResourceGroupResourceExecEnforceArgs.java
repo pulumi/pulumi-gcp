@@ -33,14 +33,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArg
     }
 
     /**
-     * A remote or local source.
+     * A remote or local file.
      * 
      */
     @Import(name="file")
     private @Nullable Output<OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs> file;
 
     /**
-     * @return A remote or local source.
+     * @return A remote or local file.
      * 
      */
     public Optional<Output<OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs>> file() {
@@ -152,7 +152,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArg
         }
 
         /**
-         * @param file A remote or local source.
+         * @param file A remote or local file.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArg
         }
 
         /**
-         * @param file A remote or local source.
+         * @param file A remote or local file.
          * 
          * @return builder
          * 

@@ -16,18 +16,20 @@ public final class RegionBackendServiceCircuitBreakersConnectTimeoutArgs extends
     public static final RegionBackendServiceCircuitBreakersConnectTimeoutArgs Empty = new RegionBackendServiceCircuitBreakersConnectTimeoutArgs();
 
     /**
-     * Span of time that&#39;s a fraction of a second at nanosecond resolution. Durations
-     * less than one second are represented with a 0 `seconds` field and a positive
-     * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+     * Span of time that&#39;s a fraction of a second at nanosecond
+     * resolution. Durations less than one second are represented
+     * with a 0 seconds field and a positive nanos field. Must
+     * be from 0 to 999,999,999 inclusive.
      * 
      */
     @Import(name="nanos")
     private @Nullable Output<Integer> nanos;
 
     /**
-     * @return Span of time that&#39;s a fraction of a second at nanosecond resolution. Durations
-     * less than one second are represented with a 0 `seconds` field and a positive
-     * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+     * @return Span of time that&#39;s a fraction of a second at nanosecond
+     * resolution. Durations less than one second are represented
+     * with a 0 seconds field and a positive nanos field. Must
+     * be from 0 to 999,999,999 inclusive.
      * 
      */
     public Optional<Output<Integer>> nanos() {
@@ -35,16 +37,16 @@ public final class RegionBackendServiceCircuitBreakersConnectTimeoutArgs extends
     }
 
     /**
-     * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
-     * inclusive.
+     * Span of time at a resolution of a second.
+     * Must be from 0 to 315,576,000,000 inclusive.
      * 
      */
     @Import(name="seconds", required=true)
     private Output<Integer> seconds;
 
     /**
-     * @return Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
-     * inclusive.
+     * @return Span of time at a resolution of a second.
+     * Must be from 0 to 315,576,000,000 inclusive.
      * 
      */
     public Output<Integer> seconds() {
@@ -77,9 +79,10 @@ public final class RegionBackendServiceCircuitBreakersConnectTimeoutArgs extends
         }
 
         /**
-         * @param nanos Span of time that&#39;s a fraction of a second at nanosecond resolution. Durations
-         * less than one second are represented with a 0 `seconds` field and a positive
-         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         * @param nanos Span of time that&#39;s a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented
+         * with a 0 seconds field and a positive nanos field. Must
+         * be from 0 to 999,999,999 inclusive.
          * 
          * @return builder
          * 
@@ -90,9 +93,10 @@ public final class RegionBackendServiceCircuitBreakersConnectTimeoutArgs extends
         }
 
         /**
-         * @param nanos Span of time that&#39;s a fraction of a second at nanosecond resolution. Durations
-         * less than one second are represented with a 0 `seconds` field and a positive
-         * `nanos` field. Must be from 0 to 999,999,999 inclusive.
+         * @param nanos Span of time that&#39;s a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented
+         * with a 0 seconds field and a positive nanos field. Must
+         * be from 0 to 999,999,999 inclusive.
          * 
          * @return builder
          * 
@@ -102,8 +106,8 @@ public final class RegionBackendServiceCircuitBreakersConnectTimeoutArgs extends
         }
 
         /**
-         * @param seconds Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
-         * inclusive.
+         * @param seconds Span of time at a resolution of a second.
+         * Must be from 0 to 315,576,000,000 inclusive.
          * 
          * @return builder
          * 
@@ -114,8 +118,8 @@ public final class RegionBackendServiceCircuitBreakersConnectTimeoutArgs extends
         }
 
         /**
-         * @param seconds Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
-         * inclusive.
+         * @param seconds Span of time at a resolution of a second.
+         * Must be from 0 to 315,576,000,000 inclusive.
          * 
          * @return builder
          * 

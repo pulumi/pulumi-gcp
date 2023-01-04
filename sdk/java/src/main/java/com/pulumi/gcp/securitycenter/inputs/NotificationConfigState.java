@@ -48,7 +48,7 @@ public final class NotificationConfigState extends com.pulumi.resources.Resource
 
     /**
      * The resource name of this notification config, in the format
-     * &#39;organizations/{{organization}}/notificationConfigs/{{config_id}}&#39;.
+     * `organizations/{{organization}}/notificationConfigs/{{config_id}}`.
      * 
      */
     @Import(name="name")
@@ -56,7 +56,7 @@ public final class NotificationConfigState extends com.pulumi.resources.Resource
 
     /**
      * @return The resource name of this notification config, in the format
-     * &#39;organizations/{{organization}}/notificationConfigs/{{config_id}}&#39;.
+     * `organizations/{{organization}}/notificationConfigs/{{config_id}}`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -98,14 +98,16 @@ public final class NotificationConfigState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The service account that needs &#34;pubsub.topics.publish&#34; permission to publish to the Pub/Sub topic.
+     * The service account that needs &#34;pubsub.topics.publish&#34; permission to
+     * publish to the Pub/Sub topic.
      * 
      */
     @Import(name="serviceAccount")
     private @Nullable Output<String> serviceAccount;
 
     /**
-     * @return The service account that needs &#34;pubsub.topics.publish&#34; permission to publish to the Pub/Sub topic.
+     * @return The service account that needs &#34;pubsub.topics.publish&#34; permission to
+     * publish to the Pub/Sub topic.
      * 
      */
     public Optional<Output<String>> serviceAccount() {
@@ -203,7 +205,7 @@ public final class NotificationConfigState extends com.pulumi.resources.Resource
 
         /**
          * @param name The resource name of this notification config, in the format
-         * &#39;organizations/{{organization}}/notificationConfigs/{{config_id}}&#39;.
+         * `organizations/{{organization}}/notificationConfigs/{{config_id}}`.
          * 
          * @return builder
          * 
@@ -215,7 +217,7 @@ public final class NotificationConfigState extends com.pulumi.resources.Resource
 
         /**
          * @param name The resource name of this notification config, in the format
-         * &#39;organizations/{{organization}}/notificationConfigs/{{config_id}}&#39;.
+         * `organizations/{{organization}}/notificationConfigs/{{config_id}}`.
          * 
          * @return builder
          * 
@@ -271,7 +273,8 @@ public final class NotificationConfigState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param serviceAccount The service account that needs &#34;pubsub.topics.publish&#34; permission to publish to the Pub/Sub topic.
+         * @param serviceAccount The service account that needs &#34;pubsub.topics.publish&#34; permission to
+         * publish to the Pub/Sub topic.
          * 
          * @return builder
          * 
@@ -282,7 +285,8 @@ public final class NotificationConfigState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param serviceAccount The service account that needs &#34;pubsub.topics.publish&#34; permission to publish to the Pub/Sub topic.
+         * @param serviceAccount The service account that needs &#34;pubsub.topics.publish&#34; permission to
+         * publish to the Pub/Sub topic.
          * 
          * @return builder
          * 

@@ -145,14 +145,16 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Self-link of subnetwork to NAT
+     * Name of the NAT service. The name must be 1-63 characters long and
+     * comply with RFC1035.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Self-link of subnetwork to NAT
+     * @return Name of the NAT service. The name must be 1-63 characters long and
+     * comply with RFC1035.
      * 
      */
     public Optional<Output<String>> name() {
@@ -583,7 +585,8 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Self-link of subnetwork to NAT
+         * @param name Name of the NAT service. The name must be 1-63 characters long and
+         * comply with RFC1035.
          * 
          * @return builder
          * 
@@ -594,7 +597,8 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Self-link of subnetwork to NAT
+         * @param name Name of the NAT service. The name must be 1-63 characters long and
+         * comply with RFC1035.
          * 
          * @return builder
          * 

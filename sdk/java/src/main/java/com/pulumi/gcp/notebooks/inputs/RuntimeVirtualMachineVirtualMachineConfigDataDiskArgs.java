@@ -20,7 +20,6 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
     public static final RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs Empty = new RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs();
 
     /**
-     * - 
      * Optional. Specifies whether the disk will be auto-deleted
      * when the instance is deleted (but not when the disk is
      * detached from the instance).
@@ -30,8 +29,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
     private @Nullable Output<Boolean> autoDelete;
 
     /**
-     * @return -
-     * Optional. Specifies whether the disk will be auto-deleted
+     * @return Optional. Specifies whether the disk will be auto-deleted
      * when the instance is deleted (but not when the disk is
      * detached from the instance).
      * 
@@ -41,7 +39,6 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
     }
 
     /**
-     * - 
      * Optional. Indicates that this is a boot disk. The virtual
      * machine will use the first partition of the disk for its
      * root filesystem.
@@ -51,8 +48,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
     private @Nullable Output<Boolean> boot;
 
     /**
-     * @return -
-     * Optional. Indicates that this is a boot disk. The virtual
+     * @return Optional. Indicates that this is a boot disk. The virtual
      * machine will use the first partition of the disk for its
      * root filesystem.
      * 
@@ -62,7 +58,6 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
     }
 
     /**
-     * - 
      * Optional. Specifies a unique device name of your choice
      * that is reflected into the /dev/disk/by-id/google-* tree
      * of a Linux operating system running within the instance.
@@ -78,8 +73,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
     private @Nullable Output<String> deviceName;
 
     /**
-     * @return -
-     * Optional. Specifies a unique device name of your choice
+     * @return Optional. Specifies a unique device name of your choice
      * that is reflected into the /dev/disk/by-id/google-* tree
      * of a Linux operating system running within the instance.
      * This name can be used to reference the device for mounting,
@@ -95,7 +89,6 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
     }
 
     /**
-     * - 
      * Indicates a list of features to enable on the guest operating
      * system. Applicable only for bootable images. To see a list of
      * available features, read `https://cloud.google.com/compute/docs/
@@ -107,8 +100,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
     private @Nullable Output<List<String>> guestOsFeatures;
 
     /**
-     * @return -
-     * Indicates a list of features to enable on the guest operating
+     * @return Indicates a list of features to enable on the guest operating
      * system. Applicable only for bootable images. To see a list of
      * available features, read `https://cloud.google.com/compute/docs/
      * images/create-delete-deprecate-private-images#guest-os-features`
@@ -120,7 +112,6 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
     }
 
     /**
-     * - 
      * Output only. A zero-based index to this disk, where 0 is
      * reserved for the boot disk. If you have many disks attached
      * to an instance, each disk would have a unique index number.
@@ -130,8 +121,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
     private @Nullable Output<Integer> index;
 
     /**
-     * @return -
-     * Output only. A zero-based index to this disk, where 0 is
+     * @return Output only. A zero-based index to this disk, where 0 is
      * reserved for the boot disk. If you have many disks attached
      * to an instance, each disk would have a unique index number.
      * 
@@ -193,7 +183,6 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
     }
 
     /**
-     * - 
      * Type of the resource. Always compute#attachedDisk for attached
      * disks.
      * 
@@ -202,8 +191,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
     private @Nullable Output<String> kind;
 
     /**
-     * @return -
-     * Type of the resource. Always compute#attachedDisk for attached
+     * @return Type of the resource. Always compute#attachedDisk for attached
      * disks.
      * 
      */
@@ -212,7 +200,6 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
     }
 
     /**
-     * - 
      * Output only. Any valid publicly visible licenses.
      * 
      */
@@ -220,8 +207,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
     private @Nullable Output<List<String>> licenses;
 
     /**
-     * @return -
-     * Output only. Any valid publicly visible licenses.
+     * @return Output only. Any valid publicly visible licenses.
      * 
      */
     public Optional<Output<List<String>>> licenses() {
@@ -265,18 +251,16 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
     }
 
     /**
-     * Accelerator model. For valid values, see
-     * `https://cloud.google.com/vertex-ai/docs/workbench/reference/
-     * rest/v1/projects.locations.runtimes#AcceleratorType`
+     * Specifies the type of the disk, either SCRATCH or PERSISTENT.
+     * If not specified, the default is PERSISTENT.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Accelerator model. For valid values, see
-     * `https://cloud.google.com/vertex-ai/docs/workbench/reference/
-     * rest/v1/projects.locations.runtimes#AcceleratorType`
+     * @return Specifies the type of the disk, either SCRATCH or PERSISTENT.
+     * If not specified, the default is PERSISTENT.
      * 
      */
     public Optional<Output<String>> type() {
@@ -319,8 +303,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
         }
 
         /**
-         * @param autoDelete -
-         * Optional. Specifies whether the disk will be auto-deleted
+         * @param autoDelete Optional. Specifies whether the disk will be auto-deleted
          * when the instance is deleted (but not when the disk is
          * detached from the instance).
          * 
@@ -333,8 +316,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
         }
 
         /**
-         * @param autoDelete -
-         * Optional. Specifies whether the disk will be auto-deleted
+         * @param autoDelete Optional. Specifies whether the disk will be auto-deleted
          * when the instance is deleted (but not when the disk is
          * detached from the instance).
          * 
@@ -346,8 +328,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
         }
 
         /**
-         * @param boot -
-         * Optional. Indicates that this is a boot disk. The virtual
+         * @param boot Optional. Indicates that this is a boot disk. The virtual
          * machine will use the first partition of the disk for its
          * root filesystem.
          * 
@@ -360,8 +341,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
         }
 
         /**
-         * @param boot -
-         * Optional. Indicates that this is a boot disk. The virtual
+         * @param boot Optional. Indicates that this is a boot disk. The virtual
          * machine will use the first partition of the disk for its
          * root filesystem.
          * 
@@ -373,8 +353,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
         }
 
         /**
-         * @param deviceName -
-         * Optional. Specifies a unique device name of your choice
+         * @param deviceName Optional. Specifies a unique device name of your choice
          * that is reflected into the /dev/disk/by-id/google-* tree
          * of a Linux operating system running within the instance.
          * This name can be used to reference the device for mounting,
@@ -393,8 +372,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
         }
 
         /**
-         * @param deviceName -
-         * Optional. Specifies a unique device name of your choice
+         * @param deviceName Optional. Specifies a unique device name of your choice
          * that is reflected into the /dev/disk/by-id/google-* tree
          * of a Linux operating system running within the instance.
          * This name can be used to reference the device for mounting,
@@ -412,8 +390,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
         }
 
         /**
-         * @param guestOsFeatures -
-         * Indicates a list of features to enable on the guest operating
+         * @param guestOsFeatures Indicates a list of features to enable on the guest operating
          * system. Applicable only for bootable images. To see a list of
          * available features, read `https://cloud.google.com/compute/docs/
          * images/create-delete-deprecate-private-images#guest-os-features`
@@ -428,8 +405,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
         }
 
         /**
-         * @param guestOsFeatures -
-         * Indicates a list of features to enable on the guest operating
+         * @param guestOsFeatures Indicates a list of features to enable on the guest operating
          * system. Applicable only for bootable images. To see a list of
          * available features, read `https://cloud.google.com/compute/docs/
          * images/create-delete-deprecate-private-images#guest-os-features`
@@ -443,8 +419,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
         }
 
         /**
-         * @param guestOsFeatures -
-         * Indicates a list of features to enable on the guest operating
+         * @param guestOsFeatures Indicates a list of features to enable on the guest operating
          * system. Applicable only for bootable images. To see a list of
          * available features, read `https://cloud.google.com/compute/docs/
          * images/create-delete-deprecate-private-images#guest-os-features`
@@ -458,8 +433,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
         }
 
         /**
-         * @param index -
-         * Output only. A zero-based index to this disk, where 0 is
+         * @param index Output only. A zero-based index to this disk, where 0 is
          * reserved for the boot disk. If you have many disks attached
          * to an instance, each disk would have a unique index number.
          * 
@@ -472,8 +446,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
         }
 
         /**
-         * @param index -
-         * Output only. A zero-based index to this disk, where 0 is
+         * @param index Output only. A zero-based index to this disk, where 0 is
          * reserved for the boot disk. If you have many disks attached
          * to an instance, each disk would have a unique index number.
          * 
@@ -549,8 +522,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
         }
 
         /**
-         * @param kind -
-         * Type of the resource. Always compute#attachedDisk for attached
+         * @param kind Type of the resource. Always compute#attachedDisk for attached
          * disks.
          * 
          * @return builder
@@ -562,8 +534,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
         }
 
         /**
-         * @param kind -
-         * Type of the resource. Always compute#attachedDisk for attached
+         * @param kind Type of the resource. Always compute#attachedDisk for attached
          * disks.
          * 
          * @return builder
@@ -574,8 +545,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
         }
 
         /**
-         * @param licenses -
-         * Output only. Any valid publicly visible licenses.
+         * @param licenses Output only. Any valid publicly visible licenses.
          * 
          * @return builder
          * 
@@ -586,8 +556,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
         }
 
         /**
-         * @param licenses -
-         * Output only. Any valid publicly visible licenses.
+         * @param licenses Output only. Any valid publicly visible licenses.
          * 
          * @return builder
          * 
@@ -597,8 +566,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
         }
 
         /**
-         * @param licenses -
-         * Output only. Any valid publicly visible licenses.
+         * @param licenses Output only. Any valid publicly visible licenses.
          * 
          * @return builder
          * 
@@ -656,9 +624,8 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
         }
 
         /**
-         * @param type Accelerator model. For valid values, see
-         * `https://cloud.google.com/vertex-ai/docs/workbench/reference/
-         * rest/v1/projects.locations.runtimes#AcceleratorType`
+         * @param type Specifies the type of the disk, either SCRATCH or PERSISTENT.
+         * If not specified, the default is PERSISTENT.
          * 
          * @return builder
          * 
@@ -669,9 +636,8 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs extends
         }
 
         /**
-         * @param type Accelerator model. For valid values, see
-         * `https://cloud.google.com/vertex-ai/docs/workbench/reference/
-         * rest/v1/projects.locations.runtimes#AcceleratorType`
+         * @param type Specifies the type of the disk, either SCRATCH or PERSISTENT.
+         * If not specified, the default is PERSISTENT.
          * 
          * @return builder
          * 

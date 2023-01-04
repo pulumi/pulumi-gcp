@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceTemplateContainerEnvValueSourceSecretKeyRef {
     /**
-     * @return The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+     * @return The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
      * 
      */
     private String secret;
     /**
-     * @return The Cloud Secret Manager secret version. Can be &#39;latest&#39; for the latest value or an integer for a specific version
+     * @return The Cloud Secret Manager secret version. Can be &#39;latest&#39; for the latest value or an integer for a specific version.
      * 
      */
     private @Nullable String version;
 
     private ServiceTemplateContainerEnvValueSourceSecretKeyRef() {}
     /**
-     * @return The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+     * @return The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
      * 
      */
     public String secret() {
         return this.secret;
     }
     /**
-     * @return The Cloud Secret Manager secret version. Can be &#39;latest&#39; for the latest value or an integer for a specific version
+     * @return The Cloud Secret Manager secret version. Can be &#39;latest&#39; for the latest value or an integer for a specific version.
      * 
      */
     public Optional<String> version() {

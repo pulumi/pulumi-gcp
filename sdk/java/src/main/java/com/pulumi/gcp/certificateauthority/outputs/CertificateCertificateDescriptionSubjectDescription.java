@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CertificateCertificateDescriptionSubjectDescription {
+    /**
+     * @return The serial number encoded in lowercase hexadecimal.
+     * 
+     */
     private @Nullable String hexSerialNumber;
     /**
      * @return The desired lifetime of the CA certificate. Used to create the &#34;notBeforeTime&#34; and
@@ -22,7 +26,15 @@ public final class CertificateCertificateDescriptionSubjectDescription {
      * 
      */
     private @Nullable String lifetime;
+    /**
+     * @return The time at which the certificate expires.
+     * 
+     */
     private @Nullable String notAfterTime;
+    /**
+     * @return The time at which the certificate becomes valid.
+     * 
+     */
     private @Nullable String notBeforeTime;
     /**
      * @return The subject alternative name fields.
@@ -38,6 +50,10 @@ public final class CertificateCertificateDescriptionSubjectDescription {
     private @Nullable List<CertificateCertificateDescriptionSubjectDescriptionSubject> subjects;
 
     private CertificateCertificateDescriptionSubjectDescription() {}
+    /**
+     * @return The serial number encoded in lowercase hexadecimal.
+     * 
+     */
     public Optional<String> hexSerialNumber() {
         return Optional.ofNullable(this.hexSerialNumber);
     }
@@ -50,9 +66,17 @@ public final class CertificateCertificateDescriptionSubjectDescription {
     public Optional<String> lifetime() {
         return Optional.ofNullable(this.lifetime);
     }
+    /**
+     * @return The time at which the certificate expires.
+     * 
+     */
     public Optional<String> notAfterTime() {
         return Optional.ofNullable(this.notAfterTime);
     }
+    /**
+     * @return The time at which the certificate becomes valid.
+     * 
+     */
     public Optional<String> notBeforeTime() {
         return Optional.ofNullable(this.notBeforeTime);
     }

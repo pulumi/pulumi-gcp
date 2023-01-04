@@ -178,16 +178,16 @@ public class GameServerDeploymentRollout extends com.pulumi.resources.CustomReso
         return Codegen.optional(this.gameServerConfigOverrides);
     }
     /**
-     * The resource id of the game server deployment eg:
-     * &#39;projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout&#39;.
+     * The resource id of the game server deployment
+     * eg: `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The resource id of the game server deployment eg:
-     * &#39;projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout&#39;.
+     * @return The resource id of the game server deployment
+     * eg: `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
      * 
      */
     public Output<String> name() {

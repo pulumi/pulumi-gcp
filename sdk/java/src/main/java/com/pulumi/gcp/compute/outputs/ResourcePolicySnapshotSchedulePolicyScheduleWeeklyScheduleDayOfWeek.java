@@ -16,7 +16,8 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDay
      */
     private String day;
     /**
-     * @return The start time of the schedule. The timestamp is an RFC3339 string.
+     * @return Time within the window to start the operations.
+     * It must be in format &#34;HH:MM&#34;, where HH : [00-23] and MM : [00-00] GMT.
      * 
      */
     private String startTime;
@@ -31,7 +32,8 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDay
         return this.day;
     }
     /**
-     * @return The start time of the schedule. The timestamp is an RFC3339 string.
+     * @return Time within the window to start the operations.
+     * It must be in format &#34;HH:MM&#34;, where HH : [00-23] and MM : [00-00] GMT.
      * 
      */
     public String startTime() {

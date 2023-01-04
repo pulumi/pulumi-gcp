@@ -193,30 +193,30 @@ public class Deployment extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
-     * Output only. URL of the manifest representing the last manifest that was successfully deployed.
+     * Output only. URL of the manifest representing the last manifest that
+     * was successfully deployed.
      * 
      */
     @Export(name="manifest", type=String.class, parameters={})
     private Output<String> manifest;
 
     /**
-     * @return Output only. URL of the manifest representing the last manifest that was successfully deployed.
+     * @return Output only. URL of the manifest representing the last manifest that
+     * was successfully deployed.
      * 
      */
     public Output<String> manifest() {
         return this.manifest;
     }
     /**
-     * The name of the template to import, as declared in the YAML
-     * configuration.
+     * Unique name for the deployment
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The name of the template to import, as declared in the YAML
-     * configuration.
+     * @return Unique name for the deployment
      * 
      */
     public Output<String> name() {

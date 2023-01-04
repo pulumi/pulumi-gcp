@@ -25,7 +25,7 @@ public final class SpannerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.spanner.SpannerFunctions;
-     * import com.pulumi.gcp.compute.inputs.GetInstanceArgs;
+     * import com.pulumi.gcp.spanner.inputs.GetInstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -62,7 +62,7 @@ public final class SpannerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.spanner.SpannerFunctions;
-     * import com.pulumi.gcp.compute.inputs.GetInstanceArgs;
+     * import com.pulumi.gcp.spanner.inputs.GetInstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -99,7 +99,7 @@ public final class SpannerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.spanner.SpannerFunctions;
-     * import com.pulumi.gcp.compute.inputs.GetInstanceArgs;
+     * import com.pulumi.gcp.spanner.inputs.GetInstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -136,7 +136,7 @@ public final class SpannerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.spanner.SpannerFunctions;
-     * import com.pulumi.gcp.compute.inputs.GetInstanceArgs;
+     * import com.pulumi.gcp.spanner.inputs.GetInstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

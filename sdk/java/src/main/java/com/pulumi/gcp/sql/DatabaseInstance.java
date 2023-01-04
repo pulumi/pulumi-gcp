@@ -358,14 +358,20 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.masterInstanceName;
     }
     /**
-     * A name for this whitelist entry.
+     * The name of the instance. If the name is left
+     * blank, the provider will randomly generate one when the instance is first
+     * created. This is done because after a name is used, it cannot be reused for
+     * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return A name for this whitelist entry.
+     * @return The name of the instance. If the name is left
+     * blank, the provider will randomly generate one when the instance is first
+     * created. This is done because after a name is used, it cannot be reused for
+     * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
      * 
      */
     public Output<String> name() {
@@ -386,14 +392,16 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.privateIpAddress;
     }
     /**
-     * The full project ID of the source instance.`
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
      * 
      */
     @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
-     * @return The full project ID of the source instance.`
+     * @return The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
      * 
      */
     public Output<String> project() {

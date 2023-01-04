@@ -102,14 +102,14 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Volume&#39;s name.
+     * Name of the container specified as a DNS_LABEL.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Volume&#39;s name.
+     * @return Name of the container specified as a DNS_LABEL.
      * 
      */
     public Optional<Output<String>> name() {
@@ -376,7 +376,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param name Volume&#39;s name.
+         * @param name Name of the container specified as a DNS_LABEL.
          * 
          * @return builder
          * 
@@ -387,7 +387,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param name Volume&#39;s name.
+         * @param name Name of the container specified as a DNS_LABEL.
          * 
          * @return builder
          * 

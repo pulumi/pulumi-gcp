@@ -185,32 +185,30 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:vertex/aiIndex:AiIndex")
 public class AiIndex extends com.pulumi.resources.CustomResource {
     /**
-     * The timestamp of when the Index was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
-     * fractional digits.
+     * The timestamp of when the Index was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
-     * @return The timestamp of when the Index was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
-     * fractional digits.
+     * @return The timestamp of when the Index was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had
-     * been undeployed first.
+     * The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
+     * Structure is documented below.
      * 
      */
     @Export(name="deployedIndexes", type=List.class, parameters={AiIndexDeployedIndex.class})
     private Output<List<AiIndexDeployedIndex>> deployedIndexes;
 
     /**
-     * @return The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had
-     * been undeployed first.
+     * @return The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
+     * Structure is documented below.
      * 
      */
     public Output<List<AiIndexDeployedIndex>> deployedIndexes() {
@@ -260,6 +258,7 @@ public class AiIndex extends com.pulumi.resources.CustomResource {
     }
     /**
      * Stats of the index resource.
+     * Structure is documented below.
      * 
      */
     @Export(name="indexStats", type=List.class, parameters={AiIndexIndexStat.class})
@@ -267,6 +266,7 @@ public class AiIndex extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Stats of the index resource.
+     * Structure is documented below.
      * 
      */
     public Output<List<AiIndexIndexStat>> indexStats() {
@@ -321,16 +321,14 @@ public class AiIndex extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.metadata);
     }
     /**
-     * Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific
-     * to it. Unset if the Index does not have any additional information.
+     * Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
      * 
      */
     @Export(name="metadataSchemaUri", type=String.class, parameters={})
     private Output<String> metadataSchemaUri;
 
     /**
-     * @return Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific
-     * to it. Unset if the Index does not have any additional information.
+     * @return Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
      * 
      */
     public Output<String> metadataSchemaUri() {
@@ -381,16 +379,14 @@ public class AiIndex extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.region);
     }
     /**
-     * The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
-     * fractional digits.
+     * The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**
-     * @return The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
-     * fractional digits.
+     * @return The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     public Output<String> updateTime() {

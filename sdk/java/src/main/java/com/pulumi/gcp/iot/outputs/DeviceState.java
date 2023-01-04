@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeviceState {
+    /**
+     * @return The device state data.
+     * 
+     */
     private @Nullable String binaryData;
+    /**
+     * @return The time at which this state version was updated in Cloud IoT Core.
+     * 
+     */
     private @Nullable String updateTime;
 
     private DeviceState() {}
+    /**
+     * @return The device state data.
+     * 
+     */
     public Optional<String> binaryData() {
         return Optional.ofNullable(this.binaryData);
     }
+    /**
+     * @return The time at which this state version was updated in Cloud IoT Core.
+     * 
+     */
     public Optional<String> updateTime() {
         return Optional.ofNullable(this.updateTime);
     }

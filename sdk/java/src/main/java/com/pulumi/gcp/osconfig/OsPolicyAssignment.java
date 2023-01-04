@@ -120,18 +120,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:osconfig/osPolicyAssignment:OsPolicyAssignment")
 public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
     /**
-     * Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS
-     * policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for
-     * this field.
+     * Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
      * 
      */
     @Export(name="baseline", type=Boolean.class, parameters={})
     private Output<Boolean> baseline;
 
     /**
-     * @return Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS
-     * policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for
-     * this field.
+     * @return Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
      * 
      */
     public Output<Boolean> baseline() {
@@ -152,6 +148,8 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
         return this.deleted;
     }
     /**
+     * Policy description. Length of the description is limited to 1024 characters.
+     * (Optional)
      * OS policy assignment description. Length of the description is limited to 1024 characters.
      * 
      */
@@ -159,7 +157,9 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return OS policy assignment description. Length of the description is limited to 1024 characters.
+     * @return Policy description. Length of the description is limited to 1024 characters.
+     * (Optional)
+     * OS policy assignment description. Length of the description is limited to 1024 characters.
      * 
      */
     public Output<Optional<String>> description() {
@@ -208,14 +208,14 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * Required. The name of the repository.
+     * Resource name.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Required. The name of the repository.
+     * @return Resource name.
      * 
      */
     public Output<String> name() {
@@ -250,16 +250,14 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the
-     * `rollout_state` is one of: * IN_PROGRESS * CANCELLING
+     * Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the `rollout_state` is one of: * IN_PROGRESS * CANCELLING
      * 
      */
     @Export(name="reconciling", type=Boolean.class, parameters={})
     private Output<Boolean> reconciling;
 
     /**
-     * @return Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the
-     * `rollout_state` is one of: * IN_PROGRESS * CANCELLING
+     * @return Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the `rollout_state` is one of: * IN_PROGRESS * CANCELLING
      * 
      */
     public Output<Boolean> reconciling() {
@@ -280,16 +278,14 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
         return this.revisionCreateTime;
     }
     /**
-     * Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy
-     * assignment
+     * Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
      * 
      */
     @Export(name="revisionId", type=String.class, parameters={})
     private Output<String> revisionId;
 
     /**
-     * @return Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy
-     * assignment
+     * @return Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
      * 
      */
     public Output<String> revisionId() {
@@ -310,16 +306,14 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
         return this.rollout;
     }
     /**
-     * Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING,
-     * CANCELLED, SUCCEEDED
+     * Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING, CANCELLED, SUCCEEDED
      * 
      */
     @Export(name="rolloutState", type=String.class, parameters={})
     private Output<String> rolloutState;
 
     /**
-     * @return Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING,
-     * CANCELLED, SUCCEEDED
+     * @return Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING, CANCELLED, SUCCEEDED
      * 
      */
     public Output<String> rolloutState() {

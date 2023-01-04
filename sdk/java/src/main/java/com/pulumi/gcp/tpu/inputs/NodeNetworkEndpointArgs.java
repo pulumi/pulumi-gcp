@@ -16,16 +16,32 @@ public final class NodeNetworkEndpointArgs extends com.pulumi.resources.Resource
 
     public static final NodeNetworkEndpointArgs Empty = new NodeNetworkEndpointArgs();
 
+    /**
+     * The IP address of this network endpoint.
+     * 
+     */
     @Import(name="ipAddress")
     private @Nullable Output<String> ipAddress;
 
+    /**
+     * @return The IP address of this network endpoint.
+     * 
+     */
     public Optional<Output<String>> ipAddress() {
         return Optional.ofNullable(this.ipAddress);
     }
 
+    /**
+     * The port of this network endpoint.
+     * 
+     */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
+    /**
+     * @return The port of this network endpoint.
+     * 
+     */
     public Optional<Output<Integer>> port() {
         return Optional.ofNullable(this.port);
     }
@@ -55,20 +71,44 @@ public final class NodeNetworkEndpointArgs extends com.pulumi.resources.Resource
             $ = new NodeNetworkEndpointArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ipAddress The IP address of this network endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipAddress(@Nullable Output<String> ipAddress) {
             $.ipAddress = ipAddress;
             return this;
         }
 
+        /**
+         * @param ipAddress The IP address of this network endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipAddress(String ipAddress) {
             return ipAddress(Output.of(ipAddress));
         }
 
+        /**
+         * @param port The port of this network endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(@Nullable Output<Integer> port) {
             $.port = port;
             return this;
         }
 
+        /**
+         * @param port The port of this network endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(Integer port) {
             return port(Output.of(port));
         }

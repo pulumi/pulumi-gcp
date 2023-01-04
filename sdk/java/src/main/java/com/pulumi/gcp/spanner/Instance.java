@@ -283,14 +283,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * Instance status: &#39;CREATING&#39; or &#39;READY&#39;.
+     * Instance status: `CREATING` or `READY`.
      * 
      */
     @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**
-     * @return Instance status: &#39;CREATING&#39; or &#39;READY&#39;.
+     * @return Instance status: `CREATING` or `READY`.
      * 
      */
     public Output<String> state() {

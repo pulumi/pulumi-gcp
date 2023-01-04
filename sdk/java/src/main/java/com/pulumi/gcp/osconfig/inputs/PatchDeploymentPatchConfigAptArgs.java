@@ -17,14 +17,14 @@ public final class PatchDeploymentPatchConfigAptArgs extends com.pulumi.resource
     public static final PatchDeploymentPatchConfigAptArgs Empty = new PatchDeploymentPatchConfigAptArgs();
 
     /**
-     * List of KBs to exclude from update.
+     * List of packages to exclude from update. These packages will be excluded.
      * 
      */
     @Import(name="excludes")
     private @Nullable Output<List<String>> excludes;
 
     /**
-     * @return List of KBs to exclude from update.
+     * @return List of packages to exclude from update. These packages will be excluded.
      * 
      */
     public Optional<Output<List<String>>> excludes() {
@@ -94,7 +94,7 @@ public final class PatchDeploymentPatchConfigAptArgs extends com.pulumi.resource
         }
 
         /**
-         * @param excludes List of KBs to exclude from update.
+         * @param excludes List of packages to exclude from update. These packages will be excluded.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class PatchDeploymentPatchConfigAptArgs extends com.pulumi.resource
         }
 
         /**
-         * @param excludes List of KBs to exclude from update.
+         * @param excludes List of packages to exclude from update. These packages will be excluded.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class PatchDeploymentPatchConfigAptArgs extends com.pulumi.resource
         }
 
         /**
-         * @param excludes List of KBs to exclude from update.
+         * @param excludes List of packages to exclude from update. These packages will be excluded.
          * 
          * @return builder
          * 

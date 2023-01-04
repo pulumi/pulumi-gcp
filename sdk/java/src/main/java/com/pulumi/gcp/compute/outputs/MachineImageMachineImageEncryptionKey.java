@@ -29,8 +29,7 @@ public final class MachineImageMachineImageEncryptionKey {
      */
     private @Nullable String rawKey;
     /**
-     * @return -
-     * The RFC 4648 base64 encoded SHA-256 hash of the
+     * @return The RFC 4648 base64 encoded SHA-256 hash of the
      * customer-supplied encryption key that protects this resource.
      * 
      */
@@ -61,8 +60,7 @@ public final class MachineImageMachineImageEncryptionKey {
         return Optional.ofNullable(this.rawKey);
     }
     /**
-     * @return -
-     * The RFC 4648 base64 encoded SHA-256 hash of the
+     * @return The RFC 4648 base64 encoded SHA-256 hash of the
      * customer-supplied encryption key that protects this resource.
      * 
      */

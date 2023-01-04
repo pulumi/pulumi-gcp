@@ -29,16 +29,32 @@ public final class LakeMetastoreStatusArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.message);
     }
 
+    /**
+     * Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+     * 
+     */
     @Import(name="state")
     private @Nullable Output<String> state;
 
+    /**
+     * @return Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+     * 
+     */
     public Optional<Output<String>> state() {
         return Optional.ofNullable(this.state);
     }
 
+    /**
+     * Output only. The time when the lake was last updated.
+     * 
+     */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
+    /**
+     * @return Output only. The time when the lake was last updated.
+     * 
+     */
     public Optional<Output<String>> updateTime() {
         return Optional.ofNullable(this.updateTime);
     }
@@ -88,20 +104,44 @@ public final class LakeMetastoreStatusArgs extends com.pulumi.resources.Resource
             return message(Output.of(message));
         }
 
+        /**
+         * @param state Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+         * 
+         * @return builder
+         * 
+         */
         public Builder state(@Nullable Output<String> state) {
             $.state = state;
             return this;
         }
 
+        /**
+         * @param state Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+         * 
+         * @return builder
+         * 
+         */
         public Builder state(String state) {
             return state(Output.of(state));
         }
 
+        /**
+         * @param updateTime Output only. The time when the lake was last updated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateTime(@Nullable Output<String> updateTime) {
             $.updateTime = updateTime;
             return this;
         }
 
+        /**
+         * @param updateTime Output only. The time when the lake was last updated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateTime(String updateTime) {
             return updateTime(Output.of(updateTime));
         }

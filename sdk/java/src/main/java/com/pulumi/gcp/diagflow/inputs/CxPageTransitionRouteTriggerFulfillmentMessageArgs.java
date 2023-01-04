@@ -16,14 +16,16 @@ public final class CxPageTransitionRouteTriggerFulfillmentMessageArgs extends co
     public static final CxPageTransitionRouteTriggerFulfillmentMessageArgs Empty = new CxPageTransitionRouteTriggerFulfillmentMessageArgs();
 
     /**
-     * A collection of text responses.
+     * The text response message.
+     * Structure is documented below.
      * 
      */
     @Import(name="text")
     private @Nullable Output<CxPageTransitionRouteTriggerFulfillmentMessageTextArgs> text;
 
     /**
-     * @return A collection of text responses.
+     * @return The text response message.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<CxPageTransitionRouteTriggerFulfillmentMessageTextArgs>> text() {
@@ -55,7 +57,8 @@ public final class CxPageTransitionRouteTriggerFulfillmentMessageArgs extends co
         }
 
         /**
-         * @param text A collection of text responses.
+         * @param text The text response message.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -66,7 +69,8 @@ public final class CxPageTransitionRouteTriggerFulfillmentMessageArgs extends co
         }
 
         /**
-         * @param text A collection of text responses.
+         * @param text The text response message.
+         * Structure is documented below.
          * 
          * @return builder
          * 

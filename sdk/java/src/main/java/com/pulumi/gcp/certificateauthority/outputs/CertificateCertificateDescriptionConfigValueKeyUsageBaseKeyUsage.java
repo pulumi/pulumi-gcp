@@ -11,9 +11,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage {
+    /**
+     * @return Describes high-level ways in which a key may be used.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable List<CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption> keyUsageOptions;
 
     private CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage() {}
+    /**
+     * @return Describes high-level ways in which a key may be used.
+     * Structure is documented below.
+     * 
+     */
     public List<CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption> keyUsageOptions() {
         return this.keyUsageOptions == null ? List.of() : this.keyUsageOptions;
     }

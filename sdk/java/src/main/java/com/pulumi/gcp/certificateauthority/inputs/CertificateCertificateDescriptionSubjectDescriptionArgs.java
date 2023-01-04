@@ -18,9 +18,17 @@ public final class CertificateCertificateDescriptionSubjectDescriptionArgs exten
 
     public static final CertificateCertificateDescriptionSubjectDescriptionArgs Empty = new CertificateCertificateDescriptionSubjectDescriptionArgs();
 
+    /**
+     * The serial number encoded in lowercase hexadecimal.
+     * 
+     */
     @Import(name="hexSerialNumber")
     private @Nullable Output<String> hexSerialNumber;
 
+    /**
+     * @return The serial number encoded in lowercase hexadecimal.
+     * 
+     */
     public Optional<Output<String>> hexSerialNumber() {
         return Optional.ofNullable(this.hexSerialNumber);
     }
@@ -44,16 +52,32 @@ public final class CertificateCertificateDescriptionSubjectDescriptionArgs exten
         return Optional.ofNullable(this.lifetime);
     }
 
+    /**
+     * The time at which the certificate expires.
+     * 
+     */
     @Import(name="notAfterTime")
     private @Nullable Output<String> notAfterTime;
 
+    /**
+     * @return The time at which the certificate expires.
+     * 
+     */
     public Optional<Output<String>> notAfterTime() {
         return Optional.ofNullable(this.notAfterTime);
     }
 
+    /**
+     * The time at which the certificate becomes valid.
+     * 
+     */
     @Import(name="notBeforeTime")
     private @Nullable Output<String> notBeforeTime;
 
+    /**
+     * @return The time at which the certificate becomes valid.
+     * 
+     */
     public Optional<Output<String>> notBeforeTime() {
         return Optional.ofNullable(this.notBeforeTime);
     }
@@ -121,11 +145,23 @@ public final class CertificateCertificateDescriptionSubjectDescriptionArgs exten
             $ = new CertificateCertificateDescriptionSubjectDescriptionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param hexSerialNumber The serial number encoded in lowercase hexadecimal.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hexSerialNumber(@Nullable Output<String> hexSerialNumber) {
             $.hexSerialNumber = hexSerialNumber;
             return this;
         }
 
+        /**
+         * @param hexSerialNumber The serial number encoded in lowercase hexadecimal.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hexSerialNumber(String hexSerialNumber) {
             return hexSerialNumber(Output.of(hexSerialNumber));
         }
@@ -155,20 +191,44 @@ public final class CertificateCertificateDescriptionSubjectDescriptionArgs exten
             return lifetime(Output.of(lifetime));
         }
 
+        /**
+         * @param notAfterTime The time at which the certificate expires.
+         * 
+         * @return builder
+         * 
+         */
         public Builder notAfterTime(@Nullable Output<String> notAfterTime) {
             $.notAfterTime = notAfterTime;
             return this;
         }
 
+        /**
+         * @param notAfterTime The time at which the certificate expires.
+         * 
+         * @return builder
+         * 
+         */
         public Builder notAfterTime(String notAfterTime) {
             return notAfterTime(Output.of(notAfterTime));
         }
 
+        /**
+         * @param notBeforeTime The time at which the certificate becomes valid.
+         * 
+         * @return builder
+         * 
+         */
         public Builder notBeforeTime(@Nullable Output<String> notBeforeTime) {
             $.notBeforeTime = notBeforeTime;
             return this;
         }
 
+        /**
+         * @param notBeforeTime The time at which the certificate becomes valid.
+         * 
+         * @return builder
+         * 
+         */
         public Builder notBeforeTime(String notBeforeTime) {
             return notBeforeTime(Output.of(notBeforeTime));
         }

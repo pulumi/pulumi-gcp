@@ -9,33 +9,76 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAppleAppResult {
+    /**
+     * @return Immutable. The globally unique, Firebase-assigned identifier of the App.
+     * This identifier should be treated as an opaque token, as the data format is not specified.
+     * 
+     */
     private String appId;
+    /**
+     * @return The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
+     * 
+     */
     private String appStoreId;
+    /**
+     * @return The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
+     * 
+     */
     private String bundleId;
     private String deletionPolicy;
+    /**
+     * @return The user-assigned display name of the App.
+     * 
+     */
     private String displayName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return The fully qualified resource name of the App, for example:
+     * projects/projectId/iosApps/appId
+     * 
+     */
     private String name;
     private String project;
+    /**
+     * @return The Apple Developer Team ID associated with the App in the App Store.
+     * 
+     */
     private String teamId;
 
     private GetAppleAppResult() {}
+    /**
+     * @return Immutable. The globally unique, Firebase-assigned identifier of the App.
+     * This identifier should be treated as an opaque token, as the data format is not specified.
+     * 
+     */
     public String appId() {
         return this.appId;
     }
+    /**
+     * @return The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
+     * 
+     */
     public String appStoreId() {
         return this.appStoreId;
     }
+    /**
+     * @return The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
+     * 
+     */
     public String bundleId() {
         return this.bundleId;
     }
     public String deletionPolicy() {
         return this.deletionPolicy;
     }
+    /**
+     * @return The user-assigned display name of the App.
+     * 
+     */
     public String displayName() {
         return this.displayName;
     }
@@ -46,12 +89,21 @@ public final class GetAppleAppResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The fully qualified resource name of the App, for example:
+     * projects/projectId/iosApps/appId
+     * 
+     */
     public String name() {
         return this.name;
     }
     public String project() {
         return this.project;
     }
+    /**
+     * @return The Apple Developer Team ID associated with the App in the App Store.
+     * 
+     */
     public String teamId() {
         return this.teamId;
     }

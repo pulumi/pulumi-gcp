@@ -73,7 +73,6 @@ public final class DiskSourceImageEncryptionKeyArgs extends com.pulumi.resources
     }
 
     /**
-     * - 
      * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
      * encryption key that protects this resource.
      * 
@@ -82,8 +81,7 @@ public final class DiskSourceImageEncryptionKeyArgs extends com.pulumi.resources
     private @Nullable Output<String> sha256;
 
     /**
-     * @return -
-     * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+     * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
      * encryption key that protects this resource.
      * 
      */
@@ -194,8 +192,7 @@ public final class DiskSourceImageEncryptionKeyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param sha256 -
-         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+         * @param sha256 The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
          * encryption key that protects this resource.
          * 
          * @return builder
@@ -207,8 +204,7 @@ public final class DiskSourceImageEncryptionKeyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param sha256 -
-         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+         * @param sha256 The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
          * encryption key that protects this resource.
          * 
          * @return builder

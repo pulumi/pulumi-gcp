@@ -14,14 +14,14 @@ public final class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKi
     public static final PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindArgs Empty = new PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindArgs();
 
     /**
-     * Name of a BigQuery field to be returned with the findings.
+     * The name of the Datastore kind.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of a BigQuery field to be returned with the findings.
+     * @return The name of the Datastore kind.
      * 
      */
     public Output<String> name() {
@@ -53,7 +53,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKi
         }
 
         /**
-         * @param name Name of a BigQuery field to be returned with the findings.
+         * @param name The name of the Datastore kind.
          * 
          * @return builder
          * 
@@ -64,7 +64,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKi
         }
 
         /**
-         * @param name Name of a BigQuery field to be returned with the findings.
+         * @param name The name of the Datastore kind.
          * 
          * @return builder
          * 

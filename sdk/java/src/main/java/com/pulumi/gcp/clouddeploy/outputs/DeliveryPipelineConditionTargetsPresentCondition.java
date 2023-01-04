@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 public final class DeliveryPipelineConditionTargetsPresentCondition {
     private @Nullable List<String> missingTargets;
     private @Nullable Boolean status;
+    /**
+     * @return Output only. Most recent time at which the pipeline was updated.
+     * 
+     */
     private @Nullable String updateTime;
 
     private DeliveryPipelineConditionTargetsPresentCondition() {}
@@ -24,6 +28,10 @@ public final class DeliveryPipelineConditionTargetsPresentCondition {
     public Optional<Boolean> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return Output only. Most recent time at which the pipeline was updated.
+     * 
+     */
     public Optional<String> updateTime() {
         return Optional.ofNullable(this.updateTime);
     }

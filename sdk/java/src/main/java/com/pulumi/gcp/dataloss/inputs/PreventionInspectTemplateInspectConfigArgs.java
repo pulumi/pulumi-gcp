@@ -56,16 +56,14 @@ public final class PreventionInspectTemplateInspectConfigArgs extends com.pulumi
     }
 
     /**
-     * Set of infoTypes for which findings would affect this rule.
-     * Structure is documented below.
+     * When true, excludes type information of the findings.
      * 
      */
     @Import(name="excludeInfoTypes")
     private @Nullable Output<Boolean> excludeInfoTypes;
 
     /**
-     * @return Set of infoTypes for which findings would affect this rule.
-     * Structure is documented below.
+     * @return When true, excludes type information of the findings.
      * 
      */
     public Optional<Output<Boolean>> excludeInfoTypes() {
@@ -88,7 +86,10 @@ public final class PreventionInspectTemplateInspectConfigArgs extends com.pulumi
     }
 
     /**
-     * If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+     * Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
+     * or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+     * When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
+     * By default this may be all types, but may change over time as detectors are updated.
      * Structure is documented below.
      * 
      */
@@ -96,7 +97,10 @@ public final class PreventionInspectTemplateInspectConfigArgs extends com.pulumi
     private @Nullable Output<List<PreventionInspectTemplateInspectConfigInfoTypeArgs>> infoTypes;
 
     /**
-     * @return If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+     * @return Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
+     * or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+     * When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
+     * By default this may be all types, but may change over time as detectors are updated.
      * Structure is documented below.
      * 
      */
@@ -259,8 +263,7 @@ public final class PreventionInspectTemplateInspectConfigArgs extends com.pulumi
         }
 
         /**
-         * @param excludeInfoTypes Set of infoTypes for which findings would affect this rule.
-         * Structure is documented below.
+         * @param excludeInfoTypes When true, excludes type information of the findings.
          * 
          * @return builder
          * 
@@ -271,8 +274,7 @@ public final class PreventionInspectTemplateInspectConfigArgs extends com.pulumi
         }
 
         /**
-         * @param excludeInfoTypes Set of infoTypes for which findings would affect this rule.
-         * Structure is documented below.
+         * @param excludeInfoTypes When true, excludes type information of the findings.
          * 
          * @return builder
          * 
@@ -303,7 +305,10 @@ public final class PreventionInspectTemplateInspectConfigArgs extends com.pulumi
         }
 
         /**
-         * @param infoTypes If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+         * @param infoTypes Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
+         * or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+         * When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
+         * By default this may be all types, but may change over time as detectors are updated.
          * Structure is documented below.
          * 
          * @return builder
@@ -315,7 +320,10 @@ public final class PreventionInspectTemplateInspectConfigArgs extends com.pulumi
         }
 
         /**
-         * @param infoTypes If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+         * @param infoTypes Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
+         * or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+         * When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
+         * By default this may be all types, but may change over time as detectors are updated.
          * Structure is documented below.
          * 
          * @return builder
@@ -326,7 +334,10 @@ public final class PreventionInspectTemplateInspectConfigArgs extends com.pulumi
         }
 
         /**
-         * @param infoTypes If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+         * @param infoTypes Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
+         * or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+         * When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
+         * By default this may be all types, but may change over time as detectors are updated.
          * Structure is documented below.
          * 
          * @return builder

@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class StandardAppVersionLibrary {
     /**
-     * @return Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+     * @return Name of the library. Example &#34;django&#34;.
      * 
      */
     private @Nullable String name;
@@ -24,7 +24,7 @@ public final class StandardAppVersionLibrary {
 
     private StandardAppVersionLibrary() {}
     /**
-     * @return Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+     * @return Name of the library. Example &#34;django&#34;.
      * 
      */
     public Optional<String> name() {

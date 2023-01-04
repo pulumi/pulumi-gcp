@@ -77,16 +77,14 @@ public final class FlexibleAppVersionLivenessCheckArgs extends com.pulumi.resour
     }
 
     /**
-     * Path to the static files matched by the URL pattern, from the application root directory.
-     * The path can refer to text matched in groupings in the URL pattern.
+     * The request path.
      * 
      */
     @Import(name="path", required=true)
     private Output<String> path;
 
     /**
-     * @return Path to the static files matched by the URL pattern, from the application root directory.
-     * The path can refer to text matched in groupings in the URL pattern.
+     * @return The request path.
      * 
      */
     public Output<String> path() {
@@ -238,8 +236,7 @@ public final class FlexibleAppVersionLivenessCheckArgs extends com.pulumi.resour
         }
 
         /**
-         * @param path Path to the static files matched by the URL pattern, from the application root directory.
-         * The path can refer to text matched in groupings in the URL pattern.
+         * @param path The request path.
          * 
          * @return builder
          * 
@@ -250,8 +247,7 @@ public final class FlexibleAppVersionLivenessCheckArgs extends com.pulumi.resour
         }
 
         /**
-         * @param path Path to the static files matched by the URL pattern, from the application root directory.
-         * The path can refer to text matched in groupings in the URL pattern.
+         * @param path The request path.
          * 
          * @return builder
          * 

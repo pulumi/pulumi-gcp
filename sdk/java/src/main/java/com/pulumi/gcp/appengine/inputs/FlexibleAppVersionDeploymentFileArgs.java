@@ -16,14 +16,14 @@ public final class FlexibleAppVersionDeploymentFileArgs extends com.pulumi.resou
     public static final FlexibleAppVersionDeploymentFileArgs Empty = new FlexibleAppVersionDeploymentFileArgs();
 
     /**
-     * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+     * The identifier for this object. Format specified above.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+     * @return The identifier for this object. Format specified above.
      * 
      */
     public Output<String> name() {
@@ -87,7 +87,7 @@ public final class FlexibleAppVersionDeploymentFileArgs extends com.pulumi.resou
         }
 
         /**
-         * @param name Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+         * @param name The identifier for this object. Format specified above.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class FlexibleAppVersionDeploymentFileArgs extends com.pulumi.resou
         }
 
         /**
-         * @param name Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+         * @param name The identifier for this object. Format specified above.
          * 
          * @return builder
          * 

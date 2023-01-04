@@ -13,8 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterBinaryAuthorization {
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
      * 
      * @deprecated
      * Deprecated in favor of evaluation_mode.
@@ -32,8 +31,7 @@ public final class ClusterBinaryAuthorization {
 
     private ClusterBinaryAuthorization() {}
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
      * 
      * @deprecated
      * Deprecated in favor of evaluation_mode.

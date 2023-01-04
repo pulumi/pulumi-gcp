@@ -10,14 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class DeploymentTargetConfig {
     /**
-     * @return The full contents of the template that you want to import.
+     * @return The full YAML contents of your configuration file.
      * 
      */
     private String content;
 
     private DeploymentTargetConfig() {}
     /**
-     * @return The full contents of the template that you want to import.
+     * @return The full YAML contents of your configuration file.
      * 
      */
     public String content() {

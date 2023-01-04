@@ -32,14 +32,14 @@ public final class GuestPoliciesRecipeUpdateStepFileCopyArgs extends com.pulumi.
     }
 
     /**
-     * Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+     * The absolute path on the instance to put the file.
      * 
      */
     @Import(name="destination", required=true)
     private Output<String> destination;
 
     /**
-     * @return Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+     * @return The absolute path on the instance to put the file.
      * 
      */
     public Output<String> destination() {
@@ -137,7 +137,7 @@ public final class GuestPoliciesRecipeUpdateStepFileCopyArgs extends com.pulumi.
         }
 
         /**
-         * @param destination Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+         * @param destination The absolute path on the instance to put the file.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class GuestPoliciesRecipeUpdateStepFileCopyArgs extends com.pulumi.
         }
 
         /**
-         * @param destination Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+         * @param destination The absolute path on the instance to put the file.
          * 
          * @return builder
          * 

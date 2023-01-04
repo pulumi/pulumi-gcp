@@ -169,14 +169,14 @@ public class Router extends com.pulumi.resources.CustomResource {
         return this.creationTimestamp;
     }
     /**
-     * User-specified description for the IP range.
+     * An optional description of this resource.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return User-specified description for the IP range.
+     * @return An optional description of this resource.
      * 
      */
     public Output<Optional<String>> description() {

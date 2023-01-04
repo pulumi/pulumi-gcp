@@ -140,14 +140,14 @@ public final class BackupPlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of a Kubernetes Resource.
+     * The full name of the BackupPlan Resource.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of a Kubernetes Resource.
+     * @return The full name of the BackupPlan Resource.
      * 
      */
     public Optional<Output<String>> name() {
@@ -383,7 +383,7 @@ public final class BackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of a Kubernetes Resource.
+         * @param name The full name of the BackupPlan Resource.
          * 
          * @return builder
          * 
@@ -394,7 +394,7 @@ public final class BackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of a Kubernetes Resource.
+         * @param name The full name of the BackupPlan Resource.
          * 
          * @return builder
          * 

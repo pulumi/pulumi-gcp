@@ -75,16 +75,16 @@ public final class GameServerDeploymentRolloutState extends com.pulumi.resources
     }
 
     /**
-     * The resource id of the game server deployment eg:
-     * &#39;projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout&#39;.
+     * The resource id of the game server deployment
+     * eg: `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The resource id of the game server deployment eg:
-     * &#39;projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout&#39;.
+     * @return The resource id of the game server deployment
+     * eg: `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -226,8 +226,8 @@ public final class GameServerDeploymentRolloutState extends com.pulumi.resources
         }
 
         /**
-         * @param name The resource id of the game server deployment eg:
-         * &#39;projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout&#39;.
+         * @param name The resource id of the game server deployment
+         * eg: `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
          * 
          * @return builder
          * 
@@ -238,8 +238,8 @@ public final class GameServerDeploymentRolloutState extends com.pulumi.resources
         }
 
         /**
-         * @param name The resource id of the game server deployment eg:
-         * &#39;projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout&#39;.
+         * @param name The resource id of the game server deployment
+         * eg: `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
          * 
          * @return builder
          * 

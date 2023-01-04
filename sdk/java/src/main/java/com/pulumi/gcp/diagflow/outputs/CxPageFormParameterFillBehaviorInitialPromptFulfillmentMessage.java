@@ -12,14 +12,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage {
     /**
-     * @return A collection of text responses.
+     * @return The text response message.
+     * Structure is documented below.
      * 
      */
     private @Nullable CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText text;
 
     private CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage() {}
     /**
-     * @return A collection of text responses.
+     * @return The text response message.
+     * Structure is documented below.
      * 
      */
     public Optional<CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText> text() {

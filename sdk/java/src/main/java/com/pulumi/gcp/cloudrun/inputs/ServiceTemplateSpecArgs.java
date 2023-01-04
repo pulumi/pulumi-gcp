@@ -83,7 +83,6 @@ public final class ServiceTemplateSpecArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * - 
      * (Deprecated)
      * ServingState holds a value describing the state the resources
      * are in for this Revision.
@@ -99,8 +98,7 @@ public final class ServiceTemplateSpecArgs extends com.pulumi.resources.Resource
     private @Nullable Output<String> servingState;
 
     /**
-     * @return -
-     * (Deprecated)
+     * @return (Deprecated)
      * ServingState holds a value describing the state the resources
      * are in for this Revision.
      * It is expected
@@ -116,18 +114,14 @@ public final class ServiceTemplateSpecArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Number of seconds after which the probe times out.
-     * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
-     * Must be smaller than period_seconds.
+     * TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
      * 
      */
     @Import(name="timeoutSeconds")
     private @Nullable Output<Integer> timeoutSeconds;
 
     /**
-     * @return Number of seconds after which the probe times out.
-     * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
-     * Must be smaller than period_seconds.
+     * @return TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
      * 
      */
     public Optional<Output<Integer>> timeoutSeconds() {
@@ -277,8 +271,7 @@ public final class ServiceTemplateSpecArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param servingState -
-         * (Deprecated)
+         * @param servingState (Deprecated)
          * ServingState holds a value describing the state the resources
          * are in for this Revision.
          * It is expected
@@ -297,8 +290,7 @@ public final class ServiceTemplateSpecArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param servingState -
-         * (Deprecated)
+         * @param servingState (Deprecated)
          * ServingState holds a value describing the state the resources
          * are in for this Revision.
          * It is expected
@@ -316,9 +308,7 @@ public final class ServiceTemplateSpecArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param timeoutSeconds Number of seconds after which the probe times out.
-         * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
-         * Must be smaller than period_seconds.
+         * @param timeoutSeconds TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
          * 
          * @return builder
          * 
@@ -329,9 +319,7 @@ public final class ServiceTemplateSpecArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param timeoutSeconds Number of seconds after which the probe times out.
-         * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
-         * Must be smaller than period_seconds.
+         * @param timeoutSeconds TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
          * 
          * @return builder
          * 

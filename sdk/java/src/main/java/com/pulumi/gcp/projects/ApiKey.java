@@ -292,16 +292,14 @@ public class ApiKey extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.displayName);
     }
     /**
-     * Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString`
-     * method.
+     * Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
      * 
      */
     @Export(name="keyString", type=String.class, parameters={})
     private Output<String> keyString;
 
     /**
-     * @return Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString`
-     * method.
+     * @return Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
      * 
      */
     public Output<String> keyString() {

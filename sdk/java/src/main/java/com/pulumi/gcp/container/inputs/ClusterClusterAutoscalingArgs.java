@@ -60,16 +60,16 @@ public final class ClusterClusterAutoscalingArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * Whether node auto-provisioning is enabled. Must be supplied for GKE Standard clusters, `true` is implied
+     * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Whether node auto-provisioning is enabled. Must be supplied for GKE Standard clusters, `true` is implied
+     * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -177,8 +177,8 @@ public final class ClusterClusterAutoscalingArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param enabled Enable the PodSecurityPolicy controller for this cluster.
-         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         * @param enabled Whether node auto-provisioning is enabled. Must be supplied for GKE Standard clusters, `true` is implied
+         * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
          * 
          * @return builder
          * 
@@ -189,8 +189,8 @@ public final class ClusterClusterAutoscalingArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param enabled Enable the PodSecurityPolicy controller for this cluster.
-         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         * @param enabled Whether node auto-provisioning is enabled. Must be supplied for GKE Standard clusters, `true` is implied
+         * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
          * 
          * @return builder
          * 

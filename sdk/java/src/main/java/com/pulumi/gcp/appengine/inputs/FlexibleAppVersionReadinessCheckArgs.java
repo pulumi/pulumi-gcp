@@ -34,14 +34,14 @@ public final class FlexibleAppVersionReadinessCheckArgs extends com.pulumi.resou
     }
 
     /**
-     * Interval between health checks.
+     * Interval between health checks.  Default: &#34;5s&#34;.
      * 
      */
     @Import(name="checkInterval")
     private @Nullable Output<String> checkInterval;
 
     /**
-     * @return Interval between health checks.
+     * @return Interval between health checks.  Default: &#34;5s&#34;.
      * 
      */
     public Optional<Output<String>> checkInterval() {
@@ -49,14 +49,14 @@ public final class FlexibleAppVersionReadinessCheckArgs extends com.pulumi.resou
     }
 
     /**
-     * Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
+     * Number of consecutive failed checks required before removing traffic. Default: 2.
      * 
      */
     @Import(name="failureThreshold")
     private @Nullable Output<Double> failureThreshold;
 
     /**
-     * @return Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
+     * @return Number of consecutive failed checks required before removing traffic. Default: 2.
      * 
      */
     public Optional<Output<Double>> failureThreshold() {
@@ -79,16 +79,14 @@ public final class FlexibleAppVersionReadinessCheckArgs extends com.pulumi.resou
     }
 
     /**
-     * Path to the static files matched by the URL pattern, from the application root directory.
-     * The path can refer to text matched in groupings in the URL pattern.
+     * The request path.
      * 
      */
     @Import(name="path", required=true)
     private Output<String> path;
 
     /**
-     * @return Path to the static files matched by the URL pattern, from the application root directory.
-     * The path can refer to text matched in groupings in the URL pattern.
+     * @return The request path.
      * 
      */
     public Output<String> path() {
@@ -96,14 +94,14 @@ public final class FlexibleAppVersionReadinessCheckArgs extends com.pulumi.resou
     }
 
     /**
-     * Number of consecutive successful checks required before considering the VM healthy. Default: 2.
+     * Number of consecutive successful checks required before receiving traffic. Default: 2.
      * 
      */
     @Import(name="successThreshold")
     private @Nullable Output<Double> successThreshold;
 
     /**
-     * @return Number of consecutive successful checks required before considering the VM healthy. Default: 2.
+     * @return Number of consecutive successful checks required before receiving traffic. Default: 2.
      * 
      */
     public Optional<Output<Double>> successThreshold() {
@@ -179,7 +177,7 @@ public final class FlexibleAppVersionReadinessCheckArgs extends com.pulumi.resou
         }
 
         /**
-         * @param checkInterval Interval between health checks.
+         * @param checkInterval Interval between health checks.  Default: &#34;5s&#34;.
          * 
          * @return builder
          * 
@@ -190,7 +188,7 @@ public final class FlexibleAppVersionReadinessCheckArgs extends com.pulumi.resou
         }
 
         /**
-         * @param checkInterval Interval between health checks.
+         * @param checkInterval Interval between health checks.  Default: &#34;5s&#34;.
          * 
          * @return builder
          * 
@@ -200,7 +198,7 @@ public final class FlexibleAppVersionReadinessCheckArgs extends com.pulumi.resou
         }
 
         /**
-         * @param failureThreshold Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
+         * @param failureThreshold Number of consecutive failed checks required before removing traffic. Default: 2.
          * 
          * @return builder
          * 
@@ -211,7 +209,7 @@ public final class FlexibleAppVersionReadinessCheckArgs extends com.pulumi.resou
         }
 
         /**
-         * @param failureThreshold Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
+         * @param failureThreshold Number of consecutive failed checks required before removing traffic. Default: 2.
          * 
          * @return builder
          * 
@@ -242,8 +240,7 @@ public final class FlexibleAppVersionReadinessCheckArgs extends com.pulumi.resou
         }
 
         /**
-         * @param path Path to the static files matched by the URL pattern, from the application root directory.
-         * The path can refer to text matched in groupings in the URL pattern.
+         * @param path The request path.
          * 
          * @return builder
          * 
@@ -254,8 +251,7 @@ public final class FlexibleAppVersionReadinessCheckArgs extends com.pulumi.resou
         }
 
         /**
-         * @param path Path to the static files matched by the URL pattern, from the application root directory.
-         * The path can refer to text matched in groupings in the URL pattern.
+         * @param path The request path.
          * 
          * @return builder
          * 
@@ -265,7 +261,7 @@ public final class FlexibleAppVersionReadinessCheckArgs extends com.pulumi.resou
         }
 
         /**
-         * @param successThreshold Number of consecutive successful checks required before considering the VM healthy. Default: 2.
+         * @param successThreshold Number of consecutive successful checks required before receiving traffic. Default: 2.
          * 
          * @return builder
          * 
@@ -276,7 +272,7 @@ public final class FlexibleAppVersionReadinessCheckArgs extends com.pulumi.resou
         }
 
         /**
-         * @param successThreshold Number of consecutive successful checks required before considering the VM healthy. Default: 2.
+         * @param successThreshold Number of consecutive successful checks required before receiving traffic. Default: 2.
          * 
          * @return builder
          * 

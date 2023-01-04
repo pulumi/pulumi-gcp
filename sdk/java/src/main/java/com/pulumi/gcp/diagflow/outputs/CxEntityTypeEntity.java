@@ -19,7 +19,9 @@ public final class CxEntityTypeEntity {
      */
     private @Nullable List<String> synonyms;
     /**
-     * @return The word or phrase to be excluded.
+     * @return The primary value associated with this entity entry. For example, if the entity type is vegetable, the value could be scallions.
+     * For KIND_MAP entity types: A canonical value to be used in place of synonyms.
+     * For KIND_LIST entity types: A string that can contain references to other entity types (with or without aliases).
      * 
      */
     private @Nullable String value;
@@ -34,7 +36,9 @@ public final class CxEntityTypeEntity {
         return this.synonyms == null ? List.of() : this.synonyms;
     }
     /**
-     * @return The word or phrase to be excluded.
+     * @return The primary value associated with this entity entry. For example, if the entity type is vegetable, the value could be scallions.
+     * For KIND_MAP entity types: A canonical value to be used in place of synonyms.
+     * For KIND_LIST entity types: A string that can contain references to other entity types (with or without aliases).
      * 
      */
     public Optional<String> value() {

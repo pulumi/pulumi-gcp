@@ -12,14 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionAzure {
     /**
-     * @return -
-     * The name of the Azure Active Directory Application.
+     * @return The name of the Azure Active Directory Application.
      * 
      */
     private @Nullable String application;
     /**
-     * @return -
-     * The client id of the Azure Active Directory Application.
+     * @return The client id of the Azure Active Directory Application.
      * 
      */
     private @Nullable String clientId;
@@ -29,30 +27,26 @@ public final class ConnectionAzure {
      */
     private String customerTenantId;
     /**
-     * @return -
-     * The object id of the Azure Active Directory Application.
+     * @return The object id of the Azure Active Directory Application.
      * 
      */
     private @Nullable String objectId;
     /**
-     * @return -
-     * The URL user will be redirected to after granting consent during connection setup.
+     * @return The URL user will be redirected to after granting consent during connection setup.
      * 
      */
     private @Nullable String redirectUri;
 
     private ConnectionAzure() {}
     /**
-     * @return -
-     * The name of the Azure Active Directory Application.
+     * @return The name of the Azure Active Directory Application.
      * 
      */
     public Optional<String> application() {
         return Optional.ofNullable(this.application);
     }
     /**
-     * @return -
-     * The client id of the Azure Active Directory Application.
+     * @return The client id of the Azure Active Directory Application.
      * 
      */
     public Optional<String> clientId() {
@@ -66,16 +60,14 @@ public final class ConnectionAzure {
         return this.customerTenantId;
     }
     /**
-     * @return -
-     * The object id of the Azure Active Directory Application.
+     * @return The object id of the Azure Active Directory Application.
      * 
      */
     public Optional<String> objectId() {
         return Optional.ofNullable(this.objectId);
     }
     /**
-     * @return -
-     * The URL user will be redirected to after granting consent during connection setup.
+     * @return The URL user will be redirected to after granting consent during connection setup.
      * 
      */
     public Optional<String> redirectUri() {

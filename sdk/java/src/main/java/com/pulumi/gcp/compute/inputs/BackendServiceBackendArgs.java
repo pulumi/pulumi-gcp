@@ -130,16 +130,22 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The maximum number of connections to the backend cluster.
-     * Defaults to 1024.
+     * The max number of simultaneous connections for the group. Can
+     * be used with either CONNECTION or UTILIZATION balancing modes.
+     * For CONNECTION mode, either maxConnections or one
+     * of maxConnectionsPerInstance or maxConnectionsPerEndpoint,
+     * as appropriate for group type, must be set.
      * 
      */
     @Import(name="maxConnections")
     private @Nullable Output<Integer> maxConnections;
 
     /**
-     * @return The maximum number of connections to the backend cluster.
-     * Defaults to 1024.
+     * @return The max number of simultaneous connections for the group. Can
+     * be used with either CONNECTION or UTILIZATION balancing modes.
+     * For CONNECTION mode, either maxConnections or one
+     * of maxConnectionsPerInstance or maxConnectionsPerEndpoint,
+     * as appropriate for group type, must be set.
      * 
      */
     public Optional<Output<Integer>> maxConnections() {
@@ -449,8 +455,11 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param maxConnections The maximum number of connections to the backend cluster.
-         * Defaults to 1024.
+         * @param maxConnections The max number of simultaneous connections for the group. Can
+         * be used with either CONNECTION or UTILIZATION balancing modes.
+         * For CONNECTION mode, either maxConnections or one
+         * of maxConnectionsPerInstance or maxConnectionsPerEndpoint,
+         * as appropriate for group type, must be set.
          * 
          * @return builder
          * 
@@ -461,8 +470,11 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param maxConnections The maximum number of connections to the backend cluster.
-         * Defaults to 1024.
+         * @param maxConnections The max number of simultaneous connections for the group. Can
+         * be used with either CONNECTION or UTILIZATION balancing modes.
+         * For CONNECTION mode, either maxConnections or one
+         * of maxConnectionsPerInstance or maxConnectionsPerEndpoint,
+         * as appropriate for group type, must be set.
          * 
          * @return builder
          * 

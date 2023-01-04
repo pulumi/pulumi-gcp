@@ -173,14 +173,16 @@ public class SecurityScanConfig extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maxQps);
     }
     /**
-     * A server defined name for this index. Format: &#39;projects/{{project}}/scanConfigs/{{server_generated_id}}&#39;
+     * A server defined name for this index. Format:
+     * `projects/{{project}}/scanConfigs/{{server_generated_id}}`
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return A server defined name for this index. Format: &#39;projects/{{project}}/scanConfigs/{{server_generated_id}}&#39;
+     * @return A server defined name for this index. Format:
+     * `projects/{{project}}/scanConfigs/{{server_generated_id}}`
      * 
      */
     public Output<String> name() {

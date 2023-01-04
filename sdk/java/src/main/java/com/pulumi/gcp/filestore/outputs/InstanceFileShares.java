@@ -32,8 +32,7 @@ public final class InstanceFileShares {
      */
     private @Nullable List<InstanceFileSharesNfsExportOption> nfsExportOptions;
     /**
-     * @return -
-     * The resource name of the backup, in the format
+     * @return The resource name of the backup, in the format
      * projects/{projectId}/locations/{locationId}/backups/{backupId},
      * that this file share has been restored from.
      * 
@@ -65,8 +64,7 @@ public final class InstanceFileShares {
         return this.nfsExportOptions == null ? List.of() : this.nfsExportOptions;
     }
     /**
-     * @return -
-     * The resource name of the backup, in the format
+     * @return The resource name of the backup, in the format
      * projects/{projectId}/locations/{locationId}/backups/{backupId},
      * that this file share has been restored from.
      * 

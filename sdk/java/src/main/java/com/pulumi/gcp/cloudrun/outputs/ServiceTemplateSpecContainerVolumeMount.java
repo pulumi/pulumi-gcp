@@ -16,7 +16,7 @@ public final class ServiceTemplateSpecContainerVolumeMount {
      */
     private String mountPath;
     /**
-     * @return Volume&#39;s name.
+     * @return This must match the Name of a Volume.
      * 
      */
     private String name;
@@ -31,7 +31,7 @@ public final class ServiceTemplateSpecContainerVolumeMount {
         return this.mountPath;
     }
     /**
-     * @return Volume&#39;s name.
+     * @return This must match the Name of a Volume.
      * 
      */
     public String name() {

@@ -16,7 +16,7 @@ public final class InstanceGuestAccelerator {
      */
     private Integer count;
     /**
-     * @return The type of reservation from which this instance can consume resources.
+     * @return The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
      * 
      */
     private String type;
@@ -30,7 +30,7 @@ public final class InstanceGuestAccelerator {
         return this.count;
     }
     /**
-     * @return The type of reservation from which this instance can consume resources.
+     * @return The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
      * 
      */
     public String type() {

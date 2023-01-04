@@ -47,11 +47,9 @@ public final class ServicePerimetersServicePerimeterSpec {
      */
     private @Nullable List<ServicePerimetersServicePerimeterSpecIngressPolicy> ingressPolicies;
     /**
-     * @return A list of resources, currently only projects in the form
-     * `projects/&lt;projectnumber&gt;`, that match this to stanza. A request matches
-     * if it contains a resource in this list. If * is specified for resources,
-     * then this `EgressTo` rule will authorize access to all resources outside
-     * the perimeter.
+     * @return A list of GCP resources that are inside of the service perimeter.
+     * Currently only projects are allowed.
+     * Format: projects/{project_number}
      * 
      */
     private @Nullable List<String> resources;
@@ -111,11 +109,9 @@ public final class ServicePerimetersServicePerimeterSpec {
         return this.ingressPolicies == null ? List.of() : this.ingressPolicies;
     }
     /**
-     * @return A list of resources, currently only projects in the form
-     * `projects/&lt;projectnumber&gt;`, that match this to stanza. A request matches
-     * if it contains a resource in this list. If * is specified for resources,
-     * then this `EgressTo` rule will authorize access to all resources outside
-     * the perimeter.
+     * @return A list of GCP resources that are inside of the service perimeter.
+     * Currently only projects are allowed.
+     * Format: projects/{project_number}
      * 
      */
     public List<String> resources() {

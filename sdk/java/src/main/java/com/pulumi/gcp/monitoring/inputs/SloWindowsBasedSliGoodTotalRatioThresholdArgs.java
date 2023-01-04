@@ -52,18 +52,16 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdArgs extends com.pul
     }
 
     /**
-     * A duration string, e.g. 10s.
-     * Good service is defined to be the count of requests made to
-     * this service that return in no more than threshold.
+     * If window performance &gt;= threshold, the window is counted
+     * as good.
      * 
      */
     @Import(name="threshold")
     private @Nullable Output<Double> threshold;
 
     /**
-     * @return A duration string, e.g. 10s.
-     * Good service is defined to be the count of requests made to
-     * this service that return in no more than threshold.
+     * @return If window performance &gt;= threshold, the window is counted
+     * as good.
      * 
      */
     public Optional<Output<Double>> threshold() {
@@ -143,9 +141,8 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdArgs extends com.pul
         }
 
         /**
-         * @param threshold A duration string, e.g. 10s.
-         * Good service is defined to be the count of requests made to
-         * this service that return in no more than threshold.
+         * @param threshold If window performance &gt;= threshold, the window is counted
+         * as good.
          * 
          * @return builder
          * 
@@ -156,9 +153,8 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdArgs extends com.pul
         }
 
         /**
-         * @param threshold A duration string, e.g. 10s.
-         * Good service is defined to be the count of requests made to
-         * this service that return in no more than threshold.
+         * @param threshold If window performance &gt;= threshold, the window is counted
+         * as good.
          * 
          * @return builder
          * 

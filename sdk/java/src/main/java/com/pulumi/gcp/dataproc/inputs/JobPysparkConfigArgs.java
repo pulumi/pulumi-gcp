@@ -34,14 +34,14 @@ public final class JobPysparkConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+     * The arguments to pass to the driver.
      * 
      */
     @Import(name="args")
     private @Nullable Output<List<String>> args;
 
     /**
-     * @return The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+     * @return The arguments to pass to the driver.
      * 
      */
     public Optional<Output<List<String>>> args() {
@@ -49,14 +49,14 @@ public final class JobPysparkConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+     * HCFS URIs of files to be copied to the working directory of Python drivers and distributed tasks. Useful for naively parallel tasks.
      * 
      */
     @Import(name="fileUris")
     private @Nullable Output<List<String>> fileUris;
 
     /**
-     * @return HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+     * @return HCFS URIs of files to be copied to the working directory of Python drivers and distributed tasks. Useful for naively parallel tasks.
      * 
      */
     public Optional<Output<List<String>>> fileUris() {
@@ -64,14 +64,14 @@ public final class JobPysparkConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * HCFS URIs of jar files to be added to the Spark CLASSPATH.
+     * HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
      * 
      */
     @Import(name="jarFileUris")
     private @Nullable Output<List<String>> jarFileUris;
 
     /**
-     * @return HCFS URIs of jar files to be added to the Spark CLASSPATH.
+     * @return HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
      * 
      */
     public Optional<Output<List<String>>> jarFileUris() {
@@ -101,14 +101,14 @@ public final class JobPysparkConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+     * A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/spark/conf/spark-defaults.conf` and classes in user code.
      * 
      */
     @Import(name="properties")
     private @Nullable Output<Map<String,String>> properties;
 
     /**
-     * @return A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+     * @return A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/spark/conf/spark-defaults.conf` and classes in user code.
      * 
      */
     public Optional<Output<Map<String,String>>> properties() {
@@ -193,7 +193,7 @@ public final class JobPysparkConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param args The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+         * @param args The arguments to pass to the driver.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class JobPysparkConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param args The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+         * @param args The arguments to pass to the driver.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class JobPysparkConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param args The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+         * @param args The arguments to pass to the driver.
          * 
          * @return builder
          * 
@@ -224,7 +224,7 @@ public final class JobPysparkConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param fileUris HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+         * @param fileUris HCFS URIs of files to be copied to the working directory of Python drivers and distributed tasks. Useful for naively parallel tasks.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class JobPysparkConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param fileUris HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+         * @param fileUris HCFS URIs of files to be copied to the working directory of Python drivers and distributed tasks. Useful for naively parallel tasks.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class JobPysparkConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param fileUris HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+         * @param fileUris HCFS URIs of files to be copied to the working directory of Python drivers and distributed tasks. Useful for naively parallel tasks.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class JobPysparkConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param jarFileUris HCFS URIs of jar files to be added to the Spark CLASSPATH.
+         * @param jarFileUris HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class JobPysparkConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param jarFileUris HCFS URIs of jar files to be added to the Spark CLASSPATH.
+         * @param jarFileUris HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class JobPysparkConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param jarFileUris HCFS URIs of jar files to be added to the Spark CLASSPATH.
+         * @param jarFileUris HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
          * 
          * @return builder
          * 
@@ -316,7 +316,7 @@ public final class JobPysparkConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param properties A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+         * @param properties A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/spark/conf/spark-defaults.conf` and classes in user code.
          * 
          * @return builder
          * 
@@ -327,7 +327,7 @@ public final class JobPysparkConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param properties A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+         * @param properties A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/spark/conf/spark-defaults.conf` and classes in user code.
          * 
          * @return builder
          * 

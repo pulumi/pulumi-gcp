@@ -34,14 +34,14 @@ public final class TagTemplateFieldArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The display name for this template.
+     * The display name for this field.
      * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
-     * @return The display name for this template.
+     * @return The display name for this field.
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -79,7 +79,6 @@ public final class TagTemplateFieldArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * - 
      * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
      * 
      */
@@ -87,8 +86,7 @@ public final class TagTemplateFieldArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<String> name;
 
     /**
-     * @return -
-     * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
+     * @return The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
      * 
      */
     public Optional<Output<String>> name() {
@@ -183,7 +181,7 @@ public final class TagTemplateFieldArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param displayName The display name for this template.
+         * @param displayName The display name for this field.
          * 
          * @return builder
          * 
@@ -194,7 +192,7 @@ public final class TagTemplateFieldArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param displayName The display name for this template.
+         * @param displayName The display name for this field.
          * 
          * @return builder
          * 
@@ -246,8 +244,7 @@ public final class TagTemplateFieldArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name -
-         * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
+         * @param name The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
          * 
          * @return builder
          * 
@@ -258,8 +255,7 @@ public final class TagTemplateFieldArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name -
-         * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
+         * @param name The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
          * 
          * @return builder
          * 

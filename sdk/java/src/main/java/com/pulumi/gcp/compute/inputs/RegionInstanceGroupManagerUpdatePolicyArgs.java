@@ -17,14 +17,14 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
     public static final RegionInstanceGroupManagerUpdatePolicyArgs Empty = new RegionInstanceGroupManagerUpdatePolicyArgs();
 
     /**
-     * - The instance redistribution policy for regional managed instance groups. Valid values are: `&#34;PROACTIVE&#34;`, `&#34;NONE&#34;`. If `PROACTIVE` (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If `NONE`, proactive redistribution is disabled.
+     * The instance redistribution policy for regional managed instance groups. Valid values are: `&#34;PROACTIVE&#34;`, `&#34;NONE&#34;`. If `PROACTIVE` (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If `NONE`, proactive redistribution is disabled.
      * 
      */
     @Import(name="instanceRedistributionType")
     private @Nullable Output<String> instanceRedistributionType;
 
     /**
-     * @return - The instance redistribution policy for regional managed instance groups. Valid values are: `&#34;PROACTIVE&#34;`, `&#34;NONE&#34;`. If `PROACTIVE` (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If `NONE`, proactive redistribution is disabled.
+     * @return The instance redistribution policy for regional managed instance groups. Valid values are: `&#34;PROACTIVE&#34;`, `&#34;NONE&#34;`. If `PROACTIVE` (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If `NONE`, proactive redistribution is disabled.
      * 
      */
     public Optional<Output<String>> instanceRedistributionType() {
@@ -107,14 +107,14 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
     }
 
     /**
-     * - Minimal action to be taken on an instance. You can specify either `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+     * Minimal action to be taken on an instance. You can specify either `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
      * 
      */
     @Import(name="minimalAction", required=true)
     private Output<String> minimalAction;
 
     /**
-     * @return - Minimal action to be taken on an instance. You can specify either `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+     * @return Minimal action to be taken on an instance. You can specify either `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
      * 
      */
     public Output<String> minimalAction() {
@@ -122,14 +122,14 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
     }
 
     /**
-     * - Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+     * Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
      * 
      */
     @Import(name="mostDisruptiveAllowedAction")
     private @Nullable Output<String> mostDisruptiveAllowedAction;
 
     /**
-     * @return - Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+     * @return Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
      * 
      */
     public Optional<Output<String>> mostDisruptiveAllowedAction() {
@@ -154,14 +154,14 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
     }
 
     /**
-     * - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+     * The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+     * @return The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
      * 
      */
     public Output<String> type() {
@@ -202,7 +202,7 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
         }
 
         /**
-         * @param instanceRedistributionType - The instance redistribution policy for regional managed instance groups. Valid values are: `&#34;PROACTIVE&#34;`, `&#34;NONE&#34;`. If `PROACTIVE` (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If `NONE`, proactive redistribution is disabled.
+         * @param instanceRedistributionType The instance redistribution policy for regional managed instance groups. Valid values are: `&#34;PROACTIVE&#34;`, `&#34;NONE&#34;`. If `PROACTIVE` (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If `NONE`, proactive redistribution is disabled.
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
         }
 
         /**
-         * @param instanceRedistributionType - The instance redistribution policy for regional managed instance groups. Valid values are: `&#34;PROACTIVE&#34;`, `&#34;NONE&#34;`. If `PROACTIVE` (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If `NONE`, proactive redistribution is disabled.
+         * @param instanceRedistributionType The instance redistribution policy for regional managed instance groups. Valid values are: `&#34;PROACTIVE&#34;`, `&#34;NONE&#34;`. If `PROACTIVE` (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If `NONE`, proactive redistribution is disabled.
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
         }
 
         /**
-         * @param minimalAction - Minimal action to be taken on an instance. You can specify either `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+         * @param minimalAction Minimal action to be taken on an instance. You can specify either `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
         }
 
         /**
-         * @param minimalAction - Minimal action to be taken on an instance. You can specify either `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+         * @param minimalAction Minimal action to be taken on an instance. You can specify either `REFRESH` to update without stopping instances, `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `REFRESH`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
          * 
          * @return builder
          * 
@@ -349,7 +349,7 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
         }
 
         /**
-         * @param mostDisruptiveAllowedAction - Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+         * @param mostDisruptiveAllowedAction Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
          * 
          * @return builder
          * 
@@ -360,7 +360,7 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
         }
 
         /**
-         * @param mostDisruptiveAllowedAction - Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+         * @param mostDisruptiveAllowedAction Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
          * 
          * @return builder
          * 
@@ -393,7 +393,7 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
         }
 
         /**
-         * @param type - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+         * @param type The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
          * 
          * @return builder
          * 
@@ -404,7 +404,7 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
         }
 
         /**
-         * @param type - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+         * @param type The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
          * 
          * @return builder
          * 

@@ -37,7 +37,7 @@ public final class DatasetAccessState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The dataset this entry applies to
+     * Grants all resources of particular types in a particular dataset read access to the current dataset.
      * Structure is documented below.
      * 
      */
@@ -45,7 +45,7 @@ public final class DatasetAccessState extends com.pulumi.resources.ResourceArgs 
     private @Nullable Output<DatasetAccessAuthorizedDatasetArgs> authorizedDataset;
 
     /**
-     * @return The dataset this entry applies to
+     * @return Grants all resources of particular types in a particular dataset read access to the current dataset.
      * Structure is documented below.
      * 
      */
@@ -54,14 +54,18 @@ public final class DatasetAccessState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The ID of the dataset containing this table.
+     * A unique ID for this dataset, without the project name. The ID
+     * must contain only letters (a-z, A-Z), numbers (0-9), or
+     * underscores (_). The maximum length is 1,024 characters.
      * 
      */
     @Import(name="datasetId")
     private @Nullable Output<String> datasetId;
 
     /**
-     * @return The ID of the dataset containing this table.
+     * @return A unique ID for this dataset, without the project name. The ID
+     * must contain only letters (a-z, A-Z), numbers (0-9), or
+     * underscores (_). The maximum length is 1,024 characters.
      * 
      */
     public Optional<Output<String>> datasetId() {
@@ -300,7 +304,7 @@ public final class DatasetAccessState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param authorizedDataset The dataset this entry applies to
+         * @param authorizedDataset Grants all resources of particular types in a particular dataset read access to the current dataset.
          * Structure is documented below.
          * 
          * @return builder
@@ -312,7 +316,7 @@ public final class DatasetAccessState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param authorizedDataset The dataset this entry applies to
+         * @param authorizedDataset Grants all resources of particular types in a particular dataset read access to the current dataset.
          * Structure is documented below.
          * 
          * @return builder
@@ -323,7 +327,9 @@ public final class DatasetAccessState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param datasetId The ID of the dataset containing this table.
+         * @param datasetId A unique ID for this dataset, without the project name. The ID
+         * must contain only letters (a-z, A-Z), numbers (0-9), or
+         * underscores (_). The maximum length is 1,024 characters.
          * 
          * @return builder
          * 
@@ -334,7 +340,9 @@ public final class DatasetAccessState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param datasetId The ID of the dataset containing this table.
+         * @param datasetId A unique ID for this dataset, without the project name. The ID
+         * must contain only letters (a-z, A-Z), numbers (0-9), or
+         * underscores (_). The maximum length is 1,024 characters.
          * 
          * @return builder
          * 

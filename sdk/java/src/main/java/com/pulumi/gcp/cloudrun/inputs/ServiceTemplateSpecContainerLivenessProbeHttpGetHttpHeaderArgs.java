@@ -16,14 +16,14 @@ public final class ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArg
     public static final ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs Empty = new ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs();
 
     /**
-     * Volume&#39;s name.
+     * The header field name.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Volume&#39;s name.
+     * @return The header field name.
      * 
      */
     public Output<String> name() {
@@ -71,7 +71,7 @@ public final class ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArg
         }
 
         /**
-         * @param name Volume&#39;s name.
+         * @param name The header field name.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArg
         }
 
         /**
-         * @param name Volume&#39;s name.
+         * @param name The header field name.
          * 
          * @return builder
          * 

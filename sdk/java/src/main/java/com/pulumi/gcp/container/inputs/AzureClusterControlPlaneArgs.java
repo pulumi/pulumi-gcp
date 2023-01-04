@@ -114,14 +114,14 @@ public final class AzureClusterControlPlaneArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * For a given replica, the ARM ID of the subnet where the control plane VM is deployed. Make sure it&#39;s a subnet under the virtual network in the cluster configuration.
+     * The ARM ID of the subnet where the control plane VMs are deployed. Example: `/subscriptions//resourceGroups//providers/Microsoft.Network/virtualNetworks//subnets/default`.
      * 
      */
     @Import(name="subnetId", required=true)
     private Output<String> subnetId;
 
     /**
-     * @return For a given replica, the ARM ID of the subnet where the control plane VM is deployed. Make sure it&#39;s a subnet under the virtual network in the cluster configuration.
+     * @return The ARM ID of the subnet where the control plane VMs are deployed. Example: `/subscriptions//resourceGroups//providers/Microsoft.Network/virtualNetworks//subnets/default`.
      * 
      */
     public Output<String> subnetId() {
@@ -343,7 +343,7 @@ public final class AzureClusterControlPlaneArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param subnetId For a given replica, the ARM ID of the subnet where the control plane VM is deployed. Make sure it&#39;s a subnet under the virtual network in the cluster configuration.
+         * @param subnetId The ARM ID of the subnet where the control plane VMs are deployed. Example: `/subscriptions//resourceGroups//providers/Microsoft.Network/virtualNetworks//subnets/default`.
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class AzureClusterControlPlaneArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param subnetId For a given replica, the ARM ID of the subnet where the control plane VM is deployed. Make sure it&#39;s a subnet under the virtual network in the cluster configuration.
+         * @param subnetId The ARM ID of the subnet where the control plane VMs are deployed. Example: `/subscriptions//resourceGroups//providers/Microsoft.Network/virtualNetworks//subnets/default`.
          * 
          * @return builder
          * 

@@ -27,8 +27,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig 
      */
     private @Nullable String idleDeleteTtl;
     /**
-     * @return -
-     * Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+     * @return Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
      * 
      */
     private @Nullable String idleStartTime;
@@ -56,8 +55,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig 
         return Optional.ofNullable(this.idleDeleteTtl);
     }
     /**
-     * @return -
-     * Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+     * @return Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
      * 
      */
     public Optional<String> idleStartTime() {

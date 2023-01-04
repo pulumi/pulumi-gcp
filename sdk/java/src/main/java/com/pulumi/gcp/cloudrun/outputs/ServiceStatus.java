@@ -14,13 +14,36 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceStatus {
+    /**
+     * @return Array of observed Service Conditions, indicating the current ready state of the service.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable List<ServiceStatusCondition> conditions;
+    /**
+     * @return From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created
+     * from this Service&#39;s Configuration. It might not be ready yet, for that use
+     * LatestReadyRevisionName.
+     * 
+     */
     private @Nullable String latestCreatedRevisionName;
+    /**
+     * @return From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision
+     * stamped out from this Service&#39;s Configuration that has had its &#34;Ready&#34; condition become
+     * &#34;True&#34;.
+     * 
+     */
     private @Nullable String latestReadyRevisionName;
+    /**
+     * @return ObservedGeneration is the &#39;Generation&#39; of the Route that was last processed by the
+     * controller.
+     * Clients polling for completed reconciliation should poll until observedGeneration =
+     * metadata.generation and the Ready condition&#39;s status is True or False.
+     * 
+     */
     private @Nullable Integer observedGeneration;
     /**
-     * @return -
-     * URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+     * @return URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
      * and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
      * but may not contain anything else (e.g. basic auth, url path, etc.)
      * 
@@ -28,21 +51,44 @@ public final class ServiceStatus {
     private @Nullable String url;
 
     private ServiceStatus() {}
+    /**
+     * @return Array of observed Service Conditions, indicating the current ready state of the service.
+     * Structure is documented below.
+     * 
+     */
     public List<ServiceStatusCondition> conditions() {
         return this.conditions == null ? List.of() : this.conditions;
     }
+    /**
+     * @return From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created
+     * from this Service&#39;s Configuration. It might not be ready yet, for that use
+     * LatestReadyRevisionName.
+     * 
+     */
     public Optional<String> latestCreatedRevisionName() {
         return Optional.ofNullable(this.latestCreatedRevisionName);
     }
+    /**
+     * @return From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision
+     * stamped out from this Service&#39;s Configuration that has had its &#34;Ready&#34; condition become
+     * &#34;True&#34;.
+     * 
+     */
     public Optional<String> latestReadyRevisionName() {
         return Optional.ofNullable(this.latestReadyRevisionName);
     }
+    /**
+     * @return ObservedGeneration is the &#39;Generation&#39; of the Route that was last processed by the
+     * controller.
+     * Clients polling for completed reconciliation should poll until observedGeneration =
+     * metadata.generation and the Ready condition&#39;s status is True or False.
+     * 
+     */
     public Optional<Integer> observedGeneration() {
         return Optional.ofNullable(this.observedGeneration);
     }
     /**
-     * @return -
-     * URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+     * @return URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
      * and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
      * but may not contain anything else (e.g. basic auth, url path, etc.)
      * 

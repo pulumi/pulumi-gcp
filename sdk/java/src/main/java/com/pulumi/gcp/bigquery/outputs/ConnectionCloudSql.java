@@ -17,7 +17,7 @@ public final class ConnectionCloudSql {
      */
     private ConnectionCloudSqlCredential credential;
     /**
-     * @return Cloud Spanner database in the form `project/instance/database&#39;
+     * @return Database name.
      * 
      */
     private String database;
@@ -43,7 +43,7 @@ public final class ConnectionCloudSql {
         return this.credential;
     }
     /**
-     * @return Cloud Spanner database in the form `project/instance/database&#39;
+     * @return Database name.
      * 
      */
     public String database() {

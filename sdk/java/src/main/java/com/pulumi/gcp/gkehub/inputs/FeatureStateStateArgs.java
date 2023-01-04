@@ -29,9 +29,17 @@ public final class FeatureStateStateArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Output only. When the Feature resource was last updated.
+     * 
+     */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
+    /**
+     * @return Output only. When the Feature resource was last updated.
+     * 
+     */
     public Optional<Output<String>> updateTime() {
         return Optional.ofNullable(this.updateTime);
     }
@@ -80,11 +88,23 @@ public final class FeatureStateStateArgs extends com.pulumi.resources.ResourceAr
             return description(Output.of(description));
         }
 
+        /**
+         * @param updateTime Output only. When the Feature resource was last updated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateTime(@Nullable Output<String> updateTime) {
             $.updateTime = updateTime;
             return this;
         }
 
+        /**
+         * @param updateTime Output only. When the Feature resource was last updated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateTime(String updateTime) {
             return updateTime(Output.of(updateTime));
         }

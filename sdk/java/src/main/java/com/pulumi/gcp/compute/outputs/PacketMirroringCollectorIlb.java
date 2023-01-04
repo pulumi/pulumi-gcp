@@ -10,14 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class PacketMirroringCollectorIlb {
     /**
-     * @return The URL of the instances where this rule should be active.
+     * @return The URL of the forwarding rule.
      * 
      */
     private String url;
 
     private PacketMirroringCollectorIlb() {}
     /**
-     * @return The URL of the instances where this rule should be active.
+     * @return The URL of the forwarding rule.
      * 
      */
     public String url() {

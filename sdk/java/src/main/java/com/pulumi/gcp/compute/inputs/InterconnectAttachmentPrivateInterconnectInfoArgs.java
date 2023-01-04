@@ -15,9 +15,19 @@ public final class InterconnectAttachmentPrivateInterconnectInfoArgs extends com
 
     public static final InterconnectAttachmentPrivateInterconnectInfoArgs Empty = new InterconnectAttachmentPrivateInterconnectInfoArgs();
 
+    /**
+     * 802.1q encapsulation tag to be used for traffic between
+     * Google and the customer, going to and from this network and region.
+     * 
+     */
     @Import(name="tag8021q")
     private @Nullable Output<Integer> tag8021q;
 
+    /**
+     * @return 802.1q encapsulation tag to be used for traffic between
+     * Google and the customer, going to and from this network and region.
+     * 
+     */
     public Optional<Output<Integer>> tag8021q() {
         return Optional.ofNullable(this.tag8021q);
     }
@@ -46,11 +56,25 @@ public final class InterconnectAttachmentPrivateInterconnectInfoArgs extends com
             $ = new InterconnectAttachmentPrivateInterconnectInfoArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param tag8021q 802.1q encapsulation tag to be used for traffic between
+         * Google and the customer, going to and from this network and region.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tag8021q(@Nullable Output<Integer> tag8021q) {
             $.tag8021q = tag8021q;
             return this;
         }
 
+        /**
+         * @param tag8021q 802.1q encapsulation tag to be used for traffic between
+         * Google and the customer, going to and from this network and region.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tag8021q(Integer tag8021q) {
             return tag8021q(Output.of(tag8021q));
         }

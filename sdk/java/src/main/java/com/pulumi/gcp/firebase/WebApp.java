@@ -140,30 +140,30 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:firebase/webApp:WebApp")
 public class WebApp extends com.pulumi.resources.CustomResource {
     /**
-     * The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-     * the data format is not specified.
+     * The globally unique, Firebase-assigned identifier of the App.
+     * This identifier should be treated as an opaque token, as the data format is not specified.
      * 
      */
     @Export(name="appId", type=String.class, parameters={})
     private Output<String> appId;
 
     /**
-     * @return The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-     * the data format is not specified.
+     * @return The globally unique, Firebase-assigned identifier of the App.
+     * This identifier should be treated as an opaque token, as the data format is not specified.
      * 
      */
     public Output<String> appId() {
         return this.appId;
     }
     /**
-     * The URLs where the &#39;WebApp&#39; is hosted.
+     * The URLs where the `WebApp` is hosted.
      * 
      */
     @Export(name="appUrls", type=List.class, parameters={String.class})
     private Output<List<String>> appUrls;
 
     /**
-     * @return The URLs where the &#39;WebApp&#39; is hosted.
+     * @return The URLs where the `WebApp` is hosted.
      * 
      */
     public Output<List<String>> appUrls() {
@@ -200,14 +200,16 @@ public class WebApp extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
-     * The fully qualified resource name of the App, for example: projects/projectId/webApps/appId
+     * The fully qualified resource name of the App, for example:
+     * projects/projectId/webApps/appId
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The fully qualified resource name of the App, for example: projects/projectId/webApps/appId
+     * @return The fully qualified resource name of the App, for example:
+     * projects/projectId/webApps/appId
      * 
      */
     public Output<String> name() {

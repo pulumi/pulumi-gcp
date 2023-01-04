@@ -20,23 +20,51 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
 
     public static final AiEndpointDeployedModelArgs Empty = new AiEndpointDeployedModelArgs();
 
+    /**
+     * A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="automaticResources")
     private @Nullable Output<List<AiEndpointDeployedModelAutomaticResourceArgs>> automaticResources;
 
+    /**
+     * @return A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<List<AiEndpointDeployedModelAutomaticResourceArgs>>> automaticResources() {
         return Optional.ofNullable(this.automaticResources);
     }
 
+    /**
+     * Output only. Timestamp when the DeployedModel was created.
+     * 
+     */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
+    /**
+     * @return Output only. Timestamp when the DeployedModel was created.
+     * 
+     */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
     }
 
+    /**
+     * A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="dedicatedResources")
     private @Nullable Output<List<AiEndpointDeployedModelDedicatedResourceArgs>> dedicatedResources;
 
+    /**
+     * @return A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<List<AiEndpointDeployedModelDedicatedResourceArgs>>> dedicatedResources() {
         return Optional.ofNullable(this.dedicatedResources);
     }
@@ -56,66 +84,124 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.displayName);
     }
 
+    /**
+     * These logs are like standard server access logs, containing information like timestamp and latency for each prediction request. Note that Stackdriver logs may incur a cost, especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option.
+     * 
+     */
     @Import(name="enableAccessLogging")
     private @Nullable Output<Boolean> enableAccessLogging;
 
+    /**
+     * @return These logs are like standard server access logs, containing information like timestamp and latency for each prediction request. Note that Stackdriver logs may incur a cost, especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option.
+     * 
+     */
     public Optional<Output<Boolean>> enableAccessLogging() {
         return Optional.ofNullable(this.enableAccessLogging);
     }
 
+    /**
+     * If true, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Stackdriver Logging. Only supported for custom-trained Models and AutoML Tabular Models.
+     * 
+     */
     @Import(name="enableContainerLogging")
     private @Nullable Output<Boolean> enableContainerLogging;
 
+    /**
+     * @return If true, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Stackdriver Logging. Only supported for custom-trained Models and AutoML Tabular Models.
+     * 
+     */
     public Optional<Output<Boolean>> enableContainerLogging() {
         return Optional.ofNullable(this.enableContainerLogging);
     }
 
     /**
-     * an identifier for the resource with format `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
+     * The ID of the DeployedModel. If not provided upon deployment, Vertex AI will generate a value for this ID. This value should be 1-10 characters, and valid characters are /[0-9]/.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return an identifier for the resource with format `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
+     * @return The ID of the DeployedModel. If not provided upon deployment, Vertex AI will generate a value for this ID. This value should be 1-10 characters, and valid characters are /[0-9]/.
      * 
      */
     public Optional<Output<String>> id() {
         return Optional.ofNullable(this.id);
     }
 
+    /**
+     * The name of the Model that this is the deployment of. Note that the Model may be in a different location than the DeployedModel&#39;s Endpoint.
+     * 
+     */
     @Import(name="model")
     private @Nullable Output<String> model;
 
+    /**
+     * @return The name of the Model that this is the deployment of. Note that the Model may be in a different location than the DeployedModel&#39;s Endpoint.
+     * 
+     */
     public Optional<Output<String>> model() {
         return Optional.ofNullable(this.model);
     }
 
+    /**
+     * Output only. The version ID of the model that is deployed.
+     * 
+     */
     @Import(name="modelVersionId")
     private @Nullable Output<String> modelVersionId;
 
+    /**
+     * @return Output only. The version ID of the model that is deployed.
+     * 
+     */
     public Optional<Output<String>> modelVersionId() {
         return Optional.ofNullable(this.modelVersionId);
     }
 
+    /**
+     * Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="privateEndpoints")
     private @Nullable Output<List<AiEndpointDeployedModelPrivateEndpointArgs>> privateEndpoints;
 
+    /**
+     * @return Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<List<AiEndpointDeployedModelPrivateEndpointArgs>>> privateEndpoints() {
         return Optional.ofNullable(this.privateEndpoints);
     }
 
+    /**
+     * The service account that the DeployedModel&#39;s container runs as. Specify the email address of the service account. If this service account is not specified, the container runs as a service account that doesn&#39;t have access to the resource project. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
+     * 
+     */
     @Import(name="serviceAccount")
     private @Nullable Output<String> serviceAccount;
 
+    /**
+     * @return The service account that the DeployedModel&#39;s container runs as. Specify the email address of the service account. If this service account is not specified, the container runs as a service account that doesn&#39;t have access to the resource project. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
+     * 
+     */
     public Optional<Output<String>> serviceAccount() {
         return Optional.ofNullable(this.serviceAccount);
     }
 
+    /**
+     * The resource name of the shared DeploymentResourcePool to deploy on. Format: projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}
+     * 
+     */
     @Import(name="sharedResources")
     private @Nullable Output<String> sharedResources;
 
+    /**
+     * @return The resource name of the shared DeploymentResourcePool to deploy on. Format: projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}
+     * 
+     */
     public Optional<Output<String>> sharedResources() {
         return Optional.ofNullable(this.sharedResources);
     }
@@ -155,37 +241,91 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
             $ = new AiEndpointDeployedModelArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param automaticResources A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder automaticResources(@Nullable Output<List<AiEndpointDeployedModelAutomaticResourceArgs>> automaticResources) {
             $.automaticResources = automaticResources;
             return this;
         }
 
+        /**
+         * @param automaticResources A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder automaticResources(List<AiEndpointDeployedModelAutomaticResourceArgs> automaticResources) {
             return automaticResources(Output.of(automaticResources));
         }
 
+        /**
+         * @param automaticResources A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder automaticResources(AiEndpointDeployedModelAutomaticResourceArgs... automaticResources) {
             return automaticResources(List.of(automaticResources));
         }
 
+        /**
+         * @param createTime Output only. Timestamp when the DeployedModel was created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createTime(@Nullable Output<String> createTime) {
             $.createTime = createTime;
             return this;
         }
 
+        /**
+         * @param createTime Output only. Timestamp when the DeployedModel was created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
         }
 
+        /**
+         * @param dedicatedResources A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dedicatedResources(@Nullable Output<List<AiEndpointDeployedModelDedicatedResourceArgs>> dedicatedResources) {
             $.dedicatedResources = dedicatedResources;
             return this;
         }
 
+        /**
+         * @param dedicatedResources A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dedicatedResources(List<AiEndpointDeployedModelDedicatedResourceArgs> dedicatedResources) {
             return dedicatedResources(Output.of(dedicatedResources));
         }
 
+        /**
+         * @param dedicatedResources A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dedicatedResources(AiEndpointDeployedModelDedicatedResourceArgs... dedicatedResources) {
             return dedicatedResources(List.of(dedicatedResources));
         }
@@ -211,26 +351,50 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
             return displayName(Output.of(displayName));
         }
 
+        /**
+         * @param enableAccessLogging These logs are like standard server access logs, containing information like timestamp and latency for each prediction request. Note that Stackdriver logs may incur a cost, especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableAccessLogging(@Nullable Output<Boolean> enableAccessLogging) {
             $.enableAccessLogging = enableAccessLogging;
             return this;
         }
 
+        /**
+         * @param enableAccessLogging These logs are like standard server access logs, containing information like timestamp and latency for each prediction request. Note that Stackdriver logs may incur a cost, especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableAccessLogging(Boolean enableAccessLogging) {
             return enableAccessLogging(Output.of(enableAccessLogging));
         }
 
+        /**
+         * @param enableContainerLogging If true, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Stackdriver Logging. Only supported for custom-trained Models and AutoML Tabular Models.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableContainerLogging(@Nullable Output<Boolean> enableContainerLogging) {
             $.enableContainerLogging = enableContainerLogging;
             return this;
         }
 
+        /**
+         * @param enableContainerLogging If true, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Stackdriver Logging. Only supported for custom-trained Models and AutoML Tabular Models.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableContainerLogging(Boolean enableContainerLogging) {
             return enableContainerLogging(Output.of(enableContainerLogging));
         }
 
         /**
-         * @param id an identifier for the resource with format `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
+         * @param id The ID of the DeployedModel. If not provided upon deployment, Vertex AI will generate a value for this ID. This value should be 1-10 characters, and valid characters are /[0-9]/.
          * 
          * @return builder
          * 
@@ -241,7 +405,7 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param id an identifier for the resource with format `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
+         * @param id The ID of the DeployedModel. If not provided upon deployment, Vertex AI will generate a value for this ID. This value should be 1-10 characters, and valid characters are /[0-9]/.
          * 
          * @return builder
          * 
@@ -250,51 +414,120 @@ public final class AiEndpointDeployedModelArgs extends com.pulumi.resources.Reso
             return id(Output.of(id));
         }
 
+        /**
+         * @param model The name of the Model that this is the deployment of. Note that the Model may be in a different location than the DeployedModel&#39;s Endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder model(@Nullable Output<String> model) {
             $.model = model;
             return this;
         }
 
+        /**
+         * @param model The name of the Model that this is the deployment of. Note that the Model may be in a different location than the DeployedModel&#39;s Endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder model(String model) {
             return model(Output.of(model));
         }
 
+        /**
+         * @param modelVersionId Output only. The version ID of the model that is deployed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder modelVersionId(@Nullable Output<String> modelVersionId) {
             $.modelVersionId = modelVersionId;
             return this;
         }
 
+        /**
+         * @param modelVersionId Output only. The version ID of the model that is deployed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder modelVersionId(String modelVersionId) {
             return modelVersionId(Output.of(modelVersionId));
         }
 
+        /**
+         * @param privateEndpoints Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateEndpoints(@Nullable Output<List<AiEndpointDeployedModelPrivateEndpointArgs>> privateEndpoints) {
             $.privateEndpoints = privateEndpoints;
             return this;
         }
 
+        /**
+         * @param privateEndpoints Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateEndpoints(List<AiEndpointDeployedModelPrivateEndpointArgs> privateEndpoints) {
             return privateEndpoints(Output.of(privateEndpoints));
         }
 
+        /**
+         * @param privateEndpoints Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateEndpoints(AiEndpointDeployedModelPrivateEndpointArgs... privateEndpoints) {
             return privateEndpoints(List.of(privateEndpoints));
         }
 
+        /**
+         * @param serviceAccount The service account that the DeployedModel&#39;s container runs as. Specify the email address of the service account. If this service account is not specified, the container runs as a service account that doesn&#39;t have access to the resource project. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceAccount(@Nullable Output<String> serviceAccount) {
             $.serviceAccount = serviceAccount;
             return this;
         }
 
+        /**
+         * @param serviceAccount The service account that the DeployedModel&#39;s container runs as. Specify the email address of the service account. If this service account is not specified, the container runs as a service account that doesn&#39;t have access to the resource project. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceAccount(String serviceAccount) {
             return serviceAccount(Output.of(serviceAccount));
         }
 
+        /**
+         * @param sharedResources The resource name of the shared DeploymentResourcePool to deploy on. Format: projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}
+         * 
+         * @return builder
+         * 
+         */
         public Builder sharedResources(@Nullable Output<String> sharedResources) {
             $.sharedResources = sharedResources;
             return this;
         }
 
+        /**
+         * @param sharedResources The resource name of the shared DeploymentResourcePool to deploy on. Format: projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}
+         * 
+         * @return builder
+         * 
+         */
         public Builder sharedResources(String sharedResources) {
             return sharedResources(Output.of(sharedResources));
         }

@@ -30,7 +30,9 @@ public final class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs extends 
     }
 
     /**
-     * The service-level to be provided for IPv6 traffic when the
+     * The [networking tier][network-tier] used for configuring
+     * this instance template. This field can take the following values: PREMIUM,
+     * STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
      * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
      * 
      */
@@ -38,7 +40,9 @@ public final class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs extends 
     private Output<String> networkTier;
 
     /**
-     * @return The service-level to be provided for IPv6 traffic when the
+     * @return The [networking tier][network-tier] used for configuring
+     * this instance template. This field can take the following values: PREMIUM,
+     * STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
      * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
      * 
      */
@@ -99,7 +103,9 @@ public final class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs extends 
         }
 
         /**
-         * @param networkTier The service-level to be provided for IPv6 traffic when the
+         * @param networkTier The [networking tier][network-tier] used for configuring
+         * this instance template. This field can take the following values: PREMIUM,
+         * STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
          * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
          * 
          * @return builder
@@ -111,7 +117,9 @@ public final class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs extends 
         }
 
         /**
-         * @param networkTier The service-level to be provided for IPv6 traffic when the
+         * @param networkTier The [networking tier][network-tier] used for configuring
+         * this instance template. This field can take the following values: PREMIUM,
+         * STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
          * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
          * 
          * @return builder

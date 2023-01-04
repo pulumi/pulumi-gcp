@@ -17,30 +17,62 @@ public final class ServiceApiArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ServiceApiArgs Empty = new ServiceApiArgs();
 
+    /**
+     * A list of Method objects; structure is documented below.
+     * 
+     */
     @Import(name="methods")
     private @Nullable Output<List<ServiceApiMethodArgs>> methods;
 
+    /**
+     * @return A list of Method objects; structure is documented below.
+     * 
+     */
     public Optional<Output<List<ServiceApiMethodArgs>>> methods() {
         return Optional.ofNullable(this.methods);
     }
 
+    /**
+     * The simple name of the endpoint as described in the config.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return The simple name of the endpoint as described in the config.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+     * 
+     */
     @Import(name="syntax")
     private @Nullable Output<String> syntax;
 
+    /**
+     * @return `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+     * 
+     */
     public Optional<Output<String>> syntax() {
         return Optional.ofNullable(this.syntax);
     }
 
+    /**
+     * A version string for this api. If specified, will have the form major-version.minor-version, e.g. `1.10`.
+     * 
+     */
     @Import(name="version")
     private @Nullable Output<String> version;
 
+    /**
+     * @return A version string for this api. If specified, will have the form major-version.minor-version, e.g. `1.10`.
+     * 
+     */
     public Optional<Output<String>> version() {
         return Optional.ofNullable(this.version);
     }
@@ -72,42 +104,96 @@ public final class ServiceApiArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ServiceApiArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param methods A list of Method objects; structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder methods(@Nullable Output<List<ServiceApiMethodArgs>> methods) {
             $.methods = methods;
             return this;
         }
 
+        /**
+         * @param methods A list of Method objects; structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder methods(List<ServiceApiMethodArgs> methods) {
             return methods(Output.of(methods));
         }
 
+        /**
+         * @param methods A list of Method objects; structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder methods(ServiceApiMethodArgs... methods) {
             return methods(List.of(methods));
         }
 
+        /**
+         * @param name The simple name of the endpoint as described in the config.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The simple name of the endpoint as described in the config.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param syntax `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder syntax(@Nullable Output<String> syntax) {
             $.syntax = syntax;
             return this;
         }
 
+        /**
+         * @param syntax `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder syntax(String syntax) {
             return syntax(Output.of(syntax));
         }
 
+        /**
+         * @param version A version string for this api. If specified, will have the form major-version.minor-version, e.g. `1.10`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder version(@Nullable Output<String> version) {
             $.version = version;
             return this;
         }
 
+        /**
+         * @param version A version string for this api. If specified, will have the form major-version.minor-version, e.g. `1.10`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder version(String version) {
             return version(Output.of(version));
         }

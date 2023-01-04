@@ -15,30 +15,64 @@ public final class DeviceConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DeviceConfigArgs Empty = new DeviceConfigArgs();
 
+    /**
+     * The device state data.
+     * 
+     */
     @Import(name="binaryData")
     private @Nullable Output<String> binaryData;
 
+    /**
+     * @return The device state data.
+     * 
+     */
     public Optional<Output<String>> binaryData() {
         return Optional.ofNullable(this.binaryData);
     }
 
+    /**
+     * The time at which this configuration version was updated in Cloud IoT Core.
+     * 
+     */
     @Import(name="cloudUpdateTime")
     private @Nullable Output<String> cloudUpdateTime;
 
+    /**
+     * @return The time at which this configuration version was updated in Cloud IoT Core.
+     * 
+     */
     public Optional<Output<String>> cloudUpdateTime() {
         return Optional.ofNullable(this.cloudUpdateTime);
     }
 
+    /**
+     * The time at which Cloud IoT Core received the acknowledgment from the device,
+     * indicating that the device has received this configuration version.
+     * 
+     */
     @Import(name="deviceAckTime")
     private @Nullable Output<String> deviceAckTime;
 
+    /**
+     * @return The time at which Cloud IoT Core received the acknowledgment from the device,
+     * indicating that the device has received this configuration version.
+     * 
+     */
     public Optional<Output<String>> deviceAckTime() {
         return Optional.ofNullable(this.deviceAckTime);
     }
 
+    /**
+     * The version of this update.
+     * 
+     */
     @Import(name="version")
     private @Nullable Output<String> version;
 
+    /**
+     * @return The version of this update.
+     * 
+     */
     public Optional<Output<String>> version() {
         return Optional.ofNullable(this.version);
     }
@@ -70,38 +104,88 @@ public final class DeviceConfigArgs extends com.pulumi.resources.ResourceArgs {
             $ = new DeviceConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param binaryData The device state data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder binaryData(@Nullable Output<String> binaryData) {
             $.binaryData = binaryData;
             return this;
         }
 
+        /**
+         * @param binaryData The device state data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder binaryData(String binaryData) {
             return binaryData(Output.of(binaryData));
         }
 
+        /**
+         * @param cloudUpdateTime The time at which this configuration version was updated in Cloud IoT Core.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cloudUpdateTime(@Nullable Output<String> cloudUpdateTime) {
             $.cloudUpdateTime = cloudUpdateTime;
             return this;
         }
 
+        /**
+         * @param cloudUpdateTime The time at which this configuration version was updated in Cloud IoT Core.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cloudUpdateTime(String cloudUpdateTime) {
             return cloudUpdateTime(Output.of(cloudUpdateTime));
         }
 
+        /**
+         * @param deviceAckTime The time at which Cloud IoT Core received the acknowledgment from the device,
+         * indicating that the device has received this configuration version.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deviceAckTime(@Nullable Output<String> deviceAckTime) {
             $.deviceAckTime = deviceAckTime;
             return this;
         }
 
+        /**
+         * @param deviceAckTime The time at which Cloud IoT Core received the acknowledgment from the device,
+         * indicating that the device has received this configuration version.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deviceAckTime(String deviceAckTime) {
             return deviceAckTime(Output.of(deviceAckTime));
         }
 
+        /**
+         * @param version The version of this update.
+         * 
+         * @return builder
+         * 
+         */
         public Builder version(@Nullable Output<String> version) {
             $.version = version;
             return this;
         }
 
+        /**
+         * @param version The version of this update.
+         * 
+         * @return builder
+         * 
+         */
         public Builder version(String version) {
             return version(Output.of(version));
         }

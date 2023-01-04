@@ -19,14 +19,14 @@ public final class CxIntentTrainingPhraseArgs extends com.pulumi.resources.Resou
     public static final CxIntentTrainingPhraseArgs Empty = new CxIntentTrainingPhraseArgs();
 
     /**
-     * The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+     * The unique identifier of the training phrase.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+     * @return The unique identifier of the training phrase.
      * 
      */
     public Optional<Output<String>> id() {
@@ -104,7 +104,7 @@ public final class CxIntentTrainingPhraseArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param id The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+         * @param id The unique identifier of the training phrase.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class CxIntentTrainingPhraseArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param id The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+         * @param id The unique identifier of the training phrase.
          * 
          * @return builder
          * 

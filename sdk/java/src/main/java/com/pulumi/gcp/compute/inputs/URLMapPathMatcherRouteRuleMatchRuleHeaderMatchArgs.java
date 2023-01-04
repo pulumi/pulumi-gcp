@@ -18,18 +18,16 @@ public final class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs extends co
     public static final URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs Empty = new URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs();
 
     /**
-     * The queryParameterMatch matches if the value of the parameter exactly matches
-     * the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
-     * must be set.
+     * The value should exactly match contents of exactMatch. Only one of exactMatch,
+     * prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
      * 
      */
     @Import(name="exactMatch")
     private @Nullable Output<String> exactMatch;
 
     /**
-     * @return The queryParameterMatch matches if the value of the parameter exactly matches
-     * the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
-     * must be set.
+     * @return The value should exactly match contents of exactMatch. Only one of exactMatch,
+     * prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
      * 
      */
     public Optional<Output<String>> exactMatch() {
@@ -37,14 +35,18 @@ public final class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs extends co
     }
 
     /**
-     * The name of the header to add.
+     * The name of the HTTP header to match. For matching against the HTTP request&#39;s
+     * authority, use a headerMatch with the header name &#34;:authority&#34;. For matching a
+     * request&#39;s method, use the headerName &#34;:method&#34;.
      * 
      */
     @Import(name="headerName", required=true)
     private Output<String> headerName;
 
     /**
-     * @return The name of the header to add.
+     * @return The name of the HTTP header to match. For matching against the HTTP request&#39;s
+     * authority, use a headerMatch with the header name &#34;:authority&#34;. For matching a
+     * request&#39;s method, use the headerName &#34;:method&#34;.
      * 
      */
     public Output<String> headerName() {
@@ -90,18 +92,18 @@ public final class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs extends co
     }
 
     /**
-     * Specifies that the queryParameterMatch matches if the request contains the query
-     * parameter, irrespective of whether the parameter has a value or not. Only one of
-     * presentMatch, exactMatch and regexMatch must be set.
+     * A header with the contents of headerName must exist. The match takes place
+     * whether or not the request&#39;s header has a value or not. Only one of exactMatch,
+     * prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
      * 
      */
     @Import(name="presentMatch")
     private @Nullable Output<Boolean> presentMatch;
 
     /**
-     * @return Specifies that the queryParameterMatch matches if the request contains the query
-     * parameter, irrespective of whether the parameter has a value or not. Only one of
-     * presentMatch, exactMatch and regexMatch must be set.
+     * @return A header with the contents of headerName must exist. The match takes place
+     * whether or not the request&#39;s header has a value or not. Only one of exactMatch,
+     * prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
      * 
      */
     public Optional<Output<Boolean>> presentMatch() {
@@ -136,20 +138,26 @@ public final class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs extends co
     }
 
     /**
-     * The queryParameterMatch matches if the value of the parameter matches the
-     * regular expression specified by regexMatch. For the regular expression grammar,
-     * please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch,
-     * exactMatch and regexMatch must be set.
+     * The value of the header must match the regular expression specified in
+     * regexMatch. For regular expression grammar, please see:
+     * en.cppreference.com/w/cpp/regex/ecmascript  For matching against a port
+     * specified in the HTTP request, use a headerMatch with headerName set to PORT and
+     * a regular expression that satisfies the RFC2616 Host header&#39;s port specifier.
+     * Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
+     * rangeMatch must be set.
      * 
      */
     @Import(name="regexMatch")
     private @Nullable Output<String> regexMatch;
 
     /**
-     * @return The queryParameterMatch matches if the value of the parameter matches the
-     * regular expression specified by regexMatch. For the regular expression grammar,
-     * please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch,
-     * exactMatch and regexMatch must be set.
+     * @return The value of the header must match the regular expression specified in
+     * regexMatch. For regular expression grammar, please see:
+     * en.cppreference.com/w/cpp/regex/ecmascript  For matching against a port
+     * specified in the HTTP request, use a headerMatch with headerName set to PORT and
+     * a regular expression that satisfies the RFC2616 Host header&#39;s port specifier.
+     * Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
+     * rangeMatch must be set.
      * 
      */
     public Optional<Output<String>> regexMatch() {
@@ -207,9 +215,8 @@ public final class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs extends co
         }
 
         /**
-         * @param exactMatch The queryParameterMatch matches if the value of the parameter exactly matches
-         * the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
-         * must be set.
+         * @param exactMatch The value should exactly match contents of exactMatch. Only one of exactMatch,
+         * prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
          * 
          * @return builder
          * 
@@ -220,9 +227,8 @@ public final class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs extends co
         }
 
         /**
-         * @param exactMatch The queryParameterMatch matches if the value of the parameter exactly matches
-         * the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
-         * must be set.
+         * @param exactMatch The value should exactly match contents of exactMatch. Only one of exactMatch,
+         * prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
          * 
          * @return builder
          * 
@@ -232,7 +238,9 @@ public final class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs extends co
         }
 
         /**
-         * @param headerName The name of the header to add.
+         * @param headerName The name of the HTTP header to match. For matching against the HTTP request&#39;s
+         * authority, use a headerMatch with the header name &#34;:authority&#34;. For matching a
+         * request&#39;s method, use the headerName &#34;:method&#34;.
          * 
          * @return builder
          * 
@@ -243,7 +251,9 @@ public final class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs extends co
         }
 
         /**
-         * @param headerName The name of the header to add.
+         * @param headerName The name of the HTTP header to match. For matching against the HTTP request&#39;s
+         * authority, use a headerMatch with the header name &#34;:authority&#34;. For matching a
+         * request&#39;s method, use the headerName &#34;:method&#34;.
          * 
          * @return builder
          * 
@@ -303,9 +313,9 @@ public final class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs extends co
         }
 
         /**
-         * @param presentMatch Specifies that the queryParameterMatch matches if the request contains the query
-         * parameter, irrespective of whether the parameter has a value or not. Only one of
-         * presentMatch, exactMatch and regexMatch must be set.
+         * @param presentMatch A header with the contents of headerName must exist. The match takes place
+         * whether or not the request&#39;s header has a value or not. Only one of exactMatch,
+         * prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
          * 
          * @return builder
          * 
@@ -316,9 +326,9 @@ public final class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs extends co
         }
 
         /**
-         * @param presentMatch Specifies that the queryParameterMatch matches if the request contains the query
-         * parameter, irrespective of whether the parameter has a value or not. Only one of
-         * presentMatch, exactMatch and regexMatch must be set.
+         * @param presentMatch A header with the contents of headerName must exist. The match takes place
+         * whether or not the request&#39;s header has a value or not. Only one of exactMatch,
+         * prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
          * 
          * @return builder
          * 
@@ -361,10 +371,13 @@ public final class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs extends co
         }
 
         /**
-         * @param regexMatch The queryParameterMatch matches if the value of the parameter matches the
-         * regular expression specified by regexMatch. For the regular expression grammar,
-         * please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch,
-         * exactMatch and regexMatch must be set.
+         * @param regexMatch The value of the header must match the regular expression specified in
+         * regexMatch. For regular expression grammar, please see:
+         * en.cppreference.com/w/cpp/regex/ecmascript  For matching against a port
+         * specified in the HTTP request, use a headerMatch with headerName set to PORT and
+         * a regular expression that satisfies the RFC2616 Host header&#39;s port specifier.
+         * Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
+         * rangeMatch must be set.
          * 
          * @return builder
          * 
@@ -375,10 +388,13 @@ public final class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs extends co
         }
 
         /**
-         * @param regexMatch The queryParameterMatch matches if the value of the parameter matches the
-         * regular expression specified by regexMatch. For the regular expression grammar,
-         * please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch,
-         * exactMatch and regexMatch must be set.
+         * @param regexMatch The value of the header must match the regular expression specified in
+         * regexMatch. For regular expression grammar, please see:
+         * en.cppreference.com/w/cpp/regex/ecmascript  For matching against a port
+         * specified in the HTTP request, use a headerMatch with headerName set to PORT and
+         * a regular expression that satisfies the RFC2616 Host header&#39;s port specifier.
+         * Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
+         * rangeMatch must be set.
          * 
          * @return builder
          * 

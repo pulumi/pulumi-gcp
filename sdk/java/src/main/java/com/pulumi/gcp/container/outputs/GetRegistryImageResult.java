@@ -17,6 +17,10 @@ public final class GetRegistryImageResult {
      * 
      */
     private String id;
+    /**
+     * @return The URL at which the image can be accessed.
+     * 
+     */
     private String imageUrl;
     private String name;
     private String project;
@@ -34,6 +38,10 @@ public final class GetRegistryImageResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The URL at which the image can be accessed.
+     * 
+     */
     public String imageUrl() {
         return this.imageUrl;
     }

@@ -72,18 +72,16 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job
-     * does not reach its desired state. See comments in reconciling for additional information on &#39;reconciliation&#39; process in
-     * Cloud Run.
+     * The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
+     * Structure is documented below.
      * 
      */
     @Import(name="conditions")
     private @Nullable Output<List<JobConditionArgs>> conditions;
 
     /**
-     * @return The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job
-     * does not reach its desired state. See comments in reconciling for additional information on &#39;reconciliation&#39; process in
-     * Cloud Run.
+     * @return The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<JobConditionArgs>>> conditions() {
@@ -91,16 +89,14 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during
-     * updates.
+     * A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
      * 
      */
     @Import(name="etag")
     private @Nullable Output<String> etag;
 
     /**
-     * @return A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during
-     * updates.
+     * @return A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
      * 
      */
     public Optional<Output<String>> etag() {
@@ -138,6 +134,8 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * KRM-style labels for the resource.
+     * (Optional)
      * KRM-style labels for the resource. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. Those labels are read-only, and user changes will not be preserved.
      * 
      */
@@ -145,7 +143,9 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return KRM-style labels for the resource. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. Those labels are read-only, and user changes will not be preserved.
+     * @return KRM-style labels for the resource.
+     * (Optional)
+     * KRM-style labels for the resource. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. Those labels are read-only, and user changes will not be preserved.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -154,6 +154,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Name of the last created execution.
+     * Structure is documented below.
      * 
      */
     @Import(name="latestCreatedExecutions")
@@ -161,6 +162,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Name of the last created execution.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<JobLatestCreatedExecutionArgs>>> latestCreatedExecutions() {
@@ -200,14 +202,14 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Volume&#39;s name.
+     * Name of the Job.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Volume&#39;s name.
+     * @return Name of the Job.
      * 
      */
     public Optional<Output<String>> name() {
@@ -215,16 +217,14 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud
-     * Run.
+     * The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud Run.
      * 
      */
     @Import(name="observedGeneration")
     private @Nullable Output<String> observedGeneration;
 
     /**
-     * @return The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud
-     * Run.
+     * @return The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud Run.
      * 
      */
     public Optional<Output<String>> observedGeneration() {
@@ -249,32 +249,20 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Returns true if the Job is currently being acted upon by the system to bring it into the desired state. When a new Job
-     * is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to
-     * the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and
-     * latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is
-     * over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job,
-     * or there was an error, and reconciliation failed. This state can be found in terminalCondition.state. If reconciliation
-     * succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and
-     * latestCreatedExecution. If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state
-     * of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in
-     * terminalCondition and conditions
+     * Returns true if the Job is currently being acted upon by the system to bring it into the desired state.
+     * When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
+     * If reconciliation succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and latestCreatedExecution.
+     * If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
      * 
      */
     @Import(name="reconciling")
     private @Nullable Output<Boolean> reconciling;
 
     /**
-     * @return Returns true if the Job is currently being acted upon by the system to bring it into the desired state. When a new Job
-     * is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to
-     * the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and
-     * latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is
-     * over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job,
-     * or there was an error, and reconciliation failed. This state can be found in terminalCondition.state. If reconciliation
-     * succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and
-     * latestCreatedExecution. If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state
-     * of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in
-     * terminalCondition and conditions
+     * @return Returns true if the Job is currently being acted upon by the system to bring it into the desired state.
+     * When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
+     * If reconciliation succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and latestCreatedExecution.
+     * If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
      * 
      */
     public Optional<Output<Boolean>> reconciling() {
@@ -282,7 +270,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Describes the task(s) that will be created when executing an execution
+     * The template used to create executions for this Job.
      * Structure is documented below.
      * 
      */
@@ -290,7 +278,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<JobTemplateArgs> template;
 
     /**
-     * @return Describes the task(s) that will be created when executing an execution
+     * @return The template used to create executions for this Job.
      * Structure is documented below.
      * 
      */
@@ -299,16 +287,16 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the
-     * desired state
+     * The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
+     * Structure is documented below.
      * 
      */
     @Import(name="terminalConditions")
     private @Nullable Output<List<JobTerminalConditionArgs>> terminalConditions;
 
     /**
-     * @return The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the
-     * desired state
+     * @return The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<JobTerminalConditionArgs>>> terminalConditions() {
@@ -316,16 +304,14 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged
-     * until the resource is deleted.
+     * Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      * 
      */
     @Import(name="uid")
     private @Nullable Output<String> uid;
 
     /**
-     * @return Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged
-     * until the resource is deleted.
+     * @return Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      * 
      */
     public Optional<Output<String>> uid() {
@@ -439,9 +425,8 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param conditions The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job
-         * does not reach its desired state. See comments in reconciling for additional information on &#39;reconciliation&#39; process in
-         * Cloud Run.
+         * @param conditions The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -452,9 +437,8 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param conditions The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job
-         * does not reach its desired state. See comments in reconciling for additional information on &#39;reconciliation&#39; process in
-         * Cloud Run.
+         * @param conditions The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -464,9 +448,8 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param conditions The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job
-         * does not reach its desired state. See comments in reconciling for additional information on &#39;reconciliation&#39; process in
-         * Cloud Run.
+         * @param conditions The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -476,8 +459,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etag A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during
-         * updates.
+         * @param etag A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
          * 
          * @return builder
          * 
@@ -488,8 +470,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etag A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during
-         * updates.
+         * @param etag A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
          * 
          * @return builder
          * 
@@ -541,7 +522,9 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels KRM-style labels for the resource. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. Those labels are read-only, and user changes will not be preserved.
+         * @param labels KRM-style labels for the resource.
+         * (Optional)
+         * KRM-style labels for the resource. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. Those labels are read-only, and user changes will not be preserved.
          * 
          * @return builder
          * 
@@ -552,7 +535,9 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels KRM-style labels for the resource. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. Those labels are read-only, and user changes will not be preserved.
+         * @param labels KRM-style labels for the resource.
+         * (Optional)
+         * KRM-style labels for the resource. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. Those labels are read-only, and user changes will not be preserved.
          * 
          * @return builder
          * 
@@ -563,6 +548,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param latestCreatedExecutions Name of the last created execution.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -574,6 +560,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param latestCreatedExecutions Name of the last created execution.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -584,6 +571,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param latestCreatedExecutions Name of the last created execution.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -637,7 +625,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Volume&#39;s name.
+         * @param name Name of the Job.
          * 
          * @return builder
          * 
@@ -648,7 +636,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Volume&#39;s name.
+         * @param name Name of the Job.
          * 
          * @return builder
          * 
@@ -658,8 +646,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param observedGeneration The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud
-         * Run.
+         * @param observedGeneration The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud Run.
          * 
          * @return builder
          * 
@@ -670,8 +657,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param observedGeneration The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud
-         * Run.
+         * @param observedGeneration The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud Run.
          * 
          * @return builder
          * 
@@ -704,16 +690,10 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reconciling Returns true if the Job is currently being acted upon by the system to bring it into the desired state. When a new Job
-         * is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to
-         * the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and
-         * latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is
-         * over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job,
-         * or there was an error, and reconciliation failed. This state can be found in terminalCondition.state. If reconciliation
-         * succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and
-         * latestCreatedExecution. If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state
-         * of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in
-         * terminalCondition and conditions
+         * @param reconciling Returns true if the Job is currently being acted upon by the system to bring it into the desired state.
+         * When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
+         * If reconciliation succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and latestCreatedExecution.
+         * If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
          * 
          * @return builder
          * 
@@ -724,16 +704,10 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reconciling Returns true if the Job is currently being acted upon by the system to bring it into the desired state. When a new Job
-         * is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to
-         * the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and
-         * latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is
-         * over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job,
-         * or there was an error, and reconciliation failed. This state can be found in terminalCondition.state. If reconciliation
-         * succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and
-         * latestCreatedExecution. If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state
-         * of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in
-         * terminalCondition and conditions
+         * @param reconciling Returns true if the Job is currently being acted upon by the system to bring it into the desired state.
+         * When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
+         * If reconciliation succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and latestCreatedExecution.
+         * If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
          * 
          * @return builder
          * 
@@ -743,7 +717,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param template Describes the task(s) that will be created when executing an execution
+         * @param template The template used to create executions for this Job.
          * Structure is documented below.
          * 
          * @return builder
@@ -755,7 +729,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param template Describes the task(s) that will be created when executing an execution
+         * @param template The template used to create executions for this Job.
          * Structure is documented below.
          * 
          * @return builder
@@ -766,8 +740,8 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param terminalConditions The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the
-         * desired state
+         * @param terminalConditions The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -778,8 +752,8 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param terminalConditions The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the
-         * desired state
+         * @param terminalConditions The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -789,8 +763,8 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param terminalConditions The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the
-         * desired state
+         * @param terminalConditions The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -800,8 +774,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uid Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged
-         * until the resource is deleted.
+         * @param uid Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
          * 
          * @return builder
          * 
@@ -812,8 +785,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uid Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged
-         * until the resource is deleted.
+         * @param uid Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
          * 
          * @return builder
          * 

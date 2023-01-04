@@ -176,7 +176,7 @@ public final class SecretmanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
-     * import com.pulumi.gcp.monitoring.inputs.GetSecretVersionArgs;
+     * import com.pulumi.gcp.secretmanager.inputs.GetSecretVersionArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -213,7 +213,7 @@ public final class SecretmanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
-     * import com.pulumi.gcp.monitoring.inputs.GetSecretVersionArgs;
+     * import com.pulumi.gcp.secretmanager.inputs.GetSecretVersionArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -250,7 +250,7 @@ public final class SecretmanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
-     * import com.pulumi.gcp.monitoring.inputs.GetSecretVersionArgs;
+     * import com.pulumi.gcp.secretmanager.inputs.GetSecretVersionArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -287,7 +287,7 @@ public final class SecretmanagerFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
-     * import com.pulumi.gcp.monitoring.inputs.GetSecretVersionArgs;
+     * import com.pulumi.gcp.secretmanager.inputs.GetSecretVersionArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

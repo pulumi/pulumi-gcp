@@ -52,7 +52,7 @@ public final class JobLoad {
      */
     private @Nullable JobLoadDestinationEncryptionConfiguration destinationEncryptionConfiguration;
     /**
-     * @return The destination table.
+     * @return The destination table to load the data into.
      * Structure is documented below.
      * 
      */
@@ -65,8 +65,11 @@ public final class JobLoad {
      */
     private @Nullable String encoding;
     /**
-     * @return When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
-     * Default is &#39;,&#39;
+     * @return The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character.
+     * To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts
+     * the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the
+     * data in its raw, binary state. BigQuery also supports the escape sequence &#34;\t&#34; to specify a tab separator.
+     * The default value is a comma (&#39;,&#39;).
      * 
      */
     private @Nullable String fieldDelimiter;
@@ -221,7 +224,7 @@ public final class JobLoad {
         return Optional.ofNullable(this.destinationEncryptionConfiguration);
     }
     /**
-     * @return The destination table.
+     * @return The destination table to load the data into.
      * Structure is documented below.
      * 
      */
@@ -238,8 +241,11 @@ public final class JobLoad {
         return Optional.ofNullable(this.encoding);
     }
     /**
-     * @return When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
-     * Default is &#39;,&#39;
+     * @return The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character.
+     * To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts
+     * the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the
+     * data in its raw, binary state. BigQuery also supports the escape sequence &#34;\t&#34; to specify a tab separator.
+     * The default value is a comma (&#39;,&#39;).
      * 
      */
     public Optional<String> fieldDelimiter() {

@@ -51,16 +51,14 @@ public final class CxFlowTransitionRouteArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * - 
-     * The unique identifier of this event handler.
+     * The unique identifier of this transition route.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return -
-     * The unique identifier of this event handler.
+     * @return The unique identifier of this transition route.
      * 
      */
     public Optional<Output<String>> name() {
@@ -102,7 +100,7 @@ public final class CxFlowTransitionRouteArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+     * The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
      * Structure is documented below.
      * 
      */
@@ -110,7 +108,7 @@ public final class CxFlowTransitionRouteArgs extends com.pulumi.resources.Resour
     private @Nullable Output<CxFlowTransitionRouteTriggerFulfillmentArgs> triggerFulfillment;
 
     /**
-     * @return The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+     * @return The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
      * Structure is documented below.
      * 
      */
@@ -194,8 +192,7 @@ public final class CxFlowTransitionRouteArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name -
-         * The unique identifier of this event handler.
+         * @param name The unique identifier of this transition route.
          * 
          * @return builder
          * 
@@ -206,8 +203,7 @@ public final class CxFlowTransitionRouteArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name -
-         * The unique identifier of this event handler.
+         * @param name The unique identifier of this transition route.
          * 
          * @return builder
          * 
@@ -263,7 +259,7 @@ public final class CxFlowTransitionRouteArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param triggerFulfillment The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+         * @param triggerFulfillment The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
          * Structure is documented below.
          * 
          * @return builder
@@ -275,7 +271,7 @@ public final class CxFlowTransitionRouteArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param triggerFulfillment The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+         * @param triggerFulfillment The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
          * Structure is documented below.
          * 
          * @return builder

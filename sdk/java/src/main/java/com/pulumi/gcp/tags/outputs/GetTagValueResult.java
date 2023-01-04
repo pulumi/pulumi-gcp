@@ -9,6 +9,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTagValueResult {
+    /**
+     * @return Creation time.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
     private String createTime;
     private String description;
     /**
@@ -16,13 +21,31 @@ public final class GetTagValueResult {
      * 
      */
     private String id;
+    /**
+     * @return The generated numeric id for the TagValue.
+     * 
+     */
     private String name;
+    /**
+     * @return Namespaced name of the TagValue.
+     * 
+     */
     private String namespacedName;
     private String parent;
     private String shortName;
+    /**
+     * @return Update time.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
     private String updateTime;
 
     private GetTagValueResult() {}
+    /**
+     * @return Creation time.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
     public String createTime() {
         return this.createTime;
     }
@@ -36,9 +59,17 @@ public final class GetTagValueResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The generated numeric id for the TagValue.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Namespaced name of the TagValue.
+     * 
+     */
     public String namespacedName() {
         return this.namespacedName;
     }
@@ -48,6 +79,11 @@ public final class GetTagValueResult {
     public String shortName() {
         return this.shortName;
     }
+    /**
+     * @return Update time.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
     public String updateTime() {
         return this.updateTime;
     }

@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetClusterIstioServiceResult {
     private String clusterName;
+    /**
+     * @return Name used for UI elements listing this (Monitoring) Service.
+     * 
+     */
     private String displayName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,11 +26,20 @@ public final class GetClusterIstioServiceResult {
      */
     private String id;
     private String location;
+    /**
+     * @return The full REST resource name for this channel. The syntax is:
+     * `projects/[PROJECT_ID]/services/[SERVICE_ID]`.
+     * 
+     */
     private String name;
     private @Nullable String project;
     private String serviceId;
     private String serviceName;
     private String serviceNamespace;
+    /**
+     * @return Configuration for how to query telemetry on the Service. Structure is documented below.
+     * 
+     */
     private List<GetClusterIstioServiceTelemetry> telemetries;
     private Map<String,String> userLabels;
 
@@ -34,6 +47,10 @@ public final class GetClusterIstioServiceResult {
     public String clusterName() {
         return this.clusterName;
     }
+    /**
+     * @return Name used for UI elements listing this (Monitoring) Service.
+     * 
+     */
     public String displayName() {
         return this.displayName;
     }
@@ -47,6 +64,11 @@ public final class GetClusterIstioServiceResult {
     public String location() {
         return this.location;
     }
+    /**
+     * @return The full REST resource name for this channel. The syntax is:
+     * `projects/[PROJECT_ID]/services/[SERVICE_ID]`.
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -62,6 +84,10 @@ public final class GetClusterIstioServiceResult {
     public String serviceNamespace() {
         return this.serviceNamespace;
     }
+    /**
+     * @return Configuration for how to query telemetry on the Service. Structure is documented below.
+     * 
+     */
     public List<GetClusterIstioServiceTelemetry> telemetries() {
         return this.telemetries;
     }

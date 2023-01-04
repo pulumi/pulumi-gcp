@@ -14,7 +14,7 @@ public final class SecurityScanConfigAuthenticationGoogleAccountArgs extends com
     public static final SecurityScanConfigAuthenticationGoogleAccountArgs Empty = new SecurityScanConfigAuthenticationGoogleAccountArgs();
 
     /**
-     * The password of the custom account. The credential is stored encrypted
+     * The password of the Google account. The credential is stored encrypted
      * in GCP.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
@@ -23,7 +23,7 @@ public final class SecurityScanConfigAuthenticationGoogleAccountArgs extends com
     private Output<String> password;
 
     /**
-     * @return The password of the custom account. The credential is stored encrypted
+     * @return The password of the Google account. The credential is stored encrypted
      * in GCP.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
@@ -33,14 +33,14 @@ public final class SecurityScanConfigAuthenticationGoogleAccountArgs extends com
     }
 
     /**
-     * The user name of the custom account.
+     * The user name of the Google account.
      * 
      */
     @Import(name="username", required=true)
     private Output<String> username;
 
     /**
-     * @return The user name of the custom account.
+     * @return The user name of the Google account.
      * 
      */
     public Output<String> username() {
@@ -73,7 +73,7 @@ public final class SecurityScanConfigAuthenticationGoogleAccountArgs extends com
         }
 
         /**
-         * @param password The password of the custom account. The credential is stored encrypted
+         * @param password The password of the Google account. The credential is stored encrypted
          * in GCP.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
@@ -86,7 +86,7 @@ public final class SecurityScanConfigAuthenticationGoogleAccountArgs extends com
         }
 
         /**
-         * @param password The password of the custom account. The credential is stored encrypted
+         * @param password The password of the Google account. The credential is stored encrypted
          * in GCP.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
@@ -98,7 +98,7 @@ public final class SecurityScanConfigAuthenticationGoogleAccountArgs extends com
         }
 
         /**
-         * @param username The user name of the custom account.
+         * @param username The user name of the Google account.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class SecurityScanConfigAuthenticationGoogleAccountArgs extends com
         }
 
         /**
-         * @param username The user name of the custom account.
+         * @param username The user name of the Google account.
          * 
          * @return builder
          * 

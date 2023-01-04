@@ -30,8 +30,7 @@ public final class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabas
      */
     private @Nullable String dataType;
     /**
-     * @return -
-     * Column length.
+     * @return Column length.
      * 
      */
     private @Nullable Integer length;
@@ -75,8 +74,7 @@ public final class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabas
         return Optional.ofNullable(this.dataType);
     }
     /**
-     * @return -
-     * Column length.
+     * @return Column length.
      * 
      */
     public Optional<Integer> length() {

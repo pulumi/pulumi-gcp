@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterClusterConfigMasterConfig {
     /**
-     * @return The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
+     * @return The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
      * 
      */
     private @Nullable List<ClusterClusterConfigMasterConfigAccelerator> accelerators;
@@ -34,7 +34,7 @@ public final class ClusterClusterConfigMasterConfig {
     private @Nullable List<String> instanceNames;
     /**
      * @return The name of a Google Compute Engine machine type
-     * to create for the worker nodes. If not specified, GCP will default to a predetermined
+     * to create for the master. If not specified, GCP will default to a predetermined
      * computed value (currently `n1-standard-4`).
      * 
      */
@@ -48,15 +48,15 @@ public final class ClusterClusterConfigMasterConfig {
      */
     private @Nullable String minCpuPlatform;
     /**
-     * @return Specifies the number of preemptible nodes to create.
-     * Defaults to 0.
+     * @return Specifies the number of master nodes to create.
+     * If not specified, GCP will default to a predetermined computed value (currently 1).
      * 
      */
     private @Nullable Integer numInstances;
 
     private ClusterClusterConfigMasterConfig() {}
     /**
-     * @return The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
+     * @return The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
      * 
      */
     public List<ClusterClusterConfigMasterConfigAccelerator> accelerators() {
@@ -82,7 +82,7 @@ public final class ClusterClusterConfigMasterConfig {
     }
     /**
      * @return The name of a Google Compute Engine machine type
-     * to create for the worker nodes. If not specified, GCP will default to a predetermined
+     * to create for the master. If not specified, GCP will default to a predetermined
      * computed value (currently `n1-standard-4`).
      * 
      */
@@ -100,8 +100,8 @@ public final class ClusterClusterConfigMasterConfig {
         return Optional.ofNullable(this.minCpuPlatform);
     }
     /**
-     * @return Specifies the number of preemptible nodes to create.
-     * Defaults to 0.
+     * @return Specifies the number of master nodes to create.
+     * If not specified, GCP will default to a predetermined computed value (currently 1).
      * 
      */
     public Optional<Integer> numInstances() {

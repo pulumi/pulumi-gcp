@@ -32,9 +32,17 @@ public final class ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRollou
         return Optional.ofNullable(this.batchNodeCount);
     }
 
+    /**
+     * Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0). Only one of the batch_percentage or batch_node_count can be specified.
+     * 
+     */
     @Import(name="batchPercentage")
     private @Nullable Output<Double> batchPercentage;
 
+    /**
+     * @return Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0). Only one of the batch_percentage or batch_node_count can be specified.
+     * 
+     */
     public Optional<Output<Double>> batchPercentage() {
         return Optional.ofNullable(this.batchPercentage);
     }
@@ -101,11 +109,23 @@ public final class ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRollou
             return batchNodeCount(Output.of(batchNodeCount));
         }
 
+        /**
+         * @param batchPercentage Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0). Only one of the batch_percentage or batch_node_count can be specified.
+         * 
+         * @return builder
+         * 
+         */
         public Builder batchPercentage(@Nullable Output<Double> batchPercentage) {
             $.batchPercentage = batchPercentage;
             return this;
         }
 
+        /**
+         * @param batchPercentage Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0). Only one of the batch_percentage or batch_node_count can be specified.
+         * 
+         * @return builder
+         * 
+         */
         public Builder batchPercentage(Double batchPercentage) {
             return batchPercentage(Output.of(batchPercentage));
         }

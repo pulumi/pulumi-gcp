@@ -70,7 +70,6 @@ public final class ProjectDefaultConfigSignInArgs extends com.pulumi.resources.R
     }
 
     /**
-     * - 
      * Output only. Hash config information.
      * Structure is documented below.
      * 
@@ -79,8 +78,7 @@ public final class ProjectDefaultConfigSignInArgs extends com.pulumi.resources.R
     private @Nullable Output<List<ProjectDefaultConfigSignInHashConfigArgs>> hashConfigs;
 
     /**
-     * @return -
-     * Output only. Hash config information.
+     * @return Output only. Hash config information.
      * Structure is documented below.
      * 
      */
@@ -201,8 +199,7 @@ public final class ProjectDefaultConfigSignInArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param hashConfigs -
-         * Output only. Hash config information.
+         * @param hashConfigs Output only. Hash config information.
          * Structure is documented below.
          * 
          * @return builder
@@ -214,8 +211,7 @@ public final class ProjectDefaultConfigSignInArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param hashConfigs -
-         * Output only. Hash config information.
+         * @param hashConfigs Output only. Hash config information.
          * Structure is documented below.
          * 
          * @return builder
@@ -226,8 +222,7 @@ public final class ProjectDefaultConfigSignInArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param hashConfigs -
-         * Output only. Hash config information.
+         * @param hashConfigs Output only. Hash config information.
          * Structure is documented below.
          * 
          * @return builder

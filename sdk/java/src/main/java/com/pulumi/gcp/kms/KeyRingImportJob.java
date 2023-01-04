@@ -46,32 +46,36 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:kms/keyRingImportJob:KeyRingImportJob")
 public class KeyRingImportJob extends com.pulumi.resources.CustomResource {
     /**
-     * Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this
-     * statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen
-     * ImportMethod is one with a protection level of HSM.
+     * Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
+     * Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+     * Only present if the chosen ImportMethod is one with a protection level of HSM.
+     * Structure is documented below.
      * 
      */
     @Export(name="attestations", type=List.class, parameters={KeyRingImportJobAttestation.class})
     private Output<List<KeyRingImportJobAttestation>> attestations;
 
     /**
-     * @return Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this
-     * statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen
-     * ImportMethod is one with a protection level of HSM.
+     * @return Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
+     * Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+     * Only present if the chosen ImportMethod is one with a protection level of HSM.
+     * Structure is documented below.
      * 
      */
     public Output<List<KeyRingImportJobAttestation>> attestations() {
         return this.attestations;
     }
     /**
-     * The time at which this resource is scheduled for expiration and can no longer be used. This is in RFC3339 text format.
+     * The time at which this resource is scheduled for expiration and can no longer be used.
+     * This is in RFC3339 text format.
      * 
      */
     @Export(name="expireTime", type=String.class, parameters={})
     private Output<String> expireTime;
 
     /**
-     * @return The time at which this resource is scheduled for expiration and can no longer be used. This is in RFC3339 text format.
+     * @return The time at which this resource is scheduled for expiration and can no longer be used.
+     * This is in RFC3339 text format.
      * 
      */
     public Output<String> expireTime() {
@@ -156,14 +160,16 @@ public class KeyRingImportJob extends com.pulumi.resources.CustomResource {
         return this.protectionLevel;
     }
     /**
-     * The public key with which to wrap key material prior to import. Only returned if state is &#39;ACTIVE&#39;.
+     * The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
+     * Structure is documented below.
      * 
      */
     @Export(name="publicKeys", type=List.class, parameters={KeyRingImportJobPublicKey.class})
     private Output<List<KeyRingImportJobPublicKey>> publicKeys;
 
     /**
-     * @return The public key with which to wrap key material prior to import. Only returned if state is &#39;ACTIVE&#39;.
+     * @return The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
+     * Structure is documented below.
      * 
      */
     public Output<List<KeyRingImportJobPublicKey>> publicKeys() {

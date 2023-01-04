@@ -15,9 +15,17 @@ public final class DnsAuthorizationDnsResourceRecordArgs extends com.pulumi.reso
 
     public static final DnsAuthorizationDnsResourceRecordArgs Empty = new DnsAuthorizationDnsResourceRecordArgs();
 
+    /**
+     * Data of the DNS Resource Record.
+     * 
+     */
     @Import(name="data")
     private @Nullable Output<String> data;
 
+    /**
+     * @return Data of the DNS Resource Record.
+     * 
+     */
     public Optional<Output<String>> data() {
         return Optional.ofNullable(this.data);
     }
@@ -41,9 +49,17 @@ public final class DnsAuthorizationDnsResourceRecordArgs extends com.pulumi.reso
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Type of the DNS Resource Record.
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return Type of the DNS Resource Record.
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -74,11 +90,23 @@ public final class DnsAuthorizationDnsResourceRecordArgs extends com.pulumi.reso
             $ = new DnsAuthorizationDnsResourceRecordArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param data Data of the DNS Resource Record.
+         * 
+         * @return builder
+         * 
+         */
         public Builder data(@Nullable Output<String> data) {
             $.data = data;
             return this;
         }
 
+        /**
+         * @param data Data of the DNS Resource Record.
+         * 
+         * @return builder
+         * 
+         */
         public Builder data(String data) {
             return data(Output.of(data));
         }
@@ -108,11 +136,23 @@ public final class DnsAuthorizationDnsResourceRecordArgs extends com.pulumi.reso
             return name(Output.of(name));
         }
 
+        /**
+         * @param type Type of the DNS Resource Record.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type Type of the DNS Resource Record.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

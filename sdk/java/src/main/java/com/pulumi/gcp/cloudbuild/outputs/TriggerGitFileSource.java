@@ -12,9 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TriggerGitFileSource {
     /**
-     * @return Path at which to mount the volume.
-     * Paths must be absolute and cannot conflict with other volume paths on the same
-     * build step or with certain reserved volume paths.
+     * @return The path of the file, with the repo root as the root of the path.
      * 
      */
     private String path;
@@ -33,16 +31,15 @@ public final class TriggerGitFileSource {
      */
     private @Nullable String revision;
     /**
-     * @return The URI of the repo (required).
+     * @return The URI of the repo (optional). If unspecified, the repo from which the trigger
+     * invocation originated is assumed to be the repo from which to read the specified path.
      * 
      */
     private @Nullable String uri;
 
     private TriggerGitFileSource() {}
     /**
-     * @return Path at which to mount the volume.
-     * Paths must be absolute and cannot conflict with other volume paths on the same
-     * build step or with certain reserved volume paths.
+     * @return The path of the file, with the repo root as the root of the path.
      * 
      */
     public String path() {
@@ -67,7 +64,8 @@ public final class TriggerGitFileSource {
         return Optional.ofNullable(this.revision);
     }
     /**
-     * @return The URI of the repo (required).
+     * @return The URI of the repo (optional). If unspecified, the repo from which the trigger
+     * invocation originated is assumed to be the repo from which to read the specified path.
      * 
      */
     public Optional<String> uri() {

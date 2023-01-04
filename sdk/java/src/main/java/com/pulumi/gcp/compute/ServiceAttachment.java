@@ -266,14 +266,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/serviceAttachment:ServiceAttachment")
 public class ServiceAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * An array of the consumer forwarding rules connected to this service attachment.
+     * An array of the consumer forwarding rules connected to this service
+     * attachment.
+     * Structure is documented below.
      * 
      */
     @Export(name="connectedEndpoints", type=List.class, parameters={ServiceAttachmentConnectedEndpoint.class})
     private Output<List<ServiceAttachmentConnectedEndpoint>> connectedEndpoints;
 
     /**
-     * @return An array of the consumer forwarding rules connected to this service attachment.
+     * @return An array of the consumer forwarding rules connected to this service
+     * attachment.
+     * Structure is documented below.
      * 
      */
     public Output<List<ServiceAttachmentConnectedEndpoint>> connectedEndpoints() {
@@ -382,14 +386,16 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
         return this.enableProxyProtocol;
     }
     /**
-     * Fingerprint of this resource. This field is used internally during updates of this resource.
+     * Fingerprint of this resource. This field is used internally during
+     * updates of this resource.
      * 
      */
     @Export(name="fingerprint", type=String.class, parameters={})
     private Output<String> fingerprint;
 
     /**
-     * @return Fingerprint of this resource. This field is used internally during updates of this resource.
+     * @return Fingerprint of this resource. This field is used internally during
+     * updates of this resource.
      * 
      */
     public Output<String> fingerprint() {

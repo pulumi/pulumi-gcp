@@ -15,16 +15,32 @@ public final class ServiceEndpointArgs extends com.pulumi.resources.ResourceArgs
 
     public static final ServiceEndpointArgs Empty = new ServiceEndpointArgs();
 
+    /**
+     * The FQDN of the endpoint as described in the config.
+     * 
+     */
     @Import(name="address")
     private @Nullable Output<String> address;
 
+    /**
+     * @return The FQDN of the endpoint as described in the config.
+     * 
+     */
     public Optional<Output<String>> address() {
         return Optional.ofNullable(this.address);
     }
 
+    /**
+     * The simple name of the endpoint as described in the config.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return The simple name of the endpoint as described in the config.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -54,20 +70,44 @@ public final class ServiceEndpointArgs extends com.pulumi.resources.ResourceArgs
             $ = new ServiceEndpointArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param address The FQDN of the endpoint as described in the config.
+         * 
+         * @return builder
+         * 
+         */
         public Builder address(@Nullable Output<String> address) {
             $.address = address;
             return this;
         }
 
+        /**
+         * @param address The FQDN of the endpoint as described in the config.
+         * 
+         * @return builder
+         * 
+         */
         public Builder address(String address) {
             return address(Output.of(address));
         }
 
+        /**
+         * @param name The simple name of the endpoint as described in the config.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The simple name of the endpoint as described in the config.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

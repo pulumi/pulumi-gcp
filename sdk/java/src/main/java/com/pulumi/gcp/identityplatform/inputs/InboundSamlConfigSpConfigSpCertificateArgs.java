@@ -16,7 +16,7 @@ public final class InboundSamlConfigSpConfigSpCertificateArgs extends com.pulumi
     public static final InboundSamlConfigSpConfigSpCertificateArgs Empty = new InboundSamlConfigSpConfigSpCertificateArgs();
 
     /**
-     * - 
+     * The IdP&#39;s x509 certificate.
      * The x509 certificate
      * 
      */
@@ -24,7 +24,7 @@ public final class InboundSamlConfigSpConfigSpCertificateArgs extends com.pulumi
     private @Nullable Output<String> x509Certificate;
 
     /**
-     * @return -
+     * @return The IdP&#39;s x509 certificate.
      * The x509 certificate
      * 
      */
@@ -57,7 +57,7 @@ public final class InboundSamlConfigSpConfigSpCertificateArgs extends com.pulumi
         }
 
         /**
-         * @param x509Certificate -
+         * @param x509Certificate The IdP&#39;s x509 certificate.
          * The x509 certificate
          * 
          * @return builder
@@ -69,7 +69,7 @@ public final class InboundSamlConfigSpConfigSpCertificateArgs extends com.pulumi
         }
 
         /**
-         * @param x509Certificate -
+         * @param x509Certificate The IdP&#39;s x509 certificate.
          * The x509 certificate
          * 
          * @return builder

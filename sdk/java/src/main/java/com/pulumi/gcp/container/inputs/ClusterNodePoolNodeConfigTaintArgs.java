@@ -29,14 +29,14 @@ public final class ClusterNodePoolNodeConfigTaintArgs extends com.pulumi.resourc
     }
 
     /**
-     * The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify &#34;compute.googleapis.com/reservation-name&#34; as the key and specify the name of your reservation as its value.
+     * Key for taint.
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify &#34;compute.googleapis.com/reservation-name&#34; as the key and specify the name of your reservation as its value.
+     * @return Key for taint.
      * 
      */
     public Output<String> key() {
@@ -106,7 +106,7 @@ public final class ClusterNodePoolNodeConfigTaintArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param key The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify &#34;compute.googleapis.com/reservation-name&#34; as the key and specify the name of your reservation as its value.
+         * @param key Key for taint.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class ClusterNodePoolNodeConfigTaintArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param key The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify &#34;compute.googleapis.com/reservation-name&#34; as the key and specify the name of your reservation as its value.
+         * @param key Key for taint.
          * 
          * @return builder
          * 

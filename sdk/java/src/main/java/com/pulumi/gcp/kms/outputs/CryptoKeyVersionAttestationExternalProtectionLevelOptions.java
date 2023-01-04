@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CryptoKeyVersionAttestationExternalProtectionLevelOptions {
+    /**
+     * @return The path to the external key material on the EKM when using EkmConnection e.g., &#34;v0/my/key&#34;. Set this field instead of externalKeyUri when using an EkmConnection.
+     * 
+     */
     private @Nullable String ekmConnectionKeyPath;
+    /**
+     * @return The URI for an external resource that this CryptoKeyVersion represents.
+     * 
+     */
     private @Nullable String externalKeyUri;
 
     private CryptoKeyVersionAttestationExternalProtectionLevelOptions() {}
+    /**
+     * @return The path to the external key material on the EKM when using EkmConnection e.g., &#34;v0/my/key&#34;. Set this field instead of externalKeyUri when using an EkmConnection.
+     * 
+     */
     public Optional<String> ekmConnectionKeyPath() {
         return Optional.ofNullable(this.ekmConnectionKeyPath);
     }
+    /**
+     * @return The URI for an external resource that this CryptoKeyVersion represents.
+     * 
+     */
     public Optional<String> externalKeyUri() {
         return Optional.ofNullable(this.externalKeyUri);
     }

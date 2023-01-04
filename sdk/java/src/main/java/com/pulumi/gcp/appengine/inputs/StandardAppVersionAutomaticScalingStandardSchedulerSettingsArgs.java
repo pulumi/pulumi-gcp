@@ -17,14 +17,14 @@ public final class StandardAppVersionAutomaticScalingStandardSchedulerSettingsAr
     public static final StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs Empty = new StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs();
 
     /**
-     * Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
+     * Maximum number of instances to run for this version. Set to zero to disable maxInstances configuration.
      * 
      */
     @Import(name="maxInstances")
     private @Nullable Output<Integer> maxInstances;
 
     /**
-     * @return Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
+     * @return Maximum number of instances to run for this version. Set to zero to disable maxInstances configuration.
      * 
      */
     public Optional<Output<Integer>> maxInstances() {
@@ -104,7 +104,7 @@ public final class StandardAppVersionAutomaticScalingStandardSchedulerSettingsAr
         }
 
         /**
-         * @param maxInstances Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
+         * @param maxInstances Maximum number of instances to run for this version. Set to zero to disable maxInstances configuration.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class StandardAppVersionAutomaticScalingStandardSchedulerSettingsAr
         }
 
         /**
-         * @param maxInstances Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
+         * @param maxInstances Maximum number of instances to run for this version. Set to zero to disable maxInstances configuration.
          * 
          * @return builder
          * 

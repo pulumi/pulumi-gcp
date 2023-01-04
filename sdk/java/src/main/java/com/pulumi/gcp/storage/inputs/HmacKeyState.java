@@ -49,6 +49,7 @@ public final class HmacKeyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * HMAC secret key material.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     @Import(name="secret")
@@ -56,6 +57,7 @@ public final class HmacKeyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return HMAC secret key material.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Optional<Output<String>> secret() {
@@ -202,6 +204,7 @@ public final class HmacKeyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param secret HMAC secret key material.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
@@ -213,6 +216,7 @@ public final class HmacKeyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param secret HMAC secret key material.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 

@@ -10,14 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class PacketMirroringMirroredResourcesSubnetwork {
     /**
-     * @return The URL of the instances where this rule should be active.
+     * @return The URL of the subnetwork where this rule should be active.
      * 
      */
     private String url;
 
     private PacketMirroringMirroredResourcesSubnetwork() {}
     /**
-     * @return The URL of the instances where this rule should be active.
+     * @return The URL of the subnetwork where this rule should be active.
      * 
      */
     public String url() {

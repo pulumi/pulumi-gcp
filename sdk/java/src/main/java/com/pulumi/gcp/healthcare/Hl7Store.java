@@ -321,7 +321,6 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * - 
      * (Optional, Deprecated)
      * A nested object resource
      * Structure is documented below.
@@ -335,8 +334,7 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Hl7StoreNotificationConfig> notificationConfig;
 
     /**
-     * @return -
-     * (Optional, Deprecated)
+     * @return (Optional, Deprecated)
      * A nested object resource
      * Structure is documented below.
      * 

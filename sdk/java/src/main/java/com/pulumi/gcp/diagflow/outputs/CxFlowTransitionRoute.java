@@ -25,8 +25,7 @@ public final class CxFlowTransitionRoute {
      */
     private @Nullable String intent;
     /**
-     * @return -
-     * The unique identifier of this event handler.
+     * @return The unique identifier of this transition route.
      * 
      */
     private @Nullable String name;
@@ -43,7 +42,7 @@ public final class CxFlowTransitionRoute {
      */
     private @Nullable String targetPage;
     /**
-     * @return The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+     * @return The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
      * Structure is documented below.
      * 
      */
@@ -67,8 +66,7 @@ public final class CxFlowTransitionRoute {
         return Optional.ofNullable(this.intent);
     }
     /**
-     * @return -
-     * The unique identifier of this event handler.
+     * @return The unique identifier of this transition route.
      * 
      */
     public Optional<String> name() {
@@ -91,7 +89,7 @@ public final class CxFlowTransitionRoute {
         return Optional.ofNullable(this.targetPage);
     }
     /**
-     * @return The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+     * @return The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
      * Structure is documented below.
      * 
      */

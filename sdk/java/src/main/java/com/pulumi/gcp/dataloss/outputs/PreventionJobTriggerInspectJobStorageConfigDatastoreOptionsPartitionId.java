@@ -17,7 +17,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPa
      */
     private @Nullable String namespaceId;
     /**
-     * @return The Google Cloud Platform project ID of the project containing the table.
+     * @return The ID of the project to which the entities belong.
      * 
      */
     private String projectId;
@@ -31,7 +31,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPa
         return Optional.ofNullable(this.namespaceId);
     }
     /**
-     * @return The Google Cloud Platform project ID of the project containing the table.
+     * @return The ID of the project to which the entities belong.
      * 
      */
     public String projectId() {

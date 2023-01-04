@@ -14,14 +14,14 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     public static final PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs Empty = new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs();
 
     /**
-     * Name describing the field.
+     * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name describing the field.
+     * @return Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
      * 
      */
     public Output<String> name() {
@@ -53,7 +53,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         }
 
         /**
-         * @param name Name describing the field.
+         * @param name Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
          * 
          * @return builder
          * 
@@ -64,7 +64,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         }
 
         /**
-         * @param name Name describing the field.
+         * @param name Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
          * 
          * @return builder
          * 

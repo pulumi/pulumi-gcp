@@ -252,16 +252,14 @@ public class Backup extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or
-     * system actions like failover or maintenance.
+     * If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
      * 
      */
     @Export(name="reconciling", type=Boolean.class, parameters={})
     private Output<Boolean> reconciling;
 
     /**
-     * @return If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or
-     * system actions like failover or maintenance.
+     * @return If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
      * 
      */
     public Output<Boolean> reconciling() {
@@ -282,16 +280,14 @@ public class Backup extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is
-     * retained until it is deleted.
+     * Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
      * 
      */
     @Export(name="uid", type=String.class, parameters={})
     private Output<String> uid;
 
     /**
-     * @return Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is
-     * retained until it is deleted.
+     * @return Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
      * 
      */
     public Output<String> uid() {

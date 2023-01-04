@@ -17,18 +17,14 @@ public final class ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs extend
     public static final ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs Empty = new ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs();
 
     /**
-     * The config setting for metastore service with the cluster.
-     * Structure defined below.
-     * ***
+     * The Hive Metastore configuration for this workload.
      * 
      */
     @Import(name="metastoreConfig")
     private @Nullable Output<ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs> metastoreConfig;
 
     /**
-     * @return The config setting for metastore service with the cluster.
-     * Structure defined below.
-     * ***
+     * @return The Hive Metastore configuration for this workload.
      * 
      */
     public Optional<Output<ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs>> metastoreConfig() {
@@ -76,9 +72,7 @@ public final class ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs extend
         }
 
         /**
-         * @param metastoreConfig The config setting for metastore service with the cluster.
-         * Structure defined below.
-         * ***
+         * @param metastoreConfig The Hive Metastore configuration for this workload.
          * 
          * @return builder
          * 
@@ -89,9 +83,7 @@ public final class ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs extend
         }
 
         /**
-         * @param metastoreConfig The config setting for metastore service with the cluster.
-         * Structure defined below.
-         * ***
+         * @param metastoreConfig The Hive Metastore configuration for this workload.
          * 
          * @return builder
          * 

@@ -184,6 +184,8 @@ public class RegionAutoscaler extends com.pulumi.resources.CustomResource {
         return this.creationTimestamp;
     }
     /**
+     * A description of a scaling schedule.
+     * (Optional)
      * An optional description of this resource.
      * 
      */
@@ -191,21 +193,31 @@ public class RegionAutoscaler extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return An optional description of this resource.
+     * @return A description of a scaling schedule.
+     * (Optional)
+     * An optional description of this resource.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The identifier for this object. Format specified above.
+     * Name of the resource. The name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The identifier for this object. Format specified above.
+     * @return Name of the resource. The name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      * 
      */
     public Output<String> name() {
@@ -256,18 +268,14 @@ public class RegionAutoscaler extends com.pulumi.resources.CustomResource {
         return this.selfLink;
     }
     /**
-     * Fraction of backend capacity utilization (set in HTTP(s) load
-     * balancing configuration) that autoscaler should maintain. Must
-     * be a positive float value. If not defined, the default is 0.8.
+     * URL of the managed instance group that this autoscaler will scale.
      * 
      */
     @Export(name="target", type=String.class, parameters={})
     private Output<String> target;
 
     /**
-     * @return Fraction of backend capacity utilization (set in HTTP(s) load
-     * balancing configuration) that autoscaler should maintain. Must
-     * be a positive float value. If not defined, the default is 0.8.
+     * @return URL of the managed instance group that this autoscaler will scale.
      * 
      */
     public Output<String> target() {

@@ -63,16 +63,14 @@ public final class EntryGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The resource name of the entry group in URL format. Example:
-     * projects/{project}/locations/{location}/entryGroups/{entryGroupId}
+     * The resource name of the entry group in URL format. Example: projects/{project}/locations/{location}/entryGroups/{entryGroupId}
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The resource name of the entry group in URL format. Example:
-     * projects/{project}/locations/{location}/entryGroups/{entryGroupId}
+     * @return The resource name of the entry group in URL format. Example: projects/{project}/locations/{location}/entryGroups/{entryGroupId}
      * 
      */
     public Optional<Output<String>> name() {
@@ -206,8 +204,7 @@ public final class EntryGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name of the entry group in URL format. Example:
-         * projects/{project}/locations/{location}/entryGroups/{entryGroupId}
+         * @param name The resource name of the entry group in URL format. Example: projects/{project}/locations/{location}/entryGroups/{entryGroupId}
          * 
          * @return builder
          * 
@@ -218,8 +215,7 @@ public final class EntryGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name of the entry group in URL format. Example:
-         * projects/{project}/locations/{location}/entryGroups/{entryGroupId}
+         * @param name The resource name of the entry group in URL format. Example: projects/{project}/locations/{location}/entryGroups/{entryGroupId}
          * 
          * @return builder
          * 

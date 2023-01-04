@@ -10,14 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class AwsNodePoolConfigConfigEncryption {
     /**
-     * @return Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+     * @return The ARN of the AWS KMS key used to encrypt node pool configuration.
      * 
      */
     private String kmsKeyArn;
 
     private AwsNodePoolConfigConfigEncryption() {}
     /**
-     * @return Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+     * @return The ARN of the AWS KMS key used to encrypt node pool configuration.
      * 
      */
     public String kmsKeyArn() {

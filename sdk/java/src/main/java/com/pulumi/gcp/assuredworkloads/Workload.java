@@ -247,16 +247,14 @@ public class Workload extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.resourceSettings);
     }
     /**
-     * Output only. The resources associated with this workload. These resources will be created when creating the workload. If
-     * any of the projects already exist, the workload creation will fail. Always read only.
+     * Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
      * 
      */
     @Export(name="resources", type=List.class, parameters={WorkloadResource.class})
     private Output<List<WorkloadResource>> resources;
 
     /**
-     * @return Output only. The resources associated with this workload. These resources will be created when creating the workload. If
-     * any of the projects already exist, the workload creation will fail. Always read only.
+     * @return Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
      * 
      */
     public Output<List<WorkloadResource>> resources() {

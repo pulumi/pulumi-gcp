@@ -162,16 +162,14 @@ public class ReservationAssignment extends com.pulumi.resources.CustomResource {
         return this.reservation;
     }
     /**
-     * Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some
-     * capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+     * Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
      * 
      */
     @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**
-     * @return Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some
-     * capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+     * @return Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
      * 
      */
     public Output<String> state() {

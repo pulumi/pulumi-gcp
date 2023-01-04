@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 public final class LakeAssetStatus {
     private @Nullable Integer activeAssets;
     private @Nullable Integer securityPolicyApplyingAssets;
+    /**
+     * @return Output only. The time when the lake was last updated.
+     * 
+     */
     private @Nullable String updateTime;
 
     private LakeAssetStatus() {}
@@ -23,6 +27,10 @@ public final class LakeAssetStatus {
     public Optional<Integer> securityPolicyApplyingAssets() {
         return Optional.ofNullable(this.securityPolicyApplyingAssets);
     }
+    /**
+     * @return Output only. The time when the lake was last updated.
+     * 
+     */
     public Optional<String> updateTime() {
         return Optional.ofNullable(this.updateTime);
     }

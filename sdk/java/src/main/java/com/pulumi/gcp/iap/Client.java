@@ -118,14 +118,14 @@ public class Client extends com.pulumi.resources.CustomResource {
         return this.brand;
     }
     /**
-     * Output only. Unique identifier of the OAuth client.
+     * The OAuth2 ID of the client.
      * 
      */
     @Export(name="clientId", type=String.class, parameters={})
     private Output<String> clientId;
 
     /**
-     * @return Output only. Unique identifier of the OAuth client.
+     * @return The OAuth2 ID of the client.
      * 
      */
     public Output<String> clientId() {
@@ -147,6 +147,7 @@ public class Client extends com.pulumi.resources.CustomResource {
     }
     /**
      * Output only. Client secret of the OAuth client.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     @Export(name="secret", type=String.class, parameters={})
@@ -154,6 +155,7 @@ public class Client extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Output only. Client secret of the OAuth client.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Output<String> secret() {

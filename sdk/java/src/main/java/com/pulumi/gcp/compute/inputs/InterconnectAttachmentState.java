@@ -89,14 +89,16 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
     }
 
     /**
-     * IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
+     * IPv4 address + prefix length to be configured on Cloud Router
+     * Interface for this interconnect attachment.
      * 
      */
     @Import(name="cloudRouterIpAddress")
     private @Nullable Output<String> cloudRouterIpAddress;
 
     /**
-     * @return IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
+     * @return IPv4 address + prefix length to be configured on Cloud Router
+     * Interface for this interconnect attachment.
      * 
      */
     public Optional<Output<String>> cloudRouterIpAddress() {
@@ -119,14 +121,16 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
     }
 
     /**
-     * IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
+     * IPv4 address + prefix length to be configured on the customer
+     * router subinterface for this interconnect attachment.
      * 
      */
     @Import(name="customerRouterIpAddress")
     private @Nullable Output<String> customerRouterIpAddress;
 
     /**
-     * @return IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
+     * @return IPv4 address + prefix length to be configured on the customer
+     * router subinterface for this interconnect attachment.
      * 
      */
     public Optional<Output<String>> customerRouterIpAddress() {
@@ -213,16 +217,16 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity
-     * issues.
+     * Google reference ID, to be used when raising support tickets with
+     * Google or otherwise to debug backend connectivity issues.
      * 
      */
     @Import(name="googleReferenceId")
     private @Nullable Output<String> googleReferenceId;
 
     /**
-     * @return Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity
-     * issues.
+     * @return Google reference ID, to be used when raising support tickets with
+     * Google or otherwise to debug backend connectivity issues.
      * 
      */
     public Optional<Output<String>> googleReferenceId() {
@@ -336,16 +340,18 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
     }
 
     /**
-     * [Output only for type PARTNER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to
-     * initiate provisioning with a selected partner. Of the form &#34;XXXXX/region/domain&#34;
+     * [Output only for type PARTNER. Not present for DEDICATED]. The opaque
+     * identifier of an PARTNER attachment used to initiate provisioning with
+     * a selected partner. Of the form &#34;XXXXX/region/domain&#34;
      * 
      */
     @Import(name="pairingKey")
     private @Nullable Output<String> pairingKey;
 
     /**
-     * @return [Output only for type PARTNER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to
-     * initiate provisioning with a selected partner. Of the form &#34;XXXXX/region/domain&#34;
+     * @return [Output only for type PARTNER. Not present for DEDICATED]. The opaque
+     * identifier of an PARTNER attachment used to initiate provisioning with
+     * a selected partner. Of the form &#34;XXXXX/region/domain&#34;
      * 
      */
     public Optional<Output<String>> pairingKey() {
@@ -353,16 +359,18 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
     }
 
     /**
-     * [Output only for type PARTNER. Not present for DEDICATED]. Optional BGP ASN for the router that should be supplied by a
-     * layer 3 Partner if they configured BGP on behalf of the customer.
+     * [Output only for type PARTNER. Not present for DEDICATED]. Optional
+     * BGP ASN for the router that should be supplied by a layer 3 Partner if
+     * they configured BGP on behalf of the customer.
      * 
      */
     @Import(name="partnerAsn")
     private @Nullable Output<String> partnerAsn;
 
     /**
-     * @return [Output only for type PARTNER. Not present for DEDICATED]. Optional BGP ASN for the router that should be supplied by a
-     * layer 3 Partner if they configured BGP on behalf of the customer.
+     * @return [Output only for type PARTNER. Not present for DEDICATED]. Optional
+     * BGP ASN for the router that should be supplied by a layer 3 Partner if
+     * they configured BGP on behalf of the customer.
      * 
      */
     public Optional<Output<String>> partnerAsn() {
@@ -370,16 +378,18 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
-     * to is of type DEDICATED.
+     * Information specific to an InterconnectAttachment. This property
+     * is populated if the interconnect that this is attached to is of type DEDICATED.
+     * Structure is documented below.
      * 
      */
     @Import(name="privateInterconnectInfos")
     private @Nullable Output<List<InterconnectAttachmentPrivateInterconnectInfoArgs>> privateInterconnectInfos;
 
     /**
-     * @return Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
-     * to is of type DEDICATED.
+     * @return Information specific to an InterconnectAttachment. This property
+     * is populated if the interconnect that this is attached to is of type DEDICATED.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<InterconnectAttachmentPrivateInterconnectInfoArgs>>> privateInterconnectInfos() {
@@ -656,7 +666,8 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param cloudRouterIpAddress IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
+         * @param cloudRouterIpAddress IPv4 address + prefix length to be configured on Cloud Router
+         * Interface for this interconnect attachment.
          * 
          * @return builder
          * 
@@ -667,7 +678,8 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param cloudRouterIpAddress IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
+         * @param cloudRouterIpAddress IPv4 address + prefix length to be configured on Cloud Router
+         * Interface for this interconnect attachment.
          * 
          * @return builder
          * 
@@ -698,7 +710,8 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param customerRouterIpAddress IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
+         * @param customerRouterIpAddress IPv4 address + prefix length to be configured on the customer
+         * router subinterface for this interconnect attachment.
          * 
          * @return builder
          * 
@@ -709,7 +722,8 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param customerRouterIpAddress IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
+         * @param customerRouterIpAddress IPv4 address + prefix length to be configured on the customer
+         * router subinterface for this interconnect attachment.
          * 
          * @return builder
          * 
@@ -816,8 +830,8 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param googleReferenceId Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity
-         * issues.
+         * @param googleReferenceId Google reference ID, to be used when raising support tickets with
+         * Google or otherwise to debug backend connectivity issues.
          * 
          * @return builder
          * 
@@ -828,8 +842,8 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param googleReferenceId Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity
-         * issues.
+         * @param googleReferenceId Google reference ID, to be used when raising support tickets with
+         * Google or otherwise to debug backend connectivity issues.
          * 
          * @return builder
          * 
@@ -994,8 +1008,9 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param pairingKey [Output only for type PARTNER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to
-         * initiate provisioning with a selected partner. Of the form &#34;XXXXX/region/domain&#34;
+         * @param pairingKey [Output only for type PARTNER. Not present for DEDICATED]. The opaque
+         * identifier of an PARTNER attachment used to initiate provisioning with
+         * a selected partner. Of the form &#34;XXXXX/region/domain&#34;
          * 
          * @return builder
          * 
@@ -1006,8 +1021,9 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param pairingKey [Output only for type PARTNER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to
-         * initiate provisioning with a selected partner. Of the form &#34;XXXXX/region/domain&#34;
+         * @param pairingKey [Output only for type PARTNER. Not present for DEDICATED]. The opaque
+         * identifier of an PARTNER attachment used to initiate provisioning with
+         * a selected partner. Of the form &#34;XXXXX/region/domain&#34;
          * 
          * @return builder
          * 
@@ -1017,8 +1033,9 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param partnerAsn [Output only for type PARTNER. Not present for DEDICATED]. Optional BGP ASN for the router that should be supplied by a
-         * layer 3 Partner if they configured BGP on behalf of the customer.
+         * @param partnerAsn [Output only for type PARTNER. Not present for DEDICATED]. Optional
+         * BGP ASN for the router that should be supplied by a layer 3 Partner if
+         * they configured BGP on behalf of the customer.
          * 
          * @return builder
          * 
@@ -1029,8 +1046,9 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param partnerAsn [Output only for type PARTNER. Not present for DEDICATED]. Optional BGP ASN for the router that should be supplied by a
-         * layer 3 Partner if they configured BGP on behalf of the customer.
+         * @param partnerAsn [Output only for type PARTNER. Not present for DEDICATED]. Optional
+         * BGP ASN for the router that should be supplied by a layer 3 Partner if
+         * they configured BGP on behalf of the customer.
          * 
          * @return builder
          * 
@@ -1040,8 +1058,9 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param privateInterconnectInfos Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
-         * to is of type DEDICATED.
+         * @param privateInterconnectInfos Information specific to an InterconnectAttachment. This property
+         * is populated if the interconnect that this is attached to is of type DEDICATED.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1052,8 +1071,9 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param privateInterconnectInfos Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
-         * to is of type DEDICATED.
+         * @param privateInterconnectInfos Information specific to an InterconnectAttachment. This property
+         * is populated if the interconnect that this is attached to is of type DEDICATED.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1063,8 +1083,9 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param privateInterconnectInfos Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
-         * to is of type DEDICATED.
+         * @param privateInterconnectInfos Information specific to an InterconnectAttachment. This property
+         * is populated if the interconnect that this is attached to is of type DEDICATED.
+         * Structure is documented below.
          * 
          * @return builder
          * 

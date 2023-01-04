@@ -34,14 +34,14 @@ public final class DomainMappingState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
+     * Relative name of the object affected by this record. Only applicable for CNAME records. Example: &#39;www&#39;.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
+     * @return Relative name of the object affected by this record. Only applicable for CNAME records. Example: &#39;www&#39;.
      * 
      */
     public Optional<Output<String>> name() {
@@ -89,6 +89,7 @@ public final class DomainMappingState extends com.pulumi.resources.ResourceArgs 
     /**
      * The resource records required to configure this domain mapping. These records must be added to the domain&#39;s DNS
      * configuration in order to serve the application via this domain mapping.
+     * Structure is documented below.
      * 
      */
     @Import(name="resourceRecords")
@@ -97,6 +98,7 @@ public final class DomainMappingState extends com.pulumi.resources.ResourceArgs 
     /**
      * @return The resource records required to configure this domain mapping. These records must be added to the domain&#39;s DNS
      * configuration in order to serve the application via this domain mapping.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<DomainMappingResourceRecordArgs>>> resourceRecords() {
@@ -171,7 +173,7 @@ public final class DomainMappingState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
+         * @param name Relative name of the object affected by this record. Only applicable for CNAME records. Example: &#39;www&#39;.
          * 
          * @return builder
          * 
@@ -182,7 +184,7 @@ public final class DomainMappingState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
+         * @param name Relative name of the object affected by this record. Only applicable for CNAME records. Example: &#39;www&#39;.
          * 
          * @return builder
          * 
@@ -244,6 +246,7 @@ public final class DomainMappingState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param resourceRecords The resource records required to configure this domain mapping. These records must be added to the domain&#39;s DNS
          * configuration in order to serve the application via this domain mapping.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -256,6 +259,7 @@ public final class DomainMappingState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param resourceRecords The resource records required to configure this domain mapping. These records must be added to the domain&#39;s DNS
          * configuration in order to serve the application via this domain mapping.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -267,6 +271,7 @@ public final class DomainMappingState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param resourceRecords The resource records required to configure this domain mapping. These records must be added to the domain&#39;s DNS
          * configuration in order to serve the application via this domain mapping.
+         * Structure is documented below.
          * 
          * @return builder
          * 

@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions {
     /**
-     * @return A collection of conditions.
+     * @return Conditions to apply to the expression.
      * Structure is documented below.
      * 
      */
@@ -28,7 +28,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
     private PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions() {}
     /**
-     * @return A collection of conditions.
+     * @return Conditions to apply to the expression.
      * Structure is documented below.
      * 
      */

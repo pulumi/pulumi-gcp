@@ -14,15 +14,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FlexibleAppVersionHandler {
     /**
-     * @return Action to take when users access resources that require authentication.
-     * Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+     * @return Actions to take when the user is not logged in.
      * Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
      * 
      */
     private @Nullable String authFailAction;
     /**
-     * @return Level of login required to access this resource.
-     * Default value is `LOGIN_OPTIONAL`.
+     * @return Methods to restrict access to a URL based on login status.
      * Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
      * 
      */
@@ -34,7 +32,9 @@ public final class FlexibleAppVersionHandler {
      */
     private @Nullable String redirectHttpResponseCode;
     /**
-     * @return Path to the script from the application root directory.
+     * @return Executes a script to handle the requests that match this URL pattern.
+     * Only the auto value is supported for Node.js in the App Engine standard environment, for example &#34;script:&#34; &#34;auto&#34;.
+     * Structure is documented below.
      * 
      */
     private @Nullable FlexibleAppVersionHandlerScript script;
@@ -60,8 +60,7 @@ public final class FlexibleAppVersionHandler {
 
     private FlexibleAppVersionHandler() {}
     /**
-     * @return Action to take when users access resources that require authentication.
-     * Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+     * @return Actions to take when the user is not logged in.
      * Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
      * 
      */
@@ -69,8 +68,7 @@ public final class FlexibleAppVersionHandler {
         return Optional.ofNullable(this.authFailAction);
     }
     /**
-     * @return Level of login required to access this resource.
-     * Default value is `LOGIN_OPTIONAL`.
+     * @return Methods to restrict access to a URL based on login status.
      * Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
      * 
      */
@@ -86,7 +84,9 @@ public final class FlexibleAppVersionHandler {
         return Optional.ofNullable(this.redirectHttpResponseCode);
     }
     /**
-     * @return Path to the script from the application root directory.
+     * @return Executes a script to handle the requests that match this URL pattern.
+     * Only the auto value is supported for Node.js in the App Engine standard environment, for example &#34;script:&#34; &#34;auto&#34;.
+     * Structure is documented below.
      * 
      */
     public Optional<FlexibleAppVersionHandlerScript> script() {

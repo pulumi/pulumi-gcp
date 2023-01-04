@@ -44,8 +44,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
      */
     private @Nullable RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig encryptionConfig;
     /**
-     * @return -
-     * The Compute Engine guest attributes. (see [Project and instance
+     * @return The Compute Engine guest attributes. (see [Project and instance
      * guest attributes](https://cloud.google.com/compute/docs/
      * storing-retrieving-metadata#guest_attributes)).
      * 
@@ -62,9 +61,12 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
      */
     private @Nullable Boolean internalIpOnly;
     /**
-     * @return Labels to apply to this disk. These can be later modified
-     * by the disks.setLabels method. This field is only
-     * applicable for persistent disks.
+     * @return The labels to associate with this runtime. Label **keys** must
+     * contain 1 to 63 characters, and must conform to [RFC 1035]
+     * (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+     * empty, but, if present, must contain 1 to 63 characters, and must
+     * conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+     * more than 32 labels can be associated with a cluster.
      * 
      */
     private @Nullable Map<String,String> labels;
@@ -136,8 +138,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
      */
     private @Nullable List<String> tags;
     /**
-     * @return -
-     * The zone where the virtual machine is located.
+     * @return The zone where the virtual machine is located.
      * 
      */
     private @Nullable String zone;
@@ -176,8 +177,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
         return Optional.ofNullable(this.encryptionConfig);
     }
     /**
-     * @return -
-     * The Compute Engine guest attributes. (see [Project and instance
+     * @return The Compute Engine guest attributes. (see [Project and instance
      * guest attributes](https://cloud.google.com/compute/docs/
      * storing-retrieving-metadata#guest_attributes)).
      * 
@@ -198,9 +198,12 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
         return Optional.ofNullable(this.internalIpOnly);
     }
     /**
-     * @return Labels to apply to this disk. These can be later modified
-     * by the disks.setLabels method. This field is only
-     * applicable for persistent disks.
+     * @return The labels to associate with this runtime. Label **keys** must
+     * contain 1 to 63 characters, and must conform to [RFC 1035]
+     * (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+     * empty, but, if present, must contain 1 to 63 characters, and must
+     * conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+     * more than 32 labels can be associated with a cluster.
      * 
      */
     public Map<String,String> labels() {
@@ -290,8 +293,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
         return this.tags == null ? List.of() : this.tags;
     }
     /**
-     * @return -
-     * The zone where the virtual machine is located.
+     * @return The zone where the virtual machine is located.
      * 
      */
     public Optional<String> zone() {

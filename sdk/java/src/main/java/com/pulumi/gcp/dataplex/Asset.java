@@ -172,14 +172,14 @@ public class Asset extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+     * The name of the asset.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+     * @return The name of the asset.
      * 
      */
     public Output<String> name() {
@@ -256,16 +256,14 @@ public class Asset extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and
-     * re-created with the same name.
+     * Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
      * 
      */
     @Export(name="uid", type=String.class, parameters={})
     private Output<String> uid;
 
     /**
-     * @return Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and
-     * re-created with the same name.
+     * @return Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
      * 
      */
     public Output<String> uid() {

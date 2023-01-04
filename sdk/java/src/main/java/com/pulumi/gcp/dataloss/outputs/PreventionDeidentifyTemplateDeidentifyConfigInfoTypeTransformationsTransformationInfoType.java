@@ -10,14 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType {
     /**
-     * @return Name describing the field.
+     * @return Name of the information type.
      * 
      */
     private String name;
 
     private PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType() {}
     /**
-     * @return Name describing the field.
+     * @return Name of the information type.
      * 
      */
     public String name() {

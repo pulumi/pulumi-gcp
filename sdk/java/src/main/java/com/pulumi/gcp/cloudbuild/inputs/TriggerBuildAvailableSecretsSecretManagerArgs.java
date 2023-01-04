@@ -14,20 +14,18 @@ public final class TriggerBuildAvailableSecretsSecretManagerArgs extends com.pul
     public static final TriggerBuildAvailableSecretsSecretManagerArgs Empty = new TriggerBuildAvailableSecretsSecretManagerArgs();
 
     /**
-     * A list of global environment variable definitions that will exist for all build steps
-     * in this build. If a variable is defined in both globally and in a build step,
-     * the variable will use the build step value.
-     * The elements are of the form &#34;KEY=VALUE&#34; for the environment variable &#34;KEY&#34; being given the value &#34;VALUE&#34;.
+     * Environment variable name to associate with the secret. Secret environment
+     * variables must be unique across all of a build&#39;s secrets, and must be used
+     * by at least one build step.
      * 
      */
     @Import(name="env", required=true)
     private Output<String> env;
 
     /**
-     * @return A list of global environment variable definitions that will exist for all build steps
-     * in this build. If a variable is defined in both globally and in a build step,
-     * the variable will use the build step value.
-     * The elements are of the form &#34;KEY=VALUE&#34; for the environment variable &#34;KEY&#34; being given the value &#34;VALUE&#34;.
+     * @return Environment variable name to associate with the secret. Secret environment
+     * variables must be unique across all of a build&#39;s secrets, and must be used
+     * by at least one build step.
      * 
      */
     public Output<String> env() {
@@ -75,10 +73,9 @@ public final class TriggerBuildAvailableSecretsSecretManagerArgs extends com.pul
         }
 
         /**
-         * @param env A list of global environment variable definitions that will exist for all build steps
-         * in this build. If a variable is defined in both globally and in a build step,
-         * the variable will use the build step value.
-         * The elements are of the form &#34;KEY=VALUE&#34; for the environment variable &#34;KEY&#34; being given the value &#34;VALUE&#34;.
+         * @param env Environment variable name to associate with the secret. Secret environment
+         * variables must be unique across all of a build&#39;s secrets, and must be used
+         * by at least one build step.
          * 
          * @return builder
          * 
@@ -89,10 +86,9 @@ public final class TriggerBuildAvailableSecretsSecretManagerArgs extends com.pul
         }
 
         /**
-         * @param env A list of global environment variable definitions that will exist for all build steps
-         * in this build. If a variable is defined in both globally and in a build step,
-         * the variable will use the build step value.
-         * The elements are of the form &#34;KEY=VALUE&#34; for the environment variable &#34;KEY&#34; being given the value &#34;VALUE&#34;.
+         * @param env Environment variable name to associate with the secret. Secret environment
+         * variables must be unique across all of a build&#39;s secrets, and must be used
+         * by at least one build step.
          * 
          * @return builder
          * 

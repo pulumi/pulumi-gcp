@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class WorkflowTemplateParameterValidationValues {
     /**
-     * @return Optional. Corresponds to the label values of reservation resource.
+     * @return Required. List of allowed values for the parameter.
      * 
      */
     private List<String> values;
 
     private WorkflowTemplateParameterValidationValues() {}
     /**
-     * @return Optional. Corresponds to the label values of reservation resource.
+     * @return Required. List of allowed values for the parameter.
      * 
      */
     public List<String> values() {

@@ -72,18 +72,16 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the
-     * Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation
-     * process in Cloud Run.
+     * The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+     * Structure is documented below.
      * 
      */
     @Import(name="conditions")
     private @Nullable Output<List<ServiceConditionArgs>> conditions;
 
     /**
-     * @return The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the
-     * Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation
-     * process in Cloud Run.
+     * @return The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<ServiceConditionArgs>>> conditions() {
@@ -106,16 +104,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during
-     * updates.
+     * A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
      * 
      */
     @Import(name="etag")
     private @Nullable Output<String> etag;
 
     /**
-     * @return A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during
-     * updates.
+     * @return A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
      * 
      */
     public Optional<Output<String>> etag() {
@@ -123,16 +119,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this
-     * is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
+     * A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
      * 
      */
     @Import(name="generation")
     private @Nullable Output<String> generation;
 
     /**
-     * @return A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this
-     * is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
+     * @return A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
      * 
      */
     public Optional<Output<String>> generation() {
@@ -157,6 +151,8 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * KRM-style labels for the resource.
+     * (Optional)
      * Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. Those labels are read-only, and user changes will not be preserved.
      * 
      */
@@ -164,7 +160,9 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. Those labels are read-only, and user changes will not be preserved.
+     * @return KRM-style labels for the resource.
+     * (Optional)
+     * Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. Those labels are read-only, and user changes will not be preserved.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -172,16 +170,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the last created revision. See comments in reconciling for additional information on reconciliation process in
-     * Cloud Run.
+     * Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
      * 
      */
     @Import(name="latestCreatedRevision")
     private @Nullable Output<String> latestCreatedRevision;
 
     /**
-     * @return Name of the last created revision. See comments in reconciling for additional information on reconciliation process in
-     * Cloud Run.
+     * @return Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
      * 
      */
     public Optional<Output<String>> latestCreatedRevision() {
@@ -189,16 +185,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the latest revision that is serving traffic. See comments in reconciling for additional information on
-     * reconciliation process in Cloud Run.
+     * Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
      * 
      */
     @Import(name="latestReadyRevision")
     private @Nullable Output<String> latestReadyRevision;
 
     /**
-     * @return Name of the latest revision that is serving traffic. See comments in reconciling for additional information on
-     * reconciliation process in Cloud Run.
+     * @return Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
      * 
      */
     public Optional<Output<String>> latestReadyRevision() {
@@ -238,14 +232,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Volume&#39;s name.
+     * Name of the Service.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Volume&#39;s name.
+     * @return Name of the Service.
      * 
      */
     public Optional<Output<String>> name() {
@@ -253,18 +247,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The generation of this Service currently serving traffic. See comments in reconciling for additional information on
-     * reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its
-     * JSON representation will be a string instead of an integer.
+     * The generation of this Service currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
      * 
      */
     @Import(name="observedGeneration")
     private @Nullable Output<String> observedGeneration;
 
     /**
-     * @return The generation of this Service currently serving traffic. See comments in reconciling for additional information on
-     * reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its
-     * JSON representation will be a string instead of an integer.
+     * @return The generation of this Service currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
      * 
      */
     public Optional<Output<String>> observedGeneration() {
@@ -289,34 +279,20 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Returns true if the Service is currently being acted upon by the system to bring it into the desired state. When a new
-     * Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring
-     * the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process,
-     * observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the
-     * intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation
-     * succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be
-     * found in terminalCondition.state. If reconciliation succeeded, the following fields will match: traffic and
-     * trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision. If reconciliation
-     * failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision,
-     * or empty for newly created Services. Additional information on the failure can be found in terminalCondition and
-     * conditions.
+     * Returns true if the Service is currently being acted upon by the system to bring it into the desired state.
+     * When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
+     * If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
+     * If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
      * 
      */
     @Import(name="reconciling")
     private @Nullable Output<Boolean> reconciling;
 
     /**
-     * @return Returns true if the Service is currently being acted upon by the system to bring it into the desired state. When a new
-     * Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring
-     * the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process,
-     * observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the
-     * intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation
-     * succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be
-     * found in terminalCondition.state. If reconciliation succeeded, the following fields will match: traffic and
-     * trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision. If reconciliation
-     * failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision,
-     * or empty for newly created Services. Additional information on the failure can be found in terminalCondition and
-     * conditions.
+     * @return Returns true if the Service is currently being acted upon by the system to bring it into the desired state.
+     * When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
+     * If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
+     * If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
      * 
      */
     public Optional<Output<Boolean>> reconciling() {
@@ -341,16 +317,16 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach
-     * a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+     * The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+     * Structure is documented below.
      * 
      */
     @Import(name="terminalConditions")
     private @Nullable Output<List<ServiceTerminalConditionArgs>> terminalConditions;
 
     /**
-     * @return The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach
-     * a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+     * @return The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<ServiceTerminalConditionArgs>>> terminalConditions() {
@@ -358,16 +334,16 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on
-     * reconciliation process in Cloud Run.
+     * Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+     * Structure is documented below.
      * 
      */
     @Import(name="trafficStatuses")
     private @Nullable Output<List<ServiceTrafficStatusArgs>> trafficStatuses;
 
     /**
-     * @return Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on
-     * reconciliation process in Cloud Run.
+     * @return Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<ServiceTrafficStatusArgs>>> trafficStatuses() {
@@ -392,16 +368,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until
-     * the resource is deleted.
+     * Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      * 
      */
     @Import(name="uid")
     private @Nullable Output<String> uid;
 
     /**
-     * @return Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until
-     * the resource is deleted.
+     * @return Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      * 
      */
     public Optional<Output<String>> uid() {
@@ -409,14 +383,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The main URI in which this Service is serving traffic.
+     * Displays the target URI.
      * 
      */
     @Import(name="uri")
     private @Nullable Output<String> uri;
 
     /**
-     * @return The main URI in which this Service is serving traffic.
+     * @return Displays the target URI.
      * 
      */
     public Optional<Output<String>> uri() {
@@ -535,9 +509,8 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param conditions The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the
-         * Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation
-         * process in Cloud Run.
+         * @param conditions The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -548,9 +521,8 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param conditions The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the
-         * Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation
-         * process in Cloud Run.
+         * @param conditions The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -560,9 +532,8 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param conditions The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the
-         * Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation
-         * process in Cloud Run.
+         * @param conditions The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -593,8 +564,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etag A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during
-         * updates.
+         * @param etag A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
          * 
          * @return builder
          * 
@@ -605,8 +575,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etag A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during
-         * updates.
+         * @param etag A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
          * 
          * @return builder
          * 
@@ -616,8 +585,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param generation A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this
-         * is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
+         * @param generation A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
          * 
          * @return builder
          * 
@@ -628,8 +596,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param generation A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this
-         * is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
+         * @param generation A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
          * 
          * @return builder
          * 
@@ -662,7 +629,9 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. Those labels are read-only, and user changes will not be preserved.
+         * @param labels KRM-style labels for the resource.
+         * (Optional)
+         * Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. Those labels are read-only, and user changes will not be preserved.
          * 
          * @return builder
          * 
@@ -673,7 +642,9 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. Those labels are read-only, and user changes will not be preserved.
+         * @param labels KRM-style labels for the resource.
+         * (Optional)
+         * Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. Those labels are read-only, and user changes will not be preserved.
          * 
          * @return builder
          * 
@@ -683,8 +654,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param latestCreatedRevision Name of the last created revision. See comments in reconciling for additional information on reconciliation process in
-         * Cloud Run.
+         * @param latestCreatedRevision Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
          * 
          * @return builder
          * 
@@ -695,8 +665,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param latestCreatedRevision Name of the last created revision. See comments in reconciling for additional information on reconciliation process in
-         * Cloud Run.
+         * @param latestCreatedRevision Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
          * 
          * @return builder
          * 
@@ -706,8 +675,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param latestReadyRevision Name of the latest revision that is serving traffic. See comments in reconciling for additional information on
-         * reconciliation process in Cloud Run.
+         * @param latestReadyRevision Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
          * 
          * @return builder
          * 
@@ -718,8 +686,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param latestReadyRevision Name of the latest revision that is serving traffic. See comments in reconciling for additional information on
-         * reconciliation process in Cloud Run.
+         * @param latestReadyRevision Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
          * 
          * @return builder
          * 
@@ -773,7 +740,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Volume&#39;s name.
+         * @param name Name of the Service.
          * 
          * @return builder
          * 
@@ -784,7 +751,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Volume&#39;s name.
+         * @param name Name of the Service.
          * 
          * @return builder
          * 
@@ -794,9 +761,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param observedGeneration The generation of this Service currently serving traffic. See comments in reconciling for additional information on
-         * reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its
-         * JSON representation will be a string instead of an integer.
+         * @param observedGeneration The generation of this Service currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
          * 
          * @return builder
          * 
@@ -807,9 +772,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param observedGeneration The generation of this Service currently serving traffic. See comments in reconciling for additional information on
-         * reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its
-         * JSON representation will be a string instead of an integer.
+         * @param observedGeneration The generation of this Service currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
          * 
          * @return builder
          * 
@@ -842,17 +805,10 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reconciling Returns true if the Service is currently being acted upon by the system to bring it into the desired state. When a new
-         * Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring
-         * the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process,
-         * observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the
-         * intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation
-         * succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be
-         * found in terminalCondition.state. If reconciliation succeeded, the following fields will match: traffic and
-         * trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision. If reconciliation
-         * failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision,
-         * or empty for newly created Services. Additional information on the failure can be found in terminalCondition and
-         * conditions.
+         * @param reconciling Returns true if the Service is currently being acted upon by the system to bring it into the desired state.
+         * When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
+         * If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
+         * If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
          * 
          * @return builder
          * 
@@ -863,17 +819,10 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reconciling Returns true if the Service is currently being acted upon by the system to bring it into the desired state. When a new
-         * Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring
-         * the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process,
-         * observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the
-         * intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation
-         * succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be
-         * found in terminalCondition.state. If reconciliation succeeded, the following fields will match: traffic and
-         * trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision. If reconciliation
-         * failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision,
-         * or empty for newly created Services. Additional information on the failure can be found in terminalCondition and
-         * conditions.
+         * @param reconciling Returns true if the Service is currently being acted upon by the system to bring it into the desired state.
+         * When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
+         * If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
+         * If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
          * 
          * @return builder
          * 
@@ -906,8 +855,8 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param terminalConditions The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach
-         * a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+         * @param terminalConditions The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -918,8 +867,8 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param terminalConditions The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach
-         * a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+         * @param terminalConditions The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -929,8 +878,8 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param terminalConditions The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach
-         * a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+         * @param terminalConditions The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -940,8 +889,8 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param trafficStatuses Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on
-         * reconciliation process in Cloud Run.
+         * @param trafficStatuses Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -952,8 +901,8 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param trafficStatuses Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on
-         * reconciliation process in Cloud Run.
+         * @param trafficStatuses Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -963,8 +912,8 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param trafficStatuses Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on
-         * reconciliation process in Cloud Run.
+         * @param trafficStatuses Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1008,8 +957,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uid Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until
-         * the resource is deleted.
+         * @param uid Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
          * 
          * @return builder
          * 
@@ -1020,8 +968,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uid Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until
-         * the resource is deleted.
+         * @param uid Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
          * 
          * @return builder
          * 
@@ -1031,7 +978,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uri The main URI in which this Service is serving traffic.
+         * @param uri Displays the target URI.
          * 
          * @return builder
          * 
@@ -1042,7 +989,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uri The main URI in which this Service is serving traffic.
+         * @param uri Displays the target URI.
          * 
          * @return builder
          * 

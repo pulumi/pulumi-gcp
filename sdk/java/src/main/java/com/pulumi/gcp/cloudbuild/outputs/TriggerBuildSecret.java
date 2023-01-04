@@ -17,9 +17,10 @@ public final class TriggerBuildSecret {
      */
     private String kmsKeyName;
     /**
-     * @return A list of global environment variables, which are encrypted using a Cloud Key Management
-     * Service crypto key. These values must be specified in the build&#39;s Secret. These variables
-     * will be available to all build steps in this build.
+     * @return Map of environment variable name to its encrypted value.
+     * Secret environment variables must be unique across all of a build&#39;s secrets,
+     * and must be used by at least one build step. Values can be at most 64 KB in size.
+     * There can be at most 100 secret values across all of a build&#39;s secrets.
      * 
      */
     private @Nullable Map<String,String> secretEnv;
@@ -33,9 +34,10 @@ public final class TriggerBuildSecret {
         return this.kmsKeyName;
     }
     /**
-     * @return A list of global environment variables, which are encrypted using a Cloud Key Management
-     * Service crypto key. These values must be specified in the build&#39;s Secret. These variables
-     * will be available to all build steps in this build.
+     * @return Map of environment variable name to its encrypted value.
+     * Secret environment variables must be unique across all of a build&#39;s secrets,
+     * and must be used by at least one build step. Values can be at most 64 KB in size.
+     * There can be at most 100 secret values across all of a build&#39;s secrets.
      * 
      */
     public Map<String,String> secretEnv() {

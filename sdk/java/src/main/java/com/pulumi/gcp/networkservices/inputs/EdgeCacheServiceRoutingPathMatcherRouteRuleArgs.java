@@ -21,14 +21,14 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleArgs extends com.p
     public static final EdgeCacheServiceRoutingPathMatcherRouteRuleArgs Empty = new EdgeCacheServiceRoutingPathMatcherRouteRuleArgs();
 
     /**
-     * A human-readable description of the resource.
+     * A human-readable description of the routeRule.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return A human-readable description of the resource.
+     * @return A human-readable description of the routeRule.
      * 
      */
     public Optional<Output<String>> description() {
@@ -174,7 +174,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleArgs extends com.p
         }
 
         /**
-         * @param description A human-readable description of the resource.
+         * @param description A human-readable description of the routeRule.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleArgs extends com.p
         }
 
         /**
-         * @param description A human-readable description of the resource.
+         * @param description A human-readable description of the routeRule.
          * 
          * @return builder
          * 

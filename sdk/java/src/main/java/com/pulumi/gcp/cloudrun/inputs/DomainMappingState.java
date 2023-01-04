@@ -101,14 +101,14 @@ public final class DomainMappingState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The current status of the DomainMapping.
+     * Status of the condition, one of True, False, Unknown.
      * 
      */
     @Import(name="statuses")
     private @Nullable Output<List<DomainMappingStatusArgs>> statuses;
 
     /**
-     * @return The current status of the DomainMapping.
+     * @return Status of the condition, one of True, False, Unknown.
      * 
      */
     public Optional<Output<List<DomainMappingStatusArgs>>> statuses() {
@@ -256,7 +256,7 @@ public final class DomainMappingState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param statuses The current status of the DomainMapping.
+         * @param statuses Status of the condition, one of True, False, Unknown.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class DomainMappingState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param statuses The current status of the DomainMapping.
+         * @param statuses Status of the condition, one of True, False, Unknown.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class DomainMappingState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param statuses The current status of the DomainMapping.
+         * @param statuses Status of the condition, one of True, False, Unknown.
          * 
          * @return builder
          * 

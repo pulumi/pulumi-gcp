@@ -22,7 +22,7 @@ public final class FeatureMembershipConfigmanagementHierarchyController {
      */
     private @Nullable Boolean enablePodTreeLabels;
     /**
-     * @return Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+     * @return Whether Hierarchy Controller is enabled in this cluster.
      * 
      */
     private @Nullable Boolean enabled;
@@ -43,7 +43,7 @@ public final class FeatureMembershipConfigmanagementHierarchyController {
         return Optional.ofNullable(this.enablePodTreeLabels);
     }
     /**
-     * @return Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+     * @return Whether Hierarchy Controller is enabled in this cluster.
      * 
      */
     public Optional<Boolean> enabled() {

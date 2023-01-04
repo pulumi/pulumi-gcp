@@ -12,26 +12,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobQueryDefaultDataset {
     /**
-     * @return The ID of the dataset containing this model.
+     * @return The dataset. Can be specified `{{dataset_id}}` if `project_id` is also set,
+     * or of the form `projects/{{project}}/datasets/{{dataset_id}}` if not.
      * 
      */
     private String datasetId;
     /**
-     * @return The ID of the project containing this model.
+     * @return The ID of the project containing this table.
      * 
      */
     private @Nullable String projectId;
 
     private JobQueryDefaultDataset() {}
     /**
-     * @return The ID of the dataset containing this model.
+     * @return The dataset. Can be specified `{{dataset_id}}` if `project_id` is also set,
+     * or of the form `projects/{{project}}/datasets/{{dataset_id}}` if not.
      * 
      */
     public String datasetId() {
         return this.datasetId;
     }
     /**
-     * @return The ID of the project containing this model.
+     * @return The ID of the project containing this table.
      * 
      */
     public Optional<String> projectId() {

@@ -84,7 +84,6 @@ public final class Hl7StoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * - 
      * (Optional, Deprecated)
      * A nested object resource
      * Structure is documented below.
@@ -98,8 +97,7 @@ public final class Hl7StoreState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Hl7StoreNotificationConfigArgs> notificationConfig;
 
     /**
-     * @return -
-     * (Optional, Deprecated)
+     * @return (Optional, Deprecated)
      * A nested object resource
      * Structure is documented below.
      * 
@@ -277,8 +275,7 @@ public final class Hl7StoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationConfig -
-         * (Optional, Deprecated)
+         * @param notificationConfig (Optional, Deprecated)
          * A nested object resource
          * Structure is documented below.
          * 
@@ -295,8 +292,7 @@ public final class Hl7StoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationConfig -
-         * (Optional, Deprecated)
+         * @param notificationConfig (Optional, Deprecated)
          * A nested object resource
          * Structure is documented below.
          * 

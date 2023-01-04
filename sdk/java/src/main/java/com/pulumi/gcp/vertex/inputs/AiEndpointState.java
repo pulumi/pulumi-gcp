@@ -20,14 +20,14 @@ public final class AiEndpointState extends com.pulumi.resources.ResourceArgs {
     public static final AiEndpointState Empty = new AiEndpointState();
 
     /**
-     * Output only. Timestamp when this Endpoint was created.
+     * Output only. Timestamp when the DeployedModel was created.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Output only. Timestamp when this Endpoint was created.
+     * @return Output only. Timestamp when the DeployedModel was created.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -35,18 +35,16 @@ public final class AiEndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and
-     * EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud
-     * Console](https://console.cloud.google.com/vertex-ai/).
+     * Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
+     * Structure is documented below.
      * 
      */
     @Import(name="deployedModels")
     private @Nullable Output<List<AiEndpointDeployedModelArgs>> deployedModels;
 
     /**
-     * @return Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and
-     * EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud
-     * Console](https://console.cloud.google.com/vertex-ai/).
+     * @return Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<AiEndpointDeployedModelArgs>>> deployedModels() {
@@ -146,18 +144,14 @@ public final class AiEndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by
-     * CreateModelDeploymentMonitoringJob. Format:
-     * &#39;projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}&#39;
+     * Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
      * 
      */
     @Import(name="modelDeploymentMonitoringJob")
     private @Nullable Output<String> modelDeploymentMonitoringJob;
 
     /**
-     * @return Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by
-     * CreateModelDeploymentMonitoringJob. Format:
-     * &#39;projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}&#39;
+     * @return Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
      * 
      */
     public Optional<Output<String>> modelDeploymentMonitoringJob() {
@@ -263,7 +257,7 @@ public final class AiEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime Output only. Timestamp when this Endpoint was created.
+         * @param createTime Output only. Timestamp when the DeployedModel was created.
          * 
          * @return builder
          * 
@@ -274,7 +268,7 @@ public final class AiEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime Output only. Timestamp when this Endpoint was created.
+         * @param createTime Output only. Timestamp when the DeployedModel was created.
          * 
          * @return builder
          * 
@@ -284,9 +278,8 @@ public final class AiEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deployedModels Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and
-         * EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud
-         * Console](https://console.cloud.google.com/vertex-ai/).
+         * @param deployedModels Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -297,9 +290,8 @@ public final class AiEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deployedModels Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and
-         * EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud
-         * Console](https://console.cloud.google.com/vertex-ai/).
+         * @param deployedModels Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -309,9 +301,8 @@ public final class AiEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deployedModels Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and
-         * EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud
-         * Console](https://console.cloud.google.com/vertex-ai/).
+         * @param deployedModels Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -449,9 +440,7 @@ public final class AiEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modelDeploymentMonitoringJob Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by
-         * CreateModelDeploymentMonitoringJob. Format:
-         * &#39;projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}&#39;
+         * @param modelDeploymentMonitoringJob Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
          * 
          * @return builder
          * 
@@ -462,9 +451,7 @@ public final class AiEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modelDeploymentMonitoringJob Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by
-         * CreateModelDeploymentMonitoringJob. Format:
-         * &#39;projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}&#39;
+         * @param modelDeploymentMonitoringJob Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
          * 
          * @return builder
          * 

@@ -52,7 +52,6 @@ public final class TriggerBuildArtifactsObjectsArgs extends com.pulumi.resources
     }
 
     /**
-     * - 
      * Output only. Stores timing information for pushing all artifact objects.
      * Structure is documented below.
      * 
@@ -61,8 +60,7 @@ public final class TriggerBuildArtifactsObjectsArgs extends com.pulumi.resources
     private @Nullable Output<List<TriggerBuildArtifactsObjectsTimingArgs>> timings;
 
     /**
-     * @return -
-     * Output only. Stores timing information for pushing all artifact objects.
+     * @return Output only. Stores timing information for pushing all artifact objects.
      * Structure is documented below.
      * 
      */
@@ -153,8 +151,7 @@ public final class TriggerBuildArtifactsObjectsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param timings -
-         * Output only. Stores timing information for pushing all artifact objects.
+         * @param timings Output only. Stores timing information for pushing all artifact objects.
          * Structure is documented below.
          * 
          * @return builder
@@ -166,8 +163,7 @@ public final class TriggerBuildArtifactsObjectsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param timings -
-         * Output only. Stores timing information for pushing all artifact objects.
+         * @param timings Output only. Stores timing information for pushing all artifact objects.
          * Structure is documented below.
          * 
          * @return builder
@@ -178,8 +174,7 @@ public final class TriggerBuildArtifactsObjectsArgs extends com.pulumi.resources
         }
 
         /**
-         * @param timings -
-         * Output only. Stores timing information for pushing all artifact objects.
+         * @param timings Output only. Stores timing information for pushing all artifact objects.
          * Structure is documented below.
          * 
          * @return builder

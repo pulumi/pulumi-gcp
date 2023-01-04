@@ -12,8 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CertificateSelfManaged {
     /**
-     * @return -
-     * (Optional, Deprecated)
+     * @return (Optional, Deprecated)
      * **Deprecated** The certificate chain in PEM-encoded form.
      * Leaf certificate comes first, followed by intermediate ones if any.
      * **Note**: This property is sensitive and will not be displayed in the plan.
@@ -38,8 +37,7 @@ public final class CertificateSelfManaged {
      */
     private @Nullable String pemPrivateKey;
     /**
-     * @return -
-     * (Optional, Deprecated)
+     * @return (Optional, Deprecated)
      * **Deprecated** The private key of the leaf certificate in PEM-encoded form.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
@@ -52,8 +50,7 @@ public final class CertificateSelfManaged {
 
     private CertificateSelfManaged() {}
     /**
-     * @return -
-     * (Optional, Deprecated)
+     * @return (Optional, Deprecated)
      * **Deprecated** The certificate chain in PEM-encoded form.
      * Leaf certificate comes first, followed by intermediate ones if any.
      * **Note**: This property is sensitive and will not be displayed in the plan.
@@ -84,8 +81,7 @@ public final class CertificateSelfManaged {
         return Optional.ofNullable(this.pemPrivateKey);
     }
     /**
-     * @return -
-     * (Optional, Deprecated)
+     * @return (Optional, Deprecated)
      * **Deprecated** The private key of the leaf certificate in PEM-encoded form.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 

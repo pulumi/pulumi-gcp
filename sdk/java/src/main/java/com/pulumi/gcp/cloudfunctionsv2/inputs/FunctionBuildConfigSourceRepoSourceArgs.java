@@ -79,14 +79,16 @@ public final class FunctionBuildConfigSourceRepoSourceArgs extends com.pulumi.re
     }
 
     /**
-     * Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function&#39;s project assuming that the secret exists in the same project as of the function.
+     * ID of the project that owns the Cloud Source Repository. If omitted, the
+     * project ID requesting the build is assumed.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function&#39;s project assuming that the secret exists in the same project as of the function.
+     * @return ID of the project that owns the Cloud Source Repository. If omitted, the
+     * project ID requesting the build is assumed.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -240,7 +242,8 @@ public final class FunctionBuildConfigSourceRepoSourceArgs extends com.pulumi.re
         }
 
         /**
-         * @param projectId Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function&#39;s project assuming that the secret exists in the same project as of the function.
+         * @param projectId ID of the project that owns the Cloud Source Repository. If omitted, the
+         * project ID requesting the build is assumed.
          * 
          * @return builder
          * 
@@ -251,7 +254,8 @@ public final class FunctionBuildConfigSourceRepoSourceArgs extends com.pulumi.re
         }
 
         /**
-         * @param projectId Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function&#39;s project assuming that the secret exists in the same project as of the function.
+         * @param projectId ID of the project that owns the Cloud Source Repository. If omitted, the
+         * project ID requesting the build is assumed.
          * 
          * @return builder
          * 

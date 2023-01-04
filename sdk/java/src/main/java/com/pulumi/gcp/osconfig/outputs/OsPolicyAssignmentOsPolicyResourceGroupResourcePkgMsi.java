@@ -18,7 +18,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi {
      */
     private @Nullable List<String> properties;
     /**
-     * @return Required. An rpm package.
+     * @return Required. The MSI package.
      * 
      */
     private OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource source;
@@ -32,7 +32,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi {
         return this.properties == null ? List.of() : this.properties;
     }
     /**
-     * @return Required. An rpm package.
+     * @return Required. The MSI package.
      * 
      */
     public OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource source() {

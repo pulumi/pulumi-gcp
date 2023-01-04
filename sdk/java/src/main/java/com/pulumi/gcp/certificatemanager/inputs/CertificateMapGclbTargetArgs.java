@@ -17,23 +17,57 @@ public final class CertificateMapGclbTargetArgs extends com.pulumi.resources.Res
 
     public static final CertificateMapGclbTargetArgs Empty = new CertificateMapGclbTargetArgs();
 
+    /**
+     * An IP configuration where this Certificate Map is serving
+     * Structure is documented below.
+     * 
+     */
     @Import(name="ipConfigs")
     private @Nullable Output<List<CertificateMapGclbTargetIpConfigArgs>> ipConfigs;
 
+    /**
+     * @return An IP configuration where this Certificate Map is serving
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<List<CertificateMapGclbTargetIpConfigArgs>>> ipConfigs() {
         return Optional.ofNullable(this.ipConfigs);
     }
 
+    /**
+     * Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetHttpsProxies/*.
+     * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+     * `targetSslProxy` may be set.
+     * 
+     */
     @Import(name="targetHttpsProxy")
     private @Nullable Output<String> targetHttpsProxy;
 
+    /**
+     * @return Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetHttpsProxies/*.
+     * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+     * `targetSslProxy` may be set.
+     * 
+     */
     public Optional<Output<String>> targetHttpsProxy() {
         return Optional.ofNullable(this.targetHttpsProxy);
     }
 
+    /**
+     * Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetSslProxies/*.
+     * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+     * `targetSslProxy` may be set.
+     * 
+     */
     @Import(name="targetSslProxy")
     private @Nullable Output<String> targetSslProxy;
 
+    /**
+     * @return Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetSslProxies/*.
+     * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+     * `targetSslProxy` may be set.
+     * 
+     */
     public Optional<Output<String>> targetSslProxy() {
         return Optional.ofNullable(this.targetSslProxy);
     }
@@ -64,33 +98,86 @@ public final class CertificateMapGclbTargetArgs extends com.pulumi.resources.Res
             $ = new CertificateMapGclbTargetArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ipConfigs An IP configuration where this Certificate Map is serving
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipConfigs(@Nullable Output<List<CertificateMapGclbTargetIpConfigArgs>> ipConfigs) {
             $.ipConfigs = ipConfigs;
             return this;
         }
 
+        /**
+         * @param ipConfigs An IP configuration where this Certificate Map is serving
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipConfigs(List<CertificateMapGclbTargetIpConfigArgs> ipConfigs) {
             return ipConfigs(Output.of(ipConfigs));
         }
 
+        /**
+         * @param ipConfigs An IP configuration where this Certificate Map is serving
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipConfigs(CertificateMapGclbTargetIpConfigArgs... ipConfigs) {
             return ipConfigs(List.of(ipConfigs));
         }
 
+        /**
+         * @param targetHttpsProxy Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetHttpsProxies/*.
+         * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+         * `targetSslProxy` may be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetHttpsProxy(@Nullable Output<String> targetHttpsProxy) {
             $.targetHttpsProxy = targetHttpsProxy;
             return this;
         }
 
+        /**
+         * @param targetHttpsProxy Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetHttpsProxies/*.
+         * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+         * `targetSslProxy` may be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetHttpsProxy(String targetHttpsProxy) {
             return targetHttpsProxy(Output.of(targetHttpsProxy));
         }
 
+        /**
+         * @param targetSslProxy Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetSslProxies/*.
+         * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+         * `targetSslProxy` may be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetSslProxy(@Nullable Output<String> targetSslProxy) {
             $.targetSslProxy = targetSslProxy;
             return this;
         }
 
+        /**
+         * @param targetSslProxy Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetSslProxies/*.
+         * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+         * `targetSslProxy` may be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetSslProxy(String targetSslProxy) {
             return targetSslProxy(Output.of(targetSslProxy));
         }

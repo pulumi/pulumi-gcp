@@ -50,14 +50,16 @@ public final class JobTemplateTemplateVolumeArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+     * Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+     * Structure is documented below.
      * 
      */
     @Import(name="secret")
     private @Nullable Output<JobTemplateTemplateVolumeSecretArgs> secret;
 
     /**
-     * @return The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+     * @return Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+     * Structure is documented below.
      * 
      */
     public Optional<Output<JobTemplateTemplateVolumeSecretArgs>> secret() {
@@ -135,7 +137,8 @@ public final class JobTemplateTemplateVolumeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param secret The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+         * @param secret Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -146,7 +149,8 @@ public final class JobTemplateTemplateVolumeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param secret The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+         * @param secret Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+         * Structure is documented below.
          * 
          * @return builder
          * 

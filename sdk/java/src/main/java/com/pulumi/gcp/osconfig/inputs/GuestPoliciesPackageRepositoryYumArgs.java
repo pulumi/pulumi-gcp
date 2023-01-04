@@ -62,16 +62,16 @@ public final class GuestPoliciesPackageRepositoryYumArgs extends com.pulumi.reso
     }
 
     /**
-     * Id of the artifact, which the installation and update steps of this recipe can reference.
-     * Artifacts in a recipe cannot have the same id.
+     * A one word, unique name for this repository. This is the repo id in the Yum config file and also the displayName
+     * if displayName is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
      * 
      */
     @Import(name="id", required=true)
     private Output<String> id;
 
     /**
-     * @return Id of the artifact, which the installation and update steps of this recipe can reference.
-     * Artifacts in a recipe cannot have the same id.
+     * @return A one word, unique name for this repository. This is the repo id in the Yum config file and also the displayName
+     * if displayName is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
      * 
      */
     public Output<String> id() {
@@ -179,8 +179,8 @@ public final class GuestPoliciesPackageRepositoryYumArgs extends com.pulumi.reso
         }
 
         /**
-         * @param id Id of the artifact, which the installation and update steps of this recipe can reference.
-         * Artifacts in a recipe cannot have the same id.
+         * @param id A one word, unique name for this repository. This is the repo id in the Yum config file and also the displayName
+         * if displayName is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
          * 
          * @return builder
          * 
@@ -191,8 +191,8 @@ public final class GuestPoliciesPackageRepositoryYumArgs extends com.pulumi.reso
         }
 
         /**
-         * @param id Id of the artifact, which the installation and update steps of this recipe can reference.
-         * Artifacts in a recipe cannot have the same id.
+         * @param id A one word, unique name for this repository. This is the repo id in the Yum config file and also the displayName
+         * if displayName is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
          * 
          * @return builder
          * 

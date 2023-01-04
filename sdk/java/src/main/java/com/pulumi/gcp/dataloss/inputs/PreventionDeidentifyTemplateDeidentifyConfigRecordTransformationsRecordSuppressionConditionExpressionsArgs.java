@@ -17,7 +17,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
     public static final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgs Empty = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgs();
 
     /**
-     * A collection of conditions.
+     * Conditions to apply to the expression.
      * Structure is documented below.
      * 
      */
@@ -25,7 +25,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
     private @Nullable Output<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgs> conditions;
 
     /**
-     * @return A collection of conditions.
+     * @return Conditions to apply to the expression.
      * Structure is documented below.
      * 
      */
@@ -78,7 +78,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
         }
 
         /**
-         * @param conditions A collection of conditions.
+         * @param conditions Conditions to apply to the expression.
          * Structure is documented below.
          * 
          * @return builder
@@ -90,7 +90,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
         }
 
         /**
-         * @param conditions A collection of conditions.
+         * @param conditions Conditions to apply to the expression.
          * Structure is documented below.
          * 
          * @return builder

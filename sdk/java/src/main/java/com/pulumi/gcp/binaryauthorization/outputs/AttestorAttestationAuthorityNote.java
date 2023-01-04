@@ -14,8 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AttestorAttestationAuthorityNote {
     /**
-     * @return -
-     * This field will contain the service account email address that
+     * @return This field will contain the service account email address that
      * this Attestor will use as the principal when querying Container
      * Analysis. Attestor administrators must grant this service account
      * the IAM role needed to read attestations from the noteReference in
@@ -53,8 +52,7 @@ public final class AttestorAttestationAuthorityNote {
 
     private AttestorAttestationAuthorityNote() {}
     /**
-     * @return -
-     * This field will contain the service account email address that
+     * @return This field will contain the service account email address that
      * this Attestor will use as the principal when querying Container
      * Analysis. Attestor administrators must grant this service account
      * the IAM role needed to read attestations from the noteReference in

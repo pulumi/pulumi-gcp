@@ -14,14 +14,14 @@ public final class DeploymentTargetConfigArgs extends com.pulumi.resources.Resou
     public static final DeploymentTargetConfigArgs Empty = new DeploymentTargetConfigArgs();
 
     /**
-     * The full contents of the template that you want to import.
+     * The full YAML contents of your configuration file.
      * 
      */
     @Import(name="content", required=true)
     private Output<String> content;
 
     /**
-     * @return The full contents of the template that you want to import.
+     * @return The full YAML contents of your configuration file.
      * 
      */
     public Output<String> content() {
@@ -53,7 +53,7 @@ public final class DeploymentTargetConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param content The full contents of the template that you want to import.
+         * @param content The full YAML contents of your configuration file.
          * 
          * @return builder
          * 
@@ -64,7 +64,7 @@ public final class DeploymentTargetConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param content The full contents of the template that you want to import.
+         * @param content The full YAML contents of your configuration file.
          * 
          * @return builder
          * 

@@ -83,14 +83,14 @@ public final class GuestPoliciesPackageRepositoryAptArgs extends com.pulumi.reso
     }
 
     /**
-     * URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
+     * URI for this repository.
      * 
      */
     @Import(name="uri", required=true)
     private Output<String> uri;
 
     /**
-     * @return URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
+     * @return URI for this repository.
      * 
      */
     public Output<String> uri() {
@@ -226,7 +226,7 @@ public final class GuestPoliciesPackageRepositoryAptArgs extends com.pulumi.reso
         }
 
         /**
-         * @param uri URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
+         * @param uri URI for this repository.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class GuestPoliciesPackageRepositoryAptArgs extends com.pulumi.reso
         }
 
         /**
-         * @param uri URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
+         * @param uri URI for this repository.
          * 
          * @return builder
          * 

@@ -382,14 +382,16 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.minPortsPerVm);
     }
     /**
-     * Self-link of subnetwork to NAT
+     * Name of the NAT service. The name must be 1-63 characters long and
+     * comply with RFC1035.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Self-link of subnetwork to NAT
+     * @return Name of the NAT service. The name must be 1-63 characters long and
+     * comply with RFC1035.
      * 
      */
     public Output<String> name() {

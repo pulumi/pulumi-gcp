@@ -294,16 +294,16 @@ public class GuestPolicies extends com.pulumi.resources.CustomResource {
         return this.assignment;
     }
     /**
-     * Time this guest policy was created. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example:
-     * &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * Time this guest policy was created. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds.
+     * Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
-     * @return Time this guest policy was created. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example:
-     * &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * @return Time this guest policy was created. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds.
+     * Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     public Output<String> createTime() {
@@ -362,6 +362,11 @@ public class GuestPolicies extends com.pulumi.resources.CustomResource {
         return this.guestPolicyId;
     }
     /**
+     * The name of the package. A package is uniquely identified for conflict validation
+     * by checking the package name and the manager(s) that the package targets.
+     * (Required)
+     * The name of the repository.
+     * (Required)
      * Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
      * Names are also used to identify resources which helps to determine whether guest policies have conflicts.
      * This means that requests to create multiple recipes with the same name and version are rejected since they
@@ -372,7 +377,12 @@ public class GuestPolicies extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
+     * @return The name of the package. A package is uniquely identified for conflict validation
+     * by checking the package name and the manager(s) that the package targets.
+     * (Required)
+     * The name of the repository.
+     * (Required)
+     * Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
      * Names are also used to identify resources which helps to determine whether guest policies have conflicts.
      * This means that requests to create multiple recipes with the same name and version are rejected since they
      * could potentially have conflicting assignments.
@@ -450,16 +460,16 @@ public class GuestPolicies extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.recipes);
     }
     /**
-     * Last time this guest policy was updated. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example:
-     * &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * Last time this guest policy was updated. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds.
+     * Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**
-     * @return Last time this guest policy was updated. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds. Example:
-     * &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * @return Last time this guest policy was updated. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds.
+     * Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     public Output<String> updateTime() {

@@ -17,8 +17,7 @@ public final class ConnectionAwsAccessRole {
      */
     private String iamRoleId;
     /**
-     * @return -
-     * A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user&#39;s AWS IAM Role.
+     * @return A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user&#39;s AWS IAM Role.
      * 
      */
     private @Nullable String identity;
@@ -32,8 +31,7 @@ public final class ConnectionAwsAccessRole {
         return this.iamRoleId;
     }
     /**
-     * @return -
-     * A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user&#39;s AWS IAM Role.
+     * @return A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user&#39;s AWS IAM Role.
      * 
      */
     public Optional<String> identity() {

@@ -29,12 +29,12 @@ public final class DiskDiskEncryptionKey {
     /**
      * @return Specifies a 256-bit customer-supplied encryption key, encoded in
      * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     private @Nullable String rawKey;
     /**
-     * @return -
-     * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+     * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
      * encryption key that protects this resource.
      * 
      */
@@ -63,14 +63,14 @@ public final class DiskDiskEncryptionKey {
     /**
      * @return Specifies a 256-bit customer-supplied encryption key, encoded in
      * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Optional<String> rawKey() {
         return Optional.ofNullable(this.rawKey);
     }
     /**
-     * @return -
-     * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+     * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
      * encryption key that protects this resource.
      * 
      */

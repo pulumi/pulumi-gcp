@@ -173,7 +173,6 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
 
     /**
      * An optional description of this resource.
-     * Provide this property when you create the resource.
      * 
      */
     @Import(name="description")
@@ -181,7 +180,6 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return An optional description of this resource.
-     * Provide this property when you create the resource.
      * 
      */
     public Optional<Output<String>> description() {
@@ -288,24 +286,6 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     /**
      * The load balancing algorithm used within the scope of the locality.
      * The possible values are:
-     * * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
-     *   is selected in round robin order.
-     * * `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
-     *   hosts and picks the host which has fewer active requests.
-     * * `RING_HASH`: The ring/modulo hash load balancer implements consistent
-     *   hashing to backends. The algorithm has the property that the
-     *   addition/removal of a host from a set of N hosts only affects
-     *   1/N of the requests.
-     * * `RANDOM`: The load balancer selects a random healthy host.
-     * * `ORIGINAL_DESTINATION`: Backend host is selected based on the client
-     *   connection metadata, i.e., connections are opened
-     *   to the same address as the destination address of
-     *   the incoming connection before the connection
-     *   was redirected to the load balancer.
-     * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
-     *   Maglev is not as stable as ring hash but has faster table lookup
-     *   build times and host selection times. For more information about
-     *   Maglev, refer to https://ai.google/research/pubs/pub44824
      * 
      */
     @Import(name="localityLbPolicy")
@@ -314,24 +294,6 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     /**
      * @return The load balancing algorithm used within the scope of the locality.
      * The possible values are:
-     * * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
-     *   is selected in round robin order.
-     * * `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
-     *   hosts and picks the host which has fewer active requests.
-     * * `RING_HASH`: The ring/modulo hash load balancer implements consistent
-     *   hashing to backends. The algorithm has the property that the
-     *   addition/removal of a host from a set of N hosts only affects
-     *   1/N of the requests.
-     * * `RANDOM`: The load balancer selects a random healthy host.
-     * * `ORIGINAL_DESTINATION`: Backend host is selected based on the client
-     *   connection metadata, i.e., connections are opened
-     *   to the same address as the destination address of
-     *   the incoming connection before the connection
-     *   was redirected to the load balancer.
-     * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
-     *   Maglev is not as stable as ring hash but has faster table lookup
-     *   build times and host selection times. For more information about
-     *   Maglev, refer to https://ai.google/research/pubs/pub44824
      * 
      */
     public Optional<Output<String>> localityLbPolicy() {
@@ -358,14 +320,26 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Name of the cookie.
+     * Name of the resource. Provided by the client when the resource is
+     * created. The name must be 1-63 characters long, and comply with
+     * RFC1035. Specifically, the name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the cookie.
+     * @return Name of the resource. Provided by the client when the resource is
+     * created. The name must be 1-63 characters long, and comply with
+     * RFC1035. Specifically, the name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      * 
      */
     public Optional<Output<String>> name() {
@@ -791,7 +765,6 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param description An optional description of this resource.
-         * Provide this property when you create the resource.
          * 
          * @return builder
          * 
@@ -803,7 +776,6 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param description An optional description of this resource.
-         * Provide this property when you create the resource.
          * 
          * @return builder
          * 
@@ -942,24 +914,6 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         /**
          * @param localityLbPolicy The load balancing algorithm used within the scope of the locality.
          * The possible values are:
-         * * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
-         *   is selected in round robin order.
-         * * `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
-         *   hosts and picks the host which has fewer active requests.
-         * * `RING_HASH`: The ring/modulo hash load balancer implements consistent
-         *   hashing to backends. The algorithm has the property that the
-         *   addition/removal of a host from a set of N hosts only affects
-         *   1/N of the requests.
-         * * `RANDOM`: The load balancer selects a random healthy host.
-         * * `ORIGINAL_DESTINATION`: Backend host is selected based on the client
-         *   connection metadata, i.e., connections are opened
-         *   to the same address as the destination address of
-         *   the incoming connection before the connection
-         *   was redirected to the load balancer.
-         * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
-         *   Maglev is not as stable as ring hash but has faster table lookup
-         *   build times and host selection times. For more information about
-         *   Maglev, refer to https://ai.google/research/pubs/pub44824
          * 
          * @return builder
          * 
@@ -972,24 +926,6 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         /**
          * @param localityLbPolicy The load balancing algorithm used within the scope of the locality.
          * The possible values are:
-         * * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
-         *   is selected in round robin order.
-         * * `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
-         *   hosts and picks the host which has fewer active requests.
-         * * `RING_HASH`: The ring/modulo hash load balancer implements consistent
-         *   hashing to backends. The algorithm has the property that the
-         *   addition/removal of a host from a set of N hosts only affects
-         *   1/N of the requests.
-         * * `RANDOM`: The load balancer selects a random healthy host.
-         * * `ORIGINAL_DESTINATION`: Backend host is selected based on the client
-         *   connection metadata, i.e., connections are opened
-         *   to the same address as the destination address of
-         *   the incoming connection before the connection
-         *   was redirected to the load balancer.
-         * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
-         *   Maglev is not as stable as ring hash but has faster table lookup
-         *   build times and host selection times. For more information about
-         *   Maglev, refer to https://ai.google/research/pubs/pub44824
          * 
          * @return builder
          * 
@@ -1024,7 +960,13 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name Name of the cookie.
+         * @param name Name of the resource. Provided by the client when the resource is
+         * created. The name must be 1-63 characters long, and comply with
+         * RFC1035. Specifically, the name must be 1-63 characters long and match
+         * the regular expression `a-z?` which means the
+         * first character must be a lowercase letter, and all following
+         * characters must be a dash, lowercase letter, or digit, except the last
+         * character, which cannot be a dash.
          * 
          * @return builder
          * 
@@ -1035,7 +977,13 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name Name of the cookie.
+         * @param name Name of the resource. Provided by the client when the resource is
+         * created. The name must be 1-63 characters long, and comply with
+         * RFC1035. Specifically, the name must be 1-63 characters long and match
+         * the regular expression `a-z?` which means the
+         * first character must be a lowercase letter, and all following
+         * characters must be a dash, lowercase letter, or digit, except the last
+         * character, which cannot be a dash.
          * 
          * @return builder
          * 

@@ -255,14 +255,16 @@ public class Repository extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.mavenConfig);
     }
     /**
-     * The name of the repository, for example: &#34;projects/p1/locations/us-central1/repositories/repo1&#34;
+     * The name of the repository, for example:
+     * &#34;projects/p1/locations/us-central1/repositories/repo1&#34;
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The name of the repository, for example: &#34;projects/p1/locations/us-central1/repositories/repo1&#34;
+     * @return The name of the repository, for example:
+     * &#34;projects/p1/locations/us-central1/repositories/repo1&#34;
      * 
      */
     public Output<String> name() {

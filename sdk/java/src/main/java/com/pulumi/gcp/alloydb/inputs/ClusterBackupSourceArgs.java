@@ -15,9 +15,17 @@ public final class ClusterBackupSourceArgs extends com.pulumi.resources.Resource
 
     public static final ClusterBackupSourceArgs Empty = new ClusterBackupSourceArgs();
 
+    /**
+     * The name of the backup resource.
+     * 
+     */
     @Import(name="backupName")
     private @Nullable Output<String> backupName;
 
+    /**
+     * @return The name of the backup resource.
+     * 
+     */
     public Optional<Output<String>> backupName() {
         return Optional.ofNullable(this.backupName);
     }
@@ -46,11 +54,23 @@ public final class ClusterBackupSourceArgs extends com.pulumi.resources.Resource
             $ = new ClusterBackupSourceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param backupName The name of the backup resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder backupName(@Nullable Output<String> backupName) {
             $.backupName = backupName;
             return this;
         }
 
+        /**
+         * @param backupName The name of the backup resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder backupName(String backupName) {
             return backupName(Output.of(backupName));
         }

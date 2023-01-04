@@ -10,16 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class ClusterNodePoolNodeConfigGcfsConfig {
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Whether or not the Google Container Filesystem (GCFS) is enabled
      * 
      */
     private Boolean enabled;
 
     private ClusterNodePoolNodeConfigGcfsConfig() {}
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Whether or not the Google Container Filesystem (GCFS) is enabled
      * 
      */
     public Boolean enabled() {

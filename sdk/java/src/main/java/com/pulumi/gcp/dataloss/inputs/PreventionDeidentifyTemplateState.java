@@ -64,6 +64,24 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
     }
 
     /**
+     * Name of the information type.
+     * (Required)
+     * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+     * (Optional)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+     * (Optional)
+     * Name describing the field.
+     * (Required)
+     * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+     * (Optional)
+     * Name describing the field.
+     * (Optional)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+     * (Optional)
+     * Name describing the field.
+     * (Optional)
+     * Name describing the field.
+     * (Optional)
      * Name describing the field.
      * 
      */
@@ -71,7 +89,25 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
     private @Nullable Output<String> name;
 
     /**
-     * @return Name describing the field.
+     * @return Name of the information type.
+     * (Required)
+     * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+     * (Optional)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+     * (Optional)
+     * Name describing the field.
+     * (Required)
+     * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+     * (Optional)
+     * Name describing the field.
+     * (Optional)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+     * (Optional)
+     * Name describing the field.
+     * (Optional)
+     * Name describing the field.
+     * (Optional)
+     * Name describing the field.
      * 
      */
     public Optional<Output<String>> name() {
@@ -195,7 +231,25 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
         }
 
         /**
-         * @param name Name describing the field.
+         * @param name Name of the information type.
+         * (Required)
+         * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+         * (Optional)
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         * (Optional)
+         * Name describing the field.
+         * (Required)
+         * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+         * (Optional)
+         * Name describing the field.
+         * (Optional)
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         * (Optional)
+         * Name describing the field.
+         * (Optional)
+         * Name describing the field.
+         * (Optional)
+         * Name describing the field.
          * 
          * @return builder
          * 
@@ -206,7 +260,25 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
         }
 
         /**
-         * @param name Name describing the field.
+         * @param name Name of the information type.
+         * (Required)
+         * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+         * (Optional)
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         * (Optional)
+         * Name describing the field.
+         * (Required)
+         * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+         * (Optional)
+         * Name describing the field.
+         * (Optional)
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         * (Optional)
+         * Name describing the field.
+         * (Optional)
+         * Name describing the field.
+         * (Optional)
+         * Name describing the field.
          * 
          * @return builder
          * 

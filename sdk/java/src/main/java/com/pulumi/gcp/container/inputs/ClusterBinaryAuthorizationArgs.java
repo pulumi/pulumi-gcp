@@ -17,8 +17,7 @@ public final class ClusterBinaryAuthorizationArgs extends com.pulumi.resources.R
     public static final ClusterBinaryAuthorizationArgs Empty = new ClusterBinaryAuthorizationArgs();
 
     /**
-     * Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
      * 
      * @deprecated
      * Deprecated in favor of evaluation_mode.
@@ -29,8 +28,7 @@ public final class ClusterBinaryAuthorizationArgs extends com.pulumi.resources.R
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
      * 
      * @deprecated
      * Deprecated in favor of evaluation_mode.
@@ -86,8 +84,7 @@ public final class ClusterBinaryAuthorizationArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param enabled Enable the PodSecurityPolicy controller for this cluster.
-         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         * @param enabled Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
          * 
          * @return builder
          * 
@@ -102,8 +99,7 @@ public final class ClusterBinaryAuthorizationArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param enabled Enable the PodSecurityPolicy controller for this cluster.
-         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         * @param enabled Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
          * 
          * @return builder
          * 

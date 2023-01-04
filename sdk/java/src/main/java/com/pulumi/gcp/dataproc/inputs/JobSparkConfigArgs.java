@@ -34,14 +34,14 @@ public final class JobSparkConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+     * The arguments to pass to the driver.
      * 
      */
     @Import(name="args")
     private @Nullable Output<List<String>> args;
 
     /**
-     * @return The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+     * @return The arguments to pass to the driver.
      * 
      */
     public Optional<Output<List<String>>> args() {
@@ -49,14 +49,14 @@ public final class JobSparkConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+     * HCFS URIs of files to be copied to the working directory of Spark drivers and distributed tasks. Useful for naively parallel tasks.
      * 
      */
     @Import(name="fileUris")
     private @Nullable Output<List<String>> fileUris;
 
     /**
-     * @return HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+     * @return HCFS URIs of files to be copied to the working directory of Spark drivers and distributed tasks. Useful for naively parallel tasks.
      * 
      */
     public Optional<Output<List<String>>> fileUris() {
@@ -64,14 +64,14 @@ public final class JobSparkConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * HCFS URIs of jar files to be added to the Spark CLASSPATH.
+     * HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
      * 
      */
     @Import(name="jarFileUris")
     private @Nullable Output<List<String>> jarFileUris;
 
     /**
-     * @return HCFS URIs of jar files to be added to the Spark CLASSPATH.
+     * @return HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
      * 
      */
     public Optional<Output<List<String>>> jarFileUris() {
@@ -86,14 +86,16 @@ public final class JobSparkConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the driver&#39;s main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`. Conflicts with `main_jar_file_uri`
+     * The class containing the main method of the driver. Must be in a
+     * provided jar or jar that is already on the classpath. Conflicts with `main_jar_file_uri`
      * 
      */
     @Import(name="mainClass")
     private @Nullable Output<String> mainClass;
 
     /**
-     * @return The name of the driver&#39;s main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`. Conflicts with `main_jar_file_uri`
+     * @return The class containing the main method of the driver. Must be in a
+     * provided jar or jar that is already on the classpath. Conflicts with `main_jar_file_uri`
      * 
      */
     public Optional<Output<String>> mainClass() {
@@ -101,14 +103,16 @@ public final class JobSparkConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The HCFS URI of the jar file containing the main class. Examples: &#39;gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar&#39; &#39;hdfs:/tmp/test-samples/custom-wordcount.jar&#39; &#39;file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar&#39;. Conflicts with `main_class`
+     * The HCFS URI of jar file containing
+     * the driver jar. Conflicts with `main_class`
      * 
      */
     @Import(name="mainJarFileUri")
     private @Nullable Output<String> mainJarFileUri;
 
     /**
-     * @return The HCFS URI of the jar file containing the main class. Examples: &#39;gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar&#39; &#39;hdfs:/tmp/test-samples/custom-wordcount.jar&#39; &#39;file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar&#39;. Conflicts with `main_class`
+     * @return The HCFS URI of jar file containing
+     * the driver jar. Conflicts with `main_class`
      * 
      */
     public Optional<Output<String>> mainJarFileUri() {
@@ -116,14 +120,14 @@ public final class JobSparkConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+     * A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/spark/conf/spark-defaults.conf` and classes in user code.
      * 
      */
     @Import(name="properties")
     private @Nullable Output<Map<String,String>> properties;
 
     /**
-     * @return A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+     * @return A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/spark/conf/spark-defaults.conf` and classes in user code.
      * 
      */
     public Optional<Output<Map<String,String>>> properties() {
@@ -193,7 +197,7 @@ public final class JobSparkConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param args The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+         * @param args The arguments to pass to the driver.
          * 
          * @return builder
          * 
@@ -204,7 +208,7 @@ public final class JobSparkConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param args The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+         * @param args The arguments to pass to the driver.
          * 
          * @return builder
          * 
@@ -214,7 +218,7 @@ public final class JobSparkConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param args The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+         * @param args The arguments to pass to the driver.
          * 
          * @return builder
          * 
@@ -224,7 +228,7 @@ public final class JobSparkConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param fileUris HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+         * @param fileUris HCFS URIs of files to be copied to the working directory of Spark drivers and distributed tasks. Useful for naively parallel tasks.
          * 
          * @return builder
          * 
@@ -235,7 +239,7 @@ public final class JobSparkConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param fileUris HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+         * @param fileUris HCFS URIs of files to be copied to the working directory of Spark drivers and distributed tasks. Useful for naively parallel tasks.
          * 
          * @return builder
          * 
@@ -245,7 +249,7 @@ public final class JobSparkConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param fileUris HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+         * @param fileUris HCFS URIs of files to be copied to the working directory of Spark drivers and distributed tasks. Useful for naively parallel tasks.
          * 
          * @return builder
          * 
@@ -255,7 +259,7 @@ public final class JobSparkConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param jarFileUris HCFS URIs of jar files to be added to the Spark CLASSPATH.
+         * @param jarFileUris HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
          * 
          * @return builder
          * 
@@ -266,7 +270,7 @@ public final class JobSparkConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param jarFileUris HCFS URIs of jar files to be added to the Spark CLASSPATH.
+         * @param jarFileUris HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
          * 
          * @return builder
          * 
@@ -276,7 +280,7 @@ public final class JobSparkConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param jarFileUris HCFS URIs of jar files to be added to the Spark CLASSPATH.
+         * @param jarFileUris HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
          * 
          * @return builder
          * 
@@ -295,7 +299,8 @@ public final class JobSparkConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param mainClass The name of the driver&#39;s main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`. Conflicts with `main_jar_file_uri`
+         * @param mainClass The class containing the main method of the driver. Must be in a
+         * provided jar or jar that is already on the classpath. Conflicts with `main_jar_file_uri`
          * 
          * @return builder
          * 
@@ -306,7 +311,8 @@ public final class JobSparkConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param mainClass The name of the driver&#39;s main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`. Conflicts with `main_jar_file_uri`
+         * @param mainClass The class containing the main method of the driver. Must be in a
+         * provided jar or jar that is already on the classpath. Conflicts with `main_jar_file_uri`
          * 
          * @return builder
          * 
@@ -316,7 +322,8 @@ public final class JobSparkConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param mainJarFileUri The HCFS URI of the jar file containing the main class. Examples: &#39;gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar&#39; &#39;hdfs:/tmp/test-samples/custom-wordcount.jar&#39; &#39;file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar&#39;. Conflicts with `main_class`
+         * @param mainJarFileUri The HCFS URI of jar file containing
+         * the driver jar. Conflicts with `main_class`
          * 
          * @return builder
          * 
@@ -327,7 +334,8 @@ public final class JobSparkConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param mainJarFileUri The HCFS URI of the jar file containing the main class. Examples: &#39;gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar&#39; &#39;hdfs:/tmp/test-samples/custom-wordcount.jar&#39; &#39;file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar&#39;. Conflicts with `main_class`
+         * @param mainJarFileUri The HCFS URI of jar file containing
+         * the driver jar. Conflicts with `main_class`
          * 
          * @return builder
          * 
@@ -337,7 +345,7 @@ public final class JobSparkConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param properties A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+         * @param properties A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/spark/conf/spark-defaults.conf` and classes in user code.
          * 
          * @return builder
          * 
@@ -348,7 +356,7 @@ public final class JobSparkConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param properties A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+         * @param properties A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/spark/conf/spark-defaults.conf` and classes in user code.
          * 
          * @return builder
          * 

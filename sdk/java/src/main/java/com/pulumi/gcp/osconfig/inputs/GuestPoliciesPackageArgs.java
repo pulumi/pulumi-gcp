@@ -16,12 +16,7 @@ public final class GuestPoliciesPackageArgs extends com.pulumi.resources.Resourc
     public static final GuestPoliciesPackageArgs Empty = new GuestPoliciesPackageArgs();
 
     /**
-     * Default is INSTALLED. The desired state the agent should maintain for this recipe.
-     * INSTALLED: The software recipe is installed on the instance but won&#39;t be updated to new versions.
-     * INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
-     * if a higher version of the recipe is assigned to this instance.
-     * REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
-     * Default value is `INSTALLED`.
+     * The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
      * Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
      * 
      */
@@ -29,12 +24,7 @@ public final class GuestPoliciesPackageArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> desiredState;
 
     /**
-     * @return Default is INSTALLED. The desired state the agent should maintain for this recipe.
-     * INSTALLED: The software recipe is installed on the instance but won&#39;t be updated to new versions.
-     * INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
-     * if a higher version of the recipe is assigned to this instance.
-     * REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
-     * Default value is `INSTALLED`.
+     * @return The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
      * Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
      * 
      */
@@ -70,20 +60,16 @@ public final class GuestPoliciesPackageArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-     * Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-     * This means that requests to create multiple recipes with the same name and version are rejected since they
-     * could potentially have conflicting assignments.
+     * The name of the package. A package is uniquely identified for conflict validation
+     * by checking the package name and the manager(s) that the package targets.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-     * Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-     * This means that requests to create multiple recipes with the same name and version are rejected since they
-     * could potentially have conflicting assignments.
+     * @return The name of the package. A package is uniquely identified for conflict validation
+     * by checking the package name and the manager(s) that the package targets.
      * 
      */
     public Output<String> name() {
@@ -117,12 +103,7 @@ public final class GuestPoliciesPackageArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param desiredState Default is INSTALLED. The desired state the agent should maintain for this recipe.
-         * INSTALLED: The software recipe is installed on the instance but won&#39;t be updated to new versions.
-         * INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
-         * if a higher version of the recipe is assigned to this instance.
-         * REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
-         * Default value is `INSTALLED`.
+         * @param desiredState The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
          * Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
          * 
          * @return builder
@@ -134,12 +115,7 @@ public final class GuestPoliciesPackageArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param desiredState Default is INSTALLED. The desired state the agent should maintain for this recipe.
-         * INSTALLED: The software recipe is installed on the instance but won&#39;t be updated to new versions.
-         * INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
-         * if a higher version of the recipe is assigned to this instance.
-         * REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
-         * Default value is `INSTALLED`.
+         * @param desiredState The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
          * Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
          * 
          * @return builder
@@ -183,10 +159,8 @@ public final class GuestPoliciesPackageArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-         * Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-         * This means that requests to create multiple recipes with the same name and version are rejected since they
-         * could potentially have conflicting assignments.
+         * @param name The name of the package. A package is uniquely identified for conflict validation
+         * by checking the package name and the manager(s) that the package targets.
          * 
          * @return builder
          * 
@@ -197,10 +171,8 @@ public final class GuestPoliciesPackageArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-         * Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-         * This means that requests to create multiple recipes with the same name and version are rejected since they
-         * could potentially have conflicting assignments.
+         * @param name The name of the package. A package is uniquely identified for conflict validation
+         * by checking the package name and the manager(s) that the package targets.
          * 
          * @return builder
          * 

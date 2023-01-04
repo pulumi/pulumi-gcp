@@ -16,14 +16,14 @@ public final class TransferJobTransferSpecGcsDataSourceArgs extends com.pulumi.r
     public static final TransferJobTransferSpecGcsDataSourceArgs Empty = new TransferJobTransferSpecGcsDataSourceArgs();
 
     /**
-     * S3 Bucket name.
+     * Google Cloud Storage bucket name.
      * 
      */
     @Import(name="bucketName", required=true)
     private Output<String> bucketName;
 
     /**
-     * @return S3 Bucket name.
+     * @return Google Cloud Storage bucket name.
      * 
      */
     public Output<String> bucketName() {
@@ -71,7 +71,7 @@ public final class TransferJobTransferSpecGcsDataSourceArgs extends com.pulumi.r
         }
 
         /**
-         * @param bucketName S3 Bucket name.
+         * @param bucketName Google Cloud Storage bucket name.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class TransferJobTransferSpecGcsDataSourceArgs extends com.pulumi.r
         }
 
         /**
-         * @param bucketName S3 Bucket name.
+         * @param bucketName Google Cloud Storage bucket name.
          * 
          * @return builder
          * 

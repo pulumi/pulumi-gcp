@@ -564,16 +564,16 @@ public class Certificate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.certificateAuthority);
     }
     /**
-     * Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-     * this field is present.
+     * Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
+     * Structure is documented below.
      * 
      */
     @Export(name="certificateDescriptions", type=List.class, parameters={CertificateCertificateDescription.class})
     private Output<List<CertificateCertificateDescription>> certificateDescriptions;
 
     /**
-     * @return Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-     * this field is present.
+     * @return Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
+     * Structure is documented below.
      * 
      */
     public Output<List<CertificateCertificateDescription>> certificateDescriptions() {
@@ -618,30 +618,30 @@ public class Certificate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.config);
     }
     /**
-     * The time that this resource was created on the server. This is in RFC3339 text format.
+     * The time that this resource was created on the server.
+     * This is in RFC3339 text format.
      * 
      */
     @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
-     * @return The time that this resource was created on the server. This is in RFC3339 text format.
+     * @return The time that this resource was created on the server.
+     * This is in RFC3339 text format.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * The resource name of the issuing CertificateAuthority in the format
-     * &#39;projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*&#39;.
+     * The resource name of the issuing CertificateAuthority in the format `projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*`.
      * 
      */
     @Export(name="issuerCertificateAuthority", type=String.class, parameters={})
     private Output<String> issuerCertificateAuthority;
 
     /**
-     * @return The resource name of the issuing CertificateAuthority in the format
-     * &#39;projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*&#39;.
+     * @return The resource name of the issuing CertificateAuthority in the format `projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*`.
      * 
      */
     public Output<String> issuerCertificateAuthority() {
@@ -724,22 +724,21 @@ public class Certificate extends com.pulumi.resources.CustomResource {
         return this.pemCertificate;
     }
     /**
-     * The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
-     * 5246.
+     * The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
      * 
      */
     @Export(name="pemCertificateChains", type=List.class, parameters={String.class})
     private Output<List<String>> pemCertificateChains;
 
     /**
-     * @return The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
-     * 5246.
+     * @return The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
      * 
      */
     public Output<List<String>> pemCertificateChains() {
         return this.pemCertificateChains;
     }
     /**
+     * (Deprecated)
      * Required. Expected to be in leaf-to-root order according to RFC 5246.
      * 
      * @deprecated
@@ -751,7 +750,8 @@ public class Certificate extends com.pulumi.resources.CustomResource {
     private Output<List<String>> pemCertificates;
 
     /**
-     * @return Required. Expected to be in leaf-to-root order according to RFC 5246.
+     * @return (Deprecated)
+     * Required. Expected to be in leaf-to-root order according to RFC 5246.
      * 
      */
     public Output<List<String>> pemCertificates() {
@@ -802,30 +802,34 @@ public class Certificate extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-     * this field is present.
+     * Output only. Details regarding the revocation of this Certificate. This Certificate is
+     * considered revoked if and only if this field is present.
+     * Structure is documented below.
      * 
      */
     @Export(name="revocationDetails", type=List.class, parameters={CertificateRevocationDetail.class})
     private Output<List<CertificateRevocationDetail>> revocationDetails;
 
     /**
-     * @return Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-     * this field is present.
+     * @return Output only. Details regarding the revocation of this Certificate. This Certificate is
+     * considered revoked if and only if this field is present.
+     * Structure is documented below.
      * 
      */
     public Output<List<CertificateRevocationDetail>> revocationDetails() {
         return this.revocationDetails;
     }
     /**
-     * Output only. The time at which this CertificateAuthority was updated. This is in RFC3339 text format.
+     * Output only. The time at which this CertificateAuthority was updated.
+     * This is in RFC3339 text format.
      * 
      */
     @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**
-     * @return Output only. The time at which this CertificateAuthority was updated. This is in RFC3339 text format.
+     * @return Output only. The time at which this CertificateAuthority was updated.
+     * This is in RFC3339 text format.
      * 
      */
     public Output<String> updateTime() {

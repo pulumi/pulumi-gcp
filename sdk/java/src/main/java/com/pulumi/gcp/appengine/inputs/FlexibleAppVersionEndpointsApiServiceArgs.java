@@ -57,14 +57,16 @@ public final class FlexibleAppVersionEndpointsApiServiceArgs extends com.pulumi.
     }
 
     /**
-     * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+     * Endpoints service name which is the name of the &#34;service&#34; resource in the Service Management API.
+     * For example &#34;myapi.endpoints.myproject.cloud.goog&#34;
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+     * @return Endpoints service name which is the name of the &#34;service&#34; resource in the Service Management API.
+     * For example &#34;myapi.endpoints.myproject.cloud.goog&#34;
      * 
      */
     public Output<String> name() {
@@ -170,7 +172,8 @@ public final class FlexibleAppVersionEndpointsApiServiceArgs extends com.pulumi.
         }
 
         /**
-         * @param name Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+         * @param name Endpoints service name which is the name of the &#34;service&#34; resource in the Service Management API.
+         * For example &#34;myapi.endpoints.myproject.cloud.goog&#34;
          * 
          * @return builder
          * 
@@ -181,7 +184,8 @@ public final class FlexibleAppVersionEndpointsApiServiceArgs extends com.pulumi.
         }
 
         /**
-         * @param name Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+         * @param name Endpoints service name which is the name of the &#34;service&#34; resource in the Service Management API.
+         * For example &#34;myapi.endpoints.myproject.cloud.goog&#34;
          * 
          * @return builder
          * 

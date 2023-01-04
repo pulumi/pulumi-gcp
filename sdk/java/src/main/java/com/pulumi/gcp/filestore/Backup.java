@@ -297,16 +297,14 @@ public class Backup extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * The size of the storage used by the backup. As backups share storage, this number is expected to change with backup
-     * creation/deletion.
+     * The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
      * 
      */
     @Export(name="storageBytes", type=String.class, parameters={})
     private Output<String> storageBytes;
 
     /**
-     * @return The size of the storage used by the backup. As backups share storage, this number is expected to change with backup
-     * creation/deletion.
+     * @return The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
      * 
      */
     public Output<String> storageBytes() {

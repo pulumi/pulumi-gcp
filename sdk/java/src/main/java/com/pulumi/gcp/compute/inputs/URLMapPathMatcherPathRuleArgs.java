@@ -40,9 +40,9 @@ public final class URLMapPathMatcherPathRuleArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * In response to a matching matchRule, the load balancer performs advanced routing
+     * In response to a matching path, the load balancer performs advanced routing
      * actions like URL rewrites, header transformations, etc. prior to forwarding the
-     * request to the selected backend. If  routeAction specifies any
+     * request to the selected backend. If routeAction specifies any
      * weightedBackendServices, service must not be set. Conversely if service is set,
      * routeAction cannot contain any  weightedBackendServices. Only one of routeAction
      * or urlRedirect must be set.
@@ -53,9 +53,9 @@ public final class URLMapPathMatcherPathRuleArgs extends com.pulumi.resources.Re
     private @Nullable Output<URLMapPathMatcherPathRuleRouteActionArgs> routeAction;
 
     /**
-     * @return In response to a matching matchRule, the load balancer performs advanced routing
+     * @return In response to a matching path, the load balancer performs advanced routing
      * actions like URL rewrites, header transformations, etc. prior to forwarding the
-     * request to the selected backend. If  routeAction specifies any
+     * request to the selected backend. If routeAction specifies any
      * weightedBackendServices, service must not be set. Conversely if service is set,
      * routeAction cannot contain any  weightedBackendServices. Only one of routeAction
      * or urlRedirect must be set.
@@ -67,14 +67,14 @@ public final class URLMapPathMatcherPathRuleArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The backend service or backend bucket link that should be matched by this test.
+     * The backend service or backend bucket to use if any of the given paths match.
      * 
      */
     @Import(name="service")
     private @Nullable Output<String> service;
 
     /**
-     * @return The backend service or backend bucket link that should be matched by this test.
+     * @return The backend service or backend bucket to use if any of the given paths match.
      * 
      */
     public Optional<Output<String>> service() {
@@ -82,9 +82,9 @@ public final class URLMapPathMatcherPathRuleArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * When this rule is matched, the request is redirected to a URL specified by
-     * urlRedirect. If urlRedirect is specified, service or routeAction must not be
-     * set.
+     * When a path pattern is matched, the request is redirected to a URL specified
+     * by urlRedirect. If urlRedirect is specified, service or routeAction must not
+     * be set.
      * Structure is documented below.
      * 
      */
@@ -92,9 +92,9 @@ public final class URLMapPathMatcherPathRuleArgs extends com.pulumi.resources.Re
     private @Nullable Output<URLMapPathMatcherPathRuleUrlRedirectArgs> urlRedirect;
 
     /**
-     * @return When this rule is matched, the request is redirected to a URL specified by
-     * urlRedirect. If urlRedirect is specified, service or routeAction must not be
-     * set.
+     * @return When a path pattern is matched, the request is redirected to a URL specified
+     * by urlRedirect. If urlRedirect is specified, service or routeAction must not
+     * be set.
      * Structure is documented below.
      * 
      */
@@ -170,9 +170,9 @@ public final class URLMapPathMatcherPathRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param routeAction In response to a matching matchRule, the load balancer performs advanced routing
+         * @param routeAction In response to a matching path, the load balancer performs advanced routing
          * actions like URL rewrites, header transformations, etc. prior to forwarding the
-         * request to the selected backend. If  routeAction specifies any
+         * request to the selected backend. If routeAction specifies any
          * weightedBackendServices, service must not be set. Conversely if service is set,
          * routeAction cannot contain any  weightedBackendServices. Only one of routeAction
          * or urlRedirect must be set.
@@ -187,9 +187,9 @@ public final class URLMapPathMatcherPathRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param routeAction In response to a matching matchRule, the load balancer performs advanced routing
+         * @param routeAction In response to a matching path, the load balancer performs advanced routing
          * actions like URL rewrites, header transformations, etc. prior to forwarding the
-         * request to the selected backend. If  routeAction specifies any
+         * request to the selected backend. If routeAction specifies any
          * weightedBackendServices, service must not be set. Conversely if service is set,
          * routeAction cannot contain any  weightedBackendServices. Only one of routeAction
          * or urlRedirect must be set.
@@ -203,7 +203,7 @@ public final class URLMapPathMatcherPathRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param service The backend service or backend bucket link that should be matched by this test.
+         * @param service The backend service or backend bucket to use if any of the given paths match.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class URLMapPathMatcherPathRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param service The backend service or backend bucket link that should be matched by this test.
+         * @param service The backend service or backend bucket to use if any of the given paths match.
          * 
          * @return builder
          * 
@@ -224,9 +224,9 @@ public final class URLMapPathMatcherPathRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param urlRedirect When this rule is matched, the request is redirected to a URL specified by
-         * urlRedirect. If urlRedirect is specified, service or routeAction must not be
-         * set.
+         * @param urlRedirect When a path pattern is matched, the request is redirected to a URL specified
+         * by urlRedirect. If urlRedirect is specified, service or routeAction must not
+         * be set.
          * Structure is documented below.
          * 
          * @return builder
@@ -238,9 +238,9 @@ public final class URLMapPathMatcherPathRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param urlRedirect When this rule is matched, the request is redirected to a URL specified by
-         * urlRedirect. If urlRedirect is specified, service or routeAction must not be
-         * set.
+         * @param urlRedirect When a path pattern is matched, the request is redirected to a URL specified
+         * by urlRedirect. If urlRedirect is specified, service or routeAction must not
+         * be set.
          * Structure is documented below.
          * 
          * @return builder

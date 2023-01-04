@@ -16,7 +16,7 @@ public final class TenantInboundSamlConfigSpConfigSpCertificateArgs extends com.
     public static final TenantInboundSamlConfigSpConfigSpCertificateArgs Empty = new TenantInboundSamlConfigSpConfigSpCertificateArgs();
 
     /**
-     * - 
+     * The x509 certificate
      * The x509 certificate
      * 
      */
@@ -24,7 +24,7 @@ public final class TenantInboundSamlConfigSpConfigSpCertificateArgs extends com.
     private @Nullable Output<String> x509Certificate;
 
     /**
-     * @return -
+     * @return The x509 certificate
      * The x509 certificate
      * 
      */
@@ -57,7 +57,7 @@ public final class TenantInboundSamlConfigSpConfigSpCertificateArgs extends com.
         }
 
         /**
-         * @param x509Certificate -
+         * @param x509Certificate The x509 certificate
          * The x509 certificate
          * 
          * @return builder
@@ -69,7 +69,7 @@ public final class TenantInboundSamlConfigSpConfigSpCertificateArgs extends com.
         }
 
         /**
-         * @param x509Certificate -
+         * @param x509Certificate The x509 certificate
          * The x509 certificate
          * 
          * @return builder

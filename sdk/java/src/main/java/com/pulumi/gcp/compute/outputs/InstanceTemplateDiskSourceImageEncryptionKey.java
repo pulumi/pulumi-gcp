@@ -12,7 +12,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceTemplateDiskSourceImageEncryptionKey {
     /**
-     * @return The self link of the encryption key that is stored in Google Cloud KMS
+     * @return The self link of the encryption key that is
+     * stored in Google Cloud KMS.
      * 
      */
     private String kmsKeySelfLink;
@@ -26,7 +27,8 @@ public final class InstanceTemplateDiskSourceImageEncryptionKey {
 
     private InstanceTemplateDiskSourceImageEncryptionKey() {}
     /**
-     * @return The self link of the encryption key that is stored in Google Cloud KMS
+     * @return The self link of the encryption key that is
+     * stored in Google Cloud KMS.
      * 
      */
     public String kmsKeySelfLink() {

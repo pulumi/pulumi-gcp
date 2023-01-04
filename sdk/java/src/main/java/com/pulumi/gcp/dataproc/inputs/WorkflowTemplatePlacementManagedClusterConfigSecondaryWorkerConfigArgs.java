@@ -67,7 +67,6 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
     }
 
     /**
-     * - 
      * Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
      * 
      */
@@ -75,8 +74,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
     private @Nullable Output<List<String>> instanceNames;
 
     /**
-     * @return -
-     * Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+     * @return Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
      * 
      */
     public Optional<Output<List<String>>> instanceNames() {
@@ -84,7 +82,6 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
     }
 
     /**
-     * - 
      * Output only. Specifies that this instance group contains preemptible instances.
      * 
      */
@@ -92,8 +89,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
     private @Nullable Output<Boolean> isPreemptible;
 
     /**
-     * @return -
-     * Output only. Specifies that this instance group contains preemptible instances.
+     * @return Output only. Specifies that this instance group contains preemptible instances.
      * 
      */
     public Optional<Output<Boolean>> isPreemptible() {
@@ -116,7 +112,6 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
     }
 
     /**
-     * - 
      * Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
      * 
      */
@@ -124,8 +119,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
     private @Nullable Output<List<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs>> managedGroupConfigs;
 
     /**
-     * @return -
-     * Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+     * @return Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
      * 
      */
     public Optional<Output<List<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs>>> managedGroupConfigs() {
@@ -284,8 +278,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
         }
 
         /**
-         * @param instanceNames -
-         * Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+         * @param instanceNames Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
          * 
          * @return builder
          * 
@@ -296,8 +289,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
         }
 
         /**
-         * @param instanceNames -
-         * Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+         * @param instanceNames Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
          * 
          * @return builder
          * 
@@ -307,8 +299,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
         }
 
         /**
-         * @param instanceNames -
-         * Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
+         * @param instanceNames Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
          * 
          * @return builder
          * 
@@ -318,8 +309,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
         }
 
         /**
-         * @param isPreemptible -
-         * Output only. Specifies that this instance group contains preemptible instances.
+         * @param isPreemptible Output only. Specifies that this instance group contains preemptible instances.
          * 
          * @return builder
          * 
@@ -330,8 +320,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
         }
 
         /**
-         * @param isPreemptible -
-         * Output only. Specifies that this instance group contains preemptible instances.
+         * @param isPreemptible Output only. Specifies that this instance group contains preemptible instances.
          * 
          * @return builder
          * 
@@ -362,8 +351,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
         }
 
         /**
-         * @param managedGroupConfigs -
-         * Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+         * @param managedGroupConfigs Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
          * 
          * @return builder
          * 
@@ -374,8 +362,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
         }
 
         /**
-         * @param managedGroupConfigs -
-         * Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+         * @param managedGroupConfigs Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
          * 
          * @return builder
          * 
@@ -385,8 +372,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
         }
 
         /**
-         * @param managedGroupConfigs -
-         * Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
+         * @param managedGroupConfigs Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
          * 
          * @return builder
          * 

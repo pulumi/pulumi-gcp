@@ -35,14 +35,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. Unique identifier of the OAuth client.
+     * The OAuth2 ID of the client.
      * 
      */
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
     /**
-     * @return Output only. Unique identifier of the OAuth client.
+     * @return The OAuth2 ID of the client.
      * 
      */
     public Optional<Output<String>> clientId() {
@@ -66,6 +66,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Output only. Client secret of the OAuth client.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     @Import(name="secret")
@@ -73,6 +74,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Output only. Client secret of the OAuth client.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Optional<Output<String>> secret() {
@@ -132,7 +134,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientId Output only. Unique identifier of the OAuth client.
+         * @param clientId The OAuth2 ID of the client.
          * 
          * @return builder
          * 
@@ -143,7 +145,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientId Output only. Unique identifier of the OAuth client.
+         * @param clientId The OAuth2 ID of the client.
          * 
          * @return builder
          * 
@@ -175,6 +177,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param secret Output only. Client secret of the OAuth client.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
@@ -186,6 +189,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param secret Output only. Client secret of the OAuth client.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 

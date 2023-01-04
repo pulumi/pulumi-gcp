@@ -175,16 +175,14 @@ public class Trigger extends com.pulumi.resources.CustomResource {
         return this.destination;
     }
     /**
-     * Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create
-     * requests to ensure the client has an up-to-date value before proceeding.
+     * Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
     @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
-     * @return Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create
-     * requests to ensure the client has an up-to-date value before proceeding.
+     * @return Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
     public Output<String> etag() {
@@ -205,14 +203,14 @@ public class Trigger extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
-     * Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+     * The location for the resource
      * 
      */
     @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
-     * @return Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+     * @return The location for the resource
      * 
      */
     public Output<String> location() {
@@ -289,16 +287,14 @@ public class Trigger extends com.pulumi.resources.CustomResource {
         return this.transports;
     }
     /**
-     * Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain
-     * unchanged until the resource is deleted.
+     * Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      * 
      */
     @Export(name="uid", type=String.class, parameters={})
     private Output<String> uid;
 
     /**
-     * @return Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain
-     * unchanged until the resource is deleted.
+     * @return Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      * 
      */
     public Output<String> uid() {

@@ -166,6 +166,8 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
+     * Optional. A human-readable description of scenarios this template is intended for.
+     * (Optional)
      * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
      */
@@ -173,7 +175,9 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+     * @return Optional. A human-readable description of scenarios this template is intended for.
+     * (Optional)
+     * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
      */
     public Output<Optional<String>> description() {
@@ -208,14 +212,14 @@ public class CertificateTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
-     * Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+     * The location for the resource
      * 
      */
     @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
-     * @return Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+     * @return The location for the resource
      * 
      */
     public Output<String> location() {

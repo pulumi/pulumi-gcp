@@ -439,7 +439,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.connectMode);
     }
     /**
-     * - 
      * Output only. The time when the policy was created.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits.
@@ -449,8 +448,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> createTime;
 
     /**
-     * @return -
-     * Output only. The time when the policy was created.
+     * @return Output only. The time when the policy was created.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits.
      * 
@@ -459,18 +457,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
-     * [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
-     * [alternativeLocationId] and can change after a failover event.
+     * The current zone where the Redis endpoint is placed.
+     * For Basic Tier instances, this will always be the same as the
+     * [locationId] provided by the user at creation time. For Standard Tier
+     * instances, this can be either [locationId] or [alternativeLocationId]
+     * and can change after a failover event.
      * 
      */
     @Export(name="currentLocationId", type=String.class, parameters={})
     private Output<String> currentLocationId;
 
     /**
-     * @return The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
-     * [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
-     * [alternativeLocationId] and can change after a failover event.
+     * @return The current zone where the Redis endpoint is placed.
+     * For Basic Tier instances, this will always be the same as the
+     * [locationId] provided by the user at creation time. For Standard Tier
+     * instances, this can be either [locationId] or [alternativeLocationId]
+     * and can change after a failover event.
      * 
      */
     public Output<String> currentLocationId() {
@@ -507,14 +509,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.displayName);
     }
     /**
-     * Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
+     * Hostname or IP address of the exposed Redis endpoint used by clients
+     * to connect to the service.
      * 
      */
     @Export(name="host", type=String.class, parameters={})
     private Output<String> host;
 
     /**
-     * @return Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
+     * @return Hostname or IP address of the exposed Redis endpoint used by clients
+     * to connect to the service.
      * 
      */
     public Output<String> host() {
@@ -618,6 +622,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Output only. Info per node.
+     * Structure is documented below.
      * 
      */
     @Export(name="nodes", type=List.class, parameters={InstanceNode.class})
@@ -625,6 +630,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Output only. Info per node.
+     * Structure is documented below.
      * 
      */
     public Output<List<InstanceNode>> nodes() {
@@ -647,18 +653,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.persistenceConfig;
     }
     /**
-     * Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
-     * &#34;serviceAccount:&#34;. The value may change over time for a given instance so should be checked before each import/export
-     * operation.
+     * Output only. Cloud IAM identity used by import / export operations
+     * to transfer data to/from Cloud Storage. Format is &#34;serviceAccount:&#34;.
+     * The value may change over time for a given instance so should be
+     * checked before each import/export operation.
      * 
      */
     @Export(name="persistenceIamIdentity", type=String.class, parameters={})
     private Output<String> persistenceIamIdentity;
 
     /**
-     * @return Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
-     * &#34;serviceAccount:&#34;. The value may change over time for a given instance so should be checked before each import/export
-     * operation.
+     * @return Output only. Cloud IAM identity used by import / export operations
+     * to transfer data to/from Cloud Storage. Format is &#34;serviceAccount:&#34;.
+     * The value may change over time for a given instance so should be
+     * checked before each import/export operation.
      * 
      */
     public Output<String> persistenceIamIdentity() {
@@ -695,34 +703,34 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy
-     * replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write
-     * requests must target &#39;host&#39;.
+     * Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
+     * Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
+     * will exhibit some lag behind the primary. Write requests must target &#39;host&#39;.
      * 
      */
     @Export(name="readEndpoint", type=String.class, parameters={})
     private Output<String> readEndpoint;
 
     /**
-     * @return Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy
-     * replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write
-     * requests must target &#39;host&#39;.
+     * @return Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
+     * Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
+     * will exhibit some lag behind the primary. Write requests must target &#39;host&#39;.
      * 
      */
     public Output<String> readEndpoint() {
         return this.readEndpoint;
     }
     /**
-     * Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
-     * &#39;port&#39;.
+     * Output only. The port number of the exposed readonly redis endpoint. Standard tier only.
+     * Write requests should target &#39;port&#39;.
      * 
      */
     @Export(name="readEndpointPort", type=Integer.class, parameters={})
     private Output<Integer> readEndpointPort;
 
     /**
-     * @return Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
-     * &#39;port&#39;.
+     * @return Output only. The port number of the exposed readonly redis endpoint. Standard tier only.
+     * Write requests should target &#39;port&#39;.
      * 
      */
     public Output<Integer> readEndpointPort() {
@@ -868,6 +876,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * List of server CA certificates for the instance.
+     * Structure is documented below.
      * 
      */
     @Export(name="serverCaCerts", type=List.class, parameters={InstanceServerCaCert.class})
@@ -875,6 +884,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return List of server CA certificates for the instance.
+     * Structure is documented below.
      * 
      */
     public Output<List<InstanceServerCaCert>> serverCaCerts() {

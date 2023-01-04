@@ -27,7 +27,7 @@ public final class Cloudfunctionsv2Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudfunctionsv2.Cloudfunctionsv2Functions;
-     * import com.pulumi.gcp.cloudfunctions.inputs.GetFunctionArgs;
+     * import com.pulumi.gcp.cloudfunctionsv2.inputs.GetFunctionArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -67,7 +67,7 @@ public final class Cloudfunctionsv2Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudfunctionsv2.Cloudfunctionsv2Functions;
-     * import com.pulumi.gcp.cloudfunctions.inputs.GetFunctionArgs;
+     * import com.pulumi.gcp.cloudfunctionsv2.inputs.GetFunctionArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -107,7 +107,7 @@ public final class Cloudfunctionsv2Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudfunctionsv2.Cloudfunctionsv2Functions;
-     * import com.pulumi.gcp.cloudfunctions.inputs.GetFunctionArgs;
+     * import com.pulumi.gcp.cloudfunctionsv2.inputs.GetFunctionArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -147,7 +147,7 @@ public final class Cloudfunctionsv2Functions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudfunctionsv2.Cloudfunctionsv2Functions;
-     * import com.pulumi.gcp.cloudfunctions.inputs.GetFunctionArgs;
+     * import com.pulumi.gcp.cloudfunctionsv2.inputs.GetFunctionArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

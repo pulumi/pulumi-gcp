@@ -15,23 +15,49 @@ public final class DomainMappingResourceRecordArgs extends com.pulumi.resources.
 
     public static final DomainMappingResourceRecordArgs Empty = new DomainMappingResourceRecordArgs();
 
+    /**
+     * Relative name of the object affected by this record. Only applicable for CNAME records. Example: &#39;www&#39;.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Relative name of the object affected by this record. Only applicable for CNAME records. Example: &#39;www&#39;.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
+     * 
+     */
     @Import(name="rrdata")
     private @Nullable Output<String> rrdata;
 
+    /**
+     * @return Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
+     * 
+     */
     public Optional<Output<String>> rrdata() {
         return Optional.ofNullable(this.rrdata);
     }
 
+    /**
+     * Resource record type. Example: `AAAA`.
+     * Possible values are `A`, `AAAA`, and `CNAME`.
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return Resource record type. Example: `AAAA`.
+     * Possible values are `A`, `AAAA`, and `CNAME`.
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -62,29 +88,67 @@ public final class DomainMappingResourceRecordArgs extends com.pulumi.resources.
             $ = new DomainMappingResourceRecordArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name Relative name of the object affected by this record. Only applicable for CNAME records. Example: &#39;www&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Relative name of the object affected by this record. Only applicable for CNAME records. Example: &#39;www&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param rrdata Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
+         * 
+         * @return builder
+         * 
+         */
         public Builder rrdata(@Nullable Output<String> rrdata) {
             $.rrdata = rrdata;
             return this;
         }
 
+        /**
+         * @param rrdata Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
+         * 
+         * @return builder
+         * 
+         */
         public Builder rrdata(String rrdata) {
             return rrdata(Output.of(rrdata));
         }
 
+        /**
+         * @param type Resource record type. Example: `AAAA`.
+         * Possible values are `A`, `AAAA`, and `CNAME`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type Resource record type. Example: `AAAA`.
+         * Possible values are `A`, `AAAA`, and `CNAME`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

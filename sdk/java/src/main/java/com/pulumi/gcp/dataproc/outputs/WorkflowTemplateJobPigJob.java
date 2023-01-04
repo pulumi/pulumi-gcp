@@ -22,7 +22,7 @@ public final class WorkflowTemplateJobPigJob {
      */
     private @Nullable Boolean continueOnFailure;
     /**
-     * @return Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+     * @return Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
      * 
      */
     private @Nullable List<String> jarFileUris;
@@ -32,12 +32,12 @@ public final class WorkflowTemplateJobPigJob {
      */
     private @Nullable WorkflowTemplateJobPigJobLoggingConfig loggingConfig;
     /**
-     * @return Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+     * @return Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
      * 
      */
     private @Nullable Map<String,String> properties;
     /**
-     * @return The HCFS URI of the script that contains SQL queries.
+     * @return The HCFS URI of the script that contains the Pig queries.
      * 
      */
     private @Nullable String queryFileUri;
@@ -47,7 +47,7 @@ public final class WorkflowTemplateJobPigJob {
      */
     private @Nullable WorkflowTemplateJobPigJobQueryList queryList;
     /**
-     * @return Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name=&#34;value&#34;;`).
+     * @return Optional. Mapping of query variable names to values (equivalent to the Pig command: `name=`).
      * 
      */
     private @Nullable Map<String,String> scriptVariables;
@@ -61,7 +61,7 @@ public final class WorkflowTemplateJobPigJob {
         return Optional.ofNullable(this.continueOnFailure);
     }
     /**
-     * @return Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+     * @return Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
      * 
      */
     public List<String> jarFileUris() {
@@ -75,14 +75,14 @@ public final class WorkflowTemplateJobPigJob {
         return Optional.ofNullable(this.loggingConfig);
     }
     /**
-     * @return Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+     * @return Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
      * 
      */
     public Map<String,String> properties() {
         return this.properties == null ? Map.of() : this.properties;
     }
     /**
-     * @return The HCFS URI of the script that contains SQL queries.
+     * @return The HCFS URI of the script that contains the Pig queries.
      * 
      */
     public Optional<String> queryFileUri() {
@@ -96,7 +96,7 @@ public final class WorkflowTemplateJobPigJob {
         return Optional.ofNullable(this.queryList);
     }
     /**
-     * @return Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name=&#34;value&#34;;`).
+     * @return Optional. Mapping of query variable names to values (equivalent to the Pig command: `name=`).
      * 
      */
     public Map<String,String> scriptVariables() {

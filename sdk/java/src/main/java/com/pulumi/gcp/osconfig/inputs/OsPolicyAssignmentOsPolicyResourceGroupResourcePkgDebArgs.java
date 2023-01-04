@@ -17,14 +17,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs ext
     public static final OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs Empty = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs();
 
     /**
-     * Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+     * Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update &amp;&amp; apt-get -y install package.deb`
      * 
      */
     @Import(name="pullDeps")
     private @Nullable Output<Boolean> pullDeps;
 
     /**
-     * @return Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+     * @return Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update &amp;&amp; apt-get -y install package.deb`
      * 
      */
     public Optional<Output<Boolean>> pullDeps() {
@@ -32,14 +32,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs ext
     }
 
     /**
-     * Required. An rpm package.
+     * Required. A deb package.
      * 
      */
     @Import(name="source", required=true)
     private Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs> source;
 
     /**
-     * @return Required. An rpm package.
+     * @return Required. A deb package.
      * 
      */
     public Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs> source() {
@@ -72,7 +72,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs ext
         }
 
         /**
-         * @param pullDeps Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+         * @param pullDeps Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update &amp;&amp; apt-get -y install package.deb`
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs ext
         }
 
         /**
-         * @param pullDeps Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+         * @param pullDeps Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update &amp;&amp; apt-get -y install package.deb`
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs ext
         }
 
         /**
-         * @param source Required. An rpm package.
+         * @param source Required. A deb package.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs ext
         }
 
         /**
-         * @param source Required. An rpm package.
+         * @param source Required. A deb package.
          * 
          * @return builder
          * 

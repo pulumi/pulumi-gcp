@@ -30,9 +30,17 @@ public final class ZoneAssetStatusArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.securityPolicyApplyingAssets);
     }
 
+    /**
+     * Output only. The time when the zone was last updated.
+     * 
+     */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
+    /**
+     * @return Output only. The time when the zone was last updated.
+     * 
+     */
     public Optional<Output<String>> updateTime() {
         return Optional.ofNullable(this.updateTime);
     }
@@ -81,11 +89,23 @@ public final class ZoneAssetStatusArgs extends com.pulumi.resources.ResourceArgs
             return securityPolicyApplyingAssets(Output.of(securityPolicyApplyingAssets));
         }
 
+        /**
+         * @param updateTime Output only. The time when the zone was last updated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateTime(@Nullable Output<String> updateTime) {
             $.updateTime = updateTime;
             return this;
         }
 
+        /**
+         * @param updateTime Output only. The time when the zone was last updated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateTime(String updateTime) {
             return updateTime(Output.of(updateTime));
         }

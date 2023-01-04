@@ -15,14 +15,14 @@ public final class RegionInstanceGroupManagerNamedPortArgs extends com.pulumi.re
     public static final RegionInstanceGroupManagerNamedPortArgs Empty = new RegionInstanceGroupManagerNamedPortArgs();
 
     /**
-     * - Version name.
+     * The name of the port.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return - Version name.
+     * @return The name of the port.
      * 
      */
     public Output<String> name() {
@@ -72,7 +72,7 @@ public final class RegionInstanceGroupManagerNamedPortArgs extends com.pulumi.re
         }
 
         /**
-         * @param name - Version name.
+         * @param name The name of the port.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class RegionInstanceGroupManagerNamedPortArgs extends com.pulumi.re
         }
 
         /**
-         * @param name - Version name.
+         * @param name The name of the port.
          * 
          * @return builder
          * 

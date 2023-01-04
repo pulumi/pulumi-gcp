@@ -50,14 +50,16 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+     * Server-specified ETag for the instance resource to prevent
+     * simultaneous updates from overwriting each other.
      * 
      */
     @Import(name="etag")
     private @Nullable Output<String> etag;
 
     /**
-     * @return Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+     * @return Server-specified ETag for the instance resource to prevent
+     * simultaneous updates from overwriting each other.
      * 
      */
     public Optional<Output<String>> etag() {
@@ -129,14 +131,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the fileshare (16 characters or less)
+     * The resource name of the instance.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the fileshare (16 characters or less)
+     * @return The resource name of the instance.
      * 
      */
     public Optional<Output<String>> name() {
@@ -197,7 +199,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * - 
      * (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
      * 
@@ -210,8 +211,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> zone;
 
     /**
-     * @return -
-     * (Optional, Deprecated)
+     * @return (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
      * 
      * @deprecated
@@ -301,7 +301,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etag Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+         * @param etag Server-specified ETag for the instance resource to prevent
+         * simultaneous updates from overwriting each other.
          * 
          * @return builder
          * 
@@ -312,7 +313,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etag Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+         * @param etag Server-specified ETag for the instance resource to prevent
+         * simultaneous updates from overwriting each other.
          * 
          * @return builder
          * 
@@ -410,7 +412,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the fileshare (16 characters or less)
+         * @param name The resource name of the instance.
          * 
          * @return builder
          * 
@@ -421,7 +423,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the fileshare (16 characters or less)
+         * @param name The resource name of the instance.
          * 
          * @return builder
          * 
@@ -514,8 +516,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zone -
-         * (Optional, Deprecated)
+         * @param zone (Optional, Deprecated)
          * The name of the Filestore zone of the instance.
          * 
          * @return builder
@@ -531,8 +532,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zone -
-         * (Optional, Deprecated)
+         * @param zone (Optional, Deprecated)
          * The name of the Filestore zone of the instance.
          * 
          * @return builder

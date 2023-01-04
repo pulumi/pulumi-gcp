@@ -20,16 +20,18 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
     public static final EntryState Empty = new EntryState();
 
     /**
-     * Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
-     * https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+     * Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
+     * Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+     * Structure is documented below.
      * 
      */
     @Import(name="bigqueryDateShardedSpecs")
     private @Nullable Output<List<EntryBigqueryDateShardedSpecArgs>> bigqueryDateShardedSpecs;
 
     /**
-     * @return Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
-     * https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+     * @return Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
+     * Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<EntryBigqueryDateShardedSpecArgs>>> bigqueryDateShardedSpecs() {
@@ -38,6 +40,7 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
+     * Structure is documented below.
      * 
      */
     @Import(name="bigqueryTableSpecs")
@@ -45,6 +48,7 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<EntryBigqueryTableSpecArgs>>> bigqueryTableSpecs() {
@@ -171,18 +175,18 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Data Catalog resource name of the entry in URL format. Example:
-     * projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}. Note that this Entry and its
-     * child resources may not actually be stored in the location in this name.
+     * The Data Catalog resource name of the entry in URL format.
+     * Example: projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}.
+     * Note that this Entry and its child resources may not actually be stored in the location in this name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The Data Catalog resource name of the entry in URL format. Example:
-     * projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}. Note that this Entry and its
-     * child resources may not actually be stored in the location in this name.
+     * @return The Data Catalog resource name of the entry in URL format.
+     * Example: projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}.
+     * Note that this Entry and its child resources may not actually be stored in the location in this name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -309,8 +313,9 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bigqueryDateShardedSpecs Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
-         * https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+         * @param bigqueryDateShardedSpecs Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
+         * Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -321,8 +326,9 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bigqueryDateShardedSpecs Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
-         * https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+         * @param bigqueryDateShardedSpecs Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
+         * Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -332,8 +338,9 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bigqueryDateShardedSpecs Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
-         * https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+         * @param bigqueryDateShardedSpecs Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
+         * Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -344,6 +351,7 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param bigqueryTableSpecs Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -355,6 +363,7 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param bigqueryTableSpecs Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -365,6 +374,7 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param bigqueryTableSpecs Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -535,9 +545,9 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The Data Catalog resource name of the entry in URL format. Example:
-         * projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}. Note that this Entry and its
-         * child resources may not actually be stored in the location in this name.
+         * @param name The Data Catalog resource name of the entry in URL format.
+         * Example: projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}.
+         * Note that this Entry and its child resources may not actually be stored in the location in this name.
          * 
          * @return builder
          * 
@@ -548,9 +558,9 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The Data Catalog resource name of the entry in URL format. Example:
-         * projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}. Note that this Entry and its
-         * child resources may not actually be stored in the location in this name.
+         * @param name The Data Catalog resource name of the entry in URL format.
+         * Example: projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}.
+         * Note that this Entry and its child resources may not actually be stored in the location in this name.
          * 
          * @return builder
          * 

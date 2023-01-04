@@ -16,16 +16,36 @@ public final class AuthorityAccessUrlArgs extends com.pulumi.resources.ResourceA
 
     public static final AuthorityAccessUrlArgs Empty = new AuthorityAccessUrlArgs();
 
+    /**
+     * The URL where this CertificateAuthority&#39;s CA certificate is published. This will only be
+     * set for CAs that have been activated.
+     * 
+     */
     @Import(name="caCertificateAccessUrl")
     private @Nullable Output<String> caCertificateAccessUrl;
 
+    /**
+     * @return The URL where this CertificateAuthority&#39;s CA certificate is published. This will only be
+     * set for CAs that have been activated.
+     * 
+     */
     public Optional<Output<String>> caCertificateAccessUrl() {
         return Optional.ofNullable(this.caCertificateAccessUrl);
     }
 
+    /**
+     * The URL where this CertificateAuthority&#39;s CRLs are published. This will only be set for
+     * CAs that have been activated.
+     * 
+     */
     @Import(name="crlAccessUrls")
     private @Nullable Output<List<String>> crlAccessUrls;
 
+    /**
+     * @return The URL where this CertificateAuthority&#39;s CRLs are published. This will only be set for
+     * CAs that have been activated.
+     * 
+     */
     public Optional<Output<List<String>>> crlAccessUrls() {
         return Optional.ofNullable(this.crlAccessUrls);
     }
@@ -55,24 +75,59 @@ public final class AuthorityAccessUrlArgs extends com.pulumi.resources.ResourceA
             $ = new AuthorityAccessUrlArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param caCertificateAccessUrl The URL where this CertificateAuthority&#39;s CA certificate is published. This will only be
+         * set for CAs that have been activated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder caCertificateAccessUrl(@Nullable Output<String> caCertificateAccessUrl) {
             $.caCertificateAccessUrl = caCertificateAccessUrl;
             return this;
         }
 
+        /**
+         * @param caCertificateAccessUrl The URL where this CertificateAuthority&#39;s CA certificate is published. This will only be
+         * set for CAs that have been activated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder caCertificateAccessUrl(String caCertificateAccessUrl) {
             return caCertificateAccessUrl(Output.of(caCertificateAccessUrl));
         }
 
+        /**
+         * @param crlAccessUrls The URL where this CertificateAuthority&#39;s CRLs are published. This will only be set for
+         * CAs that have been activated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder crlAccessUrls(@Nullable Output<List<String>> crlAccessUrls) {
             $.crlAccessUrls = crlAccessUrls;
             return this;
         }
 
+        /**
+         * @param crlAccessUrls The URL where this CertificateAuthority&#39;s CRLs are published. This will only be set for
+         * CAs that have been activated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder crlAccessUrls(List<String> crlAccessUrls) {
             return crlAccessUrls(Output.of(crlAccessUrls));
         }
 
+        /**
+         * @param crlAccessUrls The URL where this CertificateAuthority&#39;s CRLs are published. This will only be set for
+         * CAs that have been activated.
+         * 
+         * @return builder
+         * 
+         */
         public Builder crlAccessUrls(String... crlAccessUrls) {
             return crlAccessUrls(List.of(crlAccessUrls));
         }

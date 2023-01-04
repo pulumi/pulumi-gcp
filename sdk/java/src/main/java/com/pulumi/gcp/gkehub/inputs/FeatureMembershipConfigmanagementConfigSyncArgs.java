@@ -19,7 +19,6 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
     public static final FeatureMembershipConfigmanagementConfigSyncArgs Empty = new FeatureMembershipConfigmanagementConfigSyncArgs();
 
     /**
-     * - 
      * (Optional) Structure is documented below.
      * 
      */
@@ -27,8 +26,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
     private @Nullable Output<FeatureMembershipConfigmanagementConfigSyncGitArgs> git;
 
     /**
-     * @return -
-     * (Optional) Structure is documented below.
+     * @return (Optional) Structure is documented below.
      * 
      */
     public Optional<Output<FeatureMembershipConfigmanagementConfigSyncGitArgs>> git() {
@@ -36,7 +34,6 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
     }
 
     /**
-     * - 
      * (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
      * 
      */
@@ -44,8 +41,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
     private @Nullable Output<FeatureMembershipConfigmanagementConfigSyncOciArgs> oci;
 
     /**
-     * @return -
-     * (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+     * @return (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
      * 
      */
     public Optional<Output<FeatureMembershipConfigmanagementConfigSyncOciArgs>> oci() {
@@ -110,8 +106,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
         }
 
         /**
-         * @param git -
-         * (Optional) Structure is documented below.
+         * @param git (Optional) Structure is documented below.
          * 
          * @return builder
          * 
@@ -122,8 +117,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
         }
 
         /**
-         * @param git -
-         * (Optional) Structure is documented below.
+         * @param git (Optional) Structure is documented below.
          * 
          * @return builder
          * 
@@ -133,8 +127,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
         }
 
         /**
-         * @param oci -
-         * (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+         * @param oci (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
          * 
          * @return builder
          * 
@@ -145,8 +138,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
         }
 
         /**
-         * @param oci -
-         * (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+         * @param oci (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
          * 
          * @return builder
          * 

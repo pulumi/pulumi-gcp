@@ -56,14 +56,16 @@ public final class GenericServiceState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+     * The full resource name for this service. The syntax is:
+     * projects/[PROJECT_ID]/services/[SERVICE_ID].
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+     * @return The full resource name for this service. The syntax is:
+     * projects/[PROJECT_ID]/services/[SERVICE_ID].
      * 
      */
     public Optional<Output<String>> name() {
@@ -106,6 +108,7 @@ public final class GenericServiceState extends com.pulumi.resources.ResourceArgs
 
     /**
      * Configuration for how to query telemetry on a Service.
+     * Structure is documented below.
      * 
      */
     @Import(name="telemetries")
@@ -113,6 +116,7 @@ public final class GenericServiceState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return Configuration for how to query telemetry on a Service.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<GenericServiceTelemetryArgs>>> telemetries() {
@@ -223,7 +227,8 @@ public final class GenericServiceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+         * @param name The full resource name for this service. The syntax is:
+         * projects/[PROJECT_ID]/services/[SERVICE_ID].
          * 
          * @return builder
          * 
@@ -234,7 +239,8 @@ public final class GenericServiceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+         * @param name The full resource name for this service. The syntax is:
+         * projects/[PROJECT_ID]/services/[SERVICE_ID].
          * 
          * @return builder
          * 
@@ -291,6 +297,7 @@ public final class GenericServiceState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param telemetries Configuration for how to query telemetry on a Service.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -302,6 +309,7 @@ public final class GenericServiceState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param telemetries Configuration for how to query telemetry on a Service.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -312,6 +320,7 @@ public final class GenericServiceState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param telemetries Configuration for how to query telemetry on a Service.
+         * Structure is documented below.
          * 
          * @return builder
          * 

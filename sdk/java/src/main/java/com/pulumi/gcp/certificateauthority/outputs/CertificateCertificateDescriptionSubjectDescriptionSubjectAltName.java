@@ -12,6 +12,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAltName {
+    /**
+     * @return Contains additional subject alternative name values.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan> customSans;
     /**
      * @return Contains only valid, fully-qualified host names.
@@ -35,6 +40,11 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
     private @Nullable List<String> uris;
 
     private CertificateCertificateDescriptionSubjectDescriptionSubjectAltName() {}
+    /**
+     * @return Contains additional subject alternative name values.
+     * Structure is documented below.
+     * 
+     */
     public List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan> customSans() {
         return this.customSans == null ? List.of() : this.customSans;
     }

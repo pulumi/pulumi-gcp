@@ -11,13 +11,31 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DefaultObjectAccessControlProjectTeam {
+    /**
+     * @return The project team associated with the entity
+     * 
+     */
     private @Nullable String projectNumber;
+    /**
+     * @return The team.
+     * Possible values are `editors`, `owners`, and `viewers`.
+     * 
+     */
     private @Nullable String team;
 
     private DefaultObjectAccessControlProjectTeam() {}
+    /**
+     * @return The project team associated with the entity
+     * 
+     */
     public Optional<String> projectNumber() {
         return Optional.ofNullable(this.projectNumber);
     }
+    /**
+     * @return The team.
+     * Possible values are `editors`, `owners`, and `viewers`.
+     * 
+     */
     public Optional<String> team() {
         return Optional.ofNullable(this.team);
     }

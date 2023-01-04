@@ -16,16 +16,16 @@ public final class PreventionInspectTemplateInspectConfigInfoTypeArgs extends co
     public static final PreventionInspectTemplateInspectConfigInfoTypeArgs Empty = new PreventionInspectTemplateInspectConfigInfoTypeArgs();
 
     /**
-     * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-     * or `projects/project-id/storedInfoTypes/432452342`.
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-     * or `projects/project-id/storedInfoTypes/432452342`.
+     * @return Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
      * 
      */
     public Output<String> name() {
@@ -73,8 +73,8 @@ public final class PreventionInspectTemplateInspectConfigInfoTypeArgs extends co
         }
 
         /**
-         * @param name Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-         * or `projects/project-id/storedInfoTypes/432452342`.
+         * @param name Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
          * 
          * @return builder
          * 
@@ -85,8 +85,8 @@ public final class PreventionInspectTemplateInspectConfigInfoTypeArgs extends co
         }
 
         /**
-         * @param name Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-         * or `projects/project-id/storedInfoTypes/432452342`.
+         * @param name Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
          * 
          * @return builder
          * 

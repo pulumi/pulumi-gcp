@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AttachedClusterError {
+    /**
+     * @return Human-friendly description of the error.
+     * 
+     */
     private @Nullable String message;
 
     private AttachedClusterError() {}
+    /**
+     * @return Human-friendly description of the error.
+     * 
+     */
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }

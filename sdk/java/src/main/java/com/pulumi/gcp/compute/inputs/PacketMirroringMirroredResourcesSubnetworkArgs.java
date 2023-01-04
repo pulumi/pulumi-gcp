@@ -14,14 +14,14 @@ public final class PacketMirroringMirroredResourcesSubnetworkArgs extends com.pu
     public static final PacketMirroringMirroredResourcesSubnetworkArgs Empty = new PacketMirroringMirroredResourcesSubnetworkArgs();
 
     /**
-     * The URL of the instances where this rule should be active.
+     * The URL of the subnetwork where this rule should be active.
      * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
-     * @return The URL of the instances where this rule should be active.
+     * @return The URL of the subnetwork where this rule should be active.
      * 
      */
     public Output<String> url() {
@@ -53,7 +53,7 @@ public final class PacketMirroringMirroredResourcesSubnetworkArgs extends com.pu
         }
 
         /**
-         * @param url The URL of the instances where this rule should be active.
+         * @param url The URL of the subnetwork where this rule should be active.
          * 
          * @return builder
          * 
@@ -64,7 +64,7 @@ public final class PacketMirroringMirroredResourcesSubnetworkArgs extends com.pu
         }
 
         /**
-         * @param url The URL of the instances where this rule should be active.
+         * @param url The URL of the subnetwork where this rule should be active.
          * 
          * @return builder
          * 

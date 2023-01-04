@@ -99,14 +99,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the fileshare (16 characters or less)
+     * The resource name of the instance.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the fileshare (16 characters or less)
+     * @return The resource name of the instance.
      * 
      */
     public Optional<Output<String>> name() {
@@ -167,7 +167,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * - 
      * (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
      * 
@@ -180,8 +179,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> zone;
 
     /**
-     * @return -
-     * (Optional, Deprecated)
+     * @return (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
      * 
      * @deprecated
@@ -336,7 +334,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the fileshare (16 characters or less)
+         * @param name The resource name of the instance.
          * 
          * @return builder
          * 
@@ -347,7 +345,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the fileshare (16 characters or less)
+         * @param name The resource name of the instance.
          * 
          * @return builder
          * 
@@ -440,8 +438,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zone -
-         * (Optional, Deprecated)
+         * @param zone (Optional, Deprecated)
          * The name of the Filestore zone of the instance.
          * 
          * @return builder
@@ -457,8 +454,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zone -
-         * (Optional, Deprecated)
+         * @param zone (Optional, Deprecated)
          * The name of the Filestore zone of the instance.
          * 
          * @return builder

@@ -12,16 +12,32 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AssetResourceStatus {
     private @Nullable String message;
+    /**
+     * @return Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+     * 
+     */
     private @Nullable String state;
+    /**
+     * @return Output only. The time when the asset was last updated.
+     * 
+     */
     private @Nullable String updateTime;
 
     private AssetResourceStatus() {}
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
+    /**
+     * @return Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+     * 
+     */
     public Optional<String> state() {
         return Optional.ofNullable(this.state);
     }
+    /**
+     * @return Output only. The time when the asset was last updated.
+     * 
+     */
     public Optional<String> updateTime() {
         return Optional.ofNullable(this.updateTime);
     }

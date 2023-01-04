@@ -122,6 +122,7 @@ import javax.annotation.Nullable;
 public class AppGateway extends com.pulumi.resources.CustomResource {
     /**
      * A list of connections allocated for the Gateway.
+     * Structure is documented below.
      * 
      */
     @Export(name="allocatedConnections", type=List.class, parameters={AppGatewayAllocatedConnection.class})
@@ -129,6 +130,7 @@ public class AppGateway extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A list of connections allocated for the Gateway.
+     * Structure is documented below.
      * 
      */
     public Output<List<AppGatewayAllocatedConnection>> allocatedConnections() {

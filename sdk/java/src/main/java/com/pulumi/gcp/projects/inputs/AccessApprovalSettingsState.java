@@ -53,16 +53,14 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
     }
 
     /**
-     * If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-     * of the Project.
+     * If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Project.
      * 
      */
     @Import(name="enrolledAncestor")
     private @Nullable Output<Boolean> enrolledAncestor;
 
     /**
-     * @return If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-     * of the Project.
+     * @return If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Project.
      * 
      */
     public Optional<Output<Boolean>> enrolledAncestor() {
@@ -93,20 +91,20 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
     }
 
     /**
-     * If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-     * this Project (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the correct permissions on it,
-     * etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-     * top-down.
+     * If the field is true, that indicates that there is some configuration issue with the active_key_version
+     * configured on this Project (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the
+     * correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+     * as key versions are inherited top-down.
      * 
      */
     @Import(name="invalidKeyVersion")
     private @Nullable Output<Boolean> invalidKeyVersion;
 
     /**
-     * @return If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-     * this Project (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the correct permissions on it,
-     * etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-     * top-down.
+     * @return If the field is true, that indicates that there is some configuration issue with the active_key_version
+     * configured on this Project (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the
+     * correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+     * as key versions are inherited top-down.
      * 
      */
     public Optional<Output<Boolean>> invalidKeyVersion() {
@@ -148,7 +146,6 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
     }
 
     /**
-     * - 
      * (Optional, Deprecated)
      * Deprecated in favor of `project_id`
      * 
@@ -161,8 +158,7 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
     private @Nullable Output<String> project;
 
     /**
-     * @return -
-     * (Optional, Deprecated)
+     * @return (Optional, Deprecated)
      * Deprecated in favor of `project_id`
      * 
      * @deprecated
@@ -268,8 +264,7 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param enrolledAncestor If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-         * of the Project.
+         * @param enrolledAncestor If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Project.
          * 
          * @return builder
          * 
@@ -280,8 +275,7 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param enrolledAncestor If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-         * of the Project.
+         * @param enrolledAncestor If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Project.
          * 
          * @return builder
          * 
@@ -334,10 +328,10 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param invalidKeyVersion If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-         * this Project (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the correct permissions on it,
-         * etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-         * top-down.
+         * @param invalidKeyVersion If the field is true, that indicates that there is some configuration issue with the active_key_version
+         * configured on this Project (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the
+         * correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+         * as key versions are inherited top-down.
          * 
          * @return builder
          * 
@@ -348,10 +342,10 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param invalidKeyVersion If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-         * this Project (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the correct permissions on it,
-         * etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-         * top-down.
+         * @param invalidKeyVersion If the field is true, that indicates that there is some configuration issue with the active_key_version
+         * configured on this Project (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the
+         * correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+         * as key versions are inherited top-down.
          * 
          * @return builder
          * 
@@ -419,8 +413,7 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param project -
-         * (Optional, Deprecated)
+         * @param project (Optional, Deprecated)
          * Deprecated in favor of `project_id`
          * 
          * @return builder
@@ -436,8 +429,7 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param project -
-         * (Optional, Deprecated)
+         * @param project (Optional, Deprecated)
          * Deprecated in favor of `project_id`
          * 
          * @return builder

@@ -129,16 +129,16 @@ public class Agent extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.avatarUri);
     }
     /**
-     * The URI of the agent&#39;s avatar as returned from the API. Output only. To provide an image URL for the agent avatar, the
-     * [avatarUri] field can be used.
+     * The URI of the agent&#39;s avatar as returned from the API. Output only. To provide an image URL for the agent avatar,
+     * the [avatarUri] field can be used.
      * 
      */
     @Export(name="avatarUriBackend", type=String.class, parameters={})
     private Output<String> avatarUriBackend;
 
     /**
-     * @return The URI of the agent&#39;s avatar as returned from the API. Output only. To provide an image URL for the agent avatar, the
-     * [avatarUri] field can be used.
+     * @return The URI of the agent&#39;s avatar as returned from the API. Output only. To provide an image URL for the agent avatar,
+     * the [avatarUri] field can be used.
      * 
      */
     public Output<String> avatarUriBackend() {

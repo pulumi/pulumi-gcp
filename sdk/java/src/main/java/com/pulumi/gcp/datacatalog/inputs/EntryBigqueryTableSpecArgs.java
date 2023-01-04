@@ -18,23 +18,51 @@ public final class EntryBigqueryTableSpecArgs extends com.pulumi.resources.Resou
 
     public static final EntryBigqueryTableSpecArgs Empty = new EntryBigqueryTableSpecArgs();
 
+    /**
+     * The table source type.
+     * 
+     */
     @Import(name="tableSourceType")
     private @Nullable Output<String> tableSourceType;
 
+    /**
+     * @return The table source type.
+     * 
+     */
     public Optional<Output<String>> tableSourceType() {
         return Optional.ofNullable(this.tableSourceType);
     }
 
+    /**
+     * Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="tableSpecs")
     private @Nullable Output<List<EntryBigqueryTableSpecTableSpecArgs>> tableSpecs;
 
+    /**
+     * @return Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<List<EntryBigqueryTableSpecTableSpecArgs>>> tableSpecs() {
         return Optional.ofNullable(this.tableSpecs);
     }
 
+    /**
+     * Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="viewSpecs")
     private @Nullable Output<List<EntryBigqueryTableSpecViewSpecArgs>> viewSpecs;
 
+    /**
+     * @return Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<List<EntryBigqueryTableSpecViewSpecArgs>>> viewSpecs() {
         return Optional.ofNullable(this.viewSpecs);
     }
@@ -65,37 +93,91 @@ public final class EntryBigqueryTableSpecArgs extends com.pulumi.resources.Resou
             $ = new EntryBigqueryTableSpecArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param tableSourceType The table source type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tableSourceType(@Nullable Output<String> tableSourceType) {
             $.tableSourceType = tableSourceType;
             return this;
         }
 
+        /**
+         * @param tableSourceType The table source type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tableSourceType(String tableSourceType) {
             return tableSourceType(Output.of(tableSourceType));
         }
 
+        /**
+         * @param tableSpecs Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tableSpecs(@Nullable Output<List<EntryBigqueryTableSpecTableSpecArgs>> tableSpecs) {
             $.tableSpecs = tableSpecs;
             return this;
         }
 
+        /**
+         * @param tableSpecs Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tableSpecs(List<EntryBigqueryTableSpecTableSpecArgs> tableSpecs) {
             return tableSpecs(Output.of(tableSpecs));
         }
 
+        /**
+         * @param tableSpecs Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tableSpecs(EntryBigqueryTableSpecTableSpecArgs... tableSpecs) {
             return tableSpecs(List.of(tableSpecs));
         }
 
+        /**
+         * @param viewSpecs Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder viewSpecs(@Nullable Output<List<EntryBigqueryTableSpecViewSpecArgs>> viewSpecs) {
             $.viewSpecs = viewSpecs;
             return this;
         }
 
+        /**
+         * @param viewSpecs Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder viewSpecs(List<EntryBigqueryTableSpecViewSpecArgs> viewSpecs) {
             return viewSpecs(Output.of(viewSpecs));
         }
 
+        /**
+         * @param viewSpecs Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder viewSpecs(EntryBigqueryTableSpecViewSpecArgs... viewSpecs) {
             return viewSpecs(List.of(viewSpecs));
         }

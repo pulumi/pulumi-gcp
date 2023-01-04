@@ -14,17 +14,49 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobStatus {
+    /**
+     * @return Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable List<JobStatusErrorResult> errorResults;
+    /**
+     * @return The first errors encountered during the running of the job. The final message
+     * includes the number of errors that caused the process to stop. Errors here do
+     * not necessarily mean that the job has not completed or was unsuccessful.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable List<JobStatusError> errors;
+    /**
+     * @return Running state of the job. Valid states include &#39;PENDING&#39;, &#39;RUNNING&#39;, and &#39;DONE&#39;.
+     * 
+     */
     private @Nullable String state;
 
     private JobStatus() {}
+    /**
+     * @return Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
+     * Structure is documented below.
+     * 
+     */
     public List<JobStatusErrorResult> errorResults() {
         return this.errorResults == null ? List.of() : this.errorResults;
     }
+    /**
+     * @return The first errors encountered during the running of the job. The final message
+     * includes the number of errors that caused the process to stop. Errors here do
+     * not necessarily mean that the job has not completed or was unsuccessful.
+     * Structure is documented below.
+     * 
+     */
     public List<JobStatusError> errors() {
         return this.errors == null ? List.of() : this.errors;
     }
+    /**
+     * @return Running state of the job. Valid states include &#39;PENDING&#39;, &#39;RUNNING&#39;, and &#39;DONE&#39;.
+     * 
+     */
     public Optional<String> state() {
         return Optional.ofNullable(this.state);
     }

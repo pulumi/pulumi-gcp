@@ -16,7 +16,15 @@ public final class JobStatusError {
      * 
      */
     private @Nullable String location;
+    /**
+     * @return A human-readable description of the error.
+     * 
+     */
     private @Nullable String message;
+    /**
+     * @return A short error code that summarizes the error.
+     * 
+     */
     private @Nullable String reason;
 
     private JobStatusError() {}
@@ -27,9 +35,17 @@ public final class JobStatusError {
     public Optional<String> location() {
         return Optional.ofNullable(this.location);
     }
+    /**
+     * @return A human-readable description of the error.
+     * 
+     */
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
+    /**
+     * @return A short error code that summarizes the error.
+     * 
+     */
     public Optional<String> reason() {
         return Optional.ofNullable(this.reason);
     }

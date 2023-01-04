@@ -141,16 +141,14 @@ public class EntryGroup extends com.pulumi.resources.CustomResource {
         return this.entryGroupId;
     }
     /**
-     * The resource name of the entry group in URL format. Example:
-     * projects/{project}/locations/{location}/entryGroups/{entryGroupId}
+     * The resource name of the entry group in URL format. Example: projects/{project}/locations/{location}/entryGroups/{entryGroupId}
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The resource name of the entry group in URL format. Example:
-     * projects/{project}/locations/{location}/entryGroups/{entryGroupId}
+     * @return The resource name of the entry group in URL format. Example: projects/{project}/locations/{location}/entryGroups/{entryGroupId}
      * 
      */
     public Output<String> name() {

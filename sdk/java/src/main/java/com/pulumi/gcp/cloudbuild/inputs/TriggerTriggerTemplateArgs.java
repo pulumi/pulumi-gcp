@@ -17,18 +17,16 @@ public final class TriggerTriggerTemplateArgs extends com.pulumi.resources.Resou
     public static final TriggerTriggerTemplateArgs Empty = new TriggerTriggerTemplateArgs();
 
     /**
-     * Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-     * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-     * described at https://github.com/google/re2/wiki/Syntax
+     * Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+     * This field is a regular expression.
      * 
      */
     @Import(name="branchName")
     private @Nullable Output<String> branchName;
 
     /**
-     * @return Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-     * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-     * described at https://github.com/google/re2/wiki/Syntax
+     * @return Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+     * This field is a regular expression.
      * 
      */
     public Optional<Output<String>> branchName() {
@@ -36,14 +34,14 @@ public final class TriggerTriggerTemplateArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+     * Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
      * 
      */
     @Import(name="commitSha")
     private @Nullable Output<String> commitSha;
 
     /**
-     * @return Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+     * @return Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
      * 
      */
     public Optional<Output<String>> commitSha() {
@@ -51,30 +49,20 @@ public final class TriggerTriggerTemplateArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Working directory to use when running this step&#39;s container.
-     * If this value is a relative path, it is relative to the build&#39;s working
-     * directory. If this value is absolute, it may be outside the build&#39;s working
-     * directory, in which case the contents of the path may not be persisted
-     * across build step executions, unless a `volume` for that path is specified.
-     * If the build specifies a `RepoSource` with `dir` and a step with a
-     * `dir`,
-     * which specifies an absolute path, the `RepoSource` `dir` is ignored
-     * for the step&#39;s execution.
+     * Directory, relative to the source root, in which to run the build.
+     * This must be a relative path. If a step&#39;s dir is specified and
+     * is an absolute path, this value is ignored for that step&#39;s
+     * execution.
      * 
      */
     @Import(name="dir")
     private @Nullable Output<String> dir;
 
     /**
-     * @return Working directory to use when running this step&#39;s container.
-     * If this value is a relative path, it is relative to the build&#39;s working
-     * directory. If this value is absolute, it may be outside the build&#39;s working
-     * directory, in which case the contents of the path may not be persisted
-     * across build step executions, unless a `volume` for that path is specified.
-     * If the build specifies a `RepoSource` with `dir` and a step with a
-     * `dir`,
-     * which specifies an absolute path, the `RepoSource` `dir` is ignored
-     * for the step&#39;s execution.
+     * @return Directory, relative to the source root, in which to run the build.
+     * This must be a relative path. If a step&#39;s dir is specified and
+     * is an absolute path, this value is ignored for that step&#39;s
+     * execution.
      * 
      */
     public Optional<Output<String>> dir() {
@@ -97,16 +85,16 @@ public final class TriggerTriggerTemplateArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * ID of the project that owns the Cloud Source Repository.
-     * If omitted, the project ID requesting the build is assumed.
+     * ID of the project that owns the Cloud Source Repository. If
+     * omitted, the project ID requesting the build is assumed.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return ID of the project that owns the Cloud Source Repository.
-     * If omitted, the project ID requesting the build is assumed.
+     * @return ID of the project that owns the Cloud Source Repository. If
+     * omitted, the project ID requesting the build is assumed.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -114,14 +102,14 @@ public final class TriggerTriggerTemplateArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Name of the Cloud Source Repository.
+     * Name of the Cloud Source Repository. If omitted, the name &#34;default&#34; is assumed.
      * 
      */
     @Import(name="repoName")
     private @Nullable Output<String> repoName;
 
     /**
-     * @return Name of the Cloud Source Repository.
+     * @return Name of the Cloud Source Repository. If omitted, the name &#34;default&#34; is assumed.
      * 
      */
     public Optional<Output<String>> repoName() {
@@ -129,18 +117,16 @@ public final class TriggerTriggerTemplateArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-     * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-     * described at https://github.com/google/re2/wiki/Syntax
+     * Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+     * This field is a regular expression.
      * 
      */
     @Import(name="tagName")
     private @Nullable Output<String> tagName;
 
     /**
-     * @return Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-     * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-     * described at https://github.com/google/re2/wiki/Syntax
+     * @return Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+     * This field is a regular expression.
      * 
      */
     public Optional<Output<String>> tagName() {
@@ -178,9 +164,8 @@ public final class TriggerTriggerTemplateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param branchName Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-         * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-         * described at https://github.com/google/re2/wiki/Syntax
+         * @param branchName Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+         * This field is a regular expression.
          * 
          * @return builder
          * 
@@ -191,9 +176,8 @@ public final class TriggerTriggerTemplateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param branchName Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-         * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-         * described at https://github.com/google/re2/wiki/Syntax
+         * @param branchName Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+         * This field is a regular expression.
          * 
          * @return builder
          * 
@@ -203,7 +187,7 @@ public final class TriggerTriggerTemplateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param commitSha Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+         * @param commitSha Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
          * 
          * @return builder
          * 
@@ -214,7 +198,7 @@ public final class TriggerTriggerTemplateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param commitSha Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+         * @param commitSha Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
          * 
          * @return builder
          * 
@@ -224,15 +208,10 @@ public final class TriggerTriggerTemplateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param dir Working directory to use when running this step&#39;s container.
-         * If this value is a relative path, it is relative to the build&#39;s working
-         * directory. If this value is absolute, it may be outside the build&#39;s working
-         * directory, in which case the contents of the path may not be persisted
-         * across build step executions, unless a `volume` for that path is specified.
-         * If the build specifies a `RepoSource` with `dir` and a step with a
-         * `dir`,
-         * which specifies an absolute path, the `RepoSource` `dir` is ignored
-         * for the step&#39;s execution.
+         * @param dir Directory, relative to the source root, in which to run the build.
+         * This must be a relative path. If a step&#39;s dir is specified and
+         * is an absolute path, this value is ignored for that step&#39;s
+         * execution.
          * 
          * @return builder
          * 
@@ -243,15 +222,10 @@ public final class TriggerTriggerTemplateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param dir Working directory to use when running this step&#39;s container.
-         * If this value is a relative path, it is relative to the build&#39;s working
-         * directory. If this value is absolute, it may be outside the build&#39;s working
-         * directory, in which case the contents of the path may not be persisted
-         * across build step executions, unless a `volume` for that path is specified.
-         * If the build specifies a `RepoSource` with `dir` and a step with a
-         * `dir`,
-         * which specifies an absolute path, the `RepoSource` `dir` is ignored
-         * for the step&#39;s execution.
+         * @param dir Directory, relative to the source root, in which to run the build.
+         * This must be a relative path. If a step&#39;s dir is specified and
+         * is an absolute path, this value is ignored for that step&#39;s
+         * execution.
          * 
          * @return builder
          * 
@@ -282,8 +256,8 @@ public final class TriggerTriggerTemplateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param projectId ID of the project that owns the Cloud Source Repository.
-         * If omitted, the project ID requesting the build is assumed.
+         * @param projectId ID of the project that owns the Cloud Source Repository. If
+         * omitted, the project ID requesting the build is assumed.
          * 
          * @return builder
          * 
@@ -294,8 +268,8 @@ public final class TriggerTriggerTemplateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param projectId ID of the project that owns the Cloud Source Repository.
-         * If omitted, the project ID requesting the build is assumed.
+         * @param projectId ID of the project that owns the Cloud Source Repository. If
+         * omitted, the project ID requesting the build is assumed.
          * 
          * @return builder
          * 
@@ -305,7 +279,7 @@ public final class TriggerTriggerTemplateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param repoName Name of the Cloud Source Repository.
+         * @param repoName Name of the Cloud Source Repository. If omitted, the name &#34;default&#34; is assumed.
          * 
          * @return builder
          * 
@@ -316,7 +290,7 @@ public final class TriggerTriggerTemplateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param repoName Name of the Cloud Source Repository.
+         * @param repoName Name of the Cloud Source Repository. If omitted, the name &#34;default&#34; is assumed.
          * 
          * @return builder
          * 
@@ -326,9 +300,8 @@ public final class TriggerTriggerTemplateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param tagName Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-         * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-         * described at https://github.com/google/re2/wiki/Syntax
+         * @param tagName Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+         * This field is a regular expression.
          * 
          * @return builder
          * 
@@ -339,9 +312,8 @@ public final class TriggerTriggerTemplateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param tagName Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-         * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-         * described at https://github.com/google/re2/wiki/Syntax
+         * @param tagName Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+         * This field is a regular expression.
          * 
          * @return builder
          * 

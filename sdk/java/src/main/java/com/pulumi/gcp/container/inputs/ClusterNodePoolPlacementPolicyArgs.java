@@ -14,14 +14,16 @@ public final class ClusterNodePoolPlacementPolicyArgs extends com.pulumi.resourc
     public static final ClusterNodePoolPlacementPolicyArgs Empty = new ClusterNodePoolPlacementPolicyArgs();
 
     /**
-     * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+     * Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
+     * `SYSTEM_ONLY` (Only system components are monitored and logged) is only available in GKE versions 1.15 and later.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+     * @return Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
+     * `SYSTEM_ONLY` (Only system components are monitored and logged) is only available in GKE versions 1.15 and later.
      * 
      */
     public Output<String> type() {
@@ -53,7 +55,8 @@ public final class ClusterNodePoolPlacementPolicyArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param type The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         * @param type Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
+         * `SYSTEM_ONLY` (Only system components are monitored and logged) is only available in GKE versions 1.15 and later.
          * 
          * @return builder
          * 
@@ -64,7 +67,8 @@ public final class ClusterNodePoolPlacementPolicyArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param type The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         * @param type Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
+         * `SYSTEM_ONLY` (Only system components are monitored and logged) is only available in GKE versions 1.15 and later.
          * 
          * @return builder
          * 

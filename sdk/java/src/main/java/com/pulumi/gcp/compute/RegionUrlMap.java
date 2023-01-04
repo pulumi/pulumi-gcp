@@ -790,18 +790,26 @@ public class RegionUrlMap extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.defaultRouteAction);
     }
     /**
-     * A reference to a RegionBackendService resource. This will be used if
-     * none of the pathRules defined by this PathMatcher is matched by
-     * the URL&#39;s path portion.
+     * The full or partial URL of the defaultService resource to which traffic is directed if
+     * none of the hostRules match. If defaultRouteAction is additionally specified, advanced
+     * routing actions like URL Rewrites, etc. take effect prior to sending the request to the
+     * backend. However, if defaultService is specified, defaultRouteAction cannot contain any
+     * weightedBackendServices. Conversely, if routeAction specifies any
+     * weightedBackendServices, service must not be specified.  Only one of defaultService,
+     * defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set.
      * 
      */
     @Export(name="defaultService", type=String.class, parameters={})
     private Output</* @Nullable */ String> defaultService;
 
     /**
-     * @return A reference to a RegionBackendService resource. This will be used if
-     * none of the pathRules defined by this PathMatcher is matched by
-     * the URL&#39;s path portion.
+     * @return The full or partial URL of the defaultService resource to which traffic is directed if
+     * none of the hostRules match. If defaultRouteAction is additionally specified, advanced
+     * routing actions like URL Rewrites, etc. take effect prior to sending the request to the
+     * backend. However, if defaultService is specified, defaultRouteAction cannot contain any
+     * weightedBackendServices. Conversely, if routeAction specifies any
+     * weightedBackendServices, service must not be specified.  Only one of defaultService,
+     * defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set.
      * 
      */
     public Output<Optional<String>> defaultService() {
@@ -828,28 +836,32 @@ public class RegionUrlMap extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.defaultUrlRedirect);
     }
     /**
-     * Description of this test case.
+     * An optional description of this resource. Provide this property when
+     * you create the resource.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of this test case.
+     * @return An optional description of this resource. Provide this property when
+     * you create the resource.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Fingerprint of this resource. This field is used internally during updates of this resource.
+     * Fingerprint of this resource. This field is used internally during
+     * updates of this resource.
      * 
      */
     @Export(name="fingerprint", type=String.class, parameters={})
     private Output<String> fingerprint;
 
     /**
-     * @return Fingerprint of this resource. This field is used internally during updates of this resource.
+     * @return Fingerprint of this resource. This field is used internally during
+     * updates of this resource.
      * 
      */
     public Output<String> fingerprint() {
@@ -886,32 +898,42 @@ public class RegionUrlMap extends com.pulumi.resources.CustomResource {
         return this.mapId;
     }
     /**
-     * The name of the query parameter to match. The query parameter must exist in the
-     * request, in the absence of which the request match fails.
+     * Name of the resource. Provided by the client when the resource is
+     * created. The name must be 1-63 characters long, and comply with
+     * RFC1035. Specifically, the name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The name of the query parameter to match. The query parameter must exist in the
-     * request, in the absence of which the request match fails.
+     * @return Name of the resource. Provided by the client when the resource is
+     * created. The name must be 1-63 characters long, and comply with
+     * RFC1035. Specifically, the name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The name of the PathMatcher to use to match the path portion of
-     * the URL if the hostRule matches the URL&#39;s host portion.
+     * The list of named PathMatchers to use against the URL.
+     * Structure is documented below.
      * 
      */
     @Export(name="pathMatchers", type=List.class, parameters={RegionUrlMapPathMatcher.class})
     private Output</* @Nullable */ List<RegionUrlMapPathMatcher>> pathMatchers;
 
     /**
-     * @return The name of the PathMatcher to use to match the path portion of
-     * the URL if the hostRule matches the URL&#39;s host portion.
+     * @return The list of named PathMatchers to use against the URL.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<List<RegionUrlMapPathMatcher>>> pathMatchers() {

@@ -37,8 +37,7 @@ public final class ServiceTraffic {
      */
     private @Nullable String tag;
     /**
-     * @return -
-     * URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+     * @return URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
      * and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
      * but may not contain anything else (e.g. basic auth, url path, etc.)
      * 
@@ -78,8 +77,7 @@ public final class ServiceTraffic {
         return Optional.ofNullable(this.tag);
     }
     /**
-     * @return -
-     * URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+     * @return URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
      * and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
      * but may not contain anything else (e.g. basic auth, url path, etc.)
      * 

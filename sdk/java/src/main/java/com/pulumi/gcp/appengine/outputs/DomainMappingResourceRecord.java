@@ -11,17 +11,43 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DomainMappingResourceRecord {
+    /**
+     * @return Relative name of the object affected by this record. Only applicable for CNAME records. Example: &#39;www&#39;.
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
+     * 
+     */
     private @Nullable String rrdata;
+    /**
+     * @return Resource record type. Example: `AAAA`.
+     * Possible values are `A`, `AAAA`, and `CNAME`.
+     * 
+     */
     private @Nullable String type;
 
     private DomainMappingResourceRecord() {}
+    /**
+     * @return Relative name of the object affected by this record. Only applicable for CNAME records. Example: &#39;www&#39;.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
+     * 
+     */
     public Optional<String> rrdata() {
         return Optional.ofNullable(this.rrdata);
     }
+    /**
+     * @return Resource record type. Example: `AAAA`.
+     * Possible values are `A`, `AAAA`, and `CNAME`.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

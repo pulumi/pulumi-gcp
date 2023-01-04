@@ -10,16 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class ClusterConfidentialNodes {
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Enable Confidential Nodes for this cluster.
      * 
      */
     private Boolean enabled;
 
     private ClusterConfidentialNodes() {}
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Enable Confidential Nodes for this cluster.
      * 
      */
     public Boolean enabled() {

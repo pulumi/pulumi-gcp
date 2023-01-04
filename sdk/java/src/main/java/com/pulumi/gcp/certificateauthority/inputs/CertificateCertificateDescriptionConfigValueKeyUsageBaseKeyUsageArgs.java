@@ -16,9 +16,19 @@ public final class CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUs
 
     public static final CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageArgs Empty = new CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageArgs();
 
+    /**
+     * Describes high-level ways in which a key may be used.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="keyUsageOptions")
     private @Nullable Output<List<CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArgs>> keyUsageOptions;
 
+    /**
+     * @return Describes high-level ways in which a key may be used.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<List<CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArgs>>> keyUsageOptions() {
         return Optional.ofNullable(this.keyUsageOptions);
     }
@@ -47,15 +57,36 @@ public final class CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUs
             $ = new CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param keyUsageOptions Describes high-level ways in which a key may be used.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyUsageOptions(@Nullable Output<List<CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArgs>> keyUsageOptions) {
             $.keyUsageOptions = keyUsageOptions;
             return this;
         }
 
+        /**
+         * @param keyUsageOptions Describes high-level ways in which a key may be used.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyUsageOptions(List<CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArgs> keyUsageOptions) {
             return keyUsageOptions(Output.of(keyUsageOptions));
         }
 
+        /**
+         * @param keyUsageOptions Describes high-level ways in which a key may be used.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keyUsageOptions(CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArgs... keyUsageOptions) {
             return keyUsageOptions(List.of(keyUsageOptions));
         }

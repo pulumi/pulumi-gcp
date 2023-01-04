@@ -12,16 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InboundSamlConfigIdpConfigIdpCertificate {
     /**
-     * @return -
-     * The x509 certificate
+     * @return The IdP&#39;s x509 certificate.
      * 
      */
     private @Nullable String x509Certificate;
 
     private InboundSamlConfigIdpConfigIdpCertificate() {}
     /**
-     * @return -
-     * The x509 certificate
+     * @return The IdP&#39;s x509 certificate.
      * 
      */
     public Optional<String> x509Certificate() {

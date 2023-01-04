@@ -12,14 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AutoscalingPolicyWorkerConfig {
     /**
-     * @return Maximum number of instances for this group. Note that by default, clusters will not use
-     * secondary workers. Required for secondary workers if the minimum secondary instances is set.
-     * Bounds: [minInstances, ). Defaults to 0.
+     * @return Maximum number of instances for this group.
      * 
      */
     private Integer maxInstances;
     /**
-     * @return Minimum number of instances for this group. Bounds: [0, maxInstances]. Defaults to 0.
+     * @return Minimum number of instances for this group. Bounds: [2, maxInstances]. Defaults to 2.
      * 
      */
     private @Nullable Integer minInstances;
@@ -42,16 +40,14 @@ public final class AutoscalingPolicyWorkerConfig {
 
     private AutoscalingPolicyWorkerConfig() {}
     /**
-     * @return Maximum number of instances for this group. Note that by default, clusters will not use
-     * secondary workers. Required for secondary workers if the minimum secondary instances is set.
-     * Bounds: [minInstances, ). Defaults to 0.
+     * @return Maximum number of instances for this group.
      * 
      */
     public Integer maxInstances() {
         return this.maxInstances;
     }
     /**
-     * @return Minimum number of instances for this group. Bounds: [0, maxInstances]. Defaults to 0.
+     * @return Minimum number of instances for this group. Bounds: [2, maxInstances]. Defaults to 2.
      * 
      */
     public Optional<Integer> minInstances() {
