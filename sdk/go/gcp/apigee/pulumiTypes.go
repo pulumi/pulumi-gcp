@@ -337,7 +337,6 @@ func (o EnvironmentIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type EnvironmentNodeConfig struct {
-	// -
 	// The current total number of gateway nodes that each environment currently has across
 	// all instances.
 	CurrentAggregateNodeCount *string `pulumi:"currentAggregateNodeCount"`
@@ -363,7 +362,6 @@ type EnvironmentNodeConfigInput interface {
 }
 
 type EnvironmentNodeConfigArgs struct {
-	// -
 	// The current total number of gateway nodes that each environment currently has across
 	// all instances.
 	CurrentAggregateNodeCount pulumi.StringPtrInput `pulumi:"currentAggregateNodeCount"`
@@ -454,7 +452,6 @@ func (o EnvironmentNodeConfigOutput) ToEnvironmentNodeConfigPtrOutputWithContext
 	}).(EnvironmentNodeConfigPtrOutput)
 }
 
-// -
 // The current total number of gateway nodes that each environment currently has across
 // all instances.
 func (o EnvironmentNodeConfigOutput) CurrentAggregateNodeCount() pulumi.StringPtrOutput {
@@ -499,7 +496,6 @@ func (o EnvironmentNodeConfigPtrOutput) Elem() EnvironmentNodeConfigOutput {
 	}).(EnvironmentNodeConfigOutput)
 }
 
-// -
 // The current total number of gateway nodes that each environment currently has across
 // all instances.
 func (o EnvironmentNodeConfigPtrOutput) CurrentAggregateNodeCount() pulumi.StringPtrOutput {

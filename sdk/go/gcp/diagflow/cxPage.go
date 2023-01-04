@@ -146,7 +146,7 @@ import (
 type CxPage struct {
 	pulumi.CustomResourceState
 
-	// The human-readable name of the parameter, unique within the form.
+	// The human-readable name of the page, unique within the agent.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
 	// Structure is documented below.
@@ -170,7 +170,7 @@ type CxPage struct {
 	// Page.transition_routes.trigger_fulfillment.conditional_cases
 	// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode pulumi.StringPtrOutput `pulumi:"languageCode"`
-	// -
+	// The unique identifier of this transition route.
 	// The unique identifier of this event handler.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The flow to create a page for.
@@ -225,7 +225,7 @@ func GetCxPage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CxPage resources.
 type cxPageState struct {
-	// The human-readable name of the parameter, unique within the form.
+	// The human-readable name of the page, unique within the agent.
 	DisplayName *string `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
 	// Structure is documented below.
@@ -249,7 +249,7 @@ type cxPageState struct {
 	// Page.transition_routes.trigger_fulfillment.conditional_cases
 	// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode *string `pulumi:"languageCode"`
-	// -
+	// The unique identifier of this transition route.
 	// The unique identifier of this event handler.
 	Name *string `pulumi:"name"`
 	// The flow to create a page for.
@@ -273,7 +273,7 @@ type cxPageState struct {
 }
 
 type CxPageState struct {
-	// The human-readable name of the parameter, unique within the form.
+	// The human-readable name of the page, unique within the agent.
 	DisplayName pulumi.StringPtrInput
 	// The fulfillment to call when the session is entering the page.
 	// Structure is documented below.
@@ -297,7 +297,7 @@ type CxPageState struct {
 	// Page.transition_routes.trigger_fulfillment.conditional_cases
 	// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode pulumi.StringPtrInput
-	// -
+	// The unique identifier of this transition route.
 	// The unique identifier of this event handler.
 	Name pulumi.StringPtrInput
 	// The flow to create a page for.
@@ -325,7 +325,7 @@ func (CxPageState) ElementType() reflect.Type {
 }
 
 type cxPageArgs struct {
-	// The human-readable name of the parameter, unique within the form.
+	// The human-readable name of the page, unique within the agent.
 	DisplayName string `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
 	// Structure is documented below.
@@ -371,7 +371,7 @@ type cxPageArgs struct {
 
 // The set of arguments for constructing a CxPage resource.
 type CxPageArgs struct {
-	// The human-readable name of the parameter, unique within the form.
+	// The human-readable name of the page, unique within the agent.
 	DisplayName pulumi.StringInput
 	// The fulfillment to call when the session is entering the page.
 	// Structure is documented below.
@@ -502,7 +502,7 @@ func (o CxPageOutput) ToCxPageOutputWithContext(ctx context.Context) CxPageOutpu
 	return o
 }
 
-// The human-readable name of the parameter, unique within the form.
+// The human-readable name of the page, unique within the agent.
 func (o CxPageOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxPage) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -541,7 +541,7 @@ func (o CxPageOutput) LanguageCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxPage) pulumi.StringPtrOutput { return v.LanguageCode }).(pulumi.StringPtrOutput)
 }
 
-// -
+// The unique identifier of this transition route.
 // The unique identifier of this event handler.
 func (o CxPageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxPage) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)

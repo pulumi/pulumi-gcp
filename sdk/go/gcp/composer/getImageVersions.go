@@ -34,7 +34,7 @@ import (
 //				Region: pulumi.String("us-central1"),
 //				Config: &composer.EnvironmentConfigArgs{
 //					SoftwareConfig: &composer.EnvironmentConfigSoftwareConfigArgs{
-//						ImageVersion: pulumi.String(all.ImageVersions[0].ImageVersionId),
+//						ImageVersion: *pulumi.String(all.ImageVersions[0].ImageVersionId),
 //					},
 //				},
 //			})

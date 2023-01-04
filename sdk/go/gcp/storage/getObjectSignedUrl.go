@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = storage.GetObjectSignedUrl(ctx, &storage.GetObjectSignedUrlArgs{
+//			_, err := storage.GetObjectSignedUrl(ctx, &storage.GetObjectSignedUrlArgs{
 //				Bucket: "install_binaries",
 //				Path:   "path/to/install_file.bin",
 //			}, nil)
@@ -69,7 +69,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = storage.GetObjectSignedUrl(ctx, &storage.GetObjectSignedUrlArgs{
+//			_, err := storage.GetObjectSignedUrl(ctx, &storage.GetObjectSignedUrlArgs{
 //				Bucket:      "fried_chicken",
 //				Path:        "path/to/file",
 //				ContentMd5:  pulumi.StringRef("pRviqwS4c4OTJRTe03FD1w=="),

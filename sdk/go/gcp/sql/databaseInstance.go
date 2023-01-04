@@ -190,11 +190,15 @@ type DatabaseInstance struct {
 	// act as the master in the replication setup. Note, this requires the master to
 	// have `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName pulumi.StringOutput `pulumi:"masterInstanceName"`
-	// A name for this whitelist entry.
+	// The name of the instance. If the name is left
+	// blank, the provider will randomly generate one when the instance is first
+	// created. This is done because after a name is used, it cannot be reused for
+	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The first private (`PRIVATE`) IPv4 address assigned.
 	PrivateIpAddress pulumi.StringOutput `pulumi:"privateIpAddress"`
-	// The full project ID of the source instance.`
+	// The ID of the project in which the resource belongs. If it
+	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The first public (`PRIMARY`) IPv4 address assigned.
 	PublicIpAddress pulumi.StringOutput `pulumi:"publicIpAddress"`
@@ -233,7 +237,7 @@ func NewDatabaseInstance(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'DatabaseVersion'")
 	}
 	if args.RootPassword != nil {
-		args.RootPassword = pulumi.ToSecret(args.RootPassword).(pulumi.StringPtrOutput)
+		args.RootPassword = pulumi.ToSecret(args.RootPassword).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"rootPassword",
@@ -303,11 +307,15 @@ type databaseInstanceState struct {
 	// act as the master in the replication setup. Note, this requires the master to
 	// have `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName *string `pulumi:"masterInstanceName"`
-	// A name for this whitelist entry.
+	// The name of the instance. If the name is left
+	// blank, the provider will randomly generate one when the instance is first
+	// created. This is done because after a name is used, it cannot be reused for
+	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name *string `pulumi:"name"`
 	// The first private (`PRIVATE`) IPv4 address assigned.
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
-	// The full project ID of the source instance.`
+	// The ID of the project in which the resource belongs. If it
+	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The first public (`PRIMARY`) IPv4 address assigned.
 	PublicIpAddress *string `pulumi:"publicIpAddress"`
@@ -378,11 +386,15 @@ type DatabaseInstanceState struct {
 	// act as the master in the replication setup. Note, this requires the master to
 	// have `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName pulumi.StringPtrInput
-	// A name for this whitelist entry.
+	// The name of the instance. If the name is left
+	// blank, the provider will randomly generate one when the instance is first
+	// created. This is done because after a name is used, it cannot be reused for
+	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name pulumi.StringPtrInput
 	// The first private (`PRIVATE`) IPv4 address assigned.
 	PrivateIpAddress pulumi.StringPtrInput
-	// The full project ID of the source instance.`
+	// The ID of the project in which the resource belongs. If it
+	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The first public (`PRIMARY`) IPv4 address assigned.
 	PublicIpAddress pulumi.StringPtrInput
@@ -447,9 +459,13 @@ type databaseInstanceArgs struct {
 	// act as the master in the replication setup. Note, this requires the master to
 	// have `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName *string `pulumi:"masterInstanceName"`
-	// A name for this whitelist entry.
+	// The name of the instance. If the name is left
+	// blank, the provider will randomly generate one when the instance is first
+	// created. This is done because after a name is used, it cannot be reused for
+	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name *string `pulumi:"name"`
-	// The full project ID of the source instance.`
+	// The ID of the project in which the resource belongs. If it
+	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The region the instance will sit in. If a region is not provided in the resource definition,
 	// the provider region will be used instead.
@@ -503,9 +519,13 @@ type DatabaseInstanceArgs struct {
 	// act as the master in the replication setup. Note, this requires the master to
 	// have `binaryLogEnabled` set, as well as existing backups.
 	MasterInstanceName pulumi.StringPtrInput
-	// A name for this whitelist entry.
+	// The name of the instance. If the name is left
+	// blank, the provider will randomly generate one when the instance is first
+	// created. This is done because after a name is used, it cannot be reused for
+	// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 	Name pulumi.StringPtrInput
-	// The full project ID of the source instance.`
+	// The ID of the project in which the resource belongs. If it
+	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The region the instance will sit in. If a region is not provided in the resource definition,
 	// the provider region will be used instead.
@@ -687,7 +707,10 @@ func (o DatabaseInstanceOutput) MasterInstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.MasterInstanceName }).(pulumi.StringOutput)
 }
 
-// A name for this whitelist entry.
+// The name of the instance. If the name is left
+// blank, the provider will randomly generate one when the instance is first
+// created. This is done because after a name is used, it cannot be reused for
+// up to [one week](https://cloud.google.com/sql/docs/delete-instance).
 func (o DatabaseInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -697,7 +720,8 @@ func (o DatabaseInstanceOutput) PrivateIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.PrivateIpAddress }).(pulumi.StringOutput)
 }
 
-// The full project ID of the source instance.`
+// The ID of the project in which the resource belongs. If it
+// is not provided, the provider project is used.
 func (o DatabaseInstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

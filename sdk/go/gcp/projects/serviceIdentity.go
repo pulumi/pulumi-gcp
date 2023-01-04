@@ -47,14 +47,14 @@ import (
 //				return err
 //			}
 //			hcSa, err := projects.NewServiceIdentity(ctx, "hcSa", &projects.ServiceIdentityArgs{
-//				Project: pulumi.String(project.ProjectId),
+//				Project: *pulumi.String(project.ProjectId),
 //				Service: pulumi.String("healthcare.googleapis.com"),
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
 //			}
 //			_, err = projects.NewIAMMember(ctx, "hcSaBqJobuser", &projects.IAMMemberArgs{
-//				Project: pulumi.String(project.ProjectId),
+//				Project: *pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/bigquery.jobUser"),
 //				Member: hcSa.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil

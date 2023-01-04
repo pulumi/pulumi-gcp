@@ -161,7 +161,7 @@ type EnvGroupAttachment struct {
 	EnvgroupId pulumi.StringOutput `pulumi:"envgroupId"`
 	// The resource ID of the environment.
 	Environment pulumi.StringOutput `pulumi:"environment"`
-	// The name of the newly created attachment (output parameter).
+	// The name of the newly created  attachment (output parameter).
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -205,7 +205,7 @@ type envGroupAttachmentState struct {
 	EnvgroupId *string `pulumi:"envgroupId"`
 	// The resource ID of the environment.
 	Environment *string `pulumi:"environment"`
-	// The name of the newly created attachment (output parameter).
+	// The name of the newly created  attachment (output parameter).
 	Name *string `pulumi:"name"`
 }
 
@@ -215,7 +215,7 @@ type EnvGroupAttachmentState struct {
 	EnvgroupId pulumi.StringPtrInput
 	// The resource ID of the environment.
 	Environment pulumi.StringPtrInput
-	// The name of the newly created attachment (output parameter).
+	// The name of the newly created  attachment (output parameter).
 	Name pulumi.StringPtrInput
 }
 
@@ -338,7 +338,7 @@ func (o EnvGroupAttachmentOutput) Environment() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnvGroupAttachment) pulumi.StringOutput { return v.Environment }).(pulumi.StringOutput)
 }
 
-// The name of the newly created attachment (output parameter).
+// The name of the newly created  attachment (output parameter).
 func (o EnvGroupAttachmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnvGroupAttachment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

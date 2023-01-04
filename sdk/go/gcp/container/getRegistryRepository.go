@@ -49,17 +49,20 @@ func GetRegistryRepository(ctx *pulumi.Context, args *GetRegistryRepositoryArgs,
 
 // A collection of arguments for invoking getRegistryRepository.
 type GetRegistryRepositoryArgs struct {
+	// The project ID that this repository is attached to.  If not provided, provider project will be used instead.
 	Project *string `pulumi:"project"`
-	Region  *string `pulumi:"region"`
+	// The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
+	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getRegistryRepository.
 type GetRegistryRepositoryResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id            string  `pulumi:"id"`
-	Project       string  `pulumi:"project"`
-	Region        *string `pulumi:"region"`
-	RepositoryUrl string  `pulumi:"repositoryUrl"`
+	Id      string  `pulumi:"id"`
+	Project string  `pulumi:"project"`
+	Region  *string `pulumi:"region"`
+	// The URL at which the repository can be accessed.
+	RepositoryUrl string `pulumi:"repositoryUrl"`
 }
 
 func GetRegistryRepositoryOutput(ctx *pulumi.Context, args GetRegistryRepositoryOutputArgs, opts ...pulumi.InvokeOption) GetRegistryRepositoryResultOutput {
@@ -77,8 +80,10 @@ func GetRegistryRepositoryOutput(ctx *pulumi.Context, args GetRegistryRepository
 
 // A collection of arguments for invoking getRegistryRepository.
 type GetRegistryRepositoryOutputArgs struct {
+	// The project ID that this repository is attached to.  If not provided, provider project will be used instead.
 	Project pulumi.StringPtrInput `pulumi:"project"`
-	Region  pulumi.StringPtrInput `pulumi:"region"`
+	// The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetRegistryRepositoryOutputArgs) ElementType() reflect.Type {
@@ -113,6 +118,7 @@ func (o GetRegistryRepositoryResultOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegistryRepositoryResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
+// The URL at which the repository can be accessed.
 func (o GetRegistryRepositoryResultOutput) RepositoryUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistryRepositoryResult) string { return v.RepositoryUrl }).(pulumi.StringOutput)
 }

@@ -97,7 +97,7 @@ import (
 type TagBinding struct {
 	pulumi.CustomResourceState
 
-	// The generated id for the TagBinding. This is a string of the form: 'tagBindings/{full-resource-name}/{tag-value-name}'
+	// The generated id for the TagBinding. This is a string of the form: `tagBindings/{full-resource-name}/{tag-value-name}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
 	Parent pulumi.StringOutput `pulumi:"parent"`
@@ -140,7 +140,7 @@ func GetTagBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TagBinding resources.
 type tagBindingState struct {
-	// The generated id for the TagBinding. This is a string of the form: 'tagBindings/{full-resource-name}/{tag-value-name}'
+	// The generated id for the TagBinding. This is a string of the form: `tagBindings/{full-resource-name}/{tag-value-name}`
 	Name *string `pulumi:"name"`
 	// The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
 	Parent *string `pulumi:"parent"`
@@ -149,7 +149,7 @@ type tagBindingState struct {
 }
 
 type TagBindingState struct {
-	// The generated id for the TagBinding. This is a string of the form: 'tagBindings/{full-resource-name}/{tag-value-name}'
+	// The generated id for the TagBinding. This is a string of the form: `tagBindings/{full-resource-name}/{tag-value-name}`
 	Name pulumi.StringPtrInput
 	// The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
 	Parent pulumi.StringPtrInput
@@ -263,7 +263,7 @@ func (o TagBindingOutput) ToTagBindingOutputWithContext(ctx context.Context) Tag
 	return o
 }
 
-// The generated id for the TagBinding. This is a string of the form: 'tagBindings/{full-resource-name}/{tag-value-name}'
+// The generated id for the TagBinding. This is a string of the form: `tagBindings/{full-resource-name}/{tag-value-name}`
 func (o TagBindingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagBinding) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -46,7 +46,7 @@ import (
 //			_, err = monitoring.NewAlertPolicy(ctx, "alertPolicy", &monitoring.AlertPolicyArgs{
 //				DisplayName: pulumi.String("My Alert Policy"),
 //				NotificationChannels: pulumi.StringArray{
-//					pulumi.String(basic.Name),
+//					*pulumi.String(basic.Name),
 //				},
 //				Combiner: pulumi.String("OR"),
 //				Conditions: monitoring.AlertPolicyConditionArray{
@@ -101,19 +101,26 @@ type LookupNotificationChannelArgs struct {
 
 // A collection of values returned by getNotificationChannel.
 type LookupNotificationChannelResult struct {
+	// An optional human-readable description of this notification channel.
 	Description string  `pulumi:"description"`
 	DisplayName *string `pulumi:"displayName"`
-	Enabled     bool    `pulumi:"enabled"`
-	ForceDelete bool    `pulumi:"forceDelete"`
+	// Whether notifications are forwarded to the described channel.
+	Enabled     bool `pulumi:"enabled"`
+	ForceDelete bool `pulumi:"forceDelete"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                 string                                 `pulumi:"id"`
-	Labels             map[string]string                      `pulumi:"labels"`
-	Name               string                                 `pulumi:"name"`
-	Project            *string                                `pulumi:"project"`
-	SensitiveLabels    []GetNotificationChannelSensitiveLabel `pulumi:"sensitiveLabels"`
-	Type               *string                                `pulumi:"type"`
-	UserLabels         map[string]string                      `pulumi:"userLabels"`
-	VerificationStatus string                                 `pulumi:"verificationStatus"`
+	Id string `pulumi:"id"`
+	// Configuration fields that define the channel and its behavior.
+	Labels map[string]string `pulumi:"labels"`
+	// The full REST resource name for this channel. The syntax is:
+	// `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`.
+	Name            string                                 `pulumi:"name"`
+	Project         *string                                `pulumi:"project"`
+	SensitiveLabels []GetNotificationChannelSensitiveLabel `pulumi:"sensitiveLabels"`
+	Type            *string                                `pulumi:"type"`
+	// User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field.
+	UserLabels map[string]string `pulumi:"userLabels"`
+	// Indicates whether this channel has been verified or not.
+	VerificationStatus string `pulumi:"verificationStatus"`
 }
 
 func LookupNotificationChannelOutput(ctx *pulumi.Context, args LookupNotificationChannelOutputArgs, opts ...pulumi.InvokeOption) LookupNotificationChannelResultOutput {
@@ -164,6 +171,7 @@ func (o LookupNotificationChannelResultOutput) ToLookupNotificationChannelResult
 	return o
 }
 
+// An optional human-readable description of this notification channel.
 func (o LookupNotificationChannelResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationChannelResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -172,6 +180,7 @@ func (o LookupNotificationChannelResultOutput) DisplayName() pulumi.StringPtrOut
 	return o.ApplyT(func(v LookupNotificationChannelResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// Whether notifications are forwarded to the described channel.
 func (o LookupNotificationChannelResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupNotificationChannelResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -185,10 +194,13 @@ func (o LookupNotificationChannelResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationChannelResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Configuration fields that define the channel and its behavior.
 func (o LookupNotificationChannelResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNotificationChannelResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+// The full REST resource name for this channel. The syntax is:
+// `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`.
 func (o LookupNotificationChannelResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationChannelResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -207,10 +219,12 @@ func (o LookupNotificationChannelResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNotificationChannelResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field.
 func (o LookupNotificationChannelResultOutput) UserLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNotificationChannelResult) map[string]string { return v.UserLabels }).(pulumi.StringMapOutput)
 }
 
+// Indicates whether this channel has been verified or not.
 func (o LookupNotificationChannelResultOutput) VerificationStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationChannelResult) string { return v.VerificationStatus }).(pulumi.StringOutput)
 }

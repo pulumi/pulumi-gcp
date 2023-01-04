@@ -335,7 +335,6 @@ type AlertPolicyCondition struct {
 	// display name for multiple conditions in the same
 	// policy.
 	DisplayName string `pulumi:"displayName"`
-	// -
 	// The unique resource name for this condition.
 	// Its syntax is:
 	// projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
@@ -378,7 +377,6 @@ type AlertPolicyConditionArgs struct {
 	// display name for multiple conditions in the same
 	// policy.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// -
 	// The unique resource name for this condition.
 	// Its syntax is:
 	// projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
@@ -477,7 +475,6 @@ func (o AlertPolicyConditionOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertPolicyCondition) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// -
 // The unique resource name for this condition.
 // Its syntax is:
 // projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
@@ -517,39 +514,34 @@ type AlertPolicyConditionConditionAbsent struct {
 	// resource or when aggregating streams across
 	// all members of a group of resources).
 	// Multiple aggregations are applied in the
-	// order specified.This field is similar to the
-	// one in the MetricService.ListTimeSeries
-	// request. It is advisable to use the
-	// ListTimeSeries method when debugging this
-	// field.
+	// order specified.
 	// Structure is documented below.
 	Aggregations []AlertPolicyConditionConditionAbsentAggregation `pulumi:"aggregations"`
 	// The amount of time that a time series must
-	// violate the threshold to be considered
+	// fail to report new data to be considered
 	// failing. Currently, only values that are a
-	// multiple of a minute--e.g., 0, 60, 120, or
-	// 300 seconds--are supported. If an invalid
-	// value is given, an error will be returned.
-	// When choosing a duration, it is useful to
-	// keep in mind the frequency of the underlying
-	// time series data (which may also be affected
-	// by any alignments specified in the
-	// aggregations field); a good duration is long
-	// enough so that a single outlier does not
-	// generate spurious alerts, but short enough
-	// that unhealthy states are detected and
-	// alerted on quickly.
+	// multiple of a minute--e.g. 60s, 120s, or 300s
+	// --are supported.
 	Duration string `pulumi:"duration"`
-	// A logs-based filter.
+	// A filter that identifies which time series
+	// should be compared with the threshold.The
+	// filter is similar to the one that is
+	// specified in the
+	// MetricService.ListTimeSeries request (that
+	// call is useful to verify the time series
+	// that will be retrieved / processed) and must
+	// specify the metric type and optionally may
+	// contain restrictions on resource type,
+	// resource labels, and metric labels. This
+	// field may not exceed 2048 Unicode characters
+	// in length.
 	Filter *string `pulumi:"filter"`
 	// The number/percent of time series for which
 	// the comparison must hold in order for the
 	// condition to trigger. If unspecified, then
 	// the condition will trigger if the comparison
 	// is true for any of the time series that have
-	// been identified by filter and aggregations,
-	// or by the ratio, if denominatorFilter and
-	// denominatorAggregations are specified.
+	// been identified by filter and aggregations.
 	// Structure is documented below.
 	Trigger *AlertPolicyConditionConditionAbsentTrigger `pulumi:"trigger"`
 }
@@ -574,39 +566,34 @@ type AlertPolicyConditionConditionAbsentArgs struct {
 	// resource or when aggregating streams across
 	// all members of a group of resources).
 	// Multiple aggregations are applied in the
-	// order specified.This field is similar to the
-	// one in the MetricService.ListTimeSeries
-	// request. It is advisable to use the
-	// ListTimeSeries method when debugging this
-	// field.
+	// order specified.
 	// Structure is documented below.
 	Aggregations AlertPolicyConditionConditionAbsentAggregationArrayInput `pulumi:"aggregations"`
 	// The amount of time that a time series must
-	// violate the threshold to be considered
+	// fail to report new data to be considered
 	// failing. Currently, only values that are a
-	// multiple of a minute--e.g., 0, 60, 120, or
-	// 300 seconds--are supported. If an invalid
-	// value is given, an error will be returned.
-	// When choosing a duration, it is useful to
-	// keep in mind the frequency of the underlying
-	// time series data (which may also be affected
-	// by any alignments specified in the
-	// aggregations field); a good duration is long
-	// enough so that a single outlier does not
-	// generate spurious alerts, but short enough
-	// that unhealthy states are detected and
-	// alerted on quickly.
+	// multiple of a minute--e.g. 60s, 120s, or 300s
+	// --are supported.
 	Duration pulumi.StringInput `pulumi:"duration"`
-	// A logs-based filter.
+	// A filter that identifies which time series
+	// should be compared with the threshold.The
+	// filter is similar to the one that is
+	// specified in the
+	// MetricService.ListTimeSeries request (that
+	// call is useful to verify the time series
+	// that will be retrieved / processed) and must
+	// specify the metric type and optionally may
+	// contain restrictions on resource type,
+	// resource labels, and metric labels. This
+	// field may not exceed 2048 Unicode characters
+	// in length.
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
 	// The number/percent of time series for which
 	// the comparison must hold in order for the
 	// condition to trigger. If unspecified, then
 	// the condition will trigger if the comparison
 	// is true for any of the time series that have
-	// been identified by filter and aggregations,
-	// or by the ratio, if denominatorFilter and
-	// denominatorAggregations are specified.
+	// been identified by filter and aggregations.
 	// Structure is documented below.
 	Trigger AlertPolicyConditionConditionAbsentTriggerPtrInput `pulumi:"trigger"`
 }
@@ -696,11 +683,7 @@ func (o AlertPolicyConditionConditionAbsentOutput) ToAlertPolicyConditionConditi
 // resource or when aggregating streams across
 // all members of a group of resources).
 // Multiple aggregations are applied in the
-// order specified.This field is similar to the
-// one in the MetricService.ListTimeSeries
-// request. It is advisable to use the
-// ListTimeSeries method when debugging this
-// field.
+// order specified.
 // Structure is documented below.
 func (o AlertPolicyConditionConditionAbsentOutput) Aggregations() AlertPolicyConditionConditionAbsentAggregationArrayOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionAbsent) []AlertPolicyConditionConditionAbsentAggregation {
@@ -709,25 +692,26 @@ func (o AlertPolicyConditionConditionAbsentOutput) Aggregations() AlertPolicyCon
 }
 
 // The amount of time that a time series must
-// violate the threshold to be considered
+// fail to report new data to be considered
 // failing. Currently, only values that are a
-// multiple of a minute--e.g., 0, 60, 120, or
-// 300 seconds--are supported. If an invalid
-// value is given, an error will be returned.
-// When choosing a duration, it is useful to
-// keep in mind the frequency of the underlying
-// time series data (which may also be affected
-// by any alignments specified in the
-// aggregations field); a good duration is long
-// enough so that a single outlier does not
-// generate spurious alerts, but short enough
-// that unhealthy states are detected and
-// alerted on quickly.
+// multiple of a minute--e.g. 60s, 120s, or 300s
+// --are supported.
 func (o AlertPolicyConditionConditionAbsentOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionAbsent) string { return v.Duration }).(pulumi.StringOutput)
 }
 
-// A logs-based filter.
+// A filter that identifies which time series
+// should be compared with the threshold.The
+// filter is similar to the one that is
+// specified in the
+// MetricService.ListTimeSeries request (that
+// call is useful to verify the time series
+// that will be retrieved / processed) and must
+// specify the metric type and optionally may
+// contain restrictions on resource type,
+// resource labels, and metric labels. This
+// field may not exceed 2048 Unicode characters
+// in length.
 func (o AlertPolicyConditionConditionAbsentOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionAbsent) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
@@ -737,9 +721,7 @@ func (o AlertPolicyConditionConditionAbsentOutput) Filter() pulumi.StringPtrOutp
 // condition to trigger. If unspecified, then
 // the condition will trigger if the comparison
 // is true for any of the time series that have
-// been identified by filter and aggregations,
-// or by the ratio, if denominatorFilter and
-// denominatorAggregations are specified.
+// been identified by filter and aggregations.
 // Structure is documented below.
 func (o AlertPolicyConditionConditionAbsentOutput) Trigger() AlertPolicyConditionConditionAbsentTriggerPtrOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionAbsent) *AlertPolicyConditionConditionAbsentTrigger {
@@ -779,11 +761,7 @@ func (o AlertPolicyConditionConditionAbsentPtrOutput) Elem() AlertPolicyConditio
 // resource or when aggregating streams across
 // all members of a group of resources).
 // Multiple aggregations are applied in the
-// order specified.This field is similar to the
-// one in the MetricService.ListTimeSeries
-// request. It is advisable to use the
-// ListTimeSeries method when debugging this
-// field.
+// order specified.
 // Structure is documented below.
 func (o AlertPolicyConditionConditionAbsentPtrOutput) Aggregations() AlertPolicyConditionConditionAbsentAggregationArrayOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionAbsent) []AlertPolicyConditionConditionAbsentAggregation {
@@ -795,20 +773,10 @@ func (o AlertPolicyConditionConditionAbsentPtrOutput) Aggregations() AlertPolicy
 }
 
 // The amount of time that a time series must
-// violate the threshold to be considered
+// fail to report new data to be considered
 // failing. Currently, only values that are a
-// multiple of a minute--e.g., 0, 60, 120, or
-// 300 seconds--are supported. If an invalid
-// value is given, an error will be returned.
-// When choosing a duration, it is useful to
-// keep in mind the frequency of the underlying
-// time series data (which may also be affected
-// by any alignments specified in the
-// aggregations field); a good duration is long
-// enough so that a single outlier does not
-// generate spurious alerts, but short enough
-// that unhealthy states are detected and
-// alerted on quickly.
+// multiple of a minute--e.g. 60s, 120s, or 300s
+// --are supported.
 func (o AlertPolicyConditionConditionAbsentPtrOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionAbsent) *string {
 		if v == nil {
@@ -818,7 +786,18 @@ func (o AlertPolicyConditionConditionAbsentPtrOutput) Duration() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// A logs-based filter.
+// A filter that identifies which time series
+// should be compared with the threshold.The
+// filter is similar to the one that is
+// specified in the
+// MetricService.ListTimeSeries request (that
+// call is useful to verify the time series
+// that will be retrieved / processed) and must
+// specify the metric type and optionally may
+// contain restrictions on resource type,
+// resource labels, and metric labels. This
+// field may not exceed 2048 Unicode characters
+// in length.
 func (o AlertPolicyConditionConditionAbsentPtrOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionAbsent) *string {
 		if v == nil {
@@ -833,9 +812,7 @@ func (o AlertPolicyConditionConditionAbsentPtrOutput) Filter() pulumi.StringPtrO
 // condition to trigger. If unspecified, then
 // the condition will trigger if the comparison
 // is true for any of the time series that have
-// been identified by filter and aggregations,
-// or by the ratio, if denominatorFilter and
-// denominatorAggregations are specified.
+// been identified by filter and aggregations.
 // Structure is documented below.
 func (o AlertPolicyConditionConditionAbsentPtrOutput) Trigger() AlertPolicyConditionConditionAbsentTriggerPtrOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionAbsent) *AlertPolicyConditionConditionAbsentTrigger {
@@ -2084,7 +2061,18 @@ type AlertPolicyConditionConditionThreshold struct {
 	// data stops arriving.
 	// Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
 	EvaluationMissingData *string `pulumi:"evaluationMissingData"`
-	// A logs-based filter.
+	// A filter that identifies which time series
+	// should be compared with the threshold.The
+	// filter is similar to the one that is
+	// specified in the
+	// MetricService.ListTimeSeries request (that
+	// call is useful to verify the time series
+	// that will be retrieved / processed) and must
+	// specify the metric type and optionally may
+	// contain restrictions on resource type,
+	// resource labels, and metric labels. This
+	// field may not exceed 2048 Unicode characters
+	// in length.
 	Filter *string `pulumi:"filter"`
 	// A value against which to compare the time
 	// series.
@@ -2193,7 +2181,18 @@ type AlertPolicyConditionConditionThresholdArgs struct {
 	// data stops arriving.
 	// Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
 	EvaluationMissingData pulumi.StringPtrInput `pulumi:"evaluationMissingData"`
-	// A logs-based filter.
+	// A filter that identifies which time series
+	// should be compared with the threshold.The
+	// filter is similar to the one that is
+	// specified in the
+	// MetricService.ListTimeSeries request (that
+	// call is useful to verify the time series
+	// that will be retrieved / processed) and must
+	// specify the metric type and optionally may
+	// contain restrictions on resource type,
+	// resource labels, and metric labels. This
+	// field may not exceed 2048 Unicode characters
+	// in length.
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
 	// A value against which to compare the time
 	// series.
@@ -2389,7 +2388,18 @@ func (o AlertPolicyConditionConditionThresholdOutput) EvaluationMissingData() pu
 	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) *string { return v.EvaluationMissingData }).(pulumi.StringPtrOutput)
 }
 
-// A logs-based filter.
+// A filter that identifies which time series
+// should be compared with the threshold.The
+// filter is similar to the one that is
+// specified in the
+// MetricService.ListTimeSeries request (that
+// call is useful to verify the time series
+// that will be retrieved / processed) and must
+// specify the metric type and optionally may
+// contain restrictions on resource type,
+// resource labels, and metric labels. This
+// field may not exceed 2048 Unicode characters
+// in length.
 func (o AlertPolicyConditionConditionThresholdOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
@@ -2567,7 +2577,18 @@ func (o AlertPolicyConditionConditionThresholdPtrOutput) EvaluationMissingData()
 	}).(pulumi.StringPtrOutput)
 }
 
-// A logs-based filter.
+// A filter that identifies which time series
+// should be compared with the threshold.The
+// filter is similar to the one that is
+// specified in the
+// MetricService.ListTimeSeries request (that
+// call is useful to verify the time series
+// that will be retrieved / processed) and must
+// specify the metric type and optionally may
+// contain restrictions on resource type,
+// resource labels, and metric labels. This
+// field may not exceed 2048 Unicode characters
+// in length.
 func (o AlertPolicyConditionConditionThresholdPtrOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionThreshold) *string {
 		if v == nil {
@@ -3457,8 +3478,10 @@ func (o AlertPolicyConditionConditionThresholdTriggerPtrOutput) Percent() pulumi
 }
 
 type AlertPolicyCreationRecord struct {
+	// When the change occurred.
 	MutateTime *string `pulumi:"mutateTime"`
-	MutatedBy  *string `pulumi:"mutatedBy"`
+	// The email address of the user making the change.
+	MutatedBy *string `pulumi:"mutatedBy"`
 }
 
 // AlertPolicyCreationRecordInput is an input type that accepts AlertPolicyCreationRecordArgs and AlertPolicyCreationRecordOutput values.
@@ -3473,8 +3496,10 @@ type AlertPolicyCreationRecordInput interface {
 }
 
 type AlertPolicyCreationRecordArgs struct {
+	// When the change occurred.
 	MutateTime pulumi.StringPtrInput `pulumi:"mutateTime"`
-	MutatedBy  pulumi.StringPtrInput `pulumi:"mutatedBy"`
+	// The email address of the user making the change.
+	MutatedBy pulumi.StringPtrInput `pulumi:"mutatedBy"`
 }
 
 func (AlertPolicyCreationRecordArgs) ElementType() reflect.Type {
@@ -3528,10 +3553,12 @@ func (o AlertPolicyCreationRecordOutput) ToAlertPolicyCreationRecordOutputWithCo
 	return o
 }
 
+// When the change occurred.
 func (o AlertPolicyCreationRecordOutput) MutateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyCreationRecord) *string { return v.MutateTime }).(pulumi.StringPtrOutput)
 }
 
+// The email address of the user making the change.
 func (o AlertPolicyCreationRecordOutput) MutatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyCreationRecord) *string { return v.MutatedBy }).(pulumi.StringPtrOutput)
 }
@@ -4038,6 +4065,9 @@ func (o GenericServiceBasicServicePtrOutput) ServiceType() pulumi.StringPtrOutpu
 }
 
 type GenericServiceTelemetry struct {
+	// The full name of the resource that defines this service.
+	// Formatted as described in
+	// https://cloud.google.com/apis/design/resource_names.
 	ResourceName *string `pulumi:"resourceName"`
 }
 
@@ -4053,6 +4083,9 @@ type GenericServiceTelemetryInput interface {
 }
 
 type GenericServiceTelemetryArgs struct {
+	// The full name of the resource that defines this service.
+	// Formatted as described in
+	// https://cloud.google.com/apis/design/resource_names.
 	ResourceName pulumi.StringPtrInput `pulumi:"resourceName"`
 }
 
@@ -4107,6 +4140,9 @@ func (o GenericServiceTelemetryOutput) ToGenericServiceTelemetryOutputWithContex
 	return o
 }
 
+// The full name of the resource that defines this service.
+// Formatted as described in
+// https://cloud.google.com/apis/design/resource_names.
 func (o GenericServiceTelemetryOutput) ResourceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GenericServiceTelemetry) *string { return v.ResourceName }).(pulumi.StringPtrOutput)
 }
@@ -5164,6 +5200,7 @@ type SloRequestBasedSli struct {
 	// total count of all values aggregated in the Distribution.
 	// Defines a distribution TimeSeries filter and thresholds used for
 	// measuring good service and total service.
+	// Exactly one of `distributionCut` or `goodTotalRatio` can be set.
 	// Structure is documented below.
 	DistributionCut *SloRequestBasedSliDistributionCut `pulumi:"distributionCut"`
 	// A means to compute a ratio of `goodService` to `totalService`.
@@ -5171,6 +5208,7 @@ type SloRequestBasedSli struct {
 	// Must specify exactly two of good, bad, and total service filters.
 	// The relationship goodService + badService = totalService
 	// will be assumed.
+	// Exactly one of `distributionCut` or `goodTotalRatio` can be set.
 	// Structure is documented below.
 	GoodTotalRatio *SloRequestBasedSliGoodTotalRatio `pulumi:"goodTotalRatio"`
 }
@@ -5192,6 +5230,7 @@ type SloRequestBasedSliArgs struct {
 	// total count of all values aggregated in the Distribution.
 	// Defines a distribution TimeSeries filter and thresholds used for
 	// measuring good service and total service.
+	// Exactly one of `distributionCut` or `goodTotalRatio` can be set.
 	// Structure is documented below.
 	DistributionCut SloRequestBasedSliDistributionCutPtrInput `pulumi:"distributionCut"`
 	// A means to compute a ratio of `goodService` to `totalService`.
@@ -5199,6 +5238,7 @@ type SloRequestBasedSliArgs struct {
 	// Must specify exactly two of good, bad, and total service filters.
 	// The relationship goodService + badService = totalService
 	// will be assumed.
+	// Exactly one of `distributionCut` or `goodTotalRatio` can be set.
 	// Structure is documented below.
 	GoodTotalRatio SloRequestBasedSliGoodTotalRatioPtrInput `pulumi:"goodTotalRatio"`
 }
@@ -5285,6 +5325,7 @@ func (o SloRequestBasedSliOutput) ToSloRequestBasedSliPtrOutputWithContext(ctx c
 // total count of all values aggregated in the Distribution.
 // Defines a distribution TimeSeries filter and thresholds used for
 // measuring good service and total service.
+// Exactly one of `distributionCut` or `goodTotalRatio` can be set.
 // Structure is documented below.
 func (o SloRequestBasedSliOutput) DistributionCut() SloRequestBasedSliDistributionCutPtrOutput {
 	return o.ApplyT(func(v SloRequestBasedSli) *SloRequestBasedSliDistributionCut { return v.DistributionCut }).(SloRequestBasedSliDistributionCutPtrOutput)
@@ -5295,6 +5336,7 @@ func (o SloRequestBasedSliOutput) DistributionCut() SloRequestBasedSliDistributi
 // Must specify exactly two of good, bad, and total service filters.
 // The relationship goodService + badService = totalService
 // will be assumed.
+// Exactly one of `distributionCut` or `goodTotalRatio` can be set.
 // Structure is documented below.
 func (o SloRequestBasedSliOutput) GoodTotalRatio() SloRequestBasedSliGoodTotalRatioPtrOutput {
 	return o.ApplyT(func(v SloRequestBasedSli) *SloRequestBasedSliGoodTotalRatio { return v.GoodTotalRatio }).(SloRequestBasedSliGoodTotalRatioPtrOutput)
@@ -5329,6 +5371,7 @@ func (o SloRequestBasedSliPtrOutput) Elem() SloRequestBasedSliOutput {
 // total count of all values aggregated in the Distribution.
 // Defines a distribution TimeSeries filter and thresholds used for
 // measuring good service and total service.
+// Exactly one of `distributionCut` or `goodTotalRatio` can be set.
 // Structure is documented below.
 func (o SloRequestBasedSliPtrOutput) DistributionCut() SloRequestBasedSliDistributionCutPtrOutput {
 	return o.ApplyT(func(v *SloRequestBasedSli) *SloRequestBasedSliDistributionCut {
@@ -5344,6 +5387,7 @@ func (o SloRequestBasedSliPtrOutput) DistributionCut() SloRequestBasedSliDistrib
 // Must specify exactly two of good, bad, and total service filters.
 // The relationship goodService + badService = totalService
 // will be assumed.
+// Exactly one of `distributionCut` or `goodTotalRatio` can be set.
 // Structure is documented below.
 func (o SloRequestBasedSliPtrOutput) GoodTotalRatio() SloRequestBasedSliGoodTotalRatioPtrOutput {
 	return o.ApplyT(func(v *SloRequestBasedSli) *SloRequestBasedSliGoodTotalRatio {
@@ -5364,8 +5408,7 @@ type SloRequestBasedSliDistributionCut struct {
 	// will be the count of values x in the Distribution such
 	// that range.min <= x <= range.max. inclusive of min and
 	// max. Open ranges can be defined by setting
-	// just one of min or max. Summed value `X` should satisfy
-	// `range.min <= X <= range.max` for a good window.
+	// just one of min or max.
 	// Structure is documented below.
 	Range SloRequestBasedSliDistributionCutRange `pulumi:"range"`
 }
@@ -5391,8 +5434,7 @@ type SloRequestBasedSliDistributionCutArgs struct {
 	// will be the count of values x in the Distribution such
 	// that range.min <= x <= range.max. inclusive of min and
 	// max. Open ranges can be defined by setting
-	// just one of min or max. Summed value `X` should satisfy
-	// `range.min <= X <= range.max` for a good window.
+	// just one of min or max.
 	// Structure is documented below.
 	Range SloRequestBasedSliDistributionCutRangeInput `pulumi:"range"`
 }
@@ -5486,8 +5528,7 @@ func (o SloRequestBasedSliDistributionCutOutput) DistributionFilter() pulumi.Str
 // will be the count of values x in the Distribution such
 // that range.min <= x <= range.max. inclusive of min and
 // max. Open ranges can be defined by setting
-// just one of min or max. Summed value `X` should satisfy
-// `range.min <= X <= range.max` for a good window.
+// just one of min or max.
 // Structure is documented below.
 func (o SloRequestBasedSliDistributionCutOutput) Range() SloRequestBasedSliDistributionCutRangeOutput {
 	return o.ApplyT(func(v SloRequestBasedSliDistributionCut) SloRequestBasedSliDistributionCutRange { return v.Range }).(SloRequestBasedSliDistributionCutRangeOutput)
@@ -5534,8 +5575,7 @@ func (o SloRequestBasedSliDistributionCutPtrOutput) DistributionFilter() pulumi.
 // will be the count of values x in the Distribution such
 // that range.min <= x <= range.max. inclusive of min and
 // max. Open ranges can be defined by setting
-// just one of min or max. Summed value `X` should satisfy
-// `range.min <= X <= range.max` for a good window.
+// just one of min or max.
 // Structure is documented below.
 func (o SloRequestBasedSliDistributionCutPtrOutput) Range() SloRequestBasedSliDistributionCutRangePtrOutput {
 	return o.ApplyT(func(v *SloRequestBasedSliDistributionCut) *SloRequestBasedSliDistributionCutRange {
@@ -6279,9 +6319,8 @@ type SloWindowsBasedSliGoodTotalRatioThreshold struct {
 	// Request-based SLI to evaluate to judge window quality.
 	// Structure is documented below.
 	Performance *SloWindowsBasedSliGoodTotalRatioThresholdPerformance `pulumi:"performance"`
-	// A duration string, e.g. 10s.
-	// Good service is defined to be the count of requests made to
-	// this service that return in no more than threshold.
+	// If window performance >= threshold, the window is counted
+	// as good.
 	Threshold *float64 `pulumi:"threshold"`
 }
 
@@ -6303,9 +6342,8 @@ type SloWindowsBasedSliGoodTotalRatioThresholdArgs struct {
 	// Request-based SLI to evaluate to judge window quality.
 	// Structure is documented below.
 	Performance SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrInput `pulumi:"performance"`
-	// A duration string, e.g. 10s.
-	// Good service is defined to be the count of requests made to
-	// this service that return in no more than threshold.
+	// If window performance >= threshold, the window is counted
+	// as good.
 	Threshold pulumi.Float64PtrInput `pulumi:"threshold"`
 }
 
@@ -6402,9 +6440,8 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdOutput) Performance() SloWindow
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput)
 }
 
-// A duration string, e.g. 10s.
-// Good service is defined to be the count of requests made to
-// this service that return in no more than threshold.
+// If window performance >= threshold, the window is counted
+// as good.
 func (o SloWindowsBasedSliGoodTotalRatioThresholdOutput) Threshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThreshold) *float64 { return v.Threshold }).(pulumi.Float64PtrOutput)
 }
@@ -6455,9 +6492,8 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput) Performance() SloWin
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdPerformancePtrOutput)
 }
 
-// A duration string, e.g. 10s.
-// Good service is defined to be the count of requests made to
-// this service that return in no more than threshold.
+// If window performance >= threshold, the window is counted
+// as good.
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput) Threshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThreshold) *float64 {
 		if v == nil {
@@ -7246,8 +7282,7 @@ type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut struct 
 	// will be the count of values x in the Distribution such
 	// that range.min <= x <= range.max. inclusive of min and
 	// max. Open ranges can be defined by setting
-	// just one of min or max. Summed value `X` should satisfy
-	// `range.min <= X <= range.max` for a good window.
+	// just one of min or max.
 	// Structure is documented below.
 	Range SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange `pulumi:"range"`
 }
@@ -7273,8 +7308,7 @@ type SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs str
 	// will be the count of values x in the Distribution such
 	// that range.min <= x <= range.max. inclusive of min and
 	// max. Open ranges can be defined by setting
-	// just one of min or max. Summed value `X` should satisfy
-	// `range.min <= X <= range.max` for a good window.
+	// just one of min or max.
 	// Structure is documented below.
 	Range SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeInput `pulumi:"range"`
 }
@@ -7370,8 +7404,7 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutpu
 // will be the count of values x in the Distribution such
 // that range.min <= x <= range.max. inclusive of min and
 // max. Open ranges can be defined by setting
-// just one of min or max. Summed value `X` should satisfy
-// `range.min <= X <= range.max` for a good window.
+// just one of min or max.
 // Structure is documented below.
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutOutput) Range() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeOutput {
 	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut) SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange {
@@ -7420,8 +7453,7 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOu
 // will be the count of values x in the Distribution such
 // that range.min <= x <= range.max. inclusive of min and
 // max. Open ranges can be defined by setting
-// just one of min or max. Summed value `X` should satisfy
-// `range.min <= X <= range.max` for a good window.
+// just one of min or max.
 // Structure is documented below.
 func (o SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutPtrOutput) Range() SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangePtrOutput {
 	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut) *SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange {
@@ -7862,17 +7894,17 @@ type SloWindowsBasedSliMetricMeanInRange struct {
 	// will be the count of values x in the Distribution such
 	// that range.min <= x <= range.max. inclusive of min and
 	// max. Open ranges can be defined by setting
-	// just one of min or max. Summed value `X` should satisfy
-	// `range.min <= X <= range.max` for a good window.
+	// just one of min or max. Mean value `X` of `timeSeries`
+	// values should satisfy `range.min <= X <= range.max` for a
+	// good service.
 	// Structure is documented below.
 	Range SloWindowsBasedSliMetricMeanInRangeRange `pulumi:"range"`
 	// A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
 	// specifying the TimeSeries to use for evaluating window
-	// quality. The provided TimeSeries must have
-	// ValueType = INT64 or ValueType = DOUBLE and
-	// MetricKind = GAUGE.
-	// Summed value `X` should satisfy
-	// `range.min <= X <= range.max` for a good window.
+	// The provided TimeSeries must have ValueType = INT64 or
+	// ValueType = DOUBLE and MetricKind = GAUGE. Mean value `X`
+	// should satisfy `range.min <= X <= range.max`
+	// under good service.
 	TimeSeries string `pulumi:"timeSeries"`
 }
 
@@ -7892,17 +7924,17 @@ type SloWindowsBasedSliMetricMeanInRangeArgs struct {
 	// will be the count of values x in the Distribution such
 	// that range.min <= x <= range.max. inclusive of min and
 	// max. Open ranges can be defined by setting
-	// just one of min or max. Summed value `X` should satisfy
-	// `range.min <= X <= range.max` for a good window.
+	// just one of min or max. Mean value `X` of `timeSeries`
+	// values should satisfy `range.min <= X <= range.max` for a
+	// good service.
 	// Structure is documented below.
 	Range SloWindowsBasedSliMetricMeanInRangeRangeInput `pulumi:"range"`
 	// A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
 	// specifying the TimeSeries to use for evaluating window
-	// quality. The provided TimeSeries must have
-	// ValueType = INT64 or ValueType = DOUBLE and
-	// MetricKind = GAUGE.
-	// Summed value `X` should satisfy
-	// `range.min <= X <= range.max` for a good window.
+	// The provided TimeSeries must have ValueType = INT64 or
+	// ValueType = DOUBLE and MetricKind = GAUGE. Mean value `X`
+	// should satisfy `range.min <= X <= range.max`
+	// under good service.
 	TimeSeries pulumi.StringInput `pulumi:"timeSeries"`
 }
 
@@ -7987,8 +8019,9 @@ func (o SloWindowsBasedSliMetricMeanInRangeOutput) ToSloWindowsBasedSliMetricMea
 // will be the count of values x in the Distribution such
 // that range.min <= x <= range.max. inclusive of min and
 // max. Open ranges can be defined by setting
-// just one of min or max. Summed value `X` should satisfy
-// `range.min <= X <= range.max` for a good window.
+// just one of min or max. Mean value `X` of `timeSeries`
+// values should satisfy `range.min <= X <= range.max` for a
+// good service.
 // Structure is documented below.
 func (o SloWindowsBasedSliMetricMeanInRangeOutput) Range() SloWindowsBasedSliMetricMeanInRangeRangeOutput {
 	return o.ApplyT(func(v SloWindowsBasedSliMetricMeanInRange) SloWindowsBasedSliMetricMeanInRangeRange { return v.Range }).(SloWindowsBasedSliMetricMeanInRangeRangeOutput)
@@ -7996,11 +8029,10 @@ func (o SloWindowsBasedSliMetricMeanInRangeOutput) Range() SloWindowsBasedSliMet
 
 // A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
 // specifying the TimeSeries to use for evaluating window
-// quality. The provided TimeSeries must have
-// ValueType = INT64 or ValueType = DOUBLE and
-// MetricKind = GAUGE.
-// Summed value `X` should satisfy
-// `range.min <= X <= range.max` for a good window.
+// The provided TimeSeries must have ValueType = INT64 or
+// ValueType = DOUBLE and MetricKind = GAUGE. Mean value `X`
+// should satisfy `range.min <= X <= range.max`
+// under good service.
 func (o SloWindowsBasedSliMetricMeanInRangeOutput) TimeSeries() pulumi.StringOutput {
 	return o.ApplyT(func(v SloWindowsBasedSliMetricMeanInRange) string { return v.TimeSeries }).(pulumi.StringOutput)
 }
@@ -8033,8 +8065,9 @@ func (o SloWindowsBasedSliMetricMeanInRangePtrOutput) Elem() SloWindowsBasedSliM
 // will be the count of values x in the Distribution such
 // that range.min <= x <= range.max. inclusive of min and
 // max. Open ranges can be defined by setting
-// just one of min or max. Summed value `X` should satisfy
-// `range.min <= X <= range.max` for a good window.
+// just one of min or max. Mean value `X` of `timeSeries`
+// values should satisfy `range.min <= X <= range.max` for a
+// good service.
 // Structure is documented below.
 func (o SloWindowsBasedSliMetricMeanInRangePtrOutput) Range() SloWindowsBasedSliMetricMeanInRangeRangePtrOutput {
 	return o.ApplyT(func(v *SloWindowsBasedSliMetricMeanInRange) *SloWindowsBasedSliMetricMeanInRangeRange {
@@ -8047,11 +8080,10 @@ func (o SloWindowsBasedSliMetricMeanInRangePtrOutput) Range() SloWindowsBasedSli
 
 // A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
 // specifying the TimeSeries to use for evaluating window
-// quality. The provided TimeSeries must have
-// ValueType = INT64 or ValueType = DOUBLE and
-// MetricKind = GAUGE.
-// Summed value `X` should satisfy
-// `range.min <= X <= range.max` for a good window.
+// The provided TimeSeries must have ValueType = INT64 or
+// ValueType = DOUBLE and MetricKind = GAUGE. Mean value `X`
+// should satisfy `range.min <= X <= range.max`
+// under good service.
 func (o SloWindowsBasedSliMetricMeanInRangePtrOutput) TimeSeries() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SloWindowsBasedSliMetricMeanInRange) *string {
 		if v == nil {
@@ -8917,7 +8949,7 @@ type UptimeCheckConfigHttpCheck struct {
 	MaskHeaders *bool `pulumi:"maskHeaders"`
 	// The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically. Optional (defaults to "/").
 	Path *string `pulumi:"path"`
-	// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
+	// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
 	Port *int `pulumi:"port"`
 	// The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
 	// Default value is `GET`.
@@ -8958,7 +8990,7 @@ type UptimeCheckConfigHttpCheckArgs struct {
 	MaskHeaders pulumi.BoolPtrInput `pulumi:"maskHeaders"`
 	// The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically. Optional (defaults to "/").
 	Path pulumi.StringPtrInput `pulumi:"path"`
-	// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
+	// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
 	// Default value is `GET`.
@@ -9087,7 +9119,7 @@ func (o UptimeCheckConfigHttpCheckOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
+// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
 func (o UptimeCheckConfigHttpCheckOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -9206,7 +9238,7 @@ func (o UptimeCheckConfigHttpCheckPtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
+// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
 func (o UptimeCheckConfigHttpCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigHttpCheck) *int {
 		if v == nil {
@@ -9971,6 +10003,9 @@ func (o UptimeCheckConfigTcpCheckPtrOutput) Port() pulumi.IntPtrOutput {
 }
 
 type GetAppEngineServiceTelemetry struct {
+	// The full name of the resource that defines this service.
+	// Formatted as described in
+	// https://cloud.google.com/apis/design/resource_names.
 	ResourceName string `pulumi:"resourceName"`
 }
 
@@ -9986,6 +10021,9 @@ type GetAppEngineServiceTelemetryInput interface {
 }
 
 type GetAppEngineServiceTelemetryArgs struct {
+	// The full name of the resource that defines this service.
+	// Formatted as described in
+	// https://cloud.google.com/apis/design/resource_names.
 	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
@@ -10040,6 +10078,9 @@ func (o GetAppEngineServiceTelemetryOutput) ToGetAppEngineServiceTelemetryOutput
 	return o
 }
 
+// The full name of the resource that defines this service.
+// Formatted as described in
+// https://cloud.google.com/apis/design/resource_names.
 func (o GetAppEngineServiceTelemetryOutput) ResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppEngineServiceTelemetry) string { return v.ResourceName }).(pulumi.StringOutput)
 }
@@ -10065,6 +10106,9 @@ func (o GetAppEngineServiceTelemetryArrayOutput) Index(i pulumi.IntInput) GetApp
 }
 
 type GetClusterIstioServiceTelemetry struct {
+	// The full name of the resource that defines this service.
+	// Formatted as described in
+	// https://cloud.google.com/apis/design/resource_names.
 	ResourceName string `pulumi:"resourceName"`
 }
 
@@ -10080,6 +10124,9 @@ type GetClusterIstioServiceTelemetryInput interface {
 }
 
 type GetClusterIstioServiceTelemetryArgs struct {
+	// The full name of the resource that defines this service.
+	// Formatted as described in
+	// https://cloud.google.com/apis/design/resource_names.
 	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
@@ -10134,6 +10181,9 @@ func (o GetClusterIstioServiceTelemetryOutput) ToGetClusterIstioServiceTelemetry
 	return o
 }
 
+// The full name of the resource that defines this service.
+// Formatted as described in
+// https://cloud.google.com/apis/design/resource_names.
 func (o GetClusterIstioServiceTelemetryOutput) ResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterIstioServiceTelemetry) string { return v.ResourceName }).(pulumi.StringOutput)
 }
@@ -10159,6 +10209,9 @@ func (o GetClusterIstioServiceTelemetryArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetIstioCanonicalServiceTelemetry struct {
+	// The full name of the resource that defines this service.
+	// Formatted as described in
+	// https://cloud.google.com/apis/design/resource_names.
 	ResourceName string `pulumi:"resourceName"`
 }
 
@@ -10174,6 +10227,9 @@ type GetIstioCanonicalServiceTelemetryInput interface {
 }
 
 type GetIstioCanonicalServiceTelemetryArgs struct {
+	// The full name of the resource that defines this service.
+	// Formatted as described in
+	// https://cloud.google.com/apis/design/resource_names.
 	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
@@ -10228,6 +10284,9 @@ func (o GetIstioCanonicalServiceTelemetryOutput) ToGetIstioCanonicalServiceTelem
 	return o
 }
 
+// The full name of the resource that defines this service.
+// Formatted as described in
+// https://cloud.google.com/apis/design/resource_names.
 func (o GetIstioCanonicalServiceTelemetryOutput) ResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIstioCanonicalServiceTelemetry) string { return v.ResourceName }).(pulumi.StringOutput)
 }
@@ -10253,6 +10312,9 @@ func (o GetIstioCanonicalServiceTelemetryArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetMeshIstioServiceTelemetry struct {
+	// The full name of the resource that defines this service.
+	// Formatted as described in
+	// https://cloud.google.com/apis/design/resource_names.
 	ResourceName string `pulumi:"resourceName"`
 }
 
@@ -10268,6 +10330,9 @@ type GetMeshIstioServiceTelemetryInput interface {
 }
 
 type GetMeshIstioServiceTelemetryArgs struct {
+	// The full name of the resource that defines this service.
+	// Formatted as described in
+	// https://cloud.google.com/apis/design/resource_names.
 	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
@@ -10322,6 +10387,9 @@ func (o GetMeshIstioServiceTelemetryOutput) ToGetMeshIstioServiceTelemetryOutput
 	return o
 }
 
+// The full name of the resource that defines this service.
+// Formatted as described in
+// https://cloud.google.com/apis/design/resource_names.
 func (o GetMeshIstioServiceTelemetryOutput) ResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMeshIstioServiceTelemetry) string { return v.ResourceName }).(pulumi.StringOutput)
 }

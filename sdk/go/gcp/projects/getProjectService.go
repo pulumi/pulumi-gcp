@@ -38,7 +38,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = projects.GetProjectService(ctx, &projects.GetProjectServiceArgs{
+//			_, err := projects.GetProjectService(ctx, &projects.GetProjectServiceArgs{
 //				Service: "my-project-service",
 //			}, nil)
 //			if err != nil {

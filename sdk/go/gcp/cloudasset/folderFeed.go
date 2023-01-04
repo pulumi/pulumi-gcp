@@ -71,7 +71,8 @@ type FolderFeed struct {
 	FeedOutputConfig FolderFeedFeedOutputConfigOutput `pulumi:"feedOutputConfig"`
 	// The folder this feed should be created in.
 	Folder pulumi.StringOutput `pulumi:"folder"`
-	// The ID of the folder where this feed has been created. Both [FOLDER_NUMBER] and folders/[FOLDER_NUMBER] are accepted.
+	// The ID of the folder where this feed has been created. Both [FOLDER_NUMBER]
+	// and folders/[FOLDER_NUMBER] are accepted.
 	FolderId pulumi.StringOutput `pulumi:"folderId"`
 	// The format will be folders/{folder_number}/feeds/{client-assigned_feed_identifier}.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -150,7 +151,8 @@ type folderFeedState struct {
 	FeedOutputConfig *FolderFeedFeedOutputConfig `pulumi:"feedOutputConfig"`
 	// The folder this feed should be created in.
 	Folder *string `pulumi:"folder"`
-	// The ID of the folder where this feed has been created. Both [FOLDER_NUMBER] and folders/[FOLDER_NUMBER] are accepted.
+	// The ID of the folder where this feed has been created. Both [FOLDER_NUMBER]
+	// and folders/[FOLDER_NUMBER] are accepted.
 	FolderId *string `pulumi:"folderId"`
 	// The format will be folders/{folder_number}/feeds/{client-assigned_feed_identifier}.
 	Name *string `pulumi:"name"`
@@ -189,7 +191,8 @@ type FolderFeedState struct {
 	FeedOutputConfig FolderFeedFeedOutputConfigPtrInput
 	// The folder this feed should be created in.
 	Folder pulumi.StringPtrInput
-	// The ID of the folder where this feed has been created. Both [FOLDER_NUMBER] and folders/[FOLDER_NUMBER] are accepted.
+	// The ID of the folder where this feed has been created. Both [FOLDER_NUMBER]
+	// and folders/[FOLDER_NUMBER] are accepted.
 	FolderId pulumi.StringPtrInput
 	// The format will be folders/{folder_number}/feeds/{client-assigned_feed_identifier}.
 	Name pulumi.StringPtrInput
@@ -413,7 +416,8 @@ func (o FolderFeedOutput) Folder() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderFeed) pulumi.StringOutput { return v.Folder }).(pulumi.StringOutput)
 }
 
-// The ID of the folder where this feed has been created. Both [FOLDER_NUMBER] and folders/[FOLDER_NUMBER] are accepted.
+// The ID of the folder where this feed has been created. Both [FOLDER_NUMBER]
+// and folders/[FOLDER_NUMBER] are accepted.
 func (o FolderFeedOutput) FolderId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderFeed) pulumi.StringOutput { return v.FolderId }).(pulumi.StringOutput)
 }

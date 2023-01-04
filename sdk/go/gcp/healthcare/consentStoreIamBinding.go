@@ -38,7 +38,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 //				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
+//					{
 //						Role: "roles/viewer",
 //						Members: []string{
 //							"user:jane@example.com",
@@ -52,7 +52,7 @@ import (
 //			_, err = healthcare.NewConsentStoreIamPolicy(ctx, "policy", &healthcare.ConsentStoreIamPolicyArgs{
 //				Dataset:        pulumi.Any(google_healthcare_consent_store.MyConsent.Dataset),
 //				ConsentStoreId: pulumi.Any(google_healthcare_consent_store.MyConsent.Name),
-//				PolicyData:     pulumi.String(admin.PolicyData),
+//				PolicyData:     *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

@@ -71,7 +71,7 @@ import (
 //				MemorySizeGb:          pulumi.Int(1),
 //				LocationId:            pulumi.String("us-central1-a"),
 //				AlternativeLocationId: pulumi.String("us-central1-f"),
-//				AuthorizedNetwork:     pulumi.String(redis_network.Id),
+//				AuthorizedNetwork:     *pulumi.String(redis_network.Id),
 //				RedisVersion:          pulumi.String("REDIS_4_0"),
 //				DisplayName:           pulumi.String("Test Instance"),
 //				ReservedIpRange:       pulumi.String("192.168.0.0/29"),
@@ -159,13 +159,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      pulumi.String(redis_network.Id),
+//				Network:      *pulumi.String(redis_network.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			privateServiceConnection, err := servicenetworking.NewConnection(ctx, "privateServiceConnection", &servicenetworking.ConnectionArgs{
-//				Network: pulumi.String(redis_network.Id),
+//				Network: *pulumi.String(redis_network.Id),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					serviceRange.Name,
@@ -179,7 +179,7 @@ import (
 //				MemorySizeGb:          pulumi.Int(1),
 //				LocationId:            pulumi.String("us-central1-a"),
 //				AlternativeLocationId: pulumi.String("us-central1-f"),
-//				AuthorizedNetwork:     pulumi.String(redis_network.Id),
+//				AuthorizedNetwork:     *pulumi.String(redis_network.Id),
 //				ConnectMode:           pulumi.String("PRIVATE_SERVICE_ACCESS"),
 //				RedisVersion:          pulumi.String("REDIS_4_0"),
 //				DisplayName:           pulumi.String("Test Instance"),
@@ -220,7 +220,7 @@ import (
 //				MemorySizeGb:          pulumi.Int(5),
 //				LocationId:            pulumi.String("us-central1-a"),
 //				AlternativeLocationId: pulumi.String("us-central1-f"),
-//				AuthorizedNetwork:     pulumi.String(redis_network.Id),
+//				AuthorizedNetwork:     *pulumi.String(redis_network.Id),
 //				RedisVersion:          pulumi.String("REDIS_6_X"),
 //				DisplayName:           pulumi.String("Terraform Test Instance"),
 //				ReservedIpRange:       pulumi.String("192.168.0.0/28"),
@@ -278,7 +278,7 @@ import (
 //				MemorySizeGb:          pulumi.Int(1),
 //				LocationId:            pulumi.String("us-central1-a"),
 //				AlternativeLocationId: pulumi.String("us-central1-f"),
-//				AuthorizedNetwork:     pulumi.String(redis_network.Id),
+//				AuthorizedNetwork:     *pulumi.String(redis_network.Id),
 //				RedisVersion:          pulumi.String("REDIS_6_X"),
 //				DisplayName:           pulumi.String("Terraform Test Instance"),
 //				ReservedIpRange:       pulumi.String("192.168.0.0/29"),
@@ -346,21 +346,23 @@ type Instance struct {
 	// Default value is `DIRECT_PEERING`.
 	// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode pulumi.StringPtrOutput `pulumi:"connectMode"`
-	// -
 	// Output only. The time when the policy was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
-	// [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
-	// [alternativeLocationId] and can change after a failover event.
+	// The current zone where the Redis endpoint is placed.
+	// For Basic Tier instances, this will always be the same as the
+	// [locationId] provided by the user at creation time. For Standard Tier
+	// instances, this can be either [locationId] or [alternativeLocationId]
+	// and can change after a failover event.
 	CurrentLocationId pulumi.StringOutput `pulumi:"currentLocationId"`
 	// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
 	// instance. If this is provided, CMEK is enabled.
 	CustomerManagedKey pulumi.StringPtrOutput `pulumi:"customerManagedKey"`
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
+	// Hostname or IP address of the exposed Redis endpoint used by clients
+	// to connect to the service.
 	Host pulumi.StringOutput `pulumi:"host"`
 	// Resource labels to represent user provided metadata.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -381,25 +383,27 @@ type Instance struct {
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Output only. Info per node.
+	// Structure is documented below.
 	Nodes InstanceNodeArrayOutput `pulumi:"nodes"`
 	// Persistence configuration for an instance.
 	// Structure is documented below.
 	PersistenceConfig InstancePersistenceConfigOutput `pulumi:"persistenceConfig"`
-	// Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
-	// "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
-	// operation.
+	// Output only. Cloud IAM identity used by import / export operations
+	// to transfer data to/from Cloud Storage. Format is "serviceAccount:".
+	// The value may change over time for a given instance so should be
+	// checked before each import/export operation.
 	PersistenceIamIdentity pulumi.StringOutput `pulumi:"persistenceIamIdentity"`
 	// The port number of the exposed Redis endpoint.
 	Port pulumi.IntOutput `pulumi:"port"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy
-	// replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write
-	// requests must target 'host'.
+	// Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
+	// Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
+	// will exhibit some lag behind the primary. Write requests must target 'host'.
 	ReadEndpoint pulumi.StringOutput `pulumi:"readEndpoint"`
-	// Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
-	// 'port'.
+	// Output only. The port number of the exposed readonly redis endpoint. Standard tier only.
+	// Write requests should target 'port'.
 	ReadEndpointPort pulumi.IntOutput `pulumi:"readEndpointPort"`
 	// Optional. Read replica mode. Can only be specified when trying to create the instance.
 	// If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
@@ -436,6 +440,7 @@ type Instance struct {
 	// range associated with the private service access connection, or "auto".
 	SecondaryIpRange pulumi.StringOutput `pulumi:"secondaryIpRange"`
 	// List of server CA certificates for the instance.
+	// Structure is documented below.
 	ServerCaCerts InstanceServerCaCertArrayOutput `pulumi:"serverCaCerts"`
 	// The service tier of the instance. Must be one of these values:
 	// - BASIC: standalone instance
@@ -505,21 +510,23 @@ type instanceState struct {
 	// Default value is `DIRECT_PEERING`.
 	// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode *string `pulumi:"connectMode"`
-	// -
 	// Output only. The time when the policy was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
 	CreateTime *string `pulumi:"createTime"`
-	// The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
-	// [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
-	// [alternativeLocationId] and can change after a failover event.
+	// The current zone where the Redis endpoint is placed.
+	// For Basic Tier instances, this will always be the same as the
+	// [locationId] provided by the user at creation time. For Standard Tier
+	// instances, this can be either [locationId] or [alternativeLocationId]
+	// and can change after a failover event.
 	CurrentLocationId *string `pulumi:"currentLocationId"`
 	// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
 	// instance. If this is provided, CMEK is enabled.
 	CustomerManagedKey *string `pulumi:"customerManagedKey"`
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName *string `pulumi:"displayName"`
-	// Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
+	// Hostname or IP address of the exposed Redis endpoint used by clients
+	// to connect to the service.
 	Host *string `pulumi:"host"`
 	// Resource labels to represent user provided metadata.
 	Labels map[string]string `pulumi:"labels"`
@@ -540,25 +547,27 @@ type instanceState struct {
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name *string `pulumi:"name"`
 	// Output only. Info per node.
+	// Structure is documented below.
 	Nodes []InstanceNode `pulumi:"nodes"`
 	// Persistence configuration for an instance.
 	// Structure is documented below.
 	PersistenceConfig *InstancePersistenceConfig `pulumi:"persistenceConfig"`
-	// Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
-	// "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
-	// operation.
+	// Output only. Cloud IAM identity used by import / export operations
+	// to transfer data to/from Cloud Storage. Format is "serviceAccount:".
+	// The value may change over time for a given instance so should be
+	// checked before each import/export operation.
 	PersistenceIamIdentity *string `pulumi:"persistenceIamIdentity"`
 	// The port number of the exposed Redis endpoint.
 	Port *int `pulumi:"port"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy
-	// replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write
-	// requests must target 'host'.
+	// Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
+	// Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
+	// will exhibit some lag behind the primary. Write requests must target 'host'.
 	ReadEndpoint *string `pulumi:"readEndpoint"`
-	// Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
-	// 'port'.
+	// Output only. The port number of the exposed readonly redis endpoint. Standard tier only.
+	// Write requests should target 'port'.
 	ReadEndpointPort *int `pulumi:"readEndpointPort"`
 	// Optional. Read replica mode. Can only be specified when trying to create the instance.
 	// If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
@@ -595,6 +604,7 @@ type instanceState struct {
 	// range associated with the private service access connection, or "auto".
 	SecondaryIpRange *string `pulumi:"secondaryIpRange"`
 	// List of server CA certificates for the instance.
+	// Structure is documented below.
 	ServerCaCerts []InstanceServerCaCert `pulumi:"serverCaCerts"`
 	// The service tier of the instance. Must be one of these values:
 	// - BASIC: standalone instance
@@ -629,21 +639,23 @@ type InstanceState struct {
 	// Default value is `DIRECT_PEERING`.
 	// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode pulumi.StringPtrInput
-	// -
 	// Output only. The time when the policy was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
 	CreateTime pulumi.StringPtrInput
-	// The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
-	// [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
-	// [alternativeLocationId] and can change after a failover event.
+	// The current zone where the Redis endpoint is placed.
+	// For Basic Tier instances, this will always be the same as the
+	// [locationId] provided by the user at creation time. For Standard Tier
+	// instances, this can be either [locationId] or [alternativeLocationId]
+	// and can change after a failover event.
 	CurrentLocationId pulumi.StringPtrInput
 	// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
 	// instance. If this is provided, CMEK is enabled.
 	CustomerManagedKey pulumi.StringPtrInput
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName pulumi.StringPtrInput
-	// Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
+	// Hostname or IP address of the exposed Redis endpoint used by clients
+	// to connect to the service.
 	Host pulumi.StringPtrInput
 	// Resource labels to represent user provided metadata.
 	Labels pulumi.StringMapInput
@@ -664,25 +676,27 @@ type InstanceState struct {
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name pulumi.StringPtrInput
 	// Output only. Info per node.
+	// Structure is documented below.
 	Nodes InstanceNodeArrayInput
 	// Persistence configuration for an instance.
 	// Structure is documented below.
 	PersistenceConfig InstancePersistenceConfigPtrInput
-	// Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
-	// "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
-	// operation.
+	// Output only. Cloud IAM identity used by import / export operations
+	// to transfer data to/from Cloud Storage. Format is "serviceAccount:".
+	// The value may change over time for a given instance so should be
+	// checked before each import/export operation.
 	PersistenceIamIdentity pulumi.StringPtrInput
 	// The port number of the exposed Redis endpoint.
 	Port pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy
-	// replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write
-	// requests must target 'host'.
+	// Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
+	// Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
+	// will exhibit some lag behind the primary. Write requests must target 'host'.
 	ReadEndpoint pulumi.StringPtrInput
-	// Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
-	// 'port'.
+	// Output only. The port number of the exposed readonly redis endpoint. Standard tier only.
+	// Write requests should target 'port'.
 	ReadEndpointPort pulumi.IntPtrInput
 	// Optional. Read replica mode. Can only be specified when trying to create the instance.
 	// If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
@@ -719,6 +733,7 @@ type InstanceState struct {
 	// range associated with the private service access connection, or "auto".
 	SecondaryIpRange pulumi.StringPtrInput
 	// List of server CA certificates for the instance.
+	// Structure is documented below.
 	ServerCaCerts InstanceServerCaCertArrayInput
 	// The service tier of the instance. Must be one of these values:
 	// - BASIC: standalone instance
@@ -1047,7 +1062,6 @@ func (o InstanceOutput) ConnectMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ConnectMode }).(pulumi.StringPtrOutput)
 }
 
-// -
 // Output only. The time when the policy was created.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 // resolution and up to nine fractional digits.
@@ -1055,9 +1069,11 @@ func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
-// [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
-// [alternativeLocationId] and can change after a failover event.
+// The current zone where the Redis endpoint is placed.
+// For Basic Tier instances, this will always be the same as the
+// [locationId] provided by the user at creation time. For Standard Tier
+// instances, this can be either [locationId] or [alternativeLocationId]
+// and can change after a failover event.
 func (o InstanceOutput) CurrentLocationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CurrentLocationId }).(pulumi.StringOutput)
 }
@@ -1073,7 +1089,8 @@ func (o InstanceOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
+// Hostname or IP address of the exposed Redis endpoint used by clients
+// to connect to the service.
 func (o InstanceOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
 }
@@ -1115,6 +1132,7 @@ func (o InstanceOutput) Name() pulumi.StringOutput {
 }
 
 // Output only. Info per node.
+// Structure is documented below.
 func (o InstanceOutput) Nodes() InstanceNodeArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceNodeArrayOutput { return v.Nodes }).(InstanceNodeArrayOutput)
 }
@@ -1125,9 +1143,10 @@ func (o InstanceOutput) PersistenceConfig() InstancePersistenceConfigOutput {
 	return o.ApplyT(func(v *Instance) InstancePersistenceConfigOutput { return v.PersistenceConfig }).(InstancePersistenceConfigOutput)
 }
 
-// Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
-// "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
-// operation.
+// Output only. Cloud IAM identity used by import / export operations
+// to transfer data to/from Cloud Storage. Format is "serviceAccount:".
+// The value may change over time for a given instance so should be
+// checked before each import/export operation.
 func (o InstanceOutput) PersistenceIamIdentity() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PersistenceIamIdentity }).(pulumi.StringOutput)
 }
@@ -1143,15 +1162,15 @@ func (o InstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy
-// replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write
-// requests must target 'host'.
+// Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
+// Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
+// will exhibit some lag behind the primary. Write requests must target 'host'.
 func (o InstanceOutput) ReadEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ReadEndpoint }).(pulumi.StringOutput)
 }
 
-// Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
-// 'port'.
+// Output only. The port number of the exposed readonly redis endpoint. Standard tier only.
+// Write requests should target 'port'.
 func (o InstanceOutput) ReadEndpointPort() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.ReadEndpointPort }).(pulumi.IntOutput)
 }
@@ -1212,6 +1231,7 @@ func (o InstanceOutput) SecondaryIpRange() pulumi.StringOutput {
 }
 
 // List of server CA certificates for the instance.
+// Structure is documented below.
 func (o InstanceOutput) ServerCaCerts() InstanceServerCaCertArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceServerCaCertArrayOutput { return v.ServerCaCerts }).(InstanceServerCaCertArrayOutput)
 }

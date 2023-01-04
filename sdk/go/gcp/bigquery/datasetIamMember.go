@@ -46,7 +46,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			owner, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 //				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
+//					{
 //						Role: "roles/bigquery.dataOwner",
 //						Members: []string{
 //							"user:jane@example.com",
@@ -65,7 +65,7 @@ import (
 //			}
 //			_, err = bigquery.NewDatasetIamPolicy(ctx, "datasetDatasetIamPolicy", &bigquery.DatasetIamPolicyArgs{
 //				DatasetId:  datasetDataset.DatasetId,
-//				PolicyData: pulumi.String(owner.PolicyData),
+//				PolicyData: *pulumi.String(owner.PolicyData),
 //			})
 //			if err != nil {
 //				return err

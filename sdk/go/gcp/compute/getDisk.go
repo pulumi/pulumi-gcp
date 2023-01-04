@@ -37,7 +37,7 @@ import (
 //			}
 //			_, err = compute.NewInstance(ctx, "default", &compute.InstanceArgs{
 //				BootDisk: &compute.InstanceBootDiskArgs{
-//					Source:     pulumi.String(persistent_boot_disk.SelfLink),
+//					Source:     *pulumi.String(persistent_boot_disk.SelfLink),
 //					AutoDelete: pulumi.Bool(false),
 //				},
 //			})
@@ -71,37 +71,65 @@ type LookupDiskArgs struct {
 
 // A collection of values returned by getDisk.
 type LookupDiskResult struct {
-	CreationTimestamp  string                     `pulumi:"creationTimestamp"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp string `pulumi:"creationTimestamp"`
+	// The optional description of this resource.
 	Description        string                     `pulumi:"description"`
 	DiskEncryptionKeys []GetDiskDiskEncryptionKey `pulumi:"diskEncryptionKeys"`
 	// The provider-assigned unique ID for this managed resource.
-	Id               string `pulumi:"id"`
-	Image            string `pulumi:"image"`
-	Interface        string `pulumi:"interface"`
+	Id string `pulumi:"id"`
+	// The image from which to initialize this disk.
+	Image     string `pulumi:"image"`
+	Interface string `pulumi:"interface"`
+	// The fingerprint used for optimistic locking of this resource.  Used
+	// internally during updates.
 	LabelFingerprint string `pulumi:"labelFingerprint"`
 	// A map of labels applied to this disk.
-	Labels                 map[string]string `pulumi:"labels"`
-	LastAttachTimestamp    string            `pulumi:"lastAttachTimestamp"`
-	LastDetachTimestamp    string            `pulumi:"lastDetachTimestamp"`
-	MultiWriter            bool              `pulumi:"multiWriter"`
-	Name                   string            `pulumi:"name"`
-	PhysicalBlockSizeBytes int               `pulumi:"physicalBlockSizeBytes"`
-	Project                *string           `pulumi:"project"`
-	ProvisionedIops        int               `pulumi:"provisionedIops"`
-	ResourcePolicies       []string          `pulumi:"resourcePolicies"`
+	Labels map[string]string `pulumi:"labels"`
+	// Last attach timestamp in RFC3339 text format.
+	LastAttachTimestamp string `pulumi:"lastAttachTimestamp"`
+	// Last detach timestamp in RFC3339 text format.
+	LastDetachTimestamp string `pulumi:"lastDetachTimestamp"`
+	MultiWriter         bool   `pulumi:"multiWriter"`
+	Name                string `pulumi:"name"`
+	// Physical block size of the persistent disk, in bytes.
+	PhysicalBlockSizeBytes int      `pulumi:"physicalBlockSizeBytes"`
+	Project                *string  `pulumi:"project"`
+	ProvisionedIops        int      `pulumi:"provisionedIops"`
+	ResourcePolicies       []string `pulumi:"resourcePolicies"`
 	// The URI of the created resource.
-	SelfLink                     string                               `pulumi:"selfLink"`
-	Size                         int                                  `pulumi:"size"`
-	Snapshot                     string                               `pulumi:"snapshot"`
-	SourceDisk                   string                               `pulumi:"sourceDisk"`
-	SourceDiskId                 string                               `pulumi:"sourceDiskId"`
-	SourceImageEncryptionKeys    []GetDiskSourceImageEncryptionKey    `pulumi:"sourceImageEncryptionKeys"`
-	SourceImageId                string                               `pulumi:"sourceImageId"`
+	SelfLink string `pulumi:"selfLink"`
+	// Size of the persistent disk, specified in GB.
+	Size int `pulumi:"size"`
+	// The source snapshot used to create this disk.
+	Snapshot     string `pulumi:"snapshot"`
+	SourceDisk   string `pulumi:"sourceDisk"`
+	SourceDiskId string `pulumi:"sourceDiskId"`
+	// The customer-supplied encryption key of the source image.
+	SourceImageEncryptionKeys []GetDiskSourceImageEncryptionKey `pulumi:"sourceImageEncryptionKeys"`
+	// The ID value of the image used to create this disk. This value
+	// identifies the exact image that was used to create this persistent
+	// disk. For example, if you created the persistent disk from an image
+	// that was later deleted and recreated under the same name, the source
+	// image ID would identify the exact version of the image that was used.
+	SourceImageId string `pulumi:"sourceImageId"`
+	// The customer-supplied encryption key of the source snapshot.
 	SourceSnapshotEncryptionKeys []GetDiskSourceSnapshotEncryptionKey `pulumi:"sourceSnapshotEncryptionKeys"`
-	SourceSnapshotId             string                               `pulumi:"sourceSnapshotId"`
-	Type                         string                               `pulumi:"type"`
-	Users                        []string                             `pulumi:"users"`
-	Zone                         *string                              `pulumi:"zone"`
+	// The unique ID of the snapshot used to create this disk. This value
+	// identifies the exact snapshot that was used to create this persistent
+	// disk. For example, if you created the persistent disk from a snapshot
+	// that was later deleted and recreated under the same name, the source
+	// snapshot ID would identify the exact version of the snapshot that was
+	// used.
+	SourceSnapshotId string `pulumi:"sourceSnapshotId"`
+	// URL of the disk type resource describing which disk type to use to
+	// create the disk.
+	Type string `pulumi:"type"`
+	// Links to the users of the disk (attached instances) in form:
+	// project/zones/zone/instances/instance
+	Users []string `pulumi:"users"`
+	// A reference to the zone where the disk resides.
+	Zone *string `pulumi:"zone"`
 }
 
 func LookupDiskOutput(ctx *pulumi.Context, args LookupDiskOutputArgs, opts ...pulumi.InvokeOption) LookupDiskResultOutput {
@@ -147,10 +175,12 @@ func (o LookupDiskResultOutput) ToLookupDiskResultOutputWithContext(ctx context.
 	return o
 }
 
+// Creation timestamp in RFC3339 text format.
 func (o LookupDiskResultOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
 
+// The optional description of this resource.
 func (o LookupDiskResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -164,6 +194,7 @@ func (o LookupDiskResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The image from which to initialize this disk.
 func (o LookupDiskResultOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.Image }).(pulumi.StringOutput)
 }
@@ -172,6 +203,8 @@ func (o LookupDiskResultOutput) Interface() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.Interface }).(pulumi.StringOutput)
 }
 
+// The fingerprint used for optimistic locking of this resource.  Used
+// internally during updates.
 func (o LookupDiskResultOutput) LabelFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.LabelFingerprint }).(pulumi.StringOutput)
 }
@@ -181,10 +214,12 @@ func (o LookupDiskResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDiskResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+// Last attach timestamp in RFC3339 text format.
 func (o LookupDiskResultOutput) LastAttachTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.LastAttachTimestamp }).(pulumi.StringOutput)
 }
 
+// Last detach timestamp in RFC3339 text format.
 func (o LookupDiskResultOutput) LastDetachTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.LastDetachTimestamp }).(pulumi.StringOutput)
 }
@@ -197,6 +232,7 @@ func (o LookupDiskResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Physical block size of the persistent disk, in bytes.
 func (o LookupDiskResultOutput) PhysicalBlockSizeBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDiskResult) int { return v.PhysicalBlockSizeBytes }).(pulumi.IntOutput)
 }
@@ -218,10 +254,12 @@ func (o LookupDiskResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.SelfLink }).(pulumi.StringOutput)
 }
 
+// Size of the persistent disk, specified in GB.
 func (o LookupDiskResultOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDiskResult) int { return v.Size }).(pulumi.IntOutput)
 }
 
+// The source snapshot used to create this disk.
 func (o LookupDiskResultOutput) Snapshot() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.Snapshot }).(pulumi.StringOutput)
 }
@@ -234,30 +272,48 @@ func (o LookupDiskResultOutput) SourceDiskId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.SourceDiskId }).(pulumi.StringOutput)
 }
 
+// The customer-supplied encryption key of the source image.
 func (o LookupDiskResultOutput) SourceImageEncryptionKeys() GetDiskSourceImageEncryptionKeyArrayOutput {
 	return o.ApplyT(func(v LookupDiskResult) []GetDiskSourceImageEncryptionKey { return v.SourceImageEncryptionKeys }).(GetDiskSourceImageEncryptionKeyArrayOutput)
 }
 
+// The ID value of the image used to create this disk. This value
+// identifies the exact image that was used to create this persistent
+// disk. For example, if you created the persistent disk from an image
+// that was later deleted and recreated under the same name, the source
+// image ID would identify the exact version of the image that was used.
 func (o LookupDiskResultOutput) SourceImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.SourceImageId }).(pulumi.StringOutput)
 }
 
+// The customer-supplied encryption key of the source snapshot.
 func (o LookupDiskResultOutput) SourceSnapshotEncryptionKeys() GetDiskSourceSnapshotEncryptionKeyArrayOutput {
 	return o.ApplyT(func(v LookupDiskResult) []GetDiskSourceSnapshotEncryptionKey { return v.SourceSnapshotEncryptionKeys }).(GetDiskSourceSnapshotEncryptionKeyArrayOutput)
 }
 
+// The unique ID of the snapshot used to create this disk. This value
+// identifies the exact snapshot that was used to create this persistent
+// disk. For example, if you created the persistent disk from a snapshot
+// that was later deleted and recreated under the same name, the source
+// snapshot ID would identify the exact version of the snapshot that was
+// used.
 func (o LookupDiskResultOutput) SourceSnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.SourceSnapshotId }).(pulumi.StringOutput)
 }
 
+// URL of the disk type resource describing which disk type to use to
+// create the disk.
 func (o LookupDiskResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Links to the users of the disk (attached instances) in form:
+// project/zones/zone/instances/instance
 func (o LookupDiskResultOutput) Users() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDiskResult) []string { return v.Users }).(pulumi.StringArrayOutput)
 }
 
+// A reference to the zone where the disk resides.
 func (o LookupDiskResultOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDiskResult) *string { return v.Zone }).(pulumi.StringPtrOutput)
 }

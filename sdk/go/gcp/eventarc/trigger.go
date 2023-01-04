@@ -123,12 +123,11 @@ type Trigger struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Required. Destination specifies where the events should be sent to.
 	Destination TriggerDestinationOutput `pulumi:"destination"`
-	// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create
-	// requests to ensure the client has an up-to-date value before proceeding.
+	// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
 	MatchingCriterias TriggerMatchingCriteriaArrayOutput `pulumi:"matchingCriterias"`
@@ -140,8 +139,7 @@ type Trigger struct {
 	ServiceAccount pulumi.StringPtrOutput `pulumi:"serviceAccount"`
 	// Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
 	Transports TriggerTransportArrayOutput `pulumi:"transports"`
-	// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain
-	// unchanged until the resource is deleted.
+	// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Output only. The last-modified time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -193,12 +191,11 @@ type triggerState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Required. Destination specifies where the events should be sent to.
 	Destination *TriggerDestination `pulumi:"destination"`
-	// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create
-	// requests to ensure the client has an up-to-date value before proceeding.
+	// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels map[string]string `pulumi:"labels"`
-	// Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+	// The location for the resource
 	Location *string `pulumi:"location"`
 	// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
 	MatchingCriterias []TriggerMatchingCriteria `pulumi:"matchingCriterias"`
@@ -210,8 +207,7 @@ type triggerState struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
 	Transports []TriggerTransport `pulumi:"transports"`
-	// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain
-	// unchanged until the resource is deleted.
+	// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid *string `pulumi:"uid"`
 	// Output only. The last-modified time.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -226,12 +222,11 @@ type TriggerState struct {
 	CreateTime pulumi.StringPtrInput
 	// Required. Destination specifies where the events should be sent to.
 	Destination TriggerDestinationPtrInput
-	// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create
-	// requests to ensure the client has an up-to-date value before proceeding.
+	// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels pulumi.StringMapInput
-	// Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+	// The location for the resource
 	Location pulumi.StringPtrInput
 	// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
 	MatchingCriterias TriggerMatchingCriteriaArrayInput
@@ -243,8 +238,7 @@ type TriggerState struct {
 	ServiceAccount pulumi.StringPtrInput
 	// Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
 	Transports TriggerTransportArrayInput
-	// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain
-	// unchanged until the resource is deleted.
+	// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid pulumi.StringPtrInput
 	// Output only. The last-modified time.
 	UpdateTime pulumi.StringPtrInput
@@ -261,7 +255,7 @@ type triggerArgs struct {
 	Destination TriggerDestination `pulumi:"destination"`
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels map[string]string `pulumi:"labels"`
-	// Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+	// The location for the resource
 	Location string `pulumi:"location"`
 	// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
 	MatchingCriterias []TriggerMatchingCriteria `pulumi:"matchingCriterias"`
@@ -283,7 +277,7 @@ type TriggerArgs struct {
 	Destination TriggerDestinationInput
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels pulumi.StringMapInput
-	// Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+	// The location for the resource
 	Location pulumi.StringInput
 	// Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
 	MatchingCriterias TriggerMatchingCriteriaArrayInput
@@ -404,8 +398,7 @@ func (o TriggerOutput) Destination() TriggerDestinationOutput {
 	return o.ApplyT(func(v *Trigger) TriggerDestinationOutput { return v.Destination }).(TriggerDestinationOutput)
 }
 
-// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create
-// requests to ensure the client has an up-to-date value before proceeding.
+// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
 func (o TriggerOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
@@ -415,7 +408,7 @@ func (o TriggerOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+// The location for the resource
 func (o TriggerOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -445,8 +438,7 @@ func (o TriggerOutput) Transports() TriggerTransportArrayOutput {
 	return o.ApplyT(func(v *Trigger) TriggerTransportArrayOutput { return v.Transports }).(TriggerTransportArrayOutput)
 }
 
-// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain
-// unchanged until the resource is deleted.
+// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 func (o TriggerOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }

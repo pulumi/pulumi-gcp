@@ -56,7 +56,7 @@ import (
 //				return err
 //			}
 //			persistent, err := compute.NewDisk(ctx, "persistent", &compute.DiskArgs{
-//				Image: pulumi.String(debian.SelfLink),
+//				Image: *pulumi.String(debian.SelfLink),
 //				Size:  pulumi.Int(10),
 //				Type:  pulumi.String("pd-ssd"),
 //				Zone:  pulumi.String("us-central1-a"),
@@ -104,7 +104,7 @@ import (
 //				return err
 //			}
 //			persistent, err := compute.NewDisk(ctx, "persistent", &compute.DiskArgs{
-//				Image: pulumi.String(debian.SelfLink),
+//				Image: *pulumi.String(debian.SelfLink),
 //				Size:  pulumi.Int(10),
 //				Type:  pulumi.String("pd-ssd"),
 //				Zone:  pulumi.String("us-central1-a"),
@@ -169,13 +169,15 @@ type Snapshot struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Size of the snapshot, specified in GB.
 	DiskSizeGb pulumi.IntOutput `pulumi:"diskSizeGb"`
-	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+	// The fingerprint used for optimistic locking of this resource. Used
+	// internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// Labels to apply to this Snapshot.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses
-	// attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied
-	// encryption key.
+	// A list of public visible licenses that apply to this snapshot. This
+	// can be because the original image had licenses attached (such as a
+	// Windows image).  snapshotEncryptionKey nested object Encrypts the
+	// snapshot using a customer-supplied encryption key.
 	Licenses pulumi.StringArrayOutput `pulumi:"licenses"`
 	// Name of the resource; provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -211,7 +213,8 @@ type Snapshot struct {
 	// key.
 	// Structure is documented below.
 	SourceDiskEncryptionKey SnapshotSourceDiskEncryptionKeyPtrOutput `pulumi:"sourceDiskEncryptionKey"`
-	// A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
+	// A size of the storage used by the snapshot. As snapshots share
+	// storage, this number is expected to change with snapshot
 	// creation/deletion.
 	StorageBytes pulumi.IntOutput `pulumi:"storageBytes"`
 	// Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
@@ -265,13 +268,15 @@ type snapshotState struct {
 	Description *string `pulumi:"description"`
 	// Size of the snapshot, specified in GB.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
-	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+	// The fingerprint used for optimistic locking of this resource. Used
+	// internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// Labels to apply to this Snapshot.
 	Labels map[string]string `pulumi:"labels"`
-	// A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses
-	// attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied
-	// encryption key.
+	// A list of public visible licenses that apply to this snapshot. This
+	// can be because the original image had licenses attached (such as a
+	// Windows image).  snapshotEncryptionKey nested object Encrypts the
+	// snapshot using a customer-supplied encryption key.
 	Licenses []string `pulumi:"licenses"`
 	// Name of the resource; provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -307,7 +312,8 @@ type snapshotState struct {
 	// key.
 	// Structure is documented below.
 	SourceDiskEncryptionKey *SnapshotSourceDiskEncryptionKey `pulumi:"sourceDiskEncryptionKey"`
-	// A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
+	// A size of the storage used by the snapshot. As snapshots share
+	// storage, this number is expected to change with snapshot
 	// creation/deletion.
 	StorageBytes *int `pulumi:"storageBytes"`
 	// Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
@@ -330,13 +336,15 @@ type SnapshotState struct {
 	Description pulumi.StringPtrInput
 	// Size of the snapshot, specified in GB.
 	DiskSizeGb pulumi.IntPtrInput
-	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+	// The fingerprint used for optimistic locking of this resource. Used
+	// internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
 	// Labels to apply to this Snapshot.
 	Labels pulumi.StringMapInput
-	// A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses
-	// attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied
-	// encryption key.
+	// A list of public visible licenses that apply to this snapshot. This
+	// can be because the original image had licenses attached (such as a
+	// Windows image).  snapshotEncryptionKey nested object Encrypts the
+	// snapshot using a customer-supplied encryption key.
 	Licenses pulumi.StringArrayInput
 	// Name of the resource; provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -372,7 +380,8 @@ type SnapshotState struct {
 	// key.
 	// Structure is documented below.
 	SourceDiskEncryptionKey SnapshotSourceDiskEncryptionKeyPtrInput
-	// A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
+	// A size of the storage used by the snapshot. As snapshots share
+	// storage, this number is expected to change with snapshot
 	// creation/deletion.
 	StorageBytes pulumi.IntPtrInput
 	// Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
@@ -594,7 +603,8 @@ func (o SnapshotOutput) DiskSizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.IntOutput { return v.DiskSizeGb }).(pulumi.IntOutput)
 }
 
-// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+// The fingerprint used for optimistic locking of this resource. Used
+// internally during updates.
 func (o SnapshotOutput) LabelFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.LabelFingerprint }).(pulumi.StringOutput)
 }
@@ -604,9 +614,10 @@ func (o SnapshotOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses
-// attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied
-// encryption key.
+// A list of public visible licenses that apply to this snapshot. This
+// can be because the original image had licenses attached (such as a
+// Windows image).  snapshotEncryptionKey nested object Encrypts the
+// snapshot using a customer-supplied encryption key.
 func (o SnapshotOutput) Licenses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringArrayOutput { return v.Licenses }).(pulumi.StringArrayOutput)
 }
@@ -666,7 +677,8 @@ func (o SnapshotOutput) SourceDiskEncryptionKey() SnapshotSourceDiskEncryptionKe
 	return o.ApplyT(func(v *Snapshot) SnapshotSourceDiskEncryptionKeyPtrOutput { return v.SourceDiskEncryptionKey }).(SnapshotSourceDiskEncryptionKeyPtrOutput)
 }
 
-// A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
+// A size of the storage used by the snapshot. As snapshots share
+// storage, this number is expected to change with snapshot
 // creation/deletion.
 func (o SnapshotOutput) StorageBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.IntOutput { return v.StorageBytes }).(pulumi.IntOutput)

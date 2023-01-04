@@ -11,7 +11,6 @@ import (
 )
 
 type CertificateManaged struct {
-	// -
 	// Detailed state of the latest authorization attempt for each domain
 	// specified for this Managed Certificate.
 	// Structure is documented below.
@@ -21,11 +20,9 @@ type CertificateManaged struct {
 	// The domains for which a managed SSL certificate will be generated.
 	// Wildcard domains are only supported with DNS challenge resolution
 	Domains []string `pulumi:"domains"`
-	// -
 	// Information about issues with provisioning this Managed Certificate.
 	// Structure is documented below.
 	ProvisioningIssues []CertificateManagedProvisioningIssue `pulumi:"provisioningIssues"`
-	// -
 	// State of the domain for managed certificate issuance.
 	State *string `pulumi:"state"`
 }
@@ -42,7 +39,6 @@ type CertificateManagedInput interface {
 }
 
 type CertificateManagedArgs struct {
-	// -
 	// Detailed state of the latest authorization attempt for each domain
 	// specified for this Managed Certificate.
 	// Structure is documented below.
@@ -52,11 +48,9 @@ type CertificateManagedArgs struct {
 	// The domains for which a managed SSL certificate will be generated.
 	// Wildcard domains are only supported with DNS challenge resolution
 	Domains pulumi.StringArrayInput `pulumi:"domains"`
-	// -
 	// Information about issues with provisioning this Managed Certificate.
 	// Structure is documented below.
 	ProvisioningIssues CertificateManagedProvisioningIssueArrayInput `pulumi:"provisioningIssues"`
-	// -
 	// State of the domain for managed certificate issuance.
 	State pulumi.StringPtrInput `pulumi:"state"`
 }
@@ -138,7 +132,6 @@ func (o CertificateManagedOutput) ToCertificateManagedPtrOutputWithContext(ctx c
 	}).(CertificateManagedPtrOutput)
 }
 
-// -
 // Detailed state of the latest authorization attempt for each domain
 // specified for this Managed Certificate.
 // Structure is documented below.
@@ -159,14 +152,12 @@ func (o CertificateManagedOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CertificateManaged) []string { return v.Domains }).(pulumi.StringArrayOutput)
 }
 
-// -
 // Information about issues with provisioning this Managed Certificate.
 // Structure is documented below.
 func (o CertificateManagedOutput) ProvisioningIssues() CertificateManagedProvisioningIssueArrayOutput {
 	return o.ApplyT(func(v CertificateManaged) []CertificateManagedProvisioningIssue { return v.ProvisioningIssues }).(CertificateManagedProvisioningIssueArrayOutput)
 }
 
-// -
 // State of the domain for managed certificate issuance.
 func (o CertificateManagedOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateManaged) *string { return v.State }).(pulumi.StringPtrOutput)
@@ -196,7 +187,6 @@ func (o CertificateManagedPtrOutput) Elem() CertificateManagedOutput {
 	}).(CertificateManagedOutput)
 }
 
-// -
 // Detailed state of the latest authorization attempt for each domain
 // specified for this Managed Certificate.
 // Structure is documented below.
@@ -230,7 +220,6 @@ func (o CertificateManagedPtrOutput) Domains() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// -
 // Information about issues with provisioning this Managed Certificate.
 // Structure is documented below.
 func (o CertificateManagedPtrOutput) ProvisioningIssues() CertificateManagedProvisioningIssueArrayOutput {
@@ -242,7 +231,6 @@ func (o CertificateManagedPtrOutput) ProvisioningIssues() CertificateManagedProv
 	}).(CertificateManagedProvisioningIssueArrayOutput)
 }
 
-// -
 // State of the domain for managed certificate issuance.
 func (o CertificateManagedPtrOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateManaged) *string {
@@ -254,18 +242,18 @@ func (o CertificateManagedPtrOutput) State() pulumi.StringPtrOutput {
 }
 
 type CertificateManagedAuthorizationAttemptInfo struct {
-	// -
+	// Human readable explanation about the issue. Provided to help address
+	// the configuration issues.
+	// Not guaranteed to be stable. For programmatic access use `reason` field.
 	// Human readable explanation for reaching the state. Provided to help
 	// address the configuration issues.
 	// Not guaranteed to be stable. For programmatic access use `failureReason` field.
 	Details *string `pulumi:"details"`
-	// -
 	// Domain name of the authorization attempt.
 	Domain *string `pulumi:"domain"`
-	// -
 	// Reason for failure of the authorization attempt for the domain.
 	FailureReason *string `pulumi:"failureReason"`
-	// -
+	// A state of this Managed Certificate.
 	// State of the domain for managed certificate issuance.
 	State *string `pulumi:"state"`
 }
@@ -282,18 +270,18 @@ type CertificateManagedAuthorizationAttemptInfoInput interface {
 }
 
 type CertificateManagedAuthorizationAttemptInfoArgs struct {
-	// -
+	// Human readable explanation about the issue. Provided to help address
+	// the configuration issues.
+	// Not guaranteed to be stable. For programmatic access use `reason` field.
 	// Human readable explanation for reaching the state. Provided to help
 	// address the configuration issues.
 	// Not guaranteed to be stable. For programmatic access use `failureReason` field.
 	Details pulumi.StringPtrInput `pulumi:"details"`
-	// -
 	// Domain name of the authorization attempt.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
-	// -
 	// Reason for failure of the authorization attempt for the domain.
 	FailureReason pulumi.StringPtrInput `pulumi:"failureReason"`
-	// -
+	// A state of this Managed Certificate.
 	// State of the domain for managed certificate issuance.
 	State pulumi.StringPtrInput `pulumi:"state"`
 }
@@ -349,7 +337,9 @@ func (o CertificateManagedAuthorizationAttemptInfoOutput) ToCertificateManagedAu
 	return o
 }
 
-// -
+// Human readable explanation about the issue. Provided to help address
+// the configuration issues.
+// Not guaranteed to be stable. For programmatic access use `reason` field.
 // Human readable explanation for reaching the state. Provided to help
 // address the configuration issues.
 // Not guaranteed to be stable. For programmatic access use `failureReason` field.
@@ -357,19 +347,17 @@ func (o CertificateManagedAuthorizationAttemptInfoOutput) Details() pulumi.Strin
 	return o.ApplyT(func(v CertificateManagedAuthorizationAttemptInfo) *string { return v.Details }).(pulumi.StringPtrOutput)
 }
 
-// -
 // Domain name of the authorization attempt.
 func (o CertificateManagedAuthorizationAttemptInfoOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateManagedAuthorizationAttemptInfo) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
-// -
 // Reason for failure of the authorization attempt for the domain.
 func (o CertificateManagedAuthorizationAttemptInfoOutput) FailureReason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateManagedAuthorizationAttemptInfo) *string { return v.FailureReason }).(pulumi.StringPtrOutput)
 }
 
-// -
+// A state of this Managed Certificate.
 // State of the domain for managed certificate issuance.
 func (o CertificateManagedAuthorizationAttemptInfoOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateManagedAuthorizationAttemptInfo) *string { return v.State }).(pulumi.StringPtrOutput)
@@ -396,12 +384,13 @@ func (o CertificateManagedAuthorizationAttemptInfoArrayOutput) Index(i pulumi.In
 }
 
 type CertificateManagedProvisioningIssue struct {
-	// -
+	// Human readable explanation about the issue. Provided to help address
+	// the configuration issues.
+	// Not guaranteed to be stable. For programmatic access use `reason` field.
 	// Human readable explanation for reaching the state. Provided to help
 	// address the configuration issues.
 	// Not guaranteed to be stable. For programmatic access use `failureReason` field.
 	Details *string `pulumi:"details"`
-	// -
 	// Reason for provisioning failures.
 	Reason *string `pulumi:"reason"`
 }
@@ -418,12 +407,13 @@ type CertificateManagedProvisioningIssueInput interface {
 }
 
 type CertificateManagedProvisioningIssueArgs struct {
-	// -
+	// Human readable explanation about the issue. Provided to help address
+	// the configuration issues.
+	// Not guaranteed to be stable. For programmatic access use `reason` field.
 	// Human readable explanation for reaching the state. Provided to help
 	// address the configuration issues.
 	// Not guaranteed to be stable. For programmatic access use `failureReason` field.
 	Details pulumi.StringPtrInput `pulumi:"details"`
-	// -
 	// Reason for provisioning failures.
 	Reason pulumi.StringPtrInput `pulumi:"reason"`
 }
@@ -479,7 +469,9 @@ func (o CertificateManagedProvisioningIssueOutput) ToCertificateManagedProvision
 	return o
 }
 
-// -
+// Human readable explanation about the issue. Provided to help address
+// the configuration issues.
+// Not guaranteed to be stable. For programmatic access use `reason` field.
 // Human readable explanation for reaching the state. Provided to help
 // address the configuration issues.
 // Not guaranteed to be stable. For programmatic access use `failureReason` field.
@@ -487,7 +479,6 @@ func (o CertificateManagedProvisioningIssueOutput) Details() pulumi.StringPtrOut
 	return o.ApplyT(func(v CertificateManagedProvisioningIssue) *string { return v.Details }).(pulumi.StringPtrOutput)
 }
 
-// -
 // Reason for provisioning failures.
 func (o CertificateManagedProvisioningIssueOutput) Reason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateManagedProvisioningIssue) *string { return v.Reason }).(pulumi.StringPtrOutput)
@@ -514,9 +505,17 @@ func (o CertificateManagedProvisioningIssueArrayOutput) Index(i pulumi.IntInput)
 }
 
 type CertificateMapGclbTarget struct {
-	IpConfigs        []CertificateMapGclbTargetIpConfig `pulumi:"ipConfigs"`
-	TargetHttpsProxy *string                            `pulumi:"targetHttpsProxy"`
-	TargetSslProxy   *string                            `pulumi:"targetSslProxy"`
+	// An IP configuration where this Certificate Map is serving
+	// Structure is documented below.
+	IpConfigs []CertificateMapGclbTargetIpConfig `pulumi:"ipConfigs"`
+	// Proxy name must be in the format projects/*/locations/*/targetHttpsProxies/*.
+	// This field is part of a union field `targetProxy`: Only one of `targetHttpsProxy` or
+	// `targetSslProxy` may be set.
+	TargetHttpsProxy *string `pulumi:"targetHttpsProxy"`
+	// Proxy name must be in the format projects/*/locations/*/targetSslProxies/*.
+	// This field is part of a union field `targetProxy`: Only one of `targetHttpsProxy` or
+	// `targetSslProxy` may be set.
+	TargetSslProxy *string `pulumi:"targetSslProxy"`
 }
 
 // CertificateMapGclbTargetInput is an input type that accepts CertificateMapGclbTargetArgs and CertificateMapGclbTargetOutput values.
@@ -531,9 +530,17 @@ type CertificateMapGclbTargetInput interface {
 }
 
 type CertificateMapGclbTargetArgs struct {
-	IpConfigs        CertificateMapGclbTargetIpConfigArrayInput `pulumi:"ipConfigs"`
-	TargetHttpsProxy pulumi.StringPtrInput                      `pulumi:"targetHttpsProxy"`
-	TargetSslProxy   pulumi.StringPtrInput                      `pulumi:"targetSslProxy"`
+	// An IP configuration where this Certificate Map is serving
+	// Structure is documented below.
+	IpConfigs CertificateMapGclbTargetIpConfigArrayInput `pulumi:"ipConfigs"`
+	// Proxy name must be in the format projects/*/locations/*/targetHttpsProxies/*.
+	// This field is part of a union field `targetProxy`: Only one of `targetHttpsProxy` or
+	// `targetSslProxy` may be set.
+	TargetHttpsProxy pulumi.StringPtrInput `pulumi:"targetHttpsProxy"`
+	// Proxy name must be in the format projects/*/locations/*/targetSslProxies/*.
+	// This field is part of a union field `targetProxy`: Only one of `targetHttpsProxy` or
+	// `targetSslProxy` may be set.
+	TargetSslProxy pulumi.StringPtrInput `pulumi:"targetSslProxy"`
 }
 
 func (CertificateMapGclbTargetArgs) ElementType() reflect.Type {
@@ -587,14 +594,22 @@ func (o CertificateMapGclbTargetOutput) ToCertificateMapGclbTargetOutputWithCont
 	return o
 }
 
+// An IP configuration where this Certificate Map is serving
+// Structure is documented below.
 func (o CertificateMapGclbTargetOutput) IpConfigs() CertificateMapGclbTargetIpConfigArrayOutput {
 	return o.ApplyT(func(v CertificateMapGclbTarget) []CertificateMapGclbTargetIpConfig { return v.IpConfigs }).(CertificateMapGclbTargetIpConfigArrayOutput)
 }
 
+// Proxy name must be in the format projects/*/locations/*/targetHttpsProxies/*.
+// This field is part of a union field `targetProxy`: Only one of `targetHttpsProxy` or
+// `targetSslProxy` may be set.
 func (o CertificateMapGclbTargetOutput) TargetHttpsProxy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateMapGclbTarget) *string { return v.TargetHttpsProxy }).(pulumi.StringPtrOutput)
 }
 
+// Proxy name must be in the format projects/*/locations/*/targetSslProxies/*.
+// This field is part of a union field `targetProxy`: Only one of `targetHttpsProxy` or
+// `targetSslProxy` may be set.
 func (o CertificateMapGclbTargetOutput) TargetSslProxy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateMapGclbTarget) *string { return v.TargetSslProxy }).(pulumi.StringPtrOutput)
 }
@@ -620,8 +635,10 @@ func (o CertificateMapGclbTargetArrayOutput) Index(i pulumi.IntInput) Certificat
 }
 
 type CertificateMapGclbTargetIpConfig struct {
+	// An external IP address
 	IpAddress *string `pulumi:"ipAddress"`
-	Ports     []int   `pulumi:"ports"`
+	// A list of ports
+	Ports []int `pulumi:"ports"`
 }
 
 // CertificateMapGclbTargetIpConfigInput is an input type that accepts CertificateMapGclbTargetIpConfigArgs and CertificateMapGclbTargetIpConfigOutput values.
@@ -636,8 +653,10 @@ type CertificateMapGclbTargetIpConfigInput interface {
 }
 
 type CertificateMapGclbTargetIpConfigArgs struct {
+	// An external IP address
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
-	Ports     pulumi.IntArrayInput  `pulumi:"ports"`
+	// A list of ports
+	Ports pulumi.IntArrayInput `pulumi:"ports"`
 }
 
 func (CertificateMapGclbTargetIpConfigArgs) ElementType() reflect.Type {
@@ -691,10 +710,12 @@ func (o CertificateMapGclbTargetIpConfigOutput) ToCertificateMapGclbTargetIpConf
 	return o
 }
 
+// An external IP address
 func (o CertificateMapGclbTargetIpConfigOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateMapGclbTargetIpConfig) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
+// A list of ports
 func (o CertificateMapGclbTargetIpConfigOutput) Ports() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v CertificateMapGclbTargetIpConfig) []int { return v.Ports }).(pulumi.IntArrayOutput)
 }
@@ -720,7 +741,6 @@ func (o CertificateMapGclbTargetIpConfigArrayOutput) Index(i pulumi.IntInput) Ce
 }
 
 type CertificateSelfManaged struct {
-	// -
 	// (Optional, Deprecated)
 	// **Deprecated** The certificate chain in PEM-encoded form.
 	// Leaf certificate comes first, followed by intermediate ones if any.
@@ -735,7 +755,6 @@ type CertificateSelfManaged struct {
 	// The private key of the leaf certificate in PEM-encoded form.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	PemPrivateKey *string `pulumi:"pemPrivateKey"`
-	// -
 	// (Optional, Deprecated)
 	// **Deprecated** The private key of the leaf certificate in PEM-encoded form.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -756,7 +775,6 @@ type CertificateSelfManagedInput interface {
 }
 
 type CertificateSelfManagedArgs struct {
-	// -
 	// (Optional, Deprecated)
 	// **Deprecated** The certificate chain in PEM-encoded form.
 	// Leaf certificate comes first, followed by intermediate ones if any.
@@ -771,7 +789,6 @@ type CertificateSelfManagedArgs struct {
 	// The private key of the leaf certificate in PEM-encoded form.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	PemPrivateKey pulumi.StringPtrInput `pulumi:"pemPrivateKey"`
-	// -
 	// (Optional, Deprecated)
 	// **Deprecated** The private key of the leaf certificate in PEM-encoded form.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -857,7 +874,6 @@ func (o CertificateSelfManagedOutput) ToCertificateSelfManagedPtrOutputWithConte
 	}).(CertificateSelfManagedPtrOutput)
 }
 
-// -
 // (Optional, Deprecated)
 // **Deprecated** The certificate chain in PEM-encoded form.
 // Leaf certificate comes first, followed by intermediate ones if any.
@@ -881,7 +897,6 @@ func (o CertificateSelfManagedOutput) PemPrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateSelfManaged) *string { return v.PemPrivateKey }).(pulumi.StringPtrOutput)
 }
 
-// -
 // (Optional, Deprecated)
 // **Deprecated** The private key of the leaf certificate in PEM-encoded form.
 // **Note**: This property is sensitive and will not be displayed in the plan.
@@ -915,7 +930,6 @@ func (o CertificateSelfManagedPtrOutput) Elem() CertificateSelfManagedOutput {
 	}).(CertificateSelfManagedOutput)
 }
 
-// -
 // (Optional, Deprecated)
 // **Deprecated** The certificate chain in PEM-encoded form.
 // Leaf certificate comes first, followed by intermediate ones if any.
@@ -954,7 +968,6 @@ func (o CertificateSelfManagedPtrOutput) PemPrivateKey() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // (Optional, Deprecated)
 // **Deprecated** The private key of the leaf certificate in PEM-encoded form.
 // **Note**: This property is sensitive and will not be displayed in the plan.
@@ -970,11 +983,13 @@ func (o CertificateSelfManagedPtrOutput) PrivateKeyPem() pulumi.StringPtrOutput 
 }
 
 type DnsAuthorizationDnsResourceRecord struct {
+	// Data of the DNS Resource Record.
 	Data *string `pulumi:"data"`
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
 	Name *string `pulumi:"name"`
+	// Type of the DNS Resource Record.
 	Type *string `pulumi:"type"`
 }
 
@@ -990,11 +1005,13 @@ type DnsAuthorizationDnsResourceRecordInput interface {
 }
 
 type DnsAuthorizationDnsResourceRecordArgs struct {
+	// Data of the DNS Resource Record.
 	Data pulumi.StringPtrInput `pulumi:"data"`
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Type of the DNS Resource Record.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -1049,6 +1066,7 @@ func (o DnsAuthorizationDnsResourceRecordOutput) ToDnsAuthorizationDnsResourceRe
 	return o
 }
 
+// Data of the DNS Resource Record.
 func (o DnsAuthorizationDnsResourceRecordOutput) Data() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DnsAuthorizationDnsResourceRecord) *string { return v.Data }).(pulumi.StringPtrOutput)
 }
@@ -1060,6 +1078,7 @@ func (o DnsAuthorizationDnsResourceRecordOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DnsAuthorizationDnsResourceRecord) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Type of the DNS Resource Record.
 func (o DnsAuthorizationDnsResourceRecordOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DnsAuthorizationDnsResourceRecord) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

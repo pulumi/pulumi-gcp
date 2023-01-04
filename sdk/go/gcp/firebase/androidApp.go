@@ -76,8 +76,8 @@ import (
 type AndroidApp struct {
 	pulumi.CustomResourceState
 
-	// The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
-	// token, as the data format is not specified.
+	// The globally unique, Firebase-assigned identifier of the AndroidApp.
+	// This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId pulumi.StringOutput `pulumi:"appId"`
 	// (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
 	// 'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
@@ -85,10 +85,11 @@ type AndroidApp struct {
 	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the AndroidApp.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
-	// ensure the client has an up-to-date value before proceeding.
+	// This checksum is computed by the server based on the value of other fields, and it may be sent
+	// with update requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
+	// The fully qualified resource name of the AndroidApp, for example:
+	// projects/projectId/androidApps/appId
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Immutable. The canonical package name of the Android app as would appear in the Google Play
 	// Developer Console.
@@ -134,8 +135,8 @@ func GetAndroidApp(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AndroidApp resources.
 type androidAppState struct {
-	// The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
-	// token, as the data format is not specified.
+	// The globally unique, Firebase-assigned identifier of the AndroidApp.
+	// This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId *string `pulumi:"appId"`
 	// (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
 	// 'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
@@ -143,10 +144,11 @@ type androidAppState struct {
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the AndroidApp.
 	DisplayName *string `pulumi:"displayName"`
-	// This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
-	// ensure the client has an up-to-date value before proceeding.
+	// This checksum is computed by the server based on the value of other fields, and it may be sent
+	// with update requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
-	// The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
+	// The fully qualified resource name of the AndroidApp, for example:
+	// projects/projectId/androidApps/appId
 	Name *string `pulumi:"name"`
 	// Immutable. The canonical package name of the Android app as would appear in the Google Play
 	// Developer Console.
@@ -161,8 +163,8 @@ type androidAppState struct {
 }
 
 type AndroidAppState struct {
-	// The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
-	// token, as the data format is not specified.
+	// The globally unique, Firebase-assigned identifier of the AndroidApp.
+	// This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId pulumi.StringPtrInput
 	// (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
 	// 'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
@@ -170,10 +172,11 @@ type AndroidAppState struct {
 	DeletionPolicy pulumi.StringPtrInput
 	// The user-assigned display name of the AndroidApp.
 	DisplayName pulumi.StringPtrInput
-	// This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
-	// ensure the client has an up-to-date value before proceeding.
+	// This checksum is computed by the server based on the value of other fields, and it may be sent
+	// with update requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
-	// The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
+	// The fully qualified resource name of the AndroidApp, for example:
+	// projects/projectId/androidApps/appId
 	Name pulumi.StringPtrInput
 	// Immutable. The canonical package name of the Android app as would appear in the Google Play
 	// Developer Console.
@@ -317,8 +320,8 @@ func (o AndroidAppOutput) ToAndroidAppOutputWithContext(ctx context.Context) And
 	return o
 }
 
-// The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
-// token, as the data format is not specified.
+// The globally unique, Firebase-assigned identifier of the AndroidApp.
+// This identifier should be treated as an opaque token, as the data format is not specified.
 func (o AndroidAppOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AndroidApp) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
 }
@@ -335,13 +338,14 @@ func (o AndroidAppOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AndroidApp) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
-// ensure the client has an up-to-date value before proceeding.
+// This checksum is computed by the server based on the value of other fields, and it may be sent
+// with update requests to ensure the client has an up-to-date value before proceeding.
 func (o AndroidAppOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *AndroidApp) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
+// The fully qualified resource name of the AndroidApp, for example:
+// projects/projectId/androidApps/appId
 func (o AndroidAppOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AndroidApp) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

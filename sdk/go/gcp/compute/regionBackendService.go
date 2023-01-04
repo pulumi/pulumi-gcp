@@ -78,14 +78,14 @@ type RegionBackendService struct {
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
-	// Provide this property when you create the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// If true, enable Cloud CDN for this RegionBackendService.
 	EnableCdn pulumi.BoolPtrOutput `pulumi:"enableCdn"`
 	// Policy for failovers.
 	// Structure is documented below.
 	FailoverPolicy RegionBackendServiceFailoverPolicyPtrOutput `pulumi:"failoverPolicy"`
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+	// Fingerprint of this resource. A hash of the contents stored in this
+	// object. This field is used in optimistic locking.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// The set of URLs to HealthCheck resources for health checking
 	// this RegionBackendService. Currently at most one health
@@ -105,30 +105,18 @@ type RegionBackendService struct {
 	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are:
-	// * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
-	//   is selected in round robin order.
-	// * `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
-	//   hosts and picks the host which has fewer active requests.
-	// * `RING_HASH`: The ring/modulo hash load balancer implements consistent
-	//   hashing to backends. The algorithm has the property that the
-	//   addition/removal of a host from a set of N hosts only affects
-	//   1/N of the requests.
-	// * `RANDOM`: The load balancer selects a random healthy host.
-	// * `ORIGINAL_DESTINATION`: Backend host is selected based on the client
-	//   connection metadata, i.e., connections are opened
-	//   to the same address as the destination address of
-	//   the incoming connection before the connection
-	//   was redirected to the load balancer.
-	// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
-	//   Maglev is not as stable as ring hash but has faster table lookup
-	//   build times and host selection times. For more information about
-	//   Maglev, refer to https://ai.google/research/pubs/pub44824
 	LocalityLbPolicy pulumi.StringPtrOutput `pulumi:"localityLbPolicy"`
 	// This field denotes the logging options for the load balancer traffic served by this backend service.
 	// If logging is enabled, logs will be exported to Stackdriver.
 	// Structure is documented below.
 	LogConfig RegionBackendServiceLogConfigOutput `pulumi:"logConfig"`
-	// Name of the cookie.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The URL of the network to which this backend service belongs.
 	// This field can only be specified when the load balancing scheme is set to INTERNAL.
@@ -236,14 +224,14 @@ type regionBackendServiceState struct {
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
-	// Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// If true, enable Cloud CDN for this RegionBackendService.
 	EnableCdn *bool `pulumi:"enableCdn"`
 	// Policy for failovers.
 	// Structure is documented below.
 	FailoverPolicy *RegionBackendServiceFailoverPolicy `pulumi:"failoverPolicy"`
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+	// Fingerprint of this resource. A hash of the contents stored in this
+	// object. This field is used in optimistic locking.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// The set of URLs to HealthCheck resources for health checking
 	// this RegionBackendService. Currently at most one health
@@ -263,30 +251,18 @@ type regionBackendServiceState struct {
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are:
-	// * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
-	//   is selected in round robin order.
-	// * `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
-	//   hosts and picks the host which has fewer active requests.
-	// * `RING_HASH`: The ring/modulo hash load balancer implements consistent
-	//   hashing to backends. The algorithm has the property that the
-	//   addition/removal of a host from a set of N hosts only affects
-	//   1/N of the requests.
-	// * `RANDOM`: The load balancer selects a random healthy host.
-	// * `ORIGINAL_DESTINATION`: Backend host is selected based on the client
-	//   connection metadata, i.e., connections are opened
-	//   to the same address as the destination address of
-	//   the incoming connection before the connection
-	//   was redirected to the load balancer.
-	// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
-	//   Maglev is not as stable as ring hash but has faster table lookup
-	//   build times and host selection times. For more information about
-	//   Maglev, refer to https://ai.google/research/pubs/pub44824
 	LocalityLbPolicy *string `pulumi:"localityLbPolicy"`
 	// This field denotes the logging options for the load balancer traffic served by this backend service.
 	// If logging is enabled, logs will be exported to Stackdriver.
 	// Structure is documented below.
 	LogConfig *RegionBackendServiceLogConfig `pulumi:"logConfig"`
-	// Name of the cookie.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The URL of the network to which this backend service belongs.
 	// This field can only be specified when the load balancing scheme is set to INTERNAL.
@@ -366,14 +342,14 @@ type RegionBackendServiceState struct {
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource.
-	// Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// If true, enable Cloud CDN for this RegionBackendService.
 	EnableCdn pulumi.BoolPtrInput
 	// Policy for failovers.
 	// Structure is documented below.
 	FailoverPolicy RegionBackendServiceFailoverPolicyPtrInput
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+	// Fingerprint of this resource. A hash of the contents stored in this
+	// object. This field is used in optimistic locking.
 	Fingerprint pulumi.StringPtrInput
 	// The set of URLs to HealthCheck resources for health checking
 	// this RegionBackendService. Currently at most one health
@@ -393,30 +369,18 @@ type RegionBackendServiceState struct {
 	LoadBalancingScheme pulumi.StringPtrInput
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are:
-	// * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
-	//   is selected in round robin order.
-	// * `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
-	//   hosts and picks the host which has fewer active requests.
-	// * `RING_HASH`: The ring/modulo hash load balancer implements consistent
-	//   hashing to backends. The algorithm has the property that the
-	//   addition/removal of a host from a set of N hosts only affects
-	//   1/N of the requests.
-	// * `RANDOM`: The load balancer selects a random healthy host.
-	// * `ORIGINAL_DESTINATION`: Backend host is selected based on the client
-	//   connection metadata, i.e., connections are opened
-	//   to the same address as the destination address of
-	//   the incoming connection before the connection
-	//   was redirected to the load balancer.
-	// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
-	//   Maglev is not as stable as ring hash but has faster table lookup
-	//   build times and host selection times. For more information about
-	//   Maglev, refer to https://ai.google/research/pubs/pub44824
 	LocalityLbPolicy pulumi.StringPtrInput
 	// This field denotes the logging options for the load balancer traffic served by this backend service.
 	// If logging is enabled, logs will be exported to Stackdriver.
 	// Structure is documented below.
 	LogConfig RegionBackendServiceLogConfigPtrInput
-	// Name of the cookie.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The URL of the network to which this backend service belongs.
 	// This field can only be specified when the load balancing scheme is set to INTERNAL.
@@ -498,7 +462,6 @@ type regionBackendServiceArgs struct {
 	// This field only applies when all of the following are true -
 	ConsistentHash *RegionBackendServiceConsistentHash `pulumi:"consistentHash"`
 	// An optional description of this resource.
-	// Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// If true, enable Cloud CDN for this RegionBackendService.
 	EnableCdn *bool `pulumi:"enableCdn"`
@@ -523,30 +486,18 @@ type regionBackendServiceArgs struct {
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are:
-	// * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
-	//   is selected in round robin order.
-	// * `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
-	//   hosts and picks the host which has fewer active requests.
-	// * `RING_HASH`: The ring/modulo hash load balancer implements consistent
-	//   hashing to backends. The algorithm has the property that the
-	//   addition/removal of a host from a set of N hosts only affects
-	//   1/N of the requests.
-	// * `RANDOM`: The load balancer selects a random healthy host.
-	// * `ORIGINAL_DESTINATION`: Backend host is selected based on the client
-	//   connection metadata, i.e., connections are opened
-	//   to the same address as the destination address of
-	//   the incoming connection before the connection
-	//   was redirected to the load balancer.
-	// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
-	//   Maglev is not as stable as ring hash but has faster table lookup
-	//   build times and host selection times. For more information about
-	//   Maglev, refer to https://ai.google/research/pubs/pub44824
 	LocalityLbPolicy *string `pulumi:"localityLbPolicy"`
 	// This field denotes the logging options for the load balancer traffic served by this backend service.
 	// If logging is enabled, logs will be exported to Stackdriver.
 	// Structure is documented below.
 	LogConfig *RegionBackendServiceLogConfig `pulumi:"logConfig"`
-	// Name of the cookie.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The URL of the network to which this backend service belongs.
 	// This field can only be specified when the load balancing scheme is set to INTERNAL.
@@ -623,7 +574,6 @@ type RegionBackendServiceArgs struct {
 	// This field only applies when all of the following are true -
 	ConsistentHash RegionBackendServiceConsistentHashPtrInput
 	// An optional description of this resource.
-	// Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// If true, enable Cloud CDN for this RegionBackendService.
 	EnableCdn pulumi.BoolPtrInput
@@ -648,30 +598,18 @@ type RegionBackendServiceArgs struct {
 	LoadBalancingScheme pulumi.StringPtrInput
 	// The load balancing algorithm used within the scope of the locality.
 	// The possible values are:
-	// * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
-	//   is selected in round robin order.
-	// * `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
-	//   hosts and picks the host which has fewer active requests.
-	// * `RING_HASH`: The ring/modulo hash load balancer implements consistent
-	//   hashing to backends. The algorithm has the property that the
-	//   addition/removal of a host from a set of N hosts only affects
-	//   1/N of the requests.
-	// * `RANDOM`: The load balancer selects a random healthy host.
-	// * `ORIGINAL_DESTINATION`: Backend host is selected based on the client
-	//   connection metadata, i.e., connections are opened
-	//   to the same address as the destination address of
-	//   the incoming connection before the connection
-	//   was redirected to the load balancer.
-	// * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
-	//   Maglev is not as stable as ring hash but has faster table lookup
-	//   build times and host selection times. For more information about
-	//   Maglev, refer to https://ai.google/research/pubs/pub44824
 	LocalityLbPolicy pulumi.StringPtrInput
 	// This field denotes the logging options for the load balancer traffic served by this backend service.
 	// If logging is enabled, logs will be exported to Stackdriver.
 	// Structure is documented below.
 	LogConfig RegionBackendServiceLogConfigPtrInput
-	// Name of the cookie.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The URL of the network to which this backend service belongs.
 	// This field can only be specified when the load balancing scheme is set to INTERNAL.
@@ -861,7 +799,6 @@ func (o RegionBackendServiceOutput) CreationTimestamp() pulumi.StringOutput {
 }
 
 // An optional description of this resource.
-// Provide this property when you create the resource.
 func (o RegionBackendServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -877,7 +814,8 @@ func (o RegionBackendServiceOutput) FailoverPolicy() RegionBackendServiceFailove
 	return o.ApplyT(func(v *RegionBackendService) RegionBackendServiceFailoverPolicyPtrOutput { return v.FailoverPolicy }).(RegionBackendServiceFailoverPolicyPtrOutput)
 }
 
-// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+// Fingerprint of this resource. A hash of the contents stored in this
+// object. This field is used in optimistic locking.
 func (o RegionBackendServiceOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
 }
@@ -909,24 +847,6 @@ func (o RegionBackendServiceOutput) LoadBalancingScheme() pulumi.StringPtrOutput
 
 // The load balancing algorithm used within the scope of the locality.
 // The possible values are:
-//   - `ROUND_ROBIN`: This is a simple policy in which each healthy backend
-//     is selected in round robin order.
-//   - `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
-//     hosts and picks the host which has fewer active requests.
-//   - `RING_HASH`: The ring/modulo hash load balancer implements consistent
-//     hashing to backends. The algorithm has the property that the
-//     addition/removal of a host from a set of N hosts only affects
-//     1/N of the requests.
-//   - `RANDOM`: The load balancer selects a random healthy host.
-//   - `ORIGINAL_DESTINATION`: Backend host is selected based on the client
-//     connection metadata, i.e., connections are opened
-//     to the same address as the destination address of
-//     the incoming connection before the connection
-//     was redirected to the load balancer.
-//   - `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
-//     Maglev is not as stable as ring hash but has faster table lookup
-//     build times and host selection times. For more information about
-//     Maglev, refer to https://ai.google/research/pubs/pub44824
 func (o RegionBackendServiceOutput) LocalityLbPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.StringPtrOutput { return v.LocalityLbPolicy }).(pulumi.StringPtrOutput)
 }
@@ -938,7 +858,13 @@ func (o RegionBackendServiceOutput) LogConfig() RegionBackendServiceLogConfigOut
 	return o.ApplyT(func(v *RegionBackendService) RegionBackendServiceLogConfigOutput { return v.LogConfig }).(RegionBackendServiceLogConfigOutput)
 }
 
-// Name of the cookie.
+// Name of the resource. Provided by the client when the resource is
+// created. The name must be 1-63 characters long, and comply with
+// RFC1035. Specifically, the name must be 1-63 characters long and match
+// the regular expression `a-z?` which means the
+// first character must be a lowercase letter, and all following
+// characters must be a dash, lowercase letter, or digit, except the last
+// character, which cannot be a dash.
 func (o RegionBackendServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

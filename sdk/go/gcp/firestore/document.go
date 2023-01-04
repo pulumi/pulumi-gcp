@@ -131,7 +131,7 @@ type Document struct {
 	// The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
 	Fields pulumi.StringOutput `pulumi:"fields"`
 	// A server defined name for this index. Format:
-	// 'projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}'
+	// `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A relative path to the collection this document exists within
 	Path pulumi.StringOutput `pulumi:"path"`
@@ -191,7 +191,7 @@ type documentState struct {
 	// The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
 	Fields *string `pulumi:"fields"`
 	// A server defined name for this index. Format:
-	// 'projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}'
+	// `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
 	Name *string `pulumi:"name"`
 	// A relative path to the collection this document exists within
 	Path *string `pulumi:"path"`
@@ -214,7 +214,7 @@ type DocumentState struct {
 	// The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
 	Fields pulumi.StringPtrInput
 	// A server defined name for this index. Format:
-	// 'projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}'
+	// `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
 	Name pulumi.StringPtrInput
 	// A relative path to the collection this document exists within
 	Path pulumi.StringPtrInput
@@ -371,7 +371,7 @@ func (o DocumentOutput) Fields() pulumi.StringOutput {
 }
 
 // A server defined name for this index. Format:
-// 'projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}'
+// `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
 func (o DocumentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

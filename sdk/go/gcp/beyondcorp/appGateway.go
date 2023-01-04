@@ -112,6 +112,7 @@ type AppGateway struct {
 	pulumi.CustomResourceState
 
 	// A list of connections allocated for the Gateway.
+	// Structure is documented below.
 	AllocatedConnections AppGatewayAllocatedConnectionArrayOutput `pulumi:"allocatedConnections"`
 	// An arbitrary user-provided name for the AppGateway.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
@@ -168,6 +169,7 @@ func GetAppGateway(ctx *pulumi.Context,
 // Input properties used for looking up and filtering AppGateway resources.
 type appGatewayState struct {
 	// A list of connections allocated for the Gateway.
+	// Structure is documented below.
 	AllocatedConnections []AppGatewayAllocatedConnection `pulumi:"allocatedConnections"`
 	// An arbitrary user-provided name for the AppGateway.
 	DisplayName *string `pulumi:"displayName"`
@@ -196,6 +198,7 @@ type appGatewayState struct {
 
 type AppGatewayState struct {
 	// A list of connections allocated for the Gateway.
+	// Structure is documented below.
 	AllocatedConnections AppGatewayAllocatedConnectionArrayInput
 	// An arbitrary user-provided name for the AppGateway.
 	DisplayName pulumi.StringPtrInput
@@ -359,6 +362,7 @@ func (o AppGatewayOutput) ToAppGatewayOutputWithContext(ctx context.Context) App
 }
 
 // A list of connections allocated for the Gateway.
+// Structure is documented below.
 func (o AppGatewayOutput) AllocatedConnections() AppGatewayAllocatedConnectionArrayOutput {
 	return o.ApplyT(func(v *AppGateway) AppGatewayAllocatedConnectionArrayOutput { return v.AllocatedConnections }).(AppGatewayAllocatedConnectionArrayOutput)
 }

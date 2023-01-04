@@ -38,7 +38,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 //				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
+//					{
 //						Role: "roles/apigateway.viewer",
 //						Members: []string{
 //							"user:jane@example.com",
@@ -53,7 +53,7 @@ import (
 //				Project:    pulumi.Any(google_api_gateway_gateway.Api_gw.Project),
 //				Region:     pulumi.Any(google_api_gateway_gateway.Api_gw.Region),
 //				Gateway:    pulumi.Any(google_api_gateway_gateway.Api_gw.Gateway_id),
-//				PolicyData: pulumi.String(admin.PolicyData),
+//				PolicyData: *pulumi.String(admin.PolicyData),
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err

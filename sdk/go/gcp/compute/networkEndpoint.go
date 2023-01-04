@@ -63,7 +63,7 @@ import (
 //				MachineType: pulumi.String("e2-medium"),
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-//						Image: pulumi.String(myImage.SelfLink),
+//						Image: *pulumi.String(myImage.SelfLink),
 //					},
 //				},
 //				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
@@ -82,9 +82,9 @@ import (
 //				NetworkEndpointGroup: pulumi.Any(google_compute_network_endpoint_group.Neg.Name),
 //				Instance:             endpoint_instance.Name,
 //				Port:                 pulumi.Any(google_compute_network_endpoint_group.Neg.Default_port),
-//				IpAddress: endpoint_instance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (string, error) {
-//					return networkInterfaces[0].NetworkIp, nil
-//				}).(pulumi.StringOutput),
+//				IpAddress: endpoint_instance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
+//					return &networkInterfaces[0].NetworkIp, nil
+//				}).(pulumi.StringPtrOutput),
 //			})
 //			if err != nil {
 //				return err

@@ -107,9 +107,9 @@ import (
 //			}, nil)
 //			_, err = projects.NewAccessApprovalSettings(ctx, "projectAccessApproval", &projects.AccessApprovalSettingsArgs{
 //				ProjectId: pulumi.String("my-project-name"),
-//				ActiveKeyVersion: cryptoKeyVersion.ApplyT(func(cryptoKeyVersion kms.GetKMSCryptoKeyVersionResult) (string, error) {
-//					return cryptoKeyVersion.Name, nil
-//				}).(pulumi.StringOutput),
+//				ActiveKeyVersion: cryptoKeyVersion.ApplyT(func(cryptoKeyVersion kms.GetKMSCryptoKeyVersionResult) (*string, error) {
+//					return &cryptoKeyVersion.Name, nil
+//				}).(pulumi.StringPtrOutput),
 //				EnrolledServices: projects.AccessApprovalSettingsEnrolledServiceArray{
 //					&projects.AccessApprovalSettingsEnrolledServiceArgs{
 //						CloudProduct: pulumi.String("all"),
@@ -151,8 +151,7 @@ type AccessApprovalSettings struct {
 	ActiveKeyVersion pulumi.StringPtrOutput `pulumi:"activeKeyVersion"`
 	// If the field is true, that indicates that an ancestor of this Project has set active_key_version.
 	AncestorHasActiveKeyVersion pulumi.BoolOutput `pulumi:"ancestorHasActiveKeyVersion"`
-	// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-	// of the Project.
+	// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Project.
 	EnrolledAncestor pulumi.BoolOutput `pulumi:"enrolledAncestor"`
 	// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
 	// Access requests for the resource given by name against any of these services contained here will be required
@@ -160,10 +159,10 @@ type AccessApprovalSettings struct {
 	// A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
 	// Structure is documented below.
 	EnrolledServices AccessApprovalSettingsEnrolledServiceArrayOutput `pulumi:"enrolledServices"`
-	// If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-	// this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on it,
-	// etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-	// top-down.
+	// If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
+	// configured on this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the
+	// correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+	// as key versions are inherited top-down.
 	InvalidKeyVersion pulumi.BoolOutput `pulumi:"invalidKeyVersion"`
 	// The resource name of the settings. Format is "projects/{project_id}/accessApprovalSettings"
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -171,7 +170,6 @@ type AccessApprovalSettings struct {
 	// Notifications relating to a resource will be sent to all emails in the settings of ancestor
 	// resources of that resource. A maximum of 50 email addresses are allowed.
 	NotificationEmails pulumi.StringArrayOutput `pulumi:"notificationEmails"`
-	// -
 	// (Optional, Deprecated)
 	// Deprecated in favor of `projectId`
 	//
@@ -222,8 +220,7 @@ type accessApprovalSettingsState struct {
 	ActiveKeyVersion *string `pulumi:"activeKeyVersion"`
 	// If the field is true, that indicates that an ancestor of this Project has set active_key_version.
 	AncestorHasActiveKeyVersion *bool `pulumi:"ancestorHasActiveKeyVersion"`
-	// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-	// of the Project.
+	// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Project.
 	EnrolledAncestor *bool `pulumi:"enrolledAncestor"`
 	// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
 	// Access requests for the resource given by name against any of these services contained here will be required
@@ -231,10 +228,10 @@ type accessApprovalSettingsState struct {
 	// A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
 	// Structure is documented below.
 	EnrolledServices []AccessApprovalSettingsEnrolledService `pulumi:"enrolledServices"`
-	// If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-	// this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on it,
-	// etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-	// top-down.
+	// If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
+	// configured on this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the
+	// correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+	// as key versions are inherited top-down.
 	InvalidKeyVersion *bool `pulumi:"invalidKeyVersion"`
 	// The resource name of the settings. Format is "projects/{project_id}/accessApprovalSettings"
 	Name *string `pulumi:"name"`
@@ -242,7 +239,6 @@ type accessApprovalSettingsState struct {
 	// Notifications relating to a resource will be sent to all emails in the settings of ancestor
 	// resources of that resource. A maximum of 50 email addresses are allowed.
 	NotificationEmails []string `pulumi:"notificationEmails"`
-	// -
 	// (Optional, Deprecated)
 	// Deprecated in favor of `projectId`
 	//
@@ -259,8 +255,7 @@ type AccessApprovalSettingsState struct {
 	ActiveKeyVersion pulumi.StringPtrInput
 	// If the field is true, that indicates that an ancestor of this Project has set active_key_version.
 	AncestorHasActiveKeyVersion pulumi.BoolPtrInput
-	// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-	// of the Project.
+	// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Project.
 	EnrolledAncestor pulumi.BoolPtrInput
 	// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
 	// Access requests for the resource given by name against any of these services contained here will be required
@@ -268,10 +263,10 @@ type AccessApprovalSettingsState struct {
 	// A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
 	// Structure is documented below.
 	EnrolledServices AccessApprovalSettingsEnrolledServiceArrayInput
-	// If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-	// this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on it,
-	// etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-	// top-down.
+	// If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
+	// configured on this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the
+	// correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+	// as key versions are inherited top-down.
 	InvalidKeyVersion pulumi.BoolPtrInput
 	// The resource name of the settings. Format is "projects/{project_id}/accessApprovalSettings"
 	Name pulumi.StringPtrInput
@@ -279,7 +274,6 @@ type AccessApprovalSettingsState struct {
 	// Notifications relating to a resource will be sent to all emails in the settings of ancestor
 	// resources of that resource. A maximum of 50 email addresses are allowed.
 	NotificationEmails pulumi.StringArrayInput
-	// -
 	// (Optional, Deprecated)
 	// Deprecated in favor of `projectId`
 	//
@@ -308,7 +302,6 @@ type accessApprovalSettingsArgs struct {
 	// Notifications relating to a resource will be sent to all emails in the settings of ancestor
 	// resources of that resource. A maximum of 50 email addresses are allowed.
 	NotificationEmails []string `pulumi:"notificationEmails"`
-	// -
 	// (Optional, Deprecated)
 	// Deprecated in favor of `projectId`
 	//
@@ -334,7 +327,6 @@ type AccessApprovalSettingsArgs struct {
 	// Notifications relating to a resource will be sent to all emails in the settings of ancestor
 	// resources of that resource. A maximum of 50 email addresses are allowed.
 	NotificationEmails pulumi.StringArrayInput
-	// -
 	// (Optional, Deprecated)
 	// Deprecated in favor of `projectId`
 	//
@@ -443,8 +435,7 @@ func (o AccessApprovalSettingsOutput) AncestorHasActiveKeyVersion() pulumi.BoolO
 	return o.ApplyT(func(v *AccessApprovalSettings) pulumi.BoolOutput { return v.AncestorHasActiveKeyVersion }).(pulumi.BoolOutput)
 }
 
-// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-// of the Project.
+// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Project.
 func (o AccessApprovalSettingsOutput) EnrolledAncestor() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AccessApprovalSettings) pulumi.BoolOutput { return v.EnrolledAncestor }).(pulumi.BoolOutput)
 }
@@ -460,10 +451,10 @@ func (o AccessApprovalSettingsOutput) EnrolledServices() AccessApprovalSettingsE
 	}).(AccessApprovalSettingsEnrolledServiceArrayOutput)
 }
 
-// If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-// this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on it,
-// etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-// top-down.
+// If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
+// configured on this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the
+// correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+// as key versions are inherited top-down.
 func (o AccessApprovalSettingsOutput) InvalidKeyVersion() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AccessApprovalSettings) pulumi.BoolOutput { return v.InvalidKeyVersion }).(pulumi.BoolOutput)
 }
@@ -480,7 +471,6 @@ func (o AccessApprovalSettingsOutput) NotificationEmails() pulumi.StringArrayOut
 	return o.ApplyT(func(v *AccessApprovalSettings) pulumi.StringArrayOutput { return v.NotificationEmails }).(pulumi.StringArrayOutput)
 }
 
-// -
 // (Optional, Deprecated)
 // Deprecated in favor of `projectId`
 //

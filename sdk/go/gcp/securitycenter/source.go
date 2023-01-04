@@ -77,7 +77,8 @@ type Source struct {
 	// with a letter or digit, may contain letters, digits, spaces, hyphens,
 	// and underscores, and can be no longer than 32 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// The resource name of this source, in the format 'organizations/{{organization}}/sources/{{source}}'.
+	// The resource name of this source, in the format
+	// `organizations/{{organization}}/sources/{{source}}`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The organization whose Cloud Security Command Center the Source
 	// lives in.
@@ -127,7 +128,8 @@ type sourceState struct {
 	// with a letter or digit, may contain letters, digits, spaces, hyphens,
 	// and underscores, and can be no longer than 32 characters.
 	DisplayName *string `pulumi:"displayName"`
-	// The resource name of this source, in the format 'organizations/{{organization}}/sources/{{source}}'.
+	// The resource name of this source, in the format
+	// `organizations/{{organization}}/sources/{{source}}`.
 	Name *string `pulumi:"name"`
 	// The organization whose Cloud Security Command Center the Source
 	// lives in.
@@ -143,7 +145,8 @@ type SourceState struct {
 	// with a letter or digit, may contain letters, digits, spaces, hyphens,
 	// and underscores, and can be no longer than 32 characters.
 	DisplayName pulumi.StringPtrInput
-	// The resource name of this source, in the format 'organizations/{{organization}}/sources/{{source}}'.
+	// The resource name of this source, in the format
+	// `organizations/{{organization}}/sources/{{source}}`.
 	Name pulumi.StringPtrInput
 	// The organization whose Cloud Security Command Center the Source
 	// lives in.
@@ -284,7 +287,8 @@ func (o SourceOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Source) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// The resource name of this source, in the format 'organizations/{{organization}}/sources/{{source}}'.
+// The resource name of this source, in the format
+// `organizations/{{organization}}/sources/{{source}}`.
 func (o SourceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Source) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

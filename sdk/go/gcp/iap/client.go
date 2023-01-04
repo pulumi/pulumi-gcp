@@ -100,11 +100,12 @@ type Client struct {
 	// is attached to. The format is
 	// `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
 	Brand pulumi.StringOutput `pulumi:"brand"`
-	// Output only. Unique identifier of the OAuth client.
+	// The OAuth2 ID of the client.
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// Human-friendly name given to the OAuth client.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Output only. Client secret of the OAuth client.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Secret pulumi.StringOutput `pulumi:"secret"`
 }
 
@@ -151,11 +152,12 @@ type clientState struct {
 	// is attached to. The format is
 	// `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
 	Brand *string `pulumi:"brand"`
-	// Output only. Unique identifier of the OAuth client.
+	// The OAuth2 ID of the client.
 	ClientId *string `pulumi:"clientId"`
 	// Human-friendly name given to the OAuth client.
 	DisplayName *string `pulumi:"displayName"`
 	// Output only. Client secret of the OAuth client.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Secret *string `pulumi:"secret"`
 }
 
@@ -164,11 +166,12 @@ type ClientState struct {
 	// is attached to. The format is
 	// `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
 	Brand pulumi.StringPtrInput
-	// Output only. Unique identifier of the OAuth client.
+	// The OAuth2 ID of the client.
 	ClientId pulumi.StringPtrInput
 	// Human-friendly name given to the OAuth client.
 	DisplayName pulumi.StringPtrInput
 	// Output only. Client secret of the OAuth client.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Secret pulumi.StringPtrInput
 }
 
@@ -289,7 +292,7 @@ func (o ClientOutput) Brand() pulumi.StringOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.Brand }).(pulumi.StringOutput)
 }
 
-// Output only. Unique identifier of the OAuth client.
+// The OAuth2 ID of the client.
 func (o ClientOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
 }
@@ -300,6 +303,7 @@ func (o ClientOutput) DisplayName() pulumi.StringOutput {
 }
 
 // Output only. Client secret of the OAuth client.
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o ClientOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.Secret }).(pulumi.StringOutput)
 }

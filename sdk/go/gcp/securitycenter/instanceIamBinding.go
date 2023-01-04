@@ -93,7 +93,7 @@ import (
 //				EnableStackdriverMonitoring: pulumi.Bool(true),
 //				PrivateInstance:             pulumi.Bool(true),
 //				Version:                     pulumi.String("6.6.0"),
-//				DataprocServiceAccount:      pulumi.String(_default.Email),
+//				DataprocServiceAccount:      *pulumi.String(_default.Email),
 //				Labels: pulumi.StringMap{
 //					"example_key": pulumi.String("example_value"),
 //				},
@@ -101,7 +101,7 @@ import (
 //					Network: pulumi.String("default"),
 //					IpAllocation: pulumi.All(privateIpAlloc.Address, privateIpAlloc.PrefixLength).ApplyT(func(_args []interface{}) (string, error) {
 //						address := _args[0].(string)
-//						prefixLength := _args[1].(int)
+//						prefixLength := _args[1].(*int)
 //						return fmt.Sprintf("%v/%v", address, prefixLength), nil
 //					}).(pulumi.StringOutput),
 //				},

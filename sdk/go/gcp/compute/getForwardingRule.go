@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = compute.LookupForwardingRule(ctx, &compute.LookupForwardingRuleArgs{
+//			_, err := compute.LookupForwardingRule(ctx, &compute.LookupForwardingRuleArgs{
 //				Name: "forwarding-rule-us-east1",
 //			}, nil)
 //			if err != nil {

@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = secretmanager.LookupSecretVersion(ctx, &secretmanager.LookupSecretVersionArgs{
+//			_, err := secretmanager.LookupSecretVersion(ctx, &secretmanager.LookupSecretVersionArgs{
 //				Secret: "my-secret",
 //			}, nil)
 //			if err != nil {

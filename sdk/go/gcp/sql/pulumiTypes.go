@@ -2096,11 +2096,9 @@ func (o DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOut
 }
 
 type DatabaseInstanceSettingsDatabaseFlag struct {
-	// A name for this whitelist entry.
+	// Name of the flag.
 	Name string `pulumi:"name"`
-	// A CIDR notation IPv4 or IPv6 address that is allowed to
-	// access this instance. Must be set even if other two attributes are not for
-	// the whitelist to become active.
+	// Value of the flag.
 	Value string `pulumi:"value"`
 }
 
@@ -2116,11 +2114,9 @@ type DatabaseInstanceSettingsDatabaseFlagInput interface {
 }
 
 type DatabaseInstanceSettingsDatabaseFlagArgs struct {
-	// A name for this whitelist entry.
+	// Name of the flag.
 	Name pulumi.StringInput `pulumi:"name"`
-	// A CIDR notation IPv4 or IPv6 address that is allowed to
-	// access this instance. Must be set even if other two attributes are not for
-	// the whitelist to become active.
+	// Value of the flag.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -2175,14 +2171,12 @@ func (o DatabaseInstanceSettingsDatabaseFlagOutput) ToDatabaseInstanceSettingsDa
 	return o
 }
 
-// A name for this whitelist entry.
+// Name of the flag.
 func (o DatabaseInstanceSettingsDatabaseFlagOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsDatabaseFlag) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// A CIDR notation IPv4 or IPv6 address that is allowed to
-// access this instance. Must be set even if other two attributes are not for
-// the whitelist to become active.
+// Value of the flag.
 func (o DatabaseInstanceSettingsDatabaseFlagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsDatabaseFlag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -2596,7 +2590,7 @@ func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) RecordClientAddress() p
 }
 
 type DatabaseInstanceSettingsIpConfiguration struct {
-	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
 	AllocatedIpRange   *string                                                    `pulumi:"allocatedIpRange"`
 	AuthorizedNetworks []DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork `pulumi:"authorizedNetworks"`
 	// Whether this Cloud SQL instance should be assigned
@@ -2625,7 +2619,7 @@ type DatabaseInstanceSettingsIpConfigurationInput interface {
 }
 
 type DatabaseInstanceSettingsIpConfigurationArgs struct {
-	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
 	AllocatedIpRange   pulumi.StringPtrInput                                              `pulumi:"allocatedIpRange"`
 	AuthorizedNetworks DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayInput `pulumi:"authorizedNetworks"`
 	// Whether this Cloud SQL instance should be assigned
@@ -2719,7 +2713,7 @@ func (o DatabaseInstanceSettingsIpConfigurationOutput) ToDatabaseInstanceSetting
 	}).(DatabaseInstanceSettingsIpConfigurationPtrOutput)
 }
 
-// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
 func (o DatabaseInstanceSettingsIpConfigurationOutput) AllocatedIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *string { return v.AllocatedIpRange }).(pulumi.StringPtrOutput)
 }
@@ -2775,7 +2769,7 @@ func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) Elem() DatabaseInstanc
 	}).(DatabaseInstanceSettingsIpConfigurationOutput)
 }
 
-// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
 func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) AllocatedIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsIpConfiguration) *string {
 		if v == nil {

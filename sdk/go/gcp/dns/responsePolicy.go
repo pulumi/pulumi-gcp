@@ -78,12 +78,12 @@ import (
 //				},
 //				MasterAuthorizedNetworksConfig: nil,
 //				IpAllocationPolicy: &container.ClusterIpAllocationPolicyArgs{
-//					ClusterSecondaryRangeName: subnetwork_1.SecondaryIpRanges.ApplyT(func(secondaryIpRanges []compute.SubnetworkSecondaryIpRange) (string, error) {
-//						return secondaryIpRanges[0].RangeName, nil
-//					}).(pulumi.StringOutput),
-//					ServicesSecondaryRangeName: subnetwork_1.SecondaryIpRanges.ApplyT(func(secondaryIpRanges []compute.SubnetworkSecondaryIpRange) (string, error) {
-//						return secondaryIpRanges[1].RangeName, nil
-//					}).(pulumi.StringOutput),
+//					ClusterSecondaryRangeName: subnetwork_1.SecondaryIpRanges.ApplyT(func(secondaryIpRanges []compute.SubnetworkSecondaryIpRange) (*string, error) {
+//						return &secondaryIpRanges[0].RangeName, nil
+//					}).(pulumi.StringPtrOutput),
+//					ServicesSecondaryRangeName: subnetwork_1.SecondaryIpRanges.ApplyT(func(secondaryIpRanges []compute.SubnetworkSecondaryIpRange) (*string, error) {
+//						return &secondaryIpRanges[1].RangeName, nil
+//					}).(pulumi.StringPtrOutput),
 //				},
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {

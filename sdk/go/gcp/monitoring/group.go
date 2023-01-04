@@ -106,7 +106,8 @@ type Group struct {
 	// cluster. The system can perform additional analysis on
 	// groups that are clusters.
 	IsCluster pulumi.BoolPtrOutput `pulumi:"isCluster"`
-	// A unique identifier for this group. The format is "projects/{project_id_or_number}/groups/{group_id}".
+	// A unique identifier for this group. The format is
+	// "projects/{project_id_or_number}/groups/{group_id}".
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the group's parent, if it has one. The format is
 	// "projects/{project_id_or_number}/groups/{group_id}". For
@@ -162,7 +163,8 @@ type groupState struct {
 	// cluster. The system can perform additional analysis on
 	// groups that are clusters.
 	IsCluster *bool `pulumi:"isCluster"`
-	// A unique identifier for this group. The format is "projects/{project_id_or_number}/groups/{group_id}".
+	// A unique identifier for this group. The format is
+	// "projects/{project_id_or_number}/groups/{group_id}".
 	Name *string `pulumi:"name"`
 	// The name of the group's parent, if it has one. The format is
 	// "projects/{project_id_or_number}/groups/{group_id}". For
@@ -184,7 +186,8 @@ type GroupState struct {
 	// cluster. The system can perform additional analysis on
 	// groups that are clusters.
 	IsCluster pulumi.BoolPtrInput
-	// A unique identifier for this group. The format is "projects/{project_id_or_number}/groups/{group_id}".
+	// A unique identifier for this group. The format is
+	// "projects/{project_id_or_number}/groups/{group_id}".
 	Name pulumi.StringPtrInput
 	// The name of the group's parent, if it has one. The format is
 	// "projects/{project_id_or_number}/groups/{group_id}". For
@@ -346,7 +349,8 @@ func (o GroupOutput) IsCluster() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.IsCluster }).(pulumi.BoolPtrOutput)
 }
 
-// A unique identifier for this group. The format is "projects/{project_id_or_number}/groups/{group_id}".
+// A unique identifier for this group. The format is
+// "projects/{project_id_or_number}/groups/{group_id}".
 func (o GroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = compute.LookupSSLPolicy(ctx, &compute.LookupSSLPolicyArgs{
+//			_, err := compute.LookupSSLPolicy(ctx, &compute.LookupSSLPolicyArgs{
 //				Name: "production-ssl-policy",
 //			}, nil)
 //			if err != nil {

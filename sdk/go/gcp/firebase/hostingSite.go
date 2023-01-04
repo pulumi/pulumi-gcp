@@ -108,12 +108,13 @@ type HostingSite struct {
 	AppId pulumi.StringPtrOutput `pulumi:"appId"`
 	// The default URL for the site in the form of https://{name}.web.app
 	DefaultUrl pulumi.StringOutput `pulumi:"defaultUrl"`
-	// Output only. The fully-qualified resource name of the Hosting site, in the format:
-	// projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's
-	// ['ProjectNumber'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
-	// ***(recommended)*** or its
-	// ['ProjectId'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
-	// Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
+	// Output only. The fully-qualified resource name of the Hosting site, in the
+	// format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
+	// Firebase project's
+	// [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
+	// [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
+	// Learn more about using project identifiers in Google's
+	// [AIP 2510 standard](https://google.aip.dev/cloud/2510).
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -158,12 +159,13 @@ type hostingSiteState struct {
 	AppId *string `pulumi:"appId"`
 	// The default URL for the site in the form of https://{name}.web.app
 	DefaultUrl *string `pulumi:"defaultUrl"`
-	// Output only. The fully-qualified resource name of the Hosting site, in the format:
-	// projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's
-	// ['ProjectNumber'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
-	// ***(recommended)*** or its
-	// ['ProjectId'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
-	// Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
+	// Output only. The fully-qualified resource name of the Hosting site, in the
+	// format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
+	// Firebase project's
+	// [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
+	// [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
+	// Learn more about using project identifiers in Google's
+	// [AIP 2510 standard](https://google.aip.dev/cloud/2510).
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -180,12 +182,13 @@ type HostingSiteState struct {
 	AppId pulumi.StringPtrInput
 	// The default URL for the site in the form of https://{name}.web.app
 	DefaultUrl pulumi.StringPtrInput
-	// Output only. The fully-qualified resource name of the Hosting site, in the format:
-	// projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's
-	// ['ProjectNumber'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
-	// ***(recommended)*** or its
-	// ['ProjectId'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
-	// Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
+	// Output only. The fully-qualified resource name of the Hosting site, in the
+	// format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
+	// Firebase project's
+	// [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
+	// [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
+	// Learn more about using project identifiers in Google's
+	// [AIP 2510 standard](https://google.aip.dev/cloud/2510).
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -325,12 +328,13 @@ func (o HostingSiteOutput) DefaultUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostingSite) pulumi.StringOutput { return v.DefaultUrl }).(pulumi.StringOutput)
 }
 
-// Output only. The fully-qualified resource name of the Hosting site, in the format:
-// projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's
-// ['ProjectNumber'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
-// ***(recommended)*** or its
-// ['ProjectId'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
-// Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
+// Output only. The fully-qualified resource name of the Hosting site, in the
+// format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
+// Firebase project's
+// [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
+// [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
+// Learn more about using project identifiers in Google's
+// [AIP 2510 standard](https://google.aip.dev/cloud/2510).
 func (o HostingSiteOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostingSite) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

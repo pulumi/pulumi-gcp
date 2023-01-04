@@ -1561,7 +1561,6 @@ type RuntimeAccessConfig struct {
 	// `https://cloud.google.com/vertex-ai/docs/workbench/reference/
 	// rest/v1/projects.locations.runtimes#RuntimeAccessType`.
 	AccessType *string `pulumi:"accessType"`
-	// -
 	// The proxy endpoint that is used to access the runtime.
 	ProxyUri *string `pulumi:"proxyUri"`
 	// The owner of this runtime after creation. Format: `alias@example.com`.
@@ -1585,7 +1584,6 @@ type RuntimeAccessConfigArgs struct {
 	// `https://cloud.google.com/vertex-ai/docs/workbench/reference/
 	// rest/v1/projects.locations.runtimes#RuntimeAccessType`.
 	AccessType pulumi.StringPtrInput `pulumi:"accessType"`
-	// -
 	// The proxy endpoint that is used to access the runtime.
 	ProxyUri pulumi.StringPtrInput `pulumi:"proxyUri"`
 	// The owner of this runtime after creation. Format: `alias@example.com`.
@@ -1677,7 +1675,6 @@ func (o RuntimeAccessConfigOutput) AccessType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeAccessConfig) *string { return v.AccessType }).(pulumi.StringPtrOutput)
 }
 
-// -
 // The proxy endpoint that is used to access the runtime.
 func (o RuntimeAccessConfigOutput) ProxyUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeAccessConfig) *string { return v.ProxyUri }).(pulumi.StringPtrOutput)
@@ -1725,7 +1722,6 @@ func (o RuntimeAccessConfigPtrOutput) AccessType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // The proxy endpoint that is used to access the runtime.
 func (o RuntimeAccessConfigPtrOutput) ProxyUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuntimeAccessConfig) *string {
@@ -2074,6 +2070,8 @@ func (o RuntimeIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type RuntimeMetric struct {
+	// Contains runtime daemon metrics, such as OS and kernels and
+	// sessions stats.
 	SystemMetrics map[string]string `pulumi:"systemMetrics"`
 }
 
@@ -2089,6 +2087,8 @@ type RuntimeMetricInput interface {
 }
 
 type RuntimeMetricArgs struct {
+	// Contains runtime daemon metrics, such as OS and kernels and
+	// sessions stats.
 	SystemMetrics pulumi.StringMapInput `pulumi:"systemMetrics"`
 }
 
@@ -2143,6 +2143,8 @@ func (o RuntimeMetricOutput) ToRuntimeMetricOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Contains runtime daemon metrics, such as OS and kernels and
+// sessions stats.
 func (o RuntimeMetricOutput) SystemMetrics() pulumi.StringMapOutput {
 	return o.ApplyT(func(v RuntimeMetric) map[string]string { return v.SystemMetrics }).(pulumi.StringMapOutput)
 }
@@ -2194,7 +2196,6 @@ type RuntimeSoftwareConfig struct {
 	// Behavior for the post startup script.
 	// Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
 	PostStartupScriptBehavior *string `pulumi:"postStartupScriptBehavior"`
-	// -
 	// Bool indicating whether an newer image is available in an image family.
 	Upgradeable *bool `pulumi:"upgradeable"`
 }
@@ -2237,7 +2238,6 @@ type RuntimeSoftwareConfigArgs struct {
 	// Behavior for the post startup script.
 	// Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
 	PostStartupScriptBehavior pulumi.StringPtrInput `pulumi:"postStartupScriptBehavior"`
-	// -
 	// Bool indicating whether an newer image is available in an image family.
 	Upgradeable pulumi.BoolPtrInput `pulumi:"upgradeable"`
 }
@@ -2372,7 +2372,6 @@ func (o RuntimeSoftwareConfigOutput) PostStartupScriptBehavior() pulumi.StringPt
 	return o.ApplyT(func(v RuntimeSoftwareConfig) *string { return v.PostStartupScriptBehavior }).(pulumi.StringPtrOutput)
 }
 
-// -
 // Bool indicating whether an newer image is available in an image family.
 func (o RuntimeSoftwareConfigOutput) Upgradeable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RuntimeSoftwareConfig) *bool { return v.Upgradeable }).(pulumi.BoolPtrOutput)
@@ -2500,7 +2499,6 @@ func (o RuntimeSoftwareConfigPtrOutput) PostStartupScriptBehavior() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // Bool indicating whether an newer image is available in an image family.
 func (o RuntimeSoftwareConfigPtrOutput) Upgradeable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RuntimeSoftwareConfig) *bool {
@@ -2621,10 +2619,8 @@ func (o RuntimeSoftwareConfigKernelArrayOutput) Index(i pulumi.IntInput) Runtime
 }
 
 type RuntimeVirtualMachine struct {
-	// -
 	// The unique identifier of the Managed Compute Engine instance.
 	InstanceId *string `pulumi:"instanceId"`
-	// -
 	// The user-friendly name of the Managed Compute Engine instance.
 	InstanceName *string `pulumi:"instanceName"`
 	// Virtual Machine configuration settings.
@@ -2644,10 +2640,8 @@ type RuntimeVirtualMachineInput interface {
 }
 
 type RuntimeVirtualMachineArgs struct {
-	// -
 	// The unique identifier of the Managed Compute Engine instance.
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
-	// -
 	// The user-friendly name of the Managed Compute Engine instance.
 	InstanceName pulumi.StringPtrInput `pulumi:"instanceName"`
 	// Virtual Machine configuration settings.
@@ -2732,13 +2726,11 @@ func (o RuntimeVirtualMachineOutput) ToRuntimeVirtualMachinePtrOutputWithContext
 	}).(RuntimeVirtualMachinePtrOutput)
 }
 
-// -
 // The unique identifier of the Managed Compute Engine instance.
 func (o RuntimeVirtualMachineOutput) InstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeVirtualMachine) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
 }
 
-// -
 // The user-friendly name of the Managed Compute Engine instance.
 func (o RuntimeVirtualMachineOutput) InstanceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeVirtualMachine) *string { return v.InstanceName }).(pulumi.StringPtrOutput)
@@ -2776,7 +2768,6 @@ func (o RuntimeVirtualMachinePtrOutput) Elem() RuntimeVirtualMachineOutput {
 	}).(RuntimeVirtualMachineOutput)
 }
 
-// -
 // The unique identifier of the Managed Compute Engine instance.
 func (o RuntimeVirtualMachinePtrOutput) InstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuntimeVirtualMachine) *string {
@@ -2787,7 +2778,6 @@ func (o RuntimeVirtualMachinePtrOutput) InstanceId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // The user-friendly name of the Managed Compute Engine instance.
 func (o RuntimeVirtualMachinePtrOutput) InstanceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuntimeVirtualMachine) *string {
@@ -2822,7 +2812,6 @@ type RuntimeVirtualMachineVirtualMachineConfig struct {
 	// Encryption settings for virtual machine data disk.
 	// Structure is documented below.
 	EncryptionConfig *RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig `pulumi:"encryptionConfig"`
-	// -
 	// The Compute Engine guest attributes. (see [Project and instance
 	// guest attributes](https://cloud.google.com/compute/docs/
 	// storing-retrieving-metadata#guest_attributes)).
@@ -2834,9 +2823,12 @@ type RuntimeVirtualMachineVirtualMachineConfig struct {
 	// enabled networks, and all dependencies must be configured to be
 	// accessible without external IP addresses.
 	InternalIpOnly *bool `pulumi:"internalIpOnly"`
-	// Labels to apply to this disk. These can be later modified
-	// by the disks.setLabels method. This field is only
-	// applicable for persistent disks.
+	// The labels to associate with this runtime. Label **keys** must
+	// contain 1 to 63 characters, and must conform to [RFC 1035]
+	// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+	// empty, but, if present, must contain 1 to 63 characters, and must
+	// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+	// more than 32 labels can be associated with a cluster.
 	Labels map[string]string `pulumi:"labels"`
 	// The Compute Engine machine type used for runtimes.
 	MachineType string `pulumi:"machineType"`
@@ -2881,7 +2873,6 @@ type RuntimeVirtualMachineVirtualMachineConfig struct {
 	// (https://cloud.google.com/compute/docs/
 	// label-or-tag-resources#tags)).
 	Tags []string `pulumi:"tags"`
-	// -
 	// The zone where the virtual machine is located.
 	Zone *string `pulumi:"zone"`
 }
@@ -2910,7 +2901,6 @@ type RuntimeVirtualMachineVirtualMachineConfigArgs struct {
 	// Encryption settings for virtual machine data disk.
 	// Structure is documented below.
 	EncryptionConfig RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrInput `pulumi:"encryptionConfig"`
-	// -
 	// The Compute Engine guest attributes. (see [Project and instance
 	// guest attributes](https://cloud.google.com/compute/docs/
 	// storing-retrieving-metadata#guest_attributes)).
@@ -2922,9 +2912,12 @@ type RuntimeVirtualMachineVirtualMachineConfigArgs struct {
 	// enabled networks, and all dependencies must be configured to be
 	// accessible without external IP addresses.
 	InternalIpOnly pulumi.BoolPtrInput `pulumi:"internalIpOnly"`
-	// Labels to apply to this disk. These can be later modified
-	// by the disks.setLabels method. This field is only
-	// applicable for persistent disks.
+	// The labels to associate with this runtime. Label **keys** must
+	// contain 1 to 63 characters, and must conform to [RFC 1035]
+	// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+	// empty, but, if present, must contain 1 to 63 characters, and must
+	// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+	// more than 32 labels can be associated with a cluster.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The Compute Engine machine type used for runtimes.
 	MachineType pulumi.StringInput `pulumi:"machineType"`
@@ -2969,7 +2962,6 @@ type RuntimeVirtualMachineVirtualMachineConfigArgs struct {
 	// (https://cloud.google.com/compute/docs/
 	// label-or-tag-resources#tags)).
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// -
 	// The zone where the virtual machine is located.
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
@@ -3083,7 +3075,6 @@ func (o RuntimeVirtualMachineVirtualMachineConfigOutput) EncryptionConfig() Runt
 	}).(RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput)
 }
 
-// -
 // The Compute Engine guest attributes. (see [Project and instance
 // guest attributes](https://cloud.google.com/compute/docs/
 // storing-retrieving-metadata#guest_attributes)).
@@ -3101,9 +3092,12 @@ func (o RuntimeVirtualMachineVirtualMachineConfigOutput) InternalIpOnly() pulumi
 	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfig) *bool { return v.InternalIpOnly }).(pulumi.BoolPtrOutput)
 }
 
-// Labels to apply to this disk. These can be later modified
-// by the disks.setLabels method. This field is only
-// applicable for persistent disks.
+// The labels to associate with this runtime. Label **keys** must
+// contain 1 to 63 characters, and must conform to [RFC 1035]
+// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+// empty, but, if present, must contain 1 to 63 characters, and must
+// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+// more than 32 labels can be associated with a cluster.
 func (o RuntimeVirtualMachineVirtualMachineConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -3177,7 +3171,6 @@ func (o RuntimeVirtualMachineVirtualMachineConfigOutput) Tags() pulumi.StringArr
 	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// -
 // The zone where the virtual machine is located.
 func (o RuntimeVirtualMachineVirtualMachineConfigOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfig) *string { return v.Zone }).(pulumi.StringPtrOutput)
@@ -3251,7 +3244,6 @@ func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) EncryptionConfig() R
 	}).(RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigPtrOutput)
 }
 
-// -
 // The Compute Engine guest attributes. (see [Project and instance
 // guest attributes](https://cloud.google.com/compute/docs/
 // storing-retrieving-metadata#guest_attributes)).
@@ -3279,9 +3271,12 @@ func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) InternalIpOnly() pul
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Labels to apply to this disk. These can be later modified
-// by the disks.setLabels method. This field is only
-// applicable for persistent disks.
+// The labels to associate with this runtime. Label **keys** must
+// contain 1 to 63 characters, and must conform to [RFC 1035]
+// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+// empty, but, if present, must contain 1 to 63 characters, and must
+// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+// more than 32 labels can be associated with a cluster.
 func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfig) map[string]string {
 		if v == nil {
@@ -3398,7 +3393,6 @@ func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) Tags() pulumi.String
 	}).(pulumi.StringArrayOutput)
 }
 
-// -
 // The zone where the virtual machine is located.
 func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfig) *string {
@@ -3683,17 +3677,14 @@ func (o RuntimeVirtualMachineVirtualMachineConfigContainerImageArrayOutput) Inde
 }
 
 type RuntimeVirtualMachineVirtualMachineConfigDataDisk struct {
-	// -
 	// Optional. Specifies whether the disk will be auto-deleted
 	// when the instance is deleted (but not when the disk is
 	// detached from the instance).
 	AutoDelete *bool `pulumi:"autoDelete"`
-	// -
 	// Optional. Indicates that this is a boot disk. The virtual
 	// machine will use the first partition of the disk for its
 	// root filesystem.
 	Boot *bool `pulumi:"boot"`
-	// -
 	// Optional. Specifies a unique device name of your choice
 	// that is reflected into the /dev/disk/by-id/google-* tree
 	// of a Linux operating system running within the instance.
@@ -3704,14 +3695,12 @@ type RuntimeVirtualMachineVirtualMachineConfigDataDisk struct {
 	// x is a number assigned by Google Compute Engine. This field
 	// is only applicable for persistent disks.
 	DeviceName *string `pulumi:"deviceName"`
-	// -
 	// Indicates a list of features to enable on the guest operating
 	// system. Applicable only for bootable images. To see a list of
 	// available features, read `https://cloud.google.com/compute/docs/
 	// images/create-delete-deprecate-private-images#guest-os-features`
 	// options. ``
 	GuestOsFeatures []string `pulumi:"guestOsFeatures"`
-	// -
 	// Output only. A zero-based index to this disk, where 0 is
 	// reserved for the boot disk. If you have many disks attached
 	// to an instance, each disk would have a unique index number.
@@ -3731,11 +3720,9 @@ type RuntimeVirtualMachineVirtualMachineConfigDataDisk struct {
 	// can use either NVME or SCSI. For performance characteristics of SCSI
 	// over NVMe, see Local SSD performance. Valid values: * NVME * SCSI".
 	Interface *string `pulumi:"interface"`
-	// -
 	// Type of the resource. Always compute#attachedDisk for attached
 	// disks.
 	Kind *string `pulumi:"kind"`
-	// -
 	// Output only. Any valid publicly visible licenses.
 	Licenses []string `pulumi:"licenses"`
 	// The mode in which to attach this disk, either READ_WRITE
@@ -3745,9 +3732,8 @@ type RuntimeVirtualMachineVirtualMachineConfigDataDisk struct {
 	// Specifies a valid partial or full URL to an existing
 	// Persistent Disk resource.
 	Source *string `pulumi:"source"`
-	// Accelerator model. For valid values, see
-	// `https://cloud.google.com/vertex-ai/docs/workbench/reference/
-	// rest/v1/projects.locations.runtimes#AcceleratorType`
+	// Specifies the type of the disk, either SCRATCH or PERSISTENT.
+	// If not specified, the default is PERSISTENT.
 	Type *string `pulumi:"type"`
 }
 
@@ -3763,17 +3749,14 @@ type RuntimeVirtualMachineVirtualMachineConfigDataDiskInput interface {
 }
 
 type RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs struct {
-	// -
 	// Optional. Specifies whether the disk will be auto-deleted
 	// when the instance is deleted (but not when the disk is
 	// detached from the instance).
 	AutoDelete pulumi.BoolPtrInput `pulumi:"autoDelete"`
-	// -
 	// Optional. Indicates that this is a boot disk. The virtual
 	// machine will use the first partition of the disk for its
 	// root filesystem.
 	Boot pulumi.BoolPtrInput `pulumi:"boot"`
-	// -
 	// Optional. Specifies a unique device name of your choice
 	// that is reflected into the /dev/disk/by-id/google-* tree
 	// of a Linux operating system running within the instance.
@@ -3784,14 +3767,12 @@ type RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs struct {
 	// x is a number assigned by Google Compute Engine. This field
 	// is only applicable for persistent disks.
 	DeviceName pulumi.StringPtrInput `pulumi:"deviceName"`
-	// -
 	// Indicates a list of features to enable on the guest operating
 	// system. Applicable only for bootable images. To see a list of
 	// available features, read `https://cloud.google.com/compute/docs/
 	// images/create-delete-deprecate-private-images#guest-os-features`
 	// options. ``
 	GuestOsFeatures pulumi.StringArrayInput `pulumi:"guestOsFeatures"`
-	// -
 	// Output only. A zero-based index to this disk, where 0 is
 	// reserved for the boot disk. If you have many disks attached
 	// to an instance, each disk would have a unique index number.
@@ -3811,11 +3792,9 @@ type RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs struct {
 	// can use either NVME or SCSI. For performance characteristics of SCSI
 	// over NVMe, see Local SSD performance. Valid values: * NVME * SCSI".
 	Interface pulumi.StringPtrInput `pulumi:"interface"`
-	// -
 	// Type of the resource. Always compute#attachedDisk for attached
 	// disks.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
-	// -
 	// Output only. Any valid publicly visible licenses.
 	Licenses pulumi.StringArrayInput `pulumi:"licenses"`
 	// The mode in which to attach this disk, either READ_WRITE
@@ -3825,9 +3804,8 @@ type RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs struct {
 	// Specifies a valid partial or full URL to an existing
 	// Persistent Disk resource.
 	Source pulumi.StringPtrInput `pulumi:"source"`
-	// Accelerator model. For valid values, see
-	// `https://cloud.google.com/vertex-ai/docs/workbench/reference/
-	// rest/v1/projects.locations.runtimes#AcceleratorType`
+	// Specifies the type of the disk, either SCRATCH or PERSISTENT.
+	// If not specified, the default is PERSISTENT.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -3908,7 +3886,6 @@ func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) ToRuntimeVirtua
 	}).(RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput)
 }
 
-// -
 // Optional. Specifies whether the disk will be auto-deleted
 // when the instance is deleted (but not when the disk is
 // detached from the instance).
@@ -3916,7 +3893,6 @@ func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) AutoDelete() pu
 	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigDataDisk) *bool { return v.AutoDelete }).(pulumi.BoolPtrOutput)
 }
 
-// -
 // Optional. Indicates that this is a boot disk. The virtual
 // machine will use the first partition of the disk for its
 // root filesystem.
@@ -3924,7 +3900,6 @@ func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) Boot() pulumi.B
 	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigDataDisk) *bool { return v.Boot }).(pulumi.BoolPtrOutput)
 }
 
-// -
 // Optional. Specifies a unique device name of your choice
 // that is reflected into the /dev/disk/by-id/google-* tree
 // of a Linux operating system running within the instance.
@@ -3938,7 +3913,6 @@ func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) DeviceName() pu
 	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigDataDisk) *string { return v.DeviceName }).(pulumi.StringPtrOutput)
 }
 
-// -
 // Indicates a list of features to enable on the guest operating
 // system. Applicable only for bootable images. To see a list of
 // available features, read `https://cloud.google.com/compute/docs/
@@ -3948,7 +3922,6 @@ func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) GuestOsFeatures
 	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigDataDisk) []string { return v.GuestOsFeatures }).(pulumi.StringArrayOutput)
 }
 
-// -
 // Output only. A zero-based index to this disk, where 0 is
 // reserved for the boot disk. If you have many disks attached
 // to an instance, each disk would have a unique index number.
@@ -3979,14 +3952,12 @@ func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) Interface() pul
 	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigDataDisk) *string { return v.Interface }).(pulumi.StringPtrOutput)
 }
 
-// -
 // Type of the resource. Always compute#attachedDisk for attached
 // disks.
 func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigDataDisk) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// -
 // Output only. Any valid publicly visible licenses.
 func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) Licenses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigDataDisk) []string { return v.Licenses }).(pulumi.StringArrayOutput)
@@ -4005,9 +3976,8 @@ func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) Source() pulumi
 	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigDataDisk) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
-// Accelerator model. For valid values, see
-// `https://cloud.google.com/vertex-ai/docs/workbench/reference/
-// rest/v1/projects.locations.runtimes#AcceleratorType`
+// Specifies the type of the disk, either SCRATCH or PERSISTENT.
+// If not specified, the default is PERSISTENT.
 func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfigDataDisk) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -4036,7 +4006,6 @@ func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) Elem() Runti
 	}).(RuntimeVirtualMachineVirtualMachineConfigDataDiskOutput)
 }
 
-// -
 // Optional. Specifies whether the disk will be auto-deleted
 // when the instance is deleted (but not when the disk is
 // detached from the instance).
@@ -4049,7 +4018,6 @@ func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) AutoDelete()
 	}).(pulumi.BoolPtrOutput)
 }
 
-// -
 // Optional. Indicates that this is a boot disk. The virtual
 // machine will use the first partition of the disk for its
 // root filesystem.
@@ -4062,7 +4030,6 @@ func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) Boot() pulum
 	}).(pulumi.BoolPtrOutput)
 }
 
-// -
 // Optional. Specifies a unique device name of your choice
 // that is reflected into the /dev/disk/by-id/google-* tree
 // of a Linux operating system running within the instance.
@@ -4081,7 +4048,6 @@ func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) DeviceName()
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // Indicates a list of features to enable on the guest operating
 // system. Applicable only for bootable images. To see a list of
 // available features, read `https://cloud.google.com/compute/docs/
@@ -4096,7 +4062,6 @@ func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) GuestOsFeatu
 	}).(pulumi.StringArrayOutput)
 }
 
-// -
 // Output only. A zero-based index to this disk, where 0 is
 // reserved for the boot disk. If you have many disks attached
 // to an instance, each disk would have a unique index number.
@@ -4140,7 +4105,6 @@ func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) Interface() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // Type of the resource. Always compute#attachedDisk for attached
 // disks.
 func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) Kind() pulumi.StringPtrOutput {
@@ -4152,7 +4116,6 @@ func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) Kind() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // Output only. Any valid publicly visible licenses.
 func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) Licenses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigDataDisk) []string {
@@ -4186,9 +4149,8 @@ func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) Source() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// Accelerator model. For valid values, see
-// `https://cloud.google.com/vertex-ai/docs/workbench/reference/
-// rest/v1/projects.locations.runtimes#AcceleratorType`
+// Specifies the type of the disk, either SCRATCH or PERSISTENT.
+// If not specified, the default is PERSISTENT.
 func (o RuntimeVirtualMachineVirtualMachineConfigDataDiskPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfigDataDisk) *string {
 		if v == nil {

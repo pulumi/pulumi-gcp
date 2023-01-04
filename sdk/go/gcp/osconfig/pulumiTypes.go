@@ -484,12 +484,7 @@ func (o GuestPoliciesAssignmentOsTypeArrayOutput) Index(i pulumi.IntInput) Guest
 }
 
 type GuestPoliciesPackage struct {
-	// Default is INSTALLED. The desired state the agent should maintain for this recipe.
-	// INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
-	// INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
-	// if a higher version of the recipe is assigned to this instance.
-	// REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
-	// Default value is `INSTALLED`.
+	// The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
 	// Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
 	DesiredState *string `pulumi:"desiredState"`
 	// Type of package manager that can be used to install this package. If a system does not have the package manager,
@@ -500,10 +495,8 @@ type GuestPoliciesPackage struct {
 	// Default value is `ANY`.
 	// Possible values are `ANY`, `APT`, `YUM`, `ZYPPER`, and `GOO`.
 	Manager *string `pulumi:"manager"`
-	// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-	// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-	// This means that requests to create multiple recipes with the same name and version are rejected since they
-	// could potentially have conflicting assignments.
+	// The name of the package. A package is uniquely identified for conflict validation
+	// by checking the package name and the manager(s) that the package targets.
 	Name string `pulumi:"name"`
 }
 
@@ -519,12 +512,7 @@ type GuestPoliciesPackageInput interface {
 }
 
 type GuestPoliciesPackageArgs struct {
-	// Default is INSTALLED. The desired state the agent should maintain for this recipe.
-	// INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
-	// INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
-	// if a higher version of the recipe is assigned to this instance.
-	// REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
-	// Default value is `INSTALLED`.
+	// The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
 	// Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
 	DesiredState pulumi.StringPtrInput `pulumi:"desiredState"`
 	// Type of package manager that can be used to install this package. If a system does not have the package manager,
@@ -535,10 +523,8 @@ type GuestPoliciesPackageArgs struct {
 	// Default value is `ANY`.
 	// Possible values are `ANY`, `APT`, `YUM`, `ZYPPER`, and `GOO`.
 	Manager pulumi.StringPtrInput `pulumi:"manager"`
-	// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-	// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-	// This means that requests to create multiple recipes with the same name and version are rejected since they
-	// could potentially have conflicting assignments.
+	// The name of the package. A package is uniquely identified for conflict validation
+	// by checking the package name and the manager(s) that the package targets.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -593,12 +579,7 @@ func (o GuestPoliciesPackageOutput) ToGuestPoliciesPackageOutputWithContext(ctx 
 	return o
 }
 
-// Default is INSTALLED. The desired state the agent should maintain for this recipe.
-// INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
-// INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
-// if a higher version of the recipe is assigned to this instance.
-// REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
-// Default value is `INSTALLED`.
+// The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
 // Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
 func (o GuestPoliciesPackageOutput) DesiredState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesPackage) *string { return v.DesiredState }).(pulumi.StringPtrOutput)
@@ -615,10 +596,8 @@ func (o GuestPoliciesPackageOutput) Manager() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesPackage) *string { return v.Manager }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-// This means that requests to create multiple recipes with the same name and version are rejected since they
-// could potentially have conflicting assignments.
+// The name of the package. A package is uniquely identified for conflict validation
+// by checking the package name and the manager(s) that the package targets.
 func (o GuestPoliciesPackageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestPoliciesPackage) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -791,7 +770,7 @@ type GuestPoliciesPackageRepositoryApt struct {
 	// URI of the key file for this repository. The agent maintains a keyring at
 	// /etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg containing all the keys in any applied guest policy.
 	GpgKey *string `pulumi:"gpgKey"`
-	// URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
+	// URI for this repository.
 	Uri string `pulumi:"uri"`
 }
 
@@ -818,7 +797,7 @@ type GuestPoliciesPackageRepositoryAptArgs struct {
 	// URI of the key file for this repository. The agent maintains a keyring at
 	// /etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg containing all the keys in any applied guest policy.
 	GpgKey pulumi.StringPtrInput `pulumi:"gpgKey"`
-	// URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
+	// URI for this repository.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -922,7 +901,7 @@ func (o GuestPoliciesPackageRepositoryAptOutput) GpgKey() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GuestPoliciesPackageRepositoryApt) *string { return v.GpgKey }).(pulumi.StringPtrOutput)
 }
 
-// URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
+// URI for this repository.
 func (o GuestPoliciesPackageRepositoryAptOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestPoliciesPackageRepositoryApt) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -994,7 +973,7 @@ func (o GuestPoliciesPackageRepositoryAptPtrOutput) GpgKey() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
+// URI for this repository.
 func (o GuestPoliciesPackageRepositoryAptPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryApt) *string {
 		if v == nil {
@@ -1005,10 +984,7 @@ func (o GuestPoliciesPackageRepositoryAptPtrOutput) Uri() pulumi.StringPtrOutput
 }
 
 type GuestPoliciesPackageRepositoryGoo struct {
-	// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-	// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-	// This means that requests to create multiple recipes with the same name and version are rejected since they
-	// could potentially have conflicting assignments.
+	// The name of the repository.
 	Name string `pulumi:"name"`
 	// The url of the repository.
 	Url string `pulumi:"url"`
@@ -1026,10 +1002,7 @@ type GuestPoliciesPackageRepositoryGooInput interface {
 }
 
 type GuestPoliciesPackageRepositoryGooArgs struct {
-	// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-	// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-	// This means that requests to create multiple recipes with the same name and version are rejected since they
-	// could potentially have conflicting assignments.
+	// The name of the repository.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The url of the repository.
 	Url pulumi.StringInput `pulumi:"url"`
@@ -1112,10 +1085,7 @@ func (o GuestPoliciesPackageRepositoryGooOutput) ToGuestPoliciesPackageRepositor
 	}).(GuestPoliciesPackageRepositoryGooPtrOutput)
 }
 
-// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-// This means that requests to create multiple recipes with the same name and version are rejected since they
-// could potentially have conflicting assignments.
+// The name of the repository.
 func (o GuestPoliciesPackageRepositoryGooOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestPoliciesPackageRepositoryGoo) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1149,10 +1119,7 @@ func (o GuestPoliciesPackageRepositoryGooPtrOutput) Elem() GuestPoliciesPackageR
 	}).(GuestPoliciesPackageRepositoryGooOutput)
 }
 
-// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-// This means that requests to create multiple recipes with the same name and version are rejected since they
-// could potentially have conflicting assignments.
+// The name of the repository.
 func (o GuestPoliciesPackageRepositoryGooPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryGoo) *string {
 		if v == nil {
@@ -1179,8 +1146,8 @@ type GuestPoliciesPackageRepositoryYum struct {
 	DisplayName *string `pulumi:"displayName"`
 	// URIs of GPG keys.
 	GpgKeys []string `pulumi:"gpgKeys"`
-	// Id of the artifact, which the installation and update steps of this recipe can reference.
-	// Artifacts in a recipe cannot have the same id.
+	// A one word, unique name for this repository. This is the repo id in the Yum config file and also the displayName
+	// if displayName is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
 	Id string `pulumi:"id"`
 }
 
@@ -1202,8 +1169,8 @@ type GuestPoliciesPackageRepositoryYumArgs struct {
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// URIs of GPG keys.
 	GpgKeys pulumi.StringArrayInput `pulumi:"gpgKeys"`
-	// Id of the artifact, which the installation and update steps of this recipe can reference.
-	// Artifacts in a recipe cannot have the same id.
+	// A one word, unique name for this repository. This is the repo id in the Yum config file and also the displayName
+	// if displayName is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -1299,8 +1266,8 @@ func (o GuestPoliciesPackageRepositoryYumOutput) GpgKeys() pulumi.StringArrayOut
 	return o.ApplyT(func(v GuestPoliciesPackageRepositoryYum) []string { return v.GpgKeys }).(pulumi.StringArrayOutput)
 }
 
-// Id of the artifact, which the installation and update steps of this recipe can reference.
-// Artifacts in a recipe cannot have the same id.
+// A one word, unique name for this repository. This is the repo id in the Yum config file and also the displayName
+// if displayName is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
 func (o GuestPoliciesPackageRepositoryYumOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestPoliciesPackageRepositoryYum) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -1359,8 +1326,8 @@ func (o GuestPoliciesPackageRepositoryYumPtrOutput) GpgKeys() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
-// Id of the artifact, which the installation and update steps of this recipe can reference.
-// Artifacts in a recipe cannot have the same id.
+// A one word, unique name for this repository. This is the repo id in the Yum config file and also the displayName
+// if displayName is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
 func (o GuestPoliciesPackageRepositoryYumPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryYum) *string {
 		if v == nil {
@@ -1377,8 +1344,8 @@ type GuestPoliciesPackageRepositoryZypper struct {
 	DisplayName *string `pulumi:"displayName"`
 	// URIs of GPG keys.
 	GpgKeys []string `pulumi:"gpgKeys"`
-	// Id of the artifact, which the installation and update steps of this recipe can reference.
-	// Artifacts in a recipe cannot have the same id.
+	// A one word, unique name for this repository. This is the repo id in the zypper config file and also the displayName
+	// if displayName is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
 	Id string `pulumi:"id"`
 }
 
@@ -1400,8 +1367,8 @@ type GuestPoliciesPackageRepositoryZypperArgs struct {
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// URIs of GPG keys.
 	GpgKeys pulumi.StringArrayInput `pulumi:"gpgKeys"`
-	// Id of the artifact, which the installation and update steps of this recipe can reference.
-	// Artifacts in a recipe cannot have the same id.
+	// A one word, unique name for this repository. This is the repo id in the zypper config file and also the displayName
+	// if displayName is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -1497,8 +1464,8 @@ func (o GuestPoliciesPackageRepositoryZypperOutput) GpgKeys() pulumi.StringArray
 	return o.ApplyT(func(v GuestPoliciesPackageRepositoryZypper) []string { return v.GpgKeys }).(pulumi.StringArrayOutput)
 }
 
-// Id of the artifact, which the installation and update steps of this recipe can reference.
-// Artifacts in a recipe cannot have the same id.
+// A one word, unique name for this repository. This is the repo id in the zypper config file and also the displayName
+// if displayName is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
 func (o GuestPoliciesPackageRepositoryZypperOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestPoliciesPackageRepositoryZypper) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -1557,8 +1524,8 @@ func (o GuestPoliciesPackageRepositoryZypperPtrOutput) GpgKeys() pulumi.StringAr
 	}).(pulumi.StringArrayOutput)
 }
 
-// Id of the artifact, which the installation and update steps of this recipe can reference.
-// Artifacts in a recipe cannot have the same id.
+// A one word, unique name for this repository. This is the repo id in the zypper config file and also the displayName
+// if displayName is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
 func (o GuestPoliciesPackageRepositoryZypperPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryZypper) *string {
 		if v == nil {
@@ -2741,7 +2708,7 @@ func (o GuestPoliciesRecipeInstallStepDpkgInstallationPtrOutput) ArtifactId() pu
 type GuestPoliciesRecipeInstallStepFileCopy struct {
 	// The id of the relevant artifact in the recipe.
 	ArtifactId string `pulumi:"artifactId"`
-	// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+	// The absolute path on the instance to put the file.
 	Destination string `pulumi:"destination"`
 	// Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
 	// is not overwritten and the step is considered a success. Defaults to false.
@@ -2769,7 +2736,7 @@ type GuestPoliciesRecipeInstallStepFileCopyInput interface {
 type GuestPoliciesRecipeInstallStepFileCopyArgs struct {
 	// The id of the relevant artifact in the recipe.
 	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
-	// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+	// The absolute path on the instance to put the file.
 	Destination pulumi.StringInput `pulumi:"destination"`
 	// Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
 	// is not overwritten and the step is considered a success. Defaults to false.
@@ -2865,7 +2832,7 @@ func (o GuestPoliciesRecipeInstallStepFileCopyOutput) ArtifactId() pulumi.String
 	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepFileCopy) string { return v.ArtifactId }).(pulumi.StringOutput)
 }
 
-// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+// The absolute path on the instance to put the file.
 func (o GuestPoliciesRecipeInstallStepFileCopyOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepFileCopy) string { return v.Destination }).(pulumi.StringOutput)
 }
@@ -2920,7 +2887,7 @@ func (o GuestPoliciesRecipeInstallStepFileCopyPtrOutput) ArtifactId() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+// The absolute path on the instance to put the file.
 func (o GuestPoliciesRecipeInstallStepFileCopyPtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepFileCopy) *string {
 		if v == nil {
@@ -2957,7 +2924,7 @@ func (o GuestPoliciesRecipeInstallStepFileCopyPtrOutput) Permissions() pulumi.St
 }
 
 type GuestPoliciesRecipeInstallStepFileExec struct {
-	// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+	// A list of possible return values that the program can return to indicate a success. Defaults to [0].
 	AllowedExitCodes *string `pulumi:"allowedExitCodes"`
 	// Arguments to be passed to the provided executable.
 	Args []string `pulumi:"args"`
@@ -2979,7 +2946,7 @@ type GuestPoliciesRecipeInstallStepFileExecInput interface {
 }
 
 type GuestPoliciesRecipeInstallStepFileExecArgs struct {
-	// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+	// A list of possible return values that the program can return to indicate a success. Defaults to [0].
 	AllowedExitCodes pulumi.StringPtrInput `pulumi:"allowedExitCodes"`
 	// Arguments to be passed to the provided executable.
 	Args pulumi.StringArrayInput `pulumi:"args"`
@@ -3066,7 +3033,7 @@ func (o GuestPoliciesRecipeInstallStepFileExecOutput) ToGuestPoliciesRecipeInsta
 	}).(GuestPoliciesRecipeInstallStepFileExecPtrOutput)
 }
 
-// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+// A list of possible return values that the program can return to indicate a success. Defaults to [0].
 func (o GuestPoliciesRecipeInstallStepFileExecOutput) AllowedExitCodes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepFileExec) *string { return v.AllowedExitCodes }).(pulumi.StringPtrOutput)
 }
@@ -3110,7 +3077,7 @@ func (o GuestPoliciesRecipeInstallStepFileExecPtrOutput) Elem() GuestPoliciesRec
 	}).(GuestPoliciesRecipeInstallStepFileExecOutput)
 }
 
-// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+// A list of possible return values that the program can return to indicate a success. Defaults to [0].
 func (o GuestPoliciesRecipeInstallStepFileExecPtrOutput) AllowedExitCodes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepFileExec) *string {
 		if v == nil {
@@ -4144,7 +4111,7 @@ func (o GuestPoliciesRecipeUpdateStepDpkgInstallationPtrOutput) ArtifactId() pul
 type GuestPoliciesRecipeUpdateStepFileCopy struct {
 	// The id of the relevant artifact in the recipe.
 	ArtifactId string `pulumi:"artifactId"`
-	// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+	// The absolute path on the instance to put the file.
 	Destination string `pulumi:"destination"`
 	// Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
 	// is not overwritten and the step is considered a success. Defaults to false.
@@ -4172,7 +4139,7 @@ type GuestPoliciesRecipeUpdateStepFileCopyInput interface {
 type GuestPoliciesRecipeUpdateStepFileCopyArgs struct {
 	// The id of the relevant artifact in the recipe.
 	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
-	// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+	// The absolute path on the instance to put the file.
 	Destination pulumi.StringInput `pulumi:"destination"`
 	// Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
 	// is not overwritten and the step is considered a success. Defaults to false.
@@ -4268,7 +4235,7 @@ func (o GuestPoliciesRecipeUpdateStepFileCopyOutput) ArtifactId() pulumi.StringO
 	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepFileCopy) string { return v.ArtifactId }).(pulumi.StringOutput)
 }
 
-// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+// The absolute path on the instance to put the file.
 func (o GuestPoliciesRecipeUpdateStepFileCopyOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepFileCopy) string { return v.Destination }).(pulumi.StringOutput)
 }
@@ -4323,7 +4290,7 @@ func (o GuestPoliciesRecipeUpdateStepFileCopyPtrOutput) ArtifactId() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+// The absolute path on the instance to put the file.
 func (o GuestPoliciesRecipeUpdateStepFileCopyPtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepFileCopy) *string {
 		if v == nil {
@@ -4360,7 +4327,7 @@ func (o GuestPoliciesRecipeUpdateStepFileCopyPtrOutput) Permissions() pulumi.Str
 }
 
 type GuestPoliciesRecipeUpdateStepFileExec struct {
-	// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+	// A list of possible return values that the program can return to indicate a success. Defaults to [0].
 	AllowedExitCodes []int `pulumi:"allowedExitCodes"`
 	// Arguments to be passed to the provided executable.
 	Args []string `pulumi:"args"`
@@ -4382,7 +4349,7 @@ type GuestPoliciesRecipeUpdateStepFileExecInput interface {
 }
 
 type GuestPoliciesRecipeUpdateStepFileExecArgs struct {
-	// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+	// A list of possible return values that the program can return to indicate a success. Defaults to [0].
 	AllowedExitCodes pulumi.IntArrayInput `pulumi:"allowedExitCodes"`
 	// Arguments to be passed to the provided executable.
 	Args pulumi.StringArrayInput `pulumi:"args"`
@@ -4469,7 +4436,7 @@ func (o GuestPoliciesRecipeUpdateStepFileExecOutput) ToGuestPoliciesRecipeUpdate
 	}).(GuestPoliciesRecipeUpdateStepFileExecPtrOutput)
 }
 
-// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+// A list of possible return values that the program can return to indicate a success. Defaults to [0].
 func (o GuestPoliciesRecipeUpdateStepFileExecOutput) AllowedExitCodes() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepFileExec) []int { return v.AllowedExitCodes }).(pulumi.IntArrayOutput)
 }
@@ -4513,7 +4480,7 @@ func (o GuestPoliciesRecipeUpdateStepFileExecPtrOutput) Elem() GuestPoliciesReci
 	}).(GuestPoliciesRecipeUpdateStepFileExecOutput)
 }
 
-// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+// A list of possible return values that the program can return to indicate a success. Defaults to [0].
 func (o GuestPoliciesRecipeUpdateStepFileExecPtrOutput) AllowedExitCodes() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepFileExec) []int {
 		if v == nil {
@@ -5551,9 +5518,9 @@ func (o OsPolicyAssignmentInstanceFilterInventoryArrayOutput) Index(i pulumi.Int
 type OsPolicyAssignmentOsPolicy struct {
 	// This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
 	AllowNoResourceGroupMatch *bool `pulumi:"allowNoResourceGroupMatch"`
-	// OS policy assignment description. Length of the description is limited to 1024 characters.
+	// Policy description. Length of the description is limited to 1024 characters.
 	Description *string `pulumi:"description"`
-	// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+	// Required. The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
 	Id string `pulumi:"id"`
 	// Required. Policy mode Possible values: MODE_UNSPECIFIED, VALIDATION, ENFORCEMENT
 	Mode string `pulumi:"mode"`
@@ -5575,9 +5542,9 @@ type OsPolicyAssignmentOsPolicyInput interface {
 type OsPolicyAssignmentOsPolicyArgs struct {
 	// This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
 	AllowNoResourceGroupMatch pulumi.BoolPtrInput `pulumi:"allowNoResourceGroupMatch"`
-	// OS policy assignment description. Length of the description is limited to 1024 characters.
+	// Policy description. Length of the description is limited to 1024 characters.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+	// Required. The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Required. Policy mode Possible values: MODE_UNSPECIFIED, VALIDATION, ENFORCEMENT
 	Mode pulumi.StringInput `pulumi:"mode"`
@@ -5641,12 +5608,12 @@ func (o OsPolicyAssignmentOsPolicyOutput) AllowNoResourceGroupMatch() pulumi.Boo
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicy) *bool { return v.AllowNoResourceGroupMatch }).(pulumi.BoolPtrOutput)
 }
 
-// OS policy assignment description. Length of the description is limited to 1024 characters.
+// Policy description. Length of the description is limited to 1024 characters.
 func (o OsPolicyAssignmentOsPolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicy) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+// Required. The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
 func (o OsPolicyAssignmentOsPolicyOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicy) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -5900,9 +5867,9 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput) Index
 type OsPolicyAssignmentOsPolicyResourceGroupResource struct {
 	// Exec resource
 	Exec *OsPolicyAssignmentOsPolicyResourceGroupResourceExec `pulumi:"exec"`
-	// A remote or local source.
+	// File resource
 	File *OsPolicyAssignmentOsPolicyResourceGroupResourceFile `pulumi:"file"`
-	// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+	// Required. The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
 	Id string `pulumi:"id"`
 	// Package resource
 	Pkg *OsPolicyAssignmentOsPolicyResourceGroupResourcePkg `pulumi:"pkg"`
@@ -5924,9 +5891,9 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceInput interface {
 type OsPolicyAssignmentOsPolicyResourceGroupResourceArgs struct {
 	// Exec resource
 	Exec OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrInput `pulumi:"exec"`
-	// A remote or local source.
+	// File resource
 	File OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrInput `pulumi:"file"`
-	// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+	// Required. The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Package resource
 	Pkg OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrInput `pulumi:"pkg"`
@@ -5992,14 +5959,14 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceOutput) Exec() OsPolicyAs
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput)
 }
 
-// A remote or local source.
+// File resource
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceOutput) File() OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResource) *OsPolicyAssignmentOsPolicyResourceGroupResourceFile {
 		return v.File
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput)
 }
 
-// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+// Required. The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResource) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -6201,7 +6168,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput) Validate()
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce struct {
 	// Optional arguments to pass to the source during execution.
 	Args []string `pulumi:"args"`
-	// A remote or local source.
+	// A remote or local file.
 	File *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile `pulumi:"file"`
 	// Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
 	Interpreter string `pulumi:"interpreter"`
@@ -6225,7 +6192,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceInput interface {
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs struct {
 	// Optional arguments to pass to the source during execution.
 	Args pulumi.StringArrayInput `pulumi:"args"`
-	// A remote or local source.
+	// A remote or local file.
 	File OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrInput `pulumi:"file"`
 	// Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
 	Interpreter pulumi.StringInput `pulumi:"interpreter"`
@@ -6317,7 +6284,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput) Args()
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
-// A remote or local source.
+// A remote or local file.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput) File() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile {
 		return v.File
@@ -6373,7 +6340,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput) Arg
 	}).(pulumi.StringArrayOutput)
 }
 
-// A remote or local source.
+// A remote or local file.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput) File() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile {
 		if v == nil {
@@ -6789,7 +6756,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutp
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum *string `pulumi:"sha256Checksum"`
-	// Required. URI for this repository.
+	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
 	Uri string `pulumi:"uri"`
 }
 
@@ -6807,7 +6774,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteInput i
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
-	// Required. URI for this repository.
+	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -6895,7 +6862,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI for this repository.
+// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -6934,7 +6901,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI for this repository.
+// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote) *string {
 		if v == nil {
@@ -6947,7 +6914,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrO
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate struct {
 	// Optional arguments to pass to the source during execution.
 	Args []string `pulumi:"args"`
-	// A remote or local source.
+	// A remote or local file.
 	File *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile `pulumi:"file"`
 	// Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
 	Interpreter string `pulumi:"interpreter"`
@@ -6971,7 +6938,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateInput interface 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs struct {
 	// Optional arguments to pass to the source during execution.
 	Args pulumi.StringArrayInput `pulumi:"args"`
-	// A remote or local source.
+	// A remote or local file.
 	File OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrInput `pulumi:"file"`
 	// Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
 	Interpreter pulumi.StringInput `pulumi:"interpreter"`
@@ -7063,7 +7030,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput) Args(
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
-// A remote or local source.
+// A remote or local file.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput) File() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile {
 		return v.File
@@ -7119,7 +7086,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput) Ar
 	}).(pulumi.StringArrayOutput)
 }
 
-// A remote or local source.
+// A remote or local file.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput) File() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile {
 		if v == nil {
@@ -7535,7 +7502,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOut
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum *string `pulumi:"sha256Checksum"`
-	// Required. URI for this repository.
+	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
 	Uri string `pulumi:"uri"`
 }
 
@@ -7553,7 +7520,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteInput 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
-	// Required. URI for this repository.
+	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -7641,7 +7608,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI for this repository.
+// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -7680,7 +7647,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI for this repository.
+// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote) *string {
 		if v == nil {
@@ -7697,7 +7664,6 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceFile struct {
 	File *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile `pulumi:"file"`
 	// Required. The absolute path of the file within the VM.
 	Path string `pulumi:"path"`
-	// -
 	// Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
 	Permissions *string `pulumi:"permissions"`
 	// Required. Desired state of the file. Possible values: OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED, COMPLIANT, NON_COMPLIANT, UNKNOWN, NO_OS_POLICIES_APPLICABLE
@@ -7722,7 +7688,6 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs struct {
 	File OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrInput `pulumi:"file"`
 	// Required. The absolute path of the file within the VM.
 	Path pulumi.StringInput `pulumi:"path"`
-	// -
 	// Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
 	Permissions pulumi.StringPtrInput `pulumi:"permissions"`
 	// Required. Desired state of the file. Possible values: OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED, COMPLIANT, NON_COMPLIANT, UNKNOWN, NO_OS_POLICIES_APPLICABLE
@@ -7823,7 +7788,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput) Path() pulumi
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFile) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// -
 // Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput) Permissions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFile) *string { return v.Permissions }).(pulumi.StringPtrOutput)
@@ -7888,7 +7852,6 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) Path() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) Permissions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFile) *string {
@@ -8285,7 +8248,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput) Obj
 type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum *string `pulumi:"sha256Checksum"`
-	// Required. URI for this repository.
+	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
 	Uri string `pulumi:"uri"`
 }
 
@@ -8303,7 +8266,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteInput interfac
 type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
-	// Required. URI for this repository.
+	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -8389,7 +8352,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput) Sha
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote) *string { return v.Sha256Checksum }).(pulumi.StringPtrOutput)
 }
 
-// Required. URI for this repository.
+// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -8428,7 +8391,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI for this repository.
+// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote) *string {
 		if v == nil {
@@ -8439,7 +8402,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput) 
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkg struct {
-	// An Apt Repository.
+	// A package managed by Apt.
 	Apt *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt `pulumi:"apt"`
 	// A deb package file.
 	Deb *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb `pulumi:"deb"`
@@ -8451,9 +8414,9 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkg struct {
 	Msi *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi `pulumi:"msi"`
 	// An rpm package file.
 	Rpm *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm `pulumi:"rpm"`
-	// A Yum Repository.
+	// A package managed by YUM.
 	Yum *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum `pulumi:"yum"`
-	// A Zypper Repository.
+	// A package managed by Zypper.
 	Zypper *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper `pulumi:"zypper"`
 }
 
@@ -8469,7 +8432,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgInput interface {
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs struct {
-	// An Apt Repository.
+	// A package managed by Apt.
 	Apt OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrInput `pulumi:"apt"`
 	// A deb package file.
 	Deb OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrInput `pulumi:"deb"`
@@ -8481,9 +8444,9 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs struct {
 	Msi OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrInput `pulumi:"msi"`
 	// An rpm package file.
 	Rpm OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrInput `pulumi:"rpm"`
-	// A Yum Repository.
+	// A package managed by YUM.
 	Yum OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrInput `pulumi:"yum"`
-	// A Zypper Repository.
+	// A package managed by Zypper.
 	Zypper OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrInput `pulumi:"zypper"`
 }
 
@@ -8564,7 +8527,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) ToOsPolicyAssi
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput)
 }
 
-// An Apt Repository.
+// A package managed by Apt.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) Apt() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt {
 		return v.Apt
@@ -8604,14 +8567,14 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) Rpm() OsPolicy
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput)
 }
 
-// A Yum Repository.
+// A package managed by YUM.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) Yum() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum {
 		return v.Yum
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput)
 }
 
-// A Zypper Repository.
+// A package managed by Zypper.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) Zypper() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper {
 		return v.Zypper
@@ -8642,7 +8605,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Elem() OsPo
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput)
 }
 
-// An Apt Repository.
+// A package managed by Apt.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Apt() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt {
 		if v == nil {
@@ -8702,7 +8665,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Rpm() OsPol
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput)
 }
 
-// A Yum Repository.
+// A package managed by YUM.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Yum() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum {
 		if v == nil {
@@ -8712,7 +8675,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Yum() OsPol
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput)
 }
 
-// A Zypper Repository.
+// A package managed by Zypper.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Zypper() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper {
 		if v == nil {
@@ -8723,7 +8686,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Zypper() Os
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt struct {
-	// Required. The name of the repository.
+	// Required. Package name.
 	Name string `pulumi:"name"`
 }
 
@@ -8739,7 +8702,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptInput interface {
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs struct {
-	// Required. The name of the repository.
+	// Required. Package name.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -8820,7 +8783,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput) ToOsPolicyA
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput)
 }
 
-// Required. The name of the repository.
+// Required. Package name.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -8849,7 +8812,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput) Elem() O
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput)
 }
 
-// Required. The name of the repository.
+// Required. Package name.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt) *string {
 		if v == nil {
@@ -8860,9 +8823,9 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput) Name() p
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb struct {
-	// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+	// Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update && apt-get -y install package.deb`
 	PullDeps *bool `pulumi:"pullDeps"`
-	// Required. An rpm package.
+	// Required. A deb package.
 	Source OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource `pulumi:"source"`
 }
 
@@ -8878,9 +8841,9 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebInput interface {
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs struct {
-	// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+	// Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update && apt-get -y install package.deb`
 	PullDeps pulumi.BoolPtrInput `pulumi:"pullDeps"`
-	// Required. An rpm package.
+	// Required. A deb package.
 	Source OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceInput `pulumi:"source"`
 }
 
@@ -8961,12 +8924,12 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput) ToOsPolicyA
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput)
 }
 
-// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+// Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update && apt-get -y install package.deb`
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput) PullDeps() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb) *bool { return v.PullDeps }).(pulumi.BoolPtrOutput)
 }
 
-// Required. An rpm package.
+// Required. A deb package.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput) Source() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource {
 		return v.Source
@@ -8997,7 +8960,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput) Elem() O
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput)
 }
 
-// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+// Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update && apt-get -y install package.deb`
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput) PullDeps() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb) *bool {
 		if v == nil {
@@ -9007,7 +8970,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput) PullDeps
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Required. An rpm package.
+// Required. A deb package.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput) Source() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource {
 		if v == nil {
@@ -9393,7 +9356,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput)
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum *string `pulumi:"sha256Checksum"`
-	// Required. URI for this repository.
+	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
 	Uri string `pulumi:"uri"`
 }
 
@@ -9411,7 +9374,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteInput inte
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
-	// Required. URI for this repository.
+	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -9499,7 +9462,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI for this repository.
+// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -9538,7 +9501,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI for this repository.
+// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote) *string {
 		if v == nil {
@@ -9549,7 +9512,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutp
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget struct {
-	// Required. The name of the repository.
+	// Required. Package name.
 	Name string `pulumi:"name"`
 }
 
@@ -9565,7 +9528,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetInput interface {
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs struct {
-	// Required. The name of the repository.
+	// Required. Package name.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -9646,7 +9609,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput) ToOsPoli
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput)
 }
 
-// Required. The name of the repository.
+// Required. Package name.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -9675,7 +9638,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput) Elem(
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput)
 }
 
-// Required. The name of the repository.
+// Required. Package name.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget) *string {
 		if v == nil {
@@ -9688,7 +9651,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput) Name(
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi struct {
 	// Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
 	Properties []string `pulumi:"properties"`
-	// Required. An rpm package.
+	// Required. The MSI package.
 	Source OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource `pulumi:"source"`
 }
 
@@ -9706,7 +9669,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiInput interface {
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs struct {
 	// Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
 	Properties pulumi.StringArrayInput `pulumi:"properties"`
-	// Required. An rpm package.
+	// Required. The MSI package.
 	Source OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceInput `pulumi:"source"`
 }
 
@@ -9792,7 +9755,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput) Properties(
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi) []string { return v.Properties }).(pulumi.StringArrayOutput)
 }
 
-// Required. An rpm package.
+// Required. The MSI package.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput) Source() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource {
 		return v.Source
@@ -9833,7 +9796,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput) Properti
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. An rpm package.
+// Required. The MSI package.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput) Source() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource {
 		if v == nil {
@@ -10219,7 +10182,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput)
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum *string `pulumi:"sha256Checksum"`
-	// Required. URI for this repository.
+	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
 	Uri string `pulumi:"uri"`
 }
 
@@ -10237,7 +10200,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteInput inte
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
-	// Required. URI for this repository.
+	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -10325,7 +10288,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI for this repository.
+// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -10364,7 +10327,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI for this repository.
+// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote) *string {
 		if v == nil {
@@ -10908,7 +10871,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput)
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum *string `pulumi:"sha256Checksum"`
-	// Required. URI for this repository.
+	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
 	Uri string `pulumi:"uri"`
 }
 
@@ -10926,7 +10889,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteInput inte
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
-	// Required. URI for this repository.
+	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -11014,7 +10977,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI for this repository.
+// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -11053,7 +11016,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI for this repository.
+// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote) *string {
 		if v == nil {
@@ -11064,7 +11027,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutp
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum struct {
-	// Required. The name of the repository.
+	// Required. Package name.
 	Name string `pulumi:"name"`
 }
 
@@ -11080,7 +11043,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumInput interface {
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs struct {
-	// Required. The name of the repository.
+	// Required. Package name.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -11161,7 +11124,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput) ToOsPolicyA
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput)
 }
 
-// Required. The name of the repository.
+// Required. Package name.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -11190,7 +11153,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput) Elem() O
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput)
 }
 
-// Required. The name of the repository.
+// Required. Package name.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum) *string {
 		if v == nil {
@@ -11201,7 +11164,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput) Name() p
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper struct {
-	// Required. The name of the repository.
+	// Required. Package name.
 	Name string `pulumi:"name"`
 }
 
@@ -11217,7 +11180,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperInput interface {
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs struct {
-	// Required. The name of the repository.
+	// Required. Package name.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -11298,7 +11261,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput) ToOsPoli
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput)
 }
 
-// Required. The name of the repository.
+// Required. Package name.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -11327,7 +11290,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput) Elem(
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput)
 }
 
-// Required. The name of the repository.
+// Required. Package name.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper) *string {
 		if v == nil {
@@ -11915,7 +11878,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum struct {
 	DisplayName *string `pulumi:"displayName"`
 	// URIs of GPG keys.
 	GpgKeys []string `pulumi:"gpgKeys"`
-	// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+	// Required. A one word, unique name for this repository. This is the `repo id` in the yum config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for resource conflicts.
 	Id string `pulumi:"id"`
 }
 
@@ -11937,7 +11900,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs struct {
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// URIs of GPG keys.
 	GpgKeys pulumi.StringArrayInput `pulumi:"gpgKeys"`
-	// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+	// Required. A one word, unique name for this repository. This is the `repo id` in the yum config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for resource conflicts.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -12033,7 +11996,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput) GpgK
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum) []string { return v.GpgKeys }).(pulumi.StringArrayOutput)
 }
 
-// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+// Required. A one word, unique name for this repository. This is the `repo id` in the yum config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for resource conflicts.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -12092,7 +12055,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput) G
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+// Required. A one word, unique name for this repository. This is the `repo id` in the yum config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for resource conflicts.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum) *string {
 		if v == nil {
@@ -13397,7 +13360,7 @@ func (o PatchDeploymentPatchConfigPtrOutput) Zypper() PatchDeploymentPatchConfig
 }
 
 type PatchDeploymentPatchConfigApt struct {
-	// List of KBs to exclude from update.
+	// List of packages to exclude from update. These packages will be excluded.
 	Excludes []string `pulumi:"excludes"`
 	// An exclusive list of packages to be updated. These are the only packages that will be updated.
 	// If these packages are not installed, they will be ignored. This field cannot be specified with
@@ -13420,7 +13383,7 @@ type PatchDeploymentPatchConfigAptInput interface {
 }
 
 type PatchDeploymentPatchConfigAptArgs struct {
-	// List of KBs to exclude from update.
+	// List of packages to exclude from update. These packages will be excluded.
 	Excludes pulumi.StringArrayInput `pulumi:"excludes"`
 	// An exclusive list of packages to be updated. These are the only packages that will be updated.
 	// If these packages are not installed, they will be ignored. This field cannot be specified with
@@ -13508,7 +13471,7 @@ func (o PatchDeploymentPatchConfigAptOutput) ToPatchDeploymentPatchConfigAptPtrO
 	}).(PatchDeploymentPatchConfigAptPtrOutput)
 }
 
-// List of KBs to exclude from update.
+// List of packages to exclude from update. These packages will be excluded.
 func (o PatchDeploymentPatchConfigAptOutput) Excludes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfigApt) []string { return v.Excludes }).(pulumi.StringArrayOutput)
 }
@@ -13550,7 +13513,7 @@ func (o PatchDeploymentPatchConfigAptPtrOutput) Elem() PatchDeploymentPatchConfi
 	}).(PatchDeploymentPatchConfigAptOutput)
 }
 
-// List of KBs to exclude from update.
+// List of packages to exclude from update. These packages will be excluded.
 func (o PatchDeploymentPatchConfigAptPtrOutput) Excludes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigApt) []string {
 		if v == nil {
@@ -15780,7 +15743,7 @@ func (o PatchDeploymentPatchConfigWindowsUpdatePtrOutput) ExclusivePatches() pul
 }
 
 type PatchDeploymentPatchConfigYum struct {
-	// List of KBs to exclude from update.
+	// List of packages to exclude from update. These packages will be excluded.
 	Excludes []string `pulumi:"excludes"`
 	// An exclusive list of packages to be updated. These are the only packages that will be updated.
 	// If these packages are not installed, they will be ignored. This field cannot be specified with
@@ -15804,7 +15767,7 @@ type PatchDeploymentPatchConfigYumInput interface {
 }
 
 type PatchDeploymentPatchConfigYumArgs struct {
-	// List of KBs to exclude from update.
+	// List of packages to exclude from update. These packages will be excluded.
 	Excludes pulumi.StringArrayInput `pulumi:"excludes"`
 	// An exclusive list of packages to be updated. These are the only packages that will be updated.
 	// If these packages are not installed, they will be ignored. This field cannot be specified with
@@ -15893,7 +15856,7 @@ func (o PatchDeploymentPatchConfigYumOutput) ToPatchDeploymentPatchConfigYumPtrO
 	}).(PatchDeploymentPatchConfigYumPtrOutput)
 }
 
-// List of KBs to exclude from update.
+// List of packages to exclude from update. These packages will be excluded.
 func (o PatchDeploymentPatchConfigYumOutput) Excludes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfigYum) []string { return v.Excludes }).(pulumi.StringArrayOutput)
 }
@@ -15939,7 +15902,7 @@ func (o PatchDeploymentPatchConfigYumPtrOutput) Elem() PatchDeploymentPatchConfi
 	}).(PatchDeploymentPatchConfigYumOutput)
 }
 
-// List of KBs to exclude from update.
+// List of packages to exclude from update. These packages will be excluded.
 func (o PatchDeploymentPatchConfigYumPtrOutput) Excludes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigYum) []string {
 		if v == nil {
@@ -15984,10 +15947,10 @@ func (o PatchDeploymentPatchConfigYumPtrOutput) Security() pulumi.BoolPtrOutput 
 type PatchDeploymentPatchConfigZypper struct {
 	// Install only patches with these categories. Common categories include security, recommended, and feature.
 	Categories []string `pulumi:"categories"`
-	// List of KBs to exclude from update.
+	// List of packages to exclude from update.
 	Excludes []string `pulumi:"excludes"`
-	// An exclusive list of kbs to be updated. These are the only patches that will be updated.
-	// This field must not be used with other patch configurations.
+	// An exclusive list of patches to be updated. These are the only patches that will be installed using 'zypper patch patch:' command.
+	// This field must not be used with any other patch configuration fields.
 	ExclusivePatches []string `pulumi:"exclusivePatches"`
 	// Install only patches with these severities. Common severities include critical, important, moderate, and low.
 	Severities []string `pulumi:"severities"`
@@ -16011,10 +15974,10 @@ type PatchDeploymentPatchConfigZypperInput interface {
 type PatchDeploymentPatchConfigZypperArgs struct {
 	// Install only patches with these categories. Common categories include security, recommended, and feature.
 	Categories pulumi.StringArrayInput `pulumi:"categories"`
-	// List of KBs to exclude from update.
+	// List of packages to exclude from update.
 	Excludes pulumi.StringArrayInput `pulumi:"excludes"`
-	// An exclusive list of kbs to be updated. These are the only patches that will be updated.
-	// This field must not be used with other patch configurations.
+	// An exclusive list of patches to be updated. These are the only patches that will be installed using 'zypper patch patch:' command.
+	// This field must not be used with any other patch configuration fields.
 	ExclusivePatches pulumi.StringArrayInput `pulumi:"exclusivePatches"`
 	// Install only patches with these severities. Common severities include critical, important, moderate, and low.
 	Severities pulumi.StringArrayInput `pulumi:"severities"`
@@ -16106,13 +16069,13 @@ func (o PatchDeploymentPatchConfigZypperOutput) Categories() pulumi.StringArrayO
 	return o.ApplyT(func(v PatchDeploymentPatchConfigZypper) []string { return v.Categories }).(pulumi.StringArrayOutput)
 }
 
-// List of KBs to exclude from update.
+// List of packages to exclude from update.
 func (o PatchDeploymentPatchConfigZypperOutput) Excludes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfigZypper) []string { return v.Excludes }).(pulumi.StringArrayOutput)
 }
 
-// An exclusive list of kbs to be updated. These are the only patches that will be updated.
-// This field must not be used with other patch configurations.
+// An exclusive list of patches to be updated. These are the only patches that will be installed using 'zypper patch patch:' command.
+// This field must not be used with any other patch configuration fields.
 func (o PatchDeploymentPatchConfigZypperOutput) ExclusivePatches() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfigZypper) []string { return v.ExclusivePatches }).(pulumi.StringArrayOutput)
 }
@@ -16166,7 +16129,7 @@ func (o PatchDeploymentPatchConfigZypperPtrOutput) Categories() pulumi.StringArr
 	}).(pulumi.StringArrayOutput)
 }
 
-// List of KBs to exclude from update.
+// List of packages to exclude from update.
 func (o PatchDeploymentPatchConfigZypperPtrOutput) Excludes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigZypper) []string {
 		if v == nil {
@@ -16176,8 +16139,8 @@ func (o PatchDeploymentPatchConfigZypperPtrOutput) Excludes() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
-// An exclusive list of kbs to be updated. These are the only patches that will be updated.
-// This field must not be used with other patch configurations.
+// An exclusive list of patches to be updated. These are the only patches that will be installed using 'zypper patch patch:' command.
+// This field must not be used with any other patch configuration fields.
 func (o PatchDeploymentPatchConfigZypperPtrOutput) ExclusivePatches() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigZypper) []string {
 		if v == nil {
@@ -16221,14 +16184,12 @@ type PatchDeploymentRecurringSchedule struct {
 	// The end time at which a recurring patch deployment schedule is no longer active.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	EndTime *string `pulumi:"endTime"`
-	// -
 	// The time the last patch job ran successfully.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	LastExecuteTime *string `pulumi:"lastExecuteTime"`
 	// Schedule with monthly executions.
 	// Structure is documented below.
 	Monthly *PatchDeploymentRecurringScheduleMonthly `pulumi:"monthly"`
-	// -
 	// The time the next patch job is scheduled to run.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	NextExecuteTime *string `pulumi:"nextExecuteTime"`
@@ -16262,14 +16223,12 @@ type PatchDeploymentRecurringScheduleArgs struct {
 	// The end time at which a recurring patch deployment schedule is no longer active.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
-	// -
 	// The time the last patch job ran successfully.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	LastExecuteTime pulumi.StringPtrInput `pulumi:"lastExecuteTime"`
 	// Schedule with monthly executions.
 	// Structure is documented below.
 	Monthly PatchDeploymentRecurringScheduleMonthlyPtrInput `pulumi:"monthly"`
-	// -
 	// The time the next patch job is scheduled to run.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	NextExecuteTime pulumi.StringPtrInput `pulumi:"nextExecuteTime"`
@@ -16371,7 +16330,6 @@ func (o PatchDeploymentRecurringScheduleOutput) EndTime() pulumi.StringPtrOutput
 	return o.ApplyT(func(v PatchDeploymentRecurringSchedule) *string { return v.EndTime }).(pulumi.StringPtrOutput)
 }
 
-// -
 // The time the last patch job ran successfully.
 // A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 func (o PatchDeploymentRecurringScheduleOutput) LastExecuteTime() pulumi.StringPtrOutput {
@@ -16384,7 +16342,6 @@ func (o PatchDeploymentRecurringScheduleOutput) Monthly() PatchDeploymentRecurri
 	return o.ApplyT(func(v PatchDeploymentRecurringSchedule) *PatchDeploymentRecurringScheduleMonthly { return v.Monthly }).(PatchDeploymentRecurringScheduleMonthlyPtrOutput)
 }
 
-// -
 // The time the next patch job is scheduled to run.
 // A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 func (o PatchDeploymentRecurringScheduleOutput) NextExecuteTime() pulumi.StringPtrOutput {
@@ -16451,7 +16408,6 @@ func (o PatchDeploymentRecurringSchedulePtrOutput) EndTime() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // The time the last patch job ran successfully.
 // A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 func (o PatchDeploymentRecurringSchedulePtrOutput) LastExecuteTime() pulumi.StringPtrOutput {
@@ -16474,7 +16430,6 @@ func (o PatchDeploymentRecurringSchedulePtrOutput) Monthly() PatchDeploymentRecu
 	}).(PatchDeploymentRecurringScheduleMonthlyPtrOutput)
 }
 
-// -
 // The time the next patch job is scheduled to run.
 // A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 func (o PatchDeploymentRecurringSchedulePtrOutput) NextExecuteTime() pulumi.StringPtrOutput {
@@ -17216,7 +17171,7 @@ func (o PatchDeploymentRecurringScheduleTimeZonePtrOutput) Version() pulumi.Stri
 }
 
 type PatchDeploymentRecurringScheduleWeekly struct {
-	// A day of the week.
+	// IANA Time Zone Database time zone, e.g. "America/New_York".
 	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
 	DayOfWeek string `pulumi:"dayOfWeek"`
 }
@@ -17233,7 +17188,7 @@ type PatchDeploymentRecurringScheduleWeeklyInput interface {
 }
 
 type PatchDeploymentRecurringScheduleWeeklyArgs struct {
-	// A day of the week.
+	// IANA Time Zone Database time zone, e.g. "America/New_York".
 	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
 	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
 }
@@ -17315,7 +17270,7 @@ func (o PatchDeploymentRecurringScheduleWeeklyOutput) ToPatchDeploymentRecurring
 	}).(PatchDeploymentRecurringScheduleWeeklyPtrOutput)
 }
 
-// A day of the week.
+// IANA Time Zone Database time zone, e.g. "America/New_York".
 // Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
 func (o PatchDeploymentRecurringScheduleWeeklyOutput) DayOfWeek() pulumi.StringOutput {
 	return o.ApplyT(func(v PatchDeploymentRecurringScheduleWeekly) string { return v.DayOfWeek }).(pulumi.StringOutput)
@@ -17345,7 +17300,7 @@ func (o PatchDeploymentRecurringScheduleWeeklyPtrOutput) Elem() PatchDeploymentR
 	}).(PatchDeploymentRecurringScheduleWeeklyOutput)
 }
 
-// A day of the week.
+// IANA Time Zone Database time zone, e.g. "America/New_York".
 // Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
 func (o PatchDeploymentRecurringScheduleWeeklyPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentRecurringScheduleWeekly) *string {

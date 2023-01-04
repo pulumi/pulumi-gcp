@@ -111,8 +111,7 @@ type CxEnvironment struct {
 	// The Agent to create an Environment for.
 	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
 	Parent pulumi.StringPtrOutput `pulumi:"parent"`
-	// Update time of this environment. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Update time of this environment. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
 	// Structure is documented below.
@@ -163,8 +162,7 @@ type cxEnvironmentState struct {
 	// The Agent to create an Environment for.
 	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
 	Parent *string `pulumi:"parent"`
-	// Update time of this environment. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Update time of this environment. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime *string `pulumi:"updateTime"`
 	// A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
 	// Structure is documented below.
@@ -181,8 +179,7 @@ type CxEnvironmentState struct {
 	// The Agent to create an Environment for.
 	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
 	Parent pulumi.StringPtrInput
-	// Update time of this environment. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Update time of this environment. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime pulumi.StringPtrInput
 	// A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
 	// Structure is documented below.
@@ -328,8 +325,7 @@ func (o CxEnvironmentOutput) Parent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxEnvironment) pulumi.StringPtrOutput { return v.Parent }).(pulumi.StringPtrOutput)
 }
 
-// Update time of this environment. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+// Update time of this environment. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o CxEnvironmentOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxEnvironment) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

@@ -72,7 +72,7 @@ import (
 //					},
 //				},
 //				TargetPools: pulumi.StringArray{
-//					pulumi.Any(google_compute_target_pool.Appserver.Id),
+//					google_compute_target_pool.Appserver.Id,
 //				},
 //				TargetSize: pulumi.Int(2),
 //				NamedPorts: compute.RegionInstanceGroupManagerNamedPortArray{
@@ -178,7 +178,10 @@ type RegionInstanceGroupManager struct {
 	// response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
 	// respected.
 	ListManagedInstancesResults pulumi.StringPtrOutput `pulumi:"listManagedInstancesResults"`
-	// - Version name.
+	// The name of the instance group manager. Must be 1-63
+	// characters long and comply with
+	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+	// include lowercase letters, numbers, and hyphens.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The named port configuration. See the section below
 	// for details on configuration.
@@ -202,7 +205,9 @@ type RegionInstanceGroupManager struct {
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
 	TargetPools pulumi.StringArrayOutput `pulumi:"targetPools"`
-	// - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+	// The target number of running instances for this managed
+	// instance group. This value should always be explicitly set unless this resource is attached to
+	// an autoscaler, in which case it should never be set. Defaults to `0`.
 	TargetSize pulumi.IntOutput `pulumi:"targetSize"`
 	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
 	UpdatePolicy RegionInstanceGroupManagerUpdatePolicyOutput `pulumi:"updatePolicy"`
@@ -290,7 +295,10 @@ type regionInstanceGroupManagerState struct {
 	// response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
 	// respected.
 	ListManagedInstancesResults *string `pulumi:"listManagedInstancesResults"`
-	// - Version name.
+	// The name of the instance group manager. Must be 1-63
+	// characters long and comply with
+	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+	// include lowercase letters, numbers, and hyphens.
 	Name *string `pulumi:"name"`
 	// The named port configuration. See the section below
 	// for details on configuration.
@@ -314,7 +322,9 @@ type regionInstanceGroupManagerState struct {
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
 	TargetPools []string `pulumi:"targetPools"`
-	// - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+	// The target number of running instances for this managed
+	// instance group. This value should always be explicitly set unless this resource is attached to
+	// an autoscaler, in which case it should never be set. Defaults to `0`.
 	TargetSize *int `pulumi:"targetSize"`
 	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
 	UpdatePolicy *RegionInstanceGroupManagerUpdatePolicy `pulumi:"updatePolicy"`
@@ -368,7 +378,10 @@ type RegionInstanceGroupManagerState struct {
 	// response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
 	// respected.
 	ListManagedInstancesResults pulumi.StringPtrInput
-	// - Version name.
+	// The name of the instance group manager. Must be 1-63
+	// characters long and comply with
+	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+	// include lowercase letters, numbers, and hyphens.
 	Name pulumi.StringPtrInput
 	// The named port configuration. See the section below
 	// for details on configuration.
@@ -392,7 +405,9 @@ type RegionInstanceGroupManagerState struct {
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
 	TargetPools pulumi.StringArrayInput
-	// - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+	// The target number of running instances for this managed
+	// instance group. This value should always be explicitly set unless this resource is attached to
+	// an autoscaler, in which case it should never be set. Defaults to `0`.
 	TargetSize pulumi.IntPtrInput
 	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
 	UpdatePolicy RegionInstanceGroupManagerUpdatePolicyPtrInput
@@ -446,7 +461,10 @@ type regionInstanceGroupManagerArgs struct {
 	// response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
 	// respected.
 	ListManagedInstancesResults *string `pulumi:"listManagedInstancesResults"`
-	// - Version name.
+	// The name of the instance group manager. Must be 1-63
+	// characters long and comply with
+	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+	// include lowercase letters, numbers, and hyphens.
 	Name *string `pulumi:"name"`
 	// The named port configuration. See the section below
 	// for details on configuration.
@@ -466,7 +484,9 @@ type regionInstanceGroupManagerArgs struct {
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
 	TargetPools []string `pulumi:"targetPools"`
-	// - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+	// The target number of running instances for this managed
+	// instance group. This value should always be explicitly set unless this resource is attached to
+	// an autoscaler, in which case it should never be set. Defaults to `0`.
 	TargetSize *int `pulumi:"targetSize"`
 	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
 	UpdatePolicy *RegionInstanceGroupManagerUpdatePolicy `pulumi:"updatePolicy"`
@@ -517,7 +537,10 @@ type RegionInstanceGroupManagerArgs struct {
 	// response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
 	// respected.
 	ListManagedInstancesResults pulumi.StringPtrInput
-	// - Version name.
+	// The name of the instance group manager. Must be 1-63
+	// characters long and comply with
+	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+	// include lowercase letters, numbers, and hyphens.
 	Name pulumi.StringPtrInput
 	// The named port configuration. See the section below
 	// for details on configuration.
@@ -537,7 +560,9 @@ type RegionInstanceGroupManagerArgs struct {
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
 	TargetPools pulumi.StringArrayInput
-	// - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+	// The target number of running instances for this managed
+	// instance group. This value should always be explicitly set unless this resource is attached to
+	// an autoscaler, in which case it should never be set. Defaults to `0`.
 	TargetSize pulumi.IntPtrInput
 	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
 	UpdatePolicy RegionInstanceGroupManagerUpdatePolicyPtrInput
@@ -708,7 +733,10 @@ func (o RegionInstanceGroupManagerOutput) ListManagedInstancesResults() pulumi.S
 	return o.ApplyT(func(v *RegionInstanceGroupManager) pulumi.StringPtrOutput { return v.ListManagedInstancesResults }).(pulumi.StringPtrOutput)
 }
 
-// - Version name.
+// The name of the instance group manager. Must be 1-63
+// characters long and comply with
+// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+// include lowercase letters, numbers, and hyphens.
 func (o RegionInstanceGroupManagerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionInstanceGroupManager) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -770,7 +798,9 @@ func (o RegionInstanceGroupManagerOutput) TargetPools() pulumi.StringArrayOutput
 	return o.ApplyT(func(v *RegionInstanceGroupManager) pulumi.StringArrayOutput { return v.TargetPools }).(pulumi.StringArrayOutput)
 }
 
-// - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+// The target number of running instances for this managed
+// instance group. This value should always be explicitly set unless this resource is attached to
+// an autoscaler, in which case it should never be set. Defaults to `0`.
 func (o RegionInstanceGroupManagerOutput) TargetSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *RegionInstanceGroupManager) pulumi.IntOutput { return v.TargetSize }).(pulumi.IntOutput)
 }

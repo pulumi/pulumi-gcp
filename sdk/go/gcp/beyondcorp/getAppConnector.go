@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = beyondcorp.LookupAppConnector(ctx, &beyondcorp.LookupAppConnectorArgs{
+//			_, err := beyondcorp.LookupAppConnector(ctx, &beyondcorp.LookupAppConnectorArgs{
 //				Name: "my-beyondcorp-app-connector",
 //			}, nil)
 //			if err != nil {

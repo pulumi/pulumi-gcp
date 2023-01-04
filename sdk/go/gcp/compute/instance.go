@@ -154,8 +154,7 @@ type Instance struct {
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The unique fingerprint of the labels.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
-	// A set of key/value label pairs assigned to the disk. This\
-	// field is only applicable for persistent disks.
+	// A map of key/value label pairs to assign to the instance.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The machine type to create.
 	MachineType pulumi.StringOutput `pulumi:"machineType"`
@@ -199,7 +198,7 @@ type Instance struct {
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity InstanceReservationAffinityOutput `pulumi:"reservationAffinity"`
-	// -- A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+	// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringPtrOutput `pulumi:"resourcePolicies"`
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
@@ -305,8 +304,7 @@ type instanceState struct {
 	InstanceId *string `pulumi:"instanceId"`
 	// The unique fingerprint of the labels.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
-	// A set of key/value label pairs assigned to the disk. This\
-	// field is only applicable for persistent disks.
+	// A map of key/value label pairs to assign to the instance.
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type to create.
 	MachineType *string `pulumi:"machineType"`
@@ -350,7 +348,7 @@ type instanceState struct {
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity *InstanceReservationAffinity `pulumi:"reservationAffinity"`
-	// -- A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+	// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies *string `pulumi:"resourcePolicies"`
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
@@ -419,8 +417,7 @@ type InstanceState struct {
 	InstanceId pulumi.StringPtrInput
 	// The unique fingerprint of the labels.
 	LabelFingerprint pulumi.StringPtrInput
-	// A set of key/value label pairs assigned to the disk. This\
-	// field is only applicable for persistent disks.
+	// A map of key/value label pairs to assign to the instance.
 	Labels pulumi.StringMapInput
 	// The machine type to create.
 	MachineType pulumi.StringPtrInput
@@ -464,7 +461,7 @@ type InstanceState struct {
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity InstanceReservationAffinityPtrInput
-	// -- A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+	// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringPtrInput
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
@@ -529,8 +526,7 @@ type instanceArgs struct {
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
 	// The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname *string `pulumi:"hostname"`
-	// A set of key/value label pairs assigned to the disk. This\
-	// field is only applicable for persistent disks.
+	// A map of key/value label pairs to assign to the instance.
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type to create.
 	MachineType string `pulumi:"machineType"`
@@ -572,7 +568,7 @@ type instanceArgs struct {
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity *InstanceReservationAffinity `pulumi:"reservationAffinity"`
-	// -- A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+	// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies *string `pulumi:"resourcePolicies"`
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
@@ -630,8 +626,7 @@ type InstanceArgs struct {
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
 	// The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname pulumi.StringPtrInput
-	// A set of key/value label pairs assigned to the disk. This\
-	// field is only applicable for persistent disks.
+	// A map of key/value label pairs to assign to the instance.
 	Labels pulumi.StringMapInput
 	// The machine type to create.
 	MachineType pulumi.StringInput
@@ -673,7 +668,7 @@ type InstanceArgs struct {
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity InstanceReservationAffinityPtrInput
-	// -- A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+	// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringPtrInput
 	// The scheduling strategy to use. More details about
 	// this configuration option are detailed below.
@@ -872,8 +867,7 @@ func (o InstanceOutput) LabelFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.LabelFingerprint }).(pulumi.StringOutput)
 }
 
-// A set of key/value label pairs assigned to the disk. This\
-// field is only applicable for persistent disks.
+// A map of key/value label pairs to assign to the instance.
 func (o InstanceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -950,7 +944,7 @@ func (o InstanceOutput) ReservationAffinity() InstanceReservationAffinityOutput 
 	return o.ApplyT(func(v *Instance) InstanceReservationAffinityOutput { return v.ReservationAffinity }).(InstanceReservationAffinityOutput)
 }
 
-// -- A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 func (o InstanceOutput) ResourcePolicies() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ResourcePolicies }).(pulumi.StringPtrOutput)
 }

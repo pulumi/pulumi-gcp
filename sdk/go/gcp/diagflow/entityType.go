@@ -99,7 +99,8 @@ type EntityType struct {
 	// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
 	//   Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
 	Kind pulumi.StringOutput `pulumi:"kind"`
-	// The unique identifier of the entity type. Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
+	// The unique identifier of the entity type.
+	// Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -155,7 +156,8 @@ type entityTypeState struct {
 	// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
 	//   Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
 	Kind *string `pulumi:"kind"`
-	// The unique identifier of the entity type. Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
+	// The unique identifier of the entity type.
+	// Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -177,7 +179,8 @@ type EntityTypeState struct {
 	// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
 	//   Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
 	Kind pulumi.StringPtrInput
-	// The unique identifier of the entity type. Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
+	// The unique identifier of the entity type.
+	// Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -342,7 +345,8 @@ func (o EntityTypeOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntityType) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
-// The unique identifier of the entity type. Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
+// The unique identifier of the entity type.
+// Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
 func (o EntityTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntityType) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

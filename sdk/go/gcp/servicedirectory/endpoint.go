@@ -162,7 +162,8 @@ type Endpoint struct {
 	// up to 512 characters, spread across all key-value pairs.
 	// Metadata that goes beyond any these limits will be rejected.
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
-	// The resource name for the endpoint in the format 'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
+	// The resource name for the endpoint in the format
+	// `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
 	Network pulumi.StringPtrOutput `pulumi:"network"`
@@ -218,7 +219,8 @@ type endpointState struct {
 	// up to 512 characters, spread across all key-value pairs.
 	// Metadata that goes beyond any these limits will be rejected.
 	Metadata map[string]string `pulumi:"metadata"`
-	// The resource name for the endpoint in the format 'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
+	// The resource name for the endpoint in the format
+	// `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
 	Name *string `pulumi:"name"`
 	// The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
 	Network *string `pulumi:"network"`
@@ -240,7 +242,8 @@ type EndpointState struct {
 	// up to 512 characters, spread across all key-value pairs.
 	// Metadata that goes beyond any these limits will be rejected.
 	Metadata pulumi.StringMapInput
-	// The resource name for the endpoint in the format 'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
+	// The resource name for the endpoint in the format
+	// `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
 	Name pulumi.StringPtrInput
 	// The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
 	Network pulumi.StringPtrInput
@@ -402,7 +405,8 @@ func (o EndpointOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
-// The resource name for the endpoint in the format 'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
+// The resource name for the endpoint in the format
+// `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
 func (o EndpointOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

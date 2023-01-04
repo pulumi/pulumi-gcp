@@ -85,7 +85,7 @@ import (
 //				return err
 //			}
 //			actAs, err := projects.NewIAMMember(ctx, "actAs", &projects.IAMMemberArgs{
-//				Project: pulumi.String(project.ProjectId),
+//				Project: *pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/iam.serviceAccountUser"),
 //				Member: cloudbuildServiceAccount.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil
@@ -95,7 +95,7 @@ import (
 //				return err
 //			}
 //			logsWriter, err := projects.NewIAMMember(ctx, "logsWriter", &projects.IAMMemberArgs{
-//				Project: pulumi.String(project.ProjectId),
+//				Project: *pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/logging.logWriter"),
 //				Member: cloudbuildServiceAccount.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil
@@ -256,7 +256,7 @@ import (
 //			}
 //			secretAccessor, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 //				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
+//					{
 //						Role: "roles/secretmanager.secretAccessor",
 //						Members: []string{
 //							fmt.Sprintf("serviceAccount:service-%v@gcp-sa-cloudbuild.iam.gserviceaccount.com", project.Number),
@@ -270,7 +270,7 @@ import (
 //			_, err = secretmanager.NewSecretIamPolicy(ctx, "policy", &secretmanager.SecretIamPolicyArgs{
 //				Project:    webhookTriggerSecretKey.Project,
 //				SecretId:   webhookTriggerSecretKey.SecretId,
-//				PolicyData: pulumi.String(secretAccessor.PolicyData),
+//				PolicyData: *pulumi.String(secretAccessor.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -419,13 +419,10 @@ type Trigger struct {
 	// those files matches a includedFiles glob. If not, then we do not trigger
 	// a build.
 	IncludedFiles pulumi.StringArrayOutput `pulumi:"includedFiles"`
-	// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
-	// Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
-	// this location as a prefix.
+	// The [Cloud Build location](https://cloud.google.com/build/docs/locations) for the trigger.
+	// If not specified, "global" is used.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// Name of the volume to mount.
-	// Volume names must be unique per build step and must be valid names for Docker volumes.
-	// Each named volume must be used by at least two build steps.
+	// Name of the trigger. Must be unique within the project.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -448,9 +445,9 @@ type Trigger struct {
 	// One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
 	// Structure is documented below.
 	SourceToBuild TriggerSourceToBuildPtrOutput `pulumi:"sourceToBuild"`
-	// Substitutions to use in a triggered build. Should only be used with triggers.run
+	// Substitutions data for Build resource.
 	Substitutions pulumi.StringMapOutput `pulumi:"substitutions"`
-	// Tags for annotation of a Build. These are not docker tags.
+	// Tags for annotation of a BuildTrigger
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The unique identifier for the trigger.
 	TriggerId pulumi.StringOutput `pulumi:"triggerId"`
@@ -547,13 +544,10 @@ type triggerState struct {
 	// those files matches a includedFiles glob. If not, then we do not trigger
 	// a build.
 	IncludedFiles []string `pulumi:"includedFiles"`
-	// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
-	// Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
-	// this location as a prefix.
+	// The [Cloud Build location](https://cloud.google.com/build/docs/locations) for the trigger.
+	// If not specified, "global" is used.
 	Location *string `pulumi:"location"`
-	// Name of the volume to mount.
-	// Volume names must be unique per build step and must be valid names for Docker volumes.
-	// Each named volume must be used by at least two build steps.
+	// Name of the trigger. Must be unique within the project.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -576,9 +570,9 @@ type triggerState struct {
 	// One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
 	// Structure is documented below.
 	SourceToBuild *TriggerSourceToBuild `pulumi:"sourceToBuild"`
-	// Substitutions to use in a triggered build. Should only be used with triggers.run
+	// Substitutions data for Build resource.
 	Substitutions map[string]string `pulumi:"substitutions"`
-	// Tags for annotation of a Build. These are not docker tags.
+	// Tags for annotation of a BuildTrigger
 	Tags []string `pulumi:"tags"`
 	// The unique identifier for the trigger.
 	TriggerId *string `pulumi:"triggerId"`
@@ -647,13 +641,10 @@ type TriggerState struct {
 	// those files matches a includedFiles glob. If not, then we do not trigger
 	// a build.
 	IncludedFiles pulumi.StringArrayInput
-	// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
-	// Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
-	// this location as a prefix.
+	// The [Cloud Build location](https://cloud.google.com/build/docs/locations) for the trigger.
+	// If not specified, "global" is used.
 	Location pulumi.StringPtrInput
-	// Name of the volume to mount.
-	// Volume names must be unique per build step and must be valid names for Docker volumes.
-	// Each named volume must be used by at least two build steps.
+	// Name of the trigger. Must be unique within the project.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -676,9 +667,9 @@ type TriggerState struct {
 	// One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
 	// Structure is documented below.
 	SourceToBuild TriggerSourceToBuildPtrInput
-	// Substitutions to use in a triggered build. Should only be used with triggers.run
+	// Substitutions data for Build resource.
 	Substitutions pulumi.StringMapInput
-	// Tags for annotation of a Build. These are not docker tags.
+	// Tags for annotation of a BuildTrigger
 	Tags pulumi.StringArrayInput
 	// The unique identifier for the trigger.
 	TriggerId pulumi.StringPtrInput
@@ -749,13 +740,10 @@ type triggerArgs struct {
 	// those files matches a includedFiles glob. If not, then we do not trigger
 	// a build.
 	IncludedFiles []string `pulumi:"includedFiles"`
-	// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
-	// Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
-	// this location as a prefix.
+	// The [Cloud Build location](https://cloud.google.com/build/docs/locations) for the trigger.
+	// If not specified, "global" is used.
 	Location *string `pulumi:"location"`
-	// Name of the volume to mount.
-	// Volume names must be unique per build step and must be valid names for Docker volumes.
-	// Each named volume must be used by at least two build steps.
+	// Name of the trigger. Must be unique within the project.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -778,9 +766,9 @@ type triggerArgs struct {
 	// One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
 	// Structure is documented below.
 	SourceToBuild *TriggerSourceToBuild `pulumi:"sourceToBuild"`
-	// Substitutions to use in a triggered build. Should only be used with triggers.run
+	// Substitutions data for Build resource.
 	Substitutions map[string]string `pulumi:"substitutions"`
-	// Tags for annotation of a Build. These are not docker tags.
+	// Tags for annotation of a BuildTrigger
 	Tags []string `pulumi:"tags"`
 	// Template describing the types of source changes to trigger a build.
 	// Branch and tag names in trigger templates are interpreted as regular
@@ -846,13 +834,10 @@ type TriggerArgs struct {
 	// those files matches a includedFiles glob. If not, then we do not trigger
 	// a build.
 	IncludedFiles pulumi.StringArrayInput
-	// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
-	// Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
-	// this location as a prefix.
+	// The [Cloud Build location](https://cloud.google.com/build/docs/locations) for the trigger.
+	// If not specified, "global" is used.
 	Location pulumi.StringPtrInput
-	// Name of the volume to mount.
-	// Volume names must be unique per build step and must be valid names for Docker volumes.
-	// Each named volume must be used by at least two build steps.
+	// Name of the trigger. Must be unique within the project.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -875,9 +860,9 @@ type TriggerArgs struct {
 	// One of `triggerTemplate`, `github`, `pubsubConfig` `webhookConfig` or `sourceToBuild` must be provided.
 	// Structure is documented below.
 	SourceToBuild TriggerSourceToBuildPtrInput
-	// Substitutions to use in a triggered build. Should only be used with triggers.run
+	// Substitutions data for Build resource.
 	Substitutions pulumi.StringMapInput
-	// Tags for annotation of a Build. These are not docker tags.
+	// Tags for annotation of a BuildTrigger
 	Tags pulumi.StringArrayInput
 	// Template describing the types of source changes to trigger a build.
 	// Branch and tag names in trigger templates are interpreted as regular
@@ -1066,16 +1051,13 @@ func (o TriggerOutput) IncludedFiles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringArrayOutput { return v.IncludedFiles }).(pulumi.StringArrayOutput)
 }
 
-// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
-// Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
-// this location as a prefix.
+// The [Cloud Build location](https://cloud.google.com/build/docs/locations) for the trigger.
+// If not specified, "global" is used.
 func (o TriggerOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// Name of the volume to mount.
-// Volume names must be unique per build step and must be valid names for Docker volumes.
-// Each named volume must be used by at least two build steps.
+// Name of the trigger. Must be unique within the project.
 func (o TriggerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -1113,12 +1095,12 @@ func (o TriggerOutput) SourceToBuild() TriggerSourceToBuildPtrOutput {
 	return o.ApplyT(func(v *Trigger) TriggerSourceToBuildPtrOutput { return v.SourceToBuild }).(TriggerSourceToBuildPtrOutput)
 }
 
-// Substitutions to use in a triggered build. Should only be used with triggers.run
+// Substitutions data for Build resource.
 func (o TriggerOutput) Substitutions() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringMapOutput { return v.Substitutions }).(pulumi.StringMapOutput)
 }
 
-// Tags for annotation of a Build. These are not docker tags.
+// Tags for annotation of a BuildTrigger
 func (o TriggerOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

@@ -40,7 +40,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 //				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
+//					{
 //						Role: "roles/bigquery.dataOwner",
 //						Members: []string{
 //							"user:jane@example.com",
@@ -55,7 +55,7 @@ import (
 //				Project:    pulumi.Any(google_bigquery_table.Test.Project),
 //				DatasetId:  pulumi.Any(google_bigquery_table.Test.Dataset_id),
 //				TableId:    pulumi.Any(google_bigquery_table.Test.Table_id),
-//				PolicyData: pulumi.String(admin.PolicyData),
+//				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -83,12 +83,12 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 //				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
+//					{
 //						Role: "roles/bigquery.dataOwner",
 //						Members: []string{
 //							"user:jane@example.com",
 //						},
-//						Condition: organizations.GetIAMPolicyBindingCondition{
+//						Condition: {
 //							Title:       "expires_after_2019_12_31",
 //							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
 //							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
@@ -103,7 +103,7 @@ import (
 //				Project:    pulumi.Any(google_bigquery_table.Test.Project),
 //				DatasetId:  pulumi.Any(google_bigquery_table.Test.Dataset_id),
 //				TableId:    pulumi.Any(google_bigquery_table.Test.Table_id),
-//				PolicyData: pulumi.String(admin.PolicyData),
+//				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

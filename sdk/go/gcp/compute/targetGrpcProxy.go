@@ -51,10 +51,13 @@ type TargetGrpcProxy struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
-	// This field will be ignored when inserting a TargetGrpcProxy. An up-to-date fingerprint must be provided in order to
-	// patch/update the TargetGrpcProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest
-	// fingerprint, make a get() request to retrieve the TargetGrpcProxy. A base64-encoded string.
+	// Fingerprint of this resource. A hash of the contents stored in
+	// this object. This field is used in optimistic locking. This field
+	// will be ignored when inserting a TargetGrpcProxy. An up-to-date
+	// fingerprint must be provided in order to patch/update the
+	// TargetGrpcProxy; otherwise, the request will fail with error
+	// 412 conditionNotMet. To see the latest fingerprint, make a get()
+	// request to retrieve the TargetGrpcProxy. A base64-encoded string.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// Name of the resource. Provided by the client when the resource
 	// is created. The name must be 1-63 characters long, and comply
@@ -121,10 +124,13 @@ type targetGrpcProxyState struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
-	// This field will be ignored when inserting a TargetGrpcProxy. An up-to-date fingerprint must be provided in order to
-	// patch/update the TargetGrpcProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest
-	// fingerprint, make a get() request to retrieve the TargetGrpcProxy. A base64-encoded string.
+	// Fingerprint of this resource. A hash of the contents stored in
+	// this object. This field is used in optimistic locking. This field
+	// will be ignored when inserting a TargetGrpcProxy. An up-to-date
+	// fingerprint must be provided in order to patch/update the
+	// TargetGrpcProxy; otherwise, the request will fail with error
+	// 412 conditionNotMet. To see the latest fingerprint, make a get()
+	// request to retrieve the TargetGrpcProxy. A base64-encoded string.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// Name of the resource. Provided by the client when the resource
 	// is created. The name must be 1-63 characters long, and comply
@@ -163,10 +169,13 @@ type TargetGrpcProxyState struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
-	// This field will be ignored when inserting a TargetGrpcProxy. An up-to-date fingerprint must be provided in order to
-	// patch/update the TargetGrpcProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest
-	// fingerprint, make a get() request to retrieve the TargetGrpcProxy. A base64-encoded string.
+	// Fingerprint of this resource. A hash of the contents stored in
+	// this object. This field is used in optimistic locking. This field
+	// will be ignored when inserting a TargetGrpcProxy. An up-to-date
+	// fingerprint must be provided in order to patch/update the
+	// TargetGrpcProxy; otherwise, the request will fail with error
+	// 412 conditionNotMet. To see the latest fingerprint, make a get()
+	// request to retrieve the TargetGrpcProxy. A base64-encoded string.
 	Fingerprint pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource
 	// is created. The name must be 1-63 characters long, and comply
@@ -364,10 +373,13 @@ func (o TargetGrpcProxyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TargetGrpcProxy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
-// This field will be ignored when inserting a TargetGrpcProxy. An up-to-date fingerprint must be provided in order to
-// patch/update the TargetGrpcProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest
-// fingerprint, make a get() request to retrieve the TargetGrpcProxy. A base64-encoded string.
+// Fingerprint of this resource. A hash of the contents stored in
+// this object. This field is used in optimistic locking. This field
+// will be ignored when inserting a TargetGrpcProxy. An up-to-date
+// fingerprint must be provided in order to patch/update the
+// TargetGrpcProxy; otherwise, the request will fail with error
+// 412 conditionNotMet. To see the latest fingerprint, make a get()
+// request to retrieve the TargetGrpcProxy. A base64-encoded string.
 func (o TargetGrpcProxyOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetGrpcProxy) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
 }

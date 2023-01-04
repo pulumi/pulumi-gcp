@@ -40,7 +40,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 //				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
+//					{
 //						Role: "roles/iap.tunnelResourceAccessor",
 //						Members: []string{
 //							"user:jane@example.com",
@@ -53,7 +53,7 @@ import (
 //			}
 //			_, err = iap.NewTunnelIamPolicy(ctx, "policy", &iap.TunnelIamPolicyArgs{
 //				Project:    pulumi.Any(google_project_service.Project_service.Project),
-//				PolicyData: pulumi.String(admin.PolicyData),
+//				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -81,12 +81,12 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 //				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
+//					{
 //						Role: "roles/iap.tunnelResourceAccessor",
 //						Members: []string{
 //							"user:jane@example.com",
 //						},
-//						Condition: organizations.GetIAMPolicyBindingCondition{
+//						Condition: {
 //							Title:       "expires_after_2019_12_31",
 //							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
 //							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
@@ -99,7 +99,7 @@ import (
 //			}
 //			_, err = iap.NewTunnelIamPolicy(ctx, "policy", &iap.TunnelIamPolicyArgs{
 //				Project:    pulumi.Any(google_project_service.Project_service.Project),
-//				PolicyData: pulumi.String(admin.PolicyData),
+//				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

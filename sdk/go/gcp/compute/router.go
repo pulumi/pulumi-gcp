@@ -137,7 +137,7 @@ type Router struct {
 	Bgp RouterBgpPtrOutput `pulumi:"bgp"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
-	// User-specified description for the IP range.
+	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Field to indicate if a router is dedicated to use with encrypted
 	// Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
@@ -198,7 +198,7 @@ type routerState struct {
 	Bgp *RouterBgp `pulumi:"bgp"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
-	// User-specified description for the IP range.
+	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Field to indicate if a router is dedicated to use with encrypted
 	// Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
@@ -228,7 +228,7 @@ type RouterState struct {
 	Bgp RouterBgpPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
-	// User-specified description for the IP range.
+	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Field to indicate if a router is dedicated to use with encrypted
 	// Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
@@ -260,7 +260,7 @@ type routerArgs struct {
 	// BGP information specific to this router.
 	// Structure is documented below.
 	Bgp *RouterBgp `pulumi:"bgp"`
-	// User-specified description for the IP range.
+	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Field to indicate if a router is dedicated to use with encrypted
 	// Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
@@ -287,7 +287,7 @@ type RouterArgs struct {
 	// BGP information specific to this router.
 	// Structure is documented below.
 	Bgp RouterBgpPtrInput
-	// User-specified description for the IP range.
+	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Field to indicate if a router is dedicated to use with encrypted
 	// Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
@@ -407,7 +407,7 @@ func (o RouterOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Router) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
 
-// User-specified description for the IP range.
+// An optional description of this resource.
 func (o RouterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Router) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }

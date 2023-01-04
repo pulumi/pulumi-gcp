@@ -119,8 +119,9 @@ type CertificateMapEntry struct {
 	// There can be defined up to fifteen certificates in each Certificate Map Entry.
 	// Each certificate must match pattern projects/*/locations/*/certificates/*.
 	Certificates pulumi.StringArrayOutput `pulumi:"certificates"`
-	// Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-	// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
+	// with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -145,8 +146,9 @@ type CertificateMapEntry struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// A serving state of this Certificate Map Entry.
 	State pulumi.StringOutput `pulumi:"state"`
-	// Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-	// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
+	// with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -189,8 +191,9 @@ type certificateMapEntryState struct {
 	// There can be defined up to fifteen certificates in each Certificate Map Entry.
 	// Each certificate must match pattern projects/*/locations/*/certificates/*.
 	Certificates []string `pulumi:"certificates"`
-	// Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-	// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
+	// with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime *string `pulumi:"createTime"`
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
@@ -215,8 +218,9 @@ type certificateMapEntryState struct {
 	Project *string `pulumi:"project"`
 	// A serving state of this Certificate Map Entry.
 	State *string `pulumi:"state"`
-	// Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-	// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
+	// with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
@@ -225,8 +229,9 @@ type CertificateMapEntryState struct {
 	// There can be defined up to fifteen certificates in each Certificate Map Entry.
 	// Each certificate must match pattern projects/*/locations/*/certificates/*.
 	Certificates pulumi.StringArrayInput
-	// Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-	// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
+	// with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringPtrInput
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
@@ -251,8 +256,9 @@ type CertificateMapEntryState struct {
 	Project pulumi.StringPtrInput
 	// A serving state of this Certificate Map Entry.
 	State pulumi.StringPtrInput
-	// Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-	// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
+	// with nanosecond resolution and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -411,8 +417,9 @@ func (o CertificateMapEntryOutput) Certificates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringArrayOutput { return v.Certificates }).(pulumi.StringArrayOutput)
 }
 
-// Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+// Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
+// with nanosecond resolution and up to nine fractional digits.
+// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o CertificateMapEntryOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -464,8 +471,9 @@ func (o CertificateMapEntryOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+// Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
+// with nanosecond resolution and up to nine fractional digits.
+// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o CertificateMapEntryOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

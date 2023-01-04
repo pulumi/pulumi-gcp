@@ -152,17 +152,17 @@ import (
 type DatabaseInstance struct {
 	pulumi.CustomResourceState
 
-	// The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances or
-	// https://{instance-id}.{region}.firebasedatabase.app in other regions.
+	// The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
+	// or https://{instance-id}.{region}.firebasedatabase.app in other regions.
 	DatabaseUrl pulumi.StringOutput `pulumi:"databaseUrl"`
 	// The intended database state.
 	DesiredState pulumi.StringPtrOutput `pulumi:"desiredState"`
 	// The globally unique identifier of the Firebase Realtime Database instance.
 	// Instance IDs cannot be reused after deletion.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// The fully-qualified resource name of the Firebase Realtime Database, in the format:
-	// projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID PROJECT_NUMBER: The Firebase project's
-	// ['ProjectNumber'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+	// The fully-qualified resource name of the Firebase Realtime Database, in the
+	// format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
+	// PROJECT_NUMBER: The Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
 	// Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -170,7 +170,7 @@ type DatabaseInstance struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// A reference to the region where the Firebase Realtime database resides.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// The current database state. Set desired_state to :DISABLED to disable the database and :ACTIVE to reenable the database
+	// The current database state. Set desiredState to :DISABLED to disable the database and :ACTIVE to reenable the database
 	State pulumi.StringOutput `pulumi:"state"`
 	// The database type.
 	// Each project can create one default Firebase Realtime Database, which cannot be deleted once created.
@@ -216,17 +216,17 @@ func GetDatabaseInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DatabaseInstance resources.
 type databaseInstanceState struct {
-	// The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances or
-	// https://{instance-id}.{region}.firebasedatabase.app in other regions.
+	// The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
+	// or https://{instance-id}.{region}.firebasedatabase.app in other regions.
 	DatabaseUrl *string `pulumi:"databaseUrl"`
 	// The intended database state.
 	DesiredState *string `pulumi:"desiredState"`
 	// The globally unique identifier of the Firebase Realtime Database instance.
 	// Instance IDs cannot be reused after deletion.
 	InstanceId *string `pulumi:"instanceId"`
-	// The fully-qualified resource name of the Firebase Realtime Database, in the format:
-	// projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID PROJECT_NUMBER: The Firebase project's
-	// ['ProjectNumber'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+	// The fully-qualified resource name of the Firebase Realtime Database, in the
+	// format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
+	// PROJECT_NUMBER: The Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
 	// Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -234,7 +234,7 @@ type databaseInstanceState struct {
 	Project *string `pulumi:"project"`
 	// A reference to the region where the Firebase Realtime database resides.
 	Region *string `pulumi:"region"`
-	// The current database state. Set desired_state to :DISABLED to disable the database and :ACTIVE to reenable the database
+	// The current database state. Set desiredState to :DISABLED to disable the database and :ACTIVE to reenable the database
 	State *string `pulumi:"state"`
 	// The database type.
 	// Each project can create one default Firebase Realtime Database, which cannot be deleted once created.
@@ -246,17 +246,17 @@ type databaseInstanceState struct {
 }
 
 type DatabaseInstanceState struct {
-	// The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances or
-	// https://{instance-id}.{region}.firebasedatabase.app in other regions.
+	// The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
+	// or https://{instance-id}.{region}.firebasedatabase.app in other regions.
 	DatabaseUrl pulumi.StringPtrInput
 	// The intended database state.
 	DesiredState pulumi.StringPtrInput
 	// The globally unique identifier of the Firebase Realtime Database instance.
 	// Instance IDs cannot be reused after deletion.
 	InstanceId pulumi.StringPtrInput
-	// The fully-qualified resource name of the Firebase Realtime Database, in the format:
-	// projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID PROJECT_NUMBER: The Firebase project's
-	// ['ProjectNumber'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+	// The fully-qualified resource name of the Firebase Realtime Database, in the
+	// format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
+	// PROJECT_NUMBER: The Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
 	// Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -264,7 +264,7 @@ type DatabaseInstanceState struct {
 	Project pulumi.StringPtrInput
 	// A reference to the region where the Firebase Realtime database resides.
 	Region pulumi.StringPtrInput
-	// The current database state. Set desired_state to :DISABLED to disable the database and :ACTIVE to reenable the database
+	// The current database state. Set desiredState to :DISABLED to disable the database and :ACTIVE to reenable the database
 	State pulumi.StringPtrInput
 	// The database type.
 	// Each project can create one default Firebase Realtime Database, which cannot be deleted once created.
@@ -407,8 +407,8 @@ func (o DatabaseInstanceOutput) ToDatabaseInstanceOutputWithContext(ctx context.
 	return o
 }
 
-// The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances or
-// https://{instance-id}.{region}.firebasedatabase.app in other regions.
+// The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
+// or https://{instance-id}.{region}.firebasedatabase.app in other regions.
 func (o DatabaseInstanceOutput) DatabaseUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.DatabaseUrl }).(pulumi.StringOutput)
 }
@@ -424,9 +424,9 @@ func (o DatabaseInstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The fully-qualified resource name of the Firebase Realtime Database, in the format:
-// projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID PROJECT_NUMBER: The Firebase project's
-// ['ProjectNumber'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+// The fully-qualified resource name of the Firebase Realtime Database, in the
+// format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
+// PROJECT_NUMBER: The Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
 // Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
 func (o DatabaseInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -443,7 +443,7 @@ func (o DatabaseInstanceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// The current database state. Set desired_state to :DISABLED to disable the database and :ACTIVE to reenable the database
+// The current database state. Set desiredState to :DISABLED to disable the database and :ACTIVE to reenable the database
 func (o DatabaseInstanceOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

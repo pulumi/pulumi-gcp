@@ -145,10 +145,10 @@ func NewVariable(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Parent'")
 	}
 	if args.Text != nil {
-		args.Text = pulumi.ToSecret(args.Text).(pulumi.StringPtrOutput)
+		args.Text = pulumi.ToSecret(args.Text).(pulumi.StringPtrInput)
 	}
 	if args.Value != nil {
-		args.Value = pulumi.ToSecret(args.Value).(pulumi.StringPtrOutput)
+		args.Value = pulumi.ToSecret(args.Value).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"text",

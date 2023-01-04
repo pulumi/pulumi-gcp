@@ -152,20 +152,33 @@ func (o AiDatasetEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 }
 
 type AiEndpointDeployedModel struct {
+	// A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
+	// Structure is documented below.
 	AutomaticResources []AiEndpointDeployedModelAutomaticResource `pulumi:"automaticResources"`
-	CreateTime         *string                                    `pulumi:"createTime"`
+	// Output only. Timestamp when the DeployedModel was created.
+	CreateTime *string `pulumi:"createTime"`
+	// A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
+	// Structure is documented below.
 	DedicatedResources []AiEndpointDeployedModelDedicatedResource `pulumi:"dedicatedResources"`
 	// Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-	DisplayName            *string `pulumi:"displayName"`
-	EnableAccessLogging    *bool   `pulumi:"enableAccessLogging"`
-	EnableContainerLogging *bool   `pulumi:"enableContainerLogging"`
-	// an identifier for the resource with format `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
-	Id               *string                                  `pulumi:"id"`
-	Model            *string                                  `pulumi:"model"`
-	ModelVersionId   *string                                  `pulumi:"modelVersionId"`
+	DisplayName *string `pulumi:"displayName"`
+	// These logs are like standard server access logs, containing information like timestamp and latency for each prediction request. Note that Stackdriver logs may incur a cost, especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option.
+	EnableAccessLogging *bool `pulumi:"enableAccessLogging"`
+	// If true, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Stackdriver Logging. Only supported for custom-trained Models and AutoML Tabular Models.
+	EnableContainerLogging *bool `pulumi:"enableContainerLogging"`
+	// The ID of the DeployedModel. If not provided upon deployment, Vertex AI will generate a value for this ID. This value should be 1-10 characters, and valid characters are /[0-9]/.
+	Id *string `pulumi:"id"`
+	// The name of the Model that this is the deployment of. Note that the Model may be in a different location than the DeployedModel's Endpoint.
+	Model *string `pulumi:"model"`
+	// Output only. The version ID of the model that is deployed.
+	ModelVersionId *string `pulumi:"modelVersionId"`
+	// Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
+	// Structure is documented below.
 	PrivateEndpoints []AiEndpointDeployedModelPrivateEndpoint `pulumi:"privateEndpoints"`
-	ServiceAccount   *string                                  `pulumi:"serviceAccount"`
-	SharedResources  *string                                  `pulumi:"sharedResources"`
+	// The service account that the DeployedModel's container runs as. Specify the email address of the service account. If this service account is not specified, the container runs as a service account that doesn't have access to the resource project. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// The resource name of the shared DeploymentResourcePool to deploy on. Format: projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}
+	SharedResources *string `pulumi:"sharedResources"`
 }
 
 // AiEndpointDeployedModelInput is an input type that accepts AiEndpointDeployedModelArgs and AiEndpointDeployedModelOutput values.
@@ -180,20 +193,33 @@ type AiEndpointDeployedModelInput interface {
 }
 
 type AiEndpointDeployedModelArgs struct {
+	// A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
+	// Structure is documented below.
 	AutomaticResources AiEndpointDeployedModelAutomaticResourceArrayInput `pulumi:"automaticResources"`
-	CreateTime         pulumi.StringPtrInput                              `pulumi:"createTime"`
+	// Output only. Timestamp when the DeployedModel was created.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
+	// Structure is documented below.
 	DedicatedResources AiEndpointDeployedModelDedicatedResourceArrayInput `pulumi:"dedicatedResources"`
 	// Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-	DisplayName            pulumi.StringPtrInput `pulumi:"displayName"`
-	EnableAccessLogging    pulumi.BoolPtrInput   `pulumi:"enableAccessLogging"`
-	EnableContainerLogging pulumi.BoolPtrInput   `pulumi:"enableContainerLogging"`
-	// an identifier for the resource with format `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
-	Id               pulumi.StringPtrInput                            `pulumi:"id"`
-	Model            pulumi.StringPtrInput                            `pulumi:"model"`
-	ModelVersionId   pulumi.StringPtrInput                            `pulumi:"modelVersionId"`
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// These logs are like standard server access logs, containing information like timestamp and latency for each prediction request. Note that Stackdriver logs may incur a cost, especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option.
+	EnableAccessLogging pulumi.BoolPtrInput `pulumi:"enableAccessLogging"`
+	// If true, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Stackdriver Logging. Only supported for custom-trained Models and AutoML Tabular Models.
+	EnableContainerLogging pulumi.BoolPtrInput `pulumi:"enableContainerLogging"`
+	// The ID of the DeployedModel. If not provided upon deployment, Vertex AI will generate a value for this ID. This value should be 1-10 characters, and valid characters are /[0-9]/.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The name of the Model that this is the deployment of. Note that the Model may be in a different location than the DeployedModel's Endpoint.
+	Model pulumi.StringPtrInput `pulumi:"model"`
+	// Output only. The version ID of the model that is deployed.
+	ModelVersionId pulumi.StringPtrInput `pulumi:"modelVersionId"`
+	// Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
+	// Structure is documented below.
 	PrivateEndpoints AiEndpointDeployedModelPrivateEndpointArrayInput `pulumi:"privateEndpoints"`
-	ServiceAccount   pulumi.StringPtrInput                            `pulumi:"serviceAccount"`
-	SharedResources  pulumi.StringPtrInput                            `pulumi:"sharedResources"`
+	// The service account that the DeployedModel's container runs as. Specify the email address of the service account. If this service account is not specified, the container runs as a service account that doesn't have access to the resource project. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// The resource name of the shared DeploymentResourcePool to deploy on. Format: projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}
+	SharedResources pulumi.StringPtrInput `pulumi:"sharedResources"`
 }
 
 func (AiEndpointDeployedModelArgs) ElementType() reflect.Type {
@@ -247,16 +273,21 @@ func (o AiEndpointDeployedModelOutput) ToAiEndpointDeployedModelOutputWithContex
 	return o
 }
 
+// A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
+// Structure is documented below.
 func (o AiEndpointDeployedModelOutput) AutomaticResources() AiEndpointDeployedModelAutomaticResourceArrayOutput {
 	return o.ApplyT(func(v AiEndpointDeployedModel) []AiEndpointDeployedModelAutomaticResource {
 		return v.AutomaticResources
 	}).(AiEndpointDeployedModelAutomaticResourceArrayOutput)
 }
 
+// Output only. Timestamp when the DeployedModel was created.
 func (o AiEndpointDeployedModelOutput) CreateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiEndpointDeployedModel) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
 }
 
+// A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
+// Structure is documented below.
 func (o AiEndpointDeployedModelOutput) DedicatedResources() AiEndpointDeployedModelDedicatedResourceArrayOutput {
 	return o.ApplyT(func(v AiEndpointDeployedModel) []AiEndpointDeployedModelDedicatedResource {
 		return v.DedicatedResources
@@ -268,35 +299,43 @@ func (o AiEndpointDeployedModelOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiEndpointDeployedModel) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// These logs are like standard server access logs, containing information like timestamp and latency for each prediction request. Note that Stackdriver logs may incur a cost, especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option.
 func (o AiEndpointDeployedModelOutput) EnableAccessLogging() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AiEndpointDeployedModel) *bool { return v.EnableAccessLogging }).(pulumi.BoolPtrOutput)
 }
 
+// If true, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Stackdriver Logging. Only supported for custom-trained Models and AutoML Tabular Models.
 func (o AiEndpointDeployedModelOutput) EnableContainerLogging() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AiEndpointDeployedModel) *bool { return v.EnableContainerLogging }).(pulumi.BoolPtrOutput)
 }
 
-// an identifier for the resource with format `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
+// The ID of the DeployedModel. If not provided upon deployment, Vertex AI will generate a value for this ID. This value should be 1-10 characters, and valid characters are /[0-9]/.
 func (o AiEndpointDeployedModelOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiEndpointDeployedModel) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The name of the Model that this is the deployment of. Note that the Model may be in a different location than the DeployedModel's Endpoint.
 func (o AiEndpointDeployedModelOutput) Model() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiEndpointDeployedModel) *string { return v.Model }).(pulumi.StringPtrOutput)
 }
 
+// Output only. The version ID of the model that is deployed.
 func (o AiEndpointDeployedModelOutput) ModelVersionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiEndpointDeployedModel) *string { return v.ModelVersionId }).(pulumi.StringPtrOutput)
 }
 
+// Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
+// Structure is documented below.
 func (o AiEndpointDeployedModelOutput) PrivateEndpoints() AiEndpointDeployedModelPrivateEndpointArrayOutput {
 	return o.ApplyT(func(v AiEndpointDeployedModel) []AiEndpointDeployedModelPrivateEndpoint { return v.PrivateEndpoints }).(AiEndpointDeployedModelPrivateEndpointArrayOutput)
 }
 
+// The service account that the DeployedModel's container runs as. Specify the email address of the service account. If this service account is not specified, the container runs as a service account that doesn't have access to the resource project. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
 func (o AiEndpointDeployedModelOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiEndpointDeployedModel) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
+// The resource name of the shared DeploymentResourcePool to deploy on. Format: projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}
 func (o AiEndpointDeployedModelOutput) SharedResources() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiEndpointDeployedModel) *string { return v.SharedResources }).(pulumi.StringPtrOutput)
 }
@@ -322,7 +361,9 @@ func (o AiEndpointDeployedModelArrayOutput) Index(i pulumi.IntInput) AiEndpointD
 }
 
 type AiEndpointDeployedModelAutomaticResource struct {
+	// The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
 	MaxReplicaCount *int `pulumi:"maxReplicaCount"`
+	// The minimum number of replicas this DeployedModel will be always deployed on. If traffic against it increases, it may dynamically be deployed onto more replicas up to max_replica_count, and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
 	MinReplicaCount *int `pulumi:"minReplicaCount"`
 }
 
@@ -338,7 +379,9 @@ type AiEndpointDeployedModelAutomaticResourceInput interface {
 }
 
 type AiEndpointDeployedModelAutomaticResourceArgs struct {
+	// The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
 	MaxReplicaCount pulumi.IntPtrInput `pulumi:"maxReplicaCount"`
+	// The minimum number of replicas this DeployedModel will be always deployed on. If traffic against it increases, it may dynamically be deployed onto more replicas up to max_replica_count, and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
 	MinReplicaCount pulumi.IntPtrInput `pulumi:"minReplicaCount"`
 }
 
@@ -393,10 +436,12 @@ func (o AiEndpointDeployedModelAutomaticResourceOutput) ToAiEndpointDeployedMode
 	return o
 }
 
+// The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
 func (o AiEndpointDeployedModelAutomaticResourceOutput) MaxReplicaCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AiEndpointDeployedModelAutomaticResource) *int { return v.MaxReplicaCount }).(pulumi.IntPtrOutput)
 }
 
+// The minimum number of replicas this DeployedModel will be always deployed on. If traffic against it increases, it may dynamically be deployed onto more replicas up to max_replica_count, and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
 func (o AiEndpointDeployedModelAutomaticResourceOutput) MinReplicaCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AiEndpointDeployedModelAutomaticResource) *int { return v.MinReplicaCount }).(pulumi.IntPtrOutput)
 }
@@ -422,10 +467,16 @@ func (o AiEndpointDeployedModelAutomaticResourceArrayOutput) Index(i pulumi.IntI
 }
 
 type AiEndpointDeployedModelDedicatedResource struct {
+	// The metric specifications that overrides a resource utilization metric (CPU utilization, accelerator's duty cycle, and so on) target value (default to 60 if not set). At most one entry is allowed per metric. If machine_spec.accelerator_count is above 0, the autoscaling will be based on both CPU utilization and accelerator's duty cycle metrics and scale up when either metrics exceeds its target value while scale down if both metrics are under their target value. The default target value is 60 for both metrics. If machine_spec.accelerator_count is 0, the autoscaling will be based on CPU utilization metric only with default target value 60 if not explicitly set. For example, in the case of Online Prediction, if you want to override target CPU utilization to 80, you should set autoscaling_metric_specs.metric_name to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and autoscaling_metric_specs.target to `80`.
+	// Structure is documented below.
 	AutoscalingMetricSpecs []AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec `pulumi:"autoscalingMetricSpecs"`
-	MachineSpecs           []AiEndpointDeployedModelDedicatedResourceMachineSpec           `pulumi:"machineSpecs"`
-	MaxReplicaCount        *int                                                            `pulumi:"maxReplicaCount"`
-	MinReplicaCount        *int                                                            `pulumi:"minReplicaCount"`
+	// The specification of a single machine used by the prediction.
+	// Structure is documented below.
+	MachineSpecs []AiEndpointDeployedModelDedicatedResourceMachineSpec `pulumi:"machineSpecs"`
+	// The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
+	MaxReplicaCount *int `pulumi:"maxReplicaCount"`
+	// The minimum number of replicas this DeployedModel will be always deployed on. If traffic against it increases, it may dynamically be deployed onto more replicas up to max_replica_count, and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
+	MinReplicaCount *int `pulumi:"minReplicaCount"`
 }
 
 // AiEndpointDeployedModelDedicatedResourceInput is an input type that accepts AiEndpointDeployedModelDedicatedResourceArgs and AiEndpointDeployedModelDedicatedResourceOutput values.
@@ -440,10 +491,16 @@ type AiEndpointDeployedModelDedicatedResourceInput interface {
 }
 
 type AiEndpointDeployedModelDedicatedResourceArgs struct {
+	// The metric specifications that overrides a resource utilization metric (CPU utilization, accelerator's duty cycle, and so on) target value (default to 60 if not set). At most one entry is allowed per metric. If machine_spec.accelerator_count is above 0, the autoscaling will be based on both CPU utilization and accelerator's duty cycle metrics and scale up when either metrics exceeds its target value while scale down if both metrics are under their target value. The default target value is 60 for both metrics. If machine_spec.accelerator_count is 0, the autoscaling will be based on CPU utilization metric only with default target value 60 if not explicitly set. For example, in the case of Online Prediction, if you want to override target CPU utilization to 80, you should set autoscaling_metric_specs.metric_name to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and autoscaling_metric_specs.target to `80`.
+	// Structure is documented below.
 	AutoscalingMetricSpecs AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayInput `pulumi:"autoscalingMetricSpecs"`
-	MachineSpecs           AiEndpointDeployedModelDedicatedResourceMachineSpecArrayInput           `pulumi:"machineSpecs"`
-	MaxReplicaCount        pulumi.IntPtrInput                                                      `pulumi:"maxReplicaCount"`
-	MinReplicaCount        pulumi.IntPtrInput                                                      `pulumi:"minReplicaCount"`
+	// The specification of a single machine used by the prediction.
+	// Structure is documented below.
+	MachineSpecs AiEndpointDeployedModelDedicatedResourceMachineSpecArrayInput `pulumi:"machineSpecs"`
+	// The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
+	MaxReplicaCount pulumi.IntPtrInput `pulumi:"maxReplicaCount"`
+	// The minimum number of replicas this DeployedModel will be always deployed on. If traffic against it increases, it may dynamically be deployed onto more replicas up to max_replica_count, and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
+	MinReplicaCount pulumi.IntPtrInput `pulumi:"minReplicaCount"`
 }
 
 func (AiEndpointDeployedModelDedicatedResourceArgs) ElementType() reflect.Type {
@@ -497,22 +554,28 @@ func (o AiEndpointDeployedModelDedicatedResourceOutput) ToAiEndpointDeployedMode
 	return o
 }
 
+// The metric specifications that overrides a resource utilization metric (CPU utilization, accelerator's duty cycle, and so on) target value (default to 60 if not set). At most one entry is allowed per metric. If machine_spec.accelerator_count is above 0, the autoscaling will be based on both CPU utilization and accelerator's duty cycle metrics and scale up when either metrics exceeds its target value while scale down if both metrics are under their target value. The default target value is 60 for both metrics. If machine_spec.accelerator_count is 0, the autoscaling will be based on CPU utilization metric only with default target value 60 if not explicitly set. For example, in the case of Online Prediction, if you want to override target CPU utilization to 80, you should set autoscaling_metric_specs.metric_name to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and autoscaling_metric_specs.target to `80`.
+// Structure is documented below.
 func (o AiEndpointDeployedModelDedicatedResourceOutput) AutoscalingMetricSpecs() AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutput {
 	return o.ApplyT(func(v AiEndpointDeployedModelDedicatedResource) []AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec {
 		return v.AutoscalingMetricSpecs
 	}).(AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutput)
 }
 
+// The specification of a single machine used by the prediction.
+// Structure is documented below.
 func (o AiEndpointDeployedModelDedicatedResourceOutput) MachineSpecs() AiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutput {
 	return o.ApplyT(func(v AiEndpointDeployedModelDedicatedResource) []AiEndpointDeployedModelDedicatedResourceMachineSpec {
 		return v.MachineSpecs
 	}).(AiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutput)
 }
 
+// The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
 func (o AiEndpointDeployedModelDedicatedResourceOutput) MaxReplicaCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AiEndpointDeployedModelDedicatedResource) *int { return v.MaxReplicaCount }).(pulumi.IntPtrOutput)
 }
 
+// The minimum number of replicas this DeployedModel will be always deployed on. If traffic against it increases, it may dynamically be deployed onto more replicas up to max_replica_count, and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
 func (o AiEndpointDeployedModelDedicatedResourceOutput) MinReplicaCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AiEndpointDeployedModelDedicatedResource) *int { return v.MinReplicaCount }).(pulumi.IntPtrOutput)
 }
@@ -538,8 +601,10 @@ func (o AiEndpointDeployedModelDedicatedResourceArrayOutput) Index(i pulumi.IntI
 }
 
 type AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec struct {
+	// The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
 	MetricName *string `pulumi:"metricName"`
-	Target     *int    `pulumi:"target"`
+	// The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
+	Target *int `pulumi:"target"`
 }
 
 // AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecInput is an input type that accepts AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs and AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput values.
@@ -554,8 +619,10 @@ type AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecInput interfac
 }
 
 type AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs struct {
+	// The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
 	MetricName pulumi.StringPtrInput `pulumi:"metricName"`
-	Target     pulumi.IntPtrInput    `pulumi:"target"`
+	// The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
+	Target pulumi.IntPtrInput `pulumi:"target"`
 }
 
 func (AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs) ElementType() reflect.Type {
@@ -609,10 +676,12 @@ func (o AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput) ToA
 	return o
 }
 
+// The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
 func (o AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput) MetricName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec) *string { return v.MetricName }).(pulumi.StringPtrOutput)
 }
 
+// The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
 func (o AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecOutput) Target() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec) *int { return v.Target }).(pulumi.IntPtrOutput)
 }
@@ -638,9 +707,12 @@ func (o AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArrayOutput
 }
 
 type AiEndpointDeployedModelDedicatedResourceMachineSpec struct {
-	AcceleratorCount *int    `pulumi:"acceleratorCount"`
-	AcceleratorType  *string `pulumi:"acceleratorType"`
-	MachineType      *string `pulumi:"machineType"`
+	// The number of accelerators to attach to the machine.
+	AcceleratorCount *int `pulumi:"acceleratorCount"`
+	// The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
+	AcceleratorType *string `pulumi:"acceleratorType"`
+	// The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO(rsurowka): Try to better unify the required vs optional.
+	MachineType *string `pulumi:"machineType"`
 }
 
 // AiEndpointDeployedModelDedicatedResourceMachineSpecInput is an input type that accepts AiEndpointDeployedModelDedicatedResourceMachineSpecArgs and AiEndpointDeployedModelDedicatedResourceMachineSpecOutput values.
@@ -655,9 +727,12 @@ type AiEndpointDeployedModelDedicatedResourceMachineSpecInput interface {
 }
 
 type AiEndpointDeployedModelDedicatedResourceMachineSpecArgs struct {
-	AcceleratorCount pulumi.IntPtrInput    `pulumi:"acceleratorCount"`
-	AcceleratorType  pulumi.StringPtrInput `pulumi:"acceleratorType"`
-	MachineType      pulumi.StringPtrInput `pulumi:"machineType"`
+	// The number of accelerators to attach to the machine.
+	AcceleratorCount pulumi.IntPtrInput `pulumi:"acceleratorCount"`
+	// The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
+	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
+	// The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO(rsurowka): Try to better unify the required vs optional.
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 }
 
 func (AiEndpointDeployedModelDedicatedResourceMachineSpecArgs) ElementType() reflect.Type {
@@ -711,14 +786,17 @@ func (o AiEndpointDeployedModelDedicatedResourceMachineSpecOutput) ToAiEndpointD
 	return o
 }
 
+// The number of accelerators to attach to the machine.
 func (o AiEndpointDeployedModelDedicatedResourceMachineSpecOutput) AcceleratorCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AiEndpointDeployedModelDedicatedResourceMachineSpec) *int { return v.AcceleratorCount }).(pulumi.IntPtrOutput)
 }
 
+// The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
 func (o AiEndpointDeployedModelDedicatedResourceMachineSpecOutput) AcceleratorType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiEndpointDeployedModelDedicatedResourceMachineSpec) *string { return v.AcceleratorType }).(pulumi.StringPtrOutput)
 }
 
+// The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO(rsurowka): Try to better unify the required vs optional.
 func (o AiEndpointDeployedModelDedicatedResourceMachineSpecOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiEndpointDeployedModelDedicatedResourceMachineSpec) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
@@ -744,9 +822,13 @@ func (o AiEndpointDeployedModelDedicatedResourceMachineSpecArrayOutput) Index(i 
 }
 
 type AiEndpointDeployedModelPrivateEndpoint struct {
-	ExplainHttpUri    *string `pulumi:"explainHttpUri"`
-	HealthHttpUri     *string `pulumi:"healthHttpUri"`
-	PredictHttpUri    *string `pulumi:"predictHttpUri"`
+	// Output only. Http(s) path to send explain requests.
+	ExplainHttpUri *string `pulumi:"explainHttpUri"`
+	// Output only. Http(s) path to send health check requests.
+	HealthHttpUri *string `pulumi:"healthHttpUri"`
+	// Output only. Http(s) path to send prediction requests.
+	PredictHttpUri *string `pulumi:"predictHttpUri"`
+	// Output only. The name of the service attachment resource. Populated if private service connect is enabled.
 	ServiceAttachment *string `pulumi:"serviceAttachment"`
 }
 
@@ -762,9 +844,13 @@ type AiEndpointDeployedModelPrivateEndpointInput interface {
 }
 
 type AiEndpointDeployedModelPrivateEndpointArgs struct {
-	ExplainHttpUri    pulumi.StringPtrInput `pulumi:"explainHttpUri"`
-	HealthHttpUri     pulumi.StringPtrInput `pulumi:"healthHttpUri"`
-	PredictHttpUri    pulumi.StringPtrInput `pulumi:"predictHttpUri"`
+	// Output only. Http(s) path to send explain requests.
+	ExplainHttpUri pulumi.StringPtrInput `pulumi:"explainHttpUri"`
+	// Output only. Http(s) path to send health check requests.
+	HealthHttpUri pulumi.StringPtrInput `pulumi:"healthHttpUri"`
+	// Output only. Http(s) path to send prediction requests.
+	PredictHttpUri pulumi.StringPtrInput `pulumi:"predictHttpUri"`
+	// Output only. The name of the service attachment resource. Populated if private service connect is enabled.
 	ServiceAttachment pulumi.StringPtrInput `pulumi:"serviceAttachment"`
 }
 
@@ -819,18 +905,22 @@ func (o AiEndpointDeployedModelPrivateEndpointOutput) ToAiEndpointDeployedModelP
 	return o
 }
 
+// Output only. Http(s) path to send explain requests.
 func (o AiEndpointDeployedModelPrivateEndpointOutput) ExplainHttpUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiEndpointDeployedModelPrivateEndpoint) *string { return v.ExplainHttpUri }).(pulumi.StringPtrOutput)
 }
 
+// Output only. Http(s) path to send health check requests.
 func (o AiEndpointDeployedModelPrivateEndpointOutput) HealthHttpUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiEndpointDeployedModelPrivateEndpoint) *string { return v.HealthHttpUri }).(pulumi.StringPtrOutput)
 }
 
+// Output only. Http(s) path to send prediction requests.
 func (o AiEndpointDeployedModelPrivateEndpointOutput) PredictHttpUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiEndpointDeployedModelPrivateEndpoint) *string { return v.PredictHttpUri }).(pulumi.StringPtrOutput)
 }
 
+// Output only. The name of the service attachment resource. Populated if private service connect is enabled.
 func (o AiEndpointDeployedModelPrivateEndpointOutput) ServiceAttachment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiEndpointDeployedModelPrivateEndpoint) *string { return v.ServiceAttachment }).(pulumi.StringPtrOutput)
 }
@@ -1993,7 +2083,7 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisPtrOutput)
 }
 
 type AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig struct {
-	// Specify a threshold value that can trigger the alert. For categorical feature, the distribution distance is calculated by L-inifinity norm. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
+	// Specify a threshold value that can trigger the alert. For numerical feature, the distribution distance is calculated by Jensen–Shannon divergence. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
 	Value float64 `pulumi:"value"`
 }
 
@@ -2009,7 +2099,7 @@ type AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigInput inter
 }
 
 type AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs struct {
-	// Specify a threshold value that can trigger the alert. For categorical feature, the distribution distance is calculated by L-inifinity norm. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
+	// Specify a threshold value that can trigger the alert. For numerical feature, the distribution distance is calculated by Jensen–Shannon divergence. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
 	Value pulumi.Float64Input `pulumi:"value"`
 }
 
@@ -2090,7 +2180,7 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput) 
 	}).(AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput)
 }
 
-// Specify a threshold value that can trigger the alert. For categorical feature, the distribution distance is calculated by L-inifinity norm. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
+// Specify a threshold value that can trigger the alert. For numerical feature, the distribution distance is calculated by Jensen–Shannon divergence. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
 func (o AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput) Value() pulumi.Float64Output {
 	return o.ApplyT(func(v AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig) float64 { return v.Value }).(pulumi.Float64Output)
 }
@@ -2119,7 +2209,7 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutpu
 	}).(AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigOutput)
 }
 
-// Specify a threshold value that can trigger the alert. For categorical feature, the distribution distance is calculated by L-inifinity norm. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
+// Specify a threshold value that can trigger the alert. For numerical feature, the distribution distance is calculated by Jensen–Shannon divergence. Each feature must have a non-zero threshold if they need to be monitored. Otherwise no alert will be triggered for that feature. The default value is 0.3.
 func (o AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutput) Value() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig) *float64 {
 		if v == nil {
@@ -2970,8 +3060,10 @@ func (o AiFeatureStoreOnlineServingConfigScalingPtrOutput) MinNodeCount() pulumi
 }
 
 type AiIndexDeployedIndex struct {
+	// The ID of the DeployedIndex in the above IndexEndpoint.
 	DeployedIndexId *string `pulumi:"deployedIndexId"`
-	IndexEndpoint   *string `pulumi:"indexEndpoint"`
+	// A resource name of the IndexEndpoint.
+	IndexEndpoint *string `pulumi:"indexEndpoint"`
 }
 
 // AiIndexDeployedIndexInput is an input type that accepts AiIndexDeployedIndexArgs and AiIndexDeployedIndexOutput values.
@@ -2986,8 +3078,10 @@ type AiIndexDeployedIndexInput interface {
 }
 
 type AiIndexDeployedIndexArgs struct {
+	// The ID of the DeployedIndex in the above IndexEndpoint.
 	DeployedIndexId pulumi.StringPtrInput `pulumi:"deployedIndexId"`
-	IndexEndpoint   pulumi.StringPtrInput `pulumi:"indexEndpoint"`
+	// A resource name of the IndexEndpoint.
+	IndexEndpoint pulumi.StringPtrInput `pulumi:"indexEndpoint"`
 }
 
 func (AiIndexDeployedIndexArgs) ElementType() reflect.Type {
@@ -3041,10 +3135,12 @@ func (o AiIndexDeployedIndexOutput) ToAiIndexDeployedIndexOutputWithContext(ctx 
 	return o
 }
 
+// The ID of the DeployedIndex in the above IndexEndpoint.
 func (o AiIndexDeployedIndexOutput) DeployedIndexId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiIndexDeployedIndex) *string { return v.DeployedIndexId }).(pulumi.StringPtrOutput)
 }
 
+// A resource name of the IndexEndpoint.
 func (o AiIndexDeployedIndexOutput) IndexEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiIndexDeployedIndex) *string { return v.IndexEndpoint }).(pulumi.StringPtrOutput)
 }
@@ -3070,7 +3166,9 @@ func (o AiIndexDeployedIndexArrayOutput) Index(i pulumi.IntInput) AiIndexDeploye
 }
 
 type AiIndexIndexStat struct {
-	ShardsCount  *int    `pulumi:"shardsCount"`
+	// The number of shards in the Index.
+	ShardsCount *int `pulumi:"shardsCount"`
+	// The number of vectors in the Index.
 	VectorsCount *string `pulumi:"vectorsCount"`
 }
 
@@ -3086,7 +3184,9 @@ type AiIndexIndexStatInput interface {
 }
 
 type AiIndexIndexStatArgs struct {
-	ShardsCount  pulumi.IntPtrInput    `pulumi:"shardsCount"`
+	// The number of shards in the Index.
+	ShardsCount pulumi.IntPtrInput `pulumi:"shardsCount"`
+	// The number of vectors in the Index.
 	VectorsCount pulumi.StringPtrInput `pulumi:"vectorsCount"`
 }
 
@@ -3141,10 +3241,12 @@ func (o AiIndexIndexStatOutput) ToAiIndexIndexStatOutputWithContext(ctx context.
 	return o
 }
 
+// The number of shards in the Index.
 func (o AiIndexIndexStatOutput) ShardsCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AiIndexIndexStat) *int { return v.ShardsCount }).(pulumi.IntPtrOutput)
 }
 
+// The number of vectors in the Index.
 func (o AiIndexIndexStatOutput) VectorsCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiIndexIndexStat) *string { return v.VectorsCount }).(pulumi.StringPtrOutput)
 }
@@ -4217,6 +4319,7 @@ func (o AiMetadataStoreEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOut
 }
 
 type AiMetadataStoreStateType struct {
+	// The disk utilization of the MetadataStore in bytes.
 	DiskUtilizationBytes *string `pulumi:"diskUtilizationBytes"`
 }
 
@@ -4232,6 +4335,7 @@ type AiMetadataStoreStateTypeInput interface {
 }
 
 type AiMetadataStoreStateTypeArgs struct {
+	// The disk utilization of the MetadataStore in bytes.
 	DiskUtilizationBytes pulumi.StringPtrInput `pulumi:"diskUtilizationBytes"`
 }
 
@@ -4286,6 +4390,7 @@ func (o AiMetadataStoreStateTypeOutput) ToAiMetadataStoreStateTypeOutputWithCont
 	return o
 }
 
+// The disk utilization of the MetadataStore in bytes.
 func (o AiMetadataStoreStateTypeOutput) DiskUtilizationBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiMetadataStoreStateType) *string { return v.DiskUtilizationBytes }).(pulumi.StringPtrOutput)
 }

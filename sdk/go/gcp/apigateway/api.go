@@ -81,7 +81,7 @@ type Api struct {
 	// Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
 	// If not specified, a new Service will automatically be created in the same project as this API.
 	ManagedService pulumi.StringOutput `pulumi:"managedService"`
-	// The resource name of the API. Format 'projects/{{project}}/locations/global/apis/{{apiId}}'
+	// The resource name of the API. Format `projects/{{project}}/locations/global/apis/{{apiId}}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -131,7 +131,7 @@ type apiState struct {
 	// Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
 	// If not specified, a new Service will automatically be created in the same project as this API.
 	ManagedService *string `pulumi:"managedService"`
-	// The resource name of the API. Format 'projects/{{project}}/locations/global/apis/{{apiId}}'
+	// The resource name of the API. Format `projects/{{project}}/locations/global/apis/{{apiId}}`
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -150,7 +150,7 @@ type ApiState struct {
 	// Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
 	// If not specified, a new Service will automatically be created in the same project as this API.
 	ManagedService pulumi.StringPtrInput
-	// The resource name of the API. Format 'projects/{{project}}/locations/global/apis/{{apiId}}'
+	// The resource name of the API. Format `projects/{{project}}/locations/global/apis/{{apiId}}`
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -305,7 +305,7 @@ func (o ApiOutput) ManagedService() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.ManagedService }).(pulumi.StringOutput)
 }
 
-// The resource name of the API. Format 'projects/{{project}}/locations/global/apis/{{apiId}}'
+// The resource name of the API. Format `projects/{{project}}/locations/global/apis/{{apiId}}`
 func (o ApiOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

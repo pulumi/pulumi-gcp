@@ -11,7 +11,6 @@ import (
 )
 
 type QueueAppEngineRoutingOverride struct {
-	// -
 	// The host that the task is sent to.
 	Host *string `pulumi:"host"`
 	// App instance.
@@ -37,7 +36,6 @@ type QueueAppEngineRoutingOverrideInput interface {
 }
 
 type QueueAppEngineRoutingOverrideArgs struct {
-	// -
 	// The host that the task is sent to.
 	Host pulumi.StringPtrInput `pulumi:"host"`
 	// App instance.
@@ -128,7 +126,6 @@ func (o QueueAppEngineRoutingOverrideOutput) ToQueueAppEngineRoutingOverridePtrO
 	}).(QueueAppEngineRoutingOverridePtrOutput)
 }
 
-// -
 // The host that the task is sent to.
 func (o QueueAppEngineRoutingOverrideOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v QueueAppEngineRoutingOverride) *string { return v.Host }).(pulumi.StringPtrOutput)
@@ -176,7 +173,6 @@ func (o QueueAppEngineRoutingOverridePtrOutput) Elem() QueueAppEngineRoutingOver
 	}).(QueueAppEngineRoutingOverrideOutput)
 }
 
-// -
 // The host that the task is sent to.
 func (o QueueAppEngineRoutingOverridePtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *QueueAppEngineRoutingOverride) *string {
@@ -547,7 +543,6 @@ func (o QueueIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type QueueRateLimits struct {
-	// -
 	// The max burst size.
 	// Max burst size limits how fast tasks in queue are processed when many tasks are
 	// in the queue and the rate is high. This field allows the queue to have a high
@@ -576,7 +571,6 @@ type QueueRateLimitsInput interface {
 }
 
 type QueueRateLimitsArgs struct {
-	// -
 	// The max burst size.
 	// Max burst size limits how fast tasks in queue are processed when many tasks are
 	// in the queue and the rate is high. This field allows the queue to have a high
@@ -670,7 +664,6 @@ func (o QueueRateLimitsOutput) ToQueueRateLimitsPtrOutputWithContext(ctx context
 	}).(QueueRateLimitsPtrOutput)
 }
 
-// -
 // The max burst size.
 // Max burst size limits how fast tasks in queue are processed when many tasks are
 // in the queue and the rate is high. This field allows the queue to have a high
@@ -718,7 +711,6 @@ func (o QueueRateLimitsPtrOutput) Elem() QueueRateLimitsOutput {
 	}).(QueueRateLimitsOutput)
 }
 
-// -
 // The max burst size.
 // Max burst size limits how fast tasks in queue are processed when many tasks are
 // in the queue and the rate is high. This field allows the queue to have a high

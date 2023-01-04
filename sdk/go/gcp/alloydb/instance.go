@@ -141,9 +141,7 @@ type Instance struct {
 	// Read pool specific config.
 	// Structure is documented below.
 	ReadPoolConfig InstanceReadPoolConfigPtrOutput `pulumi:"readPoolConfig"`
-	// Set to true if the current state of Instance does not match the user's intended state, and the service is actively
-	// updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover
-	// or maintenance.
+	// Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// The current state of the alloydb instance.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -224,9 +222,7 @@ type instanceState struct {
 	// Read pool specific config.
 	// Structure is documented below.
 	ReadPoolConfig *InstanceReadPoolConfig `pulumi:"readPoolConfig"`
-	// Set to true if the current state of Instance does not match the user's intended state, and the service is actively
-	// updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover
-	// or maintenance.
+	// Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
 	Reconciling *bool `pulumi:"reconciling"`
 	// The current state of the alloydb instance.
 	State *string `pulumi:"state"`
@@ -270,9 +266,7 @@ type InstanceState struct {
 	// Read pool specific config.
 	// Structure is documented below.
 	ReadPoolConfig InstanceReadPoolConfigPtrInput
-	// Set to true if the current state of Instance does not match the user's intended state, and the service is actively
-	// updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover
-	// or maintenance.
+	// Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
 	Reconciling pulumi.BoolPtrInput
 	// The current state of the alloydb instance.
 	State pulumi.StringPtrInput
@@ -509,9 +503,7 @@ func (o InstanceOutput) ReadPoolConfig() InstanceReadPoolConfigPtrOutput {
 	return o.ApplyT(func(v *Instance) InstanceReadPoolConfigPtrOutput { return v.ReadPoolConfig }).(InstanceReadPoolConfigPtrOutput)
 }
 
-// Set to true if the current state of Instance does not match the user's intended state, and the service is actively
-// updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover
-// or maintenance.
+// Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
 func (o InstanceOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }

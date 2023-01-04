@@ -54,8 +54,7 @@ import (
 type AiDataset struct {
 	pulumi.CustomResourceState
 
-	// The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-	// fractional digits.
+	// The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The user-defined name of the Dataset. The name can be up to 128 characters long and can be consist of any UTF-8 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -73,8 +72,7 @@ type AiDataset struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The region of the dataset. eg us-central1
 	Region pulumi.StringOutput `pulumi:"region"`
-	// The timestamp of when the dataset was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-	// nine fractional digits.
+	// The timestamp of when the dataset was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -113,8 +111,7 @@ func GetAiDataset(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AiDataset resources.
 type aiDatasetState struct {
-	// The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-	// fractional digits.
+	// The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime *string `pulumi:"createTime"`
 	// The user-defined name of the Dataset. The name can be up to 128 characters long and can be consist of any UTF-8 characters.
 	DisplayName *string `pulumi:"displayName"`
@@ -132,14 +129,12 @@ type aiDatasetState struct {
 	Project *string `pulumi:"project"`
 	// The region of the dataset. eg us-central1
 	Region *string `pulumi:"region"`
-	// The timestamp of when the dataset was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-	// nine fractional digits.
+	// The timestamp of when the dataset was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type AiDatasetState struct {
-	// The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-	// fractional digits.
+	// The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringPtrInput
 	// The user-defined name of the Dataset. The name can be up to 128 characters long and can be consist of any UTF-8 characters.
 	DisplayName pulumi.StringPtrInput
@@ -157,8 +152,7 @@ type AiDatasetState struct {
 	Project pulumi.StringPtrInput
 	// The region of the dataset. eg us-central1
 	Region pulumi.StringPtrInput
-	// The timestamp of when the dataset was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-	// nine fractional digits.
+	// The timestamp of when the dataset was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -288,8 +282,7 @@ func (o AiDatasetOutput) ToAiDatasetOutputWithContext(ctx context.Context) AiDat
 	return o
 }
 
-// The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-// fractional digits.
+// The timestamp of when the dataset was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 func (o AiDatasetOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiDataset) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -331,8 +324,7 @@ func (o AiDatasetOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiDataset) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// The timestamp of when the dataset was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-// nine fractional digits.
+// The timestamp of when the dataset was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 func (o AiDatasetOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiDataset) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

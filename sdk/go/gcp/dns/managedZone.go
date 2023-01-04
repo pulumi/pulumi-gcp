@@ -227,12 +227,12 @@ import (
 //				},
 //				MasterAuthorizedNetworksConfig: nil,
 //				IpAllocationPolicy: &container.ClusterIpAllocationPolicyArgs{
-//					ClusterSecondaryRangeName: subnetwork_1.SecondaryIpRanges.ApplyT(func(secondaryIpRanges []compute.SubnetworkSecondaryIpRange) (string, error) {
-//						return secondaryIpRanges[0].RangeName, nil
-//					}).(pulumi.StringOutput),
-//					ServicesSecondaryRangeName: subnetwork_1.SecondaryIpRanges.ApplyT(func(secondaryIpRanges []compute.SubnetworkSecondaryIpRange) (string, error) {
-//						return secondaryIpRanges[1].RangeName, nil
-//					}).(pulumi.StringOutput),
+//					ClusterSecondaryRangeName: subnetwork_1.SecondaryIpRanges.ApplyT(func(secondaryIpRanges []compute.SubnetworkSecondaryIpRange) (*string, error) {
+//						return &secondaryIpRanges[0].RangeName, nil
+//					}).(pulumi.StringPtrOutput),
+//					ServicesSecondaryRangeName: subnetwork_1.SecondaryIpRanges.ApplyT(func(secondaryIpRanges []compute.SubnetworkSecondaryIpRange) (*string, error) {
+//						return &secondaryIpRanges[1].RangeName, nil
+//					}).(pulumi.StringPtrOutput),
 //				},
 //			})
 //			if err != nil {
@@ -425,7 +425,8 @@ type ManagedZone struct {
 	// Cloud logging configuration
 	// Structure is documented below.
 	CloudLoggingConfig ManagedZoneCloudLoggingConfigOutput `pulumi:"cloudLoggingConfig"`
-	// The time that this resource was created on the server. This is in RFC3339 text format.
+	// The time that this resource was created on the server.
+	// This is in RFC3339 text format.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
 	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -448,7 +449,8 @@ type ManagedZone struct {
 	// User assigned name for this resource.
 	// Must be unique within the project.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Delegate your managed_zone to these virtual name servers; defined by the server
+	// Delegate your managedZone to these virtual name servers;
+	// defined by the server
 	NameServers pulumi.StringArrayOutput `pulumi:"nameServers"`
 	// The presence of this field indicates that DNS Peering is enabled for this
 	// zone. The value of this field contains the network to peer with.
@@ -513,7 +515,8 @@ type managedZoneState struct {
 	// Cloud logging configuration
 	// Structure is documented below.
 	CloudLoggingConfig *ManagedZoneCloudLoggingConfig `pulumi:"cloudLoggingConfig"`
-	// The time that this resource was created on the server. This is in RFC3339 text format.
+	// The time that this resource was created on the server.
+	// This is in RFC3339 text format.
 	CreationTime *string `pulumi:"creationTime"`
 	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description *string `pulumi:"description"`
@@ -536,7 +539,8 @@ type managedZoneState struct {
 	// User assigned name for this resource.
 	// Must be unique within the project.
 	Name *string `pulumi:"name"`
-	// Delegate your managed_zone to these virtual name servers; defined by the server
+	// Delegate your managedZone to these virtual name servers;
+	// defined by the server
 	NameServers []string `pulumi:"nameServers"`
 	// The presence of this field indicates that DNS Peering is enabled for this
 	// zone. The value of this field contains the network to peer with.
@@ -567,7 +571,8 @@ type ManagedZoneState struct {
 	// Cloud logging configuration
 	// Structure is documented below.
 	CloudLoggingConfig ManagedZoneCloudLoggingConfigPtrInput
-	// The time that this resource was created on the server. This is in RFC3339 text format.
+	// The time that this resource was created on the server.
+	// This is in RFC3339 text format.
 	CreationTime pulumi.StringPtrInput
 	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description pulumi.StringPtrInput
@@ -590,7 +595,8 @@ type ManagedZoneState struct {
 	// User assigned name for this resource.
 	// Must be unique within the project.
 	Name pulumi.StringPtrInput
-	// Delegate your managed_zone to these virtual name servers; defined by the server
+	// Delegate your managedZone to these virtual name servers;
+	// defined by the server
 	NameServers pulumi.StringArrayInput
 	// The presence of this field indicates that DNS Peering is enabled for this
 	// zone. The value of this field contains the network to peer with.
@@ -811,7 +817,8 @@ func (o ManagedZoneOutput) CloudLoggingConfig() ManagedZoneCloudLoggingConfigOut
 	return o.ApplyT(func(v *ManagedZone) ManagedZoneCloudLoggingConfigOutput { return v.CloudLoggingConfig }).(ManagedZoneCloudLoggingConfigOutput)
 }
 
-// The time that this resource was created on the server. This is in RFC3339 text format.
+// The time that this resource was created on the server.
+// This is in RFC3339 text format.
 func (o ManagedZoneOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedZone) pulumi.StringOutput { return v.CreationTime }).(pulumi.StringOutput)
 }
@@ -861,7 +868,8 @@ func (o ManagedZoneOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedZone) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Delegate your managed_zone to these virtual name servers; defined by the server
+// Delegate your managedZone to these virtual name servers;
+// defined by the server
 func (o ManagedZoneOutput) NameServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ManagedZone) pulumi.StringArrayOutput { return v.NameServers }).(pulumi.StringArrayOutput)
 }

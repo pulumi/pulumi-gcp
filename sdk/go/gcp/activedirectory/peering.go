@@ -25,10 +25,8 @@ type Peering struct {
 	DomainResource pulumi.StringOutput `pulumi:"domainResource"`
 	// Resource labels that can contain user-provided metadata
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Unique name of the peering in this scope including projects and location using the form:
-	// projects/{projectId}/locations/global/peerings/{peeringId}.
+	// Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// -
 	// (Required)
 	PeeringId pulumi.StringOutput `pulumi:"peeringId"`
 	// The ID of the project in which the resource belongs.
@@ -84,10 +82,8 @@ type peeringState struct {
 	DomainResource *string `pulumi:"domainResource"`
 	// Resource labels that can contain user-provided metadata
 	Labels map[string]string `pulumi:"labels"`
-	// Unique name of the peering in this scope including projects and location using the form:
-	// projects/{projectId}/locations/global/peerings/{peeringId}.
+	// Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
 	Name *string `pulumi:"name"`
-	// -
 	// (Required)
 	PeeringId *string `pulumi:"peeringId"`
 	// The ID of the project in which the resource belongs.
@@ -106,10 +102,8 @@ type PeeringState struct {
 	DomainResource pulumi.StringPtrInput
 	// Resource labels that can contain user-provided metadata
 	Labels pulumi.StringMapInput
-	// Unique name of the peering in this scope including projects and location using the form:
-	// projects/{projectId}/locations/global/peerings/{peeringId}.
+	// Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
 	Name pulumi.StringPtrInput
-	// -
 	// (Required)
 	PeeringId pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -132,7 +126,6 @@ type peeringArgs struct {
 	DomainResource string `pulumi:"domainResource"`
 	// Resource labels that can contain user-provided metadata
 	Labels map[string]string `pulumi:"labels"`
-	// -
 	// (Required)
 	PeeringId string `pulumi:"peeringId"`
 	// The ID of the project in which the resource belongs.
@@ -152,7 +145,6 @@ type PeeringArgs struct {
 	DomainResource pulumi.StringInput
 	// Resource labels that can contain user-provided metadata
 	Labels pulumi.StringMapInput
-	// -
 	// (Required)
 	PeeringId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
@@ -266,13 +258,11 @@ func (o PeeringOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Peering) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Unique name of the peering in this scope including projects and location using the form:
-// projects/{projectId}/locations/global/peerings/{peeringId}.
+// Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
 func (o PeeringOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Peering) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// -
 // (Required)
 func (o PeeringOutput) PeeringId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Peering) pulumi.StringOutput { return v.PeeringId }).(pulumi.StringOutput)

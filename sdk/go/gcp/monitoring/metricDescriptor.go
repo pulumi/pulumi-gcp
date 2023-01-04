@@ -126,7 +126,7 @@ import (
 type MetricDescriptor struct {
 	pulumi.CustomResourceState
 
-	// A human-readable description for the label.
+	// A detailed description of the metric, which can be used in documentation.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -142,10 +142,7 @@ type MetricDescriptor struct {
 	// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
 	// Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
 	MetricKind pulumi.StringOutput `pulumi:"metricKind"`
-	// If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that
-	// is associated with this metric type can only be associated with one of the monitored resource types listed here. This
-	// field allows time series to be associated with the intersection of this metric type and the monitored resource types in
-	// this list.
+	// If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. This field allows time series to be associated with the intersection of this metric type and the monitored resource types in this list.
 	MonitoredResourceTypes pulumi.StringArrayOutput `pulumi:"monitoredResourceTypes"`
 	// The resource name of the metric descriptor.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -172,9 +169,8 @@ type MetricDescriptor struct {
 	// More info can be found in the API documentation
 	// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
 	Unit pulumi.StringPtrOutput `pulumi:"unit"`
-	// The type of data that can be assigned to the label.
-	// Default value is `STRING`.
-	// Possible values are `STRING`, `BOOL`, and `INT64`.
+	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
+	// Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
 	ValueType pulumi.StringOutput `pulumi:"valueType"`
 }
 
@@ -222,7 +218,7 @@ func GetMetricDescriptor(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MetricDescriptor resources.
 type metricDescriptorState struct {
-	// A human-readable description for the label.
+	// A detailed description of the metric, which can be used in documentation.
 	Description *string `pulumi:"description"`
 	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
 	DisplayName *string `pulumi:"displayName"`
@@ -238,10 +234,7 @@ type metricDescriptorState struct {
 	// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
 	// Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
 	MetricKind *string `pulumi:"metricKind"`
-	// If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that
-	// is associated with this metric type can only be associated with one of the monitored resource types listed here. This
-	// field allows time series to be associated with the intersection of this metric type and the monitored resource types in
-	// this list.
+	// If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. This field allows time series to be associated with the intersection of this metric type and the monitored resource types in this list.
 	MonitoredResourceTypes []string `pulumi:"monitoredResourceTypes"`
 	// The resource name of the metric descriptor.
 	Name *string `pulumi:"name"`
@@ -268,14 +261,13 @@ type metricDescriptorState struct {
 	// More info can be found in the API documentation
 	// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
 	Unit *string `pulumi:"unit"`
-	// The type of data that can be assigned to the label.
-	// Default value is `STRING`.
-	// Possible values are `STRING`, `BOOL`, and `INT64`.
+	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
+	// Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
 	ValueType *string `pulumi:"valueType"`
 }
 
 type MetricDescriptorState struct {
-	// A human-readable description for the label.
+	// A detailed description of the metric, which can be used in documentation.
 	Description pulumi.StringPtrInput
 	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
 	DisplayName pulumi.StringPtrInput
@@ -291,10 +283,7 @@ type MetricDescriptorState struct {
 	// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
 	// Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
 	MetricKind pulumi.StringPtrInput
-	// If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that
-	// is associated with this metric type can only be associated with one of the monitored resource types listed here. This
-	// field allows time series to be associated with the intersection of this metric type and the monitored resource types in
-	// this list.
+	// If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. This field allows time series to be associated with the intersection of this metric type and the monitored resource types in this list.
 	MonitoredResourceTypes pulumi.StringArrayInput
 	// The resource name of the metric descriptor.
 	Name pulumi.StringPtrInput
@@ -321,9 +310,8 @@ type MetricDescriptorState struct {
 	// More info can be found in the API documentation
 	// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
 	Unit pulumi.StringPtrInput
-	// The type of data that can be assigned to the label.
-	// Default value is `STRING`.
-	// Possible values are `STRING`, `BOOL`, and `INT64`.
+	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
+	// Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
 	ValueType pulumi.StringPtrInput
 }
 
@@ -332,7 +320,7 @@ func (MetricDescriptorState) ElementType() reflect.Type {
 }
 
 type metricDescriptorArgs struct {
-	// A human-readable description for the label.
+	// A detailed description of the metric, which can be used in documentation.
 	Description string `pulumi:"description"`
 	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
 	DisplayName string `pulumi:"displayName"`
@@ -371,15 +359,14 @@ type metricDescriptorArgs struct {
 	// More info can be found in the API documentation
 	// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
 	Unit *string `pulumi:"unit"`
-	// The type of data that can be assigned to the label.
-	// Default value is `STRING`.
-	// Possible values are `STRING`, `BOOL`, and `INT64`.
+	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
+	// Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
 	ValueType string `pulumi:"valueType"`
 }
 
 // The set of arguments for constructing a MetricDescriptor resource.
 type MetricDescriptorArgs struct {
-	// A human-readable description for the label.
+	// A detailed description of the metric, which can be used in documentation.
 	Description pulumi.StringInput
 	// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
 	DisplayName pulumi.StringInput
@@ -418,9 +405,8 @@ type MetricDescriptorArgs struct {
 	// More info can be found in the API documentation
 	// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
 	Unit pulumi.StringPtrInput
-	// The type of data that can be assigned to the label.
-	// Default value is `STRING`.
-	// Possible values are `STRING`, `BOOL`, and `INT64`.
+	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
+	// Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
 	ValueType pulumi.StringInput
 }
 
@@ -511,7 +497,7 @@ func (o MetricDescriptorOutput) ToMetricDescriptorOutputWithContext(ctx context.
 	return o
 }
 
-// A human-readable description for the label.
+// A detailed description of the metric, which can be used in documentation.
 func (o MetricDescriptorOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetricDescriptor) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
@@ -545,10 +531,7 @@ func (o MetricDescriptorOutput) MetricKind() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetricDescriptor) pulumi.StringOutput { return v.MetricKind }).(pulumi.StringOutput)
 }
 
-// If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that
-// is associated with this metric type can only be associated with one of the monitored resource types listed here. This
-// field allows time series to be associated with the intersection of this metric type and the monitored resource types in
-// this list.
+// If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. This field allows time series to be associated with the intersection of this metric type and the monitored resource types in this list.
 func (o MetricDescriptorOutput) MonitoredResourceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MetricDescriptor) pulumi.StringArrayOutput { return v.MonitoredResourceTypes }).(pulumi.StringArrayOutput)
 }
@@ -590,9 +573,8 @@ func (o MetricDescriptorOutput) Unit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricDescriptor) pulumi.StringPtrOutput { return v.Unit }).(pulumi.StringPtrOutput)
 }
 
-// The type of data that can be assigned to the label.
-// Default value is `STRING`.
-// Possible values are `STRING`, `BOOL`, and `INT64`.
+// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
+// Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
 func (o MetricDescriptorOutput) ValueType() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetricDescriptor) pulumi.StringOutput { return v.ValueType }).(pulumi.StringOutput)
 }

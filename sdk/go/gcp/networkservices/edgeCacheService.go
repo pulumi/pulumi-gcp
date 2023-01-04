@@ -383,6 +383,12 @@ import (
 type EdgeCacheService struct {
 	pulumi.CustomResourceState
 
+	// A human-readable description of the hostRule.
+	// (Optional)
+	// A human-readable description of the resource.
+	// (Optional)
+	// A human-readable description of the routeRule.
+	// (Optional)
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Disables HTTP/2.
@@ -405,7 +411,9 @@ type EdgeCacheService struct {
 	// Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
 	// Structure is documented below.
 	LogConfig EdgeCacheServiceLogConfigPtrOutput `pulumi:"logConfig"`
-	// The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+	// Name of the resource; provided by the client when the resource is created.
+	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+	// and all following characters must be a dash, underscore, letter or digit.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -454,6 +462,12 @@ func GetEdgeCacheService(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EdgeCacheService resources.
 type edgeCacheServiceState struct {
+	// A human-readable description of the hostRule.
+	// (Optional)
+	// A human-readable description of the resource.
+	// (Optional)
+	// A human-readable description of the routeRule.
+	// (Optional)
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
 	// Disables HTTP/2.
@@ -476,7 +490,9 @@ type edgeCacheServiceState struct {
 	// Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
 	// Structure is documented below.
 	LogConfig *EdgeCacheServiceLogConfig `pulumi:"logConfig"`
-	// The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+	// Name of the resource; provided by the client when the resource is created.
+	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+	// and all following characters must be a dash, underscore, letter or digit.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -494,6 +510,12 @@ type edgeCacheServiceState struct {
 }
 
 type EdgeCacheServiceState struct {
+	// A human-readable description of the hostRule.
+	// (Optional)
+	// A human-readable description of the resource.
+	// (Optional)
+	// A human-readable description of the routeRule.
+	// (Optional)
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
 	// Disables HTTP/2.
@@ -516,7 +538,9 @@ type EdgeCacheServiceState struct {
 	// Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
 	// Structure is documented below.
 	LogConfig EdgeCacheServiceLogConfigPtrInput
-	// The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+	// Name of the resource; provided by the client when the resource is created.
+	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+	// and all following characters must be a dash, underscore, letter or digit.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -538,6 +562,12 @@ func (EdgeCacheServiceState) ElementType() reflect.Type {
 }
 
 type edgeCacheServiceArgs struct {
+	// A human-readable description of the hostRule.
+	// (Optional)
+	// A human-readable description of the resource.
+	// (Optional)
+	// A human-readable description of the routeRule.
+	// (Optional)
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
 	// Disables HTTP/2.
@@ -556,7 +586,9 @@ type edgeCacheServiceArgs struct {
 	// Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
 	// Structure is documented below.
 	LogConfig *EdgeCacheServiceLogConfig `pulumi:"logConfig"`
-	// The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+	// Name of the resource; provided by the client when the resource is created.
+	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+	// and all following characters must be a dash, underscore, letter or digit.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -575,6 +607,12 @@ type edgeCacheServiceArgs struct {
 
 // The set of arguments for constructing a EdgeCacheService resource.
 type EdgeCacheServiceArgs struct {
+	// A human-readable description of the hostRule.
+	// (Optional)
+	// A human-readable description of the resource.
+	// (Optional)
+	// A human-readable description of the routeRule.
+	// (Optional)
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
 	// Disables HTTP/2.
@@ -593,7 +631,9 @@ type EdgeCacheServiceArgs struct {
 	// Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
 	// Structure is documented below.
 	LogConfig EdgeCacheServiceLogConfigPtrInput
-	// The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+	// Name of the resource; provided by the client when the resource is created.
+	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+	// and all following characters must be a dash, underscore, letter or digit.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -697,6 +737,12 @@ func (o EdgeCacheServiceOutput) ToEdgeCacheServiceOutputWithContext(ctx context.
 	return o
 }
 
+// A human-readable description of the hostRule.
+// (Optional)
+// A human-readable description of the resource.
+// (Optional)
+// A human-readable description of the routeRule.
+// (Optional)
 // A human-readable description of the resource.
 func (o EdgeCacheServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheService) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -746,7 +792,9 @@ func (o EdgeCacheServiceOutput) LogConfig() EdgeCacheServiceLogConfigPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheService) EdgeCacheServiceLogConfigPtrOutput { return v.LogConfig }).(EdgeCacheServiceLogConfigPtrOutput)
 }
 
-// The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+// Name of the resource; provided by the client when the resource is created.
+// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+// and all following characters must be a dash, underscore, letter or digit.
 func (o EdgeCacheServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EdgeCacheService) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -92,7 +92,7 @@ type Index struct {
 	// Structure is documented below.
 	Fields IndexFieldArrayOutput `pulumi:"fields"`
 	// A server defined name for this index. Format:
-	// 'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
+	// `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -151,7 +151,7 @@ type indexState struct {
 	// Structure is documented below.
 	Fields []IndexField `pulumi:"fields"`
 	// A server defined name for this index. Format:
-	// 'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
+	// `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -176,7 +176,7 @@ type IndexState struct {
 	// Structure is documented below.
 	Fields IndexFieldArrayInput
 	// A server defined name for this index. Format:
-	// 'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
+	// `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -345,7 +345,7 @@ func (o IndexOutput) Fields() IndexFieldArrayOutput {
 }
 
 // A server defined name for this index. Format:
-// 'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
+// `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
 func (o IndexOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Index) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

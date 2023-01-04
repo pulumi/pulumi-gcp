@@ -289,7 +289,7 @@ func (o DeploymentTargetPtrOutput) Imports() DeploymentTargetImportArrayOutput {
 }
 
 type DeploymentTargetConfig struct {
-	// The full contents of the template that you want to import.
+	// The full YAML contents of your configuration file.
 	Content string `pulumi:"content"`
 }
 
@@ -305,7 +305,7 @@ type DeploymentTargetConfigInput interface {
 }
 
 type DeploymentTargetConfigArgs struct {
-	// The full contents of the template that you want to import.
+	// The full YAML contents of your configuration file.
 	Content pulumi.StringInput `pulumi:"content"`
 }
 
@@ -386,7 +386,7 @@ func (o DeploymentTargetConfigOutput) ToDeploymentTargetConfigPtrOutputWithConte
 	}).(DeploymentTargetConfigPtrOutput)
 }
 
-// The full contents of the template that you want to import.
+// The full YAML contents of your configuration file.
 func (o DeploymentTargetConfigOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v DeploymentTargetConfig) string { return v.Content }).(pulumi.StringOutput)
 }
@@ -415,7 +415,7 @@ func (o DeploymentTargetConfigPtrOutput) Elem() DeploymentTargetConfigOutput {
 	}).(DeploymentTargetConfigOutput)
 }
 
-// The full contents of the template that you want to import.
+// The full YAML contents of your configuration file.
 func (o DeploymentTargetConfigPtrOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeploymentTargetConfig) *string {
 		if v == nil {

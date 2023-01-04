@@ -20,6 +20,314 @@ import (
 //   - [Creating a runtime instance](https://cloud.google.com/apigee/docs/api-platform/get-started/create-instance)
 //
 // ## Example Usage
+// ### Apigee Instance Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigee"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			current, err := organizations.GetClientConfig(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			apigeeNetwork, err := compute.NewNetwork(ctx, "apigeeNetwork", nil)
+//			if err != nil {
+//				return err
+//			}
+//			apigeeRange, err := compute.NewGlobalAddress(ctx, "apigeeRange", &compute.GlobalAddressArgs{
+//				Purpose:      pulumi.String("VPC_PEERING"),
+//				AddressType:  pulumi.String("INTERNAL"),
+//				PrefixLength: pulumi.Int(16),
+//				Network:      apigeeNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigeeVpcConnection", &servicenetworking.ConnectionArgs{
+//				Network: apigeeNetwork.ID(),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					apigeeRange.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeOrg, err := apigee.NewOrganization(ctx, "apigeeOrg", &apigee.OrganizationArgs{
+//				AnalyticsRegion:   pulumi.String("us-central1"),
+//				ProjectId:         *pulumi.String(current.Project),
+//				AuthorizedNetwork: apigeeNetwork.ID(),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				apigeeVpcConnection,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = apigee.NewInstance(ctx, "apigeeInstance", &apigee.InstanceArgs{
+//				Location: pulumi.String("us-central1"),
+//				OrgId:    apigeeOrg.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Apigee Instance Cidr Range
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigee"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			current, err := organizations.GetClientConfig(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			apigeeNetwork, err := compute.NewNetwork(ctx, "apigeeNetwork", nil)
+//			if err != nil {
+//				return err
+//			}
+//			apigeeRange, err := compute.NewGlobalAddress(ctx, "apigeeRange", &compute.GlobalAddressArgs{
+//				Purpose:      pulumi.String("VPC_PEERING"),
+//				AddressType:  pulumi.String("INTERNAL"),
+//				PrefixLength: pulumi.Int(22),
+//				Network:      apigeeNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigeeVpcConnection", &servicenetworking.ConnectionArgs{
+//				Network: apigeeNetwork.ID(),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					apigeeRange.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeOrg, err := apigee.NewOrganization(ctx, "apigeeOrg", &apigee.OrganizationArgs{
+//				AnalyticsRegion:   pulumi.String("us-central1"),
+//				ProjectId:         *pulumi.String(current.Project),
+//				AuthorizedNetwork: apigeeNetwork.ID(),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				apigeeVpcConnection,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = apigee.NewInstance(ctx, "apigeeInstance", &apigee.InstanceArgs{
+//				Location:         pulumi.String("us-central1"),
+//				OrgId:            apigeeOrg.ID(),
+//				PeeringCidrRange: pulumi.String("SLASH_22"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Apigee Instance Ip Range
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigee"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			current, err := organizations.GetClientConfig(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			apigeeNetwork, err := compute.NewNetwork(ctx, "apigeeNetwork", nil)
+//			if err != nil {
+//				return err
+//			}
+//			apigeeRange, err := compute.NewGlobalAddress(ctx, "apigeeRange", &compute.GlobalAddressArgs{
+//				Purpose:      pulumi.String("VPC_PEERING"),
+//				AddressType:  pulumi.String("INTERNAL"),
+//				PrefixLength: pulumi.Int(22),
+//				Network:      apigeeNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigeeVpcConnection", &servicenetworking.ConnectionArgs{
+//				Network: apigeeNetwork.ID(),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					apigeeRange.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeOrg, err := apigee.NewOrganization(ctx, "apigeeOrg", &apigee.OrganizationArgs{
+//				AnalyticsRegion:   pulumi.String("us-central1"),
+//				ProjectId:         *pulumi.String(current.Project),
+//				AuthorizedNetwork: apigeeNetwork.ID(),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				apigeeVpcConnection,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = apigee.NewInstance(ctx, "apigeeInstance", &apigee.InstanceArgs{
+//				Location: pulumi.String("us-central1"),
+//				OrgId:    apigeeOrg.ID(),
+//				IpRange:  pulumi.String("10.87.8.0/22"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Apigee Instance Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigee"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			current, err := organizations.GetClientConfig(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			apigeeNetwork, err := compute.NewNetwork(ctx, "apigeeNetwork", nil)
+//			if err != nil {
+//				return err
+//			}
+//			apigeeRange, err := compute.NewGlobalAddress(ctx, "apigeeRange", &compute.GlobalAddressArgs{
+//				Purpose:      pulumi.String("VPC_PEERING"),
+//				AddressType:  pulumi.String("INTERNAL"),
+//				PrefixLength: pulumi.Int(16),
+//				Network:      apigeeNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigeeVpcConnection", &servicenetworking.ConnectionArgs{
+//				Network: apigeeNetwork.ID(),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					apigeeRange.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeKeyring, err := kms.NewKeyRing(ctx, "apigeeKeyring", &kms.KeyRingArgs{
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeKey, err := kms.NewCryptoKey(ctx, "apigeeKey", &kms.CryptoKeyArgs{
+//				KeyRing: apigeeKeyring.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeSa, err := projects.NewServiceIdentity(ctx, "apigeeSa", &projects.ServiceIdentityArgs{
+//				Project: pulumi.Any(google_project.Project.Project_id),
+//				Service: pulumi.Any(google_project_service.Apigee.Service),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			apigeeSaKeyuser, err := kms.NewCryptoKeyIAMBinding(ctx, "apigeeSaKeyuser", &kms.CryptoKeyIAMBindingArgs{
+//				CryptoKeyId: apigeeKey.ID(),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Members: pulumi.StringArray{
+//					apigeeSa.Email.ApplyT(func(email string) (string, error) {
+//						return fmt.Sprintf("serviceAccount:%v", email), nil
+//					}).(pulumi.StringOutput),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeOrg, err := apigee.NewOrganization(ctx, "apigeeOrg", &apigee.OrganizationArgs{
+//				AnalyticsRegion:                  pulumi.String("us-central1"),
+//				DisplayName:                      pulumi.String("apigee-org"),
+//				Description:                      pulumi.String("Auto-provisioned Apigee Org."),
+//				ProjectId:                        *pulumi.String(current.Project),
+//				AuthorizedNetwork:                apigeeNetwork.ID(),
+//				RuntimeDatabaseEncryptionKeyName: apigeeKey.ID(),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				apigeeVpcConnection,
+//				apigeeSaKeyuser,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = apigee.NewInstance(ctx, "apigeeInstance", &apigee.InstanceArgs{
+//				Location:              pulumi.String("us-central1"),
+//				Description:           pulumi.String("Auto-managed Apigee Runtime Instance"),
+//				DisplayName:           pulumi.String("tf-test"),
+//				OrgId:                 apigeeOrg.ID(),
+//				DiskEncryptionKeyName: apigeeKey.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -73,9 +381,9 @@ type Instance struct {
 	PeeringCidrRange pulumi.StringOutput `pulumi:"peeringCidrRange"`
 	// Output only. Port number of the exposed Apigee endpoint.
 	Port pulumi.StringOutput `pulumi:"port"`
-	// Output only. Resource name of the service attachment created for the instance in the format:
-	// projects/*/regions/*/serviceAttachments/* Apigee customers can privately forward traffic to this service attachment
-	// using the PSC endpoints.
+	// Output only. Resource name of the service attachment created for the instance in
+	// the format: projects/*/regions/*/serviceAttachments/* Apigee customers can privately
+	// forward traffic to this service attachment using the PSC endpoints.
 	ServiceAttachment pulumi.StringOutput `pulumi:"serviceAttachment"`
 }
 
@@ -148,9 +456,9 @@ type instanceState struct {
 	PeeringCidrRange *string `pulumi:"peeringCidrRange"`
 	// Output only. Port number of the exposed Apigee endpoint.
 	Port *string `pulumi:"port"`
-	// Output only. Resource name of the service attachment created for the instance in the format:
-	// projects/*/regions/*/serviceAttachments/* Apigee customers can privately forward traffic to this service attachment
-	// using the PSC endpoints.
+	// Output only. Resource name of the service attachment created for the instance in
+	// the format: projects/*/regions/*/serviceAttachments/* Apigee customers can privately
+	// forward traffic to this service attachment using the PSC endpoints.
 	ServiceAttachment *string `pulumi:"serviceAttachment"`
 }
 
@@ -189,9 +497,9 @@ type InstanceState struct {
 	PeeringCidrRange pulumi.StringPtrInput
 	// Output only. Port number of the exposed Apigee endpoint.
 	Port pulumi.StringPtrInput
-	// Output only. Resource name of the service attachment created for the instance in the format:
-	// projects/*/regions/*/serviceAttachments/* Apigee customers can privately forward traffic to this service attachment
-	// using the PSC endpoints.
+	// Output only. Resource name of the service attachment created for the instance in
+	// the format: projects/*/regions/*/serviceAttachments/* Apigee customers can privately
+	// forward traffic to this service attachment using the PSC endpoints.
 	ServiceAttachment pulumi.StringPtrInput
 }
 
@@ -420,9 +728,9 @@ func (o InstanceOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
 }
 
-// Output only. Resource name of the service attachment created for the instance in the format:
-// projects/*/regions/*/serviceAttachments/* Apigee customers can privately forward traffic to this service attachment
-// using the PSC endpoints.
+// Output only. Resource name of the service attachment created for the instance in
+// the format: projects/*/regions/*/serviceAttachments/* Apigee customers can privately
+// forward traffic to this service attachment using the PSC endpoints.
 func (o InstanceOutput) ServiceAttachment() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ServiceAttachment }).(pulumi.StringOutput)
 }

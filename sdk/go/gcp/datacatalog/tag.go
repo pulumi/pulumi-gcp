@@ -399,8 +399,8 @@ type Tag struct {
 	Fields TagFieldArrayOutput `pulumi:"fields"`
 	// The resource name of the tag in URL format. Example:
 	// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
-	// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id} where tag_id is a system-generated
-	// identifier. Note that this Tag may not actually be stored in the location in this name.
+	// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id}
+	// where tagId is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
 	// all entries in that group.
@@ -459,8 +459,8 @@ type tagState struct {
 	Fields []TagField `pulumi:"fields"`
 	// The resource name of the tag in URL format. Example:
 	// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
-	// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id} where tag_id is a system-generated
-	// identifier. Note that this Tag may not actually be stored in the location in this name.
+	// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id}
+	// where tagId is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
 	Name *string `pulumi:"name"`
 	// The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
 	// all entries in that group.
@@ -485,8 +485,8 @@ type TagState struct {
 	Fields TagFieldArrayInput
 	// The resource name of the tag in URL format. Example:
 	// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
-	// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id} where tag_id is a system-generated
-	// identifier. Note that this Tag may not actually be stored in the location in this name.
+	// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id}
+	// where tagId is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
 	Name pulumi.StringPtrInput
 	// The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
 	// all entries in that group.
@@ -646,8 +646,8 @@ func (o TagOutput) Fields() TagFieldArrayOutput {
 
 // The resource name of the tag in URL format. Example:
 // projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
-// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id} where tag_id is a system-generated
-// identifier. Note that this Tag may not actually be stored in the location in this name.
+// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id}
+// where tagId is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
 func (o TagOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Tag) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

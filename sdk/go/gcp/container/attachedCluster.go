@@ -51,13 +51,13 @@ import (
 //			}
 //			_, err = container.NewAttachedCluster(ctx, "primary", &container.AttachedClusterArgs{
 //				Location:     pulumi.String("us-west1"),
-//				Project:      pulumi.String(project.ProjectId),
+//				Project:      *pulumi.String(project.ProjectId),
 //				Description:  pulumi.String("Test cluster"),
 //				Distribution: pulumi.String("aks"),
 //				OidcConfig: &container.AttachedClusterOidcConfigArgs{
 //					IssuerUrl: pulumi.String("https://oidc.issuer.url"),
 //				},
-//				PlatformVersion: pulumi.String(versions.ValidVersions[0]),
+//				PlatformVersion: *pulumi.String(versions.ValidVersions[0]),
 //				Fleet: &container.AttachedClusterFleetArgs{
 //					Project: pulumi.String(fmt.Sprintf("projects/%v", project.Number)),
 //				},
@@ -105,8 +105,9 @@ type AttachedCluster struct {
 	// Configuration related to the cluster RBAC settings.
 	// Structure is documented below.
 	Authorization AttachedClusterAuthorizationPtrOutput `pulumi:"authorization"`
-	// Output only. The region where this cluster runs. For EKS clusters, this is an AWS region. For AKS clusters, this is an
-	// Azure region.
+	// Output only. The region where this cluster runs.
+	// For EKS clusters, this is an AWS region. For AKS clusters,
+	// this is an Azure region.
 	ClusterRegion pulumi.StringOutput `pulumi:"clusterRegion"`
 	// Output only. The time at which this cluster was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -117,6 +118,7 @@ type AttachedCluster struct {
 	// "eks", "aks".
 	Distribution pulumi.StringOutput `pulumi:"distribution"`
 	// A set of errors found in the cluster.
+	// Structure is documented below.
 	Errors AttachedClusterErrorArrayOutput `pulumi:"errors"`
 	// Fleet configuration.
 	// Structure is documented below.
@@ -146,19 +148,21 @@ type AttachedCluster struct {
 	OidcConfig AttachedClusterOidcConfigOutput `pulumi:"oidcConfig"`
 	// The platform version for the cluster (e.g. `1.23.0-gke.1`).
 	PlatformVersion pulumi.StringOutput `pulumi:"platformVersion"`
-	// The ID of the project in which the resource belongs.
+	// The number of the Fleet host project where this cluster will be registered.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// If set, there are currently changes in flight to the cluster.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
-	// The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING,
-	// ERROR, DEGRADED
+	// The current state of the cluster. Possible values:
+	// STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
+	// DEGRADED
 	State pulumi.StringOutput `pulumi:"state"`
 	// A globally unique identifier for the cluster.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The time at which this cluster was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Workload Identity settings.
+	// Structure is documented below.
 	WorkloadIdentityConfigs AttachedClusterWorkloadIdentityConfigArrayOutput `pulumi:"workloadIdentityConfigs"`
 }
 
@@ -216,8 +220,9 @@ type attachedClusterState struct {
 	// Configuration related to the cluster RBAC settings.
 	// Structure is documented below.
 	Authorization *AttachedClusterAuthorization `pulumi:"authorization"`
-	// Output only. The region where this cluster runs. For EKS clusters, this is an AWS region. For AKS clusters, this is an
-	// Azure region.
+	// Output only. The region where this cluster runs.
+	// For EKS clusters, this is an AWS region. For AKS clusters,
+	// this is an Azure region.
 	ClusterRegion *string `pulumi:"clusterRegion"`
 	// Output only. The time at which this cluster was created.
 	CreateTime *string `pulumi:"createTime"`
@@ -228,6 +233,7 @@ type attachedClusterState struct {
 	// "eks", "aks".
 	Distribution *string `pulumi:"distribution"`
 	// A set of errors found in the cluster.
+	// Structure is documented below.
 	Errors []AttachedClusterError `pulumi:"errors"`
 	// Fleet configuration.
 	// Structure is documented below.
@@ -257,19 +263,21 @@ type attachedClusterState struct {
 	OidcConfig *AttachedClusterOidcConfig `pulumi:"oidcConfig"`
 	// The platform version for the cluster (e.g. `1.23.0-gke.1`).
 	PlatformVersion *string `pulumi:"platformVersion"`
-	// The ID of the project in which the resource belongs.
+	// The number of the Fleet host project where this cluster will be registered.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// If set, there are currently changes in flight to the cluster.
 	Reconciling *bool `pulumi:"reconciling"`
-	// The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING,
-	// ERROR, DEGRADED
+	// The current state of the cluster. Possible values:
+	// STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
+	// DEGRADED
 	State *string `pulumi:"state"`
 	// A globally unique identifier for the cluster.
 	Uid *string `pulumi:"uid"`
 	// The time at which this cluster was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 	// Workload Identity settings.
+	// Structure is documented below.
 	WorkloadIdentityConfigs []AttachedClusterWorkloadIdentityConfig `pulumi:"workloadIdentityConfigs"`
 }
 
@@ -284,8 +292,9 @@ type AttachedClusterState struct {
 	// Configuration related to the cluster RBAC settings.
 	// Structure is documented below.
 	Authorization AttachedClusterAuthorizationPtrInput
-	// Output only. The region where this cluster runs. For EKS clusters, this is an AWS region. For AKS clusters, this is an
-	// Azure region.
+	// Output only. The region where this cluster runs.
+	// For EKS clusters, this is an AWS region. For AKS clusters,
+	// this is an Azure region.
 	ClusterRegion pulumi.StringPtrInput
 	// Output only. The time at which this cluster was created.
 	CreateTime pulumi.StringPtrInput
@@ -296,6 +305,7 @@ type AttachedClusterState struct {
 	// "eks", "aks".
 	Distribution pulumi.StringPtrInput
 	// A set of errors found in the cluster.
+	// Structure is documented below.
 	Errors AttachedClusterErrorArrayInput
 	// Fleet configuration.
 	// Structure is documented below.
@@ -325,19 +335,21 @@ type AttachedClusterState struct {
 	OidcConfig AttachedClusterOidcConfigPtrInput
 	// The platform version for the cluster (e.g. `1.23.0-gke.1`).
 	PlatformVersion pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs.
+	// The number of the Fleet host project where this cluster will be registered.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// If set, there are currently changes in flight to the cluster.
 	Reconciling pulumi.BoolPtrInput
-	// The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING,
-	// ERROR, DEGRADED
+	// The current state of the cluster. Possible values:
+	// STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
+	// DEGRADED
 	State pulumi.StringPtrInput
 	// A globally unique identifier for the cluster.
 	Uid pulumi.StringPtrInput
 	// The time at which this cluster was last updated.
 	UpdateTime pulumi.StringPtrInput
 	// Workload Identity settings.
+	// Structure is documented below.
 	WorkloadIdentityConfigs AttachedClusterWorkloadIdentityConfigArrayInput
 }
 
@@ -388,7 +400,7 @@ type attachedClusterArgs struct {
 	OidcConfig AttachedClusterOidcConfig `pulumi:"oidcConfig"`
 	// The platform version for the cluster (e.g. `1.23.0-gke.1`).
 	PlatformVersion string `pulumi:"platformVersion"`
-	// The ID of the project in which the resource belongs.
+	// The number of the Fleet host project where this cluster will be registered.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 }
@@ -437,7 +449,7 @@ type AttachedClusterArgs struct {
 	OidcConfig AttachedClusterOidcConfigInput
 	// The platform version for the cluster (e.g. `1.23.0-gke.1`).
 	PlatformVersion pulumi.StringInput
-	// The ID of the project in which the resource belongs.
+	// The number of the Fleet host project where this cluster will be registered.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 }
@@ -545,8 +557,9 @@ func (o AttachedClusterOutput) Authorization() AttachedClusterAuthorizationPtrOu
 	return o.ApplyT(func(v *AttachedCluster) AttachedClusterAuthorizationPtrOutput { return v.Authorization }).(AttachedClusterAuthorizationPtrOutput)
 }
 
-// Output only. The region where this cluster runs. For EKS clusters, this is an AWS region. For AKS clusters, this is an
-// Azure region.
+// Output only. The region where this cluster runs.
+// For EKS clusters, this is an AWS region. For AKS clusters,
+// this is an Azure region.
 func (o AttachedClusterOutput) ClusterRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttachedCluster) pulumi.StringOutput { return v.ClusterRegion }).(pulumi.StringOutput)
 }
@@ -569,6 +582,7 @@ func (o AttachedClusterOutput) Distribution() pulumi.StringOutput {
 }
 
 // A set of errors found in the cluster.
+// Structure is documented below.
 func (o AttachedClusterOutput) Errors() AttachedClusterErrorArrayOutput {
 	return o.ApplyT(func(v *AttachedCluster) AttachedClusterErrorArrayOutput { return v.Errors }).(AttachedClusterErrorArrayOutput)
 }
@@ -625,7 +639,7 @@ func (o AttachedClusterOutput) PlatformVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttachedCluster) pulumi.StringOutput { return v.PlatformVersion }).(pulumi.StringOutput)
 }
 
-// The ID of the project in which the resource belongs.
+// The number of the Fleet host project where this cluster will be registered.
 // If it is not provided, the provider project is used.
 func (o AttachedClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttachedCluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
@@ -636,8 +650,9 @@ func (o AttachedClusterOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AttachedCluster) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }
 
-// The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING,
-// ERROR, DEGRADED
+// The current state of the cluster. Possible values:
+// STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
+// DEGRADED
 func (o AttachedClusterOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttachedCluster) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
@@ -653,6 +668,7 @@ func (o AttachedClusterOutput) UpdateTime() pulumi.StringOutput {
 }
 
 // Workload Identity settings.
+// Structure is documented below.
 func (o AttachedClusterOutput) WorkloadIdentityConfigs() AttachedClusterWorkloadIdentityConfigArrayOutput {
 	return o.ApplyT(func(v *AttachedCluster) AttachedClusterWorkloadIdentityConfigArrayOutput {
 		return v.WorkloadIdentityConfigs

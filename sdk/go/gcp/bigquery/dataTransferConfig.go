@@ -35,7 +35,7 @@ import (
 //				return err
 //			}
 //			permissions, err := projects.NewIAMMember(ctx, "permissions", &projects.IAMMemberArgs{
-//				Project: pulumi.String(project.ProjectId),
+//				Project: *pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/iam.serviceAccountTokenCreator"),
 //				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com", project.Number)),
 //			})
@@ -109,9 +109,10 @@ type DataTransferConfig struct {
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// The resource name of the transfer config. Transfer config names have the form
-	// projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is not
-	// required. The name is ignored when creating a transfer config.
+	// The resource name of the transfer config. Transfer config names have the
+	// form projects/{projectId}/locations/{location}/transferConfigs/{configId}.
+	// Where configId is usually a uuid, but this is not required.
+	// The name is ignored when creating a transfer config.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Pub/Sub topic where notifications will be sent after transfer runs
 	// associated with this transfer config finish.
@@ -210,9 +211,10 @@ type dataTransferConfigState struct {
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location *string `pulumi:"location"`
-	// The resource name of the transfer config. Transfer config names have the form
-	// projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is not
-	// required. The name is ignored when creating a transfer config.
+	// The resource name of the transfer config. Transfer config names have the
+	// form projects/{projectId}/locations/{location}/transferConfigs/{configId}.
+	// Where configId is usually a uuid, but this is not required.
+	// The name is ignored when creating a transfer config.
 	Name *string `pulumi:"name"`
 	// Pub/Sub topic where notifications will be sent after transfer runs
 	// associated with this transfer config finish.
@@ -274,9 +276,10 @@ type DataTransferConfigState struct {
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrInput
-	// The resource name of the transfer config. Transfer config names have the form
-	// projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is not
-	// required. The name is ignored when creating a transfer config.
+	// The resource name of the transfer config. Transfer config names have the
+	// form projects/{projectId}/locations/{location}/transferConfigs/{configId}.
+	// Where configId is usually a uuid, but this is not required.
+	// The name is ignored when creating a transfer config.
 	Name pulumi.StringPtrInput
 	// Pub/Sub topic where notifications will be sent after transfer runs
 	// associated with this transfer config finish.
@@ -570,9 +573,10 @@ func (o DataTransferConfigOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataTransferConfig) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The resource name of the transfer config. Transfer config names have the form
-// projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is not
-// required. The name is ignored when creating a transfer config.
+// The resource name of the transfer config. Transfer config names have the
+// form projects/{projectId}/locations/{location}/transferConfigs/{configId}.
+// Where configId is usually a uuid, but this is not required.
+// The name is ignored when creating a transfer config.
 func (o DataTransferConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataTransferConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

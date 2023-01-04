@@ -253,7 +253,6 @@ type Hl7Store struct {
 	// The resource name for the Hl7V2Store.
 	// ** Changing this property may recreate the Hl7v2 store (removing all data) **
 	Name pulumi.StringOutput `pulumi:"name"`
-	// -
 	// (Optional, Deprecated)
 	// A nested object resource
 	// Structure is documented below.
@@ -319,7 +318,6 @@ type hl7StoreState struct {
 	// The resource name for the Hl7V2Store.
 	// ** Changing this property may recreate the Hl7v2 store (removing all data) **
 	Name *string `pulumi:"name"`
-	// -
 	// (Optional, Deprecated)
 	// A nested object resource
 	// Structure is documented below.
@@ -354,7 +352,6 @@ type Hl7StoreState struct {
 	// The resource name for the Hl7V2Store.
 	// ** Changing this property may recreate the Hl7v2 store (removing all data) **
 	Name pulumi.StringPtrInput
-	// -
 	// (Optional, Deprecated)
 	// A nested object resource
 	// Structure is documented below.
@@ -393,7 +390,6 @@ type hl7StoreArgs struct {
 	// The resource name for the Hl7V2Store.
 	// ** Changing this property may recreate the Hl7v2 store (removing all data) **
 	Name *string `pulumi:"name"`
-	// -
 	// (Optional, Deprecated)
 	// A nested object resource
 	// Structure is documented below.
@@ -427,7 +423,6 @@ type Hl7StoreArgs struct {
 	// The resource name for the Hl7V2Store.
 	// ** Changing this property may recreate the Hl7v2 store (removing all data) **
 	Name pulumi.StringPtrInput
-	// -
 	// (Optional, Deprecated)
 	// A nested object resource
 	// Structure is documented below.
@@ -555,7 +550,6 @@ func (o Hl7StoreOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hl7Store) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// -
 // (Optional, Deprecated)
 // A nested object resource
 // Structure is documented below.

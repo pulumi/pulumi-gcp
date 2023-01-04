@@ -188,10 +188,12 @@ import (
 type Entry struct {
 	pulumi.CustomResourceState
 
-	// Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
-	// https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+	// Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
+	// Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+	// Structure is documented below.
 	BigqueryDateShardedSpecs EntryBigqueryDateShardedSpecArrayOutput `pulumi:"bigqueryDateShardedSpecs"`
 	// Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
+	// Structure is documented below.
 	BigqueryTableSpecs EntryBigqueryTableSpecArrayOutput `pulumi:"bigqueryTableSpecs"`
 	// Entry description, which can consist of several sentences or paragraphs that describe entry contents.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -214,9 +216,9 @@ type Entry struct {
 	// Output only when Entry is of type in the EntryType enum. For entries with userSpecifiedType,
 	// this field is optional and defaults to an empty string.
 	LinkedResource pulumi.StringOutput `pulumi:"linkedResource"`
-	// The Data Catalog resource name of the entry in URL format. Example:
-	// projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}. Note that this Entry and its
-	// child resources may not actually be stored in the location in this name.
+	// The Data Catalog resource name of the entry in URL format.
+	// Example: projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}.
+	// Note that this Entry and its child resources may not actually be stored in the location in this name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
 	// attached to it. See
@@ -274,10 +276,12 @@ func GetEntry(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Entry resources.
 type entryState struct {
-	// Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
-	// https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+	// Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
+	// Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+	// Structure is documented below.
 	BigqueryDateShardedSpecs []EntryBigqueryDateShardedSpec `pulumi:"bigqueryDateShardedSpecs"`
 	// Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
+	// Structure is documented below.
 	BigqueryTableSpecs []EntryBigqueryTableSpec `pulumi:"bigqueryTableSpecs"`
 	// Entry description, which can consist of several sentences or paragraphs that describe entry contents.
 	Description *string `pulumi:"description"`
@@ -300,9 +304,9 @@ type entryState struct {
 	// Output only when Entry is of type in the EntryType enum. For entries with userSpecifiedType,
 	// this field is optional and defaults to an empty string.
 	LinkedResource *string `pulumi:"linkedResource"`
-	// The Data Catalog resource name of the entry in URL format. Example:
-	// projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}. Note that this Entry and its
-	// child resources may not actually be stored in the location in this name.
+	// The Data Catalog resource name of the entry in URL format.
+	// Example: projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}.
+	// Note that this Entry and its child resources may not actually be stored in the location in this name.
 	Name *string `pulumi:"name"`
 	// Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
 	// attached to it. See
@@ -326,10 +330,12 @@ type entryState struct {
 }
 
 type EntryState struct {
-	// Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
-	// https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+	// Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
+	// Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+	// Structure is documented below.
 	BigqueryDateShardedSpecs EntryBigqueryDateShardedSpecArrayInput
 	// Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
+	// Structure is documented below.
 	BigqueryTableSpecs EntryBigqueryTableSpecArrayInput
 	// Entry description, which can consist of several sentences or paragraphs that describe entry contents.
 	Description pulumi.StringPtrInput
@@ -352,9 +358,9 @@ type EntryState struct {
 	// Output only when Entry is of type in the EntryType enum. For entries with userSpecifiedType,
 	// this field is optional and defaults to an empty string.
 	LinkedResource pulumi.StringPtrInput
-	// The Data Catalog resource name of the entry in URL format. Example:
-	// projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}. Note that this Entry and its
-	// child resources may not actually be stored in the location in this name.
+	// The Data Catalog resource name of the entry in URL format.
+	// Example: projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}.
+	// Note that this Entry and its child resources may not actually be stored in the location in this name.
 	Name pulumi.StringPtrInput
 	// Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
 	// attached to it. See
@@ -551,13 +557,15 @@ func (o EntryOutput) ToEntryOutputWithContext(ctx context.Context) EntryOutput {
 	return o
 }
 
-// Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
-// https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+// Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
+// Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+// Structure is documented below.
 func (o EntryOutput) BigqueryDateShardedSpecs() EntryBigqueryDateShardedSpecArrayOutput {
 	return o.ApplyT(func(v *Entry) EntryBigqueryDateShardedSpecArrayOutput { return v.BigqueryDateShardedSpecs }).(EntryBigqueryDateShardedSpecArrayOutput)
 }
 
 // Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
+// Structure is documented below.
 func (o EntryOutput) BigqueryTableSpecs() EntryBigqueryTableSpecArrayOutput {
 	return o.ApplyT(func(v *Entry) EntryBigqueryTableSpecArrayOutput { return v.BigqueryTableSpecs }).(EntryBigqueryTableSpecArrayOutput)
 }
@@ -604,9 +612,9 @@ func (o EntryOutput) LinkedResource() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.LinkedResource }).(pulumi.StringOutput)
 }
 
-// The Data Catalog resource name of the entry in URL format. Example:
-// projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}. Note that this Entry and its
-// child resources may not actually be stored in the location in this name.
+// The Data Catalog resource name of the entry in URL format.
+// Example: projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}.
+// Note that this Entry and its child resources may not actually be stored in the location in this name.
 func (o EntryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

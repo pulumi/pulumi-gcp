@@ -57,7 +57,7 @@ type Asset struct {
 	Lake pulumi.StringOutput `pulumi:"lake"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+	// The name of the asset.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -69,8 +69,7 @@ type Asset struct {
 	SecurityStatuses AssetSecurityStatusArrayOutput `pulumi:"securityStatuses"`
 	// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State pulumi.StringOutput `pulumi:"state"`
-	// Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and
-	// re-created with the same name.
+	// Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Output only. The time when the asset was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -138,7 +137,7 @@ type assetState struct {
 	Lake *string `pulumi:"lake"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
-	// Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+	// The name of the asset.
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -150,8 +149,7 @@ type assetState struct {
 	SecurityStatuses []AssetSecurityStatus `pulumi:"securityStatuses"`
 	// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State *string `pulumi:"state"`
-	// Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and
-	// re-created with the same name.
+	// Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
 	Uid *string `pulumi:"uid"`
 	// Output only. The time when the asset was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -176,7 +174,7 @@ type AssetState struct {
 	Lake pulumi.StringPtrInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
-	// Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+	// The name of the asset.
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -188,8 +186,7 @@ type AssetState struct {
 	SecurityStatuses AssetSecurityStatusArrayInput
 	// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State pulumi.StringPtrInput
-	// Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and
-	// re-created with the same name.
+	// Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
 	Uid pulumi.StringPtrInput
 	// Output only. The time when the asset was last updated.
 	UpdateTime pulumi.StringPtrInput
@@ -214,7 +211,7 @@ type assetArgs struct {
 	Lake string `pulumi:"lake"`
 	// The location for the resource
 	Location string `pulumi:"location"`
-	// Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+	// The name of the asset.
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -238,7 +235,7 @@ type AssetArgs struct {
 	Lake pulumi.StringInput
 	// The location for the resource
 	Location pulumi.StringInput
-	// Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+	// The name of the asset.
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -378,7 +375,7 @@ func (o AssetOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+// The name of the asset.
 func (o AssetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -408,8 +405,7 @@ func (o AssetOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and
-// re-created with the same name.
+// Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
 func (o AssetOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }

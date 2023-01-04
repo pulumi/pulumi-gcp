@@ -81,8 +81,9 @@ type Realm struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Location of the Realm.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// The resource id of the realm, of the form: 'projects/{project_id}/locations/{location}/realms/{realm_id}'. For example,
-	// 'projects/my-project/locations/{location}/realms/my-realm'.
+	// The resource id of the realm, of the form:
+	// `projects/{project_id}/locations/{location}/realms/{realm_id}`. For
+	// example, `projects/my-project/locations/{location}/realms/my-realm`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -138,8 +139,9 @@ type realmState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Location of the Realm.
 	Location *string `pulumi:"location"`
-	// The resource id of the realm, of the form: 'projects/{project_id}/locations/{location}/realms/{realm_id}'. For example,
-	// 'projects/my-project/locations/{location}/realms/my-realm'.
+	// The resource id of the realm, of the form:
+	// `projects/{project_id}/locations/{location}/realms/{realm_id}`. For
+	// example, `projects/my-project/locations/{location}/realms/my-realm`.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -161,8 +163,9 @@ type RealmState struct {
 	Labels pulumi.StringMapInput
 	// Location of the Realm.
 	Location pulumi.StringPtrInput
-	// The resource id of the realm, of the form: 'projects/{project_id}/locations/{location}/realms/{realm_id}'. For example,
-	// 'projects/my-project/locations/{location}/realms/my-realm'.
+	// The resource id of the realm, of the form:
+	// `projects/{project_id}/locations/{location}/realms/{realm_id}`. For
+	// example, `projects/my-project/locations/{location}/realms/my-realm`.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -323,8 +326,9 @@ func (o RealmOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Realm) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The resource id of the realm, of the form: 'projects/{project_id}/locations/{location}/realms/{realm_id}'. For example,
-// 'projects/my-project/locations/{location}/realms/my-realm'.
+// The resource id of the realm, of the form:
+// `projects/{project_id}/locations/{location}/realms/{realm_id}`. For
+// example, `projects/my-project/locations/{location}/realms/my-realm`.
 func (o RealmOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Realm) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

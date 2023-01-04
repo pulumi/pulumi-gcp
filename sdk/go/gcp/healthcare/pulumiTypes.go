@@ -2641,6 +2641,7 @@ type Hl7StoreNotificationConfigs struct {
 	// was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
 	// project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
 	// Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+	// If a notification cannot be published to Cloud Pub/Sub, errors will be logged to Stackdriver
 	PubsubTopic string `pulumi:"pubsubTopic"`
 }
 
@@ -2672,6 +2673,7 @@ type Hl7StoreNotificationConfigsArgs struct {
 	// was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
 	// project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
 	// Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+	// If a notification cannot be published to Cloud Pub/Sub, errors will be logged to Stackdriver
 	PubsubTopic pulumi.StringInput `pulumi:"pubsubTopic"`
 }
 
@@ -2745,6 +2747,7 @@ func (o Hl7StoreNotificationConfigsOutput) Filter() pulumi.StringPtrOutput {
 // was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
 // project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
 // Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+// If a notification cannot be published to Cloud Pub/Sub, errors will be logged to Stackdriver
 func (o Hl7StoreNotificationConfigsOutput) PubsubTopic() pulumi.StringOutput {
 	return o.ApplyT(func(v Hl7StoreNotificationConfigs) string { return v.PubsubTopic }).(pulumi.StringOutput)
 }

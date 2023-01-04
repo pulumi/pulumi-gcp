@@ -532,8 +532,8 @@ type Certificate struct {
 	// argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificateAuthority`
 	// should be set to `my-ca`.
 	CertificateAuthority pulumi.StringPtrOutput `pulumi:"certificateAuthority"`
-	// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-	// this field is present.
+	// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
+	// Structure is documented below.
 	CertificateDescriptions CertificateCertificateDescriptionArrayOutput `pulumi:"certificateDescriptions"`
 	// The resource name for a CertificateTemplate used to issue this certificate,
 	// in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified,
@@ -544,10 +544,10 @@ type Certificate struct {
 	// The config used to create a self-signed X.509 certificate or CSR.
 	// Structure is documented below.
 	Config CertificateConfigPtrOutput `pulumi:"config"`
-	// The time that this resource was created on the server. This is in RFC3339 text format.
+	// The time that this resource was created on the server.
+	// This is in RFC3339 text format.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The resource name of the issuing CertificateAuthority in the format
-	// 'projects/*/locations/*/caPools/*/certificateAuthorities/*'.
+	// The resource name of the issuing CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
 	IssuerCertificateAuthority pulumi.StringOutput `pulumi:"issuerCertificateAuthority"`
 	// Labels with user-defined metadata to apply to this resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -562,9 +562,9 @@ type Certificate struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Output only. The pem-encoded, signed X.509 certificate.
 	PemCertificate pulumi.StringOutput `pulumi:"pemCertificate"`
-	// The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
-	// 5246.
+	// The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
 	PemCertificateChains pulumi.StringArrayOutput `pulumi:"pemCertificateChains"`
+	// (Deprecated)
 	// Required. Expected to be in leaf-to-root order according to RFC 5246.
 	//
 	// Deprecated: Deprecated in favor of `pem_certificate_chain`.
@@ -576,10 +576,12 @@ type Certificate struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-	// this field is present.
+	// Output only. Details regarding the revocation of this Certificate. This Certificate is
+	// considered revoked if and only if this field is present.
+	// Structure is documented below.
 	RevocationDetails CertificateRevocationDetailArrayOutput `pulumi:"revocationDetails"`
-	// Output only. The time at which this CertificateAuthority was updated. This is in RFC3339 text format.
+	// Output only. The time at which this CertificateAuthority was updated.
+	// This is in RFC3339 text format.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -623,8 +625,8 @@ type certificateState struct {
 	// argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificateAuthority`
 	// should be set to `my-ca`.
 	CertificateAuthority *string `pulumi:"certificateAuthority"`
-	// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-	// this field is present.
+	// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
+	// Structure is documented below.
 	CertificateDescriptions []CertificateCertificateDescription `pulumi:"certificateDescriptions"`
 	// The resource name for a CertificateTemplate used to issue this certificate,
 	// in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified,
@@ -635,10 +637,10 @@ type certificateState struct {
 	// The config used to create a self-signed X.509 certificate or CSR.
 	// Structure is documented below.
 	Config *CertificateConfig `pulumi:"config"`
-	// The time that this resource was created on the server. This is in RFC3339 text format.
+	// The time that this resource was created on the server.
+	// This is in RFC3339 text format.
 	CreateTime *string `pulumi:"createTime"`
-	// The resource name of the issuing CertificateAuthority in the format
-	// 'projects/*/locations/*/caPools/*/certificateAuthorities/*'.
+	// The resource name of the issuing CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
 	IssuerCertificateAuthority *string `pulumi:"issuerCertificateAuthority"`
 	// Labels with user-defined metadata to apply to this resource.
 	Labels map[string]string `pulumi:"labels"`
@@ -653,9 +655,9 @@ type certificateState struct {
 	Name *string `pulumi:"name"`
 	// Output only. The pem-encoded, signed X.509 certificate.
 	PemCertificate *string `pulumi:"pemCertificate"`
-	// The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
-	// 5246.
+	// The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
 	PemCertificateChains []string `pulumi:"pemCertificateChains"`
+	// (Deprecated)
 	// Required. Expected to be in leaf-to-root order according to RFC 5246.
 	//
 	// Deprecated: Deprecated in favor of `pem_certificate_chain`.
@@ -667,10 +669,12 @@ type certificateState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-	// this field is present.
+	// Output only. Details regarding the revocation of this Certificate. This Certificate is
+	// considered revoked if and only if this field is present.
+	// Structure is documented below.
 	RevocationDetails []CertificateRevocationDetail `pulumi:"revocationDetails"`
-	// Output only. The time at which this CertificateAuthority was updated. This is in RFC3339 text format.
+	// Output only. The time at which this CertificateAuthority was updated.
+	// This is in RFC3339 text format.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
@@ -680,8 +684,8 @@ type CertificateState struct {
 	// argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificateAuthority`
 	// should be set to `my-ca`.
 	CertificateAuthority pulumi.StringPtrInput
-	// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-	// this field is present.
+	// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
+	// Structure is documented below.
 	CertificateDescriptions CertificateCertificateDescriptionArrayInput
 	// The resource name for a CertificateTemplate used to issue this certificate,
 	// in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified,
@@ -692,10 +696,10 @@ type CertificateState struct {
 	// The config used to create a self-signed X.509 certificate or CSR.
 	// Structure is documented below.
 	Config CertificateConfigPtrInput
-	// The time that this resource was created on the server. This is in RFC3339 text format.
+	// The time that this resource was created on the server.
+	// This is in RFC3339 text format.
 	CreateTime pulumi.StringPtrInput
-	// The resource name of the issuing CertificateAuthority in the format
-	// 'projects/*/locations/*/caPools/*/certificateAuthorities/*'.
+	// The resource name of the issuing CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
 	IssuerCertificateAuthority pulumi.StringPtrInput
 	// Labels with user-defined metadata to apply to this resource.
 	Labels pulumi.StringMapInput
@@ -710,9 +714,9 @@ type CertificateState struct {
 	Name pulumi.StringPtrInput
 	// Output only. The pem-encoded, signed X.509 certificate.
 	PemCertificate pulumi.StringPtrInput
-	// The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
-	// 5246.
+	// The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
 	PemCertificateChains pulumi.StringArrayInput
+	// (Deprecated)
 	// Required. Expected to be in leaf-to-root order according to RFC 5246.
 	//
 	// Deprecated: Deprecated in favor of `pem_certificate_chain`.
@@ -724,10 +728,12 @@ type CertificateState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-	// this field is present.
+	// Output only. Details regarding the revocation of this Certificate. This Certificate is
+	// considered revoked if and only if this field is present.
+	// Structure is documented below.
 	RevocationDetails CertificateRevocationDetailArrayInput
-	// Output only. The time at which this CertificateAuthority was updated. This is in RFC3339 text format.
+	// Output only. The time at which this CertificateAuthority was updated.
+	// This is in RFC3339 text format.
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -901,8 +907,8 @@ func (o CertificateOutput) CertificateAuthority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.CertificateAuthority }).(pulumi.StringPtrOutput)
 }
 
-// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-// this field is present.
+// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
+// Structure is documented below.
 func (o CertificateOutput) CertificateDescriptions() CertificateCertificateDescriptionArrayOutput {
 	return o.ApplyT(func(v *Certificate) CertificateCertificateDescriptionArrayOutput { return v.CertificateDescriptions }).(CertificateCertificateDescriptionArrayOutput)
 }
@@ -922,13 +928,13 @@ func (o CertificateOutput) Config() CertificateConfigPtrOutput {
 	return o.ApplyT(func(v *Certificate) CertificateConfigPtrOutput { return v.Config }).(CertificateConfigPtrOutput)
 }
 
-// The time that this resource was created on the server. This is in RFC3339 text format.
+// The time that this resource was created on the server.
+// This is in RFC3339 text format.
 func (o CertificateOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The resource name of the issuing CertificateAuthority in the format
-// 'projects/*/locations/*/caPools/*/certificateAuthorities/*'.
+// The resource name of the issuing CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
 func (o CertificateOutput) IssuerCertificateAuthority() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.IssuerCertificateAuthority }).(pulumi.StringOutput)
 }
@@ -961,12 +967,12 @@ func (o CertificateOutput) PemCertificate() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.PemCertificate }).(pulumi.StringOutput)
 }
 
-// The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
-// 5246.
+// The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
 func (o CertificateOutput) PemCertificateChains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringArrayOutput { return v.PemCertificateChains }).(pulumi.StringArrayOutput)
 }
 
+// (Deprecated)
 // Required. Expected to be in leaf-to-root order according to RFC 5246.
 //
 // Deprecated: Deprecated in favor of `pem_certificate_chain`.
@@ -990,13 +996,15 @@ func (o CertificateOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-// this field is present.
+// Output only. Details regarding the revocation of this Certificate. This Certificate is
+// considered revoked if and only if this field is present.
+// Structure is documented below.
 func (o CertificateOutput) RevocationDetails() CertificateRevocationDetailArrayOutput {
 	return o.ApplyT(func(v *Certificate) CertificateRevocationDetailArrayOutput { return v.RevocationDetails }).(CertificateRevocationDetailArrayOutput)
 }
 
-// Output only. The time at which this CertificateAuthority was updated. This is in RFC3339 text format.
+// Output only. The time at which this CertificateAuthority was updated.
+// This is in RFC3339 text format.
 func (o CertificateOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

@@ -104,8 +104,7 @@ type Workload struct {
 	ProvisionedResourcesParent pulumi.StringPtrOutput `pulumi:"provisionedResourcesParent"`
 	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
 	ResourceSettings WorkloadResourceSettingArrayOutput `pulumi:"resourceSettings"`
-	// Output only. The resources associated with this workload. These resources will be created when creating the workload. If
-	// any of the projects already exist, the workload creation will fail. Always read only.
+	// Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
 	Resources WorkloadResourceArrayOutput `pulumi:"resources"`
 }
 
@@ -175,8 +174,7 @@ type workloadState struct {
 	ProvisionedResourcesParent *string `pulumi:"provisionedResourcesParent"`
 	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
 	ResourceSettings []WorkloadResourceSetting `pulumi:"resourceSettings"`
-	// Output only. The resources associated with this workload. These resources will be created when creating the workload. If
-	// any of the projects already exist, the workload creation will fail. Always read only.
+	// Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
 	Resources []WorkloadResource `pulumi:"resources"`
 }
 
@@ -203,8 +201,7 @@ type WorkloadState struct {
 	ProvisionedResourcesParent pulumi.StringPtrInput
 	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
 	ResourceSettings WorkloadResourceSettingArrayInput
-	// Output only. The resources associated with this workload. These resources will be created when creating the workload. If
-	// any of the projects already exist, the workload creation will fail. Always read only.
+	// Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
 	Resources WorkloadResourceArrayInput
 }
 
@@ -397,8 +394,7 @@ func (o WorkloadOutput) ResourceSettings() WorkloadResourceSettingArrayOutput {
 	return o.ApplyT(func(v *Workload) WorkloadResourceSettingArrayOutput { return v.ResourceSettings }).(WorkloadResourceSettingArrayOutput)
 }
 
-// Output only. The resources associated with this workload. These resources will be created when creating the workload. If
-// any of the projects already exist, the workload creation will fail. Always read only.
+// Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
 func (o WorkloadOutput) Resources() WorkloadResourceArrayOutput {
 	return o.ApplyT(func(v *Workload) WorkloadResourceArrayOutput { return v.Resources }).(WorkloadResourceArrayOutput)
 }

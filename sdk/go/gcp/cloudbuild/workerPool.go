@@ -159,7 +159,7 @@ type WorkerPool struct {
 	NetworkConfig WorkerPoolNetworkConfigPtrOutput `pulumi:"networkConfig"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Output only. `WorkerPool` state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+	// Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
 	State pulumi.StringOutput `pulumi:"state"`
 	// Output only. A unique identifier for the `WorkerPool`.
 	Uid pulumi.StringOutput `pulumi:"uid"`
@@ -218,7 +218,7 @@ type workerPoolState struct {
 	NetworkConfig *WorkerPoolNetworkConfig `pulumi:"networkConfig"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
-	// Output only. `WorkerPool` state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+	// Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
 	State *string `pulumi:"state"`
 	// Output only. A unique identifier for the `WorkerPool`.
 	Uid *string `pulumi:"uid"`
@@ -246,7 +246,7 @@ type WorkerPoolState struct {
 	NetworkConfig WorkerPoolNetworkConfigPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
-	// Output only. `WorkerPool` state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+	// Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
 	State pulumi.StringPtrInput
 	// Output only. A unique identifier for the `WorkerPool`.
 	Uid pulumi.StringPtrInput
@@ -425,7 +425,7 @@ func (o WorkerPoolOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Output only. `WorkerPool` state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+// Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
 func (o WorkerPoolOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

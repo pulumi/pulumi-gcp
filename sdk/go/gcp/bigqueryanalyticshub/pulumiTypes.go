@@ -474,9 +474,9 @@ func (o ListingBigqueryDatasetPtrOutput) Dataset() pulumi.StringPtrOutput {
 }
 
 type ListingDataProvider struct {
-	// Name of the listing publisher.
+	// Name of the data provider.
 	Name string `pulumi:"name"`
-	// Email or URL of the listing publisher.
+	// Email or URL of the data provider.
 	PrimaryContact *string `pulumi:"primaryContact"`
 }
 
@@ -492,9 +492,9 @@ type ListingDataProviderInput interface {
 }
 
 type ListingDataProviderArgs struct {
-	// Name of the listing publisher.
+	// Name of the data provider.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Email or URL of the listing publisher.
+	// Email or URL of the data provider.
 	PrimaryContact pulumi.StringPtrInput `pulumi:"primaryContact"`
 }
 
@@ -575,12 +575,12 @@ func (o ListingDataProviderOutput) ToListingDataProviderPtrOutputWithContext(ctx
 	}).(ListingDataProviderPtrOutput)
 }
 
-// Name of the listing publisher.
+// Name of the data provider.
 func (o ListingDataProviderOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListingDataProvider) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Email or URL of the listing publisher.
+// Email or URL of the data provider.
 func (o ListingDataProviderOutput) PrimaryContact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListingDataProvider) *string { return v.PrimaryContact }).(pulumi.StringPtrOutput)
 }
@@ -609,7 +609,7 @@ func (o ListingDataProviderPtrOutput) Elem() ListingDataProviderOutput {
 	}).(ListingDataProviderOutput)
 }
 
-// Name of the listing publisher.
+// Name of the data provider.
 func (o ListingDataProviderPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ListingDataProvider) *string {
 		if v == nil {
@@ -619,7 +619,7 @@ func (o ListingDataProviderPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Email or URL of the listing publisher.
+// Email or URL of the data provider.
 func (o ListingDataProviderPtrOutput) PrimaryContact() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ListingDataProvider) *string {
 		if v == nil {

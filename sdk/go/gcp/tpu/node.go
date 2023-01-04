@@ -41,7 +41,7 @@ import (
 //			_, err = tpu.NewNode(ctx, "tpu", &tpu.NodeArgs{
 //				Zone:              pulumi.String("us-central1-b"),
 //				AcceleratorType:   pulumi.String("v3-8"),
-//				TensorflowVersion: pulumi.String(available.Versions[0]),
+//				TensorflowVersion: *pulumi.String(available.Versions[0]),
 //				CidrBlock:         pulumi.String("10.2.0.0/29"),
 //			})
 //			if err != nil {
@@ -82,13 +82,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      pulumi.String(network.Id),
+//				Network:      *pulumi.String(network.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			privateServiceConnection, err := servicenetworking.NewConnection(ctx, "privateServiceConnection", &servicenetworking.ConnectionArgs{
-//				Network: pulumi.String(network.Id),
+//				Network: *pulumi.String(network.Id),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					serviceRange.Name,
@@ -100,7 +100,7 @@ import (
 //			_, err = tpu.NewNode(ctx, "tpu", &tpu.NodeArgs{
 //				Zone:                 pulumi.String("us-central1-b"),
 //				AcceleratorType:      pulumi.String("v3-8"),
-//				TensorflowVersion:    pulumi.String(available.Versions[0]),
+//				TensorflowVersion:    *pulumi.String(available.Versions[0]),
 //				Description:          pulumi.String("Google Provider test TPU"),
 //				UseServiceNetworking: pulumi.Bool(true),
 //				Network:              privateServiceConnection.Network,
@@ -172,8 +172,10 @@ type Node struct {
 	// this API has been activated. If none is provided, "default" will be
 	// used.
 	Network pulumi.StringOutput `pulumi:"network"`
-	// The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
-	// node first reach out to the first (index 0) entry.
+	// The network endpoints where TPU workers can be accessed and sent work.
+	// It is recommended that Tensorflow clients of the node first reach out
+	// to the first (index 0) entry.
+	// Structure is documented below.
 	NetworkEndpoints NodeNetworkEndpointArrayOutput `pulumi:"networkEndpoints"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -181,8 +183,10 @@ type Node struct {
 	// Sets the scheduling options for this TPU instance.
 	// Structure is documented below.
 	SchedulingConfig NodeSchedulingConfigPtrOutput `pulumi:"schedulingConfig"`
-	// The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
-	// Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
+	// The service account used to run the tensor flow services within the
+	// node. To share resources, including Google Cloud Storage data, with
+	// the Tensorflow job running in the Node, this account must have
+	// permissions to that data.
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// The version of Tensorflow running in the Node.
 	TensorflowVersion pulumi.StringOutput `pulumi:"tensorflowVersion"`
@@ -252,8 +256,10 @@ type nodeState struct {
 	// this API has been activated. If none is provided, "default" will be
 	// used.
 	Network *string `pulumi:"network"`
-	// The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
-	// node first reach out to the first (index 0) entry.
+	// The network endpoints where TPU workers can be accessed and sent work.
+	// It is recommended that Tensorflow clients of the node first reach out
+	// to the first (index 0) entry.
+	// Structure is documented below.
 	NetworkEndpoints []NodeNetworkEndpoint `pulumi:"networkEndpoints"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -261,8 +267,10 @@ type nodeState struct {
 	// Sets the scheduling options for this TPU instance.
 	// Structure is documented below.
 	SchedulingConfig *NodeSchedulingConfig `pulumi:"schedulingConfig"`
-	// The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
-	// Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
+	// The service account used to run the tensor flow services within the
+	// node. To share resources, including Google Cloud Storage data, with
+	// the Tensorflow job running in the Node, this account must have
+	// permissions to that data.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// The version of Tensorflow running in the Node.
 	TensorflowVersion *string `pulumi:"tensorflowVersion"`
@@ -298,8 +306,10 @@ type NodeState struct {
 	// this API has been activated. If none is provided, "default" will be
 	// used.
 	Network pulumi.StringPtrInput
-	// The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
-	// node first reach out to the first (index 0) entry.
+	// The network endpoints where TPU workers can be accessed and sent work.
+	// It is recommended that Tensorflow clients of the node first reach out
+	// to the first (index 0) entry.
+	// Structure is documented below.
 	NetworkEndpoints NodeNetworkEndpointArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -307,8 +317,10 @@ type NodeState struct {
 	// Sets the scheduling options for this TPU instance.
 	// Structure is documented below.
 	SchedulingConfig NodeSchedulingConfigPtrInput
-	// The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
-	// Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
+	// The service account used to run the tensor flow services within the
+	// node. To share resources, including Google Cloud Storage data, with
+	// the Tensorflow job running in the Node, this account must have
+	// permissions to that data.
 	ServiceAccount pulumi.StringPtrInput
 	// The version of Tensorflow running in the Node.
 	TensorflowVersion pulumi.StringPtrInput
@@ -533,8 +545,10 @@ func (o NodeOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }
 
-// The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
-// node first reach out to the first (index 0) entry.
+// The network endpoints where TPU workers can be accessed and sent work.
+// It is recommended that Tensorflow clients of the node first reach out
+// to the first (index 0) entry.
+// Structure is documented below.
 func (o NodeOutput) NetworkEndpoints() NodeNetworkEndpointArrayOutput {
 	return o.ApplyT(func(v *Node) NodeNetworkEndpointArrayOutput { return v.NetworkEndpoints }).(NodeNetworkEndpointArrayOutput)
 }
@@ -551,8 +565,10 @@ func (o NodeOutput) SchedulingConfig() NodeSchedulingConfigPtrOutput {
 	return o.ApplyT(func(v *Node) NodeSchedulingConfigPtrOutput { return v.SchedulingConfig }).(NodeSchedulingConfigPtrOutput)
 }
 
-// The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
-// Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
+// The service account used to run the tensor flow services within the
+// node. To share resources, including Google Cloud Storage data, with
+// the Tensorflow job running in the Node, this account must have
+// permissions to that data.
 func (o NodeOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.ServiceAccount }).(pulumi.StringOutput)
 }

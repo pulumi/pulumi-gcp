@@ -164,11 +164,13 @@ type InterconnectAttachment struct {
 	// fail if all possible /29s are in use on Google's edge. If not supplied,
 	// Google will randomly select an unused /29 from all of link-local space.
 	CandidateSubnets pulumi.StringArrayOutput `pulumi:"candidateSubnets"`
-	// IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
+	// IPv4 address + prefix length to be configured on Cloud Router
+	// Interface for this interconnect attachment.
 	CloudRouterIpAddress pulumi.StringOutput `pulumi:"cloudRouterIpAddress"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
-	// IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
+	// IPv4 address + prefix length to be configured on the customer
+	// router subinterface for this interconnect attachment.
 	CustomerRouterIpAddress pulumi.StringOutput `pulumi:"customerRouterIpAddress"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -193,8 +195,8 @@ type InterconnectAttachment struct {
 	// Default value is `NONE`.
 	// Possible values are `NONE` and `IPSEC`.
 	Encryption pulumi.StringPtrOutput `pulumi:"encryption"`
-	// Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity
-	// issues.
+	// Google reference ID, to be used when raising support tickets with
+	// Google or otherwise to debug backend connectivity issues.
 	GoogleReferenceId pulumi.StringOutput `pulumi:"googleReferenceId"`
 	// URL of the underlying Interconnect object that this attachment's
 	// traffic will traverse through. Required if type is DEDICATED, must not
@@ -227,14 +229,17 @@ type InterconnectAttachment struct {
 	// lowercase letter, and all following characters must be a dash, lowercase
 	// letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// [Output only for type PARTNER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to
-	// initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
+	// [Output only for type PARTNER. Not present for DEDICATED]. The opaque
+	// identifier of an PARTNER attachment used to initiate provisioning with
+	// a selected partner. Of the form "XXXXX/region/domain"
 	PairingKey pulumi.StringOutput `pulumi:"pairingKey"`
-	// [Output only for type PARTNER. Not present for DEDICATED]. Optional BGP ASN for the router that should be supplied by a
-	// layer 3 Partner if they configured BGP on behalf of the customer.
+	// [Output only for type PARTNER. Not present for DEDICATED]. Optional
+	// BGP ASN for the router that should be supplied by a layer 3 Partner if
+	// they configured BGP on behalf of the customer.
 	PartnerAsn pulumi.StringOutput `pulumi:"partnerAsn"`
-	// Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
-	// to is of type DEDICATED.
+	// Information specific to an InterconnectAttachment. This property
+	// is populated if the interconnect that this is attached to is of type DEDICATED.
+	// Structure is documented below.
 	PrivateInterconnectInfos InterconnectAttachmentPrivateInterconnectInfoArrayOutput `pulumi:"privateInterconnectInfos"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -309,11 +314,13 @@ type interconnectAttachmentState struct {
 	// fail if all possible /29s are in use on Google's edge. If not supplied,
 	// Google will randomly select an unused /29 from all of link-local space.
 	CandidateSubnets []string `pulumi:"candidateSubnets"`
-	// IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
+	// IPv4 address + prefix length to be configured on Cloud Router
+	// Interface for this interconnect attachment.
 	CloudRouterIpAddress *string `pulumi:"cloudRouterIpAddress"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
-	// IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
+	// IPv4 address + prefix length to be configured on the customer
+	// router subinterface for this interconnect attachment.
 	CustomerRouterIpAddress *string `pulumi:"customerRouterIpAddress"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
@@ -338,8 +345,8 @@ type interconnectAttachmentState struct {
 	// Default value is `NONE`.
 	// Possible values are `NONE` and `IPSEC`.
 	Encryption *string `pulumi:"encryption"`
-	// Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity
-	// issues.
+	// Google reference ID, to be used when raising support tickets with
+	// Google or otherwise to debug backend connectivity issues.
 	GoogleReferenceId *string `pulumi:"googleReferenceId"`
 	// URL of the underlying Interconnect object that this attachment's
 	// traffic will traverse through. Required if type is DEDICATED, must not
@@ -372,14 +379,17 @@ type interconnectAttachmentState struct {
 	// lowercase letter, and all following characters must be a dash, lowercase
 	// letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// [Output only for type PARTNER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to
-	// initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
+	// [Output only for type PARTNER. Not present for DEDICATED]. The opaque
+	// identifier of an PARTNER attachment used to initiate provisioning with
+	// a selected partner. Of the form "XXXXX/region/domain"
 	PairingKey *string `pulumi:"pairingKey"`
-	// [Output only for type PARTNER. Not present for DEDICATED]. Optional BGP ASN for the router that should be supplied by a
-	// layer 3 Partner if they configured BGP on behalf of the customer.
+	// [Output only for type PARTNER. Not present for DEDICATED]. Optional
+	// BGP ASN for the router that should be supplied by a layer 3 Partner if
+	// they configured BGP on behalf of the customer.
 	PartnerAsn *string `pulumi:"partnerAsn"`
-	// Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
-	// to is of type DEDICATED.
+	// Information specific to an InterconnectAttachment. This property
+	// is populated if the interconnect that this is attached to is of type DEDICATED.
+	// Structure is documented below.
 	PrivateInterconnectInfos []InterconnectAttachmentPrivateInterconnectInfo `pulumi:"privateInterconnectInfos"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -423,11 +433,13 @@ type InterconnectAttachmentState struct {
 	// fail if all possible /29s are in use on Google's edge. If not supplied,
 	// Google will randomly select an unused /29 from all of link-local space.
 	CandidateSubnets pulumi.StringArrayInput
-	// IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
+	// IPv4 address + prefix length to be configured on Cloud Router
+	// Interface for this interconnect attachment.
 	CloudRouterIpAddress pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
-	// IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
+	// IPv4 address + prefix length to be configured on the customer
+	// router subinterface for this interconnect attachment.
 	CustomerRouterIpAddress pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
@@ -452,8 +464,8 @@ type InterconnectAttachmentState struct {
 	// Default value is `NONE`.
 	// Possible values are `NONE` and `IPSEC`.
 	Encryption pulumi.StringPtrInput
-	// Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity
-	// issues.
+	// Google reference ID, to be used when raising support tickets with
+	// Google or otherwise to debug backend connectivity issues.
 	GoogleReferenceId pulumi.StringPtrInput
 	// URL of the underlying Interconnect object that this attachment's
 	// traffic will traverse through. Required if type is DEDICATED, must not
@@ -486,14 +498,17 @@ type InterconnectAttachmentState struct {
 	// lowercase letter, and all following characters must be a dash, lowercase
 	// letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// [Output only for type PARTNER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to
-	// initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
+	// [Output only for type PARTNER. Not present for DEDICATED]. The opaque
+	// identifier of an PARTNER attachment used to initiate provisioning with
+	// a selected partner. Of the form "XXXXX/region/domain"
 	PairingKey pulumi.StringPtrInput
-	// [Output only for type PARTNER. Not present for DEDICATED]. Optional BGP ASN for the router that should be supplied by a
-	// layer 3 Partner if they configured BGP on behalf of the customer.
+	// [Output only for type PARTNER. Not present for DEDICATED]. Optional
+	// BGP ASN for the router that should be supplied by a layer 3 Partner if
+	// they configured BGP on behalf of the customer.
 	PartnerAsn pulumi.StringPtrInput
-	// Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
-	// to is of type DEDICATED.
+	// Information specific to an InterconnectAttachment. This property
+	// is populated if the interconnect that this is attached to is of type DEDICATED.
+	// Structure is documented below.
 	PrivateInterconnectInfos InterconnectAttachmentPrivateInterconnectInfoArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -821,7 +836,8 @@ func (o InterconnectAttachmentOutput) CandidateSubnets() pulumi.StringArrayOutpu
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringArrayOutput { return v.CandidateSubnets }).(pulumi.StringArrayOutput)
 }
 
-// IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
+// IPv4 address + prefix length to be configured on Cloud Router
+// Interface for this interconnect attachment.
 func (o InterconnectAttachmentOutput) CloudRouterIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.CloudRouterIpAddress }).(pulumi.StringOutput)
 }
@@ -831,7 +847,8 @@ func (o InterconnectAttachmentOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
 
-// IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
+// IPv4 address + prefix length to be configured on the customer
+// router subinterface for this interconnect attachment.
 func (o InterconnectAttachmentOutput) CustomerRouterIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.CustomerRouterIpAddress }).(pulumi.StringOutput)
 }
@@ -868,8 +885,8 @@ func (o InterconnectAttachmentOutput) Encryption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringPtrOutput { return v.Encryption }).(pulumi.StringPtrOutput)
 }
 
-// Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity
-// issues.
+// Google reference ID, to be used when raising support tickets with
+// Google or otherwise to debug backend connectivity issues.
 func (o InterconnectAttachmentOutput) GoogleReferenceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.GoogleReferenceId }).(pulumi.StringOutput)
 }
@@ -917,20 +934,23 @@ func (o InterconnectAttachmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// [Output only for type PARTNER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to
-// initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
+// [Output only for type PARTNER. Not present for DEDICATED]. The opaque
+// identifier of an PARTNER attachment used to initiate provisioning with
+// a selected partner. Of the form "XXXXX/region/domain"
 func (o InterconnectAttachmentOutput) PairingKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.PairingKey }).(pulumi.StringOutput)
 }
 
-// [Output only for type PARTNER. Not present for DEDICATED]. Optional BGP ASN for the router that should be supplied by a
-// layer 3 Partner if they configured BGP on behalf of the customer.
+// [Output only for type PARTNER. Not present for DEDICATED]. Optional
+// BGP ASN for the router that should be supplied by a layer 3 Partner if
+// they configured BGP on behalf of the customer.
 func (o InterconnectAttachmentOutput) PartnerAsn() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.PartnerAsn }).(pulumi.StringOutput)
 }
 
-// Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
-// to is of type DEDICATED.
+// Information specific to an InterconnectAttachment. This property
+// is populated if the interconnect that this is attached to is of type DEDICATED.
+// Structure is documented below.
 func (o InterconnectAttachmentOutput) PrivateInterconnectInfos() InterconnectAttachmentPrivateInterconnectInfoArrayOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) InterconnectAttachmentPrivateInterconnectInfoArrayOutput {
 		return v.PrivateInterconnectInfos

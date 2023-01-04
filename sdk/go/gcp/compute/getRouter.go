@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = compute.LookupRouter(ctx, &compute.LookupRouterArgs{
+//			_, err := compute.LookupRouter(ctx, &compute.LookupRouterArgs{
 //				Name:    "myrouter-us-east1",
 //				Network: "my-network",
 //			}, nil)

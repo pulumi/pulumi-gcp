@@ -95,7 +95,8 @@ type Group struct {
 	// Dynamic groups have a label with a key of cloudidentity.googleapis.com/groups.dynamic.
 	// Identity-mapped groups for Cloud Search have a label with a key of system/groups/external and an empty value.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Resource name of the Group in the format: groups/{group_id}, where group_id is the unique ID assigned to the Group.
+	// Resource name of the Group in the format: groups/{group_id}, where groupId
+	// is the unique ID assigned to the Group.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource name of the entity under which this Group resides in the
 	// Cloud Identity resource hierarchy.
@@ -167,7 +168,8 @@ type groupState struct {
 	// Dynamic groups have a label with a key of cloudidentity.googleapis.com/groups.dynamic.
 	// Identity-mapped groups for Cloud Search have a label with a key of system/groups/external and an empty value.
 	Labels map[string]string `pulumi:"labels"`
-	// Resource name of the Group in the format: groups/{group_id}, where group_id is the unique ID assigned to the Group.
+	// Resource name of the Group in the format: groups/{group_id}, where groupId
+	// is the unique ID assigned to the Group.
 	Name *string `pulumi:"name"`
 	// The resource name of the entity under which this Group resides in the
 	// Cloud Identity resource hierarchy.
@@ -202,7 +204,8 @@ type GroupState struct {
 	// Dynamic groups have a label with a key of cloudidentity.googleapis.com/groups.dynamic.
 	// Identity-mapped groups for Cloud Search have a label with a key of system/groups/external and an empty value.
 	Labels pulumi.StringMapInput
-	// Resource name of the Group in the format: groups/{group_id}, where group_id is the unique ID assigned to the Group.
+	// Resource name of the Group in the format: groups/{group_id}, where groupId
+	// is the unique ID assigned to the Group.
 	Name pulumi.StringPtrInput
 	// The resource name of the entity under which this Group resides in the
 	// Cloud Identity resource hierarchy.
@@ -404,7 +407,8 @@ func (o GroupOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Resource name of the Group in the format: groups/{group_id}, where group_id is the unique ID assigned to the Group.
+// Resource name of the Group in the format: groups/{group_id}, where groupId
+// is the unique ID assigned to the Group.
 func (o GroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

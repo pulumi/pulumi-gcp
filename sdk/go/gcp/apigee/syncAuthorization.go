@@ -119,8 +119,8 @@ import (
 type SyncAuthorization struct {
 	pulumi.CustomResourceState
 
-	// Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting
-	// each other. Used internally during updates.
+	// Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting each other.
+	// Used internally during updates.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Array of service accounts to grant access to control plane resources, each specified using the following format: `serviceAccount:service-account-name`.
 	// The `service-account-name` is formatted like an email address. For example: my-synchronizer-manager-serviceAccount@my_project_id.iam.gserviceaccount.com
@@ -163,8 +163,8 @@ func GetSyncAuthorization(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SyncAuthorization resources.
 type syncAuthorizationState struct {
-	// Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting
-	// each other. Used internally during updates.
+	// Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting each other.
+	// Used internally during updates.
 	Etag *string `pulumi:"etag"`
 	// Array of service accounts to grant access to control plane resources, each specified using the following format: `serviceAccount:service-account-name`.
 	// The `service-account-name` is formatted like an email address. For example: my-synchronizer-manager-serviceAccount@my_project_id.iam.gserviceaccount.com
@@ -176,8 +176,8 @@ type syncAuthorizationState struct {
 }
 
 type SyncAuthorizationState struct {
-	// Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting
-	// each other. Used internally during updates.
+	// Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting each other.
+	// Used internally during updates.
 	Etag pulumi.StringPtrInput
 	// Array of service accounts to grant access to control plane resources, each specified using the following format: `serviceAccount:service-account-name`.
 	// The `service-account-name` is formatted like an email address. For example: my-synchronizer-manager-serviceAccount@my_project_id.iam.gserviceaccount.com
@@ -300,8 +300,8 @@ func (o SyncAuthorizationOutput) ToSyncAuthorizationOutputWithContext(ctx contex
 	return o
 }
 
-// Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting
-// each other. Used internally during updates.
+// Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting each other.
+// Used internally during updates.
 func (o SyncAuthorizationOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *SyncAuthorization) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }

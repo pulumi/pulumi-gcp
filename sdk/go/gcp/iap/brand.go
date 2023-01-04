@@ -97,9 +97,10 @@ type Brand struct {
 
 	// Application name displayed on OAuth consent screen.
 	ApplicationTitle pulumi.StringOutput `pulumi:"applicationTitle"`
-	// Output only. Identifier of the brand, in the format 'projects/{project_number}/brands/{brand_id}' NOTE: The name can
-	// also be expressed as 'projects/{project_id}/brands/{brand_id}', e.g. when importing. NOTE: The brand identification
-	// corresponds to the project number as only one brand can be created per project.
+	// Output only. Identifier of the brand, in the format `projects/{project_number}/brands/{brand_id}`
+	// NOTE: The name can also be expressed as `projects/{project_id}/brands/{brand_id}`, e.g. when importing.
+	// NOTE: The brand identification corresponds to the project number as only one
+	// brand can be created per project.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Whether the brand is only intended for usage inside the GSuite organization only.
 	OrgInternalOnly pulumi.BoolOutput `pulumi:"orgInternalOnly"`
@@ -151,9 +152,10 @@ func GetBrand(ctx *pulumi.Context,
 type brandState struct {
 	// Application name displayed on OAuth consent screen.
 	ApplicationTitle *string `pulumi:"applicationTitle"`
-	// Output only. Identifier of the brand, in the format 'projects/{project_number}/brands/{brand_id}' NOTE: The name can
-	// also be expressed as 'projects/{project_id}/brands/{brand_id}', e.g. when importing. NOTE: The brand identification
-	// corresponds to the project number as only one brand can be created per project.
+	// Output only. Identifier of the brand, in the format `projects/{project_number}/brands/{brand_id}`
+	// NOTE: The name can also be expressed as `projects/{project_id}/brands/{brand_id}`, e.g. when importing.
+	// NOTE: The brand identification corresponds to the project number as only one
+	// brand can be created per project.
 	Name *string `pulumi:"name"`
 	// Whether the brand is only intended for usage inside the GSuite organization only.
 	OrgInternalOnly *bool `pulumi:"orgInternalOnly"`
@@ -171,9 +173,10 @@ type brandState struct {
 type BrandState struct {
 	// Application name displayed on OAuth consent screen.
 	ApplicationTitle pulumi.StringPtrInput
-	// Output only. Identifier of the brand, in the format 'projects/{project_number}/brands/{brand_id}' NOTE: The name can
-	// also be expressed as 'projects/{project_id}/brands/{brand_id}', e.g. when importing. NOTE: The brand identification
-	// corresponds to the project number as only one brand can be created per project.
+	// Output only. Identifier of the brand, in the format `projects/{project_number}/brands/{brand_id}`
+	// NOTE: The name can also be expressed as `projects/{project_id}/brands/{brand_id}`, e.g. when importing.
+	// NOTE: The brand identification corresponds to the project number as only one
+	// brand can be created per project.
 	Name pulumi.StringPtrInput
 	// Whether the brand is only intended for usage inside the GSuite organization only.
 	OrgInternalOnly pulumi.BoolPtrInput
@@ -313,9 +316,10 @@ func (o BrandOutput) ApplicationTitle() pulumi.StringOutput {
 	return o.ApplyT(func(v *Brand) pulumi.StringOutput { return v.ApplicationTitle }).(pulumi.StringOutput)
 }
 
-// Output only. Identifier of the brand, in the format 'projects/{project_number}/brands/{brand_id}' NOTE: The name can
-// also be expressed as 'projects/{project_id}/brands/{brand_id}', e.g. when importing. NOTE: The brand identification
-// corresponds to the project number as only one brand can be created per project.
+// Output only. Identifier of the brand, in the format `projects/{project_number}/brands/{brand_id}`
+// NOTE: The name can also be expressed as `projects/{project_id}/brands/{brand_id}`, e.g. when importing.
+// NOTE: The brand identification corresponds to the project number as only one
+// brand can be created per project.
 func (o BrandOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Brand) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

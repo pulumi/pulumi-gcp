@@ -365,8 +365,7 @@ type Cluster struct {
 	// resources with no default node pool, this should be set to `true`, alongside
 	// setting `initialNodeCount` to at least `1`.
 	RemoveDefaultNodePool pulumi.BoolPtrOutput `pulumi:"removeDefaultNodePool"`
-	// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
-	// for how these labels are applied to clusters, node pools and nodes.
+	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
 	ResourceLabels pulumi.StringMapOutput `pulumi:"resourceLabels"`
 	// Configuration for the
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
@@ -658,8 +657,7 @@ type clusterState struct {
 	// resources with no default node pool, this should be set to `true`, alongside
 	// setting `initialNodeCount` to at least `1`.
 	RemoveDefaultNodePool *bool `pulumi:"removeDefaultNodePool"`
-	// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
-	// for how these labels are applied to clusters, node pools and nodes.
+	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
 	ResourceLabels map[string]string `pulumi:"resourceLabels"`
 	// Configuration for the
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
@@ -923,8 +921,7 @@ type ClusterState struct {
 	// resources with no default node pool, this should be set to `true`, alongside
 	// setting `initialNodeCount` to at least `1`.
 	RemoveDefaultNodePool pulumi.BoolPtrInput
-	// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
-	// for how these labels are applied to clusters, node pools and nodes.
+	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
 	ResourceLabels pulumi.StringMapInput
 	// Configuration for the
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
@@ -1183,8 +1180,7 @@ type clusterArgs struct {
 	// resources with no default node pool, this should be set to `true`, alongside
 	// setting `initialNodeCount` to at least `1`.
 	RemoveDefaultNodePool *bool `pulumi:"removeDefaultNodePool"`
-	// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
-	// for how these labels are applied to clusters, node pools and nodes.
+	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
 	ResourceLabels map[string]string `pulumi:"resourceLabels"`
 	// Configuration for the
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
@@ -1429,8 +1425,7 @@ type ClusterArgs struct {
 	// resources with no default node pool, this should be set to `true`, alongside
 	// setting `initialNodeCount` to at least `1`.
 	RemoveDefaultNodePool pulumi.BoolPtrInput
-	// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
-	// for how these labels are applied to clusters, node pools and nodes.
+	// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
 	ResourceLabels pulumi.StringMapInput
 	// Configuration for the
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
@@ -1940,8 +1935,7 @@ func (o ClusterOutput) RemoveDefaultNodePool() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.RemoveDefaultNodePool }).(pulumi.BoolPtrOutput)
 }
 
-// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
-// for how these labels are applied to clusters, node pools and nodes.
+// The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
 func (o ClusterOutput) ResourceLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.ResourceLabels }).(pulumi.StringMapOutput)
 }

@@ -90,13 +90,11 @@ type Lake struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Output only. Service account associated with this lake. This service account must be authorized to access or operate on
-	// resources managed by the lake.
+	// Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State pulumi.StringOutput `pulumi:"state"`
-	// Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and
-	// re-created with the same name.
+	// Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Output only. The time when the lake was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -154,13 +152,11 @@ type lakeState struct {
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
-	// Output only. Service account associated with this lake. This service account must be authorized to access or operate on
-	// resources managed by the lake.
+	// Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State *string `pulumi:"state"`
-	// Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and
-	// re-created with the same name.
+	// Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
 	Uid *string `pulumi:"uid"`
 	// Output only. The time when the lake was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -187,13 +183,11 @@ type LakeState struct {
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
-	// Output only. Service account associated with this lake. This service account must be authorized to access or operate on
-	// resources managed by the lake.
+	// Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
 	ServiceAccount pulumi.StringPtrInput
 	// Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State pulumi.StringPtrInput
-	// Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and
-	// re-created with the same name.
+	// Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
 	Uid pulumi.StringPtrInput
 	// Output only. The time when the lake was last updated.
 	UpdateTime pulumi.StringPtrInput
@@ -375,8 +369,7 @@ func (o LakeOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Lake) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Output only. Service account associated with this lake. This service account must be authorized to access or operate on
-// resources managed by the lake.
+// Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
 func (o LakeOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *Lake) pulumi.StringOutput { return v.ServiceAccount }).(pulumi.StringOutput)
 }
@@ -386,8 +379,7 @@ func (o LakeOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Lake) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and
-// re-created with the same name.
+// Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
 func (o LakeOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Lake) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }

@@ -337,10 +337,14 @@ func (o ConsumersIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type ServiceApi struct {
+	// A list of Method objects; structure is documented below.
 	Methods []ServiceApiMethod `pulumi:"methods"`
-	Name    *string            `pulumi:"name"`
-	Syntax  *string            `pulumi:"syntax"`
-	Version *string            `pulumi:"version"`
+	// The simple name of the endpoint as described in the config.
+	Name *string `pulumi:"name"`
+	// `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+	Syntax *string `pulumi:"syntax"`
+	// A version string for this api. If specified, will have the form major-version.minor-version, e.g. `1.10`.
+	Version *string `pulumi:"version"`
 }
 
 // ServiceApiInput is an input type that accepts ServiceApiArgs and ServiceApiOutput values.
@@ -355,10 +359,14 @@ type ServiceApiInput interface {
 }
 
 type ServiceApiArgs struct {
+	// A list of Method objects; structure is documented below.
 	Methods ServiceApiMethodArrayInput `pulumi:"methods"`
-	Name    pulumi.StringPtrInput      `pulumi:"name"`
-	Syntax  pulumi.StringPtrInput      `pulumi:"syntax"`
-	Version pulumi.StringPtrInput      `pulumi:"version"`
+	// The simple name of the endpoint as described in the config.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+	Syntax pulumi.StringPtrInput `pulumi:"syntax"`
+	// A version string for this api. If specified, will have the form major-version.minor-version, e.g. `1.10`.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (ServiceApiArgs) ElementType() reflect.Type {
@@ -412,18 +420,22 @@ func (o ServiceApiOutput) ToServiceApiOutputWithContext(ctx context.Context) Ser
 	return o
 }
 
+// A list of Method objects; structure is documented below.
 func (o ServiceApiOutput) Methods() ServiceApiMethodArrayOutput {
 	return o.ApplyT(func(v ServiceApi) []ServiceApiMethod { return v.Methods }).(ServiceApiMethodArrayOutput)
 }
 
+// The simple name of the endpoint as described in the config.
 func (o ServiceApiOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceApi) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
 func (o ServiceApiOutput) Syntax() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceApi) *string { return v.Syntax }).(pulumi.StringPtrOutput)
 }
 
+// A version string for this api. If specified, will have the form major-version.minor-version, e.g. `1.10`.
 func (o ServiceApiOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceApi) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -449,10 +461,14 @@ func (o ServiceApiArrayOutput) Index(i pulumi.IntInput) ServiceApiOutput {
 }
 
 type ServiceApiMethod struct {
-	Name         *string `pulumi:"name"`
-	RequestType  *string `pulumi:"requestType"`
+	// The simple name of the endpoint as described in the config.
+	Name *string `pulumi:"name"`
+	// The type URL for the request to this API.
+	RequestType *string `pulumi:"requestType"`
+	// The type URL for the response from this API.
 	ResponseType *string `pulumi:"responseType"`
-	Syntax       *string `pulumi:"syntax"`
+	// `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+	Syntax *string `pulumi:"syntax"`
 }
 
 // ServiceApiMethodInput is an input type that accepts ServiceApiMethodArgs and ServiceApiMethodOutput values.
@@ -467,10 +483,14 @@ type ServiceApiMethodInput interface {
 }
 
 type ServiceApiMethodArgs struct {
-	Name         pulumi.StringPtrInput `pulumi:"name"`
-	RequestType  pulumi.StringPtrInput `pulumi:"requestType"`
+	// The simple name of the endpoint as described in the config.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The type URL for the request to this API.
+	RequestType pulumi.StringPtrInput `pulumi:"requestType"`
+	// The type URL for the response from this API.
 	ResponseType pulumi.StringPtrInput `pulumi:"responseType"`
-	Syntax       pulumi.StringPtrInput `pulumi:"syntax"`
+	// `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+	Syntax pulumi.StringPtrInput `pulumi:"syntax"`
 }
 
 func (ServiceApiMethodArgs) ElementType() reflect.Type {
@@ -524,18 +544,22 @@ func (o ServiceApiMethodOutput) ToServiceApiMethodOutputWithContext(ctx context.
 	return o
 }
 
+// The simple name of the endpoint as described in the config.
 func (o ServiceApiMethodOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceApiMethod) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The type URL for the request to this API.
 func (o ServiceApiMethodOutput) RequestType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceApiMethod) *string { return v.RequestType }).(pulumi.StringPtrOutput)
 }
 
+// The type URL for the response from this API.
 func (o ServiceApiMethodOutput) ResponseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceApiMethod) *string { return v.ResponseType }).(pulumi.StringPtrOutput)
 }
 
+// `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
 func (o ServiceApiMethodOutput) Syntax() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceApiMethod) *string { return v.Syntax }).(pulumi.StringPtrOutput)
 }
@@ -561,8 +585,10 @@ func (o ServiceApiMethodArrayOutput) Index(i pulumi.IntInput) ServiceApiMethodOu
 }
 
 type ServiceEndpoint struct {
+	// The FQDN of the endpoint as described in the config.
 	Address *string `pulumi:"address"`
-	Name    *string `pulumi:"name"`
+	// The simple name of the endpoint as described in the config.
+	Name *string `pulumi:"name"`
 }
 
 // ServiceEndpointInput is an input type that accepts ServiceEndpointArgs and ServiceEndpointOutput values.
@@ -577,8 +603,10 @@ type ServiceEndpointInput interface {
 }
 
 type ServiceEndpointArgs struct {
+	// The FQDN of the endpoint as described in the config.
 	Address pulumi.StringPtrInput `pulumi:"address"`
-	Name    pulumi.StringPtrInput `pulumi:"name"`
+	// The simple name of the endpoint as described in the config.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (ServiceEndpointArgs) ElementType() reflect.Type {
@@ -632,10 +660,12 @@ func (o ServiceEndpointOutput) ToServiceEndpointOutputWithContext(ctx context.Co
 	return o
 }
 
+// The FQDN of the endpoint as described in the config.
 func (o ServiceEndpointOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceEndpoint) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
 
+// The simple name of the endpoint as described in the config.
 func (o ServiceEndpointOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceEndpoint) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

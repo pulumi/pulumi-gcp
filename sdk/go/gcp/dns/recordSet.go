@@ -63,9 +63,9 @@ import (
 //				Ttl:         pulumi.Int(300),
 //				ManagedZone: prod.Name,
 //				Rrdatas: pulumi.StringArray{
-//					frontendInstance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (string, error) {
-//						return networkInterfaces[0].AccessConfigs[0].NatIp, nil
-//					}).(pulumi.StringOutput),
+//					frontendInstance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (*string, error) {
+//						return &networkInterfaces[0].AccessConfigs[0].NatIp, nil
+//					}).(pulumi.StringPtrOutput),
 //				},
 //			})
 //			if err != nil {
@@ -414,13 +414,17 @@ type RecordSet struct {
 	ManagedZone pulumi.StringOutput `pulumi:"managedZone"`
 	// The DNS name this record set will apply to.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the project in which the load balancer belongs.
+	// The ID of the project in which the resource belongs. If it
+	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The configuration for steering traffic based on query.
 	// Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
 	// Structure is documented below.
 	RoutingPolicy RecordSetRoutingPolicyPtrOutput `pulumi:"routingPolicy"`
-	// Same as `rrdatas` above.
+	// The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+	// data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
+	// record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
+	// string (e.g. "first255characters\"\"morecharacters").
 	Rrdatas pulumi.StringArrayOutput `pulumi:"rrdatas"`
 	// The time-to-live of this record set (seconds).
 	Ttl pulumi.IntPtrOutput `pulumi:"ttl"`
@@ -471,13 +475,17 @@ type recordSetState struct {
 	ManagedZone *string `pulumi:"managedZone"`
 	// The DNS name this record set will apply to.
 	Name *string `pulumi:"name"`
-	// The ID of the project in which the load balancer belongs.
+	// The ID of the project in which the resource belongs. If it
+	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The configuration for steering traffic based on query.
 	// Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
 	// Structure is documented below.
 	RoutingPolicy *RecordSetRoutingPolicy `pulumi:"routingPolicy"`
-	// Same as `rrdatas` above.
+	// The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+	// data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
+	// record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
+	// string (e.g. "first255characters\"\"morecharacters").
 	Rrdatas []string `pulumi:"rrdatas"`
 	// The time-to-live of this record set (seconds).
 	Ttl *int `pulumi:"ttl"`
@@ -491,13 +499,17 @@ type RecordSetState struct {
 	ManagedZone pulumi.StringPtrInput
 	// The DNS name this record set will apply to.
 	Name pulumi.StringPtrInput
-	// The ID of the project in which the load balancer belongs.
+	// The ID of the project in which the resource belongs. If it
+	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The configuration for steering traffic based on query.
 	// Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
 	// Structure is documented below.
 	RoutingPolicy RecordSetRoutingPolicyPtrInput
-	// Same as `rrdatas` above.
+	// The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+	// data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
+	// record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
+	// string (e.g. "first255characters\"\"morecharacters").
 	Rrdatas pulumi.StringArrayInput
 	// The time-to-live of this record set (seconds).
 	Ttl pulumi.IntPtrInput
@@ -515,13 +527,17 @@ type recordSetArgs struct {
 	ManagedZone string `pulumi:"managedZone"`
 	// The DNS name this record set will apply to.
 	Name string `pulumi:"name"`
-	// The ID of the project in which the load balancer belongs.
+	// The ID of the project in which the resource belongs. If it
+	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The configuration for steering traffic based on query.
 	// Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
 	// Structure is documented below.
 	RoutingPolicy *RecordSetRoutingPolicy `pulumi:"routingPolicy"`
-	// Same as `rrdatas` above.
+	// The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+	// data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
+	// record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
+	// string (e.g. "first255characters\"\"morecharacters").
 	Rrdatas []string `pulumi:"rrdatas"`
 	// The time-to-live of this record set (seconds).
 	Ttl *int `pulumi:"ttl"`
@@ -536,13 +552,17 @@ type RecordSetArgs struct {
 	ManagedZone pulumi.StringInput
 	// The DNS name this record set will apply to.
 	Name pulumi.StringInput
-	// The ID of the project in which the load balancer belongs.
+	// The ID of the project in which the resource belongs. If it
+	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The configuration for steering traffic based on query.
 	// Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
 	// Structure is documented below.
 	RoutingPolicy RecordSetRoutingPolicyPtrInput
-	// Same as `rrdatas` above.
+	// The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+	// data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
+	// record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
+	// string (e.g. "first255characters\"\"morecharacters").
 	Rrdatas pulumi.StringArrayInput
 	// The time-to-live of this record set (seconds).
 	Ttl pulumi.IntPtrInput
@@ -648,7 +668,8 @@ func (o RecordSetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RecordSet) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the project in which the load balancer belongs.
+// The ID of the project in which the resource belongs. If it
+// is not provided, the provider project is used.
 func (o RecordSetOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *RecordSet) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -660,7 +681,10 @@ func (o RecordSetOutput) RoutingPolicy() RecordSetRoutingPolicyPtrOutput {
 	return o.ApplyT(func(v *RecordSet) RecordSetRoutingPolicyPtrOutput { return v.RoutingPolicy }).(RecordSetRoutingPolicyPtrOutput)
 }
 
-// Same as `rrdatas` above.
+// The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+// data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
+// record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
+// string (e.g. "first255characters\"\"morecharacters").
 func (o RecordSetOutput) Rrdatas() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RecordSet) pulumi.StringArrayOutput { return v.Rrdatas }).(pulumi.StringArrayOutput)
 }

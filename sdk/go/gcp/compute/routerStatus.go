@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = compute.GetRouterStatus(ctx, &compute.GetRouterStatusArgs{
+//			_, err := compute.GetRouterStatus(ctx, &compute.GetRouterStatusArgs{
 //				Name: "myrouter",
 //			}, nil)
 //			if err != nil {

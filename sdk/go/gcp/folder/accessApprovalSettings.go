@@ -128,9 +128,9 @@ import (
 //			}, nil)
 //			_, err = folder.NewAccessApprovalSettings(ctx, "folderAccessApproval", &folder.AccessApprovalSettingsArgs{
 //				FolderId: myFolder.FolderId,
-//				ActiveKeyVersion: cryptoKeyVersion.ApplyT(func(cryptoKeyVersion kms.GetKMSCryptoKeyVersionResult) (string, error) {
-//					return cryptoKeyVersion.Name, nil
-//				}).(pulumi.StringOutput),
+//				ActiveKeyVersion: cryptoKeyVersion.ApplyT(func(cryptoKeyVersion kms.GetKMSCryptoKeyVersionResult) (*string, error) {
+//					return &cryptoKeyVersion.Name, nil
+//				}).(pulumi.StringPtrOutput),
 //				EnrolledServices: folder.AccessApprovalSettingsEnrolledServiceArray{
 //					&folder.AccessApprovalSettingsEnrolledServiceArgs{
 //						CloudProduct: pulumi.String("all"),
@@ -172,8 +172,7 @@ type AccessApprovalSettings struct {
 	ActiveKeyVersion pulumi.StringPtrOutput `pulumi:"activeKeyVersion"`
 	// If the field is true, that indicates that an ancestor of this Folder has set active_key_version.
 	AncestorHasActiveKeyVersion pulumi.BoolOutput `pulumi:"ancestorHasActiveKeyVersion"`
-	// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-	// of the Folder.
+	// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Folder.
 	EnrolledAncestor pulumi.BoolOutput `pulumi:"enrolledAncestor"`
 	// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
 	// Access requests for the resource given by name against any of these services contained here will be required
@@ -183,10 +182,10 @@ type AccessApprovalSettings struct {
 	EnrolledServices AccessApprovalSettingsEnrolledServiceArrayOutput `pulumi:"enrolledServices"`
 	// ID of the folder of the access approval settings.
 	FolderId pulumi.StringOutput `pulumi:"folderId"`
-	// If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-	// this Folder (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on it,
-	// etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-	// top-down.
+	// If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
+	// configured on this Folder (e.g. it doesn't exist or the Access Approval service account doesn't have the
+	// correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+	// as key versions are inherited top-down.
 	InvalidKeyVersion pulumi.BoolOutput `pulumi:"invalidKeyVersion"`
 	// The resource name of the settings. Format is "folders/{folder_id}/accessApprovalSettings"
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -237,8 +236,7 @@ type accessApprovalSettingsState struct {
 	ActiveKeyVersion *string `pulumi:"activeKeyVersion"`
 	// If the field is true, that indicates that an ancestor of this Folder has set active_key_version.
 	AncestorHasActiveKeyVersion *bool `pulumi:"ancestorHasActiveKeyVersion"`
-	// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-	// of the Folder.
+	// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Folder.
 	EnrolledAncestor *bool `pulumi:"enrolledAncestor"`
 	// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
 	// Access requests for the resource given by name against any of these services contained here will be required
@@ -248,10 +246,10 @@ type accessApprovalSettingsState struct {
 	EnrolledServices []AccessApprovalSettingsEnrolledService `pulumi:"enrolledServices"`
 	// ID of the folder of the access approval settings.
 	FolderId *string `pulumi:"folderId"`
-	// If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-	// this Folder (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on it,
-	// etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-	// top-down.
+	// If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
+	// configured on this Folder (e.g. it doesn't exist or the Access Approval service account doesn't have the
+	// correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+	// as key versions are inherited top-down.
 	InvalidKeyVersion *bool `pulumi:"invalidKeyVersion"`
 	// The resource name of the settings. Format is "folders/{folder_id}/accessApprovalSettings"
 	Name *string `pulumi:"name"`
@@ -268,8 +266,7 @@ type AccessApprovalSettingsState struct {
 	ActiveKeyVersion pulumi.StringPtrInput
 	// If the field is true, that indicates that an ancestor of this Folder has set active_key_version.
 	AncestorHasActiveKeyVersion pulumi.BoolPtrInput
-	// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-	// of the Folder.
+	// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Folder.
 	EnrolledAncestor pulumi.BoolPtrInput
 	// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
 	// Access requests for the resource given by name against any of these services contained here will be required
@@ -279,10 +276,10 @@ type AccessApprovalSettingsState struct {
 	EnrolledServices AccessApprovalSettingsEnrolledServiceArrayInput
 	// ID of the folder of the access approval settings.
 	FolderId pulumi.StringPtrInput
-	// If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-	// this Folder (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on it,
-	// etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-	// top-down.
+	// If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
+	// configured on this Folder (e.g. it doesn't exist or the Access Approval service account doesn't have the
+	// correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+	// as key versions are inherited top-down.
 	InvalidKeyVersion pulumi.BoolPtrInput
 	// The resource name of the settings. Format is "folders/{folder_id}/accessApprovalSettings"
 	Name pulumi.StringPtrInput
@@ -434,8 +431,7 @@ func (o AccessApprovalSettingsOutput) AncestorHasActiveKeyVersion() pulumi.BoolO
 	return o.ApplyT(func(v *AccessApprovalSettings) pulumi.BoolOutput { return v.AncestorHasActiveKeyVersion }).(pulumi.BoolOutput)
 }
 
-// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-// of the Folder.
+// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Folder.
 func (o AccessApprovalSettingsOutput) EnrolledAncestor() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AccessApprovalSettings) pulumi.BoolOutput { return v.EnrolledAncestor }).(pulumi.BoolOutput)
 }
@@ -456,10 +452,10 @@ func (o AccessApprovalSettingsOutput) FolderId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessApprovalSettings) pulumi.StringOutput { return v.FolderId }).(pulumi.StringOutput)
 }
 
-// If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-// this Folder (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on it,
-// etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-// top-down.
+// If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
+// configured on this Folder (e.g. it doesn't exist or the Access Approval service account doesn't have the
+// correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+// as key versions are inherited top-down.
 func (o AccessApprovalSettingsOutput) InvalidKeyVersion() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AccessApprovalSettings) pulumi.BoolOutput { return v.InvalidKeyVersion }).(pulumi.BoolOutput)
 }

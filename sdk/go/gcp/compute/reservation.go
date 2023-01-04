@@ -90,7 +90,8 @@ import (
 type Reservation struct {
 	pulumi.CustomResourceState
 
-	// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+	// Full or partial URL to a parent commitment. This field displays for
+	// reservations that are tied to a commitment.
 	Commitment pulumi.StringOutput `pulumi:"commitment"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
@@ -160,7 +161,8 @@ func GetReservation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Reservation resources.
 type reservationState struct {
-	// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+	// Full or partial URL to a parent commitment. This field displays for
+	// reservations that are tied to a commitment.
 	Commitment *string `pulumi:"commitment"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
@@ -196,7 +198,8 @@ type reservationState struct {
 }
 
 type ReservationState struct {
-	// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+	// Full or partial URL to a parent commitment. This field displays for
+	// reservations that are tied to a commitment.
 	Commitment pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
@@ -379,7 +382,8 @@ func (o ReservationOutput) ToReservationOutputWithContext(ctx context.Context) R
 	return o
 }
 
-// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+// Full or partial URL to a parent commitment. This field displays for
+// reservations that are tied to a commitment.
 func (o ReservationOutput) Commitment() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Commitment }).(pulumi.StringOutput)
 }

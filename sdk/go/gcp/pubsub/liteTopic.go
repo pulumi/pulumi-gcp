@@ -39,14 +39,14 @@ import (
 //				return err
 //			}
 //			exampleLiteReservation, err := pubsub.NewLiteReservation(ctx, "exampleLiteReservation", &pubsub.LiteReservationArgs{
-//				Project:            pulumi.String(project.Number),
+//				Project:            *pulumi.String(project.Number),
 //				ThroughputCapacity: pulumi.Int(2),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = pubsub.NewLiteTopic(ctx, "exampleLiteTopic", &pubsub.LiteTopicArgs{
-//				Project: pulumi.String(project.Number),
+//				Project: *pulumi.String(project.Number),
 //				PartitionConfig: &pubsub.LiteTopicPartitionConfigArgs{
 //					Count: pulumi.Int(1),
 //					Capacity: &pubsub.LiteTopicPartitionConfigCapacityArgs{

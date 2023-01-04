@@ -57,7 +57,7 @@ func NewBackendServiceSignedUrlKey(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'KeyValue'")
 	}
 	if args.KeyValue != nil {
-		args.KeyValue = pulumi.ToSecret(args.KeyValue).(pulumi.StringOutput)
+		args.KeyValue = pulumi.ToSecret(args.KeyValue).(pulumi.StringInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"keyValue",

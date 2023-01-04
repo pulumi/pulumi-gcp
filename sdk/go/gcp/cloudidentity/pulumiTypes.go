@@ -701,10 +701,12 @@ func (o GroupMembershipRoleArrayOutput) Index(i pulumi.IntInput) GroupMembership
 type GetGroupMembershipsMembership struct {
 	CreateTime string `pulumi:"createTime"`
 	// The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
-	Group      string                                   `pulumi:"group"`
+	Group string `pulumi:"group"`
+	// EntityKey of the member.  Structure is documented below.
 	MemberKeys []GetGroupMembershipsMembershipMemberKey `pulumi:"memberKeys"`
 	// The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
-	Name                string                                            `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// EntityKey of the member.  Structure is documented below.
 	PreferredMemberKeys []GetGroupMembershipsMembershipPreferredMemberKey `pulumi:"preferredMemberKeys"`
 	// The MembershipRoles that apply to the Membership. Structure is documented below.
 	Roles      []GetGroupMembershipsMembershipRole `pulumi:"roles"`
@@ -726,10 +728,12 @@ type GetGroupMembershipsMembershipInput interface {
 type GetGroupMembershipsMembershipArgs struct {
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
-	Group      pulumi.StringInput                               `pulumi:"group"`
+	Group pulumi.StringInput `pulumi:"group"`
+	// EntityKey of the member.  Structure is documented below.
 	MemberKeys GetGroupMembershipsMembershipMemberKeyArrayInput `pulumi:"memberKeys"`
 	// The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
-	Name                pulumi.StringInput                                        `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// EntityKey of the member.  Structure is documented below.
 	PreferredMemberKeys GetGroupMembershipsMembershipPreferredMemberKeyArrayInput `pulumi:"preferredMemberKeys"`
 	// The MembershipRoles that apply to the Membership. Structure is documented below.
 	Roles      GetGroupMembershipsMembershipRoleArrayInput `pulumi:"roles"`
@@ -797,6 +801,7 @@ func (o GetGroupMembershipsMembershipOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMembershipsMembership) string { return v.Group }).(pulumi.StringOutput)
 }
 
+// EntityKey of the member.  Structure is documented below.
 func (o GetGroupMembershipsMembershipOutput) MemberKeys() GetGroupMembershipsMembershipMemberKeyArrayOutput {
 	return o.ApplyT(func(v GetGroupMembershipsMembership) []GetGroupMembershipsMembershipMemberKey { return v.MemberKeys }).(GetGroupMembershipsMembershipMemberKeyArrayOutput)
 }
@@ -806,6 +811,7 @@ func (o GetGroupMembershipsMembershipOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMembershipsMembership) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// EntityKey of the member.  Structure is documented below.
 func (o GetGroupMembershipsMembershipOutput) PreferredMemberKeys() GetGroupMembershipsMembershipPreferredMemberKeyArrayOutput {
 	return o.ApplyT(func(v GetGroupMembershipsMembership) []GetGroupMembershipsMembershipPreferredMemberKey {
 		return v.PreferredMemberKeys
@@ -1185,13 +1191,20 @@ func (o GetGroupMembershipsMembershipRoleArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetGroupsGroup struct {
-	CreateTime         string                   `pulumi:"createTime"`
-	Description        string                   `pulumi:"description"`
-	DisplayName        string                   `pulumi:"displayName"`
+	CreateTime string `pulumi:"createTime"`
+	// An extended description to help users determine the purpose of a Group.
+	Description string `pulumi:"description"`
+	// The display name of the Group.
+	DisplayName string `pulumi:"displayName"`
+	// EntityKey of the Group.  Structure is documented below.
 	GroupKeys          []GetGroupsGroupGroupKey `pulumi:"groupKeys"`
 	InitialGroupConfig string                   `pulumi:"initialGroupConfig"`
-	Labels             map[string]string        `pulumi:"labels"`
-	Name               string                   `pulumi:"name"`
+	// The labels that apply to the Group.
+	// Contains 'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
+	// 'system/groups/external': '' if the Group is an external-identity-mapped group.
+	Labels map[string]string `pulumi:"labels"`
+	// Resource name of the Group in the format: groups/{group_id}, where `groupId` is the unique ID assigned to the Group.
+	Name string `pulumi:"name"`
 	// The parent resource under which to list all Groups. Must be of the form identitysources/{identity_source_id} for external- identity-mapped groups or customers/{customer_id} for Google Groups.
 	Parent     string `pulumi:"parent"`
 	UpdateTime string `pulumi:"updateTime"`
@@ -1209,13 +1222,20 @@ type GetGroupsGroupInput interface {
 }
 
 type GetGroupsGroupArgs struct {
-	CreateTime         pulumi.StringInput               `pulumi:"createTime"`
-	Description        pulumi.StringInput               `pulumi:"description"`
-	DisplayName        pulumi.StringInput               `pulumi:"displayName"`
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// An extended description to help users determine the purpose of a Group.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The display name of the Group.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// EntityKey of the Group.  Structure is documented below.
 	GroupKeys          GetGroupsGroupGroupKeyArrayInput `pulumi:"groupKeys"`
 	InitialGroupConfig pulumi.StringInput               `pulumi:"initialGroupConfig"`
-	Labels             pulumi.StringMapInput            `pulumi:"labels"`
-	Name               pulumi.StringInput               `pulumi:"name"`
+	// The labels that apply to the Group.
+	// Contains 'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
+	// 'system/groups/external': '' if the Group is an external-identity-mapped group.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Resource name of the Group in the format: groups/{group_id}, where `groupId` is the unique ID assigned to the Group.
+	Name pulumi.StringInput `pulumi:"name"`
 	// The parent resource under which to list all Groups. Must be of the form identitysources/{identity_source_id} for external- identity-mapped groups or customers/{customer_id} for Google Groups.
 	Parent     pulumi.StringInput `pulumi:"parent"`
 	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
@@ -1276,14 +1296,17 @@ func (o GetGroupsGroupOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsGroup) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// An extended description to help users determine the purpose of a Group.
 func (o GetGroupsGroupOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsGroup) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The display name of the Group.
 func (o GetGroupsGroupOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsGroup) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// EntityKey of the Group.  Structure is documented below.
 func (o GetGroupsGroupOutput) GroupKeys() GetGroupsGroupGroupKeyArrayOutput {
 	return o.ApplyT(func(v GetGroupsGroup) []GetGroupsGroupGroupKey { return v.GroupKeys }).(GetGroupsGroupGroupKeyArrayOutput)
 }
@@ -1292,10 +1315,14 @@ func (o GetGroupsGroupOutput) InitialGroupConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsGroup) string { return v.InitialGroupConfig }).(pulumi.StringOutput)
 }
 
+// The labels that apply to the Group.
+// Contains 'cloudidentity.googleapis.com/groups.discussion_forum': ” if the Group is a Google Group or
+// 'system/groups/external': ” if the Group is an external-identity-mapped group.
 func (o GetGroupsGroupOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetGroupsGroup) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+// Resource name of the Group in the format: groups/{group_id}, where `groupId` is the unique ID assigned to the Group.
 func (o GetGroupsGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsGroup) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1330,7 +1357,17 @@ func (o GetGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupOutput
 }
 
 type GetGroupsGroupGroupKey struct {
-	Id        string `pulumi:"id"`
+	// The ID of the entity.
+	// For Google-managed entities, the id is the email address of an existing group or user.
+	// For external-identity-mapped entities, the id is a string conforming
+	// to the Identity Source's requirements.
+	Id string `pulumi:"id"`
+	// The namespace in which the entity exists.
+	// If not populated, the EntityKey represents a Google-managed entity
+	// such as a Google user or a Google Group.
+	// If populated, the EntityKey represents an external-identity-mapped group.
+	// The namespace must correspond to an identity source created in Admin Console
+	// and must be in the form of `identitysources/{identity_source_id}`.
 	Namespace string `pulumi:"namespace"`
 }
 
@@ -1346,7 +1383,17 @@ type GetGroupsGroupGroupKeyInput interface {
 }
 
 type GetGroupsGroupGroupKeyArgs struct {
-	Id        pulumi.StringInput `pulumi:"id"`
+	// The ID of the entity.
+	// For Google-managed entities, the id is the email address of an existing group or user.
+	// For external-identity-mapped entities, the id is a string conforming
+	// to the Identity Source's requirements.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The namespace in which the entity exists.
+	// If not populated, the EntityKey represents a Google-managed entity
+	// such as a Google user or a Google Group.
+	// If populated, the EntityKey represents an external-identity-mapped group.
+	// The namespace must correspond to an identity source created in Admin Console
+	// and must be in the form of `identitysources/{identity_source_id}`.
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 }
 
@@ -1401,10 +1448,20 @@ func (o GetGroupsGroupGroupKeyOutput) ToGetGroupsGroupGroupKeyOutputWithContext(
 	return o
 }
 
+// The ID of the entity.
+// For Google-managed entities, the id is the email address of an existing group or user.
+// For external-identity-mapped entities, the id is a string conforming
+// to the Identity Source's requirements.
 func (o GetGroupsGroupGroupKeyOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsGroupGroupKey) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The namespace in which the entity exists.
+// If not populated, the EntityKey represents a Google-managed entity
+// such as a Google user or a Google Group.
+// If populated, the EntityKey represents an external-identity-mapped group.
+// The namespace must correspond to an identity source created in Admin Console
+// and must be in the form of `identitysources/{identity_source_id}`.
 func (o GetGroupsGroupGroupKeyOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsGroupGroupKey) string { return v.Namespace }).(pulumi.StringOutput)
 }

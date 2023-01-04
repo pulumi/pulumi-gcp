@@ -20,6 +20,30 @@ import (
 // receive an error otherwise. The provider uses this scope by default.
 //
 // ## Example Usage
+// ### Exporting An Email
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			me, err := organizations.GetClientOpenIdUserInfo(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("my-email", me.Email)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetClientOpenIdUserInfo(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetClientOpenIdUserInfoResult, error) {
 	var rv GetClientOpenIdUserInfoResult
 	err := ctx.Invoke("gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo", nil, &rv, opts...)

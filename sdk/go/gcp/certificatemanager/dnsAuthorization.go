@@ -14,6 +14,52 @@ import (
 // DnsAuthorization represents a HTTP-reachable backend for a DnsAuthorization.
 //
 // ## Example Usage
+// ### Certificate Manager Dns Authorization Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := certificatemanager.NewDnsAuthorization(ctx, "default", &certificatemanager.DnsAuthorizationArgs{
+//				Description: pulumi.String("The default dnss"),
+//				Domain:      pulumi.String(fmt.Sprintf("%vrandom_suffix}.hashicorptest.com", "%{")),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("recordNameToInsert", map[string]interface{}{
+//				"google_certificate_manager_dns_authorization.default.dns_resource_record.0.name": []map[string]interface{}{
+//					nil,
+//				},
+//				"value": "",
+//			})
+//			ctx.Export("recordTypeToInsert", map[string]interface{}{
+//				"google_certificate_manager_dns_authorization.default.dns_resource_record.0.type": []map[string]interface{}{
+//					nil,
+//				},
+//				"value": "",
+//			})
+//			ctx.Export("recordDataToInsert", map[string]interface{}{
+//				"google_certificate_manager_dns_authorization.default.dns_resource_record.0.data": []map[string]interface{}{
+//					nil,
+//				},
+//				"value": "",
+//			})
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -41,8 +87,10 @@ type DnsAuthorization struct {
 
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The structure describing the DNS Resource Record that needs to be added to DNS configuration for the authorization to be
-	// usable by certificate.
+	// The structure describing the DNS Resource Record that needs to be added
+	// to DNS configuration for the authorization to be usable by
+	// certificate.
+	// Structure is documented below.
 	DnsResourceRecords DnsAuthorizationDnsResourceRecordArrayOutput `pulumi:"dnsResourceRecords"`
 	// A domain which is being authorized. A DnsAuthorization resource covers a
 	// single domain and its wildcard, e.g. authorization for "example.com" can
@@ -93,8 +141,10 @@ func GetDnsAuthorization(ctx *pulumi.Context,
 type dnsAuthorizationState struct {
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
-	// The structure describing the DNS Resource Record that needs to be added to DNS configuration for the authorization to be
-	// usable by certificate.
+	// The structure describing the DNS Resource Record that needs to be added
+	// to DNS configuration for the authorization to be usable by
+	// certificate.
+	// Structure is documented below.
 	DnsResourceRecords []DnsAuthorizationDnsResourceRecord `pulumi:"dnsResourceRecords"`
 	// A domain which is being authorized. A DnsAuthorization resource covers a
 	// single domain and its wildcard, e.g. authorization for "example.com" can
@@ -114,8 +164,10 @@ type dnsAuthorizationState struct {
 type DnsAuthorizationState struct {
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
-	// The structure describing the DNS Resource Record that needs to be added to DNS configuration for the authorization to be
-	// usable by certificate.
+	// The structure describing the DNS Resource Record that needs to be added
+	// to DNS configuration for the authorization to be usable by
+	// certificate.
+	// Structure is documented below.
 	DnsResourceRecords DnsAuthorizationDnsResourceRecordArrayInput
 	// A domain which is being authorized. A DnsAuthorization resource covers a
 	// single domain and its wildcard, e.g. authorization for "example.com" can
@@ -265,8 +317,10 @@ func (o DnsAuthorizationOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The structure describing the DNS Resource Record that needs to be added to DNS configuration for the authorization to be
-// usable by certificate.
+// The structure describing the DNS Resource Record that needs to be added
+// to DNS configuration for the authorization to be usable by
+// certificate.
+// Structure is documented below.
 func (o DnsAuthorizationOutput) DnsResourceRecords() DnsAuthorizationDnsResourceRecordArrayOutput {
 	return o.ApplyT(func(v *DnsAuthorization) DnsAuthorizationDnsResourceRecordArrayOutput { return v.DnsResourceRecords }).(DnsAuthorizationDnsResourceRecordArrayOutput)
 }

@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = compute.LookupInstanceGroupManager(ctx, &compute.LookupInstanceGroupManagerArgs{
+//			_, err := compute.LookupInstanceGroupManager(ctx, &compute.LookupInstanceGroupManagerArgs{
 //				Name: pulumi.StringRef("my-igm"),
 //				Zone: pulumi.StringRef("us-central1-a"),
 //			}, nil)

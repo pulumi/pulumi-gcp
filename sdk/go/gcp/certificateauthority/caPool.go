@@ -81,7 +81,8 @@ type CaPool struct {
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
 	// "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	// Location of the CaPool. A full list of valid locations can be found by
+	// running `gcloud privateca locations list`.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name for this CaPool.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -138,7 +139,8 @@ type caPoolState struct {
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
 	// "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
-	// String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	// Location of the CaPool. A full list of valid locations can be found by
+	// running `gcloud privateca locations list`.
 	Location *string `pulumi:"location"`
 	// The name for this CaPool.
 	Name *string `pulumi:"name"`
@@ -161,7 +163,8 @@ type CaPoolState struct {
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
 	// "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput
-	// String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	// Location of the CaPool. A full list of valid locations can be found by
+	// running `gcloud privateca locations list`.
 	Location pulumi.StringPtrInput
 	// The name for this CaPool.
 	Name pulumi.StringPtrInput
@@ -188,7 +191,8 @@ type caPoolArgs struct {
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
 	// "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
-	// String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	// Location of the CaPool. A full list of valid locations can be found by
+	// running `gcloud privateca locations list`.
 	Location string `pulumi:"location"`
 	// The name for this CaPool.
 	Name *string `pulumi:"name"`
@@ -212,7 +216,8 @@ type CaPoolArgs struct {
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
 	// "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput
-	// String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	// Location of the CaPool. A full list of valid locations can be found by
+	// running `gcloud privateca locations list`.
 	Location pulumi.StringInput
 	// The name for this CaPool.
 	Name pulumi.StringPtrInput
@@ -327,7 +332,8 @@ func (o CaPoolOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CaPool) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+// Location of the CaPool. A full list of valid locations can be found by
+// running `gcloud privateca locations list`.
 func (o CaPoolOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *CaPool) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

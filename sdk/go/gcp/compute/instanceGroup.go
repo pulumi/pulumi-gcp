@@ -59,8 +59,8 @@ import (
 //			_, err := compute.NewInstanceGroup(ctx, "webservers", &compute.InstanceGroupArgs{
 //				Description: pulumi.String("Test instance group"),
 //				Instances: pulumi.StringArray{
-//					pulumi.Any(google_compute_instance.Test.Id),
-//					pulumi.Any(google_compute_instance.Test2.Id),
+//					google_compute_instance.Test.Id,
+//					google_compute_instance.Test2.Id,
 //				},
 //				NamedPorts: compute.InstanceGroupNamedPortTypeArray{
 //					&compute.InstanceGroupNamedPortTypeArgs{
@@ -113,7 +113,10 @@ type InstanceGroup struct {
 	// The list of instances in the group, in `selfLink` format.
 	// When adding instances they must all be in the same network and zone as the instance group.
 	Instances pulumi.StringArrayOutput `pulumi:"instances"`
-	// The name which the port will be mapped to.
+	// The name of the instance group. Must be 1-63
+	// characters long and comply with
+	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+	// include lowercase letters, numbers, and hyphens.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The named port configuration. See the section below
 	// for details on configuration. Structure is documented below.
@@ -169,7 +172,10 @@ type instanceGroupState struct {
 	// The list of instances in the group, in `selfLink` format.
 	// When adding instances they must all be in the same network and zone as the instance group.
 	Instances []string `pulumi:"instances"`
-	// The name which the port will be mapped to.
+	// The name of the instance group. Must be 1-63
+	// characters long and comply with
+	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+	// include lowercase letters, numbers, and hyphens.
 	Name *string `pulumi:"name"`
 	// The named port configuration. See the section below
 	// for details on configuration. Structure is documented below.
@@ -197,7 +203,10 @@ type InstanceGroupState struct {
 	// The list of instances in the group, in `selfLink` format.
 	// When adding instances they must all be in the same network and zone as the instance group.
 	Instances pulumi.StringArrayInput
-	// The name which the port will be mapped to.
+	// The name of the instance group. Must be 1-63
+	// characters long and comply with
+	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+	// include lowercase letters, numbers, and hyphens.
 	Name pulumi.StringPtrInput
 	// The named port configuration. See the section below
 	// for details on configuration. Structure is documented below.
@@ -229,7 +238,10 @@ type instanceGroupArgs struct {
 	// The list of instances in the group, in `selfLink` format.
 	// When adding instances they must all be in the same network and zone as the instance group.
 	Instances []string `pulumi:"instances"`
-	// The name which the port will be mapped to.
+	// The name of the instance group. Must be 1-63
+	// characters long and comply with
+	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+	// include lowercase letters, numbers, and hyphens.
 	Name *string `pulumi:"name"`
 	// The named port configuration. See the section below
 	// for details on configuration. Structure is documented below.
@@ -254,7 +266,10 @@ type InstanceGroupArgs struct {
 	// The list of instances in the group, in `selfLink` format.
 	// When adding instances they must all be in the same network and zone as the instance group.
 	Instances pulumi.StringArrayInput
-	// The name which the port will be mapped to.
+	// The name of the instance group. Must be 1-63
+	// characters long and comply with
+	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+	// include lowercase letters, numbers, and hyphens.
 	Name pulumi.StringPtrInput
 	// The named port configuration. See the section below
 	// for details on configuration. Structure is documented below.
@@ -370,7 +385,10 @@ func (o InstanceGroupOutput) Instances() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InstanceGroup) pulumi.StringArrayOutput { return v.Instances }).(pulumi.StringArrayOutput)
 }
 
-// The name which the port will be mapped to.
+// The name of the instance group. Must be 1-63
+// characters long and comply with
+// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+// include lowercase letters, numbers, and hyphens.
 func (o InstanceGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

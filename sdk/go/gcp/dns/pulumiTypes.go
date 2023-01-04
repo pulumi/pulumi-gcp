@@ -1656,7 +1656,7 @@ func (o ManagedZonePrivateVisibilityConfigGkeClusterArrayOutput) Index(i pulumi.
 }
 
 type ManagedZonePrivateVisibilityConfigNetwork struct {
-	// The id or fully qualified URL of the VPC network to forward queries to.
+	// The id or fully qualified URL of the VPC network to bind to.
 	// This should be formatted like `projects/{project}/global/networks/{network}` or
 	// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
 	NetworkUrl string `pulumi:"networkUrl"`
@@ -1674,7 +1674,7 @@ type ManagedZonePrivateVisibilityConfigNetworkInput interface {
 }
 
 type ManagedZonePrivateVisibilityConfigNetworkArgs struct {
-	// The id or fully qualified URL of the VPC network to forward queries to.
+	// The id or fully qualified URL of the VPC network to bind to.
 	// This should be formatted like `projects/{project}/global/networks/{network}` or
 	// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
 	NetworkUrl pulumi.StringInput `pulumi:"networkUrl"`
@@ -1731,7 +1731,7 @@ func (o ManagedZonePrivateVisibilityConfigNetworkOutput) ToManagedZonePrivateVis
 	return o
 }
 
-// The id or fully qualified URL of the VPC network to forward queries to.
+// The id or fully qualified URL of the VPC network to bind to.
 // This should be formatted like `projects/{project}/global/networks/{network}` or
 // `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
 func (o ManagedZonePrivateVisibilityConfigNetworkOutput) NetworkUrl() pulumi.StringOutput {
@@ -3252,13 +3252,13 @@ func (o RecordSetRoutingPolicyPrimaryBackupPtrOutput) TrickleRatio() pulumi.Floa
 }
 
 type RecordSetRoutingPolicyPrimaryBackupBackupGeo struct {
-	// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+	// The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `healthCheckedTargets` can be set.
+	// Structure is document below.
 	// Structure is document below.
 	HealthCheckedTargets *RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets `pulumi:"healthCheckedTargets"`
 	// The location name defined in Google Cloud.
-	Location string `pulumi:"location"`
-	// Same as `rrdatas` above.
-	Rrdatas []string `pulumi:"rrdatas"`
+	Location string   `pulumi:"location"`
+	Rrdatas  []string `pulumi:"rrdatas"`
 }
 
 // RecordSetRoutingPolicyPrimaryBackupBackupGeoInput is an input type that accepts RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs and RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput values.
@@ -3273,13 +3273,13 @@ type RecordSetRoutingPolicyPrimaryBackupBackupGeoInput interface {
 }
 
 type RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs struct {
-	// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+	// The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `healthCheckedTargets` can be set.
+	// Structure is document below.
 	// Structure is document below.
 	HealthCheckedTargets RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrInput `pulumi:"healthCheckedTargets"`
 	// The location name defined in Google Cloud.
-	Location pulumi.StringInput `pulumi:"location"`
-	// Same as `rrdatas` above.
-	Rrdatas pulumi.StringArrayInput `pulumi:"rrdatas"`
+	Location pulumi.StringInput      `pulumi:"location"`
+	Rrdatas  pulumi.StringArrayInput `pulumi:"rrdatas"`
 }
 
 func (RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs) ElementType() reflect.Type {
@@ -3333,7 +3333,8 @@ func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput) ToRecordSetRoutingPo
 	return o
 }
 
-// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+// The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `healthCheckedTargets` can be set.
+// Structure is document below.
 // Structure is document below.
 func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput) HealthCheckedTargets() RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput {
 	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupBackupGeo) *RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets {
@@ -3346,7 +3347,6 @@ func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput) Location() pulumi.St
 	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupBackupGeo) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Same as `rrdatas` above.
 func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput) Rrdatas() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupBackupGeo) []string { return v.Rrdatas }).(pulumi.StringArrayOutput)
 }
@@ -3976,7 +3976,7 @@ func (o RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutpu
 }
 
 type RecordSetRoutingPolicyWrr struct {
-	// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+	// The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `healthCheckedTargets` can be set.
 	// Structure is document below.
 	HealthCheckedTargets *RecordSetRoutingPolicyWrrHealthCheckedTargets `pulumi:"healthCheckedTargets"`
 	// Same as `rrdatas` above.
@@ -3997,7 +3997,7 @@ type RecordSetRoutingPolicyWrrInput interface {
 }
 
 type RecordSetRoutingPolicyWrrArgs struct {
-	// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+	// The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `healthCheckedTargets` can be set.
 	// Structure is document below.
 	HealthCheckedTargets RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrInput `pulumi:"healthCheckedTargets"`
 	// Same as `rrdatas` above.
@@ -4057,7 +4057,7 @@ func (o RecordSetRoutingPolicyWrrOutput) ToRecordSetRoutingPolicyWrrOutputWithCo
 	return o
 }
 
-// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+// The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `healthCheckedTargets` can be set.
 // Structure is document below.
 func (o RecordSetRoutingPolicyWrrOutput) HealthCheckedTargets() RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput {
 	return o.ApplyT(func(v RecordSetRoutingPolicyWrr) *RecordSetRoutingPolicyWrrHealthCheckedTargets {

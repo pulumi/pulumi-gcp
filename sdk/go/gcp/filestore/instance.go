@@ -198,7 +198,8 @@ type Instance struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A description of the instance.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+	// Server-specified ETag for the instance resource to prevent
+	// simultaneous updates from overwriting each other.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// File system shares on the instance. For this version, only a
 	// single file share is supported.
@@ -210,7 +211,7 @@ type Instance struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The name of the fileshare (16 characters or less)
+	// The resource name of the instance.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// VPC networks to which the instance is connected. For this version,
 	// only a single network is supported.
@@ -222,7 +223,6 @@ type Instance struct {
 	// The service tier of the instance.
 	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
 	Tier pulumi.StringOutput `pulumi:"tier"`
-	// -
 	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
 	//
@@ -272,7 +272,8 @@ type instanceState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// A description of the instance.
 	Description *string `pulumi:"description"`
-	// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+	// Server-specified ETag for the instance resource to prevent
+	// simultaneous updates from overwriting each other.
 	Etag *string `pulumi:"etag"`
 	// File system shares on the instance. For this version, only a
 	// single file share is supported.
@@ -284,7 +285,7 @@ type instanceState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
 	Location *string `pulumi:"location"`
-	// The name of the fileshare (16 characters or less)
+	// The resource name of the instance.
 	Name *string `pulumi:"name"`
 	// VPC networks to which the instance is connected. For this version,
 	// only a single network is supported.
@@ -296,7 +297,6 @@ type instanceState struct {
 	// The service tier of the instance.
 	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
 	Tier *string `pulumi:"tier"`
-	// -
 	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
 	//
@@ -309,7 +309,8 @@ type InstanceState struct {
 	CreateTime pulumi.StringPtrInput
 	// A description of the instance.
 	Description pulumi.StringPtrInput
-	// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+	// Server-specified ETag for the instance resource to prevent
+	// simultaneous updates from overwriting each other.
 	Etag pulumi.StringPtrInput
 	// File system shares on the instance. For this version, only a
 	// single file share is supported.
@@ -321,7 +322,7 @@ type InstanceState struct {
 	Labels pulumi.StringMapInput
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
 	Location pulumi.StringPtrInput
-	// The name of the fileshare (16 characters or less)
+	// The resource name of the instance.
 	Name pulumi.StringPtrInput
 	// VPC networks to which the instance is connected. For this version,
 	// only a single network is supported.
@@ -333,7 +334,6 @@ type InstanceState struct {
 	// The service tier of the instance.
 	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
 	Tier pulumi.StringPtrInput
-	// -
 	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
 	//
@@ -358,7 +358,7 @@ type instanceArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
 	Location *string `pulumi:"location"`
-	// The name of the fileshare (16 characters or less)
+	// The resource name of the instance.
 	Name *string `pulumi:"name"`
 	// VPC networks to which the instance is connected. For this version,
 	// only a single network is supported.
@@ -370,7 +370,6 @@ type instanceArgs struct {
 	// The service tier of the instance.
 	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
 	Tier string `pulumi:"tier"`
-	// -
 	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
 	//
@@ -392,7 +391,7 @@ type InstanceArgs struct {
 	Labels pulumi.StringMapInput
 	// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
 	Location pulumi.StringPtrInput
-	// The name of the fileshare (16 characters or less)
+	// The resource name of the instance.
 	Name pulumi.StringPtrInput
 	// VPC networks to which the instance is connected. For this version,
 	// only a single network is supported.
@@ -404,7 +403,6 @@ type InstanceArgs struct {
 	// The service tier of the instance.
 	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
 	Tier pulumi.StringInput
-	// -
 	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
 	//
@@ -509,7 +507,8 @@ func (o InstanceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+// Server-specified ETag for the instance resource to prevent
+// simultaneous updates from overwriting each other.
 func (o InstanceOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
@@ -536,7 +535,7 @@ func (o InstanceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The name of the fileshare (16 characters or less)
+// The resource name of the instance.
 func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -560,7 +559,6 @@ func (o InstanceOutput) Tier() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Tier }).(pulumi.StringOutput)
 }
 
-// -
 // (Optional, Deprecated)
 // The name of the Filestore zone of the instance.
 //

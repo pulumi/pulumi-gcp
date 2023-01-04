@@ -103,7 +103,7 @@ type AccessLevel struct {
 	// See CEL spec at: https://github.com/google/cel-spec.
 	// Structure is documented below.
 	Custom AccessLevelCustomPtrOutput `pulumi:"custom"`
-	// Description of the expression
+	// Description of the AccessLevel and its use. Does not affect behavior.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Resource name for the Access Level. The shortName component must begin
 	// with a letter and only include alphanumeric and '_'.
@@ -112,7 +112,7 @@ type AccessLevel struct {
 	// The AccessPolicy this AccessLevel lives in.
 	// Format: accessPolicies/{policy_id}
 	Parent pulumi.StringOutput `pulumi:"parent"`
-	// Title for the expression, i.e. a short string describing its purpose.
+	// Human readable title. Must be unique within the Policy.
 	Title pulumi.StringOutput `pulumi:"title"`
 }
 
@@ -158,7 +158,7 @@ type accessLevelState struct {
 	// See CEL spec at: https://github.com/google/cel-spec.
 	// Structure is documented below.
 	Custom *AccessLevelCustom `pulumi:"custom"`
-	// Description of the expression
+	// Description of the AccessLevel and its use. Does not affect behavior.
 	Description *string `pulumi:"description"`
 	// Resource name for the Access Level. The shortName component must begin
 	// with a letter and only include alphanumeric and '_'.
@@ -167,7 +167,7 @@ type accessLevelState struct {
 	// The AccessPolicy this AccessLevel lives in.
 	// Format: accessPolicies/{policy_id}
 	Parent *string `pulumi:"parent"`
-	// Title for the expression, i.e. a short string describing its purpose.
+	// Human readable title. Must be unique within the Policy.
 	Title *string `pulumi:"title"`
 }
 
@@ -179,7 +179,7 @@ type AccessLevelState struct {
 	// See CEL spec at: https://github.com/google/cel-spec.
 	// Structure is documented below.
 	Custom AccessLevelCustomPtrInput
-	// Description of the expression
+	// Description of the AccessLevel and its use. Does not affect behavior.
 	Description pulumi.StringPtrInput
 	// Resource name for the Access Level. The shortName component must begin
 	// with a letter and only include alphanumeric and '_'.
@@ -188,7 +188,7 @@ type AccessLevelState struct {
 	// The AccessPolicy this AccessLevel lives in.
 	// Format: accessPolicies/{policy_id}
 	Parent pulumi.StringPtrInput
-	// Title for the expression, i.e. a short string describing its purpose.
+	// Human readable title. Must be unique within the Policy.
 	Title pulumi.StringPtrInput
 }
 
@@ -204,7 +204,7 @@ type accessLevelArgs struct {
 	// See CEL spec at: https://github.com/google/cel-spec.
 	// Structure is documented below.
 	Custom *AccessLevelCustom `pulumi:"custom"`
-	// Description of the expression
+	// Description of the AccessLevel and its use. Does not affect behavior.
 	Description *string `pulumi:"description"`
 	// Resource name for the Access Level. The shortName component must begin
 	// with a letter and only include alphanumeric and '_'.
@@ -213,7 +213,7 @@ type accessLevelArgs struct {
 	// The AccessPolicy this AccessLevel lives in.
 	// Format: accessPolicies/{policy_id}
 	Parent string `pulumi:"parent"`
-	// Title for the expression, i.e. a short string describing its purpose.
+	// Human readable title. Must be unique within the Policy.
 	Title string `pulumi:"title"`
 }
 
@@ -226,7 +226,7 @@ type AccessLevelArgs struct {
 	// See CEL spec at: https://github.com/google/cel-spec.
 	// Structure is documented below.
 	Custom AccessLevelCustomPtrInput
-	// Description of the expression
+	// Description of the AccessLevel and its use. Does not affect behavior.
 	Description pulumi.StringPtrInput
 	// Resource name for the Access Level. The shortName component must begin
 	// with a letter and only include alphanumeric and '_'.
@@ -235,7 +235,7 @@ type AccessLevelArgs struct {
 	// The AccessPolicy this AccessLevel lives in.
 	// Format: accessPolicies/{policy_id}
 	Parent pulumi.StringInput
-	// Title for the expression, i.e. a short string describing its purpose.
+	// Human readable title. Must be unique within the Policy.
 	Title pulumi.StringInput
 }
 
@@ -339,7 +339,7 @@ func (o AccessLevelOutput) Custom() AccessLevelCustomPtrOutput {
 	return o.ApplyT(func(v *AccessLevel) AccessLevelCustomPtrOutput { return v.Custom }).(AccessLevelCustomPtrOutput)
 }
 
-// Description of the expression
+// Description of the AccessLevel and its use. Does not affect behavior.
 func (o AccessLevelOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessLevel) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -357,7 +357,7 @@ func (o AccessLevelOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessLevel) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }
 
-// Title for the expression, i.e. a short string describing its purpose.
+// Human readable title. Must be unique within the Policy.
 func (o AccessLevelOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessLevel) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
 }

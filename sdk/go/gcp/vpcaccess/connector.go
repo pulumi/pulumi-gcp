@@ -131,8 +131,7 @@ type Connector struct {
 	MinInstances pulumi.IntOutput `pulumi:"minInstances"`
 	// Minimum throughput of the connector in Mbps. Default and min is 200.
 	MinThroughput pulumi.IntPtrOutput `pulumi:"minThroughput"`
-	// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
-	// https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
+	// The name of the resource (Max 25 characters).
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Name or selfLink of the VPC network. Required if `ipCidrRange` is set.
 	Network pulumi.StringOutput `pulumi:"network"`
@@ -191,8 +190,7 @@ type connectorState struct {
 	MinInstances *int `pulumi:"minInstances"`
 	// Minimum throughput of the connector in Mbps. Default and min is 200.
 	MinThroughput *int `pulumi:"minThroughput"`
-	// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
-	// https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
+	// The name of the resource (Max 25 characters).
 	Name *string `pulumi:"name"`
 	// Name or selfLink of the VPC network. Required if `ipCidrRange` is set.
 	Network *string `pulumi:"network"`
@@ -223,8 +221,7 @@ type ConnectorState struct {
 	MinInstances pulumi.IntPtrInput
 	// Minimum throughput of the connector in Mbps. Default and min is 200.
 	MinThroughput pulumi.IntPtrInput
-	// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
-	// https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
+	// The name of the resource (Max 25 characters).
 	Name pulumi.StringPtrInput
 	// Name or selfLink of the VPC network. Required if `ipCidrRange` is set.
 	Network pulumi.StringPtrInput
@@ -259,8 +256,7 @@ type connectorArgs struct {
 	MinInstances *int `pulumi:"minInstances"`
 	// Minimum throughput of the connector in Mbps. Default and min is 200.
 	MinThroughput *int `pulumi:"minThroughput"`
-	// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
-	// https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
+	// The name of the resource (Max 25 characters).
 	Name *string `pulumi:"name"`
 	// Name or selfLink of the VPC network. Required if `ipCidrRange` is set.
 	Network *string `pulumi:"network"`
@@ -288,8 +284,7 @@ type ConnectorArgs struct {
 	MinInstances pulumi.IntPtrInput
 	// Minimum throughput of the connector in Mbps. Default and min is 200.
 	MinThroughput pulumi.IntPtrInput
-	// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
-	// https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
+	// The name of the resource (Max 25 characters).
 	Name pulumi.StringPtrInput
 	// Name or selfLink of the VPC network. Required if `ipCidrRange` is set.
 	Network pulumi.StringPtrInput
@@ -420,8 +415,7 @@ func (o ConnectorOutput) MinThroughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Connector) pulumi.IntPtrOutput { return v.MinThroughput }).(pulumi.IntPtrOutput)
 }
 
-// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
-// https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
+// The name of the resource (Max 25 characters).
 func (o ConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

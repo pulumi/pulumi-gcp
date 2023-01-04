@@ -68,8 +68,7 @@ import (
 type AiMetadataStore struct {
 	pulumi.CustomResourceState
 
-	// The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-	// nine fractional digits.
+	// The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Description of the MetadataStore.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -84,9 +83,9 @@ type AiMetadataStore struct {
 	// The region of the Metadata Store. eg us-central1
 	Region pulumi.StringOutput `pulumi:"region"`
 	// State information of the MetadataStore.
+	// Structure is documented below.
 	States AiMetadataStoreStateTypeArrayOutput `pulumi:"states"`
-	// The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-	// to nine fractional digits.
+	// The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -119,8 +118,7 @@ func GetAiMetadataStore(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AiMetadataStore resources.
 type aiMetadataStoreState struct {
-	// The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-	// nine fractional digits.
+	// The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime *string `pulumi:"createTime"`
 	// Description of the MetadataStore.
 	Description *string `pulumi:"description"`
@@ -135,15 +133,14 @@ type aiMetadataStoreState struct {
 	// The region of the Metadata Store. eg us-central1
 	Region *string `pulumi:"region"`
 	// State information of the MetadataStore.
+	// Structure is documented below.
 	States []AiMetadataStoreStateType `pulumi:"states"`
-	// The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-	// to nine fractional digits.
+	// The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type AiMetadataStoreState struct {
-	// The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-	// nine fractional digits.
+	// The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringPtrInput
 	// Description of the MetadataStore.
 	Description pulumi.StringPtrInput
@@ -158,9 +155,9 @@ type AiMetadataStoreState struct {
 	// The region of the Metadata Store. eg us-central1
 	Region pulumi.StringPtrInput
 	// State information of the MetadataStore.
+	// Structure is documented below.
 	States AiMetadataStoreStateTypeArrayInput
-	// The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-	// to nine fractional digits.
+	// The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -286,8 +283,7 @@ func (o AiMetadataStoreOutput) ToAiMetadataStoreOutputWithContext(ctx context.Co
 	return o
 }
 
-// The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-// nine fractional digits.
+// The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 func (o AiMetadataStoreOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiMetadataStore) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -320,12 +316,12 @@ func (o AiMetadataStoreOutput) Region() pulumi.StringOutput {
 }
 
 // State information of the MetadataStore.
+// Structure is documented below.
 func (o AiMetadataStoreOutput) States() AiMetadataStoreStateTypeArrayOutput {
 	return o.ApplyT(func(v *AiMetadataStore) AiMetadataStoreStateTypeArrayOutput { return v.States }).(AiMetadataStoreStateTypeArrayOutput)
 }
 
-// The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-// to nine fractional digits.
+// The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 func (o AiMetadataStoreOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiMetadataStore) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

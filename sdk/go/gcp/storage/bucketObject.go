@@ -115,10 +115,10 @@ func NewBucketObject(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Bucket'")
 	}
 	if args.Content != nil {
-		args.Content = pulumi.ToSecret(args.Content).(pulumi.StringPtrOutput)
+		args.Content = pulumi.ToSecret(args.Content).(pulumi.StringPtrInput)
 	}
 	if args.CustomerEncryption != nil {
-		args.CustomerEncryption = pulumi.ToSecret(args.CustomerEncryption).(BucketObjectCustomerEncryptionPtrOutput)
+		args.CustomerEncryption = pulumi.ToSecret(args.CustomerEncryption).(BucketObjectCustomerEncryptionPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"content",

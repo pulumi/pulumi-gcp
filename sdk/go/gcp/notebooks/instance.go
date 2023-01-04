@@ -166,8 +166,8 @@ import (
 //				BootDiskSizeGb:   pulumi.Int(110),
 //				NoPublicIp:       pulumi.Bool(true),
 //				NoProxyAccess:    pulumi.Bool(true),
-//				Network:          pulumi.String(myNetwork.Id),
-//				Subnet:           pulumi.String(mySubnetwork.Id),
+//				Network:          *pulumi.String(myNetwork.Id),
+//				Subnet:           *pulumi.String(mySubnetwork.Id),
 //				Labels: pulumi.StringMap{
 //					"k": pulumi.String("val"),
 //				},
@@ -277,8 +277,8 @@ type Instance struct {
 	// notebook instance fully boots up. The path must be a URL
 	// or Cloud Storage path (gs://path-to-file/file-name).
 	PostStartupScript pulumi.StringPtrOutput `pulumi:"postStartupScript"`
-	// The name of the Google Cloud project that this VM image belongs to.
-	// Format: projects/{project_id}
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The proxy endpoint that is used to access the Jupyter notebook.
 	ProxyUri pulumi.StringOutput `pulumi:"proxyUri"`
@@ -421,8 +421,8 @@ type instanceState struct {
 	// notebook instance fully boots up. The path must be a URL
 	// or Cloud Storage path (gs://path-to-file/file-name).
 	PostStartupScript *string `pulumi:"postStartupScript"`
-	// The name of the Google Cloud project that this VM image belongs to.
-	// Format: projects/{project_id}
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The proxy endpoint that is used to access the Jupyter notebook.
 	ProxyUri *string `pulumi:"proxyUri"`
@@ -531,8 +531,8 @@ type InstanceState struct {
 	// notebook instance fully boots up. The path must be a URL
 	// or Cloud Storage path (gs://path-to-file/file-name).
 	PostStartupScript pulumi.StringPtrInput
-	// The name of the Google Cloud project that this VM image belongs to.
-	// Format: projects/{project_id}
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The proxy endpoint that is used to access the Jupyter notebook.
 	ProxyUri pulumi.StringPtrInput
@@ -645,8 +645,8 @@ type instanceArgs struct {
 	// notebook instance fully boots up. The path must be a URL
 	// or Cloud Storage path (gs://path-to-file/file-name).
 	PostStartupScript *string `pulumi:"postStartupScript"`
-	// The name of the Google Cloud project that this VM image belongs to.
-	// Format: projects/{project_id}
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Reservation Affinity for consuming Zonal reservation.
 	// Structure is documented below.
@@ -752,8 +752,8 @@ type InstanceArgs struct {
 	// notebook instance fully boots up. The path must be a URL
 	// or Cloud Storage path (gs://path-to-file/file-name).
 	PostStartupScript pulumi.StringPtrInput
-	// The name of the Google Cloud project that this VM image belongs to.
-	// Format: projects/{project_id}
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Reservation Affinity for consuming Zonal reservation.
 	// Structure is documented below.
@@ -1013,8 +1013,8 @@ func (o InstanceOutput) PostStartupScript() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PostStartupScript }).(pulumi.StringPtrOutput)
 }
 
-// The name of the Google Cloud project that this VM image belongs to.
-// Format: projects/{project_id}
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o InstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

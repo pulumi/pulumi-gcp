@@ -178,17 +178,7 @@ type Table struct {
 	// If specified, configures range-based
 	// partitioning for this table. Structure is documented below.
 	RangePartitioning TableRangePartitioningPtrOutput `pulumi:"rangePartitioning"`
-	// A JSON schema for the external table. Schema is required
-	// for CSV and JSON formats if autodetect is not on. Schema is disallowed
-	// for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
-	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
-	// string will create a diff, even if the JSON itself hasn't changed.
-	// Furthermore drift for this field cannot not be detected because BigQuery
-	// only uses this schema to compute the effective schema for the table, therefore
-	// any changes on the configured value will force the table to be recreated.
-	// This schema is effectively only applied when creating a table from an external
-	// datasource, after creation the computed schema will be stored in
-	// `google_bigquery_table.schema`
+	// A JSON schema for the table.
 	Schema pulumi.StringOutput `pulumi:"schema"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -294,17 +284,7 @@ type tableState struct {
 	// If specified, configures range-based
 	// partitioning for this table. Structure is documented below.
 	RangePartitioning *TableRangePartitioning `pulumi:"rangePartitioning"`
-	// A JSON schema for the external table. Schema is required
-	// for CSV and JSON formats if autodetect is not on. Schema is disallowed
-	// for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
-	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
-	// string will create a diff, even if the JSON itself hasn't changed.
-	// Furthermore drift for this field cannot not be detected because BigQuery
-	// only uses this schema to compute the effective schema for the table, therefore
-	// any changes on the configured value will force the table to be recreated.
-	// This schema is effectively only applied when creating a table from an external
-	// datasource, after creation the computed schema will be stored in
-	// `google_bigquery_table.schema`
+	// A JSON schema for the table.
 	Schema *string `pulumi:"schema"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -376,17 +356,7 @@ type TableState struct {
 	// If specified, configures range-based
 	// partitioning for this table. Structure is documented below.
 	RangePartitioning TableRangePartitioningPtrInput
-	// A JSON schema for the external table. Schema is required
-	// for CSV and JSON formats if autodetect is not on. Schema is disallowed
-	// for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
-	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
-	// string will create a diff, even if the JSON itself hasn't changed.
-	// Furthermore drift for this field cannot not be detected because BigQuery
-	// only uses this schema to compute the effective schema for the table, therefore
-	// any changes on the configured value will force the table to be recreated.
-	// This schema is effectively only applied when creating a table from an external
-	// datasource, after creation the computed schema will be stored in
-	// `google_bigquery_table.schema`
+	// A JSON schema for the table.
 	Schema pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -448,17 +418,7 @@ type tableArgs struct {
 	// If specified, configures range-based
 	// partitioning for this table. Structure is documented below.
 	RangePartitioning *TableRangePartitioning `pulumi:"rangePartitioning"`
-	// A JSON schema for the external table. Schema is required
-	// for CSV and JSON formats if autodetect is not on. Schema is disallowed
-	// for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
-	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
-	// string will create a diff, even if the JSON itself hasn't changed.
-	// Furthermore drift for this field cannot not be detected because BigQuery
-	// only uses this schema to compute the effective schema for the table, therefore
-	// any changes on the configured value will force the table to be recreated.
-	// This schema is effectively only applied when creating a table from an external
-	// datasource, after creation the computed schema will be stored in
-	// `google_bigquery_table.schema`
+	// A JSON schema for the table.
 	Schema *string `pulumi:"schema"`
 	// A unique ID for the resource.
 	// Changing this forces a new resource to be created.
@@ -512,17 +472,7 @@ type TableArgs struct {
 	// If specified, configures range-based
 	// partitioning for this table. Structure is documented below.
 	RangePartitioning TableRangePartitioningPtrInput
-	// A JSON schema for the external table. Schema is required
-	// for CSV and JSON formats if autodetect is not on. Schema is disallowed
-	// for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
-	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
-	// string will create a diff, even if the JSON itself hasn't changed.
-	// Furthermore drift for this field cannot not be detected because BigQuery
-	// only uses this schema to compute the effective schema for the table, therefore
-	// any changes on the configured value will force the table to be recreated.
-	// This schema is effectively only applied when creating a table from an external
-	// datasource, after creation the computed schema will be stored in
-	// `google_bigquery_table.schema`
+	// A JSON schema for the table.
 	Schema pulumi.StringPtrInput
 	// A unique ID for the resource.
 	// Changing this forces a new resource to be created.
@@ -732,17 +682,7 @@ func (o TableOutput) RangePartitioning() TableRangePartitioningPtrOutput {
 	return o.ApplyT(func(v *Table) TableRangePartitioningPtrOutput { return v.RangePartitioning }).(TableRangePartitioningPtrOutput)
 }
 
-// A JSON schema for the external table. Schema is required
-// for CSV and JSON formats if autodetect is not on. Schema is disallowed
-// for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
-// ~>**NOTE:** Because this field expects a JSON string, any changes to the
-// string will create a diff, even if the JSON itself hasn't changed.
-// Furthermore drift for this field cannot not be detected because BigQuery
-// only uses this schema to compute the effective schema for the table, therefore
-// any changes on the configured value will force the table to be recreated.
-// This schema is effectively only applied when creating a table from an external
-// datasource, after creation the computed schema will be stored in
-// `google_bigquery_table.schema`
+// A JSON schema for the table.
 func (o TableOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.Schema }).(pulumi.StringOutput)
 }

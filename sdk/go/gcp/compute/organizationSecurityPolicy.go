@@ -69,7 +69,8 @@ type OrganizationSecurityPolicy struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A textual name of the security policy.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Fingerprint of this resource. This field is used internally during updates of this resource.
+	// Fingerprint of this resource. This field is used internally during
+	// updates of this resource.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
 	// Format: organizations/{organization_id} or folders/{folder_id}
@@ -123,7 +124,8 @@ type organizationSecurityPolicyState struct {
 	Description *string `pulumi:"description"`
 	// A textual name of the security policy.
 	DisplayName *string `pulumi:"displayName"`
-	// Fingerprint of this resource. This field is used internally during updates of this resource.
+	// Fingerprint of this resource. This field is used internally during
+	// updates of this resource.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
 	// Format: organizations/{organization_id} or folders/{folder_id}
@@ -143,7 +145,8 @@ type OrganizationSecurityPolicyState struct {
 	Description pulumi.StringPtrInput
 	// A textual name of the security policy.
 	DisplayName pulumi.StringPtrInput
-	// Fingerprint of this resource. This field is used internally during updates of this resource.
+	// Fingerprint of this resource. This field is used internally during
+	// updates of this resource.
 	Fingerprint pulumi.StringPtrInput
 	// The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
 	// Format: organizations/{organization_id} or folders/{folder_id}
@@ -292,7 +295,8 @@ func (o OrganizationSecurityPolicyOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationSecurityPolicy) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Fingerprint of this resource. This field is used internally during updates of this resource.
+// Fingerprint of this resource. This field is used internally during
+// updates of this resource.
 func (o OrganizationSecurityPolicyOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationSecurityPolicy) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
 }

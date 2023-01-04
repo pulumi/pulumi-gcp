@@ -77,14 +77,11 @@ type Hub struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance
-	// instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity
-	// Center automatically populates it based on the set of spokes attached to the hub.
+	// The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
 	RoutingVpcs HubRoutingVpcArrayOutput `pulumi:"routingVpcs"`
 	// Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
 	State pulumi.StringOutput `pulumi:"state"`
-	// Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted
-	// and another with the same name is created, the new hub is assigned a different unique_id.
+	// Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
 	UniqueId pulumi.StringOutput `pulumi:"uniqueId"`
 	// Output only. The time the hub was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -129,14 +126,11 @@ type hubState struct {
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
-	// The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance
-	// instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity
-	// Center automatically populates it based on the set of spokes attached to the hub.
+	// The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
 	RoutingVpcs []HubRoutingVpc `pulumi:"routingVpcs"`
 	// Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
 	State *string `pulumi:"state"`
-	// Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted
-	// and another with the same name is created, the new hub is assigned a different unique_id.
+	// Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
 	UniqueId *string `pulumi:"uniqueId"`
 	// Output only. The time the hub was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -153,14 +147,11 @@ type HubState struct {
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
-	// The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance
-	// instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity
-	// Center automatically populates it based on the set of spokes attached to the hub.
+	// The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
 	RoutingVpcs HubRoutingVpcArrayInput
 	// Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
 	State pulumi.StringPtrInput
-	// Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted
-	// and another with the same name is created, the new hub is assigned a different unique_id.
+	// Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
 	UniqueId pulumi.StringPtrInput
 	// Output only. The time the hub was last updated.
 	UpdateTime pulumi.StringPtrInput
@@ -305,9 +296,7 @@ func (o HubOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance
-// instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity
-// Center automatically populates it based on the set of spokes attached to the hub.
+// The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
 func (o HubOutput) RoutingVpcs() HubRoutingVpcArrayOutput {
 	return o.ApplyT(func(v *Hub) HubRoutingVpcArrayOutput { return v.RoutingVpcs }).(HubRoutingVpcArrayOutput)
 }
@@ -317,8 +306,7 @@ func (o HubOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted
-// and another with the same name is created, the new hub is assigned a different unique_id.
+// Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
 func (o HubOutput) UniqueId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.UniqueId }).(pulumi.StringOutput)
 }

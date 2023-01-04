@@ -46,13 +46,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      pulumi.String(memcacheNetwork.Id),
+//				Network:      *pulumi.String(memcacheNetwork.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			privateServiceConnection, err := servicenetworking.NewConnection(ctx, "privateServiceConnection", &servicenetworking.ConnectionArgs{
-//				Network: pulumi.String(memcacheNetwork.Id),
+//				Network: *pulumi.String(memcacheNetwork.Id),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					serviceRange.Name,
@@ -126,7 +126,6 @@ type Instance struct {
 	// The full name of the GCE network to connect the instance to.  If not provided,
 	// 'default' will be used.
 	AuthorizedNetwork pulumi.StringOutput `pulumi:"authorizedNetwork"`
-	// -
 	// Output only. The time when the policy was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits
@@ -141,10 +140,12 @@ type Instance struct {
 	// Structure is documented below.
 	MaintenancePolicy InstanceMaintenancePolicyPtrOutput `pulumi:"maintenancePolicy"`
 	// Output only. Published maintenance schedule.
+	// Structure is documented below.
 	MaintenanceSchedules InstanceMaintenanceScheduleArrayOutput `pulumi:"maintenanceSchedules"`
 	// The full version of memcached server running on this instance.
 	MemcacheFullVersion pulumi.StringOutput `pulumi:"memcacheFullVersion"`
 	// Additional information about the instance state, if available.
+	// Structure is documented below.
 	MemcacheNodes InstanceMemcacheNodeArrayOutput `pulumi:"memcacheNodes"`
 	// User-specified parameters for this memcache instance.
 	// Structure is documented below.
@@ -210,7 +211,6 @@ type instanceState struct {
 	// The full name of the GCE network to connect the instance to.  If not provided,
 	// 'default' will be used.
 	AuthorizedNetwork *string `pulumi:"authorizedNetwork"`
-	// -
 	// Output only. The time when the policy was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits
@@ -225,10 +225,12 @@ type instanceState struct {
 	// Structure is documented below.
 	MaintenancePolicy *InstanceMaintenancePolicy `pulumi:"maintenancePolicy"`
 	// Output only. Published maintenance schedule.
+	// Structure is documented below.
 	MaintenanceSchedules []InstanceMaintenanceSchedule `pulumi:"maintenanceSchedules"`
 	// The full version of memcached server running on this instance.
 	MemcacheFullVersion *string `pulumi:"memcacheFullVersion"`
 	// Additional information about the instance state, if available.
+	// Structure is documented below.
 	MemcacheNodes []InstanceMemcacheNode `pulumi:"memcacheNodes"`
 	// User-specified parameters for this memcache instance.
 	// Structure is documented below.
@@ -260,7 +262,6 @@ type InstanceState struct {
 	// The full name of the GCE network to connect the instance to.  If not provided,
 	// 'default' will be used.
 	AuthorizedNetwork pulumi.StringPtrInput
-	// -
 	// Output only. The time when the policy was created.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits
@@ -275,10 +276,12 @@ type InstanceState struct {
 	// Structure is documented below.
 	MaintenancePolicy InstanceMaintenancePolicyPtrInput
 	// Output only. Published maintenance schedule.
+	// Structure is documented below.
 	MaintenanceSchedules InstanceMaintenanceScheduleArrayInput
 	// The full version of memcached server running on this instance.
 	MemcacheFullVersion pulumi.StringPtrInput
 	// Additional information about the instance state, if available.
+	// Structure is documented below.
 	MemcacheNodes InstanceMemcacheNodeArrayInput
 	// User-specified parameters for this memcache instance.
 	// Structure is documented below.
@@ -478,7 +481,6 @@ func (o InstanceOutput) AuthorizedNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AuthorizedNetwork }).(pulumi.StringOutput)
 }
 
-// -
 // Output only. The time when the policy was created.
 // A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 // resolution and up to nine fractional digits
@@ -508,6 +510,7 @@ func (o InstanceOutput) MaintenancePolicy() InstanceMaintenancePolicyPtrOutput {
 }
 
 // Output only. Published maintenance schedule.
+// Structure is documented below.
 func (o InstanceOutput) MaintenanceSchedules() InstanceMaintenanceScheduleArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceMaintenanceScheduleArrayOutput { return v.MaintenanceSchedules }).(InstanceMaintenanceScheduleArrayOutput)
 }
@@ -518,6 +521,7 @@ func (o InstanceOutput) MemcacheFullVersion() pulumi.StringOutput {
 }
 
 // Additional information about the instance state, if available.
+// Structure is documented below.
 func (o InstanceOutput) MemcacheNodes() InstanceMemcacheNodeArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceMemcacheNodeArrayOutput { return v.MemcacheNodes }).(InstanceMemcacheNodeArrayOutput)
 }

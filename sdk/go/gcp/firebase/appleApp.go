@@ -99,8 +99,8 @@ import (
 type AppleApp struct {
 	pulumi.CustomResourceState
 
-	// The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-	// the data format is not specified.
+	// The globally unique, Firebase-assigned identifier of the App.
+	// This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId pulumi.StringOutput `pulumi:"appId"`
 	// The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
 	AppStoreId pulumi.StringPtrOutput `pulumi:"appStoreId"`
@@ -112,7 +112,8 @@ type AppleApp struct {
 	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the App.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// The fully qualified resource name of the App, for example: projects/projectId/iosApps/appId
+	// The fully qualified resource name of the App, for example:
+	// projects/projectId/iosApps/appId
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -153,8 +154,8 @@ func GetAppleApp(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AppleApp resources.
 type appleAppState struct {
-	// The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-	// the data format is not specified.
+	// The globally unique, Firebase-assigned identifier of the App.
+	// This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId *string `pulumi:"appId"`
 	// The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
 	AppStoreId *string `pulumi:"appStoreId"`
@@ -166,7 +167,8 @@ type appleAppState struct {
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the App.
 	DisplayName *string `pulumi:"displayName"`
-	// The fully qualified resource name of the App, for example: projects/projectId/iosApps/appId
+	// The fully qualified resource name of the App, for example:
+	// projects/projectId/iosApps/appId
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -176,8 +178,8 @@ type appleAppState struct {
 }
 
 type AppleAppState struct {
-	// The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-	// the data format is not specified.
+	// The globally unique, Firebase-assigned identifier of the App.
+	// This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId pulumi.StringPtrInput
 	// The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
 	AppStoreId pulumi.StringPtrInput
@@ -189,7 +191,8 @@ type AppleAppState struct {
 	DeletionPolicy pulumi.StringPtrInput
 	// The user-assigned display name of the App.
 	DisplayName pulumi.StringPtrInput
-	// The fully qualified resource name of the App, for example: projects/projectId/iosApps/appId
+	// The fully qualified resource name of the App, for example:
+	// projects/projectId/iosApps/appId
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -326,8 +329,8 @@ func (o AppleAppOutput) ToAppleAppOutputWithContext(ctx context.Context) AppleAp
 	return o
 }
 
-// The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-// the data format is not specified.
+// The globally unique, Firebase-assigned identifier of the App.
+// This identifier should be treated as an opaque token, as the data format is not specified.
 func (o AppleAppOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppleApp) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
 }
@@ -354,7 +357,8 @@ func (o AppleAppOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppleApp) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// The fully qualified resource name of the App, for example: projects/projectId/iosApps/appId
+// The fully qualified resource name of the App, for example:
+// projects/projectId/iosApps/appId
 func (o AppleAppOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppleApp) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

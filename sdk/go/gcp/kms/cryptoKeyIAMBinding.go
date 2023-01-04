@@ -49,7 +49,7 @@ import (
 //			}
 //			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 //				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
+//					{
 //						Role: "roles/cloudkms.cryptoKeyEncrypter",
 //						Members: []string{
 //							"user:jane@example.com",
@@ -62,7 +62,7 @@ import (
 //			}
 //			_, err = kms.NewCryptoKeyIAMPolicy(ctx, "cryptoKey", &kms.CryptoKeyIAMPolicyArgs{
 //				CryptoKeyId: key.ID(),
-//				PolicyData:  pulumi.String(admin.PolicyData),
+//				PolicyData:  *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -87,10 +87,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//			_, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 //				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
-//						Condition: organizations.GetIAMPolicyBindingCondition{
+//					{
+//						Condition: {
 //							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
 //							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
 //							Title:       "expires_after_2019_12_31",

@@ -11,10 +11,15 @@ import (
 )
 
 type DeviceConfig struct {
-	BinaryData      *string `pulumi:"binaryData"`
+	// The device state data.
+	BinaryData *string `pulumi:"binaryData"`
+	// The time at which this configuration version was updated in Cloud IoT Core.
 	CloudUpdateTime *string `pulumi:"cloudUpdateTime"`
-	DeviceAckTime   *string `pulumi:"deviceAckTime"`
-	Version         *string `pulumi:"version"`
+	// The time at which Cloud IoT Core received the acknowledgment from the device,
+	// indicating that the device has received this configuration version.
+	DeviceAckTime *string `pulumi:"deviceAckTime"`
+	// The version of this update.
+	Version *string `pulumi:"version"`
 }
 
 // DeviceConfigInput is an input type that accepts DeviceConfigArgs and DeviceConfigOutput values.
@@ -29,10 +34,15 @@ type DeviceConfigInput interface {
 }
 
 type DeviceConfigArgs struct {
-	BinaryData      pulumi.StringPtrInput `pulumi:"binaryData"`
+	// The device state data.
+	BinaryData pulumi.StringPtrInput `pulumi:"binaryData"`
+	// The time at which this configuration version was updated in Cloud IoT Core.
 	CloudUpdateTime pulumi.StringPtrInput `pulumi:"cloudUpdateTime"`
-	DeviceAckTime   pulumi.StringPtrInput `pulumi:"deviceAckTime"`
-	Version         pulumi.StringPtrInput `pulumi:"version"`
+	// The time at which Cloud IoT Core received the acknowledgment from the device,
+	// indicating that the device has received this configuration version.
+	DeviceAckTime pulumi.StringPtrInput `pulumi:"deviceAckTime"`
+	// The version of this update.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (DeviceConfigArgs) ElementType() reflect.Type {
@@ -86,18 +96,23 @@ func (o DeviceConfigOutput) ToDeviceConfigOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The device state data.
 func (o DeviceConfigOutput) BinaryData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceConfig) *string { return v.BinaryData }).(pulumi.StringPtrOutput)
 }
 
+// The time at which this configuration version was updated in Cloud IoT Core.
 func (o DeviceConfigOutput) CloudUpdateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceConfig) *string { return v.CloudUpdateTime }).(pulumi.StringPtrOutput)
 }
 
+// The time at which Cloud IoT Core received the acknowledgment from the device,
+// indicating that the device has received this configuration version.
 func (o DeviceConfigOutput) DeviceAckTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceConfig) *string { return v.DeviceAckTime }).(pulumi.StringPtrOutput)
 }
 
+// The version of this update.
 func (o DeviceConfigOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceConfig) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -303,10 +318,8 @@ type DeviceGatewayConfig struct {
 	// Default value is `NON_GATEWAY`.
 	// Possible values are `GATEWAY` and `NON_GATEWAY`.
 	GatewayType *string `pulumi:"gatewayType"`
-	// -
 	// The ID of the gateway the device accessed most recently.
 	LastAccessedGatewayId *string `pulumi:"lastAccessedGatewayId"`
-	// -
 	// The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
 	LastAccessedGatewayTime *string `pulumi:"lastAccessedGatewayTime"`
 }
@@ -330,10 +343,8 @@ type DeviceGatewayConfigArgs struct {
 	// Default value is `NON_GATEWAY`.
 	// Possible values are `GATEWAY` and `NON_GATEWAY`.
 	GatewayType pulumi.StringPtrInput `pulumi:"gatewayType"`
-	// -
 	// The ID of the gateway the device accessed most recently.
 	LastAccessedGatewayId pulumi.StringPtrInput `pulumi:"lastAccessedGatewayId"`
-	// -
 	// The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
 	LastAccessedGatewayTime pulumi.StringPtrInput `pulumi:"lastAccessedGatewayTime"`
 }
@@ -428,13 +439,11 @@ func (o DeviceGatewayConfigOutput) GatewayType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceGatewayConfig) *string { return v.GatewayType }).(pulumi.StringPtrOutput)
 }
 
-// -
 // The ID of the gateway the device accessed most recently.
 func (o DeviceGatewayConfigOutput) LastAccessedGatewayId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceGatewayConfig) *string { return v.LastAccessedGatewayId }).(pulumi.StringPtrOutput)
 }
 
-// -
 // The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
 func (o DeviceGatewayConfigOutput) LastAccessedGatewayTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceGatewayConfig) *string { return v.LastAccessedGatewayTime }).(pulumi.StringPtrOutput)
@@ -487,7 +496,6 @@ func (o DeviceGatewayConfigPtrOutput) GatewayType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // The ID of the gateway the device accessed most recently.
 func (o DeviceGatewayConfigPtrOutput) LastAccessedGatewayId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceGatewayConfig) *string {
@@ -498,7 +506,6 @@ func (o DeviceGatewayConfigPtrOutput) LastAccessedGatewayId() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
 func (o DeviceGatewayConfigPtrOutput) LastAccessedGatewayTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceGatewayConfig) *string {
@@ -510,9 +517,12 @@ func (o DeviceGatewayConfigPtrOutput) LastAccessedGatewayTime() pulumi.StringPtr
 }
 
 type DeviceLastErrorStatus struct {
+	// A list of messages that carry the error details.
 	Details []map[string]interface{} `pulumi:"details"`
-	Message *string                  `pulumi:"message"`
-	Number  *int                     `pulumi:"number"`
+	// A developer-facing error message, which should be in English.
+	Message *string `pulumi:"message"`
+	// The status code, which should be an enum value of google.rpc.Code.
+	Number *int `pulumi:"number"`
 }
 
 // DeviceLastErrorStatusInput is an input type that accepts DeviceLastErrorStatusArgs and DeviceLastErrorStatusOutput values.
@@ -527,9 +537,12 @@ type DeviceLastErrorStatusInput interface {
 }
 
 type DeviceLastErrorStatusArgs struct {
-	Details pulumi.MapArrayInput  `pulumi:"details"`
+	// A list of messages that carry the error details.
+	Details pulumi.MapArrayInput `pulumi:"details"`
+	// A developer-facing error message, which should be in English.
 	Message pulumi.StringPtrInput `pulumi:"message"`
-	Number  pulumi.IntPtrInput    `pulumi:"number"`
+	// The status code, which should be an enum value of google.rpc.Code.
+	Number pulumi.IntPtrInput `pulumi:"number"`
 }
 
 func (DeviceLastErrorStatusArgs) ElementType() reflect.Type {
@@ -583,14 +596,17 @@ func (o DeviceLastErrorStatusOutput) ToDeviceLastErrorStatusOutputWithContext(ct
 	return o
 }
 
+// A list of messages that carry the error details.
 func (o DeviceLastErrorStatusOutput) Details() pulumi.MapArrayOutput {
 	return o.ApplyT(func(v DeviceLastErrorStatus) []map[string]interface{} { return v.Details }).(pulumi.MapArrayOutput)
 }
 
+// A developer-facing error message, which should be in English.
 func (o DeviceLastErrorStatusOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceLastErrorStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
+// The status code, which should be an enum value of google.rpc.Code.
 func (o DeviceLastErrorStatusOutput) Number() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DeviceLastErrorStatus) *int { return v.Number }).(pulumi.IntPtrOutput)
 }
@@ -616,7 +632,9 @@ func (o DeviceLastErrorStatusArrayOutput) Index(i pulumi.IntInput) DeviceLastErr
 }
 
 type DeviceStateType struct {
+	// The device state data.
 	BinaryData *string `pulumi:"binaryData"`
+	// The time at which this state version was updated in Cloud IoT Core.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
@@ -632,7 +650,9 @@ type DeviceStateTypeInput interface {
 }
 
 type DeviceStateTypeArgs struct {
+	// The device state data.
 	BinaryData pulumi.StringPtrInput `pulumi:"binaryData"`
+	// The time at which this state version was updated in Cloud IoT Core.
 	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
 }
 
@@ -687,10 +707,12 @@ func (o DeviceStateTypeOutput) ToDeviceStateTypeOutputWithContext(ctx context.Co
 	return o
 }
 
+// The device state data.
 func (o DeviceStateTypeOutput) BinaryData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceStateType) *string { return v.BinaryData }).(pulumi.StringPtrOutput)
 }
 
+// The time at which this state version was updated in Cloud IoT Core.
 func (o DeviceStateTypeOutput) UpdateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceStateType) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
 }

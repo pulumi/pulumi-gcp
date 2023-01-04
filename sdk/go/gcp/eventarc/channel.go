@@ -63,7 +63,7 @@ import (
 //			}
 //			_, err = eventarc.NewChannel(ctx, "primary", &eventarc.ChannelArgs{
 //				Location:           pulumi.String("us-west1"),
-//				Project:            pulumi.String(testProject.ProjectId),
+//				Project:            *pulumi.String(testProject.ProjectId),
 //				CryptoKeyName:      pulumi.Any(data.Google_kms_crypto_key.Key1.Id),
 //				ThirdPartyProvider: pulumi.String(fmt.Sprintf("projects/%v/locations/us-west1/providers/datadog", testProject.ProjectId)),
 //			}, pulumi.DependsOn([]pulumi.Resource{
@@ -102,8 +102,7 @@ import (
 type Channel struct {
 	pulumi.CustomResourceState
 
-	// Output only. The activation token for the channel. The token must be used by the provider to register the channel for
-	// publishing.
+	// Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
 	ActivationToken pulumi.StringOutput `pulumi:"activationToken"`
 	// Output only. The creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -115,15 +114,13 @@ type Channel struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery.
-	// Format: `projects/{project}/topics/{topic_id}`.
+	// Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
 	PubsubTopic pulumi.StringOutput `pulumi:"pubsubTopic"`
 	// Output only. The state of a Channel. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE, INACTIVE
 	State pulumi.StringOutput `pulumi:"state"`
 	// The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
 	ThirdPartyProvider pulumi.StringPtrOutput `pulumi:"thirdPartyProvider"`
-	// Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain
-	// unchanged until the resource is deleted.
+	// Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Output only. The last-modified time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -161,8 +158,7 @@ func GetChannel(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Channel resources.
 type channelState struct {
-	// Output only. The activation token for the channel. The token must be used by the provider to register the channel for
-	// publishing.
+	// Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
 	ActivationToken *string `pulumi:"activationToken"`
 	// Output only. The creation time.
 	CreateTime *string `pulumi:"createTime"`
@@ -174,23 +170,20 @@ type channelState struct {
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
-	// Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery.
-	// Format: `projects/{project}/topics/{topic_id}`.
+	// Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
 	PubsubTopic *string `pulumi:"pubsubTopic"`
 	// Output only. The state of a Channel. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE, INACTIVE
 	State *string `pulumi:"state"`
 	// The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
 	ThirdPartyProvider *string `pulumi:"thirdPartyProvider"`
-	// Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain
-	// unchanged until the resource is deleted.
+	// Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid *string `pulumi:"uid"`
 	// Output only. The last-modified time.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type ChannelState struct {
-	// Output only. The activation token for the channel. The token must be used by the provider to register the channel for
-	// publishing.
+	// Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
 	ActivationToken pulumi.StringPtrInput
 	// Output only. The creation time.
 	CreateTime pulumi.StringPtrInput
@@ -202,15 +195,13 @@ type ChannelState struct {
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
-	// Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery.
-	// Format: `projects/{project}/topics/{topic_id}`.
+	// Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
 	PubsubTopic pulumi.StringPtrInput
 	// Output only. The state of a Channel. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE, INACTIVE
 	State pulumi.StringPtrInput
 	// The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
 	ThirdPartyProvider pulumi.StringPtrInput
-	// Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain
-	// unchanged until the resource is deleted.
+	// Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid pulumi.StringPtrInput
 	// Output only. The last-modified time.
 	UpdateTime pulumi.StringPtrInput
@@ -334,8 +325,7 @@ func (o ChannelOutput) ToChannelOutputWithContext(ctx context.Context) ChannelOu
 	return o
 }
 
-// Output only. The activation token for the channel. The token must be used by the provider to register the channel for
-// publishing.
+// Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
 func (o ChannelOutput) ActivationToken() pulumi.StringOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.ActivationToken }).(pulumi.StringOutput)
 }
@@ -365,8 +355,7 @@ func (o ChannelOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery.
-// Format: `projects/{project}/topics/{topic_id}`.
+// Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
 func (o ChannelOutput) PubsubTopic() pulumi.StringOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.PubsubTopic }).(pulumi.StringOutput)
 }
@@ -381,8 +370,7 @@ func (o ChannelOutput) ThirdPartyProvider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringPtrOutput { return v.ThirdPartyProvider }).(pulumi.StringPtrOutput)
 }
 
-// Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain
-// unchanged until the resource is deleted.
+// Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 func (o ChannelOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }

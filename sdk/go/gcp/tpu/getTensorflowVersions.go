@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = tpu.GetTensorflowVersions(ctx, nil, nil)
+//			_, err := tpu.GetTensorflowVersions(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -56,7 +56,7 @@ import (
 //			_, err = tpu.NewNode(ctx, "tpu", &tpu.NodeArgs{
 //				Zone:              pulumi.String("us-central1-b"),
 //				AcceleratorType:   pulumi.String("v3-8"),
-//				TensorflowVersion: pulumi.String(available.Versions[0]),
+//				TensorflowVersion: *pulumi.String(available.Versions[0]),
 //				CidrBlock:         pulumi.String("10.2.0.0/29"),
 //			})
 //			if err != nil {

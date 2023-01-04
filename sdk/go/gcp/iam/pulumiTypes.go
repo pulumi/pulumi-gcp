@@ -14,8 +14,7 @@ type DenyPolicyRule struct {
 	// A deny rule in an IAM deny policy.
 	// Structure is documented below.
 	DenyRule *DenyPolicyRuleDenyRule `pulumi:"denyRule"`
-	// Description of the expression. This is a longer text which describes the expression,
-	// e.g. when hovered over it in a UI.
+	// The description of the rule.
 	Description *string `pulumi:"description"`
 }
 
@@ -34,8 +33,7 @@ type DenyPolicyRuleArgs struct {
 	// A deny rule in an IAM deny policy.
 	// Structure is documented below.
 	DenyRule DenyPolicyRuleDenyRulePtrInput `pulumi:"denyRule"`
-	// Description of the expression. This is a longer text which describes the expression,
-	// e.g. when hovered over it in a UI.
+	// The description of the rule.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 }
 
@@ -96,8 +94,7 @@ func (o DenyPolicyRuleOutput) DenyRule() DenyPolicyRuleDenyRulePtrOutput {
 	return o.ApplyT(func(v DenyPolicyRule) *DenyPolicyRuleDenyRule { return v.DenyRule }).(DenyPolicyRuleDenyRulePtrOutput)
 }
 
-// Description of the expression. This is a longer text which describes the expression,
-// e.g. when hovered over it in a UI.
+// The description of the rule.
 func (o DenyPolicyRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DenyPolicyRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }

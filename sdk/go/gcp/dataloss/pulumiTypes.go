@@ -326,7 +326,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 	// all findings that correspond to infoTypes that were requested in InspectConfig.
 	// Structure is documented below.
 	InfoTypes []PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType `pulumi:"infoTypes"`
-	// Apply the transformation to the entire field.
+	// Primitive transformation to apply to the infoType.
 	// The `primitiveTransformation` block must only contain one argument, corresponding to the type of transformation.
 	// Structure is documented below.
 	PrimitiveTransformation PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation `pulumi:"primitiveTransformation"`
@@ -348,7 +348,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 	// all findings that correspond to infoTypes that were requested in InspectConfig.
 	// Structure is documented below.
 	InfoTypes PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayInput `pulumi:"infoTypes"`
-	// Apply the transformation to the entire field.
+	// Primitive transformation to apply to the infoType.
 	// The `primitiveTransformation` block must only contain one argument, corresponding to the type of transformation.
 	// Structure is documented below.
 	PrimitiveTransformation PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationInput `pulumi:"primitiveTransformation"`
@@ -414,7 +414,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArrayOutput)
 }
 
-// Apply the transformation to the entire field.
+// Primitive transformation to apply to the infoType.
 // The `primitiveTransformation` block must only contain one argument, corresponding to the type of transformation.
 // Structure is documented below.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationOutput) PrimitiveTransformation() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationOutput {
@@ -444,7 +444,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType struct {
-	// Name describing the field.
+	// Name of the information type.
 	Name string `pulumi:"name"`
 }
 
@@ -460,7 +460,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs struct {
-	// Name describing the field.
+	// Name of the information type.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -515,7 +515,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	return o
 }
 
-// Name describing the field.
+// Name of the information type.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType) string {
 		return v.Name
@@ -979,25 +979,26 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig struct {
-	// The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
-	// If the context is set but:
+	// A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
+	// If the context is not set, plaintext would be used as is for encryption. If the context is set but:
 	// 1.  there is no record present when transforming a given value or
 	// 2.  the field is not present when transforming a given value,
-	//     a default tweak will be used.
-	//     Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
-	//     The tweak is constructed as a sequence of bytes in big endian byte order such that:
-	// *   a 64 bit integer is encoded followed by a single byte of value 1
-	// *   a string is encoded in UTF-8 format followed by a single byte of value 2
+	//     plaintext would be used as is for encryption.
+	//     Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s.
 	//     Structure is documented below.
 	Context *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContext `pulumi:"context"`
-	// The key used by the encryption algorithm.
+	// The key used by the encryption function.
 	// Structure is documented below.
 	CryptoKey *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey `pulumi:"cryptoKey"`
-	// The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\_type\_name(surrogate\_character\_count):surrogate
-	// For example, if the name of custom infoType is 'MY\_TOKEN\_INFO\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\_TOKEN\_INFO\_TYPE(3):abc'
-	// This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text.
-	// In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\_TOKEN\_TYPE
-	// Structure is documented below.
+	// The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate}
+	// For example, if the name of custom info type is 'MY\_TOKEN\_INFO\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\_TOKEN\_INFO\_TYPE(3):abc'
+	// This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text.
+	// Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
+	// In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
+	// *   reverse a surrogate that does not correspond to an actual identifier
+	// *   be unable to parse the surrogate and result in an error
+	//     Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\_TOKEN\_TYPE.
+	//     Structure is documented below.
 	SurrogateInfoType *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType `pulumi:"surrogateInfoType"`
 }
 
@@ -1013,25 +1014,26 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs struct {
-	// The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
-	// If the context is set but:
+	// A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
+	// If the context is not set, plaintext would be used as is for encryption. If the context is set but:
 	// 1.  there is no record present when transforming a given value or
 	// 2.  the field is not present when transforming a given value,
-	//     a default tweak will be used.
-	//     Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
-	//     The tweak is constructed as a sequence of bytes in big endian byte order such that:
-	// *   a 64 bit integer is encoded followed by a single byte of value 1
-	// *   a string is encoded in UTF-8 format followed by a single byte of value 2
+	//     plaintext would be used as is for encryption.
+	//     Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s.
 	//     Structure is documented below.
 	Context PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextPtrInput `pulumi:"context"`
-	// The key used by the encryption algorithm.
+	// The key used by the encryption function.
 	// Structure is documented below.
 	CryptoKey PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyPtrInput `pulumi:"cryptoKey"`
-	// The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\_type\_name(surrogate\_character\_count):surrogate
-	// For example, if the name of custom infoType is 'MY\_TOKEN\_INFO\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\_TOKEN\_INFO\_TYPE(3):abc'
-	// This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text.
-	// In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\_TOKEN\_TYPE
-	// Structure is documented below.
+	// The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate}
+	// For example, if the name of custom info type is 'MY\_TOKEN\_INFO\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\_TOKEN\_INFO\_TYPE(3):abc'
+	// This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text.
+	// Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
+	// In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
+	// *   reverse a surrogate that does not correspond to an actual identifier
+	// *   be unable to parse the surrogate and result in an error
+	//     Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\_TOKEN\_TYPE.
+	//     Structure is documented below.
 	SurrogateInfoType PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypePtrInput `pulumi:"surrogateInfoType"`
 }
 
@@ -1112,15 +1114,12 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigPtrOutput)
 }
 
-// The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
-// If the context is set but:
+// A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
+// If the context is not set, plaintext would be used as is for encryption. If the context is set but:
 //  1. there is no record present when transforming a given value or
 //  2. the field is not present when transforming a given value,
-//     a default tweak will be used.
-//     Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
-//     The tweak is constructed as a sequence of bytes in big endian byte order such that:
-//     *   a 64 bit integer is encoded followed by a single byte of value 1
-//     *   a string is encoded in UTF-8 format followed by a single byte of value 2
+//     plaintext would be used as is for encryption.
+//     Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s.
 //     Structure is documented below.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigOutput) Context() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContext {
@@ -1128,7 +1127,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextPtrOutput)
 }
 
-// The key used by the encryption algorithm.
+// The key used by the encryption function.
 // Structure is documented below.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigOutput) CryptoKey() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey {
@@ -1136,11 +1135,15 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyPtrOutput)
 }
 
-// The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\_type\_name(surrogate\_character\_count):surrogate
-// For example, if the name of custom infoType is 'MY\_TOKEN\_INFO\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\_TOKEN\_INFO\_TYPE(3):abc'
-// This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text.
-// In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\_TOKEN\_TYPE
-// Structure is documented below.
+// The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate}
+// For example, if the name of custom info type is 'MY\_TOKEN\_INFO\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\_TOKEN\_INFO\_TYPE(3):abc'
+// This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text.
+// Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
+// In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
+//   - reverse a surrogate that does not correspond to an actual identifier
+//   - be unable to parse the surrogate and result in an error
+//     Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\_TOKEN\_TYPE.
+//     Structure is documented below.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigOutput) SurrogateInfoType() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypePtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType {
 		return v.SurrogateInfoType
@@ -1171,15 +1174,12 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigOutput)
 }
 
-// The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
-// If the context is set but:
+// A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
+// If the context is not set, plaintext would be used as is for encryption. If the context is set but:
 //  1. there is no record present when transforming a given value or
 //  2. the field is not present when transforming a given value,
-//     a default tweak will be used.
-//     Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
-//     The tweak is constructed as a sequence of bytes in big endian byte order such that:
-//     *   a 64 bit integer is encoded followed by a single byte of value 1
-//     *   a string is encoded in UTF-8 format followed by a single byte of value 2
+//     plaintext would be used as is for encryption.
+//     Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s.
 //     Structure is documented below.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigPtrOutput) Context() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContext {
@@ -1190,7 +1190,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextPtrOutput)
 }
 
-// The key used by the encryption algorithm.
+// The key used by the encryption function.
 // Structure is documented below.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigPtrOutput) CryptoKey() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey {
@@ -1201,11 +1201,15 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyPtrOutput)
 }
 
-// The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\_type\_name(surrogate\_character\_count):surrogate
-// For example, if the name of custom infoType is 'MY\_TOKEN\_INFO\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\_TOKEN\_INFO\_TYPE(3):abc'
-// This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text.
-// In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\_TOKEN\_TYPE
-// Structure is documented below.
+// The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate}
+// For example, if the name of custom info type is 'MY\_TOKEN\_INFO\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\_TOKEN\_INFO\_TYPE(3):abc'
+// This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text.
+// Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
+// In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
+//   - reverse a surrogate that does not correspond to an actual identifier
+//   - be unable to parse the surrogate and result in an error
+//     Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\_TOKEN\_TYPE.
+//     Structure is documented below.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigPtrOutput) SurrogateInfoType() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypePtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig) *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType {
 		if v == nil {
@@ -1712,7 +1716,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient struct {
-	// Name describing the field.
+	// Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
 	Name string `pulumi:"name"`
 }
 
@@ -1728,7 +1732,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs struct {
-	// Name describing the field.
+	// Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -1809,7 +1813,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientPtrOutput)
 }
 
-// Name describing the field.
+// Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient) string {
 		return v.Name
@@ -1840,7 +1844,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientOutput)
 }
 
-// Name describing the field.
+// Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient) *string {
 		if v == nil {
@@ -1994,7 +1998,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType struct {
-	// Name describing the field.
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
 	Name *string `pulumi:"name"`
 }
 
@@ -2010,7 +2014,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs struct {
-	// Name describing the field.
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -2091,7 +2095,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypePtrOutput)
 }
 
-// Name describing the field.
+// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType) *string {
 		return v.Name
@@ -2122,7 +2126,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeOutput)
 }
 
-// Name describing the field.
+// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType) *string {
 		if v == nil {
@@ -2937,7 +2941,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient struct {
-	// Name describing the field.
+	// Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
 	Name string `pulumi:"name"`
 }
 
@@ -2953,7 +2957,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs struct {
-	// Name describing the field.
+	// Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -3034,7 +3038,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientPtrOutput)
 }
 
-// Name describing the field.
+// Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient) string {
 		return v.Name
@@ -3065,7 +3069,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientOutput)
 }
 
-// Name describing the field.
+// Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient) *string {
 		if v == nil {
@@ -3219,7 +3223,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType struct {
-	// Name describing the field.
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
 	Name *string `pulumi:"name"`
 }
 
@@ -3235,7 +3239,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs struct {
-	// Name describing the field.
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -3316,7 +3320,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypePtrOutput)
 }
 
-// Name describing the field.
+// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType) *string {
 		return v.Name
@@ -3347,7 +3351,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeOutput)
 }
 
-// Name describing the field.
+// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType) *string {
 		if v == nil {
@@ -4354,8 +4358,11 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsPtrOutp
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation struct {
-	// A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
-	// Structure is documented below.
+	// Only apply the transformation if the condition evaluates to true for the given RecordCondition. The conditions are allowed to reference fields that are not used in the actual transformation.
+	// Example Use Cases:
+	// - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range.
+	// - Redact a field if the date of birth field is greater than 85.
+	//   Structure is documented below.
 	Condition *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition `pulumi:"condition"`
 	// Input field(s) to apply the transformation to. When you have columns that reference their position within a list, omit the index from the FieldId.
 	// FieldId name matching ignores the index. For example, instead of "contact.nums[0].type", use "contact.nums.type".
@@ -4379,8 +4386,11 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArgs struct {
-	// A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
-	// Structure is documented below.
+	// Only apply the transformation if the condition evaluates to true for the given RecordCondition. The conditions are allowed to reference fields that are not used in the actual transformation.
+	// Example Use Cases:
+	// - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range.
+	// - Redact a field if the date of birth field is greater than 85.
+	//   Structure is documented below.
 	Condition PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrInput `pulumi:"condition"`
 	// Input field(s) to apply the transformation to. When you have columns that reference their position within a list, omit the index from the FieldId.
 	// FieldId name matching ignores the index. For example, instead of "contact.nums[0].type", use "contact.nums.type".
@@ -4443,8 +4453,11 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 	return o
 }
 
-// A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
-// Structure is documented below.
+// Only apply the transformation if the condition evaluates to true for the given RecordCondition. The conditions are allowed to reference fields that are not used in the actual transformation.
+// Example Use Cases:
+//   - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range.
+//   - Redact a field if the date of birth field is greater than 85.
+//     Structure is documented below.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationOutput) Condition() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition {
 		return v.Condition
@@ -4633,7 +4646,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions struct {
-	// A collection of conditions.
+	// Conditions to apply to the expression.
 	// Structure is documented below.
 	Conditions *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions `pulumi:"conditions"`
 	// The operator to apply to the result of conditions. Default and currently only supported value is AND.
@@ -4654,7 +4667,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgs struct {
-	// A collection of conditions.
+	// Conditions to apply to the expression.
 	// Structure is documented below.
 	Conditions PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrInput `pulumi:"conditions"`
 	// The operator to apply to the result of conditions. Default and currently only supported value is AND.
@@ -4740,7 +4753,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput)
 }
 
-// A collection of conditions.
+// Conditions to apply to the expression.
 // Structure is documented below.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutput) Conditions() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions {
@@ -4781,7 +4794,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutput)
 }
 
-// A collection of conditions.
+// Conditions to apply to the expression.
 // Structure is documented below.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput) Conditions() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions {
@@ -7508,7 +7521,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordS
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions struct {
-	// A collection of conditions.
+	// Conditions to apply to the expression.
 	// Structure is documented below.
 	Conditions *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions `pulumi:"conditions"`
 	// The operator to apply to the result of conditions. Default and currently only supported value is AND.
@@ -7529,7 +7542,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSupp
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgs struct {
-	// A collection of conditions.
+	// Conditions to apply to the expression.
 	// Structure is documented below.
 	Conditions PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrInput `pulumi:"conditions"`
 	// The operator to apply to the result of conditions. Default and currently only supported value is AND.
@@ -7615,7 +7628,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordS
 	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput)
 }
 
-// A collection of conditions.
+// Conditions to apply to the expression.
 // Structure is documented below.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutput) Conditions() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions {
@@ -7656,7 +7669,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordS
 	}).(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutput)
 }
 
-// A collection of conditions.
+// Conditions to apply to the expression.
 // Structure is documented below.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput) Conditions() PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions) *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions {
@@ -8694,12 +8707,14 @@ type PreventionInspectTemplateInspectConfig struct {
 	// Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
 	// Structure is documented below.
 	CustomInfoTypes []PreventionInspectTemplateInspectConfigCustomInfoType `pulumi:"customInfoTypes"`
-	// Set of infoTypes for which findings would affect this rule.
-	// Structure is documented below.
+	// When true, excludes type information of the findings.
 	ExcludeInfoTypes *bool `pulumi:"excludeInfoTypes"`
 	// When true, a contextual quote from the data that triggered a finding is included in the response.
 	IncludeQuote *bool `pulumi:"includeQuote"`
-	// If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+	// Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
+	// or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+	// When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
+	// By default this may be all types, but may change over time as detectors are updated.
 	// Structure is documented below.
 	InfoTypes []PreventionInspectTemplateInspectConfigInfoType `pulumi:"infoTypes"`
 	// Configuration to control the number of findings returned.
@@ -8733,12 +8748,14 @@ type PreventionInspectTemplateInspectConfigArgs struct {
 	// Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
 	// Structure is documented below.
 	CustomInfoTypes PreventionInspectTemplateInspectConfigCustomInfoTypeArrayInput `pulumi:"customInfoTypes"`
-	// Set of infoTypes for which findings would affect this rule.
-	// Structure is documented below.
+	// When true, excludes type information of the findings.
 	ExcludeInfoTypes pulumi.BoolPtrInput `pulumi:"excludeInfoTypes"`
 	// When true, a contextual quote from the data that triggered a finding is included in the response.
 	IncludeQuote pulumi.BoolPtrInput `pulumi:"includeQuote"`
-	// If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+	// Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
+	// or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+	// When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
+	// By default this may be all types, but may change over time as detectors are updated.
 	// Structure is documented below.
 	InfoTypes PreventionInspectTemplateInspectConfigInfoTypeArrayInput `pulumi:"infoTypes"`
 	// Configuration to control the number of findings returned.
@@ -8845,8 +8862,7 @@ func (o PreventionInspectTemplateInspectConfigOutput) CustomInfoTypes() Preventi
 	}).(PreventionInspectTemplateInspectConfigCustomInfoTypeArrayOutput)
 }
 
-// Set of infoTypes for which findings would affect this rule.
-// Structure is documented below.
+// When true, excludes type information of the findings.
 func (o PreventionInspectTemplateInspectConfigOutput) ExcludeInfoTypes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PreventionInspectTemplateInspectConfig) *bool { return v.ExcludeInfoTypes }).(pulumi.BoolPtrOutput)
 }
@@ -8856,7 +8872,10 @@ func (o PreventionInspectTemplateInspectConfigOutput) IncludeQuote() pulumi.Bool
 	return o.ApplyT(func(v PreventionInspectTemplateInspectConfig) *bool { return v.IncludeQuote }).(pulumi.BoolPtrOutput)
 }
 
-// If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+// Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
+// or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+// When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
+// By default this may be all types, but may change over time as detectors are updated.
 // Structure is documented below.
 func (o PreventionInspectTemplateInspectConfigOutput) InfoTypes() PreventionInspectTemplateInspectConfigInfoTypeArrayOutput {
 	return o.ApplyT(func(v PreventionInspectTemplateInspectConfig) []PreventionInspectTemplateInspectConfigInfoType {
@@ -8934,8 +8953,7 @@ func (o PreventionInspectTemplateInspectConfigPtrOutput) CustomInfoTypes() Preve
 	}).(PreventionInspectTemplateInspectConfigCustomInfoTypeArrayOutput)
 }
 
-// Set of infoTypes for which findings would affect this rule.
-// Structure is documented below.
+// When true, excludes type information of the findings.
 func (o PreventionInspectTemplateInspectConfigPtrOutput) ExcludeInfoTypes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PreventionInspectTemplateInspectConfig) *bool {
 		if v == nil {
@@ -8955,7 +8973,10 @@ func (o PreventionInspectTemplateInspectConfigPtrOutput) IncludeQuote() pulumi.B
 	}).(pulumi.BoolPtrOutput)
 }
 
-// If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+// Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
+// or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+// When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
+// By default this may be all types, but may change over time as detectors are updated.
 // Structure is documented below.
 func (o PreventionInspectTemplateInspectConfigPtrOutput) InfoTypes() PreventionInspectTemplateInspectConfigInfoTypeArrayOutput {
 	return o.ApplyT(func(v *PreventionInspectTemplateInspectConfig) []PreventionInspectTemplateInspectConfigInfoType {
@@ -9635,8 +9656,8 @@ func (o PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListPt
 }
 
 type PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType struct {
-	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-	// or `projects/project-id/storedInfoTypes/432452342`.
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+	// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
 	Name string `pulumi:"name"`
 }
 
@@ -9652,8 +9673,8 @@ type PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeInput interface
 }
 
 type PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs struct {
-	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-	// or `projects/project-id/storedInfoTypes/432452342`.
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+	// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -9683,8 +9704,8 @@ func (o PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeOutput) ToPr
 	return o
 }
 
-// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-// or `projects/project-id/storedInfoTypes/432452342`.
+// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
 func (o PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -9991,8 +10012,8 @@ func (o PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypePtrOutput)
 }
 
 type PreventionInspectTemplateInspectConfigInfoType struct {
-	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-	// or `projects/project-id/storedInfoTypes/432452342`.
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
 	Name string `pulumi:"name"`
 	// Version of the information type to use. By default, the version is set to stable
 	Version *string `pulumi:"version"`
@@ -10010,8 +10031,8 @@ type PreventionInspectTemplateInspectConfigInfoTypeInput interface {
 }
 
 type PreventionInspectTemplateInspectConfigInfoTypeArgs struct {
-	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-	// or `projects/project-id/storedInfoTypes/432452342`.
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Version of the information type to use. By default, the version is set to stable
 	Version pulumi.StringPtrInput `pulumi:"version"`
@@ -10068,8 +10089,8 @@ func (o PreventionInspectTemplateInspectConfigInfoTypeOutput) ToPreventionInspec
 	return o
 }
 
-// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-// or `projects/project-id/storedInfoTypes/432452342`.
+// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
 func (o PreventionInspectTemplateInspectConfigInfoTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigInfoType) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -10281,10 +10302,9 @@ func (o PreventionInspectTemplateInspectConfigLimitsPtrOutput) MaxFindingsPerReq
 }
 
 type PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType struct {
-	// CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
-	// infoTypes and that infoType is specified in `infoTypes` field. Specifying the latter adds findings to the
-	// one detected by the system. If built-in info type is not specified in `infoTypes` list then the name is
-	// treated as a custom info type.
+	// Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
+	// not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
+	// specified in another InfoTypeLimit.
 	// Structure is documented below.
 	InfoType PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType `pulumi:"infoType"`
 	// Max findings limit for the given infoType.
@@ -10303,10 +10323,9 @@ type PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInput int
 }
 
 type PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs struct {
-	// CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
-	// infoTypes and that infoType is specified in `infoTypes` field. Specifying the latter adds findings to the
-	// one detected by the system. If built-in info type is not specified in `infoTypes` list then the name is
-	// treated as a custom info type.
+	// Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
+	// not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
+	// specified in another InfoTypeLimit.
 	// Structure is documented below.
 	InfoType PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeInput `pulumi:"infoType"`
 	// Max findings limit for the given infoType.
@@ -10364,10 +10383,9 @@ func (o PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeOutput
 	return o
 }
 
-// CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
-// infoTypes and that infoType is specified in `infoTypes` field. Specifying the latter adds findings to the
-// one detected by the system. If built-in info type is not specified in `infoTypes` list then the name is
-// treated as a custom info type.
+// Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
+// not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
+// specified in another InfoTypeLimit.
 // Structure is documented below.
 func (o PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeOutput) InfoType() PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutput {
 	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType) PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType {
@@ -10401,8 +10419,8 @@ func (o PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArrayO
 }
 
 type PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType struct {
-	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-	// or `projects/project-id/storedInfoTypes/432452342`.
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+	// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
 	Name string `pulumi:"name"`
 }
 
@@ -10418,8 +10436,8 @@ type PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeI
 }
 
 type PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs struct {
-	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-	// or `projects/project-id/storedInfoTypes/432452342`.
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+	// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -10449,8 +10467,8 @@ func (o PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTy
 	return o
 }
 
-// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-// or `projects/project-id/storedInfoTypes/432452342`.
+// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
 func (o PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType) string {
 		return v.Name
@@ -10458,7 +10476,7 @@ func (o PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTy
 }
 
 type PreventionInspectTemplateInspectConfigRuleSet struct {
-	// If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+	// List of infoTypes this rule set is applied to.
 	// Structure is documented below.
 	InfoTypes []PreventionInspectTemplateInspectConfigRuleSetInfoType `pulumi:"infoTypes"`
 	// Set of rules to be applied to infoTypes. The rules are applied in order.
@@ -10478,7 +10496,7 @@ type PreventionInspectTemplateInspectConfigRuleSetInput interface {
 }
 
 type PreventionInspectTemplateInspectConfigRuleSetArgs struct {
-	// If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+	// List of infoTypes this rule set is applied to.
 	// Structure is documented below.
 	InfoTypes PreventionInspectTemplateInspectConfigRuleSetInfoTypeArrayInput `pulumi:"infoTypes"`
 	// Set of rules to be applied to infoTypes. The rules are applied in order.
@@ -10537,7 +10555,7 @@ func (o PreventionInspectTemplateInspectConfigRuleSetOutput) ToPreventionInspect
 	return o
 }
 
-// If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+// List of infoTypes this rule set is applied to.
 // Structure is documented below.
 func (o PreventionInspectTemplateInspectConfigRuleSetOutput) InfoTypes() PreventionInspectTemplateInspectConfigRuleSetInfoTypeArrayOutput {
 	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigRuleSet) []PreventionInspectTemplateInspectConfigRuleSetInfoType {
@@ -10574,8 +10592,8 @@ func (o PreventionInspectTemplateInspectConfigRuleSetArrayOutput) Index(i pulumi
 }
 
 type PreventionInspectTemplateInspectConfigRuleSetInfoType struct {
-	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-	// or `projects/project-id/storedInfoTypes/432452342`.
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
 	Name string `pulumi:"name"`
 }
 
@@ -10591,8 +10609,8 @@ type PreventionInspectTemplateInspectConfigRuleSetInfoTypeInput interface {
 }
 
 type PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs struct {
-	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-	// or `projects/project-id/storedInfoTypes/432452342`.
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -10647,8 +10665,8 @@ func (o PreventionInspectTemplateInspectConfigRuleSetInfoTypeOutput) ToPreventio
 	return o
 }
 
-// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-// or `projects/project-id/storedInfoTypes/432452342`.
+// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
 func (o PreventionInspectTemplateInspectConfigRuleSetInfoTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigRuleSetInfoType) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -11599,8 +11617,8 @@ func (o PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInf
 }
 
 type PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType struct {
-	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-	// or `projects/project-id/storedInfoTypes/432452342`.
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
 	Name string `pulumi:"name"`
 }
 
@@ -11616,8 +11634,8 @@ type PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTy
 }
 
 type PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeArgs struct {
-	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-	// or `projects/project-id/storedInfoTypes/432452342`.
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -11672,8 +11690,8 @@ func (o PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInf
 	return o
 }
 
-// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-// or `projects/project-id/storedInfoTypes/432452342`.
+// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
 func (o PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType) string {
 		return v.Name
@@ -12072,10 +12090,11 @@ func (o PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRulePtrOutput) P
 }
 
 type PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex struct {
-	// The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+	// The index of the submatch to extract as findings. When not specified,
+	// the entire match is returned. No more than 3 may be included.
 	GroupIndexes []int `pulumi:"groupIndexes"`
-	// Pattern defining the regular expression.
-	// Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+	// Pattern defining the regular expression. Its syntax
+	// (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
 	Pattern string `pulumi:"pattern"`
 }
 
@@ -12091,10 +12110,11 @@ type PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexInp
 }
 
 type PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs struct {
-	// The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+	// The index of the submatch to extract as findings. When not specified,
+	// the entire match is returned. No more than 3 may be included.
 	GroupIndexes pulumi.IntArrayInput `pulumi:"groupIndexes"`
-	// Pattern defining the regular expression.
-	// Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+	// Pattern defining the regular expression. Its syntax
+	// (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
 	Pattern pulumi.StringInput `pulumi:"pattern"`
 }
 
@@ -12175,15 +12195,16 @@ func (o PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex
 	}).(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput)
 }
 
-// The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+// The index of the submatch to extract as findings. When not specified,
+// the entire match is returned. No more than 3 may be included.
 func (o PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutput) GroupIndexes() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex) []int {
 		return v.GroupIndexes
 	}).(pulumi.IntArrayOutput)
 }
 
-// Pattern defining the regular expression.
-// Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+// Pattern defining the regular expression. Its syntax
+// (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
 func (o PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutput) Pattern() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex) string {
 		return v.Pattern
@@ -12214,7 +12235,8 @@ func (o PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex
 	}).(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexOutput)
 }
 
-// The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+// The index of the submatch to extract as findings. When not specified,
+// the entire match is returned. No more than 3 may be included.
 func (o PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput) GroupIndexes() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex) []int {
 		if v == nil {
@@ -12224,8 +12246,8 @@ func (o PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex
 	}).(pulumi.IntArrayOutput)
 }
 
-// Pattern defining the regular expression.
-// Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+// Pattern defining the regular expression. Its syntax
+// (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
 func (o PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexPtrOutput) Pattern() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex) *string {
 		if v == nil {
@@ -14104,12 +14126,11 @@ func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFie
 }
 
 type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference struct {
-	// Dataset ID of the table.
+	// The dataset ID of the table.
 	DatasetId string `pulumi:"datasetId"`
 	// The Google Cloud Platform project ID of the project containing the table.
 	ProjectId string `pulumi:"projectId"`
-	// Name of the table. If is not set a new one will be generated for you with the following format:
-	// `dlp_googleapis_yyyy_mm_dd_[dlpJobId]`. Pacific timezone will be used for generating the date details.
+	// The name of the table.
 	TableId string `pulumi:"tableId"`
 }
 
@@ -14125,12 +14146,11 @@ type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceInp
 }
 
 type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs struct {
-	// Dataset ID of the table.
+	// The dataset ID of the table.
 	DatasetId pulumi.StringInput `pulumi:"datasetId"`
 	// The Google Cloud Platform project ID of the project containing the table.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
-	// Name of the table. If is not set a new one will be generated for you with the following format:
-	// `dlp_googleapis_yyyy_mm_dd_[dlpJobId]`. Pacific timezone will be used for generating the date details.
+	// The name of the table.
 	TableId pulumi.StringInput `pulumi:"tableId"`
 }
 
@@ -14211,7 +14231,7 @@ func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference
 	}).(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferencePtrOutput)
 }
 
-// Dataset ID of the table.
+// The dataset ID of the table.
 func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference) string {
 		return v.DatasetId
@@ -14225,8 +14245,7 @@ func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference
 	}).(pulumi.StringOutput)
 }
 
-// Name of the table. If is not set a new one will be generated for you with the following format:
-// `dlp_googleapis_yyyy_mm_dd_[dlpJobId]`. Pacific timezone will be used for generating the date details.
+// The name of the table.
 func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceOutput) TableId() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference) string {
 		return v.TableId
@@ -14257,7 +14276,7 @@ func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference
 	}).(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceOutput)
 }
 
-// Dataset ID of the table.
+// The dataset ID of the table.
 func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferencePtrOutput) DatasetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference) *string {
 		if v == nil {
@@ -14277,8 +14296,7 @@ func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of the table. If is not set a new one will be generated for you with the following format:
-// `dlp_googleapis_yyyy_mm_dd_[dlpJobId]`. Pacific timezone will be used for generating the date details.
+// The name of the table.
 func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferencePtrOutput) TableId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference) *string {
 		if v == nil {
@@ -14306,9 +14324,8 @@ type PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions struct {
 	// Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down.
 	// Must be between 0 and 100, inclusively. Both 0 and 100 means no limit.
 	FilesLimitPercent *int `pulumi:"filesLimitPercent"`
-	// How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
-	// rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
-	// Default value is `TOP`.
+	// How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
+	// If not specified, scanning would start from the top.
 	// Possible values are `TOP` and `RANDOM_START`.
 	SampleMethod *string `pulumi:"sampleMethod"`
 }
@@ -14342,9 +14359,8 @@ type PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs struct {
 	// Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down.
 	// Must be between 0 and 100, inclusively. Both 0 and 100 means no limit.
 	FilesLimitPercent pulumi.IntPtrInput `pulumi:"filesLimitPercent"`
-	// How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
-	// rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
-	// Default value is `TOP`.
+	// How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
+	// If not specified, scanning would start from the top.
 	// Possible values are `TOP` and `RANDOM_START`.
 	SampleMethod pulumi.StringPtrInput `pulumi:"sampleMethod"`
 }
@@ -14466,9 +14482,8 @@ func (o PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsOutput) Fi
 	}).(pulumi.IntPtrOutput)
 }
 
-// How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
-// rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
-// Default value is `TOP`.
+// How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
+// If not specified, scanning would start from the top.
 // Possible values are `TOP` and `RANDOM_START`.
 func (o PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsOutput) SampleMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions) *string { return v.SampleMethod }).(pulumi.StringPtrOutput)
@@ -14555,9 +14570,8 @@ func (o PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsPtrOutput)
 	}).(pulumi.IntPtrOutput)
 }
 
-// How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
-// rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
-// Default value is `TOP`.
+// How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
+// If not specified, scanning would start from the top.
 // Possible values are `TOP` and `RANDOM_START`.
 func (o PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsPtrOutput) SampleMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions) *string {
@@ -15116,7 +15130,7 @@ func (o PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPtrOutput) Pa
 }
 
 type PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind struct {
-	// Name of a BigQuery field to be returned with the findings.
+	// The name of the Datastore kind.
 	Name string `pulumi:"name"`
 }
 
@@ -15132,7 +15146,7 @@ type PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindInput interf
 }
 
 type PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindArgs struct {
-	// Name of a BigQuery field to be returned with the findings.
+	// The name of the Datastore kind.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -15213,7 +15227,7 @@ func (o PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindOutput) T
 	}).(PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindPtrOutput)
 }
 
-// Name of a BigQuery field to be returned with the findings.
+// The name of the Datastore kind.
 func (o PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -15242,7 +15256,7 @@ func (o PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindPtrOutput
 	}).(PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindOutput)
 }
 
-// Name of a BigQuery field to be returned with the findings.
+// The name of the Datastore kind.
 func (o PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind) *string {
 		if v == nil {
@@ -15255,7 +15269,7 @@ func (o PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindPtrOutput
 type PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId struct {
 	// If not empty, the ID of the namespace to which the entities belong.
 	NamespaceId *string `pulumi:"namespaceId"`
-	// The Google Cloud Platform project ID of the project containing the table.
+	// The ID of the project to which the entities belong.
 	ProjectId string `pulumi:"projectId"`
 }
 
@@ -15273,7 +15287,7 @@ type PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdInput
 type PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdArgs struct {
 	// If not empty, the ID of the namespace to which the entities belong.
 	NamespaceId pulumi.StringPtrInput `pulumi:"namespaceId"`
-	// The Google Cloud Platform project ID of the project containing the table.
+	// The ID of the project to which the entities belong.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 }
 
@@ -15361,7 +15375,7 @@ func (o PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Google Cloud Platform project ID of the project containing the table.
+// The ID of the project to which the entities belong.
 func (o PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId) string {
 		return v.ProjectId
@@ -15402,7 +15416,7 @@ func (o PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Google Cloud Platform project ID of the project containing the table.
+// The ID of the project to which the entities belong.
 func (o PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdPtrOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId) *string {
 		if v == nil {
@@ -15623,7 +15637,12 @@ func (o PreventionJobTriggerInspectJobStorageConfigTimespanConfigPtrOutput) Time
 }
 
 type PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField struct {
-	// Name of a BigQuery field to be returned with the findings.
+	// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
+	// For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
+	// modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
+	// field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
+	// For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
+	// timestamp property does not exist or its value is empty or invalid.
 	Name string `pulumi:"name"`
 }
 
@@ -15639,7 +15658,12 @@ type PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldInpu
 }
 
 type PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs struct {
-	// Name of a BigQuery field to be returned with the findings.
+	// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
+	// For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
+	// modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
+	// field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
+	// For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
+	// timestamp property does not exist or its value is empty or invalid.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -15720,7 +15744,12 @@ func (o PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldO
 	}).(PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldPtrOutput)
 }
 
-// Name of a BigQuery field to be returned with the findings.
+// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
+// For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
+// modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
+// field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
+// For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
+// timestamp property does not exist or its value is empty or invalid.
 func (o PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -15749,7 +15778,12 @@ func (o PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldP
 	}).(PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldOutput)
 }
 
-// Name of a BigQuery field to be returned with the findings.
+// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
+// For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
+// modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
+// field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
+// For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
+// timestamp property does not exist or its value is empty or invalid.
 func (o PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField) *string {
 		if v == nil {

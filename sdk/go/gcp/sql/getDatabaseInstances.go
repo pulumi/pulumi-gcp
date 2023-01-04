@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = sql.GetDatabaseInstances(ctx, &sql.GetDatabaseInstancesArgs{
+//			_, err := sql.GetDatabaseInstances(ctx, &sql.GetDatabaseInstancesArgs{
 //				Project: pulumi.StringRef("test-project"),
 //			}, nil)
 //			if err != nil {

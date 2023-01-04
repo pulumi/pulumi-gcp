@@ -92,7 +92,8 @@ type GenericService struct {
 	BasicService GenericServiceBasicServicePtrOutput `pulumi:"basicService"`
 	// Name used for UI elements listing this Service.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+	// The full resource name for this service. The syntax is:
+	// projects/[PROJECT_ID]/services/[SERVICE_ID].
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -101,6 +102,7 @@ type GenericService struct {
 	// service ID.
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
 	// Configuration for how to query telemetry on a Service.
+	// Structure is documented below.
 	Telemetries GenericServiceTelemetryArrayOutput `pulumi:"telemetries"`
 	// Labels which have been used to annotate the service. Label keys must start
 	// with a letter. Label keys and values may contain lowercase letters,
@@ -150,7 +152,8 @@ type genericServiceState struct {
 	BasicService *GenericServiceBasicService `pulumi:"basicService"`
 	// Name used for UI elements listing this Service.
 	DisplayName *string `pulumi:"displayName"`
-	// The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+	// The full resource name for this service. The syntax is:
+	// projects/[PROJECT_ID]/services/[SERVICE_ID].
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -159,6 +162,7 @@ type genericServiceState struct {
 	// service ID.
 	ServiceId *string `pulumi:"serviceId"`
 	// Configuration for how to query telemetry on a Service.
+	// Structure is documented below.
 	Telemetries []GenericServiceTelemetry `pulumi:"telemetries"`
 	// Labels which have been used to annotate the service. Label keys must start
 	// with a letter. Label keys and values may contain lowercase letters,
@@ -177,7 +181,8 @@ type GenericServiceState struct {
 	BasicService GenericServiceBasicServicePtrInput
 	// Name used for UI elements listing this Service.
 	DisplayName pulumi.StringPtrInput
-	// The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+	// The full resource name for this service. The syntax is:
+	// projects/[PROJECT_ID]/services/[SERVICE_ID].
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -186,6 +191,7 @@ type GenericServiceState struct {
 	// service ID.
 	ServiceId pulumi.StringPtrInput
 	// Configuration for how to query telemetry on a Service.
+	// Structure is documented below.
 	Telemetries GenericServiceTelemetryArrayInput
 	// Labels which have been used to annotate the service. Label keys must start
 	// with a letter. Label keys and values may contain lowercase letters,
@@ -347,7 +353,8 @@ func (o GenericServiceOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GenericService) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+// The full resource name for this service. The syntax is:
+// projects/[PROJECT_ID]/services/[SERVICE_ID].
 func (o GenericServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GenericService) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -365,6 +372,7 @@ func (o GenericServiceOutput) ServiceId() pulumi.StringOutput {
 }
 
 // Configuration for how to query telemetry on a Service.
+// Structure is documented below.
 func (o GenericServiceOutput) Telemetries() GenericServiceTelemetryArrayOutput {
 	return o.ApplyT(func(v *GenericService) GenericServiceTelemetryArrayOutput { return v.Telemetries }).(GenericServiceTelemetryArrayOutput)
 }

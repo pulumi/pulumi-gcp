@@ -53,29 +53,40 @@ type RegionUrlMap struct {
 	// defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 	// Structure is documented below.
 	DefaultRouteAction RegionUrlMapDefaultRouteActionPtrOutput `pulumi:"defaultRouteAction"`
-	// A reference to a RegionBackendService resource. This will be used if
-	// none of the pathRules defined by this PathMatcher is matched by
-	// the URL's path portion.
+	// The full or partial URL of the defaultService resource to which traffic is directed if
+	// none of the hostRules match. If defaultRouteAction is additionally specified, advanced
+	// routing actions like URL Rewrites, etc. take effect prior to sending the request to the
+	// backend. However, if defaultService is specified, defaultRouteAction cannot contain any
+	// weightedBackendServices. Conversely, if routeAction specifies any
+	// weightedBackendServices, service must not be specified.  Only one of defaultService,
+	// defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set.
 	DefaultService pulumi.StringPtrOutput `pulumi:"defaultService"`
 	// When none of the specified hostRules match, the request is redirected to a URL specified
 	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
 	// defaultRouteAction must not be set.
 	// Structure is documented below.
 	DefaultUrlRedirect RegionUrlMapDefaultUrlRedirectPtrOutput `pulumi:"defaultUrlRedirect"`
-	// Description of this test case.
+	// An optional description of this resource. Provide this property when
+	// you create the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Fingerprint of this resource. This field is used internally during updates of this resource.
+	// Fingerprint of this resource. This field is used internally during
+	// updates of this resource.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// The list of HostRules to use against the URL.
 	// Structure is documented below.
 	HostRules RegionUrlMapHostRuleArrayOutput `pulumi:"hostRules"`
 	// The unique identifier for the resource.
 	MapId pulumi.IntOutput `pulumi:"mapId"`
-	// The name of the query parameter to match. The query parameter must exist in the
-	// request, in the absence of which the request match fails.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The name of the PathMatcher to use to match the path portion of
-	// the URL if the hostRule matches the URL's host portion.
+	// The list of named PathMatchers to use against the URL.
+	// Structure is documented below.
 	PathMatchers RegionUrlMapPathMatcherArrayOutput `pulumi:"pathMatchers"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -128,29 +139,40 @@ type regionUrlMapState struct {
 	// defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 	// Structure is documented below.
 	DefaultRouteAction *RegionUrlMapDefaultRouteAction `pulumi:"defaultRouteAction"`
-	// A reference to a RegionBackendService resource. This will be used if
-	// none of the pathRules defined by this PathMatcher is matched by
-	// the URL's path portion.
+	// The full or partial URL of the defaultService resource to which traffic is directed if
+	// none of the hostRules match. If defaultRouteAction is additionally specified, advanced
+	// routing actions like URL Rewrites, etc. take effect prior to sending the request to the
+	// backend. However, if defaultService is specified, defaultRouteAction cannot contain any
+	// weightedBackendServices. Conversely, if routeAction specifies any
+	// weightedBackendServices, service must not be specified.  Only one of defaultService,
+	// defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set.
 	DefaultService *string `pulumi:"defaultService"`
 	// When none of the specified hostRules match, the request is redirected to a URL specified
 	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
 	// defaultRouteAction must not be set.
 	// Structure is documented below.
 	DefaultUrlRedirect *RegionUrlMapDefaultUrlRedirect `pulumi:"defaultUrlRedirect"`
-	// Description of this test case.
+	// An optional description of this resource. Provide this property when
+	// you create the resource.
 	Description *string `pulumi:"description"`
-	// Fingerprint of this resource. This field is used internally during updates of this resource.
+	// Fingerprint of this resource. This field is used internally during
+	// updates of this resource.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// The list of HostRules to use against the URL.
 	// Structure is documented below.
 	HostRules []RegionUrlMapHostRule `pulumi:"hostRules"`
 	// The unique identifier for the resource.
 	MapId *int `pulumi:"mapId"`
-	// The name of the query parameter to match. The query parameter must exist in the
-	// request, in the absence of which the request match fails.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// The name of the PathMatcher to use to match the path portion of
-	// the URL if the hostRule matches the URL's host portion.
+	// The list of named PathMatchers to use against the URL.
+	// Structure is documented below.
 	PathMatchers []RegionUrlMapPathMatcher `pulumi:"pathMatchers"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -175,29 +197,40 @@ type RegionUrlMapState struct {
 	// defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 	// Structure is documented below.
 	DefaultRouteAction RegionUrlMapDefaultRouteActionPtrInput
-	// A reference to a RegionBackendService resource. This will be used if
-	// none of the pathRules defined by this PathMatcher is matched by
-	// the URL's path portion.
+	// The full or partial URL of the defaultService resource to which traffic is directed if
+	// none of the hostRules match. If defaultRouteAction is additionally specified, advanced
+	// routing actions like URL Rewrites, etc. take effect prior to sending the request to the
+	// backend. However, if defaultService is specified, defaultRouteAction cannot contain any
+	// weightedBackendServices. Conversely, if routeAction specifies any
+	// weightedBackendServices, service must not be specified.  Only one of defaultService,
+	// defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set.
 	DefaultService pulumi.StringPtrInput
 	// When none of the specified hostRules match, the request is redirected to a URL specified
 	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
 	// defaultRouteAction must not be set.
 	// Structure is documented below.
 	DefaultUrlRedirect RegionUrlMapDefaultUrlRedirectPtrInput
-	// Description of this test case.
+	// An optional description of this resource. Provide this property when
+	// you create the resource.
 	Description pulumi.StringPtrInput
-	// Fingerprint of this resource. This field is used internally during updates of this resource.
+	// Fingerprint of this resource. This field is used internally during
+	// updates of this resource.
 	Fingerprint pulumi.StringPtrInput
 	// The list of HostRules to use against the URL.
 	// Structure is documented below.
 	HostRules RegionUrlMapHostRuleArrayInput
 	// The unique identifier for the resource.
 	MapId pulumi.IntPtrInput
-	// The name of the query parameter to match. The query parameter must exist in the
-	// request, in the absence of which the request match fails.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// The name of the PathMatcher to use to match the path portion of
-	// the URL if the hostRule matches the URL's host portion.
+	// The list of named PathMatchers to use against the URL.
+	// Structure is documented below.
 	PathMatchers RegionUrlMapPathMatcherArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -224,25 +257,35 @@ type regionUrlMapArgs struct {
 	// defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 	// Structure is documented below.
 	DefaultRouteAction *RegionUrlMapDefaultRouteAction `pulumi:"defaultRouteAction"`
-	// A reference to a RegionBackendService resource. This will be used if
-	// none of the pathRules defined by this PathMatcher is matched by
-	// the URL's path portion.
+	// The full or partial URL of the defaultService resource to which traffic is directed if
+	// none of the hostRules match. If defaultRouteAction is additionally specified, advanced
+	// routing actions like URL Rewrites, etc. take effect prior to sending the request to the
+	// backend. However, if defaultService is specified, defaultRouteAction cannot contain any
+	// weightedBackendServices. Conversely, if routeAction specifies any
+	// weightedBackendServices, service must not be specified.  Only one of defaultService,
+	// defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set.
 	DefaultService *string `pulumi:"defaultService"`
 	// When none of the specified hostRules match, the request is redirected to a URL specified
 	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
 	// defaultRouteAction must not be set.
 	// Structure is documented below.
 	DefaultUrlRedirect *RegionUrlMapDefaultUrlRedirect `pulumi:"defaultUrlRedirect"`
-	// Description of this test case.
+	// An optional description of this resource. Provide this property when
+	// you create the resource.
 	Description *string `pulumi:"description"`
 	// The list of HostRules to use against the URL.
 	// Structure is documented below.
 	HostRules []RegionUrlMapHostRule `pulumi:"hostRules"`
-	// The name of the query parameter to match. The query parameter must exist in the
-	// request, in the absence of which the request match fails.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// The name of the PathMatcher to use to match the path portion of
-	// the URL if the hostRule matches the URL's host portion.
+	// The list of named PathMatchers to use against the URL.
+	// Structure is documented below.
 	PathMatchers []RegionUrlMapPathMatcher `pulumi:"pathMatchers"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -264,25 +307,35 @@ type RegionUrlMapArgs struct {
 	// defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
 	// Structure is documented below.
 	DefaultRouteAction RegionUrlMapDefaultRouteActionPtrInput
-	// A reference to a RegionBackendService resource. This will be used if
-	// none of the pathRules defined by this PathMatcher is matched by
-	// the URL's path portion.
+	// The full or partial URL of the defaultService resource to which traffic is directed if
+	// none of the hostRules match. If defaultRouteAction is additionally specified, advanced
+	// routing actions like URL Rewrites, etc. take effect prior to sending the request to the
+	// backend. However, if defaultService is specified, defaultRouteAction cannot contain any
+	// weightedBackendServices. Conversely, if routeAction specifies any
+	// weightedBackendServices, service must not be specified.  Only one of defaultService,
+	// defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set.
 	DefaultService pulumi.StringPtrInput
 	// When none of the specified hostRules match, the request is redirected to a URL specified
 	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
 	// defaultRouteAction must not be set.
 	// Structure is documented below.
 	DefaultUrlRedirect RegionUrlMapDefaultUrlRedirectPtrInput
-	// Description of this test case.
+	// An optional description of this resource. Provide this property when
+	// you create the resource.
 	Description pulumi.StringPtrInput
 	// The list of HostRules to use against the URL.
 	// Structure is documented below.
 	HostRules RegionUrlMapHostRuleArrayInput
-	// The name of the query parameter to match. The query parameter must exist in the
-	// request, in the absence of which the request match fails.
+	// Name of the resource. Provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// The name of the PathMatcher to use to match the path portion of
-	// the URL if the hostRule matches the URL's host portion.
+	// The list of named PathMatchers to use against the URL.
+	// Structure is documented below.
 	PathMatchers RegionUrlMapPathMatcherArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -397,9 +450,13 @@ func (o RegionUrlMapOutput) DefaultRouteAction() RegionUrlMapDefaultRouteActionP
 	return o.ApplyT(func(v *RegionUrlMap) RegionUrlMapDefaultRouteActionPtrOutput { return v.DefaultRouteAction }).(RegionUrlMapDefaultRouteActionPtrOutput)
 }
 
-// A reference to a RegionBackendService resource. This will be used if
-// none of the pathRules defined by this PathMatcher is matched by
-// the URL's path portion.
+// The full or partial URL of the defaultService resource to which traffic is directed if
+// none of the hostRules match. If defaultRouteAction is additionally specified, advanced
+// routing actions like URL Rewrites, etc. take effect prior to sending the request to the
+// backend. However, if defaultService is specified, defaultRouteAction cannot contain any
+// weightedBackendServices. Conversely, if routeAction specifies any
+// weightedBackendServices, service must not be specified.  Only one of defaultService,
+// defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set.
 func (o RegionUrlMapOutput) DefaultService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMap) pulumi.StringPtrOutput { return v.DefaultService }).(pulumi.StringPtrOutput)
 }
@@ -412,12 +469,14 @@ func (o RegionUrlMapOutput) DefaultUrlRedirect() RegionUrlMapDefaultUrlRedirectP
 	return o.ApplyT(func(v *RegionUrlMap) RegionUrlMapDefaultUrlRedirectPtrOutput { return v.DefaultUrlRedirect }).(RegionUrlMapDefaultUrlRedirectPtrOutput)
 }
 
-// Description of this test case.
+// An optional description of this resource. Provide this property when
+// you create the resource.
 func (o RegionUrlMapOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionUrlMap) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Fingerprint of this resource. This field is used internally during updates of this resource.
+// Fingerprint of this resource. This field is used internally during
+// updates of this resource.
 func (o RegionUrlMapOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionUrlMap) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
 }
@@ -433,14 +492,19 @@ func (o RegionUrlMapOutput) MapId() pulumi.IntOutput {
 	return o.ApplyT(func(v *RegionUrlMap) pulumi.IntOutput { return v.MapId }).(pulumi.IntOutput)
 }
 
-// The name of the query parameter to match. The query parameter must exist in the
-// request, in the absence of which the request match fails.
+// Name of the resource. Provided by the client when the resource is
+// created. The name must be 1-63 characters long, and comply with
+// RFC1035. Specifically, the name must be 1-63 characters long and match
+// the regular expression `a-z?` which means the
+// first character must be a lowercase letter, and all following
+// characters must be a dash, lowercase letter, or digit, except the last
+// character, which cannot be a dash.
 func (o RegionUrlMapOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionUrlMap) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The name of the PathMatcher to use to match the path portion of
-// the URL if the hostRule matches the URL's host portion.
+// The list of named PathMatchers to use against the URL.
+// Structure is documented below.
 func (o RegionUrlMapOutput) PathMatchers() RegionUrlMapPathMatcherArrayOutput {
 	return o.ApplyT(func(v *RegionUrlMap) RegionUrlMapPathMatcherArrayOutput { return v.PathMatchers }).(RegionUrlMapPathMatcherArrayOutput)
 }

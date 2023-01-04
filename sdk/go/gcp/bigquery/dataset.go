@@ -304,9 +304,12 @@ type Dataset struct {
 	// An array of objects that define dataset access for one or more entities.
 	// Structure is documented below.
 	Accesses DatasetAccessTypeArrayOutput `pulumi:"accesses"`
-	// The time when this dataset was created, in milliseconds since the epoch.
+	// The time when this dataset was created, in milliseconds since the
+	// epoch.
 	CreationTime pulumi.IntOutput `pulumi:"creationTime"`
-	// The ID of the dataset containing this table.
+	// A unique ID for this dataset, without the project name. The ID
+	// must contain only letters (a-z, A-Z), numbers (0-9), or
+	// underscores (_). The maximum length is 1,024 characters.
 	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
 	// The default encryption key for all tables in the dataset. Once this property is set,
 	// all newly-created partitioned tables in the dataset will have encryption key set to
@@ -332,7 +335,8 @@ type Dataset struct {
 	// The labels associated with this dataset. You can use these to
 	// organize and group your datasets
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+	// The date when this dataset or any of its tables was last modified, in
+	// milliseconds since the epoch.
 	LastModifiedTime pulumi.IntOutput `pulumi:"lastModifiedTime"`
 	// The geographic location where the dataset should reside.
 	// See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
@@ -381,9 +385,12 @@ type datasetState struct {
 	// An array of objects that define dataset access for one or more entities.
 	// Structure is documented below.
 	Accesses []DatasetAccessType `pulumi:"accesses"`
-	// The time when this dataset was created, in milliseconds since the epoch.
+	// The time when this dataset was created, in milliseconds since the
+	// epoch.
 	CreationTime *int `pulumi:"creationTime"`
-	// The ID of the dataset containing this table.
+	// A unique ID for this dataset, without the project name. The ID
+	// must contain only letters (a-z, A-Z), numbers (0-9), or
+	// underscores (_). The maximum length is 1,024 characters.
 	DatasetId *string `pulumi:"datasetId"`
 	// The default encryption key for all tables in the dataset. Once this property is set,
 	// all newly-created partitioned tables in the dataset will have encryption key set to
@@ -409,7 +416,8 @@ type datasetState struct {
 	// The labels associated with this dataset. You can use these to
 	// organize and group your datasets
 	Labels map[string]string `pulumi:"labels"`
-	// The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+	// The date when this dataset or any of its tables was last modified, in
+	// milliseconds since the epoch.
 	LastModifiedTime *int `pulumi:"lastModifiedTime"`
 	// The geographic location where the dataset should reside.
 	// See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
@@ -427,9 +435,12 @@ type DatasetState struct {
 	// An array of objects that define dataset access for one or more entities.
 	// Structure is documented below.
 	Accesses DatasetAccessTypeArrayInput
-	// The time when this dataset was created, in milliseconds since the epoch.
+	// The time when this dataset was created, in milliseconds since the
+	// epoch.
 	CreationTime pulumi.IntPtrInput
-	// The ID of the dataset containing this table.
+	// A unique ID for this dataset, without the project name. The ID
+	// must contain only letters (a-z, A-Z), numbers (0-9), or
+	// underscores (_). The maximum length is 1,024 characters.
 	DatasetId pulumi.StringPtrInput
 	// The default encryption key for all tables in the dataset. Once this property is set,
 	// all newly-created partitioned tables in the dataset will have encryption key set to
@@ -455,7 +466,8 @@ type DatasetState struct {
 	// The labels associated with this dataset. You can use these to
 	// organize and group your datasets
 	Labels pulumi.StringMapInput
-	// The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+	// The date when this dataset or any of its tables was last modified, in
+	// milliseconds since the epoch.
 	LastModifiedTime pulumi.IntPtrInput
 	// The geographic location where the dataset should reside.
 	// See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
@@ -477,7 +489,9 @@ type datasetArgs struct {
 	// An array of objects that define dataset access for one or more entities.
 	// Structure is documented below.
 	Accesses []DatasetAccessType `pulumi:"accesses"`
-	// The ID of the dataset containing this table.
+	// A unique ID for this dataset, without the project name. The ID
+	// must contain only letters (a-z, A-Z), numbers (0-9), or
+	// underscores (_). The maximum length is 1,024 characters.
 	DatasetId string `pulumi:"datasetId"`
 	// The default encryption key for all tables in the dataset. Once this property is set,
 	// all newly-created partitioned tables in the dataset will have encryption key set to
@@ -516,7 +530,9 @@ type DatasetArgs struct {
 	// An array of objects that define dataset access for one or more entities.
 	// Structure is documented below.
 	Accesses DatasetAccessTypeArrayInput
-	// The ID of the dataset containing this table.
+	// A unique ID for this dataset, without the project name. The ID
+	// must contain only letters (a-z, A-Z), numbers (0-9), or
+	// underscores (_). The maximum length is 1,024 characters.
 	DatasetId pulumi.StringInput
 	// The default encryption key for all tables in the dataset. Once this property is set,
 	// all newly-created partitioned tables in the dataset will have encryption key set to
@@ -643,12 +659,15 @@ func (o DatasetOutput) Accesses() DatasetAccessTypeArrayOutput {
 	return o.ApplyT(func(v *Dataset) DatasetAccessTypeArrayOutput { return v.Accesses }).(DatasetAccessTypeArrayOutput)
 }
 
-// The time when this dataset was created, in milliseconds since the epoch.
+// The time when this dataset was created, in milliseconds since the
+// epoch.
 func (o DatasetOutput) CreationTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.IntOutput { return v.CreationTime }).(pulumi.IntOutput)
 }
 
-// The ID of the dataset containing this table.
+// A unique ID for this dataset, without the project name. The ID
+// must contain only letters (a-z, A-Z), numbers (0-9), or
+// underscores (_). The maximum length is 1,024 characters.
 func (o DatasetOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.DatasetId }).(pulumi.StringOutput)
 }
@@ -703,7 +722,8 @@ func (o DatasetOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+// The date when this dataset or any of its tables was last modified, in
+// milliseconds since the epoch.
 func (o DatasetOutput) LastModifiedTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.IntOutput { return v.LastModifiedTime }).(pulumi.IntOutput)
 }

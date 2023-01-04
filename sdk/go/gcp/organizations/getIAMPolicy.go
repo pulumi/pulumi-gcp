@@ -27,20 +27,20 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//			_, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 //				AuditConfigs: []organizations.GetIAMPolicyAuditConfig{
-//					organizations.GetIAMPolicyAuditConfig{
+//					{
 //						AuditLogConfigs: []organizations.GetIAMPolicyAuditConfigAuditLogConfig{
-//							organizations.GetIAMPolicyAuditConfigAuditLogConfig{
+//							{
 //								ExemptedMembers: []string{
 //									"user:you@domain.com",
 //								},
 //								LogType: "DATA_READ",
 //							},
-//							organizations.GetIAMPolicyAuditConfigAuditLogConfig{
+//							{
 //								LogType: "DATA_WRITE",
 //							},
-//							organizations.GetIAMPolicyAuditConfigAuditLogConfig{
+//							{
 //								LogType: "ADMIN_READ",
 //							},
 //						},
@@ -48,13 +48,13 @@ import (
 //					},
 //				},
 //				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
+//					{
 //						Members: []string{
 //							"serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com",
 //						},
 //						Role: "roles/compute.instanceAdmin",
 //					},
-//					organizations.GetIAMPolicyBinding{
+//					{
 //						Members: []string{
 //							"user:alice@gmail.com",
 //						},

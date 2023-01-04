@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = compute.LookupBackendBucket(ctx, &compute.LookupBackendBucketArgs{
+//			_, err := compute.LookupBackendBucket(ctx, &compute.LookupBackendBucketArgs{
 //				Name: "my-backend",
 //			}, nil)
 //			if err != nil {

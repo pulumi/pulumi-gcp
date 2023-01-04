@@ -11,8 +11,13 @@ import (
 )
 
 type EntryBigqueryDateShardedSpec struct {
-	Dataset     *string `pulumi:"dataset"`
-	ShardCount  *int    `pulumi:"shardCount"`
+	// The Data Catalog resource name of the dataset entry the current table belongs to, for example,
+	// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}
+	Dataset *string `pulumi:"dataset"`
+	// Total number of shards.
+	ShardCount *int `pulumi:"shardCount"`
+	// The table name prefix of the shards. The name of any given shard is [tablePrefix]YYYYMMDD,
+	// for example, for shard MyTable20180101, the tablePrefix is MyTable.
 	TablePrefix *string `pulumi:"tablePrefix"`
 }
 
@@ -28,8 +33,13 @@ type EntryBigqueryDateShardedSpecInput interface {
 }
 
 type EntryBigqueryDateShardedSpecArgs struct {
-	Dataset     pulumi.StringPtrInput `pulumi:"dataset"`
-	ShardCount  pulumi.IntPtrInput    `pulumi:"shardCount"`
+	// The Data Catalog resource name of the dataset entry the current table belongs to, for example,
+	// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}
+	Dataset pulumi.StringPtrInput `pulumi:"dataset"`
+	// Total number of shards.
+	ShardCount pulumi.IntPtrInput `pulumi:"shardCount"`
+	// The table name prefix of the shards. The name of any given shard is [tablePrefix]YYYYMMDD,
+	// for example, for shard MyTable20180101, the tablePrefix is MyTable.
 	TablePrefix pulumi.StringPtrInput `pulumi:"tablePrefix"`
 }
 
@@ -84,14 +94,19 @@ func (o EntryBigqueryDateShardedSpecOutput) ToEntryBigqueryDateShardedSpecOutput
 	return o
 }
 
+// The Data Catalog resource name of the dataset entry the current table belongs to, for example,
+// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}
 func (o EntryBigqueryDateShardedSpecOutput) Dataset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EntryBigqueryDateShardedSpec) *string { return v.Dataset }).(pulumi.StringPtrOutput)
 }
 
+// Total number of shards.
 func (o EntryBigqueryDateShardedSpecOutput) ShardCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EntryBigqueryDateShardedSpec) *int { return v.ShardCount }).(pulumi.IntPtrOutput)
 }
 
+// The table name prefix of the shards. The name of any given shard is [tablePrefix]YYYYMMDD,
+// for example, for shard MyTable20180101, the tablePrefix is MyTable.
 func (o EntryBigqueryDateShardedSpecOutput) TablePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EntryBigqueryDateShardedSpec) *string { return v.TablePrefix }).(pulumi.StringPtrOutput)
 }
@@ -117,9 +132,14 @@ func (o EntryBigqueryDateShardedSpecArrayOutput) Index(i pulumi.IntInput) EntryB
 }
 
 type EntryBigqueryTableSpec struct {
-	TableSourceType *string                           `pulumi:"tableSourceType"`
-	TableSpecs      []EntryBigqueryTableSpecTableSpec `pulumi:"tableSpecs"`
-	ViewSpecs       []EntryBigqueryTableSpecViewSpec  `pulumi:"viewSpecs"`
+	// The table source type.
+	TableSourceType *string `pulumi:"tableSourceType"`
+	// Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
+	// Structure is documented below.
+	TableSpecs []EntryBigqueryTableSpecTableSpec `pulumi:"tableSpecs"`
+	// Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
+	// Structure is documented below.
+	ViewSpecs []EntryBigqueryTableSpecViewSpec `pulumi:"viewSpecs"`
 }
 
 // EntryBigqueryTableSpecInput is an input type that accepts EntryBigqueryTableSpecArgs and EntryBigqueryTableSpecOutput values.
@@ -134,9 +154,14 @@ type EntryBigqueryTableSpecInput interface {
 }
 
 type EntryBigqueryTableSpecArgs struct {
-	TableSourceType pulumi.StringPtrInput                     `pulumi:"tableSourceType"`
-	TableSpecs      EntryBigqueryTableSpecTableSpecArrayInput `pulumi:"tableSpecs"`
-	ViewSpecs       EntryBigqueryTableSpecViewSpecArrayInput  `pulumi:"viewSpecs"`
+	// The table source type.
+	TableSourceType pulumi.StringPtrInput `pulumi:"tableSourceType"`
+	// Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
+	// Structure is documented below.
+	TableSpecs EntryBigqueryTableSpecTableSpecArrayInput `pulumi:"tableSpecs"`
+	// Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
+	// Structure is documented below.
+	ViewSpecs EntryBigqueryTableSpecViewSpecArrayInput `pulumi:"viewSpecs"`
 }
 
 func (EntryBigqueryTableSpecArgs) ElementType() reflect.Type {
@@ -190,14 +215,19 @@ func (o EntryBigqueryTableSpecOutput) ToEntryBigqueryTableSpecOutputWithContext(
 	return o
 }
 
+// The table source type.
 func (o EntryBigqueryTableSpecOutput) TableSourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EntryBigqueryTableSpec) *string { return v.TableSourceType }).(pulumi.StringPtrOutput)
 }
 
+// Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
+// Structure is documented below.
 func (o EntryBigqueryTableSpecOutput) TableSpecs() EntryBigqueryTableSpecTableSpecArrayOutput {
 	return o.ApplyT(func(v EntryBigqueryTableSpec) []EntryBigqueryTableSpecTableSpec { return v.TableSpecs }).(EntryBigqueryTableSpecTableSpecArrayOutput)
 }
 
+// Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
+// Structure is documented below.
 func (o EntryBigqueryTableSpecOutput) ViewSpecs() EntryBigqueryTableSpecViewSpecArrayOutput {
 	return o.ApplyT(func(v EntryBigqueryTableSpec) []EntryBigqueryTableSpecViewSpec { return v.ViewSpecs }).(EntryBigqueryTableSpecViewSpecArrayOutput)
 }
@@ -223,6 +253,10 @@ func (o EntryBigqueryTableSpecArrayOutput) Index(i pulumi.IntInput) EntryBigquer
 }
 
 type EntryBigqueryTableSpecTableSpec struct {
+	// If the table is a dated shard, i.e., with name pattern [prefix]YYYYMMDD, groupedEntry is the
+	// Data Catalog resource name of the date sharded grouped entry, for example,
+	// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}.
+	// Otherwise, groupedEntry is empty.
 	GroupedEntry *string `pulumi:"groupedEntry"`
 }
 
@@ -238,6 +272,10 @@ type EntryBigqueryTableSpecTableSpecInput interface {
 }
 
 type EntryBigqueryTableSpecTableSpecArgs struct {
+	// If the table is a dated shard, i.e., with name pattern [prefix]YYYYMMDD, groupedEntry is the
+	// Data Catalog resource name of the date sharded grouped entry, for example,
+	// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}.
+	// Otherwise, groupedEntry is empty.
 	GroupedEntry pulumi.StringPtrInput `pulumi:"groupedEntry"`
 }
 
@@ -292,6 +330,10 @@ func (o EntryBigqueryTableSpecTableSpecOutput) ToEntryBigqueryTableSpecTableSpec
 	return o
 }
 
+// If the table is a dated shard, i.e., with name pattern [prefix]YYYYMMDD, groupedEntry is the
+// Data Catalog resource name of the date sharded grouped entry, for example,
+// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}.
+// Otherwise, groupedEntry is empty.
 func (o EntryBigqueryTableSpecTableSpecOutput) GroupedEntry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EntryBigqueryTableSpecTableSpec) *string { return v.GroupedEntry }).(pulumi.StringPtrOutput)
 }
@@ -317,6 +359,7 @@ func (o EntryBigqueryTableSpecTableSpecArrayOutput) Index(i pulumi.IntInput) Ent
 }
 
 type EntryBigqueryTableSpecViewSpec struct {
+	// The query that defines the table view.
 	ViewQuery *string `pulumi:"viewQuery"`
 }
 
@@ -332,6 +375,7 @@ type EntryBigqueryTableSpecViewSpecInput interface {
 }
 
 type EntryBigqueryTableSpecViewSpecArgs struct {
+	// The query that defines the table view.
 	ViewQuery pulumi.StringPtrInput `pulumi:"viewQuery"`
 }
 
@@ -386,6 +430,7 @@ func (o EntryBigqueryTableSpecViewSpecOutput) ToEntryBigqueryTableSpecViewSpecOu
 	return o
 }
 
+// The query that defines the table view.
 func (o EntryBigqueryTableSpecViewSpecOutput) ViewQuery() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EntryBigqueryTableSpecViewSpec) *string { return v.ViewQuery }).(pulumi.StringPtrOutput)
 }
@@ -423,7 +468,6 @@ type EntryGcsFilesetSpec struct {
 	// * gs://bucket_name/a/*/b: matches all files in bucketName that match a/*/b pattern, such as a/c/b, a/d/b
 	// * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt
 	FilePatterns []string `pulumi:"filePatterns"`
-	// -
 	// Sample files contained in this fileset, not all files contained in this fileset are represented here.
 	// Structure is documented below.
 	SampleGcsFileSpecs []EntryGcsFilesetSpecSampleGcsFileSpec `pulumi:"sampleGcsFileSpecs"`
@@ -453,7 +497,6 @@ type EntryGcsFilesetSpecArgs struct {
 	// * gs://bucket_name/a/*/b: matches all files in bucketName that match a/*/b pattern, such as a/c/b, a/d/b
 	// * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt
 	FilePatterns pulumi.StringArrayInput `pulumi:"filePatterns"`
-	// -
 	// Sample files contained in this fileset, not all files contained in this fileset are represented here.
 	// Structure is documented below.
 	SampleGcsFileSpecs EntryGcsFilesetSpecSampleGcsFileSpecArrayInput `pulumi:"sampleGcsFileSpecs"`
@@ -551,7 +594,6 @@ func (o EntryGcsFilesetSpecOutput) FilePatterns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EntryGcsFilesetSpec) []string { return v.FilePatterns }).(pulumi.StringArrayOutput)
 }
 
-// -
 // Sample files contained in this fileset, not all files contained in this fileset are represented here.
 // Structure is documented below.
 func (o EntryGcsFilesetSpecOutput) SampleGcsFileSpecs() EntryGcsFilesetSpecSampleGcsFileSpecArrayOutput {
@@ -602,7 +644,6 @@ func (o EntryGcsFilesetSpecPtrOutput) FilePatterns() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// -
 // Sample files contained in this fileset, not all files contained in this fileset are represented here.
 // Structure is documented below.
 func (o EntryGcsFilesetSpecPtrOutput) SampleGcsFileSpecs() EntryGcsFilesetSpecSampleGcsFileSpecArrayOutput {
@@ -615,10 +656,8 @@ func (o EntryGcsFilesetSpecPtrOutput) SampleGcsFileSpecs() EntryGcsFilesetSpecSa
 }
 
 type EntryGcsFilesetSpecSampleGcsFileSpec struct {
-	// -
 	// The full file path
 	FilePath *string `pulumi:"filePath"`
-	// -
 	// The size of the file, in bytes.
 	SizeBytes *int `pulumi:"sizeBytes"`
 }
@@ -635,10 +674,8 @@ type EntryGcsFilesetSpecSampleGcsFileSpecInput interface {
 }
 
 type EntryGcsFilesetSpecSampleGcsFileSpecArgs struct {
-	// -
 	// The full file path
 	FilePath pulumi.StringPtrInput `pulumi:"filePath"`
-	// -
 	// The size of the file, in bytes.
 	SizeBytes pulumi.IntPtrInput `pulumi:"sizeBytes"`
 }
@@ -694,13 +731,11 @@ func (o EntryGcsFilesetSpecSampleGcsFileSpecOutput) ToEntryGcsFilesetSpecSampleG
 	return o
 }
 
-// -
 // The full file path
 func (o EntryGcsFilesetSpecSampleGcsFileSpecOutput) FilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EntryGcsFilesetSpecSampleGcsFileSpec) *string { return v.FilePath }).(pulumi.StringPtrOutput)
 }
 
-// -
 // The size of the file, in bytes.
 func (o EntryGcsFilesetSpecSampleGcsFileSpecOutput) SizeBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EntryGcsFilesetSpecSampleGcsFileSpec) *int { return v.SizeBytes }).(pulumi.IntPtrOutput)
@@ -1381,7 +1416,6 @@ func (o PolicyTagIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 type TagField struct {
 	// Holds the value for a tag field with boolean type.
 	BoolValue *bool `pulumi:"boolValue"`
-	// -
 	// The display name of this field
 	DisplayName *string `pulumi:"displayName"`
 	// Holds the value for a tag field with double type.
@@ -1390,7 +1424,6 @@ type TagField struct {
 	EnumValue *string `pulumi:"enumValue"`
 	// The identifier for this object. Format specified above.
 	FieldName string `pulumi:"fieldName"`
-	// -
 	// The order of this field with respect to other fields in this tag. For example, a higher value can indicate
 	// a more important field. The value can be negative. Multiple fields can have the same order, and field orders
 	// within a tag do not have to be sequential.
@@ -1415,7 +1448,6 @@ type TagFieldInput interface {
 type TagFieldArgs struct {
 	// Holds the value for a tag field with boolean type.
 	BoolValue pulumi.BoolPtrInput `pulumi:"boolValue"`
-	// -
 	// The display name of this field
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// Holds the value for a tag field with double type.
@@ -1424,7 +1456,6 @@ type TagFieldArgs struct {
 	EnumValue pulumi.StringPtrInput `pulumi:"enumValue"`
 	// The identifier for this object. Format specified above.
 	FieldName pulumi.StringInput `pulumi:"fieldName"`
-	// -
 	// The order of this field with respect to other fields in this tag. For example, a higher value can indicate
 	// a more important field. The value can be negative. Multiple fields can have the same order, and field orders
 	// within a tag do not have to be sequential.
@@ -1491,7 +1522,6 @@ func (o TagFieldOutput) BoolValue() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TagField) *bool { return v.BoolValue }).(pulumi.BoolPtrOutput)
 }
 
-// -
 // The display name of this field
 func (o TagFieldOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TagField) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
@@ -1512,7 +1542,6 @@ func (o TagFieldOutput) FieldName() pulumi.StringOutput {
 	return o.ApplyT(func(v TagField) string { return v.FieldName }).(pulumi.StringOutput)
 }
 
-// -
 // The order of this field with respect to other fields in this tag. For example, a higher value can indicate
 // a more important field. The value can be negative. Multiple fields can have the same order, and field orders
 // within a tag do not have to be sequential.
@@ -1553,13 +1582,12 @@ func (o TagFieldArrayOutput) Index(i pulumi.IntInput) TagFieldOutput {
 type TagTemplateField struct {
 	// A description for this field.
 	Description *string `pulumi:"description"`
-	// The display name for this template.
+	// The display name for this field.
 	DisplayName *string `pulumi:"displayName"`
 	// The identifier for this object. Format specified above.
 	FieldId string `pulumi:"fieldId"`
 	// Whether this is a required field. Defaults to false.
 	IsRequired *bool `pulumi:"isRequired"`
-	// -
 	// The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
 	Name *string `pulumi:"name"`
 	// The order of this field with respect to other fields in this tag template.
@@ -1585,13 +1613,12 @@ type TagTemplateFieldInput interface {
 type TagTemplateFieldArgs struct {
 	// A description for this field.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The display name for this template.
+	// The display name for this field.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// The identifier for this object. Format specified above.
 	FieldId pulumi.StringInput `pulumi:"fieldId"`
 	// Whether this is a required field. Defaults to false.
 	IsRequired pulumi.BoolPtrInput `pulumi:"isRequired"`
-	// -
 	// The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The order of this field with respect to other fields in this tag template.
@@ -1659,7 +1686,7 @@ func (o TagTemplateFieldOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TagTemplateField) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The display name for this template.
+// The display name for this field.
 func (o TagTemplateFieldOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TagTemplateField) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
@@ -1674,7 +1701,6 @@ func (o TagTemplateFieldOutput) IsRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TagTemplateField) *bool { return v.IsRequired }).(pulumi.BoolPtrOutput)
 }
 
-// -
 // The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
 func (o TagTemplateFieldOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TagTemplateField) *string { return v.Name }).(pulumi.StringPtrOutput)

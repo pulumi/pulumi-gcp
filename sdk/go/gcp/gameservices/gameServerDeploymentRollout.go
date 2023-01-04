@@ -140,8 +140,8 @@ type GameServerDeploymentRollout struct {
 	// processed.
 	// Structure is documented below.
 	GameServerConfigOverrides GameServerDeploymentRolloutGameServerConfigOverrideArrayOutput `pulumi:"gameServerConfigOverrides"`
-	// The resource id of the game server deployment eg:
-	// 'projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout'.
+	// The resource id of the game server deployment
+	// eg: `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -195,8 +195,8 @@ type gameServerDeploymentRolloutState struct {
 	// processed.
 	// Structure is documented below.
 	GameServerConfigOverrides []GameServerDeploymentRolloutGameServerConfigOverride `pulumi:"gameServerConfigOverrides"`
-	// The resource id of the game server deployment eg:
-	// 'projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout'.
+	// The resource id of the game server deployment
+	// eg: `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -216,8 +216,8 @@ type GameServerDeploymentRolloutState struct {
 	// processed.
 	// Structure is documented below.
 	GameServerConfigOverrides GameServerDeploymentRolloutGameServerConfigOverrideArrayInput
-	// The resource id of the game server deployment eg:
-	// 'projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout'.
+	// The resource id of the game server deployment
+	// eg: `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -375,8 +375,8 @@ func (o GameServerDeploymentRolloutOutput) GameServerConfigOverrides() GameServe
 	}).(GameServerDeploymentRolloutGameServerConfigOverrideArrayOutput)
 }
 
-// The resource id of the game server deployment eg:
-// 'projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout'.
+// The resource id of the game server deployment
+// eg: `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
 func (o GameServerDeploymentRolloutOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GameServerDeploymentRollout) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

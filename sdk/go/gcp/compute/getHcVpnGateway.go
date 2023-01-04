@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = compute.GetHcVpnGateway(ctx, &compute.GetHcVpnGatewayArgs{
+//			_, err := compute.GetHcVpnGateway(ctx, &compute.GetHcVpnGatewayArgs{
 //				Name: "foobar",
 //			}, nil)
 //			if err != nil {

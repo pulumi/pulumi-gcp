@@ -205,7 +205,8 @@ type Metric struct {
 	// describes the bucket boundaries used to create a histogram of the extracted values.
 	// Structure is documented below.
 	BucketOptions MetricBucketOptionsPtrOutput `pulumi:"bucketOptions"`
-	// A human-readable description for the label.
+	// A description of this metric, which is used in documentation. The maximum length of the
+	// description is 8000 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
 	// is used to match log entries.
@@ -279,7 +280,8 @@ type metricState struct {
 	// describes the bucket boundaries used to create a histogram of the extracted values.
 	// Structure is documented below.
 	BucketOptions *MetricBucketOptions `pulumi:"bucketOptions"`
-	// A human-readable description for the label.
+	// A description of this metric, which is used in documentation. The maximum length of the
+	// description is 8000 characters.
 	Description *string `pulumi:"description"`
 	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
 	// is used to match log entries.
@@ -322,7 +324,8 @@ type MetricState struct {
 	// describes the bucket boundaries used to create a histogram of the extracted values.
 	// Structure is documented below.
 	BucketOptions MetricBucketOptionsPtrInput
-	// A human-readable description for the label.
+	// A description of this metric, which is used in documentation. The maximum length of the
+	// description is 8000 characters.
 	Description pulumi.StringPtrInput
 	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
 	// is used to match log entries.
@@ -369,7 +372,8 @@ type metricArgs struct {
 	// describes the bucket boundaries used to create a histogram of the extracted values.
 	// Structure is documented below.
 	BucketOptions *MetricBucketOptions `pulumi:"bucketOptions"`
-	// A human-readable description for the label.
+	// A description of this metric, which is used in documentation. The maximum length of the
+	// description is 8000 characters.
 	Description *string `pulumi:"description"`
 	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
 	// is used to match log entries.
@@ -413,7 +417,8 @@ type MetricArgs struct {
 	// describes the bucket boundaries used to create a histogram of the extracted values.
 	// Structure is documented below.
 	BucketOptions MetricBucketOptionsPtrInput
-	// A human-readable description for the label.
+	// A description of this metric, which is used in documentation. The maximum length of the
+	// description is 8000 characters.
 	Description pulumi.StringPtrInput
 	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
 	// is used to match log entries.
@@ -548,7 +553,8 @@ func (o MetricOutput) BucketOptions() MetricBucketOptionsPtrOutput {
 	return o.ApplyT(func(v *Metric) MetricBucketOptionsPtrOutput { return v.BucketOptions }).(MetricBucketOptionsPtrOutput)
 }
 
-// A human-readable description for the label.
+// A description of this metric, which is used in documentation. The maximum length of the
+// description is 8000 characters.
 func (o MetricOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Metric) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }

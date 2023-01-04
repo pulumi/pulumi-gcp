@@ -27,16 +27,26 @@ type LookupAndroidAppArgs struct {
 
 // A collection of values returned by getAndroidApp.
 type LookupAndroidAppResult struct {
+	// Immutable. The globally unique, Firebase-assigned identifier of the AndroidApp.
+	// This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId          string `pulumi:"appId"`
 	DeletionPolicy string `pulumi:"deletionPolicy"`
-	DisplayName    string `pulumi:"displayName"`
-	Etag           string `pulumi:"etag"`
+	// The user-assigned display name of the AndroidApp.
+	DisplayName string `pulumi:"displayName"`
+	// This checksum is computed by the server based on the value of other fields, and it may be sent
+	// with update requests to ensure the client has an up-to-date value before proceeding.
+	Etag string `pulumi:"etag"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string   `pulumi:"id"`
-	Name         string   `pulumi:"name"`
-	PackageName  string   `pulumi:"packageName"`
-	Project      string   `pulumi:"project"`
-	Sha1Hashes   []string `pulumi:"sha1Hashes"`
+	Id string `pulumi:"id"`
+	// The fully qualified resource name of the AndroidApp, for example:
+	// projects/projectId/androidApps/appId
+	Name string `pulumi:"name"`
+	// The canonical package name of the Android app as would appear in the Google Play Developer Console.
+	PackageName string `pulumi:"packageName"`
+	Project     string `pulumi:"project"`
+	// The SHA1 certificate hashes for the AndroidApp.
+	Sha1Hashes []string `pulumi:"sha1Hashes"`
+	// The SHA256 certificate hashes for the AndroidApp.
 	Sha256Hashes []string `pulumi:"sha256Hashes"`
 }
 
@@ -78,6 +88,8 @@ func (o LookupAndroidAppResultOutput) ToLookupAndroidAppResultOutputWithContext(
 	return o
 }
 
+// Immutable. The globally unique, Firebase-assigned identifier of the AndroidApp.
+// This identifier should be treated as an opaque token, as the data format is not specified.
 func (o LookupAndroidAppResultOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAndroidAppResult) string { return v.AppId }).(pulumi.StringOutput)
 }
@@ -86,10 +98,13 @@ func (o LookupAndroidAppResultOutput) DeletionPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAndroidAppResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
+// The user-assigned display name of the AndroidApp.
 func (o LookupAndroidAppResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAndroidAppResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// This checksum is computed by the server based on the value of other fields, and it may be sent
+// with update requests to ensure the client has an up-to-date value before proceeding.
 func (o LookupAndroidAppResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAndroidAppResult) string { return v.Etag }).(pulumi.StringOutput)
 }
@@ -99,10 +114,13 @@ func (o LookupAndroidAppResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAndroidAppResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The fully qualified resource name of the AndroidApp, for example:
+// projects/projectId/androidApps/appId
 func (o LookupAndroidAppResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAndroidAppResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The canonical package name of the Android app as would appear in the Google Play Developer Console.
 func (o LookupAndroidAppResultOutput) PackageName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAndroidAppResult) string { return v.PackageName }).(pulumi.StringOutput)
 }
@@ -111,10 +129,12 @@ func (o LookupAndroidAppResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAndroidAppResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// The SHA1 certificate hashes for the AndroidApp.
 func (o LookupAndroidAppResultOutput) Sha1Hashes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAndroidAppResult) []string { return v.Sha1Hashes }).(pulumi.StringArrayOutput)
 }
 
+// The SHA256 certificate hashes for the AndroidApp.
 func (o LookupAndroidAppResultOutput) Sha256Hashes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAndroidAppResult) []string { return v.Sha256Hashes }).(pulumi.StringArrayOutput)
 }

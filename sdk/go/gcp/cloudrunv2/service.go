@@ -407,71 +407,58 @@ type Service struct {
 	Client pulumi.StringPtrOutput `pulumi:"client"`
 	// Arbitrary version identifier for the API client.
 	ClientVersion pulumi.StringPtrOutput `pulumi:"clientVersion"`
-	// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the
-	// Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation
-	// process in Cloud Run.
+	// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+	// Structure is documented below.
 	Conditions ServiceConditionArrayOutput `pulumi:"conditions"`
 	// User-provided description of the Service. This field currently has a 512-character limit.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during
-	// updates.
+	// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this
-	// is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
+	// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
 	Generation pulumi.StringOutput `pulumi:"generation"`
 	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
 	// Possible values are `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
 	Ingress pulumi.StringOutput `pulumi:"ingress"`
+	// KRM-style labels for the resource.
+	// (Optional)
 	// Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Name of the last created revision. See comments in reconciling for additional information on reconciliation process in
-	// Cloud Run.
+	// Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	LatestCreatedRevision pulumi.StringOutput `pulumi:"latestCreatedRevision"`
-	// Name of the latest revision that is serving traffic. See comments in reconciling for additional information on
-	// reconciliation process in Cloud Run.
+	// Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	LatestReadyRevision pulumi.StringOutput `pulumi:"latestReadyRevision"`
 	// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
 	// Possible values are `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
 	LaunchStage pulumi.StringOutput `pulumi:"launchStage"`
 	// The location of the cloud run service
 	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// Volume's name.
+	// Name of the Service.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The generation of this Service currently serving traffic. See comments in reconciling for additional information on
-	// reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its
-	// JSON representation will be a string instead of an integer.
+	// The generation of this Service currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
 	ObservedGeneration pulumi.StringOutput `pulumi:"observedGeneration"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Returns true if the Service is currently being acted upon by the system to bring it into the desired state. When a new
-	// Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring
-	// the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process,
-	// observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the
-	// intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation
-	// succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be
-	// found in terminalCondition.state. If reconciliation succeeded, the following fields will match: traffic and
-	// trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision. If reconciliation
-	// failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision,
-	// or empty for newly created Services. Additional information on the failure can be found in terminalCondition and
-	// conditions.
+	// Returns true if the Service is currently being acted upon by the system to bring it into the desired state.
+	// When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
+	// If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
+	// If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// The template used to create revisions for this Service.
 	// Structure is documented below.
 	Template ServiceTemplateOutput `pulumi:"template"`
-	// The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach
-	// a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+	// The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+	// Structure is documented below.
 	TerminalConditions ServiceTerminalConditionArrayOutput `pulumi:"terminalConditions"`
-	// Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on
-	// reconciliation process in Cloud Run.
+	// Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+	// Structure is documented below.
 	TrafficStatuses ServiceTrafficStatusArrayOutput `pulumi:"trafficStatuses"`
 	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
 	// Structure is documented below.
 	Traffics ServiceTrafficArrayOutput `pulumi:"traffics"`
-	// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until
-	// the resource is deleted.
+	// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid pulumi.StringOutput `pulumi:"uid"`
-	// The main URI in which this Service is serving traffic.
+	// Displays the target URI.
 	Uri pulumi.StringOutput `pulumi:"uri"`
 }
 
@@ -514,71 +501,58 @@ type serviceState struct {
 	Client *string `pulumi:"client"`
 	// Arbitrary version identifier for the API client.
 	ClientVersion *string `pulumi:"clientVersion"`
-	// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the
-	// Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation
-	// process in Cloud Run.
+	// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+	// Structure is documented below.
 	Conditions []ServiceCondition `pulumi:"conditions"`
 	// User-provided description of the Service. This field currently has a 512-character limit.
 	Description *string `pulumi:"description"`
-	// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during
-	// updates.
+	// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
 	Etag *string `pulumi:"etag"`
-	// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this
-	// is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
+	// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
 	Generation *string `pulumi:"generation"`
 	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
 	// Possible values are `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
 	Ingress *string `pulumi:"ingress"`
+	// KRM-style labels for the resource.
+	// (Optional)
 	// Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
 	Labels map[string]string `pulumi:"labels"`
-	// Name of the last created revision. See comments in reconciling for additional information on reconciliation process in
-	// Cloud Run.
+	// Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	LatestCreatedRevision *string `pulumi:"latestCreatedRevision"`
-	// Name of the latest revision that is serving traffic. See comments in reconciling for additional information on
-	// reconciliation process in Cloud Run.
+	// Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	LatestReadyRevision *string `pulumi:"latestReadyRevision"`
 	// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
 	// Possible values are `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
 	LaunchStage *string `pulumi:"launchStage"`
 	// The location of the cloud run service
 	Location *string `pulumi:"location"`
-	// Volume's name.
+	// Name of the Service.
 	Name *string `pulumi:"name"`
-	// The generation of this Service currently serving traffic. See comments in reconciling for additional information on
-	// reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its
-	// JSON representation will be a string instead of an integer.
+	// The generation of this Service currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
 	ObservedGeneration *string `pulumi:"observedGeneration"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Returns true if the Service is currently being acted upon by the system to bring it into the desired state. When a new
-	// Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring
-	// the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process,
-	// observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the
-	// intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation
-	// succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be
-	// found in terminalCondition.state. If reconciliation succeeded, the following fields will match: traffic and
-	// trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision. If reconciliation
-	// failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision,
-	// or empty for newly created Services. Additional information on the failure can be found in terminalCondition and
-	// conditions.
+	// Returns true if the Service is currently being acted upon by the system to bring it into the desired state.
+	// When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
+	// If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
+	// If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
 	Reconciling *bool `pulumi:"reconciling"`
 	// The template used to create revisions for this Service.
 	// Structure is documented below.
 	Template *ServiceTemplate `pulumi:"template"`
-	// The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach
-	// a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+	// The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+	// Structure is documented below.
 	TerminalConditions []ServiceTerminalCondition `pulumi:"terminalConditions"`
-	// Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on
-	// reconciliation process in Cloud Run.
+	// Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+	// Structure is documented below.
 	TrafficStatuses []ServiceTrafficStatus `pulumi:"trafficStatuses"`
 	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
 	// Structure is documented below.
 	Traffics []ServiceTraffic `pulumi:"traffics"`
-	// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until
-	// the resource is deleted.
+	// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid *string `pulumi:"uid"`
-	// The main URI in which this Service is serving traffic.
+	// Displays the target URI.
 	Uri *string `pulumi:"uri"`
 }
 
@@ -590,71 +564,58 @@ type ServiceState struct {
 	Client pulumi.StringPtrInput
 	// Arbitrary version identifier for the API client.
 	ClientVersion pulumi.StringPtrInput
-	// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the
-	// Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation
-	// process in Cloud Run.
+	// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+	// Structure is documented below.
 	Conditions ServiceConditionArrayInput
 	// User-provided description of the Service. This field currently has a 512-character limit.
 	Description pulumi.StringPtrInput
-	// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during
-	// updates.
+	// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
 	Etag pulumi.StringPtrInput
-	// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this
-	// is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
+	// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
 	Generation pulumi.StringPtrInput
 	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
 	// Possible values are `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
 	Ingress pulumi.StringPtrInput
+	// KRM-style labels for the resource.
+	// (Optional)
 	// Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
 	Labels pulumi.StringMapInput
-	// Name of the last created revision. See comments in reconciling for additional information on reconciliation process in
-	// Cloud Run.
+	// Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	LatestCreatedRevision pulumi.StringPtrInput
-	// Name of the latest revision that is serving traffic. See comments in reconciling for additional information on
-	// reconciliation process in Cloud Run.
+	// Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	LatestReadyRevision pulumi.StringPtrInput
 	// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
 	// Possible values are `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
 	LaunchStage pulumi.StringPtrInput
 	// The location of the cloud run service
 	Location pulumi.StringPtrInput
-	// Volume's name.
+	// Name of the Service.
 	Name pulumi.StringPtrInput
-	// The generation of this Service currently serving traffic. See comments in reconciling for additional information on
-	// reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its
-	// JSON representation will be a string instead of an integer.
+	// The generation of this Service currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
 	ObservedGeneration pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Returns true if the Service is currently being acted upon by the system to bring it into the desired state. When a new
-	// Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring
-	// the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process,
-	// observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the
-	// intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation
-	// succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be
-	// found in terminalCondition.state. If reconciliation succeeded, the following fields will match: traffic and
-	// trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision. If reconciliation
-	// failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision,
-	// or empty for newly created Services. Additional information on the failure can be found in terminalCondition and
-	// conditions.
+	// Returns true if the Service is currently being acted upon by the system to bring it into the desired state.
+	// When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
+	// If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
+	// If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
 	Reconciling pulumi.BoolPtrInput
 	// The template used to create revisions for this Service.
 	// Structure is documented below.
 	Template ServiceTemplatePtrInput
-	// The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach
-	// a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+	// The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+	// Structure is documented below.
 	TerminalConditions ServiceTerminalConditionArrayInput
-	// Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on
-	// reconciliation process in Cloud Run.
+	// Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+	// Structure is documented below.
 	TrafficStatuses ServiceTrafficStatusArrayInput
 	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
 	// Structure is documented below.
 	Traffics ServiceTrafficArrayInput
-	// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until
-	// the resource is deleted.
+	// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid pulumi.StringPtrInput
-	// The main URI in which this Service is serving traffic.
+	// Displays the target URI.
 	Uri pulumi.StringPtrInput
 }
 
@@ -675,6 +636,8 @@ type serviceArgs struct {
 	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
 	// Possible values are `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
 	Ingress *string `pulumi:"ingress"`
+	// KRM-style labels for the resource.
+	// (Optional)
 	// Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
 	Labels map[string]string `pulumi:"labels"`
 	// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
@@ -682,7 +645,7 @@ type serviceArgs struct {
 	LaunchStage *string `pulumi:"launchStage"`
 	// The location of the cloud run service
 	Location *string `pulumi:"location"`
-	// Volume's name.
+	// Name of the Service.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -709,6 +672,8 @@ type ServiceArgs struct {
 	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
 	// Possible values are `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
 	Ingress pulumi.StringPtrInput
+	// KRM-style labels for the resource.
+	// (Optional)
 	// Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
 	Labels pulumi.StringMapInput
 	// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
@@ -716,7 +681,7 @@ type ServiceArgs struct {
 	LaunchStage pulumi.StringPtrInput
 	// The location of the cloud run service
 	Location pulumi.StringPtrInput
-	// Volume's name.
+	// Name of the Service.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -832,9 +797,8 @@ func (o ServiceOutput) ClientVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.ClientVersion }).(pulumi.StringPtrOutput)
 }
 
-// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the
-// Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation
-// process in Cloud Run.
+// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+// Structure is documented below.
 func (o ServiceOutput) Conditions() ServiceConditionArrayOutput {
 	return o.ApplyT(func(v *Service) ServiceConditionArrayOutput { return v.Conditions }).(ServiceConditionArrayOutput)
 }
@@ -844,14 +808,12 @@ func (o ServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during
-// updates.
+// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
 func (o ServiceOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this
-// is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
+// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
 func (o ServiceOutput) Generation() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Generation }).(pulumi.StringOutput)
 }
@@ -862,19 +824,19 @@ func (o ServiceOutput) Ingress() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Ingress }).(pulumi.StringOutput)
 }
 
+// KRM-style labels for the resource.
+// (Optional)
 // Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
 func (o ServiceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Name of the last created revision. See comments in reconciling for additional information on reconciliation process in
-// Cloud Run.
+// Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 func (o ServiceOutput) LatestCreatedRevision() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.LatestCreatedRevision }).(pulumi.StringOutput)
 }
 
-// Name of the latest revision that is serving traffic. See comments in reconciling for additional information on
-// reconciliation process in Cloud Run.
+// Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 func (o ServiceOutput) LatestReadyRevision() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.LatestReadyRevision }).(pulumi.StringOutput)
 }
@@ -890,14 +852,12 @@ func (o ServiceOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// Volume's name.
+// Name of the Service.
 func (o ServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The generation of this Service currently serving traffic. See comments in reconciling for additional information on
-// reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its
-// JSON representation will be a string instead of an integer.
+// The generation of this Service currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
 func (o ServiceOutput) ObservedGeneration() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ObservedGeneration }).(pulumi.StringOutput)
 }
@@ -908,17 +868,10 @@ func (o ServiceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Returns true if the Service is currently being acted upon by the system to bring it into the desired state. When a new
-// Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring
-// the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process,
-// observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the
-// intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation
-// succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be
-// found in terminalCondition.state. If reconciliation succeeded, the following fields will match: traffic and
-// trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision. If reconciliation
-// failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision,
-// or empty for newly created Services. Additional information on the failure can be found in terminalCondition and
-// conditions.
+// Returns true if the Service is currently being acted upon by the system to bring it into the desired state.
+// When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
+// If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
+// If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
 func (o ServiceOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Service) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }
@@ -929,14 +882,14 @@ func (o ServiceOutput) Template() ServiceTemplateOutput {
 	return o.ApplyT(func(v *Service) ServiceTemplateOutput { return v.Template }).(ServiceTemplateOutput)
 }
 
-// The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach
-// a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+// The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+// Structure is documented below.
 func (o ServiceOutput) TerminalConditions() ServiceTerminalConditionArrayOutput {
 	return o.ApplyT(func(v *Service) ServiceTerminalConditionArrayOutput { return v.TerminalConditions }).(ServiceTerminalConditionArrayOutput)
 }
 
-// Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on
-// reconciliation process in Cloud Run.
+// Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+// Structure is documented below.
 func (o ServiceOutput) TrafficStatuses() ServiceTrafficStatusArrayOutput {
 	return o.ApplyT(func(v *Service) ServiceTrafficStatusArrayOutput { return v.TrafficStatuses }).(ServiceTrafficStatusArrayOutput)
 }
@@ -947,13 +900,12 @@ func (o ServiceOutput) Traffics() ServiceTrafficArrayOutput {
 	return o.ApplyT(func(v *Service) ServiceTrafficArrayOutput { return v.Traffics }).(ServiceTrafficArrayOutput)
 }
 
-// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until
-// the resource is deleted.
+// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 func (o ServiceOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }
 
-// The main URI in which this Service is serving traffic.
+// Displays the target URI.
 func (o ServiceOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Uri }).(pulumi.StringOutput)
 }

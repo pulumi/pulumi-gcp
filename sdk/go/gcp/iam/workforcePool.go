@@ -110,7 +110,8 @@ type WorkforcePool struct {
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// The location for the resource.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Output only. The resource name of the pool. Format: 'locations/{location}/workforcePools/{workforcePoolId}'
+	// Output only. The resource name of the pool.
+	// Format: `locations/{location}/workforcePools/{workforcePoolId}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
 	Parent pulumi.StringOutput `pulumi:"parent"`
@@ -120,13 +121,16 @@ type WorkforcePool struct {
 	// If `sessionDuration` is not configured, minted credentials have a default duration of one hour (3600s).
 	// A duration in seconds with up to nine fractional digits, ending with '`s`'. Example: "`3.5s`".
 	SessionDuration pulumi.StringPtrOutput `pulumi:"sessionDuration"`
-	// Output only. The state of the pool. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The pool is active, and may be
-	// used in Google Cloud policies. * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after
-	// approximately 30 days. You can restore a soft-deleted pool using
-	// [workforcePools.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePool).
-	// You cannot reuse the ID of a soft-deleted pool until it is permanently deleted. While a pool is deleted, you cannot use
-	// it to exchange tokens, or use existing tokens to access resources. If the pool is undeleted, existing tokens grant
-	// access again.
+	// Output only. The state of the pool.
+	// * STATE_UNSPECIFIED: State unspecified.
+	// * ACTIVE: The pool is active, and may be used in Google Cloud policies.
+	// * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted
+	//   after approximately 30 days. You can restore a soft-deleted pool using
+	//   [workforcePools.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePool).
+	//   You cannot reuse the ID of a soft-deleted pool until it is permanently deleted.
+	//   While a pool is deleted, you cannot use it to exchange tokens, or use
+	//   existing tokens to access resources. If the pool is undeleted, existing
+	//   tokens grant access again.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The name of the pool. The ID must be a globally unique string of 6 to 63 lowercase letters,
 	// digits, or hyphens. It must start with a letter, and cannot have a trailing hyphen.
@@ -181,7 +185,8 @@ type workforcePoolState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The location for the resource.
 	Location *string `pulumi:"location"`
-	// Output only. The resource name of the pool. Format: 'locations/{location}/workforcePools/{workforcePoolId}'
+	// Output only. The resource name of the pool.
+	// Format: `locations/{location}/workforcePools/{workforcePoolId}`
 	Name *string `pulumi:"name"`
 	// Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
 	Parent *string `pulumi:"parent"`
@@ -191,13 +196,16 @@ type workforcePoolState struct {
 	// If `sessionDuration` is not configured, minted credentials have a default duration of one hour (3600s).
 	// A duration in seconds with up to nine fractional digits, ending with '`s`'. Example: "`3.5s`".
 	SessionDuration *string `pulumi:"sessionDuration"`
-	// Output only. The state of the pool. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The pool is active, and may be
-	// used in Google Cloud policies. * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after
-	// approximately 30 days. You can restore a soft-deleted pool using
-	// [workforcePools.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePool).
-	// You cannot reuse the ID of a soft-deleted pool until it is permanently deleted. While a pool is deleted, you cannot use
-	// it to exchange tokens, or use existing tokens to access resources. If the pool is undeleted, existing tokens grant
-	// access again.
+	// Output only. The state of the pool.
+	// * STATE_UNSPECIFIED: State unspecified.
+	// * ACTIVE: The pool is active, and may be used in Google Cloud policies.
+	// * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted
+	//   after approximately 30 days. You can restore a soft-deleted pool using
+	//   [workforcePools.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePool).
+	//   You cannot reuse the ID of a soft-deleted pool until it is permanently deleted.
+	//   While a pool is deleted, you cannot use it to exchange tokens, or use
+	//   existing tokens to access resources. If the pool is undeleted, existing
+	//   tokens grant access again.
 	State *string `pulumi:"state"`
 	// The name of the pool. The ID must be a globally unique string of 6 to 63 lowercase letters,
 	// digits, or hyphens. It must start with a letter, and cannot have a trailing hyphen.
@@ -215,7 +223,8 @@ type WorkforcePoolState struct {
 	DisplayName pulumi.StringPtrInput
 	// The location for the resource.
 	Location pulumi.StringPtrInput
-	// Output only. The resource name of the pool. Format: 'locations/{location}/workforcePools/{workforcePoolId}'
+	// Output only. The resource name of the pool.
+	// Format: `locations/{location}/workforcePools/{workforcePoolId}`
 	Name pulumi.StringPtrInput
 	// Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
 	Parent pulumi.StringPtrInput
@@ -225,13 +234,16 @@ type WorkforcePoolState struct {
 	// If `sessionDuration` is not configured, minted credentials have a default duration of one hour (3600s).
 	// A duration in seconds with up to nine fractional digits, ending with '`s`'. Example: "`3.5s`".
 	SessionDuration pulumi.StringPtrInput
-	// Output only. The state of the pool. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The pool is active, and may be
-	// used in Google Cloud policies. * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after
-	// approximately 30 days. You can restore a soft-deleted pool using
-	// [workforcePools.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePool).
-	// You cannot reuse the ID of a soft-deleted pool until it is permanently deleted. While a pool is deleted, you cannot use
-	// it to exchange tokens, or use existing tokens to access resources. If the pool is undeleted, existing tokens grant
-	// access again.
+	// Output only. The state of the pool.
+	// * STATE_UNSPECIFIED: State unspecified.
+	// * ACTIVE: The pool is active, and may be used in Google Cloud policies.
+	// * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted
+	//   after approximately 30 days. You can restore a soft-deleted pool using
+	//   [workforcePools.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePool).
+	//   You cannot reuse the ID of a soft-deleted pool until it is permanently deleted.
+	//   While a pool is deleted, you cannot use it to exchange tokens, or use
+	//   existing tokens to access resources. If the pool is undeleted, existing
+	//   tokens grant access again.
 	State pulumi.StringPtrInput
 	// The name of the pool. The ID must be a globally unique string of 6 to 63 lowercase letters,
 	// digits, or hyphens. It must start with a letter, and cannot have a trailing hyphen.
@@ -400,7 +412,8 @@ func (o WorkforcePoolOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkforcePool) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Output only. The resource name of the pool. Format: 'locations/{location}/workforcePools/{workforcePoolId}'
+// Output only. The resource name of the pool.
+// Format: `locations/{location}/workforcePools/{workforcePoolId}`
 func (o WorkforcePoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkforcePool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -419,13 +432,16 @@ func (o WorkforcePoolOutput) SessionDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkforcePool) pulumi.StringPtrOutput { return v.SessionDuration }).(pulumi.StringPtrOutput)
 }
 
-// Output only. The state of the pool. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The pool is active, and may be
-// used in Google Cloud policies. * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after
-// approximately 30 days. You can restore a soft-deleted pool using
-// [workforcePools.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePool).
-// You cannot reuse the ID of a soft-deleted pool until it is permanently deleted. While a pool is deleted, you cannot use
-// it to exchange tokens, or use existing tokens to access resources. If the pool is undeleted, existing tokens grant
-// access again.
+// Output only. The state of the pool.
+//   - STATE_UNSPECIFIED: State unspecified.
+//   - ACTIVE: The pool is active, and may be used in Google Cloud policies.
+//   - DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted
+//     after approximately 30 days. You can restore a soft-deleted pool using
+//     [workforcePools.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePool).
+//     You cannot reuse the ID of a soft-deleted pool until it is permanently deleted.
+//     While a pool is deleted, you cannot use it to exchange tokens, or use
+//     existing tokens to access resources. If the pool is undeleted, existing
+//     tokens grant access again.
 func (o WorkforcePoolOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkforcePool) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

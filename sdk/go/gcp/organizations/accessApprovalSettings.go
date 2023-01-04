@@ -117,9 +117,9 @@ import (
 //			}, nil)
 //			_, err = organizations.NewAccessApprovalSettings(ctx, "organizationAccessApproval", &organizations.AccessApprovalSettingsArgs{
 //				OrganizationId: pulumi.String("123456789"),
-//				ActiveKeyVersion: cryptoKeyVersion.ApplyT(func(cryptoKeyVersion kms.GetKMSCryptoKeyVersionResult) (string, error) {
-//					return cryptoKeyVersion.Name, nil
-//				}).(pulumi.StringOutput),
+//				ActiveKeyVersion: cryptoKeyVersion.ApplyT(func(cryptoKeyVersion kms.GetKMSCryptoKeyVersionResult) (*string, error) {
+//					return &cryptoKeyVersion.Name, nil
+//				}).(pulumi.StringPtrOutput),
 //				EnrolledServices: organizations.AccessApprovalSettingsEnrolledServiceArray{
 //					&organizations.AccessApprovalSettingsEnrolledServiceArgs{
 //						CloudProduct: pulumi.String("all"),
@@ -168,9 +168,9 @@ type AccessApprovalSettings struct {
 	// A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
 	// Structure is documented below.
 	EnrolledServices AccessApprovalSettingsEnrolledServiceArrayOutput `pulumi:"enrolledServices"`
-	// If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-	// this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on
-	// it, etc.).
+	// If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
+	// configured on this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the
+	// correct permissions on it, etc.).
 	InvalidKeyVersion pulumi.BoolOutput `pulumi:"invalidKeyVersion"`
 	// The resource name of the settings. Format is "organizations/{organization_id}/accessApprovalSettings"
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -230,9 +230,9 @@ type accessApprovalSettingsState struct {
 	// A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
 	// Structure is documented below.
 	EnrolledServices []AccessApprovalSettingsEnrolledService `pulumi:"enrolledServices"`
-	// If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-	// this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on
-	// it, etc.).
+	// If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
+	// configured on this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the
+	// correct permissions on it, etc.).
 	InvalidKeyVersion *bool `pulumi:"invalidKeyVersion"`
 	// The resource name of the settings. Format is "organizations/{organization_id}/accessApprovalSettings"
 	Name *string `pulumi:"name"`
@@ -258,9 +258,9 @@ type AccessApprovalSettingsState struct {
 	// A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
 	// Structure is documented below.
 	EnrolledServices AccessApprovalSettingsEnrolledServiceArrayInput
-	// If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-	// this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on
-	// it, etc.).
+	// If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
+	// configured on this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the
+	// correct permissions on it, etc.).
 	InvalidKeyVersion pulumi.BoolPtrInput
 	// The resource name of the settings. Format is "organizations/{organization_id}/accessApprovalSettings"
 	Name pulumi.StringPtrInput
@@ -427,9 +427,9 @@ func (o AccessApprovalSettingsOutput) EnrolledServices() AccessApprovalSettingsE
 	}).(AccessApprovalSettingsEnrolledServiceArrayOutput)
 }
 
-// If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-// this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on
-// it, etc.).
+// If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
+// configured on this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the
+// correct permissions on it, etc.).
 func (o AccessApprovalSettingsOutput) InvalidKeyVersion() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AccessApprovalSettings) pulumi.BoolOutput { return v.InvalidKeyVersion }).(pulumi.BoolOutput)
 }

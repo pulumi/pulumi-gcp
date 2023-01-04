@@ -107,7 +107,7 @@ func (o HubRoutingVpcArrayOutput) Index(i pulumi.IntInput) HubRoutingVpcOutput {
 type SpokeLinkedInterconnectAttachments struct {
 	// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
 	SiteToSiteDataTransfer bool `pulumi:"siteToSiteDataTransfer"`
-	// The URIs of linked VPN tunnel resources.
+	// The URIs of linked interconnect attachment resources
 	Uris []string `pulumi:"uris"`
 }
 
@@ -125,7 +125,7 @@ type SpokeLinkedInterconnectAttachmentsInput interface {
 type SpokeLinkedInterconnectAttachmentsArgs struct {
 	// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
 	SiteToSiteDataTransfer pulumi.BoolInput `pulumi:"siteToSiteDataTransfer"`
-	// The URIs of linked VPN tunnel resources.
+	// The URIs of linked interconnect attachment resources
 	Uris pulumi.StringArrayInput `pulumi:"uris"`
 }
 
@@ -211,7 +211,7 @@ func (o SpokeLinkedInterconnectAttachmentsOutput) SiteToSiteDataTransfer() pulum
 	return o.ApplyT(func(v SpokeLinkedInterconnectAttachments) bool { return v.SiteToSiteDataTransfer }).(pulumi.BoolOutput)
 }
 
-// The URIs of linked VPN tunnel resources.
+// The URIs of linked interconnect attachment resources
 func (o SpokeLinkedInterconnectAttachmentsOutput) Uris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SpokeLinkedInterconnectAttachments) []string { return v.Uris }).(pulumi.StringArrayOutput)
 }
@@ -250,7 +250,7 @@ func (o SpokeLinkedInterconnectAttachmentsPtrOutput) SiteToSiteDataTransfer() pu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The URIs of linked VPN tunnel resources.
+// The URIs of linked interconnect attachment resources
 func (o SpokeLinkedInterconnectAttachmentsPtrOutput) Uris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SpokeLinkedInterconnectAttachments) []string {
 		if v == nil {

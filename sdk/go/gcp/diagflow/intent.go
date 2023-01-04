@@ -173,8 +173,9 @@ type Intent struct {
 	// the contexts must be present in the active user session for an event to trigger this intent. See the
 	// [events reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
 	Events pulumi.StringArrayOutput `pulumi:"events"`
-	// Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only
-	// in the output.
+	// Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
+	// only in the output.
+	// Structure is documented below.
 	FollowupIntentInfos IntentFollowupIntentInfoArrayOutput `pulumi:"followupIntentInfos"`
 	// The list of context names required for this intent to be triggered.
 	// Format: projects/<Project ID>/agent/sessions/-/contexts/<Context ID>.
@@ -185,7 +186,8 @@ type Intent struct {
 	// Note: If mlDisabled setting is set to true, then this intent is not taken into account during inference in ML
 	// ONLY match mode. Also, auto-markup in the UI is turned off.
 	MlDisabled pulumi.BoolOutput `pulumi:"mlDisabled"`
-	// The unique identifier of this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
+	// The unique identifier of this intent.
+	// Format: projects/<Project ID>/agent/intents/<Intent ID>.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The unique identifier of the parent intent in the chain of followup intents.
 	// Format: projects/<Project ID>/agent/intents/<Intent ID>.
@@ -200,8 +202,9 @@ type Intent struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Indicates whether to delete all contexts in the current session when this intent is matched.
 	ResetContexts pulumi.BoolOutput `pulumi:"resetContexts"`
-	// The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents
-	// chain for this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
+	// The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup
+	// intents chain for this intent.
+	// Format: projects/<Project ID>/agent/intents/<Intent ID>.
 	RootFollowupIntentName pulumi.StringOutput `pulumi:"rootFollowupIntentName"`
 	// Indicates whether webhooks are enabled for the intent.
 	// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
@@ -256,8 +259,9 @@ type intentState struct {
 	// the contexts must be present in the active user session for an event to trigger this intent. See the
 	// [events reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
 	Events []string `pulumi:"events"`
-	// Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only
-	// in the output.
+	// Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
+	// only in the output.
+	// Structure is documented below.
 	FollowupIntentInfos []IntentFollowupIntentInfo `pulumi:"followupIntentInfos"`
 	// The list of context names required for this intent to be triggered.
 	// Format: projects/<Project ID>/agent/sessions/-/contexts/<Context ID>.
@@ -268,7 +272,8 @@ type intentState struct {
 	// Note: If mlDisabled setting is set to true, then this intent is not taken into account during inference in ML
 	// ONLY match mode. Also, auto-markup in the UI is turned off.
 	MlDisabled *bool `pulumi:"mlDisabled"`
-	// The unique identifier of this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
+	// The unique identifier of this intent.
+	// Format: projects/<Project ID>/agent/intents/<Intent ID>.
 	Name *string `pulumi:"name"`
 	// The unique identifier of the parent intent in the chain of followup intents.
 	// Format: projects/<Project ID>/agent/intents/<Intent ID>.
@@ -283,8 +288,9 @@ type intentState struct {
 	Project *string `pulumi:"project"`
 	// Indicates whether to delete all contexts in the current session when this intent is matched.
 	ResetContexts *bool `pulumi:"resetContexts"`
-	// The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents
-	// chain for this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
+	// The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup
+	// intents chain for this intent.
+	// Format: projects/<Project ID>/agent/intents/<Intent ID>.
 	RootFollowupIntentName *string `pulumi:"rootFollowupIntentName"`
 	// Indicates whether webhooks are enabled for the intent.
 	// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
@@ -308,8 +314,9 @@ type IntentState struct {
 	// the contexts must be present in the active user session for an event to trigger this intent. See the
 	// [events reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
 	Events pulumi.StringArrayInput
-	// Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only
-	// in the output.
+	// Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
+	// only in the output.
+	// Structure is documented below.
 	FollowupIntentInfos IntentFollowupIntentInfoArrayInput
 	// The list of context names required for this intent to be triggered.
 	// Format: projects/<Project ID>/agent/sessions/-/contexts/<Context ID>.
@@ -320,7 +327,8 @@ type IntentState struct {
 	// Note: If mlDisabled setting is set to true, then this intent is not taken into account during inference in ML
 	// ONLY match mode. Also, auto-markup in the UI is turned off.
 	MlDisabled pulumi.BoolPtrInput
-	// The unique identifier of this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
+	// The unique identifier of this intent.
+	// Format: projects/<Project ID>/agent/intents/<Intent ID>.
 	Name pulumi.StringPtrInput
 	// The unique identifier of the parent intent in the chain of followup intents.
 	// Format: projects/<Project ID>/agent/intents/<Intent ID>.
@@ -335,8 +343,9 @@ type IntentState struct {
 	Project pulumi.StringPtrInput
 	// Indicates whether to delete all contexts in the current session when this intent is matched.
 	ResetContexts pulumi.BoolPtrInput
-	// The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents
-	// chain for this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
+	// The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup
+	// intents chain for this intent.
+	// Format: projects/<Project ID>/agent/intents/<Intent ID>.
 	RootFollowupIntentName pulumi.StringPtrInput
 	// Indicates whether webhooks are enabled for the intent.
 	// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
@@ -551,8 +560,9 @@ func (o IntentOutput) Events() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Intent) pulumi.StringArrayOutput { return v.Events }).(pulumi.StringArrayOutput)
 }
 
-// Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only
-// in the output.
+// Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
+// only in the output.
+// Structure is documented below.
 func (o IntentOutput) FollowupIntentInfos() IntentFollowupIntentInfoArrayOutput {
 	return o.ApplyT(func(v *Intent) IntentFollowupIntentInfoArrayOutput { return v.FollowupIntentInfos }).(IntentFollowupIntentInfoArrayOutput)
 }
@@ -575,7 +585,8 @@ func (o IntentOutput) MlDisabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Intent) pulumi.BoolOutput { return v.MlDisabled }).(pulumi.BoolOutput)
 }
 
-// The unique identifier of this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
+// The unique identifier of this intent.
+// Format: projects/<Project ID>/agent/intents/<Intent ID>.
 func (o IntentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Intent) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -605,8 +616,9 @@ func (o IntentOutput) ResetContexts() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Intent) pulumi.BoolOutput { return v.ResetContexts }).(pulumi.BoolOutput)
 }
 
-// The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents
-// chain for this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
+// The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup
+// intents chain for this intent.
+// Format: projects/<Project ID>/agent/intents/<Intent ID>.
 func (o IntentOutput) RootFollowupIntentName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Intent) pulumi.StringOutput { return v.RootFollowupIntentName }).(pulumi.StringOutput)
 }

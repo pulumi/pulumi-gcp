@@ -71,7 +71,8 @@ type CustomService struct {
 
 	// Name used for UI elements listing this Service.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+	// The full resource name for this service. The syntax is:
+	// projects/[PROJECT_ID]/services/[SERVICE_ID].
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -122,7 +123,8 @@ func GetCustomService(ctx *pulumi.Context,
 type customServiceState struct {
 	// Name used for UI elements listing this Service.
 	DisplayName *string `pulumi:"displayName"`
-	// The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+	// The full resource name for this service. The syntax is:
+	// projects/[PROJECT_ID]/services/[SERVICE_ID].
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -145,7 +147,8 @@ type customServiceState struct {
 type CustomServiceState struct {
 	// Name used for UI elements listing this Service.
 	DisplayName pulumi.StringPtrInput
-	// The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+	// The full resource name for this service. The syntax is:
+	// projects/[PROJECT_ID]/services/[SERVICE_ID].
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -304,7 +307,8 @@ func (o CustomServiceOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomService) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+// The full resource name for this service. The syntax is:
+// projects/[PROJECT_ID]/services/[SERVICE_ID].
 func (o CustomServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomService) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

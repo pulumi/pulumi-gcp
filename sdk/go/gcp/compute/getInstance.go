@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = compute.LookupInstance(ctx, &compute.LookupInstanceArgs{
+//			_, err := compute.LookupInstance(ctx, &compute.LookupInstanceArgs{
 //				Name: pulumi.StringRef("primary-application-server"),
 //				Zone: pulumi.StringRef("us-central1-a"),
 //			}, nil)
@@ -85,7 +85,8 @@ type LookupInstanceResult struct {
 	// A brief description of the resource.
 	Description   string `pulumi:"description"`
 	DesiredStatus string `pulumi:"desiredStatus"`
-	EnableDisplay bool   `pulumi:"enableDisplay"`
+	// - Whether the instance has virtual displays enabled.
+	EnableDisplay bool `pulumi:"enableDisplay"`
 	// List of the type and count of accelerator cards attached to the instance. Structure is documented below.
 	GuestAccelerators []GetInstanceGuestAccelerator `pulumi:"guestAccelerators"`
 	Hostname          string                        `pulumi:"hostname"`
@@ -231,6 +232,7 @@ func (o LookupInstanceResultOutput) DesiredStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.DesiredStatus }).(pulumi.StringOutput)
 }
 
+// - Whether the instance has virtual displays enabled.
 func (o LookupInstanceResultOutput) EnableDisplay() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupInstanceResult) bool { return v.EnableDisplay }).(pulumi.BoolOutput)
 }

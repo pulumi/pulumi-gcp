@@ -39,7 +39,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = monitoring.GetIstioCanonicalService(ctx, &monitoring.GetIstioCanonicalServiceArgs{
+//			_, err := monitoring.GetIstioCanonicalService(ctx, &monitoring.GetIstioCanonicalServiceArgs{
 //				CanonicalService:          "prometheus",
 //				CanonicalServiceNamespace: "istio-system",
 //				MeshUid:                   "proj-573164786102",
@@ -81,13 +81,17 @@ type GetIstioCanonicalServiceArgs struct {
 type GetIstioCanonicalServiceResult struct {
 	CanonicalService          string `pulumi:"canonicalService"`
 	CanonicalServiceNamespace string `pulumi:"canonicalServiceNamespace"`
-	DisplayName               string `pulumi:"displayName"`
+	// Name used for UI elements listing this (Monitoring) Service.
+	DisplayName string `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string                              `pulumi:"id"`
-	MeshUid     string                              `pulumi:"meshUid"`
-	Name        string                              `pulumi:"name"`
-	Project     *string                             `pulumi:"project"`
-	ServiceId   string                              `pulumi:"serviceId"`
+	Id      string `pulumi:"id"`
+	MeshUid string `pulumi:"meshUid"`
+	// The full REST resource name for this channel. The syntax is:
+	// `projects/[PROJECT_ID]/services/[SERVICE_ID]`.
+	Name      string  `pulumi:"name"`
+	Project   *string `pulumi:"project"`
+	ServiceId string  `pulumi:"serviceId"`
+	// Configuration for how to query telemetry on the Service. Structure is documented below.
 	Telemetries []GetIstioCanonicalServiceTelemetry `pulumi:"telemetries"`
 	UserLabels  map[string]string                   `pulumi:"userLabels"`
 }
@@ -148,6 +152,7 @@ func (o GetIstioCanonicalServiceResultOutput) CanonicalServiceNamespace() pulumi
 	return o.ApplyT(func(v GetIstioCanonicalServiceResult) string { return v.CanonicalServiceNamespace }).(pulumi.StringOutput)
 }
 
+// Name used for UI elements listing this (Monitoring) Service.
 func (o GetIstioCanonicalServiceResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIstioCanonicalServiceResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -161,6 +166,8 @@ func (o GetIstioCanonicalServiceResultOutput) MeshUid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIstioCanonicalServiceResult) string { return v.MeshUid }).(pulumi.StringOutput)
 }
 
+// The full REST resource name for this channel. The syntax is:
+// `projects/[PROJECT_ID]/services/[SERVICE_ID]`.
 func (o GetIstioCanonicalServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIstioCanonicalServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -173,6 +180,7 @@ func (o GetIstioCanonicalServiceResultOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIstioCanonicalServiceResult) string { return v.ServiceId }).(pulumi.StringOutput)
 }
 
+// Configuration for how to query telemetry on the Service. Structure is documented below.
 func (o GetIstioCanonicalServiceResultOutput) Telemetries() GetIstioCanonicalServiceTelemetryArrayOutput {
 	return o.ApplyT(func(v GetIstioCanonicalServiceResult) []GetIstioCanonicalServiceTelemetry { return v.Telemetries }).(GetIstioCanonicalServiceTelemetryArrayOutput)
 }

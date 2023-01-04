@@ -69,9 +69,9 @@ import (
 //			_, err = cloudidentity.NewGroupMembership(ctx, "cloudIdentityGroupMembershipBasic", &cloudidentity.GroupMembershipArgs{
 //				Group: group.ID(),
 //				PreferredMemberKey: &cloudidentity.GroupMembershipPreferredMemberKeyArgs{
-//					Id: child_group.GroupKey.ApplyT(func(groupKey cloudidentity.GroupGroupKey) (string, error) {
-//						return groupKey.Id, nil
-//					}).(pulumi.StringOutput),
+//					Id: child_group.GroupKey.ApplyT(func(groupKey cloudidentity.GroupGroupKey) (*string, error) {
+//						return &groupKey.Id, nil
+//					}).(pulumi.StringPtrOutput),
 //				},
 //				Roles: cloudidentity.GroupMembershipRoleArray{
 //					&cloudidentity.GroupMembershipRoleArgs{

@@ -165,10 +165,15 @@ type GameServerConfig struct {
 	// will be only one.
 	// Structure is documented below.
 	FleetConfigs GameServerConfigFleetConfigArrayOutput `pulumi:"fleetConfigs"`
+	// The labels associated with this game server config. Each label is a
+	// key-value pair.
+	// (Optional)
 	// Set of labels to group by.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Location of the Deployment.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
+	// The name of the FleetConfig.
+	// (Required)
 	// The name of the ScalingConfig
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -227,10 +232,15 @@ type gameServerConfigState struct {
 	// will be only one.
 	// Structure is documented below.
 	FleetConfigs []GameServerConfigFleetConfig `pulumi:"fleetConfigs"`
+	// The labels associated with this game server config. Each label is a
+	// key-value pair.
+	// (Optional)
 	// Set of labels to group by.
 	Labels map[string]string `pulumi:"labels"`
 	// Location of the Deployment.
 	Location *string `pulumi:"location"`
+	// The name of the FleetConfig.
+	// (Required)
 	// The name of the ScalingConfig
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -252,10 +262,15 @@ type GameServerConfigState struct {
 	// will be only one.
 	// Structure is documented below.
 	FleetConfigs GameServerConfigFleetConfigArrayInput
+	// The labels associated with this game server config. Each label is a
+	// key-value pair.
+	// (Optional)
 	// Set of labels to group by.
 	Labels pulumi.StringMapInput
 	// Location of the Deployment.
 	Location pulumi.StringPtrInput
+	// The name of the FleetConfig.
+	// (Required)
 	// The name of the ScalingConfig
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -281,6 +296,9 @@ type gameServerConfigArgs struct {
 	// will be only one.
 	// Structure is documented below.
 	FleetConfigs []GameServerConfigFleetConfig `pulumi:"fleetConfigs"`
+	// The labels associated with this game server config. Each label is a
+	// key-value pair.
+	// (Optional)
 	// Set of labels to group by.
 	Labels map[string]string `pulumi:"labels"`
 	// Location of the Deployment.
@@ -305,6 +323,9 @@ type GameServerConfigArgs struct {
 	// will be only one.
 	// Structure is documented below.
 	FleetConfigs GameServerConfigFleetConfigArrayInput
+	// The labels associated with this game server config. Each label is a
+	// key-value pair.
+	// (Optional)
 	// Set of labels to group by.
 	Labels pulumi.StringMapInput
 	// Location of the Deployment.
@@ -426,6 +447,9 @@ func (o GameServerConfigOutput) FleetConfigs() GameServerConfigFleetConfigArrayO
 	return o.ApplyT(func(v *GameServerConfig) GameServerConfigFleetConfigArrayOutput { return v.FleetConfigs }).(GameServerConfigFleetConfigArrayOutput)
 }
 
+// The labels associated with this game server config. Each label is a
+// key-value pair.
+// (Optional)
 // Set of labels to group by.
 func (o GameServerConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GameServerConfig) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
@@ -436,6 +460,8 @@ func (o GameServerConfigOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GameServerConfig) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// The name of the FleetConfig.
+// (Required)
 // The name of the ScalingConfig
 func (o GameServerConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GameServerConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)

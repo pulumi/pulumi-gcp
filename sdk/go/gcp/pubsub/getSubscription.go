@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = pubsub.LookupSubscription(ctx, &pubsub.LookupSubscriptionArgs{
+//			_, err := pubsub.LookupSubscription(ctx, &pubsub.LookupSubscriptionArgs{
 //				Name: "my-pubsub-subscription",
 //			}, nil)
 //			if err != nil {

@@ -268,12 +268,13 @@ type Subnetwork struct {
 	//
 	// Deprecated: This field is not useful for users, and has been removed as an output.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
-	// The gateway address for default routes to reach destination addresses outside this subnetwork.
+	// The gateway address for default routes to reach destination addresses
+	// outside this subnetwork.
 	GatewayAddress pulumi.StringOutput `pulumi:"gatewayAddress"`
-	// The range of IP addresses belonging to this subnetwork secondary
-	// range. Provide this property when you create the subnetwork.
-	// Ranges must be unique and non-overlapping with all primary and
-	// secondary IP ranges within a network. Only IPv4 is supported.
+	// The range of internal addresses that are owned by this subnetwork.
+	// Provide this property when you create the subnetwork. For example,
+	// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
+	// non-overlapping within a network. Only IPv4 is supported.
 	IpCidrRange pulumi.StringOutput `pulumi:"ipCidrRange"`
 	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
 	// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
@@ -381,12 +382,13 @@ type subnetworkState struct {
 	//
 	// Deprecated: This field is not useful for users, and has been removed as an output.
 	Fingerprint *string `pulumi:"fingerprint"`
-	// The gateway address for default routes to reach destination addresses outside this subnetwork.
+	// The gateway address for default routes to reach destination addresses
+	// outside this subnetwork.
 	GatewayAddress *string `pulumi:"gatewayAddress"`
-	// The range of IP addresses belonging to this subnetwork secondary
-	// range. Provide this property when you create the subnetwork.
-	// Ranges must be unique and non-overlapping with all primary and
-	// secondary IP ranges within a network. Only IPv4 is supported.
+	// The range of internal addresses that are owned by this subnetwork.
+	// Provide this property when you create the subnetwork. For example,
+	// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
+	// non-overlapping within a network. Only IPv4 is supported.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
 	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
 	// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
@@ -460,12 +462,13 @@ type SubnetworkState struct {
 	//
 	// Deprecated: This field is not useful for users, and has been removed as an output.
 	Fingerprint pulumi.StringPtrInput
-	// The gateway address for default routes to reach destination addresses outside this subnetwork.
+	// The gateway address for default routes to reach destination addresses
+	// outside this subnetwork.
 	GatewayAddress pulumi.StringPtrInput
-	// The range of IP addresses belonging to this subnetwork secondary
-	// range. Provide this property when you create the subnetwork.
-	// Ranges must be unique and non-overlapping with all primary and
-	// secondary IP ranges within a network. Only IPv4 is supported.
+	// The range of internal addresses that are owned by this subnetwork.
+	// Provide this property when you create the subnetwork. For example,
+	// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
+	// non-overlapping within a network. Only IPv4 is supported.
 	IpCidrRange pulumi.StringPtrInput
 	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
 	// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
@@ -535,10 +538,10 @@ type subnetworkArgs struct {
 	// you create the resource. This field can be set only at resource
 	// creation time.
 	Description *string `pulumi:"description"`
-	// The range of IP addresses belonging to this subnetwork secondary
-	// range. Provide this property when you create the subnetwork.
-	// Ranges must be unique and non-overlapping with all primary and
-	// secondary IP ranges within a network. Only IPv4 is supported.
+	// The range of internal addresses that are owned by this subnetwork.
+	// Provide this property when you create the subnetwork. For example,
+	// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
+	// non-overlapping within a network. Only IPv4 is supported.
 	IpCidrRange string `pulumi:"ipCidrRange"`
 	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
 	// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
@@ -601,10 +604,10 @@ type SubnetworkArgs struct {
 	// you create the resource. This field can be set only at resource
 	// creation time.
 	Description pulumi.StringPtrInput
-	// The range of IP addresses belonging to this subnetwork secondary
-	// range. Provide this property when you create the subnetwork.
-	// Ranges must be unique and non-overlapping with all primary and
-	// secondary IP ranges within a network. Only IPv4 is supported.
+	// The range of internal addresses that are owned by this subnetwork.
+	// Provide this property when you create the subnetwork. For example,
+	// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
+	// non-overlapping within a network. Only IPv4 is supported.
 	IpCidrRange pulumi.StringInput
 	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
 	// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
@@ -772,15 +775,16 @@ func (o SubnetworkOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
 }
 
-// The gateway address for default routes to reach destination addresses outside this subnetwork.
+// The gateway address for default routes to reach destination addresses
+// outside this subnetwork.
 func (o SubnetworkOutput) GatewayAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.GatewayAddress }).(pulumi.StringOutput)
 }
 
-// The range of IP addresses belonging to this subnetwork secondary
-// range. Provide this property when you create the subnetwork.
-// Ranges must be unique and non-overlapping with all primary and
-// secondary IP ranges within a network. Only IPv4 is supported.
+// The range of internal addresses that are owned by this subnetwork.
+// Provide this property when you create the subnetwork. For example,
+// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
+// non-overlapping within a network. Only IPv4 is supported.
 func (o SubnetworkOutput) IpCidrRange() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.IpCidrRange }).(pulumi.StringOutput)
 }

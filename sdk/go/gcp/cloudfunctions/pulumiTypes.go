@@ -667,7 +667,7 @@ type FunctionSecretEnvironmentVariable struct {
 	ProjectId *string `pulumi:"projectId"`
 	// ID of the secret in secret manager (not the full resource name).
 	Secret string `pulumi:"secret"`
-	// Version of the secret (version number or the string "latest"). It is preferable to use "latest" version with secret volumes as secret value changes are reflected immediately.
+	// Version of the secret (version number or the string "latest"). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
 	Version string `pulumi:"version"`
 }
 
@@ -689,7 +689,7 @@ type FunctionSecretEnvironmentVariableArgs struct {
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 	// ID of the secret in secret manager (not the full resource name).
 	Secret pulumi.StringInput `pulumi:"secret"`
-	// Version of the secret (version number or the string "latest"). It is preferable to use "latest" version with secret volumes as secret value changes are reflected immediately.
+	// Version of the secret (version number or the string "latest"). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -759,7 +759,7 @@ func (o FunctionSecretEnvironmentVariableOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionSecretEnvironmentVariable) string { return v.Secret }).(pulumi.StringOutput)
 }
 
-// Version of the secret (version number or the string "latest"). It is preferable to use "latest" version with secret volumes as secret value changes are reflected immediately.
+// Version of the secret (version number or the string "latest"). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
 func (o FunctionSecretEnvironmentVariableOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionSecretEnvironmentVariable) string { return v.Version }).(pulumi.StringOutput)
 }

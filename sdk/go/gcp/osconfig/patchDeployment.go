@@ -162,7 +162,7 @@ import (
 //				},
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-//						Image: pulumi.String(myImage.SelfLink),
+//						Image: *pulumi.String(myImage.SelfLink),
 //					},
 //				},
 //				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
@@ -373,8 +373,8 @@ import (
 type PatchDeployment struct {
 	pulumi.CustomResourceState
 
-	// Time the patch deployment was created. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu" format,
-	// accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+	// Time the patch deployment was created. Timestamp is in RFC3339 text format.
+	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Description of the patch deployment. Length of the description is limited to 1024 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -384,12 +384,11 @@ type PatchDeployment struct {
 	// VM instances to patch.
 	// Structure is documented below.
 	InstanceFilter PatchDeploymentInstanceFilterOutput `pulumi:"instanceFilter"`
-	// -
 	// The time the last patch job ran successfully.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	LastExecuteTime pulumi.StringOutput `pulumi:"lastExecuteTime"`
-	// Unique name for the patch deployment resource in a project. The patch deployment name is in the form:
-	// projects/{project_id}/patchDeployments/{patchDeploymentId}.
+	// Unique name for the patch deployment resource in a project.
+	// The patch deployment name is in the form: projects/{project_id}/patchDeployments/{patchDeploymentId}.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Schedule a one-time execution.
 	// Structure is documented below.
@@ -413,8 +412,8 @@ type PatchDeployment struct {
 	// Rollout strategy of the patch job.
 	// Structure is documented below.
 	Rollout PatchDeploymentRolloutPtrOutput `pulumi:"rollout"`
-	// Time the patch deployment was last updated. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu"
-	// format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+	// Time the patch deployment was last updated. Timestamp is in RFC3339 text format.
+	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -453,8 +452,8 @@ func GetPatchDeployment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PatchDeployment resources.
 type patchDeploymentState struct {
-	// Time the patch deployment was created. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu" format,
-	// accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+	// Time the patch deployment was created. Timestamp is in RFC3339 text format.
+	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	CreateTime *string `pulumi:"createTime"`
 	// Description of the patch deployment. Length of the description is limited to 1024 characters.
 	Description *string `pulumi:"description"`
@@ -464,12 +463,11 @@ type patchDeploymentState struct {
 	// VM instances to patch.
 	// Structure is documented below.
 	InstanceFilter *PatchDeploymentInstanceFilter `pulumi:"instanceFilter"`
-	// -
 	// The time the last patch job ran successfully.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	LastExecuteTime *string `pulumi:"lastExecuteTime"`
-	// Unique name for the patch deployment resource in a project. The patch deployment name is in the form:
-	// projects/{project_id}/patchDeployments/{patchDeploymentId}.
+	// Unique name for the patch deployment resource in a project.
+	// The patch deployment name is in the form: projects/{project_id}/patchDeployments/{patchDeploymentId}.
 	Name *string `pulumi:"name"`
 	// Schedule a one-time execution.
 	// Structure is documented below.
@@ -493,14 +491,14 @@ type patchDeploymentState struct {
 	// Rollout strategy of the patch job.
 	// Structure is documented below.
 	Rollout *PatchDeploymentRollout `pulumi:"rollout"`
-	// Time the patch deployment was last updated. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu"
-	// format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+	// Time the patch deployment was last updated. Timestamp is in RFC3339 text format.
+	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type PatchDeploymentState struct {
-	// Time the patch deployment was created. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu" format,
-	// accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+	// Time the patch deployment was created. Timestamp is in RFC3339 text format.
+	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringPtrInput
 	// Description of the patch deployment. Length of the description is limited to 1024 characters.
 	Description pulumi.StringPtrInput
@@ -510,12 +508,11 @@ type PatchDeploymentState struct {
 	// VM instances to patch.
 	// Structure is documented below.
 	InstanceFilter PatchDeploymentInstanceFilterPtrInput
-	// -
 	// The time the last patch job ran successfully.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	LastExecuteTime pulumi.StringPtrInput
-	// Unique name for the patch deployment resource in a project. The patch deployment name is in the form:
-	// projects/{project_id}/patchDeployments/{patchDeploymentId}.
+	// Unique name for the patch deployment resource in a project.
+	// The patch deployment name is in the form: projects/{project_id}/patchDeployments/{patchDeploymentId}.
 	Name pulumi.StringPtrInput
 	// Schedule a one-time execution.
 	// Structure is documented below.
@@ -539,8 +536,8 @@ type PatchDeploymentState struct {
 	// Rollout strategy of the patch job.
 	// Structure is documented below.
 	Rollout PatchDeploymentRolloutPtrInput
-	// Time the patch deployment was last updated. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu"
-	// format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+	// Time the patch deployment was last updated. Timestamp is in RFC3339 text format.
+	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -702,8 +699,8 @@ func (o PatchDeploymentOutput) ToPatchDeploymentOutputWithContext(ctx context.Co
 	return o
 }
 
-// Time the patch deployment was created. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu" format,
-// accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+// Time the patch deployment was created. Timestamp is in RFC3339 text format.
+// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 func (o PatchDeploymentOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PatchDeployment) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -725,15 +722,14 @@ func (o PatchDeploymentOutput) InstanceFilter() PatchDeploymentInstanceFilterOut
 	return o.ApplyT(func(v *PatchDeployment) PatchDeploymentInstanceFilterOutput { return v.InstanceFilter }).(PatchDeploymentInstanceFilterOutput)
 }
 
-// -
 // The time the last patch job ran successfully.
 // A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 func (o PatchDeploymentOutput) LastExecuteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PatchDeployment) pulumi.StringOutput { return v.LastExecuteTime }).(pulumi.StringOutput)
 }
 
-// Unique name for the patch deployment resource in a project. The patch deployment name is in the form:
-// projects/{project_id}/patchDeployments/{patchDeploymentId}.
+// Unique name for the patch deployment resource in a project.
+// The patch deployment name is in the form: projects/{project_id}/patchDeployments/{patchDeploymentId}.
 func (o PatchDeploymentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PatchDeployment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -778,8 +774,8 @@ func (o PatchDeploymentOutput) Rollout() PatchDeploymentRolloutPtrOutput {
 	return o.ApplyT(func(v *PatchDeployment) PatchDeploymentRolloutPtrOutput { return v.Rollout }).(PatchDeploymentRolloutPtrOutput)
 }
 
-// Time the patch deployment was last updated. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu"
-// format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+// Time the patch deployment was last updated. Timestamp is in RFC3339 text format.
+// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 func (o PatchDeploymentOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PatchDeployment) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

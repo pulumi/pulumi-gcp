@@ -11,7 +11,6 @@ import (
 )
 
 type PolicySpec struct {
-	// -
 	// An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
 	Etag *string `pulumi:"etag"`
 	// Determines the inheritance behavior for this `Policy`. If `inheritFromParent` is true, PolicyRules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this Policy becomes the new root for evaluation. This field can be set only for Policies which configure list constraints.
@@ -20,7 +19,6 @@ type PolicySpec struct {
 	Reset *bool `pulumi:"reset"`
 	// Up to 10 PolicyRules are allowed. In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence.
 	Rules []PolicySpecRule `pulumi:"rules"`
-	// -
 	// Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that `Policy`.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -37,7 +35,6 @@ type PolicySpecInput interface {
 }
 
 type PolicySpecArgs struct {
-	// -
 	// An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
 	Etag pulumi.StringPtrInput `pulumi:"etag"`
 	// Determines the inheritance behavior for this `Policy`. If `inheritFromParent` is true, PolicyRules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this Policy becomes the new root for evaluation. This field can be set only for Policies which configure list constraints.
@@ -46,7 +43,6 @@ type PolicySpecArgs struct {
 	Reset pulumi.BoolPtrInput `pulumi:"reset"`
 	// Up to 10 PolicyRules are allowed. In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence.
 	Rules PolicySpecRuleArrayInput `pulumi:"rules"`
-	// -
 	// Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that `Policy`.
 	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
 }
@@ -128,7 +124,6 @@ func (o PolicySpecOutput) ToPolicySpecPtrOutputWithContext(ctx context.Context) 
 	}).(PolicySpecPtrOutput)
 }
 
-// -
 // An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
 func (o PolicySpecOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicySpec) *string { return v.Etag }).(pulumi.StringPtrOutput)
@@ -149,7 +144,6 @@ func (o PolicySpecOutput) Rules() PolicySpecRuleArrayOutput {
 	return o.ApplyT(func(v PolicySpec) []PolicySpecRule { return v.Rules }).(PolicySpecRuleArrayOutput)
 }
 
-// -
 // Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that `Policy`.
 func (o PolicySpecOutput) UpdateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicySpec) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
@@ -179,7 +173,6 @@ func (o PolicySpecPtrOutput) Elem() PolicySpecOutput {
 	}).(PolicySpecOutput)
 }
 
-// -
 // An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
 func (o PolicySpecPtrOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicySpec) *string {
@@ -220,7 +213,6 @@ func (o PolicySpecPtrOutput) Rules() PolicySpecRuleArrayOutput {
 	}).(PolicySpecRuleArrayOutput)
 }
 
-// -
 // Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that `Policy`.
 func (o PolicySpecPtrOutput) UpdateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicySpec) *string {

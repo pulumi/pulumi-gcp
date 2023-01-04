@@ -108,6 +108,7 @@ type ObjectAccessControl struct {
 	// The name of the object to apply the access control to.
 	Object pulumi.StringOutput `pulumi:"object"`
 	// The project team associated with the entity
+	// Structure is documented below.
 	ProjectTeams ObjectAccessControlProjectTeamArrayOutput `pulumi:"projectTeams"`
 	// The access permission for the entity.
 	// Possible values are `OWNER` and `READER`.
@@ -178,6 +179,7 @@ type objectAccessControlState struct {
 	// The name of the object to apply the access control to.
 	Object *string `pulumi:"object"`
 	// The project team associated with the entity
+	// Structure is documented below.
 	ProjectTeams []ObjectAccessControlProjectTeam `pulumi:"projectTeams"`
 	// The access permission for the entity.
 	// Possible values are `OWNER` and `READER`.
@@ -208,6 +210,7 @@ type ObjectAccessControlState struct {
 	// The name of the object to apply the access control to.
 	Object pulumi.StringPtrInput
 	// The project team associated with the entity
+	// Structure is documented below.
 	ProjectTeams ObjectAccessControlProjectTeamArrayInput
 	// The access permission for the entity.
 	// Possible values are `OWNER` and `READER`.
@@ -390,6 +393,7 @@ func (o ObjectAccessControlOutput) Object() pulumi.StringOutput {
 }
 
 // The project team associated with the entity
+// Structure is documented below.
 func (o ObjectAccessControlOutput) ProjectTeams() ObjectAccessControlProjectTeamArrayOutput {
 	return o.ApplyT(func(v *ObjectAccessControl) ObjectAccessControlProjectTeamArrayOutput { return v.ProjectTeams }).(ObjectAccessControlProjectTeamArrayOutput)
 }

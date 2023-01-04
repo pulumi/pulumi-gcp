@@ -129,8 +129,8 @@ type CxIntent struct {
 	// Intent.training_phrases.parts.text
 	// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode pulumi.StringPtrOutput `pulumi:"languageCode"`
-	// The unique identifier of the intent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-	// ID>/intents/<Intent ID>.
+	// The unique identifier of the intent.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The collection of parameters associated with the intent.
 	// Structure is documented below.
@@ -194,8 +194,8 @@ type cxIntentState struct {
 	// Intent.training_phrases.parts.text
 	// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode *string `pulumi:"languageCode"`
-	// The unique identifier of the intent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-	// ID>/intents/<Intent ID>.
+	// The unique identifier of the intent.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
 	Name *string `pulumi:"name"`
 	// The collection of parameters associated with the intent.
 	// Structure is documented below.
@@ -228,8 +228,8 @@ type CxIntentState struct {
 	// Intent.training_phrases.parts.text
 	// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode pulumi.StringPtrInput
-	// The unique identifier of the intent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-	// ID>/intents/<Intent ID>.
+	// The unique identifier of the intent.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
 	Name pulumi.StringPtrInput
 	// The collection of parameters associated with the intent.
 	// Structure is documented below.
@@ -430,8 +430,8 @@ func (o CxIntentOutput) LanguageCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxIntent) pulumi.StringPtrOutput { return v.LanguageCode }).(pulumi.StringPtrOutput)
 }
 
-// The unique identifier of the intent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-// ID>/intents/<Intent ID>.
+// The unique identifier of the intent.
+// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
 func (o CxIntentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxIntent) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -280,12 +280,15 @@ type Runtime struct {
 	// The config settings for accessing runtime.
 	// Structure is documented below.
 	AccessConfig RuntimeAccessConfigPtrOutput `pulumi:"accessConfig"`
-	// The health state of this runtime. For a list of possible output values, see
-	// 'https://cloud.google.com/vertex-ai/docs/workbench/ reference/rest/v1/projects.locations.runtimes#healthstate'.
+	// The health state of this runtime. For a list of possible output
+	// values, see `https://cloud.google.com/vertex-ai/docs/workbench/
+	// reference/rest/v1/projects.locations.runtimes#healthstate`.
 	HealthState pulumi.StringOutput `pulumi:"healthState"`
 	// A reference to the zone where the machine resides.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Contains Runtime daemon metrics such as Service status and JupyterLab status
+	// Contains Runtime daemon metrics such as Service status and JupyterLab
+	// status
+	// Structure is documented below.
 	Metrics RuntimeMetricArrayOutput `pulumi:"metrics"`
 	// The name specified for the Notebook runtime.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -337,12 +340,15 @@ type runtimeState struct {
 	// The config settings for accessing runtime.
 	// Structure is documented below.
 	AccessConfig *RuntimeAccessConfig `pulumi:"accessConfig"`
-	// The health state of this runtime. For a list of possible output values, see
-	// 'https://cloud.google.com/vertex-ai/docs/workbench/ reference/rest/v1/projects.locations.runtimes#healthstate'.
+	// The health state of this runtime. For a list of possible output
+	// values, see `https://cloud.google.com/vertex-ai/docs/workbench/
+	// reference/rest/v1/projects.locations.runtimes#healthstate`.
 	HealthState *string `pulumi:"healthState"`
 	// A reference to the zone where the machine resides.
 	Location *string `pulumi:"location"`
-	// Contains Runtime daemon metrics such as Service status and JupyterLab status
+	// Contains Runtime daemon metrics such as Service status and JupyterLab
+	// status
+	// Structure is documented below.
 	Metrics []RuntimeMetric `pulumi:"metrics"`
 	// The name specified for the Notebook runtime.
 	Name *string `pulumi:"name"`
@@ -363,12 +369,15 @@ type RuntimeState struct {
 	// The config settings for accessing runtime.
 	// Structure is documented below.
 	AccessConfig RuntimeAccessConfigPtrInput
-	// The health state of this runtime. For a list of possible output values, see
-	// 'https://cloud.google.com/vertex-ai/docs/workbench/ reference/rest/v1/projects.locations.runtimes#healthstate'.
+	// The health state of this runtime. For a list of possible output
+	// values, see `https://cloud.google.com/vertex-ai/docs/workbench/
+	// reference/rest/v1/projects.locations.runtimes#healthstate`.
 	HealthState pulumi.StringPtrInput
 	// A reference to the zone where the machine resides.
 	Location pulumi.StringPtrInput
-	// Contains Runtime daemon metrics such as Service status and JupyterLab status
+	// Contains Runtime daemon metrics such as Service status and JupyterLab
+	// status
+	// Structure is documented below.
 	Metrics RuntimeMetricArrayInput
 	// The name specified for the Notebook runtime.
 	Name pulumi.StringPtrInput
@@ -521,8 +530,9 @@ func (o RuntimeOutput) AccessConfig() RuntimeAccessConfigPtrOutput {
 	return o.ApplyT(func(v *Runtime) RuntimeAccessConfigPtrOutput { return v.AccessConfig }).(RuntimeAccessConfigPtrOutput)
 }
 
-// The health state of this runtime. For a list of possible output values, see
-// 'https://cloud.google.com/vertex-ai/docs/workbench/ reference/rest/v1/projects.locations.runtimes#healthstate'.
+// The health state of this runtime. For a list of possible output
+// values, see `https://cloud.google.com/vertex-ai/docs/workbench/
+// reference/rest/v1/projects.locations.runtimes#healthstate`.
 func (o RuntimeOutput) HealthState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Runtime) pulumi.StringOutput { return v.HealthState }).(pulumi.StringOutput)
 }
@@ -532,7 +542,9 @@ func (o RuntimeOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Runtime) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Contains Runtime daemon metrics such as Service status and JupyterLab status
+// Contains Runtime daemon metrics such as Service status and JupyterLab
+// status
+// Structure is documented below.
 func (o RuntimeOutput) Metrics() RuntimeMetricArrayOutput {
 	return o.ApplyT(func(v *Runtime) RuntimeMetricArrayOutput { return v.Metrics }).(RuntimeMetricArrayOutput)
 }

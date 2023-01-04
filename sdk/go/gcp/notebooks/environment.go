@@ -90,8 +90,8 @@ type Environment struct {
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up.
 	// The path must be a URL or Cloud Storage path. Example: "gs://path-to-file/file-name"
 	PostStartupScript pulumi.StringPtrOutput `pulumi:"postStartupScript"`
-	// The name of the Google Cloud project that this VM image belongs to.
-	// Format: projects/{project_id}
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Use a Compute Engine VM image to start the notebook instance.
 	// Structure is documented below.
@@ -147,8 +147,8 @@ type environmentState struct {
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up.
 	// The path must be a URL or Cloud Storage path. Example: "gs://path-to-file/file-name"
 	PostStartupScript *string `pulumi:"postStartupScript"`
-	// The name of the Google Cloud project that this VM image belongs to.
-	// Format: projects/{project_id}
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Use a Compute Engine VM image to start the notebook instance.
 	// Structure is documented below.
@@ -173,8 +173,8 @@ type EnvironmentState struct {
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up.
 	// The path must be a URL or Cloud Storage path. Example: "gs://path-to-file/file-name"
 	PostStartupScript pulumi.StringPtrInput
-	// The name of the Google Cloud project that this VM image belongs to.
-	// Format: projects/{project_id}
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Use a Compute Engine VM image to start the notebook instance.
 	// Structure is documented below.
@@ -201,8 +201,8 @@ type environmentArgs struct {
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up.
 	// The path must be a URL or Cloud Storage path. Example: "gs://path-to-file/file-name"
 	PostStartupScript *string `pulumi:"postStartupScript"`
-	// The name of the Google Cloud project that this VM image belongs to.
-	// Format: projects/{project_id}
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Use a Compute Engine VM image to start the notebook instance.
 	// Structure is documented below.
@@ -226,8 +226,8 @@ type EnvironmentArgs struct {
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up.
 	// The path must be a URL or Cloud Storage path. Example: "gs://path-to-file/file-name"
 	PostStartupScript pulumi.StringPtrInput
-	// The name of the Google Cloud project that this VM image belongs to.
-	// Format: projects/{project_id}
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Use a Compute Engine VM image to start the notebook instance.
 	// Structure is documented below.
@@ -359,8 +359,8 @@ func (o EnvironmentOutput) PostStartupScript() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringPtrOutput { return v.PostStartupScript }).(pulumi.StringPtrOutput)
 }
 
-// The name of the Google Cloud project that this VM image belongs to.
-// Format: projects/{project_id}
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o EnvironmentOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

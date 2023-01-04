@@ -506,17 +506,17 @@ func (o ConnectionProfileGcsProfilePtrOutput) RootPath() pulumi.StringPtrOutput 
 }
 
 type ConnectionProfileMysqlProfile struct {
-	// Hostname for the SSH tunnel.
+	// Hostname for the MySQL connection.
 	Hostname string `pulumi:"hostname"`
-	// SSH password.
+	// Password for the MySQL connection.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password string `pulumi:"password"`
-	// Port for the SSH tunnel.
+	// Port for the MySQL connection.
 	Port *int `pulumi:"port"`
 	// SSL configuration for the MySQL connection.
 	// Structure is documented below.
 	SslConfig *ConnectionProfileMysqlProfileSslConfig `pulumi:"sslConfig"`
-	// Username for the SSH tunnel.
+	// Username for the MySQL connection.
 	Username string `pulumi:"username"`
 }
 
@@ -532,17 +532,17 @@ type ConnectionProfileMysqlProfileInput interface {
 }
 
 type ConnectionProfileMysqlProfileArgs struct {
-	// Hostname for the SSH tunnel.
+	// Hostname for the MySQL connection.
 	Hostname pulumi.StringInput `pulumi:"hostname"`
-	// SSH password.
+	// Password for the MySQL connection.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password pulumi.StringInput `pulumi:"password"`
-	// Port for the SSH tunnel.
+	// Port for the MySQL connection.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// SSL configuration for the MySQL connection.
 	// Structure is documented below.
 	SslConfig ConnectionProfileMysqlProfileSslConfigPtrInput `pulumi:"sslConfig"`
-	// Username for the SSH tunnel.
+	// Username for the MySQL connection.
 	Username pulumi.StringInput `pulumi:"username"`
 }
 
@@ -623,18 +623,18 @@ func (o ConnectionProfileMysqlProfileOutput) ToConnectionProfileMysqlProfilePtrO
 	}).(ConnectionProfileMysqlProfilePtrOutput)
 }
 
-// Hostname for the SSH tunnel.
+// Hostname for the MySQL connection.
 func (o ConnectionProfileMysqlProfileOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionProfileMysqlProfile) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
-// SSH password.
+// Password for the MySQL connection.
 // **Note**: This property is sensitive and will not be displayed in the plan.
 func (o ConnectionProfileMysqlProfileOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionProfileMysqlProfile) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// Port for the SSH tunnel.
+// Port for the MySQL connection.
 func (o ConnectionProfileMysqlProfileOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectionProfileMysqlProfile) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -645,7 +645,7 @@ func (o ConnectionProfileMysqlProfileOutput) SslConfig() ConnectionProfileMysqlP
 	return o.ApplyT(func(v ConnectionProfileMysqlProfile) *ConnectionProfileMysqlProfileSslConfig { return v.SslConfig }).(ConnectionProfileMysqlProfileSslConfigPtrOutput)
 }
 
-// Username for the SSH tunnel.
+// Username for the MySQL connection.
 func (o ConnectionProfileMysqlProfileOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionProfileMysqlProfile) string { return v.Username }).(pulumi.StringOutput)
 }
@@ -674,7 +674,7 @@ func (o ConnectionProfileMysqlProfilePtrOutput) Elem() ConnectionProfileMysqlPro
 	}).(ConnectionProfileMysqlProfileOutput)
 }
 
-// Hostname for the SSH tunnel.
+// Hostname for the MySQL connection.
 func (o ConnectionProfileMysqlProfilePtrOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfileMysqlProfile) *string {
 		if v == nil {
@@ -684,7 +684,7 @@ func (o ConnectionProfileMysqlProfilePtrOutput) Hostname() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// SSH password.
+// Password for the MySQL connection.
 // **Note**: This property is sensitive and will not be displayed in the plan.
 func (o ConnectionProfileMysqlProfilePtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfileMysqlProfile) *string {
@@ -695,7 +695,7 @@ func (o ConnectionProfileMysqlProfilePtrOutput) Password() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Port for the SSH tunnel.
+// Port for the MySQL connection.
 func (o ConnectionProfileMysqlProfilePtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfileMysqlProfile) *int {
 		if v == nil {
@@ -716,7 +716,7 @@ func (o ConnectionProfileMysqlProfilePtrOutput) SslConfig() ConnectionProfileMys
 	}).(ConnectionProfileMysqlProfileSslConfigPtrOutput)
 }
 
-// Username for the SSH tunnel.
+// Username for the MySQL connection.
 func (o ConnectionProfileMysqlProfilePtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfileMysqlProfile) *string {
 		if v == nil {
@@ -731,7 +731,6 @@ type ConnectionProfileMysqlProfileSslConfig struct {
 	// server's certificate.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	CaCertificate *string `pulumi:"caCertificate"`
-	// -
 	// Indicates whether the clientKey field is set.
 	CaCertificateSet *bool `pulumi:"caCertificateSet"`
 	// PEM-encoded certificate that will be used by the replica to
@@ -740,7 +739,6 @@ type ConnectionProfileMysqlProfileSslConfig struct {
 	// mandatory.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ClientCertificate *string `pulumi:"clientCertificate"`
-	// -
 	// Indicates whether the clientCertificate field is set.
 	ClientCertificateSet *bool `pulumi:"clientCertificateSet"`
 	// PEM-encoded private key associated with the Client Certificate.
@@ -748,7 +746,6 @@ type ConnectionProfileMysqlProfileSslConfig struct {
 	// 'ca_certificate' fields are mandatory.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ClientKey *string `pulumi:"clientKey"`
-	// -
 	// Indicates whether the clientKey field is set.
 	ClientKeySet *bool `pulumi:"clientKeySet"`
 }
@@ -769,7 +766,6 @@ type ConnectionProfileMysqlProfileSslConfigArgs struct {
 	// server's certificate.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	CaCertificate pulumi.StringPtrInput `pulumi:"caCertificate"`
-	// -
 	// Indicates whether the clientKey field is set.
 	CaCertificateSet pulumi.BoolPtrInput `pulumi:"caCertificateSet"`
 	// PEM-encoded certificate that will be used by the replica to
@@ -778,7 +774,6 @@ type ConnectionProfileMysqlProfileSslConfigArgs struct {
 	// mandatory.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ClientCertificate pulumi.StringPtrInput `pulumi:"clientCertificate"`
-	// -
 	// Indicates whether the clientCertificate field is set.
 	ClientCertificateSet pulumi.BoolPtrInput `pulumi:"clientCertificateSet"`
 	// PEM-encoded private key associated with the Client Certificate.
@@ -786,7 +781,6 @@ type ConnectionProfileMysqlProfileSslConfigArgs struct {
 	// 'ca_certificate' fields are mandatory.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
-	// -
 	// Indicates whether the clientKey field is set.
 	ClientKeySet pulumi.BoolPtrInput `pulumi:"clientKeySet"`
 }
@@ -875,7 +869,6 @@ func (o ConnectionProfileMysqlProfileSslConfigOutput) CaCertificate() pulumi.Str
 	return o.ApplyT(func(v ConnectionProfileMysqlProfileSslConfig) *string { return v.CaCertificate }).(pulumi.StringPtrOutput)
 }
 
-// -
 // Indicates whether the clientKey field is set.
 func (o ConnectionProfileMysqlProfileSslConfigOutput) CaCertificateSet() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionProfileMysqlProfileSslConfig) *bool { return v.CaCertificateSet }).(pulumi.BoolPtrOutput)
@@ -890,7 +883,6 @@ func (o ConnectionProfileMysqlProfileSslConfigOutput) ClientCertificate() pulumi
 	return o.ApplyT(func(v ConnectionProfileMysqlProfileSslConfig) *string { return v.ClientCertificate }).(pulumi.StringPtrOutput)
 }
 
-// -
 // Indicates whether the clientCertificate field is set.
 func (o ConnectionProfileMysqlProfileSslConfigOutput) ClientCertificateSet() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionProfileMysqlProfileSslConfig) *bool { return v.ClientCertificateSet }).(pulumi.BoolPtrOutput)
@@ -904,7 +896,6 @@ func (o ConnectionProfileMysqlProfileSslConfigOutput) ClientKey() pulumi.StringP
 	return o.ApplyT(func(v ConnectionProfileMysqlProfileSslConfig) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
 }
 
-// -
 // Indicates whether the clientKey field is set.
 func (o ConnectionProfileMysqlProfileSslConfigOutput) ClientKeySet() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionProfileMysqlProfileSslConfig) *bool { return v.ClientKeySet }).(pulumi.BoolPtrOutput)
@@ -946,7 +937,6 @@ func (o ConnectionProfileMysqlProfileSslConfigPtrOutput) CaCertificate() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // Indicates whether the clientKey field is set.
 func (o ConnectionProfileMysqlProfileSslConfigPtrOutput) CaCertificateSet() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfileMysqlProfileSslConfig) *bool {
@@ -971,7 +961,6 @@ func (o ConnectionProfileMysqlProfileSslConfigPtrOutput) ClientCertificate() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // Indicates whether the clientCertificate field is set.
 func (o ConnectionProfileMysqlProfileSslConfigPtrOutput) ClientCertificateSet() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfileMysqlProfileSslConfig) *bool {
@@ -995,7 +984,6 @@ func (o ConnectionProfileMysqlProfileSslConfigPtrOutput) ClientKey() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // Indicates whether the clientKey field is set.
 func (o ConnectionProfileMysqlProfileSslConfigPtrOutput) ClientKeySet() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfileMysqlProfileSslConfig) *bool {
@@ -1011,14 +999,14 @@ type ConnectionProfileOracleProfile struct {
 	ConnectionAttributes map[string]string `pulumi:"connectionAttributes"`
 	// Database for the Oracle connection.
 	DatabaseService string `pulumi:"databaseService"`
-	// Hostname for the SSH tunnel.
+	// Hostname for the Oracle connection.
 	Hostname string `pulumi:"hostname"`
-	// SSH password.
+	// Password for the Oracle connection.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password string `pulumi:"password"`
-	// Port for the SSH tunnel.
+	// Port for the Oracle connection.
 	Port *int `pulumi:"port"`
-	// Username for the SSH tunnel.
+	// Username for the Oracle connection.
 	Username string `pulumi:"username"`
 }
 
@@ -1038,14 +1026,14 @@ type ConnectionProfileOracleProfileArgs struct {
 	ConnectionAttributes pulumi.StringMapInput `pulumi:"connectionAttributes"`
 	// Database for the Oracle connection.
 	DatabaseService pulumi.StringInput `pulumi:"databaseService"`
-	// Hostname for the SSH tunnel.
+	// Hostname for the Oracle connection.
 	Hostname pulumi.StringInput `pulumi:"hostname"`
-	// SSH password.
+	// Password for the Oracle connection.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password pulumi.StringInput `pulumi:"password"`
-	// Port for the SSH tunnel.
+	// Port for the Oracle connection.
 	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Username for the SSH tunnel.
+	// Username for the Oracle connection.
 	Username pulumi.StringInput `pulumi:"username"`
 }
 
@@ -1136,23 +1124,23 @@ func (o ConnectionProfileOracleProfileOutput) DatabaseService() pulumi.StringOut
 	return o.ApplyT(func(v ConnectionProfileOracleProfile) string { return v.DatabaseService }).(pulumi.StringOutput)
 }
 
-// Hostname for the SSH tunnel.
+// Hostname for the Oracle connection.
 func (o ConnectionProfileOracleProfileOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionProfileOracleProfile) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
-// SSH password.
+// Password for the Oracle connection.
 // **Note**: This property is sensitive and will not be displayed in the plan.
 func (o ConnectionProfileOracleProfileOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionProfileOracleProfile) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// Port for the SSH tunnel.
+// Port for the Oracle connection.
 func (o ConnectionProfileOracleProfileOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectionProfileOracleProfile) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Username for the SSH tunnel.
+// Username for the Oracle connection.
 func (o ConnectionProfileOracleProfileOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionProfileOracleProfile) string { return v.Username }).(pulumi.StringOutput)
 }
@@ -1201,7 +1189,7 @@ func (o ConnectionProfileOracleProfilePtrOutput) DatabaseService() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Hostname for the SSH tunnel.
+// Hostname for the Oracle connection.
 func (o ConnectionProfileOracleProfilePtrOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfileOracleProfile) *string {
 		if v == nil {
@@ -1211,7 +1199,7 @@ func (o ConnectionProfileOracleProfilePtrOutput) Hostname() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// SSH password.
+// Password for the Oracle connection.
 // **Note**: This property is sensitive and will not be displayed in the plan.
 func (o ConnectionProfileOracleProfilePtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfileOracleProfile) *string {
@@ -1222,7 +1210,7 @@ func (o ConnectionProfileOracleProfilePtrOutput) Password() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Port for the SSH tunnel.
+// Port for the Oracle connection.
 func (o ConnectionProfileOracleProfilePtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfileOracleProfile) *int {
 		if v == nil {
@@ -1232,7 +1220,7 @@ func (o ConnectionProfileOracleProfilePtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Username for the SSH tunnel.
+// Username for the Oracle connection.
 func (o ConnectionProfileOracleProfilePtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfileOracleProfile) *string {
 		if v == nil {
@@ -1245,14 +1233,14 @@ func (o ConnectionProfileOracleProfilePtrOutput) Username() pulumi.StringPtrOutp
 type ConnectionProfilePostgresqlProfile struct {
 	// Database for the PostgreSQL connection.
 	Database string `pulumi:"database"`
-	// Hostname for the SSH tunnel.
+	// Hostname for the PostgreSQL connection.
 	Hostname string `pulumi:"hostname"`
-	// SSH password.
+	// Password for the PostgreSQL connection.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password string `pulumi:"password"`
-	// Port for the SSH tunnel.
+	// Port for the PostgreSQL connection.
 	Port *int `pulumi:"port"`
-	// Username for the SSH tunnel.
+	// Username for the PostgreSQL connection.
 	Username string `pulumi:"username"`
 }
 
@@ -1270,14 +1258,14 @@ type ConnectionProfilePostgresqlProfileInput interface {
 type ConnectionProfilePostgresqlProfileArgs struct {
 	// Database for the PostgreSQL connection.
 	Database pulumi.StringInput `pulumi:"database"`
-	// Hostname for the SSH tunnel.
+	// Hostname for the PostgreSQL connection.
 	Hostname pulumi.StringInput `pulumi:"hostname"`
-	// SSH password.
+	// Password for the PostgreSQL connection.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password pulumi.StringInput `pulumi:"password"`
-	// Port for the SSH tunnel.
+	// Port for the PostgreSQL connection.
 	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Username for the SSH tunnel.
+	// Username for the PostgreSQL connection.
 	Username pulumi.StringInput `pulumi:"username"`
 }
 
@@ -1363,23 +1351,23 @@ func (o ConnectionProfilePostgresqlProfileOutput) Database() pulumi.StringOutput
 	return o.ApplyT(func(v ConnectionProfilePostgresqlProfile) string { return v.Database }).(pulumi.StringOutput)
 }
 
-// Hostname for the SSH tunnel.
+// Hostname for the PostgreSQL connection.
 func (o ConnectionProfilePostgresqlProfileOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionProfilePostgresqlProfile) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
-// SSH password.
+// Password for the PostgreSQL connection.
 // **Note**: This property is sensitive and will not be displayed in the plan.
 func (o ConnectionProfilePostgresqlProfileOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionProfilePostgresqlProfile) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// Port for the SSH tunnel.
+// Port for the PostgreSQL connection.
 func (o ConnectionProfilePostgresqlProfileOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectionProfilePostgresqlProfile) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Username for the SSH tunnel.
+// Username for the PostgreSQL connection.
 func (o ConnectionProfilePostgresqlProfileOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionProfilePostgresqlProfile) string { return v.Username }).(pulumi.StringOutput)
 }
@@ -1418,7 +1406,7 @@ func (o ConnectionProfilePostgresqlProfilePtrOutput) Database() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Hostname for the SSH tunnel.
+// Hostname for the PostgreSQL connection.
 func (o ConnectionProfilePostgresqlProfilePtrOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfilePostgresqlProfile) *string {
 		if v == nil {
@@ -1428,7 +1416,7 @@ func (o ConnectionProfilePostgresqlProfilePtrOutput) Hostname() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// SSH password.
+// Password for the PostgreSQL connection.
 // **Note**: This property is sensitive and will not be displayed in the plan.
 func (o ConnectionProfilePostgresqlProfilePtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfilePostgresqlProfile) *string {
@@ -1439,7 +1427,7 @@ func (o ConnectionProfilePostgresqlProfilePtrOutput) Password() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Port for the SSH tunnel.
+// Port for the PostgreSQL connection.
 func (o ConnectionProfilePostgresqlProfilePtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfilePostgresqlProfile) *int {
 		if v == nil {
@@ -1449,7 +1437,7 @@ func (o ConnectionProfilePostgresqlProfilePtrOutput) Port() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
-// Username for the SSH tunnel.
+// Username for the PostgreSQL connection.
 func (o ConnectionProfilePostgresqlProfilePtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfilePostgresqlProfile) *string {
 		if v == nil {
@@ -1597,8 +1585,10 @@ func (o ConnectionProfilePrivateConnectivityPtrOutput) PrivateConnection() pulum
 }
 
 type PrivateConnectionError struct {
+	// A list of messages that carry the error details.
 	Details map[string]string `pulumi:"details"`
-	Message *string           `pulumi:"message"`
+	// A message containing more information about the error that occurred.
+	Message *string `pulumi:"message"`
 }
 
 // PrivateConnectionErrorInput is an input type that accepts PrivateConnectionErrorArgs and PrivateConnectionErrorOutput values.
@@ -1613,7 +1603,9 @@ type PrivateConnectionErrorInput interface {
 }
 
 type PrivateConnectionErrorArgs struct {
+	// A list of messages that carry the error details.
 	Details pulumi.StringMapInput `pulumi:"details"`
+	// A message containing more information about the error that occurred.
 	Message pulumi.StringPtrInput `pulumi:"message"`
 }
 
@@ -1668,10 +1660,12 @@ func (o PrivateConnectionErrorOutput) ToPrivateConnectionErrorOutputWithContext(
 	return o
 }
 
+// A list of messages that carry the error details.
 func (o PrivateConnectionErrorOutput) Details() pulumi.StringMapOutput {
 	return o.ApplyT(func(v PrivateConnectionError) map[string]string { return v.Details }).(pulumi.StringMapOutput)
 }
 
+// A message containing more information about the error that occurred.
 func (o PrivateConnectionErrorOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateConnectionError) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
@@ -2370,7 +2364,6 @@ type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn str
 	// The MySQL data type. Full data types list can be found here:
 	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
 	DataType *string `pulumi:"dataType"`
-	// -
 	// Column length.
 	Length *int `pulumi:"length"`
 	// Whether or not the column can accept a null value.
@@ -2400,7 +2393,6 @@ type StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs
 	// The MySQL data type. Full data types list can be found here:
 	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
-	// -
 	// Column length.
 	Length pulumi.IntPtrInput `pulumi:"length"`
 	// Whether or not the column can accept a null value.
@@ -2484,7 +2476,6 @@ func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnO
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // Column length.
 func (o StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Length() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn) *int { return v.Length }).(pulumi.IntPtrOutput)
@@ -4716,7 +4707,6 @@ type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMys
 	// The MySQL data type. Full data types list can be found here:
 	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
 	DataType *string `pulumi:"dataType"`
-	// -
 	// Column length.
 	Length *int `pulumi:"length"`
 	// Whether or not the column can accept a null value.
@@ -4746,7 +4736,6 @@ type StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMys
 	// The MySQL data type. Full data types list can be found here:
 	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
-	// -
 	// Column length.
 	Length pulumi.IntPtrInput `pulumi:"length"`
 	// Whether or not the column can accept a null value.
@@ -4830,7 +4819,6 @@ func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // Column length.
 func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Length() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *int {
@@ -5254,7 +5242,6 @@ type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMys
 	// The MySQL data type. Full data types list can be found here:
 	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
 	DataType *string `pulumi:"dataType"`
-	// -
 	// Column length.
 	Length *int `pulumi:"length"`
 	// Whether or not the column can accept a null value.
@@ -5284,7 +5271,6 @@ type StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMys
 	// The MySQL data type. Full data types list can be found here:
 	// https://dev.mysql.com/doc/refman/8.0/en/data-types.html
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
-	// -
 	// Column length.
 	Length pulumi.IntPtrInput `pulumi:"length"`
 	// Whether or not the column can accept a null value.
@@ -5368,7 +5354,6 @@ func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // Column length.
 func (o StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput) Length() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn) *int {

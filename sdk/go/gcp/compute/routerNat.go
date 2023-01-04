@@ -220,7 +220,8 @@ type RouterNat struct {
 	MaxPortsPerVm pulumi.IntPtrOutput `pulumi:"maxPortsPerVm"`
 	// Minimum number of ports allocated to a VM from this NAT.
 	MinPortsPerVm pulumi.IntPtrOutput `pulumi:"minPortsPerVm"`
-	// Self-link of subnetwork to NAT
+	// Name of the NAT service. The name must be 1-63 characters long and
+	// comply with RFC1035.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// How external IPs should be allocated for this NAT. Valid values are
 	// `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
@@ -327,7 +328,8 @@ type routerNatState struct {
 	MaxPortsPerVm *int `pulumi:"maxPortsPerVm"`
 	// Minimum number of ports allocated to a VM from this NAT.
 	MinPortsPerVm *int `pulumi:"minPortsPerVm"`
-	// Self-link of subnetwork to NAT
+	// Name of the NAT service. The name must be 1-63 characters long and
+	// comply with RFC1035.
 	Name *string `pulumi:"name"`
 	// How external IPs should be allocated for this NAT. Valid values are
 	// `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
@@ -397,7 +399,8 @@ type RouterNatState struct {
 	MaxPortsPerVm pulumi.IntPtrInput
 	// Minimum number of ports allocated to a VM from this NAT.
 	MinPortsPerVm pulumi.IntPtrInput
-	// Self-link of subnetwork to NAT
+	// Name of the NAT service. The name must be 1-63 characters long and
+	// comply with RFC1035.
 	Name pulumi.StringPtrInput
 	// How external IPs should be allocated for this NAT. Valid values are
 	// `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
@@ -471,7 +474,8 @@ type routerNatArgs struct {
 	MaxPortsPerVm *int `pulumi:"maxPortsPerVm"`
 	// Minimum number of ports allocated to a VM from this NAT.
 	MinPortsPerVm *int `pulumi:"minPortsPerVm"`
-	// Self-link of subnetwork to NAT
+	// Name of the NAT service. The name must be 1-63 characters long and
+	// comply with RFC1035.
 	Name *string `pulumi:"name"`
 	// How external IPs should be allocated for this NAT. Valid values are
 	// `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
@@ -542,7 +546,8 @@ type RouterNatArgs struct {
 	MaxPortsPerVm pulumi.IntPtrInput
 	// Minimum number of ports allocated to a VM from this NAT.
 	MinPortsPerVm pulumi.IntPtrInput
-	// Self-link of subnetwork to NAT
+	// Name of the NAT service. The name must be 1-63 characters long and
+	// comply with RFC1035.
 	Name pulumi.StringPtrInput
 	// How external IPs should be allocated for this NAT. Valid values are
 	// `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
@@ -719,7 +724,8 @@ func (o RouterNatOutput) MinPortsPerVm() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RouterNat) pulumi.IntPtrOutput { return v.MinPortsPerVm }).(pulumi.IntPtrOutput)
 }
 
-// Self-link of subnetwork to NAT
+// Name of the NAT service. The name must be 1-63 characters long and
+// comply with RFC1035.
 func (o RouterNatOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterNat) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

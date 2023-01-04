@@ -91,6 +91,7 @@ type HmacKey struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// HMAC secret key material.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Secret pulumi.StringOutput `pulumi:"secret"`
 	// The email address of the key's associated service account.
 	ServiceAccountEmail pulumi.StringOutput `pulumi:"serviceAccountEmail"`
@@ -146,6 +147,7 @@ type hmacKeyState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// HMAC secret key material.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Secret *string `pulumi:"secret"`
 	// The email address of the key's associated service account.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
@@ -166,6 +168,7 @@ type HmacKeyState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// HMAC secret key material.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Secret pulumi.StringPtrInput
 	// The email address of the key's associated service account.
 	ServiceAccountEmail pulumi.StringPtrInput
@@ -307,6 +310,7 @@ func (o HmacKeyOutput) Project() pulumi.StringOutput {
 }
 
 // HMAC secret key material.
+// **Note**: This property is sensitive and will not be displayed in the plan.
 func (o HmacKeyOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v *HmacKey) pulumi.StringOutput { return v.Secret }).(pulumi.StringOutput)
 }
