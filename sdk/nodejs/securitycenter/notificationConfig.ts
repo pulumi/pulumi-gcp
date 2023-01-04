@@ -90,7 +90,7 @@ export class NotificationConfig extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The resource name of this notification config, in the format
-     * 'organizations/{{organization}}/notificationConfigs/{{config_id}}'.
+     * `organizations/{{organization}}/notificationConfigs/{{config_id}}`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -104,7 +104,8 @@ export class NotificationConfig extends pulumi.CustomResource {
      */
     public readonly pubsubTopic!: pulumi.Output<string>;
     /**
-     * The service account that needs "pubsub.topics.publish" permission to publish to the Pub/Sub topic.
+     * The service account that needs "pubsub.topics.publish" permission to
+     * publish to the Pub/Sub topic.
      */
     public /*out*/ readonly serviceAccount!: pulumi.Output<string>;
     /**
@@ -174,7 +175,7 @@ export interface NotificationConfigState {
     description?: pulumi.Input<string>;
     /**
      * The resource name of this notification config, in the format
-     * 'organizations/{{organization}}/notificationConfigs/{{config_id}}'.
+     * `organizations/{{organization}}/notificationConfigs/{{config_id}}`.
      */
     name?: pulumi.Input<string>;
     /**
@@ -188,7 +189,8 @@ export interface NotificationConfigState {
      */
     pubsubTopic?: pulumi.Input<string>;
     /**
-     * The service account that needs "pubsub.topics.publish" permission to publish to the Pub/Sub topic.
+     * The service account that needs "pubsub.topics.publish" permission to
+     * publish to the Pub/Sub topic.
      */
     serviceAccount?: pulumi.Input<string>;
     /**

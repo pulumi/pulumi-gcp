@@ -28,20 +28,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * // Monitors the default MeshIstio service
- * const defaultIstioCanonicalService = pulumi.output(gcp.monitoring.getIstioCanonicalService({
+ * const default = gcp.monitoring.getIstioCanonicalService({
  *     canonicalService: "prometheus",
  *     canonicalServiceNamespace: "istio-system",
  *     meshUid: "proj-573164786102",
- * }));
+ * });
  * ```
  */
 export function getIstioCanonicalService(args: GetIstioCanonicalServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetIstioCanonicalServiceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:monitoring/getIstioCanonicalService:getIstioCanonicalService", {
         "canonicalService": args.canonicalService,
         "canonicalServiceNamespace": args.canonicalServiceNamespace,
@@ -82,21 +78,59 @@ export interface GetIstioCanonicalServiceArgs {
 export interface GetIstioCanonicalServiceResult {
     readonly canonicalService: string;
     readonly canonicalServiceNamespace: string;
+    /**
+     * Name used for UI elements listing this (Monitoring) Service.
+     */
     readonly displayName: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly meshUid: string;
+    /**
+     * The full REST resource name for this channel. The syntax is:
+     * `projects/[PROJECT_ID]/services/[SERVICE_ID]`.
+     */
     readonly name: string;
     readonly project?: string;
     readonly serviceId: string;
+    /**
+     * Configuration for how to query telemetry on the Service. Structure is documented below.
+     */
     readonly telemetries: outputs.monitoring.GetIstioCanonicalServiceTelemetry[];
     readonly userLabels: {[key: string]: string};
 }
-
+/**
+ * A Monitoring Service is the root resource under which operational aspects of a
+ * generic service are accessible. A service is some discrete, autonomous, and
+ * network-accessible unit, designed to solve an individual concern
+ *
+ * A monitoring Istio Canonical Service is automatically created by GCP to monitor
+ * Istio Canonical Services.
+ *
+ * To get more information about Service, see:
+ *
+ * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
+ * * How-to Guides
+ *     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+ *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+ *
+ * ## Example Usage
+ * ### Monitoring Istio Canonical Service
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default = gcp.monitoring.getIstioCanonicalService({
+ *     canonicalService: "prometheus",
+ *     canonicalServiceNamespace: "istio-system",
+ *     meshUid: "proj-573164786102",
+ * });
+ * ```
+ */
 export function getIstioCanonicalServiceOutput(args: GetIstioCanonicalServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIstioCanonicalServiceResult> {
-    return pulumi.output(args).apply(a => getIstioCanonicalService(a, opts))
+    return pulumi.output(args).apply((a: any) => getIstioCanonicalService(a, opts))
 }
 
 /**

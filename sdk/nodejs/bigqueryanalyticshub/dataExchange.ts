@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const dataExchange = new gcp.bigqueryanalyticshub.DataExchange("data_exchange", {
+ * const dataExchange = new gcp.bigqueryanalyticshub.DataExchange("dataExchange", {
  *     dataExchangeId: "my_data_exchange",
  *     description: "example data exchange",
  *     displayName: "my_data_exchange",
@@ -105,7 +105,8 @@ export class DataExchange extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * The resource name of the data exchange, for example: "projects/myproject/locations/US/dataExchanges/123"
+     * The resource name of the data exchange, for example:
+     * "projects/myproject/locations/US/dataExchanges/123"
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -201,7 +202,8 @@ export interface DataExchangeState {
      */
     location?: pulumi.Input<string>;
     /**
-     * The resource name of the data exchange, for example: "projects/myproject/locations/US/dataExchanges/123"
+     * The resource name of the data exchange, for example:
+     * "projects/myproject/locations/US/dataExchanges/123"
      */
     name?: pulumi.Input<string>;
     /**

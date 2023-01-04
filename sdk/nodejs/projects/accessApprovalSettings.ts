@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const projectAccessApproval = new gcp.projects.AccessApprovalSettings("project_access_approval", {
+ * const projectAccessApproval = new gcp.projects.AccessApprovalSettings("projectAccessApproval", {
  *     enrolledServices: [{
  *         cloudProduct: "all",
  *         enrollmentLevel: "BLOCK_ALL",
@@ -122,8 +122,7 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
      */
     public /*out*/ readonly ancestorHasActiveKeyVersion!: pulumi.Output<boolean>;
     /**
-     * If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-     * of the Project.
+     * If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Project.
      */
     public /*out*/ readonly enrolledAncestor!: pulumi.Output<boolean>;
     /**
@@ -135,10 +134,10 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
      */
     public readonly enrolledServices!: pulumi.Output<outputs.projects.AccessApprovalSettingsEnrolledService[]>;
     /**
-     * If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-     * this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on it,
-     * etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-     * top-down.
+     * If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
+     * configured on this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the
+     * correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+     * as key versions are inherited top-down.
      */
     public /*out*/ readonly invalidKeyVersion!: pulumi.Output<boolean>;
     /**
@@ -152,7 +151,6 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
      */
     public readonly notificationEmails!: pulumi.Output<string[]>;
     /**
-     * -
      * (Optional, Deprecated)
      * Deprecated in favor of `projectId`
      *
@@ -224,8 +222,7 @@ export interface AccessApprovalSettingsState {
      */
     ancestorHasActiveKeyVersion?: pulumi.Input<boolean>;
     /**
-     * If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-     * of the Project.
+     * If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Project.
      */
     enrolledAncestor?: pulumi.Input<boolean>;
     /**
@@ -237,10 +234,10 @@ export interface AccessApprovalSettingsState {
      */
     enrolledServices?: pulumi.Input<pulumi.Input<inputs.projects.AccessApprovalSettingsEnrolledService>[]>;
     /**
-     * If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-     * this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on it,
-     * etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-     * top-down.
+     * If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
+     * configured on this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the
+     * correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+     * as key versions are inherited top-down.
      */
     invalidKeyVersion?: pulumi.Input<boolean>;
     /**
@@ -254,7 +251,6 @@ export interface AccessApprovalSettingsState {
      */
     notificationEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * -
      * (Optional, Deprecated)
      * Deprecated in favor of `projectId`
      *
@@ -292,7 +288,6 @@ export interface AccessApprovalSettingsArgs {
      */
     notificationEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * -
      * (Optional, Deprecated)
      * Deprecated in favor of `projectId`
      *

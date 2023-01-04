@@ -22,11 +22,8 @@ import * as utilities from "../utilities";
  */
 export function getOrganization(args?: GetOrganizationArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:organizations/getOrganization:getOrganization", {
         "domain": args.domain,
         "organization": args.organization,
@@ -78,9 +75,24 @@ export interface GetOrganizationResult {
     readonly orgId: string;
     readonly organization?: string;
 }
-
+/**
+ * Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const org = gcp.organizations.getOrganization({
+ *     domain: "example.com",
+ * });
+ * const sales = new gcp.organizations.Folder("sales", {
+ *     displayName: "Sales",
+ *     parent: org.then(org => org.name),
+ * });
+ * ```
+ */
 export function getOrganizationOutput(args?: GetOrganizationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationResult> {
-    return pulumi.output(args).apply(a => getOrganization(a, opts))
+    return pulumi.output(args).apply((a: any) => getOrganization(a, opts))
 }
 
 /**

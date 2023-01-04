@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultAuthority = new gcp.certificateauthority.Authority("default", {
+ * const _default = new gcp.certificateauthority.Authority("default", {
  *     certificateAuthorityId: "my-certificate-authority",
  *     config: {
  *         subjectConfig: {
@@ -58,8 +58,6 @@ import * as utilities from "../utilities";
  *     },
  *     lifetime: "86400s",
  *     location: "us-central1",
- *     // This example assumes this pool already exists.
- *     // Pools cannot be deleted in normal test circumstances, so we depend on static pools
  *     pool: "ca-pool",
  * });
  * ```
@@ -258,6 +256,7 @@ export class Authority extends pulumi.CustomResource {
 
     /**
      * URLs for accessing content published by this CA, such as the CA certificate and CRLs.
+     * Structure is documented below.
      */
     public /*out*/ readonly accessUrls!: pulumi.Output<outputs.certificateauthority.AuthorityAccessUrl[]>;
     /**
@@ -270,8 +269,9 @@ export class Authority extends pulumi.CustomResource {
      */
     public readonly config!: pulumi.Output<outputs.certificateauthority.AuthorityConfig>;
     /**
-     * The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-     * resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     * The time at which this CertificateAuthority was created.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+     * fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -321,7 +321,8 @@ export class Authority extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * The resource name for this CertificateAuthority in the format projects/*&#47;locations/*&#47;certificateAuthorities/*.
+     * The resource name for this CertificateAuthority in the format
+     * projects/*&#47;locations/*&#47;certificateAuthorities/*.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -329,9 +330,10 @@ export class Authority extends pulumi.CustomResource {
      */
     public readonly pemCaCertificate!: pulumi.Output<string | undefined>;
     /**
-     * This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such
-     * that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
-     * current CertificateAuthority's certificate.
+     * This CertificateAuthority's certificate chain, including the current
+     * CertificateAuthority's certificate. Ordered such that the root issuer is the final
+     * element (consistent with RFC 5246). For a self-signed CA, this will only list the current
+     * CertificateAuthority's certificate.
      */
     public /*out*/ readonly pemCaCertificates!: pulumi.Output<string[]>;
     /**
@@ -369,8 +371,9 @@ export class Authority extends pulumi.CustomResource {
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
-     * The time at which this CertificateAuthority was updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-     * resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     * The time at which this CertificateAuthority was updated.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+     * fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -460,6 +463,7 @@ export class Authority extends pulumi.CustomResource {
 export interface AuthorityState {
     /**
      * URLs for accessing content published by this CA, such as the CA certificate and CRLs.
+     * Structure is documented below.
      */
     accessUrls?: pulumi.Input<pulumi.Input<inputs.certificateauthority.AuthorityAccessUrl>[]>;
     /**
@@ -472,8 +476,9 @@ export interface AuthorityState {
      */
     config?: pulumi.Input<inputs.certificateauthority.AuthorityConfig>;
     /**
-     * The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-     * resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     * The time at which this CertificateAuthority was created.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+     * fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -523,7 +528,8 @@ export interface AuthorityState {
      */
     location?: pulumi.Input<string>;
     /**
-     * The resource name for this CertificateAuthority in the format projects/*&#47;locations/*&#47;certificateAuthorities/*.
+     * The resource name for this CertificateAuthority in the format
+     * projects/*&#47;locations/*&#47;certificateAuthorities/*.
      */
     name?: pulumi.Input<string>;
     /**
@@ -531,9 +537,10 @@ export interface AuthorityState {
      */
     pemCaCertificate?: pulumi.Input<string>;
     /**
-     * This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such
-     * that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
-     * current CertificateAuthority's certificate.
+     * This CertificateAuthority's certificate chain, including the current
+     * CertificateAuthority's certificate. Ordered such that the root issuer is the final
+     * element (consistent with RFC 5246). For a self-signed CA, this will only list the current
+     * CertificateAuthority's certificate.
      */
     pemCaCertificates?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -571,8 +578,9 @@ export interface AuthorityState {
      */
     type?: pulumi.Input<string>;
     /**
-     * The time at which this CertificateAuthority was updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-     * resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     * The time at which this CertificateAuthority was updated.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+     * fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     updateTime?: pulumi.Input<string>;
 }

@@ -143,12 +143,14 @@ export class Entry extends pulumi.CustomResource {
     }
 
     /**
-     * Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
-     * https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+     * Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
+     * Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+     * Structure is documented below.
      */
     public /*out*/ readonly bigqueryDateShardedSpecs!: pulumi.Output<outputs.datacatalog.EntryBigqueryDateShardedSpec[]>;
     /**
      * Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
+     * Structure is documented below.
      */
     public /*out*/ readonly bigqueryTableSpecs!: pulumi.Output<outputs.datacatalog.EntryBigqueryTableSpec[]>;
     /**
@@ -187,9 +189,9 @@ export class Entry extends pulumi.CustomResource {
      */
     public readonly linkedResource!: pulumi.Output<string>;
     /**
-     * The Data Catalog resource name of the entry in URL format. Example:
-     * projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}. Note that this Entry and its
-     * child resources may not actually be stored in the location in this name.
+     * The Data Catalog resource name of the entry in URL format.
+     * Example: projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}.
+     * Note that this Entry and its child resources may not actually be stored in the location in this name.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -280,12 +282,14 @@ export class Entry extends pulumi.CustomResource {
  */
 export interface EntryState {
     /**
-     * Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
-     * https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+     * Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
+     * Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+     * Structure is documented below.
      */
     bigqueryDateShardedSpecs?: pulumi.Input<pulumi.Input<inputs.datacatalog.EntryBigqueryDateShardedSpec>[]>;
     /**
      * Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
+     * Structure is documented below.
      */
     bigqueryTableSpecs?: pulumi.Input<pulumi.Input<inputs.datacatalog.EntryBigqueryTableSpec>[]>;
     /**
@@ -324,9 +328,9 @@ export interface EntryState {
      */
     linkedResource?: pulumi.Input<string>;
     /**
-     * The Data Catalog resource name of the entry in URL format. Example:
-     * projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}. Note that this Entry and its
-     * child resources may not actually be stored in the location in this name.
+     * The Data Catalog resource name of the entry in URL format.
+     * Example: projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}.
+     * Note that this Entry and its child resources may not actually be stored in the location in this name.
      */
     name?: pulumi.Input<string>;
     /**

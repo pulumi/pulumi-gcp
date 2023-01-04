@@ -138,7 +138,8 @@ export class Routine extends pulumi.CustomResource {
      */
     public readonly arguments!: pulumi.Output<outputs.bigquery.RoutineArgument[] | undefined>;
     /**
-     * The time when this routine was created, in milliseconds since the epoch.
+     * The time when this routine was created, in milliseconds since the
+     * epoch.
      */
     public /*out*/ readonly creationTime!: pulumi.Output<number>;
     /**
@@ -170,7 +171,8 @@ export class Routine extends pulumi.CustomResource {
      */
     public readonly language!: pulumi.Output<string | undefined>;
     /**
-     * The time when this routine was modified, in milliseconds since the epoch.
+     * The time when this routine was modified, in milliseconds since the
+     * epoch.
      */
     public /*out*/ readonly lastModifiedTime!: pulumi.Output<number>;
     /**
@@ -275,7 +277,8 @@ export interface RoutineState {
      */
     arguments?: pulumi.Input<pulumi.Input<inputs.bigquery.RoutineArgument>[]>;
     /**
-     * The time when this routine was created, in milliseconds since the epoch.
+     * The time when this routine was created, in milliseconds since the
+     * epoch.
      */
     creationTime?: pulumi.Input<number>;
     /**
@@ -307,7 +310,8 @@ export interface RoutineState {
      */
     language?: pulumi.Input<string>;
     /**
-     * The time when this routine was modified, in milliseconds since the epoch.
+     * The time when this routine was modified, in milliseconds since the
+     * epoch.
      */
     lastModifiedTime?: pulumi.Input<number>;
     /**

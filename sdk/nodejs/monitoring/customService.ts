@@ -80,7 +80,8 @@ export class CustomService extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
-     * The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+     * The full resource name for this service. The syntax is:
+     * projects/[PROJECT_ID]/services/[SERVICE_ID].
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -150,7 +151,8 @@ export interface CustomServiceState {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+     * The full resource name for this service. The syntax is:
+     * projects/[PROJECT_ID]/services/[SERVICE_ID].
      */
     name?: pulumi.Input<string>;
     /**

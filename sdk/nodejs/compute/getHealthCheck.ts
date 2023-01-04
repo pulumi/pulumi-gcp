@@ -15,17 +15,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const healthCheck = pulumi.output(gcp.compute.getHealthCheck({
+ * const healthCheck = gcp.compute.getHealthCheck({
  *     name: "my-hc",
- * }));
+ * });
  * ```
  */
 export function getHealthCheck(args: GetHealthCheckArgs, opts?: pulumi.InvokeOptions): Promise<GetHealthCheckResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getHealthCheck:getHealthCheck", {
         "name": args.name,
         "project": args.project,
@@ -73,9 +70,22 @@ export interface GetHealthCheckResult {
     readonly type: string;
     readonly unhealthyThreshold: number;
 }
-
+/**
+ * Get information about a HealthCheck.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const healthCheck = gcp.compute.getHealthCheck({
+ *     name: "my-hc",
+ * });
+ * ```
+ */
 export function getHealthCheckOutput(args: GetHealthCheckOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHealthCheckResult> {
-    return pulumi.output(args).apply(a => getHealthCheck(a, opts))
+    return pulumi.output(args).apply((a: any) => getHealthCheck(a, opts))
 }
 
 /**

@@ -195,14 +195,15 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
-     * The gateway address for default routes to reach destination addresses outside this subnetwork.
+     * The gateway address for default routes to reach destination addresses
+     * outside this subnetwork.
      */
     public /*out*/ readonly gatewayAddress!: pulumi.Output<string>;
     /**
-     * The range of IP addresses belonging to this subnetwork secondary
-     * range. Provide this property when you create the subnetwork.
-     * Ranges must be unique and non-overlapping with all primary and
-     * secondary IP ranges within a network. Only IPv4 is supported.
+     * The range of internal addresses that are owned by this subnetwork.
+     * Provide this property when you create the subnetwork. For example,
+     * 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
+     * non-overlapping within a network. Only IPv4 is supported.
      */
     public readonly ipCidrRange!: pulumi.Output<string>;
     /**
@@ -383,14 +384,15 @@ export interface SubnetworkState {
      */
     fingerprint?: pulumi.Input<string>;
     /**
-     * The gateway address for default routes to reach destination addresses outside this subnetwork.
+     * The gateway address for default routes to reach destination addresses
+     * outside this subnetwork.
      */
     gatewayAddress?: pulumi.Input<string>;
     /**
-     * The range of IP addresses belonging to this subnetwork secondary
-     * range. Provide this property when you create the subnetwork.
-     * Ranges must be unique and non-overlapping with all primary and
-     * secondary IP ranges within a network. Only IPv4 is supported.
+     * The range of internal addresses that are owned by this subnetwork.
+     * Provide this property when you create the subnetwork. For example,
+     * 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
+     * non-overlapping within a network. Only IPv4 is supported.
      */
     ipCidrRange?: pulumi.Input<string>;
     /**
@@ -491,10 +493,10 @@ export interface SubnetworkArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The range of IP addresses belonging to this subnetwork secondary
-     * range. Provide this property when you create the subnetwork.
-     * Ranges must be unique and non-overlapping with all primary and
-     * secondary IP ranges within a network. Only IPv4 is supported.
+     * The range of internal addresses that are owned by this subnetwork.
+     * Provide this property when you create the subnetwork. For example,
+     * 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
+     * non-overlapping within a network. Only IPv4 is supported.
      */
     ipCidrRange: pulumi.Input<string>;
     /**

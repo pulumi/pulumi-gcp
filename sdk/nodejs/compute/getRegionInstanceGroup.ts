@@ -14,20 +14,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const group = pulumi.output(gcp.compute.getRegionInstanceGroup({
+ * const group = gcp.compute.getRegionInstanceGroup({
  *     name: "instance-group-name",
- * }));
+ * });
  * ```
  *
  * The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
  */
 export function getRegionInstanceGroup(args?: GetRegionInstanceGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionInstanceGroupResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", {
         "name": args.name,
         "project": args.project,
@@ -86,9 +83,23 @@ export interface GetRegionInstanceGroupResult {
      */
     readonly size: number;
 }
-
+/**
+ * Get a Compute Region Instance Group within GCE.
+ * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const group = gcp.compute.getRegionInstanceGroup({
+ *     name: "instance-group-name",
+ * });
+ * ```
+ *
+ * The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
+ */
 export function getRegionInstanceGroupOutput(args?: GetRegionInstanceGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionInstanceGroupResult> {
-    return pulumi.output(args).apply(a => getRegionInstanceGroup(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegionInstanceGroup(a, opts))
 }
 
 /**

@@ -142,7 +142,8 @@ export class Repository extends pulumi.CustomResource {
      */
     public readonly mavenConfig!: pulumi.Output<outputs.artifactregistry.RepositoryMavenConfig | undefined>;
     /**
-     * The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1"
+     * The name of the repository, for example:
+     * "projects/p1/locations/us-central1/repositories/repo1"
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -255,7 +256,8 @@ export interface RepositoryState {
      */
     mavenConfig?: pulumi.Input<inputs.artifactregistry.RepositoryMavenConfig>;
     /**
-     * The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1"
+     * The name of the repository, for example:
+     * "projects/p1/locations/us-central1/repositories/repo1"
      */
     name?: pulumi.Input<string>;
     /**

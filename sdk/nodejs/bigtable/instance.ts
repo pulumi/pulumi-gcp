@@ -49,14 +49,12 @@ import * as utilities from "../utilities";
  *
  * const production_instance = new gcp.bigtable.Instance("production-instance", {
  *     clusters: [
- *         // A cluster with fixed number of nodes.
  *         {
  *             clusterId: "tf-instance-cluster1",
  *             numNodes: 1,
  *             storageType: "HDD",
  *             zone: "us-central1-c",
  *         },
- *         // a cluster with auto scaling.
  *         {
  *             autoscalingConfig: {
  *                 cpuTarget: 50,

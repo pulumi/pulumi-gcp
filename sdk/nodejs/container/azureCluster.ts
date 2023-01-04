@@ -18,10 +18,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const versions = pulumi.output(gcp.container.getAzureVersions({
+ * const versions = gcp.container.getAzureVersions({
  *     location: "us-west1",
  *     project: "my-project-name",
- * }));
+ * });
  * const basic = new gcp.container.AzureClient("basic", {
  *     applicationId: "12345678-1234-1234-1234-123456789111",
  *     location: "us-west1",
@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  *             authorizedKey: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
  *         },
  *         subnetId: "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
- *         version: versions.apply(versions => versions.validVersions[0]),
+ *         version: versions.then(versions => versions.validVersions?.[0]),
  *     },
  *     fleet: {
  *         project: "my-project-number",
@@ -134,8 +134,7 @@ export class AzureCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly endpoint!: pulumi.Output<string>;
     /**
-     * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-     * and delete requests to ensure the client has an up-to-date value before proceeding.
+     * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
@@ -159,6 +158,8 @@ export class AzureCluster extends pulumi.CustomResource {
      */
     public readonly networking!: pulumi.Output<outputs.container.AzureClusterNetworking>;
     /**
+     * The number of the Fleet host project where this cluster will be registered.
+     * (Optional)
      * The project for the resource
      */
     public readonly project!: pulumi.Output<string>;
@@ -167,12 +168,11 @@ export class AzureCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
-     * The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+     * The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*&#47;resourceGroups/*`
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-     * STOPPING, ERROR, DEGRADED
+     * Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
@@ -312,8 +312,7 @@ export interface AzureClusterState {
      */
     endpoint?: pulumi.Input<string>;
     /**
-     * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-     * and delete requests to ensure the client has an up-to-date value before proceeding.
+     * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
     etag?: pulumi.Input<string>;
     /**
@@ -337,6 +336,8 @@ export interface AzureClusterState {
      */
     networking?: pulumi.Input<inputs.container.AzureClusterNetworking>;
     /**
+     * The number of the Fleet host project where this cluster will be registered.
+     * (Optional)
      * The project for the resource
      */
     project?: pulumi.Input<string>;
@@ -345,12 +346,11 @@ export interface AzureClusterState {
      */
     reconciling?: pulumi.Input<boolean>;
     /**
-     * The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+     * The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*&#47;resourceGroups/*`
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-     * STOPPING, ERROR, DEGRADED
+     * Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
      */
     state?: pulumi.Input<string>;
     /**
@@ -416,11 +416,13 @@ export interface AzureClusterArgs {
      */
     networking: pulumi.Input<inputs.container.AzureClusterNetworking>;
     /**
+     * The number of the Fleet host project where this cluster will be registered.
+     * (Optional)
      * The project for the resource
      */
     project?: pulumi.Input<string>;
     /**
-     * The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+     * The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*&#47;resourceGroups/*`
      */
     resourceGroupId: pulumi.Input<string>;
 }

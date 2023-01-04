@@ -16,105 +16,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/dlp/docs/concepts-templates)
  *
  * ## Example Usage
- * ### Dlp Deidentify Template Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const basic = new gcp.dataloss.PreventionDeidentifyTemplate("basic", {
- *     deidentifyConfig: {
- *         infoTypeTransformations: {
- *             transformations: [
- *                 {
- *                     infoTypes: [{
- *                         name: "FIRST_NAME",
- *                     }],
- *                     primitiveTransformation: {
- *                         replaceWithInfoTypeConfig: true,
- *                     },
- *                 },
- *                 {
- *                     infoTypes: [
- *                         {
- *                             name: "PHONE_NUMBER",
- *                         },
- *                         {
- *                             name: "AGE",
- *                         },
- *                     ],
- *                     primitiveTransformation: {
- *                         replaceConfig: {
- *                             newValue: {
- *                                 integerValue: 9,
- *                             },
- *                         },
- *                     },
- *                 },
- *                 {
- *                     infoTypes: [
- *                         {
- *                             name: "EMAIL_ADDRESS",
- *                         },
- *                         {
- *                             name: "LAST_NAME",
- *                         },
- *                     ],
- *                     primitiveTransformation: {
- *                         characterMaskConfig: {
- *                             charactersToIgnores: [{
- *                                 commonCharactersToIgnore: "PUNCTUATION",
- *                             }],
- *                             maskingCharacter: "X",
- *                             numberToMask: 4,
- *                             reverseOrder: true,
- *                         },
- *                     },
- *                 },
- *                 {
- *                     infoTypes: [{
- *                         name: "DATE_OF_BIRTH",
- *                     }],
- *                     primitiveTransformation: {
- *                         replaceConfig: {
- *                             newValue: {
- *                                 dateValue: {
- *                                     day: 1,
- *                                     month: 1,
- *                                     year: 2020,
- *                                 },
- *                             },
- *                         },
- *                     },
- *                 },
- *                 {
- *                     infoTypes: [{
- *                         name: "CREDIT_CARD_NUMBER",
- *                     }],
- *                     primitiveTransformation: {
- *                         cryptoDeterministicConfig: {
- *                             context: {
- *                                 name: "sometweak",
- *                             },
- *                             cryptoKey: {
- *                                 transient: {
- *                                     name: "beep",
- *                                 },
- *                             },
- *                             surrogateInfoType: {
- *                                 name: "abc",
- *                             },
- *                         },
- *                     },
- *                 },
- *             ],
- *         },
- *     },
- *     description: "Description",
- *     displayName: "Displayname",
- *     parent: "projects/my-project-name",
- * });
- * ```
  *
  * ## Import
  *
@@ -170,6 +71,24 @@ export class PreventionDeidentifyTemplate extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
+     * Name of the information type.
+     * (Required)
+     * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+     * (Optional)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+     * (Optional)
+     * Name describing the field.
+     * (Required)
+     * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+     * (Optional)
+     * Name describing the field.
+     * (Optional)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+     * (Optional)
+     * Name describing the field.
+     * (Optional)
+     * Name describing the field.
+     * (Optional)
      * Name describing the field.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -237,6 +156,24 @@ export interface PreventionDeidentifyTemplateState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * Name of the information type.
+     * (Required)
+     * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+     * (Optional)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+     * (Optional)
+     * Name describing the field.
+     * (Required)
+     * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+     * (Optional)
+     * Name describing the field.
+     * (Optional)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+     * (Optional)
+     * Name describing the field.
+     * (Optional)
+     * Name describing the field.
+     * (Optional)
      * Name describing the field.
      */
     name?: pulumi.Input<string>;

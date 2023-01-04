@@ -91,9 +91,10 @@ export class Brand extends pulumi.CustomResource {
      */
     public readonly applicationTitle!: pulumi.Output<string>;
     /**
-     * Output only. Identifier of the brand, in the format 'projects/{project_number}/brands/{brand_id}' NOTE: The name can
-     * also be expressed as 'projects/{project_id}/brands/{brand_id}', e.g. when importing. NOTE: The brand identification
-     * corresponds to the project number as only one brand can be created per project.
+     * Output only. Identifier of the brand, in the format `projects/{project_number}/brands/{brand_id}`
+     * NOTE: The name can also be expressed as `projects/{project_id}/brands/{brand_id}`, e.g. when importing.
+     * NOTE: The brand identification corresponds to the project number as only one
+     * brand can be created per project.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -160,9 +161,10 @@ export interface BrandState {
      */
     applicationTitle?: pulumi.Input<string>;
     /**
-     * Output only. Identifier of the brand, in the format 'projects/{project_number}/brands/{brand_id}' NOTE: The name can
-     * also be expressed as 'projects/{project_id}/brands/{brand_id}', e.g. when importing. NOTE: The brand identification
-     * corresponds to the project number as only one brand can be created per project.
+     * Output only. Identifier of the brand, in the format `projects/{project_number}/brands/{brand_id}`
+     * NOTE: The name can also be expressed as `projects/{project_id}/brands/{brand_id}`, e.g. when importing.
+     * NOTE: The brand identification corresponds to the project number as only one
+     * brand can be created per project.
      */
     name?: pulumi.Input<string>;
     /**

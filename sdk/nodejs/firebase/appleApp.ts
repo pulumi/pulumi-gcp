@@ -86,8 +86,8 @@ export class AppleApp extends pulumi.CustomResource {
     }
 
     /**
-     * The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-     * the data format is not specified.
+     * The globally unique, Firebase-assigned identifier of the App.
+     * This identifier should be treated as an opaque token, as the data format is not specified.
      */
     public /*out*/ readonly appId!: pulumi.Output<string>;
     /**
@@ -109,7 +109,8 @@ export class AppleApp extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * The fully qualified resource name of the App, for example: projects/projectId/iosApps/appId
+     * The fully qualified resource name of the App, for example:
+     * projects/projectId/iosApps/appId
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -167,8 +168,8 @@ export class AppleApp extends pulumi.CustomResource {
  */
 export interface AppleAppState {
     /**
-     * The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-     * the data format is not specified.
+     * The globally unique, Firebase-assigned identifier of the App.
+     * This identifier should be treated as an opaque token, as the data format is not specified.
      */
     appId?: pulumi.Input<string>;
     /**
@@ -190,7 +191,8 @@ export interface AppleAppState {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The fully qualified resource name of the App, for example: projects/projectId/iosApps/appId
+     * The fully qualified resource name of the App, for example:
+     * projects/projectId/iosApps/appId
      */
     name?: pulumi.Input<string>;
     /**

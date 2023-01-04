@@ -19,11 +19,8 @@ import * as utilities from "../utilities";
  */
 export function getTransferProjectServieAccount(args?: GetTransferProjectServieAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetTransferProjectServieAccountResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", {
         "project": args.project,
     }, opts);
@@ -61,9 +58,21 @@ export interface GetTransferProjectServieAccountResult {
      */
     readonly subjectId: string;
 }
-
+/**
+ * Use this data source to retrieve Storage Transfer service account for this project
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default = gcp.storage.getTransferProjectServieAccount({});
+ * export const defaultAccount = _default.then(_default => _default.email);
+ * ```
+ */
 export function getTransferProjectServieAccountOutput(args?: GetTransferProjectServieAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransferProjectServieAccountResult> {
-    return pulumi.output(args).apply(a => getTransferProjectServieAccount(a, opts))
+    return pulumi.output(args).apply((a: any) => getTransferProjectServieAccount(a, opts))
 }
 
 /**

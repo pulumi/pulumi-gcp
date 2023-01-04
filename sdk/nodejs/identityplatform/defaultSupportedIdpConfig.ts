@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const idpConfig = new gcp.identityplatform.DefaultSupportedIdpConfig("idp_config", {
+ * const idpConfig = new gcp.identityplatform.DefaultSupportedIdpConfig("idpConfig", {
  *     clientId: "client-id",
  *     clientSecret: "secret",
  *     enabled: true,

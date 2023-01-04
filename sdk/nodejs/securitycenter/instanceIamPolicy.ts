@@ -20,8 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basicInstance = new gcp.datafusion.Instance("basic_instance", {
- *     // Mark for testing to avoid service networking connection usage that is not cleaned up
+ * const basicInstance = new gcp.datafusion.Instance("basicInstance", {
  *     options: {
  *         prober_test_run: "true",
  *     },
@@ -95,9 +94,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const enterpriseInstance = new gcp.datafusion.Instance("enterprise_instance", {
+ * const enterpriseInstance = new gcp.datafusion.Instance("enterpriseInstance", {
  *     enableRbac: true,
- *     // Mark for testing to avoid service networking connection usage that is not cleaned up
  *     options: {
  *         prober_test_run: "true",
  *     },

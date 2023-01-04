@@ -22,11 +22,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAccountKey(args: GetAccountKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountKeyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:serviceAccount/getAccountKey:getAccountKey", {
         "name": args.name,
         "project": args.project,
@@ -72,9 +69,25 @@ export interface GetAccountKeyResult {
     readonly publicKey: string;
     readonly publicKeyType?: string;
 }
-
+/**
+ * Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myaccount = new gcp.serviceaccount.Account("myaccount", {accountId: "dev-foo-account"});
+ * const mykeyKey = new gcp.serviceaccount.Key("mykeyKey", {serviceAccountId: myaccount.name});
+ * const mykeyAccountKey = gcp.serviceAccount.getAccountKeyOutput({
+ *     name: mykeyKey.name,
+ *     publicKeyType: "TYPE_X509_PEM_FILE",
+ * });
+ * ```
+ */
 export function getAccountKeyOutput(args: GetAccountKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountKeyResult> {
-    return pulumi.output(args).apply(a => getAccountKey(a, opts))
+    return pulumi.output(args).apply((a: any) => getAccountKey(a, opts))
 }
 
 /**

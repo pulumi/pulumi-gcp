@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const cloudIdentityGroupBasic = new gcp.cloudidentity.Group("cloud_identity_group_basic", {
+ * const cloudIdentityGroupBasic = new gcp.cloudidentity.Group("cloudIdentityGroupBasic", {
  *     displayName: "my-identity-group",
  *     groupKey: {
  *         id: "my-identity-group@example.com",
@@ -113,7 +113,8 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Resource name of the Group in the format: groups/{group_id}, where group_id is the unique ID assigned to the Group.
+     * Resource name of the Group in the format: groups/{group_id}, where groupId
+     * is the unique ID assigned to the Group.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -216,7 +217,8 @@ export interface GroupState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Resource name of the Group in the format: groups/{group_id}, where group_id is the unique ID assigned to the Group.
+     * Resource name of the Group in the format: groups/{group_id}, where groupId
+     * is the unique ID assigned to the Group.
      */
     name?: pulumi.Input<string>;
     /**

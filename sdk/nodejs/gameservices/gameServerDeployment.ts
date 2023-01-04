@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultGameServerDeployment = new gcp.gameservices.GameServerDeployment("default", {
+ * const _default = new gcp.gameservices.GameServerDeployment("default", {
  *     deploymentId: "tf-test-deployment",
  *     description: "a deployment description",
  * });
@@ -89,8 +89,9 @@ export class GameServerDeployment extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string | undefined>;
     /**
      * The resource id of the game server deployment, eg:
-     * 'projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}'. For example,
-     * 'projects/my-project/locations/{location}/gameServerDeployments/my-deployment'.
+     * `projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}`.
+     * For example,
+     * `projects/my-project/locations/{location}/gameServerDeployments/my-deployment`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -158,8 +159,9 @@ export interface GameServerDeploymentState {
     location?: pulumi.Input<string>;
     /**
      * The resource id of the game server deployment, eg:
-     * 'projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}'. For example,
-     * 'projects/my-project/locations/{location}/gameServerDeployments/my-deployment'.
+     * `projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}`.
+     * For example,
+     * `projects/my-project/locations/{location}/gameServerDeployments/my-deployment`.
      */
     name?: pulumi.Input<string>;
     /**

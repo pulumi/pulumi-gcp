@@ -91,8 +91,8 @@ export class SyncAuthorization extends pulumi.CustomResource {
     }
 
     /**
-     * Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting
-     * each other. Used internally during updates.
+     * Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting each other.
+     * Used internally during updates.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
@@ -142,8 +142,8 @@ export class SyncAuthorization extends pulumi.CustomResource {
  */
 export interface SyncAuthorizationState {
     /**
-     * Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting
-     * each other. Used internally during updates.
+     * Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting each other.
+     * Used internally during updates.
      */
     etag?: pulumi.Input<string>;
     /**

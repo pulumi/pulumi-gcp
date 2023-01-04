@@ -20,11 +20,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getBackupRun(args: GetBackupRunArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupRunResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:sql/getBackupRun:getBackupRun", {
         "backupId": args.backupId,
         "instance": args.instance,
@@ -84,9 +81,23 @@ export interface GetBackupRunResult {
      */
     readonly status: string;
 }
-
+/**
+ * Use this data source to get information about a Cloud SQL instance backup run.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const backup = gcp.sql.getBackupRun({
+ *     instance: google_sql_database_instance.main.name,
+ *     mostRecent: true,
+ * });
+ * ```
+ */
 export function getBackupRunOutput(args: GetBackupRunOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupRunResult> {
-    return pulumi.output(args).apply(a => getBackupRun(a, opts))
+    return pulumi.output(args).apply((a: any) => getBackupRun(a, opts))
 }
 
 /**

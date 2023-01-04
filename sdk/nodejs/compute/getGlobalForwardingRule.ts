@@ -15,17 +15,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my_forwarding_rule = pulumi.output(gcp.compute.getGlobalForwardingRule({
+ * const my-forwarding-rule = gcp.compute.getGlobalForwardingRule({
  *     name: "forwarding-rule-global",
- * }));
+ * });
  * ```
  */
 export function getGlobalForwardingRule(args: GetGlobalForwardingRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalForwardingRuleResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getGlobalForwardingRule:getGlobalForwardingRule", {
         "name": args.name,
         "project": args.project,
@@ -72,9 +69,22 @@ export interface GetGlobalForwardingRuleResult {
     readonly selfLink: string;
     readonly target: string;
 }
-
+/**
+ * Get a global forwarding rule within GCE from its name.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-forwarding-rule = gcp.compute.getGlobalForwardingRule({
+ *     name: "forwarding-rule-global",
+ * });
+ * ```
+ */
 export function getGlobalForwardingRuleOutput(args: GetGlobalForwardingRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalForwardingRuleResult> {
-    return pulumi.output(args).apply(a => getGlobalForwardingRule(a, opts))
+    return pulumi.output(args).apply((a: any) => getGlobalForwardingRule(a, opts))
 }
 
 /**

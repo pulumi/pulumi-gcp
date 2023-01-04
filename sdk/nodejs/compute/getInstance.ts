@@ -18,19 +18,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const appserver = pulumi.output(gcp.compute.getInstance({
+ * const appserver = gcp.compute.getInstance({
  *     name: "primary-application-server",
  *     zone: "us-central1-a",
- * }));
+ * });
  * ```
  */
 export function getInstance(args?: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getInstance:getInstance", {
         "name": args.name,
         "project": args.project,
@@ -98,6 +95,9 @@ export interface GetInstanceResult {
      */
     readonly description: string;
     readonly desiredStatus: string;
+    /**
+     * - Whether the instance has virtual displays enabled.
+     */
     readonly enableDisplay: boolean;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure is documented below.
@@ -179,9 +179,26 @@ export interface GetInstanceResult {
     readonly tagsFingerprint: string;
     readonly zone?: string;
 }
-
+/**
+ * Get information about a VM instance resource within GCE. For more information see
+ * [the official documentation](https://cloud.google.com/compute/docs/instances)
+ * and
+ * [API](https://cloud.google.com/compute/docs/reference/latest/instances).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const appserver = gcp.compute.getInstance({
+ *     name: "primary-application-server",
+ *     zone: "us-central1-a",
+ * });
+ * ```
+ */
 export function getInstanceOutput(args?: GetInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceResult> {
-    return pulumi.output(args).apply(a => getInstance(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstance(a, opts))
 }
 
 /**

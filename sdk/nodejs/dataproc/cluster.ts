@@ -24,9 +24,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const simplecluster = new gcp.dataproc.Cluster("simplecluster", {
- *     region: "us-central1",
- * });
+ * const simplecluster = new gcp.dataproc.Cluster("simplecluster", {region: "us-central1"});
  * ```
  * ### Advanced
  *
@@ -93,7 +91,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const acceleratedCluster = new gcp.dataproc.Cluster("accelerated_cluster", {
+ * const acceleratedCluster = new gcp.dataproc.Cluster("acceleratedCluster", {
  *     clusterConfig: {
  *         gceClusterConfig: {
  *             zone: "us-central1-a",

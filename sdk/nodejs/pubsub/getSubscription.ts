@@ -17,17 +17,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my_pubsub_subscription = pulumi.output(gcp.pubsub.getSubscription({
+ * const my-pubsub-subscription = gcp.pubsub.getSubscription({
  *     name: "my-pubsub-subscription",
- * }));
+ * });
  * ```
  */
 export function getSubscription(args: GetSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetSubscriptionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:pubsub/getSubscription:getSubscription", {
         "name": args.name,
         "project": args.project,
@@ -73,9 +70,24 @@ export interface GetSubscriptionResult {
     readonly retryPolicies: outputs.pubsub.GetSubscriptionRetryPolicy[];
     readonly topic: string;
 }
-
+/**
+ * Get information about a Google Cloud Pub/Sub Subscription. For more information see
+ * the [official documentation](https://cloud.google.com/pubsub/docs/)
+ * and [API](https://cloud.google.com/pubsub/docs/apis).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-pubsub-subscription = gcp.pubsub.getSubscription({
+ *     name: "my-pubsub-subscription",
+ * });
+ * ```
+ */
 export function getSubscriptionOutput(args: GetSubscriptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubscriptionResult> {
-    return pulumi.output(args).apply(a => getSubscription(a, opts))
+    return pulumi.output(args).apply((a: any) => getSubscription(a, opts))
 }
 
 /**

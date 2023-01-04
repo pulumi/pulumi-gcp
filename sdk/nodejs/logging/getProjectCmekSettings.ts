@@ -19,17 +19,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const cmekSettings = pulumi.output(gcp.logging.getProjectCmekSettings({
+ * const cmekSettings = gcp.logging.getProjectCmekSettings({
  *     project: "my-project-name",
- * }));
+ * });
  * ```
  */
 export function getProjectCmekSettings(args: GetProjectCmekSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectCmekSettingsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:logging/getProjectCmekSettings:getProjectCmekSettings", {
         "kmsKeyName": args.kmsKeyName,
         "project": args.project,
@@ -93,9 +90,28 @@ export interface GetProjectCmekSettingsResult {
      */
     readonly serviceAccountId: string;
 }
-
+/**
+ * Describes the customer-managed encryption key (CMEK) settings associated with a project.
+ *
+ * To get more information about Service, see:
+ *
+ * * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects/getCmekSettings)
+ * * [Enable CMEK](https://cloud.google.com/logging/docs/routing/managed-encryption-storage#enable).
+ *
+ * ## Example Usage
+ * ### Logging Project Cmek Settings Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cmekSettings = gcp.logging.getProjectCmekSettings({
+ *     project: "my-project-name",
+ * });
+ * ```
+ */
 export function getProjectCmekSettingsOutput(args: GetProjectCmekSettingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectCmekSettingsResult> {
-    return pulumi.output(args).apply(a => getProjectCmekSettings(a, opts))
+    return pulumi.output(args).apply((a: any) => getProjectCmekSettings(a, opts))
 }
 
 /**

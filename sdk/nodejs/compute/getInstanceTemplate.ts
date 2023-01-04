@@ -18,24 +18,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * // by name
- * const generic = pulumi.output(gcp.compute.getInstanceTemplate({
+ * const generic = gcp.compute.getInstanceTemplate({
  *     name: "generic-tpl-20200107",
- * }));
- * // using a filter
- * const generic_regex = pulumi.output(gcp.compute.getInstanceTemplate({
+ * });
+ * const generic-regex = gcp.compute.getInstanceTemplate({
  *     filter: "name != generic-tpl-20200107",
  *     mostRecent: true,
- * }));
+ * });
  * ```
  */
 export function getInstanceTemplate(args?: GetInstanceTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTemplateResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getInstanceTemplate:getInstanceTemplate", {
         "filter": args.filter,
         "mostRecent": args.mostRecent,
@@ -206,9 +201,29 @@ export interface GetInstanceTemplateResult {
      */
     readonly tagsFingerprint: string;
 }
-
+/**
+ * Get information about a VM instance template resource within GCE. For more information see
+ * [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
+ * and
+ * [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const generic = gcp.compute.getInstanceTemplate({
+ *     name: "generic-tpl-20200107",
+ * });
+ * const generic-regex = gcp.compute.getInstanceTemplate({
+ *     filter: "name != generic-tpl-20200107",
+ *     mostRecent: true,
+ * });
+ * ```
+ */
 export function getInstanceTemplateOutput(args?: GetInstanceTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTemplateResult> {
-    return pulumi.output(args).apply(a => getInstanceTemplate(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstanceTemplate(a, opts))
 }
 
 /**

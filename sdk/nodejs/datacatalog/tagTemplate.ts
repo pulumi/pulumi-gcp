@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basicTagTemplate = new gcp.datacatalog.TagTemplate("basic_tag_template", {
+ * const basicTagTemplate = new gcp.datacatalog.TagTemplate("basicTagTemplate", {
  *     displayName: "Demo Tag Template",
  *     fields: [
  *         {
@@ -104,6 +104,10 @@ export class TagTemplate extends pulumi.CustomResource {
     }
 
     /**
+     * The display name for this field.
+     * (Required)
+     * The display name of the enum value.
+     * (Optional)
      * The display name for this template.
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
@@ -117,7 +121,6 @@ export class TagTemplate extends pulumi.CustomResource {
      */
     public readonly forceDelete!: pulumi.Output<boolean | undefined>;
     /**
-     * -
      * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -181,6 +184,10 @@ export class TagTemplate extends pulumi.CustomResource {
  */
 export interface TagTemplateState {
     /**
+     * The display name for this field.
+     * (Required)
+     * The display name of the enum value.
+     * (Optional)
      * The display name for this template.
      */
     displayName?: pulumi.Input<string>;
@@ -194,7 +201,6 @@ export interface TagTemplateState {
      */
     forceDelete?: pulumi.Input<boolean>;
     /**
-     * -
      * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
      */
     name?: pulumi.Input<string>;
@@ -218,6 +224,10 @@ export interface TagTemplateState {
  */
 export interface TagTemplateArgs {
     /**
+     * The display name for this field.
+     * (Required)
+     * The display name of the enum value.
+     * (Optional)
      * The display name for this template.
      */
     displayName?: pulumi.Input<string>;

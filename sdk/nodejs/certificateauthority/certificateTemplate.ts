@@ -13,90 +13,6 @@ import * as utilities from "../utilities";
  * * [Understanding Certificate Templates](https://cloud.google.com/certificate-authority-service/docs/certificate-template)
  * * [Common configurations and Certificate Profiles](https://cloud.google.com/certificate-authority-service/docs/certificate-profile)
  * ## Example Usage
- * ### Basic_certificate_template
- * An example of a basic privateca certificate template
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const primary = new gcp.certificateauthority.CertificateTemplate("primary", {
- *     description: "An updated sample certificate template",
- *     identityConstraints: {
- *         allowSubjectAltNamesPassthrough: true,
- *         allowSubjectPassthrough: true,
- *         celExpression: {
- *             description: "Always true",
- *             expression: "true",
- *             location: "any.file.anywhere",
- *             title: "Sample expression",
- *         },
- *     },
- *     labels: {
- *         "label-two": "value-two",
- *     },
- *     location: "us-west1",
- *     passthroughExtensions: {
- *         additionalExtensions: [{
- *             objectIdPaths: [
- *                 1,
- *                 6,
- *             ],
- *         }],
- *         knownExtensions: ["EXTENDED_KEY_USAGE"],
- *     },
- *     predefinedValues: {
- *         additionalExtensions: [{
- *             critical: true,
- *             objectId: {
- *                 objectIdPaths: [
- *                     1,
- *                     6,
- *                 ],
- *             },
- *             value: "c3RyaW5nCg==",
- *         }],
- *         aiaOcspServers: ["string"],
- *         caOptions: {
- *             isCa: false,
- *             maxIssuerPathLength: 6,
- *         },
- *         keyUsage: {
- *             baseKeyUsage: {
- *                 certSign: false,
- *                 contentCommitment: true,
- *                 crlSign: false,
- *                 dataEncipherment: true,
- *                 decipherOnly: true,
- *                 digitalSignature: true,
- *                 encipherOnly: true,
- *                 keyAgreement: true,
- *                 keyEncipherment: true,
- *             },
- *             extendedKeyUsage: {
- *                 clientAuth: true,
- *                 codeSigning: true,
- *                 emailProtection: true,
- *                 ocspSigning: true,
- *                 serverAuth: true,
- *                 timeStamping: true,
- *             },
- *             unknownExtendedKeyUsages: [{
- *                 objectIdPaths: [
- *                     1,
- *                     6,
- *                 ],
- *             }],
- *         },
- *         policyIds: [{
- *             objectIdPaths: [
- *                 1,
- *                 6,
- *             ],
- *         }],
- *     },
- *     project: "my-project-name",
- * });
- * ```
  *
  * ## Import
  *
@@ -147,6 +63,8 @@ export class CertificateTemplate extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Optional. A human-readable description of scenarios this template is intended for.
+     * (Optional)
      * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -159,7 +77,7 @@ export class CertificateTemplate extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+     * The location for the resource
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -236,6 +154,8 @@ export interface CertificateTemplateState {
      */
     createTime?: pulumi.Input<string>;
     /**
+     * Optional. A human-readable description of scenarios this template is intended for.
+     * (Optional)
      * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      */
     description?: pulumi.Input<string>;
@@ -248,7 +168,7 @@ export interface CertificateTemplateState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+     * The location for the resource
      */
     location?: pulumi.Input<string>;
     /**
@@ -278,6 +198,8 @@ export interface CertificateTemplateState {
  */
 export interface CertificateTemplateArgs {
     /**
+     * Optional. A human-readable description of scenarios this template is intended for.
+     * (Optional)
      * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      */
     description?: pulumi.Input<string>;
@@ -290,7 +212,7 @@ export interface CertificateTemplateArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+     * The location for the resource
      */
     location: pulumi.Input<string>;
     /**

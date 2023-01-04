@@ -28,11 +28,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRecordSet(args: GetRecordSetArgs, opts?: pulumi.InvokeOptions): Promise<GetRecordSetResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:dns/getRecordSet:getRecordSet", {
         "managedZone": args.managedZone,
         "name": args.name,
@@ -81,9 +78,31 @@ export interface GetRecordSetResult {
     readonly ttl: number;
     readonly type: string;
 }
-
+/**
+ * Get a DNS record set within Google Cloud DNS
+ * For more information see
+ * [the official documentation](https://cloud.google.com/dns/docs/records)
+ * and
+ * [API](https://cloud.google.com/dns/docs/reference/v1/resourceRecordSets)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const sample = gcp.dns.getManagedZone({
+ *     name: "sample-zone",
+ * });
+ * const rs = Promise.all([sample, sample]).then(([sample, sample1]) => gcp.dns.getRecordSet({
+ *     managedZone: sample.name,
+ *     name: `my-record.${sample1.dnsName}`,
+ *     type: "A",
+ * }));
+ * ```
+ */
 export function getRecordSetOutput(args: GetRecordSetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRecordSetResult> {
-    return pulumi.output(args).apply(a => getRecordSet(a, opts))
+    return pulumi.output(args).apply((a: any) => getRecordSet(a, opts))
 }
 
 /**

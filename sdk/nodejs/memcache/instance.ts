@@ -113,7 +113,6 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly authorizedNetwork!: pulumi.Output<string>;
     /**
-     * -
      * Output only. The time when the policy was created.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
      * resolution and up to nine fractional digits
@@ -138,6 +137,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly maintenancePolicy!: pulumi.Output<outputs.memcache.InstanceMaintenancePolicy | undefined>;
     /**
      * Output only. Published maintenance schedule.
+     * Structure is documented below.
      */
     public /*out*/ readonly maintenanceSchedules!: pulumi.Output<outputs.memcache.InstanceMaintenanceSchedule[]>;
     /**
@@ -146,6 +146,7 @@ export class Instance extends pulumi.CustomResource {
     public /*out*/ readonly memcacheFullVersion!: pulumi.Output<string>;
     /**
      * Additional information about the instance state, if available.
+     * Structure is documented below.
      */
     public /*out*/ readonly memcacheNodes!: pulumi.Output<outputs.memcache.InstanceMemcacheNode[]>;
     /**
@@ -260,7 +261,6 @@ export interface InstanceState {
      */
     authorizedNetwork?: pulumi.Input<string>;
     /**
-     * -
      * Output only. The time when the policy was created.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
      * resolution and up to nine fractional digits
@@ -285,6 +285,7 @@ export interface InstanceState {
     maintenancePolicy?: pulumi.Input<inputs.memcache.InstanceMaintenancePolicy>;
     /**
      * Output only. Published maintenance schedule.
+     * Structure is documented below.
      */
     maintenanceSchedules?: pulumi.Input<pulumi.Input<inputs.memcache.InstanceMaintenanceSchedule>[]>;
     /**
@@ -293,6 +294,7 @@ export interface InstanceState {
     memcacheFullVersion?: pulumi.Input<string>;
     /**
      * Additional information about the instance state, if available.
+     * Structure is documented below.
      */
     memcacheNodes?: pulumi.Input<pulumi.Input<inputs.memcache.InstanceMemcacheNode>[]>;
     /**

@@ -15,17 +15,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my_beyondcorp_app_connection = pulumi.output(gcp.beyondcorp.getAppConnection({
+ * const my-beyondcorp-app-connection = gcp.beyondcorp.getAppConnection({
  *     name: "my-beyondcorp-app-connection",
- * }));
+ * });
  * ```
  */
 export function getAppConnection(args: GetAppConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetAppConnectionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:beyondcorp/getAppConnection:getAppConnection", {
         "name": args.name,
         "project": args.project,
@@ -71,9 +68,22 @@ export interface GetAppConnectionResult {
     readonly region?: string;
     readonly type: string;
 }
-
+/**
+ * Get information about a Google BeyondCorp App Connection.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-beyondcorp-app-connection = gcp.beyondcorp.getAppConnection({
+ *     name: "my-beyondcorp-app-connection",
+ * });
+ * ```
+ */
 export function getAppConnectionOutput(args: GetAppConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppConnectionResult> {
-    return pulumi.output(args).apply(a => getAppConnection(a, opts))
+    return pulumi.output(args).apply((a: any) => getAppConnection(a, opts))
 }
 
 /**

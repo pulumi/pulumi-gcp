@@ -129,8 +129,8 @@ export class GameServerDeploymentRollout extends pulumi.CustomResource {
      */
     public readonly gameServerConfigOverrides!: pulumi.Output<outputs.gameservices.GameServerDeploymentRolloutGameServerConfigOverride[] | undefined>;
     /**
-     * The resource id of the game server deployment eg:
-     * 'projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout'.
+     * The resource id of the game server deployment
+     * eg: `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -199,8 +199,8 @@ export interface GameServerDeploymentRolloutState {
      */
     gameServerConfigOverrides?: pulumi.Input<pulumi.Input<inputs.gameservices.GameServerDeploymentRolloutGameServerConfigOverride>[]>;
     /**
-     * The resource id of the game server deployment eg:
-     * 'projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout'.
+     * The resource id of the game server deployment
+     * eg: `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
      */
     name?: pulumi.Input<string>;
     /**

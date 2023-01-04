@@ -228,11 +228,12 @@ export class BackupPlan extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from
-     * overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to
-     * perform BackupPlan updates in order to avoid race conditions: An etag is returned in the response to backupPlans.get,
-     * and systems are expected to put that etag in the request to backupPlans.patch or backupPlans.delete to ensure that their
-     * change will be applied to the same version of the resource.
+     * etag is used for optimistic concurrency control as a way to help prevent simultaneous
+     * updates of a backup plan from overwriting each other. It is strongly suggested that
+     * systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates
+     * in order to avoid race conditions: An etag is returned in the response to backupPlans.get,
+     * and systems are expected to put that etag in the request to backupPlans.patch or
+     * backupPlans.delete to ensure that their change will be applied to the same version of the resource.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
@@ -246,7 +247,7 @@ export class BackupPlan extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * The name of a Kubernetes Resource.
+     * The full name of the BackupPlan Resource.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -351,11 +352,12 @@ export interface BackupPlanState {
      */
     description?: pulumi.Input<string>;
     /**
-     * etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from
-     * overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to
-     * perform BackupPlan updates in order to avoid race conditions: An etag is returned in the response to backupPlans.get,
-     * and systems are expected to put that etag in the request to backupPlans.patch or backupPlans.delete to ensure that their
-     * change will be applied to the same version of the resource.
+     * etag is used for optimistic concurrency control as a way to help prevent simultaneous
+     * updates of a backup plan from overwriting each other. It is strongly suggested that
+     * systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates
+     * in order to avoid race conditions: An etag is returned in the response to backupPlans.get,
+     * and systems are expected to put that etag in the request to backupPlans.patch or
+     * backupPlans.delete to ensure that their change will be applied to the same version of the resource.
      */
     etag?: pulumi.Input<string>;
     /**
@@ -369,7 +371,7 @@ export interface BackupPlanState {
      */
     location?: pulumi.Input<string>;
     /**
-     * The name of a Kubernetes Resource.
+     * The full name of the BackupPlan Resource.
      */
     name?: pulumi.Input<string>;
     /**
@@ -432,7 +434,7 @@ export interface BackupPlanArgs {
      */
     location: pulumi.Input<string>;
     /**
-     * The name of a Kubernetes Resource.
+     * The full name of the BackupPlan Resource.
      */
     name?: pulumi.Input<string>;
     /**

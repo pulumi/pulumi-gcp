@@ -112,9 +112,7 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
     }
 
     /**
-     * Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS
-     * policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for
-     * this field.
+     * Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
      */
     public /*out*/ readonly baseline!: pulumi.Output<boolean>;
     /**
@@ -122,6 +120,8 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
      */
     public /*out*/ readonly deleted!: pulumi.Output<boolean>;
     /**
+     * Policy description. Length of the description is limited to 1024 characters.
+     * (Optional)
      * OS policy assignment description. Length of the description is limited to 1024 characters.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -138,7 +138,7 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Required. The name of the repository.
+     * Resource name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -150,8 +150,7 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the
-     * `rollout_state` is one of: * IN_PROGRESS * CANCELLING
+     * Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the `rolloutState` is one of: * IN_PROGRESS * CANCELLING
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
@@ -159,8 +158,7 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
      */
     public /*out*/ readonly revisionCreateTime!: pulumi.Output<string>;
     /**
-     * Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy
-     * assignment
+     * Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
      */
     public /*out*/ readonly revisionId!: pulumi.Output<string>;
     /**
@@ -168,8 +166,7 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
      */
     public readonly rollout!: pulumi.Output<outputs.osconfig.OsPolicyAssignmentRollout>;
     /**
-     * Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING,
-     * CANCELLED, SUCCEEDED
+     * Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING, CANCELLED, SUCCEEDED
      */
     public /*out*/ readonly rolloutState!: pulumi.Output<string>;
     /**
@@ -251,9 +248,7 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
  */
 export interface OsPolicyAssignmentState {
     /**
-     * Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS
-     * policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for
-     * this field.
+     * Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
      */
     baseline?: pulumi.Input<boolean>;
     /**
@@ -261,6 +256,8 @@ export interface OsPolicyAssignmentState {
      */
     deleted?: pulumi.Input<boolean>;
     /**
+     * Policy description. Length of the description is limited to 1024 characters.
+     * (Optional)
      * OS policy assignment description. Length of the description is limited to 1024 characters.
      */
     description?: pulumi.Input<string>;
@@ -277,7 +274,7 @@ export interface OsPolicyAssignmentState {
      */
     location?: pulumi.Input<string>;
     /**
-     * Required. The name of the repository.
+     * Resource name.
      */
     name?: pulumi.Input<string>;
     /**
@@ -289,8 +286,7 @@ export interface OsPolicyAssignmentState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the
-     * `rollout_state` is one of: * IN_PROGRESS * CANCELLING
+     * Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the `rolloutState` is one of: * IN_PROGRESS * CANCELLING
      */
     reconciling?: pulumi.Input<boolean>;
     /**
@@ -298,8 +294,7 @@ export interface OsPolicyAssignmentState {
      */
     revisionCreateTime?: pulumi.Input<string>;
     /**
-     * Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy
-     * assignment
+     * Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
      */
     revisionId?: pulumi.Input<string>;
     /**
@@ -307,8 +302,7 @@ export interface OsPolicyAssignmentState {
      */
     rollout?: pulumi.Input<inputs.osconfig.OsPolicyAssignmentRollout>;
     /**
-     * Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING,
-     * CANCELLED, SUCCEEDED
+     * Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING, CANCELLED, SUCCEEDED
      */
     rolloutState?: pulumi.Input<string>;
     /**
@@ -326,6 +320,8 @@ export interface OsPolicyAssignmentState {
  */
 export interface OsPolicyAssignmentArgs {
     /**
+     * Policy description. Length of the description is limited to 1024 characters.
+     * (Optional)
      * OS policy assignment description. Length of the description is limited to 1024 characters.
      */
     description?: pulumi.Input<string>;
@@ -338,7 +334,7 @@ export interface OsPolicyAssignmentArgs {
      */
     location: pulumi.Input<string>;
     /**
-     * Required. The name of the repository.
+     * Resource name.
      */
     name?: pulumi.Input<string>;
     /**

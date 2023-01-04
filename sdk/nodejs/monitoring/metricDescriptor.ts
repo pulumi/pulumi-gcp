@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const withAlert = new gcp.monitoring.MetricDescriptor("with_alert", {
+ * const withAlert = new gcp.monitoring.MetricDescriptor("withAlert", {
  *     description: "Daily sales records from all branch stores.",
  *     displayName: "metric-descriptor",
  *     metricKind: "GAUGE",
@@ -55,7 +55,7 @@ import * as utilities from "../utilities";
  *     unit: "{USD}",
  *     valueType: "DOUBLE",
  * });
- * const alertPolicy = new gcp.monitoring.AlertPolicy("alert_policy", {
+ * const alertPolicy = new gcp.monitoring.AlertPolicy("alertPolicy", {
  *     combiner: "OR",
  *     conditions: [{
  *         conditionThreshold: {
@@ -106,7 +106,7 @@ export class MetricDescriptor extends pulumi.CustomResource {
     }
 
     /**
-     * A human-readable description for the label.
+     * A detailed description of the metric, which can be used in documentation.
      */
     public readonly description!: pulumi.Output<string>;
     /**
@@ -134,10 +134,7 @@ export class MetricDescriptor extends pulumi.CustomResource {
      */
     public readonly metricKind!: pulumi.Output<string>;
     /**
-     * If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that
-     * is associated with this metric type can only be associated with one of the monitored resource types listed here. This
-     * field allows time series to be associated with the intersection of this metric type and the monitored resource types in
-     * this list.
+     * If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. This field allows time series to be associated with the intersection of this metric type and the monitored resource types in this list.
      */
     public /*out*/ readonly monitoredResourceTypes!: pulumi.Output<string[]>;
     /**
@@ -174,9 +171,8 @@ export class MetricDescriptor extends pulumi.CustomResource {
      */
     public readonly unit!: pulumi.Output<string | undefined>;
     /**
-     * The type of data that can be assigned to the label.
-     * Default value is `STRING`.
-     * Possible values are `STRING`, `BOOL`, and `INT64`.
+     * Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
+     * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
      */
     public readonly valueType!: pulumi.Output<string>;
 
@@ -245,7 +241,7 @@ export class MetricDescriptor extends pulumi.CustomResource {
  */
 export interface MetricDescriptorState {
     /**
-     * A human-readable description for the label.
+     * A detailed description of the metric, which can be used in documentation.
      */
     description?: pulumi.Input<string>;
     /**
@@ -273,10 +269,7 @@ export interface MetricDescriptorState {
      */
     metricKind?: pulumi.Input<string>;
     /**
-     * If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that
-     * is associated with this metric type can only be associated with one of the monitored resource types listed here. This
-     * field allows time series to be associated with the intersection of this metric type and the monitored resource types in
-     * this list.
+     * If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. This field allows time series to be associated with the intersection of this metric type and the monitored resource types in this list.
      */
     monitoredResourceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -313,9 +306,8 @@ export interface MetricDescriptorState {
      */
     unit?: pulumi.Input<string>;
     /**
-     * The type of data that can be assigned to the label.
-     * Default value is `STRING`.
-     * Possible values are `STRING`, `BOOL`, and `INT64`.
+     * Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
+     * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
      */
     valueType?: pulumi.Input<string>;
 }
@@ -325,7 +317,7 @@ export interface MetricDescriptorState {
  */
 export interface MetricDescriptorArgs {
     /**
-     * A human-readable description for the label.
+     * A detailed description of the metric, which can be used in documentation.
      */
     description: pulumi.Input<string>;
     /**
@@ -382,9 +374,8 @@ export interface MetricDescriptorArgs {
      */
     unit?: pulumi.Input<string>;
     /**
-     * The type of data that can be assigned to the label.
-     * Default value is `STRING`.
-     * Possible values are `STRING`, `BOOL`, and `INT64`.
+     * Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
+     * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
      */
     valueType: pulumi.Input<string>;
 }

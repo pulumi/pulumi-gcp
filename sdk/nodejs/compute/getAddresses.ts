@@ -13,11 +13,8 @@ import * as utilities from "../utilities";
  */
 export function getAddresses(args?: GetAddressesArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getAddresses:getAddresses", {
         "filter": args.filter,
         "project": args.project,
@@ -85,9 +82,13 @@ export interface GetAddressesResult {
      */
     readonly region?: string;
 }
-
+/**
+ * List IP addresses in a project. For more information see
+ * the official API [list](https://cloud.google.com/compute/docs/reference/latest/addresses/list) and
+ * [aggregated lsit](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
+ */
 export function getAddressesOutput(args?: GetAddressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAddressesResult> {
-    return pulumi.output(args).apply(a => getAddresses(a, opts))
+    return pulumi.output(args).apply((a: any) => getAddresses(a, opts))
 }
 
 /**

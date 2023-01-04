@@ -15,17 +15,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my_backend_bucket = pulumi.output(gcp.compute.getBackendBucket({
+ * const my-backend-bucket = gcp.compute.getBackendBucket({
  *     name: "my-backend",
- * }));
+ * });
  * ```
  */
 export function getBackendBucket(args: GetBackendBucketArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendBucketResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getBackendBucket:getBackendBucket", {
         "name": args.name,
         "project": args.project,
@@ -67,9 +64,22 @@ export interface GetBackendBucketResult {
     readonly project?: string;
     readonly selfLink: string;
 }
-
+/**
+ * Get information about a BackendBucket.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-backend-bucket = gcp.compute.getBackendBucket({
+ *     name: "my-backend",
+ * });
+ * ```
+ */
 export function getBackendBucketOutput(args: GetBackendBucketOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackendBucketResult> {
-    return pulumi.output(args).apply(a => getBackendBucket(a, opts))
+    return pulumi.output(args).apply((a: any) => getBackendBucket(a, opts))
 }
 
 /**

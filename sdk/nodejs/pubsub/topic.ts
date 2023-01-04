@@ -48,11 +48,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const example = new gcp.pubsub.Topic("example", {
- *     messageStoragePolicy: {
- *         allowedPersistenceRegions: ["europe-west3"],
- *     },
- * });
+ * const example = new gcp.pubsub.Topic("example", {messageStoragePolicy: {
+ *     allowedPersistenceRegions: ["europe-west3"],
+ * }});
  * ```
  * ### Pubsub Topic Schema Settings
  *

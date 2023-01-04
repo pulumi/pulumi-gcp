@@ -141,8 +141,7 @@ export class Backup extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or
-     * system actions like failover or maintenance.
+     * If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
@@ -150,8 +149,7 @@ export class Backup extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is
-     * retained until it is deleted.
+     * Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
     /**
@@ -254,8 +252,7 @@ export interface BackupState {
      */
     project?: pulumi.Input<string>;
     /**
-     * If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or
-     * system actions like failover or maintenance.
+     * If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
      */
     reconciling?: pulumi.Input<boolean>;
     /**
@@ -263,8 +260,7 @@ export interface BackupState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is
-     * retained until it is deleted.
+     * Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
      */
     uid?: pulumi.Input<string>;
     /**

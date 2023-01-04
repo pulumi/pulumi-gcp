@@ -18,17 +18,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my_repo = pulumi.output(gcp.sourcerepo.getRepository({
+ * const my-repo = gcp.sourcerepo.getRepository({
  *     name: "my-repository",
- * }));
+ * });
  * ```
  */
 export function getRepository(args: GetRepositoryArgs, opts?: pulumi.InvokeOptions): Promise<GetRepositoryResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:sourcerepo/getRepository:getRepository", {
         "name": args.name,
         "project": args.project,
@@ -63,9 +60,25 @@ export interface GetRepositoryResult {
     readonly size: number;
     readonly url: string;
 }
-
+/**
+ * Get infomation about an existing Google Cloud Source Repository.
+ * For more information see [the official documentation](https://cloud.google.com/source-repositories)
+ * and
+ * [API](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-repo = gcp.sourcerepo.getRepository({
+ *     name: "my-repository",
+ * });
+ * ```
+ */
 export function getRepositoryOutput(args: GetRepositoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepositoryResult> {
-    return pulumi.output(args).apply(a => getRepository(a, opts))
+    return pulumi.output(args).apply((a: any) => getRepository(a, opts))
 }
 
 /**

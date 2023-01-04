@@ -28,11 +28,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getManagedZone(args: GetManagedZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedZoneResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:dns/getManagedZone:getManagedZone", {
         "name": args.name,
         "project": args.project,
@@ -84,9 +81,31 @@ export interface GetManagedZoneResult {
      */
     readonly visibility: string;
 }
-
+/**
+ * Provides access to a zone's attributes within Google Cloud DNS.
+ * For more information see
+ * [the official documentation](https://cloud.google.com/dns/zones/)
+ * and
+ * [API](https://cloud.google.com/dns/api/v1/managedZones).
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const envDnsZone = gcp.dns.getManagedZone({
+ *     name: "qa-zone",
+ * });
+ * const dns = new gcp.dns.RecordSet("dns", {
+ *     name: envDnsZone.then(envDnsZone => `my-address.${envDnsZone.dnsName}`),
+ *     type: "TXT",
+ *     ttl: 300,
+ *     managedZone: envDnsZone.then(envDnsZone => envDnsZone.name),
+ *     rrdatas: ["test"],
+ * });
+ * ```
+ */
 export function getManagedZoneOutput(args: GetManagedZoneOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagedZoneResult> {
-    return pulumi.output(args).apply(a => getManagedZone(a, opts))
+    return pulumi.output(args).apply((a: any) => getManagedZone(a, opts))
 }
 
 /**

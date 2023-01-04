@@ -128,8 +128,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const instanceTemplate = new gcp.compute.InstanceTemplate("instance_template", {
- *     // boot disk
+ * const instanceTemplate = new gcp.compute.InstanceTemplate("instanceTemplate", {
  *     disks: [{
  *         sourceImage: "debian-cloud/debian-11",
  *     }],
@@ -223,8 +222,8 @@ export class InstanceTemplate extends pulumi.CustomResource {
      */
     public readonly instanceDescription!: pulumi.Output<string | undefined>;
     /**
-     * A set of ket/value label pairs to assign to disk created from
-     * this template
+     * A set of key/value label pairs to assign to instances
+     * created from this template.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -446,8 +445,8 @@ export interface InstanceTemplateState {
      */
     instanceDescription?: pulumi.Input<string>;
     /**
-     * A set of ket/value label pairs to assign to disk created from
-     * this template
+     * A set of key/value label pairs to assign to instances
+     * created from this template.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -589,8 +588,8 @@ export interface InstanceTemplateArgs {
      */
     instanceDescription?: pulumi.Input<string>;
     /**
-     * A set of ket/value label pairs to assign to disk created from
-     * this template
+     * A set of key/value label pairs to assign to instances
+     * created from this template.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

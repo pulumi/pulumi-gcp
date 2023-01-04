@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultRealm = new gcp.gameservices.Realm("default", {
+ * const _default = new gcp.gameservices.Realm("default", {
  *     description: "one of the nine",
  *     location: "global",
  *     realmId: "tf-test-realm",
@@ -89,8 +89,9 @@ export class Realm extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string | undefined>;
     /**
-     * The resource id of the realm, of the form: 'projects/{project_id}/locations/{location}/realms/{realm_id}'. For example,
-     * 'projects/my-project/locations/{location}/realms/my-realm'.
+     * The resource id of the realm, of the form:
+     * `projects/{project_id}/locations/{location}/realms/{realm_id}`. For
+     * example, `projects/my-project/locations/{location}/realms/my-realm`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -173,8 +174,9 @@ export interface RealmState {
      */
     location?: pulumi.Input<string>;
     /**
-     * The resource id of the realm, of the form: 'projects/{project_id}/locations/{location}/realms/{realm_id}'. For example,
-     * 'projects/my-project/locations/{location}/realms/my-realm'.
+     * The resource id of the realm, of the form:
+     * `projects/{project_id}/locations/{location}/realms/{realm_id}`. For
+     * example, `projects/my-project/locations/{location}/realms/my-realm`.
      */
     name?: pulumi.Input<string>;
     /**

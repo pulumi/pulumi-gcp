@@ -174,8 +174,7 @@ export class ApiKey extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
-     * Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString`
-     * method.
+     * Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
      */
     public /*out*/ readonly keyString!: pulumi.Output<string>;
     /**
@@ -239,8 +238,7 @@ export interface ApiKeyState {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString`
-     * method.
+     * Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
      */
     keyString?: pulumi.Input<string>;
     /**

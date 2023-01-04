@@ -58,9 +58,7 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
      */
     public readonly groupKey!: pulumi.Output<string>;
     /**
-     * Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved
-     * characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example:
-     * "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
+     * Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -119,9 +117,7 @@ export interface GcpUserAccessBindingState {
      */
     groupKey?: pulumi.Input<string>;
     /**
-     * Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved
-     * characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example:
-     * "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
+     * Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
      */
     name?: pulumi.Input<string>;
     /**

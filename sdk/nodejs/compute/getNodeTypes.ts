@@ -25,11 +25,8 @@ import * as utilities from "../utilities";
  */
 export function getNodeTypes(args?: GetNodeTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeTypesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getNodeTypes:getNodeTypes", {
         "project": args.project,
         "zone": args.zone,
@@ -68,9 +65,27 @@ export interface GetNodeTypesResult {
     readonly project: string;
     readonly zone: string;
 }
-
+/**
+ * Provides available node types for Compute Engine sole-tenant nodes in a zone
+ * for a given project. For more information, see [the official documentation](https://cloud.google.com/compute/docs/nodes/#types) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/nodeTypes).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const central1b = gcp.compute.getNodeTypes({
+ *     zone: "us-central1-b",
+ * });
+ * const tmpl = new gcp.compute.NodeTemplate("tmpl", {
+ *     region: "us-central1",
+ *     nodeType: data.google_compute_node_types.types.names[0],
+ * });
+ * ```
+ */
 export function getNodeTypesOutput(args?: GetNodeTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeTypesResult> {
-    return pulumi.output(args).apply(a => getNodeTypes(a, opts))
+    return pulumi.output(args).apply((a: any) => getNodeTypes(a, opts))
 }
 
 /**

@@ -115,8 +115,7 @@ export class CxEnvironment extends pulumi.CustomResource {
      */
     public readonly parent!: pulumi.Output<string | undefined>;
     /**
-     * Update time of this environment. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-     * fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     * Update time of this environment. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
@@ -186,8 +185,7 @@ export interface CxEnvironmentState {
      */
     parent?: pulumi.Input<string>;
     /**
-     * Update time of this environment. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-     * fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     * Update time of this environment. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     updateTime?: pulumi.Input<string>;
     /**

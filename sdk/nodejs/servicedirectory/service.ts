@@ -90,7 +90,8 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The resource name for the service in the format 'projects/*&#47;locations/*&#47;namespaces/*&#47;services/*'.
+     * The resource name for the service in the
+     * format `projects/*&#47;locations/*&#47;namespaces/*&#47;services/*`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -150,7 +151,8 @@ export interface ServiceState {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The resource name for the service in the format 'projects/*&#47;locations/*&#47;namespaces/*&#47;services/*'.
+     * The resource name for the service in the
+     * format `projects/*&#47;locations/*&#47;namespaces/*&#47;services/*`.
      */
     name?: pulumi.Input<string>;
     /**

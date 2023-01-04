@@ -11,17 +11,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const run_service = pulumi.output(gcp.runtimeconfig.getConfig({
+ * const run-service = gcp.runtimeconfig.getConfig({
  *     name: "my-service",
- * }));
+ * });
  * ```
  */
 export function getConfig(args: GetConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:runtimeconfig/getConfig:getConfig", {
         "name": args.name,
         "project": args.project,
@@ -55,9 +52,20 @@ export interface GetConfigResult {
     readonly name: string;
     readonly project?: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const run-service = gcp.runtimeconfig.getConfig({
+ *     name: "my-service",
+ * });
+ * ```
+ */
 export function getConfigOutput(args: GetConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigResult> {
-    return pulumi.output(args).apply(a => getConfig(a, opts))
+    return pulumi.output(args).apply((a: any) => getConfig(a, opts))
 }
 
 /**

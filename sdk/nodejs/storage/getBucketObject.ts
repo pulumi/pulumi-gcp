@@ -20,19 +20,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const picture = pulumi.output(gcp.storage.getBucketObject({
+ * const picture = gcp.storage.getBucketObject({
  *     bucket: "image-store",
  *     name: "folder/butterfly01.jpg",
- * }));
+ * });
  * ```
  */
 export function getBucketObject(args?: GetBucketObjectArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketObjectResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:storage/getBucketObject:getBucketObject", {
         "bucket": args.bucket,
         "name": args.name,
@@ -122,9 +119,28 @@ export interface GetBucketObjectResult {
      */
     readonly temporaryHold: boolean;
 }
-
+/**
+ * Gets an existing object inside an existing bucket in Google Cloud Storage service (GCS).
+ * See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
+ * and
+ * [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
+ *
+ * ## Example Usage
+ *
+ * Example picture stored within a folder.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const picture = gcp.storage.getBucketObject({
+ *     bucket: "image-store",
+ *     name: "folder/butterfly01.jpg",
+ * });
+ * ```
+ */
 export function getBucketObjectOutput(args?: GetBucketObjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketObjectResult> {
-    return pulumi.output(args).apply(a => getBucketObject(a, opts))
+    return pulumi.output(args).apply((a: any) => getBucketObject(a, opts))
 }
 
 /**

@@ -114,7 +114,7 @@ export class Router extends pulumi.CustomResource {
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
-     * User-specified description for the IP range.
+     * An optional description of this resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -206,7 +206,7 @@ export interface RouterState {
      */
     creationTimestamp?: pulumi.Input<string>;
     /**
-     * User-specified description for the IP range.
+     * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
     /**
@@ -253,7 +253,7 @@ export interface RouterArgs {
      */
     bgp?: pulumi.Input<inputs.compute.RouterBgp>;
     /**
-     * User-specified description for the IP range.
+     * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
     /**

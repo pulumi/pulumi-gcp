@@ -13,17 +13,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const foo = pulumi.output(gcp.iam.getWorkloadIdentityPool({
+ * const foo = gcp.iam.getWorkloadIdentityPool({
  *     workloadIdentityPoolId: "foo-pool",
- * }));
+ * });
  * ```
  */
 export function getWorkloadIdentityPool(args: GetWorkloadIdentityPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkloadIdentityPoolResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool", {
         "project": args.project,
         "workloadIdentityPoolId": args.workloadIdentityPoolId,
@@ -62,9 +59,22 @@ export interface GetWorkloadIdentityPoolResult {
     readonly state: string;
     readonly workloadIdentityPoolId: string;
 }
-
+/**
+ * Get a IAM workload identity pool from Google Cloud by its id.
+ * > **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const foo = gcp.iam.getWorkloadIdentityPool({
+ *     workloadIdentityPoolId: "foo-pool",
+ * });
+ * ```
+ */
 export function getWorkloadIdentityPoolOutput(args: GetWorkloadIdentityPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkloadIdentityPoolResult> {
-    return pulumi.output(args).apply(a => getWorkloadIdentityPool(a, opts))
+    return pulumi.output(args).apply((a: any) => getWorkloadIdentityPool(a, opts))
 }
 
 /**

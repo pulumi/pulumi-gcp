@@ -20,19 +20,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my_router = pulumi.output(gcp.compute.getRouterStatus({
+ * const my-router = gcp.compute.getRouterStatus({
  *     name: "myrouter",
- * }));
+ * });
  * ```
  */
 /** @deprecated gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus */
 export function routerStatus(args: RouterStatusArgs, opts?: pulumi.InvokeOptions): Promise<RouterStatusResult> {
     pulumi.log.warn("routerStatus is deprecated: gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus")
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/routerStatus:RouterStatus", {
         "name": args.name,
         "project": args.project,
@@ -79,9 +76,28 @@ export interface RouterStatusResult {
     readonly project?: string;
     readonly region: string;
 }
-
+/**
+ * Get a Cloud Router's status within GCE from its name and region. This data source exposes the
+ * routes learned by a Cloud Router via BGP peers.
+ *
+ * For more information see [the official documentation](https://cloud.google.com/network-connectivity/docs/router/how-to/viewing-router-details)
+ * and
+ * [API](https://cloud.google.com/compute/docs/reference/rest/v1/routers/getRouterStatus).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-router = gcp.compute.getRouterStatus({
+ *     name: "myrouter",
+ * });
+ * ```
+ */
+/** @deprecated gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus */
 export function routerStatusOutput(args: RouterStatusOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<RouterStatusResult> {
-    return pulumi.output(args).apply(a => routerStatus(a, opts))
+    return pulumi.output(args).apply((a: any) => routerStatus(a, opts))
 }
 
 /**

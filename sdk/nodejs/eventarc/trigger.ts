@@ -117,8 +117,7 @@ export class Trigger extends pulumi.CustomResource {
      */
     public readonly destination!: pulumi.Output<outputs.eventarc.TriggerDestination>;
     /**
-     * Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create
-     * requests to ensure the client has an up-to-date value before proceeding.
+     * Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
@@ -126,7 +125,7 @@ export class Trigger extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+     * The location for the resource
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -150,8 +149,7 @@ export class Trigger extends pulumi.CustomResource {
      */
     public readonly transports!: pulumi.Output<outputs.eventarc.TriggerTransport[]>;
     /**
-     * Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain
-     * unchanged until the resource is deleted.
+     * Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
     /**
@@ -238,8 +236,7 @@ export interface TriggerState {
      */
     destination?: pulumi.Input<inputs.eventarc.TriggerDestination>;
     /**
-     * Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create
-     * requests to ensure the client has an up-to-date value before proceeding.
+     * Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
      */
     etag?: pulumi.Input<string>;
     /**
@@ -247,7 +244,7 @@ export interface TriggerState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+     * The location for the resource
      */
     location?: pulumi.Input<string>;
     /**
@@ -271,8 +268,7 @@ export interface TriggerState {
      */
     transports?: pulumi.Input<pulumi.Input<inputs.eventarc.TriggerTransport>[]>;
     /**
-     * Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain
-     * unchanged until the resource is deleted.
+     * Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      */
     uid?: pulumi.Input<string>;
     /**
@@ -298,7 +294,7 @@ export interface TriggerArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+     * The location for the resource
      */
     location: pulumi.Input<string>;
     /**

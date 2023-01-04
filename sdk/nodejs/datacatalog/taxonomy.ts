@@ -86,7 +86,8 @@ export class Taxonomy extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * Resource name of this taxonomy, whose format is: "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
+     * Resource name of this taxonomy, whose format is:
+     * "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -159,7 +160,8 @@ export interface TaxonomyState {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Resource name of this taxonomy, whose format is: "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
+     * Resource name of this taxonomy, whose format is:
+     * "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
      */
     name?: pulumi.Input<string>;
     /**

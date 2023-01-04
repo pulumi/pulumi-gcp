@@ -148,8 +148,8 @@ export class CxEntityType extends pulumi.CustomResource {
      */
     public readonly languageCode!: pulumi.Output<string | undefined>;
     /**
-     * The unique identifier of the entity type. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-     * ID>/entityTypes/<Entity Type ID>.
+     * The unique identifier of the entity type.
+     * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID>.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -259,8 +259,8 @@ export interface CxEntityTypeState {
      */
     languageCode?: pulumi.Input<string>;
     /**
-     * The unique identifier of the entity type. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-     * ID>/entityTypes/<Entity Type ID>.
+     * The unique identifier of the entity type.
+     * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID>.
      */
     name?: pulumi.Input<string>;
     /**

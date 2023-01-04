@@ -216,7 +216,6 @@ export class Hl7Store extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * -
      * (Optional, Deprecated)
      * A nested object resource
      * Structure is documented below.
@@ -305,7 +304,6 @@ export interface Hl7StoreState {
      */
     name?: pulumi.Input<string>;
     /**
-     * -
      * (Optional, Deprecated)
      * A nested object resource
      * Structure is documented below.
@@ -357,7 +355,6 @@ export interface Hl7StoreArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * -
      * (Optional, Deprecated)
      * A nested object resource
      * Structure is documented below.

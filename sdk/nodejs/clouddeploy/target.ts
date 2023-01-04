@@ -129,8 +129,7 @@ export class Target extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and
-     * delete requests to ensure the client has an up-to-date value before proceeding.
+     * Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
@@ -146,7 +145,7 @@ export class Target extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+     * The location for the resource
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -255,8 +254,7 @@ export interface TargetState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and
-     * delete requests to ensure the client has an up-to-date value before proceeding.
+     * Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
     etag?: pulumi.Input<string>;
     /**
@@ -272,7 +270,7 @@ export interface TargetState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+     * The location for the resource
      */
     location?: pulumi.Input<string>;
     /**
@@ -334,7 +332,7 @@ export interface TargetArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+     * The location for the resource
      */
     location: pulumi.Input<string>;
     /**

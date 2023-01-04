@@ -103,13 +103,12 @@ export class AiEndpoint extends pulumi.CustomResource {
     }
 
     /**
-     * Output only. Timestamp when this Endpoint was created.
+     * Output only. Timestamp when the DeployedModel was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and
-     * EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud
-     * Console](https://console.cloud.google.com/vertex-ai/).
+     * Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
+     * Structure is documented below.
      */
     public /*out*/ readonly deployedModels!: pulumi.Output<outputs.vertex.AiEndpointDeployedModel[]>;
     /**
@@ -138,9 +137,7 @@ export class AiEndpoint extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by
-     * CreateModelDeploymentMonitoringJob. Format:
-     * 'projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}'
+     * Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
      */
     public /*out*/ readonly modelDeploymentMonitoringJob!: pulumi.Output<string>;
     /**
@@ -219,13 +216,12 @@ export class AiEndpoint extends pulumi.CustomResource {
  */
 export interface AiEndpointState {
     /**
-     * Output only. Timestamp when this Endpoint was created.
+     * Output only. Timestamp when the DeployedModel was created.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and
-     * EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud
-     * Console](https://console.cloud.google.com/vertex-ai/).
+     * Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
+     * Structure is documented below.
      */
     deployedModels?: pulumi.Input<pulumi.Input<inputs.vertex.AiEndpointDeployedModel>[]>;
     /**
@@ -254,9 +250,7 @@ export interface AiEndpointState {
      */
     location?: pulumi.Input<string>;
     /**
-     * Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by
-     * CreateModelDeploymentMonitoringJob. Format:
-     * 'projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}'
+     * Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
      */
     modelDeploymentMonitoringJob?: pulumi.Input<string>;
     /**

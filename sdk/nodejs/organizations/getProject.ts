@@ -21,11 +21,8 @@ import * as utilities from "../utilities";
  */
 export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:organizations/getProject:getProject", {
         "projectId": args.projectId,
     }, opts);
@@ -62,9 +59,23 @@ export interface GetProjectResult {
     readonly projectId?: string;
     readonly skipDelete: boolean;
 }
-
+/**
+ * Use this data source to get project details.
+ * For more information see
+ * [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * export const projectNumber = project.then(project => project.number);
+ * ```
+ */
 export function getProjectOutput(args?: GetProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectResult> {
-    return pulumi.output(args).apply(a => getProject(a, opts))
+    return pulumi.output(args).apply((a: any) => getProject(a, opts))
 }
 
 /**

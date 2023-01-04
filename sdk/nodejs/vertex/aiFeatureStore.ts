@@ -109,8 +109,7 @@ export class AiFeatureStore extends pulumi.CustomResource {
     }
 
     /**
-     * The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-     * nine fractional digits.
+     * The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -149,8 +148,7 @@ export class AiFeatureStore extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-     * to nine fractional digits.
+     * The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -200,8 +198,7 @@ export class AiFeatureStore extends pulumi.CustomResource {
  */
 export interface AiFeatureStoreState {
     /**
-     * The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-     * nine fractional digits.
+     * The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -240,8 +237,7 @@ export interface AiFeatureStoreState {
      */
     region?: pulumi.Input<string>;
     /**
-     * The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-     * to nine fractional digits.
+     * The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     updateTime?: pulumi.Input<string>;
 }

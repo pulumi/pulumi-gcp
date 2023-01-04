@@ -106,8 +106,8 @@ export class Environment extends pulumi.CustomResource {
      */
     public readonly postStartupScript!: pulumi.Output<string | undefined>;
     /**
-     * The name of the Google Cloud project that this VM image belongs to.
-     * Format: projects/{project_id}
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -194,8 +194,8 @@ export interface EnvironmentState {
      */
     postStartupScript?: pulumi.Input<string>;
     /**
-     * The name of the Google Cloud project that this VM image belongs to.
-     * Format: projects/{project_id}
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
@@ -237,8 +237,8 @@ export interface EnvironmentArgs {
      */
     postStartupScript?: pulumi.Input<string>;
     /**
-     * The name of the Google Cloud project that this VM image belongs to.
-     * Format: projects/{project_id}
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**

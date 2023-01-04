@@ -14,17 +14,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const objectViewer = pulumi.output(gcp.serviceAccount.getAccount({
+ * const objectViewer = gcp.serviceAccount.getAccount({
  *     accountId: "object-viewer",
- * }));
+ * });
  * ```
  */
 export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:serviceAccount/getAccount:getAccount", {
         "accountId": args.accountId,
         "project": args.project,
@@ -79,9 +76,23 @@ export interface GetAccountResult {
      */
     readonly uniqueId: string;
 }
-
+/**
+ * Get the service account from a project. For more information see
+ * the official [API](https://cloud.google.com/compute/docs/access/service-accounts) documentation.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const objectViewer = gcp.serviceAccount.getAccount({
+ *     accountId: "object-viewer",
+ * });
+ * ```
+ */
 export function getAccountOutput(args: GetAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountResult> {
-    return pulumi.output(args).apply(a => getAccount(a, opts))
+    return pulumi.output(args).apply((a: any) => getAccount(a, opts))
 }
 
 /**

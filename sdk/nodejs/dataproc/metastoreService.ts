@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultMetastoreService = new gcp.dataproc.MetastoreService("default", {
+ * const _default = new gcp.dataproc.MetastoreService("default", {
  *     hiveMetastoreConfig: {
  *         version: "2.3.6",
  *     },
@@ -150,7 +150,6 @@ export class MetastoreService extends pulumi.CustomResource {
      */
     public readonly encryptionConfig!: pulumi.Output<outputs.dataproc.MetastoreServiceEncryptionConfig | undefined>;
     /**
-     * -
      * The URI of the endpoint used to access the metastore service.
      */
     public /*out*/ readonly endpointUri!: pulumi.Output<string>;
@@ -324,7 +323,6 @@ export interface MetastoreServiceState {
      */
     encryptionConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceEncryptionConfig>;
     /**
-     * -
      * The URI of the endpoint used to access the metastore service.
      */
     endpointUri?: pulumi.Input<string>;

@@ -110,7 +110,8 @@ export class EntityType extends pulumi.CustomResource {
      */
     public readonly kind!: pulumi.Output<string>;
     /**
-     * The unique identifier of the entity type. Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
+     * The unique identifier of the entity type.
+     * Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -185,7 +186,8 @@ export interface EntityTypeState {
      */
     kind?: pulumi.Input<string>;
     /**
-     * The unique identifier of the entity type. Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
+     * The unique identifier of the entity type.
+     * Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
      */
     name?: pulumi.Input<string>;
     /**

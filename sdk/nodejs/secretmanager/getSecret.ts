@@ -15,17 +15,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const qa = pulumi.output(gcp.secretmanager.getSecret({
+ * const qa = gcp.secretmanager.getSecret({
  *     secretId: "foobar",
- * }));
+ * });
  * ```
  */
 export function getSecret(args: GetSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:secretmanager/getSecret:getSecret", {
         "project": args.project,
         "secretId": args.secretId,
@@ -65,9 +62,22 @@ export interface GetSecretResult {
     readonly topics: outputs.secretmanager.GetSecretTopic[];
     readonly ttl: string;
 }
-
+/**
+ * Use this data source to get information about a Secret Manager Secret
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const qa = gcp.secretmanager.getSecret({
+ *     secretId: "foobar",
+ * });
+ * ```
+ */
 export function getSecretOutput(args: GetSecretOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretResult> {
-    return pulumi.output(args).apply(a => getSecret(a, opts))
+    return pulumi.output(args).apply((a: any) => getSecret(a, opts))
 }
 
 /**

@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const domainMapping = new gcp.appengine.DomainMapping("domain_mapping", {
+ * const domainMapping = new gcp.appengine.DomainMapping("domainMapping", {
  *     domainName: "verified-domain.com",
  *     sslSettings: {
  *         sslManagementType: "AUTOMATIC",
@@ -79,7 +79,7 @@ export class DomainMapping extends pulumi.CustomResource {
      */
     public readonly domainName!: pulumi.Output<string>;
     /**
-     * Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
+     * Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -97,6 +97,7 @@ export class DomainMapping extends pulumi.CustomResource {
     /**
      * The resource records required to configure this domain mapping. These records must be added to the domain's DNS
      * configuration in order to serve the application via this domain mapping.
+     * Structure is documented below.
      */
     public /*out*/ readonly resourceRecords!: pulumi.Output<outputs.appengine.DomainMappingResourceRecord[]>;
     /**
@@ -150,7 +151,7 @@ export interface DomainMappingState {
      */
     domainName?: pulumi.Input<string>;
     /**
-     * Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
+     * Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
      */
     name?: pulumi.Input<string>;
     /**
@@ -168,6 +169,7 @@ export interface DomainMappingState {
     /**
      * The resource records required to configure this domain mapping. These records must be added to the domain's DNS
      * configuration in order to serve the application via this domain mapping.
+     * Structure is documented below.
      */
     resourceRecords?: pulumi.Input<pulumi.Input<inputs.appengine.DomainMappingResourceRecord>[]>;
     /**

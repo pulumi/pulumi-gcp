@@ -17,17 +17,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const qa = pulumi.output(gcp.gameservices.getGameServerDeploymentRollout({
+ * const qa = gcp.gameservices.getGameServerDeploymentRollout({
  *     deploymentId: "tf-test-deployment-s8sn12jt2c",
- * }));
+ * });
  * ```
  */
 export function getGameServerDeploymentRollout(args: GetGameServerDeploymentRolloutArgs, opts?: pulumi.InvokeOptions): Promise<GetGameServerDeploymentRolloutResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:gameservices/getGameServerDeploymentRollout:getGameServerDeploymentRollout", {
         "deploymentId": args.deploymentId,
     }, opts);
@@ -47,13 +44,28 @@ export interface GetGameServerDeploymentRolloutArgs {
  * A collection of values returned by getGameServerDeploymentRollout.
  */
 export interface GetGameServerDeploymentRolloutResult {
+    /**
+     * This field points to the game server config that is
+     * applied by default to all realms and clusters. For example,
+     * `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+     */
     readonly defaultGameServerConfig: string;
     readonly deploymentId: string;
+    /**
+     * The gameServerConfigOverrides contains the per game server config
+     * overrides. The overrides are processed in the order they are listed. As
+     * soon as a match is found for a cluster, the rest of the list is not
+     * processed.  Structure is documented below.
+     */
     readonly gameServerConfigOverrides: outputs.gameservices.GetGameServerDeploymentRolloutGameServerConfigOverride[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The resource id of the game server deployment
+     * eg: `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
+     */
     readonly name: string;
     /**
      * The ID of the project in which the resource belongs.
@@ -61,9 +73,24 @@ export interface GetGameServerDeploymentRolloutResult {
      */
     readonly project: string;
 }
-
+/**
+ * Use this data source to get the rollout state.
+ *
+ * https://cloud.google.com/game-servers/docs/reference/rest/v1beta/GameServerDeploymentRollout
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const qa = gcp.gameservices.getGameServerDeploymentRollout({
+ *     deploymentId: "tf-test-deployment-s8sn12jt2c",
+ * });
+ * ```
+ */
 export function getGameServerDeploymentRolloutOutput(args: GetGameServerDeploymentRolloutOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGameServerDeploymentRolloutResult> {
-    return pulumi.output(args).apply(a => getGameServerDeploymentRollout(a, opts))
+    return pulumi.output(args).apply((a: any) => getGameServerDeploymentRollout(a, opts))
 }
 
 /**

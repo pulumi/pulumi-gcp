@@ -65,16 +65,16 @@ export class URLMap extends pulumi.CustomResource {
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
-     * defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
-     * advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
-     * to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
-     * Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+     * defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
+     * like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend.
+     * If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService
+     * is set, defaultRouteAction cannot contain any weightedBackendServices.
      * Only one of defaultRouteAction or defaultUrlRedirect must be set.
      * Structure is documented below.
      */
     public readonly defaultRouteAction!: pulumi.Output<outputs.compute.URLMapDefaultRouteAction | undefined>;
     /**
-     * The backend service or backend bucket to use when none of the given paths match.
+     * The backend service or backend bucket to use when none of the given rules match.
      */
     public readonly defaultService!: pulumi.Output<string | undefined>;
     /**
@@ -85,18 +85,19 @@ export class URLMap extends pulumi.CustomResource {
      */
     public readonly defaultUrlRedirect!: pulumi.Output<outputs.compute.URLMapDefaultUrlRedirect | undefined>;
     /**
-     * Description of this test case.
+     * An optional description of this resource. Provide this property when you create
+     * the resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+     * Fingerprint of this resource. A hash of the contents stored in this object. This
+     * field is used in optimistic locking.
      */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
      * Specifies changes to request and response headers that need to take effect for
-     * the selected backendService.
-     * headerAction specified here take effect before headerAction in the enclosing
-     * HttpRouteRule, PathMatcher and UrlMap.
+     * the selected backendService. The headerAction specified here take effect after
+     * headerAction specified under pathMatcher.
      * Structure is documented below.
      */
     public readonly headerAction!: pulumi.Output<outputs.compute.URLMapHeaderAction | undefined>;
@@ -110,13 +111,17 @@ export class URLMap extends pulumi.CustomResource {
      */
     public /*out*/ readonly mapId!: pulumi.Output<number>;
     /**
-     * The name of the query parameter to match. The query parameter must exist in the
-     * request, in the absence of which the request match fails.
+     * Name of the resource. Provided by the client when the resource is created. The
+     * name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+     * name must be 1-63 characters long and match the regular expression
+     * `a-z?` which means the first character must be a lowercase
+     * letter, and all following characters must be a dash, lowercase letter, or digit,
+     * except the last character, which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The name of the PathMatcher to use to match the path portion of the URL if the
-     * hostRule matches the URL's host portion.
+     * The list of named PathMatchers to use against the URL.
+     * Structure is documented below.
      */
     public readonly pathMatchers!: pulumi.Output<outputs.compute.URLMapPathMatcher[] | undefined>;
     /**
@@ -194,16 +199,16 @@ export interface URLMapState {
      */
     creationTimestamp?: pulumi.Input<string>;
     /**
-     * defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
-     * advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
-     * to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
-     * Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+     * defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
+     * like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend.
+     * If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService
+     * is set, defaultRouteAction cannot contain any weightedBackendServices.
      * Only one of defaultRouteAction or defaultUrlRedirect must be set.
      * Structure is documented below.
      */
     defaultRouteAction?: pulumi.Input<inputs.compute.URLMapDefaultRouteAction>;
     /**
-     * The backend service or backend bucket to use when none of the given paths match.
+     * The backend service or backend bucket to use when none of the given rules match.
      */
     defaultService?: pulumi.Input<string>;
     /**
@@ -214,18 +219,19 @@ export interface URLMapState {
      */
     defaultUrlRedirect?: pulumi.Input<inputs.compute.URLMapDefaultUrlRedirect>;
     /**
-     * Description of this test case.
+     * An optional description of this resource. Provide this property when you create
+     * the resource.
      */
     description?: pulumi.Input<string>;
     /**
-     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+     * Fingerprint of this resource. A hash of the contents stored in this object. This
+     * field is used in optimistic locking.
      */
     fingerprint?: pulumi.Input<string>;
     /**
      * Specifies changes to request and response headers that need to take effect for
-     * the selected backendService.
-     * headerAction specified here take effect before headerAction in the enclosing
-     * HttpRouteRule, PathMatcher and UrlMap.
+     * the selected backendService. The headerAction specified here take effect after
+     * headerAction specified under pathMatcher.
      * Structure is documented below.
      */
     headerAction?: pulumi.Input<inputs.compute.URLMapHeaderAction>;
@@ -239,13 +245,17 @@ export interface URLMapState {
      */
     mapId?: pulumi.Input<number>;
     /**
-     * The name of the query parameter to match. The query parameter must exist in the
-     * request, in the absence of which the request match fails.
+     * Name of the resource. Provided by the client when the resource is created. The
+     * name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+     * name must be 1-63 characters long and match the regular expression
+     * `a-z?` which means the first character must be a lowercase
+     * letter, and all following characters must be a dash, lowercase letter, or digit,
+     * except the last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
     /**
-     * The name of the PathMatcher to use to match the path portion of the URL if the
-     * hostRule matches the URL's host portion.
+     * The list of named PathMatchers to use against the URL.
+     * Structure is documented below.
      */
     pathMatchers?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcher>[]>;
     /**
@@ -271,16 +281,16 @@ export interface URLMapState {
  */
 export interface URLMapArgs {
     /**
-     * defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
-     * advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
-     * to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
-     * Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+     * defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
+     * like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend.
+     * If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService
+     * is set, defaultRouteAction cannot contain any weightedBackendServices.
      * Only one of defaultRouteAction or defaultUrlRedirect must be set.
      * Structure is documented below.
      */
     defaultRouteAction?: pulumi.Input<inputs.compute.URLMapDefaultRouteAction>;
     /**
-     * The backend service or backend bucket to use when none of the given paths match.
+     * The backend service or backend bucket to use when none of the given rules match.
      */
     defaultService?: pulumi.Input<string>;
     /**
@@ -291,14 +301,14 @@ export interface URLMapArgs {
      */
     defaultUrlRedirect?: pulumi.Input<inputs.compute.URLMapDefaultUrlRedirect>;
     /**
-     * Description of this test case.
+     * An optional description of this resource. Provide this property when you create
+     * the resource.
      */
     description?: pulumi.Input<string>;
     /**
      * Specifies changes to request and response headers that need to take effect for
-     * the selected backendService.
-     * headerAction specified here take effect before headerAction in the enclosing
-     * HttpRouteRule, PathMatcher and UrlMap.
+     * the selected backendService. The headerAction specified here take effect after
+     * headerAction specified under pathMatcher.
      * Structure is documented below.
      */
     headerAction?: pulumi.Input<inputs.compute.URLMapHeaderAction>;
@@ -308,13 +318,17 @@ export interface URLMapArgs {
      */
     hostRules?: pulumi.Input<pulumi.Input<inputs.compute.URLMapHostRule>[]>;
     /**
-     * The name of the query parameter to match. The query parameter must exist in the
-     * request, in the absence of which the request match fails.
+     * Name of the resource. Provided by the client when the resource is created. The
+     * name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+     * name must be 1-63 characters long and match the regular expression
+     * `a-z?` which means the first character must be a lowercase
+     * letter, and all following characters must be a dash, lowercase letter, or digit,
+     * except the last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
     /**
-     * The name of the PathMatcher to use to match the path portion of the URL if the
-     * hostRule matches the URL's host portion.
+     * The list of named PathMatchers to use against the URL.
+     * Structure is documented below.
      */
     pathMatchers?: pulumi.Input<pulumi.Input<inputs.compute.URLMapPathMatcher>[]>;
     /**

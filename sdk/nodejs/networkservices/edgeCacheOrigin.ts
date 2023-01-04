@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultEdgeCacheOrigin = new gcp.networkservices.EdgeCacheOrigin("default", {
+ * const _default = new gcp.networkservices.EdgeCacheOrigin("default", {
  *     description: "The default bucket for media edge test",
  *     originAddress: "gs://media-edge-default",
  * });

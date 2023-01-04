@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultProjectMetadataItem = new gcp.compute.ProjectMetadataItem("default", {
+ * const _default = new gcp.compute.ProjectMetadataItem("default", {
  *     key: "my_metadata",
  *     value: "my_value",
  * });

@@ -5,11 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 export function getAppleAppConfig(args: GetAppleAppConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetAppleAppConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:firebase/getAppleAppConfig:getAppleAppConfig", {
         "appId": args.appId,
         "project": args.project,
@@ -36,7 +33,13 @@ export interface GetAppleAppConfigArgs {
  */
 export interface GetAppleAppConfigResult {
     readonly appId: string;
+    /**
+     * The content of the XML configuration file as a base64-encoded string.
+     */
     readonly configFileContents: string;
+    /**
+     * The filename that the configuration artifact for the IosApp is typically saved as.
+     */
     readonly configFilename: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -44,9 +47,8 @@ export interface GetAppleAppConfigResult {
     readonly id: string;
     readonly project?: string;
 }
-
 export function getAppleAppConfigOutput(args: GetAppleAppConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppleAppConfigResult> {
-    return pulumi.output(args).apply(a => getAppleAppConfig(a, opts))
+    return pulumi.output(args).apply((a: any) => getAppleAppConfig(a, opts))
 }
 
 /**

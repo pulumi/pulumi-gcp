@@ -90,8 +90,7 @@ export class Workflow extends pulumi.CustomResource {
     }
 
     /**
-     * The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-     * fractional digits.
+     * The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -139,8 +138,7 @@ export class Workflow extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-     * nine fractional digits.
+     * The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -194,8 +192,7 @@ export class Workflow extends pulumi.CustomResource {
  */
 export interface WorkflowState {
     /**
-     * The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-     * fractional digits.
+     * The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -243,8 +240,7 @@ export interface WorkflowState {
      */
     state?: pulumi.Input<string>;
     /**
-     * The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-     * nine fractional digits.
+     * The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     updateTime?: pulumi.Input<string>;
 }

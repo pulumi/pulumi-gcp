@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const hl7V2Store = new gcp.healthcare.Hl7StoreIamBinding("hl7_v2_store", {
+ * const hl7V2Store = new gcp.healthcare.Hl7StoreIamBinding("hl7V2Store", {
  *     hl7V2StoreId: "your-hl7-v2-store-id",
  *     members: ["user:jane@example.com"],
  *     role: "roles/editor",
@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const hl7V2Store = new gcp.healthcare.Hl7StoreIamMember("hl7_v2_store", {
+ * const hl7V2Store = new gcp.healthcare.Hl7StoreIamMember("hl7V2Store", {
  *     hl7V2StoreId: "your-hl7-v2-store-id",
  *     member: "user:jane@example.com",
  *     role: "roles/editor",

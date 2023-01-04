@@ -104,12 +104,12 @@ export class WebApp extends pulumi.CustomResource {
     }
 
     /**
-     * The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-     * the data format is not specified.
+     * The globally unique, Firebase-assigned identifier of the App.
+     * This identifier should be treated as an opaque token, as the data format is not specified.
      */
     public /*out*/ readonly appId!: pulumi.Output<string>;
     /**
-     * The URLs where the 'WebApp' is hosted.
+     * The URLs where the `WebApp` is hosted.
      */
     public /*out*/ readonly appUrls!: pulumi.Output<string[]>;
     /**
@@ -122,7 +122,8 @@ export class WebApp extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * The fully qualified resource name of the App, for example: projects/projectId/webApps/appId
+     * The fully qualified resource name of the App, for example:
+     * projects/projectId/webApps/appId
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -172,12 +173,12 @@ export class WebApp extends pulumi.CustomResource {
  */
 export interface WebAppState {
     /**
-     * The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-     * the data format is not specified.
+     * The globally unique, Firebase-assigned identifier of the App.
+     * This identifier should be treated as an opaque token, as the data format is not specified.
      */
     appId?: pulumi.Input<string>;
     /**
-     * The URLs where the 'WebApp' is hosted.
+     * The URLs where the `WebApp` is hosted.
      */
     appUrls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -190,7 +191,8 @@ export interface WebAppState {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The fully qualified resource name of the App, for example: projects/projectId/webApps/appId
+     * The fully qualified resource name of the App, for example:
+     * projects/projectId/webApps/appId
      */
     name?: pulumi.Input<string>;
     /**

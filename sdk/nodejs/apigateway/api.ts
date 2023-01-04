@@ -91,7 +91,7 @@ export class Api extends pulumi.CustomResource {
      */
     public readonly managedService!: pulumi.Output<string>;
     /**
-     * The resource name of the API. Format 'projects/{{project}}/locations/global/apis/{{apiId}}'
+     * The resource name of the API. Format `projects/{{project}}/locations/global/apis/{{apiId}}`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -164,7 +164,7 @@ export interface ApiState {
      */
     managedService?: pulumi.Input<string>;
     /**
-     * The resource name of the API. Format 'projects/{{project}}/locations/global/apis/{{apiId}}'
+     * The resource name of the API. Format `projects/{{project}}/locations/global/apis/{{apiId}}`
      */
     name?: pulumi.Input<string>;
     /**

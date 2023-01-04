@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  *         },
  *         iamInstanceProfile: "my--1p-dev-controlplane",
  *         subnetIds: ["subnet-00000000000000000"],
- *         version: versions.then(versions => versions.validVersions?[0]),
+ *         version: versions.then(versions => versions.validVersions?.[0]),
  *         instanceType: "t3.medium",
  *         mainVolume: {
  *             iops: 3000,
@@ -126,7 +126,7 @@ import * as utilities from "../utilities";
  *         maxPodsPerNode: 110,
  *     },
  *     subnetId: "subnet-00000000000000000",
- *     version: versions.then(versions => versions.validVersions?[0]),
+ *     version: versions.then(versions => versions.validVersions?.[0]),
  *     annotations: {
  *         "label-one": "value-one",
  *     },
@@ -199,8 +199,7 @@ export class AwsNodePool extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-     * and delete requests to ensure the client has an up-to-date value before proceeding.
+     * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
@@ -224,8 +223,7 @@ export class AwsNodePool extends pulumi.CustomResource {
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
-     * Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING,
-     * RECONCILING, STOPPING, ERROR, DEGRADED
+     * Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
@@ -344,8 +342,7 @@ export interface AwsNodePoolState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-     * and delete requests to ensure the client has an up-to-date value before proceeding.
+     * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
     etag?: pulumi.Input<string>;
     /**
@@ -369,8 +366,7 @@ export interface AwsNodePoolState {
      */
     reconciling?: pulumi.Input<boolean>;
     /**
-     * Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING,
-     * RECONCILING, STOPPING, ERROR, DEGRADED
+     * Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
      */
     state?: pulumi.Input<string>;
     /**

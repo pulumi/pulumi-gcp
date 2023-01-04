@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("default", {
+ * const _default = new gcp.compute.HttpHealthCheck("default", {
  *     checkIntervalSec: 1,
  *     requestPath: "/health_check",
  *     timeoutSec: 1,

@@ -40,12 +40,12 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const myPort = new gcp.compute.InstanceGroupNamedPort("myPort", {
- *     group: myCluster.nodePools.apply(nodePools => nodePools[0].instanceGroupUrls?[0]),
+ *     group: myCluster.nodePools.apply(nodePools => nodePools[0].instanceGroupUrls?.[0]),
  *     zone: "us-central1-a",
  *     port: 8080,
  * });
  * const myPorts = new gcp.compute.InstanceGroupNamedPort("myPorts", {
- *     group: myCluster.nodePools.apply(nodePools => nodePools[0].instanceGroupUrls?[0]),
+ *     group: myCluster.nodePools.apply(nodePools => nodePools[0].instanceGroupUrls?.[0]),
  *     zone: "us-central1-a",
  *     port: 4443,
  * });

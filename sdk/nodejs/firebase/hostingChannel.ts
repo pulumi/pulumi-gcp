@@ -105,7 +105,8 @@ export class HostingChannel extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID
+     * The fully-qualified resource name for the channel, in the format:
+     * sites/SITE_ID/channels/CHANNEL_ID
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -184,7 +185,8 @@ export interface HostingChannelState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID
+     * The fully-qualified resource name for the channel, in the format:
+     * sites/SITE_ID/channels/CHANNEL_ID
      */
     name?: pulumi.Input<string>;
     /**

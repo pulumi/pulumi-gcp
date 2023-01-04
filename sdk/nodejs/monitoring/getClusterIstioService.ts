@@ -28,21 +28,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * // Monitors the default ClusterIstio service
- * const defaultClusterIstioService = pulumi.output(gcp.monitoring.getClusterIstioService({
+ * const default = gcp.monitoring.getClusterIstioService({
  *     clusterName: "west",
  *     location: "us-west2-a",
  *     serviceName: "istio-policy",
  *     serviceNamespace: "istio-system",
- * }));
+ * });
  * ```
  */
 export function getClusterIstioService(args: GetClusterIstioServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterIstioServiceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:monitoring/getClusterIstioService:getClusterIstioService", {
         "clusterName": args.clusterName,
         "location": args.location,
@@ -88,23 +84,62 @@ export interface GetClusterIstioServiceArgs {
  */
 export interface GetClusterIstioServiceResult {
     readonly clusterName: string;
+    /**
+     * Name used for UI elements listing this (Monitoring) Service.
+     */
     readonly displayName: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly location: string;
+    /**
+     * The full REST resource name for this channel. The syntax is:
+     * `projects/[PROJECT_ID]/services/[SERVICE_ID]`.
+     */
     readonly name: string;
     readonly project?: string;
     readonly serviceId: string;
     readonly serviceName: string;
     readonly serviceNamespace: string;
+    /**
+     * Configuration for how to query telemetry on the Service. Structure is documented below.
+     */
     readonly telemetries: outputs.monitoring.GetClusterIstioServiceTelemetry[];
     readonly userLabels: {[key: string]: string};
 }
-
+/**
+ * A Monitoring Service is the root resource under which operational aspects of a
+ * generic service are accessible. A service is some discrete, autonomous, and
+ * network-accessible unit, designed to solve an individual concern
+ *
+ * An Cluster Istio monitoring service is automatically created by GCP to monitor
+ * Cluster Istio services.
+ *
+ * To get more information about Service, see:
+ *
+ * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
+ * * How-to Guides
+ *     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+ *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+ *
+ * ## Example Usage
+ * ### Monitoring Cluster Istio Service
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default = gcp.monitoring.getClusterIstioService({
+ *     clusterName: "west",
+ *     location: "us-west2-a",
+ *     serviceName: "istio-policy",
+ *     serviceNamespace: "istio-system",
+ * });
+ * ```
+ */
 export function getClusterIstioServiceOutput(args: GetClusterIstioServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterIstioServiceResult> {
-    return pulumi.output(args).apply(a => getClusterIstioService(a, opts))
+    return pulumi.output(args).apply((a: any) => getClusterIstioService(a, opts))
 }
 
 /**

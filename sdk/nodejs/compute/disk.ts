@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultDisk = new gcp.compute.Disk("default", {
+ * const _default = new gcp.compute.Disk("default", {
  *     image: "debian-11-bullseye-v20220719",
  *     labels: {
  *         environment: "dev",
@@ -139,7 +139,8 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly interface!: pulumi.Output<string | undefined>;
     /**
-     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * The fingerprint used for optimistic locking of this resource.  Used
+     * internally during updates.
      */
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
     /**
@@ -213,14 +214,10 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly size!: pulumi.Output<number>;
     /**
-     * The source snapshot used to create this disk. You can provide this as
-     * a partial or full URL to the resource. If the snapshot is in another
-     * project than this disk, you must supply a full URL. For example, the
-     * following are valid values:
-     * * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
-     * * `projects/project/global/snapshots/snapshot`
-     * * `global/snapshots/snapshot`
-     * * `snapshot`
+     * The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
+     * snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
+     * * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
+     * 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
      */
     public readonly snapshot!: pulumi.Output<string | undefined>;
     /**
@@ -235,8 +232,9 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly sourceDisk!: pulumi.Output<string | undefined>;
     /**
-     * The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
-     * the current or a previous instance of a given disk name.
+     * The ID value of the disk used to create this image. This value may
+     * be used to determine whether the image was taken from the current
+     * or a previous instance of a given disk name.
      */
     public /*out*/ readonly sourceDiskId!: pulumi.Output<string>;
     /**
@@ -246,9 +244,11 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly sourceImageEncryptionKey!: pulumi.Output<outputs.compute.DiskSourceImageEncryptionKey | undefined>;
     /**
-     * The ID value of the image used to create this disk. This value identifies the exact image that was used to create this
-     * persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated
-     * under the same name, the source image ID would identify the exact version of the image that was used.
+     * The ID value of the image used to create this disk. This value
+     * identifies the exact image that was used to create this persistent
+     * disk. For example, if you created the persistent disk from an image
+     * that was later deleted and recreated under the same name, the source
+     * image ID would identify the exact version of the image that was used.
      */
     public /*out*/ readonly sourceImageId!: pulumi.Output<string>;
     /**
@@ -259,9 +259,12 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly sourceSnapshotEncryptionKey!: pulumi.Output<outputs.compute.DiskSourceSnapshotEncryptionKey | undefined>;
     /**
-     * The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
-     * this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
-     * recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
+     * The unique ID of the snapshot used to create this disk. This value
+     * identifies the exact snapshot that was used to create this persistent
+     * disk. For example, if you created the persistent disk from a snapshot
+     * that was later deleted and recreated under the same name, the source
+     * snapshot ID would identify the exact version of the snapshot that was
+     * used.
      */
     public /*out*/ readonly sourceSnapshotId!: pulumi.Output<string>;
     /**
@@ -270,7 +273,8 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
-     * Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance
+     * Links to the users of the disk (attached instances) in form:
+     * project/zones/zone/instances/instance
      */
     public /*out*/ readonly users!: pulumi.Output<string[]>;
     /**
@@ -398,7 +402,8 @@ export interface DiskState {
      */
     interface?: pulumi.Input<string>;
     /**
-     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * The fingerprint used for optimistic locking of this resource.  Used
+     * internally during updates.
      */
     labelFingerprint?: pulumi.Input<string>;
     /**
@@ -472,14 +477,10 @@ export interface DiskState {
      */
     size?: pulumi.Input<number>;
     /**
-     * The source snapshot used to create this disk. You can provide this as
-     * a partial or full URL to the resource. If the snapshot is in another
-     * project than this disk, you must supply a full URL. For example, the
-     * following are valid values:
-     * * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
-     * * `projects/project/global/snapshots/snapshot`
-     * * `global/snapshots/snapshot`
-     * * `snapshot`
+     * The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
+     * snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
+     * * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
+     * 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
      */
     snapshot?: pulumi.Input<string>;
     /**
@@ -494,8 +495,9 @@ export interface DiskState {
      */
     sourceDisk?: pulumi.Input<string>;
     /**
-     * The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
-     * the current or a previous instance of a given disk name.
+     * The ID value of the disk used to create this image. This value may
+     * be used to determine whether the image was taken from the current
+     * or a previous instance of a given disk name.
      */
     sourceDiskId?: pulumi.Input<string>;
     /**
@@ -505,9 +507,11 @@ export interface DiskState {
      */
     sourceImageEncryptionKey?: pulumi.Input<inputs.compute.DiskSourceImageEncryptionKey>;
     /**
-     * The ID value of the image used to create this disk. This value identifies the exact image that was used to create this
-     * persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated
-     * under the same name, the source image ID would identify the exact version of the image that was used.
+     * The ID value of the image used to create this disk. This value
+     * identifies the exact image that was used to create this persistent
+     * disk. For example, if you created the persistent disk from an image
+     * that was later deleted and recreated under the same name, the source
+     * image ID would identify the exact version of the image that was used.
      */
     sourceImageId?: pulumi.Input<string>;
     /**
@@ -518,9 +522,12 @@ export interface DiskState {
      */
     sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.DiskSourceSnapshotEncryptionKey>;
     /**
-     * The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
-     * this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
-     * recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
+     * The unique ID of the snapshot used to create this disk. This value
+     * identifies the exact snapshot that was used to create this persistent
+     * disk. For example, if you created the persistent disk from a snapshot
+     * that was later deleted and recreated under the same name, the source
+     * snapshot ID would identify the exact version of the snapshot that was
+     * used.
      */
     sourceSnapshotId?: pulumi.Input<string>;
     /**
@@ -529,7 +536,8 @@ export interface DiskState {
      */
     type?: pulumi.Input<string>;
     /**
-     * Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance
+     * Links to the users of the disk (attached instances) in form:
+     * project/zones/zone/instances/instance
      */
     users?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -637,14 +645,10 @@ export interface DiskArgs {
      */
     size?: pulumi.Input<number>;
     /**
-     * The source snapshot used to create this disk. You can provide this as
-     * a partial or full URL to the resource. If the snapshot is in another
-     * project than this disk, you must supply a full URL. For example, the
-     * following are valid values:
-     * * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
-     * * `projects/project/global/snapshots/snapshot`
-     * * `global/snapshots/snapshot`
-     * * `snapshot`
+     * The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
+     * snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
+     * * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
+     * 'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
      */
     snapshot?: pulumi.Input<string>;
     /**

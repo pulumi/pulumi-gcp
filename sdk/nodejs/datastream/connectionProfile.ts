@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultConnectionProfile = new gcp.datastream.ConnectionProfile("default", {
+ * const _default = new gcp.datastream.ConnectionProfile("default", {
  *     connectionProfileId: "my-profile",
  *     displayName: "Connection profile",
  *     gcsProfile: {
@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultConnectionProfile = new gcp.datastream.ConnectionProfile("default", {
+ * const _default = new gcp.datastream.ConnectionProfile("default", {
  *     connectionProfileId: "my-profile",
  *     displayName: "Connection profile",
  *     forwardSshConnectivity: {

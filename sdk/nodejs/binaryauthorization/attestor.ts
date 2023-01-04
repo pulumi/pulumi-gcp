@@ -76,8 +76,8 @@ import * as utilities from "../utilities";
  *     publicKeys: [{
  *         id: version.apply(version => version.id),
  *         pkixPublicKey: {
- *             publicKeyPem: version.apply(version => version.publicKeys?[0]?.pem),
- *             signatureAlgorithm: version.apply(version => version.publicKeys?[0]?.algorithm),
+ *             publicKeyPem: version.apply(version => version.publicKeys?.[0]?.pem),
+ *             signatureAlgorithm: version.apply(version => version.publicKeys?.[0]?.algorithm),
  *         },
  *     }],
  * }});

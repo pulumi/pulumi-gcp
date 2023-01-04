@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  *             authorizedKey: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
  *         },
  *         subnetId: "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
- *         version: versions.then(versions => versions.validVersions?[0]),
+ *         version: versions.then(versions => versions.validVersions?.[0]),
  *     },
  *     fleet: {
  *         project: "my-project-number",
@@ -82,7 +82,7 @@ import * as utilities from "../utilities";
  *         maxPodsPerNode: 110,
  *     },
  *     subnetId: "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
- *     version: versions.then(versions => versions.validVersions?[0]),
+ *     version: versions.then(versions => versions.validVersions?.[0]),
  *     annotations: {
  *         "annotation-one": "value-one",
  *     },
@@ -159,8 +159,7 @@ export class AzureNodePool extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-     * and delete requests to ensure the client has an up-to-date value before proceeding.
+     * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
@@ -184,8 +183,7 @@ export class AzureNodePool extends pulumi.CustomResource {
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
-     * Output only. The current state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-     * STOPPING, ERROR, DEGRADED
+     * Output only. The current state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
@@ -310,8 +308,7 @@ export interface AzureNodePoolState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-     * and delete requests to ensure the client has an up-to-date value before proceeding.
+     * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
     etag?: pulumi.Input<string>;
     /**
@@ -335,8 +332,7 @@ export interface AzureNodePoolState {
      */
     reconciling?: pulumi.Input<boolean>;
     /**
-     * Output only. The current state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-     * STOPPING, ERROR, DEGRADED
+     * Output only. The current state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
      */
     state?: pulumi.Input<string>;
     /**

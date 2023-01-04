@@ -69,8 +69,7 @@ export class AiMetadataStore extends pulumi.CustomResource {
     }
 
     /**
-     * The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-     * nine fractional digits.
+     * The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -97,11 +96,11 @@ export class AiMetadataStore extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * State information of the MetadataStore.
+     * Structure is documented below.
      */
     public /*out*/ readonly states!: pulumi.Output<outputs.vertex.AiMetadataStoreState[]>;
     /**
-     * The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-     * to nine fractional digits.
+     * The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -147,8 +146,7 @@ export class AiMetadataStore extends pulumi.CustomResource {
  */
 export interface AiMetadataStoreState {
     /**
-     * The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-     * nine fractional digits.
+     * The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -175,11 +173,11 @@ export interface AiMetadataStoreState {
     region?: pulumi.Input<string>;
     /**
      * State information of the MetadataStore.
+     * Structure is documented below.
      */
     states?: pulumi.Input<pulumi.Input<inputs.vertex.AiMetadataStoreState>[]>;
     /**
-     * The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-     * to nine fractional digits.
+     * The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     updateTime?: pulumi.Input<string>;
 }

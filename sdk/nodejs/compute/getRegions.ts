@@ -10,11 +10,8 @@ import * as utilities from "../utilities";
  */
 export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getRegions:getRegions", {
         "project": args.project,
         "status": args.status,
@@ -51,9 +48,12 @@ export interface GetRegionsResult {
     readonly project: string;
     readonly status?: string;
 }
-
+/**
+ * Provides access to available Google Compute regions for a given project.
+ * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
+ */
 export function getRegionsOutput(args?: GetRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionsResult> {
-    return pulumi.output(args).apply(a => getRegions(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegions(a, opts))
 }
 
 /**

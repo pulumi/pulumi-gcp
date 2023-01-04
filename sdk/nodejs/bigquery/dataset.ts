@@ -213,11 +213,14 @@ export class Dataset extends pulumi.CustomResource {
      */
     public readonly accesses!: pulumi.Output<outputs.bigquery.DatasetAccess[]>;
     /**
-     * The time when this dataset was created, in milliseconds since the epoch.
+     * The time when this dataset was created, in milliseconds since the
+     * epoch.
      */
     public /*out*/ readonly creationTime!: pulumi.Output<number>;
     /**
-     * The ID of the dataset containing this table.
+     * A unique ID for this dataset, without the project name. The ID
+     * must contain only letters (a-z, A-Z), numbers (0-9), or
+     * underscores (_). The maximum length is 1,024 characters.
      */
     public readonly datasetId!: pulumi.Output<string>;
     /**
@@ -261,7 +264,8 @@ export class Dataset extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+     * The date when this dataset or any of its tables was last modified, in
+     * milliseconds since the epoch.
      */
     public /*out*/ readonly lastModifiedTime!: pulumi.Output<number>;
     /**
@@ -349,11 +353,14 @@ export interface DatasetState {
      */
     accesses?: pulumi.Input<pulumi.Input<inputs.bigquery.DatasetAccess>[]>;
     /**
-     * The time when this dataset was created, in milliseconds since the epoch.
+     * The time when this dataset was created, in milliseconds since the
+     * epoch.
      */
     creationTime?: pulumi.Input<number>;
     /**
-     * The ID of the dataset containing this table.
+     * A unique ID for this dataset, without the project name. The ID
+     * must contain only letters (a-z, A-Z), numbers (0-9), or
+     * underscores (_). The maximum length is 1,024 characters.
      */
     datasetId?: pulumi.Input<string>;
     /**
@@ -397,7 +404,8 @@ export interface DatasetState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+     * The date when this dataset or any of its tables was last modified, in
+     * milliseconds since the epoch.
      */
     lastModifiedTime?: pulumi.Input<number>;
     /**
@@ -430,7 +438,9 @@ export interface DatasetArgs {
      */
     accesses?: pulumi.Input<pulumi.Input<inputs.bigquery.DatasetAccess>[]>;
     /**
-     * The ID of the dataset containing this table.
+     * A unique ID for this dataset, without the project name. The ID
+     * must contain only letters (a-z, A-Z), numbers (0-9), or
+     * underscores (_). The maximum length is 1,024 characters.
      */
     datasetId: pulumi.Input<string>;
     /**

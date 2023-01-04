@@ -152,7 +152,7 @@ export class CxFlow extends pulumi.CustomResource {
      */
     public readonly languageCode!: pulumi.Output<string | undefined>;
     /**
-     * -
+     * The unique identifier of this transition route.
      * The unique identifier of this event handler.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -257,7 +257,7 @@ export interface CxFlowState {
      */
     languageCode?: pulumi.Input<string>;
     /**
-     * -
+     * The unique identifier of this transition route.
      * The unique identifier of this event handler.
      */
     name?: pulumi.Input<string>;

@@ -16,6 +16,79 @@ import * as utilities from "../utilities";
  *     * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
  *
  * ## Example Usage
+ * ### Apigee Organization Cloud Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const current = gcp.organizations.getClientConfig({});
+ * const apigeeNetwork = new gcp.compute.Network("apigeeNetwork", {});
+ * const apigeeRange = new gcp.compute.GlobalAddress("apigeeRange", {
+ *     purpose: "VPC_PEERING",
+ *     addressType: "INTERNAL",
+ *     prefixLength: 16,
+ *     network: apigeeNetwork.id,
+ * });
+ * const apigeeVpcConnection = new gcp.servicenetworking.Connection("apigeeVpcConnection", {
+ *     network: apigeeNetwork.id,
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [apigeeRange.name],
+ * });
+ * const org = new gcp.apigee.Organization("org", {
+ *     analyticsRegion: "us-central1",
+ *     projectId: current.then(current => current.project),
+ *     authorizedNetwork: apigeeNetwork.id,
+ * }, {
+ *     dependsOn: [apigeeVpcConnection],
+ * });
+ * ```
+ * ### Apigee Organization Cloud Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const current = gcp.organizations.getClientConfig({});
+ * const apigeeNetwork = new gcp.compute.Network("apigeeNetwork", {});
+ * const apigeeRange = new gcp.compute.GlobalAddress("apigeeRange", {
+ *     purpose: "VPC_PEERING",
+ *     addressType: "INTERNAL",
+ *     prefixLength: 16,
+ *     network: apigeeNetwork.id,
+ * });
+ * const apigeeVpcConnection = new gcp.servicenetworking.Connection("apigeeVpcConnection", {
+ *     network: apigeeNetwork.id,
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [apigeeRange.name],
+ * });
+ * const apigeeKeyring = new gcp.kms.KeyRing("apigeeKeyring", {location: "us-central1"});
+ * const apigeeKey = new gcp.kms.CryptoKey("apigeeKey", {keyRing: apigeeKeyring.id});
+ * const apigeeSa = new gcp.projects.ServiceIdentity("apigeeSa", {
+ *     project: google_project.project.project_id,
+ *     service: google_project_service.apigee.service,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const apigeeSaKeyuser = new gcp.kms.CryptoKeyIAMBinding("apigeeSaKeyuser", {
+ *     cryptoKeyId: apigeeKey.id,
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     members: [pulumi.interpolate`serviceAccount:${apigeeSa.email}`],
+ * });
+ * const org = new gcp.apigee.Organization("org", {
+ *     analyticsRegion: "us-central1",
+ *     displayName: "apigee-org",
+ *     description: "Auto-provisioned Apigee Org.",
+ *     projectId: current.then(current => current.project),
+ *     authorizedNetwork: apigeeNetwork.id,
+ *     runtimeDatabaseEncryptionKeyName: apigeeKey.id,
+ * }, {
+ *     dependsOn: [
+ *         apigeeVpcConnection,
+ *         apigeeSaKeyuser,
+ *     ],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -72,8 +145,8 @@ export class Organization extends pulumi.CustomResource {
      */
     public readonly billingType!: pulumi.Output<string>;
     /**
-     * Output only. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when 'RuntimeType'
-     * is CLOUD. A base64-encoded string.
+     * Output only. Base64-encoded public certificate for the root CA of the Apigee organization.
+     * Valid only when `RuntimeType` is CLOUD. A base64-encoded string.
      */
     public /*out*/ readonly caCertificate!: pulumi.Output<string>;
     /**
@@ -120,8 +193,8 @@ export class Organization extends pulumi.CustomResource {
      */
     public readonly runtimeType!: pulumi.Output<string | undefined>;
     /**
-     * Output only. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation
-     * purposes only) or paid (full subscription has been purchased).
+     * Output only. Subscription type of the Apigee organization.
+     * Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased).
      */
     public /*out*/ readonly subscriptionType!: pulumi.Output<string>;
 
@@ -194,8 +267,8 @@ export interface OrganizationState {
      */
     billingType?: pulumi.Input<string>;
     /**
-     * Output only. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when 'RuntimeType'
-     * is CLOUD. A base64-encoded string.
+     * Output only. Base64-encoded public certificate for the root CA of the Apigee organization.
+     * Valid only when `RuntimeType` is CLOUD. A base64-encoded string.
      */
     caCertificate?: pulumi.Input<string>;
     /**
@@ -242,8 +315,8 @@ export interface OrganizationState {
      */
     runtimeType?: pulumi.Input<string>;
     /**
-     * Output only. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation
-     * purposes only) or paid (full subscription has been purchased).
+     * Output only. Subscription type of the Apigee organization.
+     * Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased).
      */
     subscriptionType?: pulumi.Input<string>;
 }

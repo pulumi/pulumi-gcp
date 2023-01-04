@@ -99,6 +99,8 @@ export class OrganizationSecurityPolicyRule extends pulumi.CustomResource {
     public readonly action!: pulumi.Output<string>;
     /**
      * A description of the rule.
+     * (Optional)
+     * A description of the rule.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -208,6 +210,8 @@ export interface OrganizationSecurityPolicyRuleState {
     action?: pulumi.Input<string>;
     /**
      * A description of the rule.
+     * (Optional)
+     * A description of the rule.
      */
     description?: pulumi.Input<string>;
     /**
@@ -264,6 +268,8 @@ export interface OrganizationSecurityPolicyRuleArgs {
      */
     action: pulumi.Input<string>;
     /**
+     * A description of the rule.
+     * (Optional)
      * A description of the rule.
      */
     description?: pulumi.Input<string>;

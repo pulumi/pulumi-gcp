@@ -188,8 +188,7 @@ export class AppProfile extends pulumi.CustomResource {
      */
     public readonly multiClusterRoutingUseAny!: pulumi.Output<boolean | undefined>;
     /**
-     * The unique name of the requested app profile. Values are of the form
-     * 'projects/<project>/instances/<instance>/appProfiles/<appProfileId>'.
+     * The unique name of the requested app profile. Values are of the form `projects/<project>/instances/<instance>/appProfiles/<appProfileId>`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -277,8 +276,7 @@ export interface AppProfileState {
      */
     multiClusterRoutingUseAny?: pulumi.Input<boolean>;
     /**
-     * The unique name of the requested app profile. Values are of the form
-     * 'projects/<project>/instances/<instance>/appProfiles/<appProfileId>'.
+     * The unique name of the requested app profile. Values are of the form `projects/<project>/instances/<instance>/appProfiles/<appProfileId>`.
      */
     name?: pulumi.Input<string>;
     /**

@@ -81,7 +81,7 @@ export class TagBinding extends pulumi.CustomResource {
     }
 
     /**
-     * The generated id for the TagBinding. This is a string of the form: 'tagBindings/{full-resource-name}/{tag-value-name}'
+     * The generated id for the TagBinding. This is a string of the form: `tagBindings/{full-resource-name}/{tag-value-name}`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -131,7 +131,7 @@ export class TagBinding extends pulumi.CustomResource {
  */
 export interface TagBindingState {
     /**
-     * The generated id for the TagBinding. This is a string of the form: 'tagBindings/{full-resource-name}/{tag-value-name}'
+     * The generated id for the TagBinding. This is a string of the form: `tagBindings/{full-resource-name}/{tag-value-name}`
      */
     name?: pulumi.Input<string>;
     /**

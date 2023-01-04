@@ -79,8 +79,9 @@ export class Occurence extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * The note kind which explicitly denotes which of the occurrence details are specified. This field can be used as a filter
-     * in list requests.
+     * The note kind which explicitly denotes which of the occurrence
+     * details are specified. This field can be used as a filter in list
+     * requests.
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
@@ -182,8 +183,9 @@ export interface OccurenceState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The note kind which explicitly denotes which of the occurrence details are specified. This field can be used as a filter
-     * in list requests.
+     * The note kind which explicitly denotes which of the occurrence
+     * details are specified. This field can be used as a filter in list
+     * requests.
      */
     kind?: pulumi.Input<string>;
     /**

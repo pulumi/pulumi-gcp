@@ -151,12 +151,14 @@ export class DatasetAccess extends pulumi.CustomResource {
      */
     public /*out*/ readonly apiUpdatedMember!: pulumi.Output<boolean>;
     /**
-     * The dataset this entry applies to
+     * Grants all resources of particular types in a particular dataset read access to the current dataset.
      * Structure is documented below.
      */
     public readonly authorizedDataset!: pulumi.Output<outputs.bigquery.DatasetAccessAuthorizedDataset | undefined>;
     /**
-     * The ID of the dataset containing this table.
+     * A unique ID for this dataset, without the project name. The ID
+     * must contain only letters (a-z, A-Z), numbers (0-9), or
+     * underscores (_). The maximum length is 1,024 characters.
      */
     public readonly datasetId!: pulumi.Output<string>;
     /**
@@ -273,12 +275,14 @@ export interface DatasetAccessState {
      */
     apiUpdatedMember?: pulumi.Input<boolean>;
     /**
-     * The dataset this entry applies to
+     * Grants all resources of particular types in a particular dataset read access to the current dataset.
      * Structure is documented below.
      */
     authorizedDataset?: pulumi.Input<inputs.bigquery.DatasetAccessAuthorizedDataset>;
     /**
-     * The ID of the dataset containing this table.
+     * A unique ID for this dataset, without the project name. The ID
+     * must contain only letters (a-z, A-Z), numbers (0-9), or
+     * underscores (_). The maximum length is 1,024 characters.
      */
     datasetId?: pulumi.Input<string>;
     /**
@@ -343,12 +347,14 @@ export interface DatasetAccessState {
  */
 export interface DatasetAccessArgs {
     /**
-     * The dataset this entry applies to
+     * Grants all resources of particular types in a particular dataset read access to the current dataset.
      * Structure is documented below.
      */
     authorizedDataset?: pulumi.Input<inputs.bigquery.DatasetAccessAuthorizedDataset>;
     /**
-     * The ID of the dataset containing this table.
+     * A unique ID for this dataset, without the project name. The ID
+     * must contain only letters (a-z, A-Z), numbers (0-9), or
+     * underscores (_). The maximum length is 1,024 characters.
      */
     datasetId: pulumi.Input<string>;
     /**

@@ -13,17 +13,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const foo = pulumi.output(gcp.spanner.getInstance({
+ * const foo = gcp.spanner.getInstance({
  *     name: "bar",
- * }));
+ * });
  * ```
  */
 export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:spanner/getInstance:getInstance", {
         "config": args.config,
         "displayName": args.displayName,
@@ -67,9 +64,22 @@ export interface GetInstanceResult {
     readonly project?: string;
     readonly state: string;
 }
-
+/**
+ * Get a spanner instance from Google Cloud by its name.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const foo = gcp.spanner.getInstance({
+ *     name: "bar",
+ * });
+ * ```
+ */
 export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceResult> {
-    return pulumi.output(args).apply(a => getInstance(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstance(a, opts))
 }
 
 /**

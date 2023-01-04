@@ -89,6 +89,7 @@ export class HmacKey extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * HMAC secret key material.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      */
     public /*out*/ readonly secret!: pulumi.Output<string>;
     /**
@@ -165,6 +166,7 @@ export interface HmacKeyState {
     project?: pulumi.Input<string>;
     /**
      * HMAC secret key material.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      */
     secret?: pulumi.Input<string>;
     /**

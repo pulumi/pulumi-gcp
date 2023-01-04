@@ -17,17 +17,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my_function = pulumi.output(gcp.cloudfunctions.getFunction({
+ * const my-function = gcp.cloudfunctions.getFunction({
  *     name: "function",
- * }));
+ * });
  * ```
  */
 export function getFunction(args: GetFunctionArgs, opts?: pulumi.InvokeOptions): Promise<GetFunctionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:cloudfunctions/getFunction:getFunction", {
         "name": args.name,
         "project": args.project,
@@ -148,9 +145,24 @@ export interface GetFunctionResult {
      */
     readonly vpcConnectorEgressSettings: string;
 }
-
+/**
+ * Get information about a Google Cloud Function. For more information see
+ * the [official documentation](https://cloud.google.com/functions/docs/)
+ * and [API](https://cloud.google.com/functions/docs/apis).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-function = gcp.cloudfunctions.getFunction({
+ *     name: "function",
+ * });
+ * ```
+ */
 export function getFunctionOutput(args: GetFunctionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFunctionResult> {
-    return pulumi.output(args).apply(a => getFunction(a, opts))
+    return pulumi.output(args).apply((a: any) => getFunction(a, opts))
 }
 
 /**

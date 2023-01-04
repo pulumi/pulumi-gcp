@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const loggingMetric = new gcp.logging.Metric("logging_metric", {
+ * const loggingMetric = new gcp.logging.Metric("loggingMetric", {
  *     bucketOptions: {
  *         linearBuckets: {
  *             numFiniteBuckets: 3,
@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const loggingMetric = new gcp.logging.Metric("logging_metric", {
+ * const loggingMetric = new gcp.logging.Metric("loggingMetric", {
  *     filter: "resource.type=gae_app AND severity>=ERROR",
  *     metricDescriptor: {
  *         metricKind: "DELTA",
@@ -78,7 +78,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const loggingMetric = new gcp.logging.Metric("logging_metric", {
+ * const loggingMetric = new gcp.logging.Metric("loggingMetric", {
  *     filter: "resource.type=gae_app AND severity>=ERROR",
  *     labelExtractors: {
  *         mass: "EXTRACT(jsonPayload.request)",
@@ -163,7 +163,8 @@ export class Metric extends pulumi.CustomResource {
      */
     public readonly bucketOptions!: pulumi.Output<outputs.logging.MetricBucketOptions | undefined>;
     /**
-     * A human-readable description for the label.
+     * A description of this metric, which is used in documentation. The maximum length of the
+     * description is 8000 characters.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -268,7 +269,8 @@ export interface MetricState {
      */
     bucketOptions?: pulumi.Input<inputs.logging.MetricBucketOptions>;
     /**
-     * A human-readable description for the label.
+     * A description of this metric, which is used in documentation. The maximum length of the
+     * description is 8000 characters.
      */
     description?: pulumi.Input<string>;
     /**
@@ -332,7 +334,8 @@ export interface MetricArgs {
      */
     bucketOptions?: pulumi.Input<inputs.logging.MetricBucketOptions>;
     /**
-     * A human-readable description for the label.
+     * A description of this metric, which is used in documentation. The maximum length of the
+     * description is 8000 characters.
      */
     description?: pulumi.Input<string>;
     /**

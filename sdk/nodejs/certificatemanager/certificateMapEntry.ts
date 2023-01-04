@@ -107,8 +107,9 @@ export class CertificateMapEntry extends pulumi.CustomResource {
      */
     public readonly certificates!: pulumi.Output<string[]>;
     /**
-     * Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-     * to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     * Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
+     * with nanosecond resolution and up to nine fractional digits.
+     * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -151,8 +152,9 @@ export class CertificateMapEntry extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-     * to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     * Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
+     * with nanosecond resolution and up to nine fractional digits.
+     * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -216,8 +218,9 @@ export interface CertificateMapEntryState {
      */
     certificates?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-     * to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     * Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
+     * with nanosecond resolution and up to nine fractional digits.
+     * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -260,8 +263,9 @@ export interface CertificateMapEntryState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-     * to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     * Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
+     * with nanosecond resolution and up to nine fractional digits.
+     * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     updateTime?: pulumi.Input<string>;
 }

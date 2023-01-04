@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const bigqueryRowLimit = new gcp.dataloss.PreventionJobTrigger("bigquery_row_limit", {
+ * const bigqueryRowLimit = new gcp.dataloss.PreventionJobTrigger("bigqueryRowLimit", {
  *     description: "Description",
  *     displayName: "Displayname",
  *     inspectJob: {
@@ -100,7 +100,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const bigqueryRowLimitPercentage = new gcp.dataloss.PreventionJobTrigger("bigquery_row_limit_percentage", {
+ * const bigqueryRowLimitPercentage = new gcp.dataloss.PreventionJobTrigger("bigqueryRowLimitPercentage", {
  *     description: "Description",
  *     displayName: "Displayname",
  *     inspectJob: {
@@ -194,6 +194,15 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
      */
     public /*out*/ readonly lastRunTime!: pulumi.Output<string>;
     /**
+     * Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
+     * For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
+     * modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
+     * field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
+     * For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
+     * timestamp property does not exist or its value is empty or invalid.
+     * (Required)
+     * The name of the Datastore kind.
+     * (Required)
      * Name of a BigQuery field to be returned with the findings.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -279,6 +288,15 @@ export interface PreventionJobTriggerState {
      */
     lastRunTime?: pulumi.Input<string>;
     /**
+     * Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
+     * For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
+     * modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
+     * field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
+     * For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
+     * timestamp property does not exist or its value is empty or invalid.
+     * (Required)
+     * The name of the Datastore kind.
+     * (Required)
      * Name of a BigQuery field to be returned with the findings.
      */
     name?: pulumi.Input<string>;

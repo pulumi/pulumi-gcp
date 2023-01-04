@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const alertPolicy = new gcp.monitoring.AlertPolicy("alert_policy", {
+ * const alertPolicy = new gcp.monitoring.AlertPolicy("alertPolicy", {
  *     combiner: "OR",
  *     conditions: [{
  *         conditionThreshold: {
@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const alertPolicy = new gcp.monitoring.AlertPolicy("alert_policy", {
+ * const alertPolicy = new gcp.monitoring.AlertPolicy("alertPolicy", {
  *     combiner: "OR",
  *     conditions: [{
  *         conditionThreshold: {
@@ -128,16 +128,17 @@ export class AlertPolicy extends pulumi.CustomResource {
      */
     public readonly conditions!: pulumi.Output<outputs.monitoring.AlertPolicyCondition[]>;
     /**
-     * A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
-     * ignored.
+     * A read-only record of the creation of the alerting policy.
+     * If provided in a call to create or update, this field will
+     * be ignored.
+     * Structure is documented below.
      */
     public /*out*/ readonly creationRecords!: pulumi.Output<outputs.monitoring.AlertPolicyCreationRecord[]>;
     /**
-     * A short name or phrase used to identify the
-     * condition in dashboards, notifications, and
-     * incidents. To avoid confusion, don't use the same
-     * display name for multiple conditions in the same
-     * policy.
+     * A short name or phrase used to identify the policy in
+     * dashboards, notifications, and incidents. To avoid confusion, don't use
+     * the same display name for multiple policies in the same project. The
+     * name is limited to 512 Unicode characters.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -154,7 +155,6 @@ export class AlertPolicy extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * -
      * The unique resource name for this condition.
      * Its syntax is:
      * projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
@@ -263,16 +263,17 @@ export interface AlertPolicyState {
      */
     conditions?: pulumi.Input<pulumi.Input<inputs.monitoring.AlertPolicyCondition>[]>;
     /**
-     * A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
-     * ignored.
+     * A read-only record of the creation of the alerting policy.
+     * If provided in a call to create or update, this field will
+     * be ignored.
+     * Structure is documented below.
      */
     creationRecords?: pulumi.Input<pulumi.Input<inputs.monitoring.AlertPolicyCreationRecord>[]>;
     /**
-     * A short name or phrase used to identify the
-     * condition in dashboards, notifications, and
-     * incidents. To avoid confusion, don't use the same
-     * display name for multiple conditions in the same
-     * policy.
+     * A short name or phrase used to identify the policy in
+     * dashboards, notifications, and incidents. To avoid confusion, don't use
+     * the same display name for multiple policies in the same project. The
+     * name is limited to 512 Unicode characters.
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -289,7 +290,6 @@ export interface AlertPolicyState {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * -
      * The unique resource name for this condition.
      * Its syntax is:
      * projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
@@ -347,11 +347,10 @@ export interface AlertPolicyArgs {
      */
     conditions: pulumi.Input<pulumi.Input<inputs.monitoring.AlertPolicyCondition>[]>;
     /**
-     * A short name or phrase used to identify the
-     * condition in dashboards, notifications, and
-     * incidents. To avoid confusion, don't use the same
-     * display name for multiple conditions in the same
-     * policy.
+     * A short name or phrase used to identify the policy in
+     * dashboards, notifications, and incidents. To avoid confusion, don't use
+     * the same display name for multiple policies in the same project. The
+     * name is limited to 512 Unicode characters.
      */
     displayName: pulumi.Input<string>;
     /**

@@ -8,11 +8,8 @@ import * as utilities from "../utilities";
  * A Google Cloud Firebase web application instance
  */
 export function getWebApp(args: GetWebAppArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAppResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:firebase/getWebApp:getWebApp", {
         "appId": args.appId,
     }, opts);
@@ -32,6 +29,10 @@ export interface GetWebAppArgs {
  * A collection of values returned by getWebApp.
  */
 export interface GetWebAppResult {
+    /**
+     * Immutable. The globally unique, Firebase-assigned identifier of the App.
+     * This identifier should be treated as an opaque token, as the data format is not specified.
+     */
     readonly appId: string;
     readonly appUrls: string[];
     readonly deletionPolicy: string;
@@ -40,12 +41,18 @@ export interface GetWebAppResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The fully qualified resource name of the App, for example:
+     * projects/projectId/webApps/appId
+     */
     readonly name: string;
     readonly project: string;
 }
-
+/**
+ * A Google Cloud Firebase web application instance
+ */
 export function getWebAppOutput(args: GetWebAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebAppResult> {
-    return pulumi.output(args).apply(a => getWebApp(a, opts))
+    return pulumi.output(args).apply((a: any) => getWebApp(a, opts))
 }
 
 /**

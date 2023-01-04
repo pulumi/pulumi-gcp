@@ -412,8 +412,8 @@ export class Certificate extends pulumi.CustomResource {
      */
     public readonly certificateAuthority!: pulumi.Output<string | undefined>;
     /**
-     * Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-     * this field is present.
+     * Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
+     * Structure is documented below.
      */
     public /*out*/ readonly certificateDescriptions!: pulumi.Output<outputs.certificateauthority.CertificateCertificateDescription[]>;
     /**
@@ -430,12 +430,12 @@ export class Certificate extends pulumi.CustomResource {
      */
     public readonly config!: pulumi.Output<outputs.certificateauthority.CertificateConfig | undefined>;
     /**
-     * The time that this resource was created on the server. This is in RFC3339 text format.
+     * The time that this resource was created on the server.
+     * This is in RFC3339 text format.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * The resource name of the issuing CertificateAuthority in the format
-     * 'projects/*&#47;locations/*&#47;caPools/*&#47;certificateAuthorities/*'.
+     * The resource name of the issuing CertificateAuthority in the format `projects/*&#47;locations/*&#47;caPools/*&#47;certificateAuthorities/*`.
      */
     public /*out*/ readonly issuerCertificateAuthority!: pulumi.Output<string>;
     /**
@@ -462,11 +462,11 @@ export class Certificate extends pulumi.CustomResource {
      */
     public /*out*/ readonly pemCertificate!: pulumi.Output<string>;
     /**
-     * The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
-     * 5246.
+     * The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
      */
     public /*out*/ readonly pemCertificateChains!: pulumi.Output<string[]>;
     /**
+     * (Deprecated)
      * Required. Expected to be in leaf-to-root order according to RFC 5246.
      *
      * @deprecated Deprecated in favor of `pem_certificate_chain`.
@@ -486,12 +486,14 @@ export class Certificate extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-     * this field is present.
+     * Output only. Details regarding the revocation of this Certificate. This Certificate is
+     * considered revoked if and only if this field is present.
+     * Structure is documented below.
      */
     public /*out*/ readonly revocationDetails!: pulumi.Output<outputs.certificateauthority.CertificateRevocationDetail[]>;
     /**
-     * Output only. The time at which this CertificateAuthority was updated. This is in RFC3339 text format.
+     * Output only. The time at which this CertificateAuthority was updated.
+     * This is in RFC3339 text format.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -570,8 +572,8 @@ export interface CertificateState {
      */
     certificateAuthority?: pulumi.Input<string>;
     /**
-     * Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-     * this field is present.
+     * Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
+     * Structure is documented below.
      */
     certificateDescriptions?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescription>[]>;
     /**
@@ -588,12 +590,12 @@ export interface CertificateState {
      */
     config?: pulumi.Input<inputs.certificateauthority.CertificateConfig>;
     /**
-     * The time that this resource was created on the server. This is in RFC3339 text format.
+     * The time that this resource was created on the server.
+     * This is in RFC3339 text format.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The resource name of the issuing CertificateAuthority in the format
-     * 'projects/*&#47;locations/*&#47;caPools/*&#47;certificateAuthorities/*'.
+     * The resource name of the issuing CertificateAuthority in the format `projects/*&#47;locations/*&#47;caPools/*&#47;certificateAuthorities/*`.
      */
     issuerCertificateAuthority?: pulumi.Input<string>;
     /**
@@ -620,11 +622,11 @@ export interface CertificateState {
      */
     pemCertificate?: pulumi.Input<string>;
     /**
-     * The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
-     * 5246.
+     * The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
      */
     pemCertificateChains?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * (Deprecated)
      * Required. Expected to be in leaf-to-root order according to RFC 5246.
      *
      * @deprecated Deprecated in favor of `pem_certificate_chain`.
@@ -644,12 +646,14 @@ export interface CertificateState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-     * this field is present.
+     * Output only. Details regarding the revocation of this Certificate. This Certificate is
+     * considered revoked if and only if this field is present.
+     * Structure is documented below.
      */
     revocationDetails?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateRevocationDetail>[]>;
     /**
-     * Output only. The time at which this CertificateAuthority was updated. This is in RFC3339 text format.
+     * Output only. The time at which this CertificateAuthority was updated.
+     * This is in RFC3339 text format.
      */
     updateTime?: pulumi.Input<string>;
 }

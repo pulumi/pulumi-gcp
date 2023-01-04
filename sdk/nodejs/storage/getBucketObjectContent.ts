@@ -30,11 +30,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getBucketObjectContent(args: GetBucketObjectContentArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketObjectContentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:storage/getBucketObjectContent:getBucketObjectContent", {
         "bucket": args.bucket,
         "content": args.content,
@@ -93,9 +90,31 @@ export interface GetBucketObjectContentResult {
     readonly storageClass: string;
     readonly temporaryHold: boolean;
 }
-
+/**
+ * Gets an existing object content inside an existing bucket in Google Cloud Storage service (GCS).
+ * See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
+ * and
+ * [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
+ *
+ * > **Warning:** The object content will be saved in the state, and visiable to everyone who has access to the state file.
+ *
+ * ## Example Usage
+ *
+ * Example file object  stored within a folder.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const key = gcp.storage.getBucketObjectContent({
+ *     name: "encryptedkey",
+ *     bucket: "keystore",
+ * });
+ * export const encrypted = key.then(key => key.content);
+ * ```
+ */
 export function getBucketObjectContentOutput(args: GetBucketObjectContentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketObjectContentResult> {
-    return pulumi.output(args).apply(a => getBucketObjectContent(a, opts))
+    return pulumi.output(args).apply((a: any) => getBucketObjectContent(a, opts))
 }
 
 /**

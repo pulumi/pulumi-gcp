@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * const tpu = new gcp.tpu.Node("tpu", {
  *     zone: "us-central1-b",
  *     acceleratorType: "v3-8",
- *     tensorflowVersion: available.then(available => available.versions?[0]),
+ *     tensorflowVersion: available.then(available => available.versions?.[0]),
  *     cidrBlock: "10.2.0.0/29",
  * });
  * ```
@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  * const tpu = new gcp.tpu.Node("tpu", {
  *     zone: "us-central1-b",
  *     acceleratorType: "v3-8",
- *     tensorflowVersion: available.then(available => available.versions?[0]),
+ *     tensorflowVersion: available.then(available => available.versions?.[0]),
  *     description: "Google Provider test TPU",
  *     useServiceNetworking: true,
  *     network: privateServiceConnection.network,
@@ -150,8 +150,10 @@ export class Node extends pulumi.CustomResource {
      */
     public readonly network!: pulumi.Output<string>;
     /**
-     * The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
-     * node first reach out to the first (index 0) entry.
+     * The network endpoints where TPU workers can be accessed and sent work.
+     * It is recommended that Tensorflow clients of the node first reach out
+     * to the first (index 0) entry.
+     * Structure is documented below.
      */
     public /*out*/ readonly networkEndpoints!: pulumi.Output<outputs.tpu.NodeNetworkEndpoint[]>;
     /**
@@ -165,8 +167,10 @@ export class Node extends pulumi.CustomResource {
      */
     public readonly schedulingConfig!: pulumi.Output<outputs.tpu.NodeSchedulingConfig | undefined>;
     /**
-     * The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
-     * Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
+     * The service account used to run the tensor flow services within the
+     * node. To share resources, including Google Cloud Storage data, with
+     * the Tensorflow job running in the Node, this account must have
+     * permissions to that data.
      */
     public /*out*/ readonly serviceAccount!: pulumi.Output<string>;
     /**
@@ -277,8 +281,10 @@ export interface NodeState {
      */
     network?: pulumi.Input<string>;
     /**
-     * The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
-     * node first reach out to the first (index 0) entry.
+     * The network endpoints where TPU workers can be accessed and sent work.
+     * It is recommended that Tensorflow clients of the node first reach out
+     * to the first (index 0) entry.
+     * Structure is documented below.
      */
     networkEndpoints?: pulumi.Input<pulumi.Input<inputs.tpu.NodeNetworkEndpoint>[]>;
     /**
@@ -292,8 +298,10 @@ export interface NodeState {
      */
     schedulingConfig?: pulumi.Input<inputs.tpu.NodeSchedulingConfig>;
     /**
-     * The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
-     * Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
+     * The service account used to run the tensor flow services within the
+     * node. To share resources, including Google Cloud Storage data, with
+     * the Tensorflow job running in the Node, this account must have
+     * permissions to that data.
      */
     serviceAccount?: pulumi.Input<string>;
     /**

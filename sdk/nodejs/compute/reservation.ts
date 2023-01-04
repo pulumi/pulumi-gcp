@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const gceReservation = new gcp.compute.Reservation("gce_reservation", {
+ * const gceReservation = new gcp.compute.Reservation("gceReservation", {
  *     specificReservation: {
  *         count: 1,
  *         instanceProperties: {
@@ -90,7 +90,8 @@ export class Reservation extends pulumi.CustomResource {
     }
 
     /**
-     * Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+     * Full or partial URL to a parent commitment. This field displays for
+     * reservations that are tied to a commitment.
      */
     public /*out*/ readonly commitment!: pulumi.Output<string>;
     /**
@@ -199,7 +200,8 @@ export class Reservation extends pulumi.CustomResource {
  */
 export interface ReservationState {
     /**
-     * Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+     * Full or partial URL to a parent commitment. This field displays for
+     * reservations that are tied to a commitment.
      */
     commitment?: pulumi.Input<string>;
     /**

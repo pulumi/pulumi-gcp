@@ -13,18 +13,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const department1 = pulumi.output(gcp.organizations.getActiveFolder({
+ * const department1 = gcp.organizations.getActiveFolder({
  *     displayName: "Department 1",
  *     parent: "organizations/1234567",
- * }));
+ * });
  * ```
  */
 export function getActiveFolder(args: GetActiveFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetActiveFolderResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:organizations/getActiveFolder:getActiveFolder", {
         "displayName": args.displayName,
         "parent": args.parent,
@@ -60,9 +57,23 @@ export interface GetActiveFolderResult {
     readonly name: string;
     readonly parent: string;
 }
-
+/**
+ * Get an active folder within GCP by `displayName` and `parent`.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const department1 = gcp.organizations.getActiveFolder({
+ *     displayName: "Department 1",
+ *     parent: "organizations/1234567",
+ * });
+ * ```
+ */
 export function getActiveFolderOutput(args: GetActiveFolderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetActiveFolderResult> {
-    return pulumi.output(args).apply(a => getActiveFolder(a, opts))
+    return pulumi.output(args).apply((a: any) => getActiveFolder(a, opts))
 }
 
 /**

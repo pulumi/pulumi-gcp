@@ -116,6 +116,7 @@ export class DefaultObjectAccessControl extends pulumi.CustomResource {
     public readonly object!: pulumi.Output<string | undefined>;
     /**
      * The project team associated with the entity
+     * Structure is documented below.
      */
     public /*out*/ readonly projectTeams!: pulumi.Output<outputs.storage.DefaultObjectAccessControlProjectTeam[]>;
     /**
@@ -214,6 +215,7 @@ export interface DefaultObjectAccessControlState {
     object?: pulumi.Input<string>;
     /**
      * The project team associated with the entity
+     * Structure is documented below.
      */
     projectTeams?: pulumi.Input<pulumi.Input<inputs.storage.DefaultObjectAccessControlProjectTeam>[]>;
     /**

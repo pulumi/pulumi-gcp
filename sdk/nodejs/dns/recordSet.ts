@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  *     type: "A",
  *     ttl: 300,
  *     managedZone: prod.name,
- *     rrdatas: [frontendInstance.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].accessConfigs?[0]?.natIp)],
+ *     rrdatas: [frontendInstance.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].accessConfigs?.[0]?.natIp)],
  * });
  * ```
  * ### Adding an A record
@@ -238,7 +238,8 @@ export class RecordSet extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The ID of the project in which the load balancer belongs.
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -248,7 +249,10 @@ export class RecordSet extends pulumi.CustomResource {
      */
     public readonly routingPolicy!: pulumi.Output<outputs.dns.RecordSetRoutingPolicy | undefined>;
     /**
-     * Same as `rrdatas` above.
+     * The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+     * data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
+     * record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
+     * string (e.g. "first255characters\"\"morecharacters").
      */
     public readonly rrdatas!: pulumi.Output<string[] | undefined>;
     /**
@@ -318,7 +322,8 @@ export interface RecordSetState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The ID of the project in which the load balancer belongs.
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
@@ -328,7 +333,10 @@ export interface RecordSetState {
      */
     routingPolicy?: pulumi.Input<inputs.dns.RecordSetRoutingPolicy>;
     /**
-     * Same as `rrdatas` above.
+     * The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+     * data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
+     * record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
+     * string (e.g. "first255characters\"\"morecharacters").
      */
     rrdatas?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -355,7 +363,8 @@ export interface RecordSetArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The ID of the project in which the load balancer belongs.
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
@@ -365,7 +374,10 @@ export interface RecordSetArgs {
      */
     routingPolicy?: pulumi.Input<inputs.dns.RecordSetRoutingPolicy>;
     /**
-     * Same as `rrdatas` above.
+     * The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+     * data contains spaces, add surrounding \" if you don't want your string to get split on spaces. To specify a single
+     * record value longer than 255 characters such as a TXT record for DKIM, add \"\" inside the Terraform configuration
+     * string (e.g. "first255characters\"\"morecharacters").
      */
     rrdatas?: pulumi.Input<pulumi.Input<string>[]>;
     /**

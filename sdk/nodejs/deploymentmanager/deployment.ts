@@ -121,12 +121,12 @@ export class Deployment extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<outputs.deploymentmanager.DeploymentLabel[] | undefined>;
     /**
-     * Output only. URL of the manifest representing the last manifest that was successfully deployed.
+     * Output only. URL of the manifest representing the last manifest that
+     * was successfully deployed.
      */
     public /*out*/ readonly manifest!: pulumi.Output<string>;
     /**
-     * The name of the template to import, as declared in the YAML
-     * configuration.
+     * Unique name for the deployment
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -241,12 +241,12 @@ export interface DeploymentState {
      */
     labels?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.DeploymentLabel>[]>;
     /**
-     * Output only. URL of the manifest representing the last manifest that was successfully deployed.
+     * Output only. URL of the manifest representing the last manifest that
+     * was successfully deployed.
      */
     manifest?: pulumi.Input<string>;
     /**
-     * The name of the template to import, as declared in the YAML
-     * configuration.
+     * Unique name for the deployment
      */
     name?: pulumi.Input<string>;
     /**
@@ -312,8 +312,7 @@ export interface DeploymentArgs {
      */
     labels?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.DeploymentLabel>[]>;
     /**
-     * The name of the template to import, as declared in the YAML
-     * configuration.
+     * Unique name for the deployment
      */
     name?: pulumi.Input<string>;
     /**

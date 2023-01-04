@@ -141,7 +141,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const pscNeg = new gcp.compute.RegionNetworkEndpointGroup("psc_neg", {
+ * const pscNeg = new gcp.compute.RegionNetworkEndpointGroup("pscNeg", {
  *     networkEndpointType: "PRIVATE_SERVICE_CONNECT",
  *     pscTargetService: "asia-northeast3-cloudkms.googleapis.com",
  *     region: "asia-northeast3",

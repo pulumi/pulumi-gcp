@@ -139,8 +139,7 @@ export class Zone extends pulumi.CustomResource {
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and
-     * re-created with the same name.
+     * Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
     /**
@@ -271,8 +270,7 @@ export interface ZoneState {
      */
     type?: pulumi.Input<string>;
     /**
-     * Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and
-     * re-created with the same name.
+     * Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
      */
     uid?: pulumi.Input<string>;
     /**

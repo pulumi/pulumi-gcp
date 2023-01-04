@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * const name = new gcp.servicenetworking.PeeredDnsDomain("name", {
  *     dnsSuffix: "example.com.",
  *     network: "default",
- *     project: "1e+07",
+ *     project: "10000000",
  *     service: "peering-service",
  * });
  * ```

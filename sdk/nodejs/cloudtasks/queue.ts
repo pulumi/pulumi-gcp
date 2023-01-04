@@ -21,9 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultQueue = new gcp.cloudtasks.Queue("default", {
- *     location: "us-central1",
- * });
+ * const _default = new gcp.cloudtasks.Queue("default", {location: "us-central1"});
  * ```
  * ### Cloud Tasks Queue Advanced
  *
@@ -31,7 +29,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const advancedConfiguration = new gcp.cloudtasks.Queue("advanced_configuration", {
+ * const advancedConfiguration = new gcp.cloudtasks.Queue("advancedConfiguration", {
  *     appEngineRoutingOverride: {
  *         instance: "test",
  *         service: "worker",

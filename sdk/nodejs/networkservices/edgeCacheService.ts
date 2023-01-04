@@ -305,6 +305,12 @@ export class EdgeCacheService extends pulumi.CustomResource {
     }
 
     /**
+     * A human-readable description of the hostRule.
+     * (Optional)
+     * A human-readable description of the resource.
+     * (Optional)
+     * A human-readable description of the routeRule.
+     * (Optional)
      * A human-readable description of the resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -345,7 +351,9 @@ export class EdgeCacheService extends pulumi.CustomResource {
      */
     public readonly logConfig!: pulumi.Output<outputs.networkservices.EdgeCacheServiceLogConfig | undefined>;
     /**
-     * The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+     * Name of the resource; provided by the client when the resource is created.
+     * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+     * and all following characters must be a dash, underscore, letter or digit.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -427,6 +435,12 @@ export class EdgeCacheService extends pulumi.CustomResource {
  */
 export interface EdgeCacheServiceState {
     /**
+     * A human-readable description of the hostRule.
+     * (Optional)
+     * A human-readable description of the resource.
+     * (Optional)
+     * A human-readable description of the routeRule.
+     * (Optional)
      * A human-readable description of the resource.
      */
     description?: pulumi.Input<string>;
@@ -467,7 +481,9 @@ export interface EdgeCacheServiceState {
      */
     logConfig?: pulumi.Input<inputs.networkservices.EdgeCacheServiceLogConfig>;
     /**
-     * The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+     * Name of the resource; provided by the client when the resource is created.
+     * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+     * and all following characters must be a dash, underscore, letter or digit.
      */
     name?: pulumi.Input<string>;
     /**
@@ -498,6 +514,12 @@ export interface EdgeCacheServiceState {
  */
 export interface EdgeCacheServiceArgs {
     /**
+     * A human-readable description of the hostRule.
+     * (Optional)
+     * A human-readable description of the resource.
+     * (Optional)
+     * A human-readable description of the routeRule.
+     * (Optional)
      * A human-readable description of the resource.
      */
     description?: pulumi.Input<string>;
@@ -530,7 +552,9 @@ export interface EdgeCacheServiceArgs {
      */
     logConfig?: pulumi.Input<inputs.networkservices.EdgeCacheServiceLogConfig>;
     /**
-     * The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+     * Name of the resource; provided by the client when the resource is created.
+     * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+     * and all following characters must be a dash, underscore, letter or digit.
      */
     name?: pulumi.Input<string>;
     /**

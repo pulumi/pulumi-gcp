@@ -13,17 +13,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basic = pulumi.output(gcp.secretmanager.getSecretVersion({
+ * const basic = gcp.secretmanager.getSecretVersion({
  *     secret: "my-secret",
- * }));
+ * });
  * ```
  */
 export function getSecretVersion(args: GetSecretVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretVersionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:secretmanager/getSecretVersion:getSecretVersion", {
         "project": args.project,
         "secret": args.secret,
@@ -84,9 +81,22 @@ export interface GetSecretVersionResult {
     readonly secretData: string;
     readonly version: string;
 }
-
+/**
+ * Get a Secret Manager secret's version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = gcp.secretmanager.getSecretVersion({
+ *     secret: "my-secret",
+ * });
+ * ```
+ */
 export function getSecretVersionOutput(args: GetSecretVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretVersionResult> {
-    return pulumi.output(args).apply(a => getSecretVersion(a, opts))
+    return pulumi.output(args).apply((a: any) => getSecretVersion(a, opts))
 }
 
 /**

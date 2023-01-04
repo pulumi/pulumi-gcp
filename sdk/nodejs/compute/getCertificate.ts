@@ -22,11 +22,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getCertificate:getCertificate", {
         "name": args.name,
         "project": args.project,
@@ -67,9 +64,25 @@ export interface GetCertificateResult {
     readonly project?: string;
     readonly selfLink: string;
 }
-
+/**
+ * Get info about a Google Compute SSL Certificate from its name.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myCert = gcp.compute.getCertificate({
+ *     name: "my-cert",
+ * });
+ * export const certificate = myCert.then(myCert => myCert.certificate);
+ * export const certificateId = myCert.then(myCert => myCert.certificateId);
+ * export const selfLink = myCert.then(myCert => myCert.selfLink);
+ * ```
+ */
 export function getCertificateOutput(args: GetCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificateResult> {
-    return pulumi.output(args).apply(a => getCertificate(a, opts))
+    return pulumi.output(args).apply((a: any) => getCertificate(a, opts))
 }
 
 /**

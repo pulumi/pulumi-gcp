@@ -42,11 +42,8 @@ import * as utilities from "../utilities";
  * A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
  */
 export function getKMSSecretAsymmetric(args: GetKMSSecretAsymmetricArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSSecretAsymmetricResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric", {
         "ciphertext": args.ciphertext,
         "crc32": args.crc32,
@@ -93,9 +90,45 @@ export interface GetKMSSecretAsymmetricResult {
      */
     readonly plaintext: string;
 }
-
+/**
+ * ## get the public key to encrypt the secret with
+ *
+ * $ gcloud kms keys versions get-public-key 1\
+ *   --project my-project\
+ *   --location us-central1\
+ *   --keyring my-key-ring\
+ *   --key my-crypto-key\
+ *   --output-file public-key.pem
+ *
+ * ## encrypt secret with the public key
+ *
+ * $ echo -n my-secret-password |\
+ *   openssl pkeyutl -in -\
+ *     -encrypt\
+ *     -pubin\
+ *     -inkey public-key.pem\
+ *     -pkeyopt rsa_padding_mode:oaep\
+ *     -pkeyopt rsa_oaep_md:sha256\
+ *     -pkeyopt rsa_mgf1_md:sha256 >\
+ *   my-secret-password.enc
+ *
+ * ## base64 encode the ciphertext
+ *
+ * $ openssl base64 -in my-secret-password.enc
+ * M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
+ * ylu/7ihX9XD4bM7yYdXnMv9p1OHQUlorSBSbb/J6n1W9UJhcp6um8Tw8/Isx4f75
+ * 4PskYS6f8Y2ItliGt1/A9iR5BTgGtJBwOxMlgoX2Ggq+Nh4E5SbdoaE5o6CO1nBx
+ * eIPsPEebQ6qC4JehQM3IGuV/lrm58+hZhaXAqNzX1cEYyAt5GYqJIVCiI585SUYs
+ * wRToGyTgaN+zthF0HP9IWlR4Am4LmJ/1OcePTnYw11CkU8wNRbDzVAzogwNH+rXr
+ * LTmf7hxVjBm6bBSVSNFcBKAXFlllubSfIeZ5hgzGqn54OmSf6odO12L5JxllddHc
+ * yAd54vWKs2kJtnsKV2V4ZdkI0w6y1TeI67baFZDNGo6qsCpFMPnvv7d46Pg2VOp1
+ * J6Ivner0NnNHE4MzNmpZRk8WXMwqq4P/gTiT7F/aCX6oFCUQ4AWPQhJYh2dkcOmL
+ * IP+47Veb10aFn61F1CJwpmOOiGNXKdDT1vK8CMnnwhm825K0q/q9Zqpzc1+1ae1z
+ * mSqol1zCoa88CuSN6nTLQlVnN/dzfrGbc0boJPaM0iGhHtSzHk4SWg84LhiJB1q9
+ * A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
+ */
 export function getKMSSecretAsymmetricOutput(args: GetKMSSecretAsymmetricOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKMSSecretAsymmetricResult> {
-    return pulumi.output(args).apply(a => getKMSSecretAsymmetric(a, opts))
+    return pulumi.output(args).apply((a: any) => getKMSSecretAsymmetric(a, opts))
 }
 
 /**

@@ -19,11 +19,8 @@ import * as utilities from "../utilities";
  * data outside of resource definitions.
  */
 export function getKMSSecretCiphertext(args: GetKMSSecretCiphertextArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSSecretCiphertextResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext", {
         "cryptoKey": args.cryptoKey,
         "plaintext": args.plaintext,
@@ -61,9 +58,22 @@ export interface GetKMSSecretCiphertextResult {
     readonly id: string;
     readonly plaintext: string;
 }
-
+/**
+ * !> **Warning:** This data source is deprecated. Use the `gcp.kms.SecretCiphertext` **resource** instead.
+ *
+ * This data source allows you to encrypt data with Google Cloud KMS and use the
+ * ciphertext within your resource definitions.
+ *
+ * For more information see
+ * [the official documentation](https://cloud.google.com/kms/docs/encrypt-decrypt).
+ *
+ * > **NOTE:** Using this data source will allow you to conceal secret data within your
+ * resource definitions, but it does not take care of protecting that data in the
+ * logging output, plan output, or state output.  Please take care to secure your secret
+ * data outside of resource definitions.
+ */
 export function getKMSSecretCiphertextOutput(args: GetKMSSecretCiphertextOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKMSSecretCiphertextResult> {
-    return pulumi.output(args).apply(a => getKMSSecretCiphertext(a, opts))
+    return pulumi.output(args).apply((a: any) => getKMSSecretCiphertext(a, opts))
 }
 
 /**

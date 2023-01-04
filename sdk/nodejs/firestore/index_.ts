@@ -102,7 +102,7 @@ export class Index extends pulumi.CustomResource {
     public readonly fields!: pulumi.Output<outputs.firestore.IndexField[]>;
     /**
      * A server defined name for this index. Format:
-     * 'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
+     * `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -180,7 +180,7 @@ export interface IndexState {
     fields?: pulumi.Input<pulumi.Input<inputs.firestore.IndexField>[]>;
     /**
      * A server defined name for this index. Format:
-     * 'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
+     * `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
      */
     name?: pulumi.Input<string>;
     /**

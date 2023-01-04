@@ -19,11 +19,8 @@ import * as utilities from "../utilities";
  */
 export function getDefaultServiceAccount(args?: GetDefaultServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetDefaultServiceAccountResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getDefaultServiceAccount:getDefaultServiceAccount", {
         "project": args.project,
     }, opts);
@@ -65,9 +62,21 @@ export interface GetDefaultServiceAccountResult {
      */
     readonly uniqueId: string;
 }
-
+/**
+ * Use this data source to retrieve default service account for this project
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default = gcp.compute.getDefaultServiceAccount({});
+ * export const defaultAccount = _default.then(_default => _default.email);
+ * ```
+ */
 export function getDefaultServiceAccountOutput(args?: GetDefaultServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDefaultServiceAccountResult> {
-    return pulumi.output(args).apply(a => getDefaultServiceAccount(a, opts))
+    return pulumi.output(args).apply((a: any) => getDefaultServiceAccount(a, opts))
 }
 
 /**

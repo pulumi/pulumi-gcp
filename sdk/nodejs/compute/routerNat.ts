@@ -208,7 +208,8 @@ export class RouterNat extends pulumi.CustomResource {
      */
     public readonly minPortsPerVm!: pulumi.Output<number | undefined>;
     /**
-     * Self-link of subnetwork to NAT
+     * Name of the NAT service. The name must be 1-63 characters long and
+     * comply with RFC1035.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -386,7 +387,8 @@ export interface RouterNatState {
      */
     minPortsPerVm?: pulumi.Input<number>;
     /**
-     * Self-link of subnetwork to NAT
+     * Name of the NAT service. The name must be 1-63 characters long and
+     * comply with RFC1035.
      */
     name?: pulumi.Input<string>;
     /**
@@ -497,7 +499,8 @@ export interface RouterNatArgs {
      */
     minPortsPerVm?: pulumi.Input<number>;
     /**
-     * Self-link of subnetwork to NAT
+     * Name of the NAT service. The name must be 1-63 characters long and
+     * comply with RFC1035.
      */
     name?: pulumi.Input<string>;
     /**

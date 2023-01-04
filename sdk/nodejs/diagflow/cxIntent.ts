@@ -136,8 +136,8 @@ export class CxIntent extends pulumi.CustomResource {
      */
     public readonly languageCode!: pulumi.Output<string | undefined>;
     /**
-     * The unique identifier of the intent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-     * ID>/intents/<Intent ID>.
+     * The unique identifier of the intent.
+     * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -236,8 +236,8 @@ export interface CxIntentState {
      */
     languageCode?: pulumi.Input<string>;
     /**
-     * The unique identifier of the intent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-     * ID>/intents/<Intent ID>.
+     * The unique identifier of the intent.
+     * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
      */
     name?: pulumi.Input<string>;
     /**

@@ -20,9 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basicEntryGroup = new gcp.datacatalog.EntryGroup("basic_entry_group", {
- *     entryGroupId: "my_group",
- * });
+ * const basicEntryGroup = new gcp.datacatalog.EntryGroup("basicEntryGroup", {entryGroupId: "my_group"});
  * ```
  * ### Data Catalog Entry Group Full
  *
@@ -30,7 +28,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basicEntryGroup = new gcp.datacatalog.EntryGroup("basic_entry_group", {
+ * const basicEntryGroup = new gcp.datacatalog.EntryGroup("basicEntryGroup", {
  *     description: "example entry group",
  *     displayName: "entry group",
  *     entryGroupId: "my_group",
@@ -87,8 +85,7 @@ export class EntryGroup extends pulumi.CustomResource {
      */
     public readonly entryGroupId!: pulumi.Output<string>;
     /**
-     * The resource name of the entry group in URL format. Example:
-     * projects/{project}/locations/{location}/entryGroups/{entryGroupId}
+     * The resource name of the entry group in URL format. Example: projects/{project}/locations/{location}/entryGroups/{entryGroupId}
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -155,8 +152,7 @@ export interface EntryGroupState {
      */
     entryGroupId?: pulumi.Input<string>;
     /**
-     * The resource name of the entry group in URL format. Example:
-     * projects/{project}/locations/{location}/entryGroups/{entryGroupId}
+     * The resource name of the entry group in URL format. Example: projects/{project}/locations/{location}/entryGroups/{entryGroupId}
      */
     name?: pulumi.Input<string>;
     /**

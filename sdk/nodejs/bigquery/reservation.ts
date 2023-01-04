@@ -24,8 +24,6 @@ import * as utilities from "../utilities";
  *     concurrency: 0,
  *     ignoreIdleSlots: false,
  *     location: "asia-northeast1",
- *     // Set to 0 for testing purposes
- *     // In reality this would be larger than zero
  *     slotCapacity: 0,
  * });
  * ```

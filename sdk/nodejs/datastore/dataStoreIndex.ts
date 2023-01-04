@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultDataStoreIndex = new gcp.datastore.DataStoreIndex("default", {
+ * const _default = new gcp.datastore.DataStoreIndex("default", {
  *     kind: "foo",
  *     properties: [
  *         {

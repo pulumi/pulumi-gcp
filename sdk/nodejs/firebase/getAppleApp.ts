@@ -5,11 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 export function getAppleApp(args: GetAppleAppArgs, opts?: pulumi.InvokeOptions): Promise<GetAppleAppResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:firebase/getAppleApp:getAppleApp", {
         "appId": args.appId,
     }, opts);
@@ -29,22 +26,41 @@ export interface GetAppleAppArgs {
  * A collection of values returned by getAppleApp.
  */
 export interface GetAppleAppResult {
+    /**
+     * Immutable. The globally unique, Firebase-assigned identifier of the App.
+     * This identifier should be treated as an opaque token, as the data format is not specified.
+     */
     readonly appId: string;
+    /**
+     * The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
+     */
     readonly appStoreId: string;
+    /**
+     * The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
+     */
     readonly bundleId: string;
     readonly deletionPolicy: string;
+    /**
+     * The user-assigned display name of the App.
+     */
     readonly displayName: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The fully qualified resource name of the App, for example:
+     * projects/projectId/iosApps/appId
+     */
     readonly name: string;
     readonly project: string;
+    /**
+     * The Apple Developer Team ID associated with the App in the App Store.
+     */
     readonly teamId: string;
 }
-
 export function getAppleAppOutput(args: GetAppleAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppleAppResult> {
-    return pulumi.output(args).apply(a => getAppleApp(a, opts))
+    return pulumi.output(args).apply((a: any) => getAppleApp(a, opts))
 }
 
 /**

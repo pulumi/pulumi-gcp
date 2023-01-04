@@ -107,7 +107,8 @@ export class SecurityScanConfig extends pulumi.CustomResource {
      */
     public readonly maxQps!: pulumi.Output<number | undefined>;
     /**
-     * A server defined name for this index. Format: 'projects/{{project}}/scanConfigs/{{server_generated_id}}'
+     * A server defined name for this index. Format:
+     * `projects/{{project}}/scanConfigs/{{server_generated_id}}`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -216,7 +217,8 @@ export interface SecurityScanConfigState {
      */
     maxQps?: pulumi.Input<number>;
     /**
-     * A server defined name for this index. Format: 'projects/{{project}}/scanConfigs/{{server_generated_id}}'
+     * A server defined name for this index. Format:
+     * `projects/{{project}}/scanConfigs/{{server_generated_id}}`
      */
     name?: pulumi.Input<string>;
     /**

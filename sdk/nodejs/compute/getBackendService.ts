@@ -12,11 +12,8 @@ import * as utilities from "../utilities";
  * and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
  */
 export function getBackendService(args: GetBackendServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendServiceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getBackendService:getBackendService", {
         "name": args.name,
         "project": args.project,
@@ -111,9 +108,13 @@ export interface GetBackendServiceResult {
      */
     readonly timeoutSec: number;
 }
-
+/**
+ * Provide access to a Backend Service's attribute. For more information
+ * see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
+ * and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
+ */
 export function getBackendServiceOutput(args: GetBackendServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackendServiceResult> {
-    return pulumi.output(args).apply(a => getBackendService(a, opts))
+    return pulumi.output(args).apply((a: any) => getBackendService(a, opts))
 }
 
 /**

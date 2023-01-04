@@ -32,11 +32,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getKMSCryptoKey(args: GetKMSCryptoKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSCryptoKeyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:kms/getKMSCryptoKey:getKMSCryptoKey", {
         "keyRing": args.keyRing,
         "name": args.name,
@@ -84,9 +81,33 @@ export interface GetKMSCryptoKeyResult {
     readonly skipInitialVersionCreation: boolean;
     readonly versionTemplates: outputs.kms.GetKMSCryptoKeyVersionTemplate[];
 }
-
+/**
+ * Provides access to a Google Cloud Platform KMS CryptoKey. For more information see
+ * [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key)
+ * and
+ * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys).
+ *
+ * A CryptoKey is an interface to key material which can be used to encrypt and decrypt data. A CryptoKey belongs to a
+ * Google Cloud KMS KeyRing.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myKeyRing = gcp.kms.getKMSKeyRing({
+ *     name: "my-key-ring",
+ *     location: "us-central1",
+ * });
+ * const myCryptoKey = myKeyRing.then(myKeyRing => gcp.kms.getKMSCryptoKey({
+ *     name: "my-crypto-key",
+ *     keyRing: myKeyRing.id,
+ * }));
+ * ```
+ */
 export function getKMSCryptoKeyOutput(args: GetKMSCryptoKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKMSCryptoKeyResult> {
-    return pulumi.output(args).apply(a => getKMSCryptoKey(a, opts))
+    return pulumi.output(args).apply((a: any) => getKMSCryptoKey(a, opts))
 }
 
 /**

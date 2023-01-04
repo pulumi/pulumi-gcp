@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultEngineModel = new gcp.ml.EngineModel("default", {
+ * const _default = new gcp.ml.EngineModel("default", {
  *     description: "My model",
  *     regions: "us-central1",
  * });
@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultEngineModel = new gcp.ml.EngineModel("default", {
+ * const _default = new gcp.ml.EngineModel("default", {
  *     description: "My model",
  *     labels: {
  *         my_model: "foo",
@@ -106,7 +106,7 @@ export class EngineModel extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The name specified for the version when it was created.
+     * The name specified for the model.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -184,7 +184,7 @@ export interface EngineModelState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The name specified for the version when it was created.
+     * The name specified for the model.
      */
     name?: pulumi.Input<string>;
     /**
@@ -226,7 +226,7 @@ export interface EngineModelArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The name specified for the version when it was created.
+     * The name specified for the model.
      */
     name?: pulumi.Input<string>;
     /**

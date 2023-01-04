@@ -148,7 +148,8 @@ export class Snapshot extends pulumi.CustomResource {
      */
     public /*out*/ readonly diskSizeGb!: pulumi.Output<number>;
     /**
-     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * The fingerprint used for optimistic locking of this resource. Used
+     * internally during updates.
      */
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
     /**
@@ -156,9 +157,10 @@ export class Snapshot extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses
-     * attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied
-     * encryption key.
+     * A list of public visible licenses that apply to this snapshot. This
+     * can be because the original image had licenses attached (such as a
+     * Windows image).  snapshotEncryptionKey nested object Encrypts the
+     * snapshot using a customer-supplied encryption key.
      */
     public /*out*/ readonly licenses!: pulumi.Output<string[]>;
     /**
@@ -210,7 +212,8 @@ export class Snapshot extends pulumi.CustomResource {
      */
     public readonly sourceDiskEncryptionKey!: pulumi.Output<outputs.compute.SnapshotSourceDiskEncryptionKey | undefined>;
     /**
-     * A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
+     * A size of the storage used by the snapshot. As snapshots share
+     * storage, this number is expected to change with snapshot
      * creation/deletion.
      */
     public /*out*/ readonly storageBytes!: pulumi.Output<number>;
@@ -307,7 +310,8 @@ export interface SnapshotState {
      */
     diskSizeGb?: pulumi.Input<number>;
     /**
-     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * The fingerprint used for optimistic locking of this resource. Used
+     * internally during updates.
      */
     labelFingerprint?: pulumi.Input<string>;
     /**
@@ -315,9 +319,10 @@ export interface SnapshotState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses
-     * attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied
-     * encryption key.
+     * A list of public visible licenses that apply to this snapshot. This
+     * can be because the original image had licenses attached (such as a
+     * Windows image).  snapshotEncryptionKey nested object Encrypts the
+     * snapshot using a customer-supplied encryption key.
      */
     licenses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -369,7 +374,8 @@ export interface SnapshotState {
      */
     sourceDiskEncryptionKey?: pulumi.Input<inputs.compute.SnapshotSourceDiskEncryptionKey>;
     /**
-     * A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
+     * A size of the storage used by the snapshot. As snapshots share
+     * storage, this number is expected to change with snapshot
      * creation/deletion.
      */
     storageBytes?: pulumi.Input<number>;

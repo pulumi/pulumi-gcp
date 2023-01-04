@@ -98,8 +98,8 @@ export class Fulfillment extends pulumi.CustomResource {
      */
     public readonly genericWebService!: pulumi.Output<outputs.diagflow.FulfillmentGenericWebService | undefined>;
     /**
-     * The unique identifier of the fulfillment. Format: projects/<Project ID>/agent/fulfillment - projects/<Project
-     * ID>/locations/<Location ID>/agent/fulfillment
+     * The unique identifier of the fulfillment.
+     * Format: projects/<Project ID>/agent/fulfillment - projects/<Project ID>/locations/<Location ID>/agent/fulfillment
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -167,8 +167,8 @@ export interface FulfillmentState {
      */
     genericWebService?: pulumi.Input<inputs.diagflow.FulfillmentGenericWebService>;
     /**
-     * The unique identifier of the fulfillment. Format: projects/<Project ID>/agent/fulfillment - projects/<Project
-     * ID>/locations/<Location ID>/agent/fulfillment
+     * The unique identifier of the fulfillment.
+     * Format: projects/<Project ID>/agent/fulfillment - projects/<Project ID>/locations/<Location ID>/agent/fulfillment
      */
     name?: pulumi.Input<string>;
     /**
