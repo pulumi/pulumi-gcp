@@ -505,7 +505,7 @@ class ManagedZonePrivateVisibilityConfigNetworkArgs:
     def __init__(__self__, *,
                  network_url: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] network_url: The id or fully qualified URL of the VPC network to forward queries to.
+        :param pulumi.Input[str] network_url: The id or fully qualified URL of the VPC network to bind to.
                This should be formatted like `projects/{project}/global/networks/{network}` or
                `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
         """
@@ -515,7 +515,7 @@ class ManagedZonePrivateVisibilityConfigNetworkArgs:
     @pulumi.getter(name="networkUrl")
     def network_url(self) -> pulumi.Input[str]:
         """
-        The id or fully qualified URL of the VPC network to forward queries to.
+        The id or fully qualified URL of the VPC network to bind to.
         This should be formatted like `projects/{project}/global/networks/{network}` or
         `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
         """
@@ -1029,9 +1029,9 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs:
                  rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] location: The location name defined in Google Cloud.
-        :param pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs'] health_checked_targets: For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+        :param pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs'] health_checked_targets: The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
                Structure is document below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: Same as `rrdatas` above.
+               Structure is document below.
         """
         pulumi.set(__self__, "location", location)
         if health_checked_targets is not None:
@@ -1055,7 +1055,8 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs:
     @pulumi.getter(name="healthCheckedTargets")
     def health_checked_targets(self) -> Optional[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs']]:
         """
-        For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+        The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
+        Structure is document below.
         Structure is document below.
         """
         return pulumi.get(self, "health_checked_targets")
@@ -1067,9 +1068,6 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs:
     @property
     @pulumi.getter
     def rrdatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Same as `rrdatas` above.
-        """
         return pulumi.get(self, "rrdatas")
 
     @rrdatas.setter
@@ -1359,7 +1357,7 @@ class RecordSetRoutingPolicyWrrArgs:
                  rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[float] weight: The ratio of traffic routed to the target.
-        :param pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs'] health_checked_targets: For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+        :param pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs'] health_checked_targets: The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
                Structure is document below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: Same as `rrdatas` above.
         """
@@ -1385,7 +1383,7 @@ class RecordSetRoutingPolicyWrrArgs:
     @pulumi.getter(name="healthCheckedTargets")
     def health_checked_targets(self) -> Optional[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs']]:
         """
-        For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
+        The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
         Structure is document below.
         """
         return pulumi.get(self, "health_checked_targets")

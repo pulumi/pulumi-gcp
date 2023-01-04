@@ -140,7 +140,8 @@ class _HostingChannelState:
                will not be automatically deleted. This field is present in the output whether it's
                set directly or via the `ttl` field.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Text labels used for extra metadata and/or filtering
-        :param pulumi.Input[str] name: The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID
+        :param pulumi.Input[str] name: The fully-qualified resource name for the channel, in the format:
+               sites/SITE_ID/channels/CHANNEL_ID
         :param pulumi.Input[int] retained_release_count: The number of previous releases to retain on the channel for rollback or other
                purposes. Must be a number between 1-100. Defaults to 10 for new channels.
         :param pulumi.Input[str] site_id: Required. The ID of the site in which to create this channel.
@@ -205,7 +206,8 @@ class _HostingChannelState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID
+        The fully-qualified resource name for the channel, in the format:
+        sites/SITE_ID/channels/CHANNEL_ID
         """
         return pulumi.get(self, "name")
 
@@ -455,7 +457,8 @@ class HostingChannel(pulumi.CustomResource):
                will not be automatically deleted. This field is present in the output whether it's
                set directly or via the `ttl` field.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Text labels used for extra metadata and/or filtering
-        :param pulumi.Input[str] name: The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID
+        :param pulumi.Input[str] name: The fully-qualified resource name for the channel, in the format:
+               sites/SITE_ID/channels/CHANNEL_ID
         :param pulumi.Input[int] retained_release_count: The number of previous releases to retain on the channel for rollback or other
                purposes. Must be a number between 1-100. Defaults to 10 for new channels.
         :param pulumi.Input[str] site_id: Required. The ID of the site in which to create this channel.
@@ -506,7 +509,8 @@ class HostingChannel(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID
+        The fully-qualified resource name for the channel, in the format:
+        sites/SITE_ID/channels/CHANNEL_ID
         """
         return pulumi.get(self, "name")
 

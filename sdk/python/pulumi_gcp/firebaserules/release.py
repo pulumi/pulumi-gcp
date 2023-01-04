@@ -78,8 +78,7 @@ class _ReleaseState:
         """
         Input properties used for looking up and filtering Release resources.
         :param pulumi.Input[str] create_time: Output only. Time the release was created.
-        :param pulumi.Input[bool] disabled: Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated
-               from this Release.
+        :param pulumi.Input[bool] disabled: Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
         :param pulumi.Input[str] name: Format: `projects/{project_id}/releases/{release_id}`\\Firestore Rules Releases will **always** have the name 'cloud.firestore'
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] ruleset_name: Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
@@ -114,8 +113,7 @@ class _ReleaseState:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated
-        from this Release.
+        Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
         """
         return pulumi.get(self, "disabled")
 
@@ -370,8 +368,7 @@ class Release(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Output only. Time the release was created.
-        :param pulumi.Input[bool] disabled: Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated
-               from this Release.
+        :param pulumi.Input[bool] disabled: Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
         :param pulumi.Input[str] name: Format: `projects/{project_id}/releases/{release_id}`\\Firestore Rules Releases will **always** have the name 'cloud.firestore'
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] ruleset_name: Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
@@ -401,8 +398,7 @@ class Release(pulumi.CustomResource):
     @pulumi.getter
     def disabled(self) -> pulumi.Output[bool]:
         """
-        Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated
-        from this Release.
+        Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
         """
         return pulumi.get(self, "disabled")
 

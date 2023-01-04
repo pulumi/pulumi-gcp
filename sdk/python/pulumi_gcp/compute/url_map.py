@@ -28,29 +28,33 @@ class URLMapArgs:
                  tests: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapTestArgs']]]] = None):
         """
         The set of arguments for constructing a URLMap resource.
-        :param pulumi.Input['URLMapDefaultRouteActionArgs'] default_route_action: defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
-               advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
-               to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
-               Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+        :param pulumi.Input['URLMapDefaultRouteActionArgs'] default_route_action: defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
+               like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend.
+               If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService
+               is set, defaultRouteAction cannot contain any weightedBackendServices.
                Only one of defaultRouteAction or defaultUrlRedirect must be set.
                Structure is documented below.
-        :param pulumi.Input[str] default_service: The backend service or backend bucket to use when none of the given paths match.
+        :param pulumi.Input[str] default_service: The backend service or backend bucket to use when none of the given rules match.
         :param pulumi.Input['URLMapDefaultUrlRedirectArgs'] default_url_redirect: When none of the specified hostRules match, the request is redirected to a URL specified
                by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
                defaultRouteAction must not be set.
                Structure is documented below.
-        :param pulumi.Input[str] description: Description of this test case.
+        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create
+               the resource.
         :param pulumi.Input['URLMapHeaderActionArgs'] header_action: Specifies changes to request and response headers that need to take effect for
-               the selected backendService.
-               headerAction specified here take effect before headerAction in the enclosing
-               HttpRouteRule, PathMatcher and UrlMap.
+               the selected backendService. The headerAction specified here take effect after
+               headerAction specified under pathMatcher.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['URLMapHostRuleArgs']]] host_rules: The list of HostRules to use against the URL.
                Structure is documented below.
-        :param pulumi.Input[str] name: The name of the query parameter to match. The query parameter must exist in the
-               request, in the absence of which the request match fails.
-        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherArgs']]] path_matchers: The name of the PathMatcher to use to match the path portion of the URL if the
-               hostRule matches the URL's host portion.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The
+               name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+               name must be 1-63 characters long and match the regular expression
+               `a-z?` which means the first character must be a lowercase
+               letter, and all following characters must be a dash, lowercase letter, or digit,
+               except the last character, which cannot be a dash.
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherArgs']]] path_matchers: The list of named PathMatchers to use against the URL.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['URLMapTestArgs']]] tests: The list of expected URL mapping tests. Request to update this UrlMap will
@@ -83,10 +87,10 @@ class URLMapArgs:
     @pulumi.getter(name="defaultRouteAction")
     def default_route_action(self) -> Optional[pulumi.Input['URLMapDefaultRouteActionArgs']]:
         """
-        defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
-        advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
-        to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
-        Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+        defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
+        like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend.
+        If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService
+        is set, defaultRouteAction cannot contain any weightedBackendServices.
         Only one of defaultRouteAction or defaultUrlRedirect must be set.
         Structure is documented below.
         """
@@ -100,7 +104,7 @@ class URLMapArgs:
     @pulumi.getter(name="defaultService")
     def default_service(self) -> Optional[pulumi.Input[str]]:
         """
-        The backend service or backend bucket to use when none of the given paths match.
+        The backend service or backend bucket to use when none of the given rules match.
         """
         return pulumi.get(self, "default_service")
 
@@ -127,7 +131,8 @@ class URLMapArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of this test case.
+        An optional description of this resource. Provide this property when you create
+        the resource.
         """
         return pulumi.get(self, "description")
 
@@ -140,9 +145,8 @@ class URLMapArgs:
     def header_action(self) -> Optional[pulumi.Input['URLMapHeaderActionArgs']]:
         """
         Specifies changes to request and response headers that need to take effect for
-        the selected backendService.
-        headerAction specified here take effect before headerAction in the enclosing
-        HttpRouteRule, PathMatcher and UrlMap.
+        the selected backendService. The headerAction specified here take effect after
+        headerAction specified under pathMatcher.
         Structure is documented below.
         """
         return pulumi.get(self, "header_action")
@@ -168,8 +172,12 @@ class URLMapArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the query parameter to match. The query parameter must exist in the
-        request, in the absence of which the request match fails.
+        Name of the resource. Provided by the client when the resource is created. The
+        name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        name must be 1-63 characters long and match the regular expression
+        `a-z?` which means the first character must be a lowercase
+        letter, and all following characters must be a dash, lowercase letter, or digit,
+        except the last character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
 
@@ -181,8 +189,8 @@ class URLMapArgs:
     @pulumi.getter(name="pathMatchers")
     def path_matchers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherArgs']]]]:
         """
-        The name of the PathMatcher to use to match the path portion of the URL if the
-        hostRule matches the URL's host portion.
+        The list of named PathMatchers to use against the URL.
+        Structure is documented below.
         """
         return pulumi.get(self, "path_matchers")
 
@@ -239,31 +247,36 @@ class _URLMapState:
         """
         Input properties used for looking up and filtering URLMap resources.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
-        :param pulumi.Input['URLMapDefaultRouteActionArgs'] default_route_action: defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
-               advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
-               to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
-               Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+        :param pulumi.Input['URLMapDefaultRouteActionArgs'] default_route_action: defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
+               like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend.
+               If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService
+               is set, defaultRouteAction cannot contain any weightedBackendServices.
                Only one of defaultRouteAction or defaultUrlRedirect must be set.
                Structure is documented below.
-        :param pulumi.Input[str] default_service: The backend service or backend bucket to use when none of the given paths match.
+        :param pulumi.Input[str] default_service: The backend service or backend bucket to use when none of the given rules match.
         :param pulumi.Input['URLMapDefaultUrlRedirectArgs'] default_url_redirect: When none of the specified hostRules match, the request is redirected to a URL specified
                by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
                defaultRouteAction must not be set.
                Structure is documented below.
-        :param pulumi.Input[str] description: Description of this test case.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create
+               the resource.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This
+               field is used in optimistic locking.
         :param pulumi.Input['URLMapHeaderActionArgs'] header_action: Specifies changes to request and response headers that need to take effect for
-               the selected backendService.
-               headerAction specified here take effect before headerAction in the enclosing
-               HttpRouteRule, PathMatcher and UrlMap.
+               the selected backendService. The headerAction specified here take effect after
+               headerAction specified under pathMatcher.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['URLMapHostRuleArgs']]] host_rules: The list of HostRules to use against the URL.
                Structure is documented below.
         :param pulumi.Input[int] map_id: The unique identifier for the resource.
-        :param pulumi.Input[str] name: The name of the query parameter to match. The query parameter must exist in the
-               request, in the absence of which the request match fails.
-        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherArgs']]] path_matchers: The name of the PathMatcher to use to match the path portion of the URL if the
-               hostRule matches the URL's host portion.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The
+               name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+               name must be 1-63 characters long and match the regular expression
+               `a-z?` which means the first character must be a lowercase
+               letter, and all following characters must be a dash, lowercase letter, or digit,
+               except the last character, which cannot be a dash.
+        :param pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherArgs']]] path_matchers: The list of named PathMatchers to use against the URL.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -317,10 +330,10 @@ class _URLMapState:
     @pulumi.getter(name="defaultRouteAction")
     def default_route_action(self) -> Optional[pulumi.Input['URLMapDefaultRouteActionArgs']]:
         """
-        defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
-        advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
-        to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
-        Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+        defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
+        like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend.
+        If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService
+        is set, defaultRouteAction cannot contain any weightedBackendServices.
         Only one of defaultRouteAction or defaultUrlRedirect must be set.
         Structure is documented below.
         """
@@ -334,7 +347,7 @@ class _URLMapState:
     @pulumi.getter(name="defaultService")
     def default_service(self) -> Optional[pulumi.Input[str]]:
         """
-        The backend service or backend bucket to use when none of the given paths match.
+        The backend service or backend bucket to use when none of the given rules match.
         """
         return pulumi.get(self, "default_service")
 
@@ -361,7 +374,8 @@ class _URLMapState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of this test case.
+        An optional description of this resource. Provide this property when you create
+        the resource.
         """
         return pulumi.get(self, "description")
 
@@ -373,7 +387,8 @@ class _URLMapState:
     @pulumi.getter
     def fingerprint(self) -> Optional[pulumi.Input[str]]:
         """
-        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+        Fingerprint of this resource. A hash of the contents stored in this object. This
+        field is used in optimistic locking.
         """
         return pulumi.get(self, "fingerprint")
 
@@ -386,9 +401,8 @@ class _URLMapState:
     def header_action(self) -> Optional[pulumi.Input['URLMapHeaderActionArgs']]:
         """
         Specifies changes to request and response headers that need to take effect for
-        the selected backendService.
-        headerAction specified here take effect before headerAction in the enclosing
-        HttpRouteRule, PathMatcher and UrlMap.
+        the selected backendService. The headerAction specified here take effect after
+        headerAction specified under pathMatcher.
         Structure is documented below.
         """
         return pulumi.get(self, "header_action")
@@ -426,8 +440,12 @@ class _URLMapState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the query parameter to match. The query parameter must exist in the
-        request, in the absence of which the request match fails.
+        Name of the resource. Provided by the client when the resource is created. The
+        name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        name must be 1-63 characters long and match the regular expression
+        `a-z?` which means the first character must be a lowercase
+        letter, and all following characters must be a dash, lowercase letter, or digit,
+        except the last character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
 
@@ -439,8 +457,8 @@ class _URLMapState:
     @pulumi.getter(name="pathMatchers")
     def path_matchers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherArgs']]]]:
         """
-        The name of the PathMatcher to use to match the path portion of the URL if the
-        hostRule matches the URL's host portion.
+        The list of named PathMatchers to use against the URL.
+        Structure is documented below.
         """
         return pulumi.get(self, "path_matchers")
 
@@ -533,29 +551,33 @@ class URLMap(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['URLMapDefaultRouteActionArgs']] default_route_action: defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
-               advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
-               to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
-               Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+        :param pulumi.Input[pulumi.InputType['URLMapDefaultRouteActionArgs']] default_route_action: defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
+               like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend.
+               If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService
+               is set, defaultRouteAction cannot contain any weightedBackendServices.
                Only one of defaultRouteAction or defaultUrlRedirect must be set.
                Structure is documented below.
-        :param pulumi.Input[str] default_service: The backend service or backend bucket to use when none of the given paths match.
+        :param pulumi.Input[str] default_service: The backend service or backend bucket to use when none of the given rules match.
         :param pulumi.Input[pulumi.InputType['URLMapDefaultUrlRedirectArgs']] default_url_redirect: When none of the specified hostRules match, the request is redirected to a URL specified
                by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
                defaultRouteAction must not be set.
                Structure is documented below.
-        :param pulumi.Input[str] description: Description of this test case.
+        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create
+               the resource.
         :param pulumi.Input[pulumi.InputType['URLMapHeaderActionArgs']] header_action: Specifies changes to request and response headers that need to take effect for
-               the selected backendService.
-               headerAction specified here take effect before headerAction in the enclosing
-               HttpRouteRule, PathMatcher and UrlMap.
+               the selected backendService. The headerAction specified here take effect after
+               headerAction specified under pathMatcher.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['URLMapHostRuleArgs']]]] host_rules: The list of HostRules to use against the URL.
                Structure is documented below.
-        :param pulumi.Input[str] name: The name of the query parameter to match. The query parameter must exist in the
-               request, in the absence of which the request match fails.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['URLMapPathMatcherArgs']]]] path_matchers: The name of the PathMatcher to use to match the path portion of the URL if the
-               hostRule matches the URL's host portion.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The
+               name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+               name must be 1-63 characters long and match the regular expression
+               `a-z?` which means the first character must be a lowercase
+               letter, and all following characters must be a dash, lowercase letter, or digit,
+               except the last character, which cannot be a dash.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['URLMapPathMatcherArgs']]]] path_matchers: The list of named PathMatchers to use against the URL.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['URLMapTestArgs']]]] tests: The list of expected URL mapping tests. Request to update this UrlMap will
@@ -675,31 +697,36 @@ class URLMap(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
-        :param pulumi.Input[pulumi.InputType['URLMapDefaultRouteActionArgs']] default_route_action: defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
-               advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
-               to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
-               Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+        :param pulumi.Input[pulumi.InputType['URLMapDefaultRouteActionArgs']] default_route_action: defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
+               like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend.
+               If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService
+               is set, defaultRouteAction cannot contain any weightedBackendServices.
                Only one of defaultRouteAction or defaultUrlRedirect must be set.
                Structure is documented below.
-        :param pulumi.Input[str] default_service: The backend service or backend bucket to use when none of the given paths match.
+        :param pulumi.Input[str] default_service: The backend service or backend bucket to use when none of the given rules match.
         :param pulumi.Input[pulumi.InputType['URLMapDefaultUrlRedirectArgs']] default_url_redirect: When none of the specified hostRules match, the request is redirected to a URL specified
                by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
                defaultRouteAction must not be set.
                Structure is documented below.
-        :param pulumi.Input[str] description: Description of this test case.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create
+               the resource.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This
+               field is used in optimistic locking.
         :param pulumi.Input[pulumi.InputType['URLMapHeaderActionArgs']] header_action: Specifies changes to request and response headers that need to take effect for
-               the selected backendService.
-               headerAction specified here take effect before headerAction in the enclosing
-               HttpRouteRule, PathMatcher and UrlMap.
+               the selected backendService. The headerAction specified here take effect after
+               headerAction specified under pathMatcher.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['URLMapHostRuleArgs']]]] host_rules: The list of HostRules to use against the URL.
                Structure is documented below.
         :param pulumi.Input[int] map_id: The unique identifier for the resource.
-        :param pulumi.Input[str] name: The name of the query parameter to match. The query parameter must exist in the
-               request, in the absence of which the request match fails.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['URLMapPathMatcherArgs']]]] path_matchers: The name of the PathMatcher to use to match the path portion of the URL if the
-               hostRule matches the URL's host portion.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The
+               name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+               name must be 1-63 characters long and match the regular expression
+               `a-z?` which means the first character must be a lowercase
+               letter, and all following characters must be a dash, lowercase letter, or digit,
+               except the last character, which cannot be a dash.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['URLMapPathMatcherArgs']]]] path_matchers: The list of named PathMatchers to use against the URL.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -740,10 +767,10 @@ class URLMap(pulumi.CustomResource):
     @pulumi.getter(name="defaultRouteAction")
     def default_route_action(self) -> pulumi.Output[Optional['outputs.URLMapDefaultRouteAction']]:
         """
-        defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
-        advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
-        to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
-        Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+        defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
+        like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend.
+        If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService
+        is set, defaultRouteAction cannot contain any weightedBackendServices.
         Only one of defaultRouteAction or defaultUrlRedirect must be set.
         Structure is documented below.
         """
@@ -753,7 +780,7 @@ class URLMap(pulumi.CustomResource):
     @pulumi.getter(name="defaultService")
     def default_service(self) -> pulumi.Output[Optional[str]]:
         """
-        The backend service or backend bucket to use when none of the given paths match.
+        The backend service or backend bucket to use when none of the given rules match.
         """
         return pulumi.get(self, "default_service")
 
@@ -772,7 +799,8 @@ class URLMap(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of this test case.
+        An optional description of this resource. Provide this property when you create
+        the resource.
         """
         return pulumi.get(self, "description")
 
@@ -780,7 +808,8 @@ class URLMap(pulumi.CustomResource):
     @pulumi.getter
     def fingerprint(self) -> pulumi.Output[str]:
         """
-        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+        Fingerprint of this resource. A hash of the contents stored in this object. This
+        field is used in optimistic locking.
         """
         return pulumi.get(self, "fingerprint")
 
@@ -789,9 +818,8 @@ class URLMap(pulumi.CustomResource):
     def header_action(self) -> pulumi.Output[Optional['outputs.URLMapHeaderAction']]:
         """
         Specifies changes to request and response headers that need to take effect for
-        the selected backendService.
-        headerAction specified here take effect before headerAction in the enclosing
-        HttpRouteRule, PathMatcher and UrlMap.
+        the selected backendService. The headerAction specified here take effect after
+        headerAction specified under pathMatcher.
         Structure is documented below.
         """
         return pulumi.get(self, "header_action")
@@ -817,8 +845,12 @@ class URLMap(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the query parameter to match. The query parameter must exist in the
-        request, in the absence of which the request match fails.
+        Name of the resource. Provided by the client when the resource is created. The
+        name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        name must be 1-63 characters long and match the regular expression
+        `a-z?` which means the first character must be a lowercase
+        letter, and all following characters must be a dash, lowercase letter, or digit,
+        except the last character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
 
@@ -826,8 +858,8 @@ class URLMap(pulumi.CustomResource):
     @pulumi.getter(name="pathMatchers")
     def path_matchers(self) -> pulumi.Output[Optional[Sequence['outputs.URLMapPathMatcher']]]:
         """
-        The name of the PathMatcher to use to match the path portion of the URL if the
-        hostRule matches the URL's host portion.
+        The list of named PathMatchers to use against the URL.
+        Structure is documented below.
         """
         return pulumi.get(self, "path_matchers")
 

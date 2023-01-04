@@ -56,8 +56,8 @@ class InstanceTemplateArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
         :param pulumi.Input[str] instance_description: A brief description to use for instances
                created from this template.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of ket/value label pairs to assign to disk created from
-               this template
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to instances
+               created from this template.
         :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
         :param pulumi.Input[str] metadata_startup_script: An alternative to using the
@@ -260,8 +260,8 @@ class InstanceTemplateArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A set of ket/value label pairs to assign to disk created from
-        this template
+        A set of key/value label pairs to assign to instances
+        created from this template.
         """
         return pulumi.get(self, "labels")
 
@@ -506,8 +506,8 @@ class _InstanceTemplateState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
         :param pulumi.Input[str] instance_description: A brief description to use for instances
                created from this template.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of ket/value label pairs to assign to disk created from
-               this template
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to instances
+               created from this template.
         :param pulumi.Input[str] machine_type: The machine type to create.
         :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
@@ -710,8 +710,8 @@ class _InstanceTemplateState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A set of ket/value label pairs to assign to disk created from
-        this template
+        A set of key/value label pairs to assign to instances
+        created from this template.
         """
         return pulumi.get(self, "labels")
 
@@ -1147,8 +1147,8 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateGuestAcceleratorArgs']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
         :param pulumi.Input[str] instance_description: A brief description to use for instances
                created from this template.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of ket/value label pairs to assign to disk created from
-               this template
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to instances
+               created from this template.
         :param pulumi.Input[str] machine_type: The machine type to create.
         :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
@@ -1473,8 +1473,8 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateGuestAcceleratorArgs']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
         :param pulumi.Input[str] instance_description: A brief description to use for instances
                created from this template.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of ket/value label pairs to assign to disk created from
-               this template
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to instances
+               created from this template.
         :param pulumi.Input[str] machine_type: The machine type to create.
         :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
@@ -1623,8 +1623,8 @@ class InstanceTemplate(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        A set of ket/value label pairs to assign to disk created from
-        this template
+        A set of key/value label pairs to assign to instances
+        created from this template.
         """
         return pulumi.get(self, "labels")
 

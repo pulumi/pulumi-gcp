@@ -99,8 +99,8 @@ class InstanceArgs:
         :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a
                notebook instance fully boots up. The path must be a URL
                or Cloud Storage path (gs://path-to-file/file-name).
-        :param pulumi.Input[str] project: The name of the Google Cloud project that this VM image belongs to.
-               Format: projects/{project_id}
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input['InstanceReservationAffinityArgs'] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
                Structure is documented below.
         :param pulumi.Input[str] service_account: The service account on this instance, giving access to other
@@ -491,8 +491,8 @@ class InstanceArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Google Cloud project that this VM image belongs to.
-        Format: projects/{project_id}
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -697,8 +697,8 @@ class _InstanceState:
         :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a
                notebook instance fully boots up. The path must be a URL
                or Cloud Storage path (gs://path-to-file/file-name).
-        :param pulumi.Input[str] project: The name of the Google Cloud project that this VM image belongs to.
-               Format: projects/{project_id}
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] proxy_uri: The proxy endpoint that is used to access the Jupyter notebook.
         :param pulumi.Input['InstanceReservationAffinityArgs'] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
                Structure is documented below.
@@ -1097,8 +1097,8 @@ class _InstanceState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Google Cloud project that this VM image belongs to.
-        Format: projects/{project_id}
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -1438,8 +1438,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a
                notebook instance fully boots up. The path must be a URL
                or Cloud Storage path (gs://path-to-file/file-name).
-        :param pulumi.Input[str] project: The name of the Google Cloud project that this VM image belongs to.
-               Format: projects/{project_id}
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
                Structure is documented below.
         :param pulumi.Input[str] service_account: The service account on this instance, giving access to other
@@ -1771,8 +1771,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a
                notebook instance fully boots up. The path must be a URL
                or Cloud Storage path (gs://path-to-file/file-name).
-        :param pulumi.Input[str] project: The name of the Google Cloud project that this VM image belongs to.
-               Format: projects/{project_id}
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] proxy_uri: The proxy endpoint that is used to access the Jupyter notebook.
         :param pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
                Structure is documented below.
@@ -2050,8 +2050,8 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The name of the Google Cloud project that this VM image belongs to.
-        Format: projects/{project_id}
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 

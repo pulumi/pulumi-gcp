@@ -60,6 +60,9 @@ class GetRegistryImageResult:
     @property
     @pulumi.getter(name="imageUrl")
     def image_url(self) -> str:
+        """
+        The URL at which the image can be accessed.
+        """
         return pulumi.get(self, "image_url")
 
     @property
@@ -118,6 +121,13 @@ def get_registry_image(digest: Optional[str] = None,
     debian = gcp.container.get_registry_image(name="debian")
     pulumi.export("gcrLocation", debian.image_url)
     ```
+
+
+    :param str digest: The image digest to fetch, if any.
+    :param str name: The image name.
+    :param str project: The project ID that this image is attached to.  If not provider, provider project will be used instead.
+    :param str region: The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
+    :param str tag: The tag to fetch, if any.
     """
     __args__ = dict()
     __args__['digest'] = digest
@@ -159,5 +169,12 @@ def get_registry_image_output(digest: Optional[pulumi.Input[Optional[str]]] = No
     debian = gcp.container.get_registry_image(name="debian")
     pulumi.export("gcrLocation", debian.image_url)
     ```
+
+
+    :param str digest: The image digest to fetch, if any.
+    :param str name: The image name.
+    :param str project: The project ID that this image is attached to.  If not provider, provider project will be used instead.
+    :param str region: The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
+    :param str tag: The tag to fetch, if any.
     """
     ...

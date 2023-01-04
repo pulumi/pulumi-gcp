@@ -100,8 +100,8 @@ class TriggerDestinationCloudRunService(dict):
                  path: Optional[str] = None,
                  region: Optional[str] = None):
         """
-        :param str service: Required. Name of the GKE service.
-        :param str path: Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+        :param str service: Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+        :param str path: Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
         :param str region: Required. The region the Cloud Run service is deployed in.
         """
         pulumi.set(__self__, "service", service)
@@ -114,7 +114,7 @@ class TriggerDestinationCloudRunService(dict):
     @pulumi.getter
     def service(self) -> str:
         """
-        Required. Name of the GKE service.
+        Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
         """
         return pulumi.get(self, "service")
 
@@ -122,7 +122,7 @@ class TriggerDestinationCloudRunService(dict):
     @pulumi.getter
     def path(self) -> Optional[str]:
         """
-        Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+        Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
         """
         return pulumi.get(self, "path")
 
@@ -264,8 +264,7 @@ class TriggerTransportPubsub(dict):
                  subscription: Optional[str] = None,
                  topic: Optional[str] = None):
         """
-        :param str subscription: -
-               Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
+        :param str subscription: Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
         :param str topic: Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}. You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
         """
         if subscription is not None:
@@ -277,7 +276,6 @@ class TriggerTransportPubsub(dict):
     @pulumi.getter
     def subscription(self) -> Optional[str]:
         """
-        -
         Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
         """
         return pulumi.get(self, "subscription")

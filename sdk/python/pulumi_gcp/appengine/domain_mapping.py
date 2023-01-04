@@ -106,7 +106,7 @@ class _DomainMappingState:
         """
         Input properties used for looking up and filtering DomainMapping resources.
         :param pulumi.Input[str] domain_name: Relative name of the domain serving the application. Example: example.com.
-        :param pulumi.Input[str] name: Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
+        :param pulumi.Input[str] name: Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
         :param pulumi.Input[str] override_strategy: Whether the domain creation should override any existing mappings for this domain.
                By default, overrides are rejected.
                Default value is `STRICT`.
@@ -115,6 +115,7 @@ class _DomainMappingState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['DomainMappingResourceRecordArgs']]] resource_records: The resource records required to configure this domain mapping. These records must be added to the domain's DNS
                configuration in order to serve the application via this domain mapping.
+               Structure is documented below.
         :param pulumi.Input['DomainMappingSslSettingsArgs'] ssl_settings: SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
                Structure is documented below.
         """
@@ -147,7 +148,7 @@ class _DomainMappingState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
+        Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
         """
         return pulumi.get(self, "name")
 
@@ -189,6 +190,7 @@ class _DomainMappingState:
         """
         The resource records required to configure this domain mapping. These records must be added to the domain's DNS
         configuration in order to serve the application via this domain mapping.
+        Structure is documented below.
         """
         return pulumi.get(self, "resource_records")
 
@@ -376,7 +378,7 @@ class DomainMapping(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain_name: Relative name of the domain serving the application. Example: example.com.
-        :param pulumi.Input[str] name: Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
+        :param pulumi.Input[str] name: Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
         :param pulumi.Input[str] override_strategy: Whether the domain creation should override any existing mappings for this domain.
                By default, overrides are rejected.
                Default value is `STRICT`.
@@ -385,6 +387,7 @@ class DomainMapping(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainMappingResourceRecordArgs']]]] resource_records: The resource records required to configure this domain mapping. These records must be added to the domain's DNS
                configuration in order to serve the application via this domain mapping.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['DomainMappingSslSettingsArgs']] ssl_settings: SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
                Structure is documented below.
         """
@@ -412,7 +415,7 @@ class DomainMapping(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
+        Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
         """
         return pulumi.get(self, "name")
 
@@ -442,6 +445,7 @@ class DomainMapping(pulumi.CustomResource):
         """
         The resource records required to configure this domain mapping. These records must be added to the domain's DNS
         configuration in order to serve the application via this domain mapping.
+        Structure is documented below.
         """
         return pulumi.get(self, "resource_records")
 

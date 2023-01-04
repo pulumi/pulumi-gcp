@@ -208,11 +208,21 @@ class BucketEncryption(dict):
 
     def __init__(__self__, *,
                  default_kms_key_name: str):
+        """
+        :param str default_kms_key_name: The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
+               You must pay attention to whether the crypto key is available in the location that this bucket is created in.
+               See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
+        """
         pulumi.set(__self__, "default_kms_key_name", default_kms_key_name)
 
     @property
     @pulumi.getter(name="defaultKmsKeyName")
     def default_kms_key_name(self) -> str:
+        """
+        The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
+        You must pay attention to whether the crypto key is available in the location that this bucket is created in.
+        See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
+        """
         return pulumi.get(self, "default_kms_key_name")
 
 
@@ -702,7 +712,7 @@ class BucketVersioning(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
-        :param bool enabled: While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
+        :param bool enabled: While set to `true`, versioning is fully enabled for this bucket.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -710,7 +720,7 @@ class BucketVersioning(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
+        While set to `true`, versioning is fully enabled for this bucket.
         """
         return pulumi.get(self, "enabled")
 
@@ -791,6 +801,11 @@ class DefaultObjectAccessControlProjectTeam(dict):
     def __init__(__self__, *,
                  project_number: Optional[str] = None,
                  team: Optional[str] = None):
+        """
+        :param str project_number: The project team associated with the entity
+        :param str team: The team.
+               Possible values are `editors`, `owners`, and `viewers`.
+        """
         if project_number is not None:
             pulumi.set(__self__, "project_number", project_number)
         if team is not None:
@@ -799,11 +814,18 @@ class DefaultObjectAccessControlProjectTeam(dict):
     @property
     @pulumi.getter(name="projectNumber")
     def project_number(self) -> Optional[str]:
+        """
+        The project team associated with the entity
+        """
         return pulumi.get(self, "project_number")
 
     @property
     @pulumi.getter
     def team(self) -> Optional[str]:
+        """
+        The team.
+        Possible values are `editors`, `owners`, and `viewers`.
+        """
         return pulumi.get(self, "team")
 
 
@@ -829,6 +851,11 @@ class ObjectAccessControlProjectTeam(dict):
     def __init__(__self__, *,
                  project_number: Optional[str] = None,
                  team: Optional[str] = None):
+        """
+        :param str project_number: The project team associated with the entity
+        :param str team: The team.
+               Possible values are `editors`, `owners`, and `viewers`.
+        """
         if project_number is not None:
             pulumi.set(__self__, "project_number", project_number)
         if team is not None:
@@ -837,11 +864,18 @@ class ObjectAccessControlProjectTeam(dict):
     @property
     @pulumi.getter(name="projectNumber")
     def project_number(self) -> Optional[str]:
+        """
+        The project team associated with the entity
+        """
         return pulumi.get(self, "project_number")
 
     @property
     @pulumi.getter
     def team(self) -> Optional[str]:
+        """
+        The team.
+        Possible values are `editors`, `owners`, and `viewers`.
+        """
         return pulumi.get(self, "team")
 
 
@@ -1326,7 +1360,7 @@ class TransferJobTransferSpecAwsS3DataSource(dict):
                  aws_access_key: Optional['outputs.TransferJobTransferSpecAwsS3DataSourceAwsAccessKey'] = None,
                  role_arn: Optional[str] = None):
         """
-        :param str bucket_name: S3 Bucket name.
+        :param str bucket_name: Google Cloud Storage bucket name.
         :param 'TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs' aws_access_key: AWS credentials block.
         :param str role_arn: The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
         """
@@ -1340,7 +1374,7 @@ class TransferJobTransferSpecAwsS3DataSource(dict):
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> str:
         """
-        S3 Bucket name.
+        Google Cloud Storage bucket name.
         """
         return pulumi.get(self, "bucket_name")
 
@@ -1538,7 +1572,7 @@ class TransferJobTransferSpecGcsDataSink(dict):
                  bucket_name: str,
                  path: Optional[str] = None):
         """
-        :param str bucket_name: S3 Bucket name.
+        :param str bucket_name: Google Cloud Storage bucket name.
         :param str path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         """
         pulumi.set(__self__, "bucket_name", bucket_name)
@@ -1549,7 +1583,7 @@ class TransferJobTransferSpecGcsDataSink(dict):
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> str:
         """
-        S3 Bucket name.
+        Google Cloud Storage bucket name.
         """
         return pulumi.get(self, "bucket_name")
 
@@ -1585,7 +1619,7 @@ class TransferJobTransferSpecGcsDataSource(dict):
                  bucket_name: str,
                  path: Optional[str] = None):
         """
-        :param str bucket_name: S3 Bucket name.
+        :param str bucket_name: Google Cloud Storage bucket name.
         :param str path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         """
         pulumi.set(__self__, "bucket_name", bucket_name)
@@ -1596,7 +1630,7 @@ class TransferJobTransferSpecGcsDataSource(dict):
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> str:
         """
-        S3 Bucket name.
+        Google Cloud Storage bucket name.
         """
         return pulumi.get(self, "bucket_name")
 

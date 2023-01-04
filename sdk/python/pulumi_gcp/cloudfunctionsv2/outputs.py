@@ -69,8 +69,7 @@ class FunctionBuildConfig(dict):
                  source: Optional['outputs.FunctionBuildConfigSource'] = None,
                  worker_pool: Optional[str] = None):
         """
-        :param str build: -
-               The Cloud Build name of the latest successful
+        :param str build: The Cloud Build name of the latest successful
                deployment of the function.
         :param str docker_repository: User managed repository created in Artifact Registry optionally with a customer managed encryption key.
         :param str entry_point: The name of the function (as defined in source code) that will be executed.
@@ -78,7 +77,7 @@ class FunctionBuildConfig(dict):
                compatibility, if function with given name is not found, then the system
                will try to use function named "function". For Node.js this is name of a
                function exported by the module specified in source_location.
-        :param Mapping[str, str] environment_variables: Environment variables that shall be available during function execution.
+        :param Mapping[str, str] environment_variables: User-provided build-time environment variables for the function.
         :param str runtime: The runtime in which to run the function. Required when deploying a new
                function, optional when updating an existing function.
         :param 'FunctionBuildConfigSourceArgs' source: The location of the function source code.
@@ -104,7 +103,6 @@ class FunctionBuildConfig(dict):
     @pulumi.getter
     def build(self) -> Optional[str]:
         """
-        -
         The Cloud Build name of the latest successful
         deployment of the function.
         """
@@ -134,7 +132,7 @@ class FunctionBuildConfig(dict):
     @pulumi.getter(name="environmentVariables")
     def environment_variables(self) -> Optional[Mapping[str, str]]:
         """
-        Environment variables that shall be available during function execution.
+        User-provided build-time environment variables for the function.
         """
         return pulumi.get(self, "environment_variables")
 
@@ -262,7 +260,8 @@ class FunctionBuildConfigSourceRepoSource(dict):
         :param str dir: Directory, relative to the source root, in which to run the build.
         :param bool invert_regex: Only trigger a build if the revision regex does
                NOT match the revision regex.
-        :param str project_id: Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+        :param str project_id: ID of the project that owns the Cloud Source Repository. If omitted, the
+               project ID requesting the build is assumed.
         :param str repo_name: Name of the Cloud Source Repository.
         :param str tag_name: Regex matching tags to build.
         """
@@ -318,7 +317,8 @@ class FunctionBuildConfigSourceRepoSource(dict):
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
         """
-        Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+        ID of the project that owns the Cloud Source Repository. If omitted, the
+        project ID requesting the build is assumed.
         """
         return pulumi.get(self, "project_id")
 
@@ -431,8 +431,7 @@ class FunctionEventTrigger(dict):
                Retried execution is charged as any other execution.
                Possible values are `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, and `RETRY_POLICY_RETRY`.
         :param str service_account_email: The email of the service account for this function.
-        :param str trigger: -
-               Output only. The resource name of the Eventarc trigger.
+        :param str trigger: Output only. The resource name of the Eventarc trigger.
         :param str trigger_region: The region that the trigger will be in. The trigger will only receive
                events originating in this region. It can be the same
                region as the function, a different region or multi-region, or the global
@@ -501,7 +500,6 @@ class FunctionEventTrigger(dict):
     @pulumi.getter
     def trigger(self) -> Optional[str]:
         """
-        -
         Output only. The resource name of the Eventarc trigger.
         """
         return pulumi.get(self, "trigger")
@@ -699,8 +697,7 @@ class FunctionServiceConfig(dict):
                Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
                supplied the value is interpreted as bytes.
         :param Mapping[str, str] environment_variables: Environment variables that shall be available during function execution.
-        :param str gcf_uri: -
-               URIs of the Service deployed
+        :param str gcf_uri: URIs of the Service deployed
         :param str ingress_settings: Available ingress settings. Defaults to "ALLOW_ALL" if unspecified.
                Default value is `ALLOW_ALL`.
                Possible values are `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, and `ALLOW_INTERNAL_AND_GCLB`.
@@ -718,8 +715,7 @@ class FunctionServiceConfig(dict):
         :param int timeout_seconds: The function execution timeout. Execution is considered failed and
                can be terminated if the function is not completed at the end of the
                timeout period. Defaults to 60 seconds.
-        :param str uri: -
-               URI of the Service deployed.
+        :param str uri: URI of the Service deployed.
         :param str vpc_connector: The Serverless VPC Access connector that this cloud function can connect to.
         :param str vpc_connector_egress_settings: Available egress settings.
                Possible values are `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, and `ALL_TRAFFIC`.
@@ -797,7 +793,6 @@ class FunctionServiceConfig(dict):
     @pulumi.getter(name="gcfUri")
     def gcf_uri(self) -> Optional[str]:
         """
-        -
         URIs of the Service deployed
         """
         return pulumi.get(self, "gcf_uri")
@@ -886,7 +881,6 @@ class FunctionServiceConfig(dict):
     @pulumi.getter
     def uri(self) -> Optional[str]:
         """
-        -
         URI of the Service deployed.
         """
         return pulumi.get(self, "uri")
@@ -937,7 +931,7 @@ class FunctionServiceConfigSecretEnvironmentVariable(dict):
         :param str key: Name of the environment variable.
         :param str project_id: Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
         :param str secret: Name of the secret in secret manager (not the full resource name).
-        :param str version: Version of the secret (version number or the string 'latest'). It is preferable to use latest version with secret volumes as secret value changes are reflected immediately.
+        :param str version: Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "project_id", project_id)
@@ -972,7 +966,7 @@ class FunctionServiceConfigSecretEnvironmentVariable(dict):
     @pulumi.getter
     def version(self) -> str:
         """
-        Version of the secret (version number or the string 'latest'). It is preferable to use latest version with secret volumes as secret value changes are reflected immediately.
+        Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
         """
         return pulumi.get(self, "version")
 

@@ -120,7 +120,7 @@ class _ApiState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] managed_service: Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
                If not specified, a new Service will automatically be created in the same project as this API.
-        :param pulumi.Input[str] name: The resource name of the API. Format 'projects/{{project}}/locations/global/apis/{{apiId}}'
+        :param pulumi.Input[str] name: The resource name of the API. Format `projects/{{project}}/locations/global/apis/{{apiId}}`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -204,7 +204,7 @@ class _ApiState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name of the API. Format 'projects/{{project}}/locations/global/apis/{{apiId}}'
+        The resource name of the API. Format `projects/{{project}}/locations/global/apis/{{apiId}}`
         """
         return pulumi.get(self, "name")
 
@@ -393,7 +393,7 @@ class Api(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] managed_service: Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
                If not specified, a new Service will automatically be created in the same project as this API.
-        :param pulumi.Input[str] name: The resource name of the API. Format 'projects/{{project}}/locations/global/apis/{{apiId}}'
+        :param pulumi.Input[str] name: The resource name of the API. Format `projects/{{project}}/locations/global/apis/{{apiId}}`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -455,7 +455,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name of the API. Format 'projects/{{project}}/locations/global/apis/{{apiId}}'
+        The resource name of the API. Format `projects/{{project}}/locations/global/apis/{{apiId}}`
         """
         return pulumi.get(self, "name")
 

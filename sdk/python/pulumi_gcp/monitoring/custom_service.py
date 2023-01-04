@@ -129,7 +129,8 @@ class _CustomServiceState:
         """
         Input properties used for looking up and filtering CustomService resources.
         :param pulumi.Input[str] display_name: Name used for UI elements listing this Service.
-        :param pulumi.Input[str] name: The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+        :param pulumi.Input[str] name: The full resource name for this service. The syntax is:
+               projects/[PROJECT_ID]/services/[SERVICE_ID].
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service_id: An optional service ID to use. If not given, the server will generate a
@@ -172,7 +173,8 @@ class _CustomServiceState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+        The full resource name for this service. The syntax is:
+        projects/[PROJECT_ID]/services/[SERVICE_ID].
         """
         return pulumi.get(self, "name")
 
@@ -409,7 +411,8 @@ class CustomService(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Name used for UI elements listing this Service.
-        :param pulumi.Input[str] name: The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+        :param pulumi.Input[str] name: The full resource name for this service. The syntax is:
+               projects/[PROJECT_ID]/services/[SERVICE_ID].
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service_id: An optional service ID to use. If not given, the server will generate a
@@ -447,7 +450,8 @@ class CustomService(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+        The full resource name for this service. The syntax is:
+        projects/[PROJECT_ID]/services/[SERVICE_ID].
         """
         return pulumi.get(self, "name")
 

@@ -119,9 +119,9 @@ class _AccessApprovalSettingsState:
                to have explicit approval. Enrollment can be done for individual services.
                A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
                Structure is documented below.
-        :param pulumi.Input[bool] invalid_key_version: If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-               this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on
-               it, etc.).
+        :param pulumi.Input[bool] invalid_key_version: If the field is true, that indicates that there is some configuration issue with the active_key_version
+               configured on this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the
+               correct permissions on it, etc.).
         :param pulumi.Input[str] name: The resource name of the settings. Format is "organizations/{organization_id}/accessApprovalSettings"
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent.
                Notifications relating to a resource will be sent to all emails in the settings of ancestor
@@ -202,9 +202,9 @@ class _AccessApprovalSettingsState:
     @pulumi.getter(name="invalidKeyVersion")
     def invalid_key_version(self) -> Optional[pulumi.Input[bool]]:
         """
-        If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-        this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on
-        it, etc.).
+        If the field is true, that indicates that there is some configuration issue with the active_key_version
+        configured on this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the
+        correct permissions on it, etc.).
         """
         return pulumi.get(self, "invalid_key_version")
 
@@ -505,9 +505,9 @@ class AccessApprovalSettings(pulumi.CustomResource):
                to have explicit approval. Enrollment can be done for individual services.
                A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
                Structure is documented below.
-        :param pulumi.Input[bool] invalid_key_version: If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-               this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on
-               it, etc.).
+        :param pulumi.Input[bool] invalid_key_version: If the field is true, that indicates that there is some configuration issue with the active_key_version
+               configured on this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the
+               correct permissions on it, etc.).
         :param pulumi.Input[str] name: The resource name of the settings. Format is "organizations/{organization_id}/accessApprovalSettings"
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent.
                Notifications relating to a resource will be sent to all emails in the settings of ancestor
@@ -569,9 +569,9 @@ class AccessApprovalSettings(pulumi.CustomResource):
     @pulumi.getter(name="invalidKeyVersion")
     def invalid_key_version(self) -> pulumi.Output[bool]:
         """
-        If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-        this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on
-        it, etc.).
+        If the field is true, that indicates that there is some configuration issue with the active_key_version
+        configured on this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the
+        correct permissions on it, etc.).
         """
         return pulumi.get(self, "invalid_key_version")
 

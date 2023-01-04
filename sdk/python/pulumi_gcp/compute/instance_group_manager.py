@@ -59,7 +59,10 @@ class InstanceGroupManagerArgs:
                `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
                response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
                respected.
-        :param pulumi.Input[str] name: - Version name.
+        :param pulumi.Input[str] name: The name of the instance group manager. Must be 1-63
+               characters long and comply with
+               [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+               include lowercase letters, numbers, and hyphens.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerNamedPortArgs']]] named_ports: The named port configuration. See the section below
                for details on configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -70,7 +73,9 @@ class InstanceGroupManagerArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
-        :param pulumi.Input[int] target_size: - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+        :param pulumi.Input[int] target_size: The target number of running instances for this managed
+               instance group. This value should always be explicitly set unless this resource is attached to
+               an autoscaler, in which case it should never be set. Defaults to `0`.
         :param pulumi.Input['InstanceGroupManagerUpdatePolicyArgs'] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
         :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before
                returning. Note that if this is set to true and the operation does not succeed, this provider will
@@ -210,7 +215,10 @@ class InstanceGroupManagerArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        - Version name.
+        The name of the instance group manager. Must be 1-63
+        characters long and comply with
+        [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+        include lowercase letters, numbers, and hyphens.
         """
         return pulumi.get(self, "name")
 
@@ -298,7 +306,9 @@ class InstanceGroupManagerArgs:
     @pulumi.getter(name="targetSize")
     def target_size(self) -> Optional[pulumi.Input[int]]:
         """
-        - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+        The target number of running instances for this managed
+        instance group. This value should always be explicitly set unless this resource is attached to
+        an autoscaler, in which case it should never be set. Defaults to `0`.
         """
         return pulumi.get(self, "target_size")
 
@@ -411,7 +421,10 @@ class _InstanceGroupManagerState:
                `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
                response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
                respected.
-        :param pulumi.Input[str] name: - Version name.
+        :param pulumi.Input[str] name: The name of the instance group manager. Must be 1-63
+               characters long and comply with
+               [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+               include lowercase letters, numbers, and hyphens.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerNamedPortArgs']]] named_ports: The named port configuration. See the section below
                for details on configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -424,7 +437,9 @@ class _InstanceGroupManagerState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
-        :param pulumi.Input[int] target_size: - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+        :param pulumi.Input[int] target_size: The target number of running instances for this managed
+               instance group. This value should always be explicitly set unless this resource is attached to
+               an autoscaler, in which case it should never be set. Defaults to `0`.
         :param pulumi.Input['InstanceGroupManagerUpdatePolicyArgs'] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
@@ -589,7 +604,10 @@ class _InstanceGroupManagerState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        - Version name.
+        The name of the instance group manager. Must be 1-63
+        characters long and comply with
+        [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+        include lowercase letters, numbers, and hyphens.
         """
         return pulumi.get(self, "name")
 
@@ -710,7 +728,9 @@ class _InstanceGroupManagerState:
     @pulumi.getter(name="targetSize")
     def target_size(self) -> Optional[pulumi.Input[int]]:
         """
-        - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+        The target number of running instances for this managed
+        instance group. This value should always be explicitly set unless this resource is attached to
+        an autoscaler, in which case it should never be set. Defaults to `0`.
         """
         return pulumi.get(self, "target_size")
 
@@ -927,7 +947,10 @@ class InstanceGroupManager(pulumi.CustomResource):
                `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
                response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
                respected.
-        :param pulumi.Input[str] name: - Version name.
+        :param pulumi.Input[str] name: The name of the instance group manager. Must be 1-63
+               characters long and comply with
+               [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+               include lowercase letters, numbers, and hyphens.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerNamedPortArgs']]]] named_ports: The named port configuration. See the section below
                for details on configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -938,7 +961,9 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
-        :param pulumi.Input[int] target_size: - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+        :param pulumi.Input[int] target_size: The target number of running instances for this managed
+               instance group. This value should always be explicitly set unless this resource is attached to
+               an autoscaler, in which case it should never be set. Defaults to `0`.
         :param pulumi.Input[pulumi.InputType['InstanceGroupManagerUpdatePolicyArgs']] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
@@ -1184,7 +1209,10 @@ class InstanceGroupManager(pulumi.CustomResource):
                `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
                response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
                respected.
-        :param pulumi.Input[str] name: - Version name.
+        :param pulumi.Input[str] name: The name of the instance group manager. Must be 1-63
+               characters long and comply with
+               [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+               include lowercase letters, numbers, and hyphens.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerNamedPortArgs']]]] named_ports: The named port configuration. See the section below
                for details on configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -1197,7 +1225,9 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
-        :param pulumi.Input[int] target_size: - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+        :param pulumi.Input[int] target_size: The target number of running instances for this managed
+               instance group. This value should always be explicitly set unless this resource is attached to
+               an autoscaler, in which case it should never be set. Defaults to `0`.
         :param pulumi.Input[pulumi.InputType['InstanceGroupManagerUpdatePolicyArgs']] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
@@ -1316,7 +1346,10 @@ class InstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        - Version name.
+        The name of the instance group manager. Must be 1-63
+        characters long and comply with
+        [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+        include lowercase letters, numbers, and hyphens.
         """
         return pulumi.get(self, "name")
 
@@ -1397,7 +1430,9 @@ class InstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter(name="targetSize")
     def target_size(self) -> pulumi.Output[int]:
         """
-        - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+        The target number of running instances for this managed
+        instance group. This value should always be explicitly set unless this resource is attached to
+        an autoscaler, in which case it should never be set. Defaults to `0`.
         """
         return pulumi.get(self, "target_size")
 

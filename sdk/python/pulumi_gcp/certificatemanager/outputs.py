@@ -50,18 +50,15 @@ class CertificateManaged(dict):
                  provisioning_issues: Optional[Sequence['outputs.CertificateManagedProvisioningIssue']] = None,
                  state: Optional[str] = None):
         """
-        :param Sequence['CertificateManagedAuthorizationAttemptInfoArgs'] authorization_attempt_infos: -
-               Detailed state of the latest authorization attempt for each domain
+        :param Sequence['CertificateManagedAuthorizationAttemptInfoArgs'] authorization_attempt_infos: Detailed state of the latest authorization attempt for each domain
                specified for this Managed Certificate.
                Structure is documented below.
         :param Sequence[str] dns_authorizations: Authorizations that will be used for performing domain authorization
         :param Sequence[str] domains: The domains for which a managed SSL certificate will be generated.
                Wildcard domains are only supported with DNS challenge resolution
-        :param Sequence['CertificateManagedProvisioningIssueArgs'] provisioning_issues: -
-               Information about issues with provisioning this Managed Certificate.
+        :param Sequence['CertificateManagedProvisioningIssueArgs'] provisioning_issues: Information about issues with provisioning this Managed Certificate.
                Structure is documented below.
-        :param str state: -
-               State of the domain for managed certificate issuance.
+        :param str state: State of the domain for managed certificate issuance.
         """
         if authorization_attempt_infos is not None:
             pulumi.set(__self__, "authorization_attempt_infos", authorization_attempt_infos)
@@ -78,7 +75,6 @@ class CertificateManaged(dict):
     @pulumi.getter(name="authorizationAttemptInfos")
     def authorization_attempt_infos(self) -> Optional[Sequence['outputs.CertificateManagedAuthorizationAttemptInfo']]:
         """
-        -
         Detailed state of the latest authorization attempt for each domain
         specified for this Managed Certificate.
         Structure is documented below.
@@ -106,7 +102,6 @@ class CertificateManaged(dict):
     @pulumi.getter(name="provisioningIssues")
     def provisioning_issues(self) -> Optional[Sequence['outputs.CertificateManagedProvisioningIssue']]:
         """
-        -
         Information about issues with provisioning this Managed Certificate.
         Structure is documented below.
         """
@@ -116,7 +111,6 @@ class CertificateManaged(dict):
     @pulumi.getter
     def state(self) -> Optional[str]:
         """
-        -
         State of the domain for managed certificate issuance.
         """
         return pulumi.get(self, "state")
@@ -147,15 +141,15 @@ class CertificateManagedAuthorizationAttemptInfo(dict):
                  failure_reason: Optional[str] = None,
                  state: Optional[str] = None):
         """
-        :param str details: -
+        :param str details: Human readable explanation about the issue. Provided to help address
+               the configuration issues.
+               Not guaranteed to be stable. For programmatic access use `reason` field.
                Human readable explanation for reaching the state. Provided to help
                address the configuration issues.
                Not guaranteed to be stable. For programmatic access use `failure_reason` field.
-        :param str domain: -
-               Domain name of the authorization attempt.
-        :param str failure_reason: -
-               Reason for failure of the authorization attempt for the domain.
-        :param str state: -
+        :param str domain: Domain name of the authorization attempt.
+        :param str failure_reason: Reason for failure of the authorization attempt for the domain.
+        :param str state: A state of this Managed Certificate.
                State of the domain for managed certificate issuance.
         """
         if details is not None:
@@ -171,7 +165,9 @@ class CertificateManagedAuthorizationAttemptInfo(dict):
     @pulumi.getter
     def details(self) -> Optional[str]:
         """
-        -
+        Human readable explanation about the issue. Provided to help address
+        the configuration issues.
+        Not guaranteed to be stable. For programmatic access use `reason` field.
         Human readable explanation for reaching the state. Provided to help
         address the configuration issues.
         Not guaranteed to be stable. For programmatic access use `failure_reason` field.
@@ -182,7 +178,6 @@ class CertificateManagedAuthorizationAttemptInfo(dict):
     @pulumi.getter
     def domain(self) -> Optional[str]:
         """
-        -
         Domain name of the authorization attempt.
         """
         return pulumi.get(self, "domain")
@@ -191,7 +186,6 @@ class CertificateManagedAuthorizationAttemptInfo(dict):
     @pulumi.getter(name="failureReason")
     def failure_reason(self) -> Optional[str]:
         """
-        -
         Reason for failure of the authorization attempt for the domain.
         """
         return pulumi.get(self, "failure_reason")
@@ -200,7 +194,7 @@ class CertificateManagedAuthorizationAttemptInfo(dict):
     @pulumi.getter
     def state(self) -> Optional[str]:
         """
-        -
+        A state of this Managed Certificate.
         State of the domain for managed certificate issuance.
         """
         return pulumi.get(self, "state")
@@ -212,12 +206,13 @@ class CertificateManagedProvisioningIssue(dict):
                  details: Optional[str] = None,
                  reason: Optional[str] = None):
         """
-        :param str details: -
+        :param str details: Human readable explanation about the issue. Provided to help address
+               the configuration issues.
+               Not guaranteed to be stable. For programmatic access use `reason` field.
                Human readable explanation for reaching the state. Provided to help
                address the configuration issues.
                Not guaranteed to be stable. For programmatic access use `failure_reason` field.
-        :param str reason: -
-               Reason for provisioning failures.
+        :param str reason: Reason for provisioning failures.
         """
         if details is not None:
             pulumi.set(__self__, "details", details)
@@ -228,7 +223,9 @@ class CertificateManagedProvisioningIssue(dict):
     @pulumi.getter
     def details(self) -> Optional[str]:
         """
-        -
+        Human readable explanation about the issue. Provided to help address
+        the configuration issues.
+        Not guaranteed to be stable. For programmatic access use `reason` field.
         Human readable explanation for reaching the state. Provided to help
         address the configuration issues.
         Not guaranteed to be stable. For programmatic access use `failure_reason` field.
@@ -239,7 +236,6 @@ class CertificateManagedProvisioningIssue(dict):
     @pulumi.getter
     def reason(self) -> Optional[str]:
         """
-        -
         Reason for provisioning failures.
         """
         return pulumi.get(self, "reason")
@@ -272,6 +268,16 @@ class CertificateMapGclbTarget(dict):
                  ip_configs: Optional[Sequence['outputs.CertificateMapGclbTargetIpConfig']] = None,
                  target_https_proxy: Optional[str] = None,
                  target_ssl_proxy: Optional[str] = None):
+        """
+        :param Sequence['CertificateMapGclbTargetIpConfigArgs'] ip_configs: An IP configuration where this Certificate Map is serving
+               Structure is documented below.
+        :param str target_https_proxy: Proxy name must be in the format projects/*/locations/*/targetHttpsProxies/*.
+               This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+               `targetSslProxy` may be set.
+        :param str target_ssl_proxy: Proxy name must be in the format projects/*/locations/*/targetSslProxies/*.
+               This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+               `targetSslProxy` may be set.
+        """
         if ip_configs is not None:
             pulumi.set(__self__, "ip_configs", ip_configs)
         if target_https_proxy is not None:
@@ -282,16 +288,30 @@ class CertificateMapGclbTarget(dict):
     @property
     @pulumi.getter(name="ipConfigs")
     def ip_configs(self) -> Optional[Sequence['outputs.CertificateMapGclbTargetIpConfig']]:
+        """
+        An IP configuration where this Certificate Map is serving
+        Structure is documented below.
+        """
         return pulumi.get(self, "ip_configs")
 
     @property
     @pulumi.getter(name="targetHttpsProxy")
     def target_https_proxy(self) -> Optional[str]:
+        """
+        Proxy name must be in the format projects/*/locations/*/targetHttpsProxies/*.
+        This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+        `targetSslProxy` may be set.
+        """
         return pulumi.get(self, "target_https_proxy")
 
     @property
     @pulumi.getter(name="targetSslProxy")
     def target_ssl_proxy(self) -> Optional[str]:
+        """
+        Proxy name must be in the format projects/*/locations/*/targetSslProxies/*.
+        This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+        `targetSslProxy` may be set.
+        """
         return pulumi.get(self, "target_ssl_proxy")
 
 
@@ -317,6 +337,10 @@ class CertificateMapGclbTargetIpConfig(dict):
     def __init__(__self__, *,
                  ip_address: Optional[str] = None,
                  ports: Optional[Sequence[int]] = None):
+        """
+        :param str ip_address: An external IP address
+        :param Sequence[int] ports: A list of ports
+        """
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
         if ports is not None:
@@ -325,11 +349,17 @@ class CertificateMapGclbTargetIpConfig(dict):
     @property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[str]:
+        """
+        An external IP address
+        """
         return pulumi.get(self, "ip_address")
 
     @property
     @pulumi.getter
     def ports(self) -> Optional[Sequence[int]]:
+        """
+        A list of ports
+        """
         return pulumi.get(self, "ports")
 
 
@@ -364,8 +394,7 @@ class CertificateSelfManaged(dict):
                  pem_private_key: Optional[str] = None,
                  private_key_pem: Optional[str] = None):
         """
-        :param str certificate_pem: -
-               (Optional, Deprecated)
+        :param str certificate_pem: (Optional, Deprecated)
                **Deprecated** The certificate chain in PEM-encoded form.
                Leaf certificate comes first, followed by intermediate ones if any.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -374,8 +403,7 @@ class CertificateSelfManaged(dict):
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param str pem_private_key: The private key of the leaf certificate in PEM-encoded form.
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param str private_key_pem: -
-               (Optional, Deprecated)
+        :param str private_key_pem: (Optional, Deprecated)
                **Deprecated** The private key of the leaf certificate in PEM-encoded form.
                **Note**: This property is sensitive and will not be displayed in the plan.
         """
@@ -392,7 +420,6 @@ class CertificateSelfManaged(dict):
     @pulumi.getter(name="certificatePem")
     def certificate_pem(self) -> Optional[str]:
         """
-        -
         (Optional, Deprecated)
         **Deprecated** The certificate chain in PEM-encoded form.
         Leaf certificate comes first, followed by intermediate ones if any.
@@ -423,7 +450,6 @@ class CertificateSelfManaged(dict):
     @pulumi.getter(name="privateKeyPem")
     def private_key_pem(self) -> Optional[str]:
         """
-        -
         (Optional, Deprecated)
         **Deprecated** The private key of the leaf certificate in PEM-encoded form.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -438,9 +464,11 @@ class DnsAuthorizationDnsResourceRecord(dict):
                  name: Optional[str] = None,
                  type: Optional[str] = None):
         """
+        :param str data: Data of the DNS Resource Record.
         :param str name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
+        :param str type: Type of the DNS Resource Record.
         """
         if data is not None:
             pulumi.set(__self__, "data", data)
@@ -452,6 +480,9 @@ class DnsAuthorizationDnsResourceRecord(dict):
     @property
     @pulumi.getter
     def data(self) -> Optional[str]:
+        """
+        Data of the DNS Resource Record.
+        """
         return pulumi.get(self, "data")
 
     @property
@@ -467,6 +498,9 @@ class DnsAuthorizationDnsResourceRecord(dict):
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
+        """
+        Type of the DNS Resource Record.
+        """
         return pulumi.get(self, "type")
 
 

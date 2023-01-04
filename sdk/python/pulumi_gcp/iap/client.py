@@ -65,9 +65,10 @@ class _ClientState:
         :param pulumi.Input[str] brand: Identifier of the brand to which this client
                is attached to. The format is
                `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
-        :param pulumi.Input[str] client_id: Output only. Unique identifier of the OAuth client.
+        :param pulumi.Input[str] client_id: The OAuth2 ID of the client.
         :param pulumi.Input[str] display_name: Human-friendly name given to the OAuth client.
         :param pulumi.Input[str] secret: Output only. Client secret of the OAuth client.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         """
         if brand is not None:
             pulumi.set(__self__, "brand", brand)
@@ -96,7 +97,7 @@ class _ClientState:
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Unique identifier of the OAuth client.
+        The OAuth2 ID of the client.
         """
         return pulumi.get(self, "client_id")
 
@@ -121,6 +122,7 @@ class _ClientState:
     def secret(self) -> Optional[pulumi.Input[str]]:
         """
         Output only. Client secret of the OAuth client.
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "secret")
 
@@ -310,9 +312,10 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] brand: Identifier of the brand to which this client
                is attached to. The format is
                `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
-        :param pulumi.Input[str] client_id: Output only. Unique identifier of the OAuth client.
+        :param pulumi.Input[str] client_id: The OAuth2 ID of the client.
         :param pulumi.Input[str] display_name: Human-friendly name given to the OAuth client.
         :param pulumi.Input[str] secret: Output only. Client secret of the OAuth client.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -338,7 +341,7 @@ class Client(pulumi.CustomResource):
     @pulumi.getter(name="clientId")
     def client_id(self) -> pulumi.Output[str]:
         """
-        Output only. Unique identifier of the OAuth client.
+        The OAuth2 ID of the client.
         """
         return pulumi.get(self, "client_id")
 
@@ -355,6 +358,7 @@ class Client(pulumi.CustomResource):
     def secret(self) -> pulumi.Output[str]:
         """
         Output only. Client secret of the OAuth client.
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "secret")
 

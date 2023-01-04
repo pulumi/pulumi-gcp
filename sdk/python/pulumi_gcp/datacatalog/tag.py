@@ -119,8 +119,8 @@ class _TagState:
                Structure is documented below.
         :param pulumi.Input[str] name: The resource name of the tag in URL format. Example:
                projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
-               projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id} where tag_id is a system-generated
-               identifier. Note that this Tag may not actually be stored in the location in this name.
+               projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id}
+               where tag_id is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
         :param pulumi.Input[str] parent: The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
                all entries in that group.
         :param pulumi.Input[str] template: The resource name of the tag template that this tag uses. Example:
@@ -176,8 +176,8 @@ class _TagState:
         """
         The resource name of the tag in URL format. Example:
         projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
-        projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id} where tag_id is a system-generated
-        identifier. Note that this Tag may not actually be stored in the location in this name.
+        projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id}
+        where tag_id is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
         """
         return pulumi.get(self, "name")
 
@@ -868,8 +868,8 @@ class Tag(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] name: The resource name of the tag in URL format. Example:
                projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
-               projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id} where tag_id is a system-generated
-               identifier. Note that this Tag may not actually be stored in the location in this name.
+               projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id}
+               where tag_id is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
         :param pulumi.Input[str] parent: The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
                all entries in that group.
         :param pulumi.Input[str] template: The resource name of the tag template that this tag uses. Example:
@@ -916,8 +916,8 @@ class Tag(pulumi.CustomResource):
         """
         The resource name of the tag in URL format. Example:
         projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
-        projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id} where tag_id is a system-generated
-        identifier. Note that this Tag may not actually be stored in the location in this name.
+        projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id}
+        where tag_id is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
         """
         return pulumi.get(self, "name")
 

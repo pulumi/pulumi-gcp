@@ -28,7 +28,7 @@ class RouterArgs:
         :param pulumi.Input[str] network: A reference to the network to which this router belongs.
         :param pulumi.Input['RouterBgpArgs'] bgp: BGP information specific to this router.
                Structure is documented below.
-        :param pulumi.Input[str] description: User-specified description for the IP range.
+        :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[bool] encrypted_interconnect_router: Field to indicate if a router is dedicated to use with encrypted
                Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
                Not currently available publicly.
@@ -85,7 +85,7 @@ class RouterArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        User-specified description for the IP range.
+        An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
@@ -167,7 +167,7 @@ class _RouterState:
         :param pulumi.Input['RouterBgpArgs'] bgp: BGP information specific to this router.
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
-        :param pulumi.Input[str] description: User-specified description for the IP range.
+        :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[bool] encrypted_interconnect_router: Field to indicate if a router is dedicated to use with encrypted
                Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
                Not currently available publicly.
@@ -231,7 +231,7 @@ class _RouterState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        User-specified description for the IP range.
+        An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
@@ -405,7 +405,7 @@ class Router(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['RouterBgpArgs']] bgp: BGP information specific to this router.
                Structure is documented below.
-        :param pulumi.Input[str] description: User-specified description for the IP range.
+        :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[bool] encrypted_interconnect_router: Field to indicate if a router is dedicated to use with encrypted
                Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
                Not currently available publicly.
@@ -565,7 +565,7 @@ class Router(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['RouterBgpArgs']] bgp: BGP information specific to this router.
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
-        :param pulumi.Input[str] description: User-specified description for the IP range.
+        :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[bool] encrypted_interconnect_router: Field to indicate if a router is dedicated to use with encrypted
                Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
                Not currently available publicly.
@@ -617,7 +617,7 @@ class Router(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        User-specified description for the IP range.
+        An optional description of this resource.
         """
         return pulumi.get(self, "description")
 

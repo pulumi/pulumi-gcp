@@ -119,8 +119,9 @@ class _GameServerDeploymentState:
                key-value pair.
         :param pulumi.Input[str] location: Location of the Deployment.
         :param pulumi.Input[str] name: The resource id of the game server deployment, eg:
-               'projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}'. For example,
-               'projects/my-project/locations/{location}/gameServerDeployments/my-deployment'.
+               `projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}`.
+               For example,
+               `projects/my-project/locations/{location}/gameServerDeployments/my-deployment`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -191,8 +192,9 @@ class _GameServerDeploymentState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The resource id of the game server deployment, eg:
-        'projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}'. For example,
-        'projects/my-project/locations/{location}/gameServerDeployments/my-deployment'.
+        `projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}`.
+        For example,
+        `projects/my-project/locations/{location}/gameServerDeployments/my-deployment`.
         """
         return pulumi.get(self, "name")
 
@@ -381,8 +383,9 @@ class GameServerDeployment(pulumi.CustomResource):
                key-value pair.
         :param pulumi.Input[str] location: Location of the Deployment.
         :param pulumi.Input[str] name: The resource id of the game server deployment, eg:
-               'projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}'. For example,
-               'projects/my-project/locations/{location}/gameServerDeployments/my-deployment'.
+               `projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}`.
+               For example,
+               `projects/my-project/locations/{location}/gameServerDeployments/my-deployment`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -436,8 +439,9 @@ class GameServerDeployment(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The resource id of the game server deployment, eg:
-        'projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}'. For example,
-        'projects/my-project/locations/{location}/gameServerDeployments/my-deployment'.
+        `projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}`.
+        For example,
+        `projects/my-project/locations/{location}/gameServerDeployments/my-deployment`.
         """
         return pulumi.get(self, "name")
 

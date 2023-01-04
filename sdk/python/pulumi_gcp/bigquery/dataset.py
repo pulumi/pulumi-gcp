@@ -30,7 +30,9 @@ class DatasetArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Dataset resource.
-        :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.
+        :param pulumi.Input[str] dataset_id: A unique ID for this dataset, without the project name. The ID
+               must contain only letters (a-z, A-Z), numbers (0-9), or
+               underscores (_). The maximum length is 1,024 characters.
         :param pulumi.Input[Sequence[pulumi.Input['DatasetAccessArgs']]] accesses: An array of objects that define dataset access for one or more entities.
                Structure is documented below.
         :param pulumi.Input['DatasetDefaultEncryptionConfigurationArgs'] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set,
@@ -82,7 +84,9 @@ class DatasetArgs:
     @pulumi.getter(name="datasetId")
     def dataset_id(self) -> pulumi.Input[str]:
         """
-        The ID of the dataset containing this table.
+        A unique ID for this dataset, without the project name. The ID
+        must contain only letters (a-z, A-Z), numbers (0-9), or
+        underscores (_). The maximum length is 1,024 characters.
         """
         return pulumi.get(self, "dataset_id")
 
@@ -257,8 +261,11 @@ class _DatasetState:
         Input properties used for looking up and filtering Dataset resources.
         :param pulumi.Input[Sequence[pulumi.Input['DatasetAccessArgs']]] accesses: An array of objects that define dataset access for one or more entities.
                Structure is documented below.
-        :param pulumi.Input[int] creation_time: The time when this dataset was created, in milliseconds since the epoch.
-        :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.
+        :param pulumi.Input[int] creation_time: The time when this dataset was created, in milliseconds since the
+               epoch.
+        :param pulumi.Input[str] dataset_id: A unique ID for this dataset, without the project name. The ID
+               must contain only letters (a-z, A-Z), numbers (0-9), or
+               underscores (_). The maximum length is 1,024 characters.
         :param pulumi.Input['DatasetDefaultEncryptionConfigurationArgs'] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set,
                all newly-created partitioned tables in the dataset will have encryption key set to
                this value, unless table creation request (or query) overrides the key.
@@ -275,7 +282,8 @@ class _DatasetState:
         :param pulumi.Input[str] friendly_name: A descriptive name for the dataset
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this dataset. You can use these to
                organize and group your datasets
-        :param pulumi.Input[int] last_modified_time: The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+        :param pulumi.Input[int] last_modified_time: The date when this dataset or any of its tables was last modified, in
+               milliseconds since the epoch.
         :param pulumi.Input[str] location: The geographic location where the dataset should reside.
                See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
         :param pulumi.Input[str] max_time_travel_hours: Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
@@ -333,7 +341,8 @@ class _DatasetState:
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> Optional[pulumi.Input[int]]:
         """
-        The time when this dataset was created, in milliseconds since the epoch.
+        The time when this dataset was created, in milliseconds since the
+        epoch.
         """
         return pulumi.get(self, "creation_time")
 
@@ -345,7 +354,9 @@ class _DatasetState:
     @pulumi.getter(name="datasetId")
     def dataset_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the dataset containing this table.
+        A unique ID for this dataset, without the project name. The ID
+        must contain only letters (a-z, A-Z), numbers (0-9), or
+        underscores (_). The maximum length is 1,024 characters.
         """
         return pulumi.get(self, "dataset_id")
 
@@ -461,7 +472,8 @@ class _DatasetState:
     @pulumi.getter(name="lastModifiedTime")
     def last_modified_time(self) -> Optional[pulumi.Input[int]]:
         """
-        The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+        The date when this dataset or any of its tables was last modified, in
+        milliseconds since the epoch.
         """
         return pulumi.get(self, "last_modified_time")
 
@@ -709,7 +721,9 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessArgs']]]] accesses: An array of objects that define dataset access for one or more entities.
                Structure is documented below.
-        :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.
+        :param pulumi.Input[str] dataset_id: A unique ID for this dataset, without the project name. The ID
+               must contain only letters (a-z, A-Z), numbers (0-9), or
+               underscores (_). The maximum length is 1,024 characters.
         :param pulumi.Input[pulumi.InputType['DatasetDefaultEncryptionConfigurationArgs']] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set,
                all newly-created partitioned tables in the dataset will have encryption key set to
                this value, unless table creation request (or query) overrides the key.
@@ -993,8 +1007,11 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessArgs']]]] accesses: An array of objects that define dataset access for one or more entities.
                Structure is documented below.
-        :param pulumi.Input[int] creation_time: The time when this dataset was created, in milliseconds since the epoch.
-        :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.
+        :param pulumi.Input[int] creation_time: The time when this dataset was created, in milliseconds since the
+               epoch.
+        :param pulumi.Input[str] dataset_id: A unique ID for this dataset, without the project name. The ID
+               must contain only letters (a-z, A-Z), numbers (0-9), or
+               underscores (_). The maximum length is 1,024 characters.
         :param pulumi.Input[pulumi.InputType['DatasetDefaultEncryptionConfigurationArgs']] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set,
                all newly-created partitioned tables in the dataset will have encryption key set to
                this value, unless table creation request (or query) overrides the key.
@@ -1011,7 +1028,8 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[str] friendly_name: A descriptive name for the dataset
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this dataset. You can use these to
                organize and group your datasets
-        :param pulumi.Input[int] last_modified_time: The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+        :param pulumi.Input[int] last_modified_time: The date when this dataset or any of its tables was last modified, in
+               milliseconds since the epoch.
         :param pulumi.Input[str] location: The geographic location where the dataset should reside.
                See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
         :param pulumi.Input[str] max_time_travel_hours: Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
@@ -1054,7 +1072,8 @@ class Dataset(pulumi.CustomResource):
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> pulumi.Output[int]:
         """
-        The time when this dataset was created, in milliseconds since the epoch.
+        The time when this dataset was created, in milliseconds since the
+        epoch.
         """
         return pulumi.get(self, "creation_time")
 
@@ -1062,7 +1081,9 @@ class Dataset(pulumi.CustomResource):
     @pulumi.getter(name="datasetId")
     def dataset_id(self) -> pulumi.Output[str]:
         """
-        The ID of the dataset containing this table.
+        A unique ID for this dataset, without the project name. The ID
+        must contain only letters (a-z, A-Z), numbers (0-9), or
+        underscores (_). The maximum length is 1,024 characters.
         """
         return pulumi.get(self, "dataset_id")
 
@@ -1142,7 +1163,8 @@ class Dataset(pulumi.CustomResource):
     @pulumi.getter(name="lastModifiedTime")
     def last_modified_time(self) -> pulumi.Output[int]:
         """
-        The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+        The date when this dataset or any of its tables was last modified, in
+        milliseconds since the epoch.
         """
         return pulumi.get(self, "last_modified_time")
 

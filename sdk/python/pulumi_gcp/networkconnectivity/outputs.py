@@ -55,7 +55,7 @@ class SpokeLinkedInterconnectAttachments(dict):
                  uris: Sequence[str]):
         """
         :param bool site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
-        :param Sequence[str] uris: The URIs of linked VPN tunnel resources.
+        :param Sequence[str] uris: The URIs of linked interconnect attachment resources
         """
         pulumi.set(__self__, "site_to_site_data_transfer", site_to_site_data_transfer)
         pulumi.set(__self__, "uris", uris)
@@ -72,7 +72,7 @@ class SpokeLinkedInterconnectAttachments(dict):
     @pulumi.getter
     def uris(self) -> Sequence[str]:
         """
-        The URIs of linked VPN tunnel resources.
+        The URIs of linked interconnect attachment resources
         """
         return pulumi.get(self, "uris")
 

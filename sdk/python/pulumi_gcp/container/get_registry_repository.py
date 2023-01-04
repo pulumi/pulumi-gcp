@@ -56,6 +56,9 @@ class GetRegistryRepositoryResult:
     @property
     @pulumi.getter(name="repositoryUrl")
     def repository_url(self) -> str:
+        """
+        The URL at which the repository can be accessed.
+        """
         return pulumi.get(self, "repository_url")
 
 
@@ -88,6 +91,10 @@ def get_registry_repository(project: Optional[str] = None,
     foo = gcp.container.get_registry_repository()
     pulumi.export("gcrLocation", foo.repository_url)
     ```
+
+
+    :param str project: The project ID that this repository is attached to.  If not provided, provider project will be used instead.
+    :param str region: The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -120,5 +127,9 @@ def get_registry_repository_output(project: Optional[pulumi.Input[Optional[str]]
     foo = gcp.container.get_registry_repository()
     pulumi.export("gcrLocation", foo.repository_url)
     ```
+
+
+    :param str project: The project ID that this repository is attached to.  If not provided, provider project will be used instead.
+    :param str region: The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
     """
     ...

@@ -259,6 +259,12 @@ class DomainMappingResourceRecordArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  rrdata: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
+        :param pulumi.Input[str] rrdata: Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
+        :param pulumi.Input[str] type: Resource record type. Example: `AAAA`.
+               Possible values are `A`, `AAAA`, and `CNAME`.
+        """
         if name is not None:
             pulumi.set(__self__, "name", name)
         if rrdata is not None:
@@ -269,6 +275,9 @@ class DomainMappingResourceRecordArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -278,6 +287,9 @@ class DomainMappingResourceRecordArgs:
     @property
     @pulumi.getter
     def rrdata(self) -> Optional[pulumi.Input[str]]:
+        """
+        Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
+        """
         return pulumi.get(self, "rrdata")
 
     @rrdata.setter
@@ -287,6 +299,10 @@ class DomainMappingResourceRecordArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource record type. Example: `AAAA`.
+        Possible values are `A`, `AAAA`, and `CNAME`.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -310,8 +326,7 @@ class DomainMappingSslSettingsArgs:
                or to configure SSL manually, specify `SslManagementType.MANUAL` on a `CREATE` or `UPDATE` request. You must be
                authorized to administer the `AuthorizedCertificate` resource to manually map it to a DomainMapping resource.
                Example: 12345.
-        :param pulumi.Input[str] pending_managed_certificate_id: -
-               ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
+        :param pulumi.Input[str] pending_managed_certificate_id: ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
                managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the
                provisioning process completes, the `certificateId` field will reflect the new managed certificate and this
                field will be left empty. To remove SSL support while there is still a pending managed certificate, clear the
@@ -358,7 +373,6 @@ class DomainMappingSslSettingsArgs:
     @pulumi.getter(name="pendingManagedCertificateId")
     def pending_managed_certificate_id(self) -> Optional[pulumi.Input[str]]:
         """
-        -
         ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
         managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the
         provisioning process completes, the `certificateId` field will reflect the new managed certificate and this
@@ -1091,7 +1105,7 @@ class FlexibleAppVersionDeploymentFileArgs:
                  source_url: pulumi.Input[str],
                  sha1_sum: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        :param pulumi.Input[str] name: The identifier for this object. Format specified above.
         :param pulumi.Input[str] source_url: Source URL
         :param pulumi.Input[str] sha1_sum: SHA1 checksum of the file
         """
@@ -1104,7 +1118,7 @@ class FlexibleAppVersionDeploymentFileArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        The identifier for this object. Format specified above.
         """
         return pulumi.get(self, "name")
 
@@ -1183,7 +1197,8 @@ class FlexibleAppVersionEndpointsApiServiceArgs:
                  disable_trace_sampling: Optional[pulumi.Input[bool]] = None,
                  rollout_strategy: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        :param pulumi.Input[str] name: Endpoints service name which is the name of the "service" resource in the Service Management API.
+               For example "myapi.endpoints.myproject.cloud.goog"
         :param pulumi.Input[str] config_id: Endpoints service configuration ID as specified by the Service Management API. For example "2016-09-19r1".
                By default, the rollout strategy for Endpoints is "FIXED". This means that Endpoints starts up with a particular configuration ID.
                When a new configuration is rolled out, Endpoints must be given the new configuration ID. The configId field is used to give the configuration ID
@@ -1207,7 +1222,8 @@ class FlexibleAppVersionEndpointsApiServiceArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        Endpoints service name which is the name of the "service" resource in the Service Management API.
+        For example "myapi.endpoints.myproject.cloud.goog"
         """
         return pulumi.get(self, "name")
 
@@ -1292,15 +1308,15 @@ class FlexibleAppVersionHandlerArgs:
                  static_files: Optional[pulumi.Input['FlexibleAppVersionHandlerStaticFilesArgs']] = None,
                  url_regex: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] auth_fail_action: Action to take when users access resources that require authentication.
-               Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+        :param pulumi.Input[str] auth_fail_action: Actions to take when the user is not logged in.
                Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
-        :param pulumi.Input[str] login: Level of login required to access this resource.
-               Default value is `LOGIN_OPTIONAL`.
+        :param pulumi.Input[str] login: Methods to restrict access to a URL based on login status.
                Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
         :param pulumi.Input[str] redirect_http_response_code: 30x code to use when performing redirects for the secure field.
                Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
-        :param pulumi.Input['FlexibleAppVersionHandlerScriptArgs'] script: Path to the script from the application root directory.
+        :param pulumi.Input['FlexibleAppVersionHandlerScriptArgs'] script: Executes a script to handle the requests that match this URL pattern.
+               Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
+               Structure is documented below.
         :param pulumi.Input[str] security_level: Security (HTTPS) enforcement for this URL.
                Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
         :param pulumi.Input['FlexibleAppVersionHandlerStaticFilesArgs'] static_files: Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
@@ -1328,8 +1344,7 @@ class FlexibleAppVersionHandlerArgs:
     @pulumi.getter(name="authFailAction")
     def auth_fail_action(self) -> Optional[pulumi.Input[str]]:
         """
-        Action to take when users access resources that require authentication.
-        Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+        Actions to take when the user is not logged in.
         Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
         """
         return pulumi.get(self, "auth_fail_action")
@@ -1342,8 +1357,7 @@ class FlexibleAppVersionHandlerArgs:
     @pulumi.getter
     def login(self) -> Optional[pulumi.Input[str]]:
         """
-        Level of login required to access this resource.
-        Default value is `LOGIN_OPTIONAL`.
+        Methods to restrict access to a URL based on login status.
         Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
         """
         return pulumi.get(self, "login")
@@ -1369,7 +1383,9 @@ class FlexibleAppVersionHandlerArgs:
     @pulumi.getter
     def script(self) -> Optional[pulumi.Input['FlexibleAppVersionHandlerScriptArgs']]:
         """
-        Path to the script from the application root directory.
+        Executes a script to handle the requests that match this URL pattern.
+        Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
+        Structure is documented below.
         """
         return pulumi.get(self, "script")
 
@@ -1584,8 +1600,7 @@ class FlexibleAppVersionLivenessCheckArgs:
                  success_threshold: Optional[pulumi.Input[float]] = None,
                  timeout: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] path: Path to the static files matched by the URL pattern, from the application root directory.
-               The path can refer to text matched in groupings in the URL pattern.
+        :param pulumi.Input[str] path: The request path.
         :param pulumi.Input[str] check_interval: Interval between health checks.
         :param pulumi.Input[float] failure_threshold: Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
         :param pulumi.Input[str] host: Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
@@ -1611,8 +1626,7 @@ class FlexibleAppVersionLivenessCheckArgs:
     @pulumi.getter
     def path(self) -> pulumi.Input[str]:
         """
-        Path to the static files matched by the URL pattern, from the application root directory.
-        The path can refer to text matched in groupings in the URL pattern.
+        The request path.
         """
         return pulumi.get(self, "path")
 
@@ -1728,7 +1742,7 @@ class FlexibleAppVersionNetworkArgs:
                  session_affinity: Optional[pulumi.Input[bool]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        :param pulumi.Input[str] name: Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] forwarded_ports: List of ports, or port pairs, to forward from the virtual machine to the application container.
         :param pulumi.Input[str] instance_tag: Tag to apply to the instance during creation.
         :param pulumi.Input[bool] session_affinity: Enable session affinity.
@@ -1752,7 +1766,7 @@ class FlexibleAppVersionNetworkArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
         """
         return pulumi.get(self, "name")
 
@@ -1824,14 +1838,13 @@ class FlexibleAppVersionReadinessCheckArgs:
                  success_threshold: Optional[pulumi.Input[float]] = None,
                  timeout: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] path: Path to the static files matched by the URL pattern, from the application root directory.
-               The path can refer to text matched in groupings in the URL pattern.
+        :param pulumi.Input[str] path: The request path.
         :param pulumi.Input[str] app_start_timeout: A maximum time limit on application initialization, measured from moment the application successfully
                replies to a healthcheck until it is ready to serve traffic. Default: "300s"
-        :param pulumi.Input[str] check_interval: Interval between health checks.
-        :param pulumi.Input[float] failure_threshold: Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
+        :param pulumi.Input[str] check_interval: Interval between health checks.  Default: "5s".
+        :param pulumi.Input[float] failure_threshold: Number of consecutive failed checks required before removing traffic. Default: 2.
         :param pulumi.Input[str] host: Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
-        :param pulumi.Input[float] success_threshold: Number of consecutive successful checks required before considering the VM healthy. Default: 2.
+        :param pulumi.Input[float] success_threshold: Number of consecutive successful checks required before receiving traffic. Default: 2.
         :param pulumi.Input[str] timeout: Time before the check is considered failed. Default: "4s"
         """
         pulumi.set(__self__, "path", path)
@@ -1852,8 +1865,7 @@ class FlexibleAppVersionReadinessCheckArgs:
     @pulumi.getter
     def path(self) -> pulumi.Input[str]:
         """
-        Path to the static files matched by the URL pattern, from the application root directory.
-        The path can refer to text matched in groupings in the URL pattern.
+        The request path.
         """
         return pulumi.get(self, "path")
 
@@ -1878,7 +1890,7 @@ class FlexibleAppVersionReadinessCheckArgs:
     @pulumi.getter(name="checkInterval")
     def check_interval(self) -> Optional[pulumi.Input[str]]:
         """
-        Interval between health checks.
+        Interval between health checks.  Default: "5s".
         """
         return pulumi.get(self, "check_interval")
 
@@ -1890,7 +1902,7 @@ class FlexibleAppVersionReadinessCheckArgs:
     @pulumi.getter(name="failureThreshold")
     def failure_threshold(self) -> Optional[pulumi.Input[float]]:
         """
-        Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
+        Number of consecutive failed checks required before removing traffic. Default: 2.
         """
         return pulumi.get(self, "failure_threshold")
 
@@ -1914,7 +1926,7 @@ class FlexibleAppVersionReadinessCheckArgs:
     @pulumi.getter(name="successThreshold")
     def success_threshold(self) -> Optional[pulumi.Input[float]]:
         """
-        Number of consecutive successful checks required before considering the VM healthy. Default: 2.
+        Number of consecutive successful checks required before receiving traffic. Default: 2.
         """
         return pulumi.get(self, "success_threshold")
 
@@ -2015,7 +2027,7 @@ class FlexibleAppVersionResourcesVolumeArgs:
                  size_gb: pulumi.Input[int],
                  volume_type: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] name: Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        :param pulumi.Input[str] name: Unique name for the volume.
         :param pulumi.Input[int] size_gb: Volume size in gigabytes.
         :param pulumi.Input[str] volume_type: Underlying volume type, e.g. 'tmpfs'.
         """
@@ -2027,7 +2039,7 @@ class FlexibleAppVersionResourcesVolumeArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        Unique name for the volume.
         """
         return pulumi.get(self, "name")
 
@@ -2228,7 +2240,7 @@ class StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs:
                  target_cpu_utilization: Optional[pulumi.Input[float]] = None,
                  target_throughput_utilization: Optional[pulumi.Input[float]] = None):
         """
-        :param pulumi.Input[int] max_instances: Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
+        :param pulumi.Input[int] max_instances: Maximum number of instances to run for this version. Set to zero to disable maxInstances configuration.
         :param pulumi.Input[int] min_instances: Minimum number of instances to run for this version. Set to zero to disable minInstances configuration.
         :param pulumi.Input[float] target_cpu_utilization: Target CPU utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
         :param pulumi.Input[float] target_throughput_utilization: Target throughput utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
@@ -2246,7 +2258,7 @@ class StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs:
     @pulumi.getter(name="maxInstances")
     def max_instances(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
+        Maximum number of instances to run for this version. Set to zero to disable maxInstances configuration.
         """
         return pulumi.get(self, "max_instances")
 
@@ -2383,7 +2395,7 @@ class StandardAppVersionDeploymentFileArgs:
                  source_url: pulumi.Input[str],
                  sha1_sum: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        :param pulumi.Input[str] name: The identifier for this object. Format specified above.
         :param pulumi.Input[str] source_url: Source URL
         :param pulumi.Input[str] sha1_sum: SHA1 checksum of the file
         """
@@ -2396,7 +2408,7 @@ class StandardAppVersionDeploymentFileArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        The identifier for this object. Format specified above.
         """
         return pulumi.get(self, "name")
 
@@ -2781,7 +2793,7 @@ class StandardAppVersionLibraryArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        :param pulumi.Input[str] name: Name of the library. Example "django".
         :param pulumi.Input[str] version: Version of the library to select, or "latest".
         """
         if name is not None:
@@ -2793,7 +2805,7 @@ class StandardAppVersionLibraryArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        Name of the library. Example "django".
         """
         return pulumi.get(self, "name")
 

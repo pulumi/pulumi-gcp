@@ -234,9 +234,11 @@ class _EntryState:
                  user_specified_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Entry resources.
-        :param pulumi.Input[Sequence[pulumi.Input['EntryBigqueryDateShardedSpecArgs']]] bigquery_date_sharded_specs: Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
-               https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+        :param pulumi.Input[Sequence[pulumi.Input['EntryBigqueryDateShardedSpecArgs']]] bigquery_date_sharded_specs: Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
+               Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecArgs']]] bigquery_table_specs: Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
+               Structure is documented below.
         :param pulumi.Input[str] description: Entry description, which can consist of several sentences or paragraphs that describe entry contents.
         :param pulumi.Input[str] display_name: Display information such as title and description. A short name to identify the entry,
                for example, "Analytics Data - Jan 2011".
@@ -251,9 +253,9 @@ class _EntryState:
                //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId
                Output only when Entry is of type in the EntryType enum. For entries with userSpecifiedType,
                this field is optional and defaults to an empty string.
-        :param pulumi.Input[str] name: The Data Catalog resource name of the entry in URL format. Example:
-               projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}. Note that this Entry and its
-               child resources may not actually be stored in the location in this name.
+        :param pulumi.Input[str] name: The Data Catalog resource name of the entry in URL format.
+               Example: projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}.
+               Note that this Entry and its child resources may not actually be stored in the location in this name.
         :param pulumi.Input[str] schema: Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
                attached to it. See
                https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
@@ -303,8 +305,9 @@ class _EntryState:
     @pulumi.getter(name="bigqueryDateShardedSpecs")
     def bigquery_date_sharded_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryDateShardedSpecArgs']]]]:
         """
-        Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
-        https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+        Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
+        Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+        Structure is documented below.
         """
         return pulumi.get(self, "bigquery_date_sharded_specs")
 
@@ -317,6 +320,7 @@ class _EntryState:
     def bigquery_table_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecArgs']]]]:
         """
         Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
+        Structure is documented below.
         """
         return pulumi.get(self, "bigquery_table_specs")
 
@@ -419,9 +423,9 @@ class _EntryState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The Data Catalog resource name of the entry in URL format. Example:
-        projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}. Note that this Entry and its
-        child resources may not actually be stored in the location in this name.
+        The Data Catalog resource name of the entry in URL format.
+        Example: projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}.
+        Note that this Entry and its child resources may not actually be stored in the location in this name.
         """
         return pulumi.get(self, "name")
 
@@ -835,9 +839,11 @@ class Entry(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntryBigqueryDateShardedSpecArgs']]]] bigquery_date_sharded_specs: Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
-               https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntryBigqueryDateShardedSpecArgs']]]] bigquery_date_sharded_specs: Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
+               Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntryBigqueryTableSpecArgs']]]] bigquery_table_specs: Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
+               Structure is documented below.
         :param pulumi.Input[str] description: Entry description, which can consist of several sentences or paragraphs that describe entry contents.
         :param pulumi.Input[str] display_name: Display information such as title and description. A short name to identify the entry,
                for example, "Analytics Data - Jan 2011".
@@ -852,9 +858,9 @@ class Entry(pulumi.CustomResource):
                //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId
                Output only when Entry is of type in the EntryType enum. For entries with userSpecifiedType,
                this field is optional and defaults to an empty string.
-        :param pulumi.Input[str] name: The Data Catalog resource name of the entry in URL format. Example:
-               projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}. Note that this Entry and its
-               child resources may not actually be stored in the location in this name.
+        :param pulumi.Input[str] name: The Data Catalog resource name of the entry in URL format.
+               Example: projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}.
+               Note that this Entry and its child resources may not actually be stored in the location in this name.
         :param pulumi.Input[str] schema: Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
                attached to it. See
                https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
@@ -895,8 +901,9 @@ class Entry(pulumi.CustomResource):
     @pulumi.getter(name="bigqueryDateShardedSpecs")
     def bigquery_date_sharded_specs(self) -> pulumi.Output[Sequence['outputs.EntryBigqueryDateShardedSpec']]:
         """
-        Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD. Context:
-        https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+        Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
+        Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+        Structure is documented below.
         """
         return pulumi.get(self, "bigquery_date_sharded_specs")
 
@@ -905,6 +912,7 @@ class Entry(pulumi.CustomResource):
     def bigquery_table_specs(self) -> pulumi.Output[Sequence['outputs.EntryBigqueryTableSpec']]:
         """
         Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
+        Structure is documented below.
         """
         return pulumi.get(self, "bigquery_table_specs")
 
@@ -975,9 +983,9 @@ class Entry(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The Data Catalog resource name of the entry in URL format. Example:
-        projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}. Note that this Entry and its
-        child resources may not actually be stored in the location in this name.
+        The Data Catalog resource name of the entry in URL format.
+        Example: projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}.
+        Note that this Entry and its child resources may not actually be stored in the location in this name.
         """
         return pulumi.get(self, "name")
 

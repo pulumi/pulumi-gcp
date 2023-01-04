@@ -47,8 +47,7 @@ class DeploymentArgs:
         :param pulumi.Input[str] description: Optional user-provided description of deployment.
         :param pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArgs']]] labels: Key-value pairs to apply to this labels.
                Structure is documented below.
-        :param pulumi.Input[str] name: The name of the template to import, as declared in the YAML
-               configuration.
+        :param pulumi.Input[str] name: Unique name for the deployment
         :param pulumi.Input[bool] preview: If set to true, a deployment is created with "shell" resources
                that are not actually instantiated. This allows you to preview a
                deployment. It can be updated to false to actually deploy
@@ -156,8 +155,7 @@ class DeploymentArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the template to import, as declared in the YAML
-        configuration.
+        Unique name for the deployment
         """
         return pulumi.get(self, "name")
 
@@ -233,9 +231,9 @@ class _DeploymentState:
         :param pulumi.Input[str] description: Optional user-provided description of deployment.
         :param pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArgs']]] labels: Key-value pairs to apply to this labels.
                Structure is documented below.
-        :param pulumi.Input[str] manifest: Output only. URL of the manifest representing the last manifest that was successfully deployed.
-        :param pulumi.Input[str] name: The name of the template to import, as declared in the YAML
-               configuration.
+        :param pulumi.Input[str] manifest: Output only. URL of the manifest representing the last manifest that
+               was successfully deployed.
+        :param pulumi.Input[str] name: Unique name for the deployment
         :param pulumi.Input[bool] preview: If set to true, a deployment is created with "shell" resources
                that are not actually instantiated. This allows you to preview a
                deployment. It can be updated to false to actually deploy
@@ -352,7 +350,8 @@ class _DeploymentState:
     @pulumi.getter
     def manifest(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. URL of the manifest representing the last manifest that was successfully deployed.
+        Output only. URL of the manifest representing the last manifest that
+        was successfully deployed.
         """
         return pulumi.get(self, "manifest")
 
@@ -364,8 +363,7 @@ class _DeploymentState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the template to import, as declared in the YAML
-        configuration.
+        Unique name for the deployment
         """
         return pulumi.get(self, "name")
 
@@ -516,8 +514,7 @@ class Deployment(pulumi.CustomResource):
         :param pulumi.Input[str] description: Optional user-provided description of deployment.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentLabelArgs']]]] labels: Key-value pairs to apply to this labels.
                Structure is documented below.
-        :param pulumi.Input[str] name: The name of the template to import, as declared in the YAML
-               configuration.
+        :param pulumi.Input[str] name: Unique name for the deployment
         :param pulumi.Input[bool] preview: If set to true, a deployment is created with "shell" resources
                that are not actually instantiated. This allows you to preview a
                deployment. It can be updated to false to actually deploy
@@ -680,9 +677,9 @@ class Deployment(pulumi.CustomResource):
         :param pulumi.Input[str] description: Optional user-provided description of deployment.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentLabelArgs']]]] labels: Key-value pairs to apply to this labels.
                Structure is documented below.
-        :param pulumi.Input[str] manifest: Output only. URL of the manifest representing the last manifest that was successfully deployed.
-        :param pulumi.Input[str] name: The name of the template to import, as declared in the YAML
-               configuration.
+        :param pulumi.Input[str] manifest: Output only. URL of the manifest representing the last manifest that
+               was successfully deployed.
+        :param pulumi.Input[str] name: Unique name for the deployment
         :param pulumi.Input[bool] preview: If set to true, a deployment is created with "shell" resources
                that are not actually instantiated. This allows you to preview a
                deployment. It can be updated to false to actually deploy
@@ -773,7 +770,8 @@ class Deployment(pulumi.CustomResource):
     @pulumi.getter
     def manifest(self) -> pulumi.Output[str]:
         """
-        Output only. URL of the manifest representing the last manifest that was successfully deployed.
+        Output only. URL of the manifest representing the last manifest that
+        was successfully deployed.
         """
         return pulumi.get(self, "manifest")
 
@@ -781,8 +779,7 @@ class Deployment(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the template to import, as declared in the YAML
-        configuration.
+        Unique name for the deployment
         """
         return pulumi.get(self, "name")
 

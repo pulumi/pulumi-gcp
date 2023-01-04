@@ -173,7 +173,8 @@ class _GroupState:
                Existing Google Groups can have an additional label with a key of cloudidentity.googleapis.com/groups.security and an empty value added to them. This is an immutable change and the security label cannot be removed once added.
                Dynamic groups have a label with a key of cloudidentity.googleapis.com/groups.dynamic.
                Identity-mapped groups for Cloud Search have a label with a key of system/groups/external and an empty value.
-        :param pulumi.Input[str] name: Resource name of the Group in the format: groups/{group_id}, where group_id is the unique ID assigned to the Group.
+        :param pulumi.Input[str] name: Resource name of the Group in the format: groups/{group_id}, where group_id
+               is the unique ID assigned to the Group.
         :param pulumi.Input[str] parent: The resource name of the entity under which this Group resides in the
                Cloud Identity resource hierarchy.
                Must be of the form identitysources/{identity_source_id} for external-identity-mapped
@@ -286,7 +287,8 @@ class _GroupState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource name of the Group in the format: groups/{group_id}, where group_id is the unique ID assigned to the Group.
+        Resource name of the Group in the format: groups/{group_id}, where group_id
+        is the unique ID assigned to the Group.
         """
         return pulumi.get(self, "name")
 
@@ -535,7 +537,8 @@ class Group(pulumi.CustomResource):
                Existing Google Groups can have an additional label with a key of cloudidentity.googleapis.com/groups.security and an empty value added to them. This is an immutable change and the security label cannot be removed once added.
                Dynamic groups have a label with a key of cloudidentity.googleapis.com/groups.dynamic.
                Identity-mapped groups for Cloud Search have a label with a key of system/groups/external and an empty value.
-        :param pulumi.Input[str] name: Resource name of the Group in the format: groups/{group_id}, where group_id is the unique ID assigned to the Group.
+        :param pulumi.Input[str] name: Resource name of the Group in the format: groups/{group_id}, where group_id
+               is the unique ID assigned to the Group.
         :param pulumi.Input[str] parent: The resource name of the entity under which this Group resides in the
                Cloud Identity resource hierarchy.
                Must be of the form identitysources/{identity_source_id} for external-identity-mapped
@@ -620,7 +623,8 @@ class Group(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Resource name of the Group in the format: groups/{group_id}, where group_id is the unique ID assigned to the Group.
+        Resource name of the Group in the format: groups/{group_id}, where group_id
+        is the unique ID assigned to the Group.
         """
         return pulumi.get(self, "name")
 

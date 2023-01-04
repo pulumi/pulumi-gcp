@@ -40,11 +40,10 @@ class InstanceArgs:
         :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-        :param pulumi.Input[str] name: The name of the fileshare (16 characters or less)
+        :param pulumi.Input[str] name: The resource name of the instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] zone: -
-               (Optional, Deprecated)
+        :param pulumi.Input[str] zone: (Optional, Deprecated)
                The name of the Filestore zone of the instance.
         """
         pulumi.set(__self__, "file_shares", file_shares)
@@ -161,7 +160,7 @@ class InstanceArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the fileshare (16 characters or less)
+        The resource name of the instance.
         """
         return pulumi.get(self, "name")
 
@@ -186,7 +185,6 @@ class InstanceArgs:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        -
         (Optional, Deprecated)
         The name of the Filestore zone of the instance.
         """
@@ -216,14 +214,15 @@ class _InstanceState:
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] create_time: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: A description of the instance.
-        :param pulumi.Input[str] etag: Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+        :param pulumi.Input[str] etag: Server-specified ETag for the instance resource to prevent
+               simultaneous updates from overwriting each other.
         :param pulumi.Input['InstanceFileSharesArgs'] file_shares: File system shares on the instance. For this version, only a
                single file share is supported.
                Structure is documented below.
         :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-        :param pulumi.Input[str] name: The name of the fileshare (16 characters or less)
+        :param pulumi.Input[str] name: The resource name of the instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]] networks: VPC networks to which the instance is connected. For this version,
                only a single network is supported.
                Structure is documented below.
@@ -231,8 +230,7 @@ class _InstanceState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] tier: The service tier of the instance.
                Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
-        :param pulumi.Input[str] zone: -
-               (Optional, Deprecated)
+        :param pulumi.Input[str] zone: (Optional, Deprecated)
                The name of the Filestore zone of the instance.
         """
         if create_time is not None:
@@ -291,7 +289,8 @@ class _InstanceState:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+        Server-specified ETag for the instance resource to prevent
+        simultaneous updates from overwriting each other.
         """
         return pulumi.get(self, "etag")
 
@@ -353,7 +352,7 @@ class _InstanceState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the fileshare (16 characters or less)
+        The resource name of the instance.
         """
         return pulumi.get(self, "name")
 
@@ -405,7 +404,6 @@ class _InstanceState:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        -
         (Optional, Deprecated)
         The name of the Filestore zone of the instance.
         """
@@ -542,7 +540,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-        :param pulumi.Input[str] name: The name of the fileshare (16 characters or less)
+        :param pulumi.Input[str] name: The resource name of the instance.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]] networks: VPC networks to which the instance is connected. For this version,
                only a single network is supported.
                Structure is documented below.
@@ -550,8 +548,7 @@ class Instance(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] tier: The service tier of the instance.
                Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
-        :param pulumi.Input[str] zone: -
-               (Optional, Deprecated)
+        :param pulumi.Input[str] zone: (Optional, Deprecated)
                The name of the Filestore zone of the instance.
         """
         ...
@@ -747,14 +744,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: A description of the instance.
-        :param pulumi.Input[str] etag: Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+        :param pulumi.Input[str] etag: Server-specified ETag for the instance resource to prevent
+               simultaneous updates from overwriting each other.
         :param pulumi.Input[pulumi.InputType['InstanceFileSharesArgs']] file_shares: File system shares on the instance. For this version, only a
                single file share is supported.
                Structure is documented below.
         :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-        :param pulumi.Input[str] name: The name of the fileshare (16 characters or less)
+        :param pulumi.Input[str] name: The resource name of the instance.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]] networks: VPC networks to which the instance is connected. For this version,
                only a single network is supported.
                Structure is documented below.
@@ -762,8 +760,7 @@ class Instance(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] tier: The service tier of the instance.
                Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
-        :param pulumi.Input[str] zone: -
-               (Optional, Deprecated)
+        :param pulumi.Input[str] zone: (Optional, Deprecated)
                The name of the Filestore zone of the instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -804,7 +801,8 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+        Server-specified ETag for the instance resource to prevent
+        simultaneous updates from overwriting each other.
         """
         return pulumi.get(self, "etag")
 
@@ -846,7 +844,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the fileshare (16 characters or less)
+        The resource name of the instance.
         """
         return pulumi.get(self, "name")
 
@@ -882,7 +880,6 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
         """
-        -
         (Optional, Deprecated)
         The name of the Filestore zone of the instance.
         """

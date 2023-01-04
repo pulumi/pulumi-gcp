@@ -350,11 +350,13 @@ class _AuthorityState:
         """
         Input properties used for looking up and filtering Authority resources.
         :param pulumi.Input[Sequence[pulumi.Input['AuthorityAccessUrlArgs']]] access_urls: URLs for accessing content published by this CA, such as the CA certificate and CRLs.
+               Structure is documented below.
         :param pulumi.Input[str] certificate_authority_id: The user provided Resource ID for this Certificate Authority.
         :param pulumi.Input['AuthorityConfigArgs'] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
-        :param pulumi.Input[str] create_time: The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-               resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] create_time: The time at which this CertificateAuthority was created.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+               fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
                state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
         :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
@@ -377,11 +379,13 @@ class _AuthorityState:
                fractional digits, terminated by 's'. Example: "3.5s".
         :param pulumi.Input[str] location: Location of the CertificateAuthority. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
-        :param pulumi.Input[str] name: The resource name for this CertificateAuthority in the format projects/*/locations/*/certificateAuthorities/*.
+        :param pulumi.Input[str] name: The resource name for this CertificateAuthority in the format
+               projects/*/locations/*/certificateAuthorities/*.
         :param pulumi.Input[str] pem_ca_certificate: The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_ca_certificates: This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such
-               that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
-               current CertificateAuthority's certificate.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_ca_certificates: This CertificateAuthority's certificate chain, including the current
+               CertificateAuthority's certificate. Ordered such that the root issuer is the final
+               element (consistent with RFC 5246). For a self-signed CA, this will only list the current
+               CertificateAuthority's certificate.
         :param pulumi.Input[str] pool: The name of the CaPool this Certificate Authority belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -398,8 +402,9 @@ class _AuthorityState:
                be activated before they can issue certificates.
                Default value is `SELF_SIGNED`.
                Possible values are `SELF_SIGNED` and `SUBORDINATE`.
-        :param pulumi.Input[str] update_time: The time at which this CertificateAuthority was updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-               resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] update_time: The time at which this CertificateAuthority was updated.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+               fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         if access_urls is not None:
             pulumi.set(__self__, "access_urls", access_urls)
@@ -451,6 +456,7 @@ class _AuthorityState:
     def access_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityAccessUrlArgs']]]]:
         """
         URLs for accessing content published by this CA, such as the CA certificate and CRLs.
+        Structure is documented below.
         """
         return pulumi.get(self, "access_urls")
 
@@ -487,8 +493,9 @@ class _AuthorityState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        The time at which this CertificateAuthority was created.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+        fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "create_time")
 
@@ -610,7 +617,8 @@ class _AuthorityState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name for this CertificateAuthority in the format projects/*/locations/*/certificateAuthorities/*.
+        The resource name for this CertificateAuthority in the format
+        projects/*/locations/*/certificateAuthorities/*.
         """
         return pulumi.get(self, "name")
 
@@ -634,9 +642,10 @@ class _AuthorityState:
     @pulumi.getter(name="pemCaCertificates")
     def pem_ca_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such
-        that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
-        current CertificateAuthority's certificate.
+        This CertificateAuthority's certificate chain, including the current
+        CertificateAuthority's certificate. Ordered such that the root issuer is the final
+        element (consistent with RFC 5246). For a self-signed CA, this will only list the current
+        CertificateAuthority's certificate.
         """
         return pulumi.get(self, "pem_ca_certificates")
 
@@ -730,8 +739,9 @@ class _AuthorityState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The time at which this CertificateAuthority was updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        The time at which this CertificateAuthority was updated.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+        fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "update_time")
 
@@ -1350,11 +1360,13 @@ class Authority(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuthorityAccessUrlArgs']]]] access_urls: URLs for accessing content published by this CA, such as the CA certificate and CRLs.
+               Structure is documented below.
         :param pulumi.Input[str] certificate_authority_id: The user provided Resource ID for this Certificate Authority.
         :param pulumi.Input[pulumi.InputType['AuthorityConfigArgs']] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
-        :param pulumi.Input[str] create_time: The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-               resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] create_time: The time at which this CertificateAuthority was created.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+               fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
                state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
         :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
@@ -1377,11 +1389,13 @@ class Authority(pulumi.CustomResource):
                fractional digits, terminated by 's'. Example: "3.5s".
         :param pulumi.Input[str] location: Location of the CertificateAuthority. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
-        :param pulumi.Input[str] name: The resource name for this CertificateAuthority in the format projects/*/locations/*/certificateAuthorities/*.
+        :param pulumi.Input[str] name: The resource name for this CertificateAuthority in the format
+               projects/*/locations/*/certificateAuthorities/*.
         :param pulumi.Input[str] pem_ca_certificate: The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_ca_certificates: This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such
-               that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
-               current CertificateAuthority's certificate.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_ca_certificates: This CertificateAuthority's certificate chain, including the current
+               CertificateAuthority's certificate. Ordered such that the root issuer is the final
+               element (consistent with RFC 5246). For a self-signed CA, this will only list the current
+               CertificateAuthority's certificate.
         :param pulumi.Input[str] pool: The name of the CaPool this Certificate Authority belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1398,8 +1412,9 @@ class Authority(pulumi.CustomResource):
                be activated before they can issue certificates.
                Default value is `SELF_SIGNED`.
                Possible values are `SELF_SIGNED` and `SUBORDINATE`.
-        :param pulumi.Input[str] update_time: The time at which this CertificateAuthority was updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-               resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] update_time: The time at which this CertificateAuthority was updated.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+               fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1434,6 +1449,7 @@ class Authority(pulumi.CustomResource):
     def access_urls(self) -> pulumi.Output[Sequence['outputs.AuthorityAccessUrl']]:
         """
         URLs for accessing content published by this CA, such as the CA certificate and CRLs.
+        Structure is documented below.
         """
         return pulumi.get(self, "access_urls")
 
@@ -1458,8 +1474,9 @@ class Authority(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        The time at which this CertificateAuthority was created.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+        fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "create_time")
 
@@ -1545,7 +1562,8 @@ class Authority(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name for this CertificateAuthority in the format projects/*/locations/*/certificateAuthorities/*.
+        The resource name for this CertificateAuthority in the format
+        projects/*/locations/*/certificateAuthorities/*.
         """
         return pulumi.get(self, "name")
 
@@ -1561,9 +1579,10 @@ class Authority(pulumi.CustomResource):
     @pulumi.getter(name="pemCaCertificates")
     def pem_ca_certificates(self) -> pulumi.Output[Sequence[str]]:
         """
-        This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such
-        that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
-        current CertificateAuthority's certificate.
+        This CertificateAuthority's certificate chain, including the current
+        CertificateAuthority's certificate. Ordered such that the root issuer is the final
+        element (consistent with RFC 5246). For a self-signed CA, this will only list the current
+        CertificateAuthority's certificate.
         """
         return pulumi.get(self, "pem_ca_certificates")
 
@@ -1629,8 +1648,9 @@ class Authority(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        The time at which this CertificateAuthority was updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        The time at which this CertificateAuthority was updated.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+        fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "update_time")
 

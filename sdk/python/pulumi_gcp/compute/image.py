@@ -315,7 +315,8 @@ class _ImageState:
                  source_snapshot: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Image resources.
-        :param pulumi.Input[int] archive_size_bytes: Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
+        :param pulumi.Input[int] archive_size_bytes: Size of the image tar.gz archive stored in Google Cloud Storage (in
+               bytes).
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
@@ -333,7 +334,8 @@ class _ImageState:
                provide the same key if you use the image later (e.g. to create a
                disk from the image)
                Structure is documented below.
-        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used
+               internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this Image.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
@@ -404,7 +406,8 @@ class _ImageState:
     @pulumi.getter(name="archiveSizeBytes")
     def archive_size_bytes(self) -> Optional[pulumi.Input[int]]:
         """
-        Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
+        Size of the image tar.gz archive stored in Google Cloud Storage (in
+        bytes).
         """
         return pulumi.get(self, "archive_size_bytes")
 
@@ -499,7 +502,8 @@ class _ImageState:
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> Optional[pulumi.Input[str]]:
         """
-        The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        The fingerprint used for optimistic locking of this resource. Used
+        internally during updates.
         """
         return pulumi.get(self, "label_fingerprint")
 
@@ -940,7 +944,8 @@ class Image(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] archive_size_bytes: Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
+        :param pulumi.Input[int] archive_size_bytes: Size of the image tar.gz archive stored in Google Cloud Storage (in
+               bytes).
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
@@ -958,7 +963,8 @@ class Image(pulumi.CustomResource):
                provide the same key if you use the image later (e.g. to create a
                disk from the image)
                Structure is documented below.
-        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used
+               internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this Image.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
@@ -1017,7 +1023,8 @@ class Image(pulumi.CustomResource):
     @pulumi.getter(name="archiveSizeBytes")
     def archive_size_bytes(self) -> pulumi.Output[int]:
         """
-        Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
+        Size of the image tar.gz archive stored in Google Cloud Storage (in
+        bytes).
         """
         return pulumi.get(self, "archive_size_bytes")
 
@@ -1084,7 +1091,8 @@ class Image(pulumi.CustomResource):
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> pulumi.Output[str]:
         """
-        The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        The fingerprint used for optimistic locking of this resource. Used
+        internally during updates.
         """
         return pulumi.get(self, "label_fingerprint")
 

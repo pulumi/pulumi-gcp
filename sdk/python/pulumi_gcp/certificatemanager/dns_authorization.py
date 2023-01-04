@@ -122,8 +122,10 @@ class _DnsAuthorizationState:
         """
         Input properties used for looking up and filtering DnsAuthorization resources.
         :param pulumi.Input[str] description: A human-readable description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['DnsAuthorizationDnsResourceRecordArgs']]] dns_resource_records: The structure describing the DNS Resource Record that needs to be added to DNS configuration for the authorization to be
-               usable by certificate.
+        :param pulumi.Input[Sequence[pulumi.Input['DnsAuthorizationDnsResourceRecordArgs']]] dns_resource_records: The structure describing the DNS Resource Record that needs to be added
+               to DNS configuration for the authorization to be usable by
+               certificate.
+               Structure is documented below.
         :param pulumi.Input[str] domain: A domain which is being authorized. A DnsAuthorization resource covers a
                single domain and its wildcard, e.g. authorization for "example.com" can
                be used to issue certificates for "example.com" and "*.example.com".
@@ -163,8 +165,10 @@ class _DnsAuthorizationState:
     @pulumi.getter(name="dnsResourceRecords")
     def dns_resource_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DnsAuthorizationDnsResourceRecordArgs']]]]:
         """
-        The structure describing the DNS Resource Record that needs to be added to DNS configuration for the authorization to be
-        usable by certificate.
+        The structure describing the DNS Resource Record that needs to be added
+        to DNS configuration for the authorization to be usable by
+        certificate.
+        Structure is documented below.
         """
         return pulumi.get(self, "dns_resource_records")
 
@@ -241,6 +245,28 @@ class DnsAuthorization(pulumi.CustomResource):
         DnsAuthorization represents a HTTP-reachable backend for a DnsAuthorization.
 
         ## Example Usage
+        ### Certificate Manager Dns Authorization Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificatemanager.DnsAuthorization("default",
+            description="The default dnss",
+            domain="%{random_suffix}.hashicorptest.com")
+        pulumi.export("recordNameToInsert", {
+            "google_certificate_manager_dns_authorization.default.dns_resource_record.0.name": [{}],
+            "value": "",
+        })
+        pulumi.export("recordTypeToInsert", {
+            "google_certificate_manager_dns_authorization.default.dns_resource_record.0.type": [{}],
+            "value": "",
+        })
+        pulumi.export("recordDataToInsert", {
+            "google_certificate_manager_dns_authorization.default.dns_resource_record.0.data": [{}],
+            "value": "",
+        })
+        ```
 
         ## Import
 
@@ -281,6 +307,28 @@ class DnsAuthorization(pulumi.CustomResource):
         DnsAuthorization represents a HTTP-reachable backend for a DnsAuthorization.
 
         ## Example Usage
+        ### Certificate Manager Dns Authorization Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificatemanager.DnsAuthorization("default",
+            description="The default dnss",
+            domain="%{random_suffix}.hashicorptest.com")
+        pulumi.export("recordNameToInsert", {
+            "google_certificate_manager_dns_authorization.default.dns_resource_record.0.name": [{}],
+            "value": "",
+        })
+        pulumi.export("recordTypeToInsert", {
+            "google_certificate_manager_dns_authorization.default.dns_resource_record.0.type": [{}],
+            "value": "",
+        })
+        pulumi.export("recordDataToInsert", {
+            "google_certificate_manager_dns_authorization.default.dns_resource_record.0.data": [{}],
+            "value": "",
+        })
+        ```
 
         ## Import
 
@@ -359,8 +407,10 @@ class DnsAuthorization(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A human-readable description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DnsAuthorizationDnsResourceRecordArgs']]]] dns_resource_records: The structure describing the DNS Resource Record that needs to be added to DNS configuration for the authorization to be
-               usable by certificate.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DnsAuthorizationDnsResourceRecordArgs']]]] dns_resource_records: The structure describing the DNS Resource Record that needs to be added
+               to DNS configuration for the authorization to be usable by
+               certificate.
+               Structure is documented below.
         :param pulumi.Input[str] domain: A domain which is being authorized. A DnsAuthorization resource covers a
                single domain and its wildcard, e.g. authorization for "example.com" can
                be used to issue certificates for "example.com" and "*.example.com".
@@ -395,8 +445,10 @@ class DnsAuthorization(pulumi.CustomResource):
     @pulumi.getter(name="dnsResourceRecords")
     def dns_resource_records(self) -> pulumi.Output[Sequence['outputs.DnsAuthorizationDnsResourceRecord']]:
         """
-        The structure describing the DNS Resource Record that needs to be added to DNS configuration for the authorization to be
-        usable by certificate.
+        The structure describing the DNS Resource Record that needs to be added
+        to DNS configuration for the authorization to be usable by
+        certificate.
+        Structure is documented below.
         """
         return pulumi.get(self, "dns_resource_records")
 

@@ -31,8 +31,7 @@ class StreamArgs:
         :param pulumi.Input['StreamDestinationConfigArgs'] destination_config: Destination connection profile configuration.
                Structure is documented below.
         :param pulumi.Input[str] display_name: Display name.
-        :param pulumi.Input[str] location: The geographic location where the dataset should reside.
-               See https://cloud.google.com/bigquery/docs/locations for supported locations.
+        :param pulumi.Input[str] location: The name of the location this stream is located in.
         :param pulumi.Input['StreamSourceConfigArgs'] source_config: Source connection profile configuration.
                Structure is documented below.
         :param pulumi.Input[str] stream_id: The stream identifier.
@@ -89,8 +88,7 @@ class StreamArgs:
     @pulumi.getter
     def location(self) -> pulumi.Input[str]:
         """
-        The geographic location where the dataset should reside.
-        See https://cloud.google.com/bigquery/docs/locations for supported locations.
+        The name of the location this stream is located in.
         """
         return pulumi.get(self, "location")
 
@@ -211,8 +209,7 @@ class _StreamState:
                Structure is documented below.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
-        :param pulumi.Input[str] location: The geographic location where the dataset should reside.
-               See https://cloud.google.com/bigquery/docs/locations for supported locations.
+        :param pulumi.Input[str] location: The name of the location this stream is located in.
         :param pulumi.Input[str] name: The stream's name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -324,8 +321,7 @@ class _StreamState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        The geographic location where the dataset should reside.
-        See https://cloud.google.com/bigquery/docs/locations for supported locations.
+        The name of the location this stream is located in.
         """
         return pulumi.get(self, "location")
 
@@ -604,8 +600,7 @@ class Stream(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
-        :param pulumi.Input[str] location: The geographic location where the dataset should reside.
-               See https://cloud.google.com/bigquery/docs/locations for supported locations.
+        :param pulumi.Input[str] location: The name of the location this stream is located in.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['StreamSourceConfigArgs']] source_config: Source connection profile configuration.
@@ -893,8 +888,7 @@ class Stream(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
-        :param pulumi.Input[str] location: The geographic location where the dataset should reside.
-               See https://cloud.google.com/bigquery/docs/locations for supported locations.
+        :param pulumi.Input[str] location: The name of the location this stream is located in.
         :param pulumi.Input[str] name: The stream's name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -975,8 +969,7 @@ class Stream(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         """
-        The geographic location where the dataset should reside.
-        See https://cloud.google.com/bigquery/docs/locations for supported locations.
+        The name of the location this stream is located in.
         """
         return pulumi.get(self, "location")
 

@@ -212,11 +212,11 @@ class ConnectionProfileMysqlProfile(dict):
                  port: Optional[int] = None,
                  ssl_config: Optional['outputs.ConnectionProfileMysqlProfileSslConfig'] = None):
         """
-        :param str hostname: Hostname for the SSH tunnel.
-        :param str password: SSH password.
+        :param str hostname: Hostname for the MySQL connection.
+        :param str password: Password for the MySQL connection.
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param str username: Username for the SSH tunnel.
-        :param int port: Port for the SSH tunnel.
+        :param str username: Username for the MySQL connection.
+        :param int port: Port for the MySQL connection.
         :param 'ConnectionProfileMysqlProfileSslConfigArgs' ssl_config: SSL configuration for the MySQL connection.
                Structure is documented below.
         """
@@ -232,7 +232,7 @@ class ConnectionProfileMysqlProfile(dict):
     @pulumi.getter
     def hostname(self) -> str:
         """
-        Hostname for the SSH tunnel.
+        Hostname for the MySQL connection.
         """
         return pulumi.get(self, "hostname")
 
@@ -240,7 +240,7 @@ class ConnectionProfileMysqlProfile(dict):
     @pulumi.getter
     def password(self) -> str:
         """
-        SSH password.
+        Password for the MySQL connection.
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "password")
@@ -249,7 +249,7 @@ class ConnectionProfileMysqlProfile(dict):
     @pulumi.getter
     def username(self) -> str:
         """
-        Username for the SSH tunnel.
+        Username for the MySQL connection.
         """
         return pulumi.get(self, "username")
 
@@ -257,7 +257,7 @@ class ConnectionProfileMysqlProfile(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         """
-        Port for the SSH tunnel.
+        Port for the MySQL connection.
         """
         return pulumi.get(self, "port")
 
@@ -311,21 +311,18 @@ class ConnectionProfileMysqlProfileSslConfig(dict):
         :param str ca_certificate: PEM-encoded certificate of the CA that signed the source database
                server's certificate.
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param bool ca_certificate_set: -
-               Indicates whether the clientKey field is set.
+        :param bool ca_certificate_set: Indicates whether the clientKey field is set.
         :param str client_certificate: PEM-encoded certificate that will be used by the replica to
                authenticate against the source database server. If this field
                is used then the 'clientKey' and the 'caCertificate' fields are
                mandatory.
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param bool client_certificate_set: -
-               Indicates whether the clientCertificate field is set.
+        :param bool client_certificate_set: Indicates whether the clientCertificate field is set.
         :param str client_key: PEM-encoded private key associated with the Client Certificate.
                If this field is used then the 'client_certificate' and the
                'ca_certificate' fields are mandatory.
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param bool client_key_set: -
-               Indicates whether the clientKey field is set.
+        :param bool client_key_set: Indicates whether the clientKey field is set.
         """
         if ca_certificate is not None:
             pulumi.set(__self__, "ca_certificate", ca_certificate)
@@ -354,7 +351,6 @@ class ConnectionProfileMysqlProfileSslConfig(dict):
     @pulumi.getter(name="caCertificateSet")
     def ca_certificate_set(self) -> Optional[bool]:
         """
-        -
         Indicates whether the clientKey field is set.
         """
         return pulumi.get(self, "ca_certificate_set")
@@ -375,7 +371,6 @@ class ConnectionProfileMysqlProfileSslConfig(dict):
     @pulumi.getter(name="clientCertificateSet")
     def client_certificate_set(self) -> Optional[bool]:
         """
-        -
         Indicates whether the clientCertificate field is set.
         """
         return pulumi.get(self, "client_certificate_set")
@@ -395,7 +390,6 @@ class ConnectionProfileMysqlProfileSslConfig(dict):
     @pulumi.getter(name="clientKeySet")
     def client_key_set(self) -> Optional[bool]:
         """
-        -
         Indicates whether the clientKey field is set.
         """
         return pulumi.get(self, "client_key_set")
@@ -431,12 +425,12 @@ class ConnectionProfileOracleProfile(dict):
                  port: Optional[int] = None):
         """
         :param str database_service: Database for the Oracle connection.
-        :param str hostname: Hostname for the SSH tunnel.
-        :param str password: SSH password.
+        :param str hostname: Hostname for the Oracle connection.
+        :param str password: Password for the Oracle connection.
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param str username: Username for the SSH tunnel.
+        :param str username: Username for the Oracle connection.
         :param Mapping[str, str] connection_attributes: Connection string attributes
-        :param int port: Port for the SSH tunnel.
+        :param int port: Port for the Oracle connection.
         """
         pulumi.set(__self__, "database_service", database_service)
         pulumi.set(__self__, "hostname", hostname)
@@ -459,7 +453,7 @@ class ConnectionProfileOracleProfile(dict):
     @pulumi.getter
     def hostname(self) -> str:
         """
-        Hostname for the SSH tunnel.
+        Hostname for the Oracle connection.
         """
         return pulumi.get(self, "hostname")
 
@@ -467,7 +461,7 @@ class ConnectionProfileOracleProfile(dict):
     @pulumi.getter
     def password(self) -> str:
         """
-        SSH password.
+        Password for the Oracle connection.
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "password")
@@ -476,7 +470,7 @@ class ConnectionProfileOracleProfile(dict):
     @pulumi.getter
     def username(self) -> str:
         """
-        Username for the SSH tunnel.
+        Username for the Oracle connection.
         """
         return pulumi.get(self, "username")
 
@@ -492,7 +486,7 @@ class ConnectionProfileOracleProfile(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         """
-        Port for the SSH tunnel.
+        Port for the Oracle connection.
         """
         return pulumi.get(self, "port")
 
@@ -507,11 +501,11 @@ class ConnectionProfilePostgresqlProfile(dict):
                  port: Optional[int] = None):
         """
         :param str database: Database for the PostgreSQL connection.
-        :param str hostname: Hostname for the SSH tunnel.
-        :param str password: SSH password.
+        :param str hostname: Hostname for the PostgreSQL connection.
+        :param str password: Password for the PostgreSQL connection.
                **Note**: This property is sensitive and will not be displayed in the plan.
-        :param str username: Username for the SSH tunnel.
-        :param int port: Port for the SSH tunnel.
+        :param str username: Username for the PostgreSQL connection.
+        :param int port: Port for the PostgreSQL connection.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
@@ -532,7 +526,7 @@ class ConnectionProfilePostgresqlProfile(dict):
     @pulumi.getter
     def hostname(self) -> str:
         """
-        Hostname for the SSH tunnel.
+        Hostname for the PostgreSQL connection.
         """
         return pulumi.get(self, "hostname")
 
@@ -540,7 +534,7 @@ class ConnectionProfilePostgresqlProfile(dict):
     @pulumi.getter
     def password(self) -> str:
         """
-        SSH password.
+        Password for the PostgreSQL connection.
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "password")
@@ -549,7 +543,7 @@ class ConnectionProfilePostgresqlProfile(dict):
     @pulumi.getter
     def username(self) -> str:
         """
-        Username for the SSH tunnel.
+        Username for the PostgreSQL connection.
         """
         return pulumi.get(self, "username")
 
@@ -557,7 +551,7 @@ class ConnectionProfilePostgresqlProfile(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         """
-        Port for the SSH tunnel.
+        Port for the PostgreSQL connection.
         """
         return pulumi.get(self, "port")
 
@@ -602,6 +596,10 @@ class PrivateConnectionError(dict):
     def __init__(__self__, *,
                  details: Optional[Mapping[str, str]] = None,
                  message: Optional[str] = None):
+        """
+        :param Mapping[str, str] details: A list of messages that carry the error details.
+        :param str message: A message containing more information about the error that occurred.
+        """
         if details is not None:
             pulumi.set(__self__, "details", details)
         if message is not None:
@@ -610,11 +608,17 @@ class PrivateConnectionError(dict):
     @property
     @pulumi.getter
     def details(self) -> Optional[Mapping[str, str]]:
+        """
+        A list of messages that carry the error details.
+        """
         return pulumi.get(self, "details")
 
     @property
     @pulumi.getter
     def message(self) -> Optional[str]:
+        """
+        A message containing more information about the error that occurred.
+        """
         return pulumi.get(self, "message")
 
 
@@ -858,8 +862,7 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn(di
         :param str column: Column name.
         :param str data_type: The MySQL data type. Full data types list can be found here:
                https://dev.mysql.com/doc/refman/8.0/en/data-types.html
-        :param int length: -
-               Column length.
+        :param int length: Column length.
         :param bool nullable: Whether or not the column can accept a null value.
         :param int ordinal_position: The ordinal position of the column in the table.
         :param bool primary_key: Whether or not the column represents a primary key.
@@ -908,7 +911,6 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn(di
     @pulumi.getter
     def length(self) -> Optional[int]:
         """
-        -
         Column length.
         """
         return pulumi.get(self, "length")
@@ -1651,8 +1653,7 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMy
         :param str column: Column name.
         :param str data_type: The MySQL data type. Full data types list can be found here:
                https://dev.mysql.com/doc/refman/8.0/en/data-types.html
-        :param int length: -
-               Column length.
+        :param int length: Column length.
         :param bool nullable: Whether or not the column can accept a null value.
         :param int ordinal_position: The ordinal position of the column in the table.
         :param bool primary_key: Whether or not the column represents a primary key.
@@ -1701,7 +1702,6 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMy
     @pulumi.getter
     def length(self) -> Optional[int]:
         """
-        -
         Column length.
         """
         return pulumi.get(self, "length")
@@ -1902,8 +1902,7 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMy
         :param str column: Column name.
         :param str data_type: The MySQL data type. Full data types list can be found here:
                https://dev.mysql.com/doc/refman/8.0/en/data-types.html
-        :param int length: -
-               Column length.
+        :param int length: Column length.
         :param bool nullable: Whether or not the column can accept a null value.
         :param int ordinal_position: The ordinal position of the column in the table.
         :param bool primary_key: Whether or not the column represents a primary key.
@@ -1952,7 +1951,6 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMy
     @pulumi.getter
     def length(self) -> Optional[int]:
         """
-        -
         Column length.
         """
         return pulumi.get(self, "length")

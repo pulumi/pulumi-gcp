@@ -267,7 +267,8 @@ class _RoutineState:
         Input properties used for looking up and filtering Routine resources.
         :param pulumi.Input[Sequence[pulumi.Input['RoutineArgumentArgs']]] arguments: Input/output argument of a function or a stored procedure.
                Structure is documented below.
-        :param pulumi.Input[int] creation_time: The time when this routine was created, in milliseconds since the epoch.
+        :param pulumi.Input[int] creation_time: The time when this routine was created, in milliseconds since the
+               epoch.
         :param pulumi.Input[str] dataset_id: The ID of the dataset containing this routine
         :param pulumi.Input[str] definition_body: The body of the routine. For functions, this is the expression in the AS clause.
                If language=SQL, it is the substring inside (but excluding) the parentheses.
@@ -278,7 +279,8 @@ class _RoutineState:
                imported JAVASCRIPT libraries.
         :param pulumi.Input[str] language: The language of the routine.
                Possible values are `SQL` and `JAVASCRIPT`.
-        :param pulumi.Input[int] last_modified_time: The time when this routine was modified, in milliseconds since the epoch.
+        :param pulumi.Input[int] last_modified_time: The time when this routine was modified, in milliseconds since the
+               epoch.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] return_table_type: Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
@@ -344,7 +346,8 @@ class _RoutineState:
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> Optional[pulumi.Input[int]]:
         """
-        The time when this routine was created, in milliseconds since the epoch.
+        The time when this routine was created, in milliseconds since the
+        epoch.
         """
         return pulumi.get(self, "creation_time")
 
@@ -432,7 +435,8 @@ class _RoutineState:
     @pulumi.getter(name="lastModifiedTime")
     def last_modified_time(self) -> Optional[pulumi.Input[int]]:
         """
-        The time when this routine was modified, in milliseconds since the epoch.
+        The time when this routine was modified, in milliseconds since the
+        epoch.
         """
         return pulumi.get(self, "last_modified_time")
 
@@ -852,7 +856,8 @@ class Routine(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoutineArgumentArgs']]]] arguments: Input/output argument of a function or a stored procedure.
                Structure is documented below.
-        :param pulumi.Input[int] creation_time: The time when this routine was created, in milliseconds since the epoch.
+        :param pulumi.Input[int] creation_time: The time when this routine was created, in milliseconds since the
+               epoch.
         :param pulumi.Input[str] dataset_id: The ID of the dataset containing this routine
         :param pulumi.Input[str] definition_body: The body of the routine. For functions, this is the expression in the AS clause.
                If language=SQL, it is the substring inside (but excluding) the parentheses.
@@ -863,7 +868,8 @@ class Routine(pulumi.CustomResource):
                imported JAVASCRIPT libraries.
         :param pulumi.Input[str] language: The language of the routine.
                Possible values are `SQL` and `JAVASCRIPT`.
-        :param pulumi.Input[int] last_modified_time: The time when this routine was modified, in milliseconds since the epoch.
+        :param pulumi.Input[int] last_modified_time: The time when this routine was modified, in milliseconds since the
+               epoch.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] return_table_type: Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
@@ -916,7 +922,8 @@ class Routine(pulumi.CustomResource):
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> pulumi.Output[int]:
         """
-        The time when this routine was created, in milliseconds since the epoch.
+        The time when this routine was created, in milliseconds since the
+        epoch.
         """
         return pulumi.get(self, "creation_time")
 
@@ -976,7 +983,8 @@ class Routine(pulumi.CustomResource):
     @pulumi.getter(name="lastModifiedTime")
     def last_modified_time(self) -> pulumi.Output[int]:
         """
-        The time when this routine was modified, in milliseconds since the epoch.
+        The time when this routine was modified, in milliseconds since the
+        epoch.
         """
         return pulumi.get(self, "last_modified_time")
 

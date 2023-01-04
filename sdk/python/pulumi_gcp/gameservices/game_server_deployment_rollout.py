@@ -116,8 +116,8 @@ class _GameServerDeploymentRolloutState:
                soon as a match is found for a cluster, the rest of the list is not
                processed.
                Structure is documented below.
-        :param pulumi.Input[str] name: The resource id of the game server deployment eg:
-               'projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout'.
+        :param pulumi.Input[str] name: The resource id of the game server deployment
+               eg: `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -178,8 +178,8 @@ class _GameServerDeploymentRolloutState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource id of the game server deployment eg:
-        'projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout'.
+        The resource id of the game server deployment
+        eg: `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
         """
         return pulumi.get(self, "name")
 
@@ -447,8 +447,8 @@ class GameServerDeploymentRollout(pulumi.CustomResource):
                soon as a match is found for a cluster, the rest of the list is not
                processed.
                Structure is documented below.
-        :param pulumi.Input[str] name: The resource id of the game server deployment eg:
-               'projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout'.
+        :param pulumi.Input[str] name: The resource id of the game server deployment
+               eg: `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -497,8 +497,8 @@ class GameServerDeploymentRollout(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource id of the game server deployment eg:
-        'projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout'.
+        The resource id of the game server deployment
+        eg: `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
         """
         return pulumi.get(self, "name")
 

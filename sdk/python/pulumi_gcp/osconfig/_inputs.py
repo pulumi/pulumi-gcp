@@ -308,16 +308,9 @@ class GuestPoliciesPackageArgs:
                  desired_state: Optional[pulumi.Input[str]] = None,
                  manager: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-               Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-               This means that requests to create multiple recipes with the same name and version are rejected since they
-               could potentially have conflicting assignments.
-        :param pulumi.Input[str] desired_state: Default is INSTALLED. The desired state the agent should maintain for this recipe.
-               INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
-               INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
-               if a higher version of the recipe is assigned to this instance.
-               REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
-               Default value is `INSTALLED`.
+        :param pulumi.Input[str] name: The name of the package. A package is uniquely identified for conflict validation
+               by checking the package name and the manager(s) that the package targets.
+        :param pulumi.Input[str] desired_state: The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
                Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
         :param pulumi.Input[str] manager: Type of package manager that can be used to install this package. If a system does not have the package manager,
                the package is not installed or removed no error message is returned. By default, or if you specify ANY,
@@ -337,10 +330,8 @@ class GuestPoliciesPackageArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-        Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-        This means that requests to create multiple recipes with the same name and version are rejected since they
-        could potentially have conflicting assignments.
+        The name of the package. A package is uniquely identified for conflict validation
+        by checking the package name and the manager(s) that the package targets.
         """
         return pulumi.get(self, "name")
 
@@ -352,12 +343,7 @@ class GuestPoliciesPackageArgs:
     @pulumi.getter(name="desiredState")
     def desired_state(self) -> Optional[pulumi.Input[str]]:
         """
-        Default is INSTALLED. The desired state the agent should maintain for this recipe.
-        INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
-        INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
-        if a higher version of the recipe is assigned to this instance.
-        REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
-        Default value is `INSTALLED`.
+        The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
         Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
         """
         return pulumi.get(self, "desired_state")
@@ -475,7 +461,7 @@ class GuestPoliciesPackageRepositoryAptArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] components: List of components for this repository. Must contain at least one item.
         :param pulumi.Input[str] distribution: Distribution of this repository.
-        :param pulumi.Input[str] uri: URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
+        :param pulumi.Input[str] uri: URI for this repository.
         :param pulumi.Input[str] archive_type: Type of archive files in this repository. The default behavior is DEB.
                Default value is `DEB`.
                Possible values are `DEB` and `DEB_SRC`.
@@ -518,7 +504,7 @@ class GuestPoliciesPackageRepositoryAptArgs:
     @pulumi.getter
     def uri(self) -> pulumi.Input[str]:
         """
-        URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
+        URI for this repository.
         """
         return pulumi.get(self, "uri")
 
@@ -560,10 +546,7 @@ class GuestPoliciesPackageRepositoryGooArgs:
                  name: pulumi.Input[str],
                  url: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] name: Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-               Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-               This means that requests to create multiple recipes with the same name and version are rejected since they
-               could potentially have conflicting assignments.
+        :param pulumi.Input[str] name: The name of the repository.
         :param pulumi.Input[str] url: The url of the repository.
         """
         pulumi.set(__self__, "name", name)
@@ -573,10 +556,7 @@ class GuestPoliciesPackageRepositoryGooArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-        Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-        This means that requests to create multiple recipes with the same name and version are rejected since they
-        could potentially have conflicting assignments.
+        The name of the repository.
         """
         return pulumi.get(self, "name")
 
@@ -606,8 +586,8 @@ class GuestPoliciesPackageRepositoryYumArgs:
                  gpg_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] base_url: The location of the repository directory.
-        :param pulumi.Input[str] id: Id of the artifact, which the installation and update steps of this recipe can reference.
-               Artifacts in a recipe cannot have the same id.
+        :param pulumi.Input[str] id: A one word, unique name for this repository. This is the repo id in the Yum config file and also the displayName
+               if displayName is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
         :param pulumi.Input[str] display_name: The display name of the repository.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] gpg_keys: URIs of GPG keys.
         """
@@ -634,8 +614,8 @@ class GuestPoliciesPackageRepositoryYumArgs:
     @pulumi.getter
     def id(self) -> pulumi.Input[str]:
         """
-        Id of the artifact, which the installation and update steps of this recipe can reference.
-        Artifacts in a recipe cannot have the same id.
+        A one word, unique name for this repository. This is the repo id in the Yum config file and also the displayName
+        if displayName is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
         """
         return pulumi.get(self, "id")
 
@@ -677,8 +657,8 @@ class GuestPoliciesPackageRepositoryZypperArgs:
                  gpg_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] base_url: The location of the repository directory.
-        :param pulumi.Input[str] id: Id of the artifact, which the installation and update steps of this recipe can reference.
-               Artifacts in a recipe cannot have the same id.
+        :param pulumi.Input[str] id: A one word, unique name for this repository. This is the repo id in the zypper config file and also the displayName
+               if displayName is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
         :param pulumi.Input[str] display_name: The display name of the repository.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] gpg_keys: URIs of GPG keys.
         """
@@ -705,8 +685,8 @@ class GuestPoliciesPackageRepositoryZypperArgs:
     @pulumi.getter
     def id(self) -> pulumi.Input[str]:
         """
-        Id of the artifact, which the installation and update steps of this recipe can reference.
-        Artifacts in a recipe cannot have the same id.
+        A one word, unique name for this repository. This is the repo id in the zypper config file and also the displayName
+        if displayName is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
         """
         return pulumi.get(self, "id")
 
@@ -1272,7 +1252,7 @@ class GuestPoliciesRecipeInstallStepFileCopyArgs:
                  permissions: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] artifact_id: The id of the relevant artifact in the recipe.
-        :param pulumi.Input[str] destination: Directory to extract archive to. Defaults to / on Linux or C:\\ on Windows.
+        :param pulumi.Input[str] destination: The absolute path on the instance to put the file.
         :param pulumi.Input[bool] overwrite: Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
                is not overwritten and the step is considered a success. Defaults to false.
         :param pulumi.Input[str] permissions: Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users
@@ -1305,7 +1285,7 @@ class GuestPoliciesRecipeInstallStepFileCopyArgs:
     @pulumi.getter
     def destination(self) -> pulumi.Input[str]:
         """
-        Directory to extract archive to. Defaults to / on Linux or C:\\ on Windows.
+        The absolute path on the instance to put the file.
         """
         return pulumi.get(self, "destination")
 
@@ -1352,7 +1332,7 @@ class GuestPoliciesRecipeInstallStepFileExecArgs:
                  artifact_id: Optional[pulumi.Input[str]] = None,
                  local_path: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] allowed_exit_codes: Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+        :param pulumi.Input[str] allowed_exit_codes: A list of possible return values that the program can return to indicate a success. Defaults to [0].
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Arguments to be passed to the provided executable.
         :param pulumi.Input[str] artifact_id: The id of the relevant artifact in the recipe.
         :param pulumi.Input[str] local_path: The absolute path of the file on the local filesystem.
@@ -1370,7 +1350,7 @@ class GuestPoliciesRecipeInstallStepFileExecArgs:
     @pulumi.getter(name="allowedExitCodes")
     def allowed_exit_codes(self) -> Optional[pulumi.Input[str]]:
         """
-        Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+        A list of possible return values that the program can return to indicate a success. Defaults to [0].
         """
         return pulumi.get(self, "allowed_exit_codes")
 
@@ -1768,7 +1748,7 @@ class GuestPoliciesRecipeUpdateStepFileCopyArgs:
                  permissions: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] artifact_id: The id of the relevant artifact in the recipe.
-        :param pulumi.Input[str] destination: Directory to extract archive to. Defaults to / on Linux or C:\\ on Windows.
+        :param pulumi.Input[str] destination: The absolute path on the instance to put the file.
         :param pulumi.Input[bool] overwrite: Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
                is not overwritten and the step is considered a success. Defaults to false.
         :param pulumi.Input[str] permissions: Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users
@@ -1801,7 +1781,7 @@ class GuestPoliciesRecipeUpdateStepFileCopyArgs:
     @pulumi.getter
     def destination(self) -> pulumi.Input[str]:
         """
-        Directory to extract archive to. Defaults to / on Linux or C:\\ on Windows.
+        The absolute path on the instance to put the file.
         """
         return pulumi.get(self, "destination")
 
@@ -1848,7 +1828,7 @@ class GuestPoliciesRecipeUpdateStepFileExecArgs:
                  artifact_id: Optional[pulumi.Input[str]] = None,
                  local_path: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] allowed_exit_codes: Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] allowed_exit_codes: A list of possible return values that the program can return to indicate a success. Defaults to [0].
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Arguments to be passed to the provided executable.
         :param pulumi.Input[str] artifact_id: The id of the relevant artifact in the recipe.
         :param pulumi.Input[str] local_path: The absolute path of the file on the local filesystem.
@@ -1866,7 +1846,7 @@ class GuestPoliciesRecipeUpdateStepFileExecArgs:
     @pulumi.getter(name="allowedExitCodes")
     def allowed_exit_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
-        Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
+        A list of possible return values that the program can return to indicate a success. Defaults to [0].
         """
         return pulumi.get(self, "allowed_exit_codes")
 
@@ -2209,11 +2189,11 @@ class OsPolicyAssignmentOsPolicyArgs:
                  allow_no_resource_group_match: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] id: Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+        :param pulumi.Input[str] id: Required. The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
         :param pulumi.Input[str] mode: Required. Policy mode Possible values: MODE_UNSPECIFIED, VALIDATION, ENFORCEMENT
         :param pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupArgs']]] resource_groups: Required. List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match`
         :param pulumi.Input[bool] allow_no_resource_group_match: This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
-        :param pulumi.Input[str] description: OS policy assignment description. Length of the description is limited to 1024 characters.
+        :param pulumi.Input[str] description: Policy description. Length of the description is limited to 1024 characters.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "mode", mode)
@@ -2227,7 +2207,7 @@ class OsPolicyAssignmentOsPolicyArgs:
     @pulumi.getter
     def id(self) -> pulumi.Input[str]:
         """
-        Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+        Required. The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
         """
         return pulumi.get(self, "id")
 
@@ -2275,7 +2255,7 @@ class OsPolicyAssignmentOsPolicyArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        OS policy assignment description. Length of the description is limited to 1024 characters.
+        Policy description. Length of the description is limited to 1024 characters.
         """
         return pulumi.get(self, "description")
 
@@ -2369,9 +2349,9 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs:
                  pkg: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs']] = None,
                  repository: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs']] = None):
         """
-        :param pulumi.Input[str] id: Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+        :param pulumi.Input[str] id: Required. The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
         :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs'] exec_: Exec resource
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs'] file: A remote or local source.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs'] file: File resource
         :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs'] pkg: Package resource
         :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs'] repository: Package repository resource
         """
@@ -2389,7 +2369,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs:
     @pulumi.getter
     def id(self) -> pulumi.Input[str]:
         """
-        Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+        Required. The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
         """
         return pulumi.get(self, "id")
 
@@ -2413,7 +2393,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs:
     @pulumi.getter
     def file(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs']]:
         """
-        A remote or local source.
+        File resource
         """
         return pulumi.get(self, "file")
 
@@ -2495,7 +2475,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs:
         """
         :param pulumi.Input[str] interpreter: Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Optional arguments to pass to the source during execution.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs'] file: A remote or local source.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs'] file: A remote or local file.
         :param pulumi.Input[str] output_file_path: Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
         :param pulumi.Input[str] script: An inline script. The size of the script is limited to 1024 characters.
         """
@@ -2537,7 +2517,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs:
     @pulumi.getter
     def file(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs']]:
         """
-        A remote or local source.
+        A remote or local file.
         """
         return pulumi.get(self, "file")
 
@@ -2700,7 +2680,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs:
                  uri: pulumi.Input[str],
                  sha256_checksum: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] uri: Required. URI for this repository.
+        :param pulumi.Input[str] uri: Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
         :param pulumi.Input[str] sha256_checksum: SHA256 checksum of the remote file.
         """
         pulumi.set(__self__, "uri", uri)
@@ -2711,7 +2691,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs:
     @pulumi.getter
     def uri(self) -> pulumi.Input[str]:
         """
-        Required. URI for this repository.
+        Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
         """
         return pulumi.get(self, "uri")
 
@@ -2743,7 +2723,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs:
         """
         :param pulumi.Input[str] interpreter: Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Optional arguments to pass to the source during execution.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs'] file: A remote or local source.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs'] file: A remote or local file.
         :param pulumi.Input[str] output_file_path: Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
         :param pulumi.Input[str] script: An inline script. The size of the script is limited to 1024 characters.
         """
@@ -2785,7 +2765,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs:
     @pulumi.getter
     def file(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs']]:
         """
-        A remote or local source.
+        A remote or local file.
         """
         return pulumi.get(self, "file")
 
@@ -2948,7 +2928,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs:
                  uri: pulumi.Input[str],
                  sha256_checksum: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] uri: Required. URI for this repository.
+        :param pulumi.Input[str] uri: Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
         :param pulumi.Input[str] sha256_checksum: SHA256 checksum of the remote file.
         """
         pulumi.set(__self__, "uri", uri)
@@ -2959,7 +2939,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs:
     @pulumi.getter
     def uri(self) -> pulumi.Input[str]:
         """
-        Required. URI for this repository.
+        Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
         """
         return pulumi.get(self, "uri")
 
@@ -2993,8 +2973,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs:
         :param pulumi.Input[str] state: Required. Desired state of the file. Possible values: OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED, COMPLIANT, NON_COMPLIANT, UNKNOWN, NO_OS_POLICIES_APPLICABLE
         :param pulumi.Input[str] content: A a file with this content. The size of the content is limited to 1024 characters.
         :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs'] file: A remote or local source.
-        :param pulumi.Input[str] permissions: -
-               Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+        :param pulumi.Input[str] permissions: Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
         """
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "state", state)
@@ -3057,7 +3036,6 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs:
     @pulumi.getter
     def permissions(self) -> Optional[pulumi.Input[str]]:
         """
-        -
         Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
         """
         return pulumi.get(self, "permissions")
@@ -3197,7 +3175,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs:
                  uri: pulumi.Input[str],
                  sha256_checksum: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] uri: Required. URI for this repository.
+        :param pulumi.Input[str] uri: Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
         :param pulumi.Input[str] sha256_checksum: SHA256 checksum of the remote file.
         """
         pulumi.set(__self__, "uri", uri)
@@ -3208,7 +3186,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs:
     @pulumi.getter
     def uri(self) -> pulumi.Input[str]:
         """
-        Required. URI for this repository.
+        Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
         """
         return pulumi.get(self, "uri")
 
@@ -3242,13 +3220,13 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs:
                  zypper: Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs']] = None):
         """
         :param pulumi.Input[str] desired_state: Required. The desired state the agent should maintain for this package. Possible values: DESIRED_STATE_UNSPECIFIED, INSTALLED, REMOVED
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs'] apt: An Apt Repository.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs'] apt: A package managed by Apt.
         :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs'] deb: A deb package file.
         :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs'] googet: A package managed by GooGet.
         :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs'] msi: An MSI package.
         :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs'] rpm: An rpm package file.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs'] yum: A Yum Repository.
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs'] zypper: A Zypper Repository.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs'] yum: A package managed by YUM.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs'] zypper: A package managed by Zypper.
         """
         pulumi.set(__self__, "desired_state", desired_state)
         if apt is not None:
@@ -3282,7 +3260,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs:
     @pulumi.getter
     def apt(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs']]:
         """
-        An Apt Repository.
+        A package managed by Apt.
         """
         return pulumi.get(self, "apt")
 
@@ -3342,7 +3320,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs:
     @pulumi.getter
     def yum(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs']]:
         """
-        A Yum Repository.
+        A package managed by YUM.
         """
         return pulumi.get(self, "yum")
 
@@ -3354,7 +3332,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs:
     @pulumi.getter
     def zypper(self) -> Optional[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs']]:
         """
-        A Zypper Repository.
+        A package managed by Zypper.
         """
         return pulumi.get(self, "zypper")
 
@@ -3368,7 +3346,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] name: Required. The name of the repository.
+        :param pulumi.Input[str] name: Required. Package name.
         """
         pulumi.set(__self__, "name", name)
 
@@ -3376,7 +3354,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Required. The name of the repository.
+        Required. Package name.
         """
         return pulumi.get(self, "name")
 
@@ -3391,8 +3369,8 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs:
                  source: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs'],
                  pull_deps: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs'] source: Required. An rpm package.
-        :param pulumi.Input[bool] pull_deps: Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs'] source: Required. A deb package.
+        :param pulumi.Input[bool] pull_deps: Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update && apt-get -y install package.deb`
         """
         pulumi.set(__self__, "source", source)
         if pull_deps is not None:
@@ -3402,7 +3380,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs:
     @pulumi.getter
     def source(self) -> pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs']:
         """
-        Required. An rpm package.
+        Required. A deb package.
         """
         return pulumi.get(self, "source")
 
@@ -3414,7 +3392,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs:
     @pulumi.getter(name="pullDeps")
     def pull_deps(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+        Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update && apt-get -y install package.deb`
         """
         return pulumi.get(self, "pull_deps")
 
@@ -3553,7 +3531,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs:
                  uri: pulumi.Input[str],
                  sha256_checksum: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] uri: Required. URI for this repository.
+        :param pulumi.Input[str] uri: Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
         :param pulumi.Input[str] sha256_checksum: SHA256 checksum of the remote file.
         """
         pulumi.set(__self__, "uri", uri)
@@ -3564,7 +3542,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs:
     @pulumi.getter
     def uri(self) -> pulumi.Input[str]:
         """
-        Required. URI for this repository.
+        Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
         """
         return pulumi.get(self, "uri")
 
@@ -3590,7 +3568,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] name: Required. The name of the repository.
+        :param pulumi.Input[str] name: Required. Package name.
         """
         pulumi.set(__self__, "name", name)
 
@@ -3598,7 +3576,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Required. The name of the repository.
+        Required. Package name.
         """
         return pulumi.get(self, "name")
 
@@ -3613,7 +3591,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs:
                  source: pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs'],
                  properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs'] source: Required. An rpm package.
+        :param pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs'] source: Required. The MSI package.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] properties: Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
         """
         pulumi.set(__self__, "source", source)
@@ -3624,7 +3602,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs:
     @pulumi.getter
     def source(self) -> pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs']:
         """
-        Required. An rpm package.
+        Required. The MSI package.
         """
         return pulumi.get(self, "source")
 
@@ -3775,7 +3753,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs:
                  uri: pulumi.Input[str],
                  sha256_checksum: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] uri: Required. URI for this repository.
+        :param pulumi.Input[str] uri: Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
         :param pulumi.Input[str] sha256_checksum: SHA256 checksum of the remote file.
         """
         pulumi.set(__self__, "uri", uri)
@@ -3786,7 +3764,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs:
     @pulumi.getter
     def uri(self) -> pulumi.Input[str]:
         """
-        Required. URI for this repository.
+        Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
         """
         return pulumi.get(self, "uri")
 
@@ -3975,7 +3953,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs:
                  uri: pulumi.Input[str],
                  sha256_checksum: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] uri: Required. URI for this repository.
+        :param pulumi.Input[str] uri: Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
         :param pulumi.Input[str] sha256_checksum: SHA256 checksum of the remote file.
         """
         pulumi.set(__self__, "uri", uri)
@@ -3986,7 +3964,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs:
     @pulumi.getter
     def uri(self) -> pulumi.Input[str]:
         """
-        Required. URI for this repository.
+        Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
         """
         return pulumi.get(self, "uri")
 
@@ -4012,7 +3990,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] name: Required. The name of the repository.
+        :param pulumi.Input[str] name: Required. Package name.
         """
         pulumi.set(__self__, "name", name)
 
@@ -4020,7 +3998,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Required. The name of the repository.
+        Required. Package name.
         """
         return pulumi.get(self, "name")
 
@@ -4034,7 +4012,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] name: Required. The name of the repository.
+        :param pulumi.Input[str] name: Required. Package name.
         """
         pulumi.set(__self__, "name", name)
 
@@ -4042,7 +4020,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Required. The name of the repository.
+        Required. Package name.
         """
         return pulumi.get(self, "name")
 
@@ -4251,7 +4229,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs:
                  gpg_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] base_url: Required. The location of the repository directory.
-        :param pulumi.Input[str] id: Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+        :param pulumi.Input[str] id: Required. A one word, unique name for this repository. This is the `repo id` in the yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for resource conflicts.
         :param pulumi.Input[str] display_name: The display name of the repository.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] gpg_keys: URIs of GPG keys.
         """
@@ -4278,7 +4256,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs:
     @pulumi.getter
     def id(self) -> pulumi.Input[str]:
         """
-        Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+        Required. A one word, unique name for this repository. This is the `repo id` in the yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for resource conflicts.
         """
         return pulumi.get(self, "id")
 
@@ -4771,7 +4749,7 @@ class PatchDeploymentPatchConfigAptArgs:
                  exclusive_packages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] excludes: List of KBs to exclude from update.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excludes: List of packages to exclude from update. These packages will be excluded.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exclusive_packages: An exclusive list of packages to be updated. These are the only packages that will be updated.
                If these packages are not installed, they will be ignored. This field cannot be specified with
                any other patch configuration fields.
@@ -4789,7 +4767,7 @@ class PatchDeploymentPatchConfigAptArgs:
     @pulumi.getter
     def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of KBs to exclude from update.
+        List of packages to exclude from update. These packages will be excluded.
         """
         return pulumi.get(self, "excludes")
 
@@ -5516,7 +5494,7 @@ class PatchDeploymentPatchConfigYumArgs:
                  minimal: Optional[pulumi.Input[bool]] = None,
                  security: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] excludes: List of KBs to exclude from update.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excludes: List of packages to exclude from update. These packages will be excluded.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exclusive_packages: An exclusive list of packages to be updated. These are the only packages that will be updated.
                If these packages are not installed, they will be ignored. This field cannot be specified with
                any other patch configuration fields.
@@ -5536,7 +5514,7 @@ class PatchDeploymentPatchConfigYumArgs:
     @pulumi.getter
     def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of KBs to exclude from update.
+        List of packages to exclude from update. These packages will be excluded.
         """
         return pulumi.get(self, "excludes")
 
@@ -5594,9 +5572,9 @@ class PatchDeploymentPatchConfigZypperArgs:
                  with_update: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] categories: Install only patches with these categories. Common categories include security, recommended, and feature.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] excludes: List of KBs to exclude from update.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclusive_patches: An exclusive list of kbs to be updated. These are the only patches that will be updated.
-               This field must not be used with other patch configurations.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excludes: List of packages to exclude from update.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclusive_patches: An exclusive list of patches to be updated. These are the only patches that will be installed using 'zypper patch patch:' command.
+               This field must not be used with any other patch configuration fields.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] severities: Install only patches with these severities. Common severities include critical, important, moderate, and low.
         :param pulumi.Input[bool] with_optional: Adds the --with-optional flag to zypper patch.
         :param pulumi.Input[bool] with_update: Adds the --with-update flag, to zypper patch.
@@ -5630,7 +5608,7 @@ class PatchDeploymentPatchConfigZypperArgs:
     @pulumi.getter
     def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of KBs to exclude from update.
+        List of packages to exclude from update.
         """
         return pulumi.get(self, "excludes")
 
@@ -5642,8 +5620,8 @@ class PatchDeploymentPatchConfigZypperArgs:
     @pulumi.getter(name="exclusivePatches")
     def exclusive_patches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        An exclusive list of kbs to be updated. These are the only patches that will be updated.
-        This field must not be used with other patch configurations.
+        An exclusive list of patches to be updated. These are the only patches that will be installed using 'zypper patch patch:' command.
+        This field must not be used with any other patch configuration fields.
         """
         return pulumi.get(self, "exclusive_patches")
 
@@ -5707,13 +5685,11 @@ class PatchDeploymentRecurringScheduleArgs:
                Structure is documented below.
         :param pulumi.Input[str] end_time: The end time at which a recurring patch deployment schedule is no longer active.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[str] last_execute_time: -
-               The time the last patch job ran successfully.
+        :param pulumi.Input[str] last_execute_time: The time the last patch job ran successfully.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input['PatchDeploymentRecurringScheduleMonthlyArgs'] monthly: Schedule with monthly executions.
                Structure is documented below.
-        :param pulumi.Input[str] next_execute_time: -
-               The time the next patch job is scheduled to run.
+        :param pulumi.Input[str] next_execute_time: The time the next patch job is scheduled to run.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] start_time: The time that the recurring schedule becomes effective. Defaults to createTime of the patch deployment.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
@@ -5779,7 +5755,6 @@ class PatchDeploymentRecurringScheduleArgs:
     @pulumi.getter(name="lastExecuteTime")
     def last_execute_time(self) -> Optional[pulumi.Input[str]]:
         """
-        -
         The time the last patch job ran successfully.
         A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """
@@ -5806,7 +5781,6 @@ class PatchDeploymentRecurringScheduleArgs:
     @pulumi.getter(name="nextExecuteTime")
     def next_execute_time(self) -> Optional[pulumi.Input[str]]:
         """
-        -
         The time the next patch job is scheduled to run.
         A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """
@@ -6043,7 +6017,7 @@ class PatchDeploymentRecurringScheduleWeeklyArgs:
     def __init__(__self__, *,
                  day_of_week: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] day_of_week: A day of the week.
+        :param pulumi.Input[str] day_of_week: IANA Time Zone Database time zone, e.g. "America/New_York".
                Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
         """
         pulumi.set(__self__, "day_of_week", day_of_week)
@@ -6052,7 +6026,7 @@ class PatchDeploymentRecurringScheduleWeeklyArgs:
     @pulumi.getter(name="dayOfWeek")
     def day_of_week(self) -> pulumi.Input[str]:
         """
-        A day of the week.
+        IANA Time Zone Database time zone, e.g. "America/New_York".
         Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
         """
         return pulumi.get(self, "day_of_week")

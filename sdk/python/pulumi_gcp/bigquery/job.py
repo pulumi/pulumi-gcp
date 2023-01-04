@@ -29,18 +29,14 @@ class JobArgs:
         The set of arguments for constructing a Job resource.
         :param pulumi.Input[str] job_id: The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
         :param pulumi.Input['JobCopyArgs'] copy: Copies a table.
-               Structure is documented below.
         :param pulumi.Input['JobExtractArgs'] extract: Configures an extract job.
-               Structure is documented below.
         :param pulumi.Input[str] job_timeout_ms: Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job. You can use these to organize and group your jobs.
         :param pulumi.Input['JobLoadArgs'] load: Configures a load job.
-               Structure is documented below.
         :param pulumi.Input[str] location: The geographic location of the job. The default value is US.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['JobQueryArgs'] query: Configures a query job.
-               Structure is documented below.
         """
         pulumi.set(__self__, "job_id", job_id)
         if copy is not None:
@@ -77,7 +73,6 @@ class JobArgs:
     def copy(self) -> Optional[pulumi.Input['JobCopyArgs']]:
         """
         Copies a table.
-        Structure is documented below.
         """
         return pulumi.get(self, "copy")
 
@@ -90,7 +85,6 @@ class JobArgs:
     def extract(self) -> Optional[pulumi.Input['JobExtractArgs']]:
         """
         Configures an extract job.
-        Structure is documented below.
         """
         return pulumi.get(self, "extract")
 
@@ -127,7 +121,6 @@ class JobArgs:
     def load(self) -> Optional[pulumi.Input['JobLoadArgs']]:
         """
         Configures a load job.
-        Structure is documented below.
         """
         return pulumi.get(self, "load")
 
@@ -165,7 +158,6 @@ class JobArgs:
     def query(self) -> Optional[pulumi.Input['JobQueryArgs']]:
         """
         Configures a query job.
-        Structure is documented below.
         """
         return pulumi.get(self, "query")
 
@@ -192,21 +184,18 @@ class _JobState:
         """
         Input properties used for looking up and filtering Job resources.
         :param pulumi.Input['JobCopyArgs'] copy: Copies a table.
-               Structure is documented below.
         :param pulumi.Input['JobExtractArgs'] extract: Configures an extract job.
-               Structure is documented below.
         :param pulumi.Input[str] job_id: The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
         :param pulumi.Input[str] job_timeout_ms: Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
         :param pulumi.Input[str] job_type: The type of the job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job. You can use these to organize and group your jobs.
         :param pulumi.Input['JobLoadArgs'] load: Configures a load job.
-               Structure is documented below.
         :param pulumi.Input[str] location: The geographic location of the job. The default value is US.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['JobQueryArgs'] query: Configures a query job.
-               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]] statuses: The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+               Structure is documented below.
         :param pulumi.Input[str] user_email: Email address of the user who ran the job.
         """
         if copy is not None:
@@ -239,7 +228,6 @@ class _JobState:
     def copy(self) -> Optional[pulumi.Input['JobCopyArgs']]:
         """
         Copies a table.
-        Structure is documented below.
         """
         return pulumi.get(self, "copy")
 
@@ -252,7 +240,6 @@ class _JobState:
     def extract(self) -> Optional[pulumi.Input['JobExtractArgs']]:
         """
         Configures an extract job.
-        Structure is documented below.
         """
         return pulumi.get(self, "extract")
 
@@ -313,7 +300,6 @@ class _JobState:
     def load(self) -> Optional[pulumi.Input['JobLoadArgs']]:
         """
         Configures a load job.
-        Structure is documented below.
         """
         return pulumi.get(self, "load")
 
@@ -351,7 +337,6 @@ class _JobState:
     def query(self) -> Optional[pulumi.Input['JobQueryArgs']]:
         """
         Configures a query job.
-        Structure is documented below.
         """
         return pulumi.get(self, "query")
 
@@ -364,6 +349,7 @@ class _JobState:
     def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusArgs']]]]:
         """
         The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+        Structure is documented below.
         """
         return pulumi.get(self, "statuses")
 
@@ -596,19 +582,15 @@ class Job(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['JobCopyArgs']] copy: Copies a table.
-               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['JobExtractArgs']] extract: Configures an extract job.
-               Structure is documented below.
         :param pulumi.Input[str] job_id: The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
         :param pulumi.Input[str] job_timeout_ms: Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job. You can use these to organize and group your jobs.
         :param pulumi.Input[pulumi.InputType['JobLoadArgs']] load: Configures a load job.
-               Structure is documented below.
         :param pulumi.Input[str] location: The geographic location of the job. The default value is US.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['JobQueryArgs']] query: Configures a query job.
-               Structure is documented below.
         """
         ...
     @overload
@@ -887,21 +869,18 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['JobCopyArgs']] copy: Copies a table.
-               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['JobExtractArgs']] extract: Configures an extract job.
-               Structure is documented below.
         :param pulumi.Input[str] job_id: The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
         :param pulumi.Input[str] job_timeout_ms: Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
         :param pulumi.Input[str] job_type: The type of the job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job. You can use these to organize and group your jobs.
         :param pulumi.Input[pulumi.InputType['JobLoadArgs']] load: Configures a load job.
-               Structure is documented below.
         :param pulumi.Input[str] location: The geographic location of the job. The default value is US.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['JobQueryArgs']] query: Configures a query job.
-               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobStatusArgs']]]] statuses: The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+               Structure is documented below.
         :param pulumi.Input[str] user_email: Email address of the user who ran the job.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -927,7 +906,6 @@ class Job(pulumi.CustomResource):
     def copy(self) -> pulumi.Output[Optional['outputs.JobCopy']]:
         """
         Copies a table.
-        Structure is documented below.
         """
         return pulumi.get(self, "copy")
 
@@ -936,7 +914,6 @@ class Job(pulumi.CustomResource):
     def extract(self) -> pulumi.Output[Optional['outputs.JobExtract']]:
         """
         Configures an extract job.
-        Structure is documented below.
         """
         return pulumi.get(self, "extract")
 
@@ -977,7 +954,6 @@ class Job(pulumi.CustomResource):
     def load(self) -> pulumi.Output[Optional['outputs.JobLoad']]:
         """
         Configures a load job.
-        Structure is documented below.
         """
         return pulumi.get(self, "load")
 
@@ -1003,7 +979,6 @@ class Job(pulumi.CustomResource):
     def query(self) -> pulumi.Output[Optional['outputs.JobQuery']]:
         """
         Configures a query job.
-        Structure is documented below.
         """
         return pulumi.get(self, "query")
 
@@ -1012,6 +987,7 @@ class Job(pulumi.CustomResource):
     def statuses(self) -> pulumi.Output[Sequence['outputs.JobStatus']]:
         """
         The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+        Structure is documented below.
         """
         return pulumi.get(self, "statuses")
 

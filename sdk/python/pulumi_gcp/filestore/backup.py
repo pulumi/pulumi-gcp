@@ -181,8 +181,7 @@ class _BackupState:
         :param pulumi.Input[str] source_instance: The resource name of the source Cloud Filestore instance, in the format projects/{projectId}/locations/{locationId}/instances/{instanceId}, used to create this backup.
         :param pulumi.Input[str] source_instance_tier: The service tier of the source Cloud Filestore instance that this backup is created from.
         :param pulumi.Input[str] state: The backup state.
-        :param pulumi.Input[str] storage_bytes: The size of the storage used by the backup. As backups share storage, this number is expected to change with backup
-               creation/deletion.
+        :param pulumi.Input[str] storage_bytes: The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
         """
         if capacity_gb is not None:
             pulumi.set(__self__, "capacity_gb", capacity_gb)
@@ -380,8 +379,7 @@ class _BackupState:
     @pulumi.getter(name="storageBytes")
     def storage_bytes(self) -> Optional[pulumi.Input[str]]:
         """
-        The size of the storage used by the backup. As backups share storage, this number is expected to change with backup
-        creation/deletion.
+        The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
         """
         return pulumi.get(self, "storage_bytes")
 
@@ -640,8 +638,7 @@ class Backup(pulumi.CustomResource):
         :param pulumi.Input[str] source_instance: The resource name of the source Cloud Filestore instance, in the format projects/{projectId}/locations/{locationId}/instances/{instanceId}, used to create this backup.
         :param pulumi.Input[str] source_instance_tier: The service tier of the source Cloud Filestore instance that this backup is created from.
         :param pulumi.Input[str] state: The backup state.
-        :param pulumi.Input[str] storage_bytes: The size of the storage used by the backup. As backups share storage, this number is expected to change with backup
-               creation/deletion.
+        :param pulumi.Input[str] storage_bytes: The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -778,8 +775,7 @@ class Backup(pulumi.CustomResource):
     @pulumi.getter(name="storageBytes")
     def storage_bytes(self) -> pulumi.Output[str]:
         """
-        The size of the storage used by the backup. As backups share storage, this number is expected to change with backup
-        creation/deletion.
+        The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
         """
         return pulumi.get(self, "storage_bytes")
 

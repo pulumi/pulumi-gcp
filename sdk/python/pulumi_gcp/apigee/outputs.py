@@ -100,8 +100,7 @@ class EnvironmentNodeConfig(dict):
                  max_node_count: Optional[str] = None,
                  min_node_count: Optional[str] = None):
         """
-        :param str current_aggregate_node_count: -
-               The current total number of gateway nodes that each environment currently has across
+        :param str current_aggregate_node_count: The current total number of gateway nodes that each environment currently has across
                all instances.
         :param str max_node_count: The maximum total number of gateway nodes that the is reserved for all instances that
                has the specified environment. If not specified, the default is determined by the
@@ -121,7 +120,6 @@ class EnvironmentNodeConfig(dict):
     @pulumi.getter(name="currentAggregateNodeCount")
     def current_aggregate_node_count(self) -> Optional[str]:
         """
-        -
         The current total number of gateway nodes that each environment currently has across
         all instances.
         """

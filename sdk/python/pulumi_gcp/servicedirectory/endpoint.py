@@ -142,7 +142,8 @@ class _EndpointState:
                by service clients. The entire metadata dictionary may contain
                up to 512 characters, spread across all key-value pairs.
                Metadata that goes beyond any these limits will be rejected.
-        :param pulumi.Input[str] name: The resource name for the endpoint in the format 'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
+        :param pulumi.Input[str] name: The resource name for the endpoint in the format
+               `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
         :param pulumi.Input[str] network: The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
         :param pulumi.Input[int] port: Port that the endpoint is running on, must be in the
                range of [0, 65535]. If unspecified, the default is 0.
@@ -207,7 +208,8 @@ class _EndpointState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name for the endpoint in the format 'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
+        The resource name for the endpoint in the format
+        `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
         """
         return pulumi.get(self, "name")
 
@@ -517,7 +519,8 @@ class Endpoint(pulumi.CustomResource):
                by service clients. The entire metadata dictionary may contain
                up to 512 characters, spread across all key-value pairs.
                Metadata that goes beyond any these limits will be rejected.
-        :param pulumi.Input[str] name: The resource name for the endpoint in the format 'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
+        :param pulumi.Input[str] name: The resource name for the endpoint in the format
+               `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
         :param pulumi.Input[str] network: The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
         :param pulumi.Input[int] port: Port that the endpoint is running on, must be in the
                range of [0, 65535]. If unspecified, the default is 0.
@@ -568,7 +571,8 @@ class Endpoint(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name for the endpoint in the format 'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
+        The resource name for the endpoint in the format
+        `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
         """
         return pulumi.get(self, "name")
 

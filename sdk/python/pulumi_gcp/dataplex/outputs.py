@@ -158,7 +158,7 @@ class AssetDiscoverySpecCsvOptions(dict):
                  header_rows: Optional[int] = None):
         """
         :param str delimiter: Optional. The delimiter being used to separate values. This defaults to ','.
-        :param bool disable_type_inference: Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+        :param bool disable_type_inference: Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
         :param str encoding: Optional. The character encoding of the data. The default is UTF-8.
         :param int header_rows: Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
         """
@@ -183,7 +183,7 @@ class AssetDiscoverySpecCsvOptions(dict):
     @pulumi.getter(name="disableTypeInference")
     def disable_type_inference(self) -> Optional[bool]:
         """
-        Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+        Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
         """
         return pulumi.get(self, "disable_type_inference")
 
@@ -282,6 +282,10 @@ class AssetDiscoveryStatus(dict):
                  state: Optional[str] = None,
                  stats: Optional[Sequence['outputs.AssetDiscoveryStatusStat']] = None,
                  update_time: Optional[str] = None):
+        """
+        :param str state: Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+        :param str update_time: Output only. The time when the asset was last updated.
+        """
         if last_run_duration is not None:
             pulumi.set(__self__, "last_run_duration", last_run_duration)
         if last_run_time is not None:
@@ -313,6 +317,9 @@ class AssetDiscoveryStatus(dict):
     @property
     @pulumi.getter
     def state(self) -> Optional[str]:
+        """
+        Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+        """
         return pulumi.get(self, "state")
 
     @property
@@ -323,6 +330,9 @@ class AssetDiscoveryStatus(dict):
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[str]:
+        """
+        Output only. The time when the asset was last updated.
+        """
         return pulumi.get(self, "update_time")
 
 
@@ -435,6 +445,10 @@ class AssetResourceStatus(dict):
                  message: Optional[str] = None,
                  state: Optional[str] = None,
                  update_time: Optional[str] = None):
+        """
+        :param str state: Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+        :param str update_time: Output only. The time when the asset was last updated.
+        """
         if message is not None:
             pulumi.set(__self__, "message", message)
         if state is not None:
@@ -450,11 +464,17 @@ class AssetResourceStatus(dict):
     @property
     @pulumi.getter
     def state(self) -> Optional[str]:
+        """
+        Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[str]:
+        """
+        Output only. The time when the asset was last updated.
+        """
         return pulumi.get(self, "update_time")
 
 
@@ -481,6 +501,10 @@ class AssetSecurityStatus(dict):
                  message: Optional[str] = None,
                  state: Optional[str] = None,
                  update_time: Optional[str] = None):
+        """
+        :param str state: Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+        :param str update_time: Output only. The time when the asset was last updated.
+        """
         if message is not None:
             pulumi.set(__self__, "message", message)
         if state is not None:
@@ -496,11 +520,17 @@ class AssetSecurityStatus(dict):
     @property
     @pulumi.getter
     def state(self) -> Optional[str]:
+        """
+        Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[str]:
+        """
+        Output only. The time when the asset was last updated.
+        """
         return pulumi.get(self, "update_time")
 
 
@@ -531,6 +561,9 @@ class LakeAssetStatus(dict):
                  active_assets: Optional[int] = None,
                  security_policy_applying_assets: Optional[int] = None,
                  update_time: Optional[str] = None):
+        """
+        :param str update_time: Output only. The time when the lake was last updated.
+        """
         if active_assets is not None:
             pulumi.set(__self__, "active_assets", active_assets)
         if security_policy_applying_assets is not None:
@@ -551,6 +584,9 @@ class LakeAssetStatus(dict):
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[str]:
+        """
+        Output only. The time when the lake was last updated.
+        """
         return pulumi.get(self, "update_time")
 
 
@@ -597,6 +633,10 @@ class LakeMetastoreStatus(dict):
                  message: Optional[str] = None,
                  state: Optional[str] = None,
                  update_time: Optional[str] = None):
+        """
+        :param str state: Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+        :param str update_time: Output only. The time when the lake was last updated.
+        """
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
         if message is not None:
@@ -619,11 +659,17 @@ class LakeMetastoreStatus(dict):
     @property
     @pulumi.getter
     def state(self) -> Optional[str]:
+        """
+        Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[str]:
+        """
+        Output only. The time when the lake was last updated.
+        """
         return pulumi.get(self, "update_time")
 
 
@@ -654,6 +700,9 @@ class ZoneAssetStatus(dict):
                  active_assets: Optional[int] = None,
                  security_policy_applying_assets: Optional[int] = None,
                  update_time: Optional[str] = None):
+        """
+        :param str update_time: Output only. The time when the zone was last updated.
+        """
         if active_assets is not None:
             pulumi.set(__self__, "active_assets", active_assets)
         if security_policy_applying_assets is not None:
@@ -674,6 +723,9 @@ class ZoneAssetStatus(dict):
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[str]:
+        """
+        Output only. The time when the zone was last updated.
+        """
         return pulumi.get(self, "update_time")
 
 
@@ -806,7 +858,7 @@ class ZoneDiscoverySpecCsvOptions(dict):
                  header_rows: Optional[int] = None):
         """
         :param str delimiter: Optional. The delimiter being used to separate values. This defaults to ','.
-        :param bool disable_type_inference: Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+        :param bool disable_type_inference: Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
         :param str encoding: Optional. The character encoding of the data. The default is UTF-8.
         :param int header_rows: Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
         """
@@ -831,7 +883,7 @@ class ZoneDiscoverySpecCsvOptions(dict):
     @pulumi.getter(name="disableTypeInference")
     def disable_type_inference(self) -> Optional[bool]:
         """
-        Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+        Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
         """
         return pulumi.get(self, "disable_type_inference")
 

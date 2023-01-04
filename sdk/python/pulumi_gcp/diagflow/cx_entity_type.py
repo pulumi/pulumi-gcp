@@ -228,8 +228,8 @@ class _CxEntityTypeState:
                EntityType.entities.synonyms
                EntityType.excluded_phrases.value
                If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
-        :param pulumi.Input[str] name: The unique identifier of the entity type. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-               ID>/entityTypes/<Entity Type ID>.
+        :param pulumi.Input[str] name: The unique identifier of the entity type.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID>.
         :param pulumi.Input[str] parent: The agent to create a entity type for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         :param pulumi.Input[bool] redact: Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name when logging.
@@ -357,8 +357,8 @@ class _CxEntityTypeState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique identifier of the entity type. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-        ID>/entityTypes/<Entity Type ID>.
+        The unique identifier of the entity type.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID>.
         """
         return pulumi.get(self, "name")
 
@@ -675,8 +675,8 @@ class CxEntityType(pulumi.CustomResource):
                EntityType.entities.synonyms
                EntityType.excluded_phrases.value
                If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
-        :param pulumi.Input[str] name: The unique identifier of the entity type. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-               ID>/entityTypes/<Entity Type ID>.
+        :param pulumi.Input[str] name: The unique identifier of the entity type.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID>.
         :param pulumi.Input[str] parent: The agent to create a entity type for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         :param pulumi.Input[bool] redact: Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name when logging.
@@ -771,8 +771,8 @@ class CxEntityType(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The unique identifier of the entity type. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-        ID>/entityTypes/<Entity Type ID>.
+        The unique identifier of the entity type.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID>.
         """
         return pulumi.get(self, "name")
 

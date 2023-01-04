@@ -194,7 +194,8 @@ class _SSLPolicyState:
                *must not* be present when using any other profile.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_features: The list of features enabled in the SSL policy.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this
+               object. This field is used in optimistic locking.
         :param pulumi.Input[str] min_tls_version: The minimum version of SSL protocol that can be used by the clients
                to establish a connection with the load balancer.
                Default value is `TLS_1_0`.
@@ -300,7 +301,8 @@ class _SSLPolicyState:
     @pulumi.getter
     def fingerprint(self) -> Optional[pulumi.Input[str]]:
         """
-        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+        Fingerprint of this resource. A hash of the contents stored in this
+        object. This field is used in optimistic locking.
         """
         return pulumi.get(self, "fingerprint")
 
@@ -611,7 +613,8 @@ class SSLPolicy(pulumi.CustomResource):
                *must not* be present when using any other profile.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_features: The list of features enabled in the SSL policy.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this
+               object. This field is used in optimistic locking.
         :param pulumi.Input[str] min_tls_version: The minimum version of SSL protocol that can be used by the clients
                to establish a connection with the load balancer.
                Default value is `TLS_1_0`.
@@ -696,7 +699,8 @@ class SSLPolicy(pulumi.CustomResource):
     @pulumi.getter
     def fingerprint(self) -> pulumi.Output[str]:
         """
-        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+        Fingerprint of this resource. A hash of the contents stored in this
+        object. This field is used in optimistic locking.
         """
         return pulumi.get(self, "fingerprint")
 

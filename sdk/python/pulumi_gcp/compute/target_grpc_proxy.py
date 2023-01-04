@@ -151,10 +151,13 @@ class _TargetGrpcProxyState:
         Input properties used for looking up and filtering TargetGrpcProxy resources.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
-               This field will be ignored when inserting a TargetGrpcProxy. An up-to-date fingerprint must be provided in order to
-               patch/update the TargetGrpcProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest
-               fingerprint, make a get() request to retrieve the TargetGrpcProxy. A base64-encoded string.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in
+               this object. This field is used in optimistic locking. This field
+               will be ignored when inserting a TargetGrpcProxy. An up-to-date
+               fingerprint must be provided in order to patch/update the
+               TargetGrpcProxy; otherwise, the request will fail with error
+               412 conditionNotMet. To see the latest fingerprint, make a get()
+               request to retrieve the TargetGrpcProxy. A base64-encoded string.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource
                is created. The name must be 1-63 characters long, and comply
                with RFC1035. Specifically, the name must be 1-63 characters long
@@ -227,10 +230,13 @@ class _TargetGrpcProxyState:
     @pulumi.getter
     def fingerprint(self) -> Optional[pulumi.Input[str]]:
         """
-        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
-        This field will be ignored when inserting a TargetGrpcProxy. An up-to-date fingerprint must be provided in order to
-        patch/update the TargetGrpcProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest
-        fingerprint, make a get() request to retrieve the TargetGrpcProxy. A base64-encoded string.
+        Fingerprint of this resource. A hash of the contents stored in
+        this object. This field is used in optimistic locking. This field
+        will be ignored when inserting a TargetGrpcProxy. An up-to-date
+        fingerprint must be provided in order to patch/update the
+        TargetGrpcProxy; otherwise, the request will fail with error
+        412 conditionNotMet. To see the latest fingerprint, make a get()
+        request to retrieve the TargetGrpcProxy. A base64-encoded string.
         """
         return pulumi.get(self, "fingerprint")
 
@@ -498,10 +504,13 @@ class TargetGrpcProxy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
-               This field will be ignored when inserting a TargetGrpcProxy. An up-to-date fingerprint must be provided in order to
-               patch/update the TargetGrpcProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest
-               fingerprint, make a get() request to retrieve the TargetGrpcProxy. A base64-encoded string.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in
+               this object. This field is used in optimistic locking. This field
+               will be ignored when inserting a TargetGrpcProxy. An up-to-date
+               fingerprint must be provided in order to patch/update the
+               TargetGrpcProxy; otherwise, the request will fail with error
+               412 conditionNotMet. To see the latest fingerprint, make a get()
+               request to retrieve the TargetGrpcProxy. A base64-encoded string.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource
                is created. The name must be 1-63 characters long, and comply
                with RFC1035. Specifically, the name must be 1-63 characters long
@@ -562,10 +571,13 @@ class TargetGrpcProxy(pulumi.CustomResource):
     @pulumi.getter
     def fingerprint(self) -> pulumi.Output[str]:
         """
-        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
-        This field will be ignored when inserting a TargetGrpcProxy. An up-to-date fingerprint must be provided in order to
-        patch/update the TargetGrpcProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest
-        fingerprint, make a get() request to retrieve the TargetGrpcProxy. A base64-encoded string.
+        Fingerprint of this resource. A hash of the contents stored in
+        this object. This field is used in optimistic locking. This field
+        will be ignored when inserting a TargetGrpcProxy. An up-to-date
+        fingerprint must be provided in order to patch/update the
+        TargetGrpcProxy; otherwise, the request will fail with error
+        412 conditionNotMet. To see the latest fingerprint, make a get()
+        request to retrieve the TargetGrpcProxy. A base64-encoded string.
         """
         return pulumi.get(self, "fingerprint")
 

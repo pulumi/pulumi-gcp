@@ -111,11 +111,17 @@ class GetDiskResult:
     @property
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
         return pulumi.get(self, "creation_timestamp")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The optional description of this resource.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -134,6 +140,9 @@ class GetDiskResult:
     @property
     @pulumi.getter
     def image(self) -> str:
+        """
+        The image from which to initialize this disk.
+        """
         return pulumi.get(self, "image")
 
     @property
@@ -144,6 +153,10 @@ class GetDiskResult:
     @property
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> str:
+        """
+        The fingerprint used for optimistic locking of this resource.  Used
+        internally during updates.
+        """
         return pulumi.get(self, "label_fingerprint")
 
     @property
@@ -157,11 +170,17 @@ class GetDiskResult:
     @property
     @pulumi.getter(name="lastAttachTimestamp")
     def last_attach_timestamp(self) -> str:
+        """
+        Last attach timestamp in RFC3339 text format.
+        """
         return pulumi.get(self, "last_attach_timestamp")
 
     @property
     @pulumi.getter(name="lastDetachTimestamp")
     def last_detach_timestamp(self) -> str:
+        """
+        Last detach timestamp in RFC3339 text format.
+        """
         return pulumi.get(self, "last_detach_timestamp")
 
     @property
@@ -177,6 +196,9 @@ class GetDiskResult:
     @property
     @pulumi.getter(name="physicalBlockSizeBytes")
     def physical_block_size_bytes(self) -> int:
+        """
+        Physical block size of the persistent disk, in bytes.
+        """
         return pulumi.get(self, "physical_block_size_bytes")
 
     @property
@@ -205,11 +227,17 @@ class GetDiskResult:
     @property
     @pulumi.getter
     def size(self) -> int:
+        """
+        Size of the persistent disk, specified in GB.
+        """
         return pulumi.get(self, "size")
 
     @property
     @pulumi.getter
     def snapshot(self) -> str:
+        """
+        The source snapshot used to create this disk.
+        """
         return pulumi.get(self, "snapshot")
 
     @property
@@ -225,36 +253,68 @@ class GetDiskResult:
     @property
     @pulumi.getter(name="sourceImageEncryptionKeys")
     def source_image_encryption_keys(self) -> Sequence['outputs.GetDiskSourceImageEncryptionKeyResult']:
+        """
+        The customer-supplied encryption key of the source image.
+        """
         return pulumi.get(self, "source_image_encryption_keys")
 
     @property
     @pulumi.getter(name="sourceImageId")
     def source_image_id(self) -> str:
+        """
+        The ID value of the image used to create this disk. This value
+        identifies the exact image that was used to create this persistent
+        disk. For example, if you created the persistent disk from an image
+        that was later deleted and recreated under the same name, the source
+        image ID would identify the exact version of the image that was used.
+        """
         return pulumi.get(self, "source_image_id")
 
     @property
     @pulumi.getter(name="sourceSnapshotEncryptionKeys")
     def source_snapshot_encryption_keys(self) -> Sequence['outputs.GetDiskSourceSnapshotEncryptionKeyResult']:
+        """
+        The customer-supplied encryption key of the source snapshot.
+        """
         return pulumi.get(self, "source_snapshot_encryption_keys")
 
     @property
     @pulumi.getter(name="sourceSnapshotId")
     def source_snapshot_id(self) -> str:
+        """
+        The unique ID of the snapshot used to create this disk. This value
+        identifies the exact snapshot that was used to create this persistent
+        disk. For example, if you created the persistent disk from a snapshot
+        that was later deleted and recreated under the same name, the source
+        snapshot ID would identify the exact version of the snapshot that was
+        used.
+        """
         return pulumi.get(self, "source_snapshot_id")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        URL of the disk type resource describing which disk type to use to
+        create the disk.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def users(self) -> Sequence[str]:
+        """
+        Links to the users of the disk (attached instances) in form:
+        project/zones/zone/instances/instance
+        """
         return pulumi.get(self, "users")
 
     @property
     @pulumi.getter
     def zone(self) -> Optional[str]:
+        """
+        A reference to the zone where the disk resides.
+        """
         return pulumi.get(self, "zone")
 
 

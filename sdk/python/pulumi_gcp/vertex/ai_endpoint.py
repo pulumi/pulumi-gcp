@@ -169,10 +169,9 @@ class _AiEndpointState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AiEndpoint resources.
-        :param pulumi.Input[str] create_time: Output only. Timestamp when this Endpoint was created.
-        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelArgs']]] deployed_models: Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and
-               EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud
-               Console](https://console.cloud.google.com/vertex-ai/).
+        :param pulumi.Input[str] create_time: Output only. Timestamp when the DeployedModel was created.
+        :param pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelArgs']]] deployed_models: Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
+               Structure is documented below.
         :param pulumi.Input[str] description: The description of the Endpoint.
         :param pulumi.Input[str] display_name: Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         :param pulumi.Input['AiEndpointEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
@@ -180,9 +179,7 @@ class _AiEndpointState:
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[str] model_deployment_monitoring_job: Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by
-               CreateModelDeploymentMonitoringJob. Format:
-               'projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}'
+        :param pulumi.Input[str] model_deployment_monitoring_job: Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
         :param pulumi.Input[str] name: The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
         :param pulumi.Input[str] network: The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -220,7 +217,7 @@ class _AiEndpointState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Timestamp when this Endpoint was created.
+        Output only. Timestamp when the DeployedModel was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -232,9 +229,8 @@ class _AiEndpointState:
     @pulumi.getter(name="deployedModels")
     def deployed_models(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelArgs']]]]:
         """
-        Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and
-        EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud
-        Console](https://console.cloud.google.com/vertex-ai/).
+        Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
+        Structure is documented below.
         """
         return pulumi.get(self, "deployed_models")
 
@@ -319,9 +315,7 @@ class _AiEndpointState:
     @pulumi.getter(name="modelDeploymentMonitoringJob")
     def model_deployment_monitoring_job(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by
-        CreateModelDeploymentMonitoringJob. Format:
-        'projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}'
+        Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
         """
         return pulumi.get(self, "model_deployment_monitoring_job")
 
@@ -613,10 +607,9 @@ class AiEndpoint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Output only. Timestamp when this Endpoint was created.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AiEndpointDeployedModelArgs']]]] deployed_models: Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and
-               EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud
-               Console](https://console.cloud.google.com/vertex-ai/).
+        :param pulumi.Input[str] create_time: Output only. Timestamp when the DeployedModel was created.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AiEndpointDeployedModelArgs']]]] deployed_models: Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
+               Structure is documented below.
         :param pulumi.Input[str] description: The description of the Endpoint.
         :param pulumi.Input[str] display_name: Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         :param pulumi.Input[pulumi.InputType['AiEndpointEncryptionSpecArgs']] encryption_spec: Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
@@ -624,9 +617,7 @@ class AiEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[str] model_deployment_monitoring_job: Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by
-               CreateModelDeploymentMonitoringJob. Format:
-               'projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}'
+        :param pulumi.Input[str] model_deployment_monitoring_job: Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
         :param pulumi.Input[str] name: The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
         :param pulumi.Input[str] network: The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -656,7 +647,7 @@ class AiEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        Output only. Timestamp when this Endpoint was created.
+        Output only. Timestamp when the DeployedModel was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -664,9 +655,8 @@ class AiEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="deployedModels")
     def deployed_models(self) -> pulumi.Output[Sequence['outputs.AiEndpointDeployedModel']]:
         """
-        Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and
-        EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud
-        Console](https://console.cloud.google.com/vertex-ai/).
+        Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
+        Structure is documented below.
         """
         return pulumi.get(self, "deployed_models")
 
@@ -723,9 +713,7 @@ class AiEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="modelDeploymentMonitoringJob")
     def model_deployment_monitoring_job(self) -> pulumi.Output[str]:
         """
-        Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by
-        CreateModelDeploymentMonitoringJob. Format:
-        'projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}'
+        Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
         """
         return pulumi.get(self, "model_deployment_monitoring_job")
 

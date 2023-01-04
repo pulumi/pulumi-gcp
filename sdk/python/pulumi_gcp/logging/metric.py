@@ -34,7 +34,8 @@ class MetricArgs:
         :param pulumi.Input['MetricBucketOptionsArgs'] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
                describes the bucket boundaries used to create a histogram of the extracted values.
                Structure is documented below.
-        :param pulumi.Input[str] description: A human-readable description for the label.
+        :param pulumi.Input[str] description: A description of this metric, which is used in documentation. The maximum length of the
+               description is 8000 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] label_extractors: A map from a label key string to an extractor expression which is used to extract data from a log
                entry field and assign as the label value. Each label key specified in the LabelDescriptor must
                have an associated extractor expression in this map. The syntax of the extractor expression is
@@ -121,7 +122,8 @@ class MetricArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A human-readable description for the label.
+        A description of this metric, which is used in documentation. The maximum length of the
+        description is 8000 characters.
         """
         return pulumi.get(self, "description")
 
@@ -227,7 +229,8 @@ class _MetricState:
         :param pulumi.Input['MetricBucketOptionsArgs'] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
                describes the bucket boundaries used to create a histogram of the extracted values.
                Structure is documented below.
-        :param pulumi.Input[str] description: A human-readable description for the label.
+        :param pulumi.Input[str] description: A description of this metric, which is used in documentation. The maximum length of the
+               description is 8000 characters.
         :param pulumi.Input[str] filter: An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
                is used to match log entries.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] label_extractors: A map from a label key string to an extractor expression which is used to extract data from a log
@@ -304,7 +307,8 @@ class _MetricState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A human-readable description for the label.
+        A description of this metric, which is used in documentation. The maximum length of the
+        description is 8000 characters.
         """
         return pulumi.get(self, "description")
 
@@ -538,7 +542,8 @@ class Metric(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MetricBucketOptionsArgs']] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
                describes the bucket boundaries used to create a histogram of the extracted values.
                Structure is documented below.
-        :param pulumi.Input[str] description: A human-readable description for the label.
+        :param pulumi.Input[str] description: A description of this metric, which is used in documentation. The maximum length of the
+               description is 8000 characters.
         :param pulumi.Input[str] filter: An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
                is used to match log entries.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] label_extractors: A map from a label key string to an extractor expression which is used to extract data from a log
@@ -758,7 +763,8 @@ class Metric(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MetricBucketOptionsArgs']] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
                describes the bucket boundaries used to create a histogram of the extracted values.
                Structure is documented below.
-        :param pulumi.Input[str] description: A human-readable description for the label.
+        :param pulumi.Input[str] description: A description of this metric, which is used in documentation. The maximum length of the
+               description is 8000 characters.
         :param pulumi.Input[str] filter: An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
                is used to match log entries.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] label_extractors: A map from a label key string to an extractor expression which is used to extract data from a log
@@ -823,7 +829,8 @@ class Metric(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        A human-readable description for the label.
+        A description of this metric, which is used in documentation. The maximum length of the
+        description is 8000 characters.
         """
         return pulumi.get(self, "description")
 

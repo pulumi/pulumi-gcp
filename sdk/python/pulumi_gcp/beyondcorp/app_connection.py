@@ -38,7 +38,11 @@ class AppConnectionArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the AppConnection.
-        :param pulumi.Input[str] type: The type of hosting used by the gateway. Refer to
+        :param pulumi.Input[str] type: The type of network connectivity used by the AppConnection. Refer to
+               https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
+               for a list of possible values.
+               (Optional)
+               The type of hosting used by the gateway. Refer to
                https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
                for a list of possible values.
         """
@@ -163,6 +167,10 @@ class AppConnectionArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
+        The type of network connectivity used by the AppConnection. Refer to
+        https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
+        for a list of possible values.
+        (Optional)
         The type of hosting used by the gateway. Refer to
         https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
         for a list of possible values.
@@ -199,7 +207,11 @@ class _AppConnectionState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the AppConnection.
-        :param pulumi.Input[str] type: The type of hosting used by the gateway. Refer to
+        :param pulumi.Input[str] type: The type of network connectivity used by the AppConnection. Refer to
+               https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
+               for a list of possible values.
+               (Optional)
+               The type of hosting used by the gateway. Refer to
                https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
                for a list of possible values.
         """
@@ -325,6 +337,10 @@ class _AppConnectionState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
+        The type of network connectivity used by the AppConnection. Refer to
+        https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
+        for a list of possible values.
+        (Optional)
         The type of hosting used by the gateway. Refer to
         https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
         for a list of possible values.
@@ -419,7 +435,11 @@ class AppConnection(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the AppConnection.
-        :param pulumi.Input[str] type: The type of hosting used by the gateway. Refer to
+        :param pulumi.Input[str] type: The type of network connectivity used by the AppConnection. Refer to
+               https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
+               for a list of possible values.
+               (Optional)
+               The type of hosting used by the gateway. Refer to
                https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
                for a list of possible values.
         """
@@ -565,7 +585,11 @@ class AppConnection(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the AppConnection.
-        :param pulumi.Input[str] type: The type of hosting used by the gateway. Refer to
+        :param pulumi.Input[str] type: The type of network connectivity used by the AppConnection. Refer to
+               https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
+               for a list of possible values.
+               (Optional)
+               The type of hosting used by the gateway. Refer to
                https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
                for a list of possible values.
         """
@@ -655,6 +679,10 @@ class AppConnection(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[str]]:
         """
+        The type of network connectivity used by the AppConnection. Refer to
+        https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
+        for a list of possible values.
+        (Optional)
         The type of hosting used by the gateway. Refer to
         https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
         for a list of possible values.

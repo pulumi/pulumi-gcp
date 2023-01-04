@@ -135,6 +135,14 @@ class CryptoKeyVersionAttestation(dict):
                  content: Optional[str] = None,
                  external_protection_level_options: Optional['outputs.CryptoKeyVersionAttestationExternalProtectionLevelOptions'] = None,
                  format: Optional[str] = None):
+        """
+        :param 'CryptoKeyVersionAttestationCertChainsArgs' cert_chains: The certificate chains needed to validate the attestation
+               Structure is documented below.
+        :param str content: The attestation data provided by the HSM when the key operation was performed.
+        :param 'CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs' external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+               Structure is documented below.
+        :param str format: The format of the attestation data.
+        """
         if cert_chains is not None:
             pulumi.set(__self__, "cert_chains", cert_chains)
         if content is not None:
@@ -147,21 +155,35 @@ class CryptoKeyVersionAttestation(dict):
     @property
     @pulumi.getter(name="certChains")
     def cert_chains(self) -> Optional['outputs.CryptoKeyVersionAttestationCertChains']:
+        """
+        The certificate chains needed to validate the attestation
+        Structure is documented below.
+        """
         return pulumi.get(self, "cert_chains")
 
     @property
     @pulumi.getter
     def content(self) -> Optional[str]:
+        """
+        The attestation data provided by the HSM when the key operation was performed.
+        """
         return pulumi.get(self, "content")
 
     @property
     @pulumi.getter(name="externalProtectionLevelOptions")
     def external_protection_level_options(self) -> Optional['outputs.CryptoKeyVersionAttestationExternalProtectionLevelOptions']:
+        """
+        ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+        Structure is documented below.
+        """
         return pulumi.get(self, "external_protection_level_options")
 
     @property
     @pulumi.getter
     def format(self) -> Optional[str]:
+        """
+        The format of the attestation data.
+        """
         return pulumi.get(self, "format")
 
 
@@ -192,6 +214,11 @@ class CryptoKeyVersionAttestationCertChains(dict):
                  cavium_certs: Optional[str] = None,
                  google_card_certs: Optional[str] = None,
                  google_partition_certs: Optional[str] = None):
+        """
+        :param str cavium_certs: Cavium certificate chain corresponding to the attestation.
+        :param str google_card_certs: Google card certificate chain corresponding to the attestation.
+        :param str google_partition_certs: Google partition certificate chain corresponding to the attestation.
+        """
         if cavium_certs is not None:
             pulumi.set(__self__, "cavium_certs", cavium_certs)
         if google_card_certs is not None:
@@ -202,16 +229,25 @@ class CryptoKeyVersionAttestationCertChains(dict):
     @property
     @pulumi.getter(name="caviumCerts")
     def cavium_certs(self) -> Optional[str]:
+        """
+        Cavium certificate chain corresponding to the attestation.
+        """
         return pulumi.get(self, "cavium_certs")
 
     @property
     @pulumi.getter(name="googleCardCerts")
     def google_card_certs(self) -> Optional[str]:
+        """
+        Google card certificate chain corresponding to the attestation.
+        """
         return pulumi.get(self, "google_card_certs")
 
     @property
     @pulumi.getter(name="googlePartitionCerts")
     def google_partition_certs(self) -> Optional[str]:
+        """
+        Google partition certificate chain corresponding to the attestation.
+        """
         return pulumi.get(self, "google_partition_certs")
 
 
@@ -239,6 +275,10 @@ class CryptoKeyVersionAttestationExternalProtectionLevelOptions(dict):
     def __init__(__self__, *,
                  ekm_connection_key_path: Optional[str] = None,
                  external_key_uri: Optional[str] = None):
+        """
+        :param str ekm_connection_key_path: The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
+        :param str external_key_uri: The URI for an external resource that this CryptoKeyVersion represents.
+        """
         if ekm_connection_key_path is not None:
             pulumi.set(__self__, "ekm_connection_key_path", ekm_connection_key_path)
         if external_key_uri is not None:
@@ -247,11 +287,17 @@ class CryptoKeyVersionAttestationExternalProtectionLevelOptions(dict):
     @property
     @pulumi.getter(name="ekmConnectionKeyPath")
     def ekm_connection_key_path(self) -> Optional[str]:
+        """
+        The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
+        """
         return pulumi.get(self, "ekm_connection_key_path")
 
     @property
     @pulumi.getter(name="externalKeyUri")
     def external_key_uri(self) -> Optional[str]:
+        """
+        The URI for an external resource that this CryptoKeyVersion represents.
+        """
         return pulumi.get(self, "external_key_uri")
 
 
@@ -391,6 +437,11 @@ class KeyRingImportJobAttestation(dict):
     def __init__(__self__, *,
                  content: Optional[str] = None,
                  format: Optional[str] = None):
+        """
+        :param str content: The attestation data provided by the HSM when the key operation was performed.
+               A base64-encoded string.
+        :param str format: The format of the attestation data.
+        """
         if content is not None:
             pulumi.set(__self__, "content", content)
         if format is not None:
@@ -399,11 +450,18 @@ class KeyRingImportJobAttestation(dict):
     @property
     @pulumi.getter
     def content(self) -> Optional[str]:
+        """
+        The attestation data provided by the HSM when the key operation was performed.
+        A base64-encoded string.
+        """
         return pulumi.get(self, "content")
 
     @property
     @pulumi.getter
     def format(self) -> Optional[str]:
+        """
+        The format of the attestation data.
+        """
         return pulumi.get(self, "format")
 
 
@@ -411,12 +469,20 @@ class KeyRingImportJobAttestation(dict):
 class KeyRingImportJobPublicKey(dict):
     def __init__(__self__, *,
                  pem: Optional[str] = None):
+        """
+        :param str pem: The public key, encoded in PEM format. For more information, see the RFC 7468 sections
+               for General Considerations and Textual Encoding of Subject Public Key Info.
+        """
         if pem is not None:
             pulumi.set(__self__, "pem", pem)
 
     @property
     @pulumi.getter
     def pem(self) -> Optional[str]:
+        """
+        The public key, encoded in PEM format. For more information, see the RFC 7468 sections
+        for General Considerations and Textual Encoding of Subject Public Key Info.
+        """
         return pulumi.get(self, "pem")
 
 

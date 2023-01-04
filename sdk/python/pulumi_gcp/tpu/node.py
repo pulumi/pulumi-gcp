@@ -259,14 +259,18 @@ class _NodeState:
                preexisting Compute Engine network inside of the project on which
                this API has been activated. If none is provided, "default" will be
                used.
-        :param pulumi.Input[Sequence[pulumi.Input['NodeNetworkEndpointArgs']]] network_endpoints: The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
-               node first reach out to the first (index 0) entry.
+        :param pulumi.Input[Sequence[pulumi.Input['NodeNetworkEndpointArgs']]] network_endpoints: The network endpoints where TPU workers can be accessed and sent work.
+               It is recommended that Tensorflow clients of the node first reach out
+               to the first (index 0) entry.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['NodeSchedulingConfigArgs'] scheduling_config: Sets the scheduling options for this TPU instance.
                Structure is documented below.
-        :param pulumi.Input[str] service_account: The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
-               Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
+        :param pulumi.Input[str] service_account: The service account used to run the tensor flow services within the
+               node. To share resources, including Google Cloud Storage data, with
+               the Tensorflow job running in the Node, this account must have
+               permissions to that data.
         :param pulumi.Input[str] tensorflow_version: The version of Tensorflow running in the Node.
         :param pulumi.Input[bool] use_service_networking: Whether the VPC peering for the node is set up through Service Networking API.
                The VPC Peering should be set up before provisioning the node. If this field is set,
@@ -387,8 +391,10 @@ class _NodeState:
     @pulumi.getter(name="networkEndpoints")
     def network_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeNetworkEndpointArgs']]]]:
         """
-        The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
-        node first reach out to the first (index 0) entry.
+        The network endpoints where TPU workers can be accessed and sent work.
+        It is recommended that Tensorflow clients of the node first reach out
+        to the first (index 0) entry.
+        Structure is documented below.
         """
         return pulumi.get(self, "network_endpoints")
 
@@ -426,8 +432,10 @@ class _NodeState:
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> Optional[pulumi.Input[str]]:
         """
-        The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
-        Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
+        The service account used to run the tensor flow services within the
+        node. To share resources, including Google Cloud Storage data, with
+        the Tensorflow job running in the Node, this account must have
+        permissions to that data.
         """
         return pulumi.get(self, "service_account")
 
@@ -775,14 +783,18 @@ class Node(pulumi.CustomResource):
                preexisting Compute Engine network inside of the project on which
                this API has been activated. If none is provided, "default" will be
                used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeNetworkEndpointArgs']]]] network_endpoints: The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
-               node first reach out to the first (index 0) entry.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodeNetworkEndpointArgs']]]] network_endpoints: The network endpoints where TPU workers can be accessed and sent work.
+               It is recommended that Tensorflow clients of the node first reach out
+               to the first (index 0) entry.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['NodeSchedulingConfigArgs']] scheduling_config: Sets the scheduling options for this TPU instance.
                Structure is documented below.
-        :param pulumi.Input[str] service_account: The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
-               Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
+        :param pulumi.Input[str] service_account: The service account used to run the tensor flow services within the
+               node. To share resources, including Google Cloud Storage data, with
+               the Tensorflow job running in the Node, this account must have
+               permissions to that data.
         :param pulumi.Input[str] tensorflow_version: The version of Tensorflow running in the Node.
         :param pulumi.Input[bool] use_service_networking: Whether the VPC peering for the node is set up through Service Networking API.
                The VPC Peering should be set up before provisioning the node. If this field is set,
@@ -871,8 +883,10 @@ class Node(pulumi.CustomResource):
     @pulumi.getter(name="networkEndpoints")
     def network_endpoints(self) -> pulumi.Output[Sequence['outputs.NodeNetworkEndpoint']]:
         """
-        The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
-        node first reach out to the first (index 0) entry.
+        The network endpoints where TPU workers can be accessed and sent work.
+        It is recommended that Tensorflow clients of the node first reach out
+        to the first (index 0) entry.
+        Structure is documented below.
         """
         return pulumi.get(self, "network_endpoints")
 
@@ -898,8 +912,10 @@ class Node(pulumi.CustomResource):
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> pulumi.Output[str]:
         """
-        The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
-        Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
+        The service account used to run the tensor flow services within the
+        node. To share resources, including Google Cloud Storage data, with
+        the Tensorflow job running in the Node, this account must have
+        permissions to that data.
         """
         return pulumi.get(self, "service_account")
 

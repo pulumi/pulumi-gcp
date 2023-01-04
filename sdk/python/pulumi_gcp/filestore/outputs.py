@@ -50,8 +50,7 @@ class InstanceFileShares(dict):
         :param str name: The name of the fileshare (16 characters or less)
         :param Sequence['InstanceFileSharesNfsExportOptionArgs'] nfs_export_options: Nfs Export Options. There is a limit of 10 export options per file share.
                Structure is documented below.
-        :param str source_backup: -
-               The resource name of the backup, in the format
+        :param str source_backup: The resource name of the backup, in the format
                projects/{projectId}/locations/{locationId}/backups/{backupId},
                that this file share has been restored from.
         """
@@ -92,7 +91,6 @@ class InstanceFileShares(dict):
     @pulumi.getter(name="sourceBackup")
     def source_backup(self) -> Optional[str]:
         """
-        -
         The resource name of the backup, in the format
         projects/{projectId}/locations/{locationId}/backups/{backupId},
         that this file share has been restored from.
@@ -256,8 +254,7 @@ class InstanceNetwork(dict):
                DIRECT_PEERING.
                Default value is `DIRECT_PEERING`.
                Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
-        :param Sequence[str] ip_addresses: -
-               A list of IPv4 or IPv6 addresses.
+        :param Sequence[str] ip_addresses: A list of IPv4 or IPv6 addresses.
         :param str reserved_ip_range: A /29 CIDR block that identifies the range of IP
                addresses reserved for this instance.
         """
@@ -305,7 +302,6 @@ class InstanceNetwork(dict):
     @pulumi.getter(name="ipAddresses")
     def ip_addresses(self) -> Optional[Sequence[str]]:
         """
-        -
         A list of IPv4 or IPv6 addresses.
         """
         return pulumi.get(self, "ip_addresses")

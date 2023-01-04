@@ -143,11 +143,9 @@ class _BackupState:
         :param pulumi.Input[str] name: Output only. The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backupId}
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[bool] reconciling: If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or
-               system actions like failover or maintenance.
+        :param pulumi.Input[bool] reconciling: If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
         :param pulumi.Input[str] state: The current state of the backup.
-        :param pulumi.Input[str] uid: Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is
-               retained until it is deleted.
+        :param pulumi.Input[str] uid: Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
         :param pulumi.Input[str] update_time: Time the Backup was updated in UTC.
         """
         if backup_id is not None:
@@ -290,8 +288,7 @@ class _BackupState:
     @pulumi.getter
     def reconciling(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or
-        system actions like failover or maintenance.
+        If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
         """
         return pulumi.get(self, "reconciling")
 
@@ -315,8 +312,7 @@ class _BackupState:
     @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is
-        retained until it is deleted.
+        Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
         """
         return pulumi.get(self, "uid")
 
@@ -570,11 +566,9 @@ class Backup(pulumi.CustomResource):
         :param pulumi.Input[str] name: Output only. The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backupId}
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[bool] reconciling: If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or
-               system actions like failover or maintenance.
+        :param pulumi.Input[bool] reconciling: If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
         :param pulumi.Input[str] state: The current state of the backup.
-        :param pulumi.Input[str] uid: Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is
-               retained until it is deleted.
+        :param pulumi.Input[str] uid: Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
         :param pulumi.Input[str] update_time: Time the Backup was updated in UTC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -673,8 +667,7 @@ class Backup(pulumi.CustomResource):
     @pulumi.getter
     def reconciling(self) -> pulumi.Output[bool]:
         """
-        If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or
-        system actions like failover or maintenance.
+        If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
         """
         return pulumi.get(self, "reconciling")
 
@@ -690,8 +683,7 @@ class Backup(pulumi.CustomResource):
     @pulumi.getter
     def uid(self) -> pulumi.Output[str]:
         """
-        Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is
-        retained until it is deleted.
+        Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
         """
         return pulumi.get(self, "uid")
 

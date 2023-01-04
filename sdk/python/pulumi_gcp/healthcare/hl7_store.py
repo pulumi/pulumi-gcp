@@ -36,8 +36,7 @@ class Hl7StoreArgs:
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] name: The resource name for the Hl7V2Store.
                ** Changing this property may recreate the Hl7v2 store (removing all data) **
-        :param pulumi.Input['Hl7StoreNotificationConfigArgs'] notification_config: -
-               (Optional, Deprecated)
+        :param pulumi.Input['Hl7StoreNotificationConfigArgs'] notification_config: (Optional, Deprecated)
                A nested object resource
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]] notification_configs: A list of notification configs. Each configuration uses a filter to determine whether to publish a
@@ -111,7 +110,6 @@ class Hl7StoreArgs:
     @pulumi.getter(name="notificationConfig")
     def notification_config(self) -> Optional[pulumi.Input['Hl7StoreNotificationConfigArgs']]:
         """
-        -
         (Optional, Deprecated)
         A nested object resource
         Structure is documented below.
@@ -175,8 +173,7 @@ class _Hl7StoreState:
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] name: The resource name for the Hl7V2Store.
                ** Changing this property may recreate the Hl7v2 store (removing all data) **
-        :param pulumi.Input['Hl7StoreNotificationConfigArgs'] notification_config: -
-               (Optional, Deprecated)
+        :param pulumi.Input['Hl7StoreNotificationConfigArgs'] notification_config: (Optional, Deprecated)
                A nested object resource
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]] notification_configs: A list of notification configs. Each configuration uses a filter to determine whether to publish a
@@ -254,7 +251,6 @@ class _Hl7StoreState:
     @pulumi.getter(name="notificationConfig")
     def notification_config(self) -> Optional[pulumi.Input['Hl7StoreNotificationConfigArgs']]:
         """
-        -
         (Optional, Deprecated)
         A nested object resource
         Structure is documented below.
@@ -485,8 +481,7 @@ class Hl7Store(pulumi.CustomResource):
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] name: The resource name for the Hl7V2Store.
                ** Changing this property may recreate the Hl7v2 store (removing all data) **
-        :param pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigArgs']] notification_config: -
-               (Optional, Deprecated)
+        :param pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigArgs']] notification_config: (Optional, Deprecated)
                A nested object resource
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArgs']]]] notification_configs: A list of notification configs. Each configuration uses a filter to determine whether to publish a
@@ -733,8 +728,7 @@ class Hl7Store(pulumi.CustomResource):
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] name: The resource name for the Hl7V2Store.
                ** Changing this property may recreate the Hl7v2 store (removing all data) **
-        :param pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigArgs']] notification_config: -
-               (Optional, Deprecated)
+        :param pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigArgs']] notification_config: (Optional, Deprecated)
                A nested object resource
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArgs']]]] notification_configs: A list of notification configs. Each configuration uses a filter to determine whether to publish a
@@ -795,7 +789,6 @@ class Hl7Store(pulumi.CustomResource):
     @pulumi.getter(name="notificationConfig")
     def notification_config(self) -> pulumi.Output[Optional['outputs.Hl7StoreNotificationConfig']]:
         """
-        -
         (Optional, Deprecated)
         A nested object resource
         Structure is documented below.

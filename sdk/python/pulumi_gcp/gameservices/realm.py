@@ -136,8 +136,9 @@ class _RealmState:
         :param pulumi.Input[str] etag: ETag of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this realm. Each label is a key-value pair.
         :param pulumi.Input[str] location: Location of the Realm.
-        :param pulumi.Input[str] name: The resource id of the realm, of the form: 'projects/{project_id}/locations/{location}/realms/{realm_id}'. For example,
-               'projects/my-project/locations/{location}/realms/my-realm'.
+        :param pulumi.Input[str] name: The resource id of the realm, of the form:
+               `projects/{project_id}/locations/{location}/realms/{realm_id}`. For
+               example, `projects/my-project/locations/{location}/realms/my-realm`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] realm_id: GCP region of the Realm.
@@ -214,8 +215,9 @@ class _RealmState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource id of the realm, of the form: 'projects/{project_id}/locations/{location}/realms/{realm_id}'. For example,
-        'projects/my-project/locations/{location}/realms/my-realm'.
+        The resource id of the realm, of the form:
+        `projects/{project_id}/locations/{location}/realms/{realm_id}`. For
+        example, `projects/my-project/locations/{location}/realms/my-realm`.
         """
         return pulumi.get(self, "name")
 
@@ -442,8 +444,9 @@ class Realm(pulumi.CustomResource):
         :param pulumi.Input[str] etag: ETag of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this realm. Each label is a key-value pair.
         :param pulumi.Input[str] location: Location of the Realm.
-        :param pulumi.Input[str] name: The resource id of the realm, of the form: 'projects/{project_id}/locations/{location}/realms/{realm_id}'. For example,
-               'projects/my-project/locations/{location}/realms/my-realm'.
+        :param pulumi.Input[str] name: The resource id of the realm, of the form:
+               `projects/{project_id}/locations/{location}/realms/{realm_id}`. For
+               example, `projects/my-project/locations/{location}/realms/my-realm`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] realm_id: GCP region of the Realm.
@@ -501,8 +504,9 @@ class Realm(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource id of the realm, of the form: 'projects/{project_id}/locations/{location}/realms/{realm_id}'. For example,
-        'projects/my-project/locations/{location}/realms/my-realm'.
+        The resource id of the realm, of the form:
+        `projects/{project_id}/locations/{location}/realms/{realm_id}`. For
+        example, `projects/my-project/locations/{location}/realms/my-realm`.
         """
         return pulumi.get(self, "name")
 

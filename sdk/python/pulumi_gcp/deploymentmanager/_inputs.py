@@ -106,7 +106,7 @@ class DeploymentTargetConfigArgs:
     def __init__(__self__, *,
                  content: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] content: The full contents of the template that you want to import.
+        :param pulumi.Input[str] content: The full YAML contents of your configuration file.
         """
         pulumi.set(__self__, "content", content)
 
@@ -114,7 +114,7 @@ class DeploymentTargetConfigArgs:
     @pulumi.getter
     def content(self) -> pulumi.Input[str]:
         """
-        The full contents of the template that you want to import.
+        The full YAML contents of your configuration file.
         """
         return pulumi.get(self, "content")
 

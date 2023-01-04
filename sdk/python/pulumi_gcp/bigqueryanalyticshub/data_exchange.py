@@ -168,7 +168,8 @@ class _DataExchangeState:
         :param pulumi.Input[str] icon: Base64 encoded image representing the data exchange.
         :param pulumi.Input[int] listing_count: Number of listings contained in the data exchange.
         :param pulumi.Input[str] location: The name of the location this data exchange.
-        :param pulumi.Input[str] name: The resource name of the data exchange, for example: "projects/myproject/locations/US/dataExchanges/123"
+        :param pulumi.Input[str] name: The resource name of the data exchange, for example:
+               "projects/myproject/locations/US/dataExchanges/123"
         :param pulumi.Input[str] primary_contact: Email or URL of the primary point of contact of the data exchange.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -282,7 +283,8 @@ class _DataExchangeState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name of the data exchange, for example: "projects/myproject/locations/US/dataExchanges/123"
+        The resource name of the data exchange, for example:
+        "projects/myproject/locations/US/dataExchanges/123"
         """
         return pulumi.get(self, "name")
 
@@ -516,7 +518,8 @@ class DataExchange(pulumi.CustomResource):
         :param pulumi.Input[str] icon: Base64 encoded image representing the data exchange.
         :param pulumi.Input[int] listing_count: Number of listings contained in the data exchange.
         :param pulumi.Input[str] location: The name of the location this data exchange.
-        :param pulumi.Input[str] name: The resource name of the data exchange, for example: "projects/myproject/locations/US/dataExchanges/123"
+        :param pulumi.Input[str] name: The resource name of the data exchange, for example:
+               "projects/myproject/locations/US/dataExchanges/123"
         :param pulumi.Input[str] primary_contact: Email or URL of the primary point of contact of the data exchange.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -597,7 +600,8 @@ class DataExchange(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name of the data exchange, for example: "projects/myproject/locations/US/dataExchanges/123"
+        The resource name of the data exchange, for example:
+        "projects/myproject/locations/US/dataExchanges/123"
         """
         return pulumi.get(self, "name")
 

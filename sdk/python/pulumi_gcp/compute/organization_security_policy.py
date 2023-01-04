@@ -104,7 +104,8 @@ class _OrganizationSecurityPolicyState:
         Input properties used for looking up and filtering OrganizationSecurityPolicy resources.
         :param pulumi.Input[str] description: A textual description for the organization security policy.
         :param pulumi.Input[str] display_name: A textual name of the security policy.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. This field is used internally during updates of this resource.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. This field is used internally during
+               updates of this resource.
         :param pulumi.Input[str] parent: The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
                Format: organizations/{organization_id} or folders/{folder_id}
         :param pulumi.Input[str] policy_id: The unique identifier for the resource. This identifier is defined by the server.
@@ -155,7 +156,8 @@ class _OrganizationSecurityPolicyState:
     @pulumi.getter
     def fingerprint(self) -> Optional[pulumi.Input[str]]:
         """
-        Fingerprint of this resource. This field is used internally during updates of this resource.
+        Fingerprint of this resource. This field is used internally during
+        updates of this resource.
         """
         return pulumi.get(self, "fingerprint")
 
@@ -364,7 +366,8 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A textual description for the organization security policy.
         :param pulumi.Input[str] display_name: A textual name of the security policy.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. This field is used internally during updates of this resource.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. This field is used internally during
+               updates of this resource.
         :param pulumi.Input[str] parent: The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
                Format: organizations/{organization_id} or folders/{folder_id}
         :param pulumi.Input[str] policy_id: The unique identifier for the resource. This identifier is defined by the server.
@@ -406,7 +409,8 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
     @pulumi.getter
     def fingerprint(self) -> pulumi.Output[str]:
         """
-        Fingerprint of this resource. This field is used internally during updates of this resource.
+        Fingerprint of this resource. This field is used internally during
+        updates of this resource.
         """
         return pulumi.get(self, "fingerprint")
 

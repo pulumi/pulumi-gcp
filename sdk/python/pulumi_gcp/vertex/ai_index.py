@@ -159,28 +159,26 @@ class _AiIndexState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AiIndex resources.
-        :param pulumi.Input[str] create_time: The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-               fractional digits.
-        :param pulumi.Input[Sequence[pulumi.Input['AiIndexDeployedIndexArgs']]] deployed_indexes: The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had
-               been undeployed first.
+        :param pulumi.Input[str] create_time: The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        :param pulumi.Input[Sequence[pulumi.Input['AiIndexDeployedIndexArgs']]] deployed_indexes: The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
+               Structure is documented below.
         :param pulumi.Input[str] description: The description of the Index.
         :param pulumi.Input[str] display_name: The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[Sequence[pulumi.Input['AiIndexIndexStatArgs']]] index_stats: Stats of the index resource.
+               Structure is documented below.
         :param pulumi.Input[str] index_update_method: The update method to use with this Index. The value must be the followings. If not set, BATCH_UPDATE will be used by default.
                * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
                * STREAM_UPDATE: user can call indexes.upsertDatapoints/DeleteDatapoints to update the Index and the updates will be applied in corresponding DeployedIndexes in nearly real-time.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Indexes.
         :param pulumi.Input['AiIndexMetadataArgs'] metadata: An additional information about the Index
                Structure is documented below.
-        :param pulumi.Input[str] metadata_schema_uri: Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific
-               to it. Unset if the Index does not have any additional information.
+        :param pulumi.Input[str] metadata_schema_uri: Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
         :param pulumi.Input[str] name: The resource name of the Index.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the index. eg us-central1
-        :param pulumi.Input[str] update_time: The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-               fractional digits.
+        :param pulumi.Input[str] update_time: The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -215,8 +213,7 @@ class _AiIndexState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-        fractional digits.
+        The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "create_time")
 
@@ -228,8 +225,8 @@ class _AiIndexState:
     @pulumi.getter(name="deployedIndexes")
     def deployed_indexes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexDeployedIndexArgs']]]]:
         """
-        The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had
-        been undeployed first.
+        The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
+        Structure is documented below.
         """
         return pulumi.get(self, "deployed_indexes")
 
@@ -278,6 +275,7 @@ class _AiIndexState:
     def index_stats(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexIndexStatArgs']]]]:
         """
         Stats of the index resource.
+        Structure is documented below.
         """
         return pulumi.get(self, "index_stats")
 
@@ -328,8 +326,7 @@ class _AiIndexState:
     @pulumi.getter(name="metadataSchemaUri")
     def metadata_schema_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific
-        to it. Unset if the Index does not have any additional information.
+        Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
         """
         return pulumi.get(self, "metadata_schema_uri")
 
@@ -378,8 +375,7 @@ class _AiIndexState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-        fractional digits.
+        The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "update_time")
 
@@ -707,28 +703,26 @@ class AiIndex(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-               fractional digits.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AiIndexDeployedIndexArgs']]]] deployed_indexes: The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had
-               been undeployed first.
+        :param pulumi.Input[str] create_time: The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AiIndexDeployedIndexArgs']]]] deployed_indexes: The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
+               Structure is documented below.
         :param pulumi.Input[str] description: The description of the Index.
         :param pulumi.Input[str] display_name: The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AiIndexIndexStatArgs']]]] index_stats: Stats of the index resource.
+               Structure is documented below.
         :param pulumi.Input[str] index_update_method: The update method to use with this Index. The value must be the followings. If not set, BATCH_UPDATE will be used by default.
                * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
                * STREAM_UPDATE: user can call indexes.upsertDatapoints/DeleteDatapoints to update the Index and the updates will be applied in corresponding DeployedIndexes in nearly real-time.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Indexes.
         :param pulumi.Input[pulumi.InputType['AiIndexMetadataArgs']] metadata: An additional information about the Index
                Structure is documented below.
-        :param pulumi.Input[str] metadata_schema_uri: Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific
-               to it. Unset if the Index does not have any additional information.
+        :param pulumi.Input[str] metadata_schema_uri: Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
         :param pulumi.Input[str] name: The resource name of the Index.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the index. eg us-central1
-        :param pulumi.Input[str] update_time: The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-               fractional digits.
+        :param pulumi.Input[str] update_time: The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -754,8 +748,7 @@ class AiIndex(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-        fractional digits.
+        The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "create_time")
 
@@ -763,8 +756,8 @@ class AiIndex(pulumi.CustomResource):
     @pulumi.getter(name="deployedIndexes")
     def deployed_indexes(self) -> pulumi.Output[Sequence['outputs.AiIndexDeployedIndex']]:
         """
-        The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had
-        been undeployed first.
+        The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
+        Structure is documented below.
         """
         return pulumi.get(self, "deployed_indexes")
 
@@ -797,6 +790,7 @@ class AiIndex(pulumi.CustomResource):
     def index_stats(self) -> pulumi.Output[Sequence['outputs.AiIndexIndexStat']]:
         """
         Stats of the index resource.
+        Structure is documented below.
         """
         return pulumi.get(self, "index_stats")
 
@@ -831,8 +825,7 @@ class AiIndex(pulumi.CustomResource):
     @pulumi.getter(name="metadataSchemaUri")
     def metadata_schema_uri(self) -> pulumi.Output[str]:
         """
-        Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific
-        to it. Unset if the Index does not have any additional information.
+        Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
         """
         return pulumi.get(self, "metadata_schema_uri")
 
@@ -865,8 +858,7 @@ class AiIndex(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-        fractional digits.
+        The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "update_time")
 

@@ -88,6 +88,7 @@ class _HmacKeyState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] secret: HMAC secret key material.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] service_account_email: The email address of the key's associated service account.
         :param pulumi.Input[str] state: The state of the key. Can be set to one of ACTIVE, INACTIVE.
                Default value is `ACTIVE`.
@@ -140,6 +141,7 @@ class _HmacKeyState:
     def secret(self) -> Optional[pulumi.Input[str]]:
         """
         HMAC secret key material.
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "secret")
 
@@ -380,6 +382,7 @@ class HmacKey(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] secret: HMAC secret key material.
+               **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] service_account_email: The email address of the key's associated service account.
         :param pulumi.Input[str] state: The state of the key. Can be set to one of ACTIVE, INACTIVE.
                Default value is `ACTIVE`.
@@ -422,6 +425,7 @@ class HmacKey(pulumi.CustomResource):
     def secret(self) -> pulumi.Output[str]:
         """
         HMAC secret key material.
+        **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "secret")
 

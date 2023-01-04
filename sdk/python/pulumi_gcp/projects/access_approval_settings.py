@@ -35,8 +35,7 @@ class AccessApprovalSettingsArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent.
                Notifications relating to a resource will be sent to all emails in the settings of ancestor
                resources of that resource. A maximum of 50 email addresses are allowed.
-        :param pulumi.Input[str] project: -
-               (Optional, Deprecated)
+        :param pulumi.Input[str] project: (Optional, Deprecated)
                Deprecated in favor of `project_id`
         """
         pulumi.set(__self__, "enrolled_services", enrolled_services)
@@ -111,7 +110,6 @@ class AccessApprovalSettingsArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        -
         (Optional, Deprecated)
         Deprecated in favor of `project_id`
         """
@@ -140,23 +138,21 @@ class _AccessApprovalSettingsState:
                Empty active_key_version indicates that a Google-managed key should be used for signing.
                This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
         :param pulumi.Input[bool] ancestor_has_active_key_version: If the field is true, that indicates that an ancestor of this Project has set active_key_version.
-        :param pulumi.Input[bool] enrolled_ancestor: If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-               of the Project.
+        :param pulumi.Input[bool] enrolled_ancestor: If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Project.
         :param pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]] enrolled_services: A list of Google Cloud Services for which the given resource has Access Approval enrolled.
                Access requests for the resource given by name against any of these services contained here will be required
                to have explicit approval. Enrollment can only be done on an all or nothing basis.
                A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
                Structure is documented below.
-        :param pulumi.Input[bool] invalid_key_version: If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-               this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on it,
-               etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-               top-down.
+        :param pulumi.Input[bool] invalid_key_version: If the field is true, that indicates that there is some configuration issue with the active_key_version
+               configured on this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the
+               correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+               as key versions are inherited top-down.
         :param pulumi.Input[str] name: The resource name of the settings. Format is "projects/{project_id}/accessApprovalSettings"
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent.
                Notifications relating to a resource will be sent to all emails in the settings of ancestor
                resources of that resource. A maximum of 50 email addresses are allowed.
-        :param pulumi.Input[str] project: -
-               (Optional, Deprecated)
+        :param pulumi.Input[str] project: (Optional, Deprecated)
                Deprecated in favor of `project_id`
         :param pulumi.Input[str] project_id: ID of the project of the access approval settings.
         """
@@ -212,8 +208,7 @@ class _AccessApprovalSettingsState:
     @pulumi.getter(name="enrolledAncestor")
     def enrolled_ancestor(self) -> Optional[pulumi.Input[bool]]:
         """
-        If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-        of the Project.
+        If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Project.
         """
         return pulumi.get(self, "enrolled_ancestor")
 
@@ -241,10 +236,10 @@ class _AccessApprovalSettingsState:
     @pulumi.getter(name="invalidKeyVersion")
     def invalid_key_version(self) -> Optional[pulumi.Input[bool]]:
         """
-        If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-        this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on it,
-        etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-        top-down.
+        If the field is true, that indicates that there is some configuration issue with the active_key_version
+        configured on this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the
+        correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+        as key versions are inherited top-down.
         """
         return pulumi.get(self, "invalid_key_version")
 
@@ -282,7 +277,6 @@ class _AccessApprovalSettingsState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        -
         (Optional, Deprecated)
         Deprecated in favor of `project_id`
         """
@@ -396,8 +390,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent.
                Notifications relating to a resource will be sent to all emails in the settings of ancestor
                resources of that resource. A maximum of 50 email addresses are allowed.
-        :param pulumi.Input[str] project: -
-               (Optional, Deprecated)
+        :param pulumi.Input[str] project: (Optional, Deprecated)
                Deprecated in favor of `project_id`
         :param pulumi.Input[str] project_id: ID of the project of the access approval settings.
         """
@@ -549,23 +542,21 @@ class AccessApprovalSettings(pulumi.CustomResource):
                Empty active_key_version indicates that a Google-managed key should be used for signing.
                This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
         :param pulumi.Input[bool] ancestor_has_active_key_version: If the field is true, that indicates that an ancestor of this Project has set active_key_version.
-        :param pulumi.Input[bool] enrolled_ancestor: If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-               of the Project.
+        :param pulumi.Input[bool] enrolled_ancestor: If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Project.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApprovalSettingsEnrolledServiceArgs']]]] enrolled_services: A list of Google Cloud Services for which the given resource has Access Approval enrolled.
                Access requests for the resource given by name against any of these services contained here will be required
                to have explicit approval. Enrollment can only be done on an all or nothing basis.
                A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
                Structure is documented below.
-        :param pulumi.Input[bool] invalid_key_version: If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-               this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on it,
-               etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-               top-down.
+        :param pulumi.Input[bool] invalid_key_version: If the field is true, that indicates that there is some configuration issue with the active_key_version
+               configured on this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the
+               correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+               as key versions are inherited top-down.
         :param pulumi.Input[str] name: The resource name of the settings. Format is "projects/{project_id}/accessApprovalSettings"
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent.
                Notifications relating to a resource will be sent to all emails in the settings of ancestor
                resources of that resource. A maximum of 50 email addresses are allowed.
-        :param pulumi.Input[str] project: -
-               (Optional, Deprecated)
+        :param pulumi.Input[str] project: (Optional, Deprecated)
                Deprecated in favor of `project_id`
         :param pulumi.Input[str] project_id: ID of the project of the access approval settings.
         """
@@ -606,8 +597,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
     @pulumi.getter(name="enrolledAncestor")
     def enrolled_ancestor(self) -> pulumi.Output[bool]:
         """
-        If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-        of the Project.
+        If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Project.
         """
         return pulumi.get(self, "enrolled_ancestor")
 
@@ -627,10 +617,10 @@ class AccessApprovalSettings(pulumi.CustomResource):
     @pulumi.getter(name="invalidKeyVersion")
     def invalid_key_version(self) -> pulumi.Output[bool]:
         """
-        If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-        this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on it,
-        etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-        top-down.
+        If the field is true, that indicates that there is some configuration issue with the active_key_version
+        configured on this Project (e.g. it doesn't exist or the Access Approval service account doesn't have the
+        correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+        as key versions are inherited top-down.
         """
         return pulumi.get(self, "invalid_key_version")
 
@@ -656,7 +646,6 @@ class AccessApprovalSettings(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[Optional[str]]:
         """
-        -
         (Optional, Deprecated)
         Deprecated in favor of `project_id`
         """

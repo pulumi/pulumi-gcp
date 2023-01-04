@@ -37,6 +37,8 @@ class OrganizationSecurityPolicyRuleArgs:
                between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
                highest priority and 2147483647 is the lowest prority.
         :param pulumi.Input[str] description: A description of the rule.
+               (Optional)
+               A description of the rule.
         :param pulumi.Input[str] direction: The direction in which this rule applies. If unspecified an INGRESS rule is created.
                Possible values are `INGRESS` and `EGRESS`.
         :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule.
@@ -123,6 +125,8 @@ class OrganizationSecurityPolicyRuleArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
+        A description of the rule.
+        (Optional)
         A description of the rule.
         """
         return pulumi.get(self, "description")
@@ -217,6 +221,8 @@ class _OrganizationSecurityPolicyRuleState:
         :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Can currently be either
                "allow", "deny" or "goto_next".
         :param pulumi.Input[str] description: A description of the rule.
+               (Optional)
+               A description of the rule.
         :param pulumi.Input[str] direction: The direction in which this rule applies. If unspecified an INGRESS rule is created.
                Possible values are `INGRESS` and `EGRESS`.
         :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule.
@@ -274,6 +280,8 @@ class _OrganizationSecurityPolicyRuleState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
+        A description of the rule.
+        (Optional)
         A description of the rule.
         """
         return pulumi.get(self, "description")
@@ -464,6 +472,8 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Can currently be either
                "allow", "deny" or "goto_next".
         :param pulumi.Input[str] description: A description of the rule.
+               (Optional)
+               A description of the rule.
         :param pulumi.Input[str] direction: The direction in which this rule applies. If unspecified an INGRESS rule is created.
                Possible values are `INGRESS` and `EGRESS`.
         :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule.
@@ -625,6 +635,8 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Can currently be either
                "allow", "deny" or "goto_next".
         :param pulumi.Input[str] description: A description of the rule.
+               (Optional)
+               A description of the rule.
         :param pulumi.Input[str] direction: The direction in which this rule applies. If unspecified an INGRESS rule is created.
                Possible values are `INGRESS` and `EGRESS`.
         :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule.
@@ -673,6 +685,8 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
+        A description of the rule.
+        (Optional)
         A description of the rule.
         """
         return pulumi.get(self, "description")

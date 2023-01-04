@@ -594,7 +594,14 @@ class _FlexibleAppVersionState:
                Structure is documented below.
         :param pulumi.Input['FlexibleAppVersionManualScalingArgs'] manual_scaling: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
-        :param pulumi.Input[str] name: Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        :param pulumi.Input[str] name: Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
+               (Required)
+               Unique name for the volume.
+               (Required)
+               Endpoints service name which is the name of the "service" resource in the Service Management API.
+               For example "myapi.endpoints.myproject.cloud.goog"
+               (Required)
+               Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         :param pulumi.Input['FlexibleAppVersionNetworkArgs'] network: Extra network settings
                Structure is documented below.
         :param pulumi.Input[str] nobuild_files_regex: Files that match this pattern will not be built into this version. Only applicable for Go runtimes.
@@ -869,6 +876,13 @@ class _FlexibleAppVersionState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
+        Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
+        (Required)
+        Unique name for the volume.
+        (Required)
+        Endpoints service name which is the name of the "service" resource in the Service Management API.
+        For example "myapi.endpoints.myproject.cloud.goog"
+        (Required)
         Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         """
         return pulumi.get(self, "name")
@@ -1559,7 +1573,14 @@ class FlexibleAppVersion(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['FlexibleAppVersionManualScalingArgs']] manual_scaling: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
-        :param pulumi.Input[str] name: Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        :param pulumi.Input[str] name: Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
+               (Required)
+               Unique name for the volume.
+               (Required)
+               Endpoints service name which is the name of the "service" resource in the Service Management API.
+               For example "myapi.endpoints.myproject.cloud.goog"
+               (Required)
+               Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         :param pulumi.Input[pulumi.InputType['FlexibleAppVersionNetworkArgs']] network: Extra network settings
                Structure is documented below.
         :param pulumi.Input[str] nobuild_files_regex: Files that match this pattern will not be built into this version. Only applicable for Go runtimes.
@@ -1753,6 +1774,13 @@ class FlexibleAppVersion(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
+        Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
+        (Required)
+        Unique name for the volume.
+        (Required)
+        Endpoints service name which is the name of the "service" resource in the Service Management API.
+        For example "myapi.endpoints.myproject.cloud.goog"
+        (Required)
         Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         """
         return pulumi.get(self, "name")

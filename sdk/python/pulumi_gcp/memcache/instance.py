@@ -255,8 +255,7 @@ class _InstanceState:
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] authorized_network: The full name of the GCE network to connect the instance to.  If not provided,
                'default' will be used.
-        :param pulumi.Input[str] create_time: -
-               Output only. The time when the policy was created.
+        :param pulumi.Input[str] create_time: Output only. The time when the policy was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits
         :param pulumi.Input[str] discovery_endpoint: Endpoint for Discovery API
@@ -265,8 +264,10 @@ class _InstanceState:
         :param pulumi.Input['InstanceMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for an instance.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]] maintenance_schedules: Output only. Published maintenance schedule.
+               Structure is documented below.
         :param pulumi.Input[str] memcache_full_version: The full version of memcached server running on this instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceMemcacheNodeArgs']]] memcache_nodes: Additional information about the instance state, if available.
+               Structure is documented below.
         :param pulumi.Input['InstanceMemcacheParametersArgs'] memcache_parameters: User-specified parameters for this memcache instance.
                Structure is documented below.
         :param pulumi.Input[str] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used.
@@ -336,7 +337,6 @@ class _InstanceState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        -
         Output only. The time when the policy was created.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         resolution and up to nine fractional digits
@@ -401,6 +401,7 @@ class _InstanceState:
     def maintenance_schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]]:
         """
         Output only. Published maintenance schedule.
+        Structure is documented below.
         """
         return pulumi.get(self, "maintenance_schedules")
 
@@ -425,6 +426,7 @@ class _InstanceState:
     def memcache_nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMemcacheNodeArgs']]]]:
         """
         Additional information about the instance state, if available.
+        Structure is documented below.
         """
         return pulumi.get(self, "memcache_nodes")
 
@@ -815,8 +817,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authorized_network: The full name of the GCE network to connect the instance to.  If not provided,
                'default' will be used.
-        :param pulumi.Input[str] create_time: -
-               Output only. The time when the policy was created.
+        :param pulumi.Input[str] create_time: Output only. The time when the policy was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits
         :param pulumi.Input[str] discovery_endpoint: Endpoint for Discovery API
@@ -825,8 +826,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']] maintenance_policy: Maintenance policy for an instance.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArgs']]]] maintenance_schedules: Output only. Published maintenance schedule.
+               Structure is documented below.
         :param pulumi.Input[str] memcache_full_version: The full version of memcached server running on this instance.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMemcacheNodeArgs']]]] memcache_nodes: Additional information about the instance state, if available.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['InstanceMemcacheParametersArgs']] memcache_parameters: User-specified parameters for this memcache instance.
                Structure is documented below.
         :param pulumi.Input[str] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used.
@@ -880,7 +883,6 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        -
         Output only. The time when the policy was created.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         resolution and up to nine fractional digits
@@ -925,6 +927,7 @@ class Instance(pulumi.CustomResource):
     def maintenance_schedules(self) -> pulumi.Output[Sequence['outputs.InstanceMaintenanceSchedule']]:
         """
         Output only. Published maintenance schedule.
+        Structure is documented below.
         """
         return pulumi.get(self, "maintenance_schedules")
 
@@ -941,6 +944,7 @@ class Instance(pulumi.CustomResource):
     def memcache_nodes(self) -> pulumi.Output[Sequence['outputs.InstanceMemcacheNode']]:
         """
         Additional information about the instance state, if available.
+        Structure is documented below.
         """
         return pulumi.get(self, "memcache_nodes")
 

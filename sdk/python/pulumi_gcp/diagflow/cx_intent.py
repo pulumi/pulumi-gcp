@@ -209,8 +209,8 @@ class _CxIntentState:
         :param pulumi.Input[str] language_code: The language of the following fields in intent:
                Intent.training_phrases.parts.text
                If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
-        :param pulumi.Input[str] name: The unique identifier of the intent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-               ID>/intents/<Intent ID>.
+        :param pulumi.Input[str] name: The unique identifier of the intent.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
         :param pulumi.Input[Sequence[pulumi.Input['CxIntentParameterArgs']]] parameters: The collection of parameters associated with the intent.
                Structure is documented below.
         :param pulumi.Input[str] parent: The agent to create an intent for.
@@ -311,8 +311,8 @@ class _CxIntentState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique identifier of the intent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-        ID>/intents/<Intent ID>.
+        The unique identifier of the intent.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
         """
         return pulumi.get(self, "name")
 
@@ -647,8 +647,8 @@ class CxIntent(pulumi.CustomResource):
         :param pulumi.Input[str] language_code: The language of the following fields in intent:
                Intent.training_phrases.parts.text
                If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
-        :param pulumi.Input[str] name: The unique identifier of the intent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-               ID>/intents/<Intent ID>.
+        :param pulumi.Input[str] name: The unique identifier of the intent.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxIntentParameterArgs']]]] parameters: The collection of parameters associated with the intent.
                Structure is documented below.
         :param pulumi.Input[str] parent: The agent to create an intent for.
@@ -724,8 +724,8 @@ class CxIntent(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The unique identifier of the intent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-        ID>/intents/<Intent ID>.
+        The unique identifier of the intent.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>.
         """
         return pulumi.get(self, "name")
 

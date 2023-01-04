@@ -104,6 +104,12 @@ class ServiceApiArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  syntax: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceApiMethodArgs']]] methods: A list of Method objects; structure is documented below.
+        :param pulumi.Input[str] name: The simple name of the endpoint as described in the config.
+        :param pulumi.Input[str] syntax: `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+        :param pulumi.Input[str] version: A version string for this api. If specified, will have the form major-version.minor-version, e.g. `1.10`.
+        """
         if methods is not None:
             pulumi.set(__self__, "methods", methods)
         if name is not None:
@@ -116,6 +122,9 @@ class ServiceApiArgs:
     @property
     @pulumi.getter
     def methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceApiMethodArgs']]]]:
+        """
+        A list of Method objects; structure is documented below.
+        """
         return pulumi.get(self, "methods")
 
     @methods.setter
@@ -125,6 +134,9 @@ class ServiceApiArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The simple name of the endpoint as described in the config.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -134,6 +146,9 @@ class ServiceApiArgs:
     @property
     @pulumi.getter
     def syntax(self) -> Optional[pulumi.Input[str]]:
+        """
+        `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+        """
         return pulumi.get(self, "syntax")
 
     @syntax.setter
@@ -143,6 +158,9 @@ class ServiceApiArgs:
     @property
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        A version string for this api. If specified, will have the form major-version.minor-version, e.g. `1.10`.
+        """
         return pulumi.get(self, "version")
 
     @version.setter
@@ -157,6 +175,12 @@ class ServiceApiMethodArgs:
                  request_type: Optional[pulumi.Input[str]] = None,
                  response_type: Optional[pulumi.Input[str]] = None,
                  syntax: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The simple name of the endpoint as described in the config.
+        :param pulumi.Input[str] request_type: The type URL for the request to this API.
+        :param pulumi.Input[str] response_type: The type URL for the response from this API.
+        :param pulumi.Input[str] syntax: `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+        """
         if name is not None:
             pulumi.set(__self__, "name", name)
         if request_type is not None:
@@ -169,6 +193,9 @@ class ServiceApiMethodArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The simple name of the endpoint as described in the config.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -178,6 +205,9 @@ class ServiceApiMethodArgs:
     @property
     @pulumi.getter(name="requestType")
     def request_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type URL for the request to this API.
+        """
         return pulumi.get(self, "request_type")
 
     @request_type.setter
@@ -187,6 +217,9 @@ class ServiceApiMethodArgs:
     @property
     @pulumi.getter(name="responseType")
     def response_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type URL for the response from this API.
+        """
         return pulumi.get(self, "response_type")
 
     @response_type.setter
@@ -196,6 +229,9 @@ class ServiceApiMethodArgs:
     @property
     @pulumi.getter
     def syntax(self) -> Optional[pulumi.Input[str]]:
+        """
+        `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+        """
         return pulumi.get(self, "syntax")
 
     @syntax.setter
@@ -208,6 +244,10 @@ class ServiceEndpointArgs:
     def __init__(__self__, *,
                  address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] address: The FQDN of the endpoint as described in the config.
+        :param pulumi.Input[str] name: The simple name of the endpoint as described in the config.
+        """
         if address is not None:
             pulumi.set(__self__, "address", address)
         if name is not None:
@@ -216,6 +256,9 @@ class ServiceEndpointArgs:
     @property
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The FQDN of the endpoint as described in the config.
+        """
         return pulumi.get(self, "address")
 
     @address.setter
@@ -225,6 +268,9 @@ class ServiceEndpointArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The simple name of the endpoint as described in the config.
+        """
         return pulumi.get(self, "name")
 
     @name.setter

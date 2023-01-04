@@ -118,12 +118,13 @@ class _NotificationConfigState:
         :param pulumi.Input[str] config_id: This must be unique within the organization.
         :param pulumi.Input[str] description: The description of the notification config (max of 1024 characters).
         :param pulumi.Input[str] name: The resource name of this notification config, in the format
-               'organizations/{{organization}}/notificationConfigs/{{config_id}}'.
+               `organizations/{{organization}}/notificationConfigs/{{config_id}}`.
         :param pulumi.Input[str] organization: The organization whose Cloud Security Command Center the Notification
                Config lives in.
         :param pulumi.Input[str] pubsub_topic: The Pub/Sub topic to send notifications to. Its format is
                "projects/[project_id]/topics/[topic]".
-        :param pulumi.Input[str] service_account: The service account that needs "pubsub.topics.publish" permission to publish to the Pub/Sub topic.
+        :param pulumi.Input[str] service_account: The service account that needs "pubsub.topics.publish" permission to
+               publish to the Pub/Sub topic.
         :param pulumi.Input['NotificationConfigStreamingConfigArgs'] streaming_config: The config for triggering streaming-based notifications.
                Structure is documented below.
         """
@@ -171,7 +172,7 @@ class _NotificationConfigState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The resource name of this notification config, in the format
-        'organizations/{{organization}}/notificationConfigs/{{config_id}}'.
+        `organizations/{{organization}}/notificationConfigs/{{config_id}}`.
         """
         return pulumi.get(self, "name")
 
@@ -209,7 +210,8 @@ class _NotificationConfigState:
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> Optional[pulumi.Input[str]]:
         """
-        The service account that needs "pubsub.topics.publish" permission to publish to the Pub/Sub topic.
+        The service account that needs "pubsub.topics.publish" permission to
+        publish to the Pub/Sub topic.
         """
         return pulumi.get(self, "service_account")
 
@@ -420,12 +422,13 @@ class NotificationConfig(pulumi.CustomResource):
         :param pulumi.Input[str] config_id: This must be unique within the organization.
         :param pulumi.Input[str] description: The description of the notification config (max of 1024 characters).
         :param pulumi.Input[str] name: The resource name of this notification config, in the format
-               'organizations/{{organization}}/notificationConfigs/{{config_id}}'.
+               `organizations/{{organization}}/notificationConfigs/{{config_id}}`.
         :param pulumi.Input[str] organization: The organization whose Cloud Security Command Center the Notification
                Config lives in.
         :param pulumi.Input[str] pubsub_topic: The Pub/Sub topic to send notifications to. Its format is
                "projects/[project_id]/topics/[topic]".
-        :param pulumi.Input[str] service_account: The service account that needs "pubsub.topics.publish" permission to publish to the Pub/Sub topic.
+        :param pulumi.Input[str] service_account: The service account that needs "pubsub.topics.publish" permission to
+               publish to the Pub/Sub topic.
         :param pulumi.Input[pulumi.InputType['NotificationConfigStreamingConfigArgs']] streaming_config: The config for triggering streaming-based notifications.
                Structure is documented below.
         """
@@ -463,7 +466,7 @@ class NotificationConfig(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of this notification config, in the format
-        'organizations/{{organization}}/notificationConfigs/{{config_id}}'.
+        `organizations/{{organization}}/notificationConfigs/{{config_id}}`.
         """
         return pulumi.get(self, "name")
 
@@ -489,7 +492,8 @@ class NotificationConfig(pulumi.CustomResource):
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> pulumi.Output[str]:
         """
-        The service account that needs "pubsub.topics.publish" permission to publish to the Pub/Sub topic.
+        The service account that needs "pubsub.topics.publish" permission to
+        publish to the Pub/Sub topic.
         """
         return pulumi.get(self, "service_account")
 

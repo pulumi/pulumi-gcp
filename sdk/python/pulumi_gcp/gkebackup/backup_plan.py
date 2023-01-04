@@ -42,7 +42,7 @@ class BackupPlanArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Description: A set of custom labels supplied by the user.
                A list of key->value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-        :param pulumi.Input[str] name: The name of a Kubernetes Resource.
+        :param pulumi.Input[str] name: The full name of the BackupPlan Resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['BackupPlanRetentionPolicyArgs'] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
@@ -162,7 +162,7 @@ class BackupPlanArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of a Kubernetes Resource.
+        The full name of the BackupPlan Resource.
         """
         return pulumi.get(self, "name")
 
@@ -225,16 +225,17 @@ class _BackupPlanState:
                (except deletes), including the deactivated field itself. It also prevents any new Backups
                from being created via this BackupPlan (including scheduled Backups).
         :param pulumi.Input[str] description: User specified descriptive string for this BackupPlan.
-        :param pulumi.Input[str] etag: etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from
-               overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to
-               perform BackupPlan updates in order to avoid race conditions: An etag is returned in the response to backupPlans.get,
-               and systems are expected to put that etag in the request to backupPlans.patch or backupPlans.delete to ensure that their
-               change will be applied to the same version of the resource.
+        :param pulumi.Input[str] etag: etag is used for optimistic concurrency control as a way to help prevent simultaneous
+               updates of a backup plan from overwriting each other. It is strongly suggested that
+               systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates
+               in order to avoid race conditions: An etag is returned in the response to backupPlans.get,
+               and systems are expected to put that etag in the request to backupPlans.patch or
+               backupPlans.delete to ensure that their change will be applied to the same version of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Description: A set of custom labels supplied by the user.
                A list of key->value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] location: The region of the Backup Plan.
-        :param pulumi.Input[str] name: The name of a Kubernetes Resource.
+        :param pulumi.Input[str] name: The full name of the BackupPlan Resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[int] protected_pod_count: The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
@@ -338,11 +339,12 @@ class _BackupPlanState:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from
-        overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to
-        perform BackupPlan updates in order to avoid race conditions: An etag is returned in the response to backupPlans.get,
-        and systems are expected to put that etag in the request to backupPlans.patch or backupPlans.delete to ensure that their
-        change will be applied to the same version of the resource.
+        etag is used for optimistic concurrency control as a way to help prevent simultaneous
+        updates of a backup plan from overwriting each other. It is strongly suggested that
+        systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates
+        in order to avoid race conditions: An etag is returned in the response to backupPlans.get,
+        and systems are expected to put that etag in the request to backupPlans.patch or
+        backupPlans.delete to ensure that their change will be applied to the same version of the resource.
         """
         return pulumi.get(self, "etag")
 
@@ -380,7 +382,7 @@ class _BackupPlanState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of a Kubernetes Resource.
+        The full name of the BackupPlan Resource.
         """
         return pulumi.get(self, "name")
 
@@ -631,7 +633,7 @@ class BackupPlan(pulumi.CustomResource):
                A list of key->value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] location: The region of the Backup Plan.
-        :param pulumi.Input[str] name: The name of a Kubernetes Resource.
+        :param pulumi.Input[str] name: The full name of the BackupPlan Resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['BackupPlanRetentionPolicyArgs']] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
@@ -894,16 +896,17 @@ class BackupPlan(pulumi.CustomResource):
                (except deletes), including the deactivated field itself. It also prevents any new Backups
                from being created via this BackupPlan (including scheduled Backups).
         :param pulumi.Input[str] description: User specified descriptive string for this BackupPlan.
-        :param pulumi.Input[str] etag: etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from
-               overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to
-               perform BackupPlan updates in order to avoid race conditions: An etag is returned in the response to backupPlans.get,
-               and systems are expected to put that etag in the request to backupPlans.patch or backupPlans.delete to ensure that their
-               change will be applied to the same version of the resource.
+        :param pulumi.Input[str] etag: etag is used for optimistic concurrency control as a way to help prevent simultaneous
+               updates of a backup plan from overwriting each other. It is strongly suggested that
+               systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates
+               in order to avoid race conditions: An etag is returned in the response to backupPlans.get,
+               and systems are expected to put that etag in the request to backupPlans.patch or
+               backupPlans.delete to ensure that their change will be applied to the same version of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Description: A set of custom labels supplied by the user.
                A list of key->value pairs.
                Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] location: The region of the Backup Plan.
-        :param pulumi.Input[str] name: The name of a Kubernetes Resource.
+        :param pulumi.Input[str] name: The full name of the BackupPlan Resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[int] protected_pod_count: The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
@@ -979,11 +982,12 @@ class BackupPlan(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from
-        overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to
-        perform BackupPlan updates in order to avoid race conditions: An etag is returned in the response to backupPlans.get,
-        and systems are expected to put that etag in the request to backupPlans.patch or backupPlans.delete to ensure that their
-        change will be applied to the same version of the resource.
+        etag is used for optimistic concurrency control as a way to help prevent simultaneous
+        updates of a backup plan from overwriting each other. It is strongly suggested that
+        systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates
+        in order to avoid race conditions: An etag is returned in the response to backupPlans.get,
+        and systems are expected to put that etag in the request to backupPlans.patch or
+        backupPlans.delete to ensure that their change will be applied to the same version of the resource.
         """
         return pulumi.get(self, "etag")
 
@@ -1009,7 +1013,7 @@ class BackupPlan(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of a Kubernetes Resource.
+        The full name of the BackupPlan Resource.
         """
         return pulumi.get(self, "name")
 

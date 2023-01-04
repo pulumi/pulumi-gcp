@@ -62,7 +62,7 @@ class _InstanceAttachmentState:
         :param pulumi.Input[str] environment: The resource ID of the environment.
         :param pulumi.Input[str] instance_id: The Apigee instance associated with the Apigee environment,
                in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
-        :param pulumi.Input[str] name: The name of the newly created attachment (output parameter).
+        :param pulumi.Input[str] name: The name of the newly created  attachment (output parameter).
         """
         if environment is not None:
             pulumi.set(__self__, "environment", environment)
@@ -100,7 +100,7 @@ class _InstanceAttachmentState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the newly created attachment (output parameter).
+        The name of the newly created  attachment (output parameter).
         """
         return pulumi.get(self, "name")
 
@@ -333,7 +333,7 @@ class InstanceAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] environment: The resource ID of the environment.
         :param pulumi.Input[str] instance_id: The Apigee instance associated with the Apigee environment,
                in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
-        :param pulumi.Input[str] name: The name of the newly created attachment (output parameter).
+        :param pulumi.Input[str] name: The name of the newly created  attachment (output parameter).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -365,7 +365,7 @@ class InstanceAttachment(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the newly created attachment (output parameter).
+        The name of the newly created  attachment (output parameter).
         """
         return pulumi.get(self, "name")
 

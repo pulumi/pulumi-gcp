@@ -56,16 +56,26 @@ class GetWebAppConfigResult:
     @property
     @pulumi.getter(name="apiKey")
     def api_key(self) -> str:
+        """
+        The API key associated with the web App.
+        """
         return pulumi.get(self, "api_key")
 
     @property
     @pulumi.getter(name="authDomain")
     def auth_domain(self) -> str:
+        """
+        The domain Firebase Auth configures for OAuth redirects, in the format:
+        projectId.firebaseapp.com
+        """
         return pulumi.get(self, "auth_domain")
 
     @property
     @pulumi.getter(name="databaseUrl")
     def database_url(self) -> str:
+        """
+        The default Firebase Realtime Database URL.
+        """
         return pulumi.get(self, "database_url")
 
     @property
@@ -79,16 +89,33 @@ class GetWebAppConfigResult:
     @property
     @pulumi.getter(name="locationId")
     def location_id(self) -> str:
+        """
+        The ID of the project's default GCP resource location. The location is one of the available GCP resource
+        locations.
+        This field is omitted if the default GCP resource location has not been finalized yet. To set your project's
+        default GCP resource location, call defaultLocation.finalize after you add Firebase services to your project.
+        """
         return pulumi.get(self, "location_id")
 
     @property
     @pulumi.getter(name="measurementId")
     def measurement_id(self) -> str:
+        """
+        The unique Google-assigned identifier of the Google Analytics web stream associated with the Firebase Web App.
+        Firebase SDKs use this ID to interact with Google Analytics APIs.
+        This field is only present if the App is linked to a web stream in a Google Analytics App + Web property.
+        Learn more about this ID and Google Analytics web streams in the Analytics documentation.
+        To generate a measurementId and link the Web App with a Google Analytics web stream,
+        call projects.addGoogleAnalytics.
+        """
         return pulumi.get(self, "measurement_id")
 
     @property
     @pulumi.getter(name="messagingSenderId")
     def messaging_sender_id(self) -> str:
+        """
+        The sender ID for use with Firebase Cloud Messaging.
+        """
         return pulumi.get(self, "messaging_sender_id")
 
     @property
@@ -99,6 +126,9 @@ class GetWebAppConfigResult:
     @property
     @pulumi.getter(name="storageBucket")
     def storage_bucket(self) -> str:
+        """
+        The default Cloud Storage for Firebase storage bucket name.
+        """
         return pulumi.get(self, "storage_bucket")
 
     @property

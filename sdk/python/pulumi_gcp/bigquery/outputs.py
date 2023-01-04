@@ -182,8 +182,7 @@ class ConnectionAwsAccessRole(dict):
                  identity: Optional[str] = None):
         """
         :param str iam_role_id: The user’s AWS IAM Role that trusts the Google-owned AWS IAM user Connection.
-        :param str identity: -
-               A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
+        :param str identity: A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
         """
         pulumi.set(__self__, "iam_role_id", iam_role_id)
         if identity is not None:
@@ -201,7 +200,6 @@ class ConnectionAwsAccessRole(dict):
     @pulumi.getter
     def identity(self) -> Optional[str]:
         """
-        -
         A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
         """
         return pulumi.get(self, "identity")
@@ -240,14 +238,10 @@ class ConnectionAzure(dict):
                  redirect_uri: Optional[str] = None):
         """
         :param str customer_tenant_id: The id of customer's directory that host the data.
-        :param str application: -
-               The name of the Azure Active Directory Application.
-        :param str client_id: -
-               The client id of the Azure Active Directory Application.
-        :param str object_id: -
-               The object id of the Azure Active Directory Application.
-        :param str redirect_uri: -
-               The URL user will be redirected to after granting consent during connection setup.
+        :param str application: The name of the Azure Active Directory Application.
+        :param str client_id: The client id of the Azure Active Directory Application.
+        :param str object_id: The object id of the Azure Active Directory Application.
+        :param str redirect_uri: The URL user will be redirected to after granting consent during connection setup.
         """
         pulumi.set(__self__, "customer_tenant_id", customer_tenant_id)
         if application is not None:
@@ -271,7 +265,6 @@ class ConnectionAzure(dict):
     @pulumi.getter
     def application(self) -> Optional[str]:
         """
-        -
         The name of the Azure Active Directory Application.
         """
         return pulumi.get(self, "application")
@@ -280,7 +273,6 @@ class ConnectionAzure(dict):
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[str]:
         """
-        -
         The client id of the Azure Active Directory Application.
         """
         return pulumi.get(self, "client_id")
@@ -289,7 +281,6 @@ class ConnectionAzure(dict):
     @pulumi.getter(name="objectId")
     def object_id(self) -> Optional[str]:
         """
-        -
         The object id of the Azure Active Directory Application.
         """
         return pulumi.get(self, "object_id")
@@ -298,7 +289,6 @@ class ConnectionAzure(dict):
     @pulumi.getter(name="redirectUri")
     def redirect_uri(self) -> Optional[str]:
         """
-        -
         The URL user will be redirected to after granting consent during connection setup.
         """
         return pulumi.get(self, "redirect_uri")
@@ -326,8 +316,7 @@ class ConnectionCloudResource(dict):
     def __init__(__self__, *,
                  service_account_id: Optional[str] = None):
         """
-        :param str service_account_id: -
-               The account ID of the service created for the purpose of this connection.
+        :param str service_account_id: The account ID of the service created for the purpose of this connection.
         """
         if service_account_id is not None:
             pulumi.set(__self__, "service_account_id", service_account_id)
@@ -336,7 +325,6 @@ class ConnectionCloudResource(dict):
     @pulumi.getter(name="serviceAccountId")
     def service_account_id(self) -> Optional[str]:
         """
-        -
         The account ID of the service created for the purpose of this connection.
         """
         return pulumi.get(self, "service_account_id")
@@ -416,7 +404,7 @@ class ConnectionCloudSql(dict):
         """
         :param 'ConnectionCloudSqlCredentialArgs' credential: Cloud SQL properties.
                Structure is documented below.
-        :param str database: Cloud Spanner database in the form `project/instance/database'
+        :param str database: Database name.
         :param str instance_id: Cloud SQL instance ID in the form project:location:instance.
         :param str type: Type of the Cloud SQL database.
                Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
@@ -439,7 +427,7 @@ class ConnectionCloudSql(dict):
     @pulumi.getter
     def database(self) -> str:
         """
-        Cloud Spanner database in the form `project/instance/database'
+        Database name.
         """
         return pulumi.get(self, "database")
 
@@ -737,7 +725,7 @@ class DatasetAccess(dict):
                  user_by_email: Optional[str] = None,
                  view: Optional['outputs.DatasetAccessView'] = None):
         """
-        :param 'DatasetAccessDatasetArgs' dataset: The dataset this entry applies to
+        :param 'DatasetAccessDatasetArgs' dataset: Grants all resources of particular types in a particular dataset read access to the current dataset.
                Structure is documented below.
         :param str domain: A domain to grant access to. Any users signed in with the
                domain specified will be granted the specified access
@@ -784,7 +772,7 @@ class DatasetAccess(dict):
     @pulumi.getter
     def dataset(self) -> Optional['outputs.DatasetAccessDataset']:
         """
-        The dataset this entry applies to
+        Grants all resources of particular types in a particular dataset read access to the current dataset.
         Structure is documented below.
         """
         return pulumi.get(self, "dataset")
@@ -1511,8 +1499,7 @@ class JobCopyDestinationEncryptionConfiguration(dict):
         """
         :param str kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
                The BigQuery Service Account associated with your project requires access to this encryption key.
-        :param str kms_key_version: -
-               Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+        :param str kms_key_version: Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
         """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
         if kms_key_version is not None:
@@ -1531,7 +1518,6 @@ class JobCopyDestinationEncryptionConfiguration(dict):
     @pulumi.getter(name="kmsKeyVersion")
     def kms_key_version(self) -> Optional[str]:
         """
-        -
         Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
         """
         return pulumi.get(self, "kms_key_version")
@@ -1567,8 +1553,8 @@ class JobCopyDestinationTable(dict):
         """
         :param str table_id: The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
                or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
-        :param str dataset_id: The ID of the dataset containing this model.
-        :param str project_id: The ID of the project containing this model.
+        :param str dataset_id: The ID of the dataset containing this table.
+        :param str project_id: The ID of the project containing this table.
         """
         pulumi.set(__self__, "table_id", table_id)
         if dataset_id is not None:
@@ -1589,7 +1575,7 @@ class JobCopyDestinationTable(dict):
     @pulumi.getter(name="datasetId")
     def dataset_id(self) -> Optional[str]:
         """
-        The ID of the dataset containing this model.
+        The ID of the dataset containing this table.
         """
         return pulumi.get(self, "dataset_id")
 
@@ -1597,7 +1583,7 @@ class JobCopyDestinationTable(dict):
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
         """
-        The ID of the project containing this model.
+        The ID of the project containing this table.
         """
         return pulumi.get(self, "project_id")
 
@@ -1632,8 +1618,8 @@ class JobCopySourceTable(dict):
         """
         :param str table_id: The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
                or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
-        :param str dataset_id: The ID of the dataset containing this model.
-        :param str project_id: The ID of the project containing this model.
+        :param str dataset_id: The ID of the dataset containing this table.
+        :param str project_id: The ID of the project containing this table.
         """
         pulumi.set(__self__, "table_id", table_id)
         if dataset_id is not None:
@@ -1654,7 +1640,7 @@ class JobCopySourceTable(dict):
     @pulumi.getter(name="datasetId")
     def dataset_id(self) -> Optional[str]:
         """
-        The ID of the dataset containing this model.
+        The ID of the dataset containing this table.
         """
         return pulumi.get(self, "dataset_id")
 
@@ -1662,7 +1648,7 @@ class JobCopySourceTable(dict):
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
         """
-        The ID of the project containing this model.
+        The ID of the project containing this table.
         """
         return pulumi.get(self, "project_id")
 
@@ -1901,8 +1887,8 @@ class JobExtractSourceTable(dict):
         """
         :param str table_id: The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
                or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
-        :param str dataset_id: The ID of the dataset containing this model.
-        :param str project_id: The ID of the project containing this model.
+        :param str dataset_id: The ID of the dataset containing this table.
+        :param str project_id: The ID of the project containing this table.
         """
         pulumi.set(__self__, "table_id", table_id)
         if dataset_id is not None:
@@ -1923,7 +1909,7 @@ class JobExtractSourceTable(dict):
     @pulumi.getter(name="datasetId")
     def dataset_id(self) -> Optional[str]:
         """
-        The ID of the dataset containing this model.
+        The ID of the dataset containing this table.
         """
         return pulumi.get(self, "dataset_id")
 
@@ -1931,7 +1917,7 @@ class JobExtractSourceTable(dict):
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
         """
-        The ID of the project containing this model.
+        The ID of the project containing this table.
         """
         return pulumi.get(self, "project_id")
 
@@ -2009,7 +1995,7 @@ class JobLoad(dict):
                  time_partitioning: Optional['outputs.JobLoadTimePartitioning'] = None,
                  write_disposition: Optional[str] = None):
         """
-        :param 'JobLoadDestinationTableArgs' destination_table: The destination table.
+        :param 'JobLoadDestinationTableArgs' destination_table: The destination table to load the data into.
                Structure is documented below.
         :param Sequence[str] source_uris: The fully-qualified URIs that point to your data in Google Cloud.
                For Google Cloud Storage URIs: Each URI can contain one '\\*' wildcard character
@@ -2034,8 +2020,11 @@ class JobLoad(dict):
         :param str encoding: The character encoding of the data. The supported values are UTF-8 or ISO-8859-1.
                The default value is UTF-8. BigQuery decodes the data after the raw, binary data
                has been split using the values of the quote and fieldDelimiter properties.
-        :param str field_delimiter: When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
-               Default is ','
+        :param str field_delimiter: The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character.
+               To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts
+               the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the
+               data in its raw, binary state. BigQuery also supports the escape sequence "\\t" to specify a tab separator.
+               The default value is a comma (',').
         :param bool ignore_unknown_values: Indicates if BigQuery should allow extra values that are not represented in the table schema.
                If true, the extra values are ignored. If false, records with extra columns are treated as bad records,
                and if there are too many bad records, an invalid error is returned in the job result.
@@ -2130,7 +2119,7 @@ class JobLoad(dict):
     @pulumi.getter(name="destinationTable")
     def destination_table(self) -> 'outputs.JobLoadDestinationTable':
         """
-        The destination table.
+        The destination table to load the data into.
         Structure is documented below.
         """
         return pulumi.get(self, "destination_table")
@@ -2211,8 +2200,11 @@ class JobLoad(dict):
     @pulumi.getter(name="fieldDelimiter")
     def field_delimiter(self) -> Optional[str]:
         """
-        When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
-        Default is ','
+        The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character.
+        To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts
+        the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the
+        data in its raw, binary state. BigQuery also supports the escape sequence "\\t" to specify a tab separator.
+        The default value is a comma (',').
         """
         return pulumi.get(self, "field_delimiter")
 
@@ -2371,8 +2363,7 @@ class JobLoadDestinationEncryptionConfiguration(dict):
         """
         :param str kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
                The BigQuery Service Account associated with your project requires access to this encryption key.
-        :param str kms_key_version: -
-               Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+        :param str kms_key_version: Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
         """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
         if kms_key_version is not None:
@@ -2391,7 +2382,6 @@ class JobLoadDestinationEncryptionConfiguration(dict):
     @pulumi.getter(name="kmsKeyVersion")
     def kms_key_version(self) -> Optional[str]:
         """
-        -
         Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
         """
         return pulumi.get(self, "kms_key_version")
@@ -2427,8 +2417,8 @@ class JobLoadDestinationTable(dict):
         """
         :param str table_id: The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
                or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
-        :param str dataset_id: The ID of the dataset containing this model.
-        :param str project_id: The ID of the project containing this model.
+        :param str dataset_id: The ID of the dataset containing this table.
+        :param str project_id: The ID of the project containing this table.
         """
         pulumi.set(__self__, "table_id", table_id)
         if dataset_id is not None:
@@ -2449,7 +2439,7 @@ class JobLoadDestinationTable(dict):
     @pulumi.getter(name="datasetId")
     def dataset_id(self) -> Optional[str]:
         """
-        The ID of the dataset containing this model.
+        The ID of the dataset containing this table.
         """
         return pulumi.get(self, "dataset_id")
 
@@ -2457,7 +2447,7 @@ class JobLoadDestinationTable(dict):
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
         """
-        The ID of the project containing this model.
+        The ID of the project containing this table.
         """
         return pulumi.get(self, "project_id")
 
@@ -2593,8 +2583,9 @@ class JobQuery(dict):
                  user_defined_function_resources: Optional[Sequence['outputs.JobQueryUserDefinedFunctionResource']] = None,
                  write_disposition: Optional[str] = None):
         """
-        :param str query: Configures a query job.
-               Structure is documented below.
+        :param str query: SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+               *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+               (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
         :param bool allow_large_results: If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance.
                Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed.
                However, you must still set destinationTable when result size exceeds the allowed maximum response size.
@@ -2608,7 +2599,9 @@ class JobQuery(dict):
                Structure is documented below.
         :param 'JobQueryDestinationEncryptionConfigurationArgs' destination_encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys)
                Structure is documented below.
-        :param 'JobQueryDestinationTableArgs' destination_table: The destination table.
+        :param 'JobQueryDestinationTableArgs' destination_table: Describes the table where the query results should be stored.
+               This property must be set for large results that exceed the maximum response size.
+               For queries that produce anonymous (cached) results, this field will be populated by BigQuery.
                Structure is documented below.
         :param bool flatten_results: If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results.
                allowLargeResults must be true if this is set to false. For standard SQL queries, this flag is ignored and results are never flattened.
@@ -2620,10 +2613,11 @@ class JobQuery(dict):
         :param str priority: Specifies a priority for the query.
                Default value is `INTERACTIVE`.
                Possible values are `INTERACTIVE` and `BATCH`.
-        :param Sequence[str] schema_update_options: Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
-               supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
-               when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators.
-               For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified:
+        :param Sequence[str] schema_update_options: Allows the schema of the destination table to be updated as a side effect of the query job.
+               Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
+               when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table,
+               specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema.
+               One or more of the following values are specified:
                ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
                ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
         :param 'JobQueryScriptOptionsArgs' script_options: Options controlling the execution of scripts.
@@ -2682,8 +2676,9 @@ class JobQuery(dict):
     @pulumi.getter
     def query(self) -> str:
         """
-        Configures a query job.
-        Structure is documented below.
+        SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+        *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+        (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `create_disposition = ""` and `write_disposition = ""`.
         """
         return pulumi.get(self, "query")
 
@@ -2732,7 +2727,9 @@ class JobQuery(dict):
     @pulumi.getter(name="destinationTable")
     def destination_table(self) -> Optional['outputs.JobQueryDestinationTable']:
         """
-        The destination table.
+        Describes the table where the query results should be stored.
+        This property must be set for large results that exceed the maximum response size.
+        For queries that produce anonymous (cached) results, this field will be populated by BigQuery.
         Structure is documented below.
         """
         return pulumi.get(self, "destination_table")
@@ -2786,10 +2783,11 @@ class JobQuery(dict):
     @pulumi.getter(name="schemaUpdateOptions")
     def schema_update_options(self) -> Optional[Sequence[str]]:
         """
-        Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
-        supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
-        when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators.
-        For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified:
+        Allows the schema of the destination table to be updated as a side effect of the query job.
+        Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
+        when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table,
+        specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema.
+        One or more of the following values are specified:
         ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
         ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
         """
@@ -2873,8 +2871,9 @@ class JobQueryDefaultDataset(dict):
                  dataset_id: str,
                  project_id: Optional[str] = None):
         """
-        :param str dataset_id: The ID of the dataset containing this model.
-        :param str project_id: The ID of the project containing this model.
+        :param str dataset_id: The dataset. Can be specified `{{dataset_id}}` if `project_id` is also set,
+               or of the form `projects/{{project}}/datasets/{{dataset_id}}` if not.
+        :param str project_id: The ID of the project containing this table.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         if project_id is not None:
@@ -2884,7 +2883,8 @@ class JobQueryDefaultDataset(dict):
     @pulumi.getter(name="datasetId")
     def dataset_id(self) -> str:
         """
-        The ID of the dataset containing this model.
+        The dataset. Can be specified `{{dataset_id}}` if `project_id` is also set,
+        or of the form `projects/{{project}}/datasets/{{dataset_id}}` if not.
         """
         return pulumi.get(self, "dataset_id")
 
@@ -2892,7 +2892,7 @@ class JobQueryDefaultDataset(dict):
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
         """
-        The ID of the project containing this model.
+        The ID of the project containing this table.
         """
         return pulumi.get(self, "project_id")
 
@@ -2924,8 +2924,7 @@ class JobQueryDestinationEncryptionConfiguration(dict):
         """
         :param str kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
                The BigQuery Service Account associated with your project requires access to this encryption key.
-        :param str kms_key_version: -
-               Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+        :param str kms_key_version: Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
         """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
         if kms_key_version is not None:
@@ -2944,7 +2943,6 @@ class JobQueryDestinationEncryptionConfiguration(dict):
     @pulumi.getter(name="kmsKeyVersion")
     def kms_key_version(self) -> Optional[str]:
         """
-        -
         Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
         """
         return pulumi.get(self, "kms_key_version")
@@ -2980,8 +2978,8 @@ class JobQueryDestinationTable(dict):
         """
         :param str table_id: The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
                or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
-        :param str dataset_id: The ID of the dataset containing this model.
-        :param str project_id: The ID of the project containing this model.
+        :param str dataset_id: The ID of the dataset containing this table.
+        :param str project_id: The ID of the project containing this table.
         """
         pulumi.set(__self__, "table_id", table_id)
         if dataset_id is not None:
@@ -3002,7 +3000,7 @@ class JobQueryDestinationTable(dict):
     @pulumi.getter(name="datasetId")
     def dataset_id(self) -> Optional[str]:
         """
-        The ID of the dataset containing this model.
+        The ID of the dataset containing this table.
         """
         return pulumi.get(self, "dataset_id")
 
@@ -3010,7 +3008,7 @@ class JobQueryDestinationTable(dict):
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
         """
-        The ID of the project containing this model.
+        The ID of the project containing this table.
         """
         return pulumi.get(self, "project_id")
 
@@ -3158,6 +3156,15 @@ class JobStatus(dict):
                  error_results: Optional[Sequence['outputs.JobStatusErrorResult']] = None,
                  errors: Optional[Sequence['outputs.JobStatusError']] = None,
                  state: Optional[str] = None):
+        """
+        :param Sequence['JobStatusErrorResultArgs'] error_results: Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
+               Structure is documented below.
+        :param Sequence['JobStatusErrorArgs'] errors: The first errors encountered during the running of the job. The final message
+               includes the number of errors that caused the process to stop. Errors here do
+               not necessarily mean that the job has not completed or was unsuccessful.
+               Structure is documented below.
+        :param str state: Running state of the job. Valid states include 'PENDING', 'RUNNING', and 'DONE'.
+        """
         if error_results is not None:
             pulumi.set(__self__, "error_results", error_results)
         if errors is not None:
@@ -3168,16 +3175,29 @@ class JobStatus(dict):
     @property
     @pulumi.getter(name="errorResults")
     def error_results(self) -> Optional[Sequence['outputs.JobStatusErrorResult']]:
+        """
+        Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
+        Structure is documented below.
+        """
         return pulumi.get(self, "error_results")
 
     @property
     @pulumi.getter
     def errors(self) -> Optional[Sequence['outputs.JobStatusError']]:
+        """
+        The first errors encountered during the running of the job. The final message
+        includes the number of errors that caused the process to stop. Errors here do
+        not necessarily mean that the job has not completed or was unsuccessful.
+        Structure is documented below.
+        """
         return pulumi.get(self, "errors")
 
     @property
     @pulumi.getter
     def state(self) -> Optional[str]:
+        """
+        Running state of the job. Valid states include 'PENDING', 'RUNNING', and 'DONE'.
+        """
         return pulumi.get(self, "state")
 
 
@@ -3189,6 +3209,8 @@ class JobStatusError(dict):
                  reason: Optional[str] = None):
         """
         :param str location: The geographic location of the job. The default value is US.
+        :param str message: A human-readable description of the error.
+        :param str reason: A short error code that summarizes the error.
         """
         if location is not None:
             pulumi.set(__self__, "location", location)
@@ -3208,11 +3230,17 @@ class JobStatusError(dict):
     @property
     @pulumi.getter
     def message(self) -> Optional[str]:
+        """
+        A human-readable description of the error.
+        """
         return pulumi.get(self, "message")
 
     @property
     @pulumi.getter
     def reason(self) -> Optional[str]:
+        """
+        A short error code that summarizes the error.
+        """
         return pulumi.get(self, "reason")
 
 
@@ -3224,6 +3252,8 @@ class JobStatusErrorResult(dict):
                  reason: Optional[str] = None):
         """
         :param str location: The geographic location of the job. The default value is US.
+        :param str message: A human-readable description of the error.
+        :param str reason: A short error code that summarizes the error.
         """
         if location is not None:
             pulumi.set(__self__, "location", location)
@@ -3243,11 +3273,17 @@ class JobStatusErrorResult(dict):
     @property
     @pulumi.getter
     def message(self) -> Optional[str]:
+        """
+        A human-readable description of the error.
+        """
         return pulumi.get(self, "message")
 
     @property
     @pulumi.getter
     def reason(self) -> Optional[str]:
+        """
+        A short error code that summarizes the error.
+        """
         return pulumi.get(self, "reason")
 
 
@@ -3449,7 +3485,7 @@ class TableExternalDataConfiguration(dict):
                  max_bad_records: Optional[int] = None,
                  schema: Optional[str] = None):
         """
-        :param bool autodetect: - Let BigQuery try to autodetect the schema
+        :param bool autodetect: Let BigQuery try to autodetect the schema
                and format of the table.
         :param str source_format: The data format. Supported values are:
                "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET", "ORC",
@@ -3521,7 +3557,7 @@ class TableExternalDataConfiguration(dict):
     @pulumi.getter
     def autodetect(self) -> bool:
         """
-        - Let BigQuery try to autodetect the schema
+        Let BigQuery try to autodetect the schema
         and format of the table.
         """
         return pulumi.get(self, "autodetect")
@@ -3734,9 +3770,8 @@ class TableExternalDataConfigurationCsvOptions(dict):
         :param str encoding: The character encoding of the data. The supported
                values are UTF-8 or ISO-8859-1.
         :param str field_delimiter: The separator for fields in a CSV file.
-        :param int skip_leading_rows: The number of rows at the top of the sheet
-               that BigQuery will skip when reading the data. At least one of `range` or
-               `skip_leading_rows` must be set.
+        :param int skip_leading_rows: The number of rows at the top of a CSV
+               file that BigQuery will skip when reading the data.
         """
         pulumi.set(__self__, "quote", quote)
         if allow_jagged_rows is not None:
@@ -3804,9 +3839,8 @@ class TableExternalDataConfigurationCsvOptions(dict):
     @pulumi.getter(name="skipLeadingRows")
     def skip_leading_rows(self) -> Optional[int]:
         """
-        The number of rows at the top of the sheet
-        that BigQuery will skip when reading the data. At least one of `range` or
-        `skip_leading_rows` must be set.
+        The number of rows at the top of a CSV
+        file that BigQuery will skip when reading the data.
         """
         return pulumi.get(self, "skip_leading_rows")
 
@@ -3834,8 +3868,10 @@ class TableExternalDataConfigurationGoogleSheetsOptions(dict):
                  range: Optional[str] = None,
                  skip_leading_rows: Optional[int] = None):
         """
-        :param str range: Information required to partition based on ranges.
-               Structure is documented below.
+        :param str range: Range of a sheet to query from. Only used when
+               non-empty. At least one of `range` or `skip_leading_rows` must be set.
+               Typical format: "sheet_name!top_left_cell_id:bottom_right_cell_id"
+               For example: "sheet1!A1:B20"
         :param int skip_leading_rows: The number of rows at the top of the sheet
                that BigQuery will skip when reading the data. At least one of `range` or
                `skip_leading_rows` must be set.
@@ -3849,8 +3885,10 @@ class TableExternalDataConfigurationGoogleSheetsOptions(dict):
     @pulumi.getter
     def range(self) -> Optional[str]:
         """
-        Information required to partition based on ranges.
-        Structure is documented below.
+        Range of a sheet to query from. Only used when
+        non-empty. At least one of `range` or `skip_leading_rows` must be set.
+        Typical format: "sheet_name!top_left_cell_id:bottom_right_cell_id"
+        For example: "sheet1!A1:B20"
         """
         return pulumi.get(self, "range")
 
@@ -4128,8 +4166,9 @@ class TableTimePartitioning(dict):
                which will generate one partition per day, hour, month, and year, respectively.
         :param int expiration_ms: Number of milliseconds for which to keep the
                storage for a partition.
-        :param str field: The field used to determine how to create a range-based
-               partition.
+        :param str field: The field used to determine how to create a time-based
+               partition. If time-based partitioning is enabled without this value, the
+               table is partitioned based on the load time.
         :param bool require_partition_filter: If set to true, queries over this table
                require a partition filter that can be used for partition elimination to be
                specified.
@@ -4164,8 +4203,9 @@ class TableTimePartitioning(dict):
     @pulumi.getter
     def field(self) -> Optional[str]:
         """
-        The field used to determine how to create a range-based
-        partition.
+        The field used to determine how to create a time-based
+        partition. If time-based partitioning is enabled without this value, the
+        table is partitioned based on the load time.
         """
         return pulumi.get(self, "field")
 
@@ -4203,7 +4243,7 @@ class TableView(dict):
                  query: str,
                  use_legacy_sql: Optional[bool] = None):
         """
-        :param str query: A query whose result is persisted.
+        :param str query: A query that BigQuery executes when the view is referenced.
         :param bool use_legacy_sql: Specifies whether to use BigQuery's legacy SQL for this view.
                The default value is true. If set to false, the view will use BigQuery's standard SQL.
         """
@@ -4215,7 +4255,7 @@ class TableView(dict):
     @pulumi.getter
     def query(self) -> str:
         """
-        A query whose result is persisted.
+        A query that BigQuery executes when the view is referenced.
         """
         return pulumi.get(self, "query")
 

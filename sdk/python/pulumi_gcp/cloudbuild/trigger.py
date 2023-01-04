@@ -76,12 +76,9 @@ class TriggerArgs:
                and includedFiles is not empty, then we make sure that at least one of
                those files matches a includedFiles glob. If not, then we do not trigger
                a build.
-        :param pulumi.Input[str] location: Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
-               Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
-               this location as a prefix.
-        :param pulumi.Input[str] name: Name of the volume to mount.
-               Volume names must be unique per build step and must be valid names for Docker volumes.
-               Each named volume must be used by at least two build steps.
+        :param pulumi.Input[str] location: The [Cloud Build location](https://cloud.google.com/build/docs/locations) for the trigger.
+               If not specified, "global" is used.
+        :param pulumi.Input[str] name: Name of the trigger. Must be unique within the project.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['TriggerPubsubConfigArgs'] pubsub_config: PubsubConfig describes the configuration of a trigger that creates
@@ -99,8 +96,8 @@ class TriggerArgs:
                This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
                One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions to use in a triggered build. Should only be used with triggers.run
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a Build. These are not docker tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions data for Build resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a BuildTrigger
         :param pulumi.Input['TriggerTriggerTemplateArgs'] trigger_template: Template describing the types of source changes to trigger a build.
                Branch and tag names in trigger templates are interpreted as regular
                expressions. Any branch or tag change that matches that regular
@@ -317,9 +314,8 @@ class TriggerArgs:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
-        Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
-        this location as a prefix.
+        The [Cloud Build location](https://cloud.google.com/build/docs/locations) for the trigger.
+        If not specified, "global" is used.
         """
         return pulumi.get(self, "location")
 
@@ -331,9 +327,7 @@ class TriggerArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the volume to mount.
-        Volume names must be unique per build step and must be valid names for Docker volumes.
-        Each named volume must be used by at least two build steps.
+        Name of the trigger. Must be unique within the project.
         """
         return pulumi.get(self, "name")
 
@@ -406,7 +400,7 @@ class TriggerArgs:
     @pulumi.getter
     def substitutions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Substitutions to use in a triggered build. Should only be used with triggers.run
+        Substitutions data for Build resource.
         """
         return pulumi.get(self, "substitutions")
 
@@ -418,7 +412,7 @@ class TriggerArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags for annotation of a Build. These are not docker tags.
+        Tags for annotation of a BuildTrigger
         """
         return pulumi.get(self, "tags")
 
@@ -525,12 +519,9 @@ class _TriggerState:
                and includedFiles is not empty, then we make sure that at least one of
                those files matches a includedFiles glob. If not, then we do not trigger
                a build.
-        :param pulumi.Input[str] location: Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
-               Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
-               this location as a prefix.
-        :param pulumi.Input[str] name: Name of the volume to mount.
-               Volume names must be unique per build step and must be valid names for Docker volumes.
-               Each named volume must be used by at least two build steps.
+        :param pulumi.Input[str] location: The [Cloud Build location](https://cloud.google.com/build/docs/locations) for the trigger.
+               If not specified, "global" is used.
+        :param pulumi.Input[str] name: Name of the trigger. Must be unique within the project.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['TriggerPubsubConfigArgs'] pubsub_config: PubsubConfig describes the configuration of a trigger that creates
@@ -548,8 +539,8 @@ class _TriggerState:
                This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
                One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions to use in a triggered build. Should only be used with triggers.run
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a Build. These are not docker tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions data for Build resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a BuildTrigger
         :param pulumi.Input[str] trigger_id: The unique identifier for the trigger.
         :param pulumi.Input['TriggerTriggerTemplateArgs'] trigger_template: Template describing the types of source changes to trigger a build.
                Branch and tag names in trigger templates are interpreted as regular
@@ -783,9 +774,8 @@ class _TriggerState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
-        Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
-        this location as a prefix.
+        The [Cloud Build location](https://cloud.google.com/build/docs/locations) for the trigger.
+        If not specified, "global" is used.
         """
         return pulumi.get(self, "location")
 
@@ -797,9 +787,7 @@ class _TriggerState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the volume to mount.
-        Volume names must be unique per build step and must be valid names for Docker volumes.
-        Each named volume must be used by at least two build steps.
+        Name of the trigger. Must be unique within the project.
         """
         return pulumi.get(self, "name")
 
@@ -872,7 +860,7 @@ class _TriggerState:
     @pulumi.getter
     def substitutions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Substitutions to use in a triggered build. Should only be used with triggers.run
+        Substitutions data for Build resource.
         """
         return pulumi.get(self, "substitutions")
 
@@ -884,7 +872,7 @@ class _TriggerState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags for annotation of a Build. These are not docker tags.
+        Tags for annotation of a BuildTrigger
         """
         return pulumi.get(self, "tags")
 
@@ -1195,12 +1183,9 @@ class Trigger(pulumi.CustomResource):
                and includedFiles is not empty, then we make sure that at least one of
                those files matches a includedFiles glob. If not, then we do not trigger
                a build.
-        :param pulumi.Input[str] location: Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
-               Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
-               this location as a prefix.
-        :param pulumi.Input[str] name: Name of the volume to mount.
-               Volume names must be unique per build step and must be valid names for Docker volumes.
-               Each named volume must be used by at least two build steps.
+        :param pulumi.Input[str] location: The [Cloud Build location](https://cloud.google.com/build/docs/locations) for the trigger.
+               If not specified, "global" is used.
+        :param pulumi.Input[str] name: Name of the trigger. Must be unique within the project.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['TriggerPubsubConfigArgs']] pubsub_config: PubsubConfig describes the configuration of a trigger that creates
@@ -1218,8 +1203,8 @@ class Trigger(pulumi.CustomResource):
                This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
                One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions to use in a triggered build. Should only be used with triggers.run
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a Build. These are not docker tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions data for Build resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a BuildTrigger
         :param pulumi.Input[pulumi.InputType['TriggerTriggerTemplateArgs']] trigger_template: Template describing the types of source changes to trigger a build.
                Branch and tag names in trigger templates are interpreted as regular
                expressions. Any branch or tag change that matches that regular
@@ -1575,12 +1560,9 @@ class Trigger(pulumi.CustomResource):
                and includedFiles is not empty, then we make sure that at least one of
                those files matches a includedFiles glob. If not, then we do not trigger
                a build.
-        :param pulumi.Input[str] location: Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
-               Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
-               this location as a prefix.
-        :param pulumi.Input[str] name: Name of the volume to mount.
-               Volume names must be unique per build step and must be valid names for Docker volumes.
-               Each named volume must be used by at least two build steps.
+        :param pulumi.Input[str] location: The [Cloud Build location](https://cloud.google.com/build/docs/locations) for the trigger.
+               If not specified, "global" is used.
+        :param pulumi.Input[str] name: Name of the trigger. Must be unique within the project.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['TriggerPubsubConfigArgs']] pubsub_config: PubsubConfig describes the configuration of a trigger that creates
@@ -1598,8 +1580,8 @@ class Trigger(pulumi.CustomResource):
                This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
                One of `trigger_template`, `github`, `pubsub_config` `webhook_config` or `source_to_build` must be provided.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions to use in a triggered build. Should only be used with triggers.run
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a Build. These are not docker tags.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions data for Build resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a BuildTrigger
         :param pulumi.Input[str] trigger_id: The unique identifier for the trigger.
         :param pulumi.Input[pulumi.InputType['TriggerTriggerTemplateArgs']] trigger_template: Template describing the types of source changes to trigger a build.
                Branch and tag names in trigger templates are interpreted as regular
@@ -1767,9 +1749,8 @@ class Trigger(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[Optional[str]]:
         """
-        Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
-        Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
-        this location as a prefix.
+        The [Cloud Build location](https://cloud.google.com/build/docs/locations) for the trigger.
+        If not specified, "global" is used.
         """
         return pulumi.get(self, "location")
 
@@ -1777,9 +1758,7 @@ class Trigger(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the volume to mount.
-        Volume names must be unique per build step and must be valid names for Docker volumes.
-        Each named volume must be used by at least two build steps.
+        Name of the trigger. Must be unique within the project.
         """
         return pulumi.get(self, "name")
 
@@ -1832,7 +1811,7 @@ class Trigger(pulumi.CustomResource):
     @pulumi.getter
     def substitutions(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Substitutions to use in a triggered build. Should only be used with triggers.run
+        Substitutions data for Build resource.
         """
         return pulumi.get(self, "substitutions")
 
@@ -1840,7 +1819,7 @@ class Trigger(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags for annotation of a Build. These are not docker tags.
+        Tags for annotation of a BuildTrigger
         """
         return pulumi.get(self, "tags")
 

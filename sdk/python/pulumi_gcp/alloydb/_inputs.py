@@ -315,12 +315,18 @@ class ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs:
 class ClusterBackupSourceArgs:
     def __init__(__self__, *,
                  backup_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] backup_name: The name of the backup resource.
+        """
         if backup_name is not None:
             pulumi.set(__self__, "backup_name", backup_name)
 
     @property
     @pulumi.getter(name="backupName")
     def backup_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the backup resource.
+        """
         return pulumi.get(self, "backup_name")
 
     @backup_name.setter
@@ -374,6 +380,11 @@ class ClusterMigrationSourceArgs:
                  host_port: Optional[pulumi.Input[str]] = None,
                  reference_id: Optional[pulumi.Input[str]] = None,
                  source_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] host_port: The host and port of the on-premises instance in host:port format
+        :param pulumi.Input[str] reference_id: Place holder for the external source identifier(e.g DMS job name) that created the cluster.
+        :param pulumi.Input[str] source_type: Type of migration source.
+        """
         if host_port is not None:
             pulumi.set(__self__, "host_port", host_port)
         if reference_id is not None:
@@ -384,6 +395,9 @@ class ClusterMigrationSourceArgs:
     @property
     @pulumi.getter(name="hostPort")
     def host_port(self) -> Optional[pulumi.Input[str]]:
+        """
+        The host and port of the on-premises instance in host:port format
+        """
         return pulumi.get(self, "host_port")
 
     @host_port.setter
@@ -393,6 +407,9 @@ class ClusterMigrationSourceArgs:
     @property
     @pulumi.getter(name="referenceId")
     def reference_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Place holder for the external source identifier(e.g DMS job name) that created the cluster.
+        """
         return pulumi.get(self, "reference_id")
 
     @reference_id.setter
@@ -402,6 +419,9 @@ class ClusterMigrationSourceArgs:
     @property
     @pulumi.getter(name="sourceType")
     def source_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of migration source.
+        """
         return pulumi.get(self, "source_type")
 
     @source_type.setter

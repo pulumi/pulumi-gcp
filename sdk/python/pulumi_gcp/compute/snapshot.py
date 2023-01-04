@@ -261,11 +261,13 @@ class _SnapshotState:
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[int] disk_size_gb: Size of the snapshot, specified in GB.
-        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used
+               internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this Snapshot.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses
-               attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied
-               encryption key.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: A list of public visible licenses that apply to this snapshot. This
+               can be because the original image had licenses attached (such as a
+               Windows image).  snapshotEncryptionKey nested object Encrypts the
+               snapshot using a customer-supplied encryption key.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -293,7 +295,8 @@ class _SnapshotState:
                if the source snapshot is protected by a customer-supplied encryption
                key.
                Structure is documented below.
-        :param pulumi.Input[int] storage_bytes: A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
+        :param pulumi.Input[int] storage_bytes: A size of the storage used by the snapshot. As snapshots share
+               storage, this number is expected to change with snapshot
                creation/deletion.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
         :param pulumi.Input[str] zone: A reference to the zone where the disk is hosted.
@@ -390,7 +393,8 @@ class _SnapshotState:
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> Optional[pulumi.Input[str]]:
         """
-        The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        The fingerprint used for optimistic locking of this resource. Used
+        internally during updates.
         """
         return pulumi.get(self, "label_fingerprint")
 
@@ -414,9 +418,10 @@ class _SnapshotState:
     @pulumi.getter
     def licenses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses
-        attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied
-        encryption key.
+        A list of public visible licenses that apply to this snapshot. This
+        can be because the original image had licenses attached (such as a
+        Windows image).  snapshotEncryptionKey nested object Encrypts the
+        snapshot using a customer-supplied encryption key.
         """
         return pulumi.get(self, "licenses")
 
@@ -532,7 +537,8 @@ class _SnapshotState:
     @pulumi.getter(name="storageBytes")
     def storage_bytes(self) -> Optional[pulumi.Input[int]]:
         """
-        A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
+        A size of the storage used by the snapshot. As snapshots share
+        storage, this number is expected to change with snapshot
         creation/deletion.
         """
         return pulumi.get(self, "storage_bytes")
@@ -890,11 +896,13 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[int] disk_size_gb: Size of the snapshot, specified in GB.
-        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used
+               internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this Snapshot.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses
-               attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied
-               encryption key.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: A list of public visible licenses that apply to this snapshot. This
+               can be because the original image had licenses attached (such as a
+               Windows image).  snapshotEncryptionKey nested object Encrypts the
+               snapshot using a customer-supplied encryption key.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -922,7 +930,8 @@ class Snapshot(pulumi.CustomResource):
                if the source snapshot is protected by a customer-supplied encryption
                key.
                Structure is documented below.
-        :param pulumi.Input[int] storage_bytes: A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
+        :param pulumi.Input[int] storage_bytes: A size of the storage used by the snapshot. As snapshots share
+               storage, this number is expected to change with snapshot
                creation/deletion.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
         :param pulumi.Input[str] zone: A reference to the zone where the disk is hosted.
@@ -991,7 +1000,8 @@ class Snapshot(pulumi.CustomResource):
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> pulumi.Output[str]:
         """
-        The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        The fingerprint used for optimistic locking of this resource. Used
+        internally during updates.
         """
         return pulumi.get(self, "label_fingerprint")
 
@@ -1007,9 +1017,10 @@ class Snapshot(pulumi.CustomResource):
     @pulumi.getter
     def licenses(self) -> pulumi.Output[Sequence[str]]:
         """
-        A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses
-        attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied
-        encryption key.
+        A list of public visible licenses that apply to this snapshot. This
+        can be because the original image had licenses attached (such as a
+        Windows image).  snapshotEncryptionKey nested object Encrypts the
+        snapshot using a customer-supplied encryption key.
         """
         return pulumi.get(self, "licenses")
 
@@ -1093,7 +1104,8 @@ class Snapshot(pulumi.CustomResource):
     @pulumi.getter(name="storageBytes")
     def storage_bytes(self) -> pulumi.Output[int]:
         """
-        A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
+        A size of the storage used by the snapshot. As snapshots share
+        storage, this number is expected to change with snapshot
         creation/deletion.
         """
         return pulumi.get(self, "storage_bytes")

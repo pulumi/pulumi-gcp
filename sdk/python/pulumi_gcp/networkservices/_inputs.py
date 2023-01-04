@@ -527,7 +527,8 @@ class EdgeCacheServiceRoutingArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingHostRuleArgs']]] host_rules: The list of hostRules to match against. These rules define which hostnames the EdgeCacheService will match against, and which route configurations apply.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherArgs']]] path_matchers: The name of the pathMatcher associated with this hostRule.
+        :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherArgs']]] path_matchers: The list of pathMatchers referenced via name by hostRules. PathMatcher is used to match the path portion of the URL when a HostRule matches the URL's host portion.
+               Structure is documented below.
         """
         pulumi.set(__self__, "host_rules", host_rules)
         pulumi.set(__self__, "path_matchers", path_matchers)
@@ -549,7 +550,8 @@ class EdgeCacheServiceRoutingArgs:
     @pulumi.getter(name="pathMatchers")
     def path_matchers(self) -> pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherArgs']]]:
         """
-        The name of the pathMatcher associated with this hostRule.
+        The list of pathMatchers referenced via name by hostRules. PathMatcher is used to match the path portion of the URL when a HostRule matches the URL's host portion.
+        Structure is documented below.
         """
         return pulumi.get(self, "path_matchers")
 
@@ -577,7 +579,7 @@ class EdgeCacheServiceRoutingHostRuleArgs:
                Hosts are matched against the HTTP Host header, or for HTTP/2 and HTTP/3, the ":authority" header, from the incoming request.
                You may specify up to 10 hosts.
         :param pulumi.Input[str] path_matcher: The name of the pathMatcher associated with this hostRule.
-        :param pulumi.Input[str] description: A human-readable description of the resource.
+        :param pulumi.Input[str] description: A human-readable description of the hostRule.
         """
         pulumi.set(__self__, "hosts", hosts)
         pulumi.set(__self__, "path_matcher", path_matcher)
@@ -622,7 +624,7 @@ class EdgeCacheServiceRoutingHostRuleArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A human-readable description of the resource.
+        A human-readable description of the hostRule.
         """
         return pulumi.get(self, "description")
 
@@ -638,7 +640,7 @@ class EdgeCacheServiceRoutingPathMatcherArgs:
                  route_rules: pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleArgs']]],
                  description: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+        :param pulumi.Input[str] name: The name to which this PathMatcher is referred by the HostRule.
         :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleArgs']]] route_rules: The routeRules to match against. routeRules support advanced routing behaviour, and can match on paths, headers and query parameters, as well as status codes and HTTP methods.
                Structure is documented below.
         :param pulumi.Input[str] description: A human-readable description of the resource.
@@ -652,7 +654,7 @@ class EdgeCacheServiceRoutingPathMatcherArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+        The name to which this PathMatcher is referred by the HostRule.
         """
         return pulumi.get(self, "name")
 
@@ -704,7 +706,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleArgs:
                You cannot configure two or more routeRules with the same priority. Priority for each rule must be set to a number between 1 and 999 inclusive.
                Priority numbers can have gaps, which enable you to add or remove rules in the future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9, 12, 16 is a valid series of priority numbers
                to which you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact on existing rules.
-        :param pulumi.Input[str] description: A human-readable description of the resource.
+        :param pulumi.Input[str] description: A human-readable description of the routeRule.
         :param pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs'] header_action: The header actions, including adding & removing headers, for requests that match this route.
                Structure is documented below.
         :param pulumi.Input[str] origin: The Origin resource that requests to this route should fetch from when a matching response is not in cache. Origins can be defined as short names ("my-origin") or fully-qualified resource URLs - e.g. "networkservices.googleapis.com/projects/my-project/global/edgecacheorigins/my-origin"
@@ -760,7 +762,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A human-readable description of the resource.
+        A human-readable description of the routeRule.
         """
         return pulumi.get(self, "description")
 
@@ -909,8 +911,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddA
                  header_value: pulumi.Input[str],
                  replace: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] header_name: Headers to remove from the response prior to sending it back to the client.
-               Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+        :param pulumi.Input[str] header_name: The name of the header to add.
         :param pulumi.Input[str] header_value: The value of the header to add.
         :param pulumi.Input[bool] replace: Whether to replace all existing headers with the same name.
         """
@@ -923,8 +924,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddA
     @pulumi.getter(name="headerName")
     def header_name(self) -> pulumi.Input[str]:
         """
-        Headers to remove from the response prior to sending it back to the client.
-        Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+        The name of the header to add.
         """
         return pulumi.get(self, "header_name")
 
@@ -962,8 +962,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemo
     def __init__(__self__, *,
                  header_name: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] header_name: Headers to remove from the response prior to sending it back to the client.
-               Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+        :param pulumi.Input[str] header_name: The name of the header to remove.
         """
         pulumi.set(__self__, "header_name", header_name)
 
@@ -971,8 +970,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemo
     @pulumi.getter(name="headerName")
     def header_name(self) -> pulumi.Input[str]:
         """
-        Headers to remove from the response prior to sending it back to the client.
-        Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+        The name of the header to remove.
         """
         return pulumi.get(self, "header_name")
 
@@ -988,8 +986,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd
                  header_value: pulumi.Input[str],
                  replace: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] header_name: Headers to remove from the response prior to sending it back to the client.
-               Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+        :param pulumi.Input[str] header_name: The name of the header to add.
         :param pulumi.Input[str] header_value: The value of the header to add.
         :param pulumi.Input[bool] replace: Whether to replace all existing headers with the same name.
         """
@@ -1002,8 +999,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd
     @pulumi.getter(name="headerName")
     def header_name(self) -> pulumi.Input[str]:
         """
-        Headers to remove from the response prior to sending it back to the client.
-        Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+        The name of the header to add.
         """
         return pulumi.get(self, "header_name")
 
@@ -1082,7 +1078,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs:
                (inclusive).  The pattern specified by pathTemplateMatch may
                have at most 5 wildcard operators and at most 5 variable
                captures in total.
-        :param pulumi.Input[str] prefix_match: The value of the header must start with the contents of prefixMatch.
+        :param pulumi.Input[str] prefix_match: For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /.
         :param pulumi.Input[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs']]] query_parameter_matches: Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request.
                Structure is documented below.
         """
@@ -1159,7 +1155,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs:
     @pulumi.getter(name="prefixMatch")
     def prefix_match(self) -> Optional[pulumi.Input[str]]:
         """
-        The value of the header must start with the contents of prefixMatch.
+        For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /.
         """
         return pulumi.get(self, "prefix_match")
 
@@ -1191,13 +1187,12 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgs:
                  present_match: Optional[pulumi.Input[bool]] = None,
                  suffix_match: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] header_name: Headers to remove from the response prior to sending it back to the client.
-               Response headers are only sent to the client, and do not have an effect on the cache serving the response.
-        :param pulumi.Input[str] exact_match: The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch.
+        :param pulumi.Input[str] header_name: The header name to match on.
+        :param pulumi.Input[str] exact_match: The value of the header should exactly match contents of exactMatch.
         :param pulumi.Input[bool] invert_match: If set to false (default), the headerMatch is considered a match if the match criteria above are met.
                If set to true, the headerMatch is considered a match if the match criteria above are NOT met.
         :param pulumi.Input[str] prefix_match: The value of the header must start with the contents of prefixMatch.
-        :param pulumi.Input[bool] present_match: Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not.
+        :param pulumi.Input[bool] present_match: A header with the contents of headerName must exist. The match takes place whether or not the request's header has a value.
         :param pulumi.Input[str] suffix_match: The value of the header must end with the contents of suffixMatch.
         """
         pulumi.set(__self__, "header_name", header_name)
@@ -1216,8 +1211,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgs:
     @pulumi.getter(name="headerName")
     def header_name(self) -> pulumi.Input[str]:
         """
-        Headers to remove from the response prior to sending it back to the client.
-        Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+        The header name to match on.
         """
         return pulumi.get(self, "header_name")
 
@@ -1229,7 +1223,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgs:
     @pulumi.getter(name="exactMatch")
     def exact_match(self) -> Optional[pulumi.Input[str]]:
         """
-        The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch.
+        The value of the header should exactly match contents of exactMatch.
         """
         return pulumi.get(self, "exact_match")
 
@@ -1266,7 +1260,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgs:
     @pulumi.getter(name="presentMatch")
     def present_match(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not.
+        A header with the contents of headerName must exist. The match takes place whether or not the request's header has a value.
         """
         return pulumi.get(self, "present_match")
 
@@ -1704,24 +1698,9 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatur
                Each value may be one of `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, and `PROPAGATE_TOKEN_HLS_COOKIELESS`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] copied_parameters: The parameters to copy from the verified token to the generated token.
                Only the following parameters may be copied:
-               * `PathGlobs`
-               * `paths`
-               * `acl`
-               * `URLPrefix`
-               * `IPRanges`
-               * `SessionID`
-               * `id`
-               * `Data`
-               * `data`
-               * `payload`
-               * `Headers`
-               You may specify up to 6 parameters to copy.  A given parameter is be copied only if the parameter exists in the verified token.  Parameter names are matched exactly as specified.  The order of the parameters does not matter.  Duplicates are not allowed.
-               This field may only be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.
         :param pulumi.Input[str] keyset: The keyset to use for signature generation.
                The following are both valid paths to an EdgeCacheKeyset resource:
                * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
-               * `yourKeyset`
-               This must be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.  This field may not be specified otherwise.
         :param pulumi.Input[str] token_query_parameter: The query parameter in which to put the generated token.
                If not specified, defaults to `edge-cache-token`.
                If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
@@ -1761,19 +1740,6 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatur
         """
         The parameters to copy from the verified token to the generated token.
         Only the following parameters may be copied:
-        * `PathGlobs`
-        * `paths`
-        * `acl`
-        * `URLPrefix`
-        * `IPRanges`
-        * `SessionID`
-        * `id`
-        * `Data`
-        * `data`
-        * `payload`
-        * `Headers`
-        You may specify up to 6 parameters to copy.  A given parameter is be copied only if the parameter exists in the verified token.  Parameter names are matched exactly as specified.  The order of the parameters does not matter.  Duplicates are not allowed.
-        This field may only be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.
         """
         return pulumi.get(self, "copied_parameters")
 
@@ -1788,8 +1754,6 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatur
         The keyset to use for signature generation.
         The following are both valid paths to an EdgeCacheKeyset resource:
         * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
-        * `yourKeyset`
-        This must be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.  This field may not be specified otherwise.
         """
         return pulumi.get(self, "keyset")
 
@@ -1994,10 +1958,9 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedToken
                Defaults to using only ED25519.
                You may specify up to 3 signature algorithms to use.
                Each value may be one of `ED25519`, `HMAC_SHA_256`, and `HMAC_SHA1`.
-        :param pulumi.Input[str] token_query_parameter: The query parameter in which to put the generated token.
-               If not specified, defaults to `edge-cache-token`.
-               If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
-               This field may only be set when the GENERATE_TOKEN_HLS_COOKIELESS or PROPAGATE_TOKEN_HLS_COOKIELESS actions are specified.
+        :param pulumi.Input[str] token_query_parameter: The query parameter in which to find the token.
+               The name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+               Defaults to `edge-cache-token`.
         """
         if allowed_signature_algorithms is not None:
             pulumi.set(__self__, "allowed_signature_algorithms", allowed_signature_algorithms)
@@ -2023,10 +1986,9 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedToken
     @pulumi.getter(name="tokenQueryParameter")
     def token_query_parameter(self) -> Optional[pulumi.Input[str]]:
         """
-        The query parameter in which to put the generated token.
-        If not specified, defaults to `edge-cache-token`.
-        If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
-        This field may only be set when the GENERATE_TOKEN_HLS_COOKIELESS or PROPAGATE_TOKEN_HLS_COOKIELESS actions are specified.
+        The query parameter in which to find the token.
+        The name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+        Defaults to `edge-cache-token`.
         """
         return pulumi.get(self, "token_query_parameter")
 
@@ -2260,8 +2222,6 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs:
                prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect.
         :param pulumi.Input[str] redirect_response_code: The HTTP Status code to use for this RedirectAction.
                The supported values are:
-               - `MOVED_PERMANENTLY_DEFAULT`, which is the default value and corresponds to 301.
-               - `FOUND`, which corresponds to 302.
         :param pulumi.Input[bool] strip_query: If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
         """
         if host_redirect is not None:
@@ -2335,8 +2295,6 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs:
         """
         The HTTP Status code to use for this RedirectAction.
         The supported values are:
-        - `MOVED_PERMANENTLY_DEFAULT`, which is the default value and corresponds to 301.
-        - `FOUND`, which corresponds to 302.
         """
         return pulumi.get(self, "redirect_response_code")
 

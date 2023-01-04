@@ -160,12 +160,12 @@ class _DomainState:
                If CIDR subnets overlap between networks, domain creation will fail.
         :param pulumi.Input[str] domain_name: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
                https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-        :param pulumi.Input[str] fqdn: The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would
-               be chosen for an Active Directory set up on an internal network.
+        :param pulumi.Input[str] fqdn: The fully-qualified domain name of the exposed domain used by clients to connect to the service.
+               Similar to what would be chosen for an Active Directory set up on an internal network.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels that can contain user-provided metadata
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]
                e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
-        :param pulumi.Input[str] name: The unique name of the domain using the format: 'projects/{project}/locations/global/domains/{domainName}'.
+        :param pulumi.Input[str] name: The unique name of the domain using the format: `projects/{project}/locations/global/domains/{domainName}`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] reserved_ip_range: The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger.
@@ -233,8 +233,8 @@ class _DomainState:
     @pulumi.getter
     def fqdn(self) -> Optional[pulumi.Input[str]]:
         """
-        The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would
-        be chosen for an Active Directory set up on an internal network.
+        The fully-qualified domain name of the exposed domain used by clients to connect to the service.
+        Similar to what would be chosen for an Active Directory set up on an internal network.
         """
         return pulumi.get(self, "fqdn")
 
@@ -271,7 +271,7 @@ class _DomainState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique name of the domain using the format: 'projects/{project}/locations/global/domains/{domainName}'.
+        The unique name of the domain using the format: `projects/{project}/locations/global/domains/{domainName}`.
         """
         return pulumi.get(self, "name")
 
@@ -479,12 +479,12 @@ class Domain(pulumi.CustomResource):
                If CIDR subnets overlap between networks, domain creation will fail.
         :param pulumi.Input[str] domain_name: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
                https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
-        :param pulumi.Input[str] fqdn: The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would
-               be chosen for an Active Directory set up on an internal network.
+        :param pulumi.Input[str] fqdn: The fully-qualified domain name of the exposed domain used by clients to connect to the service.
+               Similar to what would be chosen for an Active Directory set up on an internal network.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels that can contain user-provided metadata
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]
                e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
-        :param pulumi.Input[str] name: The unique name of the domain using the format: 'projects/{project}/locations/global/domains/{domainName}'.
+        :param pulumi.Input[str] name: The unique name of the domain using the format: `projects/{project}/locations/global/domains/{domainName}`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] reserved_ip_range: The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger.
@@ -536,8 +536,8 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter
     def fqdn(self) -> pulumi.Output[str]:
         """
-        The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would
-        be chosen for an Active Directory set up on an internal network.
+        The fully-qualified domain name of the exposed domain used by clients to connect to the service.
+        Similar to what would be chosen for an Active Directory set up on an internal network.
         """
         return pulumi.get(self, "fqdn")
 
@@ -562,7 +562,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The unique name of the domain using the format: 'projects/{project}/locations/global/domains/{domainName}'.
+        The unique name of the domain using the format: `projects/{project}/locations/global/domains/{domainName}`.
         """
         return pulumi.get(self, "name")
 

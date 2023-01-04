@@ -129,7 +129,8 @@ class _GroupState:
         :param pulumi.Input[bool] is_cluster: If true, the members of this group are considered to be a
                cluster. The system can perform additional analysis on
                groups that are clusters.
-        :param pulumi.Input[str] name: A unique identifier for this group. The format is "projects/{project_id_or_number}/groups/{group_id}".
+        :param pulumi.Input[str] name: A unique identifier for this group. The format is
+               "projects/{project_id_or_number}/groups/{group_id}".
         :param pulumi.Input[str] parent_name: The name of the group's parent, if it has one. The format is
                "projects/{project_id_or_number}/groups/{group_id}". For
                groups with no parent, parentName is the empty string, "".
@@ -193,7 +194,8 @@ class _GroupState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        A unique identifier for this group. The format is "projects/{project_id_or_number}/groups/{group_id}".
+        A unique identifier for this group. The format is
+        "projects/{project_id_or_number}/groups/{group_id}".
         """
         return pulumi.get(self, "name")
 
@@ -422,7 +424,8 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[bool] is_cluster: If true, the members of this group are considered to be a
                cluster. The system can perform additional analysis on
                groups that are clusters.
-        :param pulumi.Input[str] name: A unique identifier for this group. The format is "projects/{project_id_or_number}/groups/{group_id}".
+        :param pulumi.Input[str] name: A unique identifier for this group. The format is
+               "projects/{project_id_or_number}/groups/{group_id}".
         :param pulumi.Input[str] parent_name: The name of the group's parent, if it has one. The format is
                "projects/{project_id_or_number}/groups/{group_id}". For
                groups with no parent, parentName is the empty string, "".
@@ -473,7 +476,8 @@ class Group(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        A unique identifier for this group. The format is "projects/{project_id_or_number}/groups/{group_id}".
+        A unique identifier for this group. The format is
+        "projects/{project_id_or_number}/groups/{group_id}".
         """
         return pulumi.get(self, "name")
 

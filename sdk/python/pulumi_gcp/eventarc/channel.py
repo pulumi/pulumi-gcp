@@ -114,19 +114,16 @@ class _ChannelState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Channel resources.
-        :param pulumi.Input[str] activation_token: Output only. The activation token for the channel. The token must be used by the provider to register the channel for
-               publishing.
+        :param pulumi.Input[str] activation_token: Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
         :param pulumi.Input[str] create_time: Output only. The creation time.
         :param pulumi.Input[str] crypto_key_name: Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Required. The resource name of the channel. Must be unique within the location on the project.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[str] pubsub_topic: Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery.
-               Format: `projects/{project}/topics/{topic_id}`.
+        :param pulumi.Input[str] pubsub_topic: Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
         :param pulumi.Input[str] state: Output only. The state of a Channel. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE, INACTIVE
         :param pulumi.Input[str] third_party_provider: The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
-        :param pulumi.Input[str] uid: Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain
-               unchanged until the resource is deleted.
+        :param pulumi.Input[str] uid: Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         :param pulumi.Input[str] update_time: Output only. The last-modified time.
         """
         if activation_token is not None:
@@ -156,8 +153,7 @@ class _ChannelState:
     @pulumi.getter(name="activationToken")
     def activation_token(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The activation token for the channel. The token must be used by the provider to register the channel for
-        publishing.
+        Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
         """
         return pulumi.get(self, "activation_token")
 
@@ -229,8 +225,7 @@ class _ChannelState:
     @pulumi.getter(name="pubsubTopic")
     def pubsub_topic(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery.
-        Format: `projects/{project}/topics/{topic_id}`.
+        Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
         """
         return pulumi.get(self, "pubsub_topic")
 
@@ -266,8 +261,7 @@ class _ChannelState:
     @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain
-        unchanged until the resource is deleted.
+        Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         """
         return pulumi.get(self, "uid")
 
@@ -467,19 +461,16 @@ class Channel(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] activation_token: Output only. The activation token for the channel. The token must be used by the provider to register the channel for
-               publishing.
+        :param pulumi.Input[str] activation_token: Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
         :param pulumi.Input[str] create_time: Output only. The creation time.
         :param pulumi.Input[str] crypto_key_name: Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Required. The resource name of the channel. Must be unique within the location on the project.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[str] pubsub_topic: Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery.
-               Format: `projects/{project}/topics/{topic_id}`.
+        :param pulumi.Input[str] pubsub_topic: Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
         :param pulumi.Input[str] state: Output only. The state of a Channel. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE, INACTIVE
         :param pulumi.Input[str] third_party_provider: The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
-        :param pulumi.Input[str] uid: Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain
-               unchanged until the resource is deleted.
+        :param pulumi.Input[str] uid: Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         :param pulumi.Input[str] update_time: Output only. The last-modified time.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -503,8 +494,7 @@ class Channel(pulumi.CustomResource):
     @pulumi.getter(name="activationToken")
     def activation_token(self) -> pulumi.Output[str]:
         """
-        Output only. The activation token for the channel. The token must be used by the provider to register the channel for
-        publishing.
+        Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
         """
         return pulumi.get(self, "activation_token")
 
@@ -552,8 +542,7 @@ class Channel(pulumi.CustomResource):
     @pulumi.getter(name="pubsubTopic")
     def pubsub_topic(self) -> pulumi.Output[str]:
         """
-        Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery.
-        Format: `projects/{project}/topics/{topic_id}`.
+        Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
         """
         return pulumi.get(self, "pubsub_topic")
 
@@ -577,8 +566,7 @@ class Channel(pulumi.CustomResource):
     @pulumi.getter
     def uid(self) -> pulumi.Output[str]:
         """
-        Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain
-        unchanged until the resource is deleted.
+        Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         """
         return pulumi.get(self, "uid")
 

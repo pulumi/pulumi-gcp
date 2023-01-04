@@ -32,7 +32,13 @@ class EdgeCacheServiceArgs:
         The set of arguments for constructing a EdgeCacheService resource.
         :param pulumi.Input['EdgeCacheServiceRoutingArgs'] routing: Defines how requests are routed, modified, cached and/or which origin content is filled from.
                Structure is documented below.
-        :param pulumi.Input[str] description: A human-readable description of the resource.
+        :param pulumi.Input[str] description: A human-readable description of the hostRule.
+               (Optional)
+               A human-readable description of the resource.
+               (Optional)
+               A human-readable description of the routeRule.
+               (Optional)
+               A human-readable description of the resource.
         :param pulumi.Input[bool] disable_http2: Disables HTTP/2.
                HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
                Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
@@ -43,7 +49,9 @@ class EdgeCacheServiceArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
         :param pulumi.Input['EdgeCacheServiceLogConfigArgs'] log_config: Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
                Structure is documented below.
-        :param pulumi.Input[str] name: The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+        :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
+               The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+               and all following characters must be a dash, underscore, letter or digit.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] require_tls: Require TLS (HTTPS) for all clients connecting to this service.
@@ -93,6 +101,12 @@ class EdgeCacheServiceArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
+        A human-readable description of the hostRule.
+        (Optional)
+        A human-readable description of the resource.
+        (Optional)
+        A human-readable description of the routeRule.
+        (Optional)
         A human-readable description of the resource.
         """
         return pulumi.get(self, "description")
@@ -181,7 +195,9 @@ class EdgeCacheServiceArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+        Name of the resource; provided by the client when the resource is created.
+        The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+        and all following characters must be a dash, underscore, letter or digit.
         """
         return pulumi.get(self, "name")
 
@@ -249,7 +265,13 @@ class _EdgeCacheServiceState:
                  ssl_policy: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering EdgeCacheService resources.
-        :param pulumi.Input[str] description: A human-readable description of the resource.
+        :param pulumi.Input[str] description: A human-readable description of the hostRule.
+               (Optional)
+               A human-readable description of the resource.
+               (Optional)
+               A human-readable description of the routeRule.
+               (Optional)
+               A human-readable description of the resource.
         :param pulumi.Input[bool] disable_http2: Disables HTTP/2.
                HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
                Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
@@ -262,7 +284,9 @@ class _EdgeCacheServiceState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
         :param pulumi.Input['EdgeCacheServiceLogConfigArgs'] log_config: Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
                Structure is documented below.
-        :param pulumi.Input[str] name: The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+        :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
+               The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+               and all following characters must be a dash, underscore, letter or digit.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] require_tls: Require TLS (HTTPS) for all clients connecting to this service.
@@ -306,6 +330,12 @@ class _EdgeCacheServiceState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
+        A human-readable description of the hostRule.
+        (Optional)
+        A human-readable description of the resource.
+        (Optional)
+        A human-readable description of the routeRule.
+        (Optional)
         A human-readable description of the resource.
         """
         return pulumi.get(self, "description")
@@ -418,7 +448,9 @@ class _EdgeCacheServiceState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+        Name of the resource; provided by the client when the resource is created.
+        The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+        and all following characters must be a dash, underscore, letter or digit.
         """
         return pulumi.get(self, "name")
 
@@ -763,7 +795,13 @@ class EdgeCacheService(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A human-readable description of the resource.
+        :param pulumi.Input[str] description: A human-readable description of the hostRule.
+               (Optional)
+               A human-readable description of the resource.
+               (Optional)
+               A human-readable description of the routeRule.
+               (Optional)
+               A human-readable description of the resource.
         :param pulumi.Input[bool] disable_http2: Disables HTTP/2.
                HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
                Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
@@ -774,7 +812,9 @@ class EdgeCacheService(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
         :param pulumi.Input[pulumi.InputType['EdgeCacheServiceLogConfigArgs']] log_config: Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
                Structure is documented below.
-        :param pulumi.Input[str] name: The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+        :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
+               The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+               and all following characters must be a dash, underscore, letter or digit.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] require_tls: Require TLS (HTTPS) for all clients connecting to this service.
@@ -1137,7 +1177,13 @@ class EdgeCacheService(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A human-readable description of the resource.
+        :param pulumi.Input[str] description: A human-readable description of the hostRule.
+               (Optional)
+               A human-readable description of the resource.
+               (Optional)
+               A human-readable description of the routeRule.
+               (Optional)
+               A human-readable description of the resource.
         :param pulumi.Input[bool] disable_http2: Disables HTTP/2.
                HTTP/2 (h2) is enabled by default and recommended for performance. HTTP/2 improves connection re-use and reduces connection setup overhead by sending multiple streams over the same connection.
                Some legacy HTTP clients may have issues with HTTP/2 connections due to broken HTTP/2 implementations. Setting this to true will prevent HTTP/2 from being advertised and negotiated.
@@ -1150,7 +1196,9 @@ class EdgeCacheService(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the EdgeCache resource.
         :param pulumi.Input[pulumi.InputType['EdgeCacheServiceLogConfigArgs']] log_config: Specifies the logging options for the traffic served by this service. If logging is enabled, logs will be exported to Cloud Logging.
                Structure is documented below.
-        :param pulumi.Input[str] name: The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+        :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created.
+               The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+               and all following characters must be a dash, underscore, letter or digit.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] require_tls: Require TLS (HTTPS) for all clients connecting to this service.
@@ -1185,6 +1233,12 @@ class EdgeCacheService(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
+        A human-readable description of the hostRule.
+        (Optional)
+        A human-readable description of the resource.
+        (Optional)
+        A human-readable description of the routeRule.
+        (Optional)
         A human-readable description of the resource.
         """
         return pulumi.get(self, "description")
@@ -1261,7 +1315,9 @@ class EdgeCacheService(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+        Name of the resource; provided by the client when the resource is created.
+        The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+        and all following characters must be a dash, underscore, letter or digit.
         """
         return pulumi.get(self, "name")
 

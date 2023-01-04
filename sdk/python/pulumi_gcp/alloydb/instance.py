@@ -246,9 +246,7 @@ class _InstanceState:
         :param pulumi.Input[str] name: The name of the instance resource.
         :param pulumi.Input['InstanceReadPoolConfigArgs'] read_pool_config: Read pool specific config.
                Structure is documented below.
-        :param pulumi.Input[bool] reconciling: Set to true if the current state of Instance does not match the user's intended state, and the service is actively
-               updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover
-               or maintenance.
+        :param pulumi.Input[bool] reconciling: Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
         :param pulumi.Input[str] state: The current state of the alloydb instance.
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
         :param pulumi.Input[str] update_time: Time the Instance was updated in UTC.
@@ -467,9 +465,7 @@ class _InstanceState:
     @pulumi.getter
     def reconciling(self) -> Optional[pulumi.Input[bool]]:
         """
-        Set to true if the current state of Instance does not match the user's intended state, and the service is actively
-        updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover
-        or maintenance.
+        Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
         """
         return pulumi.get(self, "reconciling")
 
@@ -773,9 +769,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the instance resource.
         :param pulumi.Input[pulumi.InputType['InstanceReadPoolConfigArgs']] read_pool_config: Read pool specific config.
                Structure is documented below.
-        :param pulumi.Input[bool] reconciling: Set to true if the current state of Instance does not match the user's intended state, and the service is actively
-               updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover
-               or maintenance.
+        :param pulumi.Input[bool] reconciling: Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
         :param pulumi.Input[str] state: The current state of the alloydb instance.
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
         :param pulumi.Input[str] update_time: Time the Instance was updated in UTC.
@@ -925,9 +919,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def reconciling(self) -> pulumi.Output[bool]:
         """
-        Set to true if the current state of Instance does not match the user's intended state, and the service is actively
-        updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover
-        or maintenance.
+        Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
         """
         return pulumi.get(self, "reconciling")
 

@@ -124,14 +124,14 @@ class _DatabaseInstanceState:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DatabaseInstance resources.
-        :param pulumi.Input[str] database_url: The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances or
-               https://{instance-id}.{region}.firebasedatabase.app in other regions.
+        :param pulumi.Input[str] database_url: The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
+               or https://{instance-id}.{region}.firebasedatabase.app in other regions.
         :param pulumi.Input[str] desired_state: The intended database state.
         :param pulumi.Input[str] instance_id: The globally unique identifier of the Firebase Realtime Database instance.
                Instance IDs cannot be reused after deletion.
-        :param pulumi.Input[str] name: The fully-qualified resource name of the Firebase Realtime Database, in the format:
-               projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID PROJECT_NUMBER: The Firebase project's
-               ['ProjectNumber'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+        :param pulumi.Input[str] name: The fully-qualified resource name of the Firebase Realtime Database, in the
+               format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
+               PROJECT_NUMBER: The Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
                Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -165,8 +165,8 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="databaseUrl")
     def database_url(self) -> Optional[pulumi.Input[str]]:
         """
-        The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances or
-        https://{instance-id}.{region}.firebasedatabase.app in other regions.
+        The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
+        or https://{instance-id}.{region}.firebasedatabase.app in other regions.
         """
         return pulumi.get(self, "database_url")
 
@@ -203,9 +203,9 @@ class _DatabaseInstanceState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The fully-qualified resource name of the Firebase Realtime Database, in the format:
-        projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID PROJECT_NUMBER: The Firebase project's
-        ['ProjectNumber'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+        The fully-qualified resource name of the Firebase Realtime Database, in the
+        format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
+        PROJECT_NUMBER: The Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
         Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
         """
         return pulumi.get(self, "name")
@@ -517,14 +517,14 @@ class DatabaseInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] database_url: The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances or
-               https://{instance-id}.{region}.firebasedatabase.app in other regions.
+        :param pulumi.Input[str] database_url: The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
+               or https://{instance-id}.{region}.firebasedatabase.app in other regions.
         :param pulumi.Input[str] desired_state: The intended database state.
         :param pulumi.Input[str] instance_id: The globally unique identifier of the Firebase Realtime Database instance.
                Instance IDs cannot be reused after deletion.
-        :param pulumi.Input[str] name: The fully-qualified resource name of the Firebase Realtime Database, in the format:
-               projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID PROJECT_NUMBER: The Firebase project's
-               ['ProjectNumber'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+        :param pulumi.Input[str] name: The fully-qualified resource name of the Firebase Realtime Database, in the
+               format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
+               PROJECT_NUMBER: The Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
                Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -555,8 +555,8 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="databaseUrl")
     def database_url(self) -> pulumi.Output[str]:
         """
-        The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances or
-        https://{instance-id}.{region}.firebasedatabase.app in other regions.
+        The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
+        or https://{instance-id}.{region}.firebasedatabase.app in other regions.
         """
         return pulumi.get(self, "database_url")
 
@@ -581,9 +581,9 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The fully-qualified resource name of the Firebase Realtime Database, in the format:
-        projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID PROJECT_NUMBER: The Firebase project's
-        ['ProjectNumber'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+        The fully-qualified resource name of the Firebase Realtime Database, in the
+        format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
+        PROJECT_NUMBER: The Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
         Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
         """
         return pulumi.get(self, "name")

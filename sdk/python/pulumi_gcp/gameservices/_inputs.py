@@ -112,7 +112,7 @@ class GameServerConfigFleetConfigArgs:
                * fleet_spec = file("fleet_configs.json")
                The format of the spec can be found :
                `https://agones.dev/site/docs/reference/fleet/`.
-        :param pulumi.Input[str] name: The name of the ScalingConfig
+        :param pulumi.Input[str] name: The name of the FleetConfig.
         """
         pulumi.set(__self__, "fleet_spec", fleet_spec)
         if name is not None:
@@ -140,7 +140,7 @@ class GameServerConfigFleetConfigArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the ScalingConfig
+        The name of the FleetConfig.
         """
         return pulumi.get(self, "name")
 

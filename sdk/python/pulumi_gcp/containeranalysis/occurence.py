@@ -148,8 +148,9 @@ class _OccurenceState:
                which authority this attestation was intended to sign.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The time when the repository was created.
-        :param pulumi.Input[str] kind: The note kind which explicitly denotes which of the occurrence details are specified. This field can be used as a filter
-               in list requests.
+        :param pulumi.Input[str] kind: The note kind which explicitly denotes which of the occurrence
+               details are specified. This field can be used as a filter in list
+               requests.
         :param pulumi.Input[str] name: The name of the occurrence.
         :param pulumi.Input[str] note_name: The analysis note associated with this occurrence, in the form of
                projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a
@@ -217,8 +218,9 @@ class _OccurenceState:
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
-        The note kind which explicitly denotes which of the occurrence details are specified. This field can be used as a filter
-        in list requests.
+        The note kind which explicitly denotes which of the occurrence
+        details are specified. This field can be used as a filter in list
+        requests.
         """
         return pulumi.get(self, "kind")
 
@@ -478,8 +480,9 @@ class Occurence(pulumi.CustomResource):
                which authority this attestation was intended to sign.
                Structure is documented below.
         :param pulumi.Input[str] create_time: The time when the repository was created.
-        :param pulumi.Input[str] kind: The note kind which explicitly denotes which of the occurrence details are specified. This field can be used as a filter
-               in list requests.
+        :param pulumi.Input[str] kind: The note kind which explicitly denotes which of the occurrence
+               details are specified. This field can be used as a filter in list
+               requests.
         :param pulumi.Input[str] name: The name of the occurrence.
         :param pulumi.Input[str] note_name: The analysis note associated with this occurrence, in the form of
                projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a
@@ -535,8 +538,9 @@ class Occurence(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        The note kind which explicitly denotes which of the occurrence details are specified. This field can be used as a filter
-        in list requests.
+        The note kind which explicitly denotes which of the occurrence
+        details are specified. This field can be used as a filter in list
+        requests.
         """
         return pulumi.get(self, "kind")
 

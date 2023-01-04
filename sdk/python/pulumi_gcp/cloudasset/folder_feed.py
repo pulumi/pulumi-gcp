@@ -216,7 +216,8 @@ class _FolderFeedState:
         :param pulumi.Input['FolderFeedFeedOutputConfigArgs'] feed_output_config: Output configuration for asset feed destination.
                Structure is documented below.
         :param pulumi.Input[str] folder: The folder this feed should be created in.
-        :param pulumi.Input[str] folder_id: The ID of the folder where this feed has been created. Both [FOLDER_NUMBER] and folders/[FOLDER_NUMBER] are accepted.
+        :param pulumi.Input[str] folder_id: The ID of the folder where this feed has been created. Both [FOLDER_NUMBER]
+               and folders/[FOLDER_NUMBER] are accepted.
         :param pulumi.Input[str] name: The format will be folders/{folder_number}/feeds/{client-assigned_feed_identifier}.
         """
         if asset_names is not None:
@@ -356,7 +357,8 @@ class _FolderFeedState:
     @pulumi.getter(name="folderId")
     def folder_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the folder where this feed has been created. Both [FOLDER_NUMBER] and folders/[FOLDER_NUMBER] are accepted.
+        The ID of the folder where this feed has been created. Both [FOLDER_NUMBER]
+        and folders/[FOLDER_NUMBER] are accepted.
         """
         return pulumi.get(self, "folder_id")
 
@@ -571,7 +573,8 @@ class FolderFeed(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['FolderFeedFeedOutputConfigArgs']] feed_output_config: Output configuration for asset feed destination.
                Structure is documented below.
         :param pulumi.Input[str] folder: The folder this feed should be created in.
-        :param pulumi.Input[str] folder_id: The ID of the folder where this feed has been created. Both [FOLDER_NUMBER] and folders/[FOLDER_NUMBER] are accepted.
+        :param pulumi.Input[str] folder_id: The ID of the folder where this feed has been created. Both [FOLDER_NUMBER]
+               and folders/[FOLDER_NUMBER] are accepted.
         :param pulumi.Input[str] name: The format will be folders/{folder_number}/feeds/{client-assigned_feed_identifier}.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -674,7 +677,8 @@ class FolderFeed(pulumi.CustomResource):
     @pulumi.getter(name="folderId")
     def folder_id(self) -> pulumi.Output[str]:
         """
-        The ID of the folder where this feed has been created. Both [FOLDER_NUMBER] and folders/[FOLDER_NUMBER] are accepted.
+        The ID of the folder where this feed has been created. Both [FOLDER_NUMBER]
+        and folders/[FOLDER_NUMBER] are accepted.
         """
         return pulumi.get(self, "folder_id")
 

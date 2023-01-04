@@ -29,8 +29,10 @@ class DatasetAccessInitArgs:
                  view: Optional[pulumi.Input['DatasetAccessViewArgs']] = None):
         """
         The set of arguments for constructing a DatasetAccess resource.
-        :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.
-        :param pulumi.Input['DatasetAccessAuthorizedDatasetArgs'] authorized_dataset: The dataset this entry applies to
+        :param pulumi.Input[str] dataset_id: A unique ID for this dataset, without the project name. The ID
+               must contain only letters (a-z, A-Z), numbers (0-9), or
+               underscores (_). The maximum length is 1,024 characters.
+        :param pulumi.Input['DatasetAccessAuthorizedDatasetArgs'] authorized_dataset: Grants all resources of particular types in a particular dataset read access to the current dataset.
                Structure is documented below.
         :param pulumi.Input[str] domain: A domain to grant access to. Any users signed in with the
                domain specified will be granted the specified access
@@ -87,7 +89,9 @@ class DatasetAccessInitArgs:
     @pulumi.getter(name="datasetId")
     def dataset_id(self) -> pulumi.Input[str]:
         """
-        The ID of the dataset containing this table.
+        A unique ID for this dataset, without the project name. The ID
+        must contain only letters (a-z, A-Z), numbers (0-9), or
+        underscores (_). The maximum length is 1,024 characters.
         """
         return pulumi.get(self, "dataset_id")
 
@@ -99,7 +103,7 @@ class DatasetAccessInitArgs:
     @pulumi.getter(name="authorizedDataset")
     def authorized_dataset(self) -> Optional[pulumi.Input['DatasetAccessAuthorizedDatasetArgs']]:
         """
-        The dataset this entry applies to
+        Grants all resources of particular types in a particular dataset read access to the current dataset.
         Structure is documented below.
         """
         return pulumi.get(self, "authorized_dataset")
@@ -255,9 +259,11 @@ class _DatasetAccessState:
         Input properties used for looking up and filtering DatasetAccess resources.
         :param pulumi.Input[bool] api_updated_member: If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
                stored in state as a different member type
-        :param pulumi.Input['DatasetAccessAuthorizedDatasetArgs'] authorized_dataset: The dataset this entry applies to
+        :param pulumi.Input['DatasetAccessAuthorizedDatasetArgs'] authorized_dataset: Grants all resources of particular types in a particular dataset read access to the current dataset.
                Structure is documented below.
-        :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.
+        :param pulumi.Input[str] dataset_id: A unique ID for this dataset, without the project name. The ID
+               must contain only letters (a-z, A-Z), numbers (0-9), or
+               underscores (_). The maximum length is 1,024 characters.
         :param pulumi.Input[str] domain: A domain to grant access to. Any users signed in with the
                domain specified will be granted the specified access
         :param pulumi.Input[str] group_by_email: An email address of a Google Group to grant access to.
@@ -329,7 +335,7 @@ class _DatasetAccessState:
     @pulumi.getter(name="authorizedDataset")
     def authorized_dataset(self) -> Optional[pulumi.Input['DatasetAccessAuthorizedDatasetArgs']]:
         """
-        The dataset this entry applies to
+        Grants all resources of particular types in a particular dataset read access to the current dataset.
         Structure is documented below.
         """
         return pulumi.get(self, "authorized_dataset")
@@ -342,7 +348,9 @@ class _DatasetAccessState:
     @pulumi.getter(name="datasetId")
     def dataset_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the dataset containing this table.
+        A unique ID for this dataset, without the project name. The ID
+        must contain only letters (a-z, A-Z), numbers (0-9), or
+        underscores (_). The maximum length is 1,024 characters.
         """
         return pulumi.get(self, "dataset_id")
 
@@ -601,9 +609,11 @@ class DatasetAccess(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DatasetAccessAuthorizedDatasetArgs']] authorized_dataset: The dataset this entry applies to
+        :param pulumi.Input[pulumi.InputType['DatasetAccessAuthorizedDatasetArgs']] authorized_dataset: Grants all resources of particular types in a particular dataset read access to the current dataset.
                Structure is documented below.
-        :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.
+        :param pulumi.Input[str] dataset_id: A unique ID for this dataset, without the project name. The ID
+               must contain only letters (a-z, A-Z), numbers (0-9), or
+               underscores (_). The maximum length is 1,024 characters.
         :param pulumi.Input[str] domain: A domain to grant access to. Any users signed in with the
                domain specified will be granted the specified access
         :param pulumi.Input[str] group_by_email: An email address of a Google Group to grant access to.
@@ -823,9 +833,11 @@ class DatasetAccess(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] api_updated_member: If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
                stored in state as a different member type
-        :param pulumi.Input[pulumi.InputType['DatasetAccessAuthorizedDatasetArgs']] authorized_dataset: The dataset this entry applies to
+        :param pulumi.Input[pulumi.InputType['DatasetAccessAuthorizedDatasetArgs']] authorized_dataset: Grants all resources of particular types in a particular dataset read access to the current dataset.
                Structure is documented below.
-        :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.
+        :param pulumi.Input[str] dataset_id: A unique ID for this dataset, without the project name. The ID
+               must contain only letters (a-z, A-Z), numbers (0-9), or
+               underscores (_). The maximum length is 1,024 characters.
         :param pulumi.Input[str] domain: A domain to grant access to. Any users signed in with the
                domain specified will be granted the specified access
         :param pulumi.Input[str] group_by_email: An email address of a Google Group to grant access to.
@@ -886,7 +898,7 @@ class DatasetAccess(pulumi.CustomResource):
     @pulumi.getter(name="authorizedDataset")
     def authorized_dataset(self) -> pulumi.Output[Optional['outputs.DatasetAccessAuthorizedDataset']]:
         """
-        The dataset this entry applies to
+        Grants all resources of particular types in a particular dataset read access to the current dataset.
         Structure is documented below.
         """
         return pulumi.get(self, "authorized_dataset")
@@ -895,7 +907,9 @@ class DatasetAccess(pulumi.CustomResource):
     @pulumi.getter(name="datasetId")
     def dataset_id(self) -> pulumi.Output[str]:
         """
-        The ID of the dataset containing this table.
+        A unique ID for this dataset, without the project name. The ID
+        must contain only letters (a-z, A-Z), numbers (0-9), or
+        underscores (_). The maximum length is 1,024 characters.
         """
         return pulumi.get(self, "dataset_id")
 

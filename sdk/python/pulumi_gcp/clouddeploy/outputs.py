@@ -86,6 +86,9 @@ class DeliveryPipelineConditionPipelineReadyCondition(dict):
     def __init__(__self__, *,
                  status: Optional[bool] = None,
                  update_time: Optional[str] = None):
+        """
+        :param str update_time: Output only. Most recent time at which the pipeline was updated.
+        """
         if status is not None:
             pulumi.set(__self__, "status", status)
         if update_time is not None:
@@ -99,6 +102,9 @@ class DeliveryPipelineConditionPipelineReadyCondition(dict):
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[str]:
+        """
+        Output only. Most recent time at which the pipeline was updated.
+        """
         return pulumi.get(self, "update_time")
 
 
@@ -127,6 +133,9 @@ class DeliveryPipelineConditionTargetsPresentCondition(dict):
                  missing_targets: Optional[Sequence[str]] = None,
                  status: Optional[bool] = None,
                  update_time: Optional[str] = None):
+        """
+        :param str update_time: Output only. Most recent time at which the pipeline was updated.
+        """
         if missing_targets is not None:
             pulumi.set(__self__, "missing_targets", missing_targets)
         if status is not None:
@@ -147,6 +156,9 @@ class DeliveryPipelineConditionTargetsPresentCondition(dict):
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[str]:
+        """
+        Output only. Most recent time at which the pipeline was updated.
+        """
         return pulumi.get(self, "update_time")
 
 

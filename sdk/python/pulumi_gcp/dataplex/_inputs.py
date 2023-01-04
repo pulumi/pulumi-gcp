@@ -139,7 +139,7 @@ class AssetDiscoverySpecCsvOptionsArgs:
                  header_rows: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] delimiter: Optional. The delimiter being used to separate values. This defaults to ','.
-        :param pulumi.Input[bool] disable_type_inference: Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+        :param pulumi.Input[bool] disable_type_inference: Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
         :param pulumi.Input[str] encoding: Optional. The character encoding of the data. The default is UTF-8.
         :param pulumi.Input[int] header_rows: Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
         """
@@ -168,7 +168,7 @@ class AssetDiscoverySpecCsvOptionsArgs:
     @pulumi.getter(name="disableTypeInference")
     def disable_type_inference(self) -> Optional[pulumi.Input[bool]]:
         """
-        Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+        Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
         """
         return pulumi.get(self, "disable_type_inference")
 
@@ -249,6 +249,10 @@ class AssetDiscoveryStatusArgs:
                  state: Optional[pulumi.Input[str]] = None,
                  stats: Optional[pulumi.Input[Sequence[pulumi.Input['AssetDiscoveryStatusStatArgs']]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] state: Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+        :param pulumi.Input[str] update_time: Output only. The time when the asset was last updated.
+        """
         if last_run_duration is not None:
             pulumi.set(__self__, "last_run_duration", last_run_duration)
         if last_run_time is not None:
@@ -292,6 +296,9 @@ class AssetDiscoveryStatusArgs:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -310,6 +317,9 @@ class AssetDiscoveryStatusArgs:
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The time when the asset was last updated.
+        """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
@@ -414,6 +424,10 @@ class AssetResourceStatusArgs:
                  message: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] state: Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+        :param pulumi.Input[str] update_time: Output only. The time when the asset was last updated.
+        """
         if message is not None:
             pulumi.set(__self__, "message", message)
         if state is not None:
@@ -433,6 +447,9 @@ class AssetResourceStatusArgs:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -442,6 +459,9 @@ class AssetResourceStatusArgs:
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The time when the asset was last updated.
+        """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
@@ -455,6 +475,10 @@ class AssetSecurityStatusArgs:
                  message: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] state: Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+        :param pulumi.Input[str] update_time: Output only. The time when the asset was last updated.
+        """
         if message is not None:
             pulumi.set(__self__, "message", message)
         if state is not None:
@@ -474,6 +498,9 @@ class AssetSecurityStatusArgs:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -483,6 +510,9 @@ class AssetSecurityStatusArgs:
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The time when the asset was last updated.
+        """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
@@ -496,6 +526,9 @@ class LakeAssetStatusArgs:
                  active_assets: Optional[pulumi.Input[int]] = None,
                  security_policy_applying_assets: Optional[pulumi.Input[int]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] update_time: Output only. The time when the lake was last updated.
+        """
         if active_assets is not None:
             pulumi.set(__self__, "active_assets", active_assets)
         if security_policy_applying_assets is not None:
@@ -524,6 +557,9 @@ class LakeAssetStatusArgs:
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The time when the lake was last updated.
+        """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
@@ -561,6 +597,10 @@ class LakeMetastoreStatusArgs:
                  message: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] state: Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+        :param pulumi.Input[str] update_time: Output only. The time when the lake was last updated.
+        """
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
         if message is not None:
@@ -591,6 +631,9 @@ class LakeMetastoreStatusArgs:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -600,6 +643,9 @@ class LakeMetastoreStatusArgs:
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The time when the lake was last updated.
+        """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
@@ -613,6 +659,9 @@ class ZoneAssetStatusArgs:
                  active_assets: Optional[pulumi.Input[int]] = None,
                  security_policy_applying_assets: Optional[pulumi.Input[int]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] update_time: Output only. The time when the zone was last updated.
+        """
         if active_assets is not None:
             pulumi.set(__self__, "active_assets", active_assets)
         if security_policy_applying_assets is not None:
@@ -641,6 +690,9 @@ class ZoneAssetStatusArgs:
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The time when the zone was last updated.
+        """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
@@ -759,7 +811,7 @@ class ZoneDiscoverySpecCsvOptionsArgs:
                  header_rows: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] delimiter: Optional. The delimiter being used to separate values. This defaults to ','.
-        :param pulumi.Input[bool] disable_type_inference: Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+        :param pulumi.Input[bool] disable_type_inference: Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
         :param pulumi.Input[str] encoding: Optional. The character encoding of the data. The default is UTF-8.
         :param pulumi.Input[int] header_rows: Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
         """
@@ -788,7 +840,7 @@ class ZoneDiscoverySpecCsvOptionsArgs:
     @pulumi.getter(name="disableTypeInference")
     def disable_type_inference(self) -> Optional[pulumi.Input[bool]]:
         """
-        Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+        Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
         """
         return pulumi.get(self, "disable_type_inference")
 

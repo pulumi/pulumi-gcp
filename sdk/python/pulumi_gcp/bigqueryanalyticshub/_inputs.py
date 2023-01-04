@@ -125,8 +125,8 @@ class ListingDataProviderArgs:
                  name: pulumi.Input[str],
                  primary_contact: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Name of the listing publisher.
-        :param pulumi.Input[str] primary_contact: Email or URL of the listing publisher.
+        :param pulumi.Input[str] name: Name of the data provider.
+        :param pulumi.Input[str] primary_contact: Email or URL of the data provider.
         """
         pulumi.set(__self__, "name", name)
         if primary_contact is not None:
@@ -136,7 +136,7 @@ class ListingDataProviderArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the listing publisher.
+        Name of the data provider.
         """
         return pulumi.get(self, "name")
 
@@ -148,7 +148,7 @@ class ListingDataProviderArgs:
     @pulumi.getter(name="primaryContact")
     def primary_contact(self) -> Optional[pulumi.Input[str]]:
         """
-        Email or URL of the listing publisher.
+        Email or URL of the data provider.
         """
         return pulumi.get(self, "primary_contact")
 

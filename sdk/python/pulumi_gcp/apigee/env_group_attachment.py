@@ -62,7 +62,7 @@ class _EnvGroupAttachmentState:
         :param pulumi.Input[str] envgroup_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
         :param pulumi.Input[str] environment: The resource ID of the environment.
-        :param pulumi.Input[str] name: The name of the newly created attachment (output parameter).
+        :param pulumi.Input[str] name: The name of the newly created  attachment (output parameter).
         """
         if envgroup_id is not None:
             pulumi.set(__self__, "envgroup_id", envgroup_id)
@@ -100,7 +100,7 @@ class _EnvGroupAttachmentState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the newly created attachment (output parameter).
+        The name of the newly created  attachment (output parameter).
         """
         return pulumi.get(self, "name")
 
@@ -333,7 +333,7 @@ class EnvGroupAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] envgroup_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
         :param pulumi.Input[str] environment: The resource ID of the environment.
-        :param pulumi.Input[str] name: The name of the newly created attachment (output parameter).
+        :param pulumi.Input[str] name: The name of the newly created  attachment (output parameter).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -365,7 +365,7 @@ class EnvGroupAttachment(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the newly created attachment (output parameter).
+        The name of the newly created  attachment (output parameter).
         """
         return pulumi.get(self, "name")
 

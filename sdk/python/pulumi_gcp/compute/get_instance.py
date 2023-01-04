@@ -211,6 +211,9 @@ class GetInstanceResult:
     @property
     @pulumi.getter(name="enableDisplay")
     def enable_display(self) -> bool:
+        """
+        - Whether the instance has virtual displays enabled.
+        """
         return pulumi.get(self, "enable_display")
 
     @property

@@ -35,8 +35,8 @@ class ClusterArgs:
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
         :param pulumi.Input['ClusterInitialUserArgs'] initial_user: Initial user to setup during cluster creation.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to backups created using this configuration.
-        :param pulumi.Input[str] location: The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb cluster.
+        :param pulumi.Input[str] location: The location where the alloydb cluster should reside.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -123,7 +123,7 @@ class ClusterArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Labels to apply to backups created using this configuration.
+        User-defined labels for the alloydb cluster.
         """
         return pulumi.get(self, "labels")
 
@@ -135,7 +135,7 @@ class ClusterArgs:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+        The location where the alloydb cluster should reside.
         """
         return pulumi.get(self, "location")
 
@@ -179,15 +179,16 @@ class _ClusterState:
                If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterBackupSourceArgs']]] backup_sources: Cluster created from backup.
+               Structure is documented below.
         :param pulumi.Input[str] cluster_id: The ID of the alloydb cluster.
-        :param pulumi.Input[str] database_version: The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This
-               field cannot be changed after cluster creation.
+        :param pulumi.Input[str] database_version: The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
         :param pulumi.Input['ClusterInitialUserArgs'] initial_user: Initial user to setup during cluster creation.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to backups created using this configuration.
-        :param pulumi.Input[str] location: The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb cluster.
+        :param pulumi.Input[str] location: The location where the alloydb cluster should reside.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterMigrationSourceArgs']]] migration_sources: Cluster created via DMS migration.
+               Structure is documented below.
         :param pulumi.Input[str] name: The name of the cluster resource.
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
@@ -241,6 +242,7 @@ class _ClusterState:
     def backup_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBackupSourceArgs']]]]:
         """
         Cluster created from backup.
+        Structure is documented below.
         """
         return pulumi.get(self, "backup_sources")
 
@@ -264,8 +266,7 @@ class _ClusterState:
     @pulumi.getter(name="databaseVersion")
     def database_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This
-        field cannot be changed after cluster creation.
+        The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
         """
         return pulumi.get(self, "database_version")
 
@@ -302,7 +303,7 @@ class _ClusterState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Labels to apply to backups created using this configuration.
+        User-defined labels for the alloydb cluster.
         """
         return pulumi.get(self, "labels")
 
@@ -314,7 +315,7 @@ class _ClusterState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+        The location where the alloydb cluster should reside.
         """
         return pulumi.get(self, "location")
 
@@ -327,6 +328,7 @@ class _ClusterState:
     def migration_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMigrationSourceArgs']]]]:
         """
         Cluster created via DMS migration.
+        Structure is documented below.
         """
         return pulumi.get(self, "migration_sources")
 
@@ -486,8 +488,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
         :param pulumi.Input[pulumi.InputType['ClusterInitialUserArgs']] initial_user: Initial user to setup during cluster creation.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to backups created using this configuration.
-        :param pulumi.Input[str] location: The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb cluster.
+        :param pulumi.Input[str] location: The location where the alloydb cluster should reside.
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -660,15 +662,16 @@ class Cluster(pulumi.CustomResource):
                If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBackupSourceArgs']]]] backup_sources: Cluster created from backup.
+               Structure is documented below.
         :param pulumi.Input[str] cluster_id: The ID of the alloydb cluster.
-        :param pulumi.Input[str] database_version: The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This
-               field cannot be changed after cluster creation.
+        :param pulumi.Input[str] database_version: The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
         :param pulumi.Input[pulumi.InputType['ClusterInitialUserArgs']] initial_user: Initial user to setup during cluster creation.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to backups created using this configuration.
-        :param pulumi.Input[str] location: The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb cluster.
+        :param pulumi.Input[str] location: The location where the alloydb cluster should reside.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterMigrationSourceArgs']]]] migration_sources: Cluster created via DMS migration.
+               Structure is documented below.
         :param pulumi.Input[str] name: The name of the cluster resource.
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
@@ -710,6 +713,7 @@ class Cluster(pulumi.CustomResource):
     def backup_sources(self) -> pulumi.Output[Sequence['outputs.ClusterBackupSource']]:
         """
         Cluster created from backup.
+        Structure is documented below.
         """
         return pulumi.get(self, "backup_sources")
 
@@ -725,8 +729,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="databaseVersion")
     def database_version(self) -> pulumi.Output[str]:
         """
-        The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This
-        field cannot be changed after cluster creation.
+        The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
         """
         return pulumi.get(self, "database_version")
 
@@ -751,7 +754,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Labels to apply to backups created using this configuration.
+        User-defined labels for the alloydb cluster.
         """
         return pulumi.get(self, "labels")
 
@@ -759,7 +762,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[Optional[str]]:
         """
-        The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+        The location where the alloydb cluster should reside.
         """
         return pulumi.get(self, "location")
 
@@ -768,6 +771,7 @@ class Cluster(pulumi.CustomResource):
     def migration_sources(self) -> pulumi.Output[Sequence['outputs.ClusterMigrationSource']]:
         """
         Cluster created via DMS migration.
+        Structure is documented below.
         """
         return pulumi.get(self, "migration_sources")
 

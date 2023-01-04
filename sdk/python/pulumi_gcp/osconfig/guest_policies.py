@@ -207,8 +207,8 @@ class _GuestPoliciesState:
                For more information, see how the service
                [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
                Structure is documented below.
-        :param pulumi.Input[str] create_time: Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
-               "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] create_time: Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+               Example: "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] description: Description of the guest policy. Length of the description is limited to 1024 characters.
         :param pulumi.Input[str] etag: The etag for this guest policy. If this is provided on update, it must match the server's etag.
         :param pulumi.Input[str] guest_policy_id: The logical name of the guest policy in the project with the following restrictions:
@@ -217,7 +217,12 @@ class _GuestPoliciesState:
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
                * Must be unique within the project.
-        :param pulumi.Input[str] name: Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
+        :param pulumi.Input[str] name: The name of the package. A package is uniquely identified for conflict validation
+               by checking the package name and the manager(s) that the package targets.
+               (Required)
+               The name of the repository.
+               (Required)
+               Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
                Names are also used to identify resources which helps to determine whether guest policies have conflicts.
                This means that requests to create multiple recipes with the same name and version are rejected since they
                could potentially have conflicting assignments.
@@ -231,8 +236,8 @@ class _GuestPoliciesState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesRecipeArgs']]] recipes: A list of Recipes to install on the VM instance.
                Structure is documented below.
-        :param pulumi.Input[str] update_time: Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
-               "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] update_time: Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+               Example: "2014-10-02T15:01:23.045123456Z".
         """
         if assignment is not None:
             pulumi.set(__self__, "assignment", assignment)
@@ -280,8 +285,8 @@ class _GuestPoliciesState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
-        "2014-10-02T15:01:23.045123456Z".
+        Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+        Example: "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "create_time")
 
@@ -334,6 +339,11 @@ class _GuestPoliciesState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
+        The name of the package. A package is uniquely identified for conflict validation
+        by checking the package name and the manager(s) that the package targets.
+        (Required)
+        The name of the repository.
+        (Required)
         Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
         Names are also used to identify resources which helps to determine whether guest policies have conflicts.
         This means that requests to create multiple recipes with the same name and version are rejected since they
@@ -403,8 +413,8 @@ class _GuestPoliciesState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
-        "2014-10-02T15:01:23.045123456Z".
+        Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+        Example: "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "update_time")
 
@@ -871,8 +881,8 @@ class GuestPolicies(pulumi.CustomResource):
                For more information, see how the service
                [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
                Structure is documented below.
-        :param pulumi.Input[str] create_time: Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
-               "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] create_time: Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+               Example: "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] description: Description of the guest policy. Length of the description is limited to 1024 characters.
         :param pulumi.Input[str] etag: The etag for this guest policy. If this is provided on update, it must match the server's etag.
         :param pulumi.Input[str] guest_policy_id: The logical name of the guest policy in the project with the following restrictions:
@@ -881,7 +891,12 @@ class GuestPolicies(pulumi.CustomResource):
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
                * Must be unique within the project.
-        :param pulumi.Input[str] name: Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
+        :param pulumi.Input[str] name: The name of the package. A package is uniquely identified for conflict validation
+               by checking the package name and the manager(s) that the package targets.
+               (Required)
+               The name of the repository.
+               (Required)
+               Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
                Names are also used to identify resources which helps to determine whether guest policies have conflicts.
                This means that requests to create multiple recipes with the same name and version are rejected since they
                could potentially have conflicting assignments.
@@ -895,8 +910,8 @@ class GuestPolicies(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestPoliciesRecipeArgs']]]] recipes: A list of Recipes to install on the VM instance.
                Structure is documented below.
-        :param pulumi.Input[str] update_time: Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
-               "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] update_time: Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+               Example: "2014-10-02T15:01:23.045123456Z".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -934,8 +949,8 @@ class GuestPolicies(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
-        "2014-10-02T15:01:23.045123456Z".
+        Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+        Example: "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "create_time")
 
@@ -972,6 +987,11 @@ class GuestPolicies(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
+        The name of the package. A package is uniquely identified for conflict validation
+        by checking the package name and the manager(s) that the package targets.
+        (Required)
+        The name of the repository.
+        (Required)
         Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
         Names are also used to identify resources which helps to determine whether guest policies have conflicts.
         This means that requests to create multiple recipes with the same name and version are rejected since they
@@ -1021,8 +1041,8 @@ class GuestPolicies(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
-        "2014-10-02T15:01:23.045123456Z".
+        Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+        Example: "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "update_time")
 

@@ -332,12 +332,18 @@ class ClusterBackupSource(dict):
 
     def __init__(__self__, *,
                  backup_name: Optional[str] = None):
+        """
+        :param str backup_name: The name of the backup resource.
+        """
         if backup_name is not None:
             pulumi.set(__self__, "backup_name", backup_name)
 
     @property
     @pulumi.getter(name="backupName")
     def backup_name(self) -> Optional[str]:
+        """
+        The name of the backup resource.
+        """
         return pulumi.get(self, "backup_name")
 
 
@@ -400,6 +406,11 @@ class ClusterMigrationSource(dict):
                  host_port: Optional[str] = None,
                  reference_id: Optional[str] = None,
                  source_type: Optional[str] = None):
+        """
+        :param str host_port: The host and port of the on-premises instance in host:port format
+        :param str reference_id: Place holder for the external source identifier(e.g DMS job name) that created the cluster.
+        :param str source_type: Type of migration source.
+        """
         if host_port is not None:
             pulumi.set(__self__, "host_port", host_port)
         if reference_id is not None:
@@ -410,16 +421,25 @@ class ClusterMigrationSource(dict):
     @property
     @pulumi.getter(name="hostPort")
     def host_port(self) -> Optional[str]:
+        """
+        The host and port of the on-premises instance in host:port format
+        """
         return pulumi.get(self, "host_port")
 
     @property
     @pulumi.getter(name="referenceId")
     def reference_id(self) -> Optional[str]:
+        """
+        Place holder for the external source identifier(e.g DMS job name) that created the cluster.
+        """
         return pulumi.get(self, "reference_id")
 
     @property
     @pulumi.getter(name="sourceType")
     def source_type(self) -> Optional[str]:
+        """
+        Type of migration source.
+        """
         return pulumi.get(self, "source_type")
 
 

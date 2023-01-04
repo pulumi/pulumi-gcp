@@ -135,7 +135,8 @@ class _TaxonomyState:
                It must: contain only unicode letters, numbers, underscores, dashes
                and spaces; not start or end with spaces; and be at most 200 bytes
                long when encoded in UTF-8.
-        :param pulumi.Input[str] name: Resource name of this taxonomy, whose format is: "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
+        :param pulumi.Input[str] name: Resource name of this taxonomy, whose format is:
+               "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Taxonomy location region.
@@ -200,7 +201,8 @@ class _TaxonomyState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource name of this taxonomy, whose format is: "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
+        Resource name of this taxonomy, whose format is:
+        "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
         """
         return pulumi.get(self, "name")
 
@@ -401,7 +403,8 @@ class Taxonomy(pulumi.CustomResource):
                It must: contain only unicode letters, numbers, underscores, dashes
                and spaces; not start or end with spaces; and be at most 200 bytes
                long when encoded in UTF-8.
-        :param pulumi.Input[str] name: Resource name of this taxonomy, whose format is: "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
+        :param pulumi.Input[str] name: Resource name of this taxonomy, whose format is:
+               "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Taxonomy location region.
@@ -453,7 +456,8 @@ class Taxonomy(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Resource name of this taxonomy, whose format is: "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
+        Resource name of this taxonomy, whose format is:
+        "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
         """
         return pulumi.get(self, "name")
 

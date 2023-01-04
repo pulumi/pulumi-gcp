@@ -286,8 +286,8 @@ class _AgentState:
         :param pulumi.Input[str] avatar_uri: The URI of the agent's avatar, which are used throughout the Dialogflow console. When an image URL is entered
                into this field, the Dialogflow will save the image in the backend. The address of the backend image returned
                from the API will be shown in the [avatarUriBackend] field.
-        :param pulumi.Input[str] avatar_uri_backend: The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar, the
-               [avatarUri] field can be used.
+        :param pulumi.Input[str] avatar_uri_backend: The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar,
+               the [avatarUri] field can be used.
         :param pulumi.Input[float] classification_threshold: To filter out false positive results and still get variety in matched natural language inputs for your agent,
                you can tune the machine learning classification threshold. If the returned score value is less than the threshold
                value, then a fallback intent will be triggered or, if there are no fallback intents defined, no intent will be
@@ -379,8 +379,8 @@ class _AgentState:
     @pulumi.getter(name="avatarUriBackend")
     def avatar_uri_backend(self) -> Optional[pulumi.Input[str]]:
         """
-        The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar, the
-        [avatarUri] field can be used.
+        The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar,
+        the [avatarUri] field can be used.
         """
         return pulumi.get(self, "avatar_uri_backend")
 
@@ -775,8 +775,8 @@ class Agent(pulumi.CustomResource):
         :param pulumi.Input[str] avatar_uri: The URI of the agent's avatar, which are used throughout the Dialogflow console. When an image URL is entered
                into this field, the Dialogflow will save the image in the backend. The address of the backend image returned
                from the API will be shown in the [avatarUriBackend] field.
-        :param pulumi.Input[str] avatar_uri_backend: The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar, the
-               [avatarUri] field can be used.
+        :param pulumi.Input[str] avatar_uri_backend: The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar,
+               the [avatarUri] field can be used.
         :param pulumi.Input[float] classification_threshold: To filter out false positive results and still get variety in matched natural language inputs for your agent,
                you can tune the machine learning classification threshold. If the returned score value is less than the threshold
                value, then a fallback intent will be triggered or, if there are no fallback intents defined, no intent will be
@@ -852,8 +852,8 @@ class Agent(pulumi.CustomResource):
     @pulumi.getter(name="avatarUriBackend")
     def avatar_uri_backend(self) -> pulumi.Output[str]:
         """
-        The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar, the
-        [avatarUri] field can be used.
+        The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar,
+        the [avatarUri] field can be used.
         """
         return pulumi.get(self, "avatar_uri_backend")
 

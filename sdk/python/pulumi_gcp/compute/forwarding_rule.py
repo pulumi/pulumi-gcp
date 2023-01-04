@@ -561,7 +561,7 @@ class _ForwardingRuleState:
                Otherwise only allows from the local region the ILB is located at.
         :param pulumi.Input[str] backend_service: A BackendService to receive the matched traffic. This is used only
                for INTERNAL load balancing.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[str] ip_address: The IP address that this forwarding rule serves. When a client sends
@@ -638,8 +638,7 @@ class _ForwardingRuleState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] psc_connection_id: The PSC connection id of the PSC Forwarding Rule.
-        :param pulumi.Input[str] psc_connection_status: The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
-               CLOSED
+        :param pulumi.Input[str] psc_connection_status: The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED, CLOSED
         :param pulumi.Input[str] region: A reference to the region where the regional forwarding rule resides.
                This field is not applicable to global forwarding rules.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -656,8 +655,8 @@ class _ForwardingRuleState:
                must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
                This field is only used for INTERNAL load balancing.
-        :param pulumi.Input[str] service_name: [Output Only] The internal fully qualified service name for this Forwarding Rule. This field is only used for internal
-               load balancing.
+        :param pulumi.Input[str] service_name: The internal fully qualified service name for this Forwarding Rule.
+               This field is only used for INTERNAL load balancing.
         :param pulumi.Input[str] subnetwork: The subnetwork that the load balanced IP should belong to for this
                Forwarding Rule.  This field is only used for INTERNAL load balancing.
                If the network specified is in auto subnet mode, this field is
@@ -769,7 +768,7 @@ class _ForwardingRuleState:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
         """
-        [Output Only] Creation timestamp in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -1011,8 +1010,7 @@ class _ForwardingRuleState:
     @pulumi.getter(name="pscConnectionStatus")
     def psc_connection_status(self) -> Optional[pulumi.Input[str]]:
         """
-        The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
-        CLOSED
+        The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED, CLOSED
         """
         return pulumi.get(self, "psc_connection_status")
 
@@ -1084,8 +1082,8 @@ class _ForwardingRuleState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        [Output Only] The internal fully qualified service name for this Forwarding Rule. This field is only used for internal
-        load balancing.
+        The internal fully qualified service name for this Forwarding Rule.
+        This field is only used for INTERNAL load balancing.
         """
         return pulumi.get(self, "service_name")
 
@@ -1481,7 +1479,7 @@ class ForwardingRule(pulumi.CustomResource):
                Otherwise only allows from the local region the ILB is located at.
         :param pulumi.Input[str] backend_service: A BackendService to receive the matched traffic. This is used only
                for INTERNAL load balancing.
-        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[str] ip_address: The IP address that this forwarding rule serves. When a client sends
@@ -1558,8 +1556,7 @@ class ForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] psc_connection_id: The PSC connection id of the PSC Forwarding Rule.
-        :param pulumi.Input[str] psc_connection_status: The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
-               CLOSED
+        :param pulumi.Input[str] psc_connection_status: The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED, CLOSED
         :param pulumi.Input[str] region: A reference to the region where the regional forwarding rule resides.
                This field is not applicable to global forwarding rules.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -1576,8 +1573,8 @@ class ForwardingRule(pulumi.CustomResource):
                must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
                This field is only used for INTERNAL load balancing.
-        :param pulumi.Input[str] service_name: [Output Only] The internal fully qualified service name for this Forwarding Rule. This field is only used for internal
-               load balancing.
+        :param pulumi.Input[str] service_name: The internal fully qualified service name for this Forwarding Rule.
+               This field is only used for INTERNAL load balancing.
         :param pulumi.Input[str] subnetwork: The subnetwork that the load balanced IP should belong to for this
                Forwarding Rule.  This field is only used for INTERNAL load balancing.
                If the network specified is in auto subnet mode, this field is
@@ -1656,7 +1653,7 @@ class ForwardingRule(pulumi.CustomResource):
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[str]:
         """
-        [Output Only] Creation timestamp in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+        Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -1838,8 +1835,7 @@ class ForwardingRule(pulumi.CustomResource):
     @pulumi.getter(name="pscConnectionStatus")
     def psc_connection_status(self) -> pulumi.Output[str]:
         """
-        The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
-        CLOSED
+        The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED, CLOSED
         """
         return pulumi.get(self, "psc_connection_status")
 
@@ -1891,8 +1887,8 @@ class ForwardingRule(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        [Output Only] The internal fully qualified service name for this Forwarding Rule. This field is only used for internal
-        load balancing.
+        The internal fully qualified service name for this Forwarding Rule.
+        This field is only used for INTERNAL load balancing.
         """
         return pulumi.get(self, "service_name")
 

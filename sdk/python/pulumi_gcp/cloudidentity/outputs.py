@@ -206,7 +206,9 @@ class GetGroupMembershipsMembershipResult(dict):
                  update_time: str):
         """
         :param str group: The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
+        :param Sequence['GetGroupMembershipsMembershipMemberKeyArgs'] member_keys: EntityKey of the member.  Structure is documented below.
         :param str name: The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
+        :param Sequence['GetGroupMembershipsMembershipPreferredMemberKeyArgs'] preferred_member_keys: EntityKey of the member.  Structure is documented below.
         :param Sequence['GetGroupMembershipsMembershipRoleArgs'] roles: The MembershipRoles that apply to the Membership. Structure is documented below.
         """
         pulumi.set(__self__, "create_time", create_time)
@@ -234,6 +236,9 @@ class GetGroupMembershipsMembershipResult(dict):
     @property
     @pulumi.getter(name="memberKeys")
     def member_keys(self) -> Sequence['outputs.GetGroupMembershipsMembershipMemberKeyResult']:
+        """
+        EntityKey of the member.  Structure is documented below.
+        """
         return pulumi.get(self, "member_keys")
 
     @property
@@ -247,6 +252,9 @@ class GetGroupMembershipsMembershipResult(dict):
     @property
     @pulumi.getter(name="preferredMemberKeys")
     def preferred_member_keys(self) -> Sequence['outputs.GetGroupMembershipsMembershipPreferredMemberKeyResult']:
+        """
+        EntityKey of the member.  Structure is documented below.
+        """
         return pulumi.get(self, "preferred_member_keys")
 
     @property
@@ -377,6 +385,13 @@ class GetGroupsGroupResult(dict):
                  parent: str,
                  update_time: str):
         """
+        :param str description: An extended description to help users determine the purpose of a Group.
+        :param str display_name: The display name of the Group.
+        :param Sequence['GetGroupsGroupGroupKeyArgs'] group_keys: EntityKey of the Group.  Structure is documented below.
+        :param Mapping[str, str] labels: The labels that apply to the Group.
+               Contains 'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
+               'system/groups/external': '' if the Group is an external-identity-mapped group.
+        :param str name: Resource name of the Group in the format: groups/{group_id}, where `group_id` is the unique ID assigned to the Group.
         :param str parent: The parent resource under which to list all Groups. Must be of the form identitysources/{identity_source_id} for external- identity-mapped groups or customers/{customer_id} for Google Groups.
         """
         pulumi.set(__self__, "create_time", create_time)
@@ -397,16 +412,25 @@ class GetGroupsGroupResult(dict):
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        An extended description to help users determine the purpose of a Group.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
+        """
+        The display name of the Group.
+        """
         return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter(name="groupKeys")
     def group_keys(self) -> Sequence['outputs.GetGroupsGroupGroupKeyResult']:
+        """
+        EntityKey of the Group.  Structure is documented below.
+        """
         return pulumi.get(self, "group_keys")
 
     @property
@@ -417,11 +441,19 @@ class GetGroupsGroupResult(dict):
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
+        """
+        The labels that apply to the Group.
+        Contains 'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
+        'system/groups/external': '' if the Group is an external-identity-mapped group.
+        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Resource name of the Group in the format: groups/{group_id}, where `group_id` is the unique ID assigned to the Group.
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -443,17 +475,43 @@ class GetGroupsGroupGroupKeyResult(dict):
     def __init__(__self__, *,
                  id: str,
                  namespace: str):
+        """
+        :param str id: The ID of the entity.
+               For Google-managed entities, the id is the email address of an existing group or user.
+               For external-identity-mapped entities, the id is a string conforming
+               to the Identity Source's requirements.
+        :param str namespace: The namespace in which the entity exists.
+               If not populated, the EntityKey represents a Google-managed entity
+               such as a Google user or a Google Group.
+               If populated, the EntityKey represents an external-identity-mapped group.
+               The namespace must correspond to an identity source created in Admin Console
+               and must be in the form of `identitysources/{identity_source_id}`.
+        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "namespace", namespace)
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The ID of the entity.
+        For Google-managed entities, the id is the email address of an existing group or user.
+        For external-identity-mapped entities, the id is a string conforming
+        to the Identity Source's requirements.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def namespace(self) -> str:
+        """
+        The namespace in which the entity exists.
+        If not populated, the EntityKey represents a Google-managed entity
+        such as a Google user or a Google Group.
+        If populated, the EntityKey represents an external-identity-mapped group.
+        The namespace must correspond to an identity source created in Admin Console
+        and must be in the form of `identitysources/{identity_source_id}`.
+        """
         return pulumi.get(self, "namespace")
 
 

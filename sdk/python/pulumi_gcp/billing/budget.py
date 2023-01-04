@@ -156,7 +156,8 @@ class _BudgetState:
                spend against the budget.
                Structure is documented below.
         :param pulumi.Input[str] display_name: User data for display name in UI. Must be <= 60 chars.
-        :param pulumi.Input[str] name: Resource name of the budget. The resource name implies the scope of a budget. Values are of the form
+        :param pulumi.Input[str] name: Resource name of the budget. The resource name
+               implies the scope of a budget. Values are of the form
                billingAccounts/{billingAccountId}/budgets/{budgetId}.
         :param pulumi.Input[Sequence[pulumi.Input['BudgetThresholdRuleArgs']]] threshold_rules: Rules that trigger alerts (notifications of thresholds being
                crossed) when spend exceeds the specified percentages of the
@@ -248,7 +249,8 @@ class _BudgetState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource name of the budget. The resource name implies the scope of a budget. Values are of the form
+        Resource name of the budget. The resource name
+        implies the scope of a budget. Values are of the form
         billingAccounts/{billingAccountId}/budgets/{budgetId}.
         """
         return pulumi.get(self, "name")
@@ -763,7 +765,8 @@ class Budget(pulumi.CustomResource):
                spend against the budget.
                Structure is documented below.
         :param pulumi.Input[str] display_name: User data for display name in UI. Must be <= 60 chars.
-        :param pulumi.Input[str] name: Resource name of the budget. The resource name implies the scope of a budget. Values are of the form
+        :param pulumi.Input[str] name: Resource name of the budget. The resource name
+               implies the scope of a budget. Values are of the form
                billingAccounts/{billingAccountId}/budgets/{budgetId}.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BudgetThresholdRuleArgs']]]] threshold_rules: Rules that trigger alerts (notifications of thresholds being
                crossed) when spend exceeds the specified percentages of the
@@ -833,7 +836,8 @@ class Budget(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Resource name of the budget. The resource name implies the scope of a budget. Values are of the form
+        Resource name of the budget. The resource name
+        implies the scope of a budget. Values are of the form
         billingAccounts/{billingAccountId}/budgets/{budgetId}.
         """
         return pulumi.get(self, "name")

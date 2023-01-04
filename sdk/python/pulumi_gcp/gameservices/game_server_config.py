@@ -32,7 +32,10 @@ class GameServerConfigArgs:
                will be only one.
                Structure is documented below.
         :param pulumi.Input[str] description: The description of the game server config.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels to group by.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server config. Each label is a
+               key-value pair.
+               (Optional)
+               Set of labels to group by.
         :param pulumi.Input[str] location: Location of the Deployment.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -107,6 +110,9 @@ class GameServerConfigArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
+        The labels associated with this game server config. Each label is a
+        key-value pair.
+        (Optional)
         Set of labels to group by.
         """
         return pulumi.get(self, "labels")
@@ -174,9 +180,14 @@ class _GameServerConfigState:
         :param pulumi.Input[Sequence[pulumi.Input['GameServerConfigFleetConfigArgs']]] fleet_configs: The fleet config contains list of fleet specs. In the Single Cloud, there
                will be only one.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels to group by.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server config. Each label is a
+               key-value pair.
+               (Optional)
+               Set of labels to group by.
         :param pulumi.Input[str] location: Location of the Deployment.
-        :param pulumi.Input[str] name: The name of the ScalingConfig
+        :param pulumi.Input[str] name: The name of the FleetConfig.
+               (Required)
+               The name of the ScalingConfig
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['GameServerConfigScalingConfigArgs']]] scaling_configs: Optional. This contains the autoscaling settings.
@@ -255,6 +266,9 @@ class _GameServerConfigState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
+        The labels associated with this game server config. Each label is a
+        key-value pair.
+        (Optional)
         Set of labels to group by.
         """
         return pulumi.get(self, "labels")
@@ -279,6 +293,8 @@ class _GameServerConfigState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
+        The name of the FleetConfig.
+        (Required)
         The name of the ScalingConfig
         """
         return pulumi.get(self, "name")
@@ -430,7 +446,10 @@ class GameServerConfig(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GameServerConfigFleetConfigArgs']]]] fleet_configs: The fleet config contains list of fleet specs. In the Single Cloud, there
                will be only one.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels to group by.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server config. Each label is a
+               key-value pair.
+               (Optional)
+               Set of labels to group by.
         :param pulumi.Input[str] location: Location of the Deployment.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -616,9 +635,14 @@ class GameServerConfig(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GameServerConfigFleetConfigArgs']]]] fleet_configs: The fleet config contains list of fleet specs. In the Single Cloud, there
                will be only one.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels to group by.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server config. Each label is a
+               key-value pair.
+               (Optional)
+               Set of labels to group by.
         :param pulumi.Input[str] location: Location of the Deployment.
-        :param pulumi.Input[str] name: The name of the ScalingConfig
+        :param pulumi.Input[str] name: The name of the FleetConfig.
+               (Required)
+               The name of the ScalingConfig
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GameServerConfigScalingConfigArgs']]]] scaling_configs: Optional. This contains the autoscaling settings.
@@ -677,6 +701,9 @@ class GameServerConfig(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
+        The labels associated with this game server config. Each label is a
+        key-value pair.
+        (Optional)
         Set of labels to group by.
         """
         return pulumi.get(self, "labels")
@@ -693,6 +720,8 @@ class GameServerConfig(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
+        The name of the FleetConfig.
+        (Required)
         The name of the ScalingConfig
         """
         return pulumi.get(self, "name")

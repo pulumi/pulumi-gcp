@@ -56,15 +56,13 @@ class InstanceMaintenancePolicy(dict):
                  update_time: Optional[str] = None,
                  weekly_maintenance_windows: Optional[Sequence['outputs.InstanceMaintenancePolicyWeeklyMaintenanceWindow']] = None):
         """
-        :param str create_time: -
-               Output only. The time when the policy was created.
+        :param str create_time: Output only. The time when the policy was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits.
         :param str description: Optional. Description of what this policy is for.
                Create/Update methods return INVALID_ARGUMENT if the
                length is greater than 512.
-        :param str update_time: -
-               Output only. The time when the policy was last updated.
+        :param str update_time: Output only. The time when the policy was last updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits.
         :param Sequence['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs'] weekly_maintenance_windows: Optional. Maintenance window that is applied to resources covered by this policy.
@@ -85,7 +83,6 @@ class InstanceMaintenancePolicy(dict):
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[str]:
         """
-        -
         Output only. The time when the policy was created.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         resolution and up to nine fractional digits.
@@ -106,7 +103,6 @@ class InstanceMaintenancePolicy(dict):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[str]:
         """
-        -
         Output only. The time when the policy was last updated.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         resolution and up to nine fractional digits.
@@ -159,12 +155,9 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindow(dict):
                - SATURDAY: Saturday
                - SUNDAY: Sunday
                Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
-        :param 'InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs' start_time: -
-               Output only. The start time of any upcoming scheduled maintenance for this instance.
-               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-               resolution and up to nine fractional digits.
-        :param str duration: -
-               Output only. Duration of the maintenance window.
+        :param 'InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs' start_time: Required. Start time of the window in UTC time.
+               Structure is documented below.
+        :param str duration: Output only. Duration of the maintenance window.
                The current window is fixed at 1 hour.
                A duration in seconds with up to nine fractional digits,
                terminated by 's'. Example: "3.5s".
@@ -195,10 +188,8 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindow(dict):
     @pulumi.getter(name="startTime")
     def start_time(self) -> 'outputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime':
         """
-        -
-        Output only. The start time of any upcoming scheduled maintenance for this instance.
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        resolution and up to nine fractional digits.
+        Required. Start time of the window in UTC time.
+        Structure is documented below.
         """
         return pulumi.get(self, "start_time")
 
@@ -206,7 +197,6 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindow(dict):
     @pulumi.getter
     def duration(self) -> Optional[str]:
         """
-        -
         Output only. Duration of the maintenance window.
         The current window is fixed at 1 hour.
         A duration in seconds with up to nine fractional digits,
@@ -302,17 +292,14 @@ class InstanceMaintenanceSchedule(dict):
                  schedule_deadline_time: Optional[str] = None,
                  start_time: Optional[str] = None):
         """
-        :param str end_time: -
-               Output only. The end time of any upcoming scheduled maintenance for this instance.
+        :param str end_time: Output only. The end time of any upcoming scheduled maintenance for this instance.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits.
-        :param str schedule_deadline_time: -
-               Output only. The deadline that the maintenance schedule start time
+        :param str schedule_deadline_time: Output only. The deadline that the maintenance schedule start time
                can not go beyond, including reschedule.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits.
-        :param str start_time: -
-               Output only. The start time of any upcoming scheduled maintenance for this instance.
+        :param str start_time: Output only. The start time of any upcoming scheduled maintenance for this instance.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits.
         """
@@ -327,7 +314,6 @@ class InstanceMaintenanceSchedule(dict):
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[str]:
         """
-        -
         Output only. The end time of any upcoming scheduled maintenance for this instance.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         resolution and up to nine fractional digits.
@@ -338,7 +324,6 @@ class InstanceMaintenanceSchedule(dict):
     @pulumi.getter(name="scheduleDeadlineTime")
     def schedule_deadline_time(self) -> Optional[str]:
         """
-        -
         Output only. The deadline that the maintenance schedule start time
         can not go beyond, including reschedule.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
@@ -350,7 +335,6 @@ class InstanceMaintenanceSchedule(dict):
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[str]:
         """
-        -
         Output only. The start time of any upcoming scheduled maintenance for this instance.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         resolution and up to nine fractional digits.
@@ -364,7 +348,8 @@ class InstanceNode(dict):
                  id: Optional[str] = None,
                  zone: Optional[str] = None):
         """
-        :param str id: an identifier for the resource with format `projects/{{project}}/locations/{{region}}/instances/{{name}}`
+        :param str id: Node identifying string. e.g. 'node-0', 'node-1'
+        :param str zone: Location of the node.
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -375,13 +360,16 @@ class InstanceNode(dict):
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
-        an identifier for the resource with format `projects/{{project}}/locations/{{region}}/instances/{{name}}`
+        Node identifying string. e.g. 'node-0', 'node-1'
         """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def zone(self) -> Optional[str]:
+        """
+        Location of the node.
+        """
         return pulumi.get(self, "zone")
 
 
@@ -420,8 +408,7 @@ class InstancePersistenceConfig(dict):
                - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
                - RDB: RDB based Persistence is enabled.
                Possible values are `DISABLED` and `RDB`.
-        :param str rdb_next_snapshot_time: -
-               Output only. The next time that a snapshot attempt is scheduled to occur.
+        :param str rdb_next_snapshot_time: Output only. The next time that a snapshot attempt is scheduled to occur.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
                to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -462,7 +449,6 @@ class InstancePersistenceConfig(dict):
     @pulumi.getter(name="rdbNextSnapshotTime")
     def rdb_next_snapshot_time(self) -> Optional[str]:
         """
-        -
         Output only. The next time that a snapshot attempt is scheduled to occur.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
         to nine fractional digits.
@@ -529,10 +515,13 @@ class InstanceServerCaCert(dict):
                  serial_number: Optional[str] = None,
                  sha1_fingerprint: Optional[str] = None):
         """
-        :param str create_time: -
-               Output only. The time when the policy was created.
+        :param str cert: The certificate data in PEM format.
+        :param str create_time: Output only. The time when the policy was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits.
+        :param str expire_time: The time when the certificate expires.
+        :param str serial_number: Serial number, as extracted from the certificate.
+        :param str sha1_fingerprint: Sha1 Fingerprint of the certificate.
         """
         if cert is not None:
             pulumi.set(__self__, "cert", cert)
@@ -548,13 +537,15 @@ class InstanceServerCaCert(dict):
     @property
     @pulumi.getter
     def cert(self) -> Optional[str]:
+        """
+        The certificate data in PEM format.
+        """
         return pulumi.get(self, "cert")
 
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[str]:
         """
-        -
         Output only. The time when the policy was created.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         resolution and up to nine fractional digits.
@@ -564,16 +555,25 @@ class InstanceServerCaCert(dict):
     @property
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> Optional[str]:
+        """
+        The time when the certificate expires.
+        """
         return pulumi.get(self, "expire_time")
 
     @property
     @pulumi.getter(name="serialNumber")
     def serial_number(self) -> Optional[str]:
+        """
+        Serial number, as extracted from the certificate.
+        """
         return pulumi.get(self, "serial_number")
 
     @property
     @pulumi.getter(name="sha1Fingerprint")
     def sha1_fingerprint(self) -> Optional[str]:
+        """
+        Sha1 Fingerprint of the certificate.
+        """
         return pulumi.get(self, "sha1_fingerprint")
 
 

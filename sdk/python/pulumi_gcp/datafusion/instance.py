@@ -403,9 +403,13 @@ class _InstanceState:
         :param pulumi.Input[str] region: The region of the Data Fusion instance.
         :param pulumi.Input[str] service_account: Deprecated. Use 'tenant_project_id' instead to extract the tenant project ID.
         :param pulumi.Input[str] service_endpoint: Endpoint on which the Data Fusion UI and REST APIs are accessible.
-        :param pulumi.Input[str] state: The current state of this Data Fusion instance. - CREATING: Instance is being created - RUNNING: Instance is running and
-               ready for requests - FAILED: Instance creation failed - DELETING: Instance is being deleted - UPGRADING: Instance is
-               being upgraded - RESTARTING: Instance is being restarted
+        :param pulumi.Input[str] state: The current state of this Data Fusion instance.
+               * CREATING: Instance is being created
+               * RUNNING: Instance is running and ready for requests
+               * FAILED: Instance creation failed
+               * DELETING: Instance is being deleted
+               * UPGRADING: Instance is being upgraded
+               * RESTARTING: Instance is being restarted
         :param pulumi.Input[str] state_message: Additional information about the current state of this Data Fusion instance if available.
         :param pulumi.Input[str] tenant_project_id: The name of the tenant project.
         :param pulumi.Input[str] type: Represents the type of Data Fusion instance. Each type is configured with
@@ -746,9 +750,13 @@ class _InstanceState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        The current state of this Data Fusion instance. - CREATING: Instance is being created - RUNNING: Instance is running and
-        ready for requests - FAILED: Instance creation failed - DELETING: Instance is being deleted - UPGRADING: Instance is
-        being upgraded - RESTARTING: Instance is being restarted
+        The current state of this Data Fusion instance.
+        * CREATING: Instance is being created
+        * RUNNING: Instance is running and ready for requests
+        * FAILED: Instance creation failed
+        * DELETING: Instance is being deleted
+        * UPGRADING: Instance is being upgraded
+        * RESTARTING: Instance is being restarted
         """
         return pulumi.get(self, "state")
 
@@ -1332,9 +1340,13 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region of the Data Fusion instance.
         :param pulumi.Input[str] service_account: Deprecated. Use 'tenant_project_id' instead to extract the tenant project ID.
         :param pulumi.Input[str] service_endpoint: Endpoint on which the Data Fusion UI and REST APIs are accessible.
-        :param pulumi.Input[str] state: The current state of this Data Fusion instance. - CREATING: Instance is being created - RUNNING: Instance is running and
-               ready for requests - FAILED: Instance creation failed - DELETING: Instance is being deleted - UPGRADING: Instance is
-               being upgraded - RESTARTING: Instance is being restarted
+        :param pulumi.Input[str] state: The current state of this Data Fusion instance.
+               * CREATING: Instance is being created
+               * RUNNING: Instance is running and ready for requests
+               * FAILED: Instance creation failed
+               * DELETING: Instance is being deleted
+               * UPGRADING: Instance is being upgraded
+               * RESTARTING: Instance is being restarted
         :param pulumi.Input[str] state_message: Additional information about the current state of this Data Fusion instance if available.
         :param pulumi.Input[str] tenant_project_id: The name of the tenant project.
         :param pulumi.Input[str] type: Represents the type of Data Fusion instance. Each type is configured with
@@ -1565,9 +1577,13 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        The current state of this Data Fusion instance. - CREATING: Instance is being created - RUNNING: Instance is running and
-        ready for requests - FAILED: Instance creation failed - DELETING: Instance is being deleted - UPGRADING: Instance is
-        being upgraded - RESTARTING: Instance is being restarted
+        The current state of this Data Fusion instance.
+        * CREATING: Instance is being created
+        * RUNNING: Instance is running and ready for requests
+        * FAILED: Instance creation failed
+        * DELETING: Instance is being deleted
+        * UPGRADING: Instance is being upgraded
+        * RESTARTING: Instance is being restarted
         """
         return pulumi.get(self, "state")
 

@@ -51,6 +51,9 @@ class GetAppEngineServiceResult:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
+        """
+        Name used for UI elements listing this (Monitoring) Service.
+        """
         return pulumi.get(self, "display_name")
 
     @property
@@ -69,6 +72,10 @@ class GetAppEngineServiceResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The full REST resource name for this channel. The syntax is:
+        `projects/[PROJECT_ID]/services/[SERVICE_ID]`.
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -84,6 +91,9 @@ class GetAppEngineServiceResult:
     @property
     @pulumi.getter
     def telemetries(self) -> Sequence['outputs.GetAppEngineServiceTelemetryResult']:
+        """
+        Configuration for how to query telemetry on the Service. Structure is documented below.
+        """
         return pulumi.get(self, "telemetries")
 
     @property

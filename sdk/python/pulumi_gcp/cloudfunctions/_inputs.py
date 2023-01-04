@@ -189,7 +189,7 @@ class FunctionSecretEnvironmentVariableArgs:
         """
         :param pulumi.Input[str] key: Name of the environment variable.
         :param pulumi.Input[str] secret: ID of the secret in secret manager (not the full resource name).
-        :param pulumi.Input[str] version: Version of the secret (version number or the string "latest"). It is preferable to use "latest" version with secret volumes as secret value changes are reflected immediately.
+        :param pulumi.Input[str] version: Version of the secret (version number or the string "latest"). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
         :param pulumi.Input[str] project_id: Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
         """
         pulumi.set(__self__, "key", key)
@@ -226,7 +226,7 @@ class FunctionSecretEnvironmentVariableArgs:
     @pulumi.getter
     def version(self) -> pulumi.Input[str]:
         """
-        Version of the secret (version number or the string "latest"). It is preferable to use "latest" version with secret volumes as secret value changes are reflected immediately.
+        Version of the secret (version number or the string "latest"). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
         """
         return pulumi.get(self, "version")
 

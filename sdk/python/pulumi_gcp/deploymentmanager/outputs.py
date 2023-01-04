@@ -91,7 +91,7 @@ class DeploymentTargetConfig(dict):
     def __init__(__self__, *,
                  content: str):
         """
-        :param str content: The full contents of the template that you want to import.
+        :param str content: The full YAML contents of your configuration file.
         """
         pulumi.set(__self__, "content", content)
 
@@ -99,7 +99,7 @@ class DeploymentTargetConfig(dict):
     @pulumi.getter
     def content(self) -> str:
         """
-        The full contents of the template that you want to import.
+        The full YAML contents of your configuration file.
         """
         return pulumi.get(self, "content")
 

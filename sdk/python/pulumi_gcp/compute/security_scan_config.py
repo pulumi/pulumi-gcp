@@ -228,7 +228,8 @@ class _SecurityScanConfigState:
                Possible values are `ENABLED` and `DISABLED`.
         :param pulumi.Input[int] max_qps: The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
                Defaults to 15.
-        :param pulumi.Input[str] name: A server defined name for this index. Format: 'projects/{{project}}/scanConfigs/{{server_generated_id}}'
+        :param pulumi.Input[str] name: A server defined name for this index. Format:
+               `projects/{{project}}/scanConfigs/{{server_generated_id}}`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['SecurityScanConfigScheduleArgs'] schedule: The schedule of the ScanConfig
@@ -333,7 +334,8 @@ class _SecurityScanConfigState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        A server defined name for this index. Format: 'projects/{{project}}/scanConfigs/{{server_generated_id}}'
+        A server defined name for this index. Format:
+        `projects/{{project}}/scanConfigs/{{server_generated_id}}`
         """
         return pulumi.get(self, "name")
 
@@ -625,7 +627,8 @@ class SecurityScanConfig(pulumi.CustomResource):
                Possible values are `ENABLED` and `DISABLED`.
         :param pulumi.Input[int] max_qps: The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
                Defaults to 15.
-        :param pulumi.Input[str] name: A server defined name for this index. Format: 'projects/{{project}}/scanConfigs/{{server_generated_id}}'
+        :param pulumi.Input[str] name: A server defined name for this index. Format:
+               `projects/{{project}}/scanConfigs/{{server_generated_id}}`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['SecurityScanConfigScheduleArgs']] schedule: The schedule of the ScanConfig
@@ -704,7 +707,8 @@ class SecurityScanConfig(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        A server defined name for this index. Format: 'projects/{{project}}/scanConfigs/{{server_generated_id}}'
+        A server defined name for this index. Format:
+        `projects/{{project}}/scanConfigs/{{server_generated_id}}`
         """
         return pulumi.get(self, "name")
 

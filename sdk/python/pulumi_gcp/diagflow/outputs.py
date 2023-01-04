@@ -98,7 +98,9 @@ class CxEntityTypeEntity(dict):
         """
         :param Sequence[str] synonyms: A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym could be green onions.
                For KIND_LIST entity types: This collection must contain exactly one synonym equal to value.
-        :param str value: The word or phrase to be excluded.
+        :param str value: The primary value associated with this entity entry. For example, if the entity type is vegetable, the value could be scallions.
+               For KIND_MAP entity types: A canonical value to be used in place of synonyms.
+               For KIND_LIST entity types: A string that can contain references to other entity types (with or without aliases).
         """
         if synonyms is not None:
             pulumi.set(__self__, "synonyms", synonyms)
@@ -118,7 +120,9 @@ class CxEntityTypeEntity(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The word or phrase to be excluded.
+        The primary value associated with this entity entry. For example, if the entity type is vegetable, the value could be scallions.
+        For KIND_MAP entity types: A canonical value to be used in place of synonyms.
+        For KIND_LIST entity types: A string that can contain references to other entity types (with or without aliases).
         """
         return pulumi.get(self, "value")
 
@@ -191,8 +195,7 @@ class CxFlowEventHandler(dict):
                  trigger_fulfillment: Optional['outputs.CxFlowEventHandlerTriggerFulfillment'] = None):
         """
         :param str event: The name of the event to handle.
-        :param str name: -
-               The unique identifier of this event handler.
+        :param str name: The unique identifier of this event handler.
         :param str target_flow: The target flow to transition to.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param str target_page: The target page to transition to.
@@ -223,7 +226,6 @@ class CxFlowEventHandler(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        -
         The unique identifier of this event handler.
         """
         return pulumi.get(self, "name")
@@ -335,7 +337,8 @@ class CxFlowEventHandlerTriggerFulfillmentMessage(dict):
     def __init__(__self__, *,
                  text: Optional['outputs.CxFlowEventHandlerTriggerFulfillmentMessageText'] = None):
         """
-        :param 'CxFlowEventHandlerTriggerFulfillmentMessageTextArgs' text: A collection of text responses.
+        :param 'CxFlowEventHandlerTriggerFulfillmentMessageTextArgs' text: The text response message.
+               Structure is documented below.
         """
         if text is not None:
             pulumi.set(__self__, "text", text)
@@ -344,7 +347,8 @@ class CxFlowEventHandlerTriggerFulfillmentMessage(dict):
     @pulumi.getter
     def text(self) -> Optional['outputs.CxFlowEventHandlerTriggerFulfillmentMessageText']:
         """
-        A collection of text responses.
+        The text response message.
+        Structure is documented below.
         """
         return pulumi.get(self, "text")
 
@@ -372,8 +376,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessageText(dict):
                  allow_playback_interruption: Optional[bool] = None,
                  texts: Optional[Sequence[str]] = None):
         """
-        :param bool allow_playback_interruption: -
-               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        :param bool allow_playback_interruption: Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
         :param Sequence[str] texts: A collection of text responses.
         """
         if allow_playback_interruption is not None:
@@ -385,7 +388,6 @@ class CxFlowEventHandlerTriggerFulfillmentMessageText(dict):
     @pulumi.getter(name="allowPlaybackInterruption")
     def allow_playback_interruption(self) -> Optional[bool]:
         """
-        -
         Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
         """
         return pulumi.get(self, "allow_playback_interruption")
@@ -512,13 +514,12 @@ class CxFlowTransitionRoute(dict):
                At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
         :param str intent: The unique identifier of an Intent.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>. Indicates that the transition can only happen when the given intent is matched. At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
-        :param str name: -
-               The unique identifier of this event handler.
+        :param str name: The unique identifier of this transition route.
         :param str target_flow: The target flow to transition to.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param str target_page: The target page to transition to.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
-        :param 'CxFlowTransitionRouteTriggerFulfillmentArgs' trigger_fulfillment: The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+        :param 'CxFlowTransitionRouteTriggerFulfillmentArgs' trigger_fulfillment: The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
                Structure is documented below.
         """
         if condition is not None:
@@ -556,8 +557,7 @@ class CxFlowTransitionRoute(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        -
-        The unique identifier of this event handler.
+        The unique identifier of this transition route.
         """
         return pulumi.get(self, "name")
 
@@ -583,7 +583,7 @@ class CxFlowTransitionRoute(dict):
     @pulumi.getter(name="triggerFulfillment")
     def trigger_fulfillment(self) -> Optional['outputs.CxFlowTransitionRouteTriggerFulfillment']:
         """
-        The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+        The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
         Structure is documented below.
         """
         return pulumi.get(self, "trigger_fulfillment")
@@ -668,7 +668,8 @@ class CxFlowTransitionRouteTriggerFulfillmentMessage(dict):
     def __init__(__self__, *,
                  text: Optional['outputs.CxFlowTransitionRouteTriggerFulfillmentMessageText'] = None):
         """
-        :param 'CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs' text: A collection of text responses.
+        :param 'CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs' text: The text response message.
+               Structure is documented below.
         """
         if text is not None:
             pulumi.set(__self__, "text", text)
@@ -677,7 +678,8 @@ class CxFlowTransitionRouteTriggerFulfillmentMessage(dict):
     @pulumi.getter
     def text(self) -> Optional['outputs.CxFlowTransitionRouteTriggerFulfillmentMessageText']:
         """
-        A collection of text responses.
+        The text response message.
+        Structure is documented below.
         """
         return pulumi.get(self, "text")
 
@@ -705,8 +707,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageText(dict):
                  allow_playback_interruption: Optional[bool] = None,
                  texts: Optional[Sequence[str]] = None):
         """
-        :param bool allow_playback_interruption: -
-               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        :param bool allow_playback_interruption: Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
         :param Sequence[str] texts: A collection of text responses.
         """
         if allow_playback_interruption is not None:
@@ -718,7 +719,6 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageText(dict):
     @pulumi.getter(name="allowPlaybackInterruption")
     def allow_playback_interruption(self) -> Optional[bool]:
         """
-        -
         Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
         """
         return pulumi.get(self, "allow_playback_interruption")
@@ -840,7 +840,7 @@ class CxIntentTrainingPhrase(dict):
                Part.text is set to a part of the phrase that has no parameters.
                Part.text is set to a part of the phrase that you want to annotate, and the parameterId field is set.
                Structure is documented below.
-        :param str id: The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+        :param str id: The unique identifier of the training phrase.
         :param int repeat_count: Indicates how many times this example was added to the intent.
         """
         pulumi.set(__self__, "parts", parts)
@@ -868,7 +868,7 @@ class CxIntentTrainingPhrase(dict):
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
-        The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+        The unique identifier of the training phrase.
         """
         return pulumi.get(self, "id")
 
@@ -1007,7 +1007,8 @@ class CxPageEntryFulfillmentMessage(dict):
     def __init__(__self__, *,
                  text: Optional['outputs.CxPageEntryFulfillmentMessageText'] = None):
         """
-        :param 'CxPageEntryFulfillmentMessageTextArgs' text: A collection of text responses.
+        :param 'CxPageEntryFulfillmentMessageTextArgs' text: The text response message.
+               Structure is documented below.
         """
         if text is not None:
             pulumi.set(__self__, "text", text)
@@ -1016,7 +1017,8 @@ class CxPageEntryFulfillmentMessage(dict):
     @pulumi.getter
     def text(self) -> Optional['outputs.CxPageEntryFulfillmentMessageText']:
         """
-        A collection of text responses.
+        The text response message.
+        Structure is documented below.
         """
         return pulumi.get(self, "text")
 
@@ -1044,8 +1046,7 @@ class CxPageEntryFulfillmentMessageText(dict):
                  allow_playback_interruption: Optional[bool] = None,
                  texts: Optional[Sequence[str]] = None):
         """
-        :param bool allow_playback_interruption: -
-               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        :param bool allow_playback_interruption: Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
         :param Sequence[str] texts: A collection of text responses.
         """
         if allow_playback_interruption is not None:
@@ -1057,7 +1058,6 @@ class CxPageEntryFulfillmentMessageText(dict):
     @pulumi.getter(name="allowPlaybackInterruption")
     def allow_playback_interruption(self) -> Optional[bool]:
         """
-        -
         Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
         """
         return pulumi.get(self, "allow_playback_interruption")
@@ -1102,8 +1102,7 @@ class CxPageEventHandler(dict):
                  trigger_fulfillment: Optional['outputs.CxPageEventHandlerTriggerFulfillment'] = None):
         """
         :param str event: The name of the event to handle.
-        :param str name: -
-               The unique identifier of this event handler.
+        :param str name: The unique identifier of this event handler.
         :param str target_flow: The target flow to transition to.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param str target_page: The target page to transition to.
@@ -1134,7 +1133,6 @@ class CxPageEventHandler(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        -
         The unique identifier of this event handler.
         """
         return pulumi.get(self, "name")
@@ -1246,7 +1244,8 @@ class CxPageEventHandlerTriggerFulfillmentMessage(dict):
     def __init__(__self__, *,
                  text: Optional['outputs.CxPageEventHandlerTriggerFulfillmentMessageText'] = None):
         """
-        :param 'CxPageEventHandlerTriggerFulfillmentMessageTextArgs' text: A collection of text responses.
+        :param 'CxPageEventHandlerTriggerFulfillmentMessageTextArgs' text: The text response message.
+               Structure is documented below.
         """
         if text is not None:
             pulumi.set(__self__, "text", text)
@@ -1255,7 +1254,8 @@ class CxPageEventHandlerTriggerFulfillmentMessage(dict):
     @pulumi.getter
     def text(self) -> Optional['outputs.CxPageEventHandlerTriggerFulfillmentMessageText']:
         """
-        A collection of text responses.
+        The text response message.
+        Structure is documented below.
         """
         return pulumi.get(self, "text")
 
@@ -1283,8 +1283,7 @@ class CxPageEventHandlerTriggerFulfillmentMessageText(dict):
                  allow_playback_interruption: Optional[bool] = None,
                  texts: Optional[Sequence[str]] = None):
         """
-        :param bool allow_playback_interruption: -
-               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        :param bool allow_playback_interruption: Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
         :param Sequence[str] texts: A collection of text responses.
         """
         if allow_playback_interruption is not None:
@@ -1296,7 +1295,6 @@ class CxPageEventHandlerTriggerFulfillmentMessageText(dict):
     @pulumi.getter(name="allowPlaybackInterruption")
     def allow_playback_interruption(self) -> Optional[bool]:
         """
-        -
         Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
         """
         return pulumi.get(self, "allow_playback_interruption")
@@ -1558,7 +1556,8 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage(dict):
     def __init__(__self__, *,
                  text: Optional['outputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText'] = None):
         """
-        :param 'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs' text: A collection of text responses.
+        :param 'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs' text: The text response message.
+               Structure is documented below.
         """
         if text is not None:
             pulumi.set(__self__, "text", text)
@@ -1567,7 +1566,8 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage(dict):
     @pulumi.getter
     def text(self) -> Optional['outputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText']:
         """
-        A collection of text responses.
+        The text response message.
+        Structure is documented below.
         """
         return pulumi.get(self, "text")
 
@@ -1595,8 +1595,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText(dict):
                  allow_playback_interruption: Optional[bool] = None,
                  texts: Optional[Sequence[str]] = None):
         """
-        :param bool allow_playback_interruption: -
-               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        :param bool allow_playback_interruption: Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
         :param Sequence[str] texts: A collection of text responses.
         """
         if allow_playback_interruption is not None:
@@ -1608,7 +1607,6 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText(dict):
     @pulumi.getter(name="allowPlaybackInterruption")
     def allow_playback_interruption(self) -> Optional[bool]:
         """
-        -
         Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
         """
         return pulumi.get(self, "allow_playback_interruption")
@@ -1657,8 +1655,7 @@ class CxPageTransitionRoute(dict):
                At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
         :param str intent: The unique identifier of an Intent.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/intents/<Intent ID>. Indicates that the transition can only happen when the given intent is matched. At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
-        :param str name: -
-               The unique identifier of this event handler.
+        :param str name: The unique identifier of this transition route.
         :param str target_flow: The target flow to transition to.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param str target_page: The target page to transition to.
@@ -1701,8 +1698,7 @@ class CxPageTransitionRoute(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        -
-        The unique identifier of this event handler.
+        The unique identifier of this transition route.
         """
         return pulumi.get(self, "name")
 
@@ -1813,7 +1809,8 @@ class CxPageTransitionRouteTriggerFulfillmentMessage(dict):
     def __init__(__self__, *,
                  text: Optional['outputs.CxPageTransitionRouteTriggerFulfillmentMessageText'] = None):
         """
-        :param 'CxPageTransitionRouteTriggerFulfillmentMessageTextArgs' text: A collection of text responses.
+        :param 'CxPageTransitionRouteTriggerFulfillmentMessageTextArgs' text: The text response message.
+               Structure is documented below.
         """
         if text is not None:
             pulumi.set(__self__, "text", text)
@@ -1822,7 +1819,8 @@ class CxPageTransitionRouteTriggerFulfillmentMessage(dict):
     @pulumi.getter
     def text(self) -> Optional['outputs.CxPageTransitionRouteTriggerFulfillmentMessageText']:
         """
-        A collection of text responses.
+        The text response message.
+        Structure is documented below.
         """
         return pulumi.get(self, "text")
 
@@ -1850,8 +1848,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessageText(dict):
                  allow_playback_interruption: Optional[bool] = None,
                  texts: Optional[Sequence[str]] = None):
         """
-        :param bool allow_playback_interruption: -
-               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        :param bool allow_playback_interruption: Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
         :param Sequence[str] texts: A collection of text responses.
         """
         if allow_playback_interruption is not None:
@@ -1863,7 +1860,6 @@ class CxPageTransitionRouteTriggerFulfillmentMessageText(dict):
     @pulumi.getter(name="allowPlaybackInterruption")
     def allow_playback_interruption(self) -> Optional[bool]:
         """
-        -
         Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
         """
         return pulumi.get(self, "allow_playback_interruption")
@@ -1904,6 +1900,18 @@ class CxVersionNluSetting(dict):
                  classification_threshold: Optional[float] = None,
                  model_training_mode: Optional[str] = None,
                  model_type: Optional[str] = None):
+        """
+        :param float classification_threshold: To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold. If the returned score value is less than the threshold value, then a no-match event will be triggered.
+               The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the default of 0.3 is used.
+        :param str model_training_mode: Indicates NLU model training mode.
+               * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
+               * MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
+               Possible values are `MODEL_TRAINING_MODE_AUTOMATIC` and `MODEL_TRAINING_MODE_MANUAL`.
+        :param str model_type: Indicates the type of NLU model.
+               * MODEL_TYPE_STANDARD: Use standard NLU model.
+               * MODEL_TYPE_ADVANCED: Use advanced NLU model.
+               Possible values are `MODEL_TYPE_STANDARD` and `MODEL_TYPE_ADVANCED`.
+        """
         if classification_threshold is not None:
             pulumi.set(__self__, "classification_threshold", classification_threshold)
         if model_training_mode is not None:
@@ -1914,16 +1922,32 @@ class CxVersionNluSetting(dict):
     @property
     @pulumi.getter(name="classificationThreshold")
     def classification_threshold(self) -> Optional[float]:
+        """
+        To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold. If the returned score value is less than the threshold value, then a no-match event will be triggered.
+        The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the default of 0.3 is used.
+        """
         return pulumi.get(self, "classification_threshold")
 
     @property
     @pulumi.getter(name="modelTrainingMode")
     def model_training_mode(self) -> Optional[str]:
+        """
+        Indicates NLU model training mode.
+        * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
+        * MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
+        Possible values are `MODEL_TRAINING_MODE_AUTOMATIC` and `MODEL_TRAINING_MODE_MANUAL`.
+        """
         return pulumi.get(self, "model_training_mode")
 
     @property
     @pulumi.getter(name="modelType")
     def model_type(self) -> Optional[str]:
+        """
+        Indicates the type of NLU model.
+        * MODEL_TYPE_STANDARD: Use standard NLU model.
+        * MODEL_TYPE_ADVANCED: Use advanced NLU model.
+        Possible values are `MODEL_TYPE_STANDARD` and `MODEL_TYPE_ADVANCED`.
+        """
         return pulumi.get(self, "model_type")
 
 
@@ -2260,6 +2284,8 @@ class IntentFollowupIntentInfo(dict):
                  followup_intent_name: Optional[str] = None,
                  parent_followup_intent_name: Optional[str] = None):
         """
+        :param str followup_intent_name: The unique identifier of the followup intent.
+               Format: projects/<Project ID>/agent/intents/<Intent ID>.
         :param str parent_followup_intent_name: The unique identifier of the parent intent in the chain of followup intents.
                Format: projects/<Project ID>/agent/intents/<Intent ID>.
         """
@@ -2271,6 +2297,10 @@ class IntentFollowupIntentInfo(dict):
     @property
     @pulumi.getter(name="followupIntentName")
     def followup_intent_name(self) -> Optional[str]:
+        """
+        The unique identifier of the followup intent.
+        Format: projects/<Project ID>/agent/intents/<Intent ID>.
+        """
         return pulumi.get(self, "followup_intent_name")
 
     @property
