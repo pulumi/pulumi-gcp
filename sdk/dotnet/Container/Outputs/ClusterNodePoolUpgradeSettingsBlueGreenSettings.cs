@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class ClusterNodePoolUpgradeSettingsBlueGreenSettings
     {
+        /// <summary>
+        /// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        /// </summary>
         public readonly string? NodePoolSoakDuration;
         public readonly Outputs.ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy StandardRolloutPolicy;
 

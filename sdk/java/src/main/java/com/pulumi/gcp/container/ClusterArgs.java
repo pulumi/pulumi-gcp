@@ -15,6 +15,7 @@ import com.pulumi.gcp.container.inputs.ClusterCostManagementConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterDatabaseEncryptionArgs;
 import com.pulumi.gcp.container.inputs.ClusterDefaultSnatStatusArgs;
 import com.pulumi.gcp.container.inputs.ClusterDnsConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterGatewayApiConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterIdentityServiceConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterIpAllocationPolicyArgs;
 import com.pulumi.gcp.container.inputs.ClusterLoggingConfigArgs;
@@ -445,6 +446,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> enableTpu() {
         return Optional.ofNullable(this.enableTpu);
+    }
+
+    /**
+     * Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
+     * 
+     */
+    @Import(name="gatewayApiConfig")
+    private @Nullable Output<ClusterGatewayApiConfigArgs> gatewayApiConfig;
+
+    /**
+     * @return Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterGatewayApiConfigArgs>> gatewayApiConfig() {
+        return Optional.ofNullable(this.gatewayApiConfig);
     }
 
     /**
@@ -1209,6 +1225,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.enableLegacyAbac = $.enableLegacyAbac;
         this.enableShieldedNodes = $.enableShieldedNodes;
         this.enableTpu = $.enableTpu;
+        this.gatewayApiConfig = $.gatewayApiConfig;
         this.identityServiceConfig = $.identityServiceConfig;
         this.initialNodeCount = $.initialNodeCount;
         this.ipAllocationPolicy = $.ipAllocationPolicy;
@@ -1792,6 +1809,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder enableTpu(Boolean enableTpu) {
             return enableTpu(Output.of(enableTpu));
+        }
+
+        /**
+         * @param gatewayApiConfig Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatewayApiConfig(@Nullable Output<ClusterGatewayApiConfigArgs> gatewayApiConfig) {
+            $.gatewayApiConfig = gatewayApiConfig;
+            return this;
+        }
+
+        /**
+         * @param gatewayApiConfig Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatewayApiConfig(ClusterGatewayApiConfigArgs gatewayApiConfig) {
+            return gatewayApiConfig(Output.of(gatewayApiConfig));
         }
 
         /**

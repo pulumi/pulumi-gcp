@@ -19,6 +19,11 @@ type InstanceFileShares struct {
 	// Nfs Export Options. There is a limit of 10 export options per file share.
 	// Structure is documented below.
 	NfsExportOptions []InstanceFileSharesNfsExportOption `pulumi:"nfsExportOptions"`
+	// -
+	// The resource name of the backup, in the format
+	// projects/{projectId}/locations/{locationId}/backups/{backupId},
+	// that this file share has been restored from.
+	SourceBackup *string `pulumi:"sourceBackup"`
 }
 
 // InstanceFileSharesInput is an input type that accepts InstanceFileSharesArgs and InstanceFileSharesOutput values.
@@ -41,6 +46,11 @@ type InstanceFileSharesArgs struct {
 	// Nfs Export Options. There is a limit of 10 export options per file share.
 	// Structure is documented below.
 	NfsExportOptions InstanceFileSharesNfsExportOptionArrayInput `pulumi:"nfsExportOptions"`
+	// -
+	// The resource name of the backup, in the format
+	// projects/{projectId}/locations/{locationId}/backups/{backupId},
+	// that this file share has been restored from.
+	SourceBackup pulumi.StringPtrInput `pulumi:"sourceBackup"`
 }
 
 func (InstanceFileSharesArgs) ElementType() reflect.Type {
@@ -137,6 +147,14 @@ func (o InstanceFileSharesOutput) NfsExportOptions() InstanceFileSharesNfsExport
 	return o.ApplyT(func(v InstanceFileShares) []InstanceFileSharesNfsExportOption { return v.NfsExportOptions }).(InstanceFileSharesNfsExportOptionArrayOutput)
 }
 
+// -
+// The resource name of the backup, in the format
+// projects/{projectId}/locations/{locationId}/backups/{backupId},
+// that this file share has been restored from.
+func (o InstanceFileSharesOutput) SourceBackup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFileShares) *string { return v.SourceBackup }).(pulumi.StringPtrOutput)
+}
+
 type InstanceFileSharesPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceFileSharesPtrOutput) ElementType() reflect.Type {
@@ -191,6 +209,19 @@ func (o InstanceFileSharesPtrOutput) NfsExportOptions() InstanceFileSharesNfsExp
 		}
 		return v.NfsExportOptions
 	}).(InstanceFileSharesNfsExportOptionArrayOutput)
+}
+
+// -
+// The resource name of the backup, in the format
+// projects/{projectId}/locations/{locationId}/backups/{backupId},
+// that this file share has been restored from.
+func (o InstanceFileSharesPtrOutput) SourceBackup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceFileShares) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceBackup
+	}).(pulumi.StringPtrOutput)
 }
 
 type InstanceFileSharesNfsExportOption struct {

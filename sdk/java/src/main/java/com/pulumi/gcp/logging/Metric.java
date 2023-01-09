@@ -164,6 +164,44 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Logging Metric Logging Bucket
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.logging.ProjectBucketConfig;
+ * import com.pulumi.gcp.logging.ProjectBucketConfigArgs;
+ * import com.pulumi.gcp.logging.Metric;
+ * import com.pulumi.gcp.logging.MetricArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var loggingMetricProjectBucketConfig = new ProjectBucketConfig(&#34;loggingMetricProjectBucketConfig&#34;, ProjectBucketConfigArgs.builder()        
+ *             .location(&#34;global&#34;)
+ *             .project(&#34;my-project-name&#34;)
+ *             .bucketId(&#34;_Default&#34;)
+ *             .build());
+ * 
+ *         var loggingMetricMetric = new Metric(&#34;loggingMetricMetric&#34;, MetricArgs.builder()        
+ *             .filter(&#34;resource.type=gae_app AND severity&gt;=ERROR&#34;)
+ *             .bucketName(loggingMetricProjectBucketConfig.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -180,6 +218,22 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:logging/metric:Metric")
 public class Metric extends com.pulumi.resources.CustomResource {
+    /**
+     * The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
+     * are supported. The bucket has to be in the same project as the metric.
+     * 
+     */
+    @Export(name="bucketName", type=String.class, parameters={})
+    private Output</* @Nullable */ String> bucketName;
+
+    /**
+     * @return The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
+     * are supported. The bucket has to be in the same project as the metric.
+     * 
+     */
+    public Output<Optional<String>> bucketName() {
+        return Codegen.optional(this.bucketName);
+    }
     /**
      * The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
      * describes the bucket boundaries used to create a histogram of the extracted values.
@@ -199,16 +253,14 @@ public class Metric extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.bucketOptions);
     }
     /**
-     * A description of this metric, which is used in documentation. The maximum length of the
-     * description is 8000 characters.
+     * A human-readable description for the label.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return A description of this metric, which is used in documentation. The maximum length of the
-     * description is 8000 characters.
+     * @return A human-readable description for the label.
      * 
      */
     public Output<Optional<String>> description() {
@@ -251,7 +303,10 @@ public class Metric extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labelExtractors);
     }
     /**
-     * The metric descriptor associated with the logs-based metric.
+     * The optional metric descriptor associated with the logs-based metric.
+     * If unspecified, it uses a default metric descriptor with a DELTA metric kind,
+     * INT64 value type, with no labels and a unit of &#34;1&#34;. Such a metric counts the
+     * number of log entries matching the filter expression.
      * Structure is documented below.
      * 
      */
@@ -259,7 +314,10 @@ public class Metric extends com.pulumi.resources.CustomResource {
     private Output<MetricMetricDescriptor> metricDescriptor;
 
     /**
-     * @return The metric descriptor associated with the logs-based metric.
+     * @return The optional metric descriptor associated with the logs-based metric.
+     * If unspecified, it uses a default metric descriptor with a DELTA metric kind,
+     * INT64 value type, with no labels and a unit of &#34;1&#34;. Such a metric counts the
+     * number of log entries matching the filter expression.
      * Structure is documented below.
      * 
      */

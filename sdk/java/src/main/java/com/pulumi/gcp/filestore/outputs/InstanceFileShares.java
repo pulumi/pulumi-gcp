@@ -9,6 +9,7 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -30,6 +31,14 @@ public final class InstanceFileShares {
      * 
      */
     private @Nullable List<InstanceFileSharesNfsExportOption> nfsExportOptions;
+    /**
+     * @return -
+     * The resource name of the backup, in the format
+     * projects/{projectId}/locations/{locationId}/backups/{backupId},
+     * that this file share has been restored from.
+     * 
+     */
+    private @Nullable String sourceBackup;
 
     private InstanceFileShares() {}
     /**
@@ -55,6 +64,16 @@ public final class InstanceFileShares {
     public List<InstanceFileSharesNfsExportOption> nfsExportOptions() {
         return this.nfsExportOptions == null ? List.of() : this.nfsExportOptions;
     }
+    /**
+     * @return -
+     * The resource name of the backup, in the format
+     * projects/{projectId}/locations/{locationId}/backups/{backupId},
+     * that this file share has been restored from.
+     * 
+     */
+    public Optional<String> sourceBackup() {
+        return Optional.ofNullable(this.sourceBackup);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -68,12 +87,14 @@ public final class InstanceFileShares {
         private Integer capacityGb;
         private String name;
         private @Nullable List<InstanceFileSharesNfsExportOption> nfsExportOptions;
+        private @Nullable String sourceBackup;
         public Builder() {}
         public Builder(InstanceFileShares defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.capacityGb = defaults.capacityGb;
     	      this.name = defaults.name;
     	      this.nfsExportOptions = defaults.nfsExportOptions;
+    	      this.sourceBackup = defaults.sourceBackup;
         }
 
         @CustomType.Setter
@@ -94,11 +115,17 @@ public final class InstanceFileShares {
         public Builder nfsExportOptions(InstanceFileSharesNfsExportOption... nfsExportOptions) {
             return nfsExportOptions(List.of(nfsExportOptions));
         }
+        @CustomType.Setter
+        public Builder sourceBackup(@Nullable String sourceBackup) {
+            this.sourceBackup = sourceBackup;
+            return this;
+        }
         public InstanceFileShares build() {
             final var o = new InstanceFileShares();
             o.capacityGb = capacityGb;
             o.name = name;
             o.nfsExportOptions = nfsExportOptions;
+            o.sourceBackup = sourceBackup;
             return o;
         }
     }

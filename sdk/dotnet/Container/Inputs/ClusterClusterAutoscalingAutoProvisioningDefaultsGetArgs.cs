@@ -81,6 +81,12 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("shieldedInstanceConfig")]
         public Input<Inputs.ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigGetArgs>? ShieldedInstanceConfig { get; set; }
 
+        /// <summary>
+        /// Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+        /// </summary>
+        [Input("upgradeSettings")]
+        public Input<Inputs.ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsGetArgs>? UpgradeSettings { get; set; }
+
         public ClusterClusterAutoscalingAutoProvisioningDefaultsGetArgs()
         {
         }

@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultManagement;
 import com.pulumi.gcp.container.outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig;
+import com.pulumi.gcp.container.outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -22,6 +23,7 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefault {
     private List<String> oauthScopes;
     private String serviceAccount;
     private List<GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig> shieldedInstanceConfigs;
+    private List<GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting> upgradeSettings;
 
     private GetClusterClusterAutoscalingAutoProvisioningDefault() {}
     public String bootDiskKmsKey() {
@@ -51,6 +53,9 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefault {
     public List<GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig> shieldedInstanceConfigs() {
         return this.shieldedInstanceConfigs;
     }
+    public List<GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting> upgradeSettings() {
+        return this.upgradeSettings;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -70,6 +75,7 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefault {
         private List<String> oauthScopes;
         private String serviceAccount;
         private List<GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig> shieldedInstanceConfigs;
+        private List<GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting> upgradeSettings;
         public Builder() {}
         public Builder(GetClusterClusterAutoscalingAutoProvisioningDefault defaults) {
     	      Objects.requireNonNull(defaults);
@@ -82,6 +88,7 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefault {
     	      this.oauthScopes = defaults.oauthScopes;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.shieldedInstanceConfigs = defaults.shieldedInstanceConfigs;
+    	      this.upgradeSettings = defaults.upgradeSettings;
         }
 
         @CustomType.Setter
@@ -138,6 +145,14 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefault {
         public Builder shieldedInstanceConfigs(GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig... shieldedInstanceConfigs) {
             return shieldedInstanceConfigs(List.of(shieldedInstanceConfigs));
         }
+        @CustomType.Setter
+        public Builder upgradeSettings(List<GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting> upgradeSettings) {
+            this.upgradeSettings = Objects.requireNonNull(upgradeSettings);
+            return this;
+        }
+        public Builder upgradeSettings(GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting... upgradeSettings) {
+            return upgradeSettings(List.of(upgradeSettings));
+        }
         public GetClusterClusterAutoscalingAutoProvisioningDefault build() {
             final var o = new GetClusterClusterAutoscalingAutoProvisioningDefault();
             o.bootDiskKmsKey = bootDiskKmsKey;
@@ -149,6 +164,7 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefault {
             o.oauthScopes = oauthScopes;
             o.serviceAccount = serviceAccount;
             o.shieldedInstanceConfigs = shieldedInstanceConfigs;
+            o.upgradeSettings = upgradeSettings;
             return o;
         }
     }

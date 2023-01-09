@@ -190,9 +190,17 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.placementPolicy);
     }
 
+    /**
+     * Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+     * 
+     */
     @Import(name="upgradeSettings")
     private @Nullable Output<ClusterNodePoolUpgradeSettingsArgs> upgradeSettings;
 
+    /**
+     * @return Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+     * 
+     */
     public Optional<Output<ClusterNodePoolUpgradeSettingsArgs>> upgradeSettings() {
         return Optional.ofNullable(this.upgradeSettings);
     }
@@ -480,11 +488,23 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
             return placementPolicy(Output.of(placementPolicy));
         }
 
+        /**
+         * @param upgradeSettings Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder upgradeSettings(@Nullable Output<ClusterNodePoolUpgradeSettingsArgs> upgradeSettings) {
             $.upgradeSettings = upgradeSettings;
             return this;
         }
 
+        /**
+         * @param upgradeSettings Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder upgradeSettings(ClusterNodePoolUpgradeSettingsArgs upgradeSettings) {
             return upgradeSettings(Output.of(upgradeSettings));
         }

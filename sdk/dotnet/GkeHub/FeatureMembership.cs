@@ -102,7 +102,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
-    /// ### Serivce Mesh
+    /// ### Service Mesh
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

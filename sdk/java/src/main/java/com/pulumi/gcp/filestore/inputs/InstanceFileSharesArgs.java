@@ -67,12 +67,34 @@ public final class InstanceFileSharesArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.nfsExportOptions);
     }
 
+    /**
+     * - 
+     * The resource name of the backup, in the format
+     * projects/{projectId}/locations/{locationId}/backups/{backupId},
+     * that this file share has been restored from.
+     * 
+     */
+    @Import(name="sourceBackup")
+    private @Nullable Output<String> sourceBackup;
+
+    /**
+     * @return -
+     * The resource name of the backup, in the format
+     * projects/{projectId}/locations/{locationId}/backups/{backupId},
+     * that this file share has been restored from.
+     * 
+     */
+    public Optional<Output<String>> sourceBackup() {
+        return Optional.ofNullable(this.sourceBackup);
+    }
+
     private InstanceFileSharesArgs() {}
 
     private InstanceFileSharesArgs(InstanceFileSharesArgs $) {
         this.capacityGb = $.capacityGb;
         this.name = $.name;
         this.nfsExportOptions = $.nfsExportOptions;
+        this.sourceBackup = $.sourceBackup;
     }
 
     public static Builder builder() {
@@ -169,6 +191,33 @@ public final class InstanceFileSharesArgs extends com.pulumi.resources.ResourceA
          */
         public Builder nfsExportOptions(InstanceFileSharesNfsExportOptionArgs... nfsExportOptions) {
             return nfsExportOptions(List.of(nfsExportOptions));
+        }
+
+        /**
+         * @param sourceBackup -
+         * The resource name of the backup, in the format
+         * projects/{projectId}/locations/{locationId}/backups/{backupId},
+         * that this file share has been restored from.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceBackup(@Nullable Output<String> sourceBackup) {
+            $.sourceBackup = sourceBackup;
+            return this;
+        }
+
+        /**
+         * @param sourceBackup -
+         * The resource name of the backup, in the format
+         * projects/{projectId}/locations/{locationId}/backups/{backupId},
+         * that this file share has been restored from.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceBackup(String sourceBackup) {
+            return sourceBackup(Output.of(sourceBackup));
         }
 
         public InstanceFileSharesArgs build() {

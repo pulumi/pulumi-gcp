@@ -350,6 +350,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// Alloydb
+			"google_alloydb_backup":   {Tok: gcpResource(gcpAlloydb, "Backup")},
 			"google_alloydb_cluster":  {Tok: gcpResource(gcpAlloydb, "Cluster")},
 			"google_alloydb_instance": {Tok: gcpResource(gcpAlloydb, "Instance")},
 
@@ -1420,6 +1421,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// Filestore resources
+			"google_filestore_backup":   {Tok: gcpResource(gcpFilestore, "Backup")},
 			"google_filestore_instance": {Tok: gcpResource(gcpFilestore, "Instance")},
 			"google_filestore_snapshot": {Tok: gcpResource(gcpFilestore, "Snapshot")},
 

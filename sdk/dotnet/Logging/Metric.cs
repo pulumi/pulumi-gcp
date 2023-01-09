@@ -129,6 +129,30 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// });
     /// ```
+    /// ### Logging Metric Logging Bucket
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var loggingMetricProjectBucketConfig = new Gcp.Logging.ProjectBucketConfig("loggingMetricProjectBucketConfig", new()
+    ///     {
+    ///         Location = "global",
+    ///         Project = "my-project-name",
+    ///         BucketId = "_Default",
+    ///     });
+    /// 
+    ///     var loggingMetricMetric = new Gcp.Logging.Metric("loggingMetricMetric", new()
+    ///     {
+    ///         Filter = "resource.type=gae_app AND severity&gt;=ERROR",
+    ///         BucketName = loggingMetricProjectBucketConfig.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -146,6 +170,13 @@ namespace Pulumi.Gcp.Logging
     public partial class Metric : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
+        /// are supported. The bucket has to be in the same project as the metric.
+        /// </summary>
+        [Output("bucketName")]
+        public Output<string?> BucketName { get; private set; } = null!;
+
+        /// <summary>
         /// The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
         /// describes the bucket boundaries used to create a histogram of the extracted values.
         /// Structure is documented below.
@@ -154,8 +185,7 @@ namespace Pulumi.Gcp.Logging
         public Output<Outputs.MetricBucketOptions?> BucketOptions { get; private set; } = null!;
 
         /// <summary>
-        /// A description of this metric, which is used in documentation. The maximum length of the
-        /// description is 8000 characters.
+        /// A human-readable description for the label.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -177,7 +207,10 @@ namespace Pulumi.Gcp.Logging
         public Output<ImmutableDictionary<string, string>?> LabelExtractors { get; private set; } = null!;
 
         /// <summary>
-        /// The metric descriptor associated with the logs-based metric.
+        /// The optional metric descriptor associated with the logs-based metric.
+        /// If unspecified, it uses a default metric descriptor with a DELTA metric kind,
+        /// INT64 value type, with no labels and a unit of "1". Such a metric counts the
+        /// number of log entries matching the filter expression.
         /// Structure is documented below.
         /// </summary>
         [Output("metricDescriptor")]
@@ -259,6 +292,13 @@ namespace Pulumi.Gcp.Logging
     public sealed class MetricArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
+        /// are supported. The bucket has to be in the same project as the metric.
+        /// </summary>
+        [Input("bucketName")]
+        public Input<string>? BucketName { get; set; }
+
+        /// <summary>
         /// The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
         /// describes the bucket boundaries used to create a histogram of the extracted values.
         /// Structure is documented below.
@@ -267,8 +307,7 @@ namespace Pulumi.Gcp.Logging
         public Input<Inputs.MetricBucketOptionsArgs>? BucketOptions { get; set; }
 
         /// <summary>
-        /// A description of this metric, which is used in documentation. The maximum length of the
-        /// description is 8000 characters.
+        /// A human-readable description for the label.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -296,11 +335,14 @@ namespace Pulumi.Gcp.Logging
         }
 
         /// <summary>
-        /// The metric descriptor associated with the logs-based metric.
+        /// The optional metric descriptor associated with the logs-based metric.
+        /// If unspecified, it uses a default metric descriptor with a DELTA metric kind,
+        /// INT64 value type, with no labels and a unit of "1". Such a metric counts the
+        /// number of log entries matching the filter expression.
         /// Structure is documented below.
         /// </summary>
-        [Input("metricDescriptor", required: true)]
-        public Input<Inputs.MetricMetricDescriptorArgs> MetricDescriptor { get; set; } = null!;
+        [Input("metricDescriptor")]
+        public Input<Inputs.MetricMetricDescriptorArgs>? MetricDescriptor { get; set; }
 
         /// <summary>
         /// The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
@@ -340,6 +382,13 @@ namespace Pulumi.Gcp.Logging
     public sealed class MetricState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
+        /// are supported. The bucket has to be in the same project as the metric.
+        /// </summary>
+        [Input("bucketName")]
+        public Input<string>? BucketName { get; set; }
+
+        /// <summary>
         /// The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
         /// describes the bucket boundaries used to create a histogram of the extracted values.
         /// Structure is documented below.
@@ -348,8 +397,7 @@ namespace Pulumi.Gcp.Logging
         public Input<Inputs.MetricBucketOptionsGetArgs>? BucketOptions { get; set; }
 
         /// <summary>
-        /// A description of this metric, which is used in documentation. The maximum length of the
-        /// description is 8000 characters.
+        /// A human-readable description for the label.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -377,7 +425,10 @@ namespace Pulumi.Gcp.Logging
         }
 
         /// <summary>
-        /// The metric descriptor associated with the logs-based metric.
+        /// The optional metric descriptor associated with the logs-based metric.
+        /// If unspecified, it uses a default metric descriptor with a DELTA metric kind,
+        /// INT64 value type, with no labels and a unit of "1". Such a metric counts the
+        /// number of log entries matching the filter expression.
         /// Structure is documented below.
         /// </summary>
         [Input("metricDescriptor")]

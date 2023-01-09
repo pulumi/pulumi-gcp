@@ -84,6 +84,12 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly columnFamilies!: pulumi.Output<outputs.bigtable.TableColumnFamily[] | undefined>;
     /**
+     * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
+     * families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
+     * protection will be set to UNPROTECTED as it is the API default value.
+     */
+    public readonly deletionProtection!: pulumi.Output<string>;
+    /**
      * The name of the Bigtable instance.
      */
     public readonly instanceName!: pulumi.Output<string>;
@@ -117,6 +123,7 @@ export class Table extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as TableState | undefined;
             resourceInputs["columnFamilies"] = state ? state.columnFamilies : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["instanceName"] = state ? state.instanceName : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -127,6 +134,7 @@ export class Table extends pulumi.CustomResource {
                 throw new Error("Missing required property 'instanceName'");
             }
             resourceInputs["columnFamilies"] = args ? args.columnFamilies : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["instanceName"] = args ? args.instanceName : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -145,6 +153,12 @@ export interface TableState {
      * A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
      */
     columnFamilies?: pulumi.Input<pulumi.Input<inputs.bigtable.TableColumnFamily>[]>;
+    /**
+     * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
+     * families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
+     * protection will be set to UNPROTECTED as it is the API default value.
+     */
+    deletionProtection?: pulumi.Input<string>;
     /**
      * The name of the Bigtable instance.
      */
@@ -174,6 +188,12 @@ export interface TableArgs {
      * A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
      */
     columnFamilies?: pulumi.Input<pulumi.Input<inputs.bigtable.TableColumnFamily>[]>;
+    /**
+     * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
+     * families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
+     * protection will be set to UNPROTECTED as it is the API default value.
+     */
+    deletionProtection?: pulumi.Input<string>;
     /**
      * The name of the Bigtable instance.
      */

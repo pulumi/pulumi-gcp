@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { BackupArgs, BackupState } from "./backup";
+export type Backup = import("./backup").Backup;
+export const Backup: typeof import("./backup").Backup = null as any;
+utilities.lazyLoad(exports, ["Backup"], () => require("./backup"));
+
 export { InstanceArgs, InstanceState } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
@@ -20,6 +25,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:filestore/backup:Backup":
+                return new Backup(name, <any>undefined, { urn })
             case "gcp:filestore/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
             case "gcp:filestore/snapshot:Snapshot":
@@ -29,5 +36,6 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "filestore/backup", _module)
 pulumi.runtime.registerResourceModule("gcp", "filestore/instance", _module)
 pulumi.runtime.registerResourceModule("gcp", "filestore/snapshot", _module)

@@ -12,10 +12,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodePoolUpgradeSettingsBlueGreenSettings {
+    /**
+     * @return Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
     private @Nullable String nodePoolSoakDuration;
     private ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy standardRolloutPolicy;
 
     private ClusterNodePoolUpgradeSettingsBlueGreenSettings() {}
+    /**
+     * @return Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
     public Optional<String> nodePoolSoakDuration() {
         return Optional.ofNullable(this.nodePoolSoakDuration);
     }

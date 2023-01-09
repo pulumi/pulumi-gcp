@@ -16,16 +16,14 @@ public final class MetricMetricDescriptorLabelArgs extends com.pulumi.resources.
     public static final MetricMetricDescriptorLabelArgs Empty = new MetricMetricDescriptorLabelArgs();
 
     /**
-     * A description of this metric, which is used in documentation. The maximum length of the
-     * description is 8000 characters.
+     * A human-readable description for the label.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return A description of this metric, which is used in documentation. The maximum length of the
-     * description is 8000 characters.
+     * @return A human-readable description for the label.
      * 
      */
     public Optional<Output<String>> description() {
@@ -93,8 +91,7 @@ public final class MetricMetricDescriptorLabelArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param description A description of this metric, which is used in documentation. The maximum length of the
-         * description is 8000 characters.
+         * @param description A human-readable description for the label.
          * 
          * @return builder
          * 
@@ -105,8 +102,7 @@ public final class MetricMetricDescriptorLabelArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param description A description of this metric, which is used in documentation. The maximum length of the
-         * description is 8000 characters.
+         * @param description A human-readable description for the label.
          * 
          * @return builder
          * 

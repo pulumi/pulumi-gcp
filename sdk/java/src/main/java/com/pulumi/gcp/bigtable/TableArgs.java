@@ -33,6 +33,25 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
+     * families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
+     * protection will be set to UNPROTECTED as it is the API default value.
+     * 
+     */
+    @Import(name="deletionProtection")
+    private @Nullable Output<String> deletionProtection;
+
+    /**
+     * @return A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
+     * families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
+     * protection will be set to UNPROTECTED as it is the API default value.
+     * 
+     */
+    public Optional<Output<String>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
+    }
+
+    /**
      * The name of the Bigtable instance.
      * 
      */
@@ -102,6 +121,7 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
 
     private TableArgs(TableArgs $) {
         this.columnFamilies = $.columnFamilies;
+        this.deletionProtection = $.deletionProtection;
         this.instanceName = $.instanceName;
         this.name = $.name;
         this.project = $.project;
@@ -155,6 +175,31 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder columnFamilies(TableColumnFamilyArgs... columnFamilies) {
             return columnFamilies(List.of(columnFamilies));
+        }
+
+        /**
+         * @param deletionProtection A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
+         * families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
+         * protection will be set to UNPROTECTED as it is the API default value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtection(@Nullable Output<String> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        /**
+         * @param deletionProtection A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
+         * families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
+         * protection will be set to UNPROTECTED as it is the API default value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtection(String deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
         }
 
         /**

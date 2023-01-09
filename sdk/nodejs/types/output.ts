@@ -21046,7 +21046,7 @@ export namespace container {
          */
         gcpFilestoreCsiDriverConfig: outputs.container.ClusterAddonsConfigGcpFilestoreCsiDriverConfig;
         /**
-         * ).
+         * .
          * The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
          */
         gkeBackupAgentConfig: outputs.container.ClusterAddonsConfigGkeBackupAgentConfig;
@@ -21279,6 +21279,10 @@ export namespace container {
          * Shielded Instance options. Structure is documented below.
          */
         shieldedInstanceConfig?: outputs.container.ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig;
+        /**
+         * Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+         */
+        upgradeSettings: outputs.container.ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings;
     }
 
     export interface ClusterClusterAutoscalingAutoProvisioningDefaultsManagement {
@@ -21310,6 +21314,45 @@ export namespace container {
          * Defines if the instance has Secure Boot enabled.
          */
         enableSecureBoot?: boolean;
+    }
+
+    export interface ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings {
+        /**
+         * Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+         */
+        blueGreenSettings: outputs.container.ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings;
+        /**
+         * The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+         */
+        maxSurge?: number;
+        /**
+         * The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+         */
+        maxUnavailable?: number;
+        /**
+         * Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+         */
+        strategy: string;
+    }
+
+    export interface ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings {
+        /**
+         * Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+         */
+        nodePoolSoakDuration: string;
+        standardRolloutPolicy: outputs.container.ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy;
+    }
+
+    export interface ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy {
+        /**
+         * Number of blue nodes to drain in a batch. Only one of the batchPercentage or batchNodeCount can be specified.
+         */
+        batchNodeCount: number;
+        batchPercentage: number;
+        /**
+         * Soak time after each batch gets drained. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".`.
+         */
+        batchSoakDuration?: string;
     }
 
     export interface ClusterClusterAutoscalingResourceLimit {
@@ -21384,6 +21427,18 @@ export namespace container {
          * The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
          */
         clusterDnsScope?: string;
+    }
+
+    export interface ClusterGatewayApiConfig {
+        /**
+         * The selected release channel.
+         * Accepted values are:
+         * * UNSPECIFIED: Not set.
+         * * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
+         * * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
+         * * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+         */
+        channel: string;
     }
 
     export interface ClusterIdentityServiceConfig {
@@ -21897,6 +21952,9 @@ export namespace container {
          */
         nodeLocations: string[];
         placementPolicy?: outputs.container.ClusterNodePoolPlacementPolicy;
+        /**
+         * Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+         */
         upgradeSettings: outputs.container.ClusterNodePoolUpgradeSettings;
         version: string;
     }
@@ -22286,20 +22344,41 @@ export namespace container {
     }
 
     export interface ClusterNodePoolUpgradeSettings {
+        /**
+         * Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+         */
         blueGreenSettings: outputs.container.ClusterNodePoolUpgradeSettingsBlueGreenSettings;
+        /**
+         * The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+         */
         maxSurge: number;
+        /**
+         * The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+         */
         maxUnavailable: number;
+        /**
+         * Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+         */
         strategy?: string;
     }
 
     export interface ClusterNodePoolUpgradeSettingsBlueGreenSettings {
+        /**
+         * Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+         */
         nodePoolSoakDuration: string;
         standardRolloutPolicy: outputs.container.ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy;
     }
 
     export interface ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy {
+        /**
+         * Number of blue nodes to drain in a batch. Only one of the batchPercentage or batchNodeCount can be specified.
+         */
         batchNodeCount: number;
         batchPercentage: number;
+        /**
+         * Soak time after each batch gets drained. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".`.
+         */
         batchSoakDuration: string;
     }
 
@@ -22553,6 +22632,7 @@ export namespace container {
         oauthScopes: string[];
         serviceAccount: string;
         shieldedInstanceConfigs: outputs.container.GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig[];
+        upgradeSettings: outputs.container.GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting[];
     }
 
     export interface GetClusterClusterAutoscalingAutoProvisioningDefaultManagement {
@@ -22569,6 +22649,24 @@ export namespace container {
     export interface GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig {
         enableIntegrityMonitoring: boolean;
         enableSecureBoot: boolean;
+    }
+
+    export interface GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting {
+        blueGreenSettings: outputs.container.GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting[];
+        maxSurge: number;
+        maxUnavailable: number;
+        strategy: string;
+    }
+
+    export interface GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting {
+        nodePoolSoakDuration: string;
+        standardRolloutPolicies: outputs.container.GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy[];
+    }
+
+    export interface GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy {
+        batchNodeCount: number;
+        batchPercentage: number;
+        batchSoakDuration: string;
     }
 
     export interface GetClusterClusterAutoscalingResourceLimit {
@@ -22602,6 +22700,10 @@ export namespace container {
         clusterDns: string;
         clusterDnsDomain: string;
         clusterDnsScope: string;
+    }
+
+    export interface GetClusterGatewayApiConfig {
+        channel: string;
     }
 
     export interface GetClusterIdentityServiceConfig {
@@ -23439,11 +23541,11 @@ export namespace datacatalog {
         /**
          * A description for this field.
          */
-        description?: string;
+        description: string;
         /**
          * The display name for this template.
          */
-        displayName?: string;
+        displayName: string;
         /**
          * The identifier for this object. Format specified above.
          */
@@ -23451,7 +23553,7 @@ export namespace datacatalog {
         /**
          * Whether this is a required field. Defaults to false.
          */
-        isRequired?: boolean;
+        isRequired: boolean;
         /**
          * -
          * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
@@ -23462,7 +23564,7 @@ export namespace datacatalog {
          * A higher value indicates a more important field. The value can be negative.
          * Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
          */
-        order?: number;
+        order: number;
         /**
          * The type of value this tag field can contain.
          * Structure is documented below.
@@ -23482,7 +23584,7 @@ export namespace datacatalog {
          * Exactly one of `primitiveType` or `enumType` must be set
          * Possible values are `DOUBLE`, `STRING`, `BOOL`, and `TIMESTAMP`.
          */
-        primitiveType?: string;
+        primitiveType: string;
     }
 
     export interface TagTemplateFieldTypeEnumType {
@@ -28613,6 +28715,13 @@ export namespace filestore {
          * Structure is documented below.
          */
         nfsExportOptions?: outputs.filestore.InstanceFileSharesNfsExportOption[];
+        /**
+         * -
+         * The resource name of the backup, in the format
+         * projects/{projectId}/locations/{locationId}/backups/{backupId},
+         * that this file share has been restored from.
+         */
+        sourceBackup: string;
     }
 
     export interface InstanceFileSharesNfsExportOption {
@@ -30572,8 +30681,7 @@ export namespace logging {
 
     export interface MetricMetricDescriptorLabel {
         /**
-         * A description of this metric, which is used in documentation. The maximum length of the
-         * description is 8000 characters.
+         * A human-readable description for the label.
          */
         description?: string;
         /**

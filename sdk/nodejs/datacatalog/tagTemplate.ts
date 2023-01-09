@@ -108,7 +108,7 @@ export class TagTemplate extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
-     * Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.
+     * Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of fieldId will be resulting in re-creating of field. The change of primitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
      * Structure is documented below.
      */
     public readonly fields!: pulumi.Output<outputs.datacatalog.TagTemplateField[]>;
@@ -185,7 +185,7 @@ export interface TagTemplateState {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.
+     * Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of fieldId will be resulting in re-creating of field. The change of primitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
      * Structure is documented below.
      */
     fields?: pulumi.Input<pulumi.Input<inputs.datacatalog.TagTemplateField>[]>;
@@ -222,7 +222,7 @@ export interface TagTemplateArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.
+     * Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of fieldId will be resulting in re-creating of field. The change of primitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
      * Structure is documented below.
      */
     fields: pulumi.Input<pulumi.Input<inputs.datacatalog.TagTemplateField>[]>;

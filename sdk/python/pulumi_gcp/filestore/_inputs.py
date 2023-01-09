@@ -20,18 +20,25 @@ class InstanceFileSharesArgs:
     def __init__(__self__, *,
                  capacity_gb: pulumi.Input[int],
                  name: pulumi.Input[str],
-                 nfs_export_options: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFileSharesNfsExportOptionArgs']]]] = None):
+                 nfs_export_options: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFileSharesNfsExportOptionArgs']]]] = None,
+                 source_backup: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] capacity_gb: File share capacity in GiB. This must be at least 1024 GiB
                for the standard tier, or 2560 GiB for the premium tier.
         :param pulumi.Input[str] name: The name of the fileshare (16 characters or less)
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFileSharesNfsExportOptionArgs']]] nfs_export_options: Nfs Export Options. There is a limit of 10 export options per file share.
                Structure is documented below.
+        :param pulumi.Input[str] source_backup: -
+               The resource name of the backup, in the format
+               projects/{projectId}/locations/{locationId}/backups/{backupId},
+               that this file share has been restored from.
         """
         pulumi.set(__self__, "capacity_gb", capacity_gb)
         pulumi.set(__self__, "name", name)
         if nfs_export_options is not None:
             pulumi.set(__self__, "nfs_export_options", nfs_export_options)
+        if source_backup is not None:
+            pulumi.set(__self__, "source_backup", source_backup)
 
     @property
     @pulumi.getter(name="capacityGb")
@@ -70,6 +77,21 @@ class InstanceFileSharesArgs:
     @nfs_export_options.setter
     def nfs_export_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFileSharesNfsExportOptionArgs']]]]):
         pulumi.set(self, "nfs_export_options", value)
+
+    @property
+    @pulumi.getter(name="sourceBackup")
+    def source_backup(self) -> Optional[pulumi.Input[str]]:
+        """
+        -
+        The resource name of the backup, in the format
+        projects/{projectId}/locations/{locationId}/backups/{backupId},
+        that this file share has been restored from.
+        """
+        return pulumi.get(self, "source_backup")
+
+    @source_backup.setter
+    def source_backup(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_backup", value)
 
 
 @pulumi.input_type

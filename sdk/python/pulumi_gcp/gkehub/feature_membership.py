@@ -283,7 +283,7 @@ class FeatureMembership(pulumi.CustomResource):
             },
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
-        ### Serivce Mesh
+        ### Service Mesh
 
         ```python
         import pulumi
@@ -398,7 +398,7 @@ class FeatureMembership(pulumi.CustomResource):
             },
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
-        ### Serivce Mesh
+        ### Service Mesh
 
         ```python
         import pulumi

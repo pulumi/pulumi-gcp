@@ -103,6 +103,24 @@ public class Table extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.columnFamilies);
     }
     /**
+     * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
+     * families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
+     * protection will be set to UNPROTECTED as it is the API default value.
+     * 
+     */
+    @Export(name="deletionProtection", type=String.class, parameters={})
+    private Output<String> deletionProtection;
+
+    /**
+     * @return A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
+     * families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
+     * protection will be set to UNPROTECTED as it is the API default value.
+     * 
+     */
+    public Output<String> deletionProtection() {
+        return this.deletionProtection;
+    }
+    /**
      * The name of the Bigtable instance.
      * 
      */

@@ -212,6 +212,8 @@ type Cluster struct {
 	EnableTpu pulumi.BoolOutput `pulumi:"enableTpu"`
 	// The IP address of this cluster's Kubernetes master.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
+	// Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
+	GatewayApiConfig ClusterGatewayApiConfigPtrOutput `pulumi:"gatewayApiConfig"`
 	// . Structure is documented below.
 	IdentityServiceConfig ClusterIdentityServiceConfigOutput `pulumi:"identityServiceConfig"`
 	// The number of nodes to create in this
@@ -503,6 +505,8 @@ type clusterState struct {
 	EnableTpu *bool `pulumi:"enableTpu"`
 	// The IP address of this cluster's Kubernetes master.
 	Endpoint *string `pulumi:"endpoint"`
+	// Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
+	GatewayApiConfig *ClusterGatewayApiConfig `pulumi:"gatewayApiConfig"`
 	// . Structure is documented below.
 	IdentityServiceConfig *ClusterIdentityServiceConfig `pulumi:"identityServiceConfig"`
 	// The number of nodes to create in this
@@ -766,6 +770,8 @@ type ClusterState struct {
 	EnableTpu pulumi.BoolPtrInput
 	// The IP address of this cluster's Kubernetes master.
 	Endpoint pulumi.StringPtrInput
+	// Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
+	GatewayApiConfig ClusterGatewayApiConfigPtrInput
 	// . Structure is documented below.
 	IdentityServiceConfig ClusterIdentityServiceConfigPtrInput
 	// The number of nodes to create in this
@@ -1031,6 +1037,8 @@ type clusterArgs struct {
 	// Whether to enable Cloud TPU resources in this cluster.
 	// See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
 	EnableTpu *bool `pulumi:"enableTpu"`
+	// Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
+	GatewayApiConfig *ClusterGatewayApiConfig `pulumi:"gatewayApiConfig"`
 	// . Structure is documented below.
 	IdentityServiceConfig *ClusterIdentityServiceConfig `pulumi:"identityServiceConfig"`
 	// The number of nodes to create in this
@@ -1275,6 +1283,8 @@ type ClusterArgs struct {
 	// Whether to enable Cloud TPU resources in this cluster.
 	// See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
 	EnableTpu pulumi.BoolPtrInput
+	// Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
+	GatewayApiConfig ClusterGatewayApiConfigPtrInput
 	// . Structure is documented below.
 	IdentityServiceConfig ClusterIdentityServiceConfigPtrInput
 	// The number of nodes to create in this
@@ -1673,6 +1683,11 @@ func (o ClusterOutput) EnableTpu() pulumi.BoolOutput {
 // The IP address of this cluster's Kubernetes master.
 func (o ClusterOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
+func (o ClusterOutput) GatewayApiConfig() ClusterGatewayApiConfigPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterGatewayApiConfigPtrOutput { return v.GatewayApiConfig }).(ClusterGatewayApiConfigPtrOutput)
 }
 
 // . Structure is documented below.

@@ -1874,8 +1874,7 @@ func (o MetricMetricDescriptorPtrOutput) ValueType() pulumi.StringPtrOutput {
 }
 
 type MetricMetricDescriptorLabel struct {
-	// A description of this metric, which is used in documentation. The maximum length of the
-	// description is 8000 characters.
+	// A human-readable description for the label.
 	Description *string `pulumi:"description"`
 	// The label key.
 	Key string `pulumi:"key"`
@@ -1897,8 +1896,7 @@ type MetricMetricDescriptorLabelInput interface {
 }
 
 type MetricMetricDescriptorLabelArgs struct {
-	// A description of this metric, which is used in documentation. The maximum length of the
-	// description is 8000 characters.
+	// A human-readable description for the label.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The label key.
 	Key pulumi.StringInput `pulumi:"key"`
@@ -1959,8 +1957,7 @@ func (o MetricMetricDescriptorLabelOutput) ToMetricMetricDescriptorLabelOutputWi
 	return o
 }
 
-// A description of this metric, which is used in documentation. The maximum length of the
-// description is 8000 characters.
+// A human-readable description for the label.
 func (o MetricMetricDescriptorLabelOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricMetricDescriptorLabel) *string { return v.Description }).(pulumi.StringPtrOutput)
 }

@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:filestore/backup:Backup":
+		r = &Backup{}
 	case "gcp:filestore/instance:Instance":
 		r = &Instance{}
 	case "gcp:filestore/snapshot:Snapshot":
@@ -38,6 +40,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"filestore/backup",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"filestore/instance",

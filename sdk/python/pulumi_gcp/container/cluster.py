@@ -38,6 +38,7 @@ class ClusterArgs:
                  enable_legacy_abac: Optional[pulumi.Input[bool]] = None,
                  enable_shielded_nodes: Optional[pulumi.Input[bool]] = None,
                  enable_tpu: Optional[pulumi.Input[bool]] = None,
+                 gateway_api_config: Optional[pulumi.Input['ClusterGatewayApiConfigArgs']] = None,
                  identity_service_config: Optional[pulumi.Input['ClusterIdentityServiceConfigArgs']] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
                  ip_allocation_policy: Optional[pulumi.Input['ClusterIpAllocationPolicyArgs']] = None,
@@ -128,6 +129,7 @@ class ClusterArgs:
         :param pulumi.Input[bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
+        :param pulumi.Input['ClusterGatewayApiConfigArgs'] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         :param pulumi.Input['ClusterIdentityServiceConfigArgs'] identity_service_config: . Structure is documented below.
         :param pulumi.Input[int] initial_node_count: The number of nodes to create in this
                cluster's default node pool. In regional or multi-zonal clusters, this is the
@@ -304,6 +306,8 @@ class ClusterArgs:
             pulumi.set(__self__, "enable_shielded_nodes", enable_shielded_nodes)
         if enable_tpu is not None:
             pulumi.set(__self__, "enable_tpu", enable_tpu)
+        if gateway_api_config is not None:
+            pulumi.set(__self__, "gateway_api_config", gateway_api_config)
         if identity_service_config is not None:
             pulumi.set(__self__, "identity_service_config", identity_service_config)
         if initial_node_count is not None:
@@ -671,6 +675,18 @@ class ClusterArgs:
     @enable_tpu.setter
     def enable_tpu(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_tpu", value)
+
+    @property
+    @pulumi.getter(name="gatewayApiConfig")
+    def gateway_api_config(self) -> Optional[pulumi.Input['ClusterGatewayApiConfigArgs']]:
+        """
+        Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
+        """
+        return pulumi.get(self, "gateway_api_config")
+
+    @gateway_api_config.setter
+    def gateway_api_config(self, value: Optional[pulumi.Input['ClusterGatewayApiConfigArgs']]):
+        pulumi.set(self, "gateway_api_config", value)
 
     @property
     @pulumi.getter(name="identityServiceConfig")
@@ -1234,6 +1250,7 @@ class _ClusterState:
                  enable_shielded_nodes: Optional[pulumi.Input[bool]] = None,
                  enable_tpu: Optional[pulumi.Input[bool]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
+                 gateway_api_config: Optional[pulumi.Input['ClusterGatewayApiConfigArgs']] = None,
                  identity_service_config: Optional[pulumi.Input['ClusterIdentityServiceConfigArgs']] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
                  ip_allocation_policy: Optional[pulumi.Input['ClusterIpAllocationPolicyArgs']] = None,
@@ -1331,6 +1348,7 @@ class _ClusterState:
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         :param pulumi.Input[str] endpoint: The IP address of this cluster's Kubernetes master.
+        :param pulumi.Input['ClusterGatewayApiConfigArgs'] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         :param pulumi.Input['ClusterIdentityServiceConfigArgs'] identity_service_config: . Structure is documented below.
         :param pulumi.Input[int] initial_node_count: The number of nodes to create in this
                cluster's default node pool. In regional or multi-zonal clusters, this is the
@@ -1521,6 +1539,8 @@ class _ClusterState:
             pulumi.set(__self__, "enable_tpu", enable_tpu)
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
+        if gateway_api_config is not None:
+            pulumi.set(__self__, "gateway_api_config", gateway_api_config)
         if identity_service_config is not None:
             pulumi.set(__self__, "identity_service_config", identity_service_config)
         if initial_node_count is not None:
@@ -1912,6 +1932,18 @@ class _ClusterState:
     @endpoint.setter
     def endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "endpoint", value)
+
+    @property
+    @pulumi.getter(name="gatewayApiConfig")
+    def gateway_api_config(self) -> Optional[pulumi.Input['ClusterGatewayApiConfigArgs']]:
+        """
+        Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
+        """
+        return pulumi.get(self, "gateway_api_config")
+
+    @gateway_api_config.setter
+    def gateway_api_config(self, value: Optional[pulumi.Input['ClusterGatewayApiConfigArgs']]):
+        pulumi.set(self, "gateway_api_config", value)
 
     @property
     @pulumi.getter(name="identityServiceConfig")
@@ -2552,6 +2584,7 @@ class Cluster(pulumi.CustomResource):
                  enable_legacy_abac: Optional[pulumi.Input[bool]] = None,
                  enable_shielded_nodes: Optional[pulumi.Input[bool]] = None,
                  enable_tpu: Optional[pulumi.Input[bool]] = None,
+                 gateway_api_config: Optional[pulumi.Input[pulumi.InputType['ClusterGatewayApiConfigArgs']]] = None,
                  identity_service_config: Optional[pulumi.Input[pulumi.InputType['ClusterIdentityServiceConfigArgs']]] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
                  ip_allocation_policy: Optional[pulumi.Input[pulumi.InputType['ClusterIpAllocationPolicyArgs']]] = None,
@@ -2713,6 +2746,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
+        :param pulumi.Input[pulumi.InputType['ClusterGatewayApiConfigArgs']] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterIdentityServiceConfigArgs']] identity_service_config: . Structure is documented below.
         :param pulumi.Input[int] initial_node_count: The number of nodes to create in this
                cluster's default node pool. In regional or multi-zonal clusters, this is the
@@ -2955,6 +2989,7 @@ class Cluster(pulumi.CustomResource):
                  enable_legacy_abac: Optional[pulumi.Input[bool]] = None,
                  enable_shielded_nodes: Optional[pulumi.Input[bool]] = None,
                  enable_tpu: Optional[pulumi.Input[bool]] = None,
+                 gateway_api_config: Optional[pulumi.Input[pulumi.InputType['ClusterGatewayApiConfigArgs']]] = None,
                  identity_service_config: Optional[pulumi.Input[pulumi.InputType['ClusterIdentityServiceConfigArgs']]] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
                  ip_allocation_policy: Optional[pulumi.Input[pulumi.InputType['ClusterIpAllocationPolicyArgs']]] = None,
@@ -3026,6 +3061,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["enable_legacy_abac"] = enable_legacy_abac
             __props__.__dict__["enable_shielded_nodes"] = enable_shielded_nodes
             __props__.__dict__["enable_tpu"] = enable_tpu
+            __props__.__dict__["gateway_api_config"] = gateway_api_config
             __props__.__dict__["identity_service_config"] = identity_service_config
             __props__.__dict__["initial_node_count"] = initial_node_count
             __props__.__dict__["ip_allocation_policy"] = ip_allocation_policy
@@ -3103,6 +3139,7 @@ class Cluster(pulumi.CustomResource):
             enable_shielded_nodes: Optional[pulumi.Input[bool]] = None,
             enable_tpu: Optional[pulumi.Input[bool]] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
+            gateway_api_config: Optional[pulumi.Input[pulumi.InputType['ClusterGatewayApiConfigArgs']]] = None,
             identity_service_config: Optional[pulumi.Input[pulumi.InputType['ClusterIdentityServiceConfigArgs']]] = None,
             initial_node_count: Optional[pulumi.Input[int]] = None,
             ip_allocation_policy: Optional[pulumi.Input[pulumi.InputType['ClusterIpAllocationPolicyArgs']]] = None,
@@ -3205,6 +3242,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         :param pulumi.Input[str] endpoint: The IP address of this cluster's Kubernetes master.
+        :param pulumi.Input[pulumi.InputType['ClusterGatewayApiConfigArgs']] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterIdentityServiceConfigArgs']] identity_service_config: . Structure is documented below.
         :param pulumi.Input[int] initial_node_count: The number of nodes to create in this
                cluster's default node pool. In regional or multi-zonal clusters, this is the
@@ -3373,6 +3411,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["enable_shielded_nodes"] = enable_shielded_nodes
         __props__.__dict__["enable_tpu"] = enable_tpu
         __props__.__dict__["endpoint"] = endpoint
+        __props__.__dict__["gateway_api_config"] = gateway_api_config
         __props__.__dict__["identity_service_config"] = identity_service_config
         __props__.__dict__["initial_node_count"] = initial_node_count
         __props__.__dict__["ip_allocation_policy"] = ip_allocation_policy
@@ -3630,6 +3669,14 @@ class Cluster(pulumi.CustomResource):
         The IP address of this cluster's Kubernetes master.
         """
         return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="gatewayApiConfig")
+    def gateway_api_config(self) -> pulumi.Output[Optional['outputs.ClusterGatewayApiConfig']]:
+        """
+        Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
+        """
+        return pulumi.get(self, "gateway_api_config")
 
     @property
     @pulumi.getter(name="identityServiceConfig")

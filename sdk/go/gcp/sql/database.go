@@ -140,7 +140,7 @@ type Database struct {
 	// The deletion policy for the database. Setting ABANDON allows the resource
 	// to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
 	// deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
-	// values are: "ABANDON".
+	// values are: "ABANDON", "DELETE". Defaults to "DELETE".
 	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// The name of the Cloud SQL instance. This does not include the project
 	// ID.
@@ -202,7 +202,7 @@ type databaseState struct {
 	// The deletion policy for the database. Setting ABANDON allows the resource
 	// to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
 	// deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
-	// values are: "ABANDON".
+	// values are: "ABANDON", "DELETE". Defaults to "DELETE".
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of the Cloud SQL instance. This does not include the project
 	// ID.
@@ -233,7 +233,7 @@ type DatabaseState struct {
 	// The deletion policy for the database. Setting ABANDON allows the resource
 	// to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
 	// deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
-	// values are: "ABANDON".
+	// values are: "ABANDON", "DELETE". Defaults to "DELETE".
 	DeletionPolicy pulumi.StringPtrInput
 	// The name of the Cloud SQL instance. This does not include the project
 	// ID.
@@ -268,7 +268,7 @@ type databaseArgs struct {
 	// The deletion policy for the database. Setting ABANDON allows the resource
 	// to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
 	// deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
-	// values are: "ABANDON".
+	// values are: "ABANDON", "DELETE". Defaults to "DELETE".
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of the Cloud SQL instance. This does not include the project
 	// ID.
@@ -298,7 +298,7 @@ type DatabaseArgs struct {
 	// The deletion policy for the database. Setting ABANDON allows the resource
 	// to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
 	// deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
-	// values are: "ABANDON".
+	// values are: "ABANDON", "DELETE". Defaults to "DELETE".
 	DeletionPolicy pulumi.StringPtrInput
 	// The name of the Cloud SQL instance. This does not include the project
 	// ID.
@@ -419,7 +419,7 @@ func (o DatabaseOutput) Collation() pulumi.StringOutput {
 // The deletion policy for the database. Setting ABANDON allows the resource
 // to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
 // deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
-// values are: "ABANDON".
+// values are: "ABANDON", "DELETE". Defaults to "DELETE".
 func (o DatabaseOutput) DeletionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }

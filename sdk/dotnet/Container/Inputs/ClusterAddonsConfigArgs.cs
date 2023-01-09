@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<Inputs.ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs>? GcpFilestoreCsiDriverConfig { get; set; }
 
         /// <summary>
-        /// ).
+        /// .
         /// The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
         /// </summary>
         [Input("gkeBackupAgentConfig")]

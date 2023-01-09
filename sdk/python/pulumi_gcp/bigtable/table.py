@@ -18,6 +18,7 @@ class TableArgs:
     def __init__(__self__, *,
                  instance_name: pulumi.Input[str],
                  column_families: Optional[pulumi.Input[Sequence[pulumi.Input['TableColumnFamilyArgs']]]] = None,
+                 deletion_protection: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  split_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -25,6 +26,9 @@ class TableArgs:
         The set of arguments for constructing a Table resource.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[Sequence[pulumi.Input['TableColumnFamilyArgs']]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
+        :param pulumi.Input[str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
+               families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
+               protection will be set to UNPROTECTED as it is the API default value.
         :param pulumi.Input[str] name: The name of the table.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
@@ -35,6 +39,8 @@ class TableArgs:
         pulumi.set(__self__, "instance_name", instance_name)
         if column_families is not None:
             pulumi.set(__self__, "column_families", column_families)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -65,6 +71,20 @@ class TableArgs:
     @column_families.setter
     def column_families(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TableColumnFamilyArgs']]]]):
         pulumi.set(self, "column_families", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[str]]:
+        """
+        A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
+        families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
+        protection will be set to UNPROTECTED as it is the API default value.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter
@@ -110,6 +130,7 @@ class TableArgs:
 class _TableState:
     def __init__(__self__, *,
                  column_families: Optional[pulumi.Input[Sequence[pulumi.Input['TableColumnFamilyArgs']]]] = None,
+                 deletion_protection: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -117,6 +138,9 @@ class _TableState:
         """
         Input properties used for looking up and filtering Table resources.
         :param pulumi.Input[Sequence[pulumi.Input['TableColumnFamilyArgs']]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
+        :param pulumi.Input[str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
+               families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
+               protection will be set to UNPROTECTED as it is the API default value.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[str] name: The name of the table.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -127,6 +151,8 @@ class _TableState:
         """
         if column_families is not None:
             pulumi.set(__self__, "column_families", column_families)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if instance_name is not None:
             pulumi.set(__self__, "instance_name", instance_name)
         if name is not None:
@@ -147,6 +173,20 @@ class _TableState:
     @column_families.setter
     def column_families(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TableColumnFamilyArgs']]]]):
         pulumi.set(self, "column_families", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[str]]:
+        """
+        A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
+        families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
+        protection will be set to UNPROTECTED as it is the API default value.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter(name="instanceName")
@@ -206,6 +246,7 @@ class Table(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  column_families: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]]] = None,
+                 deletion_protection: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -258,6 +299,9 @@ class Table(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
+        :param pulumi.Input[str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
+               families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
+               protection will be set to UNPROTECTED as it is the API default value.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[str] name: The name of the table.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -332,6 +376,7 @@ class Table(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  column_families: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]]] = None,
+                 deletion_protection: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -346,6 +391,7 @@ class Table(pulumi.CustomResource):
             __props__ = TableArgs.__new__(TableArgs)
 
             __props__.__dict__["column_families"] = column_families
+            __props__.__dict__["deletion_protection"] = deletion_protection
             if instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_name'")
             __props__.__dict__["instance_name"] = instance_name
@@ -363,6 +409,7 @@ class Table(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             column_families: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]]] = None,
+            deletion_protection: Optional[pulumi.Input[str]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -375,6 +422,9 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
+        :param pulumi.Input[str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
+               families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
+               protection will be set to UNPROTECTED as it is the API default value.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[str] name: The name of the table.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -388,6 +438,7 @@ class Table(pulumi.CustomResource):
         __props__ = _TableState.__new__(_TableState)
 
         __props__.__dict__["column_families"] = column_families
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -401,6 +452,16 @@ class Table(pulumi.CustomResource):
         A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
         """
         return pulumi.get(self, "column_families")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[str]:
+        """
+        A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
+        families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
+        protection will be set to UNPROTECTED as it is the API default value.
+        """
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="instanceName")

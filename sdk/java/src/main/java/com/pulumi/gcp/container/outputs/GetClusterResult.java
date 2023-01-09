@@ -14,6 +14,7 @@ import com.pulumi.gcp.container.outputs.GetClusterCostManagementConfig;
 import com.pulumi.gcp.container.outputs.GetClusterDatabaseEncryption;
 import com.pulumi.gcp.container.outputs.GetClusterDefaultSnatStatus;
 import com.pulumi.gcp.container.outputs.GetClusterDnsConfig;
+import com.pulumi.gcp.container.outputs.GetClusterGatewayApiConfig;
 import com.pulumi.gcp.container.outputs.GetClusterIdentityServiceConfig;
 import com.pulumi.gcp.container.outputs.GetClusterIpAllocationPolicy;
 import com.pulumi.gcp.container.outputs.GetClusterLoggingConfig;
@@ -70,6 +71,7 @@ public final class GetClusterResult {
     private Boolean enableShieldedNodes;
     private Boolean enableTpu;
     private String endpoint;
+    private List<GetClusterGatewayApiConfig> gatewayApiConfigs;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -188,6 +190,9 @@ public final class GetClusterResult {
     }
     public String endpoint() {
         return this.endpoint;
+    }
+    public List<GetClusterGatewayApiConfig> gatewayApiConfigs() {
+        return this.gatewayApiConfigs;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -358,6 +363,7 @@ public final class GetClusterResult {
         private Boolean enableShieldedNodes;
         private Boolean enableTpu;
         private String endpoint;
+        private List<GetClusterGatewayApiConfig> gatewayApiConfigs;
         private String id;
         private List<GetClusterIdentityServiceConfig> identityServiceConfigs;
         private Integer initialNodeCount;
@@ -428,6 +434,7 @@ public final class GetClusterResult {
     	      this.enableShieldedNodes = defaults.enableShieldedNodes;
     	      this.enableTpu = defaults.enableTpu;
     	      this.endpoint = defaults.endpoint;
+    	      this.gatewayApiConfigs = defaults.gatewayApiConfigs;
     	      this.id = defaults.id;
     	      this.identityServiceConfigs = defaults.identityServiceConfigs;
     	      this.initialNodeCount = defaults.initialNodeCount;
@@ -618,6 +625,14 @@ public final class GetClusterResult {
         public Builder endpoint(String endpoint) {
             this.endpoint = Objects.requireNonNull(endpoint);
             return this;
+        }
+        @CustomType.Setter
+        public Builder gatewayApiConfigs(List<GetClusterGatewayApiConfig> gatewayApiConfigs) {
+            this.gatewayApiConfigs = Objects.requireNonNull(gatewayApiConfigs);
+            return this;
+        }
+        public Builder gatewayApiConfigs(GetClusterGatewayApiConfig... gatewayApiConfigs) {
+            return gatewayApiConfigs(List.of(gatewayApiConfigs));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -933,6 +948,7 @@ public final class GetClusterResult {
             o.enableShieldedNodes = enableShieldedNodes;
             o.enableTpu = enableTpu;
             o.endpoint = endpoint;
+            o.gatewayApiConfigs = gatewayApiConfigs;
             o.id = id;
             o.identityServiceConfigs = identityServiceConfigs;
             o.initialNodeCount = initialNodeCount;

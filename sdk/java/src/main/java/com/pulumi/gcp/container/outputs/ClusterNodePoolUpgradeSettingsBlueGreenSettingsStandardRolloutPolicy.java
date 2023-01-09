@@ -13,17 +13,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy {
+    /**
+     * @return Number of blue nodes to drain in a batch. Only one of the batch_percentage or batch_node_count can be specified.
+     * 
+     */
     private @Nullable Integer batchNodeCount;
     private @Nullable Double batchPercentage;
+    /**
+     * @return Soak time after each batch gets drained. A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.`.
+     * 
+     */
     private @Nullable String batchSoakDuration;
 
     private ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy() {}
+    /**
+     * @return Number of blue nodes to drain in a batch. Only one of the batch_percentage or batch_node_count can be specified.
+     * 
+     */
     public Optional<Integer> batchNodeCount() {
         return Optional.ofNullable(this.batchNodeCount);
     }
     public Optional<Double> batchPercentage() {
         return Optional.ofNullable(this.batchPercentage);
     }
+    /**
+     * @return Soak time after each batch gets drained. A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.`.
+     * 
+     */
     public Optional<String> batchSoakDuration() {
         return Optional.ofNullable(this.batchSoakDuration);
     }

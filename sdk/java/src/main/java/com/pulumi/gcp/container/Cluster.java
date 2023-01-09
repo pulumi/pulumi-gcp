@@ -20,6 +20,7 @@ import com.pulumi.gcp.container.outputs.ClusterCostManagementConfig;
 import com.pulumi.gcp.container.outputs.ClusterDatabaseEncryption;
 import com.pulumi.gcp.container.outputs.ClusterDefaultSnatStatus;
 import com.pulumi.gcp.container.outputs.ClusterDnsConfig;
+import com.pulumi.gcp.container.outputs.ClusterGatewayApiConfig;
 import com.pulumi.gcp.container.outputs.ClusterIdentityServiceConfig;
 import com.pulumi.gcp.container.outputs.ClusterIpAllocationPolicy;
 import com.pulumi.gcp.container.outputs.ClusterLoggingConfig;
@@ -607,6 +608,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> endpoint() {
         return this.endpoint;
+    }
+    /**
+     * Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
+     * 
+     */
+    @Export(name="gatewayApiConfig", type=ClusterGatewayApiConfig.class, parameters={})
+    private Output</* @Nullable */ ClusterGatewayApiConfig> gatewayApiConfig;
+
+    /**
+     * @return Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
+     * 
+     */
+    public Output<Optional<ClusterGatewayApiConfig>> gatewayApiConfig() {
+        return Codegen.optional(this.gatewayApiConfig);
     }
     /**
      * . Structure is documented below.

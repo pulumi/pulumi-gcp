@@ -17,30 +17,62 @@ public final class ClusterNodePoolUpgradeSettingsArgs extends com.pulumi.resourc
 
     public static final ClusterNodePoolUpgradeSettingsArgs Empty = new ClusterNodePoolUpgradeSettingsArgs();
 
+    /**
+     * Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+     * 
+     */
     @Import(name="blueGreenSettings")
     private @Nullable Output<ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs> blueGreenSettings;
 
+    /**
+     * @return Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+     * 
+     */
     public Optional<Output<ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs>> blueGreenSettings() {
         return Optional.ofNullable(this.blueGreenSettings);
     }
 
+    /**
+     * The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+     * 
+     */
     @Import(name="maxSurge")
     private @Nullable Output<Integer> maxSurge;
 
+    /**
+     * @return The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+     * 
+     */
     public Optional<Output<Integer>> maxSurge() {
         return Optional.ofNullable(this.maxSurge);
     }
 
+    /**
+     * The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+     * 
+     */
     @Import(name="maxUnavailable")
     private @Nullable Output<Integer> maxUnavailable;
 
+    /**
+     * @return The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+     * 
+     */
     public Optional<Output<Integer>> maxUnavailable() {
         return Optional.ofNullable(this.maxUnavailable);
     }
 
+    /**
+     * Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+     * 
+     */
     @Import(name="strategy")
     private @Nullable Output<String> strategy;
 
+    /**
+     * @return Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+     * 
+     */
     public Optional<Output<String>> strategy() {
         return Optional.ofNullable(this.strategy);
     }
@@ -72,38 +104,86 @@ public final class ClusterNodePoolUpgradeSettingsArgs extends com.pulumi.resourc
             $ = new ClusterNodePoolUpgradeSettingsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param blueGreenSettings Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder blueGreenSettings(@Nullable Output<ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs> blueGreenSettings) {
             $.blueGreenSettings = blueGreenSettings;
             return this;
         }
 
+        /**
+         * @param blueGreenSettings Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder blueGreenSettings(ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs blueGreenSettings) {
             return blueGreenSettings(Output.of(blueGreenSettings));
         }
 
+        /**
+         * @param maxSurge The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxSurge(@Nullable Output<Integer> maxSurge) {
             $.maxSurge = maxSurge;
             return this;
         }
 
+        /**
+         * @param maxSurge The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxSurge(Integer maxSurge) {
             return maxSurge(Output.of(maxSurge));
         }
 
+        /**
+         * @param maxUnavailable The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxUnavailable(@Nullable Output<Integer> maxUnavailable) {
             $.maxUnavailable = maxUnavailable;
             return this;
         }
 
+        /**
+         * @param maxUnavailable The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxUnavailable(Integer maxUnavailable) {
             return maxUnavailable(Output.of(maxUnavailable));
         }
 
+        /**
+         * @param strategy Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+         * 
+         * @return builder
+         * 
+         */
         public Builder strategy(@Nullable Output<String> strategy) {
             $.strategy = strategy;
             return this;
         }
 
+        /**
+         * @param strategy Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+         * 
+         * @return builder
+         * 
+         */
         public Builder strategy(String strategy) {
             return strategy(Output.of(strategy));
         }

@@ -5,6 +5,7 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .backup import *
 from .cluster import *
 from .instance import *
 from ._inputs import *

@@ -100,7 +100,7 @@ type TagTemplate struct {
 
 	// The display name for this template.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.
+	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of fieldId will be resulting in re-creating of field. The change of primitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
 	// Structure is documented below.
 	Fields TagTemplateFieldArrayOutput `pulumi:"fields"`
 	// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
@@ -154,7 +154,7 @@ func GetTagTemplate(ctx *pulumi.Context,
 type tagTemplateState struct {
 	// The display name for this template.
 	DisplayName *string `pulumi:"displayName"`
-	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.
+	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of fieldId will be resulting in re-creating of field. The change of primitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
 	// Structure is documented below.
 	Fields []TagTemplateField `pulumi:"fields"`
 	// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
@@ -174,7 +174,7 @@ type tagTemplateState struct {
 type TagTemplateState struct {
 	// The display name for this template.
 	DisplayName pulumi.StringPtrInput
-	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.
+	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of fieldId will be resulting in re-creating of field. The change of primitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
 	// Structure is documented below.
 	Fields TagTemplateFieldArrayInput
 	// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
@@ -198,7 +198,7 @@ func (TagTemplateState) ElementType() reflect.Type {
 type tagTemplateArgs struct {
 	// The display name for this template.
 	DisplayName *string `pulumi:"displayName"`
-	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.
+	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of fieldId will be resulting in re-creating of field. The change of primitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
 	// Structure is documented below.
 	Fields []TagTemplateField `pulumi:"fields"`
 	// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
@@ -216,7 +216,7 @@ type tagTemplateArgs struct {
 type TagTemplateArgs struct {
 	// The display name for this template.
 	DisplayName pulumi.StringPtrInput
-	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.
+	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of fieldId will be resulting in re-creating of field. The change of primitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
 	// Structure is documented below.
 	Fields TagTemplateFieldArrayInput
 	// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
@@ -322,7 +322,7 @@ func (o TagTemplateOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TagTemplate) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields.
+// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of fieldId will be resulting in re-creating of field. The change of primitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
 // Structure is documented below.
 func (o TagTemplateOutput) Fields() TagTemplateFieldArrayOutput {
 	return o.ApplyT(func(v *TagTemplate) TagTemplateFieldArrayOutput { return v.Fields }).(TagTemplateFieldArrayOutput)
