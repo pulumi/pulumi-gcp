@@ -13,21 +13,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodePoolUpgradeSettings {
+    /**
+     * @return Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+     * 
+     */
     private @Nullable ClusterNodePoolUpgradeSettingsBlueGreenSettings blueGreenSettings;
+    /**
+     * @return The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+     * 
+     */
     private @Nullable Integer maxSurge;
+    /**
+     * @return The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+     * 
+     */
     private @Nullable Integer maxUnavailable;
+    /**
+     * @return Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+     * 
+     */
     private @Nullable String strategy;
 
     private ClusterNodePoolUpgradeSettings() {}
+    /**
+     * @return Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+     * 
+     */
     public Optional<ClusterNodePoolUpgradeSettingsBlueGreenSettings> blueGreenSettings() {
         return Optional.ofNullable(this.blueGreenSettings);
     }
+    /**
+     * @return The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+     * 
+     */
     public Optional<Integer> maxSurge() {
         return Optional.ofNullable(this.maxSurge);
     }
+    /**
+     * @return The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+     * 
+     */
     public Optional<Integer> maxUnavailable() {
         return Optional.ofNullable(this.maxUnavailable);
     }
+    /**
+     * @return Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+     * 
+     */
     public Optional<String> strategy() {
         return Optional.ofNullable(this.strategy);
     }

@@ -129,7 +129,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Serivce Mesh
+ * ### Service Mesh
  * ```java
  * package generated_program;
  * 

@@ -27,6 +27,13 @@ namespace Pulumi.Gcp.Filestore.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.InstanceFileSharesNfsExportOption> NfsExportOptions;
+        /// <summary>
+        /// -
+        /// The resource name of the backup, in the format
+        /// projects/{projectId}/locations/{locationId}/backups/{backupId},
+        /// that this file share has been restored from.
+        /// </summary>
+        public readonly string? SourceBackup;
 
         [OutputConstructor]
         private InstanceFileShares(
@@ -34,11 +41,14 @@ namespace Pulumi.Gcp.Filestore.Outputs
 
             string name,
 
-            ImmutableArray<Outputs.InstanceFileSharesNfsExportOption> nfsExportOptions)
+            ImmutableArray<Outputs.InstanceFileSharesNfsExportOption> nfsExportOptions,
+
+            string? sourceBackup)
         {
             CapacityGb = capacityGb;
             Name = name;
             NfsExportOptions = nfsExportOptions;
+            SourceBackup = sourceBackup;
         }
     }
 }

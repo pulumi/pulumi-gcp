@@ -113,7 +113,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * ).
+     * .
      * The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
      * 
      */
@@ -121,7 +121,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
     private @Nullable Output<ClusterAddonsConfigGkeBackupAgentConfigArgs> gkeBackupAgentConfig;
 
     /**
-     * @return ).
+     * @return .
      * The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
      * 
      */
@@ -382,7 +382,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param gkeBackupAgentConfig ).
+         * @param gkeBackupAgentConfig .
          * The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
          * 
          * @return builder
@@ -394,7 +394,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param gkeBackupAgentConfig ).
+         * @param gkeBackupAgentConfig .
          * The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
          * 
          * @return builder

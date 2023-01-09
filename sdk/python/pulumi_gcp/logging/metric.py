@@ -17,10 +17,11 @@ __all__ = ['MetricArgs', 'Metric']
 class MetricArgs:
     def __init__(__self__, *,
                  filter: pulumi.Input[str],
-                 metric_descriptor: pulumi.Input['MetricMetricDescriptorArgs'],
+                 bucket_name: Optional[pulumi.Input[str]] = None,
                  bucket_options: Optional[pulumi.Input['MetricBucketOptionsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  label_extractors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 metric_descriptor: Optional[pulumi.Input['MetricMetricDescriptorArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  value_extractor: Optional[pulumi.Input[str]] = None):
@@ -28,17 +29,21 @@ class MetricArgs:
         The set of arguments for constructing a Metric resource.
         :param pulumi.Input[str] filter: An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
                is used to match log entries.
-        :param pulumi.Input['MetricMetricDescriptorArgs'] metric_descriptor: The metric descriptor associated with the logs-based metric.
-               Structure is documented below.
+        :param pulumi.Input[str] bucket_name: The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
+               are supported. The bucket has to be in the same project as the metric.
         :param pulumi.Input['MetricBucketOptionsArgs'] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
                describes the bucket boundaries used to create a histogram of the extracted values.
                Structure is documented below.
-        :param pulumi.Input[str] description: A description of this metric, which is used in documentation. The maximum length of the
-               description is 8000 characters.
+        :param pulumi.Input[str] description: A human-readable description for the label.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] label_extractors: A map from a label key string to an extractor expression which is used to extract data from a log
                entry field and assign as the label value. Each label key specified in the LabelDescriptor must
                have an associated extractor expression in this map. The syntax of the extractor expression is
                the same as for the valueExtractor field.
+        :param pulumi.Input['MetricMetricDescriptorArgs'] metric_descriptor: The optional metric descriptor associated with the logs-based metric.
+               If unspecified, it uses a default metric descriptor with a DELTA metric kind,
+               INT64 value type, with no labels and a unit of "1". Such a metric counts the
+               number of log entries matching the filter expression.
+               Structure is documented below.
         :param pulumi.Input[str] name: The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
                Metric identifiers are limited to 100 characters and can include only the following
                characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
@@ -55,13 +60,16 @@ class MetricArgs:
                error to specify a regex that does not include exactly one capture group.
         """
         pulumi.set(__self__, "filter", filter)
-        pulumi.set(__self__, "metric_descriptor", metric_descriptor)
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
         if bucket_options is not None:
             pulumi.set(__self__, "bucket_options", bucket_options)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if label_extractors is not None:
             pulumi.set(__self__, "label_extractors", label_extractors)
+        if metric_descriptor is not None:
+            pulumi.set(__self__, "metric_descriptor", metric_descriptor)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -83,17 +91,17 @@ class MetricArgs:
         pulumi.set(self, "filter", value)
 
     @property
-    @pulumi.getter(name="metricDescriptor")
-    def metric_descriptor(self) -> pulumi.Input['MetricMetricDescriptorArgs']:
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The metric descriptor associated with the logs-based metric.
-        Structure is documented below.
+        The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
+        are supported. The bucket has to be in the same project as the metric.
         """
-        return pulumi.get(self, "metric_descriptor")
+        return pulumi.get(self, "bucket_name")
 
-    @metric_descriptor.setter
-    def metric_descriptor(self, value: pulumi.Input['MetricMetricDescriptorArgs']):
-        pulumi.set(self, "metric_descriptor", value)
+    @bucket_name.setter
+    def bucket_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bucket_name", value)
 
     @property
     @pulumi.getter(name="bucketOptions")
@@ -113,8 +121,7 @@ class MetricArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A description of this metric, which is used in documentation. The maximum length of the
-        description is 8000 characters.
+        A human-readable description for the label.
         """
         return pulumi.get(self, "description")
 
@@ -136,6 +143,22 @@ class MetricArgs:
     @label_extractors.setter
     def label_extractors(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "label_extractors", value)
+
+    @property
+    @pulumi.getter(name="metricDescriptor")
+    def metric_descriptor(self) -> Optional[pulumi.Input['MetricMetricDescriptorArgs']]:
+        """
+        The optional metric descriptor associated with the logs-based metric.
+        If unspecified, it uses a default metric descriptor with a DELTA metric kind,
+        INT64 value type, with no labels and a unit of "1". Such a metric counts the
+        number of log entries matching the filter expression.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "metric_descriptor")
+
+    @metric_descriptor.setter
+    def metric_descriptor(self, value: Optional[pulumi.Input['MetricMetricDescriptorArgs']]):
+        pulumi.set(self, "metric_descriptor", value)
 
     @property
     @pulumi.getter
@@ -188,6 +211,7 @@ class MetricArgs:
 @pulumi.input_type
 class _MetricState:
     def __init__(__self__, *,
+                 bucket_name: Optional[pulumi.Input[str]] = None,
                  bucket_options: Optional[pulumi.Input['MetricBucketOptionsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
@@ -198,18 +222,22 @@ class _MetricState:
                  value_extractor: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Metric resources.
+        :param pulumi.Input[str] bucket_name: The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
+               are supported. The bucket has to be in the same project as the metric.
         :param pulumi.Input['MetricBucketOptionsArgs'] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
                describes the bucket boundaries used to create a histogram of the extracted values.
                Structure is documented below.
-        :param pulumi.Input[str] description: A description of this metric, which is used in documentation. The maximum length of the
-               description is 8000 characters.
+        :param pulumi.Input[str] description: A human-readable description for the label.
         :param pulumi.Input[str] filter: An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
                is used to match log entries.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] label_extractors: A map from a label key string to an extractor expression which is used to extract data from a log
                entry field and assign as the label value. Each label key specified in the LabelDescriptor must
                have an associated extractor expression in this map. The syntax of the extractor expression is
                the same as for the valueExtractor field.
-        :param pulumi.Input['MetricMetricDescriptorArgs'] metric_descriptor: The metric descriptor associated with the logs-based metric.
+        :param pulumi.Input['MetricMetricDescriptorArgs'] metric_descriptor: The optional metric descriptor associated with the logs-based metric.
+               If unspecified, it uses a default metric descriptor with a DELTA metric kind,
+               INT64 value type, with no labels and a unit of "1". Such a metric counts the
+               number of log entries matching the filter expression.
                Structure is documented below.
         :param pulumi.Input[str] name: The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
                Metric identifiers are limited to 100 characters and can include only the following
@@ -226,6 +254,8 @@ class _MetricState:
                log entry field. The value of the field is converted to a string before applying the regex. It is an
                error to specify a regex that does not include exactly one capture group.
         """
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
         if bucket_options is not None:
             pulumi.set(__self__, "bucket_options", bucket_options)
         if description is not None:
@@ -242,6 +272,19 @@ class _MetricState:
             pulumi.set(__self__, "project", project)
         if value_extractor is not None:
             pulumi.set(__self__, "value_extractor", value_extractor)
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
+        are supported. The bucket has to be in the same project as the metric.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @bucket_name.setter
+    def bucket_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bucket_name", value)
 
     @property
     @pulumi.getter(name="bucketOptions")
@@ -261,8 +304,7 @@ class _MetricState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A description of this metric, which is used in documentation. The maximum length of the
-        description is 8000 characters.
+        A human-readable description for the label.
         """
         return pulumi.get(self, "description")
 
@@ -302,7 +344,10 @@ class _MetricState:
     @pulumi.getter(name="metricDescriptor")
     def metric_descriptor(self) -> Optional[pulumi.Input['MetricMetricDescriptorArgs']]:
         """
-        The metric descriptor associated with the logs-based metric.
+        The optional metric descriptor associated with the logs-based metric.
+        If unspecified, it uses a default metric descriptor with a DELTA metric kind,
+        INT64 value type, with no labels and a unit of "1". Such a metric counts the
+        number of log entries matching the filter expression.
         Structure is documented below.
         """
         return pulumi.get(self, "metric_descriptor")
@@ -364,6 +409,7 @@ class Metric(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 bucket_name: Optional[pulumi.Input[str]] = None,
                  bucket_options: Optional[pulumi.Input[pulumi.InputType['MetricBucketOptionsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
@@ -458,6 +504,20 @@ class Metric(pulumi.CustomResource):
                 value_type="INT64",
             ))
         ```
+        ### Logging Metric Logging Bucket
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        logging_metric_project_bucket_config = gcp.logging.ProjectBucketConfig("loggingMetricProjectBucketConfig",
+            location="global",
+            project="my-project-name",
+            bucket_id="_Default")
+        logging_metric_metric = gcp.logging.Metric("loggingMetricMetric",
+            filter="resource.type=gae_app AND severity>=ERROR",
+            bucket_name=logging_metric_project_bucket_config.id)
+        ```
 
         ## Import
 
@@ -473,18 +533,22 @@ class Metric(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] bucket_name: The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
+               are supported. The bucket has to be in the same project as the metric.
         :param pulumi.Input[pulumi.InputType['MetricBucketOptionsArgs']] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
                describes the bucket boundaries used to create a histogram of the extracted values.
                Structure is documented below.
-        :param pulumi.Input[str] description: A description of this metric, which is used in documentation. The maximum length of the
-               description is 8000 characters.
+        :param pulumi.Input[str] description: A human-readable description for the label.
         :param pulumi.Input[str] filter: An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
                is used to match log entries.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] label_extractors: A map from a label key string to an extractor expression which is used to extract data from a log
                entry field and assign as the label value. Each label key specified in the LabelDescriptor must
                have an associated extractor expression in this map. The syntax of the extractor expression is
                the same as for the valueExtractor field.
-        :param pulumi.Input[pulumi.InputType['MetricMetricDescriptorArgs']] metric_descriptor: The metric descriptor associated with the logs-based metric.
+        :param pulumi.Input[pulumi.InputType['MetricMetricDescriptorArgs']] metric_descriptor: The optional metric descriptor associated with the logs-based metric.
+               If unspecified, it uses a default metric descriptor with a DELTA metric kind,
+               INT64 value type, with no labels and a unit of "1". Such a metric counts the
+               number of log entries matching the filter expression.
                Structure is documented below.
         :param pulumi.Input[str] name: The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
                Metric identifiers are limited to 100 characters and can include only the following
@@ -592,6 +656,20 @@ class Metric(pulumi.CustomResource):
                 value_type="INT64",
             ))
         ```
+        ### Logging Metric Logging Bucket
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        logging_metric_project_bucket_config = gcp.logging.ProjectBucketConfig("loggingMetricProjectBucketConfig",
+            location="global",
+            project="my-project-name",
+            bucket_id="_Default")
+        logging_metric_metric = gcp.logging.Metric("loggingMetricMetric",
+            filter="resource.type=gae_app AND severity>=ERROR",
+            bucket_name=logging_metric_project_bucket_config.id)
+        ```
 
         ## Import
 
@@ -620,6 +698,7 @@ class Metric(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 bucket_name: Optional[pulumi.Input[str]] = None,
                  bucket_options: Optional[pulumi.Input[pulumi.InputType['MetricBucketOptionsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
@@ -637,14 +716,13 @@ class Metric(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MetricArgs.__new__(MetricArgs)
 
+            __props__.__dict__["bucket_name"] = bucket_name
             __props__.__dict__["bucket_options"] = bucket_options
             __props__.__dict__["description"] = description
             if filter is None and not opts.urn:
                 raise TypeError("Missing required property 'filter'")
             __props__.__dict__["filter"] = filter
             __props__.__dict__["label_extractors"] = label_extractors
-            if metric_descriptor is None and not opts.urn:
-                raise TypeError("Missing required property 'metric_descriptor'")
             __props__.__dict__["metric_descriptor"] = metric_descriptor
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -659,6 +737,7 @@ class Metric(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            bucket_name: Optional[pulumi.Input[str]] = None,
             bucket_options: Optional[pulumi.Input[pulumi.InputType['MetricBucketOptionsArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             filter: Optional[pulumi.Input[str]] = None,
@@ -674,18 +753,22 @@ class Metric(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] bucket_name: The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
+               are supported. The bucket has to be in the same project as the metric.
         :param pulumi.Input[pulumi.InputType['MetricBucketOptionsArgs']] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
                describes the bucket boundaries used to create a histogram of the extracted values.
                Structure is documented below.
-        :param pulumi.Input[str] description: A description of this metric, which is used in documentation. The maximum length of the
-               description is 8000 characters.
+        :param pulumi.Input[str] description: A human-readable description for the label.
         :param pulumi.Input[str] filter: An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
                is used to match log entries.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] label_extractors: A map from a label key string to an extractor expression which is used to extract data from a log
                entry field and assign as the label value. Each label key specified in the LabelDescriptor must
                have an associated extractor expression in this map. The syntax of the extractor expression is
                the same as for the valueExtractor field.
-        :param pulumi.Input[pulumi.InputType['MetricMetricDescriptorArgs']] metric_descriptor: The metric descriptor associated with the logs-based metric.
+        :param pulumi.Input[pulumi.InputType['MetricMetricDescriptorArgs']] metric_descriptor: The optional metric descriptor associated with the logs-based metric.
+               If unspecified, it uses a default metric descriptor with a DELTA metric kind,
+               INT64 value type, with no labels and a unit of "1". Such a metric counts the
+               number of log entries matching the filter expression.
                Structure is documented below.
         :param pulumi.Input[str] name: The client-assigned metric identifier. Examples - "error_count", "nginx/requests".
                Metric identifiers are limited to 100 characters and can include only the following
@@ -706,6 +789,7 @@ class Metric(pulumi.CustomResource):
 
         __props__ = _MetricState.__new__(_MetricState)
 
+        __props__.__dict__["bucket_name"] = bucket_name
         __props__.__dict__["bucket_options"] = bucket_options
         __props__.__dict__["description"] = description
         __props__.__dict__["filter"] = filter
@@ -715,6 +799,15 @@ class Metric(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["value_extractor"] = value_extractor
         return Metric(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
+        are supported. The bucket has to be in the same project as the metric.
+        """
+        return pulumi.get(self, "bucket_name")
 
     @property
     @pulumi.getter(name="bucketOptions")
@@ -730,8 +823,7 @@ class Metric(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        A description of this metric, which is used in documentation. The maximum length of the
-        description is 8000 characters.
+        A human-readable description for the label.
         """
         return pulumi.get(self, "description")
 
@@ -759,7 +851,10 @@ class Metric(pulumi.CustomResource):
     @pulumi.getter(name="metricDescriptor")
     def metric_descriptor(self) -> pulumi.Output['outputs.MetricMetricDescriptor']:
         """
-        The metric descriptor associated with the logs-based metric.
+        The optional metric descriptor associated with the logs-based metric.
+        If unspecified, it uses a default metric descriptor with a DELTA metric kind,
+        INT64 value type, with no labels and a unit of "1". Such a metric counts the
+        number of log entries matching the filter expression.
         Structure is documented below.
         """
         return pulumi.get(self, "metric_descriptor")

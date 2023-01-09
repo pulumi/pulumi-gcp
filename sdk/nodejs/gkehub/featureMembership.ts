@@ -69,7 +69,7 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * ```
- * ### Serivce Mesh
+ * ### Service Mesh
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -107,7 +107,7 @@ import (
 //	}
 //
 // ```
-// ### Serivce Mesh
+// ### Service Mesh
 //
 // ```go
 // package main

@@ -65,7 +65,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
      * The deletion policy for the database. Setting ABANDON allows the resource
      * to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
      * deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
-     * values are: &#34;ABANDON&#34;.
+     * values are: &#34;ABANDON&#34;, &#34;DELETE&#34;. Defaults to &#34;DELETE&#34;.
      * 
      */
     @Import(name="deletionPolicy")
@@ -75,7 +75,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
      * @return The deletion policy for the database. Setting ABANDON allows the resource
      * to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
      * deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
-     * values are: &#34;ABANDON&#34;.
+     * values are: &#34;ABANDON&#34;, &#34;DELETE&#34;. Defaults to &#34;DELETE&#34;.
      * 
      */
     public Optional<Output<String>> deletionPolicy() {
@@ -224,7 +224,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
          * @param deletionPolicy The deletion policy for the database. Setting ABANDON allows the resource
          * to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
          * deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
-         * values are: &#34;ABANDON&#34;.
+         * values are: &#34;ABANDON&#34;, &#34;DELETE&#34;. Defaults to &#34;DELETE&#34;.
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
          * @param deletionPolicy The deletion policy for the database. Setting ABANDON allows the resource
          * to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
          * deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
-         * values are: &#34;ABANDON&#34;.
+         * values are: &#34;ABANDON&#34;, &#34;DELETE&#34;. Defaults to &#34;DELETE&#34;.
          * 
          * @return builder
          * 

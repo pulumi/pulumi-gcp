@@ -25,6 +25,8 @@ class InstanceFileShares(dict):
             suggest = "capacity_gb"
         elif key == "nfsExportOptions":
             suggest = "nfs_export_options"
+        elif key == "sourceBackup":
+            suggest = "source_backup"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstanceFileShares. Access the value via the '{suggest}' property getter instead.")
@@ -40,18 +42,25 @@ class InstanceFileShares(dict):
     def __init__(__self__, *,
                  capacity_gb: int,
                  name: str,
-                 nfs_export_options: Optional[Sequence['outputs.InstanceFileSharesNfsExportOption']] = None):
+                 nfs_export_options: Optional[Sequence['outputs.InstanceFileSharesNfsExportOption']] = None,
+                 source_backup: Optional[str] = None):
         """
         :param int capacity_gb: File share capacity in GiB. This must be at least 1024 GiB
                for the standard tier, or 2560 GiB for the premium tier.
         :param str name: The name of the fileshare (16 characters or less)
         :param Sequence['InstanceFileSharesNfsExportOptionArgs'] nfs_export_options: Nfs Export Options. There is a limit of 10 export options per file share.
                Structure is documented below.
+        :param str source_backup: -
+               The resource name of the backup, in the format
+               projects/{projectId}/locations/{locationId}/backups/{backupId},
+               that this file share has been restored from.
         """
         pulumi.set(__self__, "capacity_gb", capacity_gb)
         pulumi.set(__self__, "name", name)
         if nfs_export_options is not None:
             pulumi.set(__self__, "nfs_export_options", nfs_export_options)
+        if source_backup is not None:
+            pulumi.set(__self__, "source_backup", source_backup)
 
     @property
     @pulumi.getter(name="capacityGb")
@@ -78,6 +87,17 @@ class InstanceFileShares(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "nfs_export_options")
+
+    @property
+    @pulumi.getter(name="sourceBackup")
+    def source_backup(self) -> Optional[str]:
+        """
+        -
+        The resource name of the backup, in the format
+        projects/{projectId}/locations/{locationId}/backups/{backupId},
+        that this file share has been restored from.
+        """
+        return pulumi.get(self, "source_backup")
 
 
 @pulumi.output_type

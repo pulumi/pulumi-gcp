@@ -277,6 +277,12 @@ namespace Pulumi.Gcp.Container
         public Output<string> Endpoint { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
+        /// </summary>
+        [Output("gatewayApiConfig")]
+        public Output<Outputs.ClusterGatewayApiConfig?> GatewayApiConfig { get; private set; } = null!;
+
+        /// <summary>
         /// . Structure is documented below.
         /// </summary>
         [Output("identityServiceConfig")]
@@ -837,6 +843,12 @@ namespace Pulumi.Gcp.Container
         public Input<bool>? EnableTpu { get; set; }
 
         /// <summary>
+        /// Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
+        /// </summary>
+        [Input("gatewayApiConfig")]
+        public Input<Inputs.ClusterGatewayApiConfigArgs>? GatewayApiConfig { get; set; }
+
+        /// <summary>
         /// . Structure is documented below.
         /// </summary>
         [Input("identityServiceConfig")]
@@ -1341,6 +1353,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
+
+        /// <summary>
+        /// Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
+        /// </summary>
+        [Input("gatewayApiConfig")]
+        public Input<Inputs.ClusterGatewayApiConfigGetArgs>? GatewayApiConfig { get; set; }
 
         /// <summary>
         /// . Structure is documented below.

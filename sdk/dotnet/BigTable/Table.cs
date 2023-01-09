@@ -79,6 +79,14 @@ namespace Pulumi.Gcp.BigTable
         public Output<ImmutableArray<Outputs.TableColumnFamily>> ColumnFamilies { get; private set; } = null!;
 
         /// <summary>
+        /// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
+        /// families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
+        /// protection will be set to UNPROTECTED as it is the API default value.
+        /// </summary>
+        [Output("deletionProtection")]
+        public Output<string> DeletionProtection { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the Bigtable instance.
         /// </summary>
         [Output("instanceName")]
@@ -164,6 +172,14 @@ namespace Pulumi.Gcp.BigTable
         }
 
         /// <summary>
+        /// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
+        /// families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
+        /// protection will be set to UNPROTECTED as it is the API default value.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<string>? DeletionProtection { get; set; }
+
+        /// <summary>
         /// The name of the Bigtable instance.
         /// </summary>
         [Input("instanceName", required: true)]
@@ -215,6 +231,14 @@ namespace Pulumi.Gcp.BigTable
             get => _columnFamilies ?? (_columnFamilies = new InputList<Inputs.TableColumnFamilyGetArgs>());
             set => _columnFamilies = value;
         }
+
+        /// <summary>
+        /// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
+        /// families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
+        /// protection will be set to UNPROTECTED as it is the API default value.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<string>? DeletionProtection { get; set; }
 
         /// <summary>
         /// The name of the Bigtable instance.

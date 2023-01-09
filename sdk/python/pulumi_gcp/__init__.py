@@ -417,6 +417,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "alloydb/backup",
+  "fqn": "pulumi_gcp.alloydb",
+  "classes": {
+   "gcp:alloydb/backup:Backup": "Backup"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "alloydb/cluster",
   "fqn": "pulumi_gcp.alloydb",
   "classes": {
@@ -3261,6 +3269,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.eventarc",
   "classes": {
    "gcp:eventarc/trigger:Trigger": "Trigger"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "filestore/backup",
+  "fqn": "pulumi_gcp.filestore",
+  "classes": {
+   "gcp:filestore/backup:Backup": "Backup"
   }
  },
  {

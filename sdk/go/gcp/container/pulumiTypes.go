@@ -7151,7 +7151,7 @@ type ClusterAddonsConfig struct {
 	// which allows the usage of filestore instance as volumes.
 	// It is disabled by default; set `enabled = true` to enable.
 	GcpFilestoreCsiDriverConfig *ClusterAddonsConfigGcpFilestoreCsiDriverConfig `pulumi:"gcpFilestoreCsiDriverConfig"`
-	// ).
+	// .
 	// The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
 	GkeBackupAgentConfig *ClusterAddonsConfigGkeBackupAgentConfig `pulumi:"gkeBackupAgentConfig"`
 	// The status of the Horizontal Pod Autoscaling
@@ -7207,7 +7207,7 @@ type ClusterAddonsConfigArgs struct {
 	// which allows the usage of filestore instance as volumes.
 	// It is disabled by default; set `enabled = true` to enable.
 	GcpFilestoreCsiDriverConfig ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrInput `pulumi:"gcpFilestoreCsiDriverConfig"`
-	// ).
+	// .
 	// The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
 	GkeBackupAgentConfig ClusterAddonsConfigGkeBackupAgentConfigPtrInput `pulumi:"gkeBackupAgentConfig"`
 	// The status of the Horizontal Pod Autoscaling
@@ -7347,7 +7347,7 @@ func (o ClusterAddonsConfigOutput) GcpFilestoreCsiDriverConfig() ClusterAddonsCo
 	}).(ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput)
 }
 
-// ).
+// .
 // The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
 func (o ClusterAddonsConfigOutput) GkeBackupAgentConfig() ClusterAddonsConfigGkeBackupAgentConfigPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigGkeBackupAgentConfig { return v.GkeBackupAgentConfig }).(ClusterAddonsConfigGkeBackupAgentConfigPtrOutput)
@@ -7473,7 +7473,7 @@ func (o ClusterAddonsConfigPtrOutput) GcpFilestoreCsiDriverConfig() ClusterAddon
 	}).(ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput)
 }
 
-// ).
+// .
 // The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
 func (o ClusterAddonsConfigPtrOutput) GkeBackupAgentConfig() ClusterAddonsConfigGkeBackupAgentConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigGkeBackupAgentConfig {
@@ -9713,6 +9713,8 @@ type ClusterClusterAutoscalingAutoProvisioningDefaults struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig *ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
+	// Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+	UpgradeSettings *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings `pulumi:"upgradeSettings"`
 }
 
 // ClusterClusterAutoscalingAutoProvisioningDefaultsInput is an input type that accepts ClusterClusterAutoscalingAutoProvisioningDefaultsArgs and ClusterClusterAutoscalingAutoProvisioningDefaultsOutput values.
@@ -9754,6 +9756,8 @@ type ClusterClusterAutoscalingAutoProvisioningDefaultsArgs struct {
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
+	// Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+	UpgradeSettings ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrInput `pulumi:"upgradeSettings"`
 }
 
 func (ClusterClusterAutoscalingAutoProvisioningDefaultsArgs) ElementType() reflect.Type {
@@ -9891,6 +9895,13 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) ShieldedInstanc
 	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigPtrOutput)
 }
 
+// Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) UpgradeSettings() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput {
+	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaults) *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings {
+		return v.UpgradeSettings
+	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput)
+}
+
 type ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) ElementType() reflect.Type {
@@ -10012,6 +10023,16 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) ShieldedInst
 		}
 		return v.ShieldedInstanceConfig
 	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigPtrOutput)
+}
+
+// Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) UpgradeSettings() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaults) *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings {
+		if v == nil {
+			return nil
+		}
+		return v.UpgradeSettings
+	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput)
 }
 
 type ClusterClusterAutoscalingAutoProvisioningDefaultsManagement struct {
@@ -10452,6 +10473,535 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigP
 		}
 		return v.EnableSecureBoot
 	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings struct {
+	// Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+	BlueGreenSettings *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings `pulumi:"blueGreenSettings"`
+	// The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+	MaxSurge *int `pulumi:"maxSurge"`
+	// The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+	MaxUnavailable *int `pulumi:"maxUnavailable"`
+	// Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+	Strategy *string `pulumi:"strategy"`
+}
+
+// ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsInput is an input type that accepts ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs and ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutput values.
+// You can construct a concrete instance of `ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsInput` via:
+//
+//	ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs{...}
+type ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsInput interface {
+	pulumi.Input
+
+	ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutput() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutput
+	ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutputWithContext(context.Context) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutput
+}
+
+type ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs struct {
+	// Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+	BlueGreenSettings ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrInput `pulumi:"blueGreenSettings"`
+	// The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+	MaxSurge pulumi.IntPtrInput `pulumi:"maxSurge"`
+	// The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+	MaxUnavailable pulumi.IntPtrInput `pulumi:"maxUnavailable"`
+	// Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+	Strategy pulumi.StringPtrInput `pulumi:"strategy"`
+}
+
+func (ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings)(nil)).Elem()
+}
+
+func (i ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutput() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutput {
+	return i.ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutputWithContext(ctx context.Context) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutput)
+}
+
+func (i ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput {
+	return i.ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutputWithContext(ctx context.Context) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutput).ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutputWithContext(ctx)
+}
+
+// ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrInput is an input type that accepts ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs, ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtr and ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput values.
+// You can construct a concrete instance of `ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrInput` via:
+//
+//	        ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrInput interface {
+	pulumi.Input
+
+	ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput
+	ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutputWithContext(context.Context) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput
+}
+
+type clusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrType ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs
+
+func ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtr(v *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrInput {
+	return (*clusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrType)(v)
+}
+
+func (*clusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings)(nil)).Elem()
+}
+
+func (i *clusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrType) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput {
+	return i.ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrType) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutputWithContext(ctx context.Context) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput)
+}
+
+type ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings)(nil)).Elem()
+}
+
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutput) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutput() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutput {
+	return o
+}
+
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutput) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutputWithContext(ctx context.Context) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutput {
+	return o
+}
+
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutput) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput {
+	return o.ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutput) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutputWithContext(ctx context.Context) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings) *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings {
+		return &v
+	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput)
+}
+
+// Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutput) BlueGreenSettings() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput {
+	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings) *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings {
+		return v.BlueGreenSettings
+	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput)
+}
+
+// The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutput) MaxSurge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings) *int { return v.MaxSurge }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutput) MaxUnavailable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings) *int { return v.MaxUnavailable }).(pulumi.IntPtrOutput)
+}
+
+// Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutput) Strategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings) *string { return v.Strategy }).(pulumi.StringPtrOutput)
+}
+
+type ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings)(nil)).Elem()
+}
+
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput {
+	return o
+}
+
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutputWithContext(ctx context.Context) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput {
+	return o
+}
+
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput) Elem() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutput {
+	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings
+		return ret
+	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutput)
+}
+
+// Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput) BlueGreenSettings() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings) *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings {
+		if v == nil {
+			return nil
+		}
+		return v.BlueGreenSettings
+	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput)
+}
+
+// The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput) MaxSurge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSurge
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput) MaxUnavailable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxUnavailable
+	}).(pulumi.IntPtrOutput)
+}
+
+// Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput) Strategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Strategy
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings struct {
+	// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	NodePoolSoakDuration  *string                                                                                                 `pulumi:"nodePoolSoakDuration"`
+	StandardRolloutPolicy *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy `pulumi:"standardRolloutPolicy"`
+}
+
+// ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsInput is an input type that accepts ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArgs and ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsOutput values.
+// You can construct a concrete instance of `ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsInput` via:
+//
+//	ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArgs{...}
+type ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsInput interface {
+	pulumi.Input
+
+	ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsOutput() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsOutput
+	ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsOutputWithContext(context.Context) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsOutput
+}
+
+type ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArgs struct {
+	// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	NodePoolSoakDuration  pulumi.StringPtrInput                                                                                          `pulumi:"nodePoolSoakDuration"`
+	StandardRolloutPolicy ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrInput `pulumi:"standardRolloutPolicy"`
+}
+
+func (ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings)(nil)).Elem()
+}
+
+func (i ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArgs) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsOutput() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsOutput {
+	return i.ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArgs) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsOutputWithContext(ctx context.Context) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsOutput)
+}
+
+func (i ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArgs) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput {
+	return i.ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArgs) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutputWithContext(ctx context.Context) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsOutput).ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutputWithContext(ctx)
+}
+
+// ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrInput is an input type that accepts ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArgs, ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtr and ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput values.
+// You can construct a concrete instance of `ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrInput` via:
+//
+//	        ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrInput interface {
+	pulumi.Input
+
+	ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput
+	ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutputWithContext(context.Context) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput
+}
+
+type clusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrType ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArgs
+
+func ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtr(v *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArgs) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrInput {
+	return (*clusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrType)(v)
+}
+
+func (*clusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings)(nil)).Elem()
+}
+
+func (i *clusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrType) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput {
+	return i.ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrType) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutputWithContext(ctx context.Context) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput)
+}
+
+type ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings)(nil)).Elem()
+}
+
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsOutput) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsOutput() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsOutput {
+	return o
+}
+
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsOutput) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsOutputWithContext(ctx context.Context) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsOutput {
+	return o
+}
+
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsOutput) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput {
+	return o.ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsOutput) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutputWithContext(ctx context.Context) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings) *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings {
+		return &v
+	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput)
+}
+
+// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsOutput) NodePoolSoakDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings) *string {
+		return v.NodePoolSoakDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsOutput) StandardRolloutPolicy() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput {
+	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings) *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy {
+		return v.StandardRolloutPolicy
+	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput)
+}
+
+type ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings)(nil)).Elem()
+}
+
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput {
+	return o
+}
+
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutputWithContext(ctx context.Context) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput {
+	return o
+}
+
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput) Elem() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsOutput {
+	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings
+		return ret
+	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsOutput)
+}
+
+// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput) NodePoolSoakDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodePoolSoakDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput) StandardRolloutPolicy() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings) *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.StandardRolloutPolicy
+	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput)
+}
+
+type ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy struct {
+	// Number of blue nodes to drain in a batch. Only one of the batchPercentage or batchNodeCount can be specified.
+	BatchNodeCount  *int     `pulumi:"batchNodeCount"`
+	BatchPercentage *float64 `pulumi:"batchPercentage"`
+	// Soak time after each batch gets drained. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".`.
+	BatchSoakDuration *string `pulumi:"batchSoakDuration"`
+}
+
+// ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyInput is an input type that accepts ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs and ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutput values.
+// You can construct a concrete instance of `ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyInput` via:
+//
+//	ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs{...}
+type ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyInput interface {
+	pulumi.Input
+
+	ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutput() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutput
+	ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutputWithContext(context.Context) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutput
+}
+
+type ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs struct {
+	// Number of blue nodes to drain in a batch. Only one of the batchPercentage or batchNodeCount can be specified.
+	BatchNodeCount  pulumi.IntPtrInput     `pulumi:"batchNodeCount"`
+	BatchPercentage pulumi.Float64PtrInput `pulumi:"batchPercentage"`
+	// Soak time after each batch gets drained. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".`.
+	BatchSoakDuration pulumi.StringPtrInput `pulumi:"batchSoakDuration"`
+}
+
+func (ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy)(nil)).Elem()
+}
+
+func (i ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutput() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutput {
+	return i.ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutputWithContext(ctx context.Context) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutput)
+}
+
+func (i ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput {
+	return i.ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutputWithContext(ctx context.Context) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutput).ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutputWithContext(ctx)
+}
+
+// ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrInput is an input type that accepts ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs, ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtr and ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput values.
+// You can construct a concrete instance of `ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrInput` via:
+//
+//	        ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrInput interface {
+	pulumi.Input
+
+	ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput
+	ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutputWithContext(context.Context) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput
+}
+
+type clusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrType ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs
+
+func ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtr(v *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrInput {
+	return (*clusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrType)(v)
+}
+
+func (*clusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy)(nil)).Elem()
+}
+
+func (i *clusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrType) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput {
+	return i.ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrType) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutputWithContext(ctx context.Context) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput)
+}
+
+type ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy)(nil)).Elem()
+}
+
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutput) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutput() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutput {
+	return o
+}
+
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutput) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutputWithContext(ctx context.Context) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutput {
+	return o
+}
+
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutput) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput {
+	return o.ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutput) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutputWithContext(ctx context.Context) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy) *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy {
+		return &v
+	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput)
+}
+
+// Number of blue nodes to drain in a batch. Only one of the batchPercentage or batchNodeCount can be specified.
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutput) BatchNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy) *int {
+		return v.BatchNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutput) BatchPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy) *float64 {
+		return v.BatchPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Soak time after each batch gets drained. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".`.
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutput) BatchSoakDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy) *string {
+		return v.BatchSoakDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy)(nil)).Elem()
+}
+
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput {
+	return o
+}
+
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput) ToClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutputWithContext(ctx context.Context) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput {
+	return o
+}
+
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput) Elem() ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutput {
+	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy) ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy
+		return ret
+	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutput)
+}
+
+// Number of blue nodes to drain in a batch. Only one of the batchPercentage or batchNodeCount can be specified.
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput) BatchNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BatchNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput) BatchPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.BatchPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Soak time after each batch gets drained. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".`.
+func (o ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput) BatchSoakDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BatchSoakDuration
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterClusterAutoscalingResourceLimit struct {
@@ -11463,6 +12013,163 @@ func (o ClusterDnsConfigPtrOutput) ClusterDnsScope() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.ClusterDnsScope
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterGatewayApiConfig struct {
+	// The selected release channel.
+	// Accepted values are:
+	// * UNSPECIFIED: Not set.
+	// * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
+	// * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
+	// * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+	Channel string `pulumi:"channel"`
+}
+
+// ClusterGatewayApiConfigInput is an input type that accepts ClusterGatewayApiConfigArgs and ClusterGatewayApiConfigOutput values.
+// You can construct a concrete instance of `ClusterGatewayApiConfigInput` via:
+//
+//	ClusterGatewayApiConfigArgs{...}
+type ClusterGatewayApiConfigInput interface {
+	pulumi.Input
+
+	ToClusterGatewayApiConfigOutput() ClusterGatewayApiConfigOutput
+	ToClusterGatewayApiConfigOutputWithContext(context.Context) ClusterGatewayApiConfigOutput
+}
+
+type ClusterGatewayApiConfigArgs struct {
+	// The selected release channel.
+	// Accepted values are:
+	// * UNSPECIFIED: Not set.
+	// * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
+	// * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
+	// * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+	Channel pulumi.StringInput `pulumi:"channel"`
+}
+
+func (ClusterGatewayApiConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterGatewayApiConfig)(nil)).Elem()
+}
+
+func (i ClusterGatewayApiConfigArgs) ToClusterGatewayApiConfigOutput() ClusterGatewayApiConfigOutput {
+	return i.ToClusterGatewayApiConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterGatewayApiConfigArgs) ToClusterGatewayApiConfigOutputWithContext(ctx context.Context) ClusterGatewayApiConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterGatewayApiConfigOutput)
+}
+
+func (i ClusterGatewayApiConfigArgs) ToClusterGatewayApiConfigPtrOutput() ClusterGatewayApiConfigPtrOutput {
+	return i.ToClusterGatewayApiConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterGatewayApiConfigArgs) ToClusterGatewayApiConfigPtrOutputWithContext(ctx context.Context) ClusterGatewayApiConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterGatewayApiConfigOutput).ToClusterGatewayApiConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterGatewayApiConfigPtrInput is an input type that accepts ClusterGatewayApiConfigArgs, ClusterGatewayApiConfigPtr and ClusterGatewayApiConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterGatewayApiConfigPtrInput` via:
+//
+//	        ClusterGatewayApiConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterGatewayApiConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterGatewayApiConfigPtrOutput() ClusterGatewayApiConfigPtrOutput
+	ToClusterGatewayApiConfigPtrOutputWithContext(context.Context) ClusterGatewayApiConfigPtrOutput
+}
+
+type clusterGatewayApiConfigPtrType ClusterGatewayApiConfigArgs
+
+func ClusterGatewayApiConfigPtr(v *ClusterGatewayApiConfigArgs) ClusterGatewayApiConfigPtrInput {
+	return (*clusterGatewayApiConfigPtrType)(v)
+}
+
+func (*clusterGatewayApiConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterGatewayApiConfig)(nil)).Elem()
+}
+
+func (i *clusterGatewayApiConfigPtrType) ToClusterGatewayApiConfigPtrOutput() ClusterGatewayApiConfigPtrOutput {
+	return i.ToClusterGatewayApiConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterGatewayApiConfigPtrType) ToClusterGatewayApiConfigPtrOutputWithContext(ctx context.Context) ClusterGatewayApiConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterGatewayApiConfigPtrOutput)
+}
+
+type ClusterGatewayApiConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterGatewayApiConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterGatewayApiConfig)(nil)).Elem()
+}
+
+func (o ClusterGatewayApiConfigOutput) ToClusterGatewayApiConfigOutput() ClusterGatewayApiConfigOutput {
+	return o
+}
+
+func (o ClusterGatewayApiConfigOutput) ToClusterGatewayApiConfigOutputWithContext(ctx context.Context) ClusterGatewayApiConfigOutput {
+	return o
+}
+
+func (o ClusterGatewayApiConfigOutput) ToClusterGatewayApiConfigPtrOutput() ClusterGatewayApiConfigPtrOutput {
+	return o.ToClusterGatewayApiConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterGatewayApiConfigOutput) ToClusterGatewayApiConfigPtrOutputWithContext(ctx context.Context) ClusterGatewayApiConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterGatewayApiConfig) *ClusterGatewayApiConfig {
+		return &v
+	}).(ClusterGatewayApiConfigPtrOutput)
+}
+
+// The selected release channel.
+// Accepted values are:
+// * UNSPECIFIED: Not set.
+// * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
+// * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
+// * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+func (o ClusterGatewayApiConfigOutput) Channel() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterGatewayApiConfig) string { return v.Channel }).(pulumi.StringOutput)
+}
+
+type ClusterGatewayApiConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterGatewayApiConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterGatewayApiConfig)(nil)).Elem()
+}
+
+func (o ClusterGatewayApiConfigPtrOutput) ToClusterGatewayApiConfigPtrOutput() ClusterGatewayApiConfigPtrOutput {
+	return o
+}
+
+func (o ClusterGatewayApiConfigPtrOutput) ToClusterGatewayApiConfigPtrOutputWithContext(ctx context.Context) ClusterGatewayApiConfigPtrOutput {
+	return o
+}
+
+func (o ClusterGatewayApiConfigPtrOutput) Elem() ClusterGatewayApiConfigOutput {
+	return o.ApplyT(func(v *ClusterGatewayApiConfig) ClusterGatewayApiConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterGatewayApiConfig
+		return ret
+	}).(ClusterGatewayApiConfigOutput)
+}
+
+// The selected release channel.
+// Accepted values are:
+// * UNSPECIFIED: Not set.
+// * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
+// * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
+// * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+func (o ClusterGatewayApiConfigPtrOutput) Channel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterGatewayApiConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Channel
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -16555,6 +17262,7 @@ type ClusterNodePool struct {
 	// a zonal cluster, omit the cluster's zone.
 	NodeLocations   []string                        `pulumi:"nodeLocations"`
 	PlacementPolicy *ClusterNodePoolPlacementPolicy `pulumi:"placementPolicy"`
+	// Specifies the upgrade settings for NAP created node pools. Structure is documented below.
 	UpgradeSettings *ClusterNodePoolUpgradeSettings `pulumi:"upgradeSettings"`
 	Version         *string                         `pulumi:"version"`
 }
@@ -16604,6 +17312,7 @@ type ClusterNodePoolArgs struct {
 	// a zonal cluster, omit the cluster's zone.
 	NodeLocations   pulumi.StringArrayInput                `pulumi:"nodeLocations"`
 	PlacementPolicy ClusterNodePoolPlacementPolicyPtrInput `pulumi:"placementPolicy"`
+	// Specifies the upgrade settings for NAP created node pools. Structure is documented below.
 	UpgradeSettings ClusterNodePoolUpgradeSettingsPtrInput `pulumi:"upgradeSettings"`
 	Version         pulumi.StringPtrInput                  `pulumi:"version"`
 }
@@ -16731,6 +17440,7 @@ func (o ClusterNodePoolOutput) PlacementPolicy() ClusterNodePoolPlacementPolicyP
 	return o.ApplyT(func(v ClusterNodePool) *ClusterNodePoolPlacementPolicy { return v.PlacementPolicy }).(ClusterNodePoolPlacementPolicyPtrOutput)
 }
 
+// Specifies the upgrade settings for NAP created node pools. Structure is documented below.
 func (o ClusterNodePoolOutput) UpgradeSettings() ClusterNodePoolUpgradeSettingsPtrOutput {
 	return o.ApplyT(func(v ClusterNodePool) *ClusterNodePoolUpgradeSettings { return v.UpgradeSettings }).(ClusterNodePoolUpgradeSettingsPtrOutput)
 }
@@ -20769,10 +21479,14 @@ func (o ClusterNodePoolPlacementPolicyPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type ClusterNodePoolUpgradeSettings struct {
+	// Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
 	BlueGreenSettings *ClusterNodePoolUpgradeSettingsBlueGreenSettings `pulumi:"blueGreenSettings"`
-	MaxSurge          *int                                             `pulumi:"maxSurge"`
-	MaxUnavailable    *int                                             `pulumi:"maxUnavailable"`
-	Strategy          *string                                          `pulumi:"strategy"`
+	// The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+	MaxSurge *int `pulumi:"maxSurge"`
+	// The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+	MaxUnavailable *int `pulumi:"maxUnavailable"`
+	// Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+	Strategy *string `pulumi:"strategy"`
 }
 
 // ClusterNodePoolUpgradeSettingsInput is an input type that accepts ClusterNodePoolUpgradeSettingsArgs and ClusterNodePoolUpgradeSettingsOutput values.
@@ -20787,10 +21501,14 @@ type ClusterNodePoolUpgradeSettingsInput interface {
 }
 
 type ClusterNodePoolUpgradeSettingsArgs struct {
+	// Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
 	BlueGreenSettings ClusterNodePoolUpgradeSettingsBlueGreenSettingsPtrInput `pulumi:"blueGreenSettings"`
-	MaxSurge          pulumi.IntPtrInput                                      `pulumi:"maxSurge"`
-	MaxUnavailable    pulumi.IntPtrInput                                      `pulumi:"maxUnavailable"`
-	Strategy          pulumi.StringPtrInput                                   `pulumi:"strategy"`
+	// The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+	MaxSurge pulumi.IntPtrInput `pulumi:"maxSurge"`
+	// The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+	MaxUnavailable pulumi.IntPtrInput `pulumi:"maxUnavailable"`
+	// Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+	Strategy pulumi.StringPtrInput `pulumi:"strategy"`
 }
 
 func (ClusterNodePoolUpgradeSettingsArgs) ElementType() reflect.Type {
@@ -20870,20 +21588,24 @@ func (o ClusterNodePoolUpgradeSettingsOutput) ToClusterNodePoolUpgradeSettingsPt
 	}).(ClusterNodePoolUpgradeSettingsPtrOutput)
 }
 
+// Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
 func (o ClusterNodePoolUpgradeSettingsOutput) BlueGreenSettings() ClusterNodePoolUpgradeSettingsBlueGreenSettingsPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolUpgradeSettings) *ClusterNodePoolUpgradeSettingsBlueGreenSettings {
 		return v.BlueGreenSettings
 	}).(ClusterNodePoolUpgradeSettingsBlueGreenSettingsPtrOutput)
 }
 
+// The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
 func (o ClusterNodePoolUpgradeSettingsOutput) MaxSurge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolUpgradeSettings) *int { return v.MaxSurge }).(pulumi.IntPtrOutput)
 }
 
+// The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
 func (o ClusterNodePoolUpgradeSettingsOutput) MaxUnavailable() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolUpgradeSettings) *int { return v.MaxUnavailable }).(pulumi.IntPtrOutput)
 }
 
+// Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
 func (o ClusterNodePoolUpgradeSettingsOutput) Strategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolUpgradeSettings) *string { return v.Strategy }).(pulumi.StringPtrOutput)
 }
@@ -20912,6 +21634,7 @@ func (o ClusterNodePoolUpgradeSettingsPtrOutput) Elem() ClusterNodePoolUpgradeSe
 	}).(ClusterNodePoolUpgradeSettingsOutput)
 }
 
+// Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
 func (o ClusterNodePoolUpgradeSettingsPtrOutput) BlueGreenSettings() ClusterNodePoolUpgradeSettingsBlueGreenSettingsPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolUpgradeSettings) *ClusterNodePoolUpgradeSettingsBlueGreenSettings {
 		if v == nil {
@@ -20921,6 +21644,7 @@ func (o ClusterNodePoolUpgradeSettingsPtrOutput) BlueGreenSettings() ClusterNode
 	}).(ClusterNodePoolUpgradeSettingsBlueGreenSettingsPtrOutput)
 }
 
+// The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
 func (o ClusterNodePoolUpgradeSettingsPtrOutput) MaxSurge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolUpgradeSettings) *int {
 		if v == nil {
@@ -20930,6 +21654,7 @@ func (o ClusterNodePoolUpgradeSettingsPtrOutput) MaxSurge() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
+// The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
 func (o ClusterNodePoolUpgradeSettingsPtrOutput) MaxUnavailable() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolUpgradeSettings) *int {
 		if v == nil {
@@ -20939,6 +21664,7 @@ func (o ClusterNodePoolUpgradeSettingsPtrOutput) MaxUnavailable() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
+// Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
 func (o ClusterNodePoolUpgradeSettingsPtrOutput) Strategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolUpgradeSettings) *string {
 		if v == nil {
@@ -20949,6 +21675,7 @@ func (o ClusterNodePoolUpgradeSettingsPtrOutput) Strategy() pulumi.StringPtrOutp
 }
 
 type ClusterNodePoolUpgradeSettingsBlueGreenSettings struct {
+	// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	NodePoolSoakDuration  *string                                                              `pulumi:"nodePoolSoakDuration"`
 	StandardRolloutPolicy ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy `pulumi:"standardRolloutPolicy"`
 }
@@ -20965,6 +21692,7 @@ type ClusterNodePoolUpgradeSettingsBlueGreenSettingsInput interface {
 }
 
 type ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs struct {
+	// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	NodePoolSoakDuration  pulumi.StringPtrInput                                                     `pulumi:"nodePoolSoakDuration"`
 	StandardRolloutPolicy ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyInput `pulumi:"standardRolloutPolicy"`
 }
@@ -21046,6 +21774,7 @@ func (o ClusterNodePoolUpgradeSettingsBlueGreenSettingsOutput) ToClusterNodePool
 	}).(ClusterNodePoolUpgradeSettingsBlueGreenSettingsPtrOutput)
 }
 
+// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 func (o ClusterNodePoolUpgradeSettingsBlueGreenSettingsOutput) NodePoolSoakDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolUpgradeSettingsBlueGreenSettings) *string { return v.NodePoolSoakDuration }).(pulumi.StringPtrOutput)
 }
@@ -21080,6 +21809,7 @@ func (o ClusterNodePoolUpgradeSettingsBlueGreenSettingsPtrOutput) Elem() Cluster
 	}).(ClusterNodePoolUpgradeSettingsBlueGreenSettingsOutput)
 }
 
+// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 func (o ClusterNodePoolUpgradeSettingsBlueGreenSettingsPtrOutput) NodePoolSoakDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolUpgradeSettingsBlueGreenSettings) *string {
 		if v == nil {
@@ -21099,9 +21829,11 @@ func (o ClusterNodePoolUpgradeSettingsBlueGreenSettingsPtrOutput) StandardRollou
 }
 
 type ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy struct {
-	BatchNodeCount    *int     `pulumi:"batchNodeCount"`
-	BatchPercentage   *float64 `pulumi:"batchPercentage"`
-	BatchSoakDuration *string  `pulumi:"batchSoakDuration"`
+	// Number of blue nodes to drain in a batch. Only one of the batchPercentage or batchNodeCount can be specified.
+	BatchNodeCount  *int     `pulumi:"batchNodeCount"`
+	BatchPercentage *float64 `pulumi:"batchPercentage"`
+	// Soak time after each batch gets drained. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".`.
+	BatchSoakDuration *string `pulumi:"batchSoakDuration"`
 }
 
 // ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyInput is an input type that accepts ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs and ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutput values.
@@ -21116,9 +21848,11 @@ type ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyInput i
 }
 
 type ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs struct {
-	BatchNodeCount    pulumi.IntPtrInput     `pulumi:"batchNodeCount"`
-	BatchPercentage   pulumi.Float64PtrInput `pulumi:"batchPercentage"`
-	BatchSoakDuration pulumi.StringPtrInput  `pulumi:"batchSoakDuration"`
+	// Number of blue nodes to drain in a batch. Only one of the batchPercentage or batchNodeCount can be specified.
+	BatchNodeCount  pulumi.IntPtrInput     `pulumi:"batchNodeCount"`
+	BatchPercentage pulumi.Float64PtrInput `pulumi:"batchPercentage"`
+	// Soak time after each batch gets drained. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".`.
+	BatchSoakDuration pulumi.StringPtrInput `pulumi:"batchSoakDuration"`
 }
 
 func (ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs) ElementType() reflect.Type {
@@ -21198,6 +21932,7 @@ func (o ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutp
 	}).(ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput)
 }
 
+// Number of blue nodes to drain in a batch. Only one of the batchPercentage or batchNodeCount can be specified.
 func (o ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutput) BatchNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy) *int {
 		return v.BatchNodeCount
@@ -21210,6 +21945,7 @@ func (o ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutp
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Soak time after each batch gets drained. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".`.
 func (o ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutput) BatchSoakDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy) *string {
 		return v.BatchSoakDuration
@@ -21240,6 +21976,7 @@ func (o ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrO
 	}).(ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutput)
 }
 
+// Number of blue nodes to drain in a batch. Only one of the batchPercentage or batchNodeCount can be specified.
 func (o ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput) BatchNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy) *int {
 		if v == nil {
@@ -21258,6 +21995,7 @@ func (o ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrO
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Soak time after each batch gets drained. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".`.
 func (o ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput) BatchSoakDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy) *string {
 		if v == nil {
@@ -28429,6 +29167,7 @@ type GetClusterClusterAutoscalingAutoProvisioningDefault struct {
 	OauthScopes             []string                                                                    `pulumi:"oauthScopes"`
 	ServiceAccount          string                                                                      `pulumi:"serviceAccount"`
 	ShieldedInstanceConfigs []GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig `pulumi:"shieldedInstanceConfigs"`
+	UpgradeSettings         []GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting         `pulumi:"upgradeSettings"`
 }
 
 // GetClusterClusterAutoscalingAutoProvisioningDefaultInput is an input type that accepts GetClusterClusterAutoscalingAutoProvisioningDefaultArgs and GetClusterClusterAutoscalingAutoProvisioningDefaultOutput values.
@@ -28452,6 +29191,7 @@ type GetClusterClusterAutoscalingAutoProvisioningDefaultArgs struct {
 	OauthScopes             pulumi.StringArrayInput                                                             `pulumi:"oauthScopes"`
 	ServiceAccount          pulumi.StringInput                                                                  `pulumi:"serviceAccount"`
 	ShieldedInstanceConfigs GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfigArrayInput `pulumi:"shieldedInstanceConfigs"`
+	UpgradeSettings         GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArrayInput         `pulumi:"upgradeSettings"`
 }
 
 func (GetClusterClusterAutoscalingAutoProvisioningDefaultArgs) ElementType() reflect.Type {
@@ -28543,6 +29283,12 @@ func (o GetClusterClusterAutoscalingAutoProvisioningDefaultOutput) ShieldedInsta
 	return o.ApplyT(func(v GetClusterClusterAutoscalingAutoProvisioningDefault) []GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig {
 		return v.ShieldedInstanceConfigs
 	}).(GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfigArrayOutput)
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultOutput) UpgradeSettings() GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArrayOutput {
+	return o.ApplyT(func(v GetClusterClusterAutoscalingAutoProvisioningDefault) []GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting {
+		return v.UpgradeSettings
+	}).(GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArrayOutput)
 }
 
 type GetClusterClusterAutoscalingAutoProvisioningDefaultArrayOutput struct{ *pulumi.OutputState }
@@ -28879,6 +29625,336 @@ func (o GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig {
 		return vs[0].([]GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig)[vs[1].(int)]
 	}).(GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfigOutput)
+}
+
+type GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting struct {
+	BlueGreenSettings []GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting `pulumi:"blueGreenSettings"`
+	MaxSurge          int                                                                                 `pulumi:"maxSurge"`
+	MaxUnavailable    int                                                                                 `pulumi:"maxUnavailable"`
+	Strategy          string                                                                              `pulumi:"strategy"`
+}
+
+// GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingInput is an input type that accepts GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArgs and GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingOutput values.
+// You can construct a concrete instance of `GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingInput` via:
+//
+//	GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArgs{...}
+type GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingOutput() GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingOutput
+	ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingOutputWithContext(context.Context) GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingOutput
+}
+
+type GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArgs struct {
+	BlueGreenSettings GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArrayInput `pulumi:"blueGreenSettings"`
+	MaxSurge          pulumi.IntInput                                                                             `pulumi:"maxSurge"`
+	MaxUnavailable    pulumi.IntInput                                                                             `pulumi:"maxUnavailable"`
+	Strategy          pulumi.StringInput                                                                          `pulumi:"strategy"`
+}
+
+func (GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting)(nil)).Elem()
+}
+
+func (i GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArgs) ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingOutput() GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingOutput {
+	return i.ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArgs) ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingOutputWithContext(ctx context.Context) GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingOutput)
+}
+
+// GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArrayInput is an input type that accepts GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArray and GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArrayOutput values.
+// You can construct a concrete instance of `GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArrayInput` via:
+//
+//	GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArray{ GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArgs{...} }
+type GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArrayOutput() GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArrayOutput
+	ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArrayOutputWithContext(context.Context) GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArrayOutput
+}
+
+type GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArray []GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingInput
+
+func (GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting)(nil)).Elem()
+}
+
+func (i GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArray) ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArrayOutput() GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArrayOutput {
+	return i.ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArray) ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArrayOutputWithContext(ctx context.Context) GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArrayOutput)
+}
+
+type GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting)(nil)).Elem()
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingOutput) ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingOutput() GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingOutput {
+	return o
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingOutput) ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingOutputWithContext(ctx context.Context) GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingOutput {
+	return o
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingOutput) BlueGreenSettings() GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArrayOutput {
+	return o.ApplyT(func(v GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting) []GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting {
+		return v.BlueGreenSettings
+	}).(GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArrayOutput)
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingOutput) MaxSurge() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting) int { return v.MaxSurge }).(pulumi.IntOutput)
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingOutput) MaxUnavailable() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting) int { return v.MaxUnavailable }).(pulumi.IntOutput)
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingOutput) Strategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting) string { return v.Strategy }).(pulumi.StringOutput)
+}
+
+type GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting)(nil)).Elem()
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArrayOutput) ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArrayOutput() GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArrayOutput {
+	return o
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArrayOutput) ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArrayOutputWithContext(ctx context.Context) GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArrayOutput {
+	return o
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArrayOutput) Index(i pulumi.IntInput) GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting {
+		return vs[0].([]GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting)[vs[1].(int)]
+	}).(GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingOutput)
+}
+
+type GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting struct {
+	NodePoolSoakDuration    string                                                                                                   `pulumi:"nodePoolSoakDuration"`
+	StandardRolloutPolicies []GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy `pulumi:"standardRolloutPolicies"`
+}
+
+// GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingInput is an input type that accepts GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArgs and GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingOutput values.
+// You can construct a concrete instance of `GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingInput` via:
+//
+//	GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArgs{...}
+type GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingOutput() GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingOutput
+	ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingOutputWithContext(context.Context) GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingOutput
+}
+
+type GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArgs struct {
+	NodePoolSoakDuration    pulumi.StringInput                                                                                               `pulumi:"nodePoolSoakDuration"`
+	StandardRolloutPolicies GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayInput `pulumi:"standardRolloutPolicies"`
+}
+
+func (GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting)(nil)).Elem()
+}
+
+func (i GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArgs) ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingOutput() GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingOutput {
+	return i.ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArgs) ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingOutputWithContext(ctx context.Context) GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingOutput)
+}
+
+// GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArrayInput is an input type that accepts GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArray and GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArrayOutput values.
+// You can construct a concrete instance of `GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArrayInput` via:
+//
+//	GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArray{ GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArgs{...} }
+type GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArrayOutput() GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArrayOutput
+	ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArrayOutputWithContext(context.Context) GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArrayOutput
+}
+
+type GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArray []GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingInput
+
+func (GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting)(nil)).Elem()
+}
+
+func (i GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArray) ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArrayOutput() GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArrayOutput {
+	return i.ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArray) ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArrayOutputWithContext(ctx context.Context) GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArrayOutput)
+}
+
+type GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting)(nil)).Elem()
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingOutput) ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingOutput() GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingOutput {
+	return o
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingOutput) ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingOutputWithContext(ctx context.Context) GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingOutput {
+	return o
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingOutput) NodePoolSoakDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting) string {
+		return v.NodePoolSoakDuration
+	}).(pulumi.StringOutput)
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingOutput) StandardRolloutPolicies() GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayOutput {
+	return o.ApplyT(func(v GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting) []GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy {
+		return v.StandardRolloutPolicies
+	}).(GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayOutput)
+}
+
+type GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting)(nil)).Elem()
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArrayOutput) ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArrayOutput() GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArrayOutput {
+	return o
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArrayOutput) ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArrayOutputWithContext(ctx context.Context) GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArrayOutput {
+	return o
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArrayOutput) Index(i pulumi.IntInput) GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting {
+		return vs[0].([]GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting)[vs[1].(int)]
+	}).(GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingOutput)
+}
+
+type GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy struct {
+	BatchNodeCount    int     `pulumi:"batchNodeCount"`
+	BatchPercentage   float64 `pulumi:"batchPercentage"`
+	BatchSoakDuration string  `pulumi:"batchSoakDuration"`
+}
+
+// GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyInput is an input type that accepts GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArgs and GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyOutput values.
+// You can construct a concrete instance of `GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyInput` via:
+//
+//	GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArgs{...}
+type GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyOutput() GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyOutput
+	ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyOutputWithContext(context.Context) GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyOutput
+}
+
+type GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArgs struct {
+	BatchNodeCount    pulumi.IntInput     `pulumi:"batchNodeCount"`
+	BatchPercentage   pulumi.Float64Input `pulumi:"batchPercentage"`
+	BatchSoakDuration pulumi.StringInput  `pulumi:"batchSoakDuration"`
+}
+
+func (GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy)(nil)).Elem()
+}
+
+func (i GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArgs) ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyOutput() GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyOutput {
+	return i.ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArgs) ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyOutputWithContext(ctx context.Context) GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyOutput)
+}
+
+// GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayInput is an input type that accepts GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArray and GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayOutput values.
+// You can construct a concrete instance of `GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayInput` via:
+//
+//	GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArray{ GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArgs{...} }
+type GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayOutput() GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayOutput
+	ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayOutputWithContext(context.Context) GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayOutput
+}
+
+type GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArray []GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyInput
+
+func (GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy)(nil)).Elem()
+}
+
+func (i GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArray) ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayOutput() GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayOutput {
+	return i.ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArray) ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayOutputWithContext(ctx context.Context) GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayOutput)
+}
+
+type GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy)(nil)).Elem()
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyOutput) ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyOutput() GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyOutput {
+	return o
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyOutput) ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyOutputWithContext(ctx context.Context) GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyOutput {
+	return o
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyOutput) BatchNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy) int {
+		return v.BatchNodeCount
+	}).(pulumi.IntOutput)
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyOutput) BatchPercentage() pulumi.Float64Output {
+	return o.ApplyT(func(v GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy) float64 {
+		return v.BatchPercentage
+	}).(pulumi.Float64Output)
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyOutput) BatchSoakDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy) string {
+		return v.BatchSoakDuration
+	}).(pulumi.StringOutput)
+}
+
+type GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy)(nil)).Elem()
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayOutput) ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayOutput() GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayOutput {
+	return o
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayOutput) ToGetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayOutputWithContext(ctx context.Context) GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayOutput {
+	return o
+}
+
+func (o GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayOutput) Index(i pulumi.IntInput) GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy {
+		return vs[0].([]GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy)[vs[1].(int)]
+	}).(GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyOutput)
 }
 
 type GetClusterClusterAutoscalingResourceLimit struct {
@@ -29567,6 +30643,100 @@ func (o GetClusterDnsConfigArrayOutput) Index(i pulumi.IntInput) GetClusterDnsCo
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterDnsConfig {
 		return vs[0].([]GetClusterDnsConfig)[vs[1].(int)]
 	}).(GetClusterDnsConfigOutput)
+}
+
+type GetClusterGatewayApiConfig struct {
+	Channel string `pulumi:"channel"`
+}
+
+// GetClusterGatewayApiConfigInput is an input type that accepts GetClusterGatewayApiConfigArgs and GetClusterGatewayApiConfigOutput values.
+// You can construct a concrete instance of `GetClusterGatewayApiConfigInput` via:
+//
+//	GetClusterGatewayApiConfigArgs{...}
+type GetClusterGatewayApiConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterGatewayApiConfigOutput() GetClusterGatewayApiConfigOutput
+	ToGetClusterGatewayApiConfigOutputWithContext(context.Context) GetClusterGatewayApiConfigOutput
+}
+
+type GetClusterGatewayApiConfigArgs struct {
+	Channel pulumi.StringInput `pulumi:"channel"`
+}
+
+func (GetClusterGatewayApiConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterGatewayApiConfig)(nil)).Elem()
+}
+
+func (i GetClusterGatewayApiConfigArgs) ToGetClusterGatewayApiConfigOutput() GetClusterGatewayApiConfigOutput {
+	return i.ToGetClusterGatewayApiConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterGatewayApiConfigArgs) ToGetClusterGatewayApiConfigOutputWithContext(ctx context.Context) GetClusterGatewayApiConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterGatewayApiConfigOutput)
+}
+
+// GetClusterGatewayApiConfigArrayInput is an input type that accepts GetClusterGatewayApiConfigArray and GetClusterGatewayApiConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterGatewayApiConfigArrayInput` via:
+//
+//	GetClusterGatewayApiConfigArray{ GetClusterGatewayApiConfigArgs{...} }
+type GetClusterGatewayApiConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterGatewayApiConfigArrayOutput() GetClusterGatewayApiConfigArrayOutput
+	ToGetClusterGatewayApiConfigArrayOutputWithContext(context.Context) GetClusterGatewayApiConfigArrayOutput
+}
+
+type GetClusterGatewayApiConfigArray []GetClusterGatewayApiConfigInput
+
+func (GetClusterGatewayApiConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterGatewayApiConfig)(nil)).Elem()
+}
+
+func (i GetClusterGatewayApiConfigArray) ToGetClusterGatewayApiConfigArrayOutput() GetClusterGatewayApiConfigArrayOutput {
+	return i.ToGetClusterGatewayApiConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterGatewayApiConfigArray) ToGetClusterGatewayApiConfigArrayOutputWithContext(ctx context.Context) GetClusterGatewayApiConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterGatewayApiConfigArrayOutput)
+}
+
+type GetClusterGatewayApiConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterGatewayApiConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterGatewayApiConfig)(nil)).Elem()
+}
+
+func (o GetClusterGatewayApiConfigOutput) ToGetClusterGatewayApiConfigOutput() GetClusterGatewayApiConfigOutput {
+	return o
+}
+
+func (o GetClusterGatewayApiConfigOutput) ToGetClusterGatewayApiConfigOutputWithContext(ctx context.Context) GetClusterGatewayApiConfigOutput {
+	return o
+}
+
+func (o GetClusterGatewayApiConfigOutput) Channel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterGatewayApiConfig) string { return v.Channel }).(pulumi.StringOutput)
+}
+
+type GetClusterGatewayApiConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterGatewayApiConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterGatewayApiConfig)(nil)).Elem()
+}
+
+func (o GetClusterGatewayApiConfigArrayOutput) ToGetClusterGatewayApiConfigArrayOutput() GetClusterGatewayApiConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterGatewayApiConfigArrayOutput) ToGetClusterGatewayApiConfigArrayOutputWithContext(ctx context.Context) GetClusterGatewayApiConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterGatewayApiConfigArrayOutput) Index(i pulumi.IntInput) GetClusterGatewayApiConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterGatewayApiConfig {
+		return vs[0].([]GetClusterGatewayApiConfig)[vs[1].(int)]
+	}).(GetClusterGatewayApiConfigOutput)
 }
 
 type GetClusterIdentityServiceConfig struct {
@@ -36973,6 +38143,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArrayInput)(nil)).Elem(), ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigInput)(nil)).Elem(), ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigPtrInput)(nil)).Elem(), ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsInput)(nil)).Elem(), ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrInput)(nil)).Elem(), ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsInput)(nil)).Elem(), ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrInput)(nil)).Elem(), ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyInput)(nil)).Elem(), ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrInput)(nil)).Elem(), ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterAutoscalingResourceLimitInput)(nil)).Elem(), ClusterClusterAutoscalingResourceLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterAutoscalingResourceLimitArrayInput)(nil)).Elem(), ClusterClusterAutoscalingResourceLimitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterTelemetryInput)(nil)).Elem(), ClusterClusterTelemetryArgs{})
@@ -36987,6 +38163,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDefaultSnatStatusPtrInput)(nil)).Elem(), ClusterDefaultSnatStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDnsConfigInput)(nil)).Elem(), ClusterDnsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDnsConfigPtrInput)(nil)).Elem(), ClusterDnsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterGatewayApiConfigInput)(nil)).Elem(), ClusterGatewayApiConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterGatewayApiConfigPtrInput)(nil)).Elem(), ClusterGatewayApiConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIdentityServiceConfigInput)(nil)).Elem(), ClusterIdentityServiceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIdentityServiceConfigPtrInput)(nil)).Elem(), ClusterIdentityServiceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIpAllocationPolicyInput)(nil)).Elem(), ClusterIpAllocationPolicyArgs{})
@@ -37201,6 +38379,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOptionArrayInput)(nil)).Elem(), GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfigInput)(nil)).Elem(), GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfigArrayInput)(nil)).Elem(), GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingInput)(nil)).Elem(), GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArrayInput)(nil)).Elem(), GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingInput)(nil)).Elem(), GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArrayInput)(nil)).Elem(), GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyInput)(nil)).Elem(), GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayInput)(nil)).Elem(), GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterAutoscalingResourceLimitInput)(nil)).Elem(), GetClusterClusterAutoscalingResourceLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterAutoscalingResourceLimitArrayInput)(nil)).Elem(), GetClusterClusterAutoscalingResourceLimitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterTelemetryInput)(nil)).Elem(), GetClusterClusterTelemetryArgs{})
@@ -37215,6 +38399,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterDefaultSnatStatusArrayInput)(nil)).Elem(), GetClusterDefaultSnatStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterDnsConfigInput)(nil)).Elem(), GetClusterDnsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterDnsConfigArrayInput)(nil)).Elem(), GetClusterDnsConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterGatewayApiConfigInput)(nil)).Elem(), GetClusterGatewayApiConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterGatewayApiConfigArrayInput)(nil)).Elem(), GetClusterGatewayApiConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIdentityServiceConfigInput)(nil)).Elem(), GetClusterIdentityServiceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIdentityServiceConfigArrayInput)(nil)).Elem(), GetClusterIdentityServiceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIpAllocationPolicyInput)(nil)).Elem(), GetClusterIpAllocationPolicyArgs{})
@@ -37479,6 +38665,12 @@ func init() {
 	pulumi.RegisterOutputType(ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArrayOutput{})
 	pulumi.RegisterOutputType(ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsOutput{})
+	pulumi.RegisterOutputType(ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsOutput{})
+	pulumi.RegisterOutputType(ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyOutput{})
+	pulumi.RegisterOutputType(ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterAutoscalingResourceLimitOutput{})
 	pulumi.RegisterOutputType(ClusterClusterAutoscalingResourceLimitArrayOutput{})
 	pulumi.RegisterOutputType(ClusterClusterTelemetryOutput{})
@@ -37493,6 +38685,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterDefaultSnatStatusPtrOutput{})
 	pulumi.RegisterOutputType(ClusterDnsConfigOutput{})
 	pulumi.RegisterOutputType(ClusterDnsConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterGatewayApiConfigOutput{})
+	pulumi.RegisterOutputType(ClusterGatewayApiConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterIdentityServiceConfigOutput{})
 	pulumi.RegisterOutputType(ClusterIdentityServiceConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterIpAllocationPolicyOutput{})
@@ -37707,6 +38901,12 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyOutput{})
+	pulumi.RegisterOutputType(GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterAutoscalingResourceLimitOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterAutoscalingResourceLimitArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterClusterTelemetryOutput{})
@@ -37721,6 +38921,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterDefaultSnatStatusArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterDnsConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterDnsConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterGatewayApiConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterGatewayApiConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterIdentityServiceConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterIdentityServiceConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterIpAllocationPolicyOutput{})

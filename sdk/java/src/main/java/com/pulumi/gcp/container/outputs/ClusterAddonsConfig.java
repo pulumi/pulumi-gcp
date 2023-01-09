@@ -53,7 +53,7 @@ public final class ClusterAddonsConfig {
      */
     private @Nullable ClusterAddonsConfigGcpFilestoreCsiDriverConfig gcpFilestoreCsiDriverConfig;
     /**
-     * @return ).
+     * @return .
      * The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
      * 
      */
@@ -140,7 +140,7 @@ public final class ClusterAddonsConfig {
         return Optional.ofNullable(this.gcpFilestoreCsiDriverConfig);
     }
     /**
-     * @return ).
+     * @return .
      * The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
      * 
      */

@@ -178,7 +178,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * The deletion policy for the database. Setting ABANDON allows the resource
      * to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
      * deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
-     * values are: &#34;ABANDON&#34;.
+     * values are: &#34;ABANDON&#34;, &#34;DELETE&#34;. Defaults to &#34;DELETE&#34;.
      * 
      */
     @Export(name="deletionPolicy", type=String.class, parameters={})
@@ -188,7 +188,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * @return The deletion policy for the database. Setting ABANDON allows the resource
      * to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
      * deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
-     * values are: &#34;ABANDON&#34;.
+     * values are: &#34;ABANDON&#34;, &#34;DELETE&#34;. Defaults to &#34;DELETE&#34;.
      * 
      */
     public Output<Optional<String>> deletionPolicy() {

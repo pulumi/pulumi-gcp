@@ -660,8 +660,7 @@ class MetricMetricDescriptorLabelArgs:
                  value_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] key: The label key.
-        :param pulumi.Input[str] description: A description of this metric, which is used in documentation. The maximum length of the
-               description is 8000 characters.
+        :param pulumi.Input[str] description: A human-readable description for the label.
         :param pulumi.Input[str] value_type: The type of data that can be assigned to the label.
                Default value is `STRING`.
                Possible values are `BOOL`, `INT64`, and `STRING`.
@@ -688,8 +687,7 @@ class MetricMetricDescriptorLabelArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A description of this metric, which is used in documentation. The maximum length of the
-        description is 8000 characters.
+        A human-readable description for the label.
         """
         return pulumi.get(self, "description")
 

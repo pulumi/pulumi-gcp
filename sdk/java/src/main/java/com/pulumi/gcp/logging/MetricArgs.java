@@ -19,6 +19,23 @@ public final class MetricArgs extends com.pulumi.resources.ResourceArgs {
     public static final MetricArgs Empty = new MetricArgs();
 
     /**
+     * The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
+     * are supported. The bucket has to be in the same project as the metric.
+     * 
+     */
+    @Import(name="bucketName")
+    private @Nullable Output<String> bucketName;
+
+    /**
+     * @return The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
+     * are supported. The bucket has to be in the same project as the metric.
+     * 
+     */
+    public Optional<Output<String>> bucketName() {
+        return Optional.ofNullable(this.bucketName);
+    }
+
+    /**
      * The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
      * describes the bucket boundaries used to create a histogram of the extracted values.
      * Structure is documented below.
@@ -38,16 +55,14 @@ public final class MetricArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A description of this metric, which is used in documentation. The maximum length of the
-     * description is 8000 characters.
+     * A human-readable description for the label.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return A description of this metric, which is used in documentation. The maximum length of the
-     * description is 8000 characters.
+     * @return A human-readable description for the label.
      * 
      */
     public Optional<Output<String>> description() {
@@ -93,20 +108,26 @@ public final class MetricArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The metric descriptor associated with the logs-based metric.
+     * The optional metric descriptor associated with the logs-based metric.
+     * If unspecified, it uses a default metric descriptor with a DELTA metric kind,
+     * INT64 value type, with no labels and a unit of &#34;1&#34;. Such a metric counts the
+     * number of log entries matching the filter expression.
      * Structure is documented below.
      * 
      */
-    @Import(name="metricDescriptor", required=true)
-    private Output<MetricMetricDescriptorArgs> metricDescriptor;
+    @Import(name="metricDescriptor")
+    private @Nullable Output<MetricMetricDescriptorArgs> metricDescriptor;
 
     /**
-     * @return The metric descriptor associated with the logs-based metric.
+     * @return The optional metric descriptor associated with the logs-based metric.
+     * If unspecified, it uses a default metric descriptor with a DELTA metric kind,
+     * INT64 value type, with no labels and a unit of &#34;1&#34;. Such a metric counts the
+     * number of log entries matching the filter expression.
      * Structure is documented below.
      * 
      */
-    public Output<MetricMetricDescriptorArgs> metricDescriptor() {
-        return this.metricDescriptor;
+    public Optional<Output<MetricMetricDescriptorArgs>> metricDescriptor() {
+        return Optional.ofNullable(this.metricDescriptor);
     }
 
     /**
@@ -179,6 +200,7 @@ public final class MetricArgs extends com.pulumi.resources.ResourceArgs {
     private MetricArgs() {}
 
     private MetricArgs(MetricArgs $) {
+        this.bucketName = $.bucketName;
         this.bucketOptions = $.bucketOptions;
         this.description = $.description;
         this.filter = $.filter;
@@ -208,6 +230,29 @@ public final class MetricArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param bucketName The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
+         * are supported. The bucket has to be in the same project as the metric.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bucketName(@Nullable Output<String> bucketName) {
+            $.bucketName = bucketName;
+            return this;
+        }
+
+        /**
+         * @param bucketName The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
+         * are supported. The bucket has to be in the same project as the metric.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bucketName(String bucketName) {
+            return bucketName(Output.of(bucketName));
+        }
+
+        /**
          * @param bucketOptions The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
          * describes the bucket boundaries used to create a histogram of the extracted values.
          * Structure is documented below.
@@ -233,8 +278,7 @@ public final class MetricArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description A description of this metric, which is used in documentation. The maximum length of the
-         * description is 8000 characters.
+         * @param description A human-readable description for the label.
          * 
          * @return builder
          * 
@@ -245,8 +289,7 @@ public final class MetricArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description A description of this metric, which is used in documentation. The maximum length of the
-         * description is 8000 characters.
+         * @param description A human-readable description for the label.
          * 
          * @return builder
          * 
@@ -306,19 +349,25 @@ public final class MetricArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metricDescriptor The metric descriptor associated with the logs-based metric.
+         * @param metricDescriptor The optional metric descriptor associated with the logs-based metric.
+         * If unspecified, it uses a default metric descriptor with a DELTA metric kind,
+         * INT64 value type, with no labels and a unit of &#34;1&#34;. Such a metric counts the
+         * number of log entries matching the filter expression.
          * Structure is documented below.
          * 
          * @return builder
          * 
          */
-        public Builder metricDescriptor(Output<MetricMetricDescriptorArgs> metricDescriptor) {
+        public Builder metricDescriptor(@Nullable Output<MetricMetricDescriptorArgs> metricDescriptor) {
             $.metricDescriptor = metricDescriptor;
             return this;
         }
 
         /**
-         * @param metricDescriptor The metric descriptor associated with the logs-based metric.
+         * @param metricDescriptor The optional metric descriptor associated with the logs-based metric.
+         * If unspecified, it uses a default metric descriptor with a DELTA metric kind,
+         * INT64 value type, with no labels and a unit of &#34;1&#34;. Such a metric counts the
+         * number of log entries matching the filter expression.
          * Structure is documented below.
          * 
          * @return builder
@@ -415,7 +464,6 @@ public final class MetricArgs extends com.pulumi.resources.ResourceArgs {
 
         public MetricArgs build() {
             $.filter = Objects.requireNonNull($.filter, "expected parameter 'filter' to be non-null");
-            $.metricDescriptor = Objects.requireNonNull($.metricDescriptor, "expected parameter 'metricDescriptor' to be non-null");
             return $;
         }
     }

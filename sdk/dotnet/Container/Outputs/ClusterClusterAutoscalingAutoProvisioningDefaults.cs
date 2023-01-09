@@ -58,6 +58,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Shielded Instance options. Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig? ShieldedInstanceConfig;
+        /// <summary>
+        /// Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings? UpgradeSettings;
 
         [OutputConstructor]
         private ClusterClusterAutoscalingAutoProvisioningDefaults(
@@ -77,7 +81,9 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? serviceAccount,
 
-            Outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig? shieldedInstanceConfig)
+            Outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig? shieldedInstanceConfig,
+
+            Outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings? upgradeSettings)
         {
             BootDiskKmsKey = bootDiskKmsKey;
             DiskSize = diskSize;
@@ -88,6 +94,7 @@ namespace Pulumi.Gcp.Container.Outputs
             OauthScopes = oauthScopes;
             ServiceAccount = serviceAccount;
             ShieldedInstanceConfig = shieldedInstanceConfig;
+            UpgradeSettings = upgradeSettings;
         }
     }
 }

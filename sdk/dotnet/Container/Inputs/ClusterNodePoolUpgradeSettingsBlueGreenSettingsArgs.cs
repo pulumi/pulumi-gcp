@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        /// </summary>
         [Input("nodePoolSoakDuration")]
         public Input<string>? NodePoolSoakDuration { get; set; }
 

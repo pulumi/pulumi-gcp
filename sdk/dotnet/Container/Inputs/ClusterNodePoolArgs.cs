@@ -99,6 +99,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("placementPolicy")]
         public Input<Inputs.ClusterNodePoolPlacementPolicyArgs>? PlacementPolicy { get; set; }
 
+        /// <summary>
+        /// Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+        /// </summary>
         [Input("upgradeSettings")]
         public Input<Inputs.ClusterNodePoolUpgradeSettingsArgs>? UpgradeSettings { get; set; }
 

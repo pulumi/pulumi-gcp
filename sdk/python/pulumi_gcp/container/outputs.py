@@ -75,6 +75,9 @@ __all__ = [
     'ClusterClusterAutoscalingAutoProvisioningDefaultsManagement',
     'ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption',
     'ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig',
+    'ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings',
+    'ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings',
+    'ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy',
     'ClusterClusterAutoscalingResourceLimit',
     'ClusterClusterTelemetry',
     'ClusterConfidentialNodes',
@@ -82,6 +85,7 @@ __all__ = [
     'ClusterDatabaseEncryption',
     'ClusterDefaultSnatStatus',
     'ClusterDnsConfig',
+    'ClusterGatewayApiConfig',
     'ClusterIdentityServiceConfig',
     'ClusterIpAllocationPolicy',
     'ClusterLoggingConfig',
@@ -189,6 +193,9 @@ __all__ = [
     'GetClusterClusterAutoscalingAutoProvisioningDefaultManagementResult',
     'GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOptionResult',
     'GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfigResult',
+    'GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingResult',
+    'GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingResult',
+    'GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyResult',
     'GetClusterClusterAutoscalingResourceLimitResult',
     'GetClusterClusterTelemetryResult',
     'GetClusterConfidentialNodeResult',
@@ -196,6 +203,7 @@ __all__ = [
     'GetClusterDatabaseEncryptionResult',
     'GetClusterDefaultSnatStatusResult',
     'GetClusterDnsConfigResult',
+    'GetClusterGatewayApiConfigResult',
     'GetClusterIdentityServiceConfigResult',
     'GetClusterIpAllocationPolicyResult',
     'GetClusterLoggingConfigResult',
@@ -2664,7 +2672,7 @@ class ClusterAddonsConfig(dict):
         :param 'ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs' gcp_filestore_csi_driver_config: The status of the Filestore CSI driver addon,
                which allows the usage of filestore instance as volumes.
                It is disabled by default; set `enabled = true` to enable.
-        :param 'ClusterAddonsConfigGkeBackupAgentConfigArgs' gke_backup_agent_config: ).
+        :param 'ClusterAddonsConfigGkeBackupAgentConfigArgs' gke_backup_agent_config: .
                The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
         :param 'ClusterAddonsConfigHorizontalPodAutoscalingArgs' horizontal_pod_autoscaling: The status of the Horizontal Pod Autoscaling
                addon, which increases or decreases the number of replica pods a replication controller
@@ -2758,7 +2766,7 @@ class ClusterAddonsConfig(dict):
     @pulumi.getter(name="gkeBackupAgentConfig")
     def gke_backup_agent_config(self) -> Optional['outputs.ClusterAddonsConfigGkeBackupAgentConfig']:
         """
-        ).
+        .
         The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
         """
         return pulumi.get(self, "gke_backup_agent_config")
@@ -3284,6 +3292,8 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
             suggest = "service_account"
         elif key == "shieldedInstanceConfig":
             suggest = "shielded_instance_config"
+        elif key == "upgradeSettings":
+            suggest = "upgrade_settings"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterClusterAutoscalingAutoProvisioningDefaults. Access the value via the '{suggest}' property getter instead.")
@@ -3305,7 +3315,8 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
                  min_cpu_platform: Optional[str] = None,
                  oauth_scopes: Optional[Sequence[str]] = None,
                  service_account: Optional[str] = None,
-                 shielded_instance_config: Optional['outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig'] = None):
+                 shielded_instance_config: Optional['outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig'] = None,
+                 upgrade_settings: Optional['outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings'] = None):
         """
         :param str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
         :param int disk_size: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. Defaults to `100`
@@ -3325,6 +3336,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
         :param str service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
         :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArgs' shielded_instance_config: Shielded Instance options. Structure is documented below.
+        :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs' upgrade_settings: Specifies the upgrade settings for NAP created node pools. Structure is documented below.
         """
         if boot_disk_kms_key is not None:
             pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
@@ -3344,6 +3356,8 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
             pulumi.set(__self__, "service_account", service_account)
         if shielded_instance_config is not None:
             pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
+        if upgrade_settings is not None:
+            pulumi.set(__self__, "upgrade_settings", upgrade_settings)
 
     @property
     @pulumi.getter(name="bootDiskKmsKey")
@@ -3425,6 +3439,14 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
         Shielded Instance options. Structure is documented below.
         """
         return pulumi.get(self, "shielded_instance_config")
+
+    @property
+    @pulumi.getter(name="upgradeSettings")
+    def upgrade_settings(self) -> Optional['outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings']:
+        """
+        Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+        """
+        return pulumi.get(self, "upgrade_settings")
 
 
 @pulumi.output_type
@@ -3579,6 +3601,188 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig(di
         Defines if the instance has Secure Boot enabled.
         """
         return pulumi.get(self, "enable_secure_boot")
+
+
+@pulumi.output_type
+class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blueGreenSettings":
+            suggest = "blue_green_settings"
+        elif key == "maxSurge":
+            suggest = "max_surge"
+        elif key == "maxUnavailable":
+            suggest = "max_unavailable"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 blue_green_settings: Optional['outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings'] = None,
+                 max_surge: Optional[int] = None,
+                 max_unavailable: Optional[int] = None,
+                 strategy: Optional[str] = None):
+        """
+        :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArgs' blue_green_settings: Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+        :param int max_surge: The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+        :param int max_unavailable: The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+        :param str strategy: Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+        """
+        if blue_green_settings is not None:
+            pulumi.set(__self__, "blue_green_settings", blue_green_settings)
+        if max_surge is not None:
+            pulumi.set(__self__, "max_surge", max_surge)
+        if max_unavailable is not None:
+            pulumi.set(__self__, "max_unavailable", max_unavailable)
+        if strategy is not None:
+            pulumi.set(__self__, "strategy", strategy)
+
+    @property
+    @pulumi.getter(name="blueGreenSettings")
+    def blue_green_settings(self) -> Optional['outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings']:
+        """
+        Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+        """
+        return pulumi.get(self, "blue_green_settings")
+
+    @property
+    @pulumi.getter(name="maxSurge")
+    def max_surge(self) -> Optional[int]:
+        """
+        The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+        """
+        return pulumi.get(self, "max_surge")
+
+    @property
+    @pulumi.getter(name="maxUnavailable")
+    def max_unavailable(self) -> Optional[int]:
+        """
+        The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+        """
+        return pulumi.get(self, "max_unavailable")
+
+    @property
+    @pulumi.getter
+    def strategy(self) -> Optional[str]:
+        """
+        Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+        """
+        return pulumi.get(self, "strategy")
+
+
+@pulumi.output_type
+class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodePoolSoakDuration":
+            suggest = "node_pool_soak_duration"
+        elif key == "standardRolloutPolicy":
+            suggest = "standard_rollout_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 node_pool_soak_duration: Optional[str] = None,
+                 standard_rollout_policy: Optional['outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy'] = None):
+        """
+        :param str node_pool_soak_duration: Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        if node_pool_soak_duration is not None:
+            pulumi.set(__self__, "node_pool_soak_duration", node_pool_soak_duration)
+        if standard_rollout_policy is not None:
+            pulumi.set(__self__, "standard_rollout_policy", standard_rollout_policy)
+
+    @property
+    @pulumi.getter(name="nodePoolSoakDuration")
+    def node_pool_soak_duration(self) -> Optional[str]:
+        """
+        Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "node_pool_soak_duration")
+
+    @property
+    @pulumi.getter(name="standardRolloutPolicy")
+    def standard_rollout_policy(self) -> Optional['outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy']:
+        return pulumi.get(self, "standard_rollout_policy")
+
+
+@pulumi.output_type
+class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "batchNodeCount":
+            suggest = "batch_node_count"
+        elif key == "batchPercentage":
+            suggest = "batch_percentage"
+        elif key == "batchSoakDuration":
+            suggest = "batch_soak_duration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 batch_node_count: Optional[int] = None,
+                 batch_percentage: Optional[float] = None,
+                 batch_soak_duration: Optional[str] = None):
+        """
+        :param int batch_node_count: Number of blue nodes to drain in a batch. Only one of the batch_percentage or batch_node_count can be specified.
+        :param str batch_soak_duration: Soak time after each batch gets drained. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".`.
+        """
+        if batch_node_count is not None:
+            pulumi.set(__self__, "batch_node_count", batch_node_count)
+        if batch_percentage is not None:
+            pulumi.set(__self__, "batch_percentage", batch_percentage)
+        if batch_soak_duration is not None:
+            pulumi.set(__self__, "batch_soak_duration", batch_soak_duration)
+
+    @property
+    @pulumi.getter(name="batchNodeCount")
+    def batch_node_count(self) -> Optional[int]:
+        """
+        Number of blue nodes to drain in a batch. Only one of the batch_percentage or batch_node_count can be specified.
+        """
+        return pulumi.get(self, "batch_node_count")
+
+    @property
+    @pulumi.getter(name="batchPercentage")
+    def batch_percentage(self) -> Optional[float]:
+        return pulumi.get(self, "batch_percentage")
+
+    @property
+    @pulumi.getter(name="batchSoakDuration")
+    def batch_soak_duration(self) -> Optional[str]:
+        """
+        Soak time after each batch gets drained. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".`.
+        """
+        return pulumi.get(self, "batch_soak_duration")
 
 
 @pulumi.output_type
@@ -3831,6 +4035,34 @@ class ClusterDnsConfig(dict):
         The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
         """
         return pulumi.get(self, "cluster_dns_scope")
+
+
+@pulumi.output_type
+class ClusterGatewayApiConfig(dict):
+    def __init__(__self__, *,
+                 channel: str):
+        """
+        :param str channel: The selected release channel.
+               Accepted values are:
+               * UNSPECIFIED: Not set.
+               * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
+               * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
+               * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+        """
+        pulumi.set(__self__, "channel", channel)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> str:
+        """
+        The selected release channel.
+        Accepted values are:
+        * UNSPECIFIED: Not set.
+        * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
+        * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
+        * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+        """
+        return pulumi.get(self, "channel")
 
 
 @pulumi.output_type
@@ -5618,6 +5850,7 @@ class ClusterNodePool(dict):
                are located. Nodes must be in the region of their regional cluster or in the
                same region as their cluster's zone for zonal clusters. If this is specified for
                a zonal cluster, omit the cluster's zone.
+        :param 'ClusterNodePoolUpgradeSettingsArgs' upgrade_settings: Specifies the upgrade settings for NAP created node pools. Structure is documented below.
         """
         if autoscaling is not None:
             pulumi.set(__self__, "autoscaling", autoscaling)
@@ -5750,6 +5983,9 @@ class ClusterNodePool(dict):
     @property
     @pulumi.getter(name="upgradeSettings")
     def upgrade_settings(self) -> Optional['outputs.ClusterNodePoolUpgradeSettings']:
+        """
+        Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+        """
         return pulumi.get(self, "upgrade_settings")
 
     @property
@@ -7151,6 +7387,12 @@ class ClusterNodePoolUpgradeSettings(dict):
                  max_surge: Optional[int] = None,
                  max_unavailable: Optional[int] = None,
                  strategy: Optional[str] = None):
+        """
+        :param 'ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs' blue_green_settings: Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+        :param int max_surge: The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+        :param int max_unavailable: The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+        :param str strategy: Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+        """
         if blue_green_settings is not None:
             pulumi.set(__self__, "blue_green_settings", blue_green_settings)
         if max_surge is not None:
@@ -7163,21 +7405,33 @@ class ClusterNodePoolUpgradeSettings(dict):
     @property
     @pulumi.getter(name="blueGreenSettings")
     def blue_green_settings(self) -> Optional['outputs.ClusterNodePoolUpgradeSettingsBlueGreenSettings']:
+        """
+        Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+        """
         return pulumi.get(self, "blue_green_settings")
 
     @property
     @pulumi.getter(name="maxSurge")
     def max_surge(self) -> Optional[int]:
+        """
+        The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+        """
         return pulumi.get(self, "max_surge")
 
     @property
     @pulumi.getter(name="maxUnavailable")
     def max_unavailable(self) -> Optional[int]:
+        """
+        The maximum number of nodes that can be simultaneously unavailable during the upgrade process. To be used when strategy is set to SURGE. Default is 0.
+        """
         return pulumi.get(self, "max_unavailable")
 
     @property
     @pulumi.getter
     def strategy(self) -> Optional[str]:
+        """
+        Strategy used for node pool update. Strategy can only be one of BLUE_GREEN or SURGE. The default is value is SURGE.
+        """
         return pulumi.get(self, "strategy")
 
 
@@ -7205,6 +7459,9 @@ class ClusterNodePoolUpgradeSettingsBlueGreenSettings(dict):
     def __init__(__self__, *,
                  standard_rollout_policy: 'outputs.ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy',
                  node_pool_soak_duration: Optional[str] = None):
+        """
+        :param str node_pool_soak_duration: Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
         pulumi.set(__self__, "standard_rollout_policy", standard_rollout_policy)
         if node_pool_soak_duration is not None:
             pulumi.set(__self__, "node_pool_soak_duration", node_pool_soak_duration)
@@ -7217,6 +7474,9 @@ class ClusterNodePoolUpgradeSettingsBlueGreenSettings(dict):
     @property
     @pulumi.getter(name="nodePoolSoakDuration")
     def node_pool_soak_duration(self) -> Optional[str]:
+        """
+        Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
         return pulumi.get(self, "node_pool_soak_duration")
 
 
@@ -7247,6 +7507,10 @@ class ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy(dict)
                  batch_node_count: Optional[int] = None,
                  batch_percentage: Optional[float] = None,
                  batch_soak_duration: Optional[str] = None):
+        """
+        :param int batch_node_count: Number of blue nodes to drain in a batch. Only one of the batch_percentage or batch_node_count can be specified.
+        :param str batch_soak_duration: Soak time after each batch gets drained. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".`.
+        """
         if batch_node_count is not None:
             pulumi.set(__self__, "batch_node_count", batch_node_count)
         if batch_percentage is not None:
@@ -7257,6 +7521,9 @@ class ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy(dict)
     @property
     @pulumi.getter(name="batchNodeCount")
     def batch_node_count(self) -> Optional[int]:
+        """
+        Number of blue nodes to drain in a batch. Only one of the batch_percentage or batch_node_count can be specified.
+        """
         return pulumi.get(self, "batch_node_count")
 
     @property
@@ -7267,6 +7534,9 @@ class ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy(dict)
     @property
     @pulumi.getter(name="batchSoakDuration")
     def batch_soak_duration(self) -> Optional[str]:
+        """
+        Soak time after each batch gets drained. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".`.
+        """
         return pulumi.get(self, "batch_soak_duration")
 
 
@@ -9250,7 +9520,8 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultResult(dict):
                  min_cpu_platform: str,
                  oauth_scopes: Sequence[str],
                  service_account: str,
-                 shielded_instance_configs: Sequence['outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfigResult']):
+                 shielded_instance_configs: Sequence['outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfigResult'],
+                 upgrade_settings: Sequence['outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingResult']):
         pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
         pulumi.set(__self__, "disk_size", disk_size)
         pulumi.set(__self__, "disk_type", disk_type)
@@ -9260,6 +9531,7 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultResult(dict):
         pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "shielded_instance_configs", shielded_instance_configs)
+        pulumi.set(__self__, "upgrade_settings", upgrade_settings)
 
     @property
     @pulumi.getter(name="bootDiskKmsKey")
@@ -9305,6 +9577,11 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultResult(dict):
     @pulumi.getter(name="shieldedInstanceConfigs")
     def shielded_instance_configs(self) -> Sequence['outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfigResult']:
         return pulumi.get(self, "shielded_instance_configs")
+
+    @property
+    @pulumi.getter(name="upgradeSettings")
+    def upgrade_settings(self) -> Sequence['outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingResult']:
+        return pulumi.get(self, "upgrade_settings")
 
 
 @pulumi.output_type
@@ -9369,6 +9646,84 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfigR
     @pulumi.getter(name="enableSecureBoot")
     def enable_secure_boot(self) -> bool:
         return pulumi.get(self, "enable_secure_boot")
+
+
+@pulumi.output_type
+class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingResult(dict):
+    def __init__(__self__, *,
+                 blue_green_settings: Sequence['outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingResult'],
+                 max_surge: int,
+                 max_unavailable: int,
+                 strategy: str):
+        pulumi.set(__self__, "blue_green_settings", blue_green_settings)
+        pulumi.set(__self__, "max_surge", max_surge)
+        pulumi.set(__self__, "max_unavailable", max_unavailable)
+        pulumi.set(__self__, "strategy", strategy)
+
+    @property
+    @pulumi.getter(name="blueGreenSettings")
+    def blue_green_settings(self) -> Sequence['outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingResult']:
+        return pulumi.get(self, "blue_green_settings")
+
+    @property
+    @pulumi.getter(name="maxSurge")
+    def max_surge(self) -> int:
+        return pulumi.get(self, "max_surge")
+
+    @property
+    @pulumi.getter(name="maxUnavailable")
+    def max_unavailable(self) -> int:
+        return pulumi.get(self, "max_unavailable")
+
+    @property
+    @pulumi.getter
+    def strategy(self) -> str:
+        return pulumi.get(self, "strategy")
+
+
+@pulumi.output_type
+class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingResult(dict):
+    def __init__(__self__, *,
+                 node_pool_soak_duration: str,
+                 standard_rollout_policies: Sequence['outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyResult']):
+        pulumi.set(__self__, "node_pool_soak_duration", node_pool_soak_duration)
+        pulumi.set(__self__, "standard_rollout_policies", standard_rollout_policies)
+
+    @property
+    @pulumi.getter(name="nodePoolSoakDuration")
+    def node_pool_soak_duration(self) -> str:
+        return pulumi.get(self, "node_pool_soak_duration")
+
+    @property
+    @pulumi.getter(name="standardRolloutPolicies")
+    def standard_rollout_policies(self) -> Sequence['outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyResult']:
+        return pulumi.get(self, "standard_rollout_policies")
+
+
+@pulumi.output_type
+class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyResult(dict):
+    def __init__(__self__, *,
+                 batch_node_count: int,
+                 batch_percentage: float,
+                 batch_soak_duration: str):
+        pulumi.set(__self__, "batch_node_count", batch_node_count)
+        pulumi.set(__self__, "batch_percentage", batch_percentage)
+        pulumi.set(__self__, "batch_soak_duration", batch_soak_duration)
+
+    @property
+    @pulumi.getter(name="batchNodeCount")
+    def batch_node_count(self) -> int:
+        return pulumi.get(self, "batch_node_count")
+
+    @property
+    @pulumi.getter(name="batchPercentage")
+    def batch_percentage(self) -> float:
+        return pulumi.get(self, "batch_percentage")
+
+    @property
+    @pulumi.getter(name="batchSoakDuration")
+    def batch_soak_duration(self) -> str:
+        return pulumi.get(self, "batch_soak_duration")
 
 
 @pulumi.output_type
@@ -9488,6 +9843,18 @@ class GetClusterDnsConfigResult(dict):
     @pulumi.getter(name="clusterDnsScope")
     def cluster_dns_scope(self) -> str:
         return pulumi.get(self, "cluster_dns_scope")
+
+
+@pulumi.output_type
+class GetClusterGatewayApiConfigResult(dict):
+    def __init__(__self__, *,
+                 channel: str):
+        pulumi.set(__self__, "channel", channel)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> str:
+        return pulumi.get(self, "channel")
 
 
 @pulumi.output_type

@@ -16,9 +16,17 @@ public final class ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs extends c
 
     public static final ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs Empty = new ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs();
 
+    /**
+     * Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
     @Import(name="nodePoolSoakDuration")
     private @Nullable Output<String> nodePoolSoakDuration;
 
+    /**
+     * @return Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
     public Optional<Output<String>> nodePoolSoakDuration() {
         return Optional.ofNullable(this.nodePoolSoakDuration);
     }
@@ -55,11 +63,23 @@ public final class ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs extends c
             $ = new ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param nodePoolSoakDuration Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodePoolSoakDuration(@Nullable Output<String> nodePoolSoakDuration) {
             $.nodePoolSoakDuration = nodePoolSoakDuration;
             return this;
         }
 
+        /**
+         * @param nodePoolSoakDuration Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodePoolSoakDuration(String nodePoolSoakDuration) {
             return nodePoolSoakDuration(Output.of(nodePoolSoakDuration));
         }

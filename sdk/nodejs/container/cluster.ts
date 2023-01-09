@@ -236,6 +236,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly endpoint!: pulumi.Output<string>;
     /**
+     * Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
+     */
+    public readonly gatewayApiConfig!: pulumi.Output<outputs.container.ClusterGatewayApiConfig | undefined>;
+    /**
      * . Structure is documented below.
      */
     public readonly identityServiceConfig!: pulumi.Output<outputs.container.ClusterIdentityServiceConfig>;
@@ -539,6 +543,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["enableShieldedNodes"] = state ? state.enableShieldedNodes : undefined;
             resourceInputs["enableTpu"] = state ? state.enableTpu : undefined;
             resourceInputs["endpoint"] = state ? state.endpoint : undefined;
+            resourceInputs["gatewayApiConfig"] = state ? state.gatewayApiConfig : undefined;
             resourceInputs["identityServiceConfig"] = state ? state.identityServiceConfig : undefined;
             resourceInputs["initialNodeCount"] = state ? state.initialNodeCount : undefined;
             resourceInputs["ipAllocationPolicy"] = state ? state.ipAllocationPolicy : undefined;
@@ -606,6 +611,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["enableLegacyAbac"] = args ? args.enableLegacyAbac : undefined;
             resourceInputs["enableShieldedNodes"] = args ? args.enableShieldedNodes : undefined;
             resourceInputs["enableTpu"] = args ? args.enableTpu : undefined;
+            resourceInputs["gatewayApiConfig"] = args ? args.gatewayApiConfig : undefined;
             resourceInputs["identityServiceConfig"] = args ? args.identityServiceConfig : undefined;
             resourceInputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
             resourceInputs["ipAllocationPolicy"] = args ? args.ipAllocationPolicy : undefined;
@@ -783,6 +789,10 @@ export interface ClusterState {
      * The IP address of this cluster's Kubernetes master.
      */
     endpoint?: pulumi.Input<string>;
+    /**
+     * Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
+     */
+    gatewayApiConfig?: pulumi.Input<inputs.container.ClusterGatewayApiConfig>;
     /**
      * . Structure is documented below.
      */
@@ -1175,6 +1185,10 @@ export interface ClusterArgs {
      * See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
      */
     enableTpu?: pulumi.Input<boolean>;
+    /**
+     * Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
+     */
+    gatewayApiConfig?: pulumi.Input<inputs.container.ClusterGatewayApiConfig>;
     /**
      * . Structure is documented below.
      */

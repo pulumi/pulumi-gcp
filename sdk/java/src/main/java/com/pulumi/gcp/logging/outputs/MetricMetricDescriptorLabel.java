@@ -12,8 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class MetricMetricDescriptorLabel {
     /**
-     * @return A description of this metric, which is used in documentation. The maximum length of the
-     * description is 8000 characters.
+     * @return A human-readable description for the label.
      * 
      */
     private @Nullable String description;
@@ -32,8 +31,7 @@ public final class MetricMetricDescriptorLabel {
 
     private MetricMetricDescriptorLabel() {}
     /**
-     * @return A description of this metric, which is used in documentation. The maximum length of the
-     * description is 8000 characters.
+     * @return A human-readable description for the label.
      * 
      */
     public Optional<String> description() {

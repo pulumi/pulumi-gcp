@@ -87,6 +87,10 @@ type Table struct {
 
 	// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 	ColumnFamilies TableColumnFamilyArrayOutput `pulumi:"columnFamilies"`
+	// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
+	// families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
+	// protection will be set to UNPROTECTED as it is the API default value.
+	DeletionProtection pulumi.StringOutput `pulumi:"deletionProtection"`
 	// The name of the Bigtable instance.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
 	// The name of the table.
@@ -134,6 +138,10 @@ func GetTable(ctx *pulumi.Context,
 type tableState struct {
 	// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 	ColumnFamilies []TableColumnFamily `pulumi:"columnFamilies"`
+	// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
+	// families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
+	// protection will be set to UNPROTECTED as it is the API default value.
+	DeletionProtection *string `pulumi:"deletionProtection"`
 	// The name of the Bigtable instance.
 	InstanceName *string `pulumi:"instanceName"`
 	// The name of the table.
@@ -150,6 +158,10 @@ type tableState struct {
 type TableState struct {
 	// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 	ColumnFamilies TableColumnFamilyArrayInput
+	// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
+	// families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
+	// protection will be set to UNPROTECTED as it is the API default value.
+	DeletionProtection pulumi.StringPtrInput
 	// The name of the Bigtable instance.
 	InstanceName pulumi.StringPtrInput
 	// The name of the table.
@@ -170,6 +182,10 @@ func (TableState) ElementType() reflect.Type {
 type tableArgs struct {
 	// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 	ColumnFamilies []TableColumnFamily `pulumi:"columnFamilies"`
+	// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
+	// families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
+	// protection will be set to UNPROTECTED as it is the API default value.
+	DeletionProtection *string `pulumi:"deletionProtection"`
 	// The name of the Bigtable instance.
 	InstanceName string `pulumi:"instanceName"`
 	// The name of the table.
@@ -187,6 +203,10 @@ type tableArgs struct {
 type TableArgs struct {
 	// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 	ColumnFamilies TableColumnFamilyArrayInput
+	// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
+	// families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
+	// protection will be set to UNPROTECTED as it is the API default value.
+	DeletionProtection pulumi.StringPtrInput
 	// The name of the Bigtable instance.
 	InstanceName pulumi.StringInput
 	// The name of the table.
@@ -290,6 +310,13 @@ func (o TableOutput) ToTableOutputWithContext(ctx context.Context) TableOutput {
 // A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 func (o TableOutput) ColumnFamilies() TableColumnFamilyArrayOutput {
 	return o.ApplyT(func(v *Table) TableColumnFamilyArrayOutput { return v.ColumnFamilies }).(TableColumnFamilyArrayOutput)
+}
+
+// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column
+// families in the table, and the instance containing the table would be prohibited. If not provided, currently deletion
+// protection will be set to UNPROTECTED as it is the API default value.
+func (o TableOutput) DeletionProtection() pulumi.StringOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.DeletionProtection }).(pulumi.StringOutput)
 }
 
 // The name of the Bigtable instance.

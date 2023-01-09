@@ -86,6 +86,7 @@ export interface GetClusterResult {
     readonly enableShieldedNodes: boolean;
     readonly enableTpu: boolean;
     readonly endpoint: string;
+    readonly gatewayApiConfigs: outputs.container.GetClusterGatewayApiConfig[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */

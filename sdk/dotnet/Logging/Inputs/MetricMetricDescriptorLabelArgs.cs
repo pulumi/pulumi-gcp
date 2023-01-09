@@ -13,8 +13,7 @@ namespace Pulumi.Gcp.Logging.Inputs
     public sealed class MetricMetricDescriptorLabelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A description of this metric, which is used in documentation. The maximum length of the
-        /// description is 8000 characters.
+        /// A human-readable description for the label.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

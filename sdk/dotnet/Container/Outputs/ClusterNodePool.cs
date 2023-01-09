@@ -58,6 +58,9 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<string> NodeLocations;
         public readonly Outputs.ClusterNodePoolPlacementPolicy? PlacementPolicy;
+        /// <summary>
+        /// Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+        /// </summary>
         public readonly Outputs.ClusterNodePoolUpgradeSettings? UpgradeSettings;
         public readonly string? Version;
 

@@ -12,12 +12,18 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Number of blue nodes to drain in a batch. Only one of the batch_percentage or batch_node_count can be specified.
+        /// </summary>
         [Input("batchNodeCount")]
         public Input<int>? BatchNodeCount { get; set; }
 
         [Input("batchPercentage")]
         public Input<double>? BatchPercentage { get; set; }
 
+        /// <summary>
+        /// Soak time after each batch gets drained. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".`.
+        /// </summary>
         [Input("batchSoakDuration")]
         public Input<string>? BatchSoakDuration { get; set; }
 

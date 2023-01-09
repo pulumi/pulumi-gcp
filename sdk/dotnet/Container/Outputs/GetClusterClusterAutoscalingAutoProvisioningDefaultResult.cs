@@ -22,6 +22,7 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly ImmutableArray<string> OauthScopes;
         public readonly string ServiceAccount;
         public readonly ImmutableArray<Outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfigResult> ShieldedInstanceConfigs;
+        public readonly ImmutableArray<Outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingResult> UpgradeSettings;
 
         [OutputConstructor]
         private GetClusterClusterAutoscalingAutoProvisioningDefaultResult(
@@ -41,7 +42,9 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string serviceAccount,
 
-            ImmutableArray<Outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfigResult> shieldedInstanceConfigs)
+            ImmutableArray<Outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfigResult> shieldedInstanceConfigs,
+
+            ImmutableArray<Outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingResult> upgradeSettings)
         {
             BootDiskKmsKey = bootDiskKmsKey;
             DiskSize = diskSize;
@@ -52,6 +55,7 @@ namespace Pulumi.Gcp.Container.Outputs
             OauthScopes = oauthScopes;
             ServiceAccount = serviceAccount;
             ShieldedInstanceConfigs = shieldedInstanceConfigs;
+            UpgradeSettings = upgradeSettings;
         }
     }
 }

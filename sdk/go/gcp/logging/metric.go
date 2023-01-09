@@ -145,6 +145,40 @@ import (
 //	}
 //
 // ```
+// ### Logging Metric Logging Bucket
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			loggingMetricProjectBucketConfig, err := logging.NewProjectBucketConfig(ctx, "loggingMetricProjectBucketConfig", &logging.ProjectBucketConfigArgs{
+//				Location: pulumi.String("global"),
+//				Project:  pulumi.String("my-project-name"),
+//				BucketId: pulumi.String("_Default"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = logging.NewMetric(ctx, "loggingMetricMetric", &logging.MetricArgs{
+//				Filter:     pulumi.String("resource.type=gae_app AND severity>=ERROR"),
+//				BucketName: loggingMetricProjectBucketConfig.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -164,12 +198,14 @@ import (
 type Metric struct {
 	pulumi.CustomResourceState
 
+	// The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
+	// are supported. The bucket has to be in the same project as the metric.
+	BucketName pulumi.StringPtrOutput `pulumi:"bucketName"`
 	// The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
 	// describes the bucket boundaries used to create a histogram of the extracted values.
 	// Structure is documented below.
 	BucketOptions MetricBucketOptionsPtrOutput `pulumi:"bucketOptions"`
-	// A description of this metric, which is used in documentation. The maximum length of the
-	// description is 8000 characters.
+	// A human-readable description for the label.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
 	// is used to match log entries.
@@ -179,7 +215,10 @@ type Metric struct {
 	// have an associated extractor expression in this map. The syntax of the extractor expression is
 	// the same as for the valueExtractor field.
 	LabelExtractors pulumi.StringMapOutput `pulumi:"labelExtractors"`
-	// The metric descriptor associated with the logs-based metric.
+	// The optional metric descriptor associated with the logs-based metric.
+	// If unspecified, it uses a default metric descriptor with a DELTA metric kind,
+	// INT64 value type, with no labels and a unit of "1". Such a metric counts the
+	// number of log entries matching the filter expression.
 	// Structure is documented below.
 	MetricDescriptor MetricMetricDescriptorOutput `pulumi:"metricDescriptor"`
 	// The client-assigned metric identifier. Examples - "errorCount", "nginx/requests".
@@ -211,9 +250,6 @@ func NewMetric(ctx *pulumi.Context,
 	if args.Filter == nil {
 		return nil, errors.New("invalid value for required argument 'Filter'")
 	}
-	if args.MetricDescriptor == nil {
-		return nil, errors.New("invalid value for required argument 'MetricDescriptor'")
-	}
 	var resource Metric
 	err := ctx.RegisterResource("gcp:logging/metric:Metric", name, args, &resource, opts...)
 	if err != nil {
@@ -236,12 +272,14 @@ func GetMetric(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Metric resources.
 type metricState struct {
+	// The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
+	// are supported. The bucket has to be in the same project as the metric.
+	BucketName *string `pulumi:"bucketName"`
 	// The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
 	// describes the bucket boundaries used to create a histogram of the extracted values.
 	// Structure is documented below.
 	BucketOptions *MetricBucketOptions `pulumi:"bucketOptions"`
-	// A description of this metric, which is used in documentation. The maximum length of the
-	// description is 8000 characters.
+	// A human-readable description for the label.
 	Description *string `pulumi:"description"`
 	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
 	// is used to match log entries.
@@ -251,7 +289,10 @@ type metricState struct {
 	// have an associated extractor expression in this map. The syntax of the extractor expression is
 	// the same as for the valueExtractor field.
 	LabelExtractors map[string]string `pulumi:"labelExtractors"`
-	// The metric descriptor associated with the logs-based metric.
+	// The optional metric descriptor associated with the logs-based metric.
+	// If unspecified, it uses a default metric descriptor with a DELTA metric kind,
+	// INT64 value type, with no labels and a unit of "1". Such a metric counts the
+	// number of log entries matching the filter expression.
 	// Structure is documented below.
 	MetricDescriptor *MetricMetricDescriptor `pulumi:"metricDescriptor"`
 	// The client-assigned metric identifier. Examples - "errorCount", "nginx/requests".
@@ -274,12 +315,14 @@ type metricState struct {
 }
 
 type MetricState struct {
+	// The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
+	// are supported. The bucket has to be in the same project as the metric.
+	BucketName pulumi.StringPtrInput
 	// The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
 	// describes the bucket boundaries used to create a histogram of the extracted values.
 	// Structure is documented below.
 	BucketOptions MetricBucketOptionsPtrInput
-	// A description of this metric, which is used in documentation. The maximum length of the
-	// description is 8000 characters.
+	// A human-readable description for the label.
 	Description pulumi.StringPtrInput
 	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
 	// is used to match log entries.
@@ -289,7 +332,10 @@ type MetricState struct {
 	// have an associated extractor expression in this map. The syntax of the extractor expression is
 	// the same as for the valueExtractor field.
 	LabelExtractors pulumi.StringMapInput
-	// The metric descriptor associated with the logs-based metric.
+	// The optional metric descriptor associated with the logs-based metric.
+	// If unspecified, it uses a default metric descriptor with a DELTA metric kind,
+	// INT64 value type, with no labels and a unit of "1". Such a metric counts the
+	// number of log entries matching the filter expression.
 	// Structure is documented below.
 	MetricDescriptor MetricMetricDescriptorPtrInput
 	// The client-assigned metric identifier. Examples - "errorCount", "nginx/requests".
@@ -316,12 +362,14 @@ func (MetricState) ElementType() reflect.Type {
 }
 
 type metricArgs struct {
+	// The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
+	// are supported. The bucket has to be in the same project as the metric.
+	BucketName *string `pulumi:"bucketName"`
 	// The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
 	// describes the bucket boundaries used to create a histogram of the extracted values.
 	// Structure is documented below.
 	BucketOptions *MetricBucketOptions `pulumi:"bucketOptions"`
-	// A description of this metric, which is used in documentation. The maximum length of the
-	// description is 8000 characters.
+	// A human-readable description for the label.
 	Description *string `pulumi:"description"`
 	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
 	// is used to match log entries.
@@ -331,9 +379,12 @@ type metricArgs struct {
 	// have an associated extractor expression in this map. The syntax of the extractor expression is
 	// the same as for the valueExtractor field.
 	LabelExtractors map[string]string `pulumi:"labelExtractors"`
-	// The metric descriptor associated with the logs-based metric.
+	// The optional metric descriptor associated with the logs-based metric.
+	// If unspecified, it uses a default metric descriptor with a DELTA metric kind,
+	// INT64 value type, with no labels and a unit of "1". Such a metric counts the
+	// number of log entries matching the filter expression.
 	// Structure is documented below.
-	MetricDescriptor MetricMetricDescriptor `pulumi:"metricDescriptor"`
+	MetricDescriptor *MetricMetricDescriptor `pulumi:"metricDescriptor"`
 	// The client-assigned metric identifier. Examples - "errorCount", "nginx/requests".
 	// Metric identifiers are limited to 100 characters and can include only the following
 	// characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
@@ -355,12 +406,14 @@ type metricArgs struct {
 
 // The set of arguments for constructing a Metric resource.
 type MetricArgs struct {
+	// The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
+	// are supported. The bucket has to be in the same project as the metric.
+	BucketName pulumi.StringPtrInput
 	// The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
 	// describes the bucket boundaries used to create a histogram of the extracted values.
 	// Structure is documented below.
 	BucketOptions MetricBucketOptionsPtrInput
-	// A description of this metric, which is used in documentation. The maximum length of the
-	// description is 8000 characters.
+	// A human-readable description for the label.
 	Description pulumi.StringPtrInput
 	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
 	// is used to match log entries.
@@ -370,9 +423,12 @@ type MetricArgs struct {
 	// have an associated extractor expression in this map. The syntax of the extractor expression is
 	// the same as for the valueExtractor field.
 	LabelExtractors pulumi.StringMapInput
-	// The metric descriptor associated with the logs-based metric.
+	// The optional metric descriptor associated with the logs-based metric.
+	// If unspecified, it uses a default metric descriptor with a DELTA metric kind,
+	// INT64 value type, with no labels and a unit of "1". Such a metric counts the
+	// number of log entries matching the filter expression.
 	// Structure is documented below.
-	MetricDescriptor MetricMetricDescriptorInput
+	MetricDescriptor MetricMetricDescriptorPtrInput
 	// The client-assigned metric identifier. Examples - "errorCount", "nginx/requests".
 	// Metric identifiers are limited to 100 characters and can include only the following
 	// characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
@@ -479,6 +535,12 @@ func (o MetricOutput) ToMetricOutputWithContext(ctx context.Context) MetricOutpu
 	return o
 }
 
+// The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
+// are supported. The bucket has to be in the same project as the metric.
+func (o MetricOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Metric) pulumi.StringPtrOutput { return v.BucketName }).(pulumi.StringPtrOutput)
+}
+
 // The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
 // describes the bucket boundaries used to create a histogram of the extracted values.
 // Structure is documented below.
@@ -486,8 +548,7 @@ func (o MetricOutput) BucketOptions() MetricBucketOptionsPtrOutput {
 	return o.ApplyT(func(v *Metric) MetricBucketOptionsPtrOutput { return v.BucketOptions }).(MetricBucketOptionsPtrOutput)
 }
 
-// A description of this metric, which is used in documentation. The maximum length of the
-// description is 8000 characters.
+// A human-readable description for the label.
 func (o MetricOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Metric) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -506,7 +567,10 @@ func (o MetricOutput) LabelExtractors() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Metric) pulumi.StringMapOutput { return v.LabelExtractors }).(pulumi.StringMapOutput)
 }
 
-// The metric descriptor associated with the logs-based metric.
+// The optional metric descriptor associated with the logs-based metric.
+// If unspecified, it uses a default metric descriptor with a DELTA metric kind,
+// INT64 value type, with no labels and a unit of "1". Such a metric counts the
+// number of log entries matching the filter expression.
 // Structure is documented below.
 func (o MetricOutput) MetricDescriptor() MetricMetricDescriptorOutput {
 	return o.ApplyT(func(v *Metric) MetricMetricDescriptorOutput { return v.MetricDescriptor }).(MetricMetricDescriptorOutput)

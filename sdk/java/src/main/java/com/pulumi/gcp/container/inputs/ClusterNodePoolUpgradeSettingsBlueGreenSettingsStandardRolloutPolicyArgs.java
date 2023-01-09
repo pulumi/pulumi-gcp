@@ -17,9 +17,17 @@ public final class ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRollou
 
     public static final ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs Empty = new ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs();
 
+    /**
+     * Number of blue nodes to drain in a batch. Only one of the batch_percentage or batch_node_count can be specified.
+     * 
+     */
     @Import(name="batchNodeCount")
     private @Nullable Output<Integer> batchNodeCount;
 
+    /**
+     * @return Number of blue nodes to drain in a batch. Only one of the batch_percentage or batch_node_count can be specified.
+     * 
+     */
     public Optional<Output<Integer>> batchNodeCount() {
         return Optional.ofNullable(this.batchNodeCount);
     }
@@ -31,9 +39,17 @@ public final class ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRollou
         return Optional.ofNullable(this.batchPercentage);
     }
 
+    /**
+     * Soak time after each batch gets drained. A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.`.
+     * 
+     */
     @Import(name="batchSoakDuration")
     private @Nullable Output<String> batchSoakDuration;
 
+    /**
+     * @return Soak time after each batch gets drained. A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.`.
+     * 
+     */
     public Optional<Output<String>> batchSoakDuration() {
         return Optional.ofNullable(this.batchSoakDuration);
     }
@@ -64,11 +80,23 @@ public final class ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRollou
             $ = new ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param batchNodeCount Number of blue nodes to drain in a batch. Only one of the batch_percentage or batch_node_count can be specified.
+         * 
+         * @return builder
+         * 
+         */
         public Builder batchNodeCount(@Nullable Output<Integer> batchNodeCount) {
             $.batchNodeCount = batchNodeCount;
             return this;
         }
 
+        /**
+         * @param batchNodeCount Number of blue nodes to drain in a batch. Only one of the batch_percentage or batch_node_count can be specified.
+         * 
+         * @return builder
+         * 
+         */
         public Builder batchNodeCount(Integer batchNodeCount) {
             return batchNodeCount(Output.of(batchNodeCount));
         }
@@ -82,11 +110,23 @@ public final class ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRollou
             return batchPercentage(Output.of(batchPercentage));
         }
 
+        /**
+         * @param batchSoakDuration Soak time after each batch gets drained. A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder batchSoakDuration(@Nullable Output<String> batchSoakDuration) {
             $.batchSoakDuration = batchSoakDuration;
             return this;
         }
 
+        /**
+         * @param batchSoakDuration Soak time after each batch gets drained. A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder batchSoakDuration(String batchSoakDuration) {
             return batchSoakDuration(Output.of(batchSoakDuration));
         }

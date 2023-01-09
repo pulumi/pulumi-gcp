@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsManagement;
 import com.pulumi.gcp.container.outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig;
+import com.pulumi.gcp.container.outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -69,6 +70,11 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
      * 
      */
     private @Nullable ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig shieldedInstanceConfig;
+    /**
+     * @return Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+     * 
+     */
+    private @Nullable ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings upgradeSettings;
 
     private ClusterClusterAutoscalingAutoProvisioningDefaults() {}
     /**
@@ -143,6 +149,13 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
     public Optional<ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig> shieldedInstanceConfig() {
         return Optional.ofNullable(this.shieldedInstanceConfig);
     }
+    /**
+     * @return Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+     * 
+     */
+    public Optional<ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings> upgradeSettings() {
+        return Optional.ofNullable(this.upgradeSettings);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -162,6 +175,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
         private @Nullable List<String> oauthScopes;
         private @Nullable String serviceAccount;
         private @Nullable ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig shieldedInstanceConfig;
+        private @Nullable ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings upgradeSettings;
         public Builder() {}
         public Builder(ClusterClusterAutoscalingAutoProvisioningDefaults defaults) {
     	      Objects.requireNonNull(defaults);
@@ -174,6 +188,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
     	      this.oauthScopes = defaults.oauthScopes;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.shieldedInstanceConfig = defaults.shieldedInstanceConfig;
+    	      this.upgradeSettings = defaults.upgradeSettings;
         }
 
         @CustomType.Setter
@@ -224,6 +239,11 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
             this.shieldedInstanceConfig = shieldedInstanceConfig;
             return this;
         }
+        @CustomType.Setter
+        public Builder upgradeSettings(@Nullable ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings upgradeSettings) {
+            this.upgradeSettings = upgradeSettings;
+            return this;
+        }
         public ClusterClusterAutoscalingAutoProvisioningDefaults build() {
             final var o = new ClusterClusterAutoscalingAutoProvisioningDefaults();
             o.bootDiskKmsKey = bootDiskKmsKey;
@@ -235,6 +255,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
             o.oauthScopes = oauthScopes;
             o.serviceAccount = serviceAccount;
             o.shieldedInstanceConfig = shieldedInstanceConfig;
+            o.upgradeSettings = upgradeSettings;
             return o;
         }
     }

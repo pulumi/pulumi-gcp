@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigGcpFilestoreCsiDriverConfig? GcpFilestoreCsiDriverConfig;
         /// <summary>
-        /// ).
+        /// .
         /// The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigGkeBackupAgentConfig? GkeBackupAgentConfig;

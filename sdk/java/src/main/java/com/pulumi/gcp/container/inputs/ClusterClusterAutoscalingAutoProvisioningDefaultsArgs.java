@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgs;
 import com.pulumi.gcp.container.inputs.ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -172,6 +173,21 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
         return Optional.ofNullable(this.shieldedInstanceConfig);
     }
 
+    /**
+     * Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+     * 
+     */
+    @Import(name="upgradeSettings")
+    private @Nullable Output<ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs> upgradeSettings;
+
+    /**
+     * @return Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs>> upgradeSettings() {
+        return Optional.ofNullable(this.upgradeSettings);
+    }
+
     private ClusterClusterAutoscalingAutoProvisioningDefaultsArgs() {}
 
     private ClusterClusterAutoscalingAutoProvisioningDefaultsArgs(ClusterClusterAutoscalingAutoProvisioningDefaultsArgs $) {
@@ -184,6 +200,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
         this.oauthScopes = $.oauthScopes;
         this.serviceAccount = $.serviceAccount;
         this.shieldedInstanceConfig = $.shieldedInstanceConfig;
+        this.upgradeSettings = $.upgradeSettings;
     }
 
     public static Builder builder() {
@@ -421,6 +438,27 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs extends
          */
         public Builder shieldedInstanceConfig(ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArgs shieldedInstanceConfig) {
             return shieldedInstanceConfig(Output.of(shieldedInstanceConfig));
+        }
+
+        /**
+         * @param upgradeSettings Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upgradeSettings(@Nullable Output<ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs> upgradeSettings) {
+            $.upgradeSettings = upgradeSettings;
+            return this;
+        }
+
+        /**
+         * @param upgradeSettings Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upgradeSettings(ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs upgradeSettings) {
+            return upgradeSettings(Output.of(upgradeSettings));
         }
 
         public ClusterClusterAutoscalingAutoProvisioningDefaultsArgs build() {

@@ -70,6 +70,10 @@ public final class ClusterNodePool {
      */
     private @Nullable List<String> nodeLocations;
     private @Nullable ClusterNodePoolPlacementPolicy placementPolicy;
+    /**
+     * @return Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+     * 
+     */
     private @Nullable ClusterNodePoolUpgradeSettings upgradeSettings;
     private @Nullable String version;
 
@@ -151,6 +155,10 @@ public final class ClusterNodePool {
     public Optional<ClusterNodePoolPlacementPolicy> placementPolicy() {
         return Optional.ofNullable(this.placementPolicy);
     }
+    /**
+     * @return Specifies the upgrade settings for NAP created node pools. Structure is documented below.
+     * 
+     */
     public Optional<ClusterNodePoolUpgradeSettings> upgradeSettings() {
         return Optional.ofNullable(this.upgradeSettings);
     }
