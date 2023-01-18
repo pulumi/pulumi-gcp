@@ -15,6 +15,9 @@ namespace Pulumi.Gcp.DataPlex.Outputs
     {
         public readonly int? ActiveAssets;
         public readonly int? SecurityPolicyApplyingAssets;
+        /// <summary>
+        /// Output only. The time when the zone was last updated.
+        /// </summary>
         public readonly string? UpdateTime;
 
         [OutputConstructor]

@@ -104,8 +104,7 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name of this data policy, in the format of
-        /// projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
+        /// Resource name of this data policy, in the format of projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -243,8 +242,7 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Resource name of this data policy, in the format of
-        /// projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
+        /// Resource name of this data policy, in the format of projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

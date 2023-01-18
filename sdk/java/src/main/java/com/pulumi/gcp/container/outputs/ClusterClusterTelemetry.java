@@ -10,14 +10,16 @@ import java.util.Objects;
 @CustomType
 public final class ClusterClusterTelemetry {
     /**
-     * @return The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+     * @return Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
+     * `SYSTEM_ONLY` (Only system components are monitored and logged) is only available in GKE versions 1.15 and later.
      * 
      */
     private String type;
 
     private ClusterClusterTelemetry() {}
     /**
-     * @return The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+     * @return Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
+     * `SYSTEM_ONLY` (Only system components are monitored and logged) is only available in GKE versions 1.15 and later.
      * 
      */
     public String type() {

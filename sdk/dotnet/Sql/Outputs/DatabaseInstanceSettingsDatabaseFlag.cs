@@ -14,13 +14,11 @@ namespace Pulumi.Gcp.Sql.Outputs
     public sealed class DatabaseInstanceSettingsDatabaseFlag
     {
         /// <summary>
-        /// A name for this whitelist entry.
+        /// Name of the flag.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// A CIDR notation IPv4 or IPv6 address that is allowed to
-        /// access this instance. Must be set even if other two attributes are not for
-        /// the whitelist to become active.
+        /// Value of the flag.
         /// </summary>
         public readonly string Value;
 

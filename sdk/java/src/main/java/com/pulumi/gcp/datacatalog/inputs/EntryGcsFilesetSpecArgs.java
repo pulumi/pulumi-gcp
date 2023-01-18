@@ -53,7 +53,6 @@ public final class EntryGcsFilesetSpecArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * - 
      * Sample files contained in this fileset, not all files contained in this fileset are represented here.
      * Structure is documented below.
      * 
@@ -62,8 +61,7 @@ public final class EntryGcsFilesetSpecArgs extends com.pulumi.resources.Resource
     private @Nullable Output<List<EntryGcsFilesetSpecSampleGcsFileSpecArgs>> sampleGcsFileSpecs;
 
     /**
-     * @return -
-     * Sample files contained in this fileset, not all files contained in this fileset are represented here.
+     * @return Sample files contained in this fileset, not all files contained in this fileset are represented here.
      * Structure is documented below.
      * 
      */
@@ -158,8 +156,7 @@ public final class EntryGcsFilesetSpecArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sampleGcsFileSpecs -
-         * Sample files contained in this fileset, not all files contained in this fileset are represented here.
+         * @param sampleGcsFileSpecs Sample files contained in this fileset, not all files contained in this fileset are represented here.
          * Structure is documented below.
          * 
          * @return builder
@@ -171,8 +168,7 @@ public final class EntryGcsFilesetSpecArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sampleGcsFileSpecs -
-         * Sample files contained in this fileset, not all files contained in this fileset are represented here.
+         * @param sampleGcsFileSpecs Sample files contained in this fileset, not all files contained in this fileset are represented here.
          * Structure is documented below.
          * 
          * @return builder
@@ -183,8 +179,7 @@ public final class EntryGcsFilesetSpecArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sampleGcsFileSpecs -
-         * Sample files contained in this fileset, not all files contained in this fileset are represented here.
+         * @param sampleGcsFileSpecs Sample files contained in this fileset, not all files contained in this fileset are represented here.
          * Structure is documented below.
          * 
          * @return builder

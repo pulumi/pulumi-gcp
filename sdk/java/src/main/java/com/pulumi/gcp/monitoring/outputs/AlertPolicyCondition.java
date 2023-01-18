@@ -52,8 +52,7 @@ public final class AlertPolicyCondition {
      */
     private String displayName;
     /**
-     * @return -
-     * The unique resource name for this condition.
+     * @return The unique resource name for this condition.
      * Its syntax is:
      * projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
      * [CONDITION_ID] is assigned by Stackdriver Monitoring when
@@ -111,8 +110,7 @@ public final class AlertPolicyCondition {
         return this.displayName;
     }
     /**
-     * @return -
-     * The unique resource name for this condition.
+     * @return The unique resource name for this condition.
      * Its syntax is:
      * projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
      * [CONDITION_ID] is assigned by Stackdriver Monitoring when

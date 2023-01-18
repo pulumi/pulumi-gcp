@@ -134,7 +134,8 @@ class _EntityTypeState:
                types can contain references to other entity types (with or without aliases).
                * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
                Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
-        :param pulumi.Input[str] name: The unique identifier of the entity type. Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
+        :param pulumi.Input[str] name: The unique identifier of the entity type.
+               Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -209,7 +210,8 @@ class _EntityTypeState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique identifier of the entity type. Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
+        The unique identifier of the entity type.
+        Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
         """
         return pulumi.get(self, "name")
 
@@ -435,7 +437,8 @@ class EntityType(pulumi.CustomResource):
                types can contain references to other entity types (with or without aliases).
                * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
                Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
-        :param pulumi.Input[str] name: The unique identifier of the entity type. Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
+        :param pulumi.Input[str] name: The unique identifier of the entity type.
+               Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -493,7 +496,8 @@ class EntityType(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The unique identifier of the entity type. Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
+        The unique identifier of the entity type.
+        Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
         """
         return pulumi.get(self, "name")
 

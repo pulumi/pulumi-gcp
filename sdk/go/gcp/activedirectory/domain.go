@@ -71,15 +71,15 @@ type Domain struct {
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
 	// https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
-	// The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would
-	// be chosen for an Active Directory set up on an internal network.
+	// The fully-qualified domain name of the exposed domain used by clients to connect to the service.
+	// Similar to what would be chosen for an Active Directory set up on an internal network.
 	Fqdn pulumi.StringOutput `pulumi:"fqdn"`
 	// Resource labels that can contain user-provided metadata
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]
 	// e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
 	Locations pulumi.StringArrayOutput `pulumi:"locations"`
-	// The unique name of the domain using the format: 'projects/{project}/locations/global/domains/{domainName}'.
+	// The unique name of the domain using the format: `projects/{project}/locations/global/domains/{domainName}`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -136,15 +136,15 @@ type domainState struct {
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
 	// https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 	DomainName *string `pulumi:"domainName"`
-	// The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would
-	// be chosen for an Active Directory set up on an internal network.
+	// The fully-qualified domain name of the exposed domain used by clients to connect to the service.
+	// Similar to what would be chosen for an Active Directory set up on an internal network.
 	Fqdn *string `pulumi:"fqdn"`
 	// Resource labels that can contain user-provided metadata
 	Labels map[string]string `pulumi:"labels"`
 	// Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]
 	// e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
 	Locations []string `pulumi:"locations"`
-	// The unique name of the domain using the format: 'projects/{project}/locations/global/domains/{domainName}'.
+	// The unique name of the domain using the format: `projects/{project}/locations/global/domains/{domainName}`.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -164,15 +164,15 @@ type DomainState struct {
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
 	// https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
 	DomainName pulumi.StringPtrInput
-	// The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would
-	// be chosen for an Active Directory set up on an internal network.
+	// The fully-qualified domain name of the exposed domain used by clients to connect to the service.
+	// Similar to what would be chosen for an Active Directory set up on an internal network.
 	Fqdn pulumi.StringPtrInput
 	// Resource labels that can contain user-provided metadata
 	Labels pulumi.StringMapInput
 	// Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]
 	// e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
 	Locations pulumi.StringArrayInput
-	// The unique name of the domain using the format: 'projects/{project}/locations/global/domains/{domainName}'.
+	// The unique name of the domain using the format: `projects/{project}/locations/global/domains/{domainName}`.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -338,8 +338,8 @@ func (o DomainOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
 }
 
-// The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would
-// be chosen for an Active Directory set up on an internal network.
+// The fully-qualified domain name of the exposed domain used by clients to connect to the service.
+// Similar to what would be chosen for an Active Directory set up on an internal network.
 func (o DomainOutput) Fqdn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Fqdn }).(pulumi.StringOutput)
 }
@@ -355,7 +355,7 @@ func (o DomainOutput) Locations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringArrayOutput { return v.Locations }).(pulumi.StringArrayOutput)
 }
 
-// The unique name of the domain using the format: 'projects/{project}/locations/global/domains/{domainName}'.
+// The unique name of the domain using the format: `projects/{project}/locations/global/domains/{domainName}`.
 func (o DomainOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

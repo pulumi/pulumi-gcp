@@ -16,14 +16,14 @@ public final class FeatureMembershipConfigmanagementBinauthzArgs extends com.pul
     public static final FeatureMembershipConfigmanagementBinauthzArgs Empty = new FeatureMembershipConfigmanagementBinauthzArgs();
 
     /**
-     * Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+     * Whether binauthz is enabled in this cluster.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+     * @return Whether binauthz is enabled in this cluster.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -55,7 +55,7 @@ public final class FeatureMembershipConfigmanagementBinauthzArgs extends com.pul
         }
 
         /**
-         * @param enabled Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+         * @param enabled Whether binauthz is enabled in this cluster.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class FeatureMembershipConfigmanagementBinauthzArgs extends com.pul
         }
 
         /**
-         * @param enabled Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+         * @param enabled Whether binauthz is enabled in this cluster.
          * 
          * @return builder
          * 

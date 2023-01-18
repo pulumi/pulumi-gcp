@@ -17,16 +17,16 @@ public final class URLMapPathMatcherPathRuleRouteActionTimeoutArgs extends com.p
     public static final URLMapPathMatcherPathRuleRouteActionTimeoutArgs Empty = new URLMapPathMatcherPathRuleRouteActionTimeoutArgs();
 
     /**
-     * Span of time that&#39;s a fraction of a second at nanosecond resolution. Durations less than one second are
-     * represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+     * Span of time that&#39;s a fraction of a second at nanosecond resolution. Durations less than one second are represented
+     * with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
      * 
      */
     @Import(name="nanos")
     private @Nullable Output<Integer> nanos;
 
     /**
-     * @return Span of time that&#39;s a fraction of a second at nanosecond resolution. Durations less than one second are
-     * represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+     * @return Span of time that&#39;s a fraction of a second at nanosecond resolution. Durations less than one second are represented
+     * with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
      * 
      */
     public Optional<Output<Integer>> nanos() {
@@ -76,8 +76,8 @@ public final class URLMapPathMatcherPathRuleRouteActionTimeoutArgs extends com.p
         }
 
         /**
-         * @param nanos Span of time that&#39;s a fraction of a second at nanosecond resolution. Durations less than one second are
-         * represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+         * @param nanos Span of time that&#39;s a fraction of a second at nanosecond resolution. Durations less than one second are represented
+         * with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
          * 
          * @return builder
          * 
@@ -88,8 +88,8 @@ public final class URLMapPathMatcherPathRuleRouteActionTimeoutArgs extends com.p
         }
 
         /**
-         * @param nanos Span of time that&#39;s a fraction of a second at nanosecond resolution. Durations less than one second are
-         * represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+         * @param nanos Span of time that&#39;s a fraction of a second at nanosecond resolution. Durations less than one second are represented
+         * with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
          * 
          * @return builder
          * 

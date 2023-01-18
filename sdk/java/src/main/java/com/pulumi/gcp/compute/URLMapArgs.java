@@ -23,10 +23,10 @@ public final class URLMapArgs extends com.pulumi.resources.ResourceArgs {
     public static final URLMapArgs Empty = new URLMapArgs();
 
     /**
-     * defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
-     * advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
-     * to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
-     * Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+     * defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
+     * like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend.
+     * If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService
+     * is set, defaultRouteAction cannot contain any weightedBackendServices.
      * Only one of defaultRouteAction or defaultUrlRedirect must be set.
      * Structure is documented below.
      * 
@@ -35,10 +35,10 @@ public final class URLMapArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<URLMapDefaultRouteActionArgs> defaultRouteAction;
 
     /**
-     * @return defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
-     * advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
-     * to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
-     * Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+     * @return defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
+     * like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend.
+     * If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService
+     * is set, defaultRouteAction cannot contain any weightedBackendServices.
      * Only one of defaultRouteAction or defaultUrlRedirect must be set.
      * Structure is documented below.
      * 
@@ -48,14 +48,14 @@ public final class URLMapArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The backend service or backend bucket to use when none of the given paths match.
+     * The backend service or backend bucket to use when none of the given rules match.
      * 
      */
     @Import(name="defaultService")
     private @Nullable Output<String> defaultService;
 
     /**
-     * @return The backend service or backend bucket to use when none of the given paths match.
+     * @return The backend service or backend bucket to use when none of the given rules match.
      * 
      */
     public Optional<Output<String>> defaultService() {
@@ -84,14 +84,16 @@ public final class URLMapArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of this test case.
+     * An optional description of this resource. Provide this property when you create
+     * the resource.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of this test case.
+     * @return An optional description of this resource. Provide this property when you create
+     * the resource.
      * 
      */
     public Optional<Output<String>> description() {
@@ -100,9 +102,8 @@ public final class URLMapArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Specifies changes to request and response headers that need to take effect for
-     * the selected backendService.
-     * headerAction specified here take effect before headerAction in the enclosing
-     * HttpRouteRule, PathMatcher and UrlMap.
+     * the selected backendService. The headerAction specified here take effect after
+     * headerAction specified under pathMatcher.
      * Structure is documented below.
      * 
      */
@@ -111,9 +112,8 @@ public final class URLMapArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Specifies changes to request and response headers that need to take effect for
-     * the selected backendService.
-     * headerAction specified here take effect before headerAction in the enclosing
-     * HttpRouteRule, PathMatcher and UrlMap.
+     * the selected backendService. The headerAction specified here take effect after
+     * headerAction specified under pathMatcher.
      * Structure is documented below.
      * 
      */
@@ -139,16 +139,24 @@ public final class URLMapArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the query parameter to match. The query parameter must exist in the
-     * request, in the absence of which the request match fails.
+     * Name of the resource. Provided by the client when the resource is created. The
+     * name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+     * name must be 1-63 characters long and match the regular expression
+     * `a-z?` which means the first character must be a lowercase
+     * letter, and all following characters must be a dash, lowercase letter, or digit,
+     * except the last character, which cannot be a dash.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the query parameter to match. The query parameter must exist in the
-     * request, in the absence of which the request match fails.
+     * @return Name of the resource. Provided by the client when the resource is created. The
+     * name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+     * name must be 1-63 characters long and match the regular expression
+     * `a-z?` which means the first character must be a lowercase
+     * letter, and all following characters must be a dash, lowercase letter, or digit,
+     * except the last character, which cannot be a dash.
      * 
      */
     public Optional<Output<String>> name() {
@@ -156,16 +164,16 @@ public final class URLMapArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the PathMatcher to use to match the path portion of the URL if the
-     * hostRule matches the URL&#39;s host portion.
+     * The list of named PathMatchers to use against the URL.
+     * Structure is documented below.
      * 
      */
     @Import(name="pathMatchers")
     private @Nullable Output<List<URLMapPathMatcherArgs>> pathMatchers;
 
     /**
-     * @return The name of the PathMatcher to use to match the path portion of the URL if the
-     * hostRule matches the URL&#39;s host portion.
+     * @return The list of named PathMatchers to use against the URL.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<URLMapPathMatcherArgs>>> pathMatchers() {
@@ -244,10 +252,10 @@ public final class URLMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultRouteAction defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
-         * advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
-         * to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
-         * Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+         * @param defaultRouteAction defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
+         * like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend.
+         * If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService
+         * is set, defaultRouteAction cannot contain any weightedBackendServices.
          * Only one of defaultRouteAction or defaultUrlRedirect must be set.
          * Structure is documented below.
          * 
@@ -260,10 +268,10 @@ public final class URLMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultRouteAction defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
-         * advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
-         * to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
-         * Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+         * @param defaultRouteAction defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
+         * like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend.
+         * If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService
+         * is set, defaultRouteAction cannot contain any weightedBackendServices.
          * Only one of defaultRouteAction or defaultUrlRedirect must be set.
          * Structure is documented below.
          * 
@@ -275,7 +283,7 @@ public final class URLMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultService The backend service or backend bucket to use when none of the given paths match.
+         * @param defaultService The backend service or backend bucket to use when none of the given rules match.
          * 
          * @return builder
          * 
@@ -286,7 +294,7 @@ public final class URLMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultService The backend service or backend bucket to use when none of the given paths match.
+         * @param defaultService The backend service or backend bucket to use when none of the given rules match.
          * 
          * @return builder
          * 
@@ -323,7 +331,8 @@ public final class URLMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of this test case.
+         * @param description An optional description of this resource. Provide this property when you create
+         * the resource.
          * 
          * @return builder
          * 
@@ -334,7 +343,8 @@ public final class URLMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of this test case.
+         * @param description An optional description of this resource. Provide this property when you create
+         * the resource.
          * 
          * @return builder
          * 
@@ -345,9 +355,8 @@ public final class URLMapArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param headerAction Specifies changes to request and response headers that need to take effect for
-         * the selected backendService.
-         * headerAction specified here take effect before headerAction in the enclosing
-         * HttpRouteRule, PathMatcher and UrlMap.
+         * the selected backendService. The headerAction specified here take effect after
+         * headerAction specified under pathMatcher.
          * Structure is documented below.
          * 
          * @return builder
@@ -360,9 +369,8 @@ public final class URLMapArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param headerAction Specifies changes to request and response headers that need to take effect for
-         * the selected backendService.
-         * headerAction specified here take effect before headerAction in the enclosing
-         * HttpRouteRule, PathMatcher and UrlMap.
+         * the selected backendService. The headerAction specified here take effect after
+         * headerAction specified under pathMatcher.
          * Structure is documented below.
          * 
          * @return builder
@@ -407,8 +415,12 @@ public final class URLMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the query parameter to match. The query parameter must exist in the
-         * request, in the absence of which the request match fails.
+         * @param name Name of the resource. Provided by the client when the resource is created. The
+         * name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+         * name must be 1-63 characters long and match the regular expression
+         * `a-z?` which means the first character must be a lowercase
+         * letter, and all following characters must be a dash, lowercase letter, or digit,
+         * except the last character, which cannot be a dash.
          * 
          * @return builder
          * 
@@ -419,8 +431,12 @@ public final class URLMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the query parameter to match. The query parameter must exist in the
-         * request, in the absence of which the request match fails.
+         * @param name Name of the resource. Provided by the client when the resource is created. The
+         * name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+         * name must be 1-63 characters long and match the regular expression
+         * `a-z?` which means the first character must be a lowercase
+         * letter, and all following characters must be a dash, lowercase letter, or digit,
+         * except the last character, which cannot be a dash.
          * 
          * @return builder
          * 
@@ -430,8 +446,8 @@ public final class URLMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pathMatchers The name of the PathMatcher to use to match the path portion of the URL if the
-         * hostRule matches the URL&#39;s host portion.
+         * @param pathMatchers The list of named PathMatchers to use against the URL.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -442,8 +458,8 @@ public final class URLMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pathMatchers The name of the PathMatcher to use to match the path portion of the URL if the
-         * hostRule matches the URL&#39;s host portion.
+         * @param pathMatchers The list of named PathMatchers to use against the URL.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -453,8 +469,8 @@ public final class URLMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pathMatchers The name of the PathMatcher to use to match the path portion of the URL if the
-         * hostRule matches the URL&#39;s host portion.
+         * @param pathMatchers The list of named PathMatchers to use against the URL.
+         * Structure is documented below.
          * 
          * @return builder
          * 

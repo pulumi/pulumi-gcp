@@ -13,17 +13,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my_network = pulumi.output(gcp.compute.getNetwork({
+ * const my-network = gcp.compute.getNetwork({
  *     name: "default-us-east1",
- * }));
+ * });
  * ```
  */
 export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getNetwork:getNetwork", {
         "name": args.name,
         "project": args.project,
@@ -72,9 +69,22 @@ export interface GetNetworkResult {
      */
     readonly subnetworksSelfLinks: string[];
 }
-
+/**
+ * Get a network within GCE from its name.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-network = gcp.compute.getNetwork({
+ *     name: "default-us-east1",
+ * });
+ * ```
+ */
 export function getNetworkOutput(args: GetNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkResult> {
-    return pulumi.output(args).apply(a => getNetwork(a, opts))
+    return pulumi.output(args).apply((a: any) => getNetwork(a, opts))
 }
 
 /**

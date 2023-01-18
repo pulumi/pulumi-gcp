@@ -113,7 +113,8 @@ namespace Pulumi.Gcp.Diagflow
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the entity type. Format: projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity type ID&gt;.
+        /// The unique identifier of the entity type.
+        /// Format: projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity type ID&gt;.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -259,7 +260,8 @@ namespace Pulumi.Gcp.Diagflow
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// The unique identifier of the entity type. Format: projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity type ID&gt;.
+        /// The unique identifier of the entity type.
+        /// Format: projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity type ID&gt;.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceEndpoint {
+    /**
+     * @return The FQDN of the endpoint as described in the config.
+     * 
+     */
     private @Nullable String address;
+    /**
+     * @return The simple name of the endpoint as described in the config.
+     * 
+     */
     private @Nullable String name;
 
     private ServiceEndpoint() {}
+    /**
+     * @return The FQDN of the endpoint as described in the config.
+     * 
+     */
     public Optional<String> address() {
         return Optional.ofNullable(this.address);
     }
+    /**
+     * @return The simple name of the endpoint as described in the config.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

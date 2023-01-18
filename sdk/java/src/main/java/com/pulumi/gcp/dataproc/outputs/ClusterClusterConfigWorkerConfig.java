@@ -48,8 +48,13 @@ public final class ClusterClusterConfigWorkerConfig {
      */
     private @Nullable String minCpuPlatform;
     /**
-     * @return Specifies the number of preemptible nodes to create.
-     * Defaults to 0.
+     * @return Specifies the number of worker nodes to create.
+     * If not specified, GCP will default to a predetermined computed value (currently 2).
+     * There is currently a beta feature which allows you to run a
+     * [Single Node Cluster](https://cloud.google.com/dataproc/docs/concepts/single-node-clusters).
+     * In order to take advantage of this you need to set
+     * `&#34;dataproc:dataproc.allow.zero.workers&#34; = &#34;true&#34;` in
+     * `cluster_config.software_config.properties`
      * 
      */
     private @Nullable Integer numInstances;
@@ -100,8 +105,13 @@ public final class ClusterClusterConfigWorkerConfig {
         return Optional.ofNullable(this.minCpuPlatform);
     }
     /**
-     * @return Specifies the number of preemptible nodes to create.
-     * Defaults to 0.
+     * @return Specifies the number of worker nodes to create.
+     * If not specified, GCP will default to a predetermined computed value (currently 2).
+     * There is currently a beta feature which allows you to run a
+     * [Single Node Cluster](https://cloud.google.com/dataproc/docs/concepts/single-node-clusters).
+     * In order to take advantage of this you need to set
+     * `&#34;dataproc:dataproc.allow.zero.workers&#34; = &#34;true&#34;` in
+     * `cluster_config.software_config.properties`
      * 
      */
     public Optional<Integer> numInstances() {

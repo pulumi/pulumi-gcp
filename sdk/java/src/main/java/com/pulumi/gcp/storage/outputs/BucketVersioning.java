@@ -10,14 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class BucketVersioning {
     /**
-     * @return While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object&#39;s access pattern.
+     * @return While set to `true`, versioning is fully enabled for this bucket.
      * 
      */
     private Boolean enabled;
 
     private BucketVersioning() {}
     /**
-     * @return While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object&#39;s access pattern.
+     * @return While set to `true`, versioning is fully enabled for this bucket.
      * 
      */
     public Boolean enabled() {

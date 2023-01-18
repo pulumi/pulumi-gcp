@@ -12,28 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AwsClusterFleet {
     /**
-     * @return -
-     * The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/&lt;project-number&gt;/locations/global/membership/&lt;cluster-id&gt;.
+     * @return The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/&lt;project-number&gt;/locations/global/membership/&lt;cluster-id&gt;.
      * 
      */
     private @Nullable String membership;
     /**
-     * @return The project for the resource
+     * @return The number of the Fleet host project where this cluster will be registered.
      * 
      */
     private @Nullable String project;
 
     private AwsClusterFleet() {}
     /**
-     * @return -
-     * The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/&lt;project-number&gt;/locations/global/membership/&lt;cluster-id&gt;.
+     * @return The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/&lt;project-number&gt;/locations/global/membership/&lt;cluster-id&gt;.
      * 
      */
     public Optional<String> membership() {
         return Optional.ofNullable(this.membership);
     }
     /**
-     * @return The project for the resource
+     * @return The number of the Fleet host project where this cluster will be registered.
      * 
      */
     public Optional<String> project() {

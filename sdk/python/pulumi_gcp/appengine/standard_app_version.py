@@ -436,7 +436,11 @@ class _StandardAppVersionState:
                Structure is documented below.
         :param pulumi.Input['StandardAppVersionManualScalingArgs'] manual_scaling: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
-        :param pulumi.Input[str] name: Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        :param pulumi.Input[str] name: The identifier for this object. Format specified above.
+               (Optional)
+               Name of the library. Example "django".
+               (Required)
+               Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         :param pulumi.Input[bool] noop_on_destroy: If set to `true`, the application version will not be deleted.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -656,6 +660,10 @@ class _StandardAppVersionState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
+        The identifier for this object. Format specified above.
+        (Optional)
+        Name of the library. Example "django".
+        (Required)
         Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         """
         return pulumi.get(self, "name")
@@ -1194,7 +1202,11 @@ class StandardAppVersion(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['StandardAppVersionManualScalingArgs']] manual_scaling: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
-        :param pulumi.Input[str] name: Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        :param pulumi.Input[str] name: The identifier for this object. Format specified above.
+               (Optional)
+               Name of the library. Example "django".
+               (Required)
+               Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         :param pulumi.Input[bool] noop_on_destroy: If set to `true`, the application version will not be deleted.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1349,6 +1361,10 @@ class StandardAppVersion(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
+        The identifier for this object. Format specified above.
+        (Optional)
+        Name of the library. Example "django".
+        (Required)
         Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         """
         return pulumi.get(self, "name")

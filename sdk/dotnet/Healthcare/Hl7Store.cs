@@ -242,7 +242,6 @@ namespace Pulumi.Gcp.Healthcare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// -
         /// (Optional, Deprecated)
         /// A nested object resource
         /// Structure is documented below.
@@ -352,7 +351,6 @@ namespace Pulumi.Gcp.Healthcare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// -
         /// (Optional, Deprecated)
         /// A nested object resource
         /// Structure is documented below.
@@ -424,7 +422,6 @@ namespace Pulumi.Gcp.Healthcare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// -
         /// (Optional, Deprecated)
         /// A nested object resource
         /// Structure is documented below.

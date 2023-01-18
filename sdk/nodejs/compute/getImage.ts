@@ -28,11 +28,8 @@ import * as utilities from "../utilities";
  */
 export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getImage:getImage", {
         "family": args.family,
         "filter": args.filter,
@@ -51,7 +48,11 @@ export interface GetImageArgs {
     family?: string;
     filter?: string;
     /**
-     * The name of the image.
+     * , `family` or `filter` - (Required) The name of a specific image or a family.
+     * Exactly one of `name`, `family` or `filter` must be specified. If `name` is specified, it will fetch
+     * the corresponding image. If `family` is specified, it will return the latest image
+     * that is part of an image family and is not deprecated. If you specify `filter`, your
+     * filter must return exactly one image. Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
      */
     name?: string;
     /**
@@ -145,9 +146,30 @@ export interface GetImageResult {
      */
     readonly status: string;
 }
-
+/**
+ * Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
+ * [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myImage = gcp.compute.getImage({
+ *     family: "debian-11",
+ *     project: "debian-cloud",
+ * });
+ * // ...
+ * const _default = new gcp.compute.Instance("default", {bootDisk: {
+ *     initializeParams: {
+ *         image: myImage.then(myImage => myImage.selfLink),
+ *     },
+ * }});
+ * ```
+ */
 export function getImageOutput(args?: GetImageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageResult> {
-    return pulumi.output(args).apply(a => getImage(a, opts))
+    return pulumi.output(args).apply((a: any) => getImage(a, opts))
 }
 
 /**
@@ -160,7 +182,11 @@ export interface GetImageOutputArgs {
     family?: pulumi.Input<string>;
     filter?: pulumi.Input<string>;
     /**
-     * The name of the image.
+     * , `family` or `filter` - (Required) The name of a specific image or a family.
+     * Exactly one of `name`, `family` or `filter` must be specified. If `name` is specified, it will fetch
+     * the corresponding image. If `family` is specified, it will return the latest image
+     * that is part of an image family and is not deprecated. If you specify `filter`, your
+     * filter must return exactly one image. Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
      */
     name?: pulumi.Input<string>;
     /**

@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly int? ContainerPort;
         /// <summary>
-        /// Volume's name.
+        /// If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
         /// </summary>
         public readonly string? Name;
 

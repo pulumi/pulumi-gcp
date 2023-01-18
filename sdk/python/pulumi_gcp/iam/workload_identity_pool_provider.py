@@ -39,16 +39,6 @@ class WorkloadIdentityPoolProviderArgs:
                provider should not be accepted.
                The expression must output a boolean representing whether to allow the federation.
                The following keywords may be referenced in the expressions:
-               * `assertion`: JSON representing the authentication credential issued by the provider.
-               * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`.
-               * `attribute`: The custom attributes mapped from the assertion in the `attribute_mappings`.
-               The maximum length of the attribute condition expression is 4096 characters. If
-               unspecified, all valid authentication credential are accepted.
-               The following example shows how to only allow credentials with a mapped `google.groups`
-               value of `admins`:
-               ```python
-               import pulumi
-               ```
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] attribute_mapping: Maps attributes from authentication credentials issued by an external identity provider
                to Google Cloud attributes, such as `subject` and `segment`.
                Each key must be a string specifying the Google Cloud IAM attribute to map to.
@@ -159,16 +149,6 @@ class WorkloadIdentityPoolProviderArgs:
         provider should not be accepted.
         The expression must output a boolean representing whether to allow the federation.
         The following keywords may be referenced in the expressions:
-        * `assertion`: JSON representing the authentication credential issued by the provider.
-        * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`.
-        * `attribute`: The custom attributes mapped from the assertion in the `attribute_mappings`.
-        The maximum length of the attribute condition expression is 4096 characters. If
-        unspecified, all valid authentication credential are accepted.
-        The following example shows how to only allow credentials with a mapped `google.groups`
-        value of `admins`:
-        ```python
-        import pulumi
-        ```
         """
         return pulumi.get(self, "attribute_condition")
 
@@ -329,16 +309,6 @@ class _WorkloadIdentityPoolProviderState:
                provider should not be accepted.
                The expression must output a boolean representing whether to allow the federation.
                The following keywords may be referenced in the expressions:
-               * `assertion`: JSON representing the authentication credential issued by the provider.
-               * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`.
-               * `attribute`: The custom attributes mapped from the assertion in the `attribute_mappings`.
-               The maximum length of the attribute condition expression is 4096 characters. If
-               unspecified, all valid authentication credential are accepted.
-               The following example shows how to only allow credentials with a mapped `google.groups`
-               value of `admins`:
-               ```python
-               import pulumi
-               ```
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] attribute_mapping: Maps attributes from authentication credentials issued by an external identity provider
                to Google Cloud attributes, such as `subject` and `segment`.
                Each key must be a string specifying the Google Cloud IAM attribute to map to.
@@ -389,15 +359,18 @@ class _WorkloadIdentityPoolProviderState:
                However, existing tokens still grant access.
         :param pulumi.Input[str] display_name: A display name for the provider. Cannot exceed 32 characters.
         :param pulumi.Input[str] name: The resource name of the provider as
-               'projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}'.
+               `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`.
         :param pulumi.Input['WorkloadIdentityPoolProviderOidcArgs'] oidc: An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] state: The state of the provider. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The provider is active, and may be used to
-               validate authentication credentials. * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently
-               deleted after approximately 30 days. You can restore a soft-deleted provider using UndeleteWorkloadIdentityPoolProvider.
-               You cannot reuse the ID of a soft-deleted provider until it is permanently deleted.
+        :param pulumi.Input[str] state: The state of the provider.
+               * STATE_UNSPECIFIED: State unspecified.
+               * ACTIVE: The provider is active, and may be used to validate authentication credentials.
+               * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently deleted
+               after approximately 30 days. You can restore a soft-deleted provider using
+               UndeleteWorkloadIdentityPoolProvider. You cannot reuse the ID of a soft-deleted provider
+               until it is permanently deleted.
         :param pulumi.Input[str] workload_identity_pool_id: The ID used for the pool, which is the final component of the pool resource name. This
                value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
@@ -439,16 +412,6 @@ class _WorkloadIdentityPoolProviderState:
         provider should not be accepted.
         The expression must output a boolean representing whether to allow the federation.
         The following keywords may be referenced in the expressions:
-        * `assertion`: JSON representing the authentication credential issued by the provider.
-        * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`.
-        * `attribute`: The custom attributes mapped from the assertion in the `attribute_mappings`.
-        The maximum length of the attribute condition expression is 4096 characters. If
-        unspecified, all valid authentication credential are accepted.
-        The following example shows how to only allow credentials with a mapped `google.groups`
-        value of `admins`:
-        ```python
-        import pulumi
-        ```
         """
         return pulumi.get(self, "attribute_condition")
 
@@ -565,7 +528,7 @@ class _WorkloadIdentityPoolProviderState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The resource name of the provider as
-        'projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}'.
+        `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`.
         """
         return pulumi.get(self, "name")
 
@@ -603,10 +566,13 @@ class _WorkloadIdentityPoolProviderState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        The state of the provider. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The provider is active, and may be used to
-        validate authentication credentials. * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently
-        deleted after approximately 30 days. You can restore a soft-deleted provider using UndeleteWorkloadIdentityPoolProvider.
-        You cannot reuse the ID of a soft-deleted provider until it is permanently deleted.
+        The state of the provider.
+        * STATE_UNSPECIFIED: State unspecified.
+        * ACTIVE: The provider is active, and may be used to validate authentication credentials.
+        * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently deleted
+        after approximately 30 days. You can restore a soft-deleted provider using
+        UndeleteWorkloadIdentityPoolProvider. You cannot reuse the ID of a soft-deleted provider
+        until it is permanently deleted.
         """
         return pulumi.get(self, "state")
 
@@ -778,16 +744,6 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                provider should not be accepted.
                The expression must output a boolean representing whether to allow the federation.
                The following keywords may be referenced in the expressions:
-               * `assertion`: JSON representing the authentication credential issued by the provider.
-               * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`.
-               * `attribute`: The custom attributes mapped from the assertion in the `attribute_mappings`.
-               The maximum length of the attribute condition expression is 4096 characters. If
-               unspecified, all valid authentication credential are accepted.
-               The following example shows how to only allow credentials with a mapped `google.groups`
-               value of `admins`:
-               ```python
-               import pulumi
-               ```
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] attribute_mapping: Maps attributes from authentication credentials issued by an external identity provider
                to Google Cloud attributes, such as `subject` and `segment`.
                Each key must be a string specifying the Google Cloud IAM attribute to map to.
@@ -1050,16 +1006,6 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                provider should not be accepted.
                The expression must output a boolean representing whether to allow the federation.
                The following keywords may be referenced in the expressions:
-               * `assertion`: JSON representing the authentication credential issued by the provider.
-               * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`.
-               * `attribute`: The custom attributes mapped from the assertion in the `attribute_mappings`.
-               The maximum length of the attribute condition expression is 4096 characters. If
-               unspecified, all valid authentication credential are accepted.
-               The following example shows how to only allow credentials with a mapped `google.groups`
-               value of `admins`:
-               ```python
-               import pulumi
-               ```
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] attribute_mapping: Maps attributes from authentication credentials issued by an external identity provider
                to Google Cloud attributes, such as `subject` and `segment`.
                Each key must be a string specifying the Google Cloud IAM attribute to map to.
@@ -1110,15 +1056,18 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                However, existing tokens still grant access.
         :param pulumi.Input[str] display_name: A display name for the provider. Cannot exceed 32 characters.
         :param pulumi.Input[str] name: The resource name of the provider as
-               'projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}'.
+               `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`.
         :param pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderOidcArgs']] oidc: An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] state: The state of the provider. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The provider is active, and may be used to
-               validate authentication credentials. * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently
-               deleted after approximately 30 days. You can restore a soft-deleted provider using UndeleteWorkloadIdentityPoolProvider.
-               You cannot reuse the ID of a soft-deleted provider until it is permanently deleted.
+        :param pulumi.Input[str] state: The state of the provider.
+               * STATE_UNSPECIFIED: State unspecified.
+               * ACTIVE: The provider is active, and may be used to validate authentication credentials.
+               * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently deleted
+               after approximately 30 days. You can restore a soft-deleted provider using
+               UndeleteWorkloadIdentityPoolProvider. You cannot reuse the ID of a soft-deleted provider
+               until it is permanently deleted.
         :param pulumi.Input[str] workload_identity_pool_id: The ID used for the pool, which is the final component of the pool resource name. This
                value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
@@ -1153,16 +1102,6 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         provider should not be accepted.
         The expression must output a boolean representing whether to allow the federation.
         The following keywords may be referenced in the expressions:
-        * `assertion`: JSON representing the authentication credential issued by the provider.
-        * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`.
-        * `attribute`: The custom attributes mapped from the assertion in the `attribute_mappings`.
-        The maximum length of the attribute condition expression is 4096 characters. If
-        unspecified, all valid authentication credential are accepted.
-        The following example shows how to only allow credentials with a mapped `google.groups`
-        value of `admins`:
-        ```python
-        import pulumi
-        ```
         """
         return pulumi.get(self, "attribute_condition")
 
@@ -1255,7 +1194,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the provider as
-        'projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}'.
+        `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`.
         """
         return pulumi.get(self, "name")
 
@@ -1281,10 +1220,13 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        The state of the provider. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The provider is active, and may be used to
-        validate authentication credentials. * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently
-        deleted after approximately 30 days. You can restore a soft-deleted provider using UndeleteWorkloadIdentityPoolProvider.
-        You cannot reuse the ID of a soft-deleted provider until it is permanently deleted.
+        The state of the provider.
+        * STATE_UNSPECIFIED: State unspecified.
+        * ACTIVE: The provider is active, and may be used to validate authentication credentials.
+        * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently deleted
+        after approximately 30 days. You can restore a soft-deleted provider using
+        UndeleteWorkloadIdentityPoolProvider. You cannot reuse the ID of a soft-deleted provider
+        until it is permanently deleted.
         """
         return pulumi.get(self, "state")
 

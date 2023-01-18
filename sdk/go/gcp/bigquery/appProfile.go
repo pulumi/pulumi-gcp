@@ -218,8 +218,7 @@ type AppProfile struct {
 	// in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
 	// consistency to improve availability.
 	MultiClusterRoutingUseAny pulumi.BoolPtrOutput `pulumi:"multiClusterRoutingUseAny"`
-	// The unique name of the requested app profile. Values are of the form
-	// 'projects/<project>/instances/<instance>/appProfiles/<appProfileId>'.
+	// The unique name of the requested app profile. Values are of the form `projects/<project>/instances/<instance>/appProfiles/<appProfileId>`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -276,8 +275,7 @@ type appProfileState struct {
 	// in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
 	// consistency to improve availability.
 	MultiClusterRoutingUseAny *bool `pulumi:"multiClusterRoutingUseAny"`
-	// The unique name of the requested app profile. Values are of the form
-	// 'projects/<project>/instances/<instance>/appProfiles/<appProfileId>'.
+	// The unique name of the requested app profile. Values are of the form `projects/<project>/instances/<instance>/appProfiles/<appProfileId>`.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -303,8 +301,7 @@ type AppProfileState struct {
 	// in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
 	// consistency to improve availability.
 	MultiClusterRoutingUseAny pulumi.BoolPtrInput
-	// The unique name of the requested app profile. Values are of the form
-	// 'projects/<project>/instances/<instance>/appProfiles/<appProfileId>'.
+	// The unique name of the requested app profile. Values are of the form `projects/<project>/instances/<instance>/appProfiles/<appProfileId>`.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -487,8 +484,7 @@ func (o AppProfileOutput) MultiClusterRoutingUseAny() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AppProfile) pulumi.BoolPtrOutput { return v.MultiClusterRoutingUseAny }).(pulumi.BoolPtrOutput)
 }
 
-// The unique name of the requested app profile. Values are of the form
-// 'projects/<project>/instances/<instance>/appProfiles/<appProfileId>'.
+// The unique name of the requested app profile. Values are of the form `projects/<project>/instances/<instance>/appProfiles/<appProfileId>`.
 func (o AppProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

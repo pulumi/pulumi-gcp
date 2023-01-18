@@ -19,7 +19,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce {
      */
     private @Nullable List<String> args;
     /**
-     * @return A remote or local source.
+     * @return A remote or local file.
      * 
      */
     private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile file;
@@ -48,7 +48,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce {
         return this.args == null ? List.of() : this.args;
     }
     /**
-     * @return A remote or local source.
+     * @return A remote or local file.
      * 
      */
     public Optional<OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile> file() {

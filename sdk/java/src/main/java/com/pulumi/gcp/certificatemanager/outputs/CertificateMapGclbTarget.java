@@ -13,17 +13,51 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CertificateMapGclbTarget {
+    /**
+     * @return An IP configuration where this Certificate Map is serving
+     * Structure is documented below.
+     * 
+     */
     private @Nullable List<CertificateMapGclbTargetIpConfig> ipConfigs;
+    /**
+     * @return Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetHttpsProxies/*.
+     * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+     * `targetSslProxy` may be set.
+     * 
+     */
     private @Nullable String targetHttpsProxy;
+    /**
+     * @return Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetSslProxies/*.
+     * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+     * `targetSslProxy` may be set.
+     * 
+     */
     private @Nullable String targetSslProxy;
 
     private CertificateMapGclbTarget() {}
+    /**
+     * @return An IP configuration where this Certificate Map is serving
+     * Structure is documented below.
+     * 
+     */
     public List<CertificateMapGclbTargetIpConfig> ipConfigs() {
         return this.ipConfigs == null ? List.of() : this.ipConfigs;
     }
+    /**
+     * @return Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetHttpsProxies/*.
+     * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+     * `targetSslProxy` may be set.
+     * 
+     */
     public Optional<String> targetHttpsProxy() {
         return Optional.ofNullable(this.targetHttpsProxy);
     }
+    /**
+     * @return Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetSslProxies/*.
+     * This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
+     * `targetSslProxy` may be set.
+     * 
+     */
     public Optional<String> targetSslProxy() {
         return Optional.ofNullable(this.targetSslProxy);
     }

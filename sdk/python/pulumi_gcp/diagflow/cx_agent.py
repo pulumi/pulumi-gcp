@@ -259,9 +259,7 @@ class _CxAgentState:
         :param pulumi.Input[str] security_settings: Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
         :param pulumi.Input['CxAgentSpeechToTextSettingsArgs'] speech_to_text_settings: Settings related to speech recognition.
                Structure is documented below.
-        :param pulumi.Input[str] start_flow: Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-               be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow
-               ID>.
+        :param pulumi.Input[str] start_flow: Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] supported_language_codes: The list of all languages supported by this agent (except for the default_language_code).
         :param pulumi.Input[str] time_zone: The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
                Europe/Paris.
@@ -437,9 +435,7 @@ class _CxAgentState:
     @pulumi.getter(name="startFlow")
     def start_flow(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-        be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow
-        ID>.
+        Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         """
         return pulumi.get(self, "start_flow")
 
@@ -727,9 +723,7 @@ class CxAgent(pulumi.CustomResource):
         :param pulumi.Input[str] security_settings: Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
         :param pulumi.Input[pulumi.InputType['CxAgentSpeechToTextSettingsArgs']] speech_to_text_settings: Settings related to speech recognition.
                Structure is documented below.
-        :param pulumi.Input[str] start_flow: Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-               be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow
-               ID>.
+        :param pulumi.Input[str] start_flow: Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] supported_language_codes: The list of all languages supported by this agent (except for the default_language_code).
         :param pulumi.Input[str] time_zone: The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
                Europe/Paris.
@@ -852,9 +846,7 @@ class CxAgent(pulumi.CustomResource):
     @pulumi.getter(name="startFlow")
     def start_flow(self) -> pulumi.Output[str]:
         """
-        Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-        be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow
-        ID>.
+        Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         """
         return pulumi.get(self, "start_flow")
 

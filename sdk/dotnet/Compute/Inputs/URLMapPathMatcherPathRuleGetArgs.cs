@@ -28,9 +28,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         }
 
         /// <summary>
-        /// In response to a matching matchRule, the load balancer performs advanced routing
+        /// In response to a matching path, the load balancer performs advanced routing
         /// actions like URL rewrites, header transformations, etc. prior to forwarding the
-        /// request to the selected backend. If  routeAction specifies any
+        /// request to the selected backend. If routeAction specifies any
         /// weightedBackendServices, service must not be set. Conversely if service is set,
         /// routeAction cannot contain any  weightedBackendServices. Only one of routeAction
         /// or urlRedirect must be set.
@@ -40,15 +40,15 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<Inputs.URLMapPathMatcherPathRuleRouteActionGetArgs>? RouteAction { get; set; }
 
         /// <summary>
-        /// The backend service or backend bucket link that should be matched by this test.
+        /// The backend service or backend bucket to use if any of the given paths match.
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }
 
         /// <summary>
-        /// When this rule is matched, the request is redirected to a URL specified by
-        /// urlRedirect. If urlRedirect is specified, service or routeAction must not be
-        /// set.
+        /// When a path pattern is matched, the request is redirected to a URL specified
+        /// by urlRedirect. If urlRedirect is specified, service or routeAction must not
+        /// be set.
         /// Structure is documented below.
         /// </summary>
         [Input("urlRedirect")]

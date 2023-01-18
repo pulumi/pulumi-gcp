@@ -20,6 +20,163 @@ import (
 //   - [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
 //
 // ## Example Usage
+// ### Apigee Organization Cloud Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigee"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			current, err := organizations.GetClientConfig(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			apigeeNetwork, err := compute.NewNetwork(ctx, "apigeeNetwork", nil)
+//			if err != nil {
+//				return err
+//			}
+//			apigeeRange, err := compute.NewGlobalAddress(ctx, "apigeeRange", &compute.GlobalAddressArgs{
+//				Purpose:      pulumi.String("VPC_PEERING"),
+//				AddressType:  pulumi.String("INTERNAL"),
+//				PrefixLength: pulumi.Int(16),
+//				Network:      apigeeNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigeeVpcConnection", &servicenetworking.ConnectionArgs{
+//				Network: apigeeNetwork.ID(),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					apigeeRange.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = apigee.NewOrganization(ctx, "org", &apigee.OrganizationArgs{
+//				AnalyticsRegion:   pulumi.String("us-central1"),
+//				ProjectId:         *pulumi.String(current.Project),
+//				AuthorizedNetwork: apigeeNetwork.ID(),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				apigeeVpcConnection,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Apigee Organization Cloud Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigee"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			current, err := organizations.GetClientConfig(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			apigeeNetwork, err := compute.NewNetwork(ctx, "apigeeNetwork", nil)
+//			if err != nil {
+//				return err
+//			}
+//			apigeeRange, err := compute.NewGlobalAddress(ctx, "apigeeRange", &compute.GlobalAddressArgs{
+//				Purpose:      pulumi.String("VPC_PEERING"),
+//				AddressType:  pulumi.String("INTERNAL"),
+//				PrefixLength: pulumi.Int(16),
+//				Network:      apigeeNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigeeVpcConnection", &servicenetworking.ConnectionArgs{
+//				Network: apigeeNetwork.ID(),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					apigeeRange.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeKeyring, err := kms.NewKeyRing(ctx, "apigeeKeyring", &kms.KeyRingArgs{
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeKey, err := kms.NewCryptoKey(ctx, "apigeeKey", &kms.CryptoKeyArgs{
+//				KeyRing: apigeeKeyring.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeSa, err := projects.NewServiceIdentity(ctx, "apigeeSa", &projects.ServiceIdentityArgs{
+//				Project: pulumi.Any(google_project.Project.Project_id),
+//				Service: pulumi.Any(google_project_service.Apigee.Service),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			apigeeSaKeyuser, err := kms.NewCryptoKeyIAMBinding(ctx, "apigeeSaKeyuser", &kms.CryptoKeyIAMBindingArgs{
+//				CryptoKeyId: apigeeKey.ID(),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Members: pulumi.StringArray{
+//					apigeeSa.Email.ApplyT(func(email string) (string, error) {
+//						return fmt.Sprintf("serviceAccount:%v", email), nil
+//					}).(pulumi.StringOutput),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = apigee.NewOrganization(ctx, "org", &apigee.OrganizationArgs{
+//				AnalyticsRegion:                  pulumi.String("us-central1"),
+//				DisplayName:                      pulumi.String("apigee-org"),
+//				Description:                      pulumi.String("Auto-provisioned Apigee Org."),
+//				ProjectId:                        *pulumi.String(current.Project),
+//				AuthorizedNetwork:                apigeeNetwork.ID(),
+//				RuntimeDatabaseEncryptionKeyName: apigeeKey.ID(),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				apigeeVpcConnection,
+//				apigeeSaKeyuser,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -47,8 +204,8 @@ type Organization struct {
 	AuthorizedNetwork pulumi.StringPtrOutput `pulumi:"authorizedNetwork"`
 	// Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
 	BillingType pulumi.StringOutput `pulumi:"billingType"`
-	// Output only. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when 'RuntimeType'
-	// is CLOUD. A base64-encoded string.
+	// Output only. Base64-encoded public certificate for the root CA of the Apigee organization.
+	// Valid only when `RuntimeType` is CLOUD. A base64-encoded string.
 	CaCertificate pulumi.StringOutput `pulumi:"caCertificate"`
 	// Description of the Apigee organization.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -77,8 +234,8 @@ type Organization struct {
 	// Default value is `CLOUD`.
 	// Possible values are `CLOUD` and `HYBRID`.
 	RuntimeType pulumi.StringPtrOutput `pulumi:"runtimeType"`
-	// Output only. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation
-	// purposes only) or paid (full subscription has been purchased).
+	// Output only. Subscription type of the Apigee organization.
+	// Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased).
 	SubscriptionType pulumi.StringOutput `pulumi:"subscriptionType"`
 }
 
@@ -122,8 +279,8 @@ type organizationState struct {
 	AuthorizedNetwork *string `pulumi:"authorizedNetwork"`
 	// Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
 	BillingType *string `pulumi:"billingType"`
-	// Output only. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when 'RuntimeType'
-	// is CLOUD. A base64-encoded string.
+	// Output only. Base64-encoded public certificate for the root CA of the Apigee organization.
+	// Valid only when `RuntimeType` is CLOUD. A base64-encoded string.
 	CaCertificate *string `pulumi:"caCertificate"`
 	// Description of the Apigee organization.
 	Description *string `pulumi:"description"`
@@ -152,8 +309,8 @@ type organizationState struct {
 	// Default value is `CLOUD`.
 	// Possible values are `CLOUD` and `HYBRID`.
 	RuntimeType *string `pulumi:"runtimeType"`
-	// Output only. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation
-	// purposes only) or paid (full subscription has been purchased).
+	// Output only. Subscription type of the Apigee organization.
+	// Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased).
 	SubscriptionType *string `pulumi:"subscriptionType"`
 }
 
@@ -166,8 +323,8 @@ type OrganizationState struct {
 	AuthorizedNetwork pulumi.StringPtrInput
 	// Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
 	BillingType pulumi.StringPtrInput
-	// Output only. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when 'RuntimeType'
-	// is CLOUD. A base64-encoded string.
+	// Output only. Base64-encoded public certificate for the root CA of the Apigee organization.
+	// Valid only when `RuntimeType` is CLOUD. A base64-encoded string.
 	CaCertificate pulumi.StringPtrInput
 	// Description of the Apigee organization.
 	Description pulumi.StringPtrInput
@@ -196,8 +353,8 @@ type OrganizationState struct {
 	// Default value is `CLOUD`.
 	// Possible values are `CLOUD` and `HYBRID`.
 	RuntimeType pulumi.StringPtrInput
-	// Output only. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation
-	// purposes only) or paid (full subscription has been purchased).
+	// Output only. Subscription type of the Apigee organization.
+	// Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased).
 	SubscriptionType pulumi.StringPtrInput
 }
 
@@ -382,8 +539,8 @@ func (o OrganizationOutput) BillingType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.BillingType }).(pulumi.StringOutput)
 }
 
-// Output only. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when 'RuntimeType'
-// is CLOUD. A base64-encoded string.
+// Output only. Base64-encoded public certificate for the root CA of the Apigee organization.
+// Valid only when `RuntimeType` is CLOUD. A base64-encoded string.
 func (o OrganizationOutput) CaCertificate() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.CaCertificate }).(pulumi.StringOutput)
 }
@@ -439,8 +596,8 @@ func (o OrganizationOutput) RuntimeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringPtrOutput { return v.RuntimeType }).(pulumi.StringPtrOutput)
 }
 
-// Output only. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation
-// purposes only) or paid (full subscription has been purchased).
+// Output only. Subscription type of the Apigee organization.
+// Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased).
 func (o OrganizationOutput) SubscriptionType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.SubscriptionType }).(pulumi.StringOutput)
 }

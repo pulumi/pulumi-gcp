@@ -275,15 +275,17 @@ class _IntentState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events: The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
                the contexts must be present in the active user session for an event to trigger this intent. See the
                [events reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
-        :param pulumi.Input[Sequence[pulumi.Input['IntentFollowupIntentInfoArgs']]] followup_intent_infos: Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only
-               in the output.
+        :param pulumi.Input[Sequence[pulumi.Input['IntentFollowupIntentInfoArgs']]] followup_intent_infos: Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
+               only in the output.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] input_context_names: The list of context names required for this intent to be triggered.
                Format: projects/<Project ID>/agent/sessions/-/contexts/<Context ID>.
         :param pulumi.Input[bool] is_fallback: Indicates whether this is a fallback intent.
         :param pulumi.Input[bool] ml_disabled: Indicates whether Machine Learning is disabled for the intent.
                Note: If mlDisabled setting is set to true, then this intent is not taken into account during inference in ML
                ONLY match mode. Also, auto-markup in the UI is turned off.
-        :param pulumi.Input[str] name: The unique identifier of this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
+        :param pulumi.Input[str] name: The unique identifier of this intent.
+               Format: projects/<Project ID>/agent/intents/<Intent ID>.
         :param pulumi.Input[str] parent_followup_intent_name: The unique identifier of the parent intent in the chain of followup intents.
                Format: projects/<Project ID>/agent/intents/<Intent ID>.
         :param pulumi.Input[int] priority: The priority of this intent. Higher numbers represent higher priorities.
@@ -293,8 +295,9 @@ class _IntentState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] reset_contexts: Indicates whether to delete all contexts in the current session when this intent is matched.
-        :param pulumi.Input[str] root_followup_intent_name: The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents
-               chain for this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
+        :param pulumi.Input[str] root_followup_intent_name: The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup
+               intents chain for this intent.
+               Format: projects/<Project ID>/agent/intents/<Intent ID>.
         :param pulumi.Input[str] webhook_state: Indicates whether webhooks are enabled for the intent.
                * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
                * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
@@ -389,8 +392,9 @@ class _IntentState:
     @pulumi.getter(name="followupIntentInfos")
     def followup_intent_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IntentFollowupIntentInfoArgs']]]]:
         """
-        Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only
-        in the output.
+        Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
+        only in the output.
+        Structure is documented below.
         """
         return pulumi.get(self, "followup_intent_infos")
 
@@ -441,7 +445,8 @@ class _IntentState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique identifier of this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
+        The unique identifier of this intent.
+        Format: projects/<Project ID>/agent/intents/<Intent ID>.
         """
         return pulumi.get(self, "name")
 
@@ -506,8 +511,9 @@ class _IntentState:
     @pulumi.getter(name="rootFollowupIntentName")
     def root_followup_intent_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents
-        chain for this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
+        The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup
+        intents chain for this intent.
+        Format: projects/<Project ID>/agent/intents/<Intent ID>.
         """
         return pulumi.get(self, "root_followup_intent_name")
 
@@ -828,15 +834,17 @@ class Intent(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events: The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
                the contexts must be present in the active user session for an event to trigger this intent. See the
                [events reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntentFollowupIntentInfoArgs']]]] followup_intent_infos: Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only
-               in the output.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntentFollowupIntentInfoArgs']]]] followup_intent_infos: Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
+               only in the output.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] input_context_names: The list of context names required for this intent to be triggered.
                Format: projects/<Project ID>/agent/sessions/-/contexts/<Context ID>.
         :param pulumi.Input[bool] is_fallback: Indicates whether this is a fallback intent.
         :param pulumi.Input[bool] ml_disabled: Indicates whether Machine Learning is disabled for the intent.
                Note: If mlDisabled setting is set to true, then this intent is not taken into account during inference in ML
                ONLY match mode. Also, auto-markup in the UI is turned off.
-        :param pulumi.Input[str] name: The unique identifier of this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
+        :param pulumi.Input[str] name: The unique identifier of this intent.
+               Format: projects/<Project ID>/agent/intents/<Intent ID>.
         :param pulumi.Input[str] parent_followup_intent_name: The unique identifier of the parent intent in the chain of followup intents.
                Format: projects/<Project ID>/agent/intents/<Intent ID>.
         :param pulumi.Input[int] priority: The priority of this intent. Higher numbers represent higher priorities.
@@ -846,8 +854,9 @@ class Intent(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] reset_contexts: Indicates whether to delete all contexts in the current session when this intent is matched.
-        :param pulumi.Input[str] root_followup_intent_name: The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents
-               chain for this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
+        :param pulumi.Input[str] root_followup_intent_name: The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup
+               intents chain for this intent.
+               Format: projects/<Project ID>/agent/intents/<Intent ID>.
         :param pulumi.Input[str] webhook_state: Indicates whether webhooks are enabled for the intent.
                * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
                * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
@@ -916,8 +925,9 @@ class Intent(pulumi.CustomResource):
     @pulumi.getter(name="followupIntentInfos")
     def followup_intent_infos(self) -> pulumi.Output[Sequence['outputs.IntentFollowupIntentInfo']]:
         """
-        Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only
-        in the output.
+        Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
+        only in the output.
+        Structure is documented below.
         """
         return pulumi.get(self, "followup_intent_infos")
 
@@ -952,7 +962,8 @@ class Intent(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The unique identifier of this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
+        The unique identifier of this intent.
+        Format: projects/<Project ID>/agent/intents/<Intent ID>.
         """
         return pulumi.get(self, "name")
 
@@ -997,8 +1008,9 @@ class Intent(pulumi.CustomResource):
     @pulumi.getter(name="rootFollowupIntentName")
     def root_followup_intent_name(self) -> pulumi.Output[str]:
         """
-        The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents
-        chain for this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
+        The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup
+        intents chain for this intent.
+        Format: projects/<Project ID>/agent/intents/<Intent ID>.
         """
         return pulumi.get(self, "root_followup_intent_name")
 

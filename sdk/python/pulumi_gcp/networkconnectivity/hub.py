@@ -104,12 +104,9 @@ class _HubState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
         :param pulumi.Input[str] name: Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[Sequence[pulumi.Input['HubRoutingVpcArgs']]] routing_vpcs: The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance
-               instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity
-               Center automatically populates it based on the set of spokes attached to the hub.
+        :param pulumi.Input[Sequence[pulumi.Input['HubRoutingVpcArgs']]] routing_vpcs: The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
         :param pulumi.Input[str] state: Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
-        :param pulumi.Input[str] unique_id: Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted
-               and another with the same name is created, the new hub is assigned a different unique_id.
+        :param pulumi.Input[str] unique_id: Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
         :param pulumi.Input[str] update_time: Output only. The time the hub was last updated.
         """
         if create_time is not None:
@@ -195,9 +192,7 @@ class _HubState:
     @pulumi.getter(name="routingVpcs")
     def routing_vpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HubRoutingVpcArgs']]]]:
         """
-        The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance
-        instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity
-        Center automatically populates it based on the set of spokes attached to the hub.
+        The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
         """
         return pulumi.get(self, "routing_vpcs")
 
@@ -221,8 +216,7 @@ class _HubState:
     @pulumi.getter(name="uniqueId")
     def unique_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted
-        and another with the same name is created, the new hub is assigned a different unique_id.
+        Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
         """
         return pulumi.get(self, "unique_id")
 
@@ -402,12 +396,9 @@ class Hub(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
         :param pulumi.Input[str] name: Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HubRoutingVpcArgs']]]] routing_vpcs: The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance
-               instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity
-               Center automatically populates it based on the set of spokes attached to the hub.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HubRoutingVpcArgs']]]] routing_vpcs: The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
         :param pulumi.Input[str] state: Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
-        :param pulumi.Input[str] unique_id: Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted
-               and another with the same name is created, the new hub is assigned a different unique_id.
+        :param pulumi.Input[str] unique_id: Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
         :param pulumi.Input[str] update_time: Output only. The time the hub was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -469,9 +460,7 @@ class Hub(pulumi.CustomResource):
     @pulumi.getter(name="routingVpcs")
     def routing_vpcs(self) -> pulumi.Output[Sequence['outputs.HubRoutingVpc']]:
         """
-        The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance
-        instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity
-        Center automatically populates it based on the set of spokes attached to the hub.
+        The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
         """
         return pulumi.get(self, "routing_vpcs")
 
@@ -487,8 +476,7 @@ class Hub(pulumi.CustomResource):
     @pulumi.getter(name="uniqueId")
     def unique_id(self) -> pulumi.Output[str]:
         """
-        Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted
-        and another with the same name is created, the new hub is assigned a different unique_id.
+        Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
         """
         return pulumi.get(self, "unique_id")
 

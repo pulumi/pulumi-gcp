@@ -25,35 +25,6 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
      * provider should not be accepted.
      * The expression must output a boolean representing whether to allow the federation.
      * The following keywords may be referenced in the expressions:
-     * * `assertion`: JSON representing the authentication credential issued by the provider.
-     * * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`.
-     * * `attribute`: The custom attributes mapped from the assertion in the `attribute_mappings`.
-     *   The maximum length of the attribute condition expression is 4096 characters. If
-     *   unspecified, all valid authentication credential are accepted.
-     *   The following example shows how to only allow credentials with a mapped `google.groups`
-     *   value of `admins`:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
      * 
      */
     @Import(name="attributeCondition")
@@ -65,35 +36,6 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
      * provider should not be accepted.
      * The expression must output a boolean representing whether to allow the federation.
      * The following keywords may be referenced in the expressions:
-     * * `assertion`: JSON representing the authentication credential issued by the provider.
-     * * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`.
-     * * `attribute`: The custom attributes mapped from the assertion in the `attribute_mappings`.
-     *   The maximum length of the attribute condition expression is 4096 characters. If
-     *   unspecified, all valid authentication credential are accepted.
-     *   The following example shows how to only allow credentials with a mapped `google.groups`
-     *   value of `admins`:
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *     }
-     * }
-     * ```
      * 
      */
     public Optional<Output<String>> attributeCondition() {
@@ -341,7 +283,7 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
 
     /**
      * The resource name of the provider as
-     * &#39;projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}&#39;.
+     * `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`.
      * 
      */
     @Import(name="name")
@@ -349,7 +291,7 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
 
     /**
      * @return The resource name of the provider as
-     * &#39;projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}&#39;.
+     * `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -391,20 +333,26 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
     }
 
     /**
-     * The state of the provider. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The provider is active, and may be used to
-     * validate authentication credentials. * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently
-     * deleted after approximately 30 days. You can restore a soft-deleted provider using UndeleteWorkloadIdentityPoolProvider.
-     * You cannot reuse the ID of a soft-deleted provider until it is permanently deleted.
+     * The state of the provider.
+     * * STATE_UNSPECIFIED: State unspecified.
+     * * ACTIVE: The provider is active, and may be used to validate authentication credentials.
+     * * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently deleted
+     *   after approximately 30 days. You can restore a soft-deleted provider using
+     *   UndeleteWorkloadIdentityPoolProvider. You cannot reuse the ID of a soft-deleted provider
+     *   until it is permanently deleted.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return The state of the provider. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The provider is active, and may be used to
-     * validate authentication credentials. * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently
-     * deleted after approximately 30 days. You can restore a soft-deleted provider using UndeleteWorkloadIdentityPoolProvider.
-     * You cannot reuse the ID of a soft-deleted provider until it is permanently deleted.
+     * @return The state of the provider.
+     * * STATE_UNSPECIFIED: State unspecified.
+     * * ACTIVE: The provider is active, and may be used to validate authentication credentials.
+     * * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently deleted
+     *   after approximately 30 days. You can restore a soft-deleted provider using
+     *   UndeleteWorkloadIdentityPoolProvider. You cannot reuse the ID of a soft-deleted provider
+     *   until it is permanently deleted.
      * 
      */
     public Optional<Output<String>> state() {
@@ -490,35 +438,6 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
          * provider should not be accepted.
          * The expression must output a boolean representing whether to allow the federation.
          * The following keywords may be referenced in the expressions:
-         * * `assertion`: JSON representing the authentication credential issued by the provider.
-         * * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`.
-         * * `attribute`: The custom attributes mapped from the assertion in the `attribute_mappings`.
-         *   The maximum length of the attribute condition expression is 4096 characters. If
-         *   unspecified, all valid authentication credential are accepted.
-         *   The following example shows how to only allow credentials with a mapped `google.groups`
-         *   value of `admins`:
-         * ```java
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *     }
-         * }
-         * ```
          * 
          * @return builder
          * 
@@ -534,35 +453,6 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
          * provider should not be accepted.
          * The expression must output a boolean representing whether to allow the federation.
          * The following keywords may be referenced in the expressions:
-         * * `assertion`: JSON representing the authentication credential issued by the provider.
-         * * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`.
-         * * `attribute`: The custom attributes mapped from the assertion in the `attribute_mappings`.
-         *   The maximum length of the attribute condition expression is 4096 characters. If
-         *   unspecified, all valid authentication credential are accepted.
-         *   The following example shows how to only allow credentials with a mapped `google.groups`
-         *   value of `admins`:
-         * ```java
-         * package generated_program;
-         * 
-         * import com.pulumi.Context;
-         * import com.pulumi.Pulumi;
-         * import com.pulumi.core.Output;
-         * import java.util.List;
-         * import java.util.ArrayList;
-         * import java.util.Map;
-         * import java.io.File;
-         * import java.nio.file.Files;
-         * import java.nio.file.Paths;
-         * 
-         * public class App {
-         *     public static void main(String[] args) {
-         *         Pulumi.run(App::stack);
-         *     }
-         * 
-         *     public static void stack(Context ctx) {
-         *     }
-         * }
-         * ```
          * 
          * @return builder
          * 
@@ -842,7 +732,7 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
 
         /**
          * @param name The resource name of the provider as
-         * &#39;projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}&#39;.
+         * `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`.
          * 
          * @return builder
          * 
@@ -854,7 +744,7 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
 
         /**
          * @param name The resource name of the provider as
-         * &#39;projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}&#39;.
+         * `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`.
          * 
          * @return builder
          * 
@@ -910,10 +800,13 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
         }
 
         /**
-         * @param state The state of the provider. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The provider is active, and may be used to
-         * validate authentication credentials. * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently
-         * deleted after approximately 30 days. You can restore a soft-deleted provider using UndeleteWorkloadIdentityPoolProvider.
-         * You cannot reuse the ID of a soft-deleted provider until it is permanently deleted.
+         * @param state The state of the provider.
+         * * STATE_UNSPECIFIED: State unspecified.
+         * * ACTIVE: The provider is active, and may be used to validate authentication credentials.
+         * * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently deleted
+         *   after approximately 30 days. You can restore a soft-deleted provider using
+         *   UndeleteWorkloadIdentityPoolProvider. You cannot reuse the ID of a soft-deleted provider
+         *   until it is permanently deleted.
          * 
          * @return builder
          * 
@@ -924,10 +817,13 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
         }
 
         /**
-         * @param state The state of the provider. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The provider is active, and may be used to
-         * validate authentication credentials. * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently
-         * deleted after approximately 30 days. You can restore a soft-deleted provider using UndeleteWorkloadIdentityPoolProvider.
-         * You cannot reuse the ID of a soft-deleted provider until it is permanently deleted.
+         * @param state The state of the provider.
+         * * STATE_UNSPECIFIED: State unspecified.
+         * * ACTIVE: The provider is active, and may be used to validate authentication credentials.
+         * * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently deleted
+         *   after approximately 30 days. You can restore a soft-deleted provider using
+         *   UndeleteWorkloadIdentityPoolProvider. You cannot reuse the ID of a soft-deleted provider
+         *   until it is permanently deleted.
          * 
          * @return builder
          * 

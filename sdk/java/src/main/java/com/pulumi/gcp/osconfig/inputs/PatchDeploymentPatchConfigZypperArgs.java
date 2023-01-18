@@ -33,14 +33,14 @@ public final class PatchDeploymentPatchConfigZypperArgs extends com.pulumi.resou
     }
 
     /**
-     * List of KBs to exclude from update.
+     * List of packages to exclude from update.
      * 
      */
     @Import(name="excludes")
     private @Nullable Output<List<String>> excludes;
 
     /**
-     * @return List of KBs to exclude from update.
+     * @return List of packages to exclude from update.
      * 
      */
     public Optional<Output<List<String>>> excludes() {
@@ -48,16 +48,16 @@ public final class PatchDeploymentPatchConfigZypperArgs extends com.pulumi.resou
     }
 
     /**
-     * An exclusive list of kbs to be updated. These are the only patches that will be updated.
-     * This field must not be used with other patch configurations.
+     * An exclusive list of patches to be updated. These are the only patches that will be installed using &#39;zypper patch patch:&#39; command.
+     * This field must not be used with any other patch configuration fields.
      * 
      */
     @Import(name="exclusivePatches")
     private @Nullable Output<List<String>> exclusivePatches;
 
     /**
-     * @return An exclusive list of kbs to be updated. These are the only patches that will be updated.
-     * This field must not be used with other patch configurations.
+     * @return An exclusive list of patches to be updated. These are the only patches that will be installed using &#39;zypper patch patch:&#39; command.
+     * This field must not be used with any other patch configuration fields.
      * 
      */
     public Optional<Output<List<String>>> exclusivePatches() {
@@ -170,7 +170,7 @@ public final class PatchDeploymentPatchConfigZypperArgs extends com.pulumi.resou
         }
 
         /**
-         * @param excludes List of KBs to exclude from update.
+         * @param excludes List of packages to exclude from update.
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class PatchDeploymentPatchConfigZypperArgs extends com.pulumi.resou
         }
 
         /**
-         * @param excludes List of KBs to exclude from update.
+         * @param excludes List of packages to exclude from update.
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class PatchDeploymentPatchConfigZypperArgs extends com.pulumi.resou
         }
 
         /**
-         * @param excludes List of KBs to exclude from update.
+         * @param excludes List of packages to exclude from update.
          * 
          * @return builder
          * 
@@ -201,8 +201,8 @@ public final class PatchDeploymentPatchConfigZypperArgs extends com.pulumi.resou
         }
 
         /**
-         * @param exclusivePatches An exclusive list of kbs to be updated. These are the only patches that will be updated.
-         * This field must not be used with other patch configurations.
+         * @param exclusivePatches An exclusive list of patches to be updated. These are the only patches that will be installed using &#39;zypper patch patch:&#39; command.
+         * This field must not be used with any other patch configuration fields.
          * 
          * @return builder
          * 
@@ -213,8 +213,8 @@ public final class PatchDeploymentPatchConfigZypperArgs extends com.pulumi.resou
         }
 
         /**
-         * @param exclusivePatches An exclusive list of kbs to be updated. These are the only patches that will be updated.
-         * This field must not be used with other patch configurations.
+         * @param exclusivePatches An exclusive list of patches to be updated. These are the only patches that will be installed using &#39;zypper patch patch:&#39; command.
+         * This field must not be used with any other patch configuration fields.
          * 
          * @return builder
          * 
@@ -224,8 +224,8 @@ public final class PatchDeploymentPatchConfigZypperArgs extends com.pulumi.resou
         }
 
         /**
-         * @param exclusivePatches An exclusive list of kbs to be updated. These are the only patches that will be updated.
-         * This field must not be used with other patch configurations.
+         * @param exclusivePatches An exclusive list of patches to be updated. These are the only patches that will be installed using &#39;zypper patch patch:&#39; command.
+         * This field must not be used with any other patch configuration fields.
          * 
          * @return builder
          * 

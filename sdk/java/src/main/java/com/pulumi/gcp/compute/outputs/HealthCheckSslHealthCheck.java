@@ -13,9 +13,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class HealthCheckSslHealthCheck {
     /**
-     * @return The port number for the health check request.
-     * Must be specified if portName and portSpecification are not set
-     * or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+     * @return The TCP port number for the HTTP2 health check request.
+     * The default value is 443.
      * 
      */
     private @Nullable Integer port;
@@ -28,15 +27,6 @@ public final class HealthCheckSslHealthCheck {
     /**
      * @return Specifies how port is selected for health checking, can be one of the
      * following values:
-     * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
-     * * `USE_NAMED_PORT`: The `portName` is used for health checking.
-     * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
-     *   network endpoint is used for health checking. For other backends, the
-     *   port or named port specified in the Backend Service is used for health
-     *   checking.
-     *   If not specified, gRPC health check follows behavior specified in `port` and
-     *   `portName` fields.
-     *   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
      * 
      */
     private @Nullable String portSpecification;
@@ -66,9 +56,8 @@ public final class HealthCheckSslHealthCheck {
 
     private HealthCheckSslHealthCheck() {}
     /**
-     * @return The port number for the health check request.
-     * Must be specified if portName and portSpecification are not set
-     * or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+     * @return The TCP port number for the HTTP2 health check request.
+     * The default value is 443.
      * 
      */
     public Optional<Integer> port() {
@@ -85,15 +74,6 @@ public final class HealthCheckSslHealthCheck {
     /**
      * @return Specifies how port is selected for health checking, can be one of the
      * following values:
-     * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
-     * * `USE_NAMED_PORT`: The `portName` is used for health checking.
-     * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
-     *   network endpoint is used for health checking. For other backends, the
-     *   port or named port specified in the Backend Service is used for health
-     *   checking.
-     *   If not specified, gRPC health check follows behavior specified in `port` and
-     *   `portName` fields.
-     *   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
      * 
      */
     public Optional<String> portSpecification() {

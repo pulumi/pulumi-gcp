@@ -30,11 +30,15 @@ class AutoscalarArgs:
                If none of these are specified, the default will be to autoscale based
                on cpuUtilization to 0.6 or 60%.
                Structure is documented below.
-        :param pulumi.Input[str] target: Fraction of backend capacity utilization (set in HTTP(s) load
-               balancing configuration) that autoscaler should maintain. Must
-               be a positive float value. If not defined, the default is 0.8.
-        :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[str] name: The identifier for this object. Format specified above.
+        :param pulumi.Input[str] target: URL of the managed instance group that this autoscaler will scale.
+        :param pulumi.Input[str] description: A description of a scaling schedule.
+               (Optional)
+               An optional description of this resource.
+        :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match
+               the regular expression `a-z?` which means the
+               first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the last
+               character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] zone: URL of the zone where the instance group resides.
@@ -71,9 +75,7 @@ class AutoscalarArgs:
     @pulumi.getter
     def target(self) -> pulumi.Input[str]:
         """
-        Fraction of backend capacity utilization (set in HTTP(s) load
-        balancing configuration) that autoscaler should maintain. Must
-        be a positive float value. If not defined, the default is 0.8.
+        URL of the managed instance group that this autoscaler will scale.
         """
         return pulumi.get(self, "target")
 
@@ -85,6 +87,8 @@ class AutoscalarArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
+        A description of a scaling schedule.
+        (Optional)
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
@@ -97,7 +101,11 @@ class AutoscalarArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The identifier for this object. Format specified above.
+        Name of the resource. The name must be 1-63 characters long and match
+        the regular expression `a-z?` which means the
+        first character must be a lowercase letter, and all following
+        characters must be a dash, lowercase letter, or digit, except the last
+        character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
 
@@ -151,14 +159,18 @@ class _AutoscalarState:
                on cpuUtilization to 0.6 or 60%.
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
-        :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[str] name: The identifier for this object. Format specified above.
+        :param pulumi.Input[str] description: A description of a scaling schedule.
+               (Optional)
+               An optional description of this resource.
+        :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match
+               the regular expression `a-z?` which means the
+               first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the last
+               character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[str] target: Fraction of backend capacity utilization (set in HTTP(s) load
-               balancing configuration) that autoscaler should maintain. Must
-               be a positive float value. If not defined, the default is 0.8.
+        :param pulumi.Input[str] target: URL of the managed instance group that this autoscaler will scale.
         :param pulumi.Input[str] zone: URL of the zone where the instance group resides.
         """
         if autoscaling_policy is not None:
@@ -211,6 +223,8 @@ class _AutoscalarState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
+        A description of a scaling schedule.
+        (Optional)
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
@@ -223,7 +237,11 @@ class _AutoscalarState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The identifier for this object. Format specified above.
+        Name of the resource. The name must be 1-63 characters long and match
+        the regular expression `a-z?` which means the
+        first character must be a lowercase letter, and all following
+        characters must be a dash, lowercase letter, or digit, except the last
+        character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
 
@@ -260,9 +278,7 @@ class _AutoscalarState:
     @pulumi.getter
     def target(self) -> Optional[pulumi.Input[str]]:
         """
-        Fraction of backend capacity utilization (set in HTTP(s) load
-        balancing configuration) that autoscaler should maintain. Must
-        be a positive float value. If not defined, the default is 0.8.
+        URL of the managed instance group that this autoscaler will scale.
         """
         return pulumi.get(self, "target")
 
@@ -452,13 +468,17 @@ class Autoscalar(pulumi.CustomResource):
                If none of these are specified, the default will be to autoscale based
                on cpuUtilization to 0.6 or 60%.
                Structure is documented below.
-        :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[str] name: The identifier for this object. Format specified above.
+        :param pulumi.Input[str] description: A description of a scaling schedule.
+               (Optional)
+               An optional description of this resource.
+        :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match
+               the regular expression `a-z?` which means the
+               first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the last
+               character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] target: Fraction of backend capacity utilization (set in HTTP(s) load
-               balancing configuration) that autoscaler should maintain. Must
-               be a positive float value. If not defined, the default is 0.8.
+        :param pulumi.Input[str] target: URL of the managed instance group that this autoscaler will scale.
         :param pulumi.Input[str] zone: URL of the zone where the instance group resides.
         """
         ...
@@ -686,14 +706,18 @@ class Autoscalar(pulumi.CustomResource):
                on cpuUtilization to 0.6 or 60%.
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
-        :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[str] name: The identifier for this object. Format specified above.
+        :param pulumi.Input[str] description: A description of a scaling schedule.
+               (Optional)
+               An optional description of this resource.
+        :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match
+               the regular expression `a-z?` which means the
+               first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the last
+               character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[str] target: Fraction of backend capacity utilization (set in HTTP(s) load
-               balancing configuration) that autoscaler should maintain. Must
-               be a positive float value. If not defined, the default is 0.8.
+        :param pulumi.Input[str] target: URL of the managed instance group that this autoscaler will scale.
         :param pulumi.Input[str] zone: URL of the zone where the instance group resides.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -735,6 +759,8 @@ class Autoscalar(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
+        A description of a scaling schedule.
+        (Optional)
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
@@ -743,7 +769,11 @@ class Autoscalar(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The identifier for this object. Format specified above.
+        Name of the resource. The name must be 1-63 characters long and match
+        the regular expression `a-z?` which means the
+        first character must be a lowercase letter, and all following
+        characters must be a dash, lowercase letter, or digit, except the last
+        character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
 
@@ -768,9 +798,7 @@ class Autoscalar(pulumi.CustomResource):
     @pulumi.getter
     def target(self) -> pulumi.Output[str]:
         """
-        Fraction of backend capacity utilization (set in HTTP(s) load
-        balancing configuration) that autoscaler should maintain. Must
-        be a positive float value. If not defined, the default is 0.8.
+        URL of the managed instance group that this autoscaler will scale.
         """
         return pulumi.get(self, "target")
 

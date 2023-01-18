@@ -16,14 +16,16 @@ public final class CxFlowTransitionRouteTriggerFulfillmentMessageArgs extends co
     public static final CxFlowTransitionRouteTriggerFulfillmentMessageArgs Empty = new CxFlowTransitionRouteTriggerFulfillmentMessageArgs();
 
     /**
-     * A collection of text responses.
+     * The text response message.
+     * Structure is documented below.
      * 
      */
     @Import(name="text")
     private @Nullable Output<CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs> text;
 
     /**
-     * @return A collection of text responses.
+     * @return The text response message.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs>> text() {
@@ -55,7 +57,8 @@ public final class CxFlowTransitionRouteTriggerFulfillmentMessageArgs extends co
         }
 
         /**
-         * @param text A collection of text responses.
+         * @param text The text response message.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -66,7 +69,8 @@ public final class CxFlowTransitionRouteTriggerFulfillmentMessageArgs extends co
         }
 
         /**
-         * @param text A collection of text responses.
+         * @param text The text response message.
+         * Structure is documented below.
          * 
          * @return builder
          * 

@@ -103,8 +103,8 @@ namespace Pulumi.Gcp.Apigee
     public partial class SyncAuthorization : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting
-        /// each other. Used internally during updates.
+        /// Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting each other.
+        /// Used internally during updates.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -200,8 +200,8 @@ namespace Pulumi.Gcp.Apigee
     public sealed class SyncAuthorizationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting
-        /// each other. Used internally during updates.
+        /// Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting each other.
+        /// Used internally during updates.
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }

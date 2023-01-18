@@ -14,7 +14,9 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class URLMapDefaultRouteActionWeightedBackendService
     {
         /// <summary>
-        /// The full or partial URL to the BackendService resource being mirrored to.
+        /// The full or partial URL to the default BackendService resource. Before forwarding the
+        /// request to backendService, the loadbalancer applies any relevant headerActions
+        /// specified as part of this backendServiceWeight.
         /// </summary>
         public readonly string? BackendService;
         /// <summary>

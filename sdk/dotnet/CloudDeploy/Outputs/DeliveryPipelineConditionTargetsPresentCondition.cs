@@ -15,6 +15,9 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
     {
         public readonly ImmutableArray<string> MissingTargets;
         public readonly bool? Status;
+        /// <summary>
+        /// Output only. Most recent time at which the pipeline was updated.
+        /// </summary>
         public readonly string? UpdateTime;
 
         [OutputConstructor]

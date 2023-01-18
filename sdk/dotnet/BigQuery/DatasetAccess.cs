@@ -208,14 +208,16 @@ namespace Pulumi.Gcp.BigQuery
         public Output<bool> ApiUpdatedMember { get; private set; } = null!;
 
         /// <summary>
-        /// The dataset this entry applies to
+        /// Grants all resources of particular types in a particular dataset read access to the current dataset.
         /// Structure is documented below.
         /// </summary>
         [Output("authorizedDataset")]
         public Output<Outputs.DatasetAccessAuthorizedDataset?> AuthorizedDataset { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the dataset containing this table.
+        /// A unique ID for this dataset, without the project name. The ID
+        /// must contain only letters (a-z, A-Z), numbers (0-9), or
+        /// underscores (_). The maximum length is 1,024 characters.
         /// </summary>
         [Output("datasetId")]
         public Output<string> DatasetId { get; private set; } = null!;
@@ -340,14 +342,16 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class DatasetAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dataset this entry applies to
+        /// Grants all resources of particular types in a particular dataset read access to the current dataset.
         /// Structure is documented below.
         /// </summary>
         [Input("authorizedDataset")]
         public Input<Inputs.DatasetAccessAuthorizedDatasetArgs>? AuthorizedDataset { get; set; }
 
         /// <summary>
-        /// The ID of the dataset containing this table.
+        /// A unique ID for this dataset, without the project name. The ID
+        /// must contain only letters (a-z, A-Z), numbers (0-9), or
+        /// underscores (_). The maximum length is 1,024 characters.
         /// </summary>
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
@@ -441,14 +445,16 @@ namespace Pulumi.Gcp.BigQuery
         public Input<bool>? ApiUpdatedMember { get; set; }
 
         /// <summary>
-        /// The dataset this entry applies to
+        /// Grants all resources of particular types in a particular dataset read access to the current dataset.
         /// Structure is documented below.
         /// </summary>
         [Input("authorizedDataset")]
         public Input<Inputs.DatasetAccessAuthorizedDatasetGetArgs>? AuthorizedDataset { get; set; }
 
         /// <summary>
-        /// The ID of the dataset containing this table.
+        /// A unique ID for this dataset, without the project name. The ID
+        /// must contain only letters (a-z, A-Z), numbers (0-9), or
+        /// underscores (_). The maximum length is 1,024 characters.
         /// </summary>
         [Input("datasetId")]
         public Input<string>? DatasetId { get; set; }

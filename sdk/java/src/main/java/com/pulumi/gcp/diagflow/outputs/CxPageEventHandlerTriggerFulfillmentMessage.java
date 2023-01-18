@@ -12,14 +12,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CxPageEventHandlerTriggerFulfillmentMessage {
     /**
-     * @return A collection of text responses.
+     * @return The text response message.
+     * Structure is documented below.
      * 
      */
     private @Nullable CxPageEventHandlerTriggerFulfillmentMessageText text;
 
     private CxPageEventHandlerTriggerFulfillmentMessage() {}
     /**
-     * @return A collection of text responses.
+     * @return The text response message.
+     * Structure is documented below.
      * 
      */
     public Optional<CxPageEventHandlerTriggerFulfillmentMessageText> text() {

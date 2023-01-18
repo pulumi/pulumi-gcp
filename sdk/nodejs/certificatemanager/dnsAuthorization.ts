@@ -16,11 +16,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultDnsAuthorization = new gcp.certificatemanager.DnsAuthorization("default", {
+ * const _default = new gcp.certificatemanager.DnsAuthorization("default", {
  *     description: "The default dnss",
- *     domain: "%{random_suffix}.hashicorptest.com",
+ *     domain: `%{random_suffix}.hashicorptest.com`,
  * });
- *
  * export const recordNameToInsert = {
  *     "google_certificate_manager_dns_authorization.default.dns_resource_record.0.name": [{}],
  *     value: "",
@@ -84,8 +83,10 @@ export class DnsAuthorization extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The structure describing the DNS Resource Record that needs to be added to DNS configuration for the authorization to be
-     * usable by certificate.
+     * The structure describing the DNS Resource Record that needs to be added
+     * to DNS configuration for the authorization to be usable by
+     * certificate.
+     * Structure is documented below.
      */
     public /*out*/ readonly dnsResourceRecords!: pulumi.Output<outputs.certificatemanager.DnsAuthorizationDnsResourceRecord[]>;
     /**
@@ -155,8 +156,10 @@ export interface DnsAuthorizationState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The structure describing the DNS Resource Record that needs to be added to DNS configuration for the authorization to be
-     * usable by certificate.
+     * The structure describing the DNS Resource Record that needs to be added
+     * to DNS configuration for the authorization to be usable by
+     * certificate.
+     * Structure is documented below.
      */
     dnsResourceRecords?: pulumi.Input<pulumi.Input<inputs.certificatemanager.DnsAuthorizationDnsResourceRecord>[]>;
     /**

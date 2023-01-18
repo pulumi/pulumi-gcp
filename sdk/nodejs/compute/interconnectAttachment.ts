@@ -134,7 +134,8 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public readonly candidateSubnets!: pulumi.Output<string[] | undefined>;
     /**
-     * IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
+     * IPv4 address + prefix length to be configured on Cloud Router
+     * Interface for this interconnect attachment.
      */
     public /*out*/ readonly cloudRouterIpAddress!: pulumi.Output<string>;
     /**
@@ -142,7 +143,8 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
-     * IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
+     * IPv4 address + prefix length to be configured on the customer
+     * router subinterface for this interconnect attachment.
      */
     public /*out*/ readonly customerRouterIpAddress!: pulumi.Output<string>;
     /**
@@ -175,8 +177,8 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public readonly encryption!: pulumi.Output<string | undefined>;
     /**
-     * Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity
-     * issues.
+     * Google reference ID, to be used when raising support tickets with
+     * Google or otherwise to debug backend connectivity issues.
      */
     public /*out*/ readonly googleReferenceId!: pulumi.Output<string>;
     /**
@@ -219,18 +221,21 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * [Output only for type PARTNER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to
-     * initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
+     * [Output only for type PARTNER. Not present for DEDICATED]. The opaque
+     * identifier of an PARTNER attachment used to initiate provisioning with
+     * a selected partner. Of the form "XXXXX/region/domain"
      */
     public /*out*/ readonly pairingKey!: pulumi.Output<string>;
     /**
-     * [Output only for type PARTNER. Not present for DEDICATED]. Optional BGP ASN for the router that should be supplied by a
-     * layer 3 Partner if they configured BGP on behalf of the customer.
+     * [Output only for type PARTNER. Not present for DEDICATED]. Optional
+     * BGP ASN for the router that should be supplied by a layer 3 Partner if
+     * they configured BGP on behalf of the customer.
      */
     public /*out*/ readonly partnerAsn!: pulumi.Output<string>;
     /**
-     * Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
-     * to is of type DEDICATED.
+     * Information specific to an InterconnectAttachment. This property
+     * is populated if the interconnect that this is attached to is of type DEDICATED.
+     * Structure is documented below.
      */
     public /*out*/ readonly privateInterconnectInfos!: pulumi.Output<outputs.compute.InterconnectAttachmentPrivateInterconnectInfo[]>;
     /**
@@ -370,7 +375,8 @@ export interface InterconnectAttachmentState {
      */
     candidateSubnets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
+     * IPv4 address + prefix length to be configured on Cloud Router
+     * Interface for this interconnect attachment.
      */
     cloudRouterIpAddress?: pulumi.Input<string>;
     /**
@@ -378,7 +384,8 @@ export interface InterconnectAttachmentState {
      */
     creationTimestamp?: pulumi.Input<string>;
     /**
-     * IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
+     * IPv4 address + prefix length to be configured on the customer
+     * router subinterface for this interconnect attachment.
      */
     customerRouterIpAddress?: pulumi.Input<string>;
     /**
@@ -411,8 +418,8 @@ export interface InterconnectAttachmentState {
      */
     encryption?: pulumi.Input<string>;
     /**
-     * Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity
-     * issues.
+     * Google reference ID, to be used when raising support tickets with
+     * Google or otherwise to debug backend connectivity issues.
      */
     googleReferenceId?: pulumi.Input<string>;
     /**
@@ -455,18 +462,21 @@ export interface InterconnectAttachmentState {
      */
     name?: pulumi.Input<string>;
     /**
-     * [Output only for type PARTNER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to
-     * initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
+     * [Output only for type PARTNER. Not present for DEDICATED]. The opaque
+     * identifier of an PARTNER attachment used to initiate provisioning with
+     * a selected partner. Of the form "XXXXX/region/domain"
      */
     pairingKey?: pulumi.Input<string>;
     /**
-     * [Output only for type PARTNER. Not present for DEDICATED]. Optional BGP ASN for the router that should be supplied by a
-     * layer 3 Partner if they configured BGP on behalf of the customer.
+     * [Output only for type PARTNER. Not present for DEDICATED]. Optional
+     * BGP ASN for the router that should be supplied by a layer 3 Partner if
+     * they configured BGP on behalf of the customer.
      */
     partnerAsn?: pulumi.Input<string>;
     /**
-     * Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
-     * to is of type DEDICATED.
+     * Information specific to an InterconnectAttachment. This property
+     * is populated if the interconnect that this is attached to is of type DEDICATED.
+     * Structure is documented below.
      */
     privateInterconnectInfos?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectAttachmentPrivateInterconnectInfo>[]>;
     /**

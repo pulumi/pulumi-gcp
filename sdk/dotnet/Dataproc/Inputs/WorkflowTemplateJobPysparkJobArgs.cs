@@ -52,7 +52,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _jarFileUris;
 
         /// <summary>
-        /// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        /// Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
         /// </summary>
         public InputList<string> JarFileUris
         {
@@ -76,7 +76,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputMap<string>? _properties;
 
         /// <summary>
-        /// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+        /// Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
         /// </summary>
         public InputMap<string> Properties
         {

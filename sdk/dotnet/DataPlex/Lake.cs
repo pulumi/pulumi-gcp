@@ -117,8 +117,7 @@ namespace Pulumi.Gcp.DataPlex
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Service account associated with this lake. This service account must be authorized to access or operate on
-        /// resources managed by the lake.
+        /// Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
         /// </summary>
         [Output("serviceAccount")]
         public Output<string> ServiceAccount { get; private set; } = null!;
@@ -130,8 +129,7 @@ namespace Pulumi.Gcp.DataPlex
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and
-        /// re-created with the same name.
+        /// Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
@@ -323,8 +321,7 @@ namespace Pulumi.Gcp.DataPlex
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Output only. Service account associated with this lake. This service account must be authorized to access or operate on
-        /// resources managed by the lake.
+        /// Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
@@ -336,8 +333,7 @@ namespace Pulumi.Gcp.DataPlex
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and
-        /// re-created with the same name.
+        /// Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }

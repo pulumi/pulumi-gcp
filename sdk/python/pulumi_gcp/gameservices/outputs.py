@@ -137,7 +137,7 @@ class GameServerConfigFleetConfig(dict):
                * fleet_spec = file("fleet_configs.json")
                The format of the spec can be found :
                `https://agones.dev/site/docs/reference/fleet/`.
-        :param str name: The name of the ScalingConfig
+        :param str name: The name of the FleetConfig.
         """
         pulumi.set(__self__, "fleet_spec", fleet_spec)
         if name is not None:
@@ -161,7 +161,7 @@ class GameServerConfigFleetConfig(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the ScalingConfig
+        The name of the FleetConfig.
         """
         return pulumi.get(self, "name")
 
@@ -433,17 +433,27 @@ class GetGameServerDeploymentRolloutGameServerConfigOverrideResult(dict):
     def __init__(__self__, *,
                  config_version: str,
                  realms_selectors: Sequence['outputs.GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorResult']):
+        """
+        :param str config_version: Version of the configuration.
+        :param Sequence['GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs'] realms_selectors: Selection by realms.  Structure is documented below.
+        """
         pulumi.set(__self__, "config_version", config_version)
         pulumi.set(__self__, "realms_selectors", realms_selectors)
 
     @property
     @pulumi.getter(name="configVersion")
     def config_version(self) -> str:
+        """
+        Version of the configuration.
+        """
         return pulumi.get(self, "config_version")
 
     @property
     @pulumi.getter(name="realmsSelectors")
     def realms_selectors(self) -> Sequence['outputs.GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorResult']:
+        """
+        Selection by realms.  Structure is documented below.
+        """
         return pulumi.get(self, "realms_selectors")
 
 
@@ -451,11 +461,17 @@ class GetGameServerDeploymentRolloutGameServerConfigOverrideResult(dict):
 class GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorResult(dict):
     def __init__(__self__, *,
                  realms: Sequence[str]):
+        """
+        :param Sequence[str] realms: List of realms to match against.
+        """
         pulumi.set(__self__, "realms", realms)
 
     @property
     @pulumi.getter
     def realms(self) -> Sequence[str]:
+        """
+        List of realms to match against.
+        """
         return pulumi.get(self, "realms")
 
 

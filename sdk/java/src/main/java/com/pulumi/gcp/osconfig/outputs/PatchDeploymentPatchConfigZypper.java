@@ -19,13 +19,13 @@ public final class PatchDeploymentPatchConfigZypper {
      */
     private @Nullable List<String> categories;
     /**
-     * @return List of KBs to exclude from update.
+     * @return List of packages to exclude from update.
      * 
      */
     private @Nullable List<String> excludes;
     /**
-     * @return An exclusive list of kbs to be updated. These are the only patches that will be updated.
-     * This field must not be used with other patch configurations.
+     * @return An exclusive list of patches to be updated. These are the only patches that will be installed using &#39;zypper patch patch:&#39; command.
+     * This field must not be used with any other patch configuration fields.
      * 
      */
     private @Nullable List<String> exclusivePatches;
@@ -54,15 +54,15 @@ public final class PatchDeploymentPatchConfigZypper {
         return this.categories == null ? List.of() : this.categories;
     }
     /**
-     * @return List of KBs to exclude from update.
+     * @return List of packages to exclude from update.
      * 
      */
     public List<String> excludes() {
         return this.excludes == null ? List.of() : this.excludes;
     }
     /**
-     * @return An exclusive list of kbs to be updated. These are the only patches that will be updated.
-     * This field must not be used with other patch configurations.
+     * @return An exclusive list of patches to be updated. These are the only patches that will be installed using &#39;zypper patch patch:&#39; command.
+     * This field must not be used with any other patch configuration fields.
      * 
      */
     public List<String> exclusivePatches() {

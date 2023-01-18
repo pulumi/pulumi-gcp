@@ -38,7 +38,6 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
         private InputList<Inputs.EntryGcsFilesetSpecSampleGcsFileSpecArgs>? _sampleGcsFileSpecs;
 
         /// <summary>
-        /// -
         /// Sample files contained in this fileset, not all files contained in this fileset are represented here.
         /// Structure is documented below.
         /// </summary>

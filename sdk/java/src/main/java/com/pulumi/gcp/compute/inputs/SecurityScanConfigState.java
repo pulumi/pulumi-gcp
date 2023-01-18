@@ -107,14 +107,16 @@ public final class SecurityScanConfigState extends com.pulumi.resources.Resource
     }
 
     /**
-     * A server defined name for this index. Format: &#39;projects/{{project}}/scanConfigs/{{server_generated_id}}&#39;
+     * A server defined name for this index. Format:
+     * `projects/{{project}}/scanConfigs/{{server_generated_id}}`
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return A server defined name for this index. Format: &#39;projects/{{project}}/scanConfigs/{{server_generated_id}}&#39;
+     * @return A server defined name for this index. Format:
+     * `projects/{{project}}/scanConfigs/{{server_generated_id}}`
      * 
      */
     public Optional<Output<String>> name() {
@@ -369,7 +371,8 @@ public final class SecurityScanConfigState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name A server defined name for this index. Format: &#39;projects/{{project}}/scanConfigs/{{server_generated_id}}&#39;
+         * @param name A server defined name for this index. Format:
+         * `projects/{{project}}/scanConfigs/{{server_generated_id}}`
          * 
          * @return builder
          * 
@@ -380,7 +383,8 @@ public final class SecurityScanConfigState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name A server defined name for this index. Format: &#39;projects/{{project}}/scanConfigs/{{server_generated_id}}&#39;
+         * @param name A server defined name for this index. Format:
+         * `projects/{{project}}/scanConfigs/{{server_generated_id}}`
          * 
          * @return builder
          * 

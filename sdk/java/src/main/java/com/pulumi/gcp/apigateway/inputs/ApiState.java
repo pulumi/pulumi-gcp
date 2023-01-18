@@ -94,14 +94,14 @@ public final class ApiState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The resource name of the API. Format &#39;projects/{{project}}/locations/global/apis/{{apiId}}&#39;
+     * The resource name of the API. Format `projects/{{project}}/locations/global/apis/{{apiId}}`
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The resource name of the API. Format &#39;projects/{{project}}/locations/global/apis/{{apiId}}&#39;
+     * @return The resource name of the API. Format `projects/{{project}}/locations/global/apis/{{apiId}}`
      * 
      */
     public Optional<Output<String>> name() {
@@ -263,7 +263,7 @@ public final class ApiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name of the API. Format &#39;projects/{{project}}/locations/global/apis/{{apiId}}&#39;
+         * @param name The resource name of the API. Format `projects/{{project}}/locations/global/apis/{{apiId}}`
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class ApiState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name of the API. Format &#39;projects/{{project}}/locations/global/apis/{{apiId}}&#39;
+         * @param name The resource name of the API. Format `projects/{{project}}/locations/global/apis/{{apiId}}`
          * 
          * @return builder
          * 

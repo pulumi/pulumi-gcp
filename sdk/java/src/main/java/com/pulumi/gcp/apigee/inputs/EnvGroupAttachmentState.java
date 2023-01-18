@@ -48,14 +48,14 @@ public final class EnvGroupAttachmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The name of the newly created attachment (output parameter).
+     * The name of the newly created  attachment (output parameter).
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the newly created attachment (output parameter).
+     * @return The name of the newly created  attachment (output parameter).
      * 
      */
     public Optional<Output<String>> name() {
@@ -133,7 +133,7 @@ public final class EnvGroupAttachmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name The name of the newly created attachment (output parameter).
+         * @param name The name of the newly created  attachment (output parameter).
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class EnvGroupAttachmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name The name of the newly created attachment (output parameter).
+         * @param name The name of the newly created  attachment (output parameter).
          * 
          * @return builder
          * 

@@ -462,14 +462,16 @@ public class ManagedZone extends com.pulumi.resources.CustomResource {
         return this.cloudLoggingConfig;
     }
     /**
-     * The time that this resource was created on the server. This is in RFC3339 text format.
+     * The time that this resource was created on the server.
+     * This is in RFC3339 text format.
      * 
      */
     @Export(name="creationTime", type=String.class, parameters={})
     private Output<String> creationTime;
 
     /**
-     * @return The time that this resource was created on the server. This is in RFC3339 text format.
+     * @return The time that this resource was created on the server.
+     * This is in RFC3339 text format.
      * 
      */
     public Output<String> creationTime() {
@@ -598,14 +600,16 @@ public class ManagedZone extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Delegate your managed_zone to these virtual name servers; defined by the server
+     * Delegate your managed_zone to these virtual name servers;
+     * defined by the server
      * 
      */
     @Export(name="nameServers", type=List.class, parameters={String.class})
     private Output<List<String>> nameServers;
 
     /**
-     * @return Delegate your managed_zone to these virtual name servers; defined by the server
+     * @return Delegate your managed_zone to these virtual name servers;
+     * defined by the server
      * 
      */
     public Output<List<String>> nameServers() {

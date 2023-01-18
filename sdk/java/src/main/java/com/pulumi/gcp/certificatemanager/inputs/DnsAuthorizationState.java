@@ -34,16 +34,20 @@ public final class DnsAuthorizationState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The structure describing the DNS Resource Record that needs to be added to DNS configuration for the authorization to be
-     * usable by certificate.
+     * The structure describing the DNS Resource Record that needs to be added
+     * to DNS configuration for the authorization to be usable by
+     * certificate.
+     * Structure is documented below.
      * 
      */
     @Import(name="dnsResourceRecords")
     private @Nullable Output<List<DnsAuthorizationDnsResourceRecordArgs>> dnsResourceRecords;
 
     /**
-     * @return The structure describing the DNS Resource Record that needs to be added to DNS configuration for the authorization to be
-     * usable by certificate.
+     * @return The structure describing the DNS Resource Record that needs to be added
+     * to DNS configuration for the authorization to be usable by
+     * certificate.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<DnsAuthorizationDnsResourceRecordArgs>>> dnsResourceRecords() {
@@ -171,8 +175,10 @@ public final class DnsAuthorizationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dnsResourceRecords The structure describing the DNS Resource Record that needs to be added to DNS configuration for the authorization to be
-         * usable by certificate.
+         * @param dnsResourceRecords The structure describing the DNS Resource Record that needs to be added
+         * to DNS configuration for the authorization to be usable by
+         * certificate.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -183,8 +189,10 @@ public final class DnsAuthorizationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dnsResourceRecords The structure describing the DNS Resource Record that needs to be added to DNS configuration for the authorization to be
-         * usable by certificate.
+         * @param dnsResourceRecords The structure describing the DNS Resource Record that needs to be added
+         * to DNS configuration for the authorization to be usable by
+         * certificate.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -194,8 +202,10 @@ public final class DnsAuthorizationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dnsResourceRecords The structure describing the DNS Resource Record that needs to be added to DNS configuration for the authorization to be
-         * usable by certificate.
+         * @param dnsResourceRecords The structure describing the DNS Resource Record that needs to be added
+         * to DNS configuration for the authorization to be usable by
+         * certificate.
+         * Structure is documented below.
          * 
          * @return builder
          * 

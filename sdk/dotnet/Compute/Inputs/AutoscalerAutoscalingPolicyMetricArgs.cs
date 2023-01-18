@@ -45,7 +45,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? Filter { get; set; }
 
         /// <summary>
-        /// The identifier for this object. Format specified above.
+        /// The identifier (type) of the Stackdriver Monitoring metric.
+        /// The metric cannot have negative values.
+        /// The metric must have a value type of INT64 or DOUBLE.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -70,9 +72,14 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<double>? SingleInstanceAssignment { get; set; }
 
         /// <summary>
-        /// Fraction of backend capacity utilization (set in HTTP(s) load
-        /// balancing configuration) that autoscaler should maintain. Must
-        /// be a positive float value. If not defined, the default is 0.8.
+        /// The target value of the metric that autoscaler should
+        /// maintain. This must be a positive value. A utilization
+        /// metric scales number of virtual machines handling requests
+        /// to increase or decrease proportionally to the metric.
+        /// For example, a good metric to use as a utilizationTarget is
+        /// www.googleapis.com/compute/instance/network/received_bytes_count.
+        /// The autoscaler will work to keep this value constant for each
+        /// of the instances.
         /// </summary>
         [Input("target")]
         public Input<double>? Target { get; set; }

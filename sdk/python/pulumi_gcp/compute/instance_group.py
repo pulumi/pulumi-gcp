@@ -29,7 +29,10 @@ class InstanceGroupArgs:
                group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The list of instances in the group, in `self_link` format.
                When adding instances they must all be in the same network and zone as the instance group.
-        :param pulumi.Input[str] name: The name which the port will be mapped to.
+        :param pulumi.Input[str] name: The name of the instance group. Must be 1-63
+               characters long and comply with
+               [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+               include lowercase letters, numbers, and hyphens.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupNamedPortArgs']]] named_ports: The named port configuration. See the section below
                for details on configuration. Structure is documented below.
         :param pulumi.Input[str] network: The URL of the network the instance group is in. If
@@ -85,7 +88,10 @@ class InstanceGroupArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name which the port will be mapped to.
+        The name of the instance group. Must be 1-63
+        characters long and comply with
+        [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+        include lowercase letters, numbers, and hyphens.
         """
         return pulumi.get(self, "name")
 
@@ -165,7 +171,10 @@ class _InstanceGroupState:
                group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The list of instances in the group, in `self_link` format.
                When adding instances they must all be in the same network and zone as the instance group.
-        :param pulumi.Input[str] name: The name which the port will be mapped to.
+        :param pulumi.Input[str] name: The name of the instance group. Must be 1-63
+               characters long and comply with
+               [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+               include lowercase letters, numbers, and hyphens.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupNamedPortArgs']]] named_ports: The named port configuration. See the section below
                for details on configuration. Structure is documented below.
         :param pulumi.Input[str] network: The URL of the network the instance group is in. If
@@ -227,7 +236,10 @@ class _InstanceGroupState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name which the port will be mapped to.
+        The name of the instance group. Must be 1-63
+        characters long and comply with
+        [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+        include lowercase letters, numbers, and hyphens.
         """
         return pulumi.get(self, "name")
 
@@ -390,7 +402,10 @@ class InstanceGroup(pulumi.CustomResource):
                group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The list of instances in the group, in `self_link` format.
                When adding instances they must all be in the same network and zone as the instance group.
-        :param pulumi.Input[str] name: The name which the port will be mapped to.
+        :param pulumi.Input[str] name: The name of the instance group. Must be 1-63
+               characters long and comply with
+               [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+               include lowercase letters, numbers, and hyphens.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupNamedPortArgs']]]] named_ports: The named port configuration. See the section below
                for details on configuration. Structure is documented below.
         :param pulumi.Input[str] network: The URL of the network the instance group is in. If
@@ -535,7 +550,10 @@ class InstanceGroup(pulumi.CustomResource):
                group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The list of instances in the group, in `self_link` format.
                When adding instances they must all be in the same network and zone as the instance group.
-        :param pulumi.Input[str] name: The name which the port will be mapped to.
+        :param pulumi.Input[str] name: The name of the instance group. Must be 1-63
+               characters long and comply with
+               [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+               include lowercase letters, numbers, and hyphens.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupNamedPortArgs']]]] named_ports: The named port configuration. See the section below
                for details on configuration. Structure is documented below.
         :param pulumi.Input[str] network: The URL of the network the instance group is in. If
@@ -585,7 +603,10 @@ class InstanceGroup(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name which the port will be mapped to.
+        The name of the instance group. Must be 1-63
+        characters long and comply with
+        [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+        include lowercase letters, numbers, and hyphens.
         """
         return pulumi.get(self, "name")
 

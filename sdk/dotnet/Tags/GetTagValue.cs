@@ -113,16 +113,30 @@ namespace Pulumi.Gcp.Tags
     [OutputType]
     public sealed class GetTagValueResult
     {
+        /// <summary>
+        /// Creation time.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
         public readonly string CreateTime;
         public readonly string Description;
         /// <summary>
         /// an identifier for the resource with format `tagValues/{{name}}`
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The generated numeric id for the TagValue.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Namespaced name of the TagValue.
+        /// </summary>
         public readonly string NamespacedName;
         public readonly string Parent;
         public readonly string ShortName;
+        /// <summary>
+        /// Update time.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
         public readonly string UpdateTime;
 
         [OutputConstructor]

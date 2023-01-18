@@ -142,8 +142,8 @@ namespace Pulumi.Gcp.GameServices
         public Output<ImmutableArray<Outputs.GameServerDeploymentRolloutGameServerConfigOverride>> GameServerConfigOverrides { get; private set; } = null!;
 
         /// <summary>
-        /// The resource id of the game server deployment eg:
-        /// 'projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout'.
+        /// The resource id of the game server deployment
+        /// eg: `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -277,8 +277,8 @@ namespace Pulumi.Gcp.GameServices
         }
 
         /// <summary>
-        /// The resource id of the game server deployment eg:
-        /// 'projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout'.
+        /// The resource id of the game server deployment
+        /// eg: `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

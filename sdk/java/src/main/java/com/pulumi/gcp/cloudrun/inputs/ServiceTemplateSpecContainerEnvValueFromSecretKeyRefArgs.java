@@ -14,16 +14,16 @@ public final class ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs exte
     public static final ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs Empty = new ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs();
 
     /**
-     * The Cloud Secret Manager secret version.
-     * Can be &#39;latest&#39; for the latest value or an integer for a specific version.
+     * A Cloud Secret Manager secret version. Must be &#39;latest&#39; for the latest
+     * version or an integer for a specific version.
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return The Cloud Secret Manager secret version.
-     * Can be &#39;latest&#39; for the latest value or an integer for a specific version.
+     * @return A Cloud Secret Manager secret version. Must be &#39;latest&#39; for the latest
+     * version or an integer for a specific version.
      * 
      */
     public Output<String> key() {
@@ -31,14 +31,22 @@ public final class ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs exte
     }
 
     /**
-     * Volume&#39;s name.
+     * The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project.
+     * If the secret is in another project, you must define an alias.
+     * An alias definition has the form: :projects/{project-id|project-number}/secrets/.
+     * If multiple alias definitions are needed, they must be separated by commas.
+     * The alias definitions must be set on the run.googleapis.com/secrets annotation.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Volume&#39;s name.
+     * @return The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project.
+     * If the secret is in another project, you must define an alias.
+     * An alias definition has the form: :projects/{project-id|project-number}/secrets/.
+     * If multiple alias definitions are needed, they must be separated by commas.
+     * The alias definitions must be set on the run.googleapis.com/secrets annotation.
      * 
      */
     public Output<String> name() {
@@ -71,8 +79,8 @@ public final class ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs exte
         }
 
         /**
-         * @param key The Cloud Secret Manager secret version.
-         * Can be &#39;latest&#39; for the latest value or an integer for a specific version.
+         * @param key A Cloud Secret Manager secret version. Must be &#39;latest&#39; for the latest
+         * version or an integer for a specific version.
          * 
          * @return builder
          * 
@@ -83,8 +91,8 @@ public final class ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs exte
         }
 
         /**
-         * @param key The Cloud Secret Manager secret version.
-         * Can be &#39;latest&#39; for the latest value or an integer for a specific version.
+         * @param key A Cloud Secret Manager secret version. Must be &#39;latest&#39; for the latest
+         * version or an integer for a specific version.
          * 
          * @return builder
          * 
@@ -94,7 +102,11 @@ public final class ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs exte
         }
 
         /**
-         * @param name Volume&#39;s name.
+         * @param name The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project.
+         * If the secret is in another project, you must define an alias.
+         * An alias definition has the form: :projects/{project-id|project-number}/secrets/.
+         * If multiple alias definitions are needed, they must be separated by commas.
+         * The alias definitions must be set on the run.googleapis.com/secrets annotation.
          * 
          * @return builder
          * 
@@ -105,7 +117,11 @@ public final class ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs exte
         }
 
         /**
-         * @param name Volume&#39;s name.
+         * @param name The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project.
+         * If the secret is in another project, you must define an alias.
+         * An alias definition has the form: :projects/{project-id|project-number}/secrets/.
+         * If multiple alias definitions are needed, they must be separated by commas.
+         * The alias definitions must be set on the run.googleapis.com/secrets annotation.
          * 
          * @return builder
          * 

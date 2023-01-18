@@ -20,17 +20,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my_router = pulumi.output(gcp.compute.getRouterStatus({
+ * const my-router = gcp.compute.getRouterStatus({
  *     name: "myrouter",
- * }));
+ * });
  * ```
  */
 export function getRouterStatus(args: GetRouterStatusArgs, opts?: pulumi.InvokeOptions): Promise<GetRouterStatusResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getRouterStatus:getRouterStatus", {
         "name": args.name,
         "project": args.project,
@@ -77,9 +74,27 @@ export interface GetRouterStatusResult {
     readonly project?: string;
     readonly region: string;
 }
-
+/**
+ * Get a Cloud Router's status within GCE from its name and region. This data source exposes the
+ * routes learned by a Cloud Router via BGP peers.
+ *
+ * For more information see [the official documentation](https://cloud.google.com/network-connectivity/docs/router/how-to/viewing-router-details)
+ * and
+ * [API](https://cloud.google.com/compute/docs/reference/rest/v1/routers/getRouterStatus).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-router = gcp.compute.getRouterStatus({
+ *     name: "myrouter",
+ * });
+ * ```
+ */
 export function getRouterStatusOutput(args: GetRouterStatusOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouterStatusResult> {
-    return pulumi.output(args).apply(a => getRouterStatus(a, opts))
+    return pulumi.output(args).apply((a: any) => getRouterStatus(a, opts))
 }
 
 /**

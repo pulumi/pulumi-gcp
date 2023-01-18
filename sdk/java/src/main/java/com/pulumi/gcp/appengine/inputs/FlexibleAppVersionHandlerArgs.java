@@ -18,8 +18,7 @@ public final class FlexibleAppVersionHandlerArgs extends com.pulumi.resources.Re
     public static final FlexibleAppVersionHandlerArgs Empty = new FlexibleAppVersionHandlerArgs();
 
     /**
-     * Action to take when users access resources that require authentication.
-     * Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+     * Actions to take when the user is not logged in.
      * Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
      * 
      */
@@ -27,8 +26,7 @@ public final class FlexibleAppVersionHandlerArgs extends com.pulumi.resources.Re
     private @Nullable Output<String> authFailAction;
 
     /**
-     * @return Action to take when users access resources that require authentication.
-     * Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+     * @return Actions to take when the user is not logged in.
      * Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
      * 
      */
@@ -37,8 +35,7 @@ public final class FlexibleAppVersionHandlerArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Level of login required to access this resource.
-     * Default value is `LOGIN_OPTIONAL`.
+     * Methods to restrict access to a URL based on login status.
      * Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
      * 
      */
@@ -46,8 +43,7 @@ public final class FlexibleAppVersionHandlerArgs extends com.pulumi.resources.Re
     private @Nullable Output<String> login;
 
     /**
-     * @return Level of login required to access this resource.
-     * Default value is `LOGIN_OPTIONAL`.
+     * @return Methods to restrict access to a URL based on login status.
      * Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
      * 
      */
@@ -73,14 +69,18 @@ public final class FlexibleAppVersionHandlerArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Path to the script from the application root directory.
+     * Executes a script to handle the requests that match this URL pattern.
+     * Only the auto value is supported for Node.js in the App Engine standard environment, for example &#34;script:&#34; &#34;auto&#34;.
+     * Structure is documented below.
      * 
      */
     @Import(name="script")
     private @Nullable Output<FlexibleAppVersionHandlerScriptArgs> script;
 
     /**
-     * @return Path to the script from the application root directory.
+     * @return Executes a script to handle the requests that match this URL pattern.
+     * Only the auto value is supported for Node.js in the App Engine standard environment, for example &#34;script:&#34; &#34;auto&#34;.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<FlexibleAppVersionHandlerScriptArgs>> script() {
@@ -171,8 +171,7 @@ public final class FlexibleAppVersionHandlerArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param authFailAction Action to take when users access resources that require authentication.
-         * Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+         * @param authFailAction Actions to take when the user is not logged in.
          * Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
          * 
          * @return builder
@@ -184,8 +183,7 @@ public final class FlexibleAppVersionHandlerArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param authFailAction Action to take when users access resources that require authentication.
-         * Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+         * @param authFailAction Actions to take when the user is not logged in.
          * Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
          * 
          * @return builder
@@ -196,8 +194,7 @@ public final class FlexibleAppVersionHandlerArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param login Level of login required to access this resource.
-         * Default value is `LOGIN_OPTIONAL`.
+         * @param login Methods to restrict access to a URL based on login status.
          * Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
          * 
          * @return builder
@@ -209,8 +206,7 @@ public final class FlexibleAppVersionHandlerArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param login Level of login required to access this resource.
-         * Default value is `LOGIN_OPTIONAL`.
+         * @param login Methods to restrict access to a URL based on login status.
          * Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
          * 
          * @return builder
@@ -244,7 +240,9 @@ public final class FlexibleAppVersionHandlerArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param script Path to the script from the application root directory.
+         * @param script Executes a script to handle the requests that match this URL pattern.
+         * Only the auto value is supported for Node.js in the App Engine standard environment, for example &#34;script:&#34; &#34;auto&#34;.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -255,7 +253,9 @@ public final class FlexibleAppVersionHandlerArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param script Path to the script from the application root directory.
+         * @param script Executes a script to handle the requests that match this URL pattern.
+         * Only the auto value is supported for Node.js in the App Engine standard environment, for example &#34;script:&#34; &#34;auto&#34;.
+         * Structure is documented below.
          * 
          * @return builder
          * 

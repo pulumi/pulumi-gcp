@@ -21,9 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const example = new gcp.iam.WorkloadIdentityPool("example", {
- *     workloadIdentityPoolId: "example-pool",
- * });
+ * const example = new gcp.iam.WorkloadIdentityPool("example", {workloadIdentityPoolId: "example-pool"});
  * ```
  * ### Iam Workload Identity Pool Full
  *
@@ -99,7 +97,7 @@ export class WorkloadIdentityPool extends pulumi.CustomResource {
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
      * The resource name of the pool as
-     * 'projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}'.
+     * `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -108,11 +106,15 @@ export class WorkloadIdentityPool extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The state of the pool. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The pool is active, and may be used in Google
-     * Cloud policies. * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after approximately 30
-     * days. You can restore a soft-deleted pool using UndeleteWorkloadIdentityPool. You cannot reuse the ID of a soft-deleted
-     * pool until it is permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or use existing
-     * tokens to access resources. If the pool is undeleted, existing tokens grant access again.
+     * The state of the pool.
+     * * STATE_UNSPECIFIED: State unspecified.
+     * * ACTIVE: The pool is active, and may be used in Google Cloud policies.
+     * * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after
+     * approximately 30 days. You can restore a soft-deleted pool using
+     * UndeleteWorkloadIdentityPool. You cannot reuse the ID of a soft-deleted pool until it is
+     * permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or
+     * use existing tokens to access resources. If the pool is undeleted, existing tokens grant
+     * access again.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
@@ -180,7 +182,7 @@ export interface WorkloadIdentityPoolState {
     displayName?: pulumi.Input<string>;
     /**
      * The resource name of the pool as
-     * 'projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}'.
+     * `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}`.
      */
     name?: pulumi.Input<string>;
     /**
@@ -189,11 +191,15 @@ export interface WorkloadIdentityPoolState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The state of the pool. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The pool is active, and may be used in Google
-     * Cloud policies. * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after approximately 30
-     * days. You can restore a soft-deleted pool using UndeleteWorkloadIdentityPool. You cannot reuse the ID of a soft-deleted
-     * pool until it is permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or use existing
-     * tokens to access resources. If the pool is undeleted, existing tokens grant access again.
+     * The state of the pool.
+     * * STATE_UNSPECIFIED: State unspecified.
+     * * ACTIVE: The pool is active, and may be used in Google Cloud policies.
+     * * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after
+     * approximately 30 days. You can restore a soft-deleted pool using
+     * UndeleteWorkloadIdentityPool. You cannot reuse the ID of a soft-deleted pool until it is
+     * permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or
+     * use existing tokens to access resources. If the pool is undeleted, existing tokens grant
+     * access again.
      */
     state?: pulumi.Input<string>;
     /**

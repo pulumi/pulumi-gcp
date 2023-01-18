@@ -53,9 +53,8 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<string> Quote { get; set; } = null!;
 
         /// <summary>
-        /// The number of rows at the top of the sheet
-        /// that BigQuery will skip when reading the data. At least one of `range` or
-        /// `skip_leading_rows` must be set.
+        /// The number of rows at the top of a CSV
+        /// file that BigQuery will skip when reading the data.
         /// </summary>
         [Input("skipLeadingRows")]
         public Input<int>? SkipLeadingRows { get; set; }

@@ -14,14 +14,14 @@ public final class AwsClusterControlPlaneConfigEncryptionArgs extends com.pulumi
     public static final AwsClusterControlPlaneConfigEncryptionArgs Empty = new AwsClusterControlPlaneConfigEncryptionArgs();
 
     /**
-     * Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+     * The ARN of the AWS KMS key used to encrypt cluster configuration.
      * 
      */
     @Import(name="kmsKeyArn", required=true)
     private Output<String> kmsKeyArn;
 
     /**
-     * @return Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+     * @return The ARN of the AWS KMS key used to encrypt cluster configuration.
      * 
      */
     public Output<String> kmsKeyArn() {
@@ -53,7 +53,7 @@ public final class AwsClusterControlPlaneConfigEncryptionArgs extends com.pulumi
         }
 
         /**
-         * @param kmsKeyArn Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+         * @param kmsKeyArn The ARN of the AWS KMS key used to encrypt cluster configuration.
          * 
          * @return builder
          * 
@@ -64,7 +64,7 @@ public final class AwsClusterControlPlaneConfigEncryptionArgs extends com.pulumi
         }
 
         /**
-         * @param kmsKeyArn Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+         * @param kmsKeyArn The ARN of the AWS KMS key used to encrypt cluster configuration.
          * 
          * @return builder
          * 

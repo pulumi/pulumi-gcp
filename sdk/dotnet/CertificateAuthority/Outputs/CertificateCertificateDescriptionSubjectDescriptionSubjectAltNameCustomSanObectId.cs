@@ -15,6 +15,10 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     {
         /// <summary>
         /// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        /// (Required)
+        /// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        /// (Required)
+        /// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         /// </summary>
         public readonly ImmutableArray<int> ObjectIdPaths;
 

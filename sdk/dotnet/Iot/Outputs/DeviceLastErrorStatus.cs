@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.Iot.Outputs
     [OutputType]
     public sealed class DeviceLastErrorStatus
     {
+        /// <summary>
+        /// A list of messages that carry the error details.
+        /// </summary>
         public readonly ImmutableArray<ImmutableDictionary<string, object>> Details;
+        /// <summary>
+        /// A developer-facing error message, which should be in English.
+        /// </summary>
         public readonly string? Message;
+        /// <summary>
+        /// The status code, which should be an enum value of google.rpc.Code.
+        /// </summary>
         public readonly int? Number;
 
         [OutputConstructor]

@@ -48,7 +48,7 @@ export class ProjectSink extends pulumi.CustomResource {
      */
     public readonly bigqueryOptions!: pulumi.Output<outputs.logging.ProjectSinkBigqueryOptions>;
     /**
-     * A description of this exclusion.
+     * A description of this sink. The maximum length of the description is 8000 characters.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -57,7 +57,7 @@ export class ProjectSink extends pulumi.CustomResource {
      */
     public readonly destination!: pulumi.Output<string>;
     /**
-     * If set to True, then this exclusion is disabled and it does not exclude any log entries.
+     * If set to True, then this sink is disabled and it does not export any log entries.
      */
     public readonly disabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -65,12 +65,13 @@ export class ProjectSink extends pulumi.CustomResource {
      */
     public readonly exclusions!: pulumi.Output<outputs.logging.ProjectSinkExclusion[] | undefined>;
     /**
-     * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+     * The filter to apply when exporting logs. Only log entries that match the filter are exported.
+     * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
      * write a filter.
      */
     public readonly filter!: pulumi.Output<string | undefined>;
     /**
-     * A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+     * The name of the logging sink.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -144,7 +145,7 @@ export interface ProjectSinkState {
      */
     bigqueryOptions?: pulumi.Input<inputs.logging.ProjectSinkBigqueryOptions>;
     /**
-     * A description of this exclusion.
+     * A description of this sink. The maximum length of the description is 8000 characters.
      */
     description?: pulumi.Input<string>;
     /**
@@ -153,7 +154,7 @@ export interface ProjectSinkState {
      */
     destination?: pulumi.Input<string>;
     /**
-     * If set to True, then this exclusion is disabled and it does not exclude any log entries.
+     * If set to True, then this sink is disabled and it does not export any log entries.
      */
     disabled?: pulumi.Input<boolean>;
     /**
@@ -161,12 +162,13 @@ export interface ProjectSinkState {
      */
     exclusions?: pulumi.Input<pulumi.Input<inputs.logging.ProjectSinkExclusion>[]>;
     /**
-     * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+     * The filter to apply when exporting logs. Only log entries that match the filter are exported.
+     * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
      * write a filter.
      */
     filter?: pulumi.Input<string>;
     /**
-     * A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+     * The name of the logging sink.
      */
     name?: pulumi.Input<string>;
     /**
@@ -197,7 +199,7 @@ export interface ProjectSinkArgs {
      */
     bigqueryOptions?: pulumi.Input<inputs.logging.ProjectSinkBigqueryOptions>;
     /**
-     * A description of this exclusion.
+     * A description of this sink. The maximum length of the description is 8000 characters.
      */
     description?: pulumi.Input<string>;
     /**
@@ -206,7 +208,7 @@ export interface ProjectSinkArgs {
      */
     destination: pulumi.Input<string>;
     /**
-     * If set to True, then this exclusion is disabled and it does not exclude any log entries.
+     * If set to True, then this sink is disabled and it does not export any log entries.
      */
     disabled?: pulumi.Input<boolean>;
     /**
@@ -214,12 +216,13 @@ export interface ProjectSinkArgs {
      */
     exclusions?: pulumi.Input<pulumi.Input<inputs.logging.ProjectSinkExclusion>[]>;
     /**
-     * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+     * The filter to apply when exporting logs. Only log entries that match the filter are exported.
+     * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
      * write a filter.
      */
     filter?: pulumi.Input<string>;
     /**
-     * A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+     * The name of the logging sink.
      */
     name?: pulumi.Input<string>;
     /**

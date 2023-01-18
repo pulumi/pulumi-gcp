@@ -44,14 +44,16 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The time that this resource was created on the server. This is in RFC3339 text format.
+     * The time that this resource was created on the server.
+     * This is in RFC3339 text format.
      * 
      */
     @Import(name="creationTime")
     private @Nullable Output<String> creationTime;
 
     /**
-     * @return The time that this resource was created on the server. This is in RFC3339 text format.
+     * @return The time that this resource was created on the server.
+     * This is in RFC3339 text format.
      * 
      */
     public Optional<Output<String>> creationTime() {
@@ -189,14 +191,16 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Delegate your managed_zone to these virtual name servers; defined by the server
+     * Delegate your managed_zone to these virtual name servers;
+     * defined by the server
      * 
      */
     @Import(name="nameServers")
     private @Nullable Output<List<String>> nameServers;
 
     /**
-     * @return Delegate your managed_zone to these virtual name servers; defined by the server
+     * @return Delegate your managed_zone to these virtual name servers;
+     * defined by the server
      * 
      */
     public Optional<Output<List<String>>> nameServers() {
@@ -379,7 +383,8 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param creationTime The time that this resource was created on the server. This is in RFC3339 text format.
+         * @param creationTime The time that this resource was created on the server.
+         * This is in RFC3339 text format.
          * 
          * @return builder
          * 
@@ -390,7 +395,8 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param creationTime The time that this resource was created on the server. This is in RFC3339 text format.
+         * @param creationTime The time that this resource was created on the server.
+         * This is in RFC3339 text format.
          * 
          * @return builder
          * 
@@ -578,7 +584,8 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nameServers Delegate your managed_zone to these virtual name servers; defined by the server
+         * @param nameServers Delegate your managed_zone to these virtual name servers;
+         * defined by the server
          * 
          * @return builder
          * 
@@ -589,7 +596,8 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nameServers Delegate your managed_zone to these virtual name servers; defined by the server
+         * @param nameServers Delegate your managed_zone to these virtual name servers;
+         * defined by the server
          * 
          * @return builder
          * 
@@ -599,7 +607,8 @@ public final class ManagedZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nameServers Delegate your managed_zone to these virtual name servers; defined by the server
+         * @param nameServers Delegate your managed_zone to these virtual name servers;
+         * defined by the server
          * 
          * @return builder
          * 

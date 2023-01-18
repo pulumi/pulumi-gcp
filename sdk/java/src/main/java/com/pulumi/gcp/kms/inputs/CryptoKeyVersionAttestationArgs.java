@@ -17,30 +17,66 @@ public final class CryptoKeyVersionAttestationArgs extends com.pulumi.resources.
 
     public static final CryptoKeyVersionAttestationArgs Empty = new CryptoKeyVersionAttestationArgs();
 
+    /**
+     * The certificate chains needed to validate the attestation
+     * Structure is documented below.
+     * 
+     */
     @Import(name="certChains")
     private @Nullable Output<CryptoKeyVersionAttestationCertChainsArgs> certChains;
 
+    /**
+     * @return The certificate chains needed to validate the attestation
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<CryptoKeyVersionAttestationCertChainsArgs>> certChains() {
         return Optional.ofNullable(this.certChains);
     }
 
+    /**
+     * The attestation data provided by the HSM when the key operation was performed.
+     * 
+     */
     @Import(name="content")
     private @Nullable Output<String> content;
 
+    /**
+     * @return The attestation data provided by the HSM when the key operation was performed.
+     * 
+     */
     public Optional<Output<String>> content() {
         return Optional.ofNullable(this.content);
     }
 
+    /**
+     * ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="externalProtectionLevelOptions")
     private @Nullable Output<CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs> externalProtectionLevelOptions;
 
+    /**
+     * @return ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs>> externalProtectionLevelOptions() {
         return Optional.ofNullable(this.externalProtectionLevelOptions);
     }
 
+    /**
+     * The format of the attestation data.
+     * 
+     */
     @Import(name="format")
     private @Nullable Output<String> format;
 
+    /**
+     * @return The format of the attestation data.
+     * 
+     */
     public Optional<Output<String>> format() {
         return Optional.ofNullable(this.format);
     }
@@ -72,38 +108,90 @@ public final class CryptoKeyVersionAttestationArgs extends com.pulumi.resources.
             $ = new CryptoKeyVersionAttestationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param certChains The certificate chains needed to validate the attestation
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder certChains(@Nullable Output<CryptoKeyVersionAttestationCertChainsArgs> certChains) {
             $.certChains = certChains;
             return this;
         }
 
+        /**
+         * @param certChains The certificate chains needed to validate the attestation
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder certChains(CryptoKeyVersionAttestationCertChainsArgs certChains) {
             return certChains(Output.of(certChains));
         }
 
+        /**
+         * @param content The attestation data provided by the HSM when the key operation was performed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder content(@Nullable Output<String> content) {
             $.content = content;
             return this;
         }
 
+        /**
+         * @param content The attestation data provided by the HSM when the key operation was performed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder content(String content) {
             return content(Output.of(content));
         }
 
+        /**
+         * @param externalProtectionLevelOptions ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalProtectionLevelOptions(@Nullable Output<CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs> externalProtectionLevelOptions) {
             $.externalProtectionLevelOptions = externalProtectionLevelOptions;
             return this;
         }
 
+        /**
+         * @param externalProtectionLevelOptions ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalProtectionLevelOptions(CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs externalProtectionLevelOptions) {
             return externalProtectionLevelOptions(Output.of(externalProtectionLevelOptions));
         }
 
+        /**
+         * @param format The format of the attestation data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder format(@Nullable Output<String> format) {
             $.format = format;
             return this;
         }
 
+        /**
+         * @param format The format of the attestation data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder format(String format) {
             return format(Output.of(format));
         }

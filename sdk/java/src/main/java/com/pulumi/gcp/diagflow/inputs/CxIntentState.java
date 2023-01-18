@@ -107,16 +107,16 @@ public final class CxIntentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The unique identifier of the intent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent
-     * ID&gt;/intents/&lt;Intent ID&gt;.
+     * The unique identifier of the intent.
+     * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/intents/&lt;Intent ID&gt;.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The unique identifier of the intent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent
-     * ID&gt;/intents/&lt;Intent ID&gt;.
+     * @return The unique identifier of the intent.
+     * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/intents/&lt;Intent ID&gt;.
      * 
      */
     public Optional<Output<String>> name() {
@@ -342,8 +342,8 @@ public final class CxIntentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The unique identifier of the intent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent
-         * ID&gt;/intents/&lt;Intent ID&gt;.
+         * @param name The unique identifier of the intent.
+         * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/intents/&lt;Intent ID&gt;.
          * 
          * @return builder
          * 
@@ -354,8 +354,8 @@ public final class CxIntentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The unique identifier of the intent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent
-         * ID&gt;/intents/&lt;Intent ID&gt;.
+         * @param name The unique identifier of the intent.
+         * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/intents/&lt;Intent ID&gt;.
          * 
          * @return builder
          * 

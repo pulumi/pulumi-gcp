@@ -192,8 +192,7 @@ class AlertPolicyCondition(dict):
         :param 'AlertPolicyConditionConditionThresholdArgs' condition_threshold: A condition that compares a time series against a
                threshold.
                Structure is documented below.
-        :param str name: -
-               The unique resource name for this condition.
+        :param str name: The unique resource name for this condition.
                Its syntax is:
                projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
                [CONDITION_ID] is assigned by Stackdriver Monitoring when
@@ -267,7 +266,6 @@ class AlertPolicyCondition(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        -
         The unique resource name for this condition.
         Its syntax is:
         projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
@@ -287,20 +285,10 @@ class AlertPolicyConditionConditionAbsent(dict):
                  trigger: Optional['outputs.AlertPolicyConditionConditionAbsentTrigger'] = None):
         """
         :param str duration: The amount of time that a time series must
-               violate the threshold to be considered
+               fail to report new data to be considered
                failing. Currently, only values that are a
-               multiple of a minute--e.g., 0, 60, 120, or
-               300 seconds--are supported. If an invalid
-               value is given, an error will be returned.
-               When choosing a duration, it is useful to
-               keep in mind the frequency of the underlying
-               time series data (which may also be affected
-               by any alignments specified in the
-               aggregations field); a good duration is long
-               enough so that a single outlier does not
-               generate spurious alerts, but short enough
-               that unhealthy states are detected and
-               alerted on quickly.
+               multiple of a minute--e.g. 60s, 120s, or 300s
+               --are supported.
         :param Sequence['AlertPolicyConditionConditionAbsentAggregationArgs'] aggregations: Specifies the alignment of data points in
                individual time series as well as how to
                combine the retrieved time series together
@@ -309,21 +297,26 @@ class AlertPolicyConditionConditionAbsent(dict):
                resource or when aggregating streams across
                all members of a group of resources).
                Multiple aggregations are applied in the
-               order specified.This field is similar to the
-               one in the MetricService.ListTimeSeries
-               request. It is advisable to use the
-               ListTimeSeries method when debugging this
-               field.
+               order specified.
                Structure is documented below.
-        :param str filter: A logs-based filter.
+        :param str filter: A filter that identifies which time series
+               should be compared with the threshold.The
+               filter is similar to the one that is
+               specified in the
+               MetricService.ListTimeSeries request (that
+               call is useful to verify the time series
+               that will be retrieved / processed) and must
+               specify the metric type and optionally may
+               contain restrictions on resource type,
+               resource labels, and metric labels. This
+               field may not exceed 2048 Unicode characters
+               in length.
         :param 'AlertPolicyConditionConditionAbsentTriggerArgs' trigger: The number/percent of time series for which
                the comparison must hold in order for the
                condition to trigger. If unspecified, then
                the condition will trigger if the comparison
                is true for any of the time series that have
-               been identified by filter and aggregations,
-               or by the ratio, if denominator_filter and
-               denominator_aggregations are specified.
+               been identified by filter and aggregations.
                Structure is documented below.
         """
         pulumi.set(__self__, "duration", duration)
@@ -339,20 +332,10 @@ class AlertPolicyConditionConditionAbsent(dict):
     def duration(self) -> str:
         """
         The amount of time that a time series must
-        violate the threshold to be considered
+        fail to report new data to be considered
         failing. Currently, only values that are a
-        multiple of a minute--e.g., 0, 60, 120, or
-        300 seconds--are supported. If an invalid
-        value is given, an error will be returned.
-        When choosing a duration, it is useful to
-        keep in mind the frequency of the underlying
-        time series data (which may also be affected
-        by any alignments specified in the
-        aggregations field); a good duration is long
-        enough so that a single outlier does not
-        generate spurious alerts, but short enough
-        that unhealthy states are detected and
-        alerted on quickly.
+        multiple of a minute--e.g. 60s, 120s, or 300s
+        --are supported.
         """
         return pulumi.get(self, "duration")
 
@@ -368,11 +351,7 @@ class AlertPolicyConditionConditionAbsent(dict):
         resource or when aggregating streams across
         all members of a group of resources).
         Multiple aggregations are applied in the
-        order specified.This field is similar to the
-        one in the MetricService.ListTimeSeries
-        request. It is advisable to use the
-        ListTimeSeries method when debugging this
-        field.
+        order specified.
         Structure is documented below.
         """
         return pulumi.get(self, "aggregations")
@@ -381,7 +360,18 @@ class AlertPolicyConditionConditionAbsent(dict):
     @pulumi.getter
     def filter(self) -> Optional[str]:
         """
-        A logs-based filter.
+        A filter that identifies which time series
+        should be compared with the threshold.The
+        filter is similar to the one that is
+        specified in the
+        MetricService.ListTimeSeries request (that
+        call is useful to verify the time series
+        that will be retrieved / processed) and must
+        specify the metric type and optionally may
+        contain restrictions on resource type,
+        resource labels, and metric labels. This
+        field may not exceed 2048 Unicode characters
+        in length.
         """
         return pulumi.get(self, "filter")
 
@@ -394,9 +384,7 @@ class AlertPolicyConditionConditionAbsent(dict):
         condition to trigger. If unspecified, then
         the condition will trigger if the comparison
         is true for any of the time series that have
-        been identified by filter and aggregations,
-        or by the ratio, if denominator_filter and
-        denominator_aggregations are specified.
+        been identified by filter and aggregations.
         Structure is documented below.
         """
         return pulumi.get(self, "trigger")
@@ -989,7 +977,18 @@ class AlertPolicyConditionConditionThreshold(dict):
                metric-threshold conditions are evaluated when
                data stops arriving.
                Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
-        :param str filter: A logs-based filter.
+        :param str filter: A filter that identifies which time series
+               should be compared with the threshold.The
+               filter is similar to the one that is
+               specified in the
+               MetricService.ListTimeSeries request (that
+               call is useful to verify the time series
+               that will be retrieved / processed) and must
+               specify the metric type and optionally may
+               contain restrictions on resource type,
+               resource labels, and metric labels. This
+               field may not exceed 2048 Unicode characters
+               in length.
         :param float threshold_value: A value against which to compare the time
                series.
         :param 'AlertPolicyConditionConditionThresholdTriggerArgs' trigger: The number/percent of time series for which
@@ -1139,7 +1138,18 @@ class AlertPolicyConditionConditionThreshold(dict):
     @pulumi.getter
     def filter(self) -> Optional[str]:
         """
-        A logs-based filter.
+        A filter that identifies which time series
+        should be compared with the threshold.The
+        filter is similar to the one that is
+        specified in the
+        MetricService.ListTimeSeries request (that
+        call is useful to verify the time series
+        that will be retrieved / processed) and must
+        specify the metric type and optionally may
+        contain restrictions on resource type,
+        resource labels, and metric labels. This
+        field may not exceed 2048 Unicode characters
+        in length.
         """
         return pulumi.get(self, "filter")
 
@@ -1672,6 +1682,10 @@ class AlertPolicyCreationRecord(dict):
     def __init__(__self__, *,
                  mutate_time: Optional[str] = None,
                  mutated_by: Optional[str] = None):
+        """
+        :param str mutate_time: When the change occurred.
+        :param str mutated_by: The email address of the user making the change.
+        """
         if mutate_time is not None:
             pulumi.set(__self__, "mutate_time", mutate_time)
         if mutated_by is not None:
@@ -1680,11 +1694,17 @@ class AlertPolicyCreationRecord(dict):
     @property
     @pulumi.getter(name="mutateTime")
     def mutate_time(self) -> Optional[str]:
+        """
+        When the change occurred.
+        """
         return pulumi.get(self, "mutate_time")
 
     @property
     @pulumi.getter(name="mutatedBy")
     def mutated_by(self) -> Optional[str]:
+        """
+        The email address of the user making the change.
+        """
         return pulumi.get(self, "mutated_by")
 
 
@@ -1859,12 +1879,22 @@ class GenericServiceTelemetry(dict):
 
     def __init__(__self__, *,
                  resource_name: Optional[str] = None):
+        """
+        :param str resource_name: The full name of the resource that defines this service.
+               Formatted as described in
+               https://cloud.google.com/apis/design/resource_names.
+        """
         if resource_name is not None:
             pulumi.set(__self__, "resource_name", resource_name)
 
     @property
     @pulumi.getter(name="resourceName")
     def resource_name(self) -> Optional[str]:
+        """
+        The full name of the resource that defines this service.
+        Formatted as described in
+        https://cloud.google.com/apis/design/resource_names.
+        """
         return pulumi.get(self, "resource_name")
 
 
@@ -2221,12 +2251,14 @@ class SloRequestBasedSli(dict):
                total count of all values aggregated in the Distribution.
                Defines a distribution TimeSeries filter and thresholds used for
                measuring good service and total service.
+               Exactly one of `distribution_cut` or `good_total_ratio` can be set.
                Structure is documented below.
         :param 'SloRequestBasedSliGoodTotalRatioArgs' good_total_ratio: A means to compute a ratio of `good_service` to `total_service`.
                Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
                Must specify exactly two of good, bad, and total service filters.
                The relationship good_service + bad_service = total_service
                will be assumed.
+               Exactly one of `distribution_cut` or `good_total_ratio` can be set.
                Structure is documented below.
         """
         if distribution_cut is not None:
@@ -2243,6 +2275,7 @@ class SloRequestBasedSli(dict):
         total count of all values aggregated in the Distribution.
         Defines a distribution TimeSeries filter and thresholds used for
         measuring good service and total service.
+        Exactly one of `distribution_cut` or `good_total_ratio` can be set.
         Structure is documented below.
         """
         return pulumi.get(self, "distribution_cut")
@@ -2256,6 +2289,7 @@ class SloRequestBasedSli(dict):
         Must specify exactly two of good, bad, and total service filters.
         The relationship good_service + bad_service = total_service
         will be assumed.
+        Exactly one of `distribution_cut` or `good_total_ratio` can be set.
         Structure is documented below.
         """
         return pulumi.get(self, "good_total_ratio")
@@ -2292,8 +2326,7 @@ class SloRequestBasedSliDistributionCut(dict):
                will be the count of values x in the Distribution such
                that range.min <= x <= range.max. inclusive of min and
                max. Open ranges can be defined by setting
-               just one of min or max. Summed value `X` should satisfy
-               `range.min <= X <= range.max` for a good window.
+               just one of min or max.
                Structure is documented below.
         """
         pulumi.set(__self__, "distribution_filter", distribution_filter)
@@ -2318,8 +2351,7 @@ class SloRequestBasedSliDistributionCut(dict):
         will be the count of values x in the Distribution such
         that range.min <= x <= range.max. inclusive of min and
         max. Open ranges can be defined by setting
-        just one of min or max. Summed value `X` should satisfy
-        `range.min <= X <= range.max` for a good window.
+        just one of min or max.
         Structure is documented below.
         """
         return pulumi.get(self, "range")
@@ -2630,9 +2662,8 @@ class SloWindowsBasedSliGoodTotalRatioThreshold(dict):
                Structure is documented below.
         :param 'SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs' performance: Request-based SLI to evaluate to judge window quality.
                Structure is documented below.
-        :param float threshold: A duration string, e.g. 10s.
-               Good service is defined to be the count of requests made to
-               this service that return in no more than threshold.
+        :param float threshold: If window performance >= threshold, the window is counted
+               as good.
         """
         if basic_sli_performance is not None:
             pulumi.set(__self__, "basic_sli_performance", basic_sli_performance)
@@ -2663,9 +2694,8 @@ class SloWindowsBasedSliGoodTotalRatioThreshold(dict):
     @pulumi.getter
     def threshold(self) -> Optional[float]:
         """
-        A duration string, e.g. 10s.
-        Good service is defined to be the count of requests made to
-        this service that return in no more than threshold.
+        If window performance >= threshold, the window is counted
+        as good.
         """
         return pulumi.get(self, "threshold")
 
@@ -2913,8 +2943,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut(dict):
                will be the count of values x in the Distribution such
                that range.min <= x <= range.max. inclusive of min and
                max. Open ranges can be defined by setting
-               just one of min or max. Summed value `X` should satisfy
-               `range.min <= X <= range.max` for a good window.
+               just one of min or max.
                Structure is documented below.
         """
         pulumi.set(__self__, "distribution_filter", distribution_filter)
@@ -2939,8 +2968,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut(dict):
         will be the count of values x in the Distribution such
         that range.min <= x <= range.max. inclusive of min and
         max. Open ranges can be defined by setting
-        just one of min or max. Summed value `X` should satisfy
-        `range.min <= X <= range.max` for a good window.
+        just one of min or max.
         Structure is documented below.
         """
         return pulumi.get(self, "range")
@@ -3110,16 +3138,16 @@ class SloWindowsBasedSliMetricMeanInRange(dict):
                will be the count of values x in the Distribution such
                that range.min <= x <= range.max. inclusive of min and
                max. Open ranges can be defined by setting
-               just one of min or max. Summed value `X` should satisfy
-               `range.min <= X <= range.max` for a good window.
+               just one of min or max. Mean value `X` of `time_series`
+               values should satisfy `range.min <= X <= range.max` for a
+               good service.
                Structure is documented below.
         :param str time_series: A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
                specifying the TimeSeries to use for evaluating window
-               quality. The provided TimeSeries must have
-               ValueType = INT64 or ValueType = DOUBLE and
-               MetricKind = GAUGE.
-               Summed value `X` should satisfy
-               `range.min <= X <= range.max` for a good window.
+               The provided TimeSeries must have ValueType = INT64 or
+               ValueType = DOUBLE and MetricKind = GAUGE. Mean value `X`
+               should satisfy `range.min <= X <= range.max`
+               under good service.
         """
         pulumi.set(__self__, "range", range)
         pulumi.set(__self__, "time_series", time_series)
@@ -3132,8 +3160,9 @@ class SloWindowsBasedSliMetricMeanInRange(dict):
         will be the count of values x in the Distribution such
         that range.min <= x <= range.max. inclusive of min and
         max. Open ranges can be defined by setting
-        just one of min or max. Summed value `X` should satisfy
-        `range.min <= X <= range.max` for a good window.
+        just one of min or max. Mean value `X` of `time_series`
+        values should satisfy `range.min <= X <= range.max` for a
+        good service.
         Structure is documented below.
         """
         return pulumi.get(self, "range")
@@ -3144,11 +3173,10 @@ class SloWindowsBasedSliMetricMeanInRange(dict):
         """
         A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
         specifying the TimeSeries to use for evaluating window
-        quality. The provided TimeSeries must have
-        ValueType = INT64 or ValueType = DOUBLE and
-        MetricKind = GAUGE.
-        Summed value `X` should satisfy
-        `range.min <= X <= range.max` for a good window.
+        The provided TimeSeries must have ValueType = INT64 or
+        ValueType = DOUBLE and MetricKind = GAUGE. Mean value `X`
+        should satisfy `range.min <= X <= range.max`
+        under good service.
         """
         return pulumi.get(self, "time_series")
 
@@ -3473,7 +3501,7 @@ class UptimeCheckConfigHttpCheck(dict):
         :param Mapping[str, str] headers: The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
         :param bool mask_headers: Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to True then the headers will be obscured with ******.
         :param str path: The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically. Optional (defaults to "/").
-        :param int port: The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
+        :param int port: The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
         :param str request_method: The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
                Default value is `GET`.
                Possible values are `METHOD_UNSPECIFIED`, `GET`, and `POST`.
@@ -3566,7 +3594,7 @@ class UptimeCheckConfigHttpCheck(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         """
-        The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
+        The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
         """
         return pulumi.get(self, "port")
 
@@ -3783,11 +3811,21 @@ class UptimeCheckConfigTcpCheck(dict):
 class GetAppEngineServiceTelemetryResult(dict):
     def __init__(__self__, *,
                  resource_name: str):
+        """
+        :param str resource_name: The full name of the resource that defines this service.
+               Formatted as described in
+               https://cloud.google.com/apis/design/resource_names.
+        """
         pulumi.set(__self__, "resource_name", resource_name)
 
     @property
     @pulumi.getter(name="resourceName")
     def resource_name(self) -> str:
+        """
+        The full name of the resource that defines this service.
+        Formatted as described in
+        https://cloud.google.com/apis/design/resource_names.
+        """
         return pulumi.get(self, "resource_name")
 
 
@@ -3795,11 +3833,21 @@ class GetAppEngineServiceTelemetryResult(dict):
 class GetClusterIstioServiceTelemetryResult(dict):
     def __init__(__self__, *,
                  resource_name: str):
+        """
+        :param str resource_name: The full name of the resource that defines this service.
+               Formatted as described in
+               https://cloud.google.com/apis/design/resource_names.
+        """
         pulumi.set(__self__, "resource_name", resource_name)
 
     @property
     @pulumi.getter(name="resourceName")
     def resource_name(self) -> str:
+        """
+        The full name of the resource that defines this service.
+        Formatted as described in
+        https://cloud.google.com/apis/design/resource_names.
+        """
         return pulumi.get(self, "resource_name")
 
 
@@ -3807,11 +3855,21 @@ class GetClusterIstioServiceTelemetryResult(dict):
 class GetIstioCanonicalServiceTelemetryResult(dict):
     def __init__(__self__, *,
                  resource_name: str):
+        """
+        :param str resource_name: The full name of the resource that defines this service.
+               Formatted as described in
+               https://cloud.google.com/apis/design/resource_names.
+        """
         pulumi.set(__self__, "resource_name", resource_name)
 
     @property
     @pulumi.getter(name="resourceName")
     def resource_name(self) -> str:
+        """
+        The full name of the resource that defines this service.
+        Formatted as described in
+        https://cloud.google.com/apis/design/resource_names.
+        """
         return pulumi.get(self, "resource_name")
 
 
@@ -3819,11 +3877,21 @@ class GetIstioCanonicalServiceTelemetryResult(dict):
 class GetMeshIstioServiceTelemetryResult(dict):
     def __init__(__self__, *,
                  resource_name: str):
+        """
+        :param str resource_name: The full name of the resource that defines this service.
+               Formatted as described in
+               https://cloud.google.com/apis/design/resource_names.
+        """
         pulumi.set(__self__, "resource_name", resource_name)
 
     @property
     @pulumi.getter(name="resourceName")
     def resource_name(self) -> str:
+        """
+        The full name of the resource that defines this service.
+        Formatted as described in
+        https://cloud.google.com/apis/design/resource_names.
+        """
         return pulumi.get(self, "resource_name")
 
 

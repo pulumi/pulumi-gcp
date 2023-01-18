@@ -115,6 +115,17 @@ class JobConditionArgs:
                  severity: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] execution_reason: A reason for the execution condition.
+        :param pulumi.Input[str] last_transition_time: Last time the condition transitioned from one status to another.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] message: Human readable message indicating details about the current status.
+        :param pulumi.Input[str] reason: A common (service-level) reason for this condition.
+        :param pulumi.Input[str] revision_reason: A reason for the revision condition.
+        :param pulumi.Input[str] severity: How to interpret failures of this condition, one of Error, Warning, Info
+        :param pulumi.Input[str] state: State of the condition.
+        :param pulumi.Input[str] type: type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        """
         if execution_reason is not None:
             pulumi.set(__self__, "execution_reason", execution_reason)
         if last_transition_time is not None:
@@ -135,6 +146,9 @@ class JobConditionArgs:
     @property
     @pulumi.getter(name="executionReason")
     def execution_reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reason for the execution condition.
+        """
         return pulumi.get(self, "execution_reason")
 
     @execution_reason.setter
@@ -144,6 +158,10 @@ class JobConditionArgs:
     @property
     @pulumi.getter(name="lastTransitionTime")
     def last_transition_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last time the condition transitioned from one status to another.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
         return pulumi.get(self, "last_transition_time")
 
     @last_transition_time.setter
@@ -153,6 +171,9 @@ class JobConditionArgs:
     @property
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human readable message indicating details about the current status.
+        """
         return pulumi.get(self, "message")
 
     @message.setter
@@ -162,6 +183,9 @@ class JobConditionArgs:
     @property
     @pulumi.getter
     def reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        A common (service-level) reason for this condition.
+        """
         return pulumi.get(self, "reason")
 
     @reason.setter
@@ -171,6 +195,9 @@ class JobConditionArgs:
     @property
     @pulumi.getter(name="revisionReason")
     def revision_reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reason for the revision condition.
+        """
         return pulumi.get(self, "revision_reason")
 
     @revision_reason.setter
@@ -180,6 +207,9 @@ class JobConditionArgs:
     @property
     @pulumi.getter
     def severity(self) -> Optional[pulumi.Input[str]]:
+        """
+        How to interpret failures of this condition, one of Error, Warning, Info
+        """
         return pulumi.get(self, "severity")
 
     @severity.setter
@@ -189,6 +219,9 @@ class JobConditionArgs:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        State of the condition.
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -198,6 +231,9 @@ class JobConditionArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -212,7 +248,11 @@ class JobLatestCreatedExecutionArgs:
                  create_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Volume's name.
+        :param pulumi.Input[str] completion_time: Completion timestamp of the execution.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] create_time: Creation timestamp of the execution.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] name: Name of the Job.
         """
         if completion_time is not None:
             pulumi.set(__self__, "completion_time", completion_time)
@@ -224,6 +264,10 @@ class JobLatestCreatedExecutionArgs:
     @property
     @pulumi.getter(name="completionTime")
     def completion_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Completion timestamp of the execution.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
         return pulumi.get(self, "completion_time")
 
     @completion_time.setter
@@ -233,6 +277,10 @@ class JobLatestCreatedExecutionArgs:
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation timestamp of the execution.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
@@ -243,7 +291,7 @@ class JobLatestCreatedExecutionArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Volume's name.
+        Name of the Job.
         """
         return pulumi.get(self, "name")
 
@@ -262,7 +310,7 @@ class JobTemplateArgs:
         """
         :param pulumi.Input['JobTemplateTemplateArgs'] template: Describes the task(s) that will be created when executing an execution
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: KRM-style labels for the resource.
         :param pulumi.Input[int] parallelism: Specifies the maximum desired number of tasks the execution should run at given time. Must be <= taskCount. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
         :param pulumi.Input[int] task_count: Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
         """
@@ -291,7 +339,7 @@ class JobTemplateArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
+        KRM-style labels for the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -491,7 +539,7 @@ class JobTemplateTemplateContainerArgs:
                Structure is documented below.
         :param pulumi.Input['JobTemplateTemplateContainerLivenessProbeArgs'] liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
                Structure is documented below.
-        :param pulumi.Input[str] name: Volume's name.
+        :param pulumi.Input[str] name: Name of the container specified as a DNS_LABEL.
         :param pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerPortArgs']]] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
                If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
                Structure is documented below.
@@ -591,7 +639,7 @@ class JobTemplateTemplateContainerArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Volume's name.
+        Name of the container specified as a DNS_LABEL.
         """
         return pulumi.get(self, "name")
 
@@ -672,8 +720,8 @@ class JobTemplateTemplateContainerEnvArgs:
                  value: Optional[pulumi.Input[str]] = None,
                  value_source: Optional[pulumi.Input['JobTemplateTemplateContainerEnvValueSourceArgs']] = None):
         """
-        :param pulumi.Input[str] name: Volume's name.
-        :param pulumi.Input[str] value: The header field value
+        :param pulumi.Input[str] name: Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+        :param pulumi.Input[str] value: Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
         :param pulumi.Input['JobTemplateTemplateContainerEnvValueSourceArgs'] value_source: Source for the environment variable's value.
                Structure is documented below.
         """
@@ -687,7 +735,7 @@ class JobTemplateTemplateContainerEnvArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Volume's name.
+        Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
         """
         return pulumi.get(self, "name")
 
@@ -699,7 +747,7 @@ class JobTemplateTemplateContainerEnvArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The header field value
+        Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
         """
         return pulumi.get(self, "value")
 
@@ -752,8 +800,8 @@ class JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs:
                  secret: pulumi.Input[str],
                  version: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] secret: The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
-        :param pulumi.Input[str] version: The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+        :param pulumi.Input[str] secret: The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
+        :param pulumi.Input[str] version: The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
         """
         pulumi.set(__self__, "secret", secret)
         pulumi.set(__self__, "version", version)
@@ -762,7 +810,7 @@ class JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs:
     @pulumi.getter
     def secret(self) -> pulumi.Input[str]:
         """
-        The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+        The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
         """
         return pulumi.get(self, "secret")
 
@@ -774,7 +822,7 @@ class JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs:
     @pulumi.getter
     def version(self) -> pulumi.Input[str]:
         """
-        The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+        The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
         """
         return pulumi.get(self, "version")
 
@@ -898,7 +946,7 @@ class JobTemplateTemplateContainerLivenessProbeHttpGetArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderArgs']]] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
                Structure is documented below.
-        :param pulumi.Input[str] path: The relative path of the secret in the container.
+        :param pulumi.Input[str] path: Path to access on the HTTP server. Defaults to '/'.
         """
         if http_headers is not None:
             pulumi.set(__self__, "http_headers", http_headers)
@@ -922,7 +970,7 @@ class JobTemplateTemplateContainerLivenessProbeHttpGetArgs:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        The relative path of the secret in the container.
+        Path to access on the HTTP server. Defaults to '/'.
         """
         return pulumi.get(self, "path")
 
@@ -937,7 +985,7 @@ class JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderArgs:
                  name: pulumi.Input[str],
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Volume's name.
+        :param pulumi.Input[str] name: The header field name
         :param pulumi.Input[str] value: The header field value
         """
         pulumi.set(__self__, "name", name)
@@ -948,7 +996,7 @@ class JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Volume's name.
+        The header field name
         """
         return pulumi.get(self, "name")
 
@@ -999,7 +1047,7 @@ class JobTemplateTemplateContainerPortArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] container_port: Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
-        :param pulumi.Input[str] name: Volume's name.
+        :param pulumi.Input[str] name: If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
         """
         if container_port is not None:
             pulumi.set(__self__, "container_port", container_port)
@@ -1022,7 +1070,7 @@ class JobTemplateTemplateContainerPortArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Volume's name.
+        If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
         """
         return pulumi.get(self, "name")
 
@@ -1169,7 +1217,7 @@ class JobTemplateTemplateContainerStartupProbeHttpGetArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs']]] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
                Structure is documented below.
-        :param pulumi.Input[str] path: The relative path of the secret in the container.
+        :param pulumi.Input[str] path: Path to access on the HTTP server. Defaults to '/'.
         """
         if http_headers is not None:
             pulumi.set(__self__, "http_headers", http_headers)
@@ -1193,7 +1241,7 @@ class JobTemplateTemplateContainerStartupProbeHttpGetArgs:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        The relative path of the secret in the container.
+        Path to access on the HTTP server. Defaults to '/'.
         """
         return pulumi.get(self, "path")
 
@@ -1208,7 +1256,7 @@ class JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs:
                  name: pulumi.Input[str],
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Volume's name.
+        :param pulumi.Input[str] name: The header field name
         :param pulumi.Input[str] value: The header field value
         """
         pulumi.set(__self__, "name", name)
@@ -1219,7 +1267,7 @@ class JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Volume's name.
+        The header field name
         """
         return pulumi.get(self, "name")
 
@@ -1270,7 +1318,7 @@ class JobTemplateTemplateContainerVolumeMountArgs:
                  name: pulumi.Input[str]):
         """
         :param pulumi.Input[str] mount_path: Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
-        :param pulumi.Input[str] name: Volume's name.
+        :param pulumi.Input[str] name: This must match the Name of a Volume.
         """
         pulumi.set(__self__, "mount_path", mount_path)
         pulumi.set(__self__, "name", name)
@@ -1291,7 +1339,7 @@ class JobTemplateTemplateContainerVolumeMountArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Volume's name.
+        This must match the Name of a Volume.
         """
         return pulumi.get(self, "name")
 
@@ -1310,7 +1358,8 @@ class JobTemplateTemplateVolumeArgs:
         :param pulumi.Input[str] name: Volume's name.
         :param pulumi.Input['JobTemplateTemplateVolumeCloudSqlInstanceArgs'] cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
                Structure is documented below.
-        :param pulumi.Input['JobTemplateTemplateVolumeSecretArgs'] secret: The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+        :param pulumi.Input['JobTemplateTemplateVolumeSecretArgs'] secret: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+               Structure is documented below.
         """
         pulumi.set(__self__, "name", name)
         if cloud_sql_instance is not None:
@@ -1347,7 +1396,8 @@ class JobTemplateTemplateVolumeArgs:
     @pulumi.getter
     def secret(self) -> Optional[pulumi.Input['JobTemplateTemplateVolumeSecretArgs']]:
         """
-        The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+        Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+        Structure is documented below.
         """
         return pulumi.get(self, "secret")
 
@@ -1539,6 +1589,17 @@ class JobTerminalConditionArgs:
                  severity: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] execution_reason: A reason for the execution condition.
+        :param pulumi.Input[str] last_transition_time: Last time the condition transitioned from one status to another.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] message: Human readable message indicating details about the current status.
+        :param pulumi.Input[str] reason: A common (service-level) reason for this condition.
+        :param pulumi.Input[str] revision_reason: A reason for the revision condition.
+        :param pulumi.Input[str] severity: How to interpret failures of this condition, one of Error, Warning, Info
+        :param pulumi.Input[str] state: State of the condition.
+        :param pulumi.Input[str] type: type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        """
         if execution_reason is not None:
             pulumi.set(__self__, "execution_reason", execution_reason)
         if last_transition_time is not None:
@@ -1559,6 +1620,9 @@ class JobTerminalConditionArgs:
     @property
     @pulumi.getter(name="executionReason")
     def execution_reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reason for the execution condition.
+        """
         return pulumi.get(self, "execution_reason")
 
     @execution_reason.setter
@@ -1568,6 +1632,10 @@ class JobTerminalConditionArgs:
     @property
     @pulumi.getter(name="lastTransitionTime")
     def last_transition_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last time the condition transitioned from one status to another.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
         return pulumi.get(self, "last_transition_time")
 
     @last_transition_time.setter
@@ -1577,6 +1645,9 @@ class JobTerminalConditionArgs:
     @property
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human readable message indicating details about the current status.
+        """
         return pulumi.get(self, "message")
 
     @message.setter
@@ -1586,6 +1657,9 @@ class JobTerminalConditionArgs:
     @property
     @pulumi.getter
     def reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        A common (service-level) reason for this condition.
+        """
         return pulumi.get(self, "reason")
 
     @reason.setter
@@ -1595,6 +1669,9 @@ class JobTerminalConditionArgs:
     @property
     @pulumi.getter(name="revisionReason")
     def revision_reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reason for the revision condition.
+        """
         return pulumi.get(self, "revision_reason")
 
     @revision_reason.setter
@@ -1604,6 +1681,9 @@ class JobTerminalConditionArgs:
     @property
     @pulumi.getter
     def severity(self) -> Optional[pulumi.Input[str]]:
+        """
+        How to interpret failures of this condition, one of Error, Warning, Info
+        """
         return pulumi.get(self, "severity")
 
     @severity.setter
@@ -1613,6 +1693,9 @@ class JobTerminalConditionArgs:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        State of the condition.
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -1622,6 +1705,9 @@ class JobTerminalConditionArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -1680,6 +1766,14 @@ class ServiceConditionArgs:
                  state: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] execution_reason: A reason for the execution condition.
+        :param pulumi.Input[str] last_transition_time: Last time the condition transitioned from one status to another.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] message: Human readable message indicating details about the current status.
+        :param pulumi.Input[str] reason: A common (service-level) reason for this condition.
+        :param pulumi.Input[str] revision_reason: A reason for the revision condition.
+        :param pulumi.Input[str] severity: How to interpret failures of this condition, one of Error, Warning, Info
+        :param pulumi.Input[str] state: State of the condition.
         :param pulumi.Input[str] type: The allocation type for this traffic target.
                Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
         """
@@ -1703,6 +1797,9 @@ class ServiceConditionArgs:
     @property
     @pulumi.getter(name="executionReason")
     def execution_reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reason for the execution condition.
+        """
         return pulumi.get(self, "execution_reason")
 
     @execution_reason.setter
@@ -1712,6 +1809,10 @@ class ServiceConditionArgs:
     @property
     @pulumi.getter(name="lastTransitionTime")
     def last_transition_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last time the condition transitioned from one status to another.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
         return pulumi.get(self, "last_transition_time")
 
     @last_transition_time.setter
@@ -1721,6 +1822,9 @@ class ServiceConditionArgs:
     @property
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human readable message indicating details about the current status.
+        """
         return pulumi.get(self, "message")
 
     @message.setter
@@ -1730,6 +1834,9 @@ class ServiceConditionArgs:
     @property
     @pulumi.getter
     def reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        A common (service-level) reason for this condition.
+        """
         return pulumi.get(self, "reason")
 
     @reason.setter
@@ -1739,6 +1846,9 @@ class ServiceConditionArgs:
     @property
     @pulumi.getter(name="revisionReason")
     def revision_reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reason for the revision condition.
+        """
         return pulumi.get(self, "revision_reason")
 
     @revision_reason.setter
@@ -1748,6 +1858,9 @@ class ServiceConditionArgs:
     @property
     @pulumi.getter
     def severity(self) -> Optional[pulumi.Input[str]]:
+        """
+        How to interpret failures of this condition, one of Error, Warning, Info
+        """
         return pulumi.get(self, "severity")
 
     @severity.setter
@@ -1757,6 +1870,9 @@ class ServiceConditionArgs:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        State of the condition.
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -1797,9 +1913,9 @@ class ServiceTemplateArgs:
         :param pulumi.Input[str] encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
         :param pulumi.Input[str] execution_environment: The sandbox environment to host this Revision.
                Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: KRM-style labels for the resource.
         :param pulumi.Input[int] max_instance_request_concurrency: Sets the maximum number of requests that each serving instance can receive.
-        :param pulumi.Input[str] revision: Revision to which to send this portion of traffic, if traffic allocation is by revision.
+        :param pulumi.Input[str] revision: The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
         :param pulumi.Input['ServiceTemplateScalingArgs'] scaling: Scaling settings for this Revision.
                Structure is documented below.
         :param pulumi.Input[str] service_account: Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
@@ -1875,7 +1991,7 @@ class ServiceTemplateArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
+        KRM-style labels for the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1899,7 +2015,7 @@ class ServiceTemplateArgs:
     @pulumi.getter
     def revision(self) -> Optional[pulumi.Input[str]]:
         """
-        Revision to which to send this portion of traffic, if traffic allocation is by revision.
+        The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
         """
         return pulumi.get(self, "revision")
 
@@ -1994,7 +2110,7 @@ class ServiceTemplateContainerArgs:
                Structure is documented below.
         :param pulumi.Input['ServiceTemplateContainerLivenessProbeArgs'] liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
                Structure is documented below.
-        :param pulumi.Input[str] name: Volume's name.
+        :param pulumi.Input[str] name: Name of the container specified as a DNS_LABEL.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerPortArgs']]] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
                If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
                Structure is documented below.
@@ -2094,7 +2210,7 @@ class ServiceTemplateContainerArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Volume's name.
+        Name of the container specified as a DNS_LABEL.
         """
         return pulumi.get(self, "name")
 
@@ -2175,8 +2291,8 @@ class ServiceTemplateContainerEnvArgs:
                  value: Optional[pulumi.Input[str]] = None,
                  value_source: Optional[pulumi.Input['ServiceTemplateContainerEnvValueSourceArgs']] = None):
         """
-        :param pulumi.Input[str] name: Volume's name.
-        :param pulumi.Input[str] value: The header field value
+        :param pulumi.Input[str] name: Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+        :param pulumi.Input[str] value: Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
         :param pulumi.Input['ServiceTemplateContainerEnvValueSourceArgs'] value_source: Source for the environment variable's value.
                Structure is documented below.
         """
@@ -2190,7 +2306,7 @@ class ServiceTemplateContainerEnvArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Volume's name.
+        Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
         """
         return pulumi.get(self, "name")
 
@@ -2202,7 +2318,7 @@ class ServiceTemplateContainerEnvArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The header field value
+        Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
         """
         return pulumi.get(self, "value")
 
@@ -2255,8 +2371,8 @@ class ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs:
                  secret: pulumi.Input[str],
                  version: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] secret: The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
-        :param pulumi.Input[str] version: The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+        :param pulumi.Input[str] secret: The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
+        :param pulumi.Input[str] version: The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
         """
         pulumi.set(__self__, "secret", secret)
         if version is not None:
@@ -2266,7 +2382,7 @@ class ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs:
     @pulumi.getter
     def secret(self) -> pulumi.Input[str]:
         """
-        The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+        The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
         """
         return pulumi.get(self, "secret")
 
@@ -2278,7 +2394,7 @@ class ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+        The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
         """
         return pulumi.get(self, "version")
 
@@ -2402,7 +2518,7 @@ class ServiceTemplateContainerLivenessProbeHttpGetArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs']]] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
                Structure is documented below.
-        :param pulumi.Input[str] path: The relative path of the secret in the container.
+        :param pulumi.Input[str] path: Path to access on the HTTP server. Defaults to '/'.
         """
         if http_headers is not None:
             pulumi.set(__self__, "http_headers", http_headers)
@@ -2426,7 +2542,7 @@ class ServiceTemplateContainerLivenessProbeHttpGetArgs:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        The relative path of the secret in the container.
+        Path to access on the HTTP server. Defaults to '/'.
         """
         return pulumi.get(self, "path")
 
@@ -2441,7 +2557,7 @@ class ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs:
                  name: pulumi.Input[str],
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Volume's name.
+        :param pulumi.Input[str] name: The header field name
         :param pulumi.Input[str] value: The header field value
         """
         pulumi.set(__self__, "name", name)
@@ -2452,7 +2568,7 @@ class ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Volume's name.
+        The header field name
         """
         return pulumi.get(self, "name")
 
@@ -2503,7 +2619,7 @@ class ServiceTemplateContainerPortArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] container_port: Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
-        :param pulumi.Input[str] name: Volume's name.
+        :param pulumi.Input[str] name: If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
         """
         if container_port is not None:
             pulumi.set(__self__, "container_port", container_port)
@@ -2526,7 +2642,7 @@ class ServiceTemplateContainerPortArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Volume's name.
+        If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
         """
         return pulumi.get(self, "name")
 
@@ -2689,7 +2805,7 @@ class ServiceTemplateContainerStartupProbeHttpGetArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs']]] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
                Structure is documented below.
-        :param pulumi.Input[str] path: The relative path of the secret in the container.
+        :param pulumi.Input[str] path: Path to access on the HTTP server. Defaults to '/'.
         """
         if http_headers is not None:
             pulumi.set(__self__, "http_headers", http_headers)
@@ -2713,7 +2829,7 @@ class ServiceTemplateContainerStartupProbeHttpGetArgs:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        The relative path of the secret in the container.
+        Path to access on the HTTP server. Defaults to '/'.
         """
         return pulumi.get(self, "path")
 
@@ -2728,7 +2844,7 @@ class ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs:
                  name: pulumi.Input[str],
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Volume's name.
+        :param pulumi.Input[str] name: The header field name
         :param pulumi.Input[str] value: The header field value
         """
         pulumi.set(__self__, "name", name)
@@ -2739,7 +2855,7 @@ class ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Volume's name.
+        The header field name
         """
         return pulumi.get(self, "name")
 
@@ -2790,7 +2906,7 @@ class ServiceTemplateContainerVolumeMountArgs:
                  name: pulumi.Input[str]):
         """
         :param pulumi.Input[str] mount_path: Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
-        :param pulumi.Input[str] name: Volume's name.
+        :param pulumi.Input[str] name: This must match the Name of a Volume.
         """
         pulumi.set(__self__, "mount_path", mount_path)
         pulumi.set(__self__, "name", name)
@@ -2811,7 +2927,7 @@ class ServiceTemplateContainerVolumeMountArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Volume's name.
+        This must match the Name of a Volume.
         """
         return pulumi.get(self, "name")
 
@@ -2869,7 +2985,8 @@ class ServiceTemplateVolumeArgs:
         :param pulumi.Input[str] name: Volume's name.
         :param pulumi.Input['ServiceTemplateVolumeCloudSqlInstanceArgs'] cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
                Structure is documented below.
-        :param pulumi.Input['ServiceTemplateVolumeSecretArgs'] secret: The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+        :param pulumi.Input['ServiceTemplateVolumeSecretArgs'] secret: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+               Structure is documented below.
         """
         pulumi.set(__self__, "name", name)
         if cloud_sql_instance is not None:
@@ -2906,7 +3023,8 @@ class ServiceTemplateVolumeArgs:
     @pulumi.getter
     def secret(self) -> Optional[pulumi.Input['ServiceTemplateVolumeSecretArgs']]:
         """
-        The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+        Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+        Structure is documented below.
         """
         return pulumi.get(self, "secret")
 
@@ -3100,6 +3218,14 @@ class ServiceTerminalConditionArgs:
                  state: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] execution_reason: A reason for the execution condition.
+        :param pulumi.Input[str] last_transition_time: Last time the condition transitioned from one status to another.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] message: Human readable message indicating details about the current status.
+        :param pulumi.Input[str] reason: A common (service-level) reason for this condition.
+        :param pulumi.Input[str] revision_reason: A reason for the revision condition.
+        :param pulumi.Input[str] severity: How to interpret failures of this condition, one of Error, Warning, Info
+        :param pulumi.Input[str] state: State of the condition.
         :param pulumi.Input[str] type: The allocation type for this traffic target.
                Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
         """
@@ -3123,6 +3249,9 @@ class ServiceTerminalConditionArgs:
     @property
     @pulumi.getter(name="executionReason")
     def execution_reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reason for the execution condition.
+        """
         return pulumi.get(self, "execution_reason")
 
     @execution_reason.setter
@@ -3132,6 +3261,10 @@ class ServiceTerminalConditionArgs:
     @property
     @pulumi.getter(name="lastTransitionTime")
     def last_transition_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last time the condition transitioned from one status to another.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
         return pulumi.get(self, "last_transition_time")
 
     @last_transition_time.setter
@@ -3141,6 +3274,9 @@ class ServiceTerminalConditionArgs:
     @property
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human readable message indicating details about the current status.
+        """
         return pulumi.get(self, "message")
 
     @message.setter
@@ -3150,6 +3286,9 @@ class ServiceTerminalConditionArgs:
     @property
     @pulumi.getter
     def reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        A common (service-level) reason for this condition.
+        """
         return pulumi.get(self, "reason")
 
     @reason.setter
@@ -3159,6 +3298,9 @@ class ServiceTerminalConditionArgs:
     @property
     @pulumi.getter(name="revisionReason")
     def revision_reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reason for the revision condition.
+        """
         return pulumi.get(self, "revision_reason")
 
     @revision_reason.setter
@@ -3168,6 +3310,9 @@ class ServiceTerminalConditionArgs:
     @property
     @pulumi.getter
     def severity(self) -> Optional[pulumi.Input[str]]:
+        """
+        How to interpret failures of this condition, one of Error, Warning, Info
+        """
         return pulumi.get(self, "severity")
 
     @severity.setter
@@ -3177,6 +3322,9 @@ class ServiceTerminalConditionArgs:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        State of the condition.
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -3280,10 +3428,13 @@ class ServiceTrafficStatusArgs:
                  uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] percent: Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
-        :param pulumi.Input[str] revision: Revision to which to send this portion of traffic, if traffic allocation is by revision.
+        :param pulumi.Input[str] revision: The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+               (Optional)
+               Revision to which to send this portion of traffic, if traffic allocation is by revision.
         :param pulumi.Input[str] tag: Indicates a string to be part of the URI to exclusively reference this target.
         :param pulumi.Input[str] type: The allocation type for this traffic target.
                Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+        :param pulumi.Input[str] uri: Displays the target URI.
         """
         if percent is not None:
             pulumi.set(__self__, "percent", percent)
@@ -3312,6 +3463,8 @@ class ServiceTrafficStatusArgs:
     @pulumi.getter
     def revision(self) -> Optional[pulumi.Input[str]]:
         """
+        The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+        (Optional)
         Revision to which to send this portion of traffic, if traffic allocation is by revision.
         """
         return pulumi.get(self, "revision")
@@ -3348,6 +3501,9 @@ class ServiceTrafficStatusArgs:
     @property
     @pulumi.getter
     def uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Displays the target URI.
+        """
         return pulumi.get(self, "uri")
 
     @uri.setter

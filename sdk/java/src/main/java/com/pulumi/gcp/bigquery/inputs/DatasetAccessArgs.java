@@ -19,7 +19,7 @@ public final class DatasetAccessArgs extends com.pulumi.resources.ResourceArgs {
     public static final DatasetAccessArgs Empty = new DatasetAccessArgs();
 
     /**
-     * The dataset this entry applies to
+     * Grants all resources of particular types in a particular dataset read access to the current dataset.
      * Structure is documented below.
      * 
      */
@@ -27,7 +27,7 @@ public final class DatasetAccessArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<DatasetAccessDatasetArgs> dataset;
 
     /**
-     * @return The dataset this entry applies to
+     * @return Grants all resources of particular types in a particular dataset read access to the current dataset.
      * Structure is documented below.
      * 
      */
@@ -204,7 +204,7 @@ public final class DatasetAccessArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataset The dataset this entry applies to
+         * @param dataset Grants all resources of particular types in a particular dataset read access to the current dataset.
          * Structure is documented below.
          * 
          * @return builder
@@ -216,7 +216,7 @@ public final class DatasetAccessArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataset The dataset this entry applies to
+         * @param dataset Grants all resources of particular types in a particular dataset read access to the current dataset.
          * Structure is documented below.
          * 
          * @return builder

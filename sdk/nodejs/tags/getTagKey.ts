@@ -13,18 +13,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const environmentTagKey = pulumi.output(gcp.tags.getTagKey({
+ * const environmentTagKey = gcp.tags.getTagKey({
  *     parent: "organizations/12345",
  *     shortName: "environment",
- * }));
+ * });
  * ```
  */
 export function getTagKey(args: GetTagKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetTagKeyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:tags/getTagKey:getTagKey", {
         "parent": args.parent,
         "shortName": args.shortName,
@@ -49,21 +46,49 @@ export interface GetTagKeyArgs {
  * A collection of values returned by getTagKey.
  */
 export interface GetTagKeyResult {
+    /**
+     * Creation time.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     */
     readonly createTime: string;
     readonly description: string;
     /**
      * an identifier for the resource with format `tagKeys/{{name}}`
      */
     readonly id: string;
+    /**
+     * The generated numeric id for the TagKey.
+     */
     readonly name: string;
+    /**
+     * Namespaced name of the TagKey.
+     */
     readonly namespacedName: string;
     readonly parent: string;
     readonly shortName: string;
+    /**
+     * Update time.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     */
     readonly updateTime: string;
 }
-
+/**
+ * Get a tag key within a GCP org by `parent` and `shortName`.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const environmentTagKey = gcp.tags.getTagKey({
+ *     parent: "organizations/12345",
+ *     shortName: "environment",
+ * });
+ * ```
+ */
 export function getTagKeyOutput(args: GetTagKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagKeyResult> {
-    return pulumi.output(args).apply(a => getTagKey(a, opts))
+    return pulumi.output(args).apply((a: any) => getTagKey(a, opts))
 }
 
 /**

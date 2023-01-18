@@ -35,14 +35,14 @@ public final class WorkflowTemplateJobHiveJobArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+     * Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
      * 
      */
     @Import(name="jarFileUris")
     private @Nullable Output<List<String>> jarFileUris;
 
     /**
-     * @return Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+     * @return Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
      * 
      */
     public Optional<Output<List<String>>> jarFileUris() {
@@ -50,14 +50,14 @@ public final class WorkflowTemplateJobHiveJobArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+     * Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
      * 
      */
     @Import(name="properties")
     private @Nullable Output<Map<String,String>> properties;
 
     /**
-     * @return Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+     * @return Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
      * 
      */
     public Optional<Output<Map<String,String>>> properties() {
@@ -65,14 +65,14 @@ public final class WorkflowTemplateJobHiveJobArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The HCFS URI of the script that contains SQL queries.
+     * The HCFS URI of the script that contains Hive queries.
      * 
      */
     @Import(name="queryFileUri")
     private @Nullable Output<String> queryFileUri;
 
     /**
-     * @return The HCFS URI of the script that contains SQL queries.
+     * @return The HCFS URI of the script that contains Hive queries.
      * 
      */
     public Optional<Output<String>> queryFileUri() {
@@ -95,14 +95,14 @@ public final class WorkflowTemplateJobHiveJobArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name=&#34;value&#34;;`).
+     * Optional. Mapping of query variable names to values (equivalent to the Hive command: `SET name=&#34;value&#34;;`).
      * 
      */
     @Import(name="scriptVariables")
     private @Nullable Output<Map<String,String>> scriptVariables;
 
     /**
-     * @return Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name=&#34;value&#34;;`).
+     * @return Optional. Mapping of query variable names to values (equivalent to the Hive command: `SET name=&#34;value&#34;;`).
      * 
      */
     public Optional<Output<Map<String,String>>> scriptVariables() {
@@ -160,7 +160,7 @@ public final class WorkflowTemplateJobHiveJobArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param jarFileUris Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+         * @param jarFileUris Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
          * 
          * @return builder
          * 
@@ -171,7 +171,7 @@ public final class WorkflowTemplateJobHiveJobArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param jarFileUris Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+         * @param jarFileUris Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class WorkflowTemplateJobHiveJobArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param jarFileUris Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+         * @param jarFileUris Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class WorkflowTemplateJobHiveJobArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param properties Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+         * @param properties Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class WorkflowTemplateJobHiveJobArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param properties Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+         * @param properties Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class WorkflowTemplateJobHiveJobArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param queryFileUri The HCFS URI of the script that contains SQL queries.
+         * @param queryFileUri The HCFS URI of the script that contains Hive queries.
          * 
          * @return builder
          * 
@@ -223,7 +223,7 @@ public final class WorkflowTemplateJobHiveJobArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param queryFileUri The HCFS URI of the script that contains SQL queries.
+         * @param queryFileUri The HCFS URI of the script that contains Hive queries.
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class WorkflowTemplateJobHiveJobArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param scriptVariables Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name=&#34;value&#34;;`).
+         * @param scriptVariables Optional. Mapping of query variable names to values (equivalent to the Hive command: `SET name=&#34;value&#34;;`).
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class WorkflowTemplateJobHiveJobArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param scriptVariables Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name=&#34;value&#34;;`).
+         * @param scriptVariables Optional. Mapping of query variable names to values (equivalent to the Hive command: `SET name=&#34;value&#34;;`).
          * 
          * @return builder
          * 

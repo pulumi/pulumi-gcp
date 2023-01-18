@@ -49,9 +49,8 @@ public final class TableExternalDataConfigurationCsvOptions {
      */
     private String quote;
     /**
-     * @return The number of rows at the top of the sheet
-     * that BigQuery will skip when reading the data. At least one of `range` or
-     * `skip_leading_rows` must be set.
+     * @return The number of rows at the top of a CSV
+     * file that BigQuery will skip when reading the data.
      * 
      */
     private @Nullable Integer skipLeadingRows;
@@ -103,9 +102,8 @@ public final class TableExternalDataConfigurationCsvOptions {
         return this.quote;
     }
     /**
-     * @return The number of rows at the top of the sheet
-     * that BigQuery will skip when reading the data. At least one of `range` or
-     * `skip_leading_rows` must be set.
+     * @return The number of rows at the top of a CSV
+     * file that BigQuery will skip when reading the data.
      * 
      */
     public Optional<Integer> skipLeadingRows() {

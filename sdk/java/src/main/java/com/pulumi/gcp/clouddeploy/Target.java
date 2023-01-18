@@ -202,16 +202,14 @@ public class Target extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and
-     * delete requests to ensure the client has an up-to-date value before proceeding.
+     * Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
     @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
-     * @return Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and
-     * delete requests to ensure the client has an up-to-date value before proceeding.
+     * @return Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
     public Output<String> etag() {
@@ -260,14 +258,14 @@ public class Target extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
-     * Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+     * The location for the resource
      * 
      */
     @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
-     * @return Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+     * @return The location for the resource
      * 
      */
     public Output<String> location() {

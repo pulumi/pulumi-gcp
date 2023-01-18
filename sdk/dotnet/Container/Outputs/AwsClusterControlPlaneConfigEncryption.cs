@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class AwsClusterControlPlaneConfigEncryption
     {
         /// <summary>
-        /// Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+        /// The ARN of the AWS KMS key used to encrypt cluster configuration.
         /// </summary>
         public readonly string KmsKeyArn;
 

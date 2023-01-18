@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PatchDeploymentPatchConfigApt {
     /**
-     * @return List of KBs to exclude from update.
+     * @return List of packages to exclude from update. These packages will be excluded.
      * 
      */
     private @Nullable List<String> excludes;
@@ -33,7 +33,7 @@ public final class PatchDeploymentPatchConfigApt {
 
     private PatchDeploymentPatchConfigApt() {}
     /**
-     * @return List of KBs to exclude from update.
+     * @return List of packages to exclude from update. These packages will be excluded.
      * 
      */
     public List<String> excludes() {

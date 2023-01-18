@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EdgeCacheServiceRoutingHostRule {
     /**
-     * @return A human-readable description of the resource.
+     * @return A human-readable description of the hostRule.
      * 
      */
     private @Nullable String description;
@@ -40,7 +40,7 @@ public final class EdgeCacheServiceRoutingHostRule {
 
     private EdgeCacheServiceRoutingHostRule() {}
     /**
-     * @return A human-readable description of the resource.
+     * @return A human-readable description of the hostRule.
      * 
      */
     public Optional<String> description() {

@@ -104,7 +104,8 @@ namespace Pulumi.Gcp.Compute
     public partial class Image : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
+        /// Size of the image tar.gz archive stored in Google Cloud Storage (in
+        /// bytes).
         /// </summary>
         [Output("archiveSizeBytes")]
         public Output<int> ArchiveSizeBytes { get; private set; } = null!;
@@ -157,7 +158,8 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.ImageImageEncryptionKey?> ImageEncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        /// The fingerprint used for optimistic locking of this resource. Used
+        /// internally during updates.
         /// </summary>
         [Output("labelFingerprint")]
         public Output<string> LabelFingerprint { get; private set; } = null!;
@@ -420,7 +422,8 @@ namespace Pulumi.Gcp.Compute
     public sealed class ImageState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
+        /// Size of the image tar.gz archive stored in Google Cloud Storage (in
+        /// bytes).
         /// </summary>
         [Input("archiveSizeBytes")]
         public Input<int>? ArchiveSizeBytes { get; set; }
@@ -479,7 +482,8 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.ImageImageEncryptionKeyGetArgs>? ImageEncryptionKey { get; set; }
 
         /// <summary>
-        /// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        /// The fingerprint used for optimistic locking of this resource. Used
+        /// internally during updates.
         /// </summary>
         [Input("labelFingerprint")]
         public Input<string>? LabelFingerprint { get; set; }

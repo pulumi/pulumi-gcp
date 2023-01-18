@@ -314,7 +314,6 @@ func (o ConnectionAwsPtrOutput) AccessRole() ConnectionAwsAccessRolePtrOutput {
 type ConnectionAwsAccessRole struct {
 	// The user’s AWS IAM Role that trusts the Google-owned AWS IAM user Connection.
 	IamRoleId string `pulumi:"iamRoleId"`
-	// -
 	// A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
 	Identity *string `pulumi:"identity"`
 }
@@ -333,7 +332,6 @@ type ConnectionAwsAccessRoleInput interface {
 type ConnectionAwsAccessRoleArgs struct {
 	// The user’s AWS IAM Role that trusts the Google-owned AWS IAM user Connection.
 	IamRoleId pulumi.StringInput `pulumi:"iamRoleId"`
-	// -
 	// A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
 	Identity pulumi.StringPtrInput `pulumi:"identity"`
 }
@@ -420,7 +418,6 @@ func (o ConnectionAwsAccessRoleOutput) IamRoleId() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionAwsAccessRole) string { return v.IamRoleId }).(pulumi.StringOutput)
 }
 
-// -
 // A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
 func (o ConnectionAwsAccessRoleOutput) Identity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAwsAccessRole) *string { return v.Identity }).(pulumi.StringPtrOutput)
@@ -460,7 +457,6 @@ func (o ConnectionAwsAccessRolePtrOutput) IamRoleId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's AWS IAM Role.
 func (o ConnectionAwsAccessRolePtrOutput) Identity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionAwsAccessRole) *string {
@@ -472,18 +468,14 @@ func (o ConnectionAwsAccessRolePtrOutput) Identity() pulumi.StringPtrOutput {
 }
 
 type ConnectionAzure struct {
-	// -
 	// The name of the Azure Active Directory Application.
 	Application *string `pulumi:"application"`
-	// -
 	// The client id of the Azure Active Directory Application.
 	ClientId *string `pulumi:"clientId"`
 	// The id of customer's directory that host the data.
 	CustomerTenantId string `pulumi:"customerTenantId"`
-	// -
 	// The object id of the Azure Active Directory Application.
 	ObjectId *string `pulumi:"objectId"`
-	// -
 	// The URL user will be redirected to after granting consent during connection setup.
 	RedirectUri *string `pulumi:"redirectUri"`
 }
@@ -500,18 +492,14 @@ type ConnectionAzureInput interface {
 }
 
 type ConnectionAzureArgs struct {
-	// -
 	// The name of the Azure Active Directory Application.
 	Application pulumi.StringPtrInput `pulumi:"application"`
-	// -
 	// The client id of the Azure Active Directory Application.
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
 	// The id of customer's directory that host the data.
 	CustomerTenantId pulumi.StringInput `pulumi:"customerTenantId"`
-	// -
 	// The object id of the Azure Active Directory Application.
 	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
-	// -
 	// The URL user will be redirected to after granting consent during connection setup.
 	RedirectUri pulumi.StringPtrInput `pulumi:"redirectUri"`
 }
@@ -593,13 +581,11 @@ func (o ConnectionAzureOutput) ToConnectionAzurePtrOutputWithContext(ctx context
 	}).(ConnectionAzurePtrOutput)
 }
 
-// -
 // The name of the Azure Active Directory Application.
 func (o ConnectionAzureOutput) Application() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAzure) *string { return v.Application }).(pulumi.StringPtrOutput)
 }
 
-// -
 // The client id of the Azure Active Directory Application.
 func (o ConnectionAzureOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAzure) *string { return v.ClientId }).(pulumi.StringPtrOutput)
@@ -610,13 +596,11 @@ func (o ConnectionAzureOutput) CustomerTenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionAzure) string { return v.CustomerTenantId }).(pulumi.StringOutput)
 }
 
-// -
 // The object id of the Azure Active Directory Application.
 func (o ConnectionAzureOutput) ObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAzure) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
 }
 
-// -
 // The URL user will be redirected to after granting consent during connection setup.
 func (o ConnectionAzureOutput) RedirectUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAzure) *string { return v.RedirectUri }).(pulumi.StringPtrOutput)
@@ -646,7 +630,6 @@ func (o ConnectionAzurePtrOutput) Elem() ConnectionAzureOutput {
 	}).(ConnectionAzureOutput)
 }
 
-// -
 // The name of the Azure Active Directory Application.
 func (o ConnectionAzurePtrOutput) Application() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionAzure) *string {
@@ -657,7 +640,6 @@ func (o ConnectionAzurePtrOutput) Application() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // The client id of the Azure Active Directory Application.
 func (o ConnectionAzurePtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionAzure) *string {
@@ -678,7 +660,6 @@ func (o ConnectionAzurePtrOutput) CustomerTenantId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // The object id of the Azure Active Directory Application.
 func (o ConnectionAzurePtrOutput) ObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionAzure) *string {
@@ -689,7 +670,6 @@ func (o ConnectionAzurePtrOutput) ObjectId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // The URL user will be redirected to after granting consent during connection setup.
 func (o ConnectionAzurePtrOutput) RedirectUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionAzure) *string {
@@ -701,7 +681,6 @@ func (o ConnectionAzurePtrOutput) RedirectUri() pulumi.StringPtrOutput {
 }
 
 type ConnectionCloudResource struct {
-	// -
 	// The account ID of the service created for the purpose of this connection.
 	ServiceAccountId *string `pulumi:"serviceAccountId"`
 }
@@ -718,7 +697,6 @@ type ConnectionCloudResourceInput interface {
 }
 
 type ConnectionCloudResourceArgs struct {
-	// -
 	// The account ID of the service created for the purpose of this connection.
 	ServiceAccountId pulumi.StringPtrInput `pulumi:"serviceAccountId"`
 }
@@ -800,7 +778,6 @@ func (o ConnectionCloudResourceOutput) ToConnectionCloudResourcePtrOutputWithCon
 	}).(ConnectionCloudResourcePtrOutput)
 }
 
-// -
 // The account ID of the service created for the purpose of this connection.
 func (o ConnectionCloudResourceOutput) ServiceAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionCloudResource) *string { return v.ServiceAccountId }).(pulumi.StringPtrOutput)
@@ -830,7 +807,6 @@ func (o ConnectionCloudResourcePtrOutput) Elem() ConnectionCloudResourceOutput {
 	}).(ConnectionCloudResourceOutput)
 }
 
-// -
 // The account ID of the service created for the purpose of this connection.
 func (o ConnectionCloudResourcePtrOutput) ServiceAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionCloudResource) *string {
@@ -1001,7 +977,7 @@ type ConnectionCloudSql struct {
 	// Cloud SQL properties.
 	// Structure is documented below.
 	Credential ConnectionCloudSqlCredential `pulumi:"credential"`
-	// Cloud Spanner database in the form `project/instance/database'
+	// Database name.
 	Database string `pulumi:"database"`
 	// Cloud SQL instance ID in the form project:location:instance.
 	InstanceId string `pulumi:"instanceId"`
@@ -1025,7 +1001,7 @@ type ConnectionCloudSqlArgs struct {
 	// Cloud SQL properties.
 	// Structure is documented below.
 	Credential ConnectionCloudSqlCredentialInput `pulumi:"credential"`
-	// Cloud Spanner database in the form `project/instance/database'
+	// Database name.
 	Database pulumi.StringInput `pulumi:"database"`
 	// Cloud SQL instance ID in the form project:location:instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
@@ -1117,7 +1093,7 @@ func (o ConnectionCloudSqlOutput) Credential() ConnectionCloudSqlCredentialOutpu
 	return o.ApplyT(func(v ConnectionCloudSql) ConnectionCloudSqlCredential { return v.Credential }).(ConnectionCloudSqlCredentialOutput)
 }
 
-// Cloud Spanner database in the form `project/instance/database'
+// Database name.
 func (o ConnectionCloudSqlOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionCloudSql) string { return v.Database }).(pulumi.StringOutput)
 }
@@ -1168,7 +1144,7 @@ func (o ConnectionCloudSqlPtrOutput) Credential() ConnectionCloudSqlCredentialPt
 	}).(ConnectionCloudSqlCredentialPtrOutput)
 }
 
-// Cloud Spanner database in the form `project/instance/database'
+// Database name.
 func (o ConnectionCloudSqlPtrOutput) Database() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionCloudSql) *string {
 		if v == nil {
@@ -2183,7 +2159,7 @@ func (o DataTransferConfigSensitiveParamsPtrOutput) SecretAccessKey() pulumi.Str
 }
 
 type DatasetAccessType struct {
-	// The dataset this entry applies to
+	// Grants all resources of particular types in a particular dataset read access to the current dataset.
 	// Structure is documented below.
 	Dataset *DatasetAccessDataset `pulumi:"dataset"`
 	// A domain to grant access to. Any users signed in with the
@@ -2230,7 +2206,7 @@ type DatasetAccessTypeInput interface {
 }
 
 type DatasetAccessTypeArgs struct {
-	// The dataset this entry applies to
+	// Grants all resources of particular types in a particular dataset read access to the current dataset.
 	// Structure is documented below.
 	Dataset DatasetAccessDatasetPtrInput `pulumi:"dataset"`
 	// A domain to grant access to. Any users signed in with the
@@ -2316,7 +2292,7 @@ func (o DatasetAccessTypeOutput) ToDatasetAccessTypeOutputWithContext(ctx contex
 	return o
 }
 
-// The dataset this entry applies to
+// Grants all resources of particular types in a particular dataset read access to the current dataset.
 // Structure is documented below.
 func (o DatasetAccessTypeOutput) Dataset() DatasetAccessDatasetPtrOutput {
 	return o.ApplyT(func(v DatasetAccessType) *DatasetAccessDataset { return v.Dataset }).(DatasetAccessDatasetPtrOutput)
@@ -4499,7 +4475,6 @@ type JobCopyDestinationEncryptionConfiguration struct {
 	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
 	// The BigQuery Service Account associated with your project requires access to this encryption key.
 	KmsKeyName string `pulumi:"kmsKeyName"`
-	// -
 	// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
 	KmsKeyVersion *string `pulumi:"kmsKeyVersion"`
 }
@@ -4519,7 +4494,6 @@ type JobCopyDestinationEncryptionConfigurationArgs struct {
 	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
 	// The BigQuery Service Account associated with your project requires access to this encryption key.
 	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
-	// -
 	// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
 	KmsKeyVersion pulumi.StringPtrInput `pulumi:"kmsKeyVersion"`
 }
@@ -4607,7 +4581,6 @@ func (o JobCopyDestinationEncryptionConfigurationOutput) KmsKeyName() pulumi.Str
 	return o.ApplyT(func(v JobCopyDestinationEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
-// -
 // Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
 func (o JobCopyDestinationEncryptionConfigurationOutput) KmsKeyVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCopyDestinationEncryptionConfiguration) *string { return v.KmsKeyVersion }).(pulumi.StringPtrOutput)
@@ -4648,7 +4621,6 @@ func (o JobCopyDestinationEncryptionConfigurationPtrOutput) KmsKeyName() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
 func (o JobCopyDestinationEncryptionConfigurationPtrOutput) KmsKeyVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobCopyDestinationEncryptionConfiguration) *string {
@@ -4660,9 +4632,9 @@ func (o JobCopyDestinationEncryptionConfigurationPtrOutput) KmsKeyVersion() pulu
 }
 
 type JobCopyDestinationTable struct {
-	// The ID of the dataset containing this model.
+	// The ID of the dataset containing this table.
 	DatasetId *string `pulumi:"datasetId"`
-	// The ID of the project containing this model.
+	// The ID of the project containing this table.
 	ProjectId *string `pulumi:"projectId"`
 	// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
 	// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
@@ -4681,9 +4653,9 @@ type JobCopyDestinationTableInput interface {
 }
 
 type JobCopyDestinationTableArgs struct {
-	// The ID of the dataset containing this model.
+	// The ID of the dataset containing this table.
 	DatasetId pulumi.StringPtrInput `pulumi:"datasetId"`
-	// The ID of the project containing this model.
+	// The ID of the project containing this table.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 	// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
 	// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
@@ -4767,12 +4739,12 @@ func (o JobCopyDestinationTableOutput) ToJobCopyDestinationTablePtrOutputWithCon
 	}).(JobCopyDestinationTablePtrOutput)
 }
 
-// The ID of the dataset containing this model.
+// The ID of the dataset containing this table.
 func (o JobCopyDestinationTableOutput) DatasetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCopyDestinationTable) *string { return v.DatasetId }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the project containing this model.
+// The ID of the project containing this table.
 func (o JobCopyDestinationTableOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCopyDestinationTable) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -4807,7 +4779,7 @@ func (o JobCopyDestinationTablePtrOutput) Elem() JobCopyDestinationTableOutput {
 	}).(JobCopyDestinationTableOutput)
 }
 
-// The ID of the dataset containing this model.
+// The ID of the dataset containing this table.
 func (o JobCopyDestinationTablePtrOutput) DatasetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobCopyDestinationTable) *string {
 		if v == nil {
@@ -4817,7 +4789,7 @@ func (o JobCopyDestinationTablePtrOutput) DatasetId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The ID of the project containing this model.
+// The ID of the project containing this table.
 func (o JobCopyDestinationTablePtrOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobCopyDestinationTable) *string {
 		if v == nil {
@@ -4839,9 +4811,9 @@ func (o JobCopyDestinationTablePtrOutput) TableId() pulumi.StringPtrOutput {
 }
 
 type JobCopySourceTable struct {
-	// The ID of the dataset containing this model.
+	// The ID of the dataset containing this table.
 	DatasetId *string `pulumi:"datasetId"`
-	// The ID of the project containing this model.
+	// The ID of the project containing this table.
 	ProjectId *string `pulumi:"projectId"`
 	// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
 	// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
@@ -4860,9 +4832,9 @@ type JobCopySourceTableInput interface {
 }
 
 type JobCopySourceTableArgs struct {
-	// The ID of the dataset containing this model.
+	// The ID of the dataset containing this table.
 	DatasetId pulumi.StringPtrInput `pulumi:"datasetId"`
-	// The ID of the project containing this model.
+	// The ID of the project containing this table.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 	// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
 	// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
@@ -4920,12 +4892,12 @@ func (o JobCopySourceTableOutput) ToJobCopySourceTableOutputWithContext(ctx cont
 	return o
 }
 
-// The ID of the dataset containing this model.
+// The ID of the dataset containing this table.
 func (o JobCopySourceTableOutput) DatasetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCopySourceTable) *string { return v.DatasetId }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the project containing this model.
+// The ID of the project containing this table.
 func (o JobCopySourceTableOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCopySourceTable) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -5426,9 +5398,9 @@ func (o JobExtractSourceModelPtrOutput) ProjectId() pulumi.StringPtrOutput {
 }
 
 type JobExtractSourceTable struct {
-	// The ID of the dataset containing this model.
+	// The ID of the dataset containing this table.
 	DatasetId *string `pulumi:"datasetId"`
-	// The ID of the project containing this model.
+	// The ID of the project containing this table.
 	ProjectId *string `pulumi:"projectId"`
 	// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
 	// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
@@ -5447,9 +5419,9 @@ type JobExtractSourceTableInput interface {
 }
 
 type JobExtractSourceTableArgs struct {
-	// The ID of the dataset containing this model.
+	// The ID of the dataset containing this table.
 	DatasetId pulumi.StringPtrInput `pulumi:"datasetId"`
-	// The ID of the project containing this model.
+	// The ID of the project containing this table.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 	// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
 	// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
@@ -5533,12 +5505,12 @@ func (o JobExtractSourceTableOutput) ToJobExtractSourceTablePtrOutputWithContext
 	}).(JobExtractSourceTablePtrOutput)
 }
 
-// The ID of the dataset containing this model.
+// The ID of the dataset containing this table.
 func (o JobExtractSourceTableOutput) DatasetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobExtractSourceTable) *string { return v.DatasetId }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the project containing this model.
+// The ID of the project containing this table.
 func (o JobExtractSourceTableOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobExtractSourceTable) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -5573,7 +5545,7 @@ func (o JobExtractSourceTablePtrOutput) Elem() JobExtractSourceTableOutput {
 	}).(JobExtractSourceTableOutput)
 }
 
-// The ID of the dataset containing this model.
+// The ID of the dataset containing this table.
 func (o JobExtractSourceTablePtrOutput) DatasetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobExtractSourceTable) *string {
 		if v == nil {
@@ -5583,7 +5555,7 @@ func (o JobExtractSourceTablePtrOutput) DatasetId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The ID of the project containing this model.
+// The ID of the project containing this table.
 func (o JobExtractSourceTablePtrOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobExtractSourceTable) *string {
 		if v == nil {
@@ -5624,15 +5596,18 @@ type JobLoad struct {
 	// Custom encryption configuration (e.g., Cloud KMS keys)
 	// Structure is documented below.
 	DestinationEncryptionConfiguration *JobLoadDestinationEncryptionConfiguration `pulumi:"destinationEncryptionConfiguration"`
-	// The destination table.
+	// The destination table to load the data into.
 	// Structure is documented below.
 	DestinationTable JobLoadDestinationTable `pulumi:"destinationTable"`
 	// The character encoding of the data. The supported values are UTF-8 or ISO-8859-1.
 	// The default value is UTF-8. BigQuery decodes the data after the raw, binary data
 	// has been split using the values of the quote and fieldDelimiter properties.
 	Encoding *string `pulumi:"encoding"`
-	// When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
-	// Default is ','
+	// The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character.
+	// To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts
+	// the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the
+	// data in its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator.
+	// The default value is a comma (',').
 	FieldDelimiter *string `pulumi:"fieldDelimiter"`
 	// Indicates if BigQuery should allow extra values that are not represented in the table schema.
 	// If true, the extra values are ignored. If false, records with extra columns are treated as bad records,
@@ -5735,15 +5710,18 @@ type JobLoadArgs struct {
 	// Custom encryption configuration (e.g., Cloud KMS keys)
 	// Structure is documented below.
 	DestinationEncryptionConfiguration JobLoadDestinationEncryptionConfigurationPtrInput `pulumi:"destinationEncryptionConfiguration"`
-	// The destination table.
+	// The destination table to load the data into.
 	// Structure is documented below.
 	DestinationTable JobLoadDestinationTableInput `pulumi:"destinationTable"`
 	// The character encoding of the data. The supported values are UTF-8 or ISO-8859-1.
 	// The default value is UTF-8. BigQuery decodes the data after the raw, binary data
 	// has been split using the values of the quote and fieldDelimiter properties.
 	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
-	// When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
-	// Default is ','
+	// The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character.
+	// To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts
+	// the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the
+	// data in its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator.
+	// The default value is a comma (',').
 	FieldDelimiter pulumi.StringPtrInput `pulumi:"fieldDelimiter"`
 	// Indicates if BigQuery should allow extra values that are not represented in the table schema.
 	// If true, the extra values are ignored. If false, records with extra columns are treated as bad records,
@@ -5928,7 +5906,7 @@ func (o JobLoadOutput) DestinationEncryptionConfiguration() JobLoadDestinationEn
 	}).(JobLoadDestinationEncryptionConfigurationPtrOutput)
 }
 
-// The destination table.
+// The destination table to load the data into.
 // Structure is documented below.
 func (o JobLoadOutput) DestinationTable() JobLoadDestinationTableOutput {
 	return o.ApplyT(func(v JobLoad) JobLoadDestinationTable { return v.DestinationTable }).(JobLoadDestinationTableOutput)
@@ -5941,8 +5919,11 @@ func (o JobLoadOutput) Encoding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobLoad) *string { return v.Encoding }).(pulumi.StringPtrOutput)
 }
 
-// When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
-// Default is ','
+// The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character.
+// To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts
+// the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the
+// data in its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator.
+// The default value is a comma (',').
 func (o JobLoadOutput) FieldDelimiter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobLoad) *string { return v.FieldDelimiter }).(pulumi.StringPtrOutput)
 }
@@ -6134,7 +6115,7 @@ func (o JobLoadPtrOutput) DestinationEncryptionConfiguration() JobLoadDestinatio
 	}).(JobLoadDestinationEncryptionConfigurationPtrOutput)
 }
 
-// The destination table.
+// The destination table to load the data into.
 // Structure is documented below.
 func (o JobLoadPtrOutput) DestinationTable() JobLoadDestinationTablePtrOutput {
 	return o.ApplyT(func(v *JobLoad) *JobLoadDestinationTable {
@@ -6157,8 +6138,11 @@ func (o JobLoadPtrOutput) Encoding() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
-// Default is ','
+// The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character.
+// To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts
+// the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the
+// data in its raw, binary state. BigQuery also supports the escape sequence "\t" to specify a tab separator.
+// The default value is a comma (',').
 func (o JobLoadPtrOutput) FieldDelimiter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobLoad) *string {
 		if v == nil {
@@ -6336,7 +6320,6 @@ type JobLoadDestinationEncryptionConfiguration struct {
 	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
 	// The BigQuery Service Account associated with your project requires access to this encryption key.
 	KmsKeyName string `pulumi:"kmsKeyName"`
-	// -
 	// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
 	KmsKeyVersion *string `pulumi:"kmsKeyVersion"`
 }
@@ -6356,7 +6339,6 @@ type JobLoadDestinationEncryptionConfigurationArgs struct {
 	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
 	// The BigQuery Service Account associated with your project requires access to this encryption key.
 	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
-	// -
 	// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
 	KmsKeyVersion pulumi.StringPtrInput `pulumi:"kmsKeyVersion"`
 }
@@ -6444,7 +6426,6 @@ func (o JobLoadDestinationEncryptionConfigurationOutput) KmsKeyName() pulumi.Str
 	return o.ApplyT(func(v JobLoadDestinationEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
-// -
 // Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
 func (o JobLoadDestinationEncryptionConfigurationOutput) KmsKeyVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobLoadDestinationEncryptionConfiguration) *string { return v.KmsKeyVersion }).(pulumi.StringPtrOutput)
@@ -6485,7 +6466,6 @@ func (o JobLoadDestinationEncryptionConfigurationPtrOutput) KmsKeyName() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
 func (o JobLoadDestinationEncryptionConfigurationPtrOutput) KmsKeyVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobLoadDestinationEncryptionConfiguration) *string {
@@ -6497,9 +6477,9 @@ func (o JobLoadDestinationEncryptionConfigurationPtrOutput) KmsKeyVersion() pulu
 }
 
 type JobLoadDestinationTable struct {
-	// The ID of the dataset containing this model.
+	// The ID of the dataset containing this table.
 	DatasetId *string `pulumi:"datasetId"`
-	// The ID of the project containing this model.
+	// The ID of the project containing this table.
 	ProjectId *string `pulumi:"projectId"`
 	// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
 	// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
@@ -6518,9 +6498,9 @@ type JobLoadDestinationTableInput interface {
 }
 
 type JobLoadDestinationTableArgs struct {
-	// The ID of the dataset containing this model.
+	// The ID of the dataset containing this table.
 	DatasetId pulumi.StringPtrInput `pulumi:"datasetId"`
-	// The ID of the project containing this model.
+	// The ID of the project containing this table.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 	// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
 	// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
@@ -6604,12 +6584,12 @@ func (o JobLoadDestinationTableOutput) ToJobLoadDestinationTablePtrOutputWithCon
 	}).(JobLoadDestinationTablePtrOutput)
 }
 
-// The ID of the dataset containing this model.
+// The ID of the dataset containing this table.
 func (o JobLoadDestinationTableOutput) DatasetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobLoadDestinationTable) *string { return v.DatasetId }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the project containing this model.
+// The ID of the project containing this table.
 func (o JobLoadDestinationTableOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobLoadDestinationTable) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -6644,7 +6624,7 @@ func (o JobLoadDestinationTablePtrOutput) Elem() JobLoadDestinationTableOutput {
 	}).(JobLoadDestinationTableOutput)
 }
 
-// The ID of the dataset containing this model.
+// The ID of the dataset containing this table.
 func (o JobLoadDestinationTablePtrOutput) DatasetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobLoadDestinationTable) *string {
 		if v == nil {
@@ -6654,7 +6634,7 @@ func (o JobLoadDestinationTablePtrOutput) DatasetId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The ID of the project containing this model.
+// The ID of the project containing this table.
 func (o JobLoadDestinationTablePtrOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobLoadDestinationTable) *string {
 		if v == nil {
@@ -6880,7 +6860,9 @@ type JobQuery struct {
 	// Custom encryption configuration (e.g., Cloud KMS keys)
 	// Structure is documented below.
 	DestinationEncryptionConfiguration *JobQueryDestinationEncryptionConfiguration `pulumi:"destinationEncryptionConfiguration"`
-	// The destination table.
+	// Describes the table where the query results should be stored.
+	// This property must be set for large results that exceed the maximum response size.
+	// For queries that produce anonymous (cached) results, this field will be populated by BigQuery.
 	// Structure is documented below.
 	DestinationTable *JobQueryDestinationTable `pulumi:"destinationTable"`
 	// If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results.
@@ -6898,13 +6880,15 @@ type JobQuery struct {
 	// Default value is `INTERACTIVE`.
 	// Possible values are `INTERACTIVE` and `BATCH`.
 	Priority *string `pulumi:"priority"`
-	// Configures a query job.
-	// Structure is documented below.
+	// SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+	// *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+	// (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `createDisposition = ""` and `writeDisposition = ""`.
 	Query string `pulumi:"query"`
-	// Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
-	// supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
-	// when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators.
-	// For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified:
+	// Allows the schema of the destination table to be updated as a side effect of the query job.
+	// Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
+	// when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table,
+	// specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema.
+	// One or more of the following values are specified:
 	// ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
 	// ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
 	SchemaUpdateOptions []string `pulumi:"schemaUpdateOptions"`
@@ -6961,7 +6945,9 @@ type JobQueryArgs struct {
 	// Custom encryption configuration (e.g., Cloud KMS keys)
 	// Structure is documented below.
 	DestinationEncryptionConfiguration JobQueryDestinationEncryptionConfigurationPtrInput `pulumi:"destinationEncryptionConfiguration"`
-	// The destination table.
+	// Describes the table where the query results should be stored.
+	// This property must be set for large results that exceed the maximum response size.
+	// For queries that produce anonymous (cached) results, this field will be populated by BigQuery.
 	// Structure is documented below.
 	DestinationTable JobQueryDestinationTablePtrInput `pulumi:"destinationTable"`
 	// If true and query uses legacy SQL dialect, flattens all nested and repeated fields in the query results.
@@ -6979,13 +6965,15 @@ type JobQueryArgs struct {
 	// Default value is `INTERACTIVE`.
 	// Possible values are `INTERACTIVE` and `BATCH`.
 	Priority pulumi.StringPtrInput `pulumi:"priority"`
-	// Configures a query job.
-	// Structure is documented below.
+	// SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+	// *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+	// (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `createDisposition = ""` and `writeDisposition = ""`.
 	Query pulumi.StringInput `pulumi:"query"`
-	// Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
-	// supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
-	// when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators.
-	// For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified:
+	// Allows the schema of the destination table to be updated as a side effect of the query job.
+	// Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
+	// when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table,
+	// specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema.
+	// One or more of the following values are specified:
 	// ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
 	// ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
 	SchemaUpdateOptions pulumi.StringArrayInput `pulumi:"schemaUpdateOptions"`
@@ -7121,7 +7109,9 @@ func (o JobQueryOutput) DestinationEncryptionConfiguration() JobQueryDestination
 	}).(JobQueryDestinationEncryptionConfigurationPtrOutput)
 }
 
-// The destination table.
+// Describes the table where the query results should be stored.
+// This property must be set for large results that exceed the maximum response size.
+// For queries that produce anonymous (cached) results, this field will be populated by BigQuery.
 // Structure is documented below.
 func (o JobQueryOutput) DestinationTable() JobQueryDestinationTablePtrOutput {
 	return o.ApplyT(func(v JobQuery) *JobQueryDestinationTable { return v.DestinationTable }).(JobQueryDestinationTablePtrOutput)
@@ -7157,16 +7147,18 @@ func (o JobQueryOutput) Priority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobQuery) *string { return v.Priority }).(pulumi.StringPtrOutput)
 }
 
-// Configures a query job.
-// Structure is documented below.
+// SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+// *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+// (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `createDisposition = ""` and `writeDisposition = ""`.
 func (o JobQueryOutput) Query() pulumi.StringOutput {
 	return o.ApplyT(func(v JobQuery) string { return v.Query }).(pulumi.StringOutput)
 }
 
-// Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
-// supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
-// when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators.
-// For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified:
+// Allows the schema of the destination table to be updated as a side effect of the query job.
+// Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
+// when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table,
+// specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema.
+// One or more of the following values are specified:
 // ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
 // ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
 func (o JobQueryOutput) SchemaUpdateOptions() pulumi.StringArrayOutput {
@@ -7283,7 +7275,9 @@ func (o JobQueryPtrOutput) DestinationEncryptionConfiguration() JobQueryDestinat
 	}).(JobQueryDestinationEncryptionConfigurationPtrOutput)
 }
 
-// The destination table.
+// Describes the table where the query results should be stored.
+// This property must be set for large results that exceed the maximum response size.
+// For queries that produce anonymous (cached) results, this field will be populated by BigQuery.
 // Structure is documented below.
 func (o JobQueryPtrOutput) DestinationTable() JobQueryDestinationTablePtrOutput {
 	return o.ApplyT(func(v *JobQuery) *JobQueryDestinationTable {
@@ -7349,8 +7343,9 @@ func (o JobQueryPtrOutput) Priority() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Configures a query job.
-// Structure is documented below.
+// SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
+// *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
+// (`DELETE`, `UPDATE`, `MERGE`, `INSERT`) must specify `createDisposition = ""` and `writeDisposition = ""`.
 func (o JobQueryPtrOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobQuery) *string {
 		if v == nil {
@@ -7360,10 +7355,11 @@ func (o JobQueryPtrOutput) Query() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or
-// supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
-// when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators.
-// For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified:
+// Allows the schema of the destination table to be updated as a side effect of the query job.
+// Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
+// when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table,
+// specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema.
+// One or more of the following values are specified:
 // ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
 // ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
 func (o JobQueryPtrOutput) SchemaUpdateOptions() pulumi.StringArrayOutput {
@@ -7438,9 +7434,10 @@ func (o JobQueryPtrOutput) WriteDisposition() pulumi.StringPtrOutput {
 }
 
 type JobQueryDefaultDataset struct {
-	// The ID of the dataset containing this model.
+	// The dataset. Can be specified `{{dataset_id}}` if `projectId` is also set,
+	// or of the form `projects/{{project}}/datasets/{{dataset_id}}` if not.
 	DatasetId string `pulumi:"datasetId"`
-	// The ID of the project containing this model.
+	// The ID of the project containing this table.
 	ProjectId *string `pulumi:"projectId"`
 }
 
@@ -7456,9 +7453,10 @@ type JobQueryDefaultDatasetInput interface {
 }
 
 type JobQueryDefaultDatasetArgs struct {
-	// The ID of the dataset containing this model.
+	// The dataset. Can be specified `{{dataset_id}}` if `projectId` is also set,
+	// or of the form `projects/{{project}}/datasets/{{dataset_id}}` if not.
 	DatasetId pulumi.StringInput `pulumi:"datasetId"`
-	// The ID of the project containing this model.
+	// The ID of the project containing this table.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 }
 
@@ -7539,12 +7537,13 @@ func (o JobQueryDefaultDatasetOutput) ToJobQueryDefaultDatasetPtrOutputWithConte
 	}).(JobQueryDefaultDatasetPtrOutput)
 }
 
-// The ID of the dataset containing this model.
+// The dataset. Can be specified `{{dataset_id}}` if `projectId` is also set,
+// or of the form `projects/{{project}}/datasets/{{dataset_id}}` if not.
 func (o JobQueryDefaultDatasetOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v JobQueryDefaultDataset) string { return v.DatasetId }).(pulumi.StringOutput)
 }
 
-// The ID of the project containing this model.
+// The ID of the project containing this table.
 func (o JobQueryDefaultDatasetOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobQueryDefaultDataset) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -7573,7 +7572,8 @@ func (o JobQueryDefaultDatasetPtrOutput) Elem() JobQueryDefaultDatasetOutput {
 	}).(JobQueryDefaultDatasetOutput)
 }
 
-// The ID of the dataset containing this model.
+// The dataset. Can be specified `{{dataset_id}}` if `projectId` is also set,
+// or of the form `projects/{{project}}/datasets/{{dataset_id}}` if not.
 func (o JobQueryDefaultDatasetPtrOutput) DatasetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobQueryDefaultDataset) *string {
 		if v == nil {
@@ -7583,7 +7583,7 @@ func (o JobQueryDefaultDatasetPtrOutput) DatasetId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The ID of the project containing this model.
+// The ID of the project containing this table.
 func (o JobQueryDefaultDatasetPtrOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobQueryDefaultDataset) *string {
 		if v == nil {
@@ -7597,7 +7597,6 @@ type JobQueryDestinationEncryptionConfiguration struct {
 	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
 	// The BigQuery Service Account associated with your project requires access to this encryption key.
 	KmsKeyName string `pulumi:"kmsKeyName"`
-	// -
 	// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
 	KmsKeyVersion *string `pulumi:"kmsKeyVersion"`
 }
@@ -7617,7 +7616,6 @@ type JobQueryDestinationEncryptionConfigurationArgs struct {
 	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
 	// The BigQuery Service Account associated with your project requires access to this encryption key.
 	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
-	// -
 	// Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
 	KmsKeyVersion pulumi.StringPtrInput `pulumi:"kmsKeyVersion"`
 }
@@ -7705,7 +7703,6 @@ func (o JobQueryDestinationEncryptionConfigurationOutput) KmsKeyName() pulumi.St
 	return o.ApplyT(func(v JobQueryDestinationEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
-// -
 // Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
 func (o JobQueryDestinationEncryptionConfigurationOutput) KmsKeyVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobQueryDestinationEncryptionConfiguration) *string { return v.KmsKeyVersion }).(pulumi.StringPtrOutput)
@@ -7746,7 +7743,6 @@ func (o JobQueryDestinationEncryptionConfigurationPtrOutput) KmsKeyName() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
 func (o JobQueryDestinationEncryptionConfigurationPtrOutput) KmsKeyVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobQueryDestinationEncryptionConfiguration) *string {
@@ -7758,9 +7754,9 @@ func (o JobQueryDestinationEncryptionConfigurationPtrOutput) KmsKeyVersion() pul
 }
 
 type JobQueryDestinationTable struct {
-	// The ID of the dataset containing this model.
+	// The ID of the dataset containing this table.
 	DatasetId *string `pulumi:"datasetId"`
-	// The ID of the project containing this model.
+	// The ID of the project containing this table.
 	ProjectId *string `pulumi:"projectId"`
 	// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
 	// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
@@ -7779,9 +7775,9 @@ type JobQueryDestinationTableInput interface {
 }
 
 type JobQueryDestinationTableArgs struct {
-	// The ID of the dataset containing this model.
+	// The ID of the dataset containing this table.
 	DatasetId pulumi.StringPtrInput `pulumi:"datasetId"`
-	// The ID of the project containing this model.
+	// The ID of the project containing this table.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 	// The table. Can be specified `{{table_id}}` if `projectId` and `datasetId` are also set,
 	// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
@@ -7865,12 +7861,12 @@ func (o JobQueryDestinationTableOutput) ToJobQueryDestinationTablePtrOutputWithC
 	}).(JobQueryDestinationTablePtrOutput)
 }
 
-// The ID of the dataset containing this model.
+// The ID of the dataset containing this table.
 func (o JobQueryDestinationTableOutput) DatasetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobQueryDestinationTable) *string { return v.DatasetId }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the project containing this model.
+// The ID of the project containing this table.
 func (o JobQueryDestinationTableOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobQueryDestinationTable) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -7905,7 +7901,7 @@ func (o JobQueryDestinationTablePtrOutput) Elem() JobQueryDestinationTableOutput
 	}).(JobQueryDestinationTableOutput)
 }
 
-// The ID of the dataset containing this model.
+// The ID of the dataset containing this table.
 func (o JobQueryDestinationTablePtrOutput) DatasetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobQueryDestinationTable) *string {
 		if v == nil {
@@ -7915,7 +7911,7 @@ func (o JobQueryDestinationTablePtrOutput) DatasetId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The ID of the project containing this model.
+// The ID of the project containing this table.
 func (o JobQueryDestinationTablePtrOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobQueryDestinationTable) *string {
 		if v == nil {
@@ -8229,9 +8225,16 @@ func (o JobQueryUserDefinedFunctionResourceArrayOutput) Index(i pulumi.IntInput)
 }
 
 type JobStatus struct {
+	// Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
+	// Structure is documented below.
 	ErrorResults []JobStatusErrorResult `pulumi:"errorResults"`
-	Errors       []JobStatusError       `pulumi:"errors"`
-	State        *string                `pulumi:"state"`
+	// The first errors encountered during the running of the job. The final message
+	// includes the number of errors that caused the process to stop. Errors here do
+	// not necessarily mean that the job has not completed or was unsuccessful.
+	// Structure is documented below.
+	Errors []JobStatusError `pulumi:"errors"`
+	// Running state of the job. Valid states include 'PENDING', 'RUNNING', and 'DONE'.
+	State *string `pulumi:"state"`
 }
 
 // JobStatusInput is an input type that accepts JobStatusArgs and JobStatusOutput values.
@@ -8246,9 +8249,16 @@ type JobStatusInput interface {
 }
 
 type JobStatusArgs struct {
+	// Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
+	// Structure is documented below.
 	ErrorResults JobStatusErrorResultArrayInput `pulumi:"errorResults"`
-	Errors       JobStatusErrorArrayInput       `pulumi:"errors"`
-	State        pulumi.StringPtrInput          `pulumi:"state"`
+	// The first errors encountered during the running of the job. The final message
+	// includes the number of errors that caused the process to stop. Errors here do
+	// not necessarily mean that the job has not completed or was unsuccessful.
+	// Structure is documented below.
+	Errors JobStatusErrorArrayInput `pulumi:"errors"`
+	// Running state of the job. Valid states include 'PENDING', 'RUNNING', and 'DONE'.
+	State pulumi.StringPtrInput `pulumi:"state"`
 }
 
 func (JobStatusArgs) ElementType() reflect.Type {
@@ -8302,14 +8312,21 @@ func (o JobStatusOutput) ToJobStatusOutputWithContext(ctx context.Context) JobSt
 	return o
 }
 
+// Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
+// Structure is documented below.
 func (o JobStatusOutput) ErrorResults() JobStatusErrorResultArrayOutput {
 	return o.ApplyT(func(v JobStatus) []JobStatusErrorResult { return v.ErrorResults }).(JobStatusErrorResultArrayOutput)
 }
 
+// The first errors encountered during the running of the job. The final message
+// includes the number of errors that caused the process to stop. Errors here do
+// not necessarily mean that the job has not completed or was unsuccessful.
+// Structure is documented below.
 func (o JobStatusOutput) Errors() JobStatusErrorArrayOutput {
 	return o.ApplyT(func(v JobStatus) []JobStatusError { return v.Errors }).(JobStatusErrorArrayOutput)
 }
 
+// Running state of the job. Valid states include 'PENDING', 'RUNNING', and 'DONE'.
 func (o JobStatusOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobStatus) *string { return v.State }).(pulumi.StringPtrOutput)
 }
@@ -8337,8 +8354,10 @@ func (o JobStatusArrayOutput) Index(i pulumi.IntInput) JobStatusOutput {
 type JobStatusError struct {
 	// The geographic location of the job. The default value is US.
 	Location *string `pulumi:"location"`
-	Message  *string `pulumi:"message"`
-	Reason   *string `pulumi:"reason"`
+	// A human-readable description of the error.
+	Message *string `pulumi:"message"`
+	// A short error code that summarizes the error.
+	Reason *string `pulumi:"reason"`
 }
 
 // JobStatusErrorInput is an input type that accepts JobStatusErrorArgs and JobStatusErrorOutput values.
@@ -8355,8 +8374,10 @@ type JobStatusErrorInput interface {
 type JobStatusErrorArgs struct {
 	// The geographic location of the job. The default value is US.
 	Location pulumi.StringPtrInput `pulumi:"location"`
-	Message  pulumi.StringPtrInput `pulumi:"message"`
-	Reason   pulumi.StringPtrInput `pulumi:"reason"`
+	// A human-readable description of the error.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// A short error code that summarizes the error.
+	Reason pulumi.StringPtrInput `pulumi:"reason"`
 }
 
 func (JobStatusErrorArgs) ElementType() reflect.Type {
@@ -8415,10 +8436,12 @@ func (o JobStatusErrorOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobStatusError) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// A human-readable description of the error.
 func (o JobStatusErrorOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobStatusError) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
+// A short error code that summarizes the error.
 func (o JobStatusErrorOutput) Reason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobStatusError) *string { return v.Reason }).(pulumi.StringPtrOutput)
 }
@@ -8446,8 +8469,10 @@ func (o JobStatusErrorArrayOutput) Index(i pulumi.IntInput) JobStatusErrorOutput
 type JobStatusErrorResult struct {
 	// The geographic location of the job. The default value is US.
 	Location *string `pulumi:"location"`
-	Message  *string `pulumi:"message"`
-	Reason   *string `pulumi:"reason"`
+	// A human-readable description of the error.
+	Message *string `pulumi:"message"`
+	// A short error code that summarizes the error.
+	Reason *string `pulumi:"reason"`
 }
 
 // JobStatusErrorResultInput is an input type that accepts JobStatusErrorResultArgs and JobStatusErrorResultOutput values.
@@ -8464,8 +8489,10 @@ type JobStatusErrorResultInput interface {
 type JobStatusErrorResultArgs struct {
 	// The geographic location of the job. The default value is US.
 	Location pulumi.StringPtrInput `pulumi:"location"`
-	Message  pulumi.StringPtrInput `pulumi:"message"`
-	Reason   pulumi.StringPtrInput `pulumi:"reason"`
+	// A human-readable description of the error.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// A short error code that summarizes the error.
+	Reason pulumi.StringPtrInput `pulumi:"reason"`
 }
 
 func (JobStatusErrorResultArgs) ElementType() reflect.Type {
@@ -8524,10 +8551,12 @@ func (o JobStatusErrorResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobStatusErrorResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
+// A human-readable description of the error.
 func (o JobStatusErrorResultOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobStatusErrorResult) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
+// A short error code that summarizes the error.
 func (o JobStatusErrorResultOutput) Reason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobStatusErrorResult) *string { return v.Reason }).(pulumi.StringPtrOutput)
 }
@@ -8876,8 +8905,8 @@ func (o TableEncryptionConfigurationPtrOutput) KmsKeyVersion() pulumi.StringPtrO
 }
 
 type TableExternalDataConfiguration struct {
-	// - Let BigQuery try to autodetect the schema
-	//   and format of the table.
+	// Let BigQuery try to autodetect the schema
+	// and format of the table.
 	Autodetect bool `pulumi:"autodetect"`
 	// Additional options if `sourceFormat` is set to\
 	// "AVRO".  Structure is documented below.
@@ -8947,8 +8976,8 @@ type TableExternalDataConfigurationInput interface {
 }
 
 type TableExternalDataConfigurationArgs struct {
-	// - Let BigQuery try to autodetect the schema
-	//   and format of the table.
+	// Let BigQuery try to autodetect the schema
+	// and format of the table.
 	Autodetect pulumi.BoolInput `pulumi:"autodetect"`
 	// Additional options if `sourceFormat` is set to\
 	// "AVRO".  Structure is documented below.
@@ -9083,8 +9112,8 @@ func (o TableExternalDataConfigurationOutput) ToTableExternalDataConfigurationPt
 	}).(TableExternalDataConfigurationPtrOutput)
 }
 
-//   - Let BigQuery try to autodetect the schema
-//     and format of the table.
+// Let BigQuery try to autodetect the schema
+// and format of the table.
 func (o TableExternalDataConfigurationOutput) Autodetect() pulumi.BoolOutput {
 	return o.ApplyT(func(v TableExternalDataConfiguration) bool { return v.Autodetect }).(pulumi.BoolOutput)
 }
@@ -9206,8 +9235,8 @@ func (o TableExternalDataConfigurationPtrOutput) Elem() TableExternalDataConfigu
 	}).(TableExternalDataConfigurationOutput)
 }
 
-//   - Let BigQuery try to autodetect the schema
-//     and format of the table.
+// Let BigQuery try to autodetect the schema
+// and format of the table.
 func (o TableExternalDataConfigurationPtrOutput) Autodetect() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TableExternalDataConfiguration) *bool {
 		if v == nil {
@@ -9525,9 +9554,8 @@ type TableExternalDataConfigurationCsvOptions struct {
 	// limitations with default values, this value is required to be
 	// explicitly set.
 	Quote string `pulumi:"quote"`
-	// The number of rows at the top of the sheet
-	// that BigQuery will skip when reading the data. At least one of `range` or
-	// `skipLeadingRows` must be set.
+	// The number of rows at the top of a CSV
+	// file that BigQuery will skip when reading the data.
 	SkipLeadingRows *int `pulumi:"skipLeadingRows"`
 }
 
@@ -9563,9 +9591,8 @@ type TableExternalDataConfigurationCsvOptionsArgs struct {
 	// limitations with default values, this value is required to be
 	// explicitly set.
 	Quote pulumi.StringInput `pulumi:"quote"`
-	// The number of rows at the top of the sheet
-	// that BigQuery will skip when reading the data. At least one of `range` or
-	// `skipLeadingRows` must be set.
+	// The number of rows at the top of a CSV
+	// file that BigQuery will skip when reading the data.
 	SkipLeadingRows pulumi.IntPtrInput `pulumi:"skipLeadingRows"`
 }
 
@@ -9681,9 +9708,8 @@ func (o TableExternalDataConfigurationCsvOptionsOutput) Quote() pulumi.StringOut
 	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) string { return v.Quote }).(pulumi.StringOutput)
 }
 
-// The number of rows at the top of the sheet
-// that BigQuery will skip when reading the data. At least one of `range` or
-// `skipLeadingRows` must be set.
+// The number of rows at the top of a CSV
+// file that BigQuery will skip when reading the data.
 func (o TableExternalDataConfigurationCsvOptionsOutput) SkipLeadingRows() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TableExternalDataConfigurationCsvOptions) *int { return v.SkipLeadingRows }).(pulumi.IntPtrOutput)
 }
@@ -9772,9 +9798,8 @@ func (o TableExternalDataConfigurationCsvOptionsPtrOutput) Quote() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// The number of rows at the top of the sheet
-// that BigQuery will skip when reading the data. At least one of `range` or
-// `skipLeadingRows` must be set.
+// The number of rows at the top of a CSV
+// file that BigQuery will skip when reading the data.
 func (o TableExternalDataConfigurationCsvOptionsPtrOutput) SkipLeadingRows() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TableExternalDataConfigurationCsvOptions) *int {
 		if v == nil {
@@ -9785,8 +9810,10 @@ func (o TableExternalDataConfigurationCsvOptionsPtrOutput) SkipLeadingRows() pul
 }
 
 type TableExternalDataConfigurationGoogleSheetsOptions struct {
-	// Information required to partition based on ranges.
-	// Structure is documented below.
+	// Range of a sheet to query from. Only used when
+	// non-empty. At least one of `range` or `skipLeadingRows` must be set.
+	// Typical format: "sheet_name!top_left_cell_id:bottom_right_cell_id"
+	// For example: "sheet1!A1:B20"
 	Range *string `pulumi:"range"`
 	// The number of rows at the top of the sheet
 	// that BigQuery will skip when reading the data. At least one of `range` or
@@ -9806,8 +9833,10 @@ type TableExternalDataConfigurationGoogleSheetsOptionsInput interface {
 }
 
 type TableExternalDataConfigurationGoogleSheetsOptionsArgs struct {
-	// Information required to partition based on ranges.
-	// Structure is documented below.
+	// Range of a sheet to query from. Only used when
+	// non-empty. At least one of `range` or `skipLeadingRows` must be set.
+	// Typical format: "sheet_name!top_left_cell_id:bottom_right_cell_id"
+	// For example: "sheet1!A1:B20"
 	Range pulumi.StringPtrInput `pulumi:"range"`
 	// The number of rows at the top of the sheet
 	// that BigQuery will skip when reading the data. At least one of `range` or
@@ -9892,8 +9921,10 @@ func (o TableExternalDataConfigurationGoogleSheetsOptionsOutput) ToTableExternal
 	}).(TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput)
 }
 
-// Information required to partition based on ranges.
-// Structure is documented below.
+// Range of a sheet to query from. Only used when
+// non-empty. At least one of `range` or `skipLeadingRows` must be set.
+// Typical format: "sheet_name!top_left_cell_id:bottom_right_cell_id"
+// For example: "sheet1!A1:B20"
 func (o TableExternalDataConfigurationGoogleSheetsOptionsOutput) Range() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TableExternalDataConfigurationGoogleSheetsOptions) *string { return v.Range }).(pulumi.StringPtrOutput)
 }
@@ -9929,8 +9960,10 @@ func (o TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput) Elem() Table
 	}).(TableExternalDataConfigurationGoogleSheetsOptionsOutput)
 }
 
-// Information required to partition based on ranges.
-// Structure is documented below.
+// Range of a sheet to query from. Only used when
+// non-empty. At least one of `range` or `skipLeadingRows` must be set.
+// Typical format: "sheet_name!top_left_cell_id:bottom_right_cell_id"
+// For example: "sheet1!A1:B20"
 func (o TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput) Range() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TableExternalDataConfigurationGoogleSheetsOptions) *string {
 		if v == nil {
@@ -10717,8 +10750,9 @@ type TableTimePartitioning struct {
 	// Number of milliseconds for which to keep the
 	// storage for a partition.
 	ExpirationMs *int `pulumi:"expirationMs"`
-	// The field used to determine how to create a range-based
-	// partition.
+	// The field used to determine how to create a time-based
+	// partition. If time-based partitioning is enabled without this value, the
+	// table is partitioned based on the load time.
 	Field *string `pulumi:"field"`
 	// If set to true, queries over this table
 	// require a partition filter that can be used for partition elimination to be
@@ -10744,8 +10778,9 @@ type TableTimePartitioningArgs struct {
 	// Number of milliseconds for which to keep the
 	// storage for a partition.
 	ExpirationMs pulumi.IntPtrInput `pulumi:"expirationMs"`
-	// The field used to determine how to create a range-based
-	// partition.
+	// The field used to determine how to create a time-based
+	// partition. If time-based partitioning is enabled without this value, the
+	// table is partitioned based on the load time.
 	Field pulumi.StringPtrInput `pulumi:"field"`
 	// If set to true, queries over this table
 	// require a partition filter that can be used for partition elimination to be
@@ -10839,8 +10874,9 @@ func (o TableTimePartitioningOutput) ExpirationMs() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TableTimePartitioning) *int { return v.ExpirationMs }).(pulumi.IntPtrOutput)
 }
 
-// The field used to determine how to create a range-based
-// partition.
+// The field used to determine how to create a time-based
+// partition. If time-based partitioning is enabled without this value, the
+// table is partitioned based on the load time.
 func (o TableTimePartitioningOutput) Field() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TableTimePartitioning) *string { return v.Field }).(pulumi.StringPtrOutput)
 }
@@ -10893,8 +10929,9 @@ func (o TableTimePartitioningPtrOutput) ExpirationMs() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The field used to determine how to create a range-based
-// partition.
+// The field used to determine how to create a time-based
+// partition. If time-based partitioning is enabled without this value, the
+// table is partitioned based on the load time.
 func (o TableTimePartitioningPtrOutput) Field() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TableTimePartitioning) *string {
 		if v == nil {
@@ -10928,7 +10965,7 @@ func (o TableTimePartitioningPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type TableView struct {
-	// A query whose result is persisted.
+	// A query that BigQuery executes when the view is referenced.
 	Query string `pulumi:"query"`
 	// Specifies whether to use BigQuery's legacy SQL for this view.
 	// The default value is true. If set to false, the view will use BigQuery's standard SQL.
@@ -10947,7 +10984,7 @@ type TableViewInput interface {
 }
 
 type TableViewArgs struct {
-	// A query whose result is persisted.
+	// A query that BigQuery executes when the view is referenced.
 	Query pulumi.StringInput `pulumi:"query"`
 	// Specifies whether to use BigQuery's legacy SQL for this view.
 	// The default value is true. If set to false, the view will use BigQuery's standard SQL.
@@ -11031,7 +11068,7 @@ func (o TableViewOutput) ToTableViewPtrOutputWithContext(ctx context.Context) Ta
 	}).(TableViewPtrOutput)
 }
 
-// A query whose result is persisted.
+// A query that BigQuery executes when the view is referenced.
 func (o TableViewOutput) Query() pulumi.StringOutput {
 	return o.ApplyT(func(v TableView) string { return v.Query }).(pulumi.StringOutput)
 }
@@ -11066,7 +11103,7 @@ func (o TableViewPtrOutput) Elem() TableViewOutput {
 	}).(TableViewOutput)
 }
 
-// A query whose result is persisted.
+// A query that BigQuery executes when the view is referenced.
 func (o TableViewPtrOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TableView) *string {
 		if v == nil {

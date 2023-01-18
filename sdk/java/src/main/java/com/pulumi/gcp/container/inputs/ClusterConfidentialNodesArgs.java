@@ -14,16 +14,14 @@ public final class ClusterConfidentialNodesArgs extends com.pulumi.resources.Res
     public static final ClusterConfidentialNodesArgs Empty = new ClusterConfidentialNodesArgs();
 
     /**
-     * Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * Enable Confidential Nodes for this cluster.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Enable Confidential Nodes for this cluster.
      * 
      */
     public Output<Boolean> enabled() {
@@ -55,8 +53,7 @@ public final class ClusterConfidentialNodesArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param enabled Enable the PodSecurityPolicy controller for this cluster.
-         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         * @param enabled Enable Confidential Nodes for this cluster.
          * 
          * @return builder
          * 
@@ -67,8 +64,7 @@ public final class ClusterConfidentialNodesArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param enabled Enable the PodSecurityPolicy controller for this cluster.
-         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         * @param enabled Enable Confidential Nodes for this cluster.
          * 
          * @return builder
          * 

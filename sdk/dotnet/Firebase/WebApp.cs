@@ -124,14 +124,14 @@ namespace Pulumi.Gcp.Firebase
     public partial class WebApp : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-        /// the data format is not specified.
+        /// The globally unique, Firebase-assigned identifier of the App.
+        /// This identifier should be treated as an opaque token, as the data format is not specified.
         /// </summary>
         [Output("appId")]
         public Output<string> AppId { get; private set; } = null!;
 
         /// <summary>
-        /// The URLs where the 'WebApp' is hosted.
+        /// The URLs where the `WebApp` is hosted.
         /// </summary>
         [Output("appUrls")]
         public Output<ImmutableArray<string>> AppUrls { get; private set; } = null!;
@@ -150,7 +150,8 @@ namespace Pulumi.Gcp.Firebase
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// The fully qualified resource name of the App, for example: projects/projectId/webApps/appId
+        /// The fully qualified resource name of the App, for example:
+        /// projects/projectId/webApps/appId
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -237,8 +238,8 @@ namespace Pulumi.Gcp.Firebase
     public sealed class WebAppState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-        /// the data format is not specified.
+        /// The globally unique, Firebase-assigned identifier of the App.
+        /// This identifier should be treated as an opaque token, as the data format is not specified.
         /// </summary>
         [Input("appId")]
         public Input<string>? AppId { get; set; }
@@ -247,7 +248,7 @@ namespace Pulumi.Gcp.Firebase
         private InputList<string>? _appUrls;
 
         /// <summary>
-        /// The URLs where the 'WebApp' is hosted.
+        /// The URLs where the `WebApp` is hosted.
         /// </summary>
         public InputList<string> AppUrls
         {
@@ -269,7 +270,8 @@ namespace Pulumi.Gcp.Firebase
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The fully qualified resource name of the App, for example: projects/projectId/webApps/appId
+        /// The fully qualified resource name of the App, for example:
+        /// projects/projectId/webApps/appId
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

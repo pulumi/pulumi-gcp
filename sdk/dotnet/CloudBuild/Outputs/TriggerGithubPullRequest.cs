@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     public sealed class TriggerGithubPullRequest
     {
         /// <summary>
-        /// Regex of branches to match.  Specify only one of branch or tag.
+        /// Regex of branches to match.
         /// </summary>
         public readonly string Branch;
         /// <summary>
@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// </summary>
         public readonly string? CommentControl;
         /// <summary>
-        /// Only trigger a build if the revision regex does NOT match the revision regex.
+        /// If true, branches that do NOT match the git_ref will trigger a build.
         /// </summary>
         public readonly bool? InvertRegex;
 

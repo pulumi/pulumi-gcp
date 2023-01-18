@@ -14,16 +14,16 @@ public final class ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs exten
     public static final ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs Empty = new ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs();
 
     /**
-     * Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * Whether the cluster master is accessible globally or
+     * not.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Whether the cluster master is accessible globally or
+     * not.
      * 
      */
     public Output<Boolean> enabled() {
@@ -55,8 +55,8 @@ public final class ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs exten
         }
 
         /**
-         * @param enabled Enable the PodSecurityPolicy controller for this cluster.
-         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         * @param enabled Whether the cluster master is accessible globally or
+         * not.
          * 
          * @return builder
          * 
@@ -67,8 +67,8 @@ public final class ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs exten
         }
 
         /**
-         * @param enabled Enable the PodSecurityPolicy controller for this cluster.
-         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         * @param enabled Whether the cluster master is accessible globally or
+         * not.
          * 
          * @return builder
          * 

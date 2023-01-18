@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
     public sealed class ServicePerimetersServicePerimeter
     {
         /// <summary>
-        /// -
         /// Time the AccessPolicy was created in UTC.
         /// </summary>
         public readonly string? CreateTime;
@@ -68,7 +67,6 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         /// </summary>
         public readonly string Title;
         /// <summary>
-        /// -
         /// Time the AccessPolicy was updated in UTC.
         /// </summary>
         public readonly string? UpdateTime;

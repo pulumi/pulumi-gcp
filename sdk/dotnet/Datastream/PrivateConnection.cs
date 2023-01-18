@@ -76,6 +76,7 @@ namespace Pulumi.Gcp.Datastream
 
         /// <summary>
         /// The PrivateConnection error in case of failure.
+        /// Structure is documented below.
         /// </summary>
         [Output("errors")]
         public Output<ImmutableArray<Outputs.PrivateConnectionError>> Errors { get; private set; } = null!;
@@ -235,6 +236,7 @@ namespace Pulumi.Gcp.Datastream
 
         /// <summary>
         /// The PrivateConnection error in case of failure.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.PrivateConnectionErrorGetArgs> Errors
         {

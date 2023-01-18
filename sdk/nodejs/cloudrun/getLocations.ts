@@ -19,16 +19,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const available = pulumi.output(gcp.cloudrun.getLocations());
+ * const available = gcp.cloudrun.getLocations({});
  * ```
  */
 export function getLocations(args?: GetLocationsArgs, opts?: pulumi.InvokeOptions): Promise<GetLocationsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:cloudrun/getLocations:getLocations", {
         "project": args.project,
     }, opts);
@@ -59,9 +56,26 @@ export interface GetLocationsResult {
     readonly locations: string[];
     readonly project: string;
 }
-
+/**
+ * Get Cloud Run locations available for a project.
+ *
+ * To get more information about Cloud Run, see:
+ *
+ * * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1/projects.locations)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/run/docs/)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const available = gcp.cloudrun.getLocations({});
+ * ```
+ */
 export function getLocationsOutput(args?: GetLocationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLocationsResult> {
-    return pulumi.output(args).apply(a => getLocations(a, opts))
+    return pulumi.output(args).apply((a: any) => getLocations(a, opts))
 }
 
 /**

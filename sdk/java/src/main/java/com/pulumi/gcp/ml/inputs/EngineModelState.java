@@ -68,14 +68,14 @@ public final class EngineModelState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name specified for the version when it was created.
+     * The name specified for the model.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name specified for the version when it was created.
+     * @return The name specified for the model.
      * 
      */
     public Optional<Output<String>> name() {
@@ -245,7 +245,7 @@ public final class EngineModelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name specified for the version when it was created.
+         * @param name The name specified for the model.
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class EngineModelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name specified for the version when it was created.
+         * @param name The name specified for the model.
          * 
          * @return builder
          * 

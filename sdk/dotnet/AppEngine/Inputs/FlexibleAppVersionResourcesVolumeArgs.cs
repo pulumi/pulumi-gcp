@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.AppEngine.Inputs
     public sealed class FlexibleAppVersionResourcesVolumeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        /// Unique name for the volume.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

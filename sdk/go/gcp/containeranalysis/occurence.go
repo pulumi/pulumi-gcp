@@ -58,8 +58,9 @@ type Occurence struct {
 	Attestation OccurenceAttestationOutput `pulumi:"attestation"`
 	// The time when the repository was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The note kind which explicitly denotes which of the occurrence details are specified. This field can be used as a filter
-	// in list requests.
+	// The note kind which explicitly denotes which of the occurrence
+	// details are specified. This field can be used as a filter in list
+	// requests.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The name of the occurrence.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -130,8 +131,9 @@ type occurenceState struct {
 	Attestation *OccurenceAttestation `pulumi:"attestation"`
 	// The time when the repository was created.
 	CreateTime *string `pulumi:"createTime"`
-	// The note kind which explicitly denotes which of the occurrence details are specified. This field can be used as a filter
-	// in list requests.
+	// The note kind which explicitly denotes which of the occurrence
+	// details are specified. This field can be used as a filter in list
+	// requests.
 	Kind *string `pulumi:"kind"`
 	// The name of the occurrence.
 	Name *string `pulumi:"name"`
@@ -165,8 +167,9 @@ type OccurenceState struct {
 	Attestation OccurenceAttestationPtrInput
 	// The time when the repository was created.
 	CreateTime pulumi.StringPtrInput
-	// The note kind which explicitly denotes which of the occurrence details are specified. This field can be used as a filter
-	// in list requests.
+	// The note kind which explicitly denotes which of the occurrence
+	// details are specified. This field can be used as a filter in list
+	// requests.
 	Kind pulumi.StringPtrInput
 	// The name of the occurrence.
 	Name pulumi.StringPtrInput
@@ -349,8 +352,9 @@ func (o OccurenceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Occurence) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The note kind which explicitly denotes which of the occurrence details are specified. This field can be used as a filter
-// in list requests.
+// The note kind which explicitly denotes which of the occurrence
+// details are specified. This field can be used as a filter in list
+// requests.
 func (o OccurenceOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *Occurence) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }

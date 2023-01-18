@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
     public sealed class TriggerGithubPullRequestGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Regex of branches to match.  Specify only one of branch or tag.
+        /// Regex of branches to match.
         /// </summary>
         [Input("branch", required: true)]
         public Input<string> Branch { get; set; } = null!;
@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         public Input<string>? CommentControl { get; set; }
 
         /// <summary>
-        /// Only trigger a build if the revision regex does NOT match the revision regex.
+        /// If true, branches that do NOT match the git_ref will trigger a build.
         /// </summary>
         [Input("invertRegex")]
         public Input<bool>? InvertRegex { get; set; }

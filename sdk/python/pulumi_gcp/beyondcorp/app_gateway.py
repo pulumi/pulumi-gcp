@@ -159,6 +159,7 @@ class _AppGatewayState:
         """
         Input properties used for looking up and filtering AppGateway resources.
         :param pulumi.Input[Sequence[pulumi.Input['AppGatewayAllocatedConnectionArgs']]] allocated_connections: A list of connections allocated for the Gateway.
+               Structure is documented below.
         :param pulumi.Input[str] display_name: An arbitrary user-provided name for the AppGateway.
         :param pulumi.Input[str] host_type: The type of hosting used by the AppGateway.
                Default value is `HOST_TYPE_UNSPECIFIED`.
@@ -200,6 +201,7 @@ class _AppGatewayState:
     def allocated_connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppGatewayAllocatedConnectionArgs']]]]:
         """
         A list of connections allocated for the Gateway.
+        Structure is documented below.
         """
         return pulumi.get(self, "allocated_connections")
 
@@ -544,6 +546,7 @@ class AppGateway(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AppGatewayAllocatedConnectionArgs']]]] allocated_connections: A list of connections allocated for the Gateway.
+               Structure is documented below.
         :param pulumi.Input[str] display_name: An arbitrary user-provided name for the AppGateway.
         :param pulumi.Input[str] host_type: The type of hosting used by the AppGateway.
                Default value is `HOST_TYPE_UNSPECIFIED`.
@@ -580,6 +583,7 @@ class AppGateway(pulumi.CustomResource):
     def allocated_connections(self) -> pulumi.Output[Sequence['outputs.AppGatewayAllocatedConnection']]:
         """
         A list of connections allocated for the Gateway.
+        Structure is documented below.
         """
         return pulumi.get(self, "allocated_connections")
 

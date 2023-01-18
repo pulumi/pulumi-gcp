@@ -45,9 +45,10 @@ public final class MetricMetricDescriptor {
      */
     private @Nullable String unit;
     /**
-     * @return The type of data that can be assigned to the label.
-     * Default value is `STRING`.
-     * Possible values are `BOOL`, `INT64`, and `STRING`.
+     * @return Whether the measurement is an integer, a floating-point number, etc.
+     * Some combinations of metricKind and valueType might not be supported.
+     * For counter metrics, set this to INT64.
+     * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, and `MONEY`.
      * 
      */
     private String valueType;
@@ -93,9 +94,10 @@ public final class MetricMetricDescriptor {
         return Optional.ofNullable(this.unit);
     }
     /**
-     * @return The type of data that can be assigned to the label.
-     * Default value is `STRING`.
-     * Possible values are `BOOL`, `INT64`, and `STRING`.
+     * @return Whether the measurement is an integer, a floating-point number, etc.
+     * Some combinations of metricKind and valueType might not be supported.
+     * For counter metrics, set this to INT64.
+     * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, and `MONEY`.
      * 
      */
     public String valueType() {

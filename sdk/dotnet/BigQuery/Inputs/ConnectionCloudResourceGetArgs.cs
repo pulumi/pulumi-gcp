@@ -13,7 +13,6 @@ namespace Pulumi.Gcp.BigQuery.Inputs
     public sealed class ConnectionCloudResourceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// -
         /// The account ID of the service created for the purpose of this connection.
         /// </summary>
         [Input("serviceAccountId")]

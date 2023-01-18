@@ -38,7 +38,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 //				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
+//					{
 //						Role: "roles/viewer",
 //						Members: []string{
 //							"user:jane@example.com",
@@ -53,7 +53,7 @@ import (
 //				Project:       pulumi.Any(google_cloudfunctions2_function.Function.Project),
 //				Location:      pulumi.Any(google_cloudfunctions2_function.Function.Location),
 //				CloudFunction: pulumi.Any(google_cloudfunctions2_function.Function.Name),
-//				PolicyData:    pulumi.String(admin.PolicyData),
+//				PolicyData:    *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

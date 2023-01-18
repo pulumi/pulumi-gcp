@@ -48,7 +48,7 @@ import (
 //				return err
 //			}
 //			_, err = billing.NewBudget(ctx, "budget", &billing.BudgetArgs{
-//				BillingAccount: pulumi.String(account.Id),
+//				BillingAccount: *pulumi.String(account.Id),
 //				DisplayName:    pulumi.String("Example Billing Budget"),
 //				Amount: &billing.BudgetAmountArgs{
 //					SpecifiedAmount: &billing.BudgetAmountSpecifiedAmountArgs{
@@ -98,7 +98,7 @@ import (
 //				return err
 //			}
 //			_, err = billing.NewBudget(ctx, "budget", &billing.BudgetArgs{
-//				BillingAccount: pulumi.String(account.Id),
+//				BillingAccount: *pulumi.String(account.Id),
 //				DisplayName:    pulumi.String("Example Billing Budget"),
 //				BudgetFilter: &billing.BudgetBudgetFilterArgs{
 //					Projects: pulumi.StringArray{
@@ -150,7 +150,7 @@ import (
 //				return err
 //			}
 //			_, err = billing.NewBudget(ctx, "budget", &billing.BudgetArgs{
-//				BillingAccount: pulumi.String(account.Id),
+//				BillingAccount: *pulumi.String(account.Id),
 //				DisplayName:    pulumi.String("Example Billing Budget"),
 //				BudgetFilter: &billing.BudgetBudgetFilterArgs{
 //					Projects: pulumi.StringArray{
@@ -224,7 +224,7 @@ import (
 //				return err
 //			}
 //			_, err = billing.NewBudget(ctx, "budget", &billing.BudgetArgs{
-//				BillingAccount: pulumi.String(account.Id),
+//				BillingAccount: *pulumi.String(account.Id),
 //				DisplayName:    pulumi.String("Example Billing Budget"),
 //				BudgetFilter: &billing.BudgetBudgetFilterArgs{
 //					Projects: pulumi.StringArray{
@@ -289,7 +289,7 @@ import (
 //				return err
 //			}
 //			_, err = billing.NewBudget(ctx, "budget", &billing.BudgetArgs{
-//				BillingAccount: pulumi.String(account.Id),
+//				BillingAccount: *pulumi.String(account.Id),
 //				DisplayName:    pulumi.String("Example Billing Budget"),
 //				BudgetFilter: &billing.BudgetBudgetFilterArgs{
 //					Projects: pulumi.StringArray{
@@ -376,7 +376,8 @@ type Budget struct {
 	BudgetFilter BudgetBudgetFilterOutput `pulumi:"budgetFilter"`
 	// User data for display name in UI. Must be <= 60 chars.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// Resource name of the budget. The resource name implies the scope of a budget. Values are of the form
+	// Resource name of the budget. The resource name
+	// implies the scope of a budget. Values are of the form
 	// billingAccounts/{billingAccountId}/budgets/{budgetId}.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Rules that trigger alerts (notifications of thresholds being
@@ -437,7 +438,8 @@ type budgetState struct {
 	BudgetFilter *BudgetBudgetFilter `pulumi:"budgetFilter"`
 	// User data for display name in UI. Must be <= 60 chars.
 	DisplayName *string `pulumi:"displayName"`
-	// Resource name of the budget. The resource name implies the scope of a budget. Values are of the form
+	// Resource name of the budget. The resource name
+	// implies the scope of a budget. Values are of the form
 	// billingAccounts/{billingAccountId}/budgets/{budgetId}.
 	Name *string `pulumi:"name"`
 	// Rules that trigger alerts (notifications of thresholds being
@@ -464,7 +466,8 @@ type BudgetState struct {
 	BudgetFilter BudgetBudgetFilterPtrInput
 	// User data for display name in UI. Must be <= 60 chars.
 	DisplayName pulumi.StringPtrInput
-	// Resource name of the budget. The resource name implies the scope of a budget. Values are of the form
+	// Resource name of the budget. The resource name
+	// implies the scope of a budget. Values are of the form
 	// billingAccounts/{billingAccountId}/budgets/{budgetId}.
 	Name pulumi.StringPtrInput
 	// Rules that trigger alerts (notifications of thresholds being
@@ -645,7 +648,8 @@ func (o BudgetOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Budget) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Resource name of the budget. The resource name implies the scope of a budget. Values are of the form
+// Resource name of the budget. The resource name
+// implies the scope of a budget. Values are of the form
 // billingAccounts/{billingAccountId}/budgets/{budgetId}.
 func (o BudgetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Budget) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)

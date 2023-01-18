@@ -11,9 +11,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GenericServiceTelemetry {
+    /**
+     * @return The full name of the resource that defines this service.
+     * Formatted as described in
+     * https://cloud.google.com/apis/design/resource_names.
+     * 
+     */
     private @Nullable String resourceName;
 
     private GenericServiceTelemetry() {}
+    /**
+     * @return The full name of the resource that defines this service.
+     * Formatted as described in
+     * https://cloud.google.com/apis/design/resource_names.
+     * 
+     */
     public Optional<String> resourceName() {
         return Optional.ofNullable(this.resourceName);
     }

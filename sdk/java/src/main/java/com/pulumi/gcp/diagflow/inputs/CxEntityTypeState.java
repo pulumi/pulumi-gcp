@@ -153,16 +153,16 @@ public final class CxEntityTypeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The unique identifier of the entity type. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent
-     * ID&gt;/entityTypes/&lt;Entity Type ID&gt;.
+     * The unique identifier of the entity type.
+     * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/entityTypes/&lt;Entity Type ID&gt;.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The unique identifier of the entity type. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent
-     * ID&gt;/entityTypes/&lt;Entity Type ID&gt;.
+     * @return The unique identifier of the entity type.
+     * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/entityTypes/&lt;Entity Type ID&gt;.
      * 
      */
     public Optional<Output<String>> name() {
@@ -433,8 +433,8 @@ public final class CxEntityTypeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The unique identifier of the entity type. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent
-         * ID&gt;/entityTypes/&lt;Entity Type ID&gt;.
+         * @param name The unique identifier of the entity type.
+         * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/entityTypes/&lt;Entity Type ID&gt;.
          * 
          * @return builder
          * 
@@ -445,8 +445,8 @@ public final class CxEntityTypeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The unique identifier of the entity type. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent
-         * ID&gt;/entityTypes/&lt;Entity Type ID&gt;.
+         * @param name The unique identifier of the entity type.
+         * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/entityTypes/&lt;Entity Type ID&gt;.
          * 
          * @return builder
          * 

@@ -14,7 +14,10 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     public sealed class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation
     {
         /// <summary>
-        /// A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
+        /// Only apply the transformation if the condition evaluates to true for the given RecordCondition. The conditions are allowed to reference fields that are not used in the actual transformation.
+        /// Example Use Cases:
+        /// - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range.
+        /// - Redact a field if the date of birth field is greater than 85.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition? Condition;

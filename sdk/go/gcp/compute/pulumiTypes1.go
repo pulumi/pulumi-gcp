@@ -2472,9 +2472,12 @@ func (o GetInstanceServiceAccountArrayOutput) Index(i pulumi.IntInput) GetInstan
 }
 
 type GetInstanceShieldedInstanceConfig struct {
+	// - Whether integrity monitoring is enabled for the instance.
 	EnableIntegrityMonitoring bool `pulumi:"enableIntegrityMonitoring"`
-	EnableSecureBoot          bool `pulumi:"enableSecureBoot"`
-	EnableVtpm                bool `pulumi:"enableVtpm"`
+	// - Whether secure boot is enabled for the instance.
+	EnableSecureBoot bool `pulumi:"enableSecureBoot"`
+	// - Whether the instance uses vTPM.
+	EnableVtpm bool `pulumi:"enableVtpm"`
 }
 
 // GetInstanceShieldedInstanceConfigInput is an input type that accepts GetInstanceShieldedInstanceConfigArgs and GetInstanceShieldedInstanceConfigOutput values.
@@ -2489,9 +2492,12 @@ type GetInstanceShieldedInstanceConfigInput interface {
 }
 
 type GetInstanceShieldedInstanceConfigArgs struct {
+	// - Whether integrity monitoring is enabled for the instance.
 	EnableIntegrityMonitoring pulumi.BoolInput `pulumi:"enableIntegrityMonitoring"`
-	EnableSecureBoot          pulumi.BoolInput `pulumi:"enableSecureBoot"`
-	EnableVtpm                pulumi.BoolInput `pulumi:"enableVtpm"`
+	// - Whether secure boot is enabled for the instance.
+	EnableSecureBoot pulumi.BoolInput `pulumi:"enableSecureBoot"`
+	// - Whether the instance uses vTPM.
+	EnableVtpm pulumi.BoolInput `pulumi:"enableVtpm"`
 }
 
 func (GetInstanceShieldedInstanceConfigArgs) ElementType() reflect.Type {
@@ -2545,14 +2551,17 @@ func (o GetInstanceShieldedInstanceConfigOutput) ToGetInstanceShieldedInstanceCo
 	return o
 }
 
+// - Whether integrity monitoring is enabled for the instance.
 func (o GetInstanceShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceShieldedInstanceConfig) bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolOutput)
 }
 
+// - Whether secure boot is enabled for the instance.
 func (o GetInstanceShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceShieldedInstanceConfig) bool { return v.EnableSecureBoot }).(pulumi.BoolOutput)
 }
 
+// - Whether the instance uses vTPM.
 func (o GetInstanceShieldedInstanceConfigOutput) EnableVtpm() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceShieldedInstanceConfig) bool { return v.EnableVtpm }).(pulumi.BoolOutput)
 }
@@ -2684,6 +2693,7 @@ func (o GetInstanceTemplateAdvancedMachineFeatureArrayOutput) Index(i pulumi.Int
 }
 
 type GetInstanceTemplateConfidentialInstanceConfig struct {
+	// Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
 	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
 }
 
@@ -2699,6 +2709,7 @@ type GetInstanceTemplateConfidentialInstanceConfigInput interface {
 }
 
 type GetInstanceTemplateConfidentialInstanceConfigArgs struct {
+	// Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
 	EnableConfidentialCompute pulumi.BoolInput `pulumi:"enableConfidentialCompute"`
 }
 
@@ -2753,6 +2764,7 @@ func (o GetInstanceTemplateConfidentialInstanceConfigOutput) ToGetInstanceTempla
 	return o
 }
 
+// Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
 func (o GetInstanceTemplateConfidentialInstanceConfigOutput) EnableConfidentialCompute() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceTemplateConfidentialInstanceConfig) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
 }
@@ -2810,7 +2822,8 @@ type GetInstanceTemplateDisk struct {
 	// The mode in which to attach this disk, either READ_WRITE
 	// or READ_ONLY. If you are attaching or creating a boot disk, this must
 	// read-write mode.
-	Mode             string   `pulumi:"mode"`
+	Mode string `pulumi:"mode"`
+	// (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// The name (**not self_link**)
 	// of the disk (such as those managed by `compute.Disk`) to attach.
@@ -2875,7 +2888,8 @@ type GetInstanceTemplateDiskArgs struct {
 	// The mode in which to attach this disk, either READ_WRITE
 	// or READ_ONLY. If you are attaching or creating a boot disk, this must
 	// read-write mode.
-	Mode             pulumi.StringInput      `pulumi:"mode"`
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringArrayInput `pulumi:"resourcePolicies"`
 	// The name (**not self_link**)
 	// of the disk (such as those managed by `compute.Disk`) to attach.
@@ -3012,6 +3026,7 @@ func (o GetInstanceTemplateDiskOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateDisk) string { return v.Mode }).(pulumi.StringOutput)
 }
 
+// (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
 func (o GetInstanceTemplateDiskOutput) ResourcePolicies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstanceTemplateDisk) []string { return v.ResourcePolicies }).(pulumi.StringArrayOutput)
 }
@@ -4789,9 +4804,12 @@ func (o GetInstanceTemplateServiceAccountArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetInstanceTemplateShieldedInstanceConfig struct {
+	// - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
 	EnableIntegrityMonitoring bool `pulumi:"enableIntegrityMonitoring"`
-	EnableSecureBoot          bool `pulumi:"enableSecureBoot"`
-	EnableVtpm                bool `pulumi:"enableVtpm"`
+	// - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+	EnableSecureBoot bool `pulumi:"enableSecureBoot"`
+	// - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+	EnableVtpm bool `pulumi:"enableVtpm"`
 }
 
 // GetInstanceTemplateShieldedInstanceConfigInput is an input type that accepts GetInstanceTemplateShieldedInstanceConfigArgs and GetInstanceTemplateShieldedInstanceConfigOutput values.
@@ -4806,9 +4824,12 @@ type GetInstanceTemplateShieldedInstanceConfigInput interface {
 }
 
 type GetInstanceTemplateShieldedInstanceConfigArgs struct {
+	// - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
 	EnableIntegrityMonitoring pulumi.BoolInput `pulumi:"enableIntegrityMonitoring"`
-	EnableSecureBoot          pulumi.BoolInput `pulumi:"enableSecureBoot"`
-	EnableVtpm                pulumi.BoolInput `pulumi:"enableVtpm"`
+	// - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+	EnableSecureBoot pulumi.BoolInput `pulumi:"enableSecureBoot"`
+	// - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+	EnableVtpm pulumi.BoolInput `pulumi:"enableVtpm"`
 }
 
 func (GetInstanceTemplateShieldedInstanceConfigArgs) ElementType() reflect.Type {
@@ -4862,14 +4883,17 @@ func (o GetInstanceTemplateShieldedInstanceConfigOutput) ToGetInstanceTemplateSh
 	return o
 }
 
+// - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
 func (o GetInstanceTemplateShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceTemplateShieldedInstanceConfig) bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolOutput)
 }
 
+// - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
 func (o GetInstanceTemplateShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceTemplateShieldedInstanceConfig) bool { return v.EnableSecureBoot }).(pulumi.BoolOutput)
 }
 
+// - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
 func (o GetInstanceTemplateShieldedInstanceConfigOutput) EnableVtpm() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceTemplateShieldedInstanceConfig) bool { return v.EnableVtpm }).(pulumi.BoolOutput)
 }

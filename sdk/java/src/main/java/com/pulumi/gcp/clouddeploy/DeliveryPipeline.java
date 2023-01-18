@@ -211,16 +211,14 @@ public class DeliveryPipeline extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete
-     * requests to ensure the client has an up-to-date value before proceeding.
+     * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
     @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
-     * @return This checksum is computed by the server based on the value of other fields, and may be sent on update and delete
-     * requests to ensure the client has an up-to-date value before proceeding.
+     * @return This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
     public Output<String> etag() {

@@ -30,16 +30,36 @@ public final class DomainMappingStatusResourceRecordArgs extends com.pulumi.reso
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Data for this record. Values vary by record type, as defined in RFC 1035
+     * (section 5) and RFC 1034 (section 3.6.1).
+     * 
+     */
     @Import(name="rrdata")
     private @Nullable Output<String> rrdata;
 
+    /**
+     * @return Data for this record. Values vary by record type, as defined in RFC 1035
+     * (section 5) and RFC 1034 (section 3.6.1).
+     * 
+     */
     public Optional<Output<String>> rrdata() {
         return Optional.ofNullable(this.rrdata);
     }
 
+    /**
+     * Resource record type. Example: `AAAA`.
+     * Possible values are `A`, `AAAA`, and `CNAME`.
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return Resource record type. Example: `AAAA`.
+     * Possible values are `A`, `AAAA`, and `CNAME`.
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -91,20 +111,48 @@ public final class DomainMappingStatusResourceRecordArgs extends com.pulumi.reso
             return name(Output.of(name));
         }
 
+        /**
+         * @param rrdata Data for this record. Values vary by record type, as defined in RFC 1035
+         * (section 5) and RFC 1034 (section 3.6.1).
+         * 
+         * @return builder
+         * 
+         */
         public Builder rrdata(@Nullable Output<String> rrdata) {
             $.rrdata = rrdata;
             return this;
         }
 
+        /**
+         * @param rrdata Data for this record. Values vary by record type, as defined in RFC 1035
+         * (section 5) and RFC 1034 (section 3.6.1).
+         * 
+         * @return builder
+         * 
+         */
         public Builder rrdata(String rrdata) {
             return rrdata(Output.of(rrdata));
         }
 
+        /**
+         * @param type Resource record type. Example: `AAAA`.
+         * Possible values are `A`, `AAAA`, and `CNAME`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type Resource record type. Example: `AAAA`.
+         * Possible values are `A`, `AAAA`, and `CNAME`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

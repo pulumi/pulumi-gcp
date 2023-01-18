@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
     public sealed class TableExternalDataConfiguration
     {
         /// <summary>
-        /// - Let BigQuery try to autodetect the schema
+        /// Let BigQuery try to autodetect the schema
         /// and format of the table.
         /// </summary>
         public readonly bool Autodetect;

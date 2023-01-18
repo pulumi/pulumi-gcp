@@ -87,7 +87,8 @@ type Service struct {
 	// up to 2000 characters, spread across all key-value pairs.
 	// Metadata that goes beyond any these limits will be rejected.
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
-	// The resource name for the service in the format 'projects/*/locations/*/namespaces/*/services/*'.
+	// The resource name for the service in the
+	// format `projects/*/locations/*/namespaces/*/services/*`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource name of the namespace this service will belong to.
 	Namespace pulumi.StringOutput `pulumi:"namespace"`
@@ -136,7 +137,8 @@ type serviceState struct {
 	// up to 2000 characters, spread across all key-value pairs.
 	// Metadata that goes beyond any these limits will be rejected.
 	Metadata map[string]string `pulumi:"metadata"`
-	// The resource name for the service in the format 'projects/*/locations/*/namespaces/*/services/*'.
+	// The resource name for the service in the
+	// format `projects/*/locations/*/namespaces/*/services/*`.
 	Name *string `pulumi:"name"`
 	// The resource name of the namespace this service will belong to.
 	Namespace *string `pulumi:"namespace"`
@@ -151,7 +153,8 @@ type ServiceState struct {
 	// up to 2000 characters, spread across all key-value pairs.
 	// Metadata that goes beyond any these limits will be rejected.
 	Metadata pulumi.StringMapInput
-	// The resource name for the service in the format 'projects/*/locations/*/namespaces/*/services/*'.
+	// The resource name for the service in the
+	// format `projects/*/locations/*/namespaces/*/services/*`.
 	Name pulumi.StringPtrInput
 	// The resource name of the namespace this service will belong to.
 	Namespace pulumi.StringPtrInput
@@ -286,7 +289,8 @@ func (o ServiceOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
-// The resource name for the service in the format 'projects/*/locations/*/namespaces/*/services/*'.
+// The resource name for the service in the
+// format `projects/*/locations/*/namespaces/*/services/*`.
 func (o ServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
         /// handle this extension, the client should consider this to be an error).
         /// </summary>
         public readonly bool? Critical;
+        /// <summary>
+        /// Required. Describes how some of the technical fields in a certificate should be populated.
+        /// Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId> ObectIds;
         /// <summary>
         /// The value of this X.509 extension. A base64-encoded string.

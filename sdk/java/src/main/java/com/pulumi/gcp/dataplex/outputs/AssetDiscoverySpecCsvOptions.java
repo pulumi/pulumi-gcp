@@ -19,7 +19,7 @@ public final class AssetDiscoverySpecCsvOptions {
      */
     private @Nullable String delimiter;
     /**
-     * @return Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+     * @return Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
      * 
      */
     private @Nullable Boolean disableTypeInference;
@@ -43,7 +43,7 @@ public final class AssetDiscoverySpecCsvOptions {
         return Optional.ofNullable(this.delimiter);
     }
     /**
-     * @return Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+     * @return Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
      * 
      */
     public Optional<Boolean> disableTypeInference() {

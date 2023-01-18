@@ -18,6 +18,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("nodePoolSoakDuration")]
         public Input<string>? NodePoolSoakDuration { get; set; }
 
+        /// <summary>
+        /// Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+        /// </summary>
         [Input("standardRolloutPolicy")]
         public Input<Inputs.ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs>? StandardRolloutPolicy { get; set; }
 

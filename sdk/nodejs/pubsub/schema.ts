@@ -36,6 +36,7 @@ import * as utilities from "../utilities";
  *     }
  *   ]
  * }
+ *
  * `,
  *     type: "AVRO",
  * });

@@ -79,7 +79,7 @@ public final class CxWebhookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of Service Directory service.
+     * Configuration for a generic web service.
      * Structure is documented below.
      * 
      */
@@ -87,7 +87,7 @@ public final class CxWebhookState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<CxWebhookGenericWebServiceArgs> genericWebService;
 
     /**
-     * @return The name of Service Directory service.
+     * @return Configuration for a generic web service.
      * Structure is documented below.
      * 
      */
@@ -96,16 +96,16 @@ public final class CxWebhookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The unique identifier of the webhook. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent
-     * ID&gt;/webhooks/&lt;Webhook ID&gt;.
+     * The unique identifier of the webhook.
+     * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/webhooks/&lt;Webhook ID&gt;.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The unique identifier of the webhook. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent
-     * ID&gt;/webhooks/&lt;Webhook ID&gt;.
+     * @return The unique identifier of the webhook.
+     * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/webhooks/&lt;Webhook ID&gt;.
      * 
      */
     public Optional<Output<String>> name() {
@@ -162,18 +162,14 @@ public final class CxWebhookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-     * be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow
-     * ID&gt;.
+     * Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
      * 
      */
     @Import(name="startFlow")
     private @Nullable Output<String> startFlow;
 
     /**
-     * @return Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-     * be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow
-     * ID&gt;.
+     * @return Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
      * 
      */
     public Optional<Output<String>> startFlow() {
@@ -314,7 +310,7 @@ public final class CxWebhookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param genericWebService The name of Service Directory service.
+         * @param genericWebService Configuration for a generic web service.
          * Structure is documented below.
          * 
          * @return builder
@@ -326,7 +322,7 @@ public final class CxWebhookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param genericWebService The name of Service Directory service.
+         * @param genericWebService Configuration for a generic web service.
          * Structure is documented below.
          * 
          * @return builder
@@ -337,8 +333,8 @@ public final class CxWebhookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The unique identifier of the webhook. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent
-         * ID&gt;/webhooks/&lt;Webhook ID&gt;.
+         * @param name The unique identifier of the webhook.
+         * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/webhooks/&lt;Webhook ID&gt;.
          * 
          * @return builder
          * 
@@ -349,8 +345,8 @@ public final class CxWebhookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The unique identifier of the webhook. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent
-         * ID&gt;/webhooks/&lt;Webhook ID&gt;.
+         * @param name The unique identifier of the webhook.
+         * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/webhooks/&lt;Webhook ID&gt;.
          * 
          * @return builder
          * 
@@ -427,9 +423,7 @@ public final class CxWebhookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startFlow Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-         * be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow
-         * ID&gt;.
+         * @param startFlow Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
          * 
          * @return builder
          * 
@@ -440,9 +434,7 @@ public final class CxWebhookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startFlow Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-         * be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow
-         * ID&gt;.
+         * @param startFlow Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
          * 
          * @return builder
          * 

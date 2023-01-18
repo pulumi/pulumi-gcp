@@ -13,7 +13,8 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class InstanceTemplateDiskSourceImageEncryptionKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The self link of the encryption key that is stored in Google Cloud KMS
+        /// The self link of the encryption key that is
+        /// stored in Google Cloud KMS.
         /// </summary>
         [Input("kmsKeySelfLink", required: true)]
         public Input<string> KmsKeySelfLink { get; set; } = null!;

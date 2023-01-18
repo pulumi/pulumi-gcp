@@ -18,7 +18,6 @@ public final class AttestorAttestationAuthorityNoteArgs extends com.pulumi.resou
     public static final AttestorAttestationAuthorityNoteArgs Empty = new AttestorAttestationAuthorityNoteArgs();
 
     /**
-     * - 
      * This field will contain the service account email address that
      * this Attestor will use as the principal when querying Container
      * Analysis. Attestor administrators must grant this service account
@@ -34,8 +33,7 @@ public final class AttestorAttestationAuthorityNoteArgs extends com.pulumi.resou
     private @Nullable Output<String> delegationServiceAccountEmail;
 
     /**
-     * @return -
-     * This field will contain the service account email address that
+     * @return This field will contain the service account email address that
      * this Attestor will use as the principal when querying Container
      * Analysis. Attestor administrators must grant this service account
      * the IAM role needed to read attestations from the noteReference in
@@ -133,8 +131,7 @@ public final class AttestorAttestationAuthorityNoteArgs extends com.pulumi.resou
         }
 
         /**
-         * @param delegationServiceAccountEmail -
-         * This field will contain the service account email address that
+         * @param delegationServiceAccountEmail This field will contain the service account email address that
          * this Attestor will use as the principal when querying Container
          * Analysis. Attestor administrators must grant this service account
          * the IAM role needed to read attestations from the noteReference in
@@ -153,8 +150,7 @@ public final class AttestorAttestationAuthorityNoteArgs extends com.pulumi.resou
         }
 
         /**
-         * @param delegationServiceAccountEmail -
-         * This field will contain the service account email address that
+         * @param delegationServiceAccountEmail This field will contain the service account email address that
          * this Attestor will use as the principal when querying Container
          * Analysis. Attestor administrators must grant this service account
          * the IAM role needed to read attestations from the noteReference in

@@ -14,12 +14,10 @@ namespace Pulumi.Gcp.BigQuery.Outputs
     public sealed class ConnectionAzure
     {
         /// <summary>
-        /// -
         /// The name of the Azure Active Directory Application.
         /// </summary>
         public readonly string? Application;
         /// <summary>
-        /// -
         /// The client id of the Azure Active Directory Application.
         /// </summary>
         public readonly string? ClientId;
@@ -28,12 +26,10 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly string CustomerTenantId;
         /// <summary>
-        /// -
         /// The object id of the Azure Active Directory Application.
         /// </summary>
         public readonly string? ObjectId;
         /// <summary>
-        /// -
         /// The URL user will be redirected to after granting consent during connection setup.
         /// </summary>
         public readonly string? RedirectUri;

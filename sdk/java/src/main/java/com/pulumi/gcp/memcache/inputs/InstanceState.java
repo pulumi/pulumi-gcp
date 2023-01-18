@@ -41,7 +41,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * - 
      * Output only. The time when the policy was created.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits
@@ -51,8 +50,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> createTime;
 
     /**
-     * @return -
-     * Output only. The time when the policy was created.
+     * @return Output only. The time when the policy was created.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits
      * 
@@ -125,6 +123,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Output only. Published maintenance schedule.
+     * Structure is documented below.
      * 
      */
     @Import(name="maintenanceSchedules")
@@ -132,6 +131,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Output only. Published maintenance schedule.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<InstanceMaintenanceScheduleArgs>>> maintenanceSchedules() {
@@ -155,6 +155,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Additional information about the instance state, if available.
+     * Structure is documented below.
      * 
      */
     @Import(name="memcacheNodes")
@@ -162,6 +163,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Additional information about the instance state, if available.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<InstanceMemcacheNodeArgs>>> memcacheNodes() {
@@ -368,8 +370,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime -
-         * Output only. The time when the policy was created.
+         * @param createTime Output only. The time when the policy was created.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
          * resolution and up to nine fractional digits
          * 
@@ -382,8 +383,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime -
-         * Output only. The time when the policy was created.
+         * @param createTime Output only. The time when the policy was created.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
          * resolution and up to nine fractional digits
          * 
@@ -482,6 +482,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param maintenanceSchedules Output only. Published maintenance schedule.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -493,6 +494,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param maintenanceSchedules Output only. Published maintenance schedule.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -503,6 +505,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param maintenanceSchedules Output only. Published maintenance schedule.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -534,6 +537,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param memcacheNodes Additional information about the instance state, if available.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -545,6 +549,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param memcacheNodes Additional information about the instance state, if available.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -555,6 +560,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param memcacheNodes Additional information about the instance state, if available.
+         * Structure is documented below.
          * 
          * @return builder
          * 

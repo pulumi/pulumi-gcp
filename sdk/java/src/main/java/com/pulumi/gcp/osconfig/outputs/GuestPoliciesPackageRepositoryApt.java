@@ -36,7 +36,7 @@ public final class GuestPoliciesPackageRepositoryApt {
      */
     private @Nullable String gpgKey;
     /**
-     * @return URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
+     * @return URI for this repository.
      * 
      */
     private String uri;
@@ -74,7 +74,7 @@ public final class GuestPoliciesPackageRepositoryApt {
         return Optional.ofNullable(this.gpgKey);
     }
     /**
-     * @return URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
+     * @return URI for this repository.
      * 
      */
     public String uri() {

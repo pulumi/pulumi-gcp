@@ -57,6 +57,9 @@ class DeliveryPipelineConditionPipelineReadyConditionArgs:
     def __init__(__self__, *,
                  status: Optional[pulumi.Input[bool]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] update_time: Output only. Most recent time at which the pipeline was updated.
+        """
         if status is not None:
             pulumi.set(__self__, "status", status)
         if update_time is not None:
@@ -74,6 +77,9 @@ class DeliveryPipelineConditionPipelineReadyConditionArgs:
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Most recent time at which the pipeline was updated.
+        """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
@@ -87,6 +93,9 @@ class DeliveryPipelineConditionTargetsPresentConditionArgs:
                  missing_targets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  status: Optional[pulumi.Input[bool]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] update_time: Output only. Most recent time at which the pipeline was updated.
+        """
         if missing_targets is not None:
             pulumi.set(__self__, "missing_targets", missing_targets)
         if status is not None:
@@ -115,6 +124,9 @@ class DeliveryPipelineConditionTargetsPresentConditionArgs:
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Most recent time at which the pipeline was updated.
+        """
         return pulumi.get(self, "update_time")
 
     @update_time.setter

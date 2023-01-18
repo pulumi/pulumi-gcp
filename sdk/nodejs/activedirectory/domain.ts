@@ -79,8 +79,8 @@ export class Domain extends pulumi.CustomResource {
      */
     public readonly domainName!: pulumi.Output<string>;
     /**
-     * The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would
-     * be chosen for an Active Directory set up on an internal network.
+     * The fully-qualified domain name of the exposed domain used by clients to connect to the service.
+     * Similar to what would be chosen for an Active Directory set up on an internal network.
      */
     public /*out*/ readonly fqdn!: pulumi.Output<string>;
     /**
@@ -93,7 +93,7 @@ export class Domain extends pulumi.CustomResource {
      */
     public readonly locations!: pulumi.Output<string[]>;
     /**
-     * The unique name of the domain using the format: 'projects/{project}/locations/global/domains/{domainName}'.
+     * The unique name of the domain using the format: `projects/{project}/locations/global/domains/{domainName}`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -175,8 +175,8 @@ export interface DomainState {
      */
     domainName?: pulumi.Input<string>;
     /**
-     * The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would
-     * be chosen for an Active Directory set up on an internal network.
+     * The fully-qualified domain name of the exposed domain used by clients to connect to the service.
+     * Similar to what would be chosen for an Active Directory set up on an internal network.
      */
     fqdn?: pulumi.Input<string>;
     /**
@@ -189,7 +189,7 @@ export interface DomainState {
      */
     locations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The unique name of the domain using the format: 'projects/{project}/locations/global/domains/{domainName}'.
+     * The unique name of the domain using the format: `projects/{project}/locations/global/domains/{domainName}`.
      */
     name?: pulumi.Input<string>;
     /**

@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class ClusterClusterConfigMasterConfig
     {
         /// <summary>
-        /// The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
+        /// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterClusterConfigMasterConfigAccelerator> Accelerators;
         /// <summary>
@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         public readonly ImmutableArray<string> InstanceNames;
         /// <summary>
         /// The name of a Google Compute Engine machine type
-        /// to create for the worker nodes. If not specified, GCP will default to a predetermined
+        /// to create for the master. If not specified, GCP will default to a predetermined
         /// computed value (currently `n1-standard-4`).
         /// </summary>
         public readonly string? MachineType;
@@ -41,8 +41,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly string? MinCpuPlatform;
         /// <summary>
-        /// Specifies the number of preemptible nodes to create.
-        /// Defaults to 0.
+        /// Specifies the number of master nodes to create.
+        /// If not specified, GCP will default to a predetermined computed value (currently 1).
         /// </summary>
         public readonly int? NumInstances;
 

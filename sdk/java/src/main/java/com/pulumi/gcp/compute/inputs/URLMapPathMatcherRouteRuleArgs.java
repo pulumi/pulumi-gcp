@@ -23,9 +23,9 @@ public final class URLMapPathMatcherRouteRuleArgs extends com.pulumi.resources.R
 
     /**
      * Specifies changes to request and response headers that need to take effect for
-     * the selected backendService.
-     * headerAction specified here take effect before headerAction in the enclosing
-     * HttpRouteRule, PathMatcher and UrlMap.
+     * the selected backendService. The headerAction specified here are applied before
+     * the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].r
+     * outeAction.weightedBackendService.backendServiceWeightAction[].headerAction
      * Structure is documented below.
      * 
      */
@@ -34,9 +34,9 @@ public final class URLMapPathMatcherRouteRuleArgs extends com.pulumi.resources.R
 
     /**
      * @return Specifies changes to request and response headers that need to take effect for
-     * the selected backendService.
-     * headerAction specified here take effect before headerAction in the enclosing
-     * HttpRouteRule, PathMatcher and UrlMap.
+     * the selected backendService. The headerAction specified here are applied before
+     * the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].r
+     * outeAction.weightedBackendService.backendServiceWeightAction[].headerAction
      * Structure is documented below.
      * 
      */
@@ -128,14 +128,26 @@ public final class URLMapPathMatcherRouteRuleArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The backend service or backend bucket link that should be matched by this test.
+     * The backend service resource to which traffic is
+     * directed if this rule is matched. If routeAction is additionally specified,
+     * advanced routing actions like URL Rewrites, etc. take effect prior to sending
+     * the request to the backend. However, if service is specified, routeAction cannot
+     * contain any weightedBackendService s. Conversely, if routeAction specifies any
+     * weightedBackendServices, service must not be specified. Only one of urlRedirect,
+     * service or routeAction.weightedBackendService must be set.
      * 
      */
     @Import(name="service")
     private @Nullable Output<String> service;
 
     /**
-     * @return The backend service or backend bucket link that should be matched by this test.
+     * @return The backend service resource to which traffic is
+     * directed if this rule is matched. If routeAction is additionally specified,
+     * advanced routing actions like URL Rewrites, etc. take effect prior to sending
+     * the request to the backend. However, if service is specified, routeAction cannot
+     * contain any weightedBackendService s. Conversely, if routeAction specifies any
+     * weightedBackendServices, service must not be specified. Only one of urlRedirect,
+     * service or routeAction.weightedBackendService must be set.
      * 
      */
     public Optional<Output<String>> service() {
@@ -194,9 +206,9 @@ public final class URLMapPathMatcherRouteRuleArgs extends com.pulumi.resources.R
 
         /**
          * @param headerAction Specifies changes to request and response headers that need to take effect for
-         * the selected backendService.
-         * headerAction specified here take effect before headerAction in the enclosing
-         * HttpRouteRule, PathMatcher and UrlMap.
+         * the selected backendService. The headerAction specified here are applied before
+         * the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].r
+         * outeAction.weightedBackendService.backendServiceWeightAction[].headerAction
          * Structure is documented below.
          * 
          * @return builder
@@ -209,9 +221,9 @@ public final class URLMapPathMatcherRouteRuleArgs extends com.pulumi.resources.R
 
         /**
          * @param headerAction Specifies changes to request and response headers that need to take effect for
-         * the selected backendService.
-         * headerAction specified here take effect before headerAction in the enclosing
-         * HttpRouteRule, PathMatcher and UrlMap.
+         * the selected backendService. The headerAction specified here are applied before
+         * the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].r
+         * outeAction.weightedBackendService.backendServiceWeightAction[].headerAction
          * Structure is documented below.
          * 
          * @return builder
@@ -334,7 +346,13 @@ public final class URLMapPathMatcherRouteRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param service The backend service or backend bucket link that should be matched by this test.
+         * @param service The backend service resource to which traffic is
+         * directed if this rule is matched. If routeAction is additionally specified,
+         * advanced routing actions like URL Rewrites, etc. take effect prior to sending
+         * the request to the backend. However, if service is specified, routeAction cannot
+         * contain any weightedBackendService s. Conversely, if routeAction specifies any
+         * weightedBackendServices, service must not be specified. Only one of urlRedirect,
+         * service or routeAction.weightedBackendService must be set.
          * 
          * @return builder
          * 
@@ -345,7 +363,13 @@ public final class URLMapPathMatcherRouteRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param service The backend service or backend bucket link that should be matched by this test.
+         * @param service The backend service resource to which traffic is
+         * directed if this rule is matched. If routeAction is additionally specified,
+         * advanced routing actions like URL Rewrites, etc. take effect prior to sending
+         * the request to the backend. However, if service is specified, routeAction cannot
+         * contain any weightedBackendService s. Conversely, if routeAction specifies any
+         * weightedBackendServices, service must not be specified. Only one of urlRedirect,
+         * service or routeAction.weightedBackendService must be set.
          * 
          * @return builder
          * 

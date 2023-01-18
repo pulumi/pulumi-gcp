@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<Inputs.ConnectionCloudSqlCredentialGetArgs> Credential { get; set; } = null!;
 
         /// <summary>
-        /// Cloud Spanner database in the form `project/instance/database'
+        /// Database name.
         /// </summary>
         [Input("database", required: true)]
         public Input<string> Database { get; set; } = null!;

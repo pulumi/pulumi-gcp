@@ -13,9 +13,21 @@ public final class BucketEncryptionArgs extends com.pulumi.resources.ResourceArg
 
     public static final BucketEncryptionArgs Empty = new BucketEncryptionArgs();
 
+    /**
+     * The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
+     * You must pay attention to whether the crypto key is available in the location that this bucket is created in.
+     * See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
+     * 
+     */
     @Import(name="defaultKmsKeyName", required=true)
     private Output<String> defaultKmsKeyName;
 
+    /**
+     * @return The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
+     * You must pay attention to whether the crypto key is available in the location that this bucket is created in.
+     * See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
+     * 
+     */
     public Output<String> defaultKmsKeyName() {
         return this.defaultKmsKeyName;
     }
@@ -44,11 +56,27 @@ public final class BucketEncryptionArgs extends com.pulumi.resources.ResourceArg
             $ = new BucketEncryptionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param defaultKmsKeyName The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
+         * You must pay attention to whether the crypto key is available in the location that this bucket is created in.
+         * See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultKmsKeyName(Output<String> defaultKmsKeyName) {
             $.defaultKmsKeyName = defaultKmsKeyName;
             return this;
         }
 
+        /**
+         * @param defaultKmsKeyName The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
+         * You must pay attention to whether the crypto key is available in the location that this bucket is created in.
+         * See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultKmsKeyName(String defaultKmsKeyName) {
             return defaultKmsKeyName(Output.of(defaultKmsKeyName));
         }

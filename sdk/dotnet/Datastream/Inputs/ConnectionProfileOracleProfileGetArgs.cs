@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Datastream.Inputs
         public Input<string> DatabaseService { get; set; } = null!;
 
         /// <summary>
-        /// Hostname for the SSH tunnel.
+        /// Hostname for the Oracle connection.
         /// </summary>
         [Input("hostname", required: true)]
         public Input<string> Hostname { get; set; } = null!;
@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.Datastream.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// SSH password.
+        /// Password for the Oracle connection.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public Input<string>? Password
@@ -54,13 +54,13 @@ namespace Pulumi.Gcp.Datastream.Inputs
         }
 
         /// <summary>
-        /// Port for the SSH tunnel.
+        /// Port for the Oracle connection.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// Username for the SSH tunnel.
+        /// Username for the Oracle connection.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;

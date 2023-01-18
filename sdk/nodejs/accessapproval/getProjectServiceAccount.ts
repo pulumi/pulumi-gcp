@@ -30,11 +30,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getProjectServiceAccount(args: GetProjectServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectServiceAccountResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:accessapproval/getProjectServiceAccount:getProjectServiceAccount", {
         "projectId": args.projectId,
     }, opts);
@@ -69,9 +66,33 @@ export interface GetProjectServiceAccountResult {
     readonly name: string;
     readonly projectId: string;
 }
-
+/**
+ * Get the email address of a project's Access Approval service account.
+ *
+ * Each Google Cloud project has a unique service account used by Access Approval.
+ * When using Access Approval with a
+ * [custom signing key](https://cloud.google.com/cloud-provider-access-management/access-approval/docs/review-approve-access-requests-custom-keys),
+ * this account needs to be granted the `cloudkms.signerVerifier` IAM role on the
+ * Cloud KMS key used to sign approvals.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const serviceAccount = gcp.accessapproval.getProjectServiceAccount({
+ *     projectId: "my-project",
+ * });
+ * const iam = new gcp.kms.CryptoKeyIAMMember("iam", {
+ *     cryptoKeyId: google_kms_crypto_key.crypto_key.id,
+ *     role: "roles/cloudkms.signerVerifier",
+ *     member: serviceAccount.then(serviceAccount => `serviceAccount:${serviceAccount.accountEmail}`),
+ * });
+ * ```
+ */
 export function getProjectServiceAccountOutput(args: GetProjectServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectServiceAccountResult> {
-    return pulumi.output(args).apply(a => getProjectServiceAccount(a, opts))
+    return pulumi.output(args).apply((a: any) => getProjectServiceAccount(a, opts))
 }
 
 /**

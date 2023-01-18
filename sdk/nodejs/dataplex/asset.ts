@@ -92,7 +92,7 @@ export class Asset extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+     * The name of the asset.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -116,8 +116,7 @@ export class Asset extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and
-     * re-created with the same name.
+     * Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
     /**
@@ -236,7 +235,7 @@ export interface AssetState {
      */
     location?: pulumi.Input<string>;
     /**
-     * Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+     * The name of the asset.
      */
     name?: pulumi.Input<string>;
     /**
@@ -260,8 +259,7 @@ export interface AssetState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and
-     * re-created with the same name.
+     * Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
      */
     uid?: pulumi.Input<string>;
     /**
@@ -303,7 +301,7 @@ export interface AssetArgs {
      */
     location: pulumi.Input<string>;
     /**
-     * Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+     * The name of the asset.
      */
     name?: pulumi.Input<string>;
     /**

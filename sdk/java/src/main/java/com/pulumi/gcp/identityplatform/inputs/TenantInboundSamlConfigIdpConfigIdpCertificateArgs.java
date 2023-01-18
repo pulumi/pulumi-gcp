@@ -16,7 +16,6 @@ public final class TenantInboundSamlConfigIdpConfigIdpCertificateArgs extends co
     public static final TenantInboundSamlConfigIdpConfigIdpCertificateArgs Empty = new TenantInboundSamlConfigIdpConfigIdpCertificateArgs();
 
     /**
-     * - 
      * The x509 certificate
      * 
      */
@@ -24,8 +23,7 @@ public final class TenantInboundSamlConfigIdpConfigIdpCertificateArgs extends co
     private @Nullable Output<String> x509Certificate;
 
     /**
-     * @return -
-     * The x509 certificate
+     * @return The x509 certificate
      * 
      */
     public Optional<Output<String>> x509Certificate() {
@@ -57,8 +55,7 @@ public final class TenantInboundSamlConfigIdpConfigIdpCertificateArgs extends co
         }
 
         /**
-         * @param x509Certificate -
-         * The x509 certificate
+         * @param x509Certificate The x509 certificate
          * 
          * @return builder
          * 
@@ -69,8 +66,7 @@ public final class TenantInboundSamlConfigIdpConfigIdpCertificateArgs extends co
         }
 
         /**
-         * @param x509Certificate -
-         * The x509 certificate
+         * @param x509Certificate The x509 certificate
          * 
          * @return builder
          * 

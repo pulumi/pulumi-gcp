@@ -92,14 +92,16 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The gateway address for default routes to reach destination addresses outside this subnetwork.
+     * The gateway address for default routes to reach destination addresses
+     * outside this subnetwork.
      * 
      */
     @Import(name="gatewayAddress")
     private @Nullable Output<String> gatewayAddress;
 
     /**
-     * @return The gateway address for default routes to reach destination addresses outside this subnetwork.
+     * @return The gateway address for default routes to reach destination addresses
+     * outside this subnetwork.
      * 
      */
     public Optional<Output<String>> gatewayAddress() {
@@ -107,20 +109,20 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The range of IP addresses belonging to this subnetwork secondary
-     * range. Provide this property when you create the subnetwork.
-     * Ranges must be unique and non-overlapping with all primary and
-     * secondary IP ranges within a network. Only IPv4 is supported.
+     * The range of internal addresses that are owned by this subnetwork.
+     * Provide this property when you create the subnetwork. For example,
+     * 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
+     * non-overlapping within a network. Only IPv4 is supported.
      * 
      */
     @Import(name="ipCidrRange")
     private @Nullable Output<String> ipCidrRange;
 
     /**
-     * @return The range of IP addresses belonging to this subnetwork secondary
-     * range. Provide this property when you create the subnetwork.
-     * Ranges must be unique and non-overlapping with all primary and
-     * secondary IP ranges within a network. Only IPv4 is supported.
+     * @return The range of internal addresses that are owned by this subnetwork.
+     * Provide this property when you create the subnetwork. For example,
+     * 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
+     * non-overlapping within a network. Only IPv4 is supported.
      * 
      */
     public Optional<Output<String>> ipCidrRange() {
@@ -535,7 +537,8 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gatewayAddress The gateway address for default routes to reach destination addresses outside this subnetwork.
+         * @param gatewayAddress The gateway address for default routes to reach destination addresses
+         * outside this subnetwork.
          * 
          * @return builder
          * 
@@ -546,7 +549,8 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gatewayAddress The gateway address for default routes to reach destination addresses outside this subnetwork.
+         * @param gatewayAddress The gateway address for default routes to reach destination addresses
+         * outside this subnetwork.
          * 
          * @return builder
          * 
@@ -556,10 +560,10 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipCidrRange The range of IP addresses belonging to this subnetwork secondary
-         * range. Provide this property when you create the subnetwork.
-         * Ranges must be unique and non-overlapping with all primary and
-         * secondary IP ranges within a network. Only IPv4 is supported.
+         * @param ipCidrRange The range of internal addresses that are owned by this subnetwork.
+         * Provide this property when you create the subnetwork. For example,
+         * 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
+         * non-overlapping within a network. Only IPv4 is supported.
          * 
          * @return builder
          * 
@@ -570,10 +574,10 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipCidrRange The range of IP addresses belonging to this subnetwork secondary
-         * range. Provide this property when you create the subnetwork.
-         * Ranges must be unique and non-overlapping with all primary and
-         * secondary IP ranges within a network. Only IPv4 is supported.
+         * @param ipCidrRange The range of internal addresses that are owned by this subnetwork.
+         * Provide this property when you create the subnetwork. For example,
+         * 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
+         * non-overlapping within a network. Only IPv4 is supported.
          * 
          * @return builder
          * 

@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = gameservices.LookupGameServerDeploymentRollout(ctx, &gameservices.LookupGameServerDeploymentRolloutArgs{
+//			_, err := gameservices.LookupGameServerDeploymentRollout(ctx, &gameservices.LookupGameServerDeploymentRolloutArgs{
 //				DeploymentId: "tf-test-deployment-s8sn12jt2c",
 //			}, nil)
 //			if err != nil {
@@ -56,11 +56,20 @@ type LookupGameServerDeploymentRolloutArgs struct {
 
 // A collection of values returned by getGameServerDeploymentRollout.
 type LookupGameServerDeploymentRolloutResult struct {
-	DefaultGameServerConfig   string                                                   `pulumi:"defaultGameServerConfig"`
-	DeploymentId              string                                                   `pulumi:"deploymentId"`
+	// This field points to the game server config that is
+	// applied by default to all realms and clusters. For example,
+	// `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+	DefaultGameServerConfig string `pulumi:"defaultGameServerConfig"`
+	DeploymentId            string `pulumi:"deploymentId"`
+	// The gameServerConfigOverrides contains the per game server config
+	// overrides. The overrides are processed in the order they are listed. As
+	// soon as a match is found for a cluster, the rest of the list is not
+	// processed.  Structure is documented below.
 	GameServerConfigOverrides []GetGameServerDeploymentRolloutGameServerConfigOverride `pulumi:"gameServerConfigOverrides"`
 	// The provider-assigned unique ID for this managed resource.
-	Id   string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The resource id of the game server deployment
+	// eg: `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
 	Name string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -105,6 +114,9 @@ func (o LookupGameServerDeploymentRolloutResultOutput) ToLookupGameServerDeploym
 	return o
 }
 
+// This field points to the game server config that is
+// applied by default to all realms and clusters. For example,
+// `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
 func (o LookupGameServerDeploymentRolloutResultOutput) DefaultGameServerConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGameServerDeploymentRolloutResult) string { return v.DefaultGameServerConfig }).(pulumi.StringOutput)
 }
@@ -113,6 +125,10 @@ func (o LookupGameServerDeploymentRolloutResultOutput) DeploymentId() pulumi.Str
 	return o.ApplyT(func(v LookupGameServerDeploymentRolloutResult) string { return v.DeploymentId }).(pulumi.StringOutput)
 }
 
+// The gameServerConfigOverrides contains the per game server config
+// overrides. The overrides are processed in the order they are listed. As
+// soon as a match is found for a cluster, the rest of the list is not
+// processed.  Structure is documented below.
 func (o LookupGameServerDeploymentRolloutResultOutput) GameServerConfigOverrides() GetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutput {
 	return o.ApplyT(func(v LookupGameServerDeploymentRolloutResult) []GetGameServerDeploymentRolloutGameServerConfigOverride {
 		return v.GameServerConfigOverrides
@@ -124,6 +140,8 @@ func (o LookupGameServerDeploymentRolloutResultOutput) Id() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupGameServerDeploymentRolloutResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The resource id of the game server deployment
+// eg: `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
 func (o LookupGameServerDeploymentRolloutResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGameServerDeploymentRolloutResult) string { return v.Name }).(pulumi.StringOutput)
 }

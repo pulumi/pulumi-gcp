@@ -102,7 +102,8 @@ type SecurityScanConfig struct {
 	// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
 	// Defaults to 15.
 	MaxQps pulumi.IntPtrOutput `pulumi:"maxQps"`
-	// A server defined name for this index. Format: 'projects/{{project}}/scanConfigs/{{server_generated_id}}'
+	// A server defined name for this index. Format:
+	// `projects/{{project}}/scanConfigs/{{server_generated_id}}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -172,7 +173,8 @@ type securityScanConfigState struct {
 	// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
 	// Defaults to 15.
 	MaxQps *int `pulumi:"maxQps"`
-	// A server defined name for this index. Format: 'projects/{{project}}/scanConfigs/{{server_generated_id}}'
+	// A server defined name for this index. Format:
+	// `projects/{{project}}/scanConfigs/{{server_generated_id}}`
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -208,7 +210,8 @@ type SecurityScanConfigState struct {
 	// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
 	// Defaults to 15.
 	MaxQps pulumi.IntPtrInput
-	// A server defined name for this index. Format: 'projects/{{project}}/scanConfigs/{{server_generated_id}}'
+	// A server defined name for this index. Format:
+	// `projects/{{project}}/scanConfigs/{{server_generated_id}}`
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -418,7 +421,8 @@ func (o SecurityScanConfigOutput) MaxQps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SecurityScanConfig) pulumi.IntPtrOutput { return v.MaxQps }).(pulumi.IntPtrOutput)
 }
 
-// A server defined name for this index. Format: 'projects/{{project}}/scanConfigs/{{server_generated_id}}'
+// A server defined name for this index. Format:
+// `projects/{{project}}/scanConfigs/{{server_generated_id}}`
 func (o SecurityScanConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityScanConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

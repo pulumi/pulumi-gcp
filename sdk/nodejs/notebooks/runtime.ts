@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const runtimeGpu = new gcp.notebooks.Runtime("runtime_gpu", {
+ * const runtimeGpu = new gcp.notebooks.Runtime("runtimeGpu", {
  *     accessConfig: {
  *         accessType: "SINGLE_USER",
  *         runtimeOwner: "admin@hashicorptest.com",
@@ -83,7 +83,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const runtimeContainer = new gcp.notebooks.Runtime("runtime_container", {
+ * const runtimeContainer = new gcp.notebooks.Runtime("runtimeContainer", {
  *     accessConfig: {
  *         accessType: "SINGLE_USER",
  *         runtimeOwner: "admin@hashicorptest.com",
@@ -118,7 +118,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const runtimeContainer = new gcp.notebooks.Runtime("runtime_container", {
+ * const runtimeContainer = new gcp.notebooks.Runtime("runtimeContainer", {
  *     accessConfig: {
  *         accessType: "SINGLE_USER",
  *         runtimeOwner: "admin@hashicorptest.com",
@@ -149,7 +149,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const runtimeContainer = new gcp.notebooks.Runtime("runtime_container", {
+ * const runtimeContainer = new gcp.notebooks.Runtime("runtimeContainer", {
  *     accessConfig: {
  *         accessType: "SINGLE_USER",
  *         runtimeOwner: "admin@hashicorptest.com",
@@ -222,8 +222,9 @@ export class Runtime extends pulumi.CustomResource {
      */
     public readonly accessConfig!: pulumi.Output<outputs.notebooks.RuntimeAccessConfig | undefined>;
     /**
-     * The health state of this runtime. For a list of possible output values, see
-     * 'https://cloud.google.com/vertex-ai/docs/workbench/ reference/rest/v1/projects.locations.runtimes#healthstate'.
+     * The health state of this runtime. For a list of possible output
+     * values, see `https://cloud.google.com/vertex-ai/docs/workbench/
+     * reference/rest/v1/projects.locations.runtimes#healthstate`.
      */
     public /*out*/ readonly healthState!: pulumi.Output<string>;
     /**
@@ -231,7 +232,9 @@ export class Runtime extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Contains Runtime daemon metrics such as Service status and JupyterLab status
+     * Contains Runtime daemon metrics such as Service status and JupyterLab
+     * status
+     * Structure is documented below.
      */
     public /*out*/ readonly metrics!: pulumi.Output<outputs.notebooks.RuntimeMetric[]>;
     /**
@@ -310,8 +313,9 @@ export interface RuntimeState {
      */
     accessConfig?: pulumi.Input<inputs.notebooks.RuntimeAccessConfig>;
     /**
-     * The health state of this runtime. For a list of possible output values, see
-     * 'https://cloud.google.com/vertex-ai/docs/workbench/ reference/rest/v1/projects.locations.runtimes#healthstate'.
+     * The health state of this runtime. For a list of possible output
+     * values, see `https://cloud.google.com/vertex-ai/docs/workbench/
+     * reference/rest/v1/projects.locations.runtimes#healthstate`.
      */
     healthState?: pulumi.Input<string>;
     /**
@@ -319,7 +323,9 @@ export interface RuntimeState {
      */
     location?: pulumi.Input<string>;
     /**
-     * Contains Runtime daemon metrics such as Service status and JupyterLab status
+     * Contains Runtime daemon metrics such as Service status and JupyterLab
+     * status
+     * Structure is documented below.
      */
     metrics?: pulumi.Input<pulumi.Input<inputs.notebooks.RuntimeMetric>[]>;
     /**

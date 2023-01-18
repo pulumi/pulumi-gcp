@@ -11,21 +11,55 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DomainMappingStatusCondition {
+    /**
+     * @return Human readable message indicating details about the current status.
+     * 
+     */
     private @Nullable String message;
+    /**
+     * @return One-word CamelCase reason for the condition&#39;s current status.
+     * 
+     */
     private @Nullable String reason;
+    /**
+     * @return Status of the condition, one of True, False, Unknown.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return Resource record type. Example: `AAAA`.
+     * Possible values are `A`, `AAAA`, and `CNAME`.
+     * 
+     */
     private @Nullable String type;
 
     private DomainMappingStatusCondition() {}
+    /**
+     * @return Human readable message indicating details about the current status.
+     * 
+     */
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
+    /**
+     * @return One-word CamelCase reason for the condition&#39;s current status.
+     * 
+     */
     public Optional<String> reason() {
         return Optional.ofNullable(this.reason);
     }
+    /**
+     * @return Status of the condition, one of True, False, Unknown.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return Resource record type. Example: `AAAA`.
+     * Possible values are `A`, `AAAA`, and `CNAME`.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

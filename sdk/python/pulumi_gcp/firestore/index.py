@@ -138,7 +138,7 @@ class _IndexState:
                ordered `"ASCENDING"` (unless explicitly specified otherwise).
                Structure is documented below.
         :param pulumi.Input[str] name: A server defined name for this index. Format:
-               'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
+               `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] query_scope: The scope at which a query is run.
@@ -205,7 +205,7 @@ class _IndexState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         A server defined name for this index. Format:
-        'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
+        `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
         """
         return pulumi.get(self, "name")
 
@@ -441,7 +441,7 @@ class Index(pulumi.CustomResource):
                ordered `"ASCENDING"` (unless explicitly specified otherwise).
                Structure is documented below.
         :param pulumi.Input[str] name: A server defined name for this index. Format:
-               'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
+               `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] query_scope: The scope at which a query is run.
@@ -495,7 +495,7 @@ class Index(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         A server defined name for this index. Format:
-        'projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}'
+        `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/indexes/{{server_generated_id}}`
         """
         return pulumi.get(self, "name")
 

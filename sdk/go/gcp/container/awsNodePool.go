@@ -61,7 +61,7 @@ import (
 //					SubnetIds: pulumi.StringArray{
 //						pulumi.String("subnet-00000000000000000"),
 //					},
-//					Version:      pulumi.String(versions.ValidVersions[0]),
+//					Version:      *pulumi.String(versions.ValidVersions[0]),
 //					InstanceType: pulumi.String("t3.medium"),
 //					MainVolume: &container.AwsClusterControlPlaneMainVolumeArgs{
 //						Iops:       pulumi.Int(3000),
@@ -158,7 +158,7 @@ import (
 //					MaxPodsPerNode: pulumi.Int(110),
 //				},
 //				SubnetId: pulumi.String("subnet-00000000000000000"),
-//				Version:  pulumi.String(versions.ValidVersions[0]),
+//				Version:  *pulumi.String(versions.ValidVersions[0]),
 //				Annotations: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
@@ -207,8 +207,7 @@ type AwsNodePool struct {
 	Config AwsNodePoolConfigOutput `pulumi:"config"`
 	// Output only. The time at which this node pool was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-	// and delete requests to ensure the client has an up-to-date value before proceeding.
+	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -220,8 +219,7 @@ type AwsNodePool struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Output only. If set, there are currently changes in flight to the node pool.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
-	// Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING,
-	// RECONCILING, STOPPING, ERROR, DEGRADED
+	// Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
 	State pulumi.StringOutput `pulumi:"state"`
 	// The subnet where the node pool node run.
 	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
@@ -293,8 +291,7 @@ type awsNodePoolState struct {
 	Config *AwsNodePoolConfig `pulumi:"config"`
 	// Output only. The time at which this node pool was created.
 	CreateTime *string `pulumi:"createTime"`
-	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-	// and delete requests to ensure the client has an up-to-date value before proceeding.
+	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
@@ -306,8 +303,7 @@ type awsNodePoolState struct {
 	Project *string `pulumi:"project"`
 	// Output only. If set, there are currently changes in flight to the node pool.
 	Reconciling *bool `pulumi:"reconciling"`
-	// Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING,
-	// RECONCILING, STOPPING, ERROR, DEGRADED
+	// Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
 	State *string `pulumi:"state"`
 	// The subnet where the node pool node run.
 	SubnetId *string `pulumi:"subnetId"`
@@ -330,8 +326,7 @@ type AwsNodePoolState struct {
 	Config AwsNodePoolConfigPtrInput
 	// Output only. The time at which this node pool was created.
 	CreateTime pulumi.StringPtrInput
-	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-	// and delete requests to ensure the client has an up-to-date value before proceeding.
+	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
@@ -343,8 +338,7 @@ type AwsNodePoolState struct {
 	Project pulumi.StringPtrInput
 	// Output only. If set, there are currently changes in flight to the node pool.
 	Reconciling pulumi.BoolPtrInput
-	// Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING,
-	// RECONCILING, STOPPING, ERROR, DEGRADED
+	// Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
 	State pulumi.StringPtrInput
 	// The subnet where the node pool node run.
 	SubnetId pulumi.StringPtrInput
@@ -519,8 +513,7 @@ func (o AwsNodePoolOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsNodePool) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-// and delete requests to ensure the client has an up-to-date value before proceeding.
+// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 func (o AwsNodePoolOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsNodePool) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
@@ -550,8 +543,7 @@ func (o AwsNodePoolOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AwsNodePool) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }
 
-// Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING,
-// RECONCILING, STOPPING, ERROR, DEGRADED
+// Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
 func (o AwsNodePoolOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsNodePool) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

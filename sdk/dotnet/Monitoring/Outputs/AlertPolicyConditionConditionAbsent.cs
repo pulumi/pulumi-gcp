@@ -22,34 +22,31 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// resource or when aggregating streams across
         /// all members of a group of resources).
         /// Multiple aggregations are applied in the
-        /// order specified.This field is similar to the
-        /// one in the MetricService.ListTimeSeries
-        /// request. It is advisable to use the
-        /// ListTimeSeries method when debugging this
-        /// field.
+        /// order specified.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.AlertPolicyConditionConditionAbsentAggregation> Aggregations;
         /// <summary>
         /// The amount of time that a time series must
-        /// violate the threshold to be considered
+        /// fail to report new data to be considered
         /// failing. Currently, only values that are a
-        /// multiple of a minute--e.g., 0, 60, 120, or
-        /// 300 seconds--are supported. If an invalid
-        /// value is given, an error will be returned.
-        /// When choosing a duration, it is useful to
-        /// keep in mind the frequency of the underlying
-        /// time series data (which may also be affected
-        /// by any alignments specified in the
-        /// aggregations field); a good duration is long
-        /// enough so that a single outlier does not
-        /// generate spurious alerts, but short enough
-        /// that unhealthy states are detected and
-        /// alerted on quickly.
+        /// multiple of a minute--e.g. 60s, 120s, or 300s
+        /// --are supported.
         /// </summary>
         public readonly string Duration;
         /// <summary>
-        /// A logs-based filter.
+        /// A filter that identifies which time series
+        /// should be compared with the threshold.The
+        /// filter is similar to the one that is
+        /// specified in the
+        /// MetricService.ListTimeSeries request (that
+        /// call is useful to verify the time series
+        /// that will be retrieved / processed) and must
+        /// specify the metric type and optionally may
+        /// contain restrictions on resource type,
+        /// resource labels, and metric labels. This
+        /// field may not exceed 2048 Unicode characters
+        /// in length.
         /// </summary>
         public readonly string? Filter;
         /// <summary>
@@ -58,9 +55,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// condition to trigger. If unspecified, then
         /// the condition will trigger if the comparison
         /// is true for any of the time series that have
-        /// been identified by filter and aggregations,
-        /// or by the ratio, if denominator_filter and
-        /// denominator_aggregations are specified.
+        /// been identified by filter and aggregations.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AlertPolicyConditionConditionAbsentTrigger? Trigger;

@@ -12,8 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EnvironmentNodeConfig {
     /**
-     * @return -
-     * The current total number of gateway nodes that each environment currently has across
+     * @return The current total number of gateway nodes that each environment currently has across
      * all instances.
      * 
      */
@@ -35,8 +34,7 @@ public final class EnvironmentNodeConfig {
 
     private EnvironmentNodeConfig() {}
     /**
-     * @return -
-     * The current total number of gateway nodes that each environment currently has across
+     * @return The current total number of gateway nodes that each environment currently has across
      * all instances.
      * 
      */

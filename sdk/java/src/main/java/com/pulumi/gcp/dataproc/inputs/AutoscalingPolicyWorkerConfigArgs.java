@@ -16,18 +16,14 @@ public final class AutoscalingPolicyWorkerConfigArgs extends com.pulumi.resource
     public static final AutoscalingPolicyWorkerConfigArgs Empty = new AutoscalingPolicyWorkerConfigArgs();
 
     /**
-     * Maximum number of instances for this group. Note that by default, clusters will not use
-     * secondary workers. Required for secondary workers if the minimum secondary instances is set.
-     * Bounds: [minInstances, ). Defaults to 0.
+     * Maximum number of instances for this group.
      * 
      */
     @Import(name="maxInstances", required=true)
     private Output<Integer> maxInstances;
 
     /**
-     * @return Maximum number of instances for this group. Note that by default, clusters will not use
-     * secondary workers. Required for secondary workers if the minimum secondary instances is set.
-     * Bounds: [minInstances, ). Defaults to 0.
+     * @return Maximum number of instances for this group.
      * 
      */
     public Output<Integer> maxInstances() {
@@ -35,14 +31,14 @@ public final class AutoscalingPolicyWorkerConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * Minimum number of instances for this group. Bounds: [0, maxInstances]. Defaults to 0.
+     * Minimum number of instances for this group. Bounds: [2, maxInstances]. Defaults to 2.
      * 
      */
     @Import(name="minInstances")
     private @Nullable Output<Integer> minInstances;
 
     /**
-     * @return Minimum number of instances for this group. Bounds: [0, maxInstances]. Defaults to 0.
+     * @return Minimum number of instances for this group. Bounds: [2, maxInstances]. Defaults to 2.
      * 
      */
     public Optional<Output<Integer>> minInstances() {
@@ -113,9 +109,7 @@ public final class AutoscalingPolicyWorkerConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param maxInstances Maximum number of instances for this group. Note that by default, clusters will not use
-         * secondary workers. Required for secondary workers if the minimum secondary instances is set.
-         * Bounds: [minInstances, ). Defaults to 0.
+         * @param maxInstances Maximum number of instances for this group.
          * 
          * @return builder
          * 
@@ -126,9 +120,7 @@ public final class AutoscalingPolicyWorkerConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param maxInstances Maximum number of instances for this group. Note that by default, clusters will not use
-         * secondary workers. Required for secondary workers if the minimum secondary instances is set.
-         * Bounds: [minInstances, ). Defaults to 0.
+         * @param maxInstances Maximum number of instances for this group.
          * 
          * @return builder
          * 
@@ -138,7 +130,7 @@ public final class AutoscalingPolicyWorkerConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param minInstances Minimum number of instances for this group. Bounds: [0, maxInstances]. Defaults to 0.
+         * @param minInstances Minimum number of instances for this group. Bounds: [2, maxInstances]. Defaults to 2.
          * 
          * @return builder
          * 
@@ -149,7 +141,7 @@ public final class AutoscalingPolicyWorkerConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param minInstances Minimum number of instances for this group. Bounds: [0, maxInstances]. Defaults to 0.
+         * @param minInstances Minimum number of instances for this group. Bounds: [2, maxInstances]. Defaults to 2.
          * 
          * @return builder
          * 

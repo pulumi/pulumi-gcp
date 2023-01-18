@@ -15,14 +15,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FeatureMembershipConfigmanagementConfigSync {
     /**
-     * @return -
-     * (Optional) Structure is documented below.
+     * @return (Optional) Structure is documented below.
      * 
      */
     private @Nullable FeatureMembershipConfigmanagementConfigSyncGit git;
     /**
-     * @return -
-     * (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+     * @return (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
      * 
      */
     private @Nullable FeatureMembershipConfigmanagementConfigSyncOci oci;
@@ -39,16 +37,14 @@ public final class FeatureMembershipConfigmanagementConfigSync {
 
     private FeatureMembershipConfigmanagementConfigSync() {}
     /**
-     * @return -
-     * (Optional) Structure is documented below.
+     * @return (Optional) Structure is documented below.
      * 
      */
     public Optional<FeatureMembershipConfigmanagementConfigSyncGit> git() {
         return Optional.ofNullable(this.git);
     }
     /**
-     * @return -
-     * (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+     * @return (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
      * 
      */
     public Optional<FeatureMembershipConfigmanagementConfigSyncOci> oci() {

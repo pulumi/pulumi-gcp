@@ -110,7 +110,8 @@ type HostingChannel struct {
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
 	// Text labels used for extra metadata and/or filtering
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID
+	// The fully-qualified resource name for the channel, in the format:
+	// sites/SITE_ID/channels/CHANNEL_ID
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The number of previous releases to retain on the channel for rollback or other
 	// purposes. Must be a number between 1-100. Defaults to 10 for new channels.
@@ -166,7 +167,8 @@ type hostingChannelState struct {
 	ExpireTime *string `pulumi:"expireTime"`
 	// Text labels used for extra metadata and/or filtering
 	Labels map[string]string `pulumi:"labels"`
-	// The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID
+	// The fully-qualified resource name for the channel, in the format:
+	// sites/SITE_ID/channels/CHANNEL_ID
 	Name *string `pulumi:"name"`
 	// The number of previous releases to retain on the channel for rollback or other
 	// purposes. Must be a number between 1-100. Defaults to 10 for new channels.
@@ -188,7 +190,8 @@ type HostingChannelState struct {
 	ExpireTime pulumi.StringPtrInput
 	// Text labels used for extra metadata and/or filtering
 	Labels pulumi.StringMapInput
-	// The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID
+	// The fully-qualified resource name for the channel, in the format:
+	// sites/SITE_ID/channels/CHANNEL_ID
 	Name pulumi.StringPtrInput
 	// The number of previous releases to retain on the channel for rollback or other
 	// purposes. Must be a number between 1-100. Defaults to 10 for new channels.
@@ -350,7 +353,8 @@ func (o HostingChannelOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *HostingChannel) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID
+// The fully-qualified resource name for the channel, in the format:
+// sites/SITE_ID/channels/CHANNEL_ID
 func (o HostingChannelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostingChannel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

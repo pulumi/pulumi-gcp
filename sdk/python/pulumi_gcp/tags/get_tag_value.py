@@ -50,6 +50,10 @@ class GetTagValueResult:
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
+        """
+        Creation time.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
         return pulumi.get(self, "create_time")
 
     @property
@@ -68,11 +72,17 @@ class GetTagValueResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The generated numeric id for the TagValue.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="namespacedName")
     def namespaced_name(self) -> str:
+        """
+        Namespaced name of the TagValue.
+        """
         return pulumi.get(self, "namespaced_name")
 
     @property
@@ -88,6 +98,10 @@ class GetTagValueResult:
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
+        """
+        Update time.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
         return pulumi.get(self, "update_time")
 
 

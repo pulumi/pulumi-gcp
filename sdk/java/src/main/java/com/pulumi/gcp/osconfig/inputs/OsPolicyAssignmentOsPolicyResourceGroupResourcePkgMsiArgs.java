@@ -33,14 +33,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs ext
     }
 
     /**
-     * Required. An rpm package.
+     * Required. The MSI package.
      * 
      */
     @Import(name="source", required=true)
     private Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs> source;
 
     /**
-     * @return Required. An rpm package.
+     * @return Required. The MSI package.
      * 
      */
     public Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs> source() {
@@ -104,7 +104,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs ext
         }
 
         /**
-         * @param source Required. An rpm package.
+         * @param source Required. The MSI package.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs ext
         }
 
         /**
-         * @param source Required. An rpm package.
+         * @param source Required. The MSI package.
          * 
          * @return builder
          * 

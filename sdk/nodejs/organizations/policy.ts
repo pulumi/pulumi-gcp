@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const serialPortPolicy = new gcp.organizations.Policy("serial_port_policy", {
+ * const serialPortPolicy = new gcp.organizations.Policy("serialPortPolicy", {
  *     booleanPolicy: {
  *         enforced: true,
  *     },
@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const servicesPolicy = new gcp.organizations.Policy("services_policy", {
+ * const servicesPolicy = new gcp.organizations.Policy("servicesPolicy", {
  *     constraint: "serviceuser.services",
  *     listPolicy: {
  *         allow: {
@@ -57,7 +57,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const servicesPolicy = new gcp.organizations.Policy("services_policy", {
+ * const servicesPolicy = new gcp.organizations.Policy("servicesPolicy", {
  *     constraint: "serviceuser.services",
  *     listPolicy: {
  *         deny: {
@@ -75,11 +75,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const servicesPolicy = new gcp.organizations.Policy("services_policy", {
+ * const servicesPolicy = new gcp.organizations.Policy("servicesPolicy", {
  *     constraint: "serviceuser.services",
  *     orgId: "123456789",
  *     restorePolicy: {
- *         default: true,
+ *         "default": true,
  *     },
  * });
  * ```

@@ -46,18 +46,14 @@ public final class GcpUserAccessBindingState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved
-     * characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example:
-     * &#34;organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N&#34;
+     * Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: &#34;organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N&#34;
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved
-     * characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example:
-     * &#34;organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N&#34;
+     * @return Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: &#34;organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N&#34;
      * 
      */
     public Optional<Output<String>> name() {
@@ -149,9 +145,7 @@ public final class GcpUserAccessBindingState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved
-         * characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example:
-         * &#34;organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N&#34;
+         * @param name Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: &#34;organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N&#34;
          * 
          * @return builder
          * 
@@ -162,9 +156,7 @@ public final class GcpUserAccessBindingState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved
-         * characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example:
-         * &#34;organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N&#34;
+         * @param name Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: &#34;organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N&#34;
          * 
          * @return builder
          * 

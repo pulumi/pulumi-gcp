@@ -177,7 +177,7 @@ namespace Pulumi.Gcp.CloudBuild
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. `WorkerPool` state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+        /// Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -359,7 +359,7 @@ namespace Pulumi.Gcp.CloudBuild
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Output only. `WorkerPool` state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
+        /// Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

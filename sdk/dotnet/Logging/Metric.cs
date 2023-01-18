@@ -185,7 +185,8 @@ namespace Pulumi.Gcp.Logging
         public Output<Outputs.MetricBucketOptions?> BucketOptions { get; private set; } = null!;
 
         /// <summary>
-        /// A human-readable description for the label.
+        /// A description of this metric, which is used in documentation. The maximum length of the
+        /// description is 8000 characters.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -307,7 +308,8 @@ namespace Pulumi.Gcp.Logging
         public Input<Inputs.MetricBucketOptionsArgs>? BucketOptions { get; set; }
 
         /// <summary>
-        /// A human-readable description for the label.
+        /// A description of this metric, which is used in documentation. The maximum length of the
+        /// description is 8000 characters.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -397,7 +399,8 @@ namespace Pulumi.Gcp.Logging
         public Input<Inputs.MetricBucketOptionsGetArgs>? BucketOptions { get; set; }
 
         /// <summary>
-        /// A human-readable description for the label.
+        /// A description of this metric, which is used in documentation. The maximum length of the
+        /// description is 8000 characters.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Alloydb.Outputs
     [OutputType]
     public sealed class ClusterBackupSource
     {
+        /// <summary>
+        /// The name of the backup resource.
+        /// </summary>
         public readonly string? BackupName;
 
         [OutputConstructor]

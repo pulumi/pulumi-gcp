@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class PacketMirroringCollectorIlbGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The URL of the instances where this rule should be active.
+        /// The URL of the forwarding rule.
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;

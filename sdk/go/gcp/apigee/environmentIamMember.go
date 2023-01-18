@@ -38,7 +38,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 //				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
+//					{
 //						Role: "roles/viewer",
 //						Members: []string{
 //							"user:jane@example.com",
@@ -52,7 +52,7 @@ import (
 //			_, err = apigee.NewEnvironmentIamPolicy(ctx, "policy", &apigee.EnvironmentIamPolicyArgs{
 //				OrgId:      pulumi.Any(google_apigee_environment.Apigee_environment.Org_id),
 //				EnvId:      pulumi.Any(google_apigee_environment.Apigee_environment.Name),
-//				PolicyData: pulumi.String(admin.PolicyData),
+//				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

@@ -16,7 +16,9 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
     public static final CertificateManagedAuthorizationAttemptInfoArgs Empty = new CertificateManagedAuthorizationAttemptInfoArgs();
 
     /**
-     * - 
+     * Human readable explanation about the issue. Provided to help address
+     * the configuration issues.
+     * Not guaranteed to be stable. For programmatic access use `reason` field.
      * Human readable explanation for reaching the state. Provided to help
      * address the configuration issues.
      * Not guaranteed to be stable. For programmatic access use `failure_reason` field.
@@ -26,7 +28,9 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
     private @Nullable Output<String> details;
 
     /**
-     * @return -
+     * @return Human readable explanation about the issue. Provided to help address
+     * the configuration issues.
+     * Not guaranteed to be stable. For programmatic access use `reason` field.
      * Human readable explanation for reaching the state. Provided to help
      * address the configuration issues.
      * Not guaranteed to be stable. For programmatic access use `failure_reason` field.
@@ -37,7 +41,6 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
     }
 
     /**
-     * - 
      * Domain name of the authorization attempt.
      * 
      */
@@ -45,8 +48,7 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
     private @Nullable Output<String> domain;
 
     /**
-     * @return -
-     * Domain name of the authorization attempt.
+     * @return Domain name of the authorization attempt.
      * 
      */
     public Optional<Output<String>> domain() {
@@ -54,7 +56,6 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
     }
 
     /**
-     * - 
      * Reason for failure of the authorization attempt for the domain.
      * 
      */
@@ -62,8 +63,7 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
     private @Nullable Output<String> failureReason;
 
     /**
-     * @return -
-     * Reason for failure of the authorization attempt for the domain.
+     * @return Reason for failure of the authorization attempt for the domain.
      * 
      */
     public Optional<Output<String>> failureReason() {
@@ -71,7 +71,7 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
     }
 
     /**
-     * - 
+     * A state of this Managed Certificate.
      * State of the domain for managed certificate issuance.
      * 
      */
@@ -79,7 +79,7 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
     private @Nullable Output<String> state;
 
     /**
-     * @return -
+     * @return A state of this Managed Certificate.
      * State of the domain for managed certificate issuance.
      * 
      */
@@ -115,7 +115,9 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
         }
 
         /**
-         * @param details -
+         * @param details Human readable explanation about the issue. Provided to help address
+         * the configuration issues.
+         * Not guaranteed to be stable. For programmatic access use `reason` field.
          * Human readable explanation for reaching the state. Provided to help
          * address the configuration issues.
          * Not guaranteed to be stable. For programmatic access use `failure_reason` field.
@@ -129,7 +131,9 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
         }
 
         /**
-         * @param details -
+         * @param details Human readable explanation about the issue. Provided to help address
+         * the configuration issues.
+         * Not guaranteed to be stable. For programmatic access use `reason` field.
          * Human readable explanation for reaching the state. Provided to help
          * address the configuration issues.
          * Not guaranteed to be stable. For programmatic access use `failure_reason` field.
@@ -142,8 +146,7 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
         }
 
         /**
-         * @param domain -
-         * Domain name of the authorization attempt.
+         * @param domain Domain name of the authorization attempt.
          * 
          * @return builder
          * 
@@ -154,8 +157,7 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
         }
 
         /**
-         * @param domain -
-         * Domain name of the authorization attempt.
+         * @param domain Domain name of the authorization attempt.
          * 
          * @return builder
          * 
@@ -165,8 +167,7 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
         }
 
         /**
-         * @param failureReason -
-         * Reason for failure of the authorization attempt for the domain.
+         * @param failureReason Reason for failure of the authorization attempt for the domain.
          * 
          * @return builder
          * 
@@ -177,8 +178,7 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
         }
 
         /**
-         * @param failureReason -
-         * Reason for failure of the authorization attempt for the domain.
+         * @param failureReason Reason for failure of the authorization attempt for the domain.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
         }
 
         /**
-         * @param state -
+         * @param state A state of this Managed Certificate.
          * State of the domain for managed certificate issuance.
          * 
          * @return builder
@@ -200,7 +200,7 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
         }
 
         /**
-         * @param state -
+         * @param state A state of this Managed Certificate.
          * State of the domain for managed certificate issuance.
          * 
          * @return builder

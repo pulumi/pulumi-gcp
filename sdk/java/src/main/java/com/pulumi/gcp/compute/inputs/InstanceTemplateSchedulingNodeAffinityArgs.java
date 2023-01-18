@@ -15,14 +15,14 @@ public final class InstanceTemplateSchedulingNodeAffinityArgs extends com.pulumi
     public static final InstanceTemplateSchedulingNodeAffinityArgs Empty = new InstanceTemplateSchedulingNodeAffinityArgs();
 
     /**
-     * Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+     * The key for the node affinity label.
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+     * @return The key for the node affinity label.
      * 
      */
     public Output<String> key() {
@@ -88,7 +88,7 @@ public final class InstanceTemplateSchedulingNodeAffinityArgs extends com.pulumi
         }
 
         /**
-         * @param key Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+         * @param key The key for the node affinity label.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class InstanceTemplateSchedulingNodeAffinityArgs extends com.pulumi
         }
 
         /**
-         * @param key Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+         * @param key The key for the node affinity label.
          * 
          * @return builder
          * 

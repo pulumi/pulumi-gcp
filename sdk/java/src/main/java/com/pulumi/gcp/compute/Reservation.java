@@ -97,14 +97,16 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/reservation:Reservation")
 public class Reservation extends com.pulumi.resources.CustomResource {
     /**
-     * Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+     * Full or partial URL to a parent commitment. This field displays for
+     * reservations that are tied to a commitment.
      * 
      */
     @Export(name="commitment", type=String.class, parameters={})
     private Output<String> commitment;
 
     /**
-     * @return Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+     * @return Full or partial URL to a parent commitment. This field displays for
+     * reservations that are tied to a commitment.
      * 
      */
     public Output<String> commitment() {

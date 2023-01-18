@@ -122,14 +122,16 @@ public final class DataExchangeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The resource name of the data exchange, for example: &#34;projects/myproject/locations/US/dataExchanges/123&#34;
+     * The resource name of the data exchange, for example:
+     * &#34;projects/myproject/locations/US/dataExchanges/123&#34;
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The resource name of the data exchange, for example: &#34;projects/myproject/locations/US/dataExchanges/123&#34;
+     * @return The resource name of the data exchange, for example:
+     * &#34;projects/myproject/locations/US/dataExchanges/123&#34;
      * 
      */
     public Optional<Output<String>> name() {
@@ -349,7 +351,8 @@ public final class DataExchangeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name of the data exchange, for example: &#34;projects/myproject/locations/US/dataExchanges/123&#34;
+         * @param name The resource name of the data exchange, for example:
+         * &#34;projects/myproject/locations/US/dataExchanges/123&#34;
          * 
          * @return builder
          * 
@@ -360,7 +363,8 @@ public final class DataExchangeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name of the data exchange, for example: &#34;projects/myproject/locations/US/dataExchanges/123&#34;
+         * @param name The resource name of the data exchange, for example:
+         * &#34;projects/myproject/locations/US/dataExchanges/123&#34;
          * 
          * @return builder
          * 

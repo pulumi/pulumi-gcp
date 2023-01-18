@@ -50,7 +50,7 @@ public final class AzureClusterControlPlane {
      */
     private AzureClusterControlPlaneSshConfig sshConfig;
     /**
-     * @return For a given replica, the ARM ID of the subnet where the control plane VM is deployed. Make sure it&#39;s a subnet under the virtual network in the cluster configuration.
+     * @return The ARM ID of the subnet where the control plane VMs are deployed. Example: `/subscriptions//resourceGroups//providers/Microsoft.Network/virtualNetworks//subnets/default`.
      * 
      */
     private String subnetId;
@@ -114,7 +114,7 @@ public final class AzureClusterControlPlane {
         return this.sshConfig;
     }
     /**
-     * @return For a given replica, the ARM ID of the subnet where the control plane VM is deployed. Make sure it&#39;s a subnet under the virtual network in the cluster configuration.
+     * @return The ARM ID of the subnet where the control plane VMs are deployed. Example: `/subscriptions//resourceGroups//providers/Microsoft.Network/virtualNetworks//subnets/default`.
      * 
      */
     public String subnetId() {

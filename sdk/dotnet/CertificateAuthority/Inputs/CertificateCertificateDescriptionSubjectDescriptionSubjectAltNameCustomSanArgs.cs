@@ -21,6 +21,11 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
 
         [Input("obectIds")]
         private InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs>? _obectIds;
+
+        /// <summary>
+        /// Required. Describes how some of the technical fields in a certificate should be populated.
+        /// Structure is documented below.
+        /// </summary>
         public InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs> ObectIds
         {
             get => _obectIds ?? (_obectIds = new InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs>());

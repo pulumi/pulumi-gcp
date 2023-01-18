@@ -139,14 +139,15 @@ type AlertPolicy struct {
 	// one to six conditions.
 	// Structure is documented below.
 	Conditions AlertPolicyConditionArrayOutput `pulumi:"conditions"`
-	// A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
-	// ignored.
+	// A read-only record of the creation of the alerting policy.
+	// If provided in a call to create or update, this field will
+	// be ignored.
+	// Structure is documented below.
 	CreationRecords AlertPolicyCreationRecordArrayOutput `pulumi:"creationRecords"`
-	// A short name or phrase used to identify the
-	// condition in dashboards, notifications, and
-	// incidents. To avoid confusion, don't use the same
-	// display name for multiple conditions in the same
-	// policy.
+	// A short name or phrase used to identify the policy in
+	// dashboards, notifications, and incidents. To avoid confusion, don't use
+	// the same display name for multiple policies in the same project. The
+	// name is limited to 512 Unicode characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Documentation that is included with notifications and incidents related
 	// to this policy. Best practice is for the documentation to include information
@@ -157,7 +158,6 @@ type AlertPolicy struct {
 	Documentation AlertPolicyDocumentationPtrOutput `pulumi:"documentation"`
 	// Whether or not the policy is enabled. The default is true.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// -
 	// The unique resource name for this condition.
 	// Its syntax is:
 	// projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
@@ -235,14 +235,15 @@ type alertPolicyState struct {
 	// one to six conditions.
 	// Structure is documented below.
 	Conditions []AlertPolicyCondition `pulumi:"conditions"`
-	// A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
-	// ignored.
+	// A read-only record of the creation of the alerting policy.
+	// If provided in a call to create or update, this field will
+	// be ignored.
+	// Structure is documented below.
 	CreationRecords []AlertPolicyCreationRecord `pulumi:"creationRecords"`
-	// A short name or phrase used to identify the
-	// condition in dashboards, notifications, and
-	// incidents. To avoid confusion, don't use the same
-	// display name for multiple conditions in the same
-	// policy.
+	// A short name or phrase used to identify the policy in
+	// dashboards, notifications, and incidents. To avoid confusion, don't use
+	// the same display name for multiple policies in the same project. The
+	// name is limited to 512 Unicode characters.
 	DisplayName *string `pulumi:"displayName"`
 	// Documentation that is included with notifications and incidents related
 	// to this policy. Best practice is for the documentation to include information
@@ -253,7 +254,6 @@ type alertPolicyState struct {
 	Documentation *AlertPolicyDocumentation `pulumi:"documentation"`
 	// Whether or not the policy is enabled. The default is true.
 	Enabled *bool `pulumi:"enabled"`
-	// -
 	// The unique resource name for this condition.
 	// Its syntax is:
 	// projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
@@ -294,14 +294,15 @@ type AlertPolicyState struct {
 	// one to six conditions.
 	// Structure is documented below.
 	Conditions AlertPolicyConditionArrayInput
-	// A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
-	// ignored.
+	// A read-only record of the creation of the alerting policy.
+	// If provided in a call to create or update, this field will
+	// be ignored.
+	// Structure is documented below.
 	CreationRecords AlertPolicyCreationRecordArrayInput
-	// A short name or phrase used to identify the
-	// condition in dashboards, notifications, and
-	// incidents. To avoid confusion, don't use the same
-	// display name for multiple conditions in the same
-	// policy.
+	// A short name or phrase used to identify the policy in
+	// dashboards, notifications, and incidents. To avoid confusion, don't use
+	// the same display name for multiple policies in the same project. The
+	// name is limited to 512 Unicode characters.
 	DisplayName pulumi.StringPtrInput
 	// Documentation that is included with notifications and incidents related
 	// to this policy. Best practice is for the documentation to include information
@@ -312,7 +313,6 @@ type AlertPolicyState struct {
 	Documentation AlertPolicyDocumentationPtrInput
 	// Whether or not the policy is enabled. The default is true.
 	Enabled pulumi.BoolPtrInput
-	// -
 	// The unique resource name for this condition.
 	// Its syntax is:
 	// projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
@@ -357,11 +357,10 @@ type alertPolicyArgs struct {
 	// one to six conditions.
 	// Structure is documented below.
 	Conditions []AlertPolicyCondition `pulumi:"conditions"`
-	// A short name or phrase used to identify the
-	// condition in dashboards, notifications, and
-	// incidents. To avoid confusion, don't use the same
-	// display name for multiple conditions in the same
-	// policy.
+	// A short name or phrase used to identify the policy in
+	// dashboards, notifications, and incidents. To avoid confusion, don't use
+	// the same display name for multiple policies in the same project. The
+	// name is limited to 512 Unicode characters.
 	DisplayName string `pulumi:"displayName"`
 	// Documentation that is included with notifications and incidents related
 	// to this policy. Best practice is for the documentation to include information
@@ -406,11 +405,10 @@ type AlertPolicyArgs struct {
 	// one to six conditions.
 	// Structure is documented below.
 	Conditions AlertPolicyConditionArrayInput
-	// A short name or phrase used to identify the
-	// condition in dashboards, notifications, and
-	// incidents. To avoid confusion, don't use the same
-	// display name for multiple conditions in the same
-	// policy.
+	// A short name or phrase used to identify the policy in
+	// dashboards, notifications, and incidents. To avoid confusion, don't use
+	// the same display name for multiple policies in the same project. The
+	// name is limited to 512 Unicode characters.
 	DisplayName pulumi.StringInput
 	// Documentation that is included with notifications and incidents related
 	// to this policy. Best practice is for the documentation to include information
@@ -549,17 +547,18 @@ func (o AlertPolicyOutput) Conditions() AlertPolicyConditionArrayOutput {
 	return o.ApplyT(func(v *AlertPolicy) AlertPolicyConditionArrayOutput { return v.Conditions }).(AlertPolicyConditionArrayOutput)
 }
 
-// A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
-// ignored.
+// A read-only record of the creation of the alerting policy.
+// If provided in a call to create or update, this field will
+// be ignored.
+// Structure is documented below.
 func (o AlertPolicyOutput) CreationRecords() AlertPolicyCreationRecordArrayOutput {
 	return o.ApplyT(func(v *AlertPolicy) AlertPolicyCreationRecordArrayOutput { return v.CreationRecords }).(AlertPolicyCreationRecordArrayOutput)
 }
 
-// A short name or phrase used to identify the
-// condition in dashboards, notifications, and
-// incidents. To avoid confusion, don't use the same
-// display name for multiple conditions in the same
-// policy.
+// A short name or phrase used to identify the policy in
+// dashboards, notifications, and incidents. To avoid confusion, don't use
+// the same display name for multiple policies in the same project. The
+// name is limited to 512 Unicode characters.
 func (o AlertPolicyOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlertPolicy) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -579,7 +578,6 @@ func (o AlertPolicyOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AlertPolicy) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// -
 // The unique resource name for this condition.
 // Its syntax is:
 // projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]

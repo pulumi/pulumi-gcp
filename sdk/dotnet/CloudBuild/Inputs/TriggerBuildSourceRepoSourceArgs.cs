@@ -27,15 +27,9 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         public Input<string>? CommitSha { get; set; }
 
         /// <summary>
-        /// Working directory to use when running this step's container.
-        /// If this value is a relative path, it is relative to the build's working
-        /// directory. If this value is absolute, it may be outside the build's working
-        /// directory, in which case the contents of the path may not be persisted
-        /// across build step executions, unless a `volume` for that path is specified.
-        /// If the build specifies a `RepoSource` with `dir` and a step with a
-        /// `dir`,
-        /// which specifies an absolute path, the `RepoSource` `dir` is ignored
-        /// for the step's execution.
+        /// Directory, relative to the source root, in which to run the build.
+        /// This must be a relative path. If a step's dir is specified and is an absolute path,
+        /// this value is ignored for that step's execution.
         /// </summary>
         [Input("dir")]
         public Input<string>? Dir { get; set; }

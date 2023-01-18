@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly ImmutableArray<string> FileUris;
         /// <summary>
-        /// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        /// Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
         /// </summary>
         public readonly ImmutableArray<string> JarFileUris;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly string? MainJarFileUri;
         /// <summary>
-        /// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+        /// Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Properties;
 

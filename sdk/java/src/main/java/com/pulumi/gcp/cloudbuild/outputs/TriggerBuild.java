@@ -33,9 +33,9 @@ public final class TriggerBuild {
     private @Nullable TriggerBuildAvailableSecrets availableSecrets;
     /**
      * @return A list of images to be pushed upon the successful completion of all build steps.
-     * The images will be pushed using the builder service account&#39;s credentials.
+     * The images are pushed using the builder service account&#39;s credentials.
      * The digests of the pushed images will be stored in the Build resource&#39;s results field.
-     * If any of the images fail to be pushed, the build is marked FAILURE.
+     * If any of the images fail to be pushed, the build status is marked FAILURE.
      * 
      */
     private @Nullable List<String> images;
@@ -79,7 +79,7 @@ public final class TriggerBuild {
      */
     private List<TriggerBuildStep> steps;
     /**
-     * @return Substitutions to use in a triggered build. Should only be used with triggers.run
+     * @return Substitutions data for Build resource.
      * 
      */
     private @Nullable Map<String,String> substitutions;
@@ -89,10 +89,11 @@ public final class TriggerBuild {
      */
     private @Nullable List<String> tags;
     /**
-     * @return Time limit for executing this build step. If not defined,
-     * the step has no
-     * time limit and will be allowed to continue to run until either it
-     * completes or the build itself times out.
+     * @return Amount of time that this build should be allowed to run, to second granularity.
+     * If this amount of time elapses, work on the build will cease and the build status will be TIMEOUT.
+     * This timeout must be equal to or greater than the sum of the timeouts for build steps within the build.
+     * The expected format is the number of seconds followed by s.
+     * Default time is ten minutes (600s).
      * 
      */
     private @Nullable String timeout;
@@ -116,9 +117,9 @@ public final class TriggerBuild {
     }
     /**
      * @return A list of images to be pushed upon the successful completion of all build steps.
-     * The images will be pushed using the builder service account&#39;s credentials.
+     * The images are pushed using the builder service account&#39;s credentials.
      * The digests of the pushed images will be stored in the Build resource&#39;s results field.
-     * If any of the images fail to be pushed, the build is marked FAILURE.
+     * If any of the images fail to be pushed, the build status is marked FAILURE.
      * 
      */
     public List<String> images() {
@@ -176,7 +177,7 @@ public final class TriggerBuild {
         return this.steps;
     }
     /**
-     * @return Substitutions to use in a triggered build. Should only be used with triggers.run
+     * @return Substitutions data for Build resource.
      * 
      */
     public Map<String,String> substitutions() {
@@ -190,10 +191,11 @@ public final class TriggerBuild {
         return this.tags == null ? List.of() : this.tags;
     }
     /**
-     * @return Time limit for executing this build step. If not defined,
-     * the step has no
-     * time limit and will be allowed to continue to run until either it
-     * completes or the build itself times out.
+     * @return Amount of time that this build should be allowed to run, to second granularity.
+     * If this amount of time elapses, work on the build will cease and the build status will be TIMEOUT.
+     * This timeout must be equal to or greater than the sum of the timeouts for build steps within the build.
+     * The expected format is the number of seconds followed by s.
+     * Default time is ten minutes (600s).
      * 
      */
     public Optional<String> timeout() {

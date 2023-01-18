@@ -856,6 +856,7 @@ func (o ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayOutput) Index(i 
 }
 
 type ClusterBackupSource struct {
+	// The name of the backup resource.
 	BackupName *string `pulumi:"backupName"`
 }
 
@@ -871,6 +872,7 @@ type ClusterBackupSourceInput interface {
 }
 
 type ClusterBackupSourceArgs struct {
+	// The name of the backup resource.
 	BackupName pulumi.StringPtrInput `pulumi:"backupName"`
 }
 
@@ -925,6 +927,7 @@ func (o ClusterBackupSourceOutput) ToClusterBackupSourceOutputWithContext(ctx co
 	return o
 }
 
+// The name of the backup resource.
 func (o ClusterBackupSourceOutput) BackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterBackupSource) *string { return v.BackupName }).(pulumi.StringPtrOutput)
 }
@@ -1110,9 +1113,12 @@ func (o ClusterInitialUserPtrOutput) User() pulumi.StringPtrOutput {
 }
 
 type ClusterMigrationSource struct {
-	HostPort    *string `pulumi:"hostPort"`
+	// The host and port of the on-premises instance in host:port format
+	HostPort *string `pulumi:"hostPort"`
+	// Place holder for the external source identifier(e.g DMS job name) that created the cluster.
 	ReferenceId *string `pulumi:"referenceId"`
-	SourceType  *string `pulumi:"sourceType"`
+	// Type of migration source.
+	SourceType *string `pulumi:"sourceType"`
 }
 
 // ClusterMigrationSourceInput is an input type that accepts ClusterMigrationSourceArgs and ClusterMigrationSourceOutput values.
@@ -1127,9 +1133,12 @@ type ClusterMigrationSourceInput interface {
 }
 
 type ClusterMigrationSourceArgs struct {
-	HostPort    pulumi.StringPtrInput `pulumi:"hostPort"`
+	// The host and port of the on-premises instance in host:port format
+	HostPort pulumi.StringPtrInput `pulumi:"hostPort"`
+	// Place holder for the external source identifier(e.g DMS job name) that created the cluster.
 	ReferenceId pulumi.StringPtrInput `pulumi:"referenceId"`
-	SourceType  pulumi.StringPtrInput `pulumi:"sourceType"`
+	// Type of migration source.
+	SourceType pulumi.StringPtrInput `pulumi:"sourceType"`
 }
 
 func (ClusterMigrationSourceArgs) ElementType() reflect.Type {
@@ -1183,14 +1192,17 @@ func (o ClusterMigrationSourceOutput) ToClusterMigrationSourceOutputWithContext(
 	return o
 }
 
+// The host and port of the on-premises instance in host:port format
 func (o ClusterMigrationSourceOutput) HostPort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMigrationSource) *string { return v.HostPort }).(pulumi.StringPtrOutput)
 }
 
+// Place holder for the external source identifier(e.g DMS job name) that created the cluster.
 func (o ClusterMigrationSourceOutput) ReferenceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMigrationSource) *string { return v.ReferenceId }).(pulumi.StringPtrOutput)
 }
 
+// Type of migration source.
 func (o ClusterMigrationSourceOutput) SourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMigrationSource) *string { return v.SourceType }).(pulumi.StringPtrOutput)
 }

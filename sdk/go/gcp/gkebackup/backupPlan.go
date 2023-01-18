@@ -288,11 +288,12 @@ type BackupPlan struct {
 	Deactivated pulumi.BoolOutput `pulumi:"deactivated"`
 	// User specified descriptive string for this BackupPlan.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from
-	// overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to
-	// perform BackupPlan updates in order to avoid race conditions: An etag is returned in the response to backupPlans.get,
-	// and systems are expected to put that etag in the request to backupPlans.patch or backupPlans.delete to ensure that their
-	// change will be applied to the same version of the resource.
+	// etag is used for optimistic concurrency control as a way to help prevent simultaneous
+	// updates of a backup plan from overwriting each other. It is strongly suggested that
+	// systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates
+	// in order to avoid race conditions: An etag is returned in the response to backupPlans.get,
+	// and systems are expected to put that etag in the request to backupPlans.patch or
+	// backupPlans.delete to ensure that their change will be applied to the same version of the resource.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Description: A set of custom labels supplied by the user.
 	// A list of key->value pairs.
@@ -300,7 +301,7 @@ type BackupPlan struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The region of the Backup Plan.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The name of a Kubernetes Resource.
+	// The full name of the BackupPlan Resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -364,11 +365,12 @@ type backupPlanState struct {
 	Deactivated *bool `pulumi:"deactivated"`
 	// User specified descriptive string for this BackupPlan.
 	Description *string `pulumi:"description"`
-	// etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from
-	// overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to
-	// perform BackupPlan updates in order to avoid race conditions: An etag is returned in the response to backupPlans.get,
-	// and systems are expected to put that etag in the request to backupPlans.patch or backupPlans.delete to ensure that their
-	// change will be applied to the same version of the resource.
+	// etag is used for optimistic concurrency control as a way to help prevent simultaneous
+	// updates of a backup plan from overwriting each other. It is strongly suggested that
+	// systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates
+	// in order to avoid race conditions: An etag is returned in the response to backupPlans.get,
+	// and systems are expected to put that etag in the request to backupPlans.patch or
+	// backupPlans.delete to ensure that their change will be applied to the same version of the resource.
 	Etag *string `pulumi:"etag"`
 	// Description: A set of custom labels supplied by the user.
 	// A list of key->value pairs.
@@ -376,7 +378,7 @@ type backupPlanState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The region of the Backup Plan.
 	Location *string `pulumi:"location"`
-	// The name of a Kubernetes Resource.
+	// The full name of the BackupPlan Resource.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -406,11 +408,12 @@ type BackupPlanState struct {
 	Deactivated pulumi.BoolPtrInput
 	// User specified descriptive string for this BackupPlan.
 	Description pulumi.StringPtrInput
-	// etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from
-	// overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to
-	// perform BackupPlan updates in order to avoid race conditions: An etag is returned in the response to backupPlans.get,
-	// and systems are expected to put that etag in the request to backupPlans.patch or backupPlans.delete to ensure that their
-	// change will be applied to the same version of the resource.
+	// etag is used for optimistic concurrency control as a way to help prevent simultaneous
+	// updates of a backup plan from overwriting each other. It is strongly suggested that
+	// systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates
+	// in order to avoid race conditions: An etag is returned in the response to backupPlans.get,
+	// and systems are expected to put that etag in the request to backupPlans.patch or
+	// backupPlans.delete to ensure that their change will be applied to the same version of the resource.
 	Etag pulumi.StringPtrInput
 	// Description: A set of custom labels supplied by the user.
 	// A list of key->value pairs.
@@ -418,7 +421,7 @@ type BackupPlanState struct {
 	Labels pulumi.StringMapInput
 	// The region of the Backup Plan.
 	Location pulumi.StringPtrInput
-	// The name of a Kubernetes Resource.
+	// The full name of the BackupPlan Resource.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -458,7 +461,7 @@ type backupPlanArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The region of the Backup Plan.
 	Location string `pulumi:"location"`
-	// The name of a Kubernetes Resource.
+	// The full name of the BackupPlan Resource.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -491,7 +494,7 @@ type BackupPlanArgs struct {
 	Labels pulumi.StringMapInput
 	// The region of the Backup Plan.
 	Location pulumi.StringInput
-	// The name of a Kubernetes Resource.
+	// The full name of the BackupPlan Resource.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -618,11 +621,12 @@ func (o BackupPlanOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackupPlan) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from
-// overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to
-// perform BackupPlan updates in order to avoid race conditions: An etag is returned in the response to backupPlans.get,
-// and systems are expected to put that etag in the request to backupPlans.patch or backupPlans.delete to ensure that their
-// change will be applied to the same version of the resource.
+// etag is used for optimistic concurrency control as a way to help prevent simultaneous
+// updates of a backup plan from overwriting each other. It is strongly suggested that
+// systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates
+// in order to avoid race conditions: An etag is returned in the response to backupPlans.get,
+// and systems are expected to put that etag in the request to backupPlans.patch or
+// backupPlans.delete to ensure that their change will be applied to the same version of the resource.
 func (o BackupPlanOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
@@ -639,7 +643,7 @@ func (o BackupPlanOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The name of a Kubernetes Resource.
+// The full name of the BackupPlan Resource.
 func (o BackupPlanOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

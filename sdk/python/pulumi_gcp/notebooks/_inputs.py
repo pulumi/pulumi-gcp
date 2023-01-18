@@ -479,8 +479,7 @@ class RuntimeAccessConfigArgs:
         :param pulumi.Input[str] access_type: The type of access mode this instance. For valid values, see
                `https://cloud.google.com/vertex-ai/docs/workbench/reference/
                rest/v1/projects.locations.runtimes#RuntimeAccessType`.
-        :param pulumi.Input[str] proxy_uri: -
-               The proxy endpoint that is used to access the runtime.
+        :param pulumi.Input[str] proxy_uri: The proxy endpoint that is used to access the runtime.
         :param pulumi.Input[str] runtime_owner: The owner of this runtime after creation. Format: `alias@example.com`.
                Currently supports one owner only.
         """
@@ -509,7 +508,6 @@ class RuntimeAccessConfigArgs:
     @pulumi.getter(name="proxyUri")
     def proxy_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        -
         The proxy endpoint that is used to access the runtime.
         """
         return pulumi.get(self, "proxy_uri")
@@ -614,12 +612,20 @@ class RuntimeIamMemberConditionArgs:
 class RuntimeMetricArgs:
     def __init__(__self__, *,
                  system_metrics: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] system_metrics: Contains runtime daemon metrics, such as OS and kernels and
+               sessions stats.
+        """
         if system_metrics is not None:
             pulumi.set(__self__, "system_metrics", system_metrics)
 
     @property
     @pulumi.getter(name="systemMetrics")
     def system_metrics(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Contains runtime daemon metrics, such as OS and kernels and
+        sessions stats.
+        """
         return pulumi.get(self, "system_metrics")
 
     @system_metrics.setter
@@ -658,8 +664,7 @@ class RuntimeSoftwareConfigArgs:
                Cloud Storage path (gs://path-to-file/file-name).
         :param pulumi.Input[str] post_startup_script_behavior: Behavior for the post startup script.
                Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
-        :param pulumi.Input[bool] upgradeable: -
-               Bool indicating whether an newer image is available in an image family.
+        :param pulumi.Input[bool] upgradeable: Bool indicating whether an newer image is available in an image family.
         """
         if custom_gpu_driver_path is not None:
             pulumi.set(__self__, "custom_gpu_driver_path", custom_gpu_driver_path)
@@ -802,7 +807,6 @@ class RuntimeSoftwareConfigArgs:
     @pulumi.getter
     def upgradeable(self) -> Optional[pulumi.Input[bool]]:
         """
-        -
         Bool indicating whether an newer image is available in an image family.
         """
         return pulumi.get(self, "upgradeable")
@@ -859,10 +863,8 @@ class RuntimeVirtualMachineArgs:
                  instance_name: Optional[pulumi.Input[str]] = None,
                  virtual_machine_config: Optional[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigArgs']] = None):
         """
-        :param pulumi.Input[str] instance_id: -
-               The unique identifier of the Managed Compute Engine instance.
-        :param pulumi.Input[str] instance_name: -
-               The user-friendly name of the Managed Compute Engine instance.
+        :param pulumi.Input[str] instance_id: The unique identifier of the Managed Compute Engine instance.
+        :param pulumi.Input[str] instance_name: The user-friendly name of the Managed Compute Engine instance.
         :param pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigArgs'] virtual_machine_config: Virtual Machine configuration settings.
                Structure is documented below.
         """
@@ -877,7 +879,6 @@ class RuntimeVirtualMachineArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[str]]:
         """
-        -
         The unique identifier of the Managed Compute Engine instance.
         """
         return pulumi.get(self, "instance_id")
@@ -890,7 +891,6 @@ class RuntimeVirtualMachineArgs:
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
         """
-        -
         The user-friendly name of the Managed Compute Engine instance.
         """
         return pulumi.get(self, "instance_name")
@@ -942,8 +942,7 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
                Structure is documented below.
         :param pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs'] encryption_config: Encryption settings for virtual machine data disk.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] guest_attributes: -
-               The Compute Engine guest attributes. (see [Project and instance
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] guest_attributes: The Compute Engine guest attributes. (see [Project and instance
                guest attributes](https://cloud.google.com/compute/docs/
                storing-retrieving-metadata#guest_attributes)).
         :param pulumi.Input[bool] internal_ip_only: If true, runtime will only have internal IP addresses. By default,
@@ -952,9 +951,12 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
                `internal_ip_only` restriction can only be enabled for subnetwork
                enabled networks, and all dependencies must be configured to be
                accessible without external IP addresses.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk. These can be later modified
-               by the disks.setLabels method. This field is only
-               applicable for persistent disks.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels to associate with this runtime. Label **keys** must
+               contain 1 to 63 characters, and must conform to [RFC 1035]
+               (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+               empty, but, if present, must contain 1 to 63 characters, and must
+               conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+               more than 32 labels can be associated with a cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The Compute Engine metadata entries to add to virtual machine.
                (see [Project and instance metadata](https://cloud.google.com
                /compute/docs/storing-retrieving-metadata#project_and_instance
@@ -989,8 +991,7 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The Compute Engine tags to add to runtime (see [Tagging instances]
                (https://cloud.google.com/compute/docs/
                label-or-tag-resources#tags)).
-        :param pulumi.Input[str] zone: -
-               The zone where the virtual machine is located.
+        :param pulumi.Input[str] zone: The zone where the virtual machine is located.
         """
         pulumi.set(__self__, "data_disk", data_disk)
         pulumi.set(__self__, "machine_type", machine_type)
@@ -1091,7 +1092,6 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
     @pulumi.getter(name="guestAttributes")
     def guest_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        -
         The Compute Engine guest attributes. (see [Project and instance
         guest attributes](https://cloud.google.com/compute/docs/
         storing-retrieving-metadata#guest_attributes)).
@@ -1123,9 +1123,12 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Labels to apply to this disk. These can be later modified
-        by the disks.setLabels method. This field is only
-        applicable for persistent disks.
+        The labels to associate with this runtime. Label **keys** must
+        contain 1 to 63 characters, and must conform to [RFC 1035]
+        (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+        empty, but, if present, must contain 1 to 63 characters, and must
+        conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+        more than 32 labels can be associated with a cluster.
         """
         return pulumi.get(self, "labels")
 
@@ -1248,7 +1251,6 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        -
         The zone where the virtual machine is located.
         """
         return pulumi.get(self, "zone")
@@ -1357,16 +1359,13 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
                  source: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] auto_delete: -
-               Optional. Specifies whether the disk will be auto-deleted
+        :param pulumi.Input[bool] auto_delete: Optional. Specifies whether the disk will be auto-deleted
                when the instance is deleted (but not when the disk is
                detached from the instance).
-        :param pulumi.Input[bool] boot: -
-               Optional. Indicates that this is a boot disk. The virtual
+        :param pulumi.Input[bool] boot: Optional. Indicates that this is a boot disk. The virtual
                machine will use the first partition of the disk for its
                root filesystem.
-        :param pulumi.Input[str] device_name: -
-               Optional. Specifies a unique device name of your choice
+        :param pulumi.Input[str] device_name: Optional. Specifies a unique device name of your choice
                that is reflected into the /dev/disk/by-id/google-* tree
                of a Linux operating system running within the instance.
                This name can be used to reference the device for mounting,
@@ -1375,14 +1374,12 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
                to apply to this disk, in the form persistent-disk-x, where
                x is a number assigned by Google Compute Engine. This field
                is only applicable for persistent disks.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] guest_os_features: -
-               Indicates a list of features to enable on the guest operating
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] guest_os_features: Indicates a list of features to enable on the guest operating
                system. Applicable only for bootable images. To see a list of
                available features, read `https://cloud.google.com/compute/docs/
                images/create-delete-deprecate-private-images#guest-os-features`
                options. ``
-        :param pulumi.Input[int] index: -
-               Output only. A zero-based index to this disk, where 0 is
+        :param pulumi.Input[int] index: Output only. A zero-based index to this disk, where 0 is
                reserved for the boot disk. If you have many disks attached
                to an instance, each disk would have a unique index number.
         :param pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs'] initialize_params: Input only. Specifies the parameters for a new disk that will
@@ -1398,19 +1395,16 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
                to attach a persistent disk in any other format than SCSI. Local SSDs
                can use either NVME or SCSI. For performance characteristics of SCSI
                over NVMe, see Local SSD performance. Valid values: * NVME * SCSI".
-        :param pulumi.Input[str] kind: -
-               Type of the resource. Always compute#attachedDisk for attached
+        :param pulumi.Input[str] kind: Type of the resource. Always compute#attachedDisk for attached
                disks.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: -
-               Output only. Any valid publicly visible licenses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Output only. Any valid publicly visible licenses.
         :param pulumi.Input[str] mode: The mode in which to attach this disk, either READ_WRITE
                or READ_ONLY. If not specified, the default is to attach
                the disk in READ_WRITE mode.
         :param pulumi.Input[str] source: Specifies a valid partial or full URL to an existing
                Persistent Disk resource.
-        :param pulumi.Input[str] type: Accelerator model. For valid values, see
-               `https://cloud.google.com/vertex-ai/docs/workbench/reference/
-               rest/v1/projects.locations.runtimes#AcceleratorType`
+        :param pulumi.Input[str] type: Specifies the type of the disk, either SCRATCH or PERSISTENT.
+               If not specified, the default is PERSISTENT.
         """
         if auto_delete is not None:
             pulumi.set(__self__, "auto_delete", auto_delete)
@@ -1441,7 +1435,6 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
     @pulumi.getter(name="autoDelete")
     def auto_delete(self) -> Optional[pulumi.Input[bool]]:
         """
-        -
         Optional. Specifies whether the disk will be auto-deleted
         when the instance is deleted (but not when the disk is
         detached from the instance).
@@ -1456,7 +1449,6 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
     @pulumi.getter
     def boot(self) -> Optional[pulumi.Input[bool]]:
         """
-        -
         Optional. Indicates that this is a boot disk. The virtual
         machine will use the first partition of the disk for its
         root filesystem.
@@ -1471,7 +1463,6 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
     @pulumi.getter(name="deviceName")
     def device_name(self) -> Optional[pulumi.Input[str]]:
         """
-        -
         Optional. Specifies a unique device name of your choice
         that is reflected into the /dev/disk/by-id/google-* tree
         of a Linux operating system running within the instance.
@@ -1492,7 +1483,6 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
     @pulumi.getter(name="guestOsFeatures")
     def guest_os_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        -
         Indicates a list of features to enable on the guest operating
         system. Applicable only for bootable images. To see a list of
         available features, read `https://cloud.google.com/compute/docs/
@@ -1509,7 +1499,6 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
     @pulumi.getter
     def index(self) -> Optional[pulumi.Input[int]]:
         """
-        -
         Output only. A zero-based index to this disk, where 0 is
         reserved for the boot disk. If you have many disks attached
         to an instance, each disk would have a unique index number.
@@ -1559,7 +1548,6 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
-        -
         Type of the resource. Always compute#attachedDisk for attached
         disks.
         """
@@ -1573,7 +1561,6 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
     @pulumi.getter
     def licenses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        -
         Output only. Any valid publicly visible licenses.
         """
         return pulumi.get(self, "licenses")
@@ -1613,9 +1600,8 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Accelerator model. For valid values, see
-        `https://cloud.google.com/vertex-ai/docs/workbench/reference/
-        rest/v1/projects.locations.runtimes#AcceleratorType`
+        Specifies the type of the disk, either SCRATCH or PERSISTENT.
+        If not specified, the default is PERSISTENT.
         """
         return pulumi.get(self, "type")
 

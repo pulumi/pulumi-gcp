@@ -223,15 +223,25 @@ namespace Pulumi.Gcp.Monitoring
     [OutputType]
     public sealed class GetAppEngineServiceResult
     {
+        /// <summary>
+        /// Name used for UI elements listing this (Monitoring) Service.
+        /// </summary>
         public readonly string DisplayName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string ModuleId;
+        /// <summary>
+        /// The full REST resource name for this channel. The syntax is:
+        /// `projects/[PROJECT_ID]/services/[SERVICE_ID]`.
+        /// </summary>
         public readonly string Name;
         public readonly string? Project;
         public readonly string ServiceId;
+        /// <summary>
+        /// Configuration for how to query telemetry on the Service. Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAppEngineServiceTelemetryResult> Telemetries;
         public readonly ImmutableDictionary<string, string> UserLabels;
 

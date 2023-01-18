@@ -69,7 +69,8 @@ class RouterNatArgs:
         :param pulumi.Input[int] max_ports_per_vm: Maximum number of ports allocated to a VM from this NAT.
                This field can only be set when enableDynamicPortAllocation is enabled.
         :param pulumi.Input[int] min_ports_per_vm: Minimum number of ports allocated to a VM from this NAT.
-        :param pulumi.Input[str] name: Self-link of subnetwork to NAT
+        :param pulumi.Input[str] name: Name of the NAT service. The name must be 1-63 characters long and
+               comply with RFC1035.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] nat_ips: Self-links of NAT IPs. Only valid if natIpAllocateOption
                is set to MANUAL_ONLY.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -268,7 +269,8 @@ class RouterNatArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Self-link of subnetwork to NAT
+        Name of the NAT service. The name must be 1-63 characters long and
+        comply with RFC1035.
         """
         return pulumi.get(self, "name")
 
@@ -420,7 +422,8 @@ class _RouterNatState:
         :param pulumi.Input[int] max_ports_per_vm: Maximum number of ports allocated to a VM from this NAT.
                This field can only be set when enableDynamicPortAllocation is enabled.
         :param pulumi.Input[int] min_ports_per_vm: Minimum number of ports allocated to a VM from this NAT.
-        :param pulumi.Input[str] name: Self-link of subnetwork to NAT
+        :param pulumi.Input[str] name: Name of the NAT service. The name must be 1-63 characters long and
+               comply with RFC1035.
         :param pulumi.Input[str] nat_ip_allocate_option: How external IPs should be allocated for this NAT. Valid values are
                `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
                Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
@@ -589,7 +592,8 @@ class _RouterNatState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Self-link of subnetwork to NAT
+        Name of the NAT service. The name must be 1-63 characters long and
+        comply with RFC1035.
         """
         return pulumi.get(self, "name")
 
@@ -919,7 +923,8 @@ class RouterNat(pulumi.CustomResource):
         :param pulumi.Input[int] max_ports_per_vm: Maximum number of ports allocated to a VM from this NAT.
                This field can only be set when enableDynamicPortAllocation is enabled.
         :param pulumi.Input[int] min_ports_per_vm: Minimum number of ports allocated to a VM from this NAT.
-        :param pulumi.Input[str] name: Self-link of subnetwork to NAT
+        :param pulumi.Input[str] name: Name of the NAT service. The name must be 1-63 characters long and
+               comply with RFC1035.
         :param pulumi.Input[str] nat_ip_allocate_option: How external IPs should be allocated for this NAT. Valid values are
                `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
                Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
@@ -1204,7 +1209,8 @@ class RouterNat(pulumi.CustomResource):
         :param pulumi.Input[int] max_ports_per_vm: Maximum number of ports allocated to a VM from this NAT.
                This field can only be set when enableDynamicPortAllocation is enabled.
         :param pulumi.Input[int] min_ports_per_vm: Minimum number of ports allocated to a VM from this NAT.
-        :param pulumi.Input[str] name: Self-link of subnetwork to NAT
+        :param pulumi.Input[str] name: Name of the NAT service. The name must be 1-63 characters long and
+               comply with RFC1035.
         :param pulumi.Input[str] nat_ip_allocate_option: How external IPs should be allocated for this NAT. Valid values are
                `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
                Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
@@ -1331,7 +1337,8 @@ class RouterNat(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Self-link of subnetwork to NAT
+        Name of the NAT service. The name must be 1-63 characters long and
+        comply with RFC1035.
         """
         return pulumi.get(self, "name")
 

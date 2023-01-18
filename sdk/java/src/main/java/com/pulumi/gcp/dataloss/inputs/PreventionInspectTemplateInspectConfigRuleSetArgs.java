@@ -16,7 +16,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetArgs extends com
     public static final PreventionInspectTemplateInspectConfigRuleSetArgs Empty = new PreventionInspectTemplateInspectConfigRuleSetArgs();
 
     /**
-     * If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+     * List of infoTypes this rule set is applied to.
      * Structure is documented below.
      * 
      */
@@ -24,7 +24,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetArgs extends com
     private Output<List<PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs>> infoTypes;
 
     /**
-     * @return If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+     * @return List of infoTypes this rule set is applied to.
      * Structure is documented below.
      * 
      */
@@ -75,7 +75,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetArgs extends com
         }
 
         /**
-         * @param infoTypes If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+         * @param infoTypes List of infoTypes this rule set is applied to.
          * Structure is documented below.
          * 
          * @return builder
@@ -87,7 +87,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetArgs extends com
         }
 
         /**
-         * @param infoTypes If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+         * @param infoTypes List of infoTypes this rule set is applied to.
          * Structure is documented below.
          * 
          * @return builder
@@ -98,7 +98,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetArgs extends com
         }
 
         /**
-         * @param infoTypes If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+         * @param infoTypes List of infoTypes this rule set is applied to.
          * Structure is documented below.
          * 
          * @return builder

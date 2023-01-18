@@ -13,9 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterVirtualClusterConfigAuxiliaryServicesConfig {
     /**
-     * @return The config setting for metastore service with the cluster.
-     * Structure defined below.
-     * ***
+     * @return The Hive Metastore configuration for this workload.
      * 
      */
     private @Nullable ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig metastoreConfig;
@@ -27,9 +25,7 @@ public final class ClusterVirtualClusterConfigAuxiliaryServicesConfig {
 
     private ClusterVirtualClusterConfigAuxiliaryServicesConfig() {}
     /**
-     * @return The config setting for metastore service with the cluster.
-     * Structure defined below.
-     * ***
+     * @return The Hive Metastore configuration for this workload.
      * 
      */
     public Optional<ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig> metastoreConfig() {

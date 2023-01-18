@@ -100,8 +100,9 @@ public final class GameServerClusterState extends com.pulumi.resources.ResourceA
 
     /**
      * The resource id of the game server cluster, eg:
-     * &#39;projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}&#39;. For example,
-     * &#39;projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster&#39;.
+     * `projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}`.
+     * For example,
+     * `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
      * 
      */
     @Import(name="name")
@@ -109,8 +110,9 @@ public final class GameServerClusterState extends com.pulumi.resources.ResourceA
 
     /**
      * @return The resource id of the game server cluster, eg:
-     * &#39;projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}&#39;. For example,
-     * &#39;projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster&#39;.
+     * `projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}`.
+     * For example,
+     * `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -293,8 +295,9 @@ public final class GameServerClusterState extends com.pulumi.resources.ResourceA
 
         /**
          * @param name The resource id of the game server cluster, eg:
-         * &#39;projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}&#39;. For example,
-         * &#39;projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster&#39;.
+         * `projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}`.
+         * For example,
+         * `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
          * 
          * @return builder
          * 
@@ -306,8 +309,9 @@ public final class GameServerClusterState extends com.pulumi.resources.ResourceA
 
         /**
          * @param name The resource id of the game server cluster, eg:
-         * &#39;projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}&#39;. For example,
-         * &#39;projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster&#39;.
+         * `projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}`.
+         * For example,
+         * `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
          * 
          * @return builder
          * 

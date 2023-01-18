@@ -151,7 +151,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Instance status: 'CREATING' or 'READY'.
+     * Instance status: `CREATING` or `READY`.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
 
@@ -250,7 +250,7 @@ export interface InstanceState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Instance status: 'CREATING' or 'READY'.
+     * Instance status: `CREATING` or `READY`.
      */
     state?: pulumi.Input<string>;
 }

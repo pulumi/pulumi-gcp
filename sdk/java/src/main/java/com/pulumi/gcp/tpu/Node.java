@@ -260,16 +260,20 @@ public class Node extends com.pulumi.resources.CustomResource {
         return this.network;
     }
     /**
-     * The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
-     * node first reach out to the first (index 0) entry.
+     * The network endpoints where TPU workers can be accessed and sent work.
+     * It is recommended that Tensorflow clients of the node first reach out
+     * to the first (index 0) entry.
+     * Structure is documented below.
      * 
      */
     @Export(name="networkEndpoints", type=List.class, parameters={NodeNetworkEndpoint.class})
     private Output<List<NodeNetworkEndpoint>> networkEndpoints;
 
     /**
-     * @return The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
-     * node first reach out to the first (index 0) entry.
+     * @return The network endpoints where TPU workers can be accessed and sent work.
+     * It is recommended that Tensorflow clients of the node first reach out
+     * to the first (index 0) entry.
+     * Structure is documented below.
      * 
      */
     public Output<List<NodeNetworkEndpoint>> networkEndpoints() {
@@ -308,16 +312,20 @@ public class Node extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.schedulingConfig);
     }
     /**
-     * The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
-     * Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
+     * The service account used to run the tensor flow services within the
+     * node. To share resources, including Google Cloud Storage data, with
+     * the Tensorflow job running in the Node, this account must have
+     * permissions to that data.
      * 
      */
     @Export(name="serviceAccount", type=String.class, parameters={})
     private Output<String> serviceAccount;
 
     /**
-     * @return The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
-     * Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
+     * @return The service account used to run the tensor flow services within the
+     * node. To share resources, including Google Cloud Storage data, with
+     * the Tensorflow job running in the Node, this account must have
+     * permissions to that data.
      * 
      */
     public Output<String> serviceAccount() {

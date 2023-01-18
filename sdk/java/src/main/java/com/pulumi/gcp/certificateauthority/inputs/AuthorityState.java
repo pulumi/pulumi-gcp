@@ -24,6 +24,7 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * URLs for accessing content published by this CA, such as the CA certificate and CRLs.
+     * Structure is documented below.
      * 
      */
     @Import(name="accessUrls")
@@ -31,6 +32,7 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return URLs for accessing content published by this CA, such as the CA certificate and CRLs.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<AuthorityAccessUrlArgs>>> accessUrls() {
@@ -70,16 +72,18 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
-     * resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * The time at which this CertificateAuthority was created.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
+     * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
-     * resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * @return The time at which this CertificateAuthority was created.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
+     * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -235,14 +239,16 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The resource name for this CertificateAuthority in the format projects/*{@literal /}locations/*{@literal /}certificateAuthorities/*.
+     * The resource name for this CertificateAuthority in the format
+     * projects/*{@literal /}locations/*{@literal /}certificateAuthorities/*.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The resource name for this CertificateAuthority in the format projects/*{@literal /}locations/*{@literal /}certificateAuthorities/*.
+     * @return The resource name for this CertificateAuthority in the format
+     * projects/*{@literal /}locations/*{@literal /}certificateAuthorities/*.
      * 
      */
     public Optional<Output<String>> name() {
@@ -265,18 +271,20 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This CertificateAuthority&#39;s certificate chain, including the current CertificateAuthority&#39;s certificate. Ordered such
-     * that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
-     * current CertificateAuthority&#39;s certificate.
+     * This CertificateAuthority&#39;s certificate chain, including the current
+     * CertificateAuthority&#39;s certificate. Ordered such that the root issuer is the final
+     * element (consistent with RFC 5246). For a self-signed CA, this will only list the current
+     * CertificateAuthority&#39;s certificate.
      * 
      */
     @Import(name="pemCaCertificates")
     private @Nullable Output<List<String>> pemCaCertificates;
 
     /**
-     * @return This CertificateAuthority&#39;s certificate chain, including the current CertificateAuthority&#39;s certificate. Ordered such
-     * that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
-     * current CertificateAuthority&#39;s certificate.
+     * @return This CertificateAuthority&#39;s certificate chain, including the current
+     * CertificateAuthority&#39;s certificate. Ordered such that the root issuer is the final
+     * element (consistent with RFC 5246). For a self-signed CA, this will only list the current
+     * CertificateAuthority&#39;s certificate.
      * 
      */
     public Optional<Output<List<String>>> pemCaCertificates() {
@@ -394,16 +402,18 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The time at which this CertificateAuthority was updated. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
-     * resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * The time at which this CertificateAuthority was updated.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
+     * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return The time at which this CertificateAuthority was updated. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
-     * resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * @return The time at which this CertificateAuthority was updated.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
+     * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -457,6 +467,7 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param accessUrls URLs for accessing content published by this CA, such as the CA certificate and CRLs.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -468,6 +479,7 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param accessUrls URLs for accessing content published by this CA, such as the CA certificate and CRLs.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -478,6 +490,7 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param accessUrls URLs for accessing content published by this CA, such as the CA certificate and CRLs.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -531,8 +544,9 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
-         * resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * @param createTime The time at which this CertificateAuthority was created.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
+         * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder
          * 
@@ -543,8 +557,9 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
-         * resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * @param createTime The time at which this CertificateAuthority was created.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
+         * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder
          * 
@@ -750,7 +765,8 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name for this CertificateAuthority in the format projects/*{@literal /}locations/*{@literal /}certificateAuthorities/*.
+         * @param name The resource name for this CertificateAuthority in the format
+         * projects/*{@literal /}locations/*{@literal /}certificateAuthorities/*.
          * 
          * @return builder
          * 
@@ -761,7 +777,8 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name for this CertificateAuthority in the format projects/*{@literal /}locations/*{@literal /}certificateAuthorities/*.
+         * @param name The resource name for this CertificateAuthority in the format
+         * projects/*{@literal /}locations/*{@literal /}certificateAuthorities/*.
          * 
          * @return builder
          * 
@@ -792,9 +809,10 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pemCaCertificates This CertificateAuthority&#39;s certificate chain, including the current CertificateAuthority&#39;s certificate. Ordered such
-         * that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
-         * current CertificateAuthority&#39;s certificate.
+         * @param pemCaCertificates This CertificateAuthority&#39;s certificate chain, including the current
+         * CertificateAuthority&#39;s certificate. Ordered such that the root issuer is the final
+         * element (consistent with RFC 5246). For a self-signed CA, this will only list the current
+         * CertificateAuthority&#39;s certificate.
          * 
          * @return builder
          * 
@@ -805,9 +823,10 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pemCaCertificates This CertificateAuthority&#39;s certificate chain, including the current CertificateAuthority&#39;s certificate. Ordered such
-         * that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
-         * current CertificateAuthority&#39;s certificate.
+         * @param pemCaCertificates This CertificateAuthority&#39;s certificate chain, including the current
+         * CertificateAuthority&#39;s certificate. Ordered such that the root issuer is the final
+         * element (consistent with RFC 5246). For a self-signed CA, this will only list the current
+         * CertificateAuthority&#39;s certificate.
          * 
          * @return builder
          * 
@@ -817,9 +836,10 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pemCaCertificates This CertificateAuthority&#39;s certificate chain, including the current CertificateAuthority&#39;s certificate. Ordered such
-         * that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
-         * current CertificateAuthority&#39;s certificate.
+         * @param pemCaCertificates This CertificateAuthority&#39;s certificate chain, including the current
+         * CertificateAuthority&#39;s certificate. Ordered such that the root issuer is the final
+         * element (consistent with RFC 5246). For a self-signed CA, this will only list the current
+         * CertificateAuthority&#39;s certificate.
          * 
          * @return builder
          * 
@@ -975,8 +995,9 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateTime The time at which this CertificateAuthority was updated. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
-         * resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * @param updateTime The time at which this CertificateAuthority was updated.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
+         * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder
          * 
@@ -987,8 +1008,9 @@ public final class AuthorityState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateTime The time at which this CertificateAuthority was updated. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
-         * resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * @param updateTime The time at which this CertificateAuthority was updated.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
+         * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder
          * 

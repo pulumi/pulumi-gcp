@@ -39,7 +39,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = monitoring.GetClusterIstioService(ctx, &monitoring.GetClusterIstioServiceArgs{
+//			_, err := monitoring.GetClusterIstioService(ctx, &monitoring.GetClusterIstioServiceArgs{
 //				ClusterName:      "west",
 //				Location:         "us-west2-a",
 //				ServiceName:      "istio-policy",
@@ -84,17 +84,21 @@ type GetClusterIstioServiceArgs struct {
 // A collection of values returned by getClusterIstioService.
 type GetClusterIstioServiceResult struct {
 	ClusterName string `pulumi:"clusterName"`
+	// Name used for UI elements listing this (Monitoring) Service.
 	DisplayName string `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id               string                            `pulumi:"id"`
-	Location         string                            `pulumi:"location"`
-	Name             string                            `pulumi:"name"`
-	Project          *string                           `pulumi:"project"`
-	ServiceId        string                            `pulumi:"serviceId"`
-	ServiceName      string                            `pulumi:"serviceName"`
-	ServiceNamespace string                            `pulumi:"serviceNamespace"`
-	Telemetries      []GetClusterIstioServiceTelemetry `pulumi:"telemetries"`
-	UserLabels       map[string]string                 `pulumi:"userLabels"`
+	Id       string `pulumi:"id"`
+	Location string `pulumi:"location"`
+	// The full REST resource name for this channel. The syntax is:
+	// `projects/[PROJECT_ID]/services/[SERVICE_ID]`.
+	Name             string  `pulumi:"name"`
+	Project          *string `pulumi:"project"`
+	ServiceId        string  `pulumi:"serviceId"`
+	ServiceName      string  `pulumi:"serviceName"`
+	ServiceNamespace string  `pulumi:"serviceNamespace"`
+	// Configuration for how to query telemetry on the Service. Structure is documented below.
+	Telemetries []GetClusterIstioServiceTelemetry `pulumi:"telemetries"`
+	UserLabels  map[string]string                 `pulumi:"userLabels"`
 }
 
 func GetClusterIstioServiceOutput(ctx *pulumi.Context, args GetClusterIstioServiceOutputArgs, opts ...pulumi.InvokeOption) GetClusterIstioServiceResultOutput {
@@ -152,6 +156,7 @@ func (o GetClusterIstioServiceResultOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterIstioServiceResult) string { return v.ClusterName }).(pulumi.StringOutput)
 }
 
+// Name used for UI elements listing this (Monitoring) Service.
 func (o GetClusterIstioServiceResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterIstioServiceResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -165,6 +170,8 @@ func (o GetClusterIstioServiceResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterIstioServiceResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// The full REST resource name for this channel. The syntax is:
+// `projects/[PROJECT_ID]/services/[SERVICE_ID]`.
 func (o GetClusterIstioServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterIstioServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -185,6 +192,7 @@ func (o GetClusterIstioServiceResultOutput) ServiceNamespace() pulumi.StringOutp
 	return o.ApplyT(func(v GetClusterIstioServiceResult) string { return v.ServiceNamespace }).(pulumi.StringOutput)
 }
 
+// Configuration for how to query telemetry on the Service. Structure is documented below.
 func (o GetClusterIstioServiceResultOutput) Telemetries() GetClusterIstioServiceTelemetryArrayOutput {
 	return o.ApplyT(func(v GetClusterIstioServiceResult) []GetClusterIstioServiceTelemetry { return v.Telemetries }).(GetClusterIstioServiceTelemetryArrayOutput)
 }

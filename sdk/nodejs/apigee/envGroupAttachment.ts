@@ -129,7 +129,7 @@ export class EnvGroupAttachment extends pulumi.CustomResource {
      */
     public readonly environment!: pulumi.Output<string>;
     /**
-     * The name of the newly created attachment (output parameter).
+     * The name of the newly created  attachment (output parameter).
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
 
@@ -180,7 +180,7 @@ export interface EnvGroupAttachmentState {
      */
     environment?: pulumi.Input<string>;
     /**
-     * The name of the newly created attachment (output parameter).
+     * The name of the newly created  attachment (output parameter).
      */
     name?: pulumi.Input<string>;
 }

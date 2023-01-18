@@ -182,21 +182,6 @@ namespace Pulumi.Gcp.Iam
         /// provider should not be accepted.
         /// The expression must output a boolean representing whether to allow the federation.
         /// The following keywords may be referenced in the expressions:
-        /// * `assertion`: JSON representing the authentication credential issued by the provider.
-        /// * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`.
-        /// * `attribute`: The custom attributes mapped from the assertion in the `attribute_mappings`.
-        /// The maximum length of the attribute condition expression is 4096 characters. If
-        /// unspecified, all valid authentication credential are accepted.
-        /// The following example shows how to only allow credentials with a mapped `google.groups`
-        /// value of `admins`:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// </summary>
         [Output("attributeCondition")]
         public Output<string?> AttributeCondition { get; private set; } = null!;
@@ -287,7 +272,7 @@ namespace Pulumi.Gcp.Iam
 
         /// <summary>
         /// The resource name of the provider as
-        /// 'projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}'.
+        /// `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -307,10 +292,13 @@ namespace Pulumi.Gcp.Iam
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the provider. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The provider is active, and may be used to
-        /// validate authentication credentials. * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently
-        /// deleted after approximately 30 days. You can restore a soft-deleted provider using UndeleteWorkloadIdentityPoolProvider.
-        /// You cannot reuse the ID of a soft-deleted provider until it is permanently deleted.
+        /// The state of the provider.
+        /// * STATE_UNSPECIFIED: State unspecified.
+        /// * ACTIVE: The provider is active, and may be used to validate authentication credentials.
+        /// * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently deleted
+        /// after approximately 30 days. You can restore a soft-deleted provider using
+        /// UndeleteWorkloadIdentityPoolProvider. You cannot reuse the ID of a soft-deleted provider
+        /// until it is permanently deleted.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -383,21 +371,6 @@ namespace Pulumi.Gcp.Iam
         /// provider should not be accepted.
         /// The expression must output a boolean representing whether to allow the federation.
         /// The following keywords may be referenced in the expressions:
-        /// * `assertion`: JSON representing the authentication credential issued by the provider.
-        /// * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`.
-        /// * `attribute`: The custom attributes mapped from the assertion in the `attribute_mappings`.
-        /// The maximum length of the attribute condition expression is 4096 characters. If
-        /// unspecified, all valid authentication credential are accepted.
-        /// The following example shows how to only allow credentials with a mapped `google.groups`
-        /// value of `admins`:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// </summary>
         [Input("attributeCondition")]
         public Input<string>? AttributeCondition { get; set; }
@@ -536,21 +509,6 @@ namespace Pulumi.Gcp.Iam
         /// provider should not be accepted.
         /// The expression must output a boolean representing whether to allow the federation.
         /// The following keywords may be referenced in the expressions:
-        /// * `assertion`: JSON representing the authentication credential issued by the provider.
-        /// * `google`: The Google attributes mapped from the assertion in the `attribute_mappings`.
-        /// * `attribute`: The custom attributes mapped from the assertion in the `attribute_mappings`.
-        /// The maximum length of the attribute condition expression is 4096 characters. If
-        /// unspecified, all valid authentication credential are accepted.
-        /// The following example shows how to only allow credentials with a mapped `google.groups`
-        /// value of `admins`:
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using Pulumi;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        /// });
-        /// ```
         /// </summary>
         [Input("attributeCondition")]
         public Input<string>? AttributeCondition { get; set; }
@@ -647,7 +605,7 @@ namespace Pulumi.Gcp.Iam
 
         /// <summary>
         /// The resource name of the provider as
-        /// 'projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}'.
+        /// `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -667,10 +625,13 @@ namespace Pulumi.Gcp.Iam
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The state of the provider. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The provider is active, and may be used to
-        /// validate authentication credentials. * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently
-        /// deleted after approximately 30 days. You can restore a soft-deleted provider using UndeleteWorkloadIdentityPoolProvider.
-        /// You cannot reuse the ID of a soft-deleted provider until it is permanently deleted.
+        /// The state of the provider.
+        /// * STATE_UNSPECIFIED: State unspecified.
+        /// * ACTIVE: The provider is active, and may be used to validate authentication credentials.
+        /// * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently deleted
+        /// after approximately 30 days. You can restore a soft-deleted provider using
+        /// UndeleteWorkloadIdentityPoolProvider. You cannot reuse the ID of a soft-deleted provider
+        /// until it is permanently deleted.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

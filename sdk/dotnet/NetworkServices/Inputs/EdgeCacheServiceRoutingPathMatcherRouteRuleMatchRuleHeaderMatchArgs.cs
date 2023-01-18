@@ -13,14 +13,13 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
     public sealed class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch.
+        /// The value of the header should exactly match contents of exactMatch.
         /// </summary>
         [Input("exactMatch")]
         public Input<string>? ExactMatch { get; set; }
 
         /// <summary>
-        /// Headers to remove from the response prior to sending it back to the client.
-        /// Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+        /// The header name to match on.
         /// </summary>
         [Input("headerName", required: true)]
         public Input<string> HeaderName { get; set; } = null!;
@@ -39,7 +38,7 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         public Input<string>? PrefixMatch { get; set; }
 
         /// <summary>
-        /// Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not.
+        /// A header with the contents of headerName must exist. The match takes place whether or not the request's header has a value.
         /// </summary>
         [Input("presentMatch")]
         public Input<bool>? PresentMatch { get; set; }

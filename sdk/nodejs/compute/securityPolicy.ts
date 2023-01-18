@@ -19,32 +19,30 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const policy = new gcp.compute.SecurityPolicy("policy", {
- *     rules: [
- *         {
- *             action: "deny(403)",
- *             description: "Deny access to IPs in 9.9.9.0/24",
- *             match: {
- *                 config: {
- *                     srcIpRanges: ["9.9.9.0/24"],
- *                 },
- *                 versionedExpr: "SRC_IPS_V1",
+ * const policy = new gcp.compute.SecurityPolicy("policy", {rules: [
+ *     {
+ *         action: "deny(403)",
+ *         description: "Deny access to IPs in 9.9.9.0/24",
+ *         match: {
+ *             config: {
+ *                 srcIpRanges: ["9.9.9.0/24"],
  *             },
- *             priority: 1000,
+ *             versionedExpr: "SRC_IPS_V1",
  *         },
- *         {
- *             action: "allow",
- *             description: "default rule",
- *             match: {
- *                 config: {
- *                     srcIpRanges: ["*"],
- *                 },
- *                 versionedExpr: "SRC_IPS_V1",
+ *         priority: 1000,
+ *     },
+ *     {
+ *         action: "allow",
+ *         description: "default rule",
+ *         match: {
+ *             config: {
+ *                 srcIpRanges: ["*"],
  *             },
- *             priority: 2147483647,
+ *             versionedExpr: "SRC_IPS_V1",
  *         },
- *     ],
- * });
+ *         priority: 2147483647,
+ *     },
+ * ]});
  * ```
  * ### With ReCAPTCHA Configuration Options
  *
@@ -78,42 +76,40 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const policy = new gcp.compute.SecurityPolicy("policy", {
- *     rules: [
- *         {
- *             action: "allow",
- *             description: "default rule",
- *             match: {
- *                 config: {
- *                     srcIpRanges: ["*"],
- *                 },
- *                 versionedExpr: "SRC_IPS_V1",
+ * const policy = new gcp.compute.SecurityPolicy("policy", {rules: [
+ *     {
+ *         action: "allow",
+ *         description: "default rule",
+ *         match: {
+ *             config: {
+ *                 srcIpRanges: ["*"],
  *             },
- *             priority: 2147483647,
+ *             versionedExpr: "SRC_IPS_V1",
  *         },
- *         {
- *             action: "allow",
- *             headerAction: {
- *                 requestHeadersToAdds: [
- *                     {
- *                         headerName: "reCAPTCHA-Warning",
- *                         headerValue: "high",
- *                     },
- *                     {
- *                         headerName: "X-Resource",
- *                         headerValue: "test",
- *                     },
- *                 ],
- *             },
- *             match: {
- *                 expr: {
- *                     expression: "request.path.matches(\"/login.html\") && token.recaptcha_session.score < 0.2",
+ *         priority: 2147483647,
+ *     },
+ *     {
+ *         action: "allow",
+ *         headerAction: {
+ *             requestHeadersToAdds: [
+ *                 {
+ *                     headerName: "reCAPTCHA-Warning",
+ *                     headerValue: "high",
  *                 },
- *             },
- *             priority: 1000,
+ *                 {
+ *                     headerName: "X-Resource",
+ *                     headerValue: "test",
+ *                 },
+ *             ],
  *         },
- *     ],
- * });
+ *         match: {
+ *             expr: {
+ *                 expression: "request.path.matches(\"/login.html\") && token.recaptcha_session.score < 0.2",
+ *             },
+ *         },
+ *         priority: 1000,
+ *     },
+ * ]});
  * ```
  */
 export class SecurityPolicy extends pulumi.CustomResource {
@@ -154,7 +150,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
      */
     public readonly advancedOptionsConfig!: pulumi.Output<outputs.compute.SecurityPolicyAdvancedOptionsConfig>;
     /**
-     * An optional description of this rule. Max size is 64.
+     * An optional description of this security policy. Max size is 2048.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -185,7 +181,14 @@ export class SecurityPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * Type of redirect action.
+     * The type indicates the intended use of the security policy. This field can be set only at resource creation time.
+     * * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
+     * They filter requests before they hit the origin servers.
+     * * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
+     * (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+     * They filter requests before the request is served from Google's cache.
+     * * CLOUD_ARMOR_INTERNAL_SERVICE - Cloud Armor internal service policies can be configured to filter HTTP requests targeting services
+     * managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -244,7 +247,7 @@ export interface SecurityPolicyState {
      */
     advancedOptionsConfig?: pulumi.Input<inputs.compute.SecurityPolicyAdvancedOptionsConfig>;
     /**
-     * An optional description of this rule. Max size is 64.
+     * An optional description of this security policy. Max size is 2048.
      */
     description?: pulumi.Input<string>;
     /**
@@ -275,7 +278,14 @@ export interface SecurityPolicyState {
      */
     selfLink?: pulumi.Input<string>;
     /**
-     * Type of redirect action.
+     * The type indicates the intended use of the security policy. This field can be set only at resource creation time.
+     * * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
+     * They filter requests before they hit the origin servers.
+     * * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
+     * (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+     * They filter requests before the request is served from Google's cache.
+     * * CLOUD_ARMOR_INTERNAL_SERVICE - Cloud Armor internal service policies can be configured to filter HTTP requests targeting services
+     * managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
      */
     type?: pulumi.Input<string>;
 }
@@ -294,7 +304,7 @@ export interface SecurityPolicyArgs {
      */
     advancedOptionsConfig?: pulumi.Input<inputs.compute.SecurityPolicyAdvancedOptionsConfig>;
     /**
-     * An optional description of this rule. Max size is 64.
+     * An optional description of this security policy. Max size is 2048.
      */
     description?: pulumi.Input<string>;
     /**
@@ -317,7 +327,14 @@ export interface SecurityPolicyArgs {
      */
     rules?: pulumi.Input<pulumi.Input<inputs.compute.SecurityPolicyRule>[]>;
     /**
-     * Type of redirect action.
+     * The type indicates the intended use of the security policy. This field can be set only at resource creation time.
+     * * CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
+     * They filter requests before they hit the origin servers.
+     * * CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
+     * (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+     * They filter requests before the request is served from Google's cache.
+     * * CLOUD_ARMOR_INTERNAL_SERVICE - Cloud Armor internal service policies can be configured to filter HTTP requests targeting services
+     * managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
      */
     type?: pulumi.Input<string>;
 }

@@ -27,8 +27,7 @@ class DenyPolicyRuleArgs:
         """
         :param pulumi.Input['DenyPolicyRuleDenyRuleArgs'] deny_rule: A deny rule in an IAM deny policy.
                Structure is documented below.
-        :param pulumi.Input[str] description: Description of the expression. This is a longer text which describes the expression,
-               e.g. when hovered over it in a UI.
+        :param pulumi.Input[str] description: The description of the rule.
         """
         if deny_rule is not None:
             pulumi.set(__self__, "deny_rule", deny_rule)
@@ -52,8 +51,7 @@ class DenyPolicyRuleArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the expression. This is a longer text which describes the expression,
-        e.g. when hovered over it in a UI.
+        The description of the rule.
         """
         return pulumi.get(self, "description")
 

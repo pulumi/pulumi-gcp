@@ -193,38 +193,40 @@ public class AlertPolicy extends com.pulumi.resources.CustomResource {
         return this.conditions;
     }
     /**
-     * A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
-     * ignored.
+     * A read-only record of the creation of the alerting policy.
+     * If provided in a call to create or update, this field will
+     * be ignored.
+     * Structure is documented below.
      * 
      */
     @Export(name="creationRecords", type=List.class, parameters={AlertPolicyCreationRecord.class})
     private Output<List<AlertPolicyCreationRecord>> creationRecords;
 
     /**
-     * @return A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
-     * ignored.
+     * @return A read-only record of the creation of the alerting policy.
+     * If provided in a call to create or update, this field will
+     * be ignored.
+     * Structure is documented below.
      * 
      */
     public Output<List<AlertPolicyCreationRecord>> creationRecords() {
         return this.creationRecords;
     }
     /**
-     * A short name or phrase used to identify the
-     * condition in dashboards, notifications, and
-     * incidents. To avoid confusion, don&#39;t use the same
-     * display name for multiple conditions in the same
-     * policy.
+     * A short name or phrase used to identify the policy in
+     * dashboards, notifications, and incidents. To avoid confusion, don&#39;t use
+     * the same display name for multiple policies in the same project. The
+     * name is limited to 512 Unicode characters.
      * 
      */
     @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
-     * @return A short name or phrase used to identify the
-     * condition in dashboards, notifications, and
-     * incidents. To avoid confusion, don&#39;t use the same
-     * display name for multiple conditions in the same
-     * policy.
+     * @return A short name or phrase used to identify the policy in
+     * dashboards, notifications, and incidents. To avoid confusion, don&#39;t use
+     * the same display name for multiple policies in the same project. The
+     * name is limited to 512 Unicode characters.
      * 
      */
     public Output<String> displayName() {
@@ -269,7 +271,6 @@ public class AlertPolicy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enabled);
     }
     /**
-     * - 
      * The unique resource name for this condition.
      * Its syntax is:
      * projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
@@ -282,8 +283,7 @@ public class AlertPolicy extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return -
-     * The unique resource name for this condition.
+     * @return The unique resource name for this condition.
      * Its syntax is:
      * projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
      * [CONDITION_ID] is assigned by Stackdriver Monitoring when

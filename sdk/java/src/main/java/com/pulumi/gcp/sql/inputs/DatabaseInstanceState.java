@@ -223,14 +223,20 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A name for this whitelist entry.
+     * The name of the instance. If the name is left
+     * blank, the provider will randomly generate one when the instance is first
+     * created. This is done because after a name is used, it cannot be reused for
+     * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return A name for this whitelist entry.
+     * @return The name of the instance. If the name is left
+     * blank, the provider will randomly generate one when the instance is first
+     * created. This is done because after a name is used, it cannot be reused for
+     * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
      * 
      */
     public Optional<Output<String>> name() {
@@ -253,14 +259,16 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The full project ID of the source instance.`
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The full project ID of the source instance.`
+     * @return The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
      * 
      */
     public Optional<Output<String>> project() {
@@ -730,7 +738,10 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name A name for this whitelist entry.
+         * @param name The name of the instance. If the name is left
+         * blank, the provider will randomly generate one when the instance is first
+         * created. This is done because after a name is used, it cannot be reused for
+         * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
          * 
          * @return builder
          * 
@@ -741,7 +752,10 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name A name for this whitelist entry.
+         * @param name The name of the instance. If the name is left
+         * blank, the provider will randomly generate one when the instance is first
+         * created. This is done because after a name is used, it cannot be reused for
+         * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
          * 
          * @return builder
          * 
@@ -772,7 +786,8 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param project The full project ID of the source instance.`
+         * @param project The ID of the project in which the resource belongs. If it
+         * is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -783,7 +798,8 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param project The full project ID of the source instance.`
+         * @param project The ID of the project in which the resource belongs. If it
+         * is not provided, the provider project is used.
          * 
          * @return builder
          * 

@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.storage.StorageFunctions;
- * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+ * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
  * import com.pulumi.gcp.pubsub.Topic;
  * import com.pulumi.gcp.pubsub.TopicIAMBinding;
  * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;

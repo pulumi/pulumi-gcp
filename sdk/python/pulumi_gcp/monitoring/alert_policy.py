@@ -35,11 +35,10 @@ class AlertPolicyArgs:
                evaluate to true, then an incident is created. A policy can have from
                one to six conditions.
                Structure is documented below.
-        :param pulumi.Input[str] display_name: A short name or phrase used to identify the
-               condition in dashboards, notifications, and
-               incidents. To avoid confusion, don't use the same
-               display name for multiple conditions in the same
-               policy.
+        :param pulumi.Input[str] display_name: A short name or phrase used to identify the policy in
+               dashboards, notifications, and incidents. To avoid confusion, don't use
+               the same display name for multiple policies in the same project. The
+               name is limited to 512 Unicode characters.
         :param pulumi.Input['AlertPolicyAlertStrategyArgs'] alert_strategy: Control over how this alert policy's notification channels are notified.
                Structure is documented below.
         :param pulumi.Input['AlertPolicyDocumentationArgs'] documentation: Documentation that is included with notifications and incidents related
@@ -114,11 +113,10 @@ class AlertPolicyArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Input[str]:
         """
-        A short name or phrase used to identify the
-        condition in dashboards, notifications, and
-        incidents. To avoid confusion, don't use the same
-        display name for multiple conditions in the same
-        policy.
+        A short name or phrase used to identify the policy in
+        dashboards, notifications, and incidents. To avoid confusion, don't use
+        the same display name for multiple policies in the same project. The
+        name is limited to 512 Unicode characters.
         """
         return pulumi.get(self, "display_name")
 
@@ -242,13 +240,14 @@ class _AlertPolicyState:
                evaluate to true, then an incident is created. A policy can have from
                one to six conditions.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['AlertPolicyCreationRecordArgs']]] creation_records: A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
-               ignored.
-        :param pulumi.Input[str] display_name: A short name or phrase used to identify the
-               condition in dashboards, notifications, and
-               incidents. To avoid confusion, don't use the same
-               display name for multiple conditions in the same
-               policy.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertPolicyCreationRecordArgs']]] creation_records: A read-only record of the creation of the alerting policy.
+               If provided in a call to create or update, this field will
+               be ignored.
+               Structure is documented below.
+        :param pulumi.Input[str] display_name: A short name or phrase used to identify the policy in
+               dashboards, notifications, and incidents. To avoid confusion, don't use
+               the same display name for multiple policies in the same project. The
+               name is limited to 512 Unicode characters.
         :param pulumi.Input['AlertPolicyDocumentationArgs'] documentation: Documentation that is included with notifications and incidents related
                to this policy. Best practice is for the documentation to include information
                to help responders understand, mitigate, escalate, and correct the underlying
@@ -256,8 +255,7 @@ class _AlertPolicyState:
                limited capacity might not show this documentation.
                Structure is documented below.
         :param pulumi.Input[bool] enabled: Whether or not the policy is enabled. The default is true.
-        :param pulumi.Input[str] name: -
-               The unique resource name for this condition.
+        :param pulumi.Input[str] name: The unique resource name for this condition.
                Its syntax is:
                projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
                [CONDITION_ID] is assigned by Stackdriver Monitoring when
@@ -348,8 +346,10 @@ class _AlertPolicyState:
     @pulumi.getter(name="creationRecords")
     def creation_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyCreationRecordArgs']]]]:
         """
-        A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
-        ignored.
+        A read-only record of the creation of the alerting policy.
+        If provided in a call to create or update, this field will
+        be ignored.
+        Structure is documented below.
         """
         return pulumi.get(self, "creation_records")
 
@@ -361,11 +361,10 @@ class _AlertPolicyState:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        A short name or phrase used to identify the
-        condition in dashboards, notifications, and
-        incidents. To avoid confusion, don't use the same
-        display name for multiple conditions in the same
-        policy.
+        A short name or phrase used to identify the policy in
+        dashboards, notifications, and incidents. To avoid confusion, don't use
+        the same display name for multiple policies in the same project. The
+        name is limited to 512 Unicode characters.
         """
         return pulumi.get(self, "display_name")
 
@@ -406,7 +405,6 @@ class _AlertPolicyState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        -
         The unique resource name for this condition.
         Its syntax is:
         projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
@@ -567,11 +565,10 @@ class AlertPolicy(pulumi.CustomResource):
                evaluate to true, then an incident is created. A policy can have from
                one to six conditions.
                Structure is documented below.
-        :param pulumi.Input[str] display_name: A short name or phrase used to identify the
-               condition in dashboards, notifications, and
-               incidents. To avoid confusion, don't use the same
-               display name for multiple conditions in the same
-               policy.
+        :param pulumi.Input[str] display_name: A short name or phrase used to identify the policy in
+               dashboards, notifications, and incidents. To avoid confusion, don't use
+               the same display name for multiple policies in the same project. The
+               name is limited to 512 Unicode characters.
         :param pulumi.Input[pulumi.InputType['AlertPolicyDocumentationArgs']] documentation: Documentation that is included with notifications and incidents related
                to this policy. Best practice is for the documentation to include information
                to help responders understand, mitigate, escalate, and correct the underlying
@@ -760,13 +757,14 @@ class AlertPolicy(pulumi.CustomResource):
                evaluate to true, then an incident is created. A policy can have from
                one to six conditions.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertPolicyCreationRecordArgs']]]] creation_records: A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
-               ignored.
-        :param pulumi.Input[str] display_name: A short name or phrase used to identify the
-               condition in dashboards, notifications, and
-               incidents. To avoid confusion, don't use the same
-               display name for multiple conditions in the same
-               policy.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertPolicyCreationRecordArgs']]]] creation_records: A read-only record of the creation of the alerting policy.
+               If provided in a call to create or update, this field will
+               be ignored.
+               Structure is documented below.
+        :param pulumi.Input[str] display_name: A short name or phrase used to identify the policy in
+               dashboards, notifications, and incidents. To avoid confusion, don't use
+               the same display name for multiple policies in the same project. The
+               name is limited to 512 Unicode characters.
         :param pulumi.Input[pulumi.InputType['AlertPolicyDocumentationArgs']] documentation: Documentation that is included with notifications and incidents related
                to this policy. Best practice is for the documentation to include information
                to help responders understand, mitigate, escalate, and correct the underlying
@@ -774,8 +772,7 @@ class AlertPolicy(pulumi.CustomResource):
                limited capacity might not show this documentation.
                Structure is documented below.
         :param pulumi.Input[bool] enabled: Whether or not the policy is enabled. The default is true.
-        :param pulumi.Input[str] name: -
-               The unique resource name for this condition.
+        :param pulumi.Input[str] name: The unique resource name for this condition.
                Its syntax is:
                projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
                [CONDITION_ID] is assigned by Stackdriver Monitoring when
@@ -848,8 +845,10 @@ class AlertPolicy(pulumi.CustomResource):
     @pulumi.getter(name="creationRecords")
     def creation_records(self) -> pulumi.Output[Sequence['outputs.AlertPolicyCreationRecord']]:
         """
-        A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
-        ignored.
+        A read-only record of the creation of the alerting policy.
+        If provided in a call to create or update, this field will
+        be ignored.
+        Structure is documented below.
         """
         return pulumi.get(self, "creation_records")
 
@@ -857,11 +856,10 @@ class AlertPolicy(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        A short name or phrase used to identify the
-        condition in dashboards, notifications, and
-        incidents. To avoid confusion, don't use the same
-        display name for multiple conditions in the same
-        policy.
+        A short name or phrase used to identify the policy in
+        dashboards, notifications, and incidents. To avoid confusion, don't use
+        the same display name for multiple policies in the same project. The
+        name is limited to 512 Unicode characters.
         """
         return pulumi.get(self, "display_name")
 
@@ -890,7 +888,6 @@ class AlertPolicy(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        -
         The unique resource name for this condition.
         Its syntax is:
         projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]

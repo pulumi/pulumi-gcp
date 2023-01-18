@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         /// </summary>
         public readonly Outputs.AccessLevelsAccessLevelCustom? Custom;
         /// <summary>
-        /// Description of the expression
+        /// Description of the AccessLevel and its use. Does not affect behavior.
         /// </summary>
         public readonly string? Description;
         /// <summary>
@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Title for the expression, i.e. a short string describing its purpose.
+        /// Human readable title. Must be unique within the Policy.
         /// </summary>
         public readonly string Title;
 

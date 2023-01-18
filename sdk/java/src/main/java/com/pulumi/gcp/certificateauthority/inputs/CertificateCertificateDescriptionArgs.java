@@ -23,28 +23,60 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
 
     public static final CertificateCertificateDescriptionArgs Empty = new CertificateCertificateDescriptionArgs();
 
+    /**
+     * Describes lists of issuer CA certificate URLs that appear in the &#34;Authority Information Access&#34; extension in the certificate.
+     * 
+     */
     @Import(name="aiaIssuingCertificateUrls")
     private @Nullable Output<List<String>> aiaIssuingCertificateUrls;
 
+    /**
+     * @return Describes lists of issuer CA certificate URLs that appear in the &#34;Authority Information Access&#34; extension in the certificate.
+     * 
+     */
     public Optional<Output<List<String>>> aiaIssuingCertificateUrls() {
         return Optional.ofNullable(this.aiaIssuingCertificateUrls);
     }
 
+    /**
+     * Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+     * Structure is documented below.
+     * 
+     */
     @Import(name="authorityKeyIds")
     private @Nullable Output<List<CertificateCertificateDescriptionAuthorityKeyIdArgs>> authorityKeyIds;
 
+    /**
+     * @return Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<List<CertificateCertificateDescriptionAuthorityKeyIdArgs>>> authorityKeyIds() {
         return Optional.ofNullable(this.authorityKeyIds);
     }
 
+    /**
+     * The hash of the x.509 certificate.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="certFingerprints")
     private @Nullable Output<List<CertificateCertificateDescriptionCertFingerprintArgs>> certFingerprints;
 
+    /**
+     * @return The hash of the x.509 certificate.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<List<CertificateCertificateDescriptionCertFingerprintArgs>>> certFingerprints() {
         return Optional.ofNullable(this.certFingerprints);
     }
 
     /**
+     * (Deprecated)
+     * Describes some of the technical fields in a certificate.
+     * Structure is documented below.
+     * 
      * @deprecated
      * Deprecated in favor of `x509_description`.
      * 
@@ -54,6 +86,10 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
     private @Nullable Output<List<CertificateCertificateDescriptionConfigValueArgs>> configValues;
 
     /**
+     * @return (Deprecated)
+     * Describes some of the technical fields in a certificate.
+     * Structure is documented below.
+     * 
      * @deprecated
      * Deprecated in favor of `x509_description`.
      * 
@@ -63,9 +99,17 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
         return Optional.ofNullable(this.configValues);
     }
 
+    /**
+     * Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+     * 
+     */
     @Import(name="crlDistributionPoints")
     private @Nullable Output<List<String>> crlDistributionPoints;
 
+    /**
+     * @return Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+     * 
+     */
     public Optional<Output<List<String>>> crlDistributionPoints() {
         return Optional.ofNullable(this.crlDistributionPoints);
     }
@@ -87,23 +131,53 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
         return Optional.ofNullable(this.publicKeys);
     }
 
+    /**
+     * Describes some of the values in a certificate that are related to the subject and lifetime.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="subjectDescriptions")
     private @Nullable Output<List<CertificateCertificateDescriptionSubjectDescriptionArgs>> subjectDescriptions;
 
+    /**
+     * @return Describes some of the values in a certificate that are related to the subject and lifetime.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<List<CertificateCertificateDescriptionSubjectDescriptionArgs>>> subjectDescriptions() {
         return Optional.ofNullable(this.subjectDescriptions);
     }
 
+    /**
+     * Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="subjectKeyIds")
     private @Nullable Output<List<CertificateCertificateDescriptionSubjectKeyIdArgs>> subjectKeyIds;
 
+    /**
+     * @return Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<List<CertificateCertificateDescriptionSubjectKeyIdArgs>>> subjectKeyIds() {
         return Optional.ofNullable(this.subjectKeyIds);
     }
 
+    /**
+     * A structured description of the issued X.509 certificate.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="x509Descriptions")
     private @Nullable Output<List<CertificateCertificateDescriptionX509DescriptionArgs>> x509Descriptions;
 
+    /**
+     * @return A structured description of the issued X.509 certificate.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<List<CertificateCertificateDescriptionX509DescriptionArgs>>> x509Descriptions() {
         return Optional.ofNullable(this.x509Descriptions);
     }
@@ -140,46 +214,110 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
             $ = new CertificateCertificateDescriptionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param aiaIssuingCertificateUrls Describes lists of issuer CA certificate URLs that appear in the &#34;Authority Information Access&#34; extension in the certificate.
+         * 
+         * @return builder
+         * 
+         */
         public Builder aiaIssuingCertificateUrls(@Nullable Output<List<String>> aiaIssuingCertificateUrls) {
             $.aiaIssuingCertificateUrls = aiaIssuingCertificateUrls;
             return this;
         }
 
+        /**
+         * @param aiaIssuingCertificateUrls Describes lists of issuer CA certificate URLs that appear in the &#34;Authority Information Access&#34; extension in the certificate.
+         * 
+         * @return builder
+         * 
+         */
         public Builder aiaIssuingCertificateUrls(List<String> aiaIssuingCertificateUrls) {
             return aiaIssuingCertificateUrls(Output.of(aiaIssuingCertificateUrls));
         }
 
+        /**
+         * @param aiaIssuingCertificateUrls Describes lists of issuer CA certificate URLs that appear in the &#34;Authority Information Access&#34; extension in the certificate.
+         * 
+         * @return builder
+         * 
+         */
         public Builder aiaIssuingCertificateUrls(String... aiaIssuingCertificateUrls) {
             return aiaIssuingCertificateUrls(List.of(aiaIssuingCertificateUrls));
         }
 
+        /**
+         * @param authorityKeyIds Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authorityKeyIds(@Nullable Output<List<CertificateCertificateDescriptionAuthorityKeyIdArgs>> authorityKeyIds) {
             $.authorityKeyIds = authorityKeyIds;
             return this;
         }
 
+        /**
+         * @param authorityKeyIds Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authorityKeyIds(List<CertificateCertificateDescriptionAuthorityKeyIdArgs> authorityKeyIds) {
             return authorityKeyIds(Output.of(authorityKeyIds));
         }
 
+        /**
+         * @param authorityKeyIds Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authorityKeyIds(CertificateCertificateDescriptionAuthorityKeyIdArgs... authorityKeyIds) {
             return authorityKeyIds(List.of(authorityKeyIds));
         }
 
+        /**
+         * @param certFingerprints The hash of the x.509 certificate.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder certFingerprints(@Nullable Output<List<CertificateCertificateDescriptionCertFingerprintArgs>> certFingerprints) {
             $.certFingerprints = certFingerprints;
             return this;
         }
 
+        /**
+         * @param certFingerprints The hash of the x.509 certificate.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder certFingerprints(List<CertificateCertificateDescriptionCertFingerprintArgs> certFingerprints) {
             return certFingerprints(Output.of(certFingerprints));
         }
 
+        /**
+         * @param certFingerprints The hash of the x.509 certificate.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder certFingerprints(CertificateCertificateDescriptionCertFingerprintArgs... certFingerprints) {
             return certFingerprints(List.of(certFingerprints));
         }
 
         /**
+         * @param configValues (Deprecated)
+         * Describes some of the technical fields in a certificate.
+         * Structure is documented below.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -193,6 +331,10 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
         }
 
         /**
+         * @param configValues (Deprecated)
+         * Describes some of the technical fields in a certificate.
+         * Structure is documented below.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -205,6 +347,10 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
         }
 
         /**
+         * @param configValues (Deprecated)
+         * Describes some of the technical fields in a certificate.
+         * Structure is documented below.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -216,15 +362,33 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
             return configValues(List.of(configValues));
         }
 
+        /**
+         * @param crlDistributionPoints Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+         * 
+         * @return builder
+         * 
+         */
         public Builder crlDistributionPoints(@Nullable Output<List<String>> crlDistributionPoints) {
             $.crlDistributionPoints = crlDistributionPoints;
             return this;
         }
 
+        /**
+         * @param crlDistributionPoints Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+         * 
+         * @return builder
+         * 
+         */
         public Builder crlDistributionPoints(List<String> crlDistributionPoints) {
             return crlDistributionPoints(Output.of(crlDistributionPoints));
         }
 
+        /**
+         * @param crlDistributionPoints Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+         * 
+         * @return builder
+         * 
+         */
         public Builder crlDistributionPoints(String... crlDistributionPoints) {
             return crlDistributionPoints(List.of(crlDistributionPoints));
         }
@@ -263,41 +427,104 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
             return publicKeys(List.of(publicKeys));
         }
 
+        /**
+         * @param subjectDescriptions Describes some of the values in a certificate that are related to the subject and lifetime.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subjectDescriptions(@Nullable Output<List<CertificateCertificateDescriptionSubjectDescriptionArgs>> subjectDescriptions) {
             $.subjectDescriptions = subjectDescriptions;
             return this;
         }
 
+        /**
+         * @param subjectDescriptions Describes some of the values in a certificate that are related to the subject and lifetime.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subjectDescriptions(List<CertificateCertificateDescriptionSubjectDescriptionArgs> subjectDescriptions) {
             return subjectDescriptions(Output.of(subjectDescriptions));
         }
 
+        /**
+         * @param subjectDescriptions Describes some of the values in a certificate that are related to the subject and lifetime.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subjectDescriptions(CertificateCertificateDescriptionSubjectDescriptionArgs... subjectDescriptions) {
             return subjectDescriptions(List.of(subjectDescriptions));
         }
 
+        /**
+         * @param subjectKeyIds Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subjectKeyIds(@Nullable Output<List<CertificateCertificateDescriptionSubjectKeyIdArgs>> subjectKeyIds) {
             $.subjectKeyIds = subjectKeyIds;
             return this;
         }
 
+        /**
+         * @param subjectKeyIds Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subjectKeyIds(List<CertificateCertificateDescriptionSubjectKeyIdArgs> subjectKeyIds) {
             return subjectKeyIds(Output.of(subjectKeyIds));
         }
 
+        /**
+         * @param subjectKeyIds Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subjectKeyIds(CertificateCertificateDescriptionSubjectKeyIdArgs... subjectKeyIds) {
             return subjectKeyIds(List.of(subjectKeyIds));
         }
 
+        /**
+         * @param x509Descriptions A structured description of the issued X.509 certificate.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder x509Descriptions(@Nullable Output<List<CertificateCertificateDescriptionX509DescriptionArgs>> x509Descriptions) {
             $.x509Descriptions = x509Descriptions;
             return this;
         }
 
+        /**
+         * @param x509Descriptions A structured description of the issued X.509 certificate.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder x509Descriptions(List<CertificateCertificateDescriptionX509DescriptionArgs> x509Descriptions) {
             return x509Descriptions(Output.of(x509Descriptions));
         }
 
+        /**
+         * @param x509Descriptions A structured description of the issued X.509 certificate.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder x509Descriptions(CertificateCertificateDescriptionX509DescriptionArgs... x509Descriptions) {
             return x509Descriptions(List.of(x509Descriptions));
         }

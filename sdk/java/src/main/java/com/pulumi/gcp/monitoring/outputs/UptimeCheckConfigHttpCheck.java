@@ -56,7 +56,7 @@ public final class UptimeCheckConfigHttpCheck {
      */
     private @Nullable String path;
     /**
-     * @return The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
+     * @return The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
      * 
      */
     private @Nullable Integer port;
@@ -132,7 +132,7 @@ public final class UptimeCheckConfigHttpCheck {
         return Optional.ofNullable(this.path);
     }
     /**
-     * @return The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
+     * @return The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
      * 
      */
     public Optional<Integer> port() {

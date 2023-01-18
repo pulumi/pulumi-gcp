@@ -61,7 +61,7 @@ class AttachedClusterArgs:
         :param pulumi.Input['AttachedClusterMonitoringConfigArgs'] monitoring_config: Monitoring configuration.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of this resource.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+        :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
                If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "distribution", distribution)
@@ -240,7 +240,7 @@ class AttachedClusterArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the project in which the resource belongs.
+        The number of the Fleet host project where this cluster will be registered.
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
@@ -284,14 +284,16 @@ class _AttachedClusterState:
                with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input['AttachedClusterAuthorizationArgs'] authorization: Configuration related to the cluster RBAC settings.
                Structure is documented below.
-        :param pulumi.Input[str] cluster_region: Output only. The region where this cluster runs. For EKS clusters, this is an AWS region. For AKS clusters, this is an
-               Azure region.
+        :param pulumi.Input[str] cluster_region: Output only. The region where this cluster runs.
+               For EKS clusters, this is an AWS region. For AKS clusters,
+               this is an Azure region.
         :param pulumi.Input[str] create_time: Output only. The time at which this cluster was created.
         :param pulumi.Input[str] description: A human readable description of this attached cluster. Cannot be longer
                than 255 UTF-8 encoded bytes.
         :param pulumi.Input[str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
                "eks", "aks".
         :param pulumi.Input[Sequence[pulumi.Input['AttachedClusterErrorArgs']]] errors: A set of errors found in the cluster.
+               Structure is documented below.
         :param pulumi.Input['AttachedClusterFleetArgs'] fleet: Fleet configuration.
                Structure is documented below.
         :param pulumi.Input[str] kubernetes_version: The Kubernetes version of the cluster.
@@ -312,14 +314,16 @@ class _AttachedClusterState:
                `issuer_url` and `jwks`.
                Structure is documented below.
         :param pulumi.Input[str] platform_version: The platform version for the cluster (e.g. `1.23.0-gke.1`).
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+        :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] reconciling: If set, there are currently changes in flight to the cluster.
-        :param pulumi.Input[str] state: The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING,
-               ERROR, DEGRADED
+        :param pulumi.Input[str] state: The current state of the cluster. Possible values:
+               STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
+               DEGRADED
         :param pulumi.Input[str] uid: A globally unique identifier for the cluster.
         :param pulumi.Input[str] update_time: The time at which this cluster was last updated.
         :param pulumi.Input[Sequence[pulumi.Input['AttachedClusterWorkloadIdentityConfigArgs']]] workload_identity_configs: Workload Identity settings.
+               Structure is documented below.
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -398,8 +402,9 @@ class _AttachedClusterState:
     @pulumi.getter(name="clusterRegion")
     def cluster_region(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The region where this cluster runs. For EKS clusters, this is an AWS region. For AKS clusters, this is an
-        Azure region.
+        Output only. The region where this cluster runs.
+        For EKS clusters, this is an AWS region. For AKS clusters,
+        this is an Azure region.
         """
         return pulumi.get(self, "cluster_region")
 
@@ -450,6 +455,7 @@ class _AttachedClusterState:
     def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AttachedClusterErrorArgs']]]]:
         """
         A set of errors found in the cluster.
+        Structure is documented below.
         """
         return pulumi.get(self, "errors")
 
@@ -569,7 +575,7 @@ class _AttachedClusterState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the project in which the resource belongs.
+        The number of the Fleet host project where this cluster will be registered.
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
@@ -594,8 +600,9 @@ class _AttachedClusterState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING,
-        ERROR, DEGRADED
+        The current state of the cluster. Possible values:
+        STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
+        DEGRADED
         """
         return pulumi.get(self, "state")
 
@@ -632,6 +639,7 @@ class _AttachedClusterState:
     def workload_identity_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AttachedClusterWorkloadIdentityConfigArgs']]]]:
         """
         Workload Identity settings.
+        Structure is documented below.
         """
         return pulumi.get(self, "workload_identity_configs")
 
@@ -741,7 +749,7 @@ class AttachedCluster(pulumi.CustomResource):
                `issuer_url` and `jwks`.
                Structure is documented below.
         :param pulumi.Input[str] platform_version: The platform version for the cluster (e.g. `1.23.0-gke.1`).
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+        :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
                If it is not provided, the provider project is used.
         """
         ...
@@ -913,14 +921,16 @@ class AttachedCluster(pulumi.CustomResource):
                with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input[pulumi.InputType['AttachedClusterAuthorizationArgs']] authorization: Configuration related to the cluster RBAC settings.
                Structure is documented below.
-        :param pulumi.Input[str] cluster_region: Output only. The region where this cluster runs. For EKS clusters, this is an AWS region. For AKS clusters, this is an
-               Azure region.
+        :param pulumi.Input[str] cluster_region: Output only. The region where this cluster runs.
+               For EKS clusters, this is an AWS region. For AKS clusters,
+               this is an Azure region.
         :param pulumi.Input[str] create_time: Output only. The time at which this cluster was created.
         :param pulumi.Input[str] description: A human readable description of this attached cluster. Cannot be longer
                than 255 UTF-8 encoded bytes.
         :param pulumi.Input[str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
                "eks", "aks".
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedClusterErrorArgs']]]] errors: A set of errors found in the cluster.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['AttachedClusterFleetArgs']] fleet: Fleet configuration.
                Structure is documented below.
         :param pulumi.Input[str] kubernetes_version: The Kubernetes version of the cluster.
@@ -941,14 +951,16 @@ class AttachedCluster(pulumi.CustomResource):
                `issuer_url` and `jwks`.
                Structure is documented below.
         :param pulumi.Input[str] platform_version: The platform version for the cluster (e.g. `1.23.0-gke.1`).
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+        :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] reconciling: If set, there are currently changes in flight to the cluster.
-        :param pulumi.Input[str] state: The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING,
-               ERROR, DEGRADED
+        :param pulumi.Input[str] state: The current state of the cluster. Possible values:
+               STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
+               DEGRADED
         :param pulumi.Input[str] uid: A globally unique identifier for the cluster.
         :param pulumi.Input[str] update_time: The time at which this cluster was last updated.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedClusterWorkloadIdentityConfigArgs']]]] workload_identity_configs: Workload Identity settings.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1003,8 +1015,9 @@ class AttachedCluster(pulumi.CustomResource):
     @pulumi.getter(name="clusterRegion")
     def cluster_region(self) -> pulumi.Output[str]:
         """
-        Output only. The region where this cluster runs. For EKS clusters, this is an AWS region. For AKS clusters, this is an
-        Azure region.
+        Output only. The region where this cluster runs.
+        For EKS clusters, this is an AWS region. For AKS clusters,
+        this is an Azure region.
         """
         return pulumi.get(self, "cluster_region")
 
@@ -1039,6 +1052,7 @@ class AttachedCluster(pulumi.CustomResource):
     def errors(self) -> pulumi.Output[Sequence['outputs.AttachedClusterError']]:
         """
         A set of errors found in the cluster.
+        Structure is documented below.
         """
         return pulumi.get(self, "errors")
 
@@ -1122,7 +1136,7 @@ class AttachedCluster(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The ID of the project in which the resource belongs.
+        The number of the Fleet host project where this cluster will be registered.
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
@@ -1139,8 +1153,9 @@ class AttachedCluster(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING,
-        ERROR, DEGRADED
+        The current state of the cluster. Possible values:
+        STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
+        DEGRADED
         """
         return pulumi.get(self, "state")
 
@@ -1165,6 +1180,7 @@ class AttachedCluster(pulumi.CustomResource):
     def workload_identity_configs(self) -> pulumi.Output[Sequence['outputs.AttachedClusterWorkloadIdentityConfig']]:
         """
         Workload Identity settings.
+        Structure is documented below.
         """
         return pulumi.get(self, "workload_identity_configs")
 

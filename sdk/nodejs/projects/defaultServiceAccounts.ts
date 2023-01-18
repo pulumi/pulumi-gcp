@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myProject = new gcp.projects.DefaultServiceAccounts("my_project", {
+ * const myProject = new gcp.projects.DefaultServiceAccounts("myProject", {
  *     action: "DELETE",
  *     project: "my-project-id",
  * });
@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myProject = new gcp.projects.DefaultServiceAccounts("my_project", {
+ * const myProject = new gcp.projects.DefaultServiceAccounts("myProject", {
  *     action: "DISABLE",
  *     project: "my-project-id",
  *     restorePolicy: "REVERT",

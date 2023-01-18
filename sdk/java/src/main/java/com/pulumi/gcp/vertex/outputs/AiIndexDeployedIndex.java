@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AiIndexDeployedIndex {
+    /**
+     * @return The ID of the DeployedIndex in the above IndexEndpoint.
+     * 
+     */
     private @Nullable String deployedIndexId;
+    /**
+     * @return A resource name of the IndexEndpoint.
+     * 
+     */
     private @Nullable String indexEndpoint;
 
     private AiIndexDeployedIndex() {}
+    /**
+     * @return The ID of the DeployedIndex in the above IndexEndpoint.
+     * 
+     */
     public Optional<String> deployedIndexId() {
         return Optional.ofNullable(this.deployedIndexId);
     }
+    /**
+     * @return A resource name of the IndexEndpoint.
+     * 
+     */
     public Optional<String> indexEndpoint() {
         return Optional.ofNullable(this.indexEndpoint);
     }

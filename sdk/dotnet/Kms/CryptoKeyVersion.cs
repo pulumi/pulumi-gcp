@@ -67,8 +67,9 @@ namespace Pulumi.Gcp.Kms
         public Output<string> Algorithm { get; private set; } = null!;
 
         /// <summary>
-        /// Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the
-        /// key as stored on the HSM, independently of Google. Only provided for key versions with protectionLevel HSM.
+        /// Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+        /// Only provided for key versions with protectionLevel HSM.
+        /// Structure is documented below.
         /// </summary>
         [Output("attestations")]
         public Output<ImmutableArray<Outputs.CryptoKeyVersionAttestation>> Attestations { get; private set; } = null!;
@@ -183,8 +184,9 @@ namespace Pulumi.Gcp.Kms
         private InputList<Inputs.CryptoKeyVersionAttestationGetArgs>? _attestations;
 
         /// <summary>
-        /// Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the
-        /// key as stored on the HSM, independently of Google. Only provided for key versions with protectionLevel HSM.
+        /// Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+        /// Only provided for key versions with protectionLevel HSM.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.CryptoKeyVersionAttestationGetArgs> Attestations
         {

@@ -118,16 +118,16 @@ public class Domain extends com.pulumi.resources.CustomResource {
         return this.domainName;
     }
     /**
-     * The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would
-     * be chosen for an Active Directory set up on an internal network.
+     * The fully-qualified domain name of the exposed domain used by clients to connect to the service.
+     * Similar to what would be chosen for an Active Directory set up on an internal network.
      * 
      */
     @Export(name="fqdn", type=String.class, parameters={})
     private Output<String> fqdn;
 
     /**
-     * @return The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would
-     * be chosen for an Active Directory set up on an internal network.
+     * @return The fully-qualified domain name of the exposed domain used by clients to connect to the service.
+     * Similar to what would be chosen for an Active Directory set up on an internal network.
      * 
      */
     public Output<String> fqdn() {
@@ -164,14 +164,14 @@ public class Domain extends com.pulumi.resources.CustomResource {
         return this.locations;
     }
     /**
-     * The unique name of the domain using the format: &#39;projects/{project}/locations/global/domains/{domainName}&#39;.
+     * The unique name of the domain using the format: `projects/{project}/locations/global/domains/{domainName}`.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The unique name of the domain using the format: &#39;projects/{project}/locations/global/domains/{domainName}&#39;.
+     * @return The unique name of the domain using the format: `projects/{project}/locations/global/domains/{domainName}`.
      * 
      */
     public Output<String> name() {

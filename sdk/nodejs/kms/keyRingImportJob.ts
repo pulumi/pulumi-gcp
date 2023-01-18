@@ -61,13 +61,15 @@ export class KeyRingImportJob extends pulumi.CustomResource {
     }
 
     /**
-     * Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this
-     * statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen
-     * ImportMethod is one with a protection level of HSM.
+     * Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
+     * Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+     * Only present if the chosen ImportMethod is one with a protection level of HSM.
+     * Structure is documented below.
      */
     public /*out*/ readonly attestations!: pulumi.Output<outputs.kms.KeyRingImportJobAttestation[]>;
     /**
-     * The time at which this resource is scheduled for expiration and can no longer be used. This is in RFC3339 text format.
+     * The time at which this resource is scheduled for expiration and can no longer be used.
+     * This is in RFC3339 text format.
      */
     public /*out*/ readonly expireTime!: pulumi.Output<string>;
     /**
@@ -95,7 +97,8 @@ export class KeyRingImportJob extends pulumi.CustomResource {
      */
     public readonly protectionLevel!: pulumi.Output<string>;
     /**
-     * The public key with which to wrap key material prior to import. Only returned if state is 'ACTIVE'.
+     * The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
+     * Structure is documented below.
      */
     public /*out*/ readonly publicKeys!: pulumi.Output<outputs.kms.KeyRingImportJobPublicKey[]>;
     /**
@@ -159,13 +162,15 @@ export class KeyRingImportJob extends pulumi.CustomResource {
  */
 export interface KeyRingImportJobState {
     /**
-     * Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this
-     * statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen
-     * ImportMethod is one with a protection level of HSM.
+     * Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
+     * Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+     * Only present if the chosen ImportMethod is one with a protection level of HSM.
+     * Structure is documented below.
      */
     attestations?: pulumi.Input<pulumi.Input<inputs.kms.KeyRingImportJobAttestation>[]>;
     /**
-     * The time at which this resource is scheduled for expiration and can no longer be used. This is in RFC3339 text format.
+     * The time at which this resource is scheduled for expiration and can no longer be used.
+     * This is in RFC3339 text format.
      */
     expireTime?: pulumi.Input<string>;
     /**
@@ -193,7 +198,8 @@ export interface KeyRingImportJobState {
      */
     protectionLevel?: pulumi.Input<string>;
     /**
-     * The public key with which to wrap key material prior to import. Only returned if state is 'ACTIVE'.
+     * The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
+     * Structure is documented below.
      */
     publicKeys?: pulumi.Input<pulumi.Input<inputs.kms.KeyRingImportJobPublicKey>[]>;
     /**

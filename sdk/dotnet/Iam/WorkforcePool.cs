@@ -105,7 +105,8 @@ namespace Pulumi.Gcp.Iam
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. The resource name of the pool. Format: 'locations/{location}/workforcePools/{workforcePoolId}'
+        /// Output only. The resource name of the pool.
+        /// Format: `locations/{location}/workforcePools/{workforcePoolId}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -127,13 +128,16 @@ namespace Pulumi.Gcp.Iam
         public Output<string?> SessionDuration { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. The state of the pool. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The pool is active, and may be
-        /// used in Google Cloud policies. * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after
-        /// approximately 30 days. You can restore a soft-deleted pool using
+        /// Output only. The state of the pool.
+        /// * STATE_UNSPECIFIED: State unspecified.
+        /// * ACTIVE: The pool is active, and may be used in Google Cloud policies.
+        /// * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted
+        /// after approximately 30 days. You can restore a soft-deleted pool using
         /// [workforcePools.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePool).
-        /// You cannot reuse the ID of a soft-deleted pool until it is permanently deleted. While a pool is deleted, you cannot use
-        /// it to exchange tokens, or use existing tokens to access resources. If the pool is undeleted, existing tokens grant
-        /// access again.
+        /// You cannot reuse the ID of a soft-deleted pool until it is permanently deleted.
+        /// While a pool is deleted, you cannot use it to exchange tokens, or use
+        /// existing tokens to access resources. If the pool is undeleted, existing
+        /// tokens grant access again.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -275,7 +279,8 @@ namespace Pulumi.Gcp.Iam
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Output only. The resource name of the pool. Format: 'locations/{location}/workforcePools/{workforcePoolId}'
+        /// Output only. The resource name of the pool.
+        /// Format: `locations/{location}/workforcePools/{workforcePoolId}`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -297,13 +302,16 @@ namespace Pulumi.Gcp.Iam
         public Input<string>? SessionDuration { get; set; }
 
         /// <summary>
-        /// Output only. The state of the pool. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The pool is active, and may be
-        /// used in Google Cloud policies. * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after
-        /// approximately 30 days. You can restore a soft-deleted pool using
+        /// Output only. The state of the pool.
+        /// * STATE_UNSPECIFIED: State unspecified.
+        /// * ACTIVE: The pool is active, and may be used in Google Cloud policies.
+        /// * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted
+        /// after approximately 30 days. You can restore a soft-deleted pool using
         /// [workforcePools.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePool).
-        /// You cannot reuse the ID of a soft-deleted pool until it is permanently deleted. While a pool is deleted, you cannot use
-        /// it to exchange tokens, or use existing tokens to access resources. If the pool is undeleted, existing tokens grant
-        /// access again.
+        /// You cannot reuse the ID of a soft-deleted pool until it is permanently deleted.
+        /// While a pool is deleted, you cannot use it to exchange tokens, or use
+        /// existing tokens to access resources. If the pool is undeleted, existing
+        /// tokens grant access again.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

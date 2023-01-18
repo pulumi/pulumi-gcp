@@ -39,7 +39,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 //				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
+//					{
 //						Role: "roles/compute.admin",
 //						Members: []string{
 //							"user:jane@example.com",
@@ -53,7 +53,7 @@ import (
 //			_, err = compute.NewMachineImageIamPolicy(ctx, "policy", &compute.MachineImageIamPolicyArgs{
 //				Project:      pulumi.Any(google_compute_machine_image.Image.Project),
 //				MachineImage: pulumi.Any(google_compute_machine_image.Image.Name),
-//				PolicyData:   pulumi.String(admin.PolicyData),
+//				PolicyData:   *pulumi.String(admin.PolicyData),
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
@@ -81,12 +81,12 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 //				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
+//					{
 //						Role: "roles/compute.admin",
 //						Members: []string{
 //							"user:jane@example.com",
 //						},
-//						Condition: organizations.GetIAMPolicyBindingCondition{
+//						Condition: {
 //							Title:       "expires_after_2019_12_31",
 //							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
 //							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
@@ -100,7 +100,7 @@ import (
 //			_, err = compute.NewMachineImageIamPolicy(ctx, "policy", &compute.MachineImageIamPolicyArgs{
 //				Project:      pulumi.Any(google_compute_machine_image.Image.Project),
 //				MachineImage: pulumi.Any(google_compute_machine_image.Image.Name),
-//				PolicyData:   pulumi.String(admin.PolicyData),
+//				PolicyData:   *pulumi.String(admin.PolicyData),
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err

@@ -234,16 +234,17 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Fingerprint { get; private set; } = null!;
 
         /// <summary>
-        /// The gateway address for default routes to reach destination addresses outside this subnetwork.
+        /// The gateway address for default routes to reach destination addresses
+        /// outside this subnetwork.
         /// </summary>
         [Output("gatewayAddress")]
         public Output<string> GatewayAddress { get; private set; } = null!;
 
         /// <summary>
-        /// The range of IP addresses belonging to this subnetwork secondary
-        /// range. Provide this property when you create the subnetwork.
-        /// Ranges must be unique and non-overlapping with all primary and
-        /// secondary IP ranges within a network. Only IPv4 is supported.
+        /// The range of internal addresses that are owned by this subnetwork.
+        /// Provide this property when you create the subnetwork. For example,
+        /// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
+        /// non-overlapping within a network. Only IPv4 is supported.
         /// </summary>
         [Output("ipCidrRange")]
         public Output<string> IpCidrRange { get; private set; } = null!;
@@ -416,10 +417,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The range of IP addresses belonging to this subnetwork secondary
-        /// range. Provide this property when you create the subnetwork.
-        /// Ranges must be unique and non-overlapping with all primary and
-        /// secondary IP ranges within a network. Only IPv4 is supported.
+        /// The range of internal addresses that are owned by this subnetwork.
+        /// Provide this property when you create the subnetwork. For example,
+        /// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
+        /// non-overlapping within a network. Only IPv4 is supported.
         /// </summary>
         [Input("ipCidrRange", required: true)]
         public Input<string> IpCidrRange { get; set; } = null!;
@@ -566,16 +567,17 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Fingerprint { get; set; }
 
         /// <summary>
-        /// The gateway address for default routes to reach destination addresses outside this subnetwork.
+        /// The gateway address for default routes to reach destination addresses
+        /// outside this subnetwork.
         /// </summary>
         [Input("gatewayAddress")]
         public Input<string>? GatewayAddress { get; set; }
 
         /// <summary>
-        /// The range of IP addresses belonging to this subnetwork secondary
-        /// range. Provide this property when you create the subnetwork.
-        /// Ranges must be unique and non-overlapping with all primary and
-        /// secondary IP ranges within a network. Only IPv4 is supported.
+        /// The range of internal addresses that are owned by this subnetwork.
+        /// Provide this property when you create the subnetwork. For example,
+        /// 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
+        /// non-overlapping within a network. Only IPv4 is supported.
         /// </summary>
         [Input("ipCidrRange")]
         public Input<string>? IpCidrRange { get; set; }

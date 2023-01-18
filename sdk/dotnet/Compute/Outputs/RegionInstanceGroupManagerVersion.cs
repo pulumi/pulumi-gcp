@@ -14,15 +14,15 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class RegionInstanceGroupManagerVersion
     {
         /// <summary>
-        /// - The full URL to an instance template from which all new instances of this version will be created.
+        /// The full URL to an instance template from which all new instances of this version will be created.
         /// </summary>
         public readonly string InstanceTemplate;
         /// <summary>
-        /// - Version name.
+        /// Version name.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+        /// The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
         /// </summary>
         public readonly Outputs.RegionInstanceGroupManagerVersionTargetSize? TargetSize;
 

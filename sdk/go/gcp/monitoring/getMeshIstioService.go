@@ -39,7 +39,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = monitoring.GetMeshIstioService(ctx, &monitoring.GetMeshIstioServiceArgs{
+//			_, err := monitoring.GetMeshIstioService(ctx, &monitoring.GetMeshIstioServiceArgs{
 //				MeshUid:          "proj-573164786102",
 //				ServiceName:      "prometheus",
 //				ServiceNamespace: "istio-system",
@@ -79,17 +79,21 @@ type GetMeshIstioServiceArgs struct {
 
 // A collection of values returned by getMeshIstioService.
 type GetMeshIstioServiceResult struct {
+	// Name used for UI elements listing this (Monitoring) Service.
 	DisplayName string `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id               string                         `pulumi:"id"`
-	MeshUid          string                         `pulumi:"meshUid"`
-	Name             string                         `pulumi:"name"`
-	Project          *string                        `pulumi:"project"`
-	ServiceId        string                         `pulumi:"serviceId"`
-	ServiceName      string                         `pulumi:"serviceName"`
-	ServiceNamespace string                         `pulumi:"serviceNamespace"`
-	Telemetries      []GetMeshIstioServiceTelemetry `pulumi:"telemetries"`
-	UserLabels       map[string]string              `pulumi:"userLabels"`
+	Id      string `pulumi:"id"`
+	MeshUid string `pulumi:"meshUid"`
+	// The full REST resource name for this channel. The syntax is:
+	// `projects/[PROJECT_ID]/services/[SERVICE_ID]`.
+	Name             string  `pulumi:"name"`
+	Project          *string `pulumi:"project"`
+	ServiceId        string  `pulumi:"serviceId"`
+	ServiceName      string  `pulumi:"serviceName"`
+	ServiceNamespace string  `pulumi:"serviceNamespace"`
+	// Configuration for how to query telemetry on the Service. Structure is documented below.
+	Telemetries []GetMeshIstioServiceTelemetry `pulumi:"telemetries"`
+	UserLabels  map[string]string              `pulumi:"userLabels"`
 }
 
 func GetMeshIstioServiceOutput(ctx *pulumi.Context, args GetMeshIstioServiceOutputArgs, opts ...pulumi.InvokeOption) GetMeshIstioServiceResultOutput {
@@ -140,6 +144,7 @@ func (o GetMeshIstioServiceResultOutput) ToGetMeshIstioServiceResultOutputWithCo
 	return o
 }
 
+// Name used for UI elements listing this (Monitoring) Service.
 func (o GetMeshIstioServiceResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMeshIstioServiceResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -153,6 +158,8 @@ func (o GetMeshIstioServiceResultOutput) MeshUid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMeshIstioServiceResult) string { return v.MeshUid }).(pulumi.StringOutput)
 }
 
+// The full REST resource name for this channel. The syntax is:
+// `projects/[PROJECT_ID]/services/[SERVICE_ID]`.
 func (o GetMeshIstioServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMeshIstioServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -173,6 +180,7 @@ func (o GetMeshIstioServiceResultOutput) ServiceNamespace() pulumi.StringOutput 
 	return o.ApplyT(func(v GetMeshIstioServiceResult) string { return v.ServiceNamespace }).(pulumi.StringOutput)
 }
 
+// Configuration for how to query telemetry on the Service. Structure is documented below.
 func (o GetMeshIstioServiceResultOutput) Telemetries() GetMeshIstioServiceTelemetryArrayOutput {
 	return o.ApplyT(func(v GetMeshIstioServiceResult) []GetMeshIstioServiceTelemetry { return v.Telemetries }).(GetMeshIstioServiceTelemetryArrayOutput)
 }

@@ -17,22 +17,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const rneg1 = pulumi.output(gcp.compute.getRegionNetworkEndpointGroup({
+ * const rneg1 = gcp.compute.getRegionNetworkEndpointGroup({
  *     name: "k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
  *     region: "us-central1",
- * }));
- * const rneg2 = pulumi.output(gcp.compute.getRegionNetworkEndpointGroup({
+ * });
+ * const rneg2 = gcp.compute.getRegionNetworkEndpointGroup({
  *     selfLink: "https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
- * }));
+ * });
  * ```
  */
 export function getRegionNetworkEndpointGroup(args?: GetRegionNetworkEndpointGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionNetworkEndpointGroupResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getRegionNetworkEndpointGroup:getRegionNetworkEndpointGroup", {
         "name": args.name,
         "project": args.project,
@@ -100,9 +97,28 @@ export interface GetRegionNetworkEndpointGroupResult {
      */
     readonly subnetwork: string;
 }
-
+/**
+ * Use this data source to access a Region Network Endpoint Group's attributes.
+ *
+ * The RNEG may be found by providing either a `selfLink`, or a `name` and a `region`.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const rneg1 = gcp.compute.getRegionNetworkEndpointGroup({
+ *     name: "k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
+ *     region: "us-central1",
+ * });
+ * const rneg2 = gcp.compute.getRegionNetworkEndpointGroup({
+ *     selfLink: "https://www.googleapis.com/compute/v1/projects/myproject/regions/us-central1/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
+ * });
+ * ```
+ */
 export function getRegionNetworkEndpointGroupOutput(args?: GetRegionNetworkEndpointGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionNetworkEndpointGroupResult> {
-    return pulumi.output(args).apply(a => getRegionNetworkEndpointGroup(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegionNetworkEndpointGroup(a, opts))
 }
 
 /**

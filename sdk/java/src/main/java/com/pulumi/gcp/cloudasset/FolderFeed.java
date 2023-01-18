@@ -188,14 +188,16 @@ public class FolderFeed extends com.pulumi.resources.CustomResource {
         return this.folder;
     }
     /**
-     * The ID of the folder where this feed has been created. Both [FOLDER_NUMBER] and folders/[FOLDER_NUMBER] are accepted.
+     * The ID of the folder where this feed has been created. Both [FOLDER_NUMBER]
+     * and folders/[FOLDER_NUMBER] are accepted.
      * 
      */
     @Export(name="folderId", type=String.class, parameters={})
     private Output<String> folderId;
 
     /**
-     * @return The ID of the folder where this feed has been created. Both [FOLDER_NUMBER] and folders/[FOLDER_NUMBER] are accepted.
+     * @return The ID of the folder where this feed has been created. Both [FOLDER_NUMBER]
+     * and folders/[FOLDER_NUMBER] are accepted.
      * 
      */
     public Output<String> folderId() {

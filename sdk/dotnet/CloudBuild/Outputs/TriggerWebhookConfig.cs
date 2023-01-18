@@ -14,12 +14,10 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     public sealed class TriggerWebhookConfig
     {
         /// <summary>
-        /// Secrets to decrypt using Cloud Key Management Service.
-        /// Structure is documented below.
+        /// Resource name for the secret required as a URL parameter.
         /// </summary>
         public readonly string Secret;
         /// <summary>
-        /// -
         /// Potential issues with the underlying Pub/Sub subscription configuration.
         /// Only populated on get requests.
         /// </summary>

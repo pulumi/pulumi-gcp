@@ -135,6 +135,7 @@ class _PrivateConnectionState:
         Input properties used for looking up and filtering PrivateConnection resources.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[Sequence[pulumi.Input['PrivateConnectionErrorArgs']]] errors: The PrivateConnection error in case of failure.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
         :param pulumi.Input[str] location: The name of the location this private connection is located in.
         :param pulumi.Input[str] name: The resource's name.
@@ -182,6 +183,7 @@ class _PrivateConnectionState:
     def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrivateConnectionErrorArgs']]]]:
         """
         The PrivateConnection error in case of failure.
+        Structure is documented below.
         """
         return pulumi.get(self, "errors")
 
@@ -474,6 +476,7 @@ class PrivateConnection(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateConnectionErrorArgs']]]] errors: The PrivateConnection error in case of failure.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
         :param pulumi.Input[str] location: The name of the location this private connection is located in.
         :param pulumi.Input[str] name: The resource's name.
@@ -513,6 +516,7 @@ class PrivateConnection(pulumi.CustomResource):
     def errors(self) -> pulumi.Output[Sequence['outputs.PrivateConnectionError']]:
         """
         The PrivateConnection error in case of failure.
+        Structure is documented below.
         """
         return pulumi.get(self, "errors")
 

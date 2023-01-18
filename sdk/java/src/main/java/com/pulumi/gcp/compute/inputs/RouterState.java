@@ -50,14 +50,14 @@ public final class RouterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * User-specified description for the IP range.
+     * An optional description of this resource.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return User-specified description for the IP range.
+     * @return An optional description of this resource.
      * 
      */
     public Optional<Output<String>> description() {
@@ -247,7 +247,7 @@ public final class RouterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description User-specified description for the IP range.
+         * @param description An optional description of this resource.
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class RouterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description User-specified description for the IP range.
+         * @param description An optional description of this resource.
          * 
          * @return builder
          * 

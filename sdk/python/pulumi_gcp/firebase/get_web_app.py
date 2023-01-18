@@ -47,6 +47,10 @@ class GetWebAppResult:
     @property
     @pulumi.getter(name="appId")
     def app_id(self) -> str:
+        """
+        Immutable. The globally unique, Firebase-assigned identifier of the App.
+        This identifier should be treated as an opaque token, as the data format is not specified.
+        """
         return pulumi.get(self, "app_id")
 
     @property
@@ -75,6 +79,10 @@ class GetWebAppResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The fully qualified resource name of the App, for example:
+        projects/projectId/webApps/appId
+        """
         return pulumi.get(self, "name")
 
     @property

@@ -85,9 +85,9 @@ class TriggerBuildArgs:
         :param pulumi.Input['TriggerBuildAvailableSecretsArgs'] available_secrets: Secrets and secret environment variables.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] images: A list of images to be pushed upon the successful completion of all build steps.
-               The images will be pushed using the builder service account's credentials.
+               The images are pushed using the builder service account's credentials.
                The digests of the pushed images will be stored in the Build resource's results field.
-               If any of the images fail to be pushed, the build is marked FAILURE.
+               If any of the images fail to be pushed, the build status is marked FAILURE.
         :param pulumi.Input[str] logs_bucket: Google Cloud Storage bucket where logs should be written.
                Logs file names will be of the format ${logsBucket}/log-${build_id}.txt.
         :param pulumi.Input['TriggerBuildOptionsArgs'] options: Special options for this build.
@@ -101,12 +101,13 @@ class TriggerBuildArgs:
         :param pulumi.Input['TriggerBuildSourceArgs'] source: The location of the source files to build.
                One of `storageSource` or `repoSource` must be provided.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions to use in a triggered build. Should only be used with triggers.run
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions data for Build resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a Build. These are not docker tags.
-        :param pulumi.Input[str] timeout: Time limit for executing this build step. If not defined,
-               the step has no
-               time limit and will be allowed to continue to run until either it
-               completes or the build itself times out.
+        :param pulumi.Input[str] timeout: Amount of time that this build should be allowed to run, to second granularity.
+               If this amount of time elapses, work on the build will cease and the build status will be TIMEOUT.
+               This timeout must be equal to or greater than the sum of the timeouts for build steps within the build.
+               The expected format is the number of seconds followed by s.
+               Default time is ten minutes (600s).
         """
         pulumi.set(__self__, "steps", steps)
         if artifacts is not None:
@@ -176,9 +177,9 @@ class TriggerBuildArgs:
     def images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of images to be pushed upon the successful completion of all build steps.
-        The images will be pushed using the builder service account's credentials.
+        The images are pushed using the builder service account's credentials.
         The digests of the pushed images will be stored in the Build resource's results field.
-        If any of the images fail to be pushed, the build is marked FAILURE.
+        If any of the images fail to be pushed, the build status is marked FAILURE.
         """
         return pulumi.get(self, "images")
 
@@ -258,7 +259,7 @@ class TriggerBuildArgs:
     @pulumi.getter
     def substitutions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Substitutions to use in a triggered build. Should only be used with triggers.run
+        Substitutions data for Build resource.
         """
         return pulumi.get(self, "substitutions")
 
@@ -282,10 +283,11 @@ class TriggerBuildArgs:
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[str]]:
         """
-        Time limit for executing this build step. If not defined,
-        the step has no
-        time limit and will be allowed to continue to run until either it
-        completes or the build itself times out.
+        Amount of time that this build should be allowed to run, to second granularity.
+        If this amount of time elapses, work on the build will cease and the build status will be TIMEOUT.
+        This timeout must be equal to or greater than the sum of the timeouts for build steps within the build.
+        The expected format is the number of seconds followed by s.
+        Default time is ten minutes (600s).
         """
         return pulumi.get(self, "timeout")
 
@@ -360,8 +362,7 @@ class TriggerBuildArtifactsObjectsArgs:
                Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
                this location as a prefix.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: Path globs used to match files in the build's workspace.
-        :param pulumi.Input[Sequence[pulumi.Input['TriggerBuildArtifactsObjectsTimingArgs']]] timings: -
-               Output only. Stores timing information for pushing all artifact objects.
+        :param pulumi.Input[Sequence[pulumi.Input['TriggerBuildArtifactsObjectsTimingArgs']]] timings: Output only. Stores timing information for pushing all artifact objects.
                Structure is documented below.
         """
         if location is not None:
@@ -401,7 +402,6 @@ class TriggerBuildArtifactsObjectsArgs:
     @pulumi.getter
     def timings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TriggerBuildArtifactsObjectsTimingArgs']]]]:
         """
-        -
         Output only. Stores timing information for pushing all artifact objects.
         Structure is documented below.
         """
@@ -489,10 +489,9 @@ class TriggerBuildAvailableSecretsSecretManagerArgs:
                  env: pulumi.Input[str],
                  version_name: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] env: A list of global environment variable definitions that will exist for all build steps
-               in this build. If a variable is defined in both globally and in a build step,
-               the variable will use the build step value.
-               The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+        :param pulumi.Input[str] env: Environment variable name to associate with the secret. Secret environment
+               variables must be unique across all of a build's secrets, and must be used
+               by at least one build step.
         :param pulumi.Input[str] version_name: Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*
         """
         pulumi.set(__self__, "env", env)
@@ -502,10 +501,9 @@ class TriggerBuildAvailableSecretsSecretManagerArgs:
     @pulumi.getter
     def env(self) -> pulumi.Input[str]:
         """
-        A list of global environment variable definitions that will exist for all build steps
-        in this build. If a variable is defined in both globally and in a build step,
-        the variable will use the build step value.
-        The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+        Environment variable name to associate with the secret. Secret environment
+        variables must be unique across all of a build's secrets, and must be used
+        by at least one build step.
         """
         return pulumi.get(self, "env")
 
@@ -829,9 +827,10 @@ class TriggerBuildSecretArgs:
                  secret_env: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] kms_key_name: Cloud KMS key name to use to decrypt these envs.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secret_env: A list of global environment variables, which are encrypted using a Cloud Key Management
-               Service crypto key. These values must be specified in the build's Secret. These variables
-               will be available to all build steps in this build.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secret_env: Map of environment variable name to its encrypted value.
+               Secret environment variables must be unique across all of a build's secrets,
+               and must be used by at least one build step. Values can be at most 64 KB in size.
+               There can be at most 100 secret values across all of a build's secrets.
         """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
         if secret_env is not None:
@@ -853,9 +852,10 @@ class TriggerBuildSecretArgs:
     @pulumi.getter(name="secretEnv")
     def secret_env(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A list of global environment variables, which are encrypted using a Cloud Key Management
-        Service crypto key. These values must be specified in the build's Secret. These variables
-        will be available to all build steps in this build.
+        Map of environment variable name to its encrypted value.
+        Secret environment variables must be unique across all of a build's secrets,
+        and must be used by at least one build step. Values can be at most 64 KB in size.
+        There can be at most 100 secret values across all of a build's secrets.
         """
         return pulumi.get(self, "secret_env")
 
@@ -924,15 +924,9 @@ class TriggerBuildSourceRepoSourceArgs:
                The syntax of the regular expressions accepted is the syntax accepted by RE2 and
                described at https://github.com/google/re2/wiki/Syntax
         :param pulumi.Input[str] commit_sha: Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-        :param pulumi.Input[str] dir: Working directory to use when running this step's container.
-               If this value is a relative path, it is relative to the build's working
-               directory. If this value is absolute, it may be outside the build's working
-               directory, in which case the contents of the path may not be persisted
-               across build step executions, unless a `volume` for that path is specified.
-               If the build specifies a `RepoSource` with `dir` and a step with a
-               `dir`,
-               which specifies an absolute path, the `RepoSource` `dir` is ignored
-               for the step's execution.
+        :param pulumi.Input[str] dir: Directory, relative to the source root, in which to run the build.
+               This must be a relative path. If a step's dir is specified and is an absolute path,
+               this value is ignored for that step's execution.
         :param pulumi.Input[bool] invert_regex: Only trigger a build if the revision regex does NOT match the revision regex.
         :param pulumi.Input[str] project_id: ID of the project that owns the Cloud Source Repository.
                If omitted, the project ID requesting the build is assumed.
@@ -999,15 +993,9 @@ class TriggerBuildSourceRepoSourceArgs:
     @pulumi.getter
     def dir(self) -> Optional[pulumi.Input[str]]:
         """
-        Working directory to use when running this step's container.
-        If this value is a relative path, it is relative to the build's working
-        directory. If this value is absolute, it may be outside the build's working
-        directory, in which case the contents of the path may not be persisted
-        across build step executions, unless a `volume` for that path is specified.
-        If the build specifies a `RepoSource` with `dir` and a step with a
-        `dir`,
-        which specifies an absolute path, the `RepoSource` `dir` is ignored
-        for the step's execution.
+        Directory, relative to the source root, in which to run the build.
+        This must be a relative path. If a step's dir is specified and is an absolute path,
+        this value is ignored for that step's execution.
         """
         return pulumi.get(self, "dir")
 
@@ -1140,9 +1128,19 @@ class TriggerBuildStepArgs:
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerBuildStepVolumeArgs']]]] = None,
                  wait_fors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] name: Name of the volume to mount.
-               Volume names must be unique per build step and must be valid names for Docker volumes.
-               Each named volume must be used by at least two build steps.
+        :param pulumi.Input[str] name: The name of the container image that will run this particular build step.
+               If the image is available in the host's Docker daemon's cache, it will be
+               run directly. If not, the host will attempt to pull the image first, using
+               the builder service account's credentials if necessary.
+               The Docker daemon's cache will already have the latest versions of all of
+               the officially supported build steps (see https://github.com/GoogleCloudPlatform/cloud-builders
+               for images and examples).
+               The Docker daemon will also have cached many of the layers for some popular
+               images, like "ubuntu", "debian", but they will be refreshed at the time
+               you attempt to use them.
+               If you built an image in a previous build step, it will be stored in the
+               host's Docker daemon's cache and is available to use as the name for a
+               later build step.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: A list of arguments that will be presented to the step when it is started.
                If the image used to run the step's container has an entrypoint, the args
                are used as arguments to that entrypoint. If the image does not define an
@@ -1160,30 +1158,30 @@ class TriggerBuildStepArgs:
         :param pulumi.Input[str] entrypoint: Entrypoint to be used instead of the build step image's
                default entrypoint.
                If unset, the image's default entrypoint is used
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] envs: A list of global environment variable definitions that will exist for all build steps
-               in this build. If a variable is defined in both globally and in a build step,
-               the variable will use the build step value.
-               The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] envs: A list of environment variable definitions to be used when
+               running a step.
+               The elements are of the form "KEY=VALUE" for the environment variable
+               "KEY" being given the value "VALUE".
         :param pulumi.Input[str] id: Unique identifier for this build step, used in `wait_for` to
                reference this build step as a dependency.
         :param pulumi.Input[str] script: A shell script to be executed in the step.
                When script is provided, the user cannot specify the entrypoint or args.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] secret_envs: A list of global environment variables, which are encrypted using a Cloud Key Management
-               Service crypto key. These values must be specified in the build's Secret. These variables
-               will be available to all build steps in this build.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] secret_envs: A list of environment variables which are encrypted using
+               a Cloud Key
+               Management Service crypto key. These values must be specified in
+               the build's `Secret`.
         :param pulumi.Input[str] timeout: Time limit for executing this build step. If not defined,
                the step has no
                time limit and will be allowed to continue to run until either it
                completes or the build itself times out.
-        :param pulumi.Input[str] timing: -
-               Output only. Stores timing information for pushing all artifact objects.
-               Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['TriggerBuildStepVolumeArgs']]] volumes: Global list of volumes to mount for ALL build steps
-               Each volume is created as an empty volume prior to starting the build process.
-               Upon completion of the build, volumes and their contents are discarded. Global
-               volume names and paths cannot conflict with the volumes defined a build step.
-               Using a global volume in a build with only one step is not valid as it is indicative
-               of a build request with an incorrect configuration.
+        :param pulumi.Input[str] timing: Output only. Stores timing information for executing this
+               build step.
+        :param pulumi.Input[Sequence[pulumi.Input['TriggerBuildStepVolumeArgs']]] volumes: List of volumes to mount into the build step.
+               Each volume is created as an empty volume prior to execution of the
+               build step. Upon completion of the build, volumes and their contents
+               are discarded.
+               Using a named volume in only one step is not valid as it is
+               indicative of a build request with an incorrect configuration.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] wait_fors: The ID(s) of the step(s) that this build step depends on.
                This build step will not start until all the build steps in `wait_for`
@@ -1219,9 +1217,19 @@ class TriggerBuildStepArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the volume to mount.
-        Volume names must be unique per build step and must be valid names for Docker volumes.
-        Each named volume must be used by at least two build steps.
+        The name of the container image that will run this particular build step.
+        If the image is available in the host's Docker daemon's cache, it will be
+        run directly. If not, the host will attempt to pull the image first, using
+        the builder service account's credentials if necessary.
+        The Docker daemon's cache will already have the latest versions of all of
+        the officially supported build steps (see https://github.com/GoogleCloudPlatform/cloud-builders
+        for images and examples).
+        The Docker daemon will also have cached many of the layers for some popular
+        images, like "ubuntu", "debian", but they will be refreshed at the time
+        you attempt to use them.
+        If you built an image in a previous build step, it will be stored in the
+        host's Docker daemon's cache and is available to use as the name for a
+        later build step.
         """
         return pulumi.get(self, "name")
 
@@ -1283,10 +1291,10 @@ class TriggerBuildStepArgs:
     @pulumi.getter
     def envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of global environment variable definitions that will exist for all build steps
-        in this build. If a variable is defined in both globally and in a build step,
-        the variable will use the build step value.
-        The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+        A list of environment variable definitions to be used when
+        running a step.
+        The elements are of the form "KEY=VALUE" for the environment variable
+        "KEY" being given the value "VALUE".
         """
         return pulumi.get(self, "envs")
 
@@ -1324,9 +1332,10 @@ class TriggerBuildStepArgs:
     @pulumi.getter(name="secretEnvs")
     def secret_envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of global environment variables, which are encrypted using a Cloud Key Management
-        Service crypto key. These values must be specified in the build's Secret. These variables
-        will be available to all build steps in this build.
+        A list of environment variables which are encrypted using
+        a Cloud Key
+        Management Service crypto key. These values must be specified in
+        the build's `Secret`.
         """
         return pulumi.get(self, "secret_envs")
 
@@ -1353,9 +1362,8 @@ class TriggerBuildStepArgs:
     @pulumi.getter
     def timing(self) -> Optional[pulumi.Input[str]]:
         """
-        -
-        Output only. Stores timing information for pushing all artifact objects.
-        Structure is documented below.
+        Output only. Stores timing information for executing this
+        build step.
         """
         return pulumi.get(self, "timing")
 
@@ -1367,12 +1375,12 @@ class TriggerBuildStepArgs:
     @pulumi.getter
     def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TriggerBuildStepVolumeArgs']]]]:
         """
-        Global list of volumes to mount for ALL build steps
-        Each volume is created as an empty volume prior to starting the build process.
-        Upon completion of the build, volumes and their contents are discarded. Global
-        volume names and paths cannot conflict with the volumes defined a build step.
-        Using a global volume in a build with only one step is not valid as it is indicative
-        of a build request with an incorrect configuration.
+        List of volumes to mount into the build step.
+        Each volume is created as an empty volume prior to execution of the
+        build step. Upon completion of the build, volumes and their contents
+        are discarded.
+        Using a named volume in only one step is not valid as it is
+        indicative of a build request with an incorrect configuration.
         Structure is documented below.
         """
         return pulumi.get(self, "volumes")
@@ -1451,16 +1459,15 @@ class TriggerGitFileSourceArgs:
                  revision: Optional[pulumi.Input[str]] = None,
                  uri: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] path: Path at which to mount the volume.
-               Paths must be absolute and cannot conflict with other volume paths on the same
-               build step or with certain reserved volume paths.
+        :param pulumi.Input[str] path: The path of the file, with the repo root as the root of the path.
         :param pulumi.Input[str] repo_type: The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
                Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
                Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET_SERVER`.
         :param pulumi.Input[str] revision: The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
                filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
                If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
-        :param pulumi.Input[str] uri: The URI of the repo (required).
+        :param pulumi.Input[str] uri: The URI of the repo (optional). If unspecified, the repo from which the trigger
+               invocation originated is assumed to be the repo from which to read the specified path.
         """
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "repo_type", repo_type)
@@ -1473,9 +1480,7 @@ class TriggerGitFileSourceArgs:
     @pulumi.getter
     def path(self) -> pulumi.Input[str]:
         """
-        Path at which to mount the volume.
-        Paths must be absolute and cannot conflict with other volume paths on the same
-        build step or with certain reserved volume paths.
+        The path of the file, with the repo root as the root of the path.
         """
         return pulumi.get(self, "path")
 
@@ -1515,7 +1520,8 @@ class TriggerGitFileSourceArgs:
     @pulumi.getter
     def uri(self) -> Optional[pulumi.Input[str]]:
         """
-        The URI of the repo (required).
+        The URI of the repo (optional). If unspecified, the repo from which the trigger
+        invocation originated is assumed to be the repo from which to read the specified path.
         """
         return pulumi.get(self, "uri")
 
@@ -1532,9 +1538,8 @@ class TriggerGithubArgs:
                  pull_request: Optional[pulumi.Input['TriggerGithubPullRequestArgs']] = None,
                  push: Optional[pulumi.Input['TriggerGithubPushArgs']] = None):
         """
-        :param pulumi.Input[str] name: Name of the volume to mount.
-               Volume names must be unique per build step and must be valid names for Docker volumes.
-               Each named volume must be used by at least two build steps.
+        :param pulumi.Input[str] name: Name of the repository. For example: The name for
+               https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
         :param pulumi.Input[str] owner: Owner of the repository. For example: The owner for
                https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
         :param pulumi.Input['TriggerGithubPullRequestArgs'] pull_request: filter to match changes in pull requests. Specify only one of `pull_request` or `push`.
@@ -1555,9 +1560,8 @@ class TriggerGithubArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the volume to mount.
-        Volume names must be unique per build step and must be valid names for Docker volumes.
-        Each named volume must be used by at least two build steps.
+        Name of the repository. For example: The name for
+        https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
         """
         return pulumi.get(self, "name")
 
@@ -1612,10 +1616,10 @@ class TriggerGithubPullRequestArgs:
                  comment_control: Optional[pulumi.Input[str]] = None,
                  invert_regex: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] branch: Regex of branches to match.  Specify only one of branch or tag.
+        :param pulumi.Input[str] branch: Regex of branches to match.
         :param pulumi.Input[str] comment_control: Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
                Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
-        :param pulumi.Input[bool] invert_regex: Only trigger a build if the revision regex does NOT match the revision regex.
+        :param pulumi.Input[bool] invert_regex: If true, branches that do NOT match the git_ref will trigger a build.
         """
         pulumi.set(__self__, "branch", branch)
         if comment_control is not None:
@@ -1627,7 +1631,7 @@ class TriggerGithubPullRequestArgs:
     @pulumi.getter
     def branch(self) -> pulumi.Input[str]:
         """
-        Regex of branches to match.  Specify only one of branch or tag.
+        Regex of branches to match.
         """
         return pulumi.get(self, "branch")
 
@@ -1652,7 +1656,7 @@ class TriggerGithubPullRequestArgs:
     @pulumi.getter(name="invertRegex")
     def invert_regex(self) -> Optional[pulumi.Input[bool]]:
         """
-        Only trigger a build if the revision regex does NOT match the revision regex.
+        If true, branches that do NOT match the git_ref will trigger a build.
         """
         return pulumi.get(self, "invert_regex")
 
@@ -1669,7 +1673,7 @@ class TriggerGithubPushArgs:
                  tag: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] branch: Regex of branches to match.  Specify only one of branch or tag.
-        :param pulumi.Input[bool] invert_regex: Only trigger a build if the revision regex does NOT match the revision regex.
+        :param pulumi.Input[bool] invert_regex: When true, only trigger a build if the revision regex does NOT match the git_ref regex.
         :param pulumi.Input[str] tag: Regex of tags to match.  Specify only one of branch or tag.
         """
         if branch is not None:
@@ -1695,7 +1699,7 @@ class TriggerGithubPushArgs:
     @pulumi.getter(name="invertRegex")
     def invert_regex(self) -> Optional[pulumi.Input[bool]]:
         """
-        Only trigger a build if the revision regex does NOT match the revision regex.
+        When true, only trigger a build if the revision regex does NOT match the git_ref regex.
         """
         return pulumi.get(self, "invert_regex")
 
@@ -1726,11 +1730,9 @@ class TriggerPubsubConfigArgs:
         """
         :param pulumi.Input[str] topic: The name of the topic from which this subscription is receiving messages.
         :param pulumi.Input[str] service_account_email: Service account that will make the push request.
-        :param pulumi.Input[str] state: -
-               Potential issues with the underlying Pub/Sub subscription configuration.
+        :param pulumi.Input[str] state: Potential issues with the underlying Pub/Sub subscription configuration.
                Only populated on get requests.
-        :param pulumi.Input[str] subscription: -
-               Output only. Name of the subscription.
+        :param pulumi.Input[str] subscription: Output only. Name of the subscription.
         """
         pulumi.set(__self__, "topic", topic)
         if service_account_email is not None:
@@ -1768,7 +1770,6 @@ class TriggerPubsubConfigArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        -
         Potential issues with the underlying Pub/Sub subscription configuration.
         Only populated on get requests.
         """
@@ -1782,7 +1783,6 @@ class TriggerPubsubConfigArgs:
     @pulumi.getter
     def subscription(self) -> Optional[pulumi.Input[str]]:
         """
-        -
         Output only. Name of the subscription.
         """
         return pulumi.get(self, "subscription")
@@ -1859,26 +1859,19 @@ class TriggerTriggerTemplateArgs:
                  repo_name: Optional[pulumi.Input[str]] = None,
                  tag_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] branch_name: Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-               The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-               described at https://github.com/google/re2/wiki/Syntax
-        :param pulumi.Input[str] commit_sha: Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-        :param pulumi.Input[str] dir: Working directory to use when running this step's container.
-               If this value is a relative path, it is relative to the build's working
-               directory. If this value is absolute, it may be outside the build's working
-               directory, in which case the contents of the path may not be persisted
-               across build step executions, unless a `volume` for that path is specified.
-               If the build specifies a `RepoSource` with `dir` and a step with a
-               `dir`,
-               which specifies an absolute path, the `RepoSource` `dir` is ignored
-               for the step's execution.
+        :param pulumi.Input[str] branch_name: Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+               This field is a regular expression.
+        :param pulumi.Input[str] commit_sha: Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+        :param pulumi.Input[str] dir: Directory, relative to the source root, in which to run the build.
+               This must be a relative path. If a step's dir is specified and
+               is an absolute path, this value is ignored for that step's
+               execution.
         :param pulumi.Input[bool] invert_regex: Only trigger a build if the revision regex does NOT match the revision regex.
-        :param pulumi.Input[str] project_id: ID of the project that owns the Cloud Source Repository.
-               If omitted, the project ID requesting the build is assumed.
-        :param pulumi.Input[str] repo_name: Name of the Cloud Source Repository.
-        :param pulumi.Input[str] tag_name: Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-               The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-               described at https://github.com/google/re2/wiki/Syntax
+        :param pulumi.Input[str] project_id: ID of the project that owns the Cloud Source Repository. If
+               omitted, the project ID requesting the build is assumed.
+        :param pulumi.Input[str] repo_name: Name of the Cloud Source Repository. If omitted, the name "default" is assumed.
+        :param pulumi.Input[str] tag_name: Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+               This field is a regular expression.
         """
         if branch_name is not None:
             pulumi.set(__self__, "branch_name", branch_name)
@@ -1899,9 +1892,8 @@ class TriggerTriggerTemplateArgs:
     @pulumi.getter(name="branchName")
     def branch_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-        The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-        described at https://github.com/google/re2/wiki/Syntax
+        Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+        This field is a regular expression.
         """
         return pulumi.get(self, "branch_name")
 
@@ -1913,7 +1905,7 @@ class TriggerTriggerTemplateArgs:
     @pulumi.getter(name="commitSha")
     def commit_sha(self) -> Optional[pulumi.Input[str]]:
         """
-        Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+        Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
         """
         return pulumi.get(self, "commit_sha")
 
@@ -1925,15 +1917,10 @@ class TriggerTriggerTemplateArgs:
     @pulumi.getter
     def dir(self) -> Optional[pulumi.Input[str]]:
         """
-        Working directory to use when running this step's container.
-        If this value is a relative path, it is relative to the build's working
-        directory. If this value is absolute, it may be outside the build's working
-        directory, in which case the contents of the path may not be persisted
-        across build step executions, unless a `volume` for that path is specified.
-        If the build specifies a `RepoSource` with `dir` and a step with a
-        `dir`,
-        which specifies an absolute path, the `RepoSource` `dir` is ignored
-        for the step's execution.
+        Directory, relative to the source root, in which to run the build.
+        This must be a relative path. If a step's dir is specified and
+        is an absolute path, this value is ignored for that step's
+        execution.
         """
         return pulumi.get(self, "dir")
 
@@ -1957,8 +1944,8 @@ class TriggerTriggerTemplateArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the project that owns the Cloud Source Repository.
-        If omitted, the project ID requesting the build is assumed.
+        ID of the project that owns the Cloud Source Repository. If
+        omitted, the project ID requesting the build is assumed.
         """
         return pulumi.get(self, "project_id")
 
@@ -1970,7 +1957,7 @@ class TriggerTriggerTemplateArgs:
     @pulumi.getter(name="repoName")
     def repo_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Cloud Source Repository.
+        Name of the Cloud Source Repository. If omitted, the name "default" is assumed.
         """
         return pulumi.get(self, "repo_name")
 
@@ -1982,9 +1969,8 @@ class TriggerTriggerTemplateArgs:
     @pulumi.getter(name="tagName")
     def tag_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-        The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-        described at https://github.com/google/re2/wiki/Syntax
+        Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+        This field is a regular expression.
         """
         return pulumi.get(self, "tag_name")
 
@@ -1999,10 +1985,8 @@ class TriggerWebhookConfigArgs:
                  secret: pulumi.Input[str],
                  state: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] secret: Secrets to decrypt using Cloud Key Management Service.
-               Structure is documented below.
-        :param pulumi.Input[str] state: -
-               Potential issues with the underlying Pub/Sub subscription configuration.
+        :param pulumi.Input[str] secret: Resource name for the secret required as a URL parameter.
+        :param pulumi.Input[str] state: Potential issues with the underlying Pub/Sub subscription configuration.
                Only populated on get requests.
         """
         pulumi.set(__self__, "secret", secret)
@@ -2013,8 +1997,7 @@ class TriggerWebhookConfigArgs:
     @pulumi.getter
     def secret(self) -> pulumi.Input[str]:
         """
-        Secrets to decrypt using Cloud Key Management Service.
-        Structure is documented below.
+        Resource name for the secret required as a URL parameter.
         """
         return pulumi.get(self, "secret")
 
@@ -2026,7 +2009,6 @@ class TriggerWebhookConfigArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        -
         Potential issues with the underlying Pub/Sub subscription configuration.
         Only populated on get requests.
         """

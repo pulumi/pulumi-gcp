@@ -15,9 +15,17 @@ public final class AiMetadataStoreStateArgs extends com.pulumi.resources.Resourc
 
     public static final AiMetadataStoreStateArgs Empty = new AiMetadataStoreStateArgs();
 
+    /**
+     * The disk utilization of the MetadataStore in bytes.
+     * 
+     */
     @Import(name="diskUtilizationBytes")
     private @Nullable Output<String> diskUtilizationBytes;
 
+    /**
+     * @return The disk utilization of the MetadataStore in bytes.
+     * 
+     */
     public Optional<Output<String>> diskUtilizationBytes() {
         return Optional.ofNullable(this.diskUtilizationBytes);
     }
@@ -46,11 +54,23 @@ public final class AiMetadataStoreStateArgs extends com.pulumi.resources.Resourc
             $ = new AiMetadataStoreStateArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param diskUtilizationBytes The disk utilization of the MetadataStore in bytes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder diskUtilizationBytes(@Nullable Output<String> diskUtilizationBytes) {
             $.diskUtilizationBytes = diskUtilizationBytes;
             return this;
         }
 
+        /**
+         * @param diskUtilizationBytes The disk utilization of the MetadataStore in bytes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder diskUtilizationBytes(String diskUtilizationBytes) {
             return diskUtilizationBytes(Output.of(diskUtilizationBytes));
         }

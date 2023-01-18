@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = cloudbuild.LookupTrigger(ctx, &cloudbuild.LookupTriggerArgs{
+//			_, err := cloudbuild.LookupTrigger(ctx, &cloudbuild.LookupTriggerArgs{
 //				Project:   pulumi.StringRef("your-project-id"),
 //				TriggerId: google_cloudbuild_trigger.FilenameTrigger.Trigger_id,
 //				Location:  "location of trigger build",

@@ -159,9 +159,9 @@ type TriggerBuild struct {
 	// Structure is documented below.
 	AvailableSecrets *TriggerBuildAvailableSecrets `pulumi:"availableSecrets"`
 	// A list of images to be pushed upon the successful completion of all build steps.
-	// The images will be pushed using the builder service account's credentials.
+	// The images are pushed using the builder service account's credentials.
 	// The digests of the pushed images will be stored in the Build resource's results field.
-	// If any of the images fail to be pushed, the build is marked FAILURE.
+	// If any of the images fail to be pushed, the build status is marked FAILURE.
 	Images []string `pulumi:"images"`
 	// Google Cloud Storage bucket where logs should be written.
 	// Logs file names will be of the format ${logsBucket}/log-${build_id}.txt.
@@ -184,14 +184,15 @@ type TriggerBuild struct {
 	// The operations to be performed on the workspace.
 	// Structure is documented below.
 	Steps []TriggerBuildStep `pulumi:"steps"`
-	// Substitutions to use in a triggered build. Should only be used with triggers.run
+	// Substitutions data for Build resource.
 	Substitutions map[string]string `pulumi:"substitutions"`
 	// Tags for annotation of a Build. These are not docker tags.
 	Tags []string `pulumi:"tags"`
-	// Time limit for executing this build step. If not defined,
-	// the step has no
-	// time limit and will be allowed to continue to run until either it
-	// completes or the build itself times out.
+	// Amount of time that this build should be allowed to run, to second granularity.
+	// If this amount of time elapses, work on the build will cease and the build status will be TIMEOUT.
+	// This timeout must be equal to or greater than the sum of the timeouts for build steps within the build.
+	// The expected format is the number of seconds followed by s.
+	// Default time is ten minutes (600s).
 	Timeout *string `pulumi:"timeout"`
 }
 
@@ -214,9 +215,9 @@ type TriggerBuildArgs struct {
 	// Structure is documented below.
 	AvailableSecrets TriggerBuildAvailableSecretsPtrInput `pulumi:"availableSecrets"`
 	// A list of images to be pushed upon the successful completion of all build steps.
-	// The images will be pushed using the builder service account's credentials.
+	// The images are pushed using the builder service account's credentials.
 	// The digests of the pushed images will be stored in the Build resource's results field.
-	// If any of the images fail to be pushed, the build is marked FAILURE.
+	// If any of the images fail to be pushed, the build status is marked FAILURE.
 	Images pulumi.StringArrayInput `pulumi:"images"`
 	// Google Cloud Storage bucket where logs should be written.
 	// Logs file names will be of the format ${logsBucket}/log-${build_id}.txt.
@@ -239,14 +240,15 @@ type TriggerBuildArgs struct {
 	// The operations to be performed on the workspace.
 	// Structure is documented below.
 	Steps TriggerBuildStepArrayInput `pulumi:"steps"`
-	// Substitutions to use in a triggered build. Should only be used with triggers.run
+	// Substitutions data for Build resource.
 	Substitutions pulumi.StringMapInput `pulumi:"substitutions"`
 	// Tags for annotation of a Build. These are not docker tags.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// Time limit for executing this build step. If not defined,
-	// the step has no
-	// time limit and will be allowed to continue to run until either it
-	// completes or the build itself times out.
+	// Amount of time that this build should be allowed to run, to second granularity.
+	// If this amount of time elapses, work on the build will cease and the build status will be TIMEOUT.
+	// This timeout must be equal to or greater than the sum of the timeouts for build steps within the build.
+	// The expected format is the number of seconds followed by s.
+	// Default time is ten minutes (600s).
 	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
 }
 
@@ -340,9 +342,9 @@ func (o TriggerBuildOutput) AvailableSecrets() TriggerBuildAvailableSecretsPtrOu
 }
 
 // A list of images to be pushed upon the successful completion of all build steps.
-// The images will be pushed using the builder service account's credentials.
+// The images are pushed using the builder service account's credentials.
 // The digests of the pushed images will be stored in the Build resource's results field.
-// If any of the images fail to be pushed, the build is marked FAILURE.
+// If any of the images fail to be pushed, the build status is marked FAILURE.
 func (o TriggerBuildOutput) Images() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TriggerBuild) []string { return v.Images }).(pulumi.StringArrayOutput)
 }
@@ -386,7 +388,7 @@ func (o TriggerBuildOutput) Steps() TriggerBuildStepArrayOutput {
 	return o.ApplyT(func(v TriggerBuild) []TriggerBuildStep { return v.Steps }).(TriggerBuildStepArrayOutput)
 }
 
-// Substitutions to use in a triggered build. Should only be used with triggers.run
+// Substitutions data for Build resource.
 func (o TriggerBuildOutput) Substitutions() pulumi.StringMapOutput {
 	return o.ApplyT(func(v TriggerBuild) map[string]string { return v.Substitutions }).(pulumi.StringMapOutput)
 }
@@ -396,10 +398,11 @@ func (o TriggerBuildOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TriggerBuild) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Time limit for executing this build step. If not defined,
-// the step has no
-// time limit and will be allowed to continue to run until either it
-// completes or the build itself times out.
+// Amount of time that this build should be allowed to run, to second granularity.
+// If this amount of time elapses, work on the build will cease and the build status will be TIMEOUT.
+// This timeout must be equal to or greater than the sum of the timeouts for build steps within the build.
+// The expected format is the number of seconds followed by s.
+// Default time is ten minutes (600s).
 func (o TriggerBuildOutput) Timeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerBuild) *string { return v.Timeout }).(pulumi.StringPtrOutput)
 }
@@ -451,9 +454,9 @@ func (o TriggerBuildPtrOutput) AvailableSecrets() TriggerBuildAvailableSecretsPt
 }
 
 // A list of images to be pushed upon the successful completion of all build steps.
-// The images will be pushed using the builder service account's credentials.
+// The images are pushed using the builder service account's credentials.
 // The digests of the pushed images will be stored in the Build resource's results field.
-// If any of the images fail to be pushed, the build is marked FAILURE.
+// If any of the images fail to be pushed, the build status is marked FAILURE.
 func (o TriggerBuildPtrOutput) Images() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TriggerBuild) []string {
 		if v == nil {
@@ -532,7 +535,7 @@ func (o TriggerBuildPtrOutput) Steps() TriggerBuildStepArrayOutput {
 	}).(TriggerBuildStepArrayOutput)
 }
 
-// Substitutions to use in a triggered build. Should only be used with triggers.run
+// Substitutions data for Build resource.
 func (o TriggerBuildPtrOutput) Substitutions() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *TriggerBuild) map[string]string {
 		if v == nil {
@@ -552,10 +555,11 @@ func (o TriggerBuildPtrOutput) Tags() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Time limit for executing this build step. If not defined,
-// the step has no
-// time limit and will be allowed to continue to run until either it
-// completes or the build itself times out.
+// Amount of time that this build should be allowed to run, to second granularity.
+// If this amount of time elapses, work on the build will cease and the build status will be TIMEOUT.
+// This timeout must be equal to or greater than the sum of the timeouts for build steps within the build.
+// The expected format is the number of seconds followed by s.
+// Default time is ten minutes (600s).
 func (o TriggerBuildPtrOutput) Timeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerBuild) *string {
 		if v == nil {
@@ -760,7 +764,6 @@ type TriggerBuildArtifactsObjects struct {
 	Location *string `pulumi:"location"`
 	// Path globs used to match files in the build's workspace.
 	Paths []string `pulumi:"paths"`
-	// -
 	// Output only. Stores timing information for pushing all artifact objects.
 	// Structure is documented below.
 	Timings []TriggerBuildArtifactsObjectsTiming `pulumi:"timings"`
@@ -784,7 +787,6 @@ type TriggerBuildArtifactsObjectsArgs struct {
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// Path globs used to match files in the build's workspace.
 	Paths pulumi.StringArrayInput `pulumi:"paths"`
-	// -
 	// Output only. Stores timing information for pushing all artifact objects.
 	// Structure is documented below.
 	Timings TriggerBuildArtifactsObjectsTimingArrayInput `pulumi:"timings"`
@@ -879,7 +881,6 @@ func (o TriggerBuildArtifactsObjectsOutput) Paths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TriggerBuildArtifactsObjects) []string { return v.Paths }).(pulumi.StringArrayOutput)
 }
 
-// -
 // Output only. Stores timing information for pushing all artifact objects.
 // Structure is documented below.
 func (o TriggerBuildArtifactsObjectsOutput) Timings() TriggerBuildArtifactsObjectsTimingArrayOutput {
@@ -932,7 +933,6 @@ func (o TriggerBuildArtifactsObjectsPtrOutput) Paths() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
-// -
 // Output only. Stores timing information for pushing all artifact objects.
 // Structure is documented below.
 func (o TriggerBuildArtifactsObjectsPtrOutput) Timings() TriggerBuildArtifactsObjectsTimingArrayOutput {
@@ -1206,10 +1206,9 @@ func (o TriggerBuildAvailableSecretsPtrOutput) SecretManagers() TriggerBuildAvai
 }
 
 type TriggerBuildAvailableSecretsSecretManager struct {
-	// A list of global environment variable definitions that will exist for all build steps
-	// in this build. If a variable is defined in both globally and in a build step,
-	// the variable will use the build step value.
-	// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+	// Environment variable name to associate with the secret. Secret environment
+	// variables must be unique across all of a build's secrets, and must be used
+	// by at least one build step.
 	Env string `pulumi:"env"`
 	// Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*
 	VersionName string `pulumi:"versionName"`
@@ -1227,10 +1226,9 @@ type TriggerBuildAvailableSecretsSecretManagerInput interface {
 }
 
 type TriggerBuildAvailableSecretsSecretManagerArgs struct {
-	// A list of global environment variable definitions that will exist for all build steps
-	// in this build. If a variable is defined in both globally and in a build step,
-	// the variable will use the build step value.
-	// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+	// Environment variable name to associate with the secret. Secret environment
+	// variables must be unique across all of a build's secrets, and must be used
+	// by at least one build step.
 	Env pulumi.StringInput `pulumi:"env"`
 	// Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*
 	VersionName pulumi.StringInput `pulumi:"versionName"`
@@ -1287,10 +1285,9 @@ func (o TriggerBuildAvailableSecretsSecretManagerOutput) ToTriggerBuildAvailable
 	return o
 }
 
-// A list of global environment variable definitions that will exist for all build steps
-// in this build. If a variable is defined in both globally and in a build step,
-// the variable will use the build step value.
-// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+// Environment variable name to associate with the secret. Secret environment
+// variables must be unique across all of a build's secrets, and must be used
+// by at least one build step.
 func (o TriggerBuildAvailableSecretsSecretManagerOutput) Env() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerBuildAvailableSecretsSecretManager) string { return v.Env }).(pulumi.StringOutput)
 }
@@ -1887,9 +1884,10 @@ func (o TriggerBuildOptionsVolumeArrayOutput) Index(i pulumi.IntInput) TriggerBu
 type TriggerBuildSecret struct {
 	// Cloud KMS key name to use to decrypt these envs.
 	KmsKeyName string `pulumi:"kmsKeyName"`
-	// A list of global environment variables, which are encrypted using a Cloud Key Management
-	// Service crypto key. These values must be specified in the build's Secret. These variables
-	// will be available to all build steps in this build.
+	// Map of environment variable name to its encrypted value.
+	// Secret environment variables must be unique across all of a build's secrets,
+	// and must be used by at least one build step. Values can be at most 64 KB in size.
+	// There can be at most 100 secret values across all of a build's secrets.
 	SecretEnv map[string]string `pulumi:"secretEnv"`
 }
 
@@ -1907,9 +1905,10 @@ type TriggerBuildSecretInput interface {
 type TriggerBuildSecretArgs struct {
 	// Cloud KMS key name to use to decrypt these envs.
 	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
-	// A list of global environment variables, which are encrypted using a Cloud Key Management
-	// Service crypto key. These values must be specified in the build's Secret. These variables
-	// will be available to all build steps in this build.
+	// Map of environment variable name to its encrypted value.
+	// Secret environment variables must be unique across all of a build's secrets,
+	// and must be used by at least one build step. Values can be at most 64 KB in size.
+	// There can be at most 100 secret values across all of a build's secrets.
 	SecretEnv pulumi.StringMapInput `pulumi:"secretEnv"`
 }
 
@@ -1969,9 +1968,10 @@ func (o TriggerBuildSecretOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerBuildSecret) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
-// A list of global environment variables, which are encrypted using a Cloud Key Management
-// Service crypto key. These values must be specified in the build's Secret. These variables
-// will be available to all build steps in this build.
+// Map of environment variable name to its encrypted value.
+// Secret environment variables must be unique across all of a build's secrets,
+// and must be used by at least one build step. Values can be at most 64 KB in size.
+// There can be at most 100 secret values across all of a build's secrets.
 func (o TriggerBuildSecretOutput) SecretEnv() pulumi.StringMapOutput {
 	return o.ApplyT(func(v TriggerBuildSecret) map[string]string { return v.SecretEnv }).(pulumi.StringMapOutput)
 }
@@ -2167,15 +2167,9 @@ type TriggerBuildSourceRepoSource struct {
 	BranchName *string `pulumi:"branchName"`
 	// Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
 	CommitSha *string `pulumi:"commitSha"`
-	// Working directory to use when running this step's container.
-	// If this value is a relative path, it is relative to the build's working
-	// directory. If this value is absolute, it may be outside the build's working
-	// directory, in which case the contents of the path may not be persisted
-	// across build step executions, unless a `volume` for that path is specified.
-	// If the build specifies a `RepoSource` with `dir` and a step with a
-	// `dir`,
-	// which specifies an absolute path, the `RepoSource` `dir` is ignored
-	// for the step's execution.
+	// Directory, relative to the source root, in which to run the build.
+	// This must be a relative path. If a step's dir is specified and is an absolute path,
+	// this value is ignored for that step's execution.
 	Dir *string `pulumi:"dir"`
 	// Only trigger a build if the revision regex does NOT match the revision regex.
 	InvertRegex *bool `pulumi:"invertRegex"`
@@ -2210,15 +2204,9 @@ type TriggerBuildSourceRepoSourceArgs struct {
 	BranchName pulumi.StringPtrInput `pulumi:"branchName"`
 	// Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
 	CommitSha pulumi.StringPtrInput `pulumi:"commitSha"`
-	// Working directory to use when running this step's container.
-	// If this value is a relative path, it is relative to the build's working
-	// directory. If this value is absolute, it may be outside the build's working
-	// directory, in which case the contents of the path may not be persisted
-	// across build step executions, unless a `volume` for that path is specified.
-	// If the build specifies a `RepoSource` with `dir` and a step with a
-	// `dir`,
-	// which specifies an absolute path, the `RepoSource` `dir` is ignored
-	// for the step's execution.
+	// Directory, relative to the source root, in which to run the build.
+	// This must be a relative path. If a step's dir is specified and is an absolute path,
+	// this value is ignored for that step's execution.
 	Dir pulumi.StringPtrInput `pulumi:"dir"`
 	// Only trigger a build if the revision regex does NOT match the revision regex.
 	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
@@ -2324,15 +2312,9 @@ func (o TriggerBuildSourceRepoSourceOutput) CommitSha() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerBuildSourceRepoSource) *string { return v.CommitSha }).(pulumi.StringPtrOutput)
 }
 
-// Working directory to use when running this step's container.
-// If this value is a relative path, it is relative to the build's working
-// directory. If this value is absolute, it may be outside the build's working
-// directory, in which case the contents of the path may not be persisted
-// across build step executions, unless a `volume` for that path is specified.
-// If the build specifies a `RepoSource` with `dir` and a step with a
-// `dir`,
-// which specifies an absolute path, the `RepoSource` `dir` is ignored
-// for the step's execution.
+// Directory, relative to the source root, in which to run the build.
+// This must be a relative path. If a step's dir is specified and is an absolute path,
+// this value is ignored for that step's execution.
 func (o TriggerBuildSourceRepoSourceOutput) Dir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerBuildSourceRepoSource) *string { return v.Dir }).(pulumi.StringPtrOutput)
 }
@@ -2411,15 +2393,9 @@ func (o TriggerBuildSourceRepoSourcePtrOutput) CommitSha() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Working directory to use when running this step's container.
-// If this value is a relative path, it is relative to the build's working
-// directory. If this value is absolute, it may be outside the build's working
-// directory, in which case the contents of the path may not be persisted
-// across build step executions, unless a `volume` for that path is specified.
-// If the build specifies a `RepoSource` with `dir` and a step with a
-// `dir`,
-// which specifies an absolute path, the `RepoSource` `dir` is ignored
-// for the step's execution.
+// Directory, relative to the source root, in which to run the build.
+// This must be a relative path. If a step's dir is specified and is an absolute path,
+// this value is ignored for that step's execution.
 func (o TriggerBuildSourceRepoSourcePtrOutput) Dir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerBuildSourceRepoSource) *string {
 		if v == nil {
@@ -2686,40 +2662,50 @@ type TriggerBuildStep struct {
 	// default entrypoint.
 	// If unset, the image's default entrypoint is used
 	Entrypoint *string `pulumi:"entrypoint"`
-	// A list of global environment variable definitions that will exist for all build steps
-	// in this build. If a variable is defined in both globally and in a build step,
-	// the variable will use the build step value.
-	// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+	// A list of environment variable definitions to be used when
+	// running a step.
+	// The elements are of the form "KEY=VALUE" for the environment variable
+	// "KEY" being given the value "VALUE".
 	Envs []string `pulumi:"envs"`
 	// Unique identifier for this build step, used in `waitFor` to
 	// reference this build step as a dependency.
 	Id *string `pulumi:"id"`
-	// Name of the volume to mount.
-	// Volume names must be unique per build step and must be valid names for Docker volumes.
-	// Each named volume must be used by at least two build steps.
+	// The name of the container image that will run this particular build step.
+	// If the image is available in the host's Docker daemon's cache, it will be
+	// run directly. If not, the host will attempt to pull the image first, using
+	// the builder service account's credentials if necessary.
+	// The Docker daemon's cache will already have the latest versions of all of
+	// the officially supported build steps (see https://github.com/GoogleCloudPlatform/cloud-builders
+	// for images and examples).
+	// The Docker daemon will also have cached many of the layers for some popular
+	// images, like "ubuntu", "debian", but they will be refreshed at the time
+	// you attempt to use them.
+	// If you built an image in a previous build step, it will be stored in the
+	// host's Docker daemon's cache and is available to use as the name for a
+	// later build step.
 	Name string `pulumi:"name"`
 	// A shell script to be executed in the step.
 	// When script is provided, the user cannot specify the entrypoint or args.
 	Script *string `pulumi:"script"`
-	// A list of global environment variables, which are encrypted using a Cloud Key Management
-	// Service crypto key. These values must be specified in the build's Secret. These variables
-	// will be available to all build steps in this build.
+	// A list of environment variables which are encrypted using
+	// a Cloud Key
+	// Management Service crypto key. These values must be specified in
+	// the build's `Secret`.
 	SecretEnvs []string `pulumi:"secretEnvs"`
 	// Time limit for executing this build step. If not defined,
 	// the step has no
 	// time limit and will be allowed to continue to run until either it
 	// completes or the build itself times out.
 	Timeout *string `pulumi:"timeout"`
-	// -
-	// Output only. Stores timing information for pushing all artifact objects.
-	// Structure is documented below.
+	// Output only. Stores timing information for executing this
+	// build step.
 	Timing *string `pulumi:"timing"`
-	// Global list of volumes to mount for ALL build steps
-	// Each volume is created as an empty volume prior to starting the build process.
-	// Upon completion of the build, volumes and their contents are discarded. Global
-	// volume names and paths cannot conflict with the volumes defined a build step.
-	// Using a global volume in a build with only one step is not valid as it is indicative
-	// of a build request with an incorrect configuration.
+	// List of volumes to mount into the build step.
+	// Each volume is created as an empty volume prior to execution of the
+	// build step. Upon completion of the build, volumes and their contents
+	// are discarded.
+	// Using a named volume in only one step is not valid as it is
+	// indicative of a build request with an incorrect configuration.
 	// Structure is documented below.
 	Volumes []TriggerBuildStepVolume `pulumi:"volumes"`
 	// The ID(s) of the step(s) that this build step depends on.
@@ -2762,40 +2748,50 @@ type TriggerBuildStepArgs struct {
 	// default entrypoint.
 	// If unset, the image's default entrypoint is used
 	Entrypoint pulumi.StringPtrInput `pulumi:"entrypoint"`
-	// A list of global environment variable definitions that will exist for all build steps
-	// in this build. If a variable is defined in both globally and in a build step,
-	// the variable will use the build step value.
-	// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+	// A list of environment variable definitions to be used when
+	// running a step.
+	// The elements are of the form "KEY=VALUE" for the environment variable
+	// "KEY" being given the value "VALUE".
 	Envs pulumi.StringArrayInput `pulumi:"envs"`
 	// Unique identifier for this build step, used in `waitFor` to
 	// reference this build step as a dependency.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Name of the volume to mount.
-	// Volume names must be unique per build step and must be valid names for Docker volumes.
-	// Each named volume must be used by at least two build steps.
+	// The name of the container image that will run this particular build step.
+	// If the image is available in the host's Docker daemon's cache, it will be
+	// run directly. If not, the host will attempt to pull the image first, using
+	// the builder service account's credentials if necessary.
+	// The Docker daemon's cache will already have the latest versions of all of
+	// the officially supported build steps (see https://github.com/GoogleCloudPlatform/cloud-builders
+	// for images and examples).
+	// The Docker daemon will also have cached many of the layers for some popular
+	// images, like "ubuntu", "debian", but they will be refreshed at the time
+	// you attempt to use them.
+	// If you built an image in a previous build step, it will be stored in the
+	// host's Docker daemon's cache and is available to use as the name for a
+	// later build step.
 	Name pulumi.StringInput `pulumi:"name"`
 	// A shell script to be executed in the step.
 	// When script is provided, the user cannot specify the entrypoint or args.
 	Script pulumi.StringPtrInput `pulumi:"script"`
-	// A list of global environment variables, which are encrypted using a Cloud Key Management
-	// Service crypto key. These values must be specified in the build's Secret. These variables
-	// will be available to all build steps in this build.
+	// A list of environment variables which are encrypted using
+	// a Cloud Key
+	// Management Service crypto key. These values must be specified in
+	// the build's `Secret`.
 	SecretEnvs pulumi.StringArrayInput `pulumi:"secretEnvs"`
 	// Time limit for executing this build step. If not defined,
 	// the step has no
 	// time limit and will be allowed to continue to run until either it
 	// completes or the build itself times out.
 	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
-	// -
-	// Output only. Stores timing information for pushing all artifact objects.
-	// Structure is documented below.
+	// Output only. Stores timing information for executing this
+	// build step.
 	Timing pulumi.StringPtrInput `pulumi:"timing"`
-	// Global list of volumes to mount for ALL build steps
-	// Each volume is created as an empty volume prior to starting the build process.
-	// Upon completion of the build, volumes and their contents are discarded. Global
-	// volume names and paths cannot conflict with the volumes defined a build step.
-	// Using a global volume in a build with only one step is not valid as it is indicative
-	// of a build request with an incorrect configuration.
+	// List of volumes to mount into the build step.
+	// Each volume is created as an empty volume prior to execution of the
+	// build step. Upon completion of the build, volumes and their contents
+	// are discarded.
+	// Using a named volume in only one step is not valid as it is
+	// indicative of a build request with an incorrect configuration.
 	// Structure is documented below.
 	Volumes TriggerBuildStepVolumeArrayInput `pulumi:"volumes"`
 	// The ID(s) of the step(s) that this build step depends on.
@@ -2886,10 +2882,10 @@ func (o TriggerBuildStepOutput) Entrypoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerBuildStep) *string { return v.Entrypoint }).(pulumi.StringPtrOutput)
 }
 
-// A list of global environment variable definitions that will exist for all build steps
-// in this build. If a variable is defined in both globally and in a build step,
-// the variable will use the build step value.
-// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+// A list of environment variable definitions to be used when
+// running a step.
+// The elements are of the form "KEY=VALUE" for the environment variable
+// "KEY" being given the value "VALUE".
 func (o TriggerBuildStepOutput) Envs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TriggerBuildStep) []string { return v.Envs }).(pulumi.StringArrayOutput)
 }
@@ -2900,9 +2896,19 @@ func (o TriggerBuildStepOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerBuildStep) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Name of the volume to mount.
-// Volume names must be unique per build step and must be valid names for Docker volumes.
-// Each named volume must be used by at least two build steps.
+// The name of the container image that will run this particular build step.
+// If the image is available in the host's Docker daemon's cache, it will be
+// run directly. If not, the host will attempt to pull the image first, using
+// the builder service account's credentials if necessary.
+// The Docker daemon's cache will already have the latest versions of all of
+// the officially supported build steps (see https://github.com/GoogleCloudPlatform/cloud-builders
+// for images and examples).
+// The Docker daemon will also have cached many of the layers for some popular
+// images, like "ubuntu", "debian", but they will be refreshed at the time
+// you attempt to use them.
+// If you built an image in a previous build step, it will be stored in the
+// host's Docker daemon's cache and is available to use as the name for a
+// later build step.
 func (o TriggerBuildStepOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerBuildStep) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2913,9 +2919,10 @@ func (o TriggerBuildStepOutput) Script() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerBuildStep) *string { return v.Script }).(pulumi.StringPtrOutput)
 }
 
-// A list of global environment variables, which are encrypted using a Cloud Key Management
-// Service crypto key. These values must be specified in the build's Secret. These variables
-// will be available to all build steps in this build.
+// A list of environment variables which are encrypted using
+// a Cloud Key
+// Management Service crypto key. These values must be specified in
+// the build's `Secret`.
 func (o TriggerBuildStepOutput) SecretEnvs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TriggerBuildStep) []string { return v.SecretEnvs }).(pulumi.StringArrayOutput)
 }
@@ -2928,19 +2935,18 @@ func (o TriggerBuildStepOutput) Timeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerBuildStep) *string { return v.Timeout }).(pulumi.StringPtrOutput)
 }
 
-// -
-// Output only. Stores timing information for pushing all artifact objects.
-// Structure is documented below.
+// Output only. Stores timing information for executing this
+// build step.
 func (o TriggerBuildStepOutput) Timing() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerBuildStep) *string { return v.Timing }).(pulumi.StringPtrOutput)
 }
 
-// Global list of volumes to mount for ALL build steps
-// Each volume is created as an empty volume prior to starting the build process.
-// Upon completion of the build, volumes and their contents are discarded. Global
-// volume names and paths cannot conflict with the volumes defined a build step.
-// Using a global volume in a build with only one step is not valid as it is indicative
-// of a build request with an incorrect configuration.
+// List of volumes to mount into the build step.
+// Each volume is created as an empty volume prior to execution of the
+// build step. Upon completion of the build, volumes and their contents
+// are discarded.
+// Using a named volume in only one step is not valid as it is
+// indicative of a build request with an incorrect configuration.
 // Structure is documented below.
 func (o TriggerBuildStepOutput) Volumes() TriggerBuildStepVolumeArrayOutput {
 	return o.ApplyT(func(v TriggerBuildStep) []TriggerBuildStepVolume { return v.Volumes }).(TriggerBuildStepVolumeArrayOutput)
@@ -3094,9 +3100,7 @@ func (o TriggerBuildStepVolumeArrayOutput) Index(i pulumi.IntInput) TriggerBuild
 }
 
 type TriggerGitFileSource struct {
-	// Path at which to mount the volume.
-	// Paths must be absolute and cannot conflict with other volume paths on the same
-	// build step or with certain reserved volume paths.
+	// The path of the file, with the repo root as the root of the path.
 	Path string `pulumi:"path"`
 	// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
 	// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
@@ -3106,7 +3110,8 @@ type TriggerGitFileSource struct {
 	// filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
 	// If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
 	Revision *string `pulumi:"revision"`
-	// The URI of the repo (required).
+	// The URI of the repo (optional). If unspecified, the repo from which the trigger
+	// invocation originated is assumed to be the repo from which to read the specified path.
 	Uri *string `pulumi:"uri"`
 }
 
@@ -3122,9 +3127,7 @@ type TriggerGitFileSourceInput interface {
 }
 
 type TriggerGitFileSourceArgs struct {
-	// Path at which to mount the volume.
-	// Paths must be absolute and cannot conflict with other volume paths on the same
-	// build step or with certain reserved volume paths.
+	// The path of the file, with the repo root as the root of the path.
 	Path pulumi.StringInput `pulumi:"path"`
 	// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
 	// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
@@ -3134,7 +3137,8 @@ type TriggerGitFileSourceArgs struct {
 	// filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
 	// If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
 	Revision pulumi.StringPtrInput `pulumi:"revision"`
-	// The URI of the repo (required).
+	// The URI of the repo (optional). If unspecified, the repo from which the trigger
+	// invocation originated is assumed to be the repo from which to read the specified path.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
 }
 
@@ -3215,9 +3219,7 @@ func (o TriggerGitFileSourceOutput) ToTriggerGitFileSourcePtrOutputWithContext(c
 	}).(TriggerGitFileSourcePtrOutput)
 }
 
-// Path at which to mount the volume.
-// Paths must be absolute and cannot conflict with other volume paths on the same
-// build step or with certain reserved volume paths.
+// The path of the file, with the repo root as the root of the path.
 func (o TriggerGitFileSourceOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerGitFileSource) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -3236,7 +3238,8 @@ func (o TriggerGitFileSourceOutput) Revision() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerGitFileSource) *string { return v.Revision }).(pulumi.StringPtrOutput)
 }
 
-// The URI of the repo (required).
+// The URI of the repo (optional). If unspecified, the repo from which the trigger
+// invocation originated is assumed to be the repo from which to read the specified path.
 func (o TriggerGitFileSourceOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerGitFileSource) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
@@ -3265,9 +3268,7 @@ func (o TriggerGitFileSourcePtrOutput) Elem() TriggerGitFileSourceOutput {
 	}).(TriggerGitFileSourceOutput)
 }
 
-// Path at which to mount the volume.
-// Paths must be absolute and cannot conflict with other volume paths on the same
-// build step or with certain reserved volume paths.
+// The path of the file, with the repo root as the root of the path.
 func (o TriggerGitFileSourcePtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerGitFileSource) *string {
 		if v == nil {
@@ -3301,7 +3302,8 @@ func (o TriggerGitFileSourcePtrOutput) Revision() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The URI of the repo (required).
+// The URI of the repo (optional). If unspecified, the repo from which the trigger
+// invocation originated is assumed to be the repo from which to read the specified path.
 func (o TriggerGitFileSourcePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerGitFileSource) *string {
 		if v == nil {
@@ -3312,9 +3314,8 @@ func (o TriggerGitFileSourcePtrOutput) Uri() pulumi.StringPtrOutput {
 }
 
 type TriggerGithub struct {
-	// Name of the volume to mount.
-	// Volume names must be unique per build step and must be valid names for Docker volumes.
-	// Each named volume must be used by at least two build steps.
+	// Name of the repository. For example: The name for
+	// https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
 	Name *string `pulumi:"name"`
 	// Owner of the repository. For example: The owner for
 	// https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
@@ -3339,9 +3340,8 @@ type TriggerGithubInput interface {
 }
 
 type TriggerGithubArgs struct {
-	// Name of the volume to mount.
-	// Volume names must be unique per build step and must be valid names for Docker volumes.
-	// Each named volume must be used by at least two build steps.
+	// Name of the repository. For example: The name for
+	// https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Owner of the repository. For example: The owner for
 	// https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
@@ -3431,9 +3431,8 @@ func (o TriggerGithubOutput) ToTriggerGithubPtrOutputWithContext(ctx context.Con
 	}).(TriggerGithubPtrOutput)
 }
 
-// Name of the volume to mount.
-// Volume names must be unique per build step and must be valid names for Docker volumes.
-// Each named volume must be used by at least two build steps.
+// Name of the repository. For example: The name for
+// https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
 func (o TriggerGithubOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -3480,9 +3479,8 @@ func (o TriggerGithubPtrOutput) Elem() TriggerGithubOutput {
 	}).(TriggerGithubOutput)
 }
 
-// Name of the volume to mount.
-// Volume names must be unique per build step and must be valid names for Docker volumes.
-// Each named volume must be used by at least two build steps.
+// Name of the repository. For example: The name for
+// https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
 func (o TriggerGithubPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerGithub) *string {
 		if v == nil {
@@ -3526,12 +3524,12 @@ func (o TriggerGithubPtrOutput) Push() TriggerGithubPushPtrOutput {
 }
 
 type TriggerGithubPullRequest struct {
-	// Regex of branches to match.  Specify only one of branch or tag.
+	// Regex of branches to match.
 	Branch string `pulumi:"branch"`
 	// Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
 	// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 	CommentControl *string `pulumi:"commentControl"`
-	// Only trigger a build if the revision regex does NOT match the revision regex.
+	// If true, branches that do NOT match the gitRef will trigger a build.
 	InvertRegex *bool `pulumi:"invertRegex"`
 }
 
@@ -3547,12 +3545,12 @@ type TriggerGithubPullRequestInput interface {
 }
 
 type TriggerGithubPullRequestArgs struct {
-	// Regex of branches to match.  Specify only one of branch or tag.
+	// Regex of branches to match.
 	Branch pulumi.StringInput `pulumi:"branch"`
 	// Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator.
 	// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 	CommentControl pulumi.StringPtrInput `pulumi:"commentControl"`
-	// Only trigger a build if the revision regex does NOT match the revision regex.
+	// If true, branches that do NOT match the gitRef will trigger a build.
 	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
 }
 
@@ -3633,7 +3631,7 @@ func (o TriggerGithubPullRequestOutput) ToTriggerGithubPullRequestPtrOutputWithC
 	}).(TriggerGithubPullRequestPtrOutput)
 }
 
-// Regex of branches to match.  Specify only one of branch or tag.
+// Regex of branches to match.
 func (o TriggerGithubPullRequestOutput) Branch() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerGithubPullRequest) string { return v.Branch }).(pulumi.StringOutput)
 }
@@ -3644,7 +3642,7 @@ func (o TriggerGithubPullRequestOutput) CommentControl() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v TriggerGithubPullRequest) *string { return v.CommentControl }).(pulumi.StringPtrOutput)
 }
 
-// Only trigger a build if the revision regex does NOT match the revision regex.
+// If true, branches that do NOT match the gitRef will trigger a build.
 func (o TriggerGithubPullRequestOutput) InvertRegex() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TriggerGithubPullRequest) *bool { return v.InvertRegex }).(pulumi.BoolPtrOutput)
 }
@@ -3673,7 +3671,7 @@ func (o TriggerGithubPullRequestPtrOutput) Elem() TriggerGithubPullRequestOutput
 	}).(TriggerGithubPullRequestOutput)
 }
 
-// Regex of branches to match.  Specify only one of branch or tag.
+// Regex of branches to match.
 func (o TriggerGithubPullRequestPtrOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerGithubPullRequest) *string {
 		if v == nil {
@@ -3694,7 +3692,7 @@ func (o TriggerGithubPullRequestPtrOutput) CommentControl() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Only trigger a build if the revision regex does NOT match the revision regex.
+// If true, branches that do NOT match the gitRef will trigger a build.
 func (o TriggerGithubPullRequestPtrOutput) InvertRegex() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TriggerGithubPullRequest) *bool {
 		if v == nil {
@@ -3707,7 +3705,7 @@ func (o TriggerGithubPullRequestPtrOutput) InvertRegex() pulumi.BoolPtrOutput {
 type TriggerGithubPush struct {
 	// Regex of branches to match.  Specify only one of branch or tag.
 	Branch *string `pulumi:"branch"`
-	// Only trigger a build if the revision regex does NOT match the revision regex.
+	// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
 	InvertRegex *bool `pulumi:"invertRegex"`
 	// Regex of tags to match.  Specify only one of branch or tag.
 	Tag *string `pulumi:"tag"`
@@ -3727,7 +3725,7 @@ type TriggerGithubPushInput interface {
 type TriggerGithubPushArgs struct {
 	// Regex of branches to match.  Specify only one of branch or tag.
 	Branch pulumi.StringPtrInput `pulumi:"branch"`
-	// Only trigger a build if the revision regex does NOT match the revision regex.
+	// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
 	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
 	// Regex of tags to match.  Specify only one of branch or tag.
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
@@ -3815,7 +3813,7 @@ func (o TriggerGithubPushOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerGithubPush) *string { return v.Branch }).(pulumi.StringPtrOutput)
 }
 
-// Only trigger a build if the revision regex does NOT match the revision regex.
+// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
 func (o TriggerGithubPushOutput) InvertRegex() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TriggerGithubPush) *bool { return v.InvertRegex }).(pulumi.BoolPtrOutput)
 }
@@ -3859,7 +3857,7 @@ func (o TriggerGithubPushPtrOutput) Branch() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Only trigger a build if the revision regex does NOT match the revision regex.
+// When true, only trigger a build if the revision regex does NOT match the gitRef regex.
 func (o TriggerGithubPushPtrOutput) InvertRegex() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TriggerGithubPush) *bool {
 		if v == nil {
@@ -3882,11 +3880,9 @@ func (o TriggerGithubPushPtrOutput) Tag() pulumi.StringPtrOutput {
 type TriggerPubsubConfig struct {
 	// Service account that will make the push request.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
-	// -
 	// Potential issues with the underlying Pub/Sub subscription configuration.
 	// Only populated on get requests.
 	State *string `pulumi:"state"`
-	// -
 	// Output only. Name of the subscription.
 	Subscription *string `pulumi:"subscription"`
 	// The name of the topic from which this subscription is receiving messages.
@@ -3907,11 +3903,9 @@ type TriggerPubsubConfigInput interface {
 type TriggerPubsubConfigArgs struct {
 	// Service account that will make the push request.
 	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
-	// -
 	// Potential issues with the underlying Pub/Sub subscription configuration.
 	// Only populated on get requests.
 	State pulumi.StringPtrInput `pulumi:"state"`
-	// -
 	// Output only. Name of the subscription.
 	Subscription pulumi.StringPtrInput `pulumi:"subscription"`
 	// The name of the topic from which this subscription is receiving messages.
@@ -4000,14 +3994,12 @@ func (o TriggerPubsubConfigOutput) ServiceAccountEmail() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v TriggerPubsubConfig) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
 }
 
-// -
 // Potential issues with the underlying Pub/Sub subscription configuration.
 // Only populated on get requests.
 func (o TriggerPubsubConfigOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerPubsubConfig) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
-// -
 // Output only. Name of the subscription.
 func (o TriggerPubsubConfigOutput) Subscription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerPubsubConfig) *string { return v.Subscription }).(pulumi.StringPtrOutput)
@@ -4052,7 +4044,6 @@ func (o TriggerPubsubConfigPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // Potential issues with the underlying Pub/Sub subscription configuration.
 // Only populated on get requests.
 func (o TriggerPubsubConfigPtrOutput) State() pulumi.StringPtrOutput {
@@ -4064,7 +4055,6 @@ func (o TriggerPubsubConfigPtrOutput) State() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // Output only. Name of the subscription.
 func (o TriggerPubsubConfigPtrOutput) Subscription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerPubsubConfig) *string {
@@ -4269,32 +4259,25 @@ func (o TriggerSourceToBuildPtrOutput) Uri() pulumi.StringPtrOutput {
 }
 
 type TriggerTriggerTemplate struct {
-	// Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-	// described at https://github.com/google/re2/wiki/Syntax
+	// Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+	// This field is a regular expression.
 	BranchName *string `pulumi:"branchName"`
-	// Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+	// Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
 	CommitSha *string `pulumi:"commitSha"`
-	// Working directory to use when running this step's container.
-	// If this value is a relative path, it is relative to the build's working
-	// directory. If this value is absolute, it may be outside the build's working
-	// directory, in which case the contents of the path may not be persisted
-	// across build step executions, unless a `volume` for that path is specified.
-	// If the build specifies a `RepoSource` with `dir` and a step with a
-	// `dir`,
-	// which specifies an absolute path, the `RepoSource` `dir` is ignored
-	// for the step's execution.
+	// Directory, relative to the source root, in which to run the build.
+	// This must be a relative path. If a step's dir is specified and
+	// is an absolute path, this value is ignored for that step's
+	// execution.
 	Dir *string `pulumi:"dir"`
 	// Only trigger a build if the revision regex does NOT match the revision regex.
 	InvertRegex *bool `pulumi:"invertRegex"`
-	// ID of the project that owns the Cloud Source Repository.
-	// If omitted, the project ID requesting the build is assumed.
+	// ID of the project that owns the Cloud Source Repository. If
+	// omitted, the project ID requesting the build is assumed.
 	ProjectId *string `pulumi:"projectId"`
-	// Name of the Cloud Source Repository.
+	// Name of the Cloud Source Repository. If omitted, the name "default" is assumed.
 	RepoName *string `pulumi:"repoName"`
-	// Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-	// described at https://github.com/google/re2/wiki/Syntax
+	// Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+	// This field is a regular expression.
 	TagName *string `pulumi:"tagName"`
 }
 
@@ -4310,32 +4293,25 @@ type TriggerTriggerTemplateInput interface {
 }
 
 type TriggerTriggerTemplateArgs struct {
-	// Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-	// described at https://github.com/google/re2/wiki/Syntax
+	// Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+	// This field is a regular expression.
 	BranchName pulumi.StringPtrInput `pulumi:"branchName"`
-	// Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+	// Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
 	CommitSha pulumi.StringPtrInput `pulumi:"commitSha"`
-	// Working directory to use when running this step's container.
-	// If this value is a relative path, it is relative to the build's working
-	// directory. If this value is absolute, it may be outside the build's working
-	// directory, in which case the contents of the path may not be persisted
-	// across build step executions, unless a `volume` for that path is specified.
-	// If the build specifies a `RepoSource` with `dir` and a step with a
-	// `dir`,
-	// which specifies an absolute path, the `RepoSource` `dir` is ignored
-	// for the step's execution.
+	// Directory, relative to the source root, in which to run the build.
+	// This must be a relative path. If a step's dir is specified and
+	// is an absolute path, this value is ignored for that step's
+	// execution.
 	Dir pulumi.StringPtrInput `pulumi:"dir"`
 	// Only trigger a build if the revision regex does NOT match the revision regex.
 	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
-	// ID of the project that owns the Cloud Source Repository.
-	// If omitted, the project ID requesting the build is assumed.
+	// ID of the project that owns the Cloud Source Repository. If
+	// omitted, the project ID requesting the build is assumed.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
-	// Name of the Cloud Source Repository.
+	// Name of the Cloud Source Repository. If omitted, the name "default" is assumed.
 	RepoName pulumi.StringPtrInput `pulumi:"repoName"`
-	// Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-	// described at https://github.com/google/re2/wiki/Syntax
+	// Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+	// This field is a regular expression.
 	TagName pulumi.StringPtrInput `pulumi:"tagName"`
 }
 
@@ -4416,27 +4392,21 @@ func (o TriggerTriggerTemplateOutput) ToTriggerTriggerTemplatePtrOutputWithConte
 	}).(TriggerTriggerTemplatePtrOutput)
 }
 
-// Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-// described at https://github.com/google/re2/wiki/Syntax
+// Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+// This field is a regular expression.
 func (o TriggerTriggerTemplateOutput) BranchName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerTriggerTemplate) *string { return v.BranchName }).(pulumi.StringPtrOutput)
 }
 
-// Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+// Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
 func (o TriggerTriggerTemplateOutput) CommitSha() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerTriggerTemplate) *string { return v.CommitSha }).(pulumi.StringPtrOutput)
 }
 
-// Working directory to use when running this step's container.
-// If this value is a relative path, it is relative to the build's working
-// directory. If this value is absolute, it may be outside the build's working
-// directory, in which case the contents of the path may not be persisted
-// across build step executions, unless a `volume` for that path is specified.
-// If the build specifies a `RepoSource` with `dir` and a step with a
-// `dir`,
-// which specifies an absolute path, the `RepoSource` `dir` is ignored
-// for the step's execution.
+// Directory, relative to the source root, in which to run the build.
+// This must be a relative path. If a step's dir is specified and
+// is an absolute path, this value is ignored for that step's
+// execution.
 func (o TriggerTriggerTemplateOutput) Dir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerTriggerTemplate) *string { return v.Dir }).(pulumi.StringPtrOutput)
 }
@@ -4446,20 +4416,19 @@ func (o TriggerTriggerTemplateOutput) InvertRegex() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TriggerTriggerTemplate) *bool { return v.InvertRegex }).(pulumi.BoolPtrOutput)
 }
 
-// ID of the project that owns the Cloud Source Repository.
-// If omitted, the project ID requesting the build is assumed.
+// ID of the project that owns the Cloud Source Repository. If
+// omitted, the project ID requesting the build is assumed.
 func (o TriggerTriggerTemplateOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerTriggerTemplate) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Name of the Cloud Source Repository.
+// Name of the Cloud Source Repository. If omitted, the name "default" is assumed.
 func (o TriggerTriggerTemplateOutput) RepoName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerTriggerTemplate) *string { return v.RepoName }).(pulumi.StringPtrOutput)
 }
 
-// Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-// described at https://github.com/google/re2/wiki/Syntax
+// Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+// This field is a regular expression.
 func (o TriggerTriggerTemplateOutput) TagName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerTriggerTemplate) *string { return v.TagName }).(pulumi.StringPtrOutput)
 }
@@ -4488,9 +4457,8 @@ func (o TriggerTriggerTemplatePtrOutput) Elem() TriggerTriggerTemplateOutput {
 	}).(TriggerTriggerTemplateOutput)
 }
 
-// Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-// described at https://github.com/google/re2/wiki/Syntax
+// Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+// This field is a regular expression.
 func (o TriggerTriggerTemplatePtrOutput) BranchName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerTriggerTemplate) *string {
 		if v == nil {
@@ -4500,7 +4468,7 @@ func (o TriggerTriggerTemplatePtrOutput) BranchName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+// Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
 func (o TriggerTriggerTemplatePtrOutput) CommitSha() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerTriggerTemplate) *string {
 		if v == nil {
@@ -4510,15 +4478,10 @@ func (o TriggerTriggerTemplatePtrOutput) CommitSha() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Working directory to use when running this step's container.
-// If this value is a relative path, it is relative to the build's working
-// directory. If this value is absolute, it may be outside the build's working
-// directory, in which case the contents of the path may not be persisted
-// across build step executions, unless a `volume` for that path is specified.
-// If the build specifies a `RepoSource` with `dir` and a step with a
-// `dir`,
-// which specifies an absolute path, the `RepoSource` `dir` is ignored
-// for the step's execution.
+// Directory, relative to the source root, in which to run the build.
+// This must be a relative path. If a step's dir is specified and
+// is an absolute path, this value is ignored for that step's
+// execution.
 func (o TriggerTriggerTemplatePtrOutput) Dir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerTriggerTemplate) *string {
 		if v == nil {
@@ -4538,8 +4501,8 @@ func (o TriggerTriggerTemplatePtrOutput) InvertRegex() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// ID of the project that owns the Cloud Source Repository.
-// If omitted, the project ID requesting the build is assumed.
+// ID of the project that owns the Cloud Source Repository. If
+// omitted, the project ID requesting the build is assumed.
 func (o TriggerTriggerTemplatePtrOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerTriggerTemplate) *string {
 		if v == nil {
@@ -4549,7 +4512,7 @@ func (o TriggerTriggerTemplatePtrOutput) ProjectId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of the Cloud Source Repository.
+// Name of the Cloud Source Repository. If omitted, the name "default" is assumed.
 func (o TriggerTriggerTemplatePtrOutput) RepoName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerTriggerTemplate) *string {
 		if v == nil {
@@ -4559,9 +4522,8 @@ func (o TriggerTriggerTemplatePtrOutput) RepoName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-// described at https://github.com/google/re2/wiki/Syntax
+// Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+// This field is a regular expression.
 func (o TriggerTriggerTemplatePtrOutput) TagName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerTriggerTemplate) *string {
 		if v == nil {
@@ -4572,10 +4534,8 @@ func (o TriggerTriggerTemplatePtrOutput) TagName() pulumi.StringPtrOutput {
 }
 
 type TriggerWebhookConfig struct {
-	// Secrets to decrypt using Cloud Key Management Service.
-	// Structure is documented below.
+	// Resource name for the secret required as a URL parameter.
 	Secret string `pulumi:"secret"`
-	// -
 	// Potential issues with the underlying Pub/Sub subscription configuration.
 	// Only populated on get requests.
 	State *string `pulumi:"state"`
@@ -4593,10 +4553,8 @@ type TriggerWebhookConfigInput interface {
 }
 
 type TriggerWebhookConfigArgs struct {
-	// Secrets to decrypt using Cloud Key Management Service.
-	// Structure is documented below.
+	// Resource name for the secret required as a URL parameter.
 	Secret pulumi.StringInput `pulumi:"secret"`
-	// -
 	// Potential issues with the underlying Pub/Sub subscription configuration.
 	// Only populated on get requests.
 	State pulumi.StringPtrInput `pulumi:"state"`
@@ -4679,13 +4637,11 @@ func (o TriggerWebhookConfigOutput) ToTriggerWebhookConfigPtrOutputWithContext(c
 	}).(TriggerWebhookConfigPtrOutput)
 }
 
-// Secrets to decrypt using Cloud Key Management Service.
-// Structure is documented below.
+// Resource name for the secret required as a URL parameter.
 func (o TriggerWebhookConfigOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerWebhookConfig) string { return v.Secret }).(pulumi.StringOutput)
 }
 
-// -
 // Potential issues with the underlying Pub/Sub subscription configuration.
 // Only populated on get requests.
 func (o TriggerWebhookConfigOutput) State() pulumi.StringPtrOutput {
@@ -4716,8 +4672,7 @@ func (o TriggerWebhookConfigPtrOutput) Elem() TriggerWebhookConfigOutput {
 	}).(TriggerWebhookConfigOutput)
 }
 
-// Secrets to decrypt using Cloud Key Management Service.
-// Structure is documented below.
+// Resource name for the secret required as a URL parameter.
 func (o TriggerWebhookConfigPtrOutput) Secret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerWebhookConfig) *string {
 		if v == nil {
@@ -4727,7 +4682,6 @@ func (o TriggerWebhookConfigPtrOutput) Secret() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // Potential issues with the underlying Pub/Sub subscription configuration.
 // Only populated on get requests.
 func (o TriggerWebhookConfigPtrOutput) State() pulumi.StringPtrOutput {

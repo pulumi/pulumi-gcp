@@ -169,7 +169,8 @@ class _ReservationState:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Reservation resources.
-        :param pulumi.Input[str] commitment: Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+        :param pulumi.Input[str] commitment: Full or partial URL to a parent commitment. This field displays for
+               reservations that are tied to a commitment.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -219,7 +220,8 @@ class _ReservationState:
     @pulumi.getter
     def commitment(self) -> Optional[pulumi.Input[str]]:
         """
-        Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+        Full or partial URL to a parent commitment. This field displays for
+        reservations that are tied to a commitment.
         """
         return pulumi.get(self, "commitment")
 
@@ -581,7 +583,8 @@ class Reservation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] commitment: Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+        :param pulumi.Input[str] commitment: Full or partial URL to a parent commitment. This field displays for
+               reservations that are tied to a commitment.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -625,7 +628,8 @@ class Reservation(pulumi.CustomResource):
     @pulumi.getter
     def commitment(self) -> pulumi.Output[str]:
         """
-        Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+        Full or partial URL to a parent commitment. This field displays for
+        reservations that are tied to a commitment.
         """
         return pulumi.get(self, "commitment")
 

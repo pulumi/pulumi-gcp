@@ -101,8 +101,7 @@ export class Release extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated
-     * from this Release.
+     * Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
      */
     public /*out*/ readonly disabled!: pulumi.Output<boolean>;
     /**
@@ -167,8 +166,7 @@ export interface ReleaseState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated
-     * from this Release.
+     * Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
      */
     disabled?: pulumi.Input<boolean>;
     /**

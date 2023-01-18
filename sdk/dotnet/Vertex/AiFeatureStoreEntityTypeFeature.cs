@@ -143,8 +143,7 @@ namespace Pulumi.Gcp.Vertex
     public partial class AiFeatureStoreEntityTypeFeature : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The timestamp of when the entity type was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-        /// nine fractional digits.
+        /// The timestamp of when the entity type was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -180,8 +179,7 @@ namespace Pulumi.Gcp.Vertex
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution
-        /// and up to nine fractional digits.
+        /// The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -283,8 +281,7 @@ namespace Pulumi.Gcp.Vertex
     public sealed class AiFeatureStoreEntityTypeFeatureState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The timestamp of when the entity type was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-        /// nine fractional digits.
+        /// The timestamp of when the entity type was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -326,8 +323,7 @@ namespace Pulumi.Gcp.Vertex
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution
-        /// and up to nine fractional digits.
+        /// The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

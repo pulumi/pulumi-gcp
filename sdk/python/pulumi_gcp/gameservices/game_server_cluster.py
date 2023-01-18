@@ -160,8 +160,9 @@ class _GameServerClusterState:
                key-value pair.
         :param pulumi.Input[str] location: Location of the Cluster.
         :param pulumi.Input[str] name: The resource id of the game server cluster, eg:
-               'projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}'. For example,
-               'projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster'.
+               `projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}`.
+               For example,
+               `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] realm_id: The realm id of the game server realm.
@@ -251,8 +252,9 @@ class _GameServerClusterState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The resource id of the game server cluster, eg:
-        'projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}'. For example,
-        'projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster'.
+        `projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}`.
+        For example,
+        `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
         """
         return pulumi.get(self, "name")
 
@@ -452,8 +454,9 @@ class GameServerCluster(pulumi.CustomResource):
                key-value pair.
         :param pulumi.Input[str] location: Location of the Cluster.
         :param pulumi.Input[str] name: The resource id of the game server cluster, eg:
-               'projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}'. For example,
-               'projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster'.
+               `projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}`.
+               For example,
+               `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] realm_id: The realm id of the game server realm.
@@ -520,8 +523,9 @@ class GameServerCluster(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The resource id of the game server cluster, eg:
-        'projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}'. For example,
-        'projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster'.
+        `projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}`.
+        For example,
+        `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
         """
         return pulumi.get(self, "name")
 

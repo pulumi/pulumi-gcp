@@ -15,14 +15,14 @@ public final class InstanceSchedulingNodeAffinityArgs extends com.pulumi.resourc
     public static final InstanceSchedulingNodeAffinityArgs Empty = new InstanceSchedulingNodeAffinityArgs();
 
     /**
-     * Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+     * The key for the node affinity label.
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+     * @return The key for the node affinity label.
      * 
      */
     public Output<String> key() {
@@ -47,14 +47,14 @@ public final class InstanceSchedulingNodeAffinityArgs extends com.pulumi.resourc
     }
 
     /**
-     * Corresponds to the label values of a reservation resource.
+     * The values for the node affinity label.
      * 
      */
     @Import(name="values", required=true)
     private Output<List<String>> values;
 
     /**
-     * @return Corresponds to the label values of a reservation resource.
+     * @return The values for the node affinity label.
      * 
      */
     public Output<List<String>> values() {
@@ -88,7 +88,7 @@ public final class InstanceSchedulingNodeAffinityArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param key Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+         * @param key The key for the node affinity label.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class InstanceSchedulingNodeAffinityArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param key Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+         * @param key The key for the node affinity label.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class InstanceSchedulingNodeAffinityArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param values Corresponds to the label values of a reservation resource.
+         * @param values The values for the node affinity label.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class InstanceSchedulingNodeAffinityArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param values Corresponds to the label values of a reservation resource.
+         * @param values The values for the node affinity label.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class InstanceSchedulingNodeAffinityArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param values Corresponds to the label values of a reservation resource.
+         * @param values The values for the node affinity label.
          * 
          * @return builder
          * 

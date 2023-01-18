@@ -96,14 +96,14 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs exte
     }
 
     /**
-     * The value of the header must start with the contents of prefixMatch.
+     * For satisfying the matchRule condition, the request&#39;s path must begin with the specified prefixMatch. prefixMatch must begin with a /.
      * 
      */
     @Import(name="prefixMatch")
     private @Nullable Output<String> prefixMatch;
 
     /**
-     * @return The value of the header must start with the contents of prefixMatch.
+     * @return For satisfying the matchRule condition, the request&#39;s path must begin with the specified prefixMatch. prefixMatch must begin with a /.
      * 
      */
     public Optional<Output<String>> prefixMatch() {
@@ -268,7 +268,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs exte
         }
 
         /**
-         * @param prefixMatch The value of the header must start with the contents of prefixMatch.
+         * @param prefixMatch For satisfying the matchRule condition, the request&#39;s path must begin with the specified prefixMatch. prefixMatch must begin with a /.
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs exte
         }
 
         /**
-         * @param prefixMatch The value of the header must start with the contents of prefixMatch.
+         * @param prefixMatch For satisfying the matchRule condition, the request&#39;s path must begin with the specified prefixMatch. prefixMatch must begin with a /.
          * 
          * @return builder
          * 

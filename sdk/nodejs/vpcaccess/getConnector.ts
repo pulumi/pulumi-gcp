@@ -21,9 +21,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const sample = pulumi.output(gcp.vpcaccess.getConnector({
+ * const sample = gcp.vpcaccess.getConnector({
  *     name: "vpc-con",
- * }));
+ * });
  * const connector = new gcp.vpcaccess.Connector("connector", {
  *     ipCidrRange: "10.8.0.0/28",
  *     network: "default",
@@ -32,11 +32,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getConnector(args: GetConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectorResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:vpcaccess/getConnector:getConnector", {
         "name": args.name,
         "project": args.project,
@@ -86,9 +83,33 @@ export interface GetConnectorResult {
     readonly state: string;
     readonly subnets: outputs.vpcaccess.GetConnectorSubnet[];
 }
-
+/**
+ * Get a Serverless VPC Access connector.
+ *
+ * To get more information about Connector, see:
+ *
+ * * [API documentation](https://cloud.google.com/vpc/docs/reference/vpcaccess/rest/v1/projects.locations.connectors)
+ * * How-to Guides
+ *     * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const sample = gcp.vpcaccess.getConnector({
+ *     name: "vpc-con",
+ * });
+ * const connector = new gcp.vpcaccess.Connector("connector", {
+ *     ipCidrRange: "10.8.0.0/28",
+ *     network: "default",
+ *     region: "us-central1",
+ * });
+ * ```
+ */
 export function getConnectorOutput(args: GetConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectorResult> {
-    return pulumi.output(args).apply(a => getConnector(a, opts))
+    return pulumi.output(args).apply((a: any) => getConnector(a, opts))
 }
 
 /**

@@ -17,7 +17,15 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Data for this record. Values vary by record type, as defined in RFC 1035
+        /// (section 5) and RFC 1034 (section 3.6.1).
+        /// </summary>
         public readonly string? Rrdata;
+        /// <summary>
+        /// Resource record type. Example: `AAAA`.
+        /// Possible values are `A`, `AAAA`, and `CNAME`.
+        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

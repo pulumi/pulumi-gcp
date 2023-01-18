@@ -244,7 +244,9 @@ class _ServiceAttachmentState:
                  target_service: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServiceAttachment resources.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConnectedEndpointArgs']]] connected_endpoints: An array of the consumer forwarding rules connected to this service attachment.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConnectedEndpointArgs']]] connected_endpoints: An array of the consumer forwarding rules connected to this service
+               attachment.
+               Structure is documented below.
         :param pulumi.Input[str] connection_preference: The connection preference to use for this service attachment. Valid
                values include "ACCEPT_AUTOMATIC", "ACCEPT_MANUAL".
         :param pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConsumerAcceptListArgs']]] consumer_accept_lists: An array of projects that are allowed to connect to this service
@@ -260,7 +262,8 @@ class _ServiceAttachmentState:
         :param pulumi.Input[bool] enable_proxy_protocol: If true, enable the proxy protocol which is for supplying client TCP/IP
                address data in TCP connections that traverse proxies on their way to
                destination servers.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. This field is used internally during updates of this resource.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. This field is used internally during
+               updates of this resource.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -308,7 +311,9 @@ class _ServiceAttachmentState:
     @pulumi.getter(name="connectedEndpoints")
     def connected_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAttachmentConnectedEndpointArgs']]]]:
         """
-        An array of the consumer forwarding rules connected to this service attachment.
+        An array of the consumer forwarding rules connected to this service
+        attachment.
+        Structure is documented below.
         """
         return pulumi.get(self, "connected_endpoints")
 
@@ -401,7 +406,8 @@ class _ServiceAttachmentState:
     @pulumi.getter
     def fingerprint(self) -> Optional[pulumi.Input[str]]:
         """
-        Fingerprint of this resource. This field is used internally during updates of this resource.
+        Fingerprint of this resource. This field is used internally during
+        updates of this resource.
         """
         return pulumi.get(self, "fingerprint")
 
@@ -692,7 +698,9 @@ class ServiceAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConnectedEndpointArgs']]]] connected_endpoints: An array of the consumer forwarding rules connected to this service attachment.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConnectedEndpointArgs']]]] connected_endpoints: An array of the consumer forwarding rules connected to this service
+               attachment.
+               Structure is documented below.
         :param pulumi.Input[str] connection_preference: The connection preference to use for this service attachment. Valid
                values include "ACCEPT_AUTOMATIC", "ACCEPT_MANUAL".
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAttachmentConsumerAcceptListArgs']]]] consumer_accept_lists: An array of projects that are allowed to connect to this service
@@ -708,7 +716,8 @@ class ServiceAttachment(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_proxy_protocol: If true, enable the proxy protocol which is for supplying client TCP/IP
                address data in TCP connections that traverse proxies on their way to
                destination servers.
-        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. This field is used internally during updates of this resource.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. This field is used internally during
+               updates of this resource.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?`
@@ -747,7 +756,9 @@ class ServiceAttachment(pulumi.CustomResource):
     @pulumi.getter(name="connectedEndpoints")
     def connected_endpoints(self) -> pulumi.Output[Sequence['outputs.ServiceAttachmentConnectedEndpoint']]:
         """
-        An array of the consumer forwarding rules connected to this service attachment.
+        An array of the consumer forwarding rules connected to this service
+        attachment.
+        Structure is documented below.
         """
         return pulumi.get(self, "connected_endpoints")
 
@@ -812,7 +823,8 @@ class ServiceAttachment(pulumi.CustomResource):
     @pulumi.getter
     def fingerprint(self) -> pulumi.Output[str]:
         """
-        Fingerprint of this resource. This field is used internally during updates of this resource.
+        Fingerprint of this resource. This field is used internally during
+        updates of this resource.
         """
         return pulumi.get(self, "fingerprint")
 

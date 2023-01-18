@@ -13,14 +13,14 @@ namespace Pulumi.Gcp.CloudRun.Inputs
     public sealed class ServiceTemplateSpecContainerEnvFromConfigMapRefArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Secret to select from.
+        /// The ConfigMap to select from.
         /// Structure is documented below.
         /// </summary>
         [Input("localObjectReference")]
         public Input<Inputs.ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs>? LocalObjectReference { get; set; }
 
         /// <summary>
-        /// Specify whether the Secret must be defined
+        /// Specify whether the ConfigMap must be defined
         /// </summary>
         [Input("optional")]
         public Input<bool>? Optional { get; set; }

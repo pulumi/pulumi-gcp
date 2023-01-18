@@ -124,14 +124,14 @@ public final class AssetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+     * The name of the asset.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+     * @return The name of the asset.
      * 
      */
     public Optional<Output<String>> name() {
@@ -349,7 +349,7 @@ public final class AssetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+         * @param name The name of the asset.
          * 
          * @return builder
          * 
@@ -360,7 +360,7 @@ public final class AssetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+         * @param name The name of the asset.
          * 
          * @return builder
          * 

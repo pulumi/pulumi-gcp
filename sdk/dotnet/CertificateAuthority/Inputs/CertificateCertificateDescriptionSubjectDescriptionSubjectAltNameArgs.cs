@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
     {
         [Input("customSans")]
         private InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs>? _customSans;
+
+        /// <summary>
+        /// Contains additional subject alternative name values.
+        /// Structure is documented below.
+        /// </summary>
         public InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs> CustomSans
         {
             get => _customSans ?? (_customSans = new InputList<Inputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs>());

@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.AppEngine.Outputs
         /// </summary>
         public readonly string? InstanceTag;
         /// <summary>
-        /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        /// Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
         /// </summary>
         public readonly string Name;
         /// <summary>

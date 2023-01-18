@@ -18,8 +18,7 @@ public final class AppConnectionGateway {
      */
     private String appGateway;
     /**
-     * @return -
-     * Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
+     * @return Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
      * 
      */
     private @Nullable Integer ingressPort;
@@ -31,8 +30,7 @@ public final class AppConnectionGateway {
      */
     private @Nullable String type;
     /**
-     * @return -
-     * Server-defined URI for this resource.
+     * @return Server-defined URI for this resource.
      * 
      */
     private @Nullable String uri;
@@ -46,8 +44,7 @@ public final class AppConnectionGateway {
         return this.appGateway;
     }
     /**
-     * @return -
-     * Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
+     * @return Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
      * 
      */
     public Optional<Integer> ingressPort() {
@@ -63,8 +60,7 @@ public final class AppConnectionGateway {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return -
-     * Server-defined URI for this resource.
+     * @return Server-defined URI for this resource.
      * 
      */
     public Optional<String> uri() {

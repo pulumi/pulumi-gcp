@@ -73,8 +73,9 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
      */
     public /*out*/ readonly algorithm!: pulumi.Output<string>;
     /**
-     * Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the
-     * key as stored on the HSM, independently of Google. Only provided for key versions with protectionLevel HSM.
+     * Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+     * Only provided for key versions with protectionLevel HSM.
+     * Structure is documented below.
      */
     public /*out*/ readonly attestations!: pulumi.Output<outputs.kms.CryptoKeyVersionAttestation[]>;
     /**
@@ -147,8 +148,9 @@ export interface CryptoKeyVersionState {
      */
     algorithm?: pulumi.Input<string>;
     /**
-     * Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the
-     * key as stored on the HSM, independently of Google. Only provided for key versions with protectionLevel HSM.
+     * Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+     * Only provided for key versions with protectionLevel HSM.
+     * Structure is documented below.
      */
     attestations?: pulumi.Input<pulumi.Input<inputs.kms.CryptoKeyVersionAttestation>[]>;
     /**

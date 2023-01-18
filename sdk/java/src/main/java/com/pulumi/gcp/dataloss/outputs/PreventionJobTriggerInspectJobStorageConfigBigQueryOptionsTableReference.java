@@ -10,7 +10,7 @@ import java.util.Objects;
 @CustomType
 public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference {
     /**
-     * @return Dataset ID of the table.
+     * @return The dataset ID of the table.
      * 
      */
     private String datasetId;
@@ -20,15 +20,14 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTab
      */
     private String projectId;
     /**
-     * @return Name of the table. If is not set a new one will be generated for you with the following format:
-     * `dlp_googleapis_yyyy_mm_dd_[dlp_job_id]`. Pacific timezone will be used for generating the date details.
+     * @return The name of the table.
      * 
      */
     private String tableId;
 
     private PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference() {}
     /**
-     * @return Dataset ID of the table.
+     * @return The dataset ID of the table.
      * 
      */
     public String datasetId() {
@@ -42,8 +41,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTab
         return this.projectId;
     }
     /**
-     * @return Name of the table. If is not set a new one will be generated for you with the following format:
-     * `dlp_googleapis_yyyy_mm_dd_[dlp_job_id]`. Pacific timezone will be used for generating the date details.
+     * @return The name of the table.
      * 
      */
     public String tableId() {

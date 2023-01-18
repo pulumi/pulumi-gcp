@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class InstanceGroupManagerNamedPortGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// - Version name.
+        /// The name of the port.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

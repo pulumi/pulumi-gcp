@@ -409,6 +409,9 @@ func (o BucketCustomPlacementConfigPtrOutput) DataLocations() pulumi.StringArray
 }
 
 type BucketEncryption struct {
+	// The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
+	// You must pay attention to whether the crypto key is available in the location that this bucket is created in.
+	// See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
 	DefaultKmsKeyName string `pulumi:"defaultKmsKeyName"`
 }
 
@@ -424,6 +427,9 @@ type BucketEncryptionInput interface {
 }
 
 type BucketEncryptionArgs struct {
+	// The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
+	// You must pay attention to whether the crypto key is available in the location that this bucket is created in.
+	// See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
 	DefaultKmsKeyName pulumi.StringInput `pulumi:"defaultKmsKeyName"`
 }
 
@@ -504,6 +510,9 @@ func (o BucketEncryptionOutput) ToBucketEncryptionPtrOutputWithContext(ctx conte
 	}).(BucketEncryptionPtrOutput)
 }
 
+// The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
+// You must pay attention to whether the crypto key is available in the location that this bucket is created in.
+// See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
 func (o BucketEncryptionOutput) DefaultKmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketEncryption) string { return v.DefaultKmsKeyName }).(pulumi.StringOutput)
 }
@@ -532,6 +541,9 @@ func (o BucketEncryptionPtrOutput) Elem() BucketEncryptionOutput {
 	}).(BucketEncryptionOutput)
 }
 
+// The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
+// You must pay attention to whether the crypto key is available in the location that this bucket is created in.
+// See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
 func (o BucketEncryptionPtrOutput) DefaultKmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketEncryption) *string {
 		if v == nil {
@@ -1673,7 +1685,7 @@ func (o BucketRetentionPolicyPtrOutput) RetentionPeriod() pulumi.IntPtrOutput {
 }
 
 type BucketVersioning struct {
-	// While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
+	// While set to `true`, versioning is fully enabled for this bucket.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -1689,7 +1701,7 @@ type BucketVersioningInput interface {
 }
 
 type BucketVersioningArgs struct {
-	// While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
+	// While set to `true`, versioning is fully enabled for this bucket.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -1770,7 +1782,7 @@ func (o BucketVersioningOutput) ToBucketVersioningPtrOutputWithContext(ctx conte
 	}).(BucketVersioningPtrOutput)
 }
 
-// While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
+// While set to `true`, versioning is fully enabled for this bucket.
 func (o BucketVersioningOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v BucketVersioning) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -1799,7 +1811,7 @@ func (o BucketVersioningPtrOutput) Elem() BucketVersioningOutput {
 	}).(BucketVersioningOutput)
 }
 
-// While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
+// While set to `true`, versioning is fully enabled for this bucket.
 func (o BucketVersioningPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BucketVersioning) *bool {
 		if v == nil {
@@ -1974,8 +1986,11 @@ func (o BucketWebsitePtrOutput) NotFoundPage() pulumi.StringPtrOutput {
 }
 
 type DefaultObjectAccessControlProjectTeam struct {
+	// The project team associated with the entity
 	ProjectNumber *string `pulumi:"projectNumber"`
-	Team          *string `pulumi:"team"`
+	// The team.
+	// Possible values are `editors`, `owners`, and `viewers`.
+	Team *string `pulumi:"team"`
 }
 
 // DefaultObjectAccessControlProjectTeamInput is an input type that accepts DefaultObjectAccessControlProjectTeamArgs and DefaultObjectAccessControlProjectTeamOutput values.
@@ -1990,8 +2005,11 @@ type DefaultObjectAccessControlProjectTeamInput interface {
 }
 
 type DefaultObjectAccessControlProjectTeamArgs struct {
+	// The project team associated with the entity
 	ProjectNumber pulumi.StringPtrInput `pulumi:"projectNumber"`
-	Team          pulumi.StringPtrInput `pulumi:"team"`
+	// The team.
+	// Possible values are `editors`, `owners`, and `viewers`.
+	Team pulumi.StringPtrInput `pulumi:"team"`
 }
 
 func (DefaultObjectAccessControlProjectTeamArgs) ElementType() reflect.Type {
@@ -2045,10 +2063,13 @@ func (o DefaultObjectAccessControlProjectTeamOutput) ToDefaultObjectAccessContro
 	return o
 }
 
+// The project team associated with the entity
 func (o DefaultObjectAccessControlProjectTeamOutput) ProjectNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DefaultObjectAccessControlProjectTeam) *string { return v.ProjectNumber }).(pulumi.StringPtrOutput)
 }
 
+// The team.
+// Possible values are `editors`, `owners`, and `viewers`.
 func (o DefaultObjectAccessControlProjectTeamOutput) Team() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DefaultObjectAccessControlProjectTeam) *string { return v.Team }).(pulumi.StringPtrOutput)
 }
@@ -2074,8 +2095,11 @@ func (o DefaultObjectAccessControlProjectTeamArrayOutput) Index(i pulumi.IntInpu
 }
 
 type ObjectAccessControlProjectTeam struct {
+	// The project team associated with the entity
 	ProjectNumber *string `pulumi:"projectNumber"`
-	Team          *string `pulumi:"team"`
+	// The team.
+	// Possible values are `editors`, `owners`, and `viewers`.
+	Team *string `pulumi:"team"`
 }
 
 // ObjectAccessControlProjectTeamInput is an input type that accepts ObjectAccessControlProjectTeamArgs and ObjectAccessControlProjectTeamOutput values.
@@ -2090,8 +2114,11 @@ type ObjectAccessControlProjectTeamInput interface {
 }
 
 type ObjectAccessControlProjectTeamArgs struct {
+	// The project team associated with the entity
 	ProjectNumber pulumi.StringPtrInput `pulumi:"projectNumber"`
-	Team          pulumi.StringPtrInput `pulumi:"team"`
+	// The team.
+	// Possible values are `editors`, `owners`, and `viewers`.
+	Team pulumi.StringPtrInput `pulumi:"team"`
 }
 
 func (ObjectAccessControlProjectTeamArgs) ElementType() reflect.Type {
@@ -2145,10 +2172,13 @@ func (o ObjectAccessControlProjectTeamOutput) ToObjectAccessControlProjectTeamOu
 	return o
 }
 
+// The project team associated with the entity
 func (o ObjectAccessControlProjectTeamOutput) ProjectNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectAccessControlProjectTeam) *string { return v.ProjectNumber }).(pulumi.StringPtrOutput)
 }
 
+// The team.
+// Possible values are `editors`, `owners`, and `viewers`.
 func (o ObjectAccessControlProjectTeamOutput) Team() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectAccessControlProjectTeam) *string { return v.Team }).(pulumi.StringPtrOutput)
 }
@@ -3517,7 +3547,7 @@ func (o TransferJobTransferSpecPtrOutput) TransferOptions() TransferJobTransferS
 type TransferJobTransferSpecAwsS3DataSource struct {
 	// AWS credentials block.
 	AwsAccessKey *TransferJobTransferSpecAwsS3DataSourceAwsAccessKey `pulumi:"awsAccessKey"`
-	// S3 Bucket name.
+	// Google Cloud Storage bucket name.
 	BucketName string `pulumi:"bucketName"`
 	// The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
 	RoleArn *string `pulumi:"roleArn"`
@@ -3537,7 +3567,7 @@ type TransferJobTransferSpecAwsS3DataSourceInput interface {
 type TransferJobTransferSpecAwsS3DataSourceArgs struct {
 	// AWS credentials block.
 	AwsAccessKey TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrInput `pulumi:"awsAccessKey"`
-	// S3 Bucket name.
+	// Google Cloud Storage bucket name.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
 	// The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
@@ -3627,7 +3657,7 @@ func (o TransferJobTransferSpecAwsS3DataSourceOutput) AwsAccessKey() TransferJob
 	}).(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput)
 }
 
-// S3 Bucket name.
+// Google Cloud Storage bucket name.
 func (o TransferJobTransferSpecAwsS3DataSourceOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) string { return v.BucketName }).(pulumi.StringOutput)
 }
@@ -3671,7 +3701,7 @@ func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) AwsAccessKey() Transfer
 	}).(TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrOutput)
 }
 
-// S3 Bucket name.
+// Google Cloud Storage bucket name.
 func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3DataSource) *string {
 		if v == nil {
@@ -4181,7 +4211,7 @@ func (o TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutp
 }
 
 type TransferJobTransferSpecGcsDataSink struct {
-	// S3 Bucket name.
+	// Google Cloud Storage bucket name.
 	BucketName string `pulumi:"bucketName"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path *string `pulumi:"path"`
@@ -4199,7 +4229,7 @@ type TransferJobTransferSpecGcsDataSinkInput interface {
 }
 
 type TransferJobTransferSpecGcsDataSinkArgs struct {
-	// S3 Bucket name.
+	// Google Cloud Storage bucket name.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path pulumi.StringPtrInput `pulumi:"path"`
@@ -4282,7 +4312,7 @@ func (o TransferJobTransferSpecGcsDataSinkOutput) ToTransferJobTransferSpecGcsDa
 	}).(TransferJobTransferSpecGcsDataSinkPtrOutput)
 }
 
-// S3 Bucket name.
+// Google Cloud Storage bucket name.
 func (o TransferJobTransferSpecGcsDataSinkOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecGcsDataSink) string { return v.BucketName }).(pulumi.StringOutput)
 }
@@ -4316,7 +4346,7 @@ func (o TransferJobTransferSpecGcsDataSinkPtrOutput) Elem() TransferJobTransferS
 	}).(TransferJobTransferSpecGcsDataSinkOutput)
 }
 
-// S3 Bucket name.
+// Google Cloud Storage bucket name.
 func (o TransferJobTransferSpecGcsDataSinkPtrOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransferJobTransferSpecGcsDataSink) *string {
 		if v == nil {
@@ -4337,7 +4367,7 @@ func (o TransferJobTransferSpecGcsDataSinkPtrOutput) Path() pulumi.StringPtrOutp
 }
 
 type TransferJobTransferSpecGcsDataSource struct {
-	// S3 Bucket name.
+	// Google Cloud Storage bucket name.
 	BucketName string `pulumi:"bucketName"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path *string `pulumi:"path"`
@@ -4355,7 +4385,7 @@ type TransferJobTransferSpecGcsDataSourceInput interface {
 }
 
 type TransferJobTransferSpecGcsDataSourceArgs struct {
-	// S3 Bucket name.
+	// Google Cloud Storage bucket name.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path pulumi.StringPtrInput `pulumi:"path"`
@@ -4438,7 +4468,7 @@ func (o TransferJobTransferSpecGcsDataSourceOutput) ToTransferJobTransferSpecGcs
 	}).(TransferJobTransferSpecGcsDataSourcePtrOutput)
 }
 
-// S3 Bucket name.
+// Google Cloud Storage bucket name.
 func (o TransferJobTransferSpecGcsDataSourceOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecGcsDataSource) string { return v.BucketName }).(pulumi.StringOutput)
 }
@@ -4472,7 +4502,7 @@ func (o TransferJobTransferSpecGcsDataSourcePtrOutput) Elem() TransferJobTransfe
 	}).(TransferJobTransferSpecGcsDataSourceOutput)
 }
 
-// S3 Bucket name.
+// Google Cloud Storage bucket name.
 func (o TransferJobTransferSpecGcsDataSourcePtrOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransferJobTransferSpecGcsDataSource) *string {
 		if v == nil {

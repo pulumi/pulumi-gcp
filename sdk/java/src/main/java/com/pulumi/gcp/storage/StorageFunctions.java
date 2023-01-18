@@ -986,7 +986,7 @@ public final class StorageFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
-     * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
      * import com.pulumi.gcp.pubsub.TopicIAMBinding;
      * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
      * import java.util.List;
@@ -1021,7 +1021,7 @@ public final class StorageFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
-     * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
      * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
      * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
      * import com.pulumi.gcp.storage.Bucket;
@@ -1109,7 +1109,7 @@ public final class StorageFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
-     * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
      * import com.pulumi.gcp.pubsub.TopicIAMBinding;
      * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
      * import java.util.List;
@@ -1144,7 +1144,7 @@ public final class StorageFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
-     * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
      * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
      * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
      * import com.pulumi.gcp.storage.Bucket;
@@ -1232,7 +1232,7 @@ public final class StorageFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
-     * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
      * import com.pulumi.gcp.pubsub.TopicIAMBinding;
      * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
      * import java.util.List;
@@ -1267,7 +1267,7 @@ public final class StorageFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
-     * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
      * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
      * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
      * import com.pulumi.gcp.storage.Bucket;
@@ -1355,7 +1355,7 @@ public final class StorageFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
-     * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
      * import com.pulumi.gcp.pubsub.TopicIAMBinding;
      * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
      * import java.util.List;
@@ -1390,7 +1390,7 @@ public final class StorageFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
-     * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
      * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
      * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
      * import com.pulumi.gcp.storage.Bucket;
@@ -1478,7 +1478,7 @@ public final class StorageFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
-     * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
      * import com.pulumi.gcp.pubsub.TopicIAMBinding;
      * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
      * import java.util.List;
@@ -1513,7 +1513,7 @@ public final class StorageFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
-     * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
      * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
      * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
      * import com.pulumi.gcp.storage.Bucket;
@@ -1601,7 +1601,7 @@ public final class StorageFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
-     * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
      * import com.pulumi.gcp.pubsub.TopicIAMBinding;
      * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
      * import java.util.List;
@@ -1636,7 +1636,7 @@ public final class StorageFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
-     * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
      * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
      * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
      * import com.pulumi.gcp.storage.Bucket;

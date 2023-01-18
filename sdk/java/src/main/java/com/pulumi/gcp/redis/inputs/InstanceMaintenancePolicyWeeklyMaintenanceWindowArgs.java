@@ -50,7 +50,6 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs extends 
     }
 
     /**
-     * - 
      * Output only. Duration of the maintenance window.
      * The current window is fixed at 1 hour.
      * A duration in seconds with up to nine fractional digits,
@@ -61,8 +60,7 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs extends 
     private @Nullable Output<String> duration;
 
     /**
-     * @return -
-     * Output only. Duration of the maintenance window.
+     * @return Output only. Duration of the maintenance window.
      * The current window is fixed at 1 hour.
      * A duration in seconds with up to nine fractional digits,
      * terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
@@ -73,20 +71,16 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs extends 
     }
 
     /**
-     * - 
-     * Output only. The start time of any upcoming scheduled maintenance for this instance.
-     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
-     * resolution and up to nine fractional digits.
+     * Required. Start time of the window in UTC time.
+     * Structure is documented below.
      * 
      */
     @Import(name="startTime", required=true)
     private Output<InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs> startTime;
 
     /**
-     * @return -
-     * Output only. The start time of any upcoming scheduled maintenance for this instance.
-     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
-     * resolution and up to nine fractional digits.
+     * @return Required. Start time of the window in UTC time.
+     * Structure is documented below.
      * 
      */
     public Output<InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs> startTime() {
@@ -159,8 +153,7 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs extends 
         }
 
         /**
-         * @param duration -
-         * Output only. Duration of the maintenance window.
+         * @param duration Output only. Duration of the maintenance window.
          * The current window is fixed at 1 hour.
          * A duration in seconds with up to nine fractional digits,
          * terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
@@ -174,8 +167,7 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs extends 
         }
 
         /**
-         * @param duration -
-         * Output only. Duration of the maintenance window.
+         * @param duration Output only. Duration of the maintenance window.
          * The current window is fixed at 1 hour.
          * A duration in seconds with up to nine fractional digits,
          * terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
@@ -188,10 +180,8 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs extends 
         }
 
         /**
-         * @param startTime -
-         * Output only. The start time of any upcoming scheduled maintenance for this instance.
-         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
-         * resolution and up to nine fractional digits.
+         * @param startTime Required. Start time of the window in UTC time.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -202,10 +192,8 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs extends 
         }
 
         /**
-         * @param startTime -
-         * Output only. The start time of any upcoming scheduled maintenance for this instance.
-         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
-         * resolution and up to nine fractional digits.
+         * @param startTime Required. Start time of the window in UTC time.
+         * Structure is documented below.
          * 
          * @return builder
          * 

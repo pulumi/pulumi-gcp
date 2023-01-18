@@ -13,8 +13,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TableExternalDataConfigurationGoogleSheetsOptions {
     /**
-     * @return Information required to partition based on ranges.
-     * Structure is documented below.
+     * @return Range of a sheet to query from. Only used when
+     * non-empty. At least one of `range` or `skip_leading_rows` must be set.
+     * Typical format: &#34;sheet_name!top_left_cell_id:bottom_right_cell_id&#34;
+     * For example: &#34;sheet1!A1:B20&#34;
      * 
      */
     private @Nullable String range;
@@ -28,8 +30,10 @@ public final class TableExternalDataConfigurationGoogleSheetsOptions {
 
     private TableExternalDataConfigurationGoogleSheetsOptions() {}
     /**
-     * @return Information required to partition based on ranges.
-     * Structure is documented below.
+     * @return Range of a sheet to query from. Only used when
+     * non-empty. At least one of `range` or `skip_leading_rows` must be set.
+     * Typical format: &#34;sheet_name!top_left_cell_id:bottom_right_cell_id&#34;
+     * For example: &#34;sheet1!A1:B20&#34;
      * 
      */
     public Optional<String> range() {

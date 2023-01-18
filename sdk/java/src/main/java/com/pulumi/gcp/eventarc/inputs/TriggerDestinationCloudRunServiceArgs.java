@@ -16,14 +16,14 @@ public final class TriggerDestinationCloudRunServiceArgs extends com.pulumi.reso
     public static final TriggerDestinationCloudRunServiceArgs Empty = new TriggerDestinationCloudRunServiceArgs();
 
     /**
-     * Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: &#34;/route&#34;, &#34;route&#34;, &#34;route/subroute&#34;.
+     * Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: &#34;/route&#34;, &#34;route&#34;, &#34;route/subroute&#34;.
      * 
      */
     @Import(name="path")
     private @Nullable Output<String> path;
 
     /**
-     * @return Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: &#34;/route&#34;, &#34;route&#34;, &#34;route/subroute&#34;.
+     * @return Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: &#34;/route&#34;, &#34;route&#34;, &#34;route/subroute&#34;.
      * 
      */
     public Optional<Output<String>> path() {
@@ -46,14 +46,14 @@ public final class TriggerDestinationCloudRunServiceArgs extends com.pulumi.reso
     }
 
     /**
-     * Required. Name of the GKE service.
+     * Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
      * 
      */
     @Import(name="service", required=true)
     private Output<String> service;
 
     /**
-     * @return Required. Name of the GKE service.
+     * @return Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
      * 
      */
     public Output<String> service() {
@@ -87,7 +87,7 @@ public final class TriggerDestinationCloudRunServiceArgs extends com.pulumi.reso
         }
 
         /**
-         * @param path Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: &#34;/route&#34;, &#34;route&#34;, &#34;route/subroute&#34;.
+         * @param path Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: &#34;/route&#34;, &#34;route&#34;, &#34;route/subroute&#34;.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class TriggerDestinationCloudRunServiceArgs extends com.pulumi.reso
         }
 
         /**
-         * @param path Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: &#34;/route&#34;, &#34;route&#34;, &#34;route/subroute&#34;.
+         * @param path Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: &#34;/route&#34;, &#34;route&#34;, &#34;route/subroute&#34;.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class TriggerDestinationCloudRunServiceArgs extends com.pulumi.reso
         }
 
         /**
-         * @param service Required. Name of the GKE service.
+         * @param service Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class TriggerDestinationCloudRunServiceArgs extends com.pulumi.reso
         }
 
         /**
-         * @param service Required. Name of the GKE service.
+         * @param service Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
          * 
          * @return builder
          * 

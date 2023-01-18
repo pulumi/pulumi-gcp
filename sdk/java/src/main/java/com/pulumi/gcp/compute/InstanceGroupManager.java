@@ -301,14 +301,20 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.listManagedInstancesResults);
     }
     /**
-     * - Version name.
+     * The name of the instance group manager. Must be 1-63
+     * characters long and comply with
+     * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+     * include lowercase letters, numbers, and hyphens.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return - Version name.
+     * @return The name of the instance group manager. Must be 1-63
+     * characters long and comply with
+     * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+     * include lowercase letters, numbers, and hyphens.
      * 
      */
     public Output<String> name() {
@@ -441,14 +447,18 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.targetPools);
     }
     /**
-     * - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+     * The target number of running instances for this managed
+     * instance group. This value should always be explicitly set unless this resource is attached to
+     * an autoscaler, in which case it should never be set. Defaults to `0`.
      * 
      */
     @Export(name="targetSize", type=Integer.class, parameters={})
     private Output<Integer> targetSize;
 
     /**
-     * @return - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+     * @return The target number of running instances for this managed
+     * instance group. This value should always be explicitly set unless this resource is attached to
+     * an autoscaler, in which case it should never be set. Defaults to `0`.
      * 
      */
     public Output<Integer> targetSize() {

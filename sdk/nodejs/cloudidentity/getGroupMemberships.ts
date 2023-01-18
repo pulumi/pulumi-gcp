@@ -17,17 +17,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const members = pulumi.output(gcp.cloudidentity.getGroupMemberships({
+ * const members = gcp.cloudidentity.getGroupMemberships({
  *     group: "groups/123eab45c6defghi",
- * }));
+ * });
  * ```
  */
 export function getGroupMemberships(args: GetGroupMembershipsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupMembershipsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:cloudidentity/getGroupMemberships:getGroupMemberships", {
         "group": args.group,
     }, opts);
@@ -57,9 +54,24 @@ export interface GetGroupMembershipsResult {
      */
     readonly memberships: outputs.cloudidentity.GetGroupMembershipsMembership[];
 }
-
+/**
+ * Use this data source to get list of the Cloud Identity Group Memberships within a given Group.
+ *
+ * https://cloud.google.com/identity/docs/concepts/overview#memberships
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const members = gcp.cloudidentity.getGroupMemberships({
+ *     group: "groups/123eab45c6defghi",
+ * });
+ * ```
+ */
 export function getGroupMembershipsOutput(args: GetGroupMembershipsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupMembershipsResult> {
-    return pulumi.output(args).apply(a => getGroupMemberships(a, opts))
+    return pulumi.output(args).apply((a: any) => getGroupMemberships(a, opts))
 }
 
 /**

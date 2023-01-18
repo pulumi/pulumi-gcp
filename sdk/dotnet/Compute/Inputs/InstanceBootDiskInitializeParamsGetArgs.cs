@@ -47,7 +47,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// The type of reservation from which this instance can consume resources.
+        /// The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

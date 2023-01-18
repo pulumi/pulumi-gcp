@@ -15,18 +15,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const foo = pulumi.output(gcp.iam.getWorkloadIdentityPoolProvider({
+ * const foo = gcp.iam.getWorkloadIdentityPoolProvider({
  *     workloadIdentityPoolId: "foo-pool",
  *     workloadIdentityPoolProviderId: "bar-provider",
- * }));
+ * });
  * ```
  */
 export function getWorkloadIdentityPoolProvider(args: GetWorkloadIdentityPoolProviderArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkloadIdentityPoolProviderResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:iam/getWorkloadIdentityPoolProvider:getWorkloadIdentityPoolProvider", {
         "project": args.project,
         "workloadIdentityPoolId": args.workloadIdentityPoolId,
@@ -76,9 +73,23 @@ export interface GetWorkloadIdentityPoolProviderResult {
     readonly workloadIdentityPoolId: string;
     readonly workloadIdentityPoolProviderId: string;
 }
-
+/**
+ * Get a IAM workload identity provider from Google Cloud by its id.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const foo = gcp.iam.getWorkloadIdentityPoolProvider({
+ *     workloadIdentityPoolId: "foo-pool",
+ *     workloadIdentityPoolProviderId: "bar-provider",
+ * });
+ * ```
+ */
 export function getWorkloadIdentityPoolProviderOutput(args: GetWorkloadIdentityPoolProviderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkloadIdentityPoolProviderResult> {
-    return pulumi.output(args).apply(a => getWorkloadIdentityPoolProvider(a, opts))
+    return pulumi.output(args).apply((a: any) => getWorkloadIdentityPoolProvider(a, opts))
 }
 
 /**

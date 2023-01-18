@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class AttachedClusterError
     {
+        /// <summary>
+        /// Human-friendly description of the error.
+        /// </summary>
         public readonly string? Message;
 
         [OutputConstructor]

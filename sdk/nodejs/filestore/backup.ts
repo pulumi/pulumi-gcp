@@ -150,8 +150,7 @@ export class Backup extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * The size of the storage used by the backup. As backups share storage, this number is expected to change with backup
-     * creation/deletion.
+     * The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
      */
     public /*out*/ readonly storageBytes!: pulumi.Output<string>;
 
@@ -277,8 +276,7 @@ export interface BackupState {
      */
     state?: pulumi.Input<string>;
     /**
-     * The size of the storage used by the backup. As backups share storage, this number is expected to change with backup
-     * creation/deletion.
+     * The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
      */
     storageBytes?: pulumi.Input<string>;
 }

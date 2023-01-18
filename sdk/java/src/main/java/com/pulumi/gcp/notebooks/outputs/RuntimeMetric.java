@@ -11,9 +11,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RuntimeMetric {
+    /**
+     * @return Contains runtime daemon metrics, such as OS and kernels and
+     * sessions stats.
+     * 
+     */
     private @Nullable Map<String,String> systemMetrics;
 
     private RuntimeMetric() {}
+    /**
+     * @return Contains runtime daemon metrics, such as OS and kernels and
+     * sessions stats.
+     * 
+     */
     public Map<String,String> systemMetrics() {
         return this.systemMetrics == null ? Map.of() : this.systemMetrics;
     }

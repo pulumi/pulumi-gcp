@@ -18,36 +18,83 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ServiceStatusArgs Empty = new ServiceStatusArgs();
 
+    /**
+     * Array of observed Service Conditions, indicating the current ready state of the service.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="conditions")
     private @Nullable Output<List<ServiceStatusConditionArgs>> conditions;
 
+    /**
+     * @return Array of observed Service Conditions, indicating the current ready state of the service.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<List<ServiceStatusConditionArgs>>> conditions() {
         return Optional.ofNullable(this.conditions);
     }
 
+    /**
+     * From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created
+     * from this Service&#39;s Configuration. It might not be ready yet, for that use
+     * LatestReadyRevisionName.
+     * 
+     */
     @Import(name="latestCreatedRevisionName")
     private @Nullable Output<String> latestCreatedRevisionName;
 
+    /**
+     * @return From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created
+     * from this Service&#39;s Configuration. It might not be ready yet, for that use
+     * LatestReadyRevisionName.
+     * 
+     */
     public Optional<Output<String>> latestCreatedRevisionName() {
         return Optional.ofNullable(this.latestCreatedRevisionName);
     }
 
+    /**
+     * From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision
+     * stamped out from this Service&#39;s Configuration that has had its &#34;Ready&#34; condition become
+     * &#34;True&#34;.
+     * 
+     */
     @Import(name="latestReadyRevisionName")
     private @Nullable Output<String> latestReadyRevisionName;
 
+    /**
+     * @return From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision
+     * stamped out from this Service&#39;s Configuration that has had its &#34;Ready&#34; condition become
+     * &#34;True&#34;.
+     * 
+     */
     public Optional<Output<String>> latestReadyRevisionName() {
         return Optional.ofNullable(this.latestReadyRevisionName);
     }
 
+    /**
+     * ObservedGeneration is the &#39;Generation&#39; of the Route that was last processed by the
+     * controller.
+     * Clients polling for completed reconciliation should poll until observedGeneration =
+     * metadata.generation and the Ready condition&#39;s status is True or False.
+     * 
+     */
     @Import(name="observedGeneration")
     private @Nullable Output<Integer> observedGeneration;
 
+    /**
+     * @return ObservedGeneration is the &#39;Generation&#39; of the Route that was last processed by the
+     * controller.
+     * Clients polling for completed reconciliation should poll until observedGeneration =
+     * metadata.generation and the Ready condition&#39;s status is True or False.
+     * 
+     */
     public Optional<Output<Integer>> observedGeneration() {
         return Optional.ofNullable(this.observedGeneration);
     }
 
     /**
-     * - 
      * URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
      * and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
      * but may not contain anything else (e.g. basic auth, url path, etc.)
@@ -57,8 +104,7 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> url;
 
     /**
-     * @return -
-     * URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+     * @return URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
      * and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
      * but may not contain anything else (e.g. basic auth, url path, etc.)
      * 
@@ -95,49 +141,119 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ServiceStatusArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param conditions Array of observed Service Conditions, indicating the current ready state of the service.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder conditions(@Nullable Output<List<ServiceStatusConditionArgs>> conditions) {
             $.conditions = conditions;
             return this;
         }
 
+        /**
+         * @param conditions Array of observed Service Conditions, indicating the current ready state of the service.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder conditions(List<ServiceStatusConditionArgs> conditions) {
             return conditions(Output.of(conditions));
         }
 
+        /**
+         * @param conditions Array of observed Service Conditions, indicating the current ready state of the service.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder conditions(ServiceStatusConditionArgs... conditions) {
             return conditions(List.of(conditions));
         }
 
+        /**
+         * @param latestCreatedRevisionName From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created
+         * from this Service&#39;s Configuration. It might not be ready yet, for that use
+         * LatestReadyRevisionName.
+         * 
+         * @return builder
+         * 
+         */
         public Builder latestCreatedRevisionName(@Nullable Output<String> latestCreatedRevisionName) {
             $.latestCreatedRevisionName = latestCreatedRevisionName;
             return this;
         }
 
+        /**
+         * @param latestCreatedRevisionName From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created
+         * from this Service&#39;s Configuration. It might not be ready yet, for that use
+         * LatestReadyRevisionName.
+         * 
+         * @return builder
+         * 
+         */
         public Builder latestCreatedRevisionName(String latestCreatedRevisionName) {
             return latestCreatedRevisionName(Output.of(latestCreatedRevisionName));
         }
 
+        /**
+         * @param latestReadyRevisionName From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision
+         * stamped out from this Service&#39;s Configuration that has had its &#34;Ready&#34; condition become
+         * &#34;True&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder latestReadyRevisionName(@Nullable Output<String> latestReadyRevisionName) {
             $.latestReadyRevisionName = latestReadyRevisionName;
             return this;
         }
 
+        /**
+         * @param latestReadyRevisionName From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision
+         * stamped out from this Service&#39;s Configuration that has had its &#34;Ready&#34; condition become
+         * &#34;True&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder latestReadyRevisionName(String latestReadyRevisionName) {
             return latestReadyRevisionName(Output.of(latestReadyRevisionName));
         }
 
+        /**
+         * @param observedGeneration ObservedGeneration is the &#39;Generation&#39; of the Route that was last processed by the
+         * controller.
+         * Clients polling for completed reconciliation should poll until observedGeneration =
+         * metadata.generation and the Ready condition&#39;s status is True or False.
+         * 
+         * @return builder
+         * 
+         */
         public Builder observedGeneration(@Nullable Output<Integer> observedGeneration) {
             $.observedGeneration = observedGeneration;
             return this;
         }
 
+        /**
+         * @param observedGeneration ObservedGeneration is the &#39;Generation&#39; of the Route that was last processed by the
+         * controller.
+         * Clients polling for completed reconciliation should poll until observedGeneration =
+         * metadata.generation and the Ready condition&#39;s status is True or False.
+         * 
+         * @return builder
+         * 
+         */
         public Builder observedGeneration(Integer observedGeneration) {
             return observedGeneration(Output.of(observedGeneration));
         }
 
         /**
-         * @param url -
-         * URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+         * @param url URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
          * and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
          * but may not contain anything else (e.g. basic auth, url path, etc.)
          * 
@@ -150,8 +266,7 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url -
-         * URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+         * @param url URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
          * and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
          * but may not contain anything else (e.g. basic auth, url path, etc.)
          * 

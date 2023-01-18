@@ -19,8 +19,9 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly int? ExpirationMs;
         /// <summary>
-        /// The field used to determine how to create a range-based
-        /// partition.
+        /// The field used to determine how to create a time-based
+        /// partition. If time-based partitioning is enabled without this value, the
+        /// table is partitioned based on the load time.
         /// </summary>
         public readonly string? Field;
         /// <summary>

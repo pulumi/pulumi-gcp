@@ -13,13 +13,13 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub.Inputs
     public sealed class ListingDataProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the listing publisher.
+        /// Name of the data provider.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Email or URL of the listing publisher.
+        /// Email or URL of the data provider.
         /// </summary>
         [Input("primaryContact")]
         public Input<string>? PrimaryContact { get; set; }

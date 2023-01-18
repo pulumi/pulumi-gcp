@@ -188,8 +188,7 @@ class _WorkloadState:
         :param pulumi.Input[str] organization: The organization for the resource
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
         :param pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArgs']]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
-        :param pulumi.Input[Sequence[pulumi.Input['WorkloadResourceArgs']]] resources: Output only. The resources associated with this workload. These resources will be created when creating the workload. If
-               any of the projects already exist, the workload creation will fail. Always read only.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkloadResourceArgs']]] resources: Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
         """
         if billing_account is not None:
             pulumi.set(__self__, "billing_account", billing_account)
@@ -352,8 +351,7 @@ class _WorkloadState:
     @pulumi.getter
     def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceArgs']]]]:
         """
-        Output only. The resources associated with this workload. These resources will be created when creating the workload. If
-        any of the projects already exist, the workload creation will fail. Always read only.
+        Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
         """
         return pulumi.get(self, "resources")
 
@@ -590,8 +588,7 @@ class Workload(pulumi.CustomResource):
         :param pulumi.Input[str] organization: The organization for the resource
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadResourceSettingArgs']]]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadResourceArgs']]]] resources: Output only. The resources associated with this workload. These resources will be created when creating the workload. If
-               any of the projects already exist, the workload creation will fail. Always read only.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkloadResourceArgs']]]] resources: Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -703,8 +700,7 @@ class Workload(pulumi.CustomResource):
     @pulumi.getter
     def resources(self) -> pulumi.Output[Sequence['outputs.WorkloadResource']]:
         """
-        Output only. The resources associated with this workload. These resources will be created when creating the workload. If
-        any of the projects already exist, the workload creation will fail. Always read only.
+        Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
         """
         return pulumi.get(self, "resources")
 

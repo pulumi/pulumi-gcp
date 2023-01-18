@@ -330,10 +330,8 @@ type Job struct {
 	pulumi.CustomResourceState
 
 	// Copies a table.
-	// Structure is documented below.
 	Copy JobCopyPtrOutput `pulumi:"copy"`
 	// Configures an extract job.
-	// Structure is documented below.
 	Extract JobExtractPtrOutput `pulumi:"extract"`
 	// The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
 	JobId pulumi.StringOutput `pulumi:"jobId"`
@@ -344,7 +342,6 @@ type Job struct {
 	// The labels associated with this job. You can use these to organize and group your jobs.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Configures a load job.
-	// Structure is documented below.
 	Load JobLoadPtrOutput `pulumi:"load"`
 	// The geographic location of the job. The default value is US.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
@@ -352,9 +349,9 @@ type Job struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Configures a query job.
-	// Structure is documented below.
 	Query JobQueryPtrOutput `pulumi:"query"`
 	// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+	// Structure is documented below.
 	Statuses JobStatusArrayOutput `pulumi:"statuses"`
 	// Email address of the user who ran the job.
 	UserEmail pulumi.StringOutput `pulumi:"userEmail"`
@@ -393,10 +390,8 @@ func GetJob(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Job resources.
 type jobState struct {
 	// Copies a table.
-	// Structure is documented below.
 	Copy *JobCopy `pulumi:"copy"`
 	// Configures an extract job.
-	// Structure is documented below.
 	Extract *JobExtract `pulumi:"extract"`
 	// The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
 	JobId *string `pulumi:"jobId"`
@@ -407,7 +402,6 @@ type jobState struct {
 	// The labels associated with this job. You can use these to organize and group your jobs.
 	Labels map[string]string `pulumi:"labels"`
 	// Configures a load job.
-	// Structure is documented below.
 	Load *JobLoad `pulumi:"load"`
 	// The geographic location of the job. The default value is US.
 	Location *string `pulumi:"location"`
@@ -415,9 +409,9 @@ type jobState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Configures a query job.
-	// Structure is documented below.
 	Query *JobQuery `pulumi:"query"`
 	// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+	// Structure is documented below.
 	Statuses []JobStatus `pulumi:"statuses"`
 	// Email address of the user who ran the job.
 	UserEmail *string `pulumi:"userEmail"`
@@ -425,10 +419,8 @@ type jobState struct {
 
 type JobState struct {
 	// Copies a table.
-	// Structure is documented below.
 	Copy JobCopyPtrInput
 	// Configures an extract job.
-	// Structure is documented below.
 	Extract JobExtractPtrInput
 	// The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
 	JobId pulumi.StringPtrInput
@@ -439,7 +431,6 @@ type JobState struct {
 	// The labels associated with this job. You can use these to organize and group your jobs.
 	Labels pulumi.StringMapInput
 	// Configures a load job.
-	// Structure is documented below.
 	Load JobLoadPtrInput
 	// The geographic location of the job. The default value is US.
 	Location pulumi.StringPtrInput
@@ -447,9 +438,9 @@ type JobState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Configures a query job.
-	// Structure is documented below.
 	Query JobQueryPtrInput
 	// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+	// Structure is documented below.
 	Statuses JobStatusArrayInput
 	// Email address of the user who ran the job.
 	UserEmail pulumi.StringPtrInput
@@ -461,10 +452,8 @@ func (JobState) ElementType() reflect.Type {
 
 type jobArgs struct {
 	// Copies a table.
-	// Structure is documented below.
 	Copy *JobCopy `pulumi:"copy"`
 	// Configures an extract job.
-	// Structure is documented below.
 	Extract *JobExtract `pulumi:"extract"`
 	// The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
 	JobId string `pulumi:"jobId"`
@@ -473,7 +462,6 @@ type jobArgs struct {
 	// The labels associated with this job. You can use these to organize and group your jobs.
 	Labels map[string]string `pulumi:"labels"`
 	// Configures a load job.
-	// Structure is documented below.
 	Load *JobLoad `pulumi:"load"`
 	// The geographic location of the job. The default value is US.
 	Location *string `pulumi:"location"`
@@ -481,17 +469,14 @@ type jobArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Configures a query job.
-	// Structure is documented below.
 	Query *JobQuery `pulumi:"query"`
 }
 
 // The set of arguments for constructing a Job resource.
 type JobArgs struct {
 	// Copies a table.
-	// Structure is documented below.
 	Copy JobCopyPtrInput
 	// Configures an extract job.
-	// Structure is documented below.
 	Extract JobExtractPtrInput
 	// The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
 	JobId pulumi.StringInput
@@ -500,7 +485,6 @@ type JobArgs struct {
 	// The labels associated with this job. You can use these to organize and group your jobs.
 	Labels pulumi.StringMapInput
 	// Configures a load job.
-	// Structure is documented below.
 	Load JobLoadPtrInput
 	// The geographic location of the job. The default value is US.
 	Location pulumi.StringPtrInput
@@ -508,7 +492,6 @@ type JobArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Configures a query job.
-	// Structure is documented below.
 	Query JobQueryPtrInput
 }
 
@@ -600,13 +583,11 @@ func (o JobOutput) ToJobOutputWithContext(ctx context.Context) JobOutput {
 }
 
 // Copies a table.
-// Structure is documented below.
 func (o JobOutput) Copy() JobCopyPtrOutput {
 	return o.ApplyT(func(v *Job) JobCopyPtrOutput { return v.Copy }).(JobCopyPtrOutput)
 }
 
 // Configures an extract job.
-// Structure is documented below.
 func (o JobOutput) Extract() JobExtractPtrOutput {
 	return o.ApplyT(func(v *Job) JobExtractPtrOutput { return v.Extract }).(JobExtractPtrOutput)
 }
@@ -632,7 +613,6 @@ func (o JobOutput) Labels() pulumi.StringMapOutput {
 }
 
 // Configures a load job.
-// Structure is documented below.
 func (o JobOutput) Load() JobLoadPtrOutput {
 	return o.ApplyT(func(v *Job) JobLoadPtrOutput { return v.Load }).(JobLoadPtrOutput)
 }
@@ -649,12 +629,12 @@ func (o JobOutput) Project() pulumi.StringOutput {
 }
 
 // Configures a query job.
-// Structure is documented below.
 func (o JobOutput) Query() JobQueryPtrOutput {
 	return o.ApplyT(func(v *Job) JobQueryPtrOutput { return v.Query }).(JobQueryPtrOutput)
 }
 
 // The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+// Structure is documented below.
 func (o JobOutput) Statuses() JobStatusArrayOutput {
 	return o.ApplyT(func(v *Job) JobStatusArrayOutput { return v.Statuses }).(JobStatusArrayOutput)
 }

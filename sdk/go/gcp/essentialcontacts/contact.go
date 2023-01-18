@@ -46,7 +46,7 @@ import (
 //				return err
 //			}
 //			_, err = essentialcontacts.NewContact(ctx, "contact", &essentialcontacts.ContactArgs{
-//				Parent:      pulumi.String(project.Id),
+//				Parent:      *pulumi.String(project.Id),
 //				Email:       pulumi.String("foo@bar.com"),
 //				LanguageTag: pulumi.String("en-GB"),
 //				NotificationCategorySubscriptions: pulumi.StringArray{

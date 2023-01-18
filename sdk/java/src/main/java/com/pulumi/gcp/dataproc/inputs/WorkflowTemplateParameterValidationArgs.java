@@ -32,14 +32,14 @@ public final class WorkflowTemplateParameterValidationArgs extends com.pulumi.re
     }
 
     /**
-     * Optional. Corresponds to the label values of reservation resource.
+     * Validation based on a list of allowed values.
      * 
      */
     @Import(name="values")
     private @Nullable Output<WorkflowTemplateParameterValidationValuesArgs> values;
 
     /**
-     * @return Optional. Corresponds to the label values of reservation resource.
+     * @return Validation based on a list of allowed values.
      * 
      */
     public Optional<Output<WorkflowTemplateParameterValidationValuesArgs>> values() {
@@ -93,7 +93,7 @@ public final class WorkflowTemplateParameterValidationArgs extends com.pulumi.re
         }
 
         /**
-         * @param values Optional. Corresponds to the label values of reservation resource.
+         * @param values Validation based on a list of allowed values.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class WorkflowTemplateParameterValidationArgs extends com.pulumi.re
         }
 
         /**
-         * @param values Optional. Corresponds to the label values of reservation resource.
+         * @param values Validation based on a list of allowed values.
          * 
          * @return builder
          * 

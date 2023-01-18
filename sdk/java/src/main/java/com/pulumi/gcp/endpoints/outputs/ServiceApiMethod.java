@@ -11,21 +11,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceApiMethod {
+    /**
+     * @return The simple name of the endpoint as described in the config.
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return The type URL for the request to this API.
+     * 
+     */
     private @Nullable String requestType;
+    /**
+     * @return The type URL for the response from this API.
+     * 
+     */
     private @Nullable String responseType;
+    /**
+     * @return `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+     * 
+     */
     private @Nullable String syntax;
 
     private ServiceApiMethod() {}
+    /**
+     * @return The simple name of the endpoint as described in the config.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return The type URL for the request to this API.
+     * 
+     */
     public Optional<String> requestType() {
         return Optional.ofNullable(this.requestType);
     }
+    /**
+     * @return The type URL for the response from this API.
+     * 
+     */
     public Optional<String> responseType() {
         return Optional.ofNullable(this.responseType);
     }
+    /**
+     * @return `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+     * 
+     */
     public Optional<String> syntax() {
         return Optional.ofNullable(this.syntax);
     }

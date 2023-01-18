@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultDataset = new gcp.healthcare.Dataset("default", {
+ * const _default = new gcp.healthcare.Dataset("default", {
  *     location: "us-central1",
  *     timeZone: "UTC",
  * });

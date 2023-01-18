@@ -134,8 +134,7 @@ type Target struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. Description of the `Target`. Max length is 255 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and
-	// delete requests to ensure the client has an up-to-date value before proceeding.
+	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
 	ExecutionConfigs TargetExecutionConfigArrayOutput `pulumi:"executionConfigs"`
@@ -143,7 +142,7 @@ type Target struct {
 	Gke TargetGkePtrOutput `pulumi:"gke"`
 	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -201,8 +200,7 @@ type targetState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Optional. Description of the `Target`. Max length is 255 characters.
 	Description *string `pulumi:"description"`
-	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and
-	// delete requests to ensure the client has an up-to-date value before proceeding.
+	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
 	ExecutionConfigs []TargetExecutionConfig `pulumi:"executionConfigs"`
@@ -210,7 +208,7 @@ type targetState struct {
 	Gke *TargetGke `pulumi:"gke"`
 	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels map[string]string `pulumi:"labels"`
-	// Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+	// The location for the resource
 	Location *string `pulumi:"location"`
 	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
 	Name *string `pulumi:"name"`
@@ -237,8 +235,7 @@ type TargetState struct {
 	CreateTime pulumi.StringPtrInput
 	// Optional. Description of the `Target`. Max length is 255 characters.
 	Description pulumi.StringPtrInput
-	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and
-	// delete requests to ensure the client has an up-to-date value before proceeding.
+	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
 	ExecutionConfigs TargetExecutionConfigArrayInput
@@ -246,7 +243,7 @@ type TargetState struct {
 	Gke TargetGkePtrInput
 	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels pulumi.StringMapInput
-	// Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+	// The location for the resource
 	Location pulumi.StringPtrInput
 	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
 	Name pulumi.StringPtrInput
@@ -281,7 +278,7 @@ type targetArgs struct {
 	Gke *TargetGke `pulumi:"gke"`
 	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels map[string]string `pulumi:"labels"`
-	// Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+	// The location for the resource
 	Location string `pulumi:"location"`
 	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
 	Name *string `pulumi:"name"`
@@ -307,7 +304,7 @@ type TargetArgs struct {
 	Gke TargetGkePtrInput
 	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels pulumi.StringMapInput
-	// Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+	// The location for the resource
 	Location pulumi.StringInput
 	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
 	Name pulumi.StringPtrInput
@@ -426,8 +423,7 @@ func (o TargetOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and
-// delete requests to ensure the client has an up-to-date value before proceeding.
+// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 func (o TargetOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
@@ -447,7 +443,7 @@ func (o TargetOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+// The location for the resource
 func (o TargetOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

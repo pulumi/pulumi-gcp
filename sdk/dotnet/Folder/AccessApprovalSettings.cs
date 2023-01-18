@@ -157,8 +157,7 @@ namespace Pulumi.Gcp.Folder
         public Output<bool> AncestorHasActiveKeyVersion { get; private set; } = null!;
 
         /// <summary>
-        /// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-        /// of the Folder.
+        /// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Folder.
         /// </summary>
         [Output("enrolledAncestor")]
         public Output<bool> EnrolledAncestor { get; private set; } = null!;
@@ -180,10 +179,10 @@ namespace Pulumi.Gcp.Folder
         public Output<string> FolderId { get; private set; } = null!;
 
         /// <summary>
-        /// If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-        /// this Folder (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on it,
-        /// etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-        /// top-down.
+        /// If the field is true, that indicates that there is some configuration issue with the active_key_version
+        /// configured on this Folder (e.g. it doesn't exist or the Access Approval service account doesn't have the
+        /// correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+        /// as key versions are inherited top-down.
         /// </summary>
         [Output("invalidKeyVersion")]
         public Output<bool> InvalidKeyVersion { get; private set; } = null!;
@@ -315,8 +314,7 @@ namespace Pulumi.Gcp.Folder
         public Input<bool>? AncestorHasActiveKeyVersion { get; set; }
 
         /// <summary>
-        /// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-        /// of the Folder.
+        /// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Folder.
         /// </summary>
         [Input("enrolledAncestor")]
         public Input<bool>? EnrolledAncestor { get; set; }
@@ -344,10 +342,10 @@ namespace Pulumi.Gcp.Folder
         public Input<string>? FolderId { get; set; }
 
         /// <summary>
-        /// If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-        /// this Folder (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on it,
-        /// etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-        /// top-down.
+        /// If the field is true, that indicates that there is some configuration issue with the active_key_version
+        /// configured on this Folder (e.g. it doesn't exist or the Access Approval service account doesn't have the
+        /// correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+        /// as key versions are inherited top-down.
         /// </summary>
         [Input("invalidKeyVersion")]
         public Input<bool>? InvalidKeyVersion { get; set; }

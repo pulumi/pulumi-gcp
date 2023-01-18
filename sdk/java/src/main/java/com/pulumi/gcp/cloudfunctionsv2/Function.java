@@ -38,7 +38,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.BucketObject;
  * import com.pulumi.gcp.storage.BucketObjectArgs;
  * import com.pulumi.gcp.storage.StorageFunctions;
- * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+ * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
  * import com.pulumi.gcp.projects.IAMMember;
  * import com.pulumi.gcp.projects.IAMMemberArgs;
  * import com.pulumi.gcp.serviceAccount.Account;

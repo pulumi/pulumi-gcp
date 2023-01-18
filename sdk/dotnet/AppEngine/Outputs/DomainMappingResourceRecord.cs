@@ -13,8 +13,18 @@ namespace Pulumi.Gcp.AppEngine.Outputs
     [OutputType]
     public sealed class DomainMappingResourceRecord
     {
+        /// <summary>
+        /// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
+        /// </summary>
         public readonly string? Rrdata;
+        /// <summary>
+        /// Resource record type. Example: `AAAA`.
+        /// Possible values are `A`, `AAAA`, and `CNAME`.
+        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

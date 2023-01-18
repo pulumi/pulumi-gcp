@@ -153,8 +153,7 @@ class AlertPolicyConditionArgs:
         :param pulumi.Input['AlertPolicyConditionConditionThresholdArgs'] condition_threshold: A condition that compares a time series against a
                threshold.
                Structure is documented below.
-        :param pulumi.Input[str] name: -
-               The unique resource name for this condition.
+        :param pulumi.Input[str] name: The unique resource name for this condition.
                Its syntax is:
                projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
                [CONDITION_ID] is assigned by Stackdriver Monitoring when
@@ -248,7 +247,6 @@ class AlertPolicyConditionArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        -
         The unique resource name for this condition.
         Its syntax is:
         projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
@@ -272,20 +270,10 @@ class AlertPolicyConditionConditionAbsentArgs:
                  trigger: Optional[pulumi.Input['AlertPolicyConditionConditionAbsentTriggerArgs']] = None):
         """
         :param pulumi.Input[str] duration: The amount of time that a time series must
-               violate the threshold to be considered
+               fail to report new data to be considered
                failing. Currently, only values that are a
-               multiple of a minute--e.g., 0, 60, 120, or
-               300 seconds--are supported. If an invalid
-               value is given, an error will be returned.
-               When choosing a duration, it is useful to
-               keep in mind the frequency of the underlying
-               time series data (which may also be affected
-               by any alignments specified in the
-               aggregations field); a good duration is long
-               enough so that a single outlier does not
-               generate spurious alerts, but short enough
-               that unhealthy states are detected and
-               alerted on quickly.
+               multiple of a minute--e.g. 60s, 120s, or 300s
+               --are supported.
         :param pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionConditionAbsentAggregationArgs']]] aggregations: Specifies the alignment of data points in
                individual time series as well as how to
                combine the retrieved time series together
@@ -294,21 +282,26 @@ class AlertPolicyConditionConditionAbsentArgs:
                resource or when aggregating streams across
                all members of a group of resources).
                Multiple aggregations are applied in the
-               order specified.This field is similar to the
-               one in the MetricService.ListTimeSeries
-               request. It is advisable to use the
-               ListTimeSeries method when debugging this
-               field.
+               order specified.
                Structure is documented below.
-        :param pulumi.Input[str] filter: A logs-based filter.
+        :param pulumi.Input[str] filter: A filter that identifies which time series
+               should be compared with the threshold.The
+               filter is similar to the one that is
+               specified in the
+               MetricService.ListTimeSeries request (that
+               call is useful to verify the time series
+               that will be retrieved / processed) and must
+               specify the metric type and optionally may
+               contain restrictions on resource type,
+               resource labels, and metric labels. This
+               field may not exceed 2048 Unicode characters
+               in length.
         :param pulumi.Input['AlertPolicyConditionConditionAbsentTriggerArgs'] trigger: The number/percent of time series for which
                the comparison must hold in order for the
                condition to trigger. If unspecified, then
                the condition will trigger if the comparison
                is true for any of the time series that have
-               been identified by filter and aggregations,
-               or by the ratio, if denominator_filter and
-               denominator_aggregations are specified.
+               been identified by filter and aggregations.
                Structure is documented below.
         """
         pulumi.set(__self__, "duration", duration)
@@ -324,20 +317,10 @@ class AlertPolicyConditionConditionAbsentArgs:
     def duration(self) -> pulumi.Input[str]:
         """
         The amount of time that a time series must
-        violate the threshold to be considered
+        fail to report new data to be considered
         failing. Currently, only values that are a
-        multiple of a minute--e.g., 0, 60, 120, or
-        300 seconds--are supported. If an invalid
-        value is given, an error will be returned.
-        When choosing a duration, it is useful to
-        keep in mind the frequency of the underlying
-        time series data (which may also be affected
-        by any alignments specified in the
-        aggregations field); a good duration is long
-        enough so that a single outlier does not
-        generate spurious alerts, but short enough
-        that unhealthy states are detected and
-        alerted on quickly.
+        multiple of a minute--e.g. 60s, 120s, or 300s
+        --are supported.
         """
         return pulumi.get(self, "duration")
 
@@ -357,11 +340,7 @@ class AlertPolicyConditionConditionAbsentArgs:
         resource or when aggregating streams across
         all members of a group of resources).
         Multiple aggregations are applied in the
-        order specified.This field is similar to the
-        one in the MetricService.ListTimeSeries
-        request. It is advisable to use the
-        ListTimeSeries method when debugging this
-        field.
+        order specified.
         Structure is documented below.
         """
         return pulumi.get(self, "aggregations")
@@ -374,7 +353,18 @@ class AlertPolicyConditionConditionAbsentArgs:
     @pulumi.getter
     def filter(self) -> Optional[pulumi.Input[str]]:
         """
-        A logs-based filter.
+        A filter that identifies which time series
+        should be compared with the threshold.The
+        filter is similar to the one that is
+        specified in the
+        MetricService.ListTimeSeries request (that
+        call is useful to verify the time series
+        that will be retrieved / processed) and must
+        specify the metric type and optionally may
+        contain restrictions on resource type,
+        resource labels, and metric labels. This
+        field may not exceed 2048 Unicode characters
+        in length.
         """
         return pulumi.get(self, "filter")
 
@@ -391,9 +381,7 @@ class AlertPolicyConditionConditionAbsentArgs:
         condition to trigger. If unspecified, then
         the condition will trigger if the comparison
         is true for any of the time series that have
-        been identified by filter and aggregations,
-        or by the ratio, if denominator_filter and
-        denominator_aggregations are specified.
+        been identified by filter and aggregations.
         Structure is documented below.
         """
         return pulumi.get(self, "trigger")
@@ -966,7 +954,18 @@ class AlertPolicyConditionConditionThresholdArgs:
                metric-threshold conditions are evaluated when
                data stops arriving.
                Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
-        :param pulumi.Input[str] filter: A logs-based filter.
+        :param pulumi.Input[str] filter: A filter that identifies which time series
+               should be compared with the threshold.The
+               filter is similar to the one that is
+               specified in the
+               MetricService.ListTimeSeries request (that
+               call is useful to verify the time series
+               that will be retrieved / processed) and must
+               specify the metric type and optionally may
+               contain restrictions on resource type,
+               resource labels, and metric labels. This
+               field may not exceed 2048 Unicode characters
+               in length.
         :param pulumi.Input[float] threshold_value: A value against which to compare the time
                series.
         :param pulumi.Input['AlertPolicyConditionConditionThresholdTriggerArgs'] trigger: The number/percent of time series for which
@@ -1140,7 +1139,18 @@ class AlertPolicyConditionConditionThresholdArgs:
     @pulumi.getter
     def filter(self) -> Optional[pulumi.Input[str]]:
         """
-        A logs-based filter.
+        A filter that identifies which time series
+        should be compared with the threshold.The
+        filter is similar to the one that is
+        specified in the
+        MetricService.ListTimeSeries request (that
+        call is useful to verify the time series
+        that will be retrieved / processed) and must
+        specify the metric type and optionally may
+        contain restrictions on resource type,
+        resource labels, and metric labels. This
+        field may not exceed 2048 Unicode characters
+        in length.
         """
         return pulumi.get(self, "filter")
 
@@ -1660,6 +1670,10 @@ class AlertPolicyCreationRecordArgs:
     def __init__(__self__, *,
                  mutate_time: Optional[pulumi.Input[str]] = None,
                  mutated_by: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] mutate_time: When the change occurred.
+        :param pulumi.Input[str] mutated_by: The email address of the user making the change.
+        """
         if mutate_time is not None:
             pulumi.set(__self__, "mutate_time", mutate_time)
         if mutated_by is not None:
@@ -1668,6 +1682,9 @@ class AlertPolicyCreationRecordArgs:
     @property
     @pulumi.getter(name="mutateTime")
     def mutate_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        When the change occurred.
+        """
         return pulumi.get(self, "mutate_time")
 
     @mutate_time.setter
@@ -1677,6 +1694,9 @@ class AlertPolicyCreationRecordArgs:
     @property
     @pulumi.getter(name="mutatedBy")
     def mutated_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        The email address of the user making the change.
+        """
         return pulumi.get(self, "mutated_by")
 
     @mutated_by.setter
@@ -1805,12 +1825,22 @@ class GenericServiceBasicServiceArgs:
 class GenericServiceTelemetryArgs:
     def __init__(__self__, *,
                  resource_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] resource_name: The full name of the resource that defines this service.
+               Formatted as described in
+               https://cloud.google.com/apis/design/resource_names.
+        """
         if resource_name is not None:
             pulumi.set(__self__, "resource_name", resource_name)
 
     @property
     @pulumi.getter(name="resourceName")
     def resource_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full name of the resource that defines this service.
+        Formatted as described in
+        https://cloud.google.com/apis/design/resource_names.
+        """
         return pulumi.get(self, "resource_name")
 
     @resource_name.setter
@@ -2157,12 +2187,14 @@ class SloRequestBasedSliArgs:
                total count of all values aggregated in the Distribution.
                Defines a distribution TimeSeries filter and thresholds used for
                measuring good service and total service.
+               Exactly one of `distribution_cut` or `good_total_ratio` can be set.
                Structure is documented below.
         :param pulumi.Input['SloRequestBasedSliGoodTotalRatioArgs'] good_total_ratio: A means to compute a ratio of `good_service` to `total_service`.
                Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
                Must specify exactly two of good, bad, and total service filters.
                The relationship good_service + bad_service = total_service
                will be assumed.
+               Exactly one of `distribution_cut` or `good_total_ratio` can be set.
                Structure is documented below.
         """
         if distribution_cut is not None:
@@ -2179,6 +2211,7 @@ class SloRequestBasedSliArgs:
         total count of all values aggregated in the Distribution.
         Defines a distribution TimeSeries filter and thresholds used for
         measuring good service and total service.
+        Exactly one of `distribution_cut` or `good_total_ratio` can be set.
         Structure is documented below.
         """
         return pulumi.get(self, "distribution_cut")
@@ -2196,6 +2229,7 @@ class SloRequestBasedSliArgs:
         Must specify exactly two of good, bad, and total service filters.
         The relationship good_service + bad_service = total_service
         will be assumed.
+        Exactly one of `distribution_cut` or `good_total_ratio` can be set.
         Structure is documented below.
         """
         return pulumi.get(self, "good_total_ratio")
@@ -2219,8 +2253,7 @@ class SloRequestBasedSliDistributionCutArgs:
                will be the count of values x in the Distribution such
                that range.min <= x <= range.max. inclusive of min and
                max. Open ranges can be defined by setting
-               just one of min or max. Summed value `X` should satisfy
-               `range.min <= X <= range.max` for a good window.
+               just one of min or max.
                Structure is documented below.
         """
         pulumi.set(__self__, "distribution_filter", distribution_filter)
@@ -2249,8 +2282,7 @@ class SloRequestBasedSliDistributionCutArgs:
         will be the count of values x in the Distribution such
         that range.min <= x <= range.max. inclusive of min and
         max. Open ranges can be defined by setting
-        just one of min or max. Summed value `X` should satisfy
-        `range.min <= X <= range.max` for a good window.
+        just one of min or max.
         Structure is documented below.
         """
         return pulumi.get(self, "range")
@@ -2542,9 +2574,8 @@ class SloWindowsBasedSliGoodTotalRatioThresholdArgs:
                Structure is documented below.
         :param pulumi.Input['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs'] performance: Request-based SLI to evaluate to judge window quality.
                Structure is documented below.
-        :param pulumi.Input[float] threshold: A duration string, e.g. 10s.
-               Good service is defined to be the count of requests made to
-               this service that return in no more than threshold.
+        :param pulumi.Input[float] threshold: If window performance >= threshold, the window is counted
+               as good.
         """
         if basic_sli_performance is not None:
             pulumi.set(__self__, "basic_sli_performance", basic_sli_performance)
@@ -2583,9 +2614,8 @@ class SloWindowsBasedSliGoodTotalRatioThresholdArgs:
     @pulumi.getter
     def threshold(self) -> Optional[pulumi.Input[float]]:
         """
-        A duration string, e.g. 10s.
-        Good service is defined to be the count of requests made to
-        this service that return in no more than threshold.
+        If window performance >= threshold, the window is counted
+        as good.
         """
         return pulumi.get(self, "threshold")
 
@@ -2837,8 +2867,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs:
                will be the count of values x in the Distribution such
                that range.min <= x <= range.max. inclusive of min and
                max. Open ranges can be defined by setting
-               just one of min or max. Summed value `X` should satisfy
-               `range.min <= X <= range.max` for a good window.
+               just one of min or max.
                Structure is documented below.
         """
         pulumi.set(__self__, "distribution_filter", distribution_filter)
@@ -2867,8 +2896,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs:
         will be the count of values x in the Distribution such
         that range.min <= x <= range.max. inclusive of min and
         max. Open ranges can be defined by setting
-        just one of min or max. Summed value `X` should satisfy
-        `range.min <= X <= range.max` for a good window.
+        just one of min or max.
         Structure is documented below.
         """
         return pulumi.get(self, "range")
@@ -3024,16 +3052,16 @@ class SloWindowsBasedSliMetricMeanInRangeArgs:
                will be the count of values x in the Distribution such
                that range.min <= x <= range.max. inclusive of min and
                max. Open ranges can be defined by setting
-               just one of min or max. Summed value `X` should satisfy
-               `range.min <= X <= range.max` for a good window.
+               just one of min or max. Mean value `X` of `time_series`
+               values should satisfy `range.min <= X <= range.max` for a
+               good service.
                Structure is documented below.
         :param pulumi.Input[str] time_series: A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
                specifying the TimeSeries to use for evaluating window
-               quality. The provided TimeSeries must have
-               ValueType = INT64 or ValueType = DOUBLE and
-               MetricKind = GAUGE.
-               Summed value `X` should satisfy
-               `range.min <= X <= range.max` for a good window.
+               The provided TimeSeries must have ValueType = INT64 or
+               ValueType = DOUBLE and MetricKind = GAUGE. Mean value `X`
+               should satisfy `range.min <= X <= range.max`
+               under good service.
         """
         pulumi.set(__self__, "range", range)
         pulumi.set(__self__, "time_series", time_series)
@@ -3046,8 +3074,9 @@ class SloWindowsBasedSliMetricMeanInRangeArgs:
         will be the count of values x in the Distribution such
         that range.min <= x <= range.max. inclusive of min and
         max. Open ranges can be defined by setting
-        just one of min or max. Summed value `X` should satisfy
-        `range.min <= X <= range.max` for a good window.
+        just one of min or max. Mean value `X` of `time_series`
+        values should satisfy `range.min <= X <= range.max` for a
+        good service.
         Structure is documented below.
         """
         return pulumi.get(self, "range")
@@ -3062,11 +3091,10 @@ class SloWindowsBasedSliMetricMeanInRangeArgs:
         """
         A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
         specifying the TimeSeries to use for evaluating window
-        quality. The provided TimeSeries must have
-        ValueType = INT64 or ValueType = DOUBLE and
-        MetricKind = GAUGE.
-        Summed value `X` should satisfy
-        `range.min <= X <= range.max` for a good window.
+        The provided TimeSeries must have ValueType = INT64 or
+        ValueType = DOUBLE and MetricKind = GAUGE. Mean value `X`
+        should satisfy `range.min <= X <= range.max`
+        under good service.
         """
         return pulumi.get(self, "time_series")
 
@@ -3357,7 +3385,7 @@ class UptimeCheckConfigHttpCheckArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
         :param pulumi.Input[bool] mask_headers: Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to True then the headers will be obscured with ******.
         :param pulumi.Input[str] path: The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically. Optional (defaults to "/").
-        :param pulumi.Input[int] port: The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
+        :param pulumi.Input[int] port: The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
         :param pulumi.Input[str] request_method: The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
                Default value is `GET`.
                Possible values are `METHOD_UNSPECIFIED`, `GET`, and `POST`.
@@ -3478,7 +3506,7 @@ class UptimeCheckConfigHttpCheckArgs:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
-        The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
+        The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
         """
         return pulumi.get(self, "port")
 

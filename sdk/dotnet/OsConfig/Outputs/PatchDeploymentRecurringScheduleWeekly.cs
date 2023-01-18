@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     public sealed class PatchDeploymentRecurringScheduleWeekly
     {
         /// <summary>
-        /// A day of the week.
+        /// IANA Time Zone Database time zone, e.g. "America/New_York".
         /// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
         /// </summary>
         public readonly string DayOfWeek;

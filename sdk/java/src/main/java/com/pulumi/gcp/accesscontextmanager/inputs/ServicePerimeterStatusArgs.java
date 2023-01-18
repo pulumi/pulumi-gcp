@@ -97,22 +97,18 @@ public final class ServicePerimeterStatusArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * A list of resources, currently only projects in the form
-     * `projects/&lt;projectnumber&gt;`, that match this to stanza. A request matches
-     * if it contains a resource in this list. If * is specified for resources,
-     * then this `EgressTo` rule will authorize access to all resources outside
-     * the perimeter.
+     * A list of GCP resources that are inside of the service perimeter.
+     * Currently only projects are allowed.
+     * Format: projects/{project_number}
      * 
      */
     @Import(name="resources")
     private @Nullable Output<List<String>> resources;
 
     /**
-     * @return A list of resources, currently only projects in the form
-     * `projects/&lt;projectnumber&gt;`, that match this to stanza. A request matches
-     * if it contains a resource in this list. If * is specified for resources,
-     * then this `EgressTo` rule will authorize access to all resources outside
-     * the perimeter.
+     * @return A list of GCP resources that are inside of the service perimeter.
+     * Currently only projects are allowed.
+     * Format: projects/{project_number}
      * 
      */
     public Optional<Output<List<String>>> resources() {
@@ -332,11 +328,9 @@ public final class ServicePerimeterStatusArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param resources A list of resources, currently only projects in the form
-         * `projects/&lt;projectnumber&gt;`, that match this to stanza. A request matches
-         * if it contains a resource in this list. If * is specified for resources,
-         * then this `EgressTo` rule will authorize access to all resources outside
-         * the perimeter.
+         * @param resources A list of GCP resources that are inside of the service perimeter.
+         * Currently only projects are allowed.
+         * Format: projects/{project_number}
          * 
          * @return builder
          * 
@@ -347,11 +341,9 @@ public final class ServicePerimeterStatusArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param resources A list of resources, currently only projects in the form
-         * `projects/&lt;projectnumber&gt;`, that match this to stanza. A request matches
-         * if it contains a resource in this list. If * is specified for resources,
-         * then this `EgressTo` rule will authorize access to all resources outside
-         * the perimeter.
+         * @param resources A list of GCP resources that are inside of the service perimeter.
+         * Currently only projects are allowed.
+         * Format: projects/{project_number}
          * 
          * @return builder
          * 
@@ -361,11 +353,9 @@ public final class ServicePerimeterStatusArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param resources A list of resources, currently only projects in the form
-         * `projects/&lt;projectnumber&gt;`, that match this to stanza. A request matches
-         * if it contains a resource in this list. If * is specified for resources,
-         * then this `EgressTo` rule will authorize access to all resources outside
-         * the perimeter.
+         * @param resources A list of GCP resources that are inside of the service perimeter.
+         * Currently only projects are allowed.
+         * Format: projects/{project_number}
          * 
          * @return builder
          * 

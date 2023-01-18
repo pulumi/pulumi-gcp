@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.CloudTasks.Outputs
     public sealed class QueueAppEngineRoutingOverride
     {
         /// <summary>
-        /// -
         /// The host that the task is sent to.
         /// </summary>
         public readonly string? Host;

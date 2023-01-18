@@ -53,15 +53,13 @@ class InstanceMaintenancePolicy(dict):
                Minimum 1. For the current version, the maximum number of weekly_maintenance_windows
                is expected to be one.
                Structure is documented below.
-        :param str create_time: -
-               Output only. The time when the policy was created.
+        :param str create_time: Output only. The time when the policy was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits
         :param str description: Optional. Description of what this policy is for.
                Create/Update methods return INVALID_ARGUMENT if the
                length is greater than 512.
-        :param str update_time: -
-               Output only. The time when the policy was updated.
+        :param str update_time: Output only. The time when the policy was updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits.
         """
@@ -88,7 +86,6 @@ class InstanceMaintenancePolicy(dict):
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[str]:
         """
-        -
         Output only. The time when the policy was created.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         resolution and up to nine fractional digits
@@ -109,7 +106,6 @@ class InstanceMaintenancePolicy(dict):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[str]:
         """
-        -
         Output only. The time when the policy was updated.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         resolution and up to nine fractional digits.
@@ -285,6 +281,13 @@ class InstanceMaintenanceSchedule(dict):
                  schedule_deadline_time: Optional[str] = None,
                  start_time: Optional[str] = None):
         """
+        :param str end_time: Output only. The end time of any upcoming scheduled maintenance for this instance.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits.
+        :param str schedule_deadline_time: Output only. The deadline that the maintenance schedule start time
+               can not go beyond, including reschedule.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits.
         :param str start_time: Required. Start time of the window in UTC time.
                Structure is documented below.
         """
@@ -298,11 +301,22 @@ class InstanceMaintenanceSchedule(dict):
     @property
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[str]:
+        """
+        Output only. The end time of any upcoming scheduled maintenance for this instance.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
         return pulumi.get(self, "end_time")
 
     @property
     @pulumi.getter(name="scheduleDeadlineTime")
     def schedule_deadline_time(self) -> Optional[str]:
+        """
+        Output only. The deadline that the maintenance schedule start time
+        can not go beyond, including reschedule.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
         return pulumi.get(self, "schedule_deadline_time")
 
     @property
@@ -340,6 +354,13 @@ class InstanceMemcacheNode(dict):
                  port: Optional[int] = None,
                  state: Optional[str] = None,
                  zone: Optional[str] = None):
+        """
+        :param str host: Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
+        :param str node_id: Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
+        :param int port: The port number of the Memcached server on this node.
+        :param str state: Current state of the Memcached node.
+        :param str zone: Location (GCP Zone) for the Memcached node.
+        """
         if host is not None:
             pulumi.set(__self__, "host", host)
         if node_id is not None:
@@ -354,26 +375,41 @@ class InstanceMemcacheNode(dict):
     @property
     @pulumi.getter
     def host(self) -> Optional[str]:
+        """
+        Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
+        """
         return pulumi.get(self, "host")
 
     @property
     @pulumi.getter(name="nodeId")
     def node_id(self) -> Optional[str]:
+        """
+        Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
+        """
         return pulumi.get(self, "node_id")
 
     @property
     @pulumi.getter
     def port(self) -> Optional[int]:
+        """
+        The port number of the Memcached server on this node.
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
     def state(self) -> Optional[str]:
+        """
+        Current state of the Memcached node.
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def zone(self) -> Optional[str]:
+        """
+        Location (GCP Zone) for the Memcached node.
+        """
         return pulumi.get(self, "zone")
 
 
@@ -383,8 +419,7 @@ class InstanceMemcacheParameters(dict):
                  id: Optional[str] = None,
                  params: Optional[Mapping[str, str]] = None):
         """
-        :param str id: -
-               This is a unique ID associated with this set of parameters.
+        :param str id: This is a unique ID associated with this set of parameters.
         :param Mapping[str, str] params: User-defined set of parameters to use in the memcache process.
         """
         if id is not None:
@@ -396,7 +431,6 @@ class InstanceMemcacheParameters(dict):
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
-        -
         This is a unique ID associated with this set of parameters.
         """
         return pulumi.get(self, "id")

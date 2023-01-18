@@ -38,12 +38,14 @@ class AzureClusterArgs:
         :param pulumi.Input['AzureClusterFleetArgs'] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input['AzureClusterNetworkingArgs'] networking: Cluster-wide networking configuration.
-        :param pulumi.Input[str] resource_group_id: The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+        :param pulumi.Input[str] resource_group_id: The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input['AzureClusterLoggingConfigArgs'] logging_config: (Beta only) Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
+               (Optional)
+               The project for the resource
         """
         pulumi.set(__self__, "authorization", authorization)
         pulumi.set(__self__, "azure_region", azure_region)
@@ -152,7 +154,7 @@ class AzureClusterArgs:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[str]:
         """
-        The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+        The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -212,6 +214,8 @@ class AzureClusterArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
+        The number of the Fleet host project where this cluster will be registered.
+        (Optional)
         The project for the resource
         """
         return pulumi.get(self, "project")
@@ -255,18 +259,18 @@ class _AzureClusterState:
         :param pulumi.Input[str] create_time: Output only. The time at which this cluster was created.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[str] endpoint: Output only. The endpoint of the cluster's API server.
-        :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-               and delete requests to ensure the client has an up-to-date value before proceeding.
+        :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input['AzureClusterFleetArgs'] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input['AzureClusterLoggingConfigArgs'] logging_config: (Beta only) Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input['AzureClusterNetworkingArgs'] networking: Cluster-wide networking configuration.
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
+               (Optional)
+               The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. If set, there are currently changes in flight to the cluster.
-        :param pulumi.Input[str] resource_group_id: The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
-        :param pulumi.Input[str] state: Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-               STOPPING, ERROR, DEGRADED
+        :param pulumi.Input[str] resource_group_id: The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
+        :param pulumi.Input[str] state: Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         :param pulumi.Input[str] uid: Output only. A globally unique identifier for the cluster.
         :param pulumi.Input[str] update_time: Output only. The time at which this cluster was last updated.
         :param pulumi.Input[Sequence[pulumi.Input['AzureClusterWorkloadIdentityConfigArgs']]] workload_identity_configs: Output only. Workload Identity settings.
@@ -414,8 +418,7 @@ class _AzureClusterState:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-        and delete requests to ensure the client has an up-to-date value before proceeding.
+        Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
 
@@ -487,6 +490,8 @@ class _AzureClusterState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
+        The number of the Fleet host project where this cluster will be registered.
+        (Optional)
         The project for the resource
         """
         return pulumi.get(self, "project")
@@ -511,7 +516,7 @@ class _AzureClusterState:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+        The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -523,8 +528,7 @@ class _AzureClusterState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-        STOPPING, ERROR, DEGRADED
+        Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         """
         return pulumi.get(self, "state")
 
@@ -664,8 +668,10 @@ class AzureCluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArgs']] logging_config: (Beta only) Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[pulumi.InputType['AzureClusterNetworkingArgs']] networking: Cluster-wide networking configuration.
-        :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[str] resource_group_id: The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+        :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
+               (Optional)
+               The project for the resource
+        :param pulumi.Input[str] resource_group_id: The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
         """
         ...
     @overload
@@ -856,18 +862,18 @@ class AzureCluster(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Output only. The time at which this cluster was created.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[str] endpoint: Output only. The endpoint of the cluster's API server.
-        :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-               and delete requests to ensure the client has an up-to-date value before proceeding.
+        :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[pulumi.InputType['AzureClusterFleetArgs']] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArgs']] logging_config: (Beta only) Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[pulumi.InputType['AzureClusterNetworkingArgs']] networking: Cluster-wide networking configuration.
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
+               (Optional)
+               The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. If set, there are currently changes in flight to the cluster.
-        :param pulumi.Input[str] resource_group_id: The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
-        :param pulumi.Input[str] state: Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-               STOPPING, ERROR, DEGRADED
+        :param pulumi.Input[str] resource_group_id: The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
+        :param pulumi.Input[str] state: Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         :param pulumi.Input[str] uid: Output only. A globally unique identifier for the cluster.
         :param pulumi.Input[str] update_time: Output only. The time at which this cluster was last updated.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AzureClusterWorkloadIdentityConfigArgs']]]] workload_identity_configs: Output only. Workload Identity settings.
@@ -967,8 +973,7 @@ class AzureCluster(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-        and delete requests to ensure the client has an up-to-date value before proceeding.
+        Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
 
@@ -1016,6 +1021,8 @@ class AzureCluster(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
+        The number of the Fleet host project where this cluster will be registered.
+        (Optional)
         The project for the resource
         """
         return pulumi.get(self, "project")
@@ -1032,7 +1039,7 @@ class AzureCluster(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[str]:
         """
-        The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+        The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -1040,8 +1047,7 @@ class AzureCluster(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-        STOPPING, ERROR, DEGRADED
+        Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         """
         return pulumi.get(self, "state")
 

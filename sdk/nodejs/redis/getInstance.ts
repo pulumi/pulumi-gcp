@@ -24,11 +24,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:redis/getInstance:getInstance", {
         "name": args.name,
         "project": args.project,
@@ -98,9 +95,25 @@ export interface GetInstanceResult {
     readonly tier: string;
     readonly transitEncryptionMode: string;
 }
-
+/**
+ * Get info about a Google Cloud Redis instance.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myInstance = gcp.redis.getInstance({
+ *     name: "my-redis-instance",
+ * });
+ * export const instanceMemorySizeGb = myInstance.then(myInstance => myInstance.memorySizeGb);
+ * export const instanceConnectMode = myInstance.then(myInstance => myInstance.connectMode);
+ * export const instanceAuthorizedNetwork = myInstance.then(myInstance => myInstance.authorizedNetwork);
+ * ```
+ */
 export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceResult> {
-    return pulumi.output(args).apply(a => getInstance(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstance(a, opts))
 }
 
 /**

@@ -38,7 +38,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 //				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
+//					{
 //						Role: "roles/billing.viewer",
 //						Members: []string{
 //							"user:jane@example.com",
@@ -51,7 +51,7 @@ import (
 //			}
 //			_, err = billing.NewAccountIamPolicy(ctx, "editor", &billing.AccountIamPolicyArgs{
 //				BillingAccountId: pulumi.String("00AA00-000AAA-00AA0A"),
-//				PolicyData:       pulumi.String(admin.PolicyData),
+//				PolicyData:       *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

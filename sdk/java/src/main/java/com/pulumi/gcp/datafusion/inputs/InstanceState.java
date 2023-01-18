@@ -358,18 +358,26 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The current state of this Data Fusion instance. - CREATING: Instance is being created - RUNNING: Instance is running and
-     * ready for requests - FAILED: Instance creation failed - DELETING: Instance is being deleted - UPGRADING: Instance is
-     * being upgraded - RESTARTING: Instance is being restarted
+     * The current state of this Data Fusion instance.
+     * * CREATING: Instance is being created
+     * * RUNNING: Instance is running and ready for requests
+     * * FAILED: Instance creation failed
+     * * DELETING: Instance is being deleted
+     * * UPGRADING: Instance is being upgraded
+     * * RESTARTING: Instance is being restarted
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return The current state of this Data Fusion instance. - CREATING: Instance is being created - RUNNING: Instance is running and
-     * ready for requests - FAILED: Instance creation failed - DELETING: Instance is being deleted - UPGRADING: Instance is
-     * being upgraded - RESTARTING: Instance is being restarted
+     * @return The current state of this Data Fusion instance.
+     * * CREATING: Instance is being created
+     * * RUNNING: Instance is running and ready for requests
+     * * FAILED: Instance creation failed
+     * * DELETING: Instance is being deleted
+     * * UPGRADING: Instance is being upgraded
+     * * RESTARTING: Instance is being restarted
      * 
      */
     public Optional<Output<String>> state() {
@@ -1001,9 +1009,13 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state The current state of this Data Fusion instance. - CREATING: Instance is being created - RUNNING: Instance is running and
-         * ready for requests - FAILED: Instance creation failed - DELETING: Instance is being deleted - UPGRADING: Instance is
-         * being upgraded - RESTARTING: Instance is being restarted
+         * @param state The current state of this Data Fusion instance.
+         * * CREATING: Instance is being created
+         * * RUNNING: Instance is running and ready for requests
+         * * FAILED: Instance creation failed
+         * * DELETING: Instance is being deleted
+         * * UPGRADING: Instance is being upgraded
+         * * RESTARTING: Instance is being restarted
          * 
          * @return builder
          * 
@@ -1014,9 +1026,13 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state The current state of this Data Fusion instance. - CREATING: Instance is being created - RUNNING: Instance is running and
-         * ready for requests - FAILED: Instance creation failed - DELETING: Instance is being deleted - UPGRADING: Instance is
-         * being upgraded - RESTARTING: Instance is being restarted
+         * @param state The current state of this Data Fusion instance.
+         * * CREATING: Instance is being created
+         * * RUNNING: Instance is running and ready for requests
+         * * FAILED: Instance creation failed
+         * * DELETING: Instance is being deleted
+         * * UPGRADING: Instance is being upgraded
+         * * RESTARTING: Instance is being restarted
          * 
          * @return builder
          * 

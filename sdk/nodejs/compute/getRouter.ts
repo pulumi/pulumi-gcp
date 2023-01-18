@@ -15,18 +15,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my_router = pulumi.output(gcp.compute.getRouter({
+ * const my-router = gcp.compute.getRouter({
  *     name: "myrouter-us-east1",
  *     network: "my-network",
- * }));
+ * });
  * ```
  */
 export function getRouter(args: GetRouterArgs, opts?: pulumi.InvokeOptions): Promise<GetRouterResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getRouter:getRouter", {
         "name": args.name,
         "network": args.network,
@@ -77,9 +74,23 @@ export interface GetRouterResult {
     readonly region?: string;
     readonly selfLink: string;
 }
-
+/**
+ * Get a router within GCE from its name and VPC.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-router = gcp.compute.getRouter({
+ *     name: "myrouter-us-east1",
+ *     network: "my-network",
+ * });
+ * ```
+ */
 export function getRouterOutput(args: GetRouterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouterResult> {
-    return pulumi.output(args).apply(a => getRouter(a, opts))
+    return pulumi.output(args).apply((a: any) => getRouter(a, opts))
 }
 
 /**

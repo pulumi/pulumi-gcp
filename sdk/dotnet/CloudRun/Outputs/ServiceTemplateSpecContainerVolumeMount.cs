@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// </summary>
         public readonly string MountPath;
         /// <summary>
-        /// Volume's name.
+        /// This must match the Name of a Volume.
         /// </summary>
         public readonly string Name;
 

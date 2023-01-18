@@ -67,14 +67,16 @@ public final class HostingChannelState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID
+     * The fully-qualified resource name for the channel, in the format:
+     * sites/SITE_ID/channels/CHANNEL_ID
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID
+     * @return The fully-qualified resource name for the channel, in the format:
+     * sites/SITE_ID/channels/CHANNEL_ID
      * 
      */
     public Optional<Output<String>> name() {
@@ -230,7 +232,8 @@ public final class HostingChannelState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID
+         * @param name The fully-qualified resource name for the channel, in the format:
+         * sites/SITE_ID/channels/CHANNEL_ID
          * 
          * @return builder
          * 
@@ -241,7 +244,8 @@ public final class HostingChannelState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name The fully-qualified resource name for the channel, in the format: sites/SITE_ID/channels/CHANNEL_ID
+         * @param name The fully-qualified resource name for the channel, in the format:
+         * sites/SITE_ID/channels/CHANNEL_ID
          * 
          * @return builder
          * 

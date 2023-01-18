@@ -35,8 +35,8 @@ class EnvironmentArgs:
                Format: projects/{project_id}/locations/{location}/environments/{environmentId}
         :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up.
                The path must be a URL or Cloud Storage path. Example: "gs://path-to-file/file-name"
-        :param pulumi.Input[str] project: The name of the Google Cloud project that this VM image belongs to.
-               Format: projects/{project_id}
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input['EnvironmentVmImageArgs'] vm_image: Use a Compute Engine VM image to start the notebook instance.
                Structure is documented below.
         """
@@ -135,8 +135,8 @@ class EnvironmentArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Google Cloud project that this VM image belongs to.
-        Format: projects/{project_id}
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -182,8 +182,8 @@ class _EnvironmentState:
                Format: projects/{project_id}/locations/{location}/environments/{environmentId}
         :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up.
                The path must be a URL or Cloud Storage path. Example: "gs://path-to-file/file-name"
-        :param pulumi.Input[str] project: The name of the Google Cloud project that this VM image belongs to.
-               Format: projects/{project_id}
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input['EnvironmentVmImageArgs'] vm_image: Use a Compute Engine VM image to start the notebook instance.
                Structure is documented below.
         """
@@ -297,8 +297,8 @@ class _EnvironmentState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Google Cloud project that this VM image belongs to.
-        Format: projects/{project_id}
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -384,8 +384,8 @@ class Environment(pulumi.CustomResource):
                Format: projects/{project_id}/locations/{location}/environments/{environmentId}
         :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up.
                The path must be a URL or Cloud Storage path. Example: "gs://path-to-file/file-name"
-        :param pulumi.Input[str] project: The name of the Google Cloud project that this VM image belongs to.
-               Format: projects/{project_id}
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['EnvironmentVmImageArgs']] vm_image: Use a Compute Engine VM image to start the notebook instance.
                Structure is documented below.
         """
@@ -513,8 +513,8 @@ class Environment(pulumi.CustomResource):
                Format: projects/{project_id}/locations/{location}/environments/{environmentId}
         :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up.
                The path must be a URL or Cloud Storage path. Example: "gs://path-to-file/file-name"
-        :param pulumi.Input[str] project: The name of the Google Cloud project that this VM image belongs to.
-               Format: projects/{project_id}
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['EnvironmentVmImageArgs']] vm_image: Use a Compute Engine VM image to start the notebook instance.
                Structure is documented below.
         """
@@ -596,8 +596,8 @@ class Environment(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The name of the Google Cloud project that this VM image belongs to.
-        Format: projects/{project_id}
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 

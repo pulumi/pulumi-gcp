@@ -530,17 +530,19 @@ class _InstanceState:
         :param pulumi.Input[str] connect_mode: The connection mode of the Redis instance.
                Default value is `DIRECT_PEERING`.
                Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
-        :param pulumi.Input[str] create_time: -
-               Output only. The time when the policy was created.
+        :param pulumi.Input[str] create_time: Output only. The time when the policy was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits.
-        :param pulumi.Input[str] current_location_id: The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
-               [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
-               [alternativeLocationId] and can change after a failover event.
+        :param pulumi.Input[str] current_location_id: The current zone where the Redis endpoint is placed.
+               For Basic Tier instances, this will always be the same as the
+               [locationId] provided by the user at creation time. For Standard Tier
+               instances, this can be either [locationId] or [alternativeLocationId]
+               and can change after a failover event.
         :param pulumi.Input[str] customer_managed_key: Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
                instance. If this is provided, CMEK is enabled.
         :param pulumi.Input[str] display_name: An arbitrary and optional user-provided name for the instance.
-        :param pulumi.Input[str] host: Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
+        :param pulumi.Input[str] host: Hostname or IP address of the exposed Redis endpoint used by clients
+               to connect to the service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[str] location_id: The zone where the instance will be provisioned. If not provided,
                the service will choose a zone for the instance. For STANDARD_HA tier,
@@ -554,19 +556,21 @@ class _InstanceState:
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNodeArgs']]] nodes: Output only. Info per node.
+               Structure is documented below.
         :param pulumi.Input['InstancePersistenceConfigArgs'] persistence_config: Persistence configuration for an instance.
                Structure is documented below.
-        :param pulumi.Input[str] persistence_iam_identity: Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
-               "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
-               operation.
+        :param pulumi.Input[str] persistence_iam_identity: Output only. Cloud IAM identity used by import / export operations
+               to transfer data to/from Cloud Storage. Format is "serviceAccount:".
+               The value may change over time for a given instance so should be
+               checked before each import/export operation.
         :param pulumi.Input[int] port: The port number of the exposed Redis endpoint.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] read_endpoint: Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy
-               replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write
-               requests must target 'host'.
-        :param pulumi.Input[int] read_endpoint_port: Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
-               'port'.
+        :param pulumi.Input[str] read_endpoint: Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
+               Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
+               will exhibit some lag behind the primary. Write requests must target 'host'.
+        :param pulumi.Input[int] read_endpoint_port: Output only. The port number of the exposed readonly redis endpoint. Standard tier only.
+               Write requests should target 'port'.
         :param pulumi.Input[str] read_replicas_mode: Optional. Read replica mode. Can only be specified when trying to create the instance.
                If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
                - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be provided and the
@@ -595,6 +599,7 @@ class _InstanceState:
                "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address
                range associated with the private service access connection, or "auto".
         :param pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArgs']]] server_ca_certs: List of server CA certificates for the instance.
+               Structure is documented below.
         :param pulumi.Input[str] tier: The service tier of the instance. Must be one of these values:
                - BASIC: standalone instance
                - STANDARD_HA: highly available primary/replica instances
@@ -745,7 +750,6 @@ class _InstanceState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        -
         Output only. The time when the policy was created.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         resolution and up to nine fractional digits.
@@ -760,9 +764,11 @@ class _InstanceState:
     @pulumi.getter(name="currentLocationId")
     def current_location_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
-        [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
-        [alternativeLocationId] and can change after a failover event.
+        The current zone where the Redis endpoint is placed.
+        For Basic Tier instances, this will always be the same as the
+        [locationId] provided by the user at creation time. For Standard Tier
+        instances, this can be either [locationId] or [alternativeLocationId]
+        and can change after a failover event.
         """
         return pulumi.get(self, "current_location_id")
 
@@ -799,7 +805,8 @@ class _InstanceState:
     @pulumi.getter
     def host(self) -> Optional[pulumi.Input[str]]:
         """
-        Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
+        Hostname or IP address of the exposed Redis endpoint used by clients
+        to connect to the service.
         """
         return pulumi.get(self, "host")
 
@@ -890,6 +897,7 @@ class _InstanceState:
     def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNodeArgs']]]]:
         """
         Output only. Info per node.
+        Structure is documented below.
         """
         return pulumi.get(self, "nodes")
 
@@ -914,9 +922,10 @@ class _InstanceState:
     @pulumi.getter(name="persistenceIamIdentity")
     def persistence_iam_identity(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
-        "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
-        operation.
+        Output only. Cloud IAM identity used by import / export operations
+        to transfer data to/from Cloud Storage. Format is "serviceAccount:".
+        The value may change over time for a given instance so should be
+        checked before each import/export operation.
         """
         return pulumi.get(self, "persistence_iam_identity")
 
@@ -953,9 +962,9 @@ class _InstanceState:
     @pulumi.getter(name="readEndpoint")
     def read_endpoint(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy
-        replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write
-        requests must target 'host'.
+        Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
+        Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
+        will exhibit some lag behind the primary. Write requests must target 'host'.
         """
         return pulumi.get(self, "read_endpoint")
 
@@ -967,8 +976,8 @@ class _InstanceState:
     @pulumi.getter(name="readEndpointPort")
     def read_endpoint_port(self) -> Optional[pulumi.Input[int]]:
         """
-        Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
-        'port'.
+        Output only. The port number of the exposed readonly redis endpoint. Standard tier only.
+        Write requests should target 'port'.
         """
         return pulumi.get(self, "read_endpoint_port")
 
@@ -1085,6 +1094,7 @@ class _InstanceState:
     def server_ca_certs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArgs']]]]:
         """
         List of server CA certificates for the instance.
+        Structure is documented below.
         """
         return pulumi.get(self, "server_ca_certs")
 
@@ -1700,17 +1710,19 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] connect_mode: The connection mode of the Redis instance.
                Default value is `DIRECT_PEERING`.
                Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
-        :param pulumi.Input[str] create_time: -
-               Output only. The time when the policy was created.
+        :param pulumi.Input[str] create_time: Output only. The time when the policy was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits.
-        :param pulumi.Input[str] current_location_id: The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
-               [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
-               [alternativeLocationId] and can change after a failover event.
+        :param pulumi.Input[str] current_location_id: The current zone where the Redis endpoint is placed.
+               For Basic Tier instances, this will always be the same as the
+               [locationId] provided by the user at creation time. For Standard Tier
+               instances, this can be either [locationId] or [alternativeLocationId]
+               and can change after a failover event.
         :param pulumi.Input[str] customer_managed_key: Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
                instance. If this is provided, CMEK is enabled.
         :param pulumi.Input[str] display_name: An arbitrary and optional user-provided name for the instance.
-        :param pulumi.Input[str] host: Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
+        :param pulumi.Input[str] host: Hostname or IP address of the exposed Redis endpoint used by clients
+               to connect to the service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[str] location_id: The zone where the instance will be provisioned. If not provided,
                the service will choose a zone for the instance. For STANDARD_HA tier,
@@ -1724,19 +1736,21 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNodeArgs']]]] nodes: Output only. Info per node.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['InstancePersistenceConfigArgs']] persistence_config: Persistence configuration for an instance.
                Structure is documented below.
-        :param pulumi.Input[str] persistence_iam_identity: Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
-               "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
-               operation.
+        :param pulumi.Input[str] persistence_iam_identity: Output only. Cloud IAM identity used by import / export operations
+               to transfer data to/from Cloud Storage. Format is "serviceAccount:".
+               The value may change over time for a given instance so should be
+               checked before each import/export operation.
         :param pulumi.Input[int] port: The port number of the exposed Redis endpoint.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] read_endpoint: Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy
-               replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write
-               requests must target 'host'.
-        :param pulumi.Input[int] read_endpoint_port: Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
-               'port'.
+        :param pulumi.Input[str] read_endpoint: Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
+               Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
+               will exhibit some lag behind the primary. Write requests must target 'host'.
+        :param pulumi.Input[int] read_endpoint_port: Output only. The port number of the exposed readonly redis endpoint. Standard tier only.
+               Write requests should target 'port'.
         :param pulumi.Input[str] read_replicas_mode: Optional. Read replica mode. Can only be specified when trying to create the instance.
                If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
                - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be provided and the
@@ -1765,6 +1779,7 @@ class Instance(pulumi.CustomResource):
                "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address
                range associated with the private service access connection, or "auto".
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceServerCaCertArgs']]]] server_ca_certs: List of server CA certificates for the instance.
+               Structure is documented below.
         :param pulumi.Input[str] tier: The service tier of the instance. Must be one of these values:
                - BASIC: standalone instance
                - STANDARD_HA: highly available primary/replica instances
@@ -1867,7 +1882,6 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        -
         Output only. The time when the policy was created.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         resolution and up to nine fractional digits.
@@ -1878,9 +1892,11 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="currentLocationId")
     def current_location_id(self) -> pulumi.Output[str]:
         """
-        The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
-        [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
-        [alternativeLocationId] and can change after a failover event.
+        The current zone where the Redis endpoint is placed.
+        For Basic Tier instances, this will always be the same as the
+        [locationId] provided by the user at creation time. For Standard Tier
+        instances, this can be either [locationId] or [alternativeLocationId]
+        and can change after a failover event.
         """
         return pulumi.get(self, "current_location_id")
 
@@ -1905,7 +1921,8 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def host(self) -> pulumi.Output[str]:
         """
-        Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
+        Hostname or IP address of the exposed Redis endpoint used by clients
+        to connect to the service.
         """
         return pulumi.get(self, "host")
 
@@ -1968,6 +1985,7 @@ class Instance(pulumi.CustomResource):
     def nodes(self) -> pulumi.Output[Sequence['outputs.InstanceNode']]:
         """
         Output only. Info per node.
+        Structure is documented below.
         """
         return pulumi.get(self, "nodes")
 
@@ -1984,9 +2002,10 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="persistenceIamIdentity")
     def persistence_iam_identity(self) -> pulumi.Output[str]:
         """
-        Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
-        "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
-        operation.
+        Output only. Cloud IAM identity used by import / export operations
+        to transfer data to/from Cloud Storage. Format is "serviceAccount:".
+        The value may change over time for a given instance so should be
+        checked before each import/export operation.
         """
         return pulumi.get(self, "persistence_iam_identity")
 
@@ -2011,9 +2030,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="readEndpoint")
     def read_endpoint(self) -> pulumi.Output[str]:
         """
-        Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy
-        replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write
-        requests must target 'host'.
+        Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
+        Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
+        will exhibit some lag behind the primary. Write requests must target 'host'.
         """
         return pulumi.get(self, "read_endpoint")
 
@@ -2021,8 +2040,8 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="readEndpointPort")
     def read_endpoint_port(self) -> pulumi.Output[int]:
         """
-        Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
-        'port'.
+        Output only. The port number of the exposed readonly redis endpoint. Standard tier only.
+        Write requests should target 'port'.
         """
         return pulumi.get(self, "read_endpoint_port")
 
@@ -2107,6 +2126,7 @@ class Instance(pulumi.CustomResource):
     def server_ca_certs(self) -> pulumi.Output[Sequence['outputs.InstanceServerCaCert']]:
         """
         List of server CA certificates for the instance.
+        Structure is documented below.
         """
         return pulumi.get(self, "server_ca_certs")
 

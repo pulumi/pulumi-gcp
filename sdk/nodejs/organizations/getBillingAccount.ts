@@ -24,11 +24,8 @@ import * as utilities from "../utilities";
  */
 export function getBillingAccount(args?: GetBillingAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetBillingAccountResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:organizations/getBillingAccount:getBillingAccount", {
         "billingAccount": args.billingAccount,
         "displayName": args.displayName,
@@ -74,9 +71,26 @@ export interface GetBillingAccountResult {
      */
     readonly projectIds: string[];
 }
-
+/**
+ * Use this data source to get information about a Google Billing Account.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const acct = gcp.organizations.getBillingAccount({
+ *     displayName: "My Billing Account",
+ *     open: true,
+ * });
+ * const myProject = new gcp.organizations.Project("myProject", {
+ *     projectId: "your-project-id",
+ *     orgId: "1234567",
+ *     billingAccount: acct.then(acct => acct.id),
+ * });
+ * ```
+ */
 export function getBillingAccountOutput(args?: GetBillingAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBillingAccountResult> {
-    return pulumi.output(args).apply(a => getBillingAccount(a, opts))
+    return pulumi.output(args).apply((a: any) => getBillingAccount(a, opts))
 }
 
 /**

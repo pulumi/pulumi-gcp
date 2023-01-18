@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     public sealed class PreventionInspectTemplateInspectConfigRuleSet
     {
         /// <summary>
-        /// If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+        /// List of infoTypes this rule set is applied to.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.PreventionInspectTemplateInspectConfigRuleSetInfoType> InfoTypes;

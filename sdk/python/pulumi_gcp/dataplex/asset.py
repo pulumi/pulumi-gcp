@@ -36,7 +36,7 @@ class AssetArgs:
         :param pulumi.Input[str] description: Optional. Description of the asset.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the asset.
-        :param pulumi.Input[str] name: Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+        :param pulumi.Input[str] name: The name of the asset.
         :param pulumi.Input[str] project: The project for the resource
         """
         pulumi.set(__self__, "dataplex_zone", dataplex_zone)
@@ -155,7 +155,7 @@ class AssetArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+        The name of the asset.
         """
         return pulumi.get(self, "name")
 
@@ -207,14 +207,13 @@ class _AssetState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the asset.
         :param pulumi.Input[str] lake: The lake for the resource
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[str] name: Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+        :param pulumi.Input[str] name: The name of the asset.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input['AssetResourceSpecArgs'] resource_spec: Required. Immutable. Specification of the resource that is referenced by this asset.
         :param pulumi.Input[Sequence[pulumi.Input['AssetResourceStatusArgs']]] resource_statuses: Output only. Status of the resource referenced by this asset.
         :param pulumi.Input[Sequence[pulumi.Input['AssetSecurityStatusArgs']]] security_statuses: Output only. Status of the security policy applied to resource referenced by this asset.
         :param pulumi.Input[str] state: Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
-        :param pulumi.Input[str] uid: Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and
-               re-created with the same name.
+        :param pulumi.Input[str] uid: Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
         :param pulumi.Input[str] update_time: Output only. The time when the asset was last updated.
         """
         if create_time is not None:
@@ -364,7 +363,7 @@ class _AssetState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+        The name of the asset.
         """
         return pulumi.get(self, "name")
 
@@ -436,8 +435,7 @@ class _AssetState:
     @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and
-        re-created with the same name.
+        Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
         """
         return pulumi.get(self, "uid")
 
@@ -504,7 +502,7 @@ class Asset(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the asset.
         :param pulumi.Input[str] lake: The lake for the resource
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[str] name: Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+        :param pulumi.Input[str] name: The name of the asset.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[pulumi.InputType['AssetResourceSpecArgs']] resource_spec: Required. Immutable. Specification of the resource that is referenced by this asset.
         """
@@ -639,14 +637,13 @@ class Asset(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the asset.
         :param pulumi.Input[str] lake: The lake for the resource
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[str] name: Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+        :param pulumi.Input[str] name: The name of the asset.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[pulumi.InputType['AssetResourceSpecArgs']] resource_spec: Required. Immutable. Specification of the resource that is referenced by this asset.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AssetResourceStatusArgs']]]] resource_statuses: Output only. Status of the resource referenced by this asset.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AssetSecurityStatusArgs']]]] security_statuses: Output only. Status of the security policy applied to resource referenced by this asset.
         :param pulumi.Input[str] state: Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
-        :param pulumi.Input[str] uid: Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and
-               re-created with the same name.
+        :param pulumi.Input[str] uid: Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
         :param pulumi.Input[str] update_time: Output only. The time when the asset was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -748,7 +745,7 @@ class Asset(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+        The name of the asset.
         """
         return pulumi.get(self, "name")
 
@@ -796,8 +793,7 @@ class Asset(pulumi.CustomResource):
     @pulumi.getter
     def uid(self) -> pulumi.Output[str]:
         """
-        Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and
-        re-created with the same name.
+        Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
         """
         return pulumi.get(self, "uid")
 

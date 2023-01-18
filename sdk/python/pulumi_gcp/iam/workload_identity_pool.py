@@ -126,14 +126,18 @@ class _WorkloadIdentityPoolState:
                access again.
         :param pulumi.Input[str] display_name: A display name for the pool. Cannot exceed 32 characters.
         :param pulumi.Input[str] name: The resource name of the pool as
-               'projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}'.
+               `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] state: The state of the pool. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The pool is active, and may be used in Google
-               Cloud policies. * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after approximately 30
-               days. You can restore a soft-deleted pool using UndeleteWorkloadIdentityPool. You cannot reuse the ID of a soft-deleted
-               pool until it is permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or use existing
-               tokens to access resources. If the pool is undeleted, existing tokens grant access again.
+        :param pulumi.Input[str] state: The state of the pool.
+               * STATE_UNSPECIFIED: State unspecified.
+               * ACTIVE: The pool is active, and may be used in Google Cloud policies.
+               * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after
+               approximately 30 days. You can restore a soft-deleted pool using
+               UndeleteWorkloadIdentityPool. You cannot reuse the ID of a soft-deleted pool until it is
+               permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or
+               use existing tokens to access resources. If the pool is undeleted, existing tokens grant
+               access again.
         :param pulumi.Input[str] workload_identity_pool_id: The ID to use for the pool, which becomes the final component of the resource name. This
                value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
@@ -196,7 +200,7 @@ class _WorkloadIdentityPoolState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The resource name of the pool as
-        'projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}'.
+        `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}`.
         """
         return pulumi.get(self, "name")
 
@@ -221,11 +225,15 @@ class _WorkloadIdentityPoolState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        The state of the pool. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The pool is active, and may be used in Google
-        Cloud policies. * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after approximately 30
-        days. You can restore a soft-deleted pool using UndeleteWorkloadIdentityPool. You cannot reuse the ID of a soft-deleted
-        pool until it is permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or use existing
-        tokens to access resources. If the pool is undeleted, existing tokens grant access again.
+        The state of the pool.
+        * STATE_UNSPECIFIED: State unspecified.
+        * ACTIVE: The pool is active, and may be used in Google Cloud policies.
+        * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after
+        approximately 30 days. You can restore a soft-deleted pool using
+        UndeleteWorkloadIdentityPool. You cannot reuse the ID of a soft-deleted pool until it is
+        permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or
+        use existing tokens to access resources. If the pool is undeleted, existing tokens grant
+        access again.
         """
         return pulumi.get(self, "state")
 
@@ -442,14 +450,18 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                access again.
         :param pulumi.Input[str] display_name: A display name for the pool. Cannot exceed 32 characters.
         :param pulumi.Input[str] name: The resource name of the pool as
-               'projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}'.
+               `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] state: The state of the pool. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The pool is active, and may be used in Google
-               Cloud policies. * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after approximately 30
-               days. You can restore a soft-deleted pool using UndeleteWorkloadIdentityPool. You cannot reuse the ID of a soft-deleted
-               pool until it is permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or use existing
-               tokens to access resources. If the pool is undeleted, existing tokens grant access again.
+        :param pulumi.Input[str] state: The state of the pool.
+               * STATE_UNSPECIFIED: State unspecified.
+               * ACTIVE: The pool is active, and may be used in Google Cloud policies.
+               * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after
+               approximately 30 days. You can restore a soft-deleted pool using
+               UndeleteWorkloadIdentityPool. You cannot reuse the ID of a soft-deleted pool until it is
+               permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or
+               use existing tokens to access resources. If the pool is undeleted, existing tokens grant
+               access again.
         :param pulumi.Input[str] workload_identity_pool_id: The ID to use for the pool, which becomes the final component of the resource name. This
                value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
@@ -498,7 +510,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The resource name of the pool as
-        'projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}'.
+        `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}`.
         """
         return pulumi.get(self, "name")
 
@@ -515,11 +527,15 @@ class WorkloadIdentityPool(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        The state of the pool. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The pool is active, and may be used in Google
-        Cloud policies. * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after approximately 30
-        days. You can restore a soft-deleted pool using UndeleteWorkloadIdentityPool. You cannot reuse the ID of a soft-deleted
-        pool until it is permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or use existing
-        tokens to access resources. If the pool is undeleted, existing tokens grant access again.
+        The state of the pool.
+        * STATE_UNSPECIFIED: State unspecified.
+        * ACTIVE: The pool is active, and may be used in Google Cloud policies.
+        * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after
+        approximately 30 days. You can restore a soft-deleted pool using
+        UndeleteWorkloadIdentityPool. You cannot reuse the ID of a soft-deleted pool until it is
+        permanently deleted. While a pool is deleted, you cannot use it to exchange tokens, or
+        use existing tokens to access resources. If the pool is undeleted, existing tokens grant
+        access again.
         """
         return pulumi.get(self, "state")
 

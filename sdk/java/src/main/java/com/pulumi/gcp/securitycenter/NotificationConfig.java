@@ -116,7 +116,7 @@ public class NotificationConfig extends com.pulumi.resources.CustomResource {
     }
     /**
      * The resource name of this notification config, in the format
-     * &#39;organizations/{{organization}}/notificationConfigs/{{config_id}}&#39;.
+     * `organizations/{{organization}}/notificationConfigs/{{config_id}}`.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
@@ -124,7 +124,7 @@ public class NotificationConfig extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The resource name of this notification config, in the format
-     * &#39;organizations/{{organization}}/notificationConfigs/{{config_id}}&#39;.
+     * `organizations/{{organization}}/notificationConfigs/{{config_id}}`.
      * 
      */
     public Output<String> name() {
@@ -163,14 +163,16 @@ public class NotificationConfig extends com.pulumi.resources.CustomResource {
         return this.pubsubTopic;
     }
     /**
-     * The service account that needs &#34;pubsub.topics.publish&#34; permission to publish to the Pub/Sub topic.
+     * The service account that needs &#34;pubsub.topics.publish&#34; permission to
+     * publish to the Pub/Sub topic.
      * 
      */
     @Export(name="serviceAccount", type=String.class, parameters={})
     private Output<String> serviceAccount;
 
     /**
-     * @return The service account that needs &#34;pubsub.topics.publish&#34; permission to publish to the Pub/Sub topic.
+     * @return The service account that needs &#34;pubsub.topics.publish&#34; permission to
+     * publish to the Pub/Sub topic.
      * 
      */
     public Output<String> serviceAccount() {

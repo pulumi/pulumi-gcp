@@ -15,9 +15,17 @@ public final class AttachedClusterErrorArgs extends com.pulumi.resources.Resourc
 
     public static final AttachedClusterErrorArgs Empty = new AttachedClusterErrorArgs();
 
+    /**
+     * Human-friendly description of the error.
+     * 
+     */
     @Import(name="message")
     private @Nullable Output<String> message;
 
+    /**
+     * @return Human-friendly description of the error.
+     * 
+     */
     public Optional<Output<String>> message() {
         return Optional.ofNullable(this.message);
     }
@@ -46,11 +54,23 @@ public final class AttachedClusterErrorArgs extends com.pulumi.resources.Resourc
             $ = new AttachedClusterErrorArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param message Human-friendly description of the error.
+         * 
+         * @return builder
+         * 
+         */
         public Builder message(@Nullable Output<String> message) {
             $.message = message;
             return this;
         }
 
+        /**
+         * @param message Human-friendly description of the error.
+         * 
+         * @return builder
+         * 
+         */
         public Builder message(String message) {
             return message(Output.of(message));
         }

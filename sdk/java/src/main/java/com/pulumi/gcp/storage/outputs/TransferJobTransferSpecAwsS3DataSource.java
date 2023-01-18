@@ -18,7 +18,7 @@ public final class TransferJobTransferSpecAwsS3DataSource {
      */
     private @Nullable TransferJobTransferSpecAwsS3DataSourceAwsAccessKey awsAccessKey;
     /**
-     * @return S3 Bucket name.
+     * @return Google Cloud Storage bucket name.
      * 
      */
     private String bucketName;
@@ -37,7 +37,7 @@ public final class TransferJobTransferSpecAwsS3DataSource {
         return Optional.ofNullable(this.awsAccessKey);
     }
     /**
-     * @return S3 Bucket name.
+     * @return Google Cloud Storage bucket name.
      * 
      */
     public String bucketName() {

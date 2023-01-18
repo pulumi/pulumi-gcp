@@ -743,7 +743,7 @@ public final class ComputeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
-     * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+     * import com.pulumi.gcp.compute.inputs.GetDefaultServiceAccountArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -779,7 +779,7 @@ public final class ComputeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
-     * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+     * import com.pulumi.gcp.compute.inputs.GetDefaultServiceAccountArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -815,7 +815,7 @@ public final class ComputeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
-     * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+     * import com.pulumi.gcp.compute.inputs.GetDefaultServiceAccountArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -851,7 +851,7 @@ public final class ComputeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
-     * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+     * import com.pulumi.gcp.compute.inputs.GetDefaultServiceAccountArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -887,7 +887,7 @@ public final class ComputeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
-     * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+     * import com.pulumi.gcp.compute.inputs.GetDefaultServiceAccountArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -923,7 +923,7 @@ public final class ComputeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.compute.ComputeFunctions;
-     * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+     * import com.pulumi.gcp.compute.inputs.GetDefaultServiceAccountArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -3723,6 +3723,46 @@ public final class ComputeFunctions {
      * 
      * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
      * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.Firewall;
+     * import com.pulumi.gcp.compute.FirewallArgs;
+     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ranges = ComputeFunctions.getLBIPRanges();
+     * 
+     *         var lb = new Firewall(&#34;lb&#34;, FirewallArgs.builder()        
+     *             .network(google_compute_network.main().name())
+     *             .allows(FirewallAllowArgs.builder()
+     *                 .protocol(&#34;tcp&#34;)
+     *                 .ports(&#34;80&#34;)
+     *                 .build())
+     *             .sourceRanges(ranges.applyValue(getLBIPRangesResult -&gt; getLBIPRangesResult.networks()))
+     *             .targetTags(&#34;InstanceBehindLoadBalancer&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetLBIPRangesResult> getLBIPRanges() {
         return getLBIPRanges(InvokeArgs.Empty, InvokeOptions.Empty);
@@ -3731,6 +3771,46 @@ public final class ComputeFunctions {
      * Use this data source to access IP ranges in your firewall rules.
      * 
      * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.Firewall;
+     * import com.pulumi.gcp.compute.FirewallArgs;
+     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ranges = ComputeFunctions.getLBIPRanges();
+     * 
+     *         var lb = new Firewall(&#34;lb&#34;, FirewallArgs.builder()        
+     *             .network(google_compute_network.main().name())
+     *             .allows(FirewallAllowArgs.builder()
+     *                 .protocol(&#34;tcp&#34;)
+     *                 .ports(&#34;80&#34;)
+     *                 .build())
+     *             .sourceRanges(ranges.applyValue(getLBIPRangesResult -&gt; getLBIPRangesResult.networks()))
+     *             .targetTags(&#34;InstanceBehindLoadBalancer&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetLBIPRangesResult> getLBIPRangesPlain() {
@@ -3741,6 +3821,46 @@ public final class ComputeFunctions {
      * 
      * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
      * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.Firewall;
+     * import com.pulumi.gcp.compute.FirewallArgs;
+     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ranges = ComputeFunctions.getLBIPRanges();
+     * 
+     *         var lb = new Firewall(&#34;lb&#34;, FirewallArgs.builder()        
+     *             .network(google_compute_network.main().name())
+     *             .allows(FirewallAllowArgs.builder()
+     *                 .protocol(&#34;tcp&#34;)
+     *                 .ports(&#34;80&#34;)
+     *                 .build())
+     *             .sourceRanges(ranges.applyValue(getLBIPRangesResult -&gt; getLBIPRangesResult.networks()))
+     *             .targetTags(&#34;InstanceBehindLoadBalancer&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetLBIPRangesResult> getLBIPRanges(InvokeArgs args) {
         return getLBIPRanges(args, InvokeOptions.Empty);
@@ -3749,6 +3869,46 @@ public final class ComputeFunctions {
      * Use this data source to access IP ranges in your firewall rules.
      * 
      * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.Firewall;
+     * import com.pulumi.gcp.compute.FirewallArgs;
+     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ranges = ComputeFunctions.getLBIPRanges();
+     * 
+     *         var lb = new Firewall(&#34;lb&#34;, FirewallArgs.builder()        
+     *             .network(google_compute_network.main().name())
+     *             .allows(FirewallAllowArgs.builder()
+     *                 .protocol(&#34;tcp&#34;)
+     *                 .ports(&#34;80&#34;)
+     *                 .build())
+     *             .sourceRanges(ranges.applyValue(getLBIPRangesResult -&gt; getLBIPRangesResult.networks()))
+     *             .targetTags(&#34;InstanceBehindLoadBalancer&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetLBIPRangesResult> getLBIPRangesPlain(InvokeArgs args) {
@@ -3759,6 +3919,46 @@ public final class ComputeFunctions {
      * 
      * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
      * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.Firewall;
+     * import com.pulumi.gcp.compute.FirewallArgs;
+     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ranges = ComputeFunctions.getLBIPRanges();
+     * 
+     *         var lb = new Firewall(&#34;lb&#34;, FirewallArgs.builder()        
+     *             .network(google_compute_network.main().name())
+     *             .allows(FirewallAllowArgs.builder()
+     *                 .protocol(&#34;tcp&#34;)
+     *                 .ports(&#34;80&#34;)
+     *                 .build())
+     *             .sourceRanges(ranges.applyValue(getLBIPRangesResult -&gt; getLBIPRangesResult.networks()))
+     *             .targetTags(&#34;InstanceBehindLoadBalancer&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetLBIPRangesResult> getLBIPRanges(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getLBIPRanges:getLBIPRanges", TypeShape.of(GetLBIPRangesResult.class), args, Utilities.withVersion(options));
@@ -3767,6 +3967,46 @@ public final class ComputeFunctions {
      * Use this data source to access IP ranges in your firewall rules.
      * 
      * https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.Firewall;
+     * import com.pulumi.gcp.compute.FirewallArgs;
+     * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ranges = ComputeFunctions.getLBIPRanges();
+     * 
+     *         var lb = new Firewall(&#34;lb&#34;, FirewallArgs.builder()        
+     *             .network(google_compute_network.main().name())
+     *             .allows(FirewallAllowArgs.builder()
+     *                 .protocol(&#34;tcp&#34;)
+     *                 .ports(&#34;80&#34;)
+     *                 .build())
+     *             .sourceRanges(ranges.applyValue(getLBIPRangesResult -&gt; getLBIPRangesResult.networks()))
+     *             .targetTags(&#34;InstanceBehindLoadBalancer&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetLBIPRangesResult> getLBIPRangesPlain(InvokeArgs args, InvokeOptions options) {

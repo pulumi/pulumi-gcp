@@ -14,7 +14,7 @@ public final class PatchDeploymentRecurringScheduleWeeklyArgs extends com.pulumi
     public static final PatchDeploymentRecurringScheduleWeeklyArgs Empty = new PatchDeploymentRecurringScheduleWeeklyArgs();
 
     /**
-     * A day of the week.
+     * IANA Time Zone Database time zone, e.g. &#34;America/New_York&#34;.
      * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
      * 
      */
@@ -22,7 +22,7 @@ public final class PatchDeploymentRecurringScheduleWeeklyArgs extends com.pulumi
     private Output<String> dayOfWeek;
 
     /**
-     * @return A day of the week.
+     * @return IANA Time Zone Database time zone, e.g. &#34;America/New_York&#34;.
      * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
      * 
      */
@@ -55,7 +55,7 @@ public final class PatchDeploymentRecurringScheduleWeeklyArgs extends com.pulumi
         }
 
         /**
-         * @param dayOfWeek A day of the week.
+         * @param dayOfWeek IANA Time Zone Database time zone, e.g. &#34;America/New_York&#34;.
          * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
          * 
          * @return builder
@@ -67,7 +67,7 @@ public final class PatchDeploymentRecurringScheduleWeeklyArgs extends com.pulumi
         }
 
         /**
-         * @param dayOfWeek A day of the week.
+         * @param dayOfWeek IANA Time Zone Database time zone, e.g. &#34;America/New_York&#34;.
          * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
          * 
          * @return builder

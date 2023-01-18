@@ -158,9 +158,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly readPoolConfig!: pulumi.Output<outputs.alloydb.InstanceReadPoolConfig | undefined>;
     /**
-     * Set to true if the current state of Instance does not match the user's intended state, and the service is actively
-     * updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover
-     * or maintenance.
+     * Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
@@ -308,9 +306,7 @@ export interface InstanceState {
      */
     readPoolConfig?: pulumi.Input<inputs.alloydb.InstanceReadPoolConfig>;
     /**
-     * Set to true if the current state of Instance does not match the user's intended state, and the service is actively
-     * updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover
-     * or maintenance.
+     * Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
      */
     reconciling?: pulumi.Input<boolean>;
     /**

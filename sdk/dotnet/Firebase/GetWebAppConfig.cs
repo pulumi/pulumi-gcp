@@ -83,17 +83,47 @@ namespace Pulumi.Gcp.Firebase
     [OutputType]
     public sealed class GetWebAppConfigResult
     {
+        /// <summary>
+        /// The API key associated with the web App.
+        /// </summary>
         public readonly string ApiKey;
+        /// <summary>
+        /// The domain Firebase Auth configures for OAuth redirects, in the format:
+        /// projectId.firebaseapp.com
+        /// </summary>
         public readonly string AuthDomain;
+        /// <summary>
+        /// The default Firebase Realtime Database URL.
+        /// </summary>
         public readonly string DatabaseUrl;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The ID of the project's default GCP resource location. The location is one of the available GCP resource
+        /// locations.
+        /// This field is omitted if the default GCP resource location has not been finalized yet. To set your project's
+        /// default GCP resource location, call defaultLocation.finalize after you add Firebase services to your project.
+        /// </summary>
         public readonly string LocationId;
+        /// <summary>
+        /// The unique Google-assigned identifier of the Google Analytics web stream associated with the Firebase Web App.
+        /// Firebase SDKs use this ID to interact with Google Analytics APIs.
+        /// This field is only present if the App is linked to a web stream in a Google Analytics App + Web property.
+        /// Learn more about this ID and Google Analytics web streams in the Analytics documentation.
+        /// To generate a measurementId and link the Web App with a Google Analytics web stream,
+        /// call projects.addGoogleAnalytics.
+        /// </summary>
         public readonly string MeasurementId;
+        /// <summary>
+        /// The sender ID for use with Firebase Cloud Messaging.
+        /// </summary>
         public readonly string MessagingSenderId;
         public readonly string? Project;
+        /// <summary>
+        /// The default Cloud Storage for Firebase storage bucket name.
+        /// </summary>
         public readonly string StorageBucket;
         public readonly string WebAppId;
 

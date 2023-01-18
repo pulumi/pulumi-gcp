@@ -41,7 +41,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 //				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
+//					{
 //						Role: "roles/editor",
 //						Members: []string{
 //							"user:jane@example.com",
@@ -54,7 +54,7 @@ import (
 //			}
 //			_, err = spanner.NewInstanceIAMPolicy(ctx, "instance", &spanner.InstanceIAMPolicyArgs{
 //				Instance:   pulumi.String("your-instance-name"),
-//				PolicyData: pulumi.String(admin.PolicyData),
+//				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

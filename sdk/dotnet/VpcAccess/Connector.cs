@@ -129,8 +129,7 @@ namespace Pulumi.Gcp.VpcAccess
         public Output<int?> MinThroughput { get; private set; } = null!;
 
         /// <summary>
-        /// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
-        /// https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
+        /// The name of the resource (Max 25 characters).
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -256,8 +255,7 @@ namespace Pulumi.Gcp.VpcAccess
         public Input<int>? MinThroughput { get; set; }
 
         /// <summary>
-        /// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
-        /// https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
+        /// The name of the resource (Max 25 characters).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -333,8 +331,7 @@ namespace Pulumi.Gcp.VpcAccess
         public Input<int>? MinThroughput { get; set; }
 
         /// <summary>
-        /// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
-        /// https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
+        /// The name of the resource (Max 25 characters).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

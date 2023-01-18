@@ -33,8 +33,7 @@ public final class FlexibleAppVersionLivenessCheck {
      */
     private @Nullable String initialDelay;
     /**
-     * @return Path to the static files matched by the URL pattern, from the application root directory.
-     * The path can refer to text matched in groupings in the URL pattern.
+     * @return The request path.
      * 
      */
     private String path;
@@ -79,8 +78,7 @@ public final class FlexibleAppVersionLivenessCheck {
         return Optional.ofNullable(this.initialDelay);
     }
     /**
-     * @return Path to the static files matched by the URL pattern, from the application root directory.
-     * The path can refer to text matched in groupings in the URL pattern.
+     * @return The request path.
      * 
      */
     public String path() {

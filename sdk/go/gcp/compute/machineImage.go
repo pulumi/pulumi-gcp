@@ -115,7 +115,7 @@ import (
 //				return err
 //			}
 //			_, err = projects.NewIAMMember(ctx, "kms-project-binding", &projects.IAMMemberArgs{
-//				Project: pulumi.String(project.ProjectId),
+//				Project: *pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@compute-system.iam.gserviceaccount.com", project.Number)),
 //			}, pulumi.Provider(google_beta))

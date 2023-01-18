@@ -100,6 +100,10 @@ namespace Pulumi.Gcp.DataCatalog
     public partial class TagTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The display name for this field.
+        /// (Required)
+        /// The display name of the enum value.
+        /// (Optional)
         /// The display name for this template.
         /// </summary>
         [Output("displayName")]
@@ -119,7 +123,6 @@ namespace Pulumi.Gcp.DataCatalog
         public Output<bool?> ForceDelete { get; private set; } = null!;
 
         /// <summary>
-        /// -
         /// The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
         /// </summary>
         [Output("name")]
@@ -191,6 +194,10 @@ namespace Pulumi.Gcp.DataCatalog
     public sealed class TagTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The display name for this field.
+        /// (Required)
+        /// The display name of the enum value.
+        /// (Optional)
         /// The display name for this template.
         /// </summary>
         [Input("displayName")]
@@ -243,6 +250,10 @@ namespace Pulumi.Gcp.DataCatalog
     public sealed class TagTemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The display name for this field.
+        /// (Required)
+        /// The display name of the enum value.
+        /// (Optional)
         /// The display name for this template.
         /// </summary>
         [Input("displayName")]
@@ -268,7 +279,6 @@ namespace Pulumi.Gcp.DataCatalog
         public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
-        /// -
         /// The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
         /// </summary>
         [Input("name")]

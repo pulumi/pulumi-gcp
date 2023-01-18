@@ -102,7 +102,7 @@ export class AccessLevel extends pulumi.CustomResource {
      */
     public readonly custom!: pulumi.Output<outputs.accesscontextmanager.AccessLevelCustom | undefined>;
     /**
-     * Description of the expression
+     * Description of the AccessLevel and its use. Does not affect behavior.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -117,7 +117,7 @@ export class AccessLevel extends pulumi.CustomResource {
      */
     public readonly parent!: pulumi.Output<string>;
     /**
-     * Title for the expression, i.e. a short string describing its purpose.
+     * Human readable title. Must be unique within the Policy.
      */
     public readonly title!: pulumi.Output<string>;
 
@@ -176,7 +176,7 @@ export interface AccessLevelState {
      */
     custom?: pulumi.Input<inputs.accesscontextmanager.AccessLevelCustom>;
     /**
-     * Description of the expression
+     * Description of the AccessLevel and its use. Does not affect behavior.
      */
     description?: pulumi.Input<string>;
     /**
@@ -191,7 +191,7 @@ export interface AccessLevelState {
      */
     parent?: pulumi.Input<string>;
     /**
-     * Title for the expression, i.e. a short string describing its purpose.
+     * Human readable title. Must be unique within the Policy.
      */
     title?: pulumi.Input<string>;
 }
@@ -212,7 +212,7 @@ export interface AccessLevelArgs {
      */
     custom?: pulumi.Input<inputs.accesscontextmanager.AccessLevelCustom>;
     /**
-     * Description of the expression
+     * Description of the AccessLevel and its use. Does not affect behavior.
      */
     description?: pulumi.Input<string>;
     /**
@@ -227,7 +227,7 @@ export interface AccessLevelArgs {
      */
     parent: pulumi.Input<string>;
     /**
-     * Title for the expression, i.e. a short string describing its purpose.
+     * Human readable title. Must be unique within the Policy.
      */
     title: pulumi.Input<string>;
 }

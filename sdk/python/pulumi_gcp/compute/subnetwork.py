@@ -32,10 +32,10 @@ class SubnetworkArgs:
                  stack_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Subnetwork resource.
-        :param pulumi.Input[str] ip_cidr_range: The range of IP addresses belonging to this subnetwork secondary
-               range. Provide this property when you create the subnetwork.
-               Ranges must be unique and non-overlapping with all primary and
-               secondary IP ranges within a network. Only IPv4 is supported.
+        :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that are owned by this subnetwork.
+               Provide this property when you create the subnetwork. For example,
+               10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
+               non-overlapping within a network. Only IPv4 is supported.
         :param pulumi.Input[str] network: The network this subnet belongs to.
                Only networks that are in the distributed mode can have subnetworks.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
@@ -112,10 +112,10 @@ class SubnetworkArgs:
     @pulumi.getter(name="ipCidrRange")
     def ip_cidr_range(self) -> pulumi.Input[str]:
         """
-        The range of IP addresses belonging to this subnetwork secondary
-        range. Provide this property when you create the subnetwork.
-        Ranges must be unique and non-overlapping with all primary and
-        secondary IP ranges within a network. Only IPv4 is supported.
+        The range of internal addresses that are owned by this subnetwork.
+        Provide this property when you create the subnetwork. For example,
+        10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
+        non-overlapping within a network. Only IPv4 is supported.
         """
         return pulumi.get(self, "ip_cidr_range")
 
@@ -342,11 +342,12 @@ class _SubnetworkState:
                creation time.
         :param pulumi.Input[str] external_ipv6_prefix: The range of external IPv6 addresses that are owned by this subnetwork.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. This field is used internally during updates of this resource.
-        :param pulumi.Input[str] gateway_address: The gateway address for default routes to reach destination addresses outside this subnetwork.
-        :param pulumi.Input[str] ip_cidr_range: The range of IP addresses belonging to this subnetwork secondary
-               range. Provide this property when you create the subnetwork.
-               Ranges must be unique and non-overlapping with all primary and
-               secondary IP ranges within a network. Only IPv4 is supported.
+        :param pulumi.Input[str] gateway_address: The gateway address for default routes to reach destination addresses
+               outside this subnetwork.
+        :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that are owned by this subnetwork.
+               Provide this property when you create the subnetwork. For example,
+               10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
+               non-overlapping within a network. Only IPv4 is supported.
         :param pulumi.Input[str] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
                or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
                cannot enable direct path.
@@ -489,7 +490,8 @@ class _SubnetworkState:
     @pulumi.getter(name="gatewayAddress")
     def gateway_address(self) -> Optional[pulumi.Input[str]]:
         """
-        The gateway address for default routes to reach destination addresses outside this subnetwork.
+        The gateway address for default routes to reach destination addresses
+        outside this subnetwork.
         """
         return pulumi.get(self, "gateway_address")
 
@@ -501,10 +503,10 @@ class _SubnetworkState:
     @pulumi.getter(name="ipCidrRange")
     def ip_cidr_range(self) -> Optional[pulumi.Input[str]]:
         """
-        The range of IP addresses belonging to this subnetwork secondary
-        range. Provide this property when you create the subnetwork.
-        Ranges must be unique and non-overlapping with all primary and
-        secondary IP ranges within a network. Only IPv4 is supported.
+        The range of internal addresses that are owned by this subnetwork.
+        Provide this property when you create the subnetwork. For example,
+        10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
+        non-overlapping within a network. Only IPv4 is supported.
         """
         return pulumi.get(self, "ip_cidr_range")
 
@@ -867,10 +869,10 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource. This field can be set only at resource
                creation time.
-        :param pulumi.Input[str] ip_cidr_range: The range of IP addresses belonging to this subnetwork secondary
-               range. Provide this property when you create the subnetwork.
-               Ranges must be unique and non-overlapping with all primary and
-               secondary IP ranges within a network. Only IPv4 is supported.
+        :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that are owned by this subnetwork.
+               Provide this property when you create the subnetwork. For example,
+               10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
+               non-overlapping within a network. Only IPv4 is supported.
         :param pulumi.Input[str] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
                or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
                cannot enable direct path.
@@ -1156,11 +1158,12 @@ class Subnetwork(pulumi.CustomResource):
                creation time.
         :param pulumi.Input[str] external_ipv6_prefix: The range of external IPv6 addresses that are owned by this subnetwork.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. This field is used internally during updates of this resource.
-        :param pulumi.Input[str] gateway_address: The gateway address for default routes to reach destination addresses outside this subnetwork.
-        :param pulumi.Input[str] ip_cidr_range: The range of IP addresses belonging to this subnetwork secondary
-               range. Provide this property when you create the subnetwork.
-               Ranges must be unique and non-overlapping with all primary and
-               secondary IP ranges within a network. Only IPv4 is supported.
+        :param pulumi.Input[str] gateway_address: The gateway address for default routes to reach destination addresses
+               outside this subnetwork.
+        :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that are owned by this subnetwork.
+               Provide this property when you create the subnetwork. For example,
+               10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
+               non-overlapping within a network. Only IPv4 is supported.
         :param pulumi.Input[str] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
                or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
                cannot enable direct path.
@@ -1269,7 +1272,8 @@ class Subnetwork(pulumi.CustomResource):
     @pulumi.getter(name="gatewayAddress")
     def gateway_address(self) -> pulumi.Output[str]:
         """
-        The gateway address for default routes to reach destination addresses outside this subnetwork.
+        The gateway address for default routes to reach destination addresses
+        outside this subnetwork.
         """
         return pulumi.get(self, "gateway_address")
 
@@ -1277,10 +1281,10 @@ class Subnetwork(pulumi.CustomResource):
     @pulumi.getter(name="ipCidrRange")
     def ip_cidr_range(self) -> pulumi.Output[str]:
         """
-        The range of IP addresses belonging to this subnetwork secondary
-        range. Provide this property when you create the subnetwork.
-        Ranges must be unique and non-overlapping with all primary and
-        secondary IP ranges within a network. Only IPv4 is supported.
+        The range of internal addresses that are owned by this subnetwork.
+        Provide this property when you create the subnetwork. For example,
+        10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
+        non-overlapping within a network. Only IPv4 is supported.
         """
         return pulumi.get(self, "ip_cidr_range")
 

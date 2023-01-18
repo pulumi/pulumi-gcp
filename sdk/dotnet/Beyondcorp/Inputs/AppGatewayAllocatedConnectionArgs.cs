@@ -12,9 +12,15 @@ namespace Pulumi.Gcp.Beyondcorp.Inputs
 
     public sealed class AppGatewayAllocatedConnectionArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ingress port of an allocated connection.
+        /// </summary>
         [Input("ingressPort")]
         public Input<int>? IngressPort { get; set; }
 
+        /// <summary>
+        /// The PSC uri of an allocated connection.
+        /// </summary>
         [Input("pscUri")]
         public Input<string>? PscUri { get; set; }
 

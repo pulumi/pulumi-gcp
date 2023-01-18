@@ -19,14 +19,14 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
     public static final MetricDescriptorArgs Empty = new MetricDescriptorArgs();
 
     /**
-     * A human-readable description for the label.
+     * A detailed description of the metric, which can be used in documentation.
      * 
      */
     @Import(name="description", required=true)
     private Output<String> description;
 
     /**
-     * @return A human-readable description for the label.
+     * @return A detailed description of the metric, which can be used in documentation.
      * 
      */
     public Output<String> description() {
@@ -196,18 +196,16 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The type of data that can be assigned to the label.
-     * Default value is `STRING`.
-     * Possible values are `STRING`, `BOOL`, and `INT64`.
+     * Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
+     * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
      * 
      */
     @Import(name="valueType", required=true)
     private Output<String> valueType;
 
     /**
-     * @return The type of data that can be assigned to the label.
-     * Default value is `STRING`.
-     * Possible values are `STRING`, `BOOL`, and `INT64`.
+     * @return Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
+     * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
      * 
      */
     public Output<String> valueType() {
@@ -248,7 +246,7 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param description A human-readable description for the label.
+         * @param description A detailed description of the metric, which can be used in documentation.
          * 
          * @return builder
          * 
@@ -259,7 +257,7 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param description A human-readable description for the label.
+         * @param description A detailed description of the metric, which can be used in documentation.
          * 
          * @return builder
          * 
@@ -490,9 +488,8 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param valueType The type of data that can be assigned to the label.
-         * Default value is `STRING`.
-         * Possible values are `STRING`, `BOOL`, and `INT64`.
+         * @param valueType Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
+         * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
          * 
          * @return builder
          * 
@@ -503,9 +500,8 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param valueType The type of data that can be assigned to the label.
-         * Default value is `STRING`.
-         * Possible values are `STRING`, `BOOL`, and `INT64`.
+         * @param valueType Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
+         * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
          * 
          * @return builder
          * 

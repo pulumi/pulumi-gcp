@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ProjectDefaultConfigSignInEmail {
     /**
-     * @return Whether anonymous user auth is enabled for the project or not.
+     * @return Whether email auth is enabled for the project or not.
      * 
      */
     private @Nullable Boolean enabled;
@@ -26,7 +26,7 @@ public final class ProjectDefaultConfigSignInEmail {
 
     private ProjectDefaultConfigSignInEmail() {}
     /**
-     * @return Whether anonymous user auth is enabled for the project or not.
+     * @return Whether email auth is enabled for the project or not.
      * 
      */
     public Optional<Boolean> enabled() {

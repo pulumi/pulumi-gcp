@@ -51,17 +51,37 @@ namespace Pulumi.Gcp.Firebase
     [OutputType]
     public sealed class GetAppleAppResult
     {
+        /// <summary>
+        /// Immutable. The globally unique, Firebase-assigned identifier of the App.
+        /// This identifier should be treated as an opaque token, as the data format is not specified.
+        /// </summary>
         public readonly string AppId;
+        /// <summary>
+        /// The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
+        /// </summary>
         public readonly string AppStoreId;
+        /// <summary>
+        /// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
+        /// </summary>
         public readonly string BundleId;
         public readonly string DeletionPolicy;
+        /// <summary>
+        /// The user-assigned display name of the App.
+        /// </summary>
         public readonly string DisplayName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The fully qualified resource name of the App, for example:
+        /// projects/projectId/iosApps/appId
+        /// </summary>
         public readonly string Name;
         public readonly string Project;
+        /// <summary>
+        /// The Apple Developer Team ID associated with the App in the App Store.
+        /// </summary>
         public readonly string TeamId;
 
         [OutputConstructor]

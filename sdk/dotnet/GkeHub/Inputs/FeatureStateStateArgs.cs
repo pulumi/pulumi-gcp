@@ -18,6 +18,9 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Output only. When the Feature resource was last updated.
+        /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
 

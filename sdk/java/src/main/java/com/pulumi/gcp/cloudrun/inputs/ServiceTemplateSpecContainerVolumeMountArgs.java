@@ -31,14 +31,14 @@ public final class ServiceTemplateSpecContainerVolumeMountArgs extends com.pulum
     }
 
     /**
-     * Volume&#39;s name.
+     * This must match the Name of a Volume.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Volume&#39;s name.
+     * @return This must match the Name of a Volume.
      * 
      */
     public Output<String> name() {
@@ -94,7 +94,7 @@ public final class ServiceTemplateSpecContainerVolumeMountArgs extends com.pulum
         }
 
         /**
-         * @param name Volume&#39;s name.
+         * @param name This must match the Name of a Volume.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class ServiceTemplateSpecContainerVolumeMountArgs extends com.pulum
         }
 
         /**
-         * @param name Volume&#39;s name.
+         * @param name This must match the Name of a Volume.
          * 
          * @return builder
          * 

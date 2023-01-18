@@ -15,17 +15,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my_beyondcorp_app_connector = pulumi.output(gcp.beyondcorp.getAppConnector({
+ * const my-beyondcorp-app-connector = gcp.beyondcorp.getAppConnector({
  *     name: "my-beyondcorp-app-connector",
- * }));
+ * });
  * ```
  */
 export function getAppConnector(args: GetAppConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetAppConnectorResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:beyondcorp/getAppConnector:getAppConnector", {
         "name": args.name,
         "project": args.project,
@@ -69,9 +66,22 @@ export interface GetAppConnectorResult {
     readonly region?: string;
     readonly state: string;
 }
-
+/**
+ * Get information about a Google BeyondCorp App Connector.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-beyondcorp-app-connector = gcp.beyondcorp.getAppConnector({
+ *     name: "my-beyondcorp-app-connector",
+ * });
+ * ```
+ */
 export function getAppConnectorOutput(args: GetAppConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppConnectorResult> {
-    return pulumi.output(args).apply(a => getAppConnector(a, opts))
+    return pulumi.output(args).apply((a: any) => getAppConnector(a, opts))
 }
 
 /**

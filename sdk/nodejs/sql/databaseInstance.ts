@@ -30,8 +30,6 @@ import * as utilities from "../utilities";
  *     databaseVersion: "POSTGRES_14",
  *     region: "us-central1",
  *     settings: {
- *         // Second-generation instance tiers are based on the machine
- *         // type. See argument reference below.
  *         tier: "db-f1-micro",
  *     },
  * });
@@ -188,7 +186,10 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public readonly masterInstanceName!: pulumi.Output<string>;
     /**
-     * A name for this whitelist entry.
+     * The name of the instance. If the name is left
+     * blank, the provider will randomly generate one when the instance is first
+     * created. This is done because after a name is used, it cannot be reused for
+     * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -196,7 +197,8 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly privateIpAddress!: pulumi.Output<string>;
     /**
-     * The full project ID of the source instance.`
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -379,7 +381,10 @@ export interface DatabaseInstanceState {
      */
     masterInstanceName?: pulumi.Input<string>;
     /**
-     * A name for this whitelist entry.
+     * The name of the instance. If the name is left
+     * blank, the provider will randomly generate one when the instance is first
+     * created. This is done because after a name is used, it cannot be reused for
+     * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
      */
     name?: pulumi.Input<string>;
     /**
@@ -387,7 +392,8 @@ export interface DatabaseInstanceState {
      */
     privateIpAddress?: pulumi.Input<string>;
     /**
-     * The full project ID of the source instance.`
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
@@ -481,11 +487,15 @@ export interface DatabaseInstanceArgs {
      */
     masterInstanceName?: pulumi.Input<string>;
     /**
-     * A name for this whitelist entry.
+     * The name of the instance. If the name is left
+     * blank, the provider will randomly generate one when the instance is first
+     * created. This is done because after a name is used, it cannot be reused for
+     * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
      */
     name?: pulumi.Input<string>;
     /**
-     * The full project ID of the source instance.`
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**

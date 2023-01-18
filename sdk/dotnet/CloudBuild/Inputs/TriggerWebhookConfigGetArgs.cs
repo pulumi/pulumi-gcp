@@ -13,14 +13,12 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
     public sealed class TriggerWebhookConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Secrets to decrypt using Cloud Key Management Service.
-        /// Structure is documented below.
+        /// Resource name for the secret required as a URL parameter.
         /// </summary>
         [Input("secret", required: true)]
         public Input<string> Secret { get; set; } = null!;
 
         /// <summary>
-        /// -
         /// Potential issues with the underlying Pub/Sub subscription configuration.
         /// Only populated on get requests.
         /// </summary>

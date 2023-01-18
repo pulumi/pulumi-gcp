@@ -31,7 +31,7 @@ class CxWebhookArgs:
         :param pulumi.Input[bool] disabled: Indicates whether the webhook is disabled.
         :param pulumi.Input[bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
         :param pulumi.Input[bool] enable_stackdriver_logging: Determines whether this agent should log conversation queries.
-        :param pulumi.Input['CxWebhookGenericWebServiceArgs'] generic_web_service: The name of Service Directory service.
+        :param pulumi.Input['CxWebhookGenericWebServiceArgs'] generic_web_service: Configuration for a generic web service.
                Structure is documented below.
         :param pulumi.Input[str] parent: The agent to create a webhook for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
@@ -110,7 +110,7 @@ class CxWebhookArgs:
     @pulumi.getter(name="genericWebService")
     def generic_web_service(self) -> Optional[pulumi.Input['CxWebhookGenericWebServiceArgs']]:
         """
-        The name of Service Directory service.
+        Configuration for a generic web service.
         Structure is documented below.
         """
         return pulumi.get(self, "generic_web_service")
@@ -190,18 +190,16 @@ class _CxWebhookState:
         :param pulumi.Input[str] display_name: The human-readable name of the webhook, unique within the agent.
         :param pulumi.Input[bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
         :param pulumi.Input[bool] enable_stackdriver_logging: Determines whether this agent should log conversation queries.
-        :param pulumi.Input['CxWebhookGenericWebServiceArgs'] generic_web_service: The name of Service Directory service.
+        :param pulumi.Input['CxWebhookGenericWebServiceArgs'] generic_web_service: Configuration for a generic web service.
                Structure is documented below.
-        :param pulumi.Input[str] name: The unique identifier of the webhook. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-               ID>/webhooks/<Webhook ID>.
+        :param pulumi.Input[str] name: The unique identifier of the webhook.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
         :param pulumi.Input[str] parent: The agent to create a webhook for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         :param pulumi.Input[str] security_settings: Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
         :param pulumi.Input['CxWebhookServiceDirectoryArgs'] service_directory: Configuration for a Service Directory service.
                Structure is documented below.
-        :param pulumi.Input[str] start_flow: Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-               be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow
-               ID>.
+        :param pulumi.Input[str] start_flow: Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param pulumi.Input[str] timeout: Webhook execution timeout.
         """
         if disabled is not None:
@@ -279,7 +277,7 @@ class _CxWebhookState:
     @pulumi.getter(name="genericWebService")
     def generic_web_service(self) -> Optional[pulumi.Input['CxWebhookGenericWebServiceArgs']]:
         """
-        The name of Service Directory service.
+        Configuration for a generic web service.
         Structure is documented below.
         """
         return pulumi.get(self, "generic_web_service")
@@ -292,8 +290,8 @@ class _CxWebhookState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique identifier of the webhook. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-        ID>/webhooks/<Webhook ID>.
+        The unique identifier of the webhook.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
         """
         return pulumi.get(self, "name")
 
@@ -343,9 +341,7 @@ class _CxWebhookState:
     @pulumi.getter(name="startFlow")
     def start_flow(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-        be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow
-        ID>.
+        Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         """
         return pulumi.get(self, "start_flow")
 
@@ -440,7 +436,7 @@ class CxWebhook(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The human-readable name of the webhook, unique within the agent.
         :param pulumi.Input[bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
         :param pulumi.Input[bool] enable_stackdriver_logging: Determines whether this agent should log conversation queries.
-        :param pulumi.Input[pulumi.InputType['CxWebhookGenericWebServiceArgs']] generic_web_service: The name of Service Directory service.
+        :param pulumi.Input[pulumi.InputType['CxWebhookGenericWebServiceArgs']] generic_web_service: Configuration for a generic web service.
                Structure is documented below.
         :param pulumi.Input[str] parent: The agent to create a webhook for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
@@ -586,18 +582,16 @@ class CxWebhook(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The human-readable name of the webhook, unique within the agent.
         :param pulumi.Input[bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
         :param pulumi.Input[bool] enable_stackdriver_logging: Determines whether this agent should log conversation queries.
-        :param pulumi.Input[pulumi.InputType['CxWebhookGenericWebServiceArgs']] generic_web_service: The name of Service Directory service.
+        :param pulumi.Input[pulumi.InputType['CxWebhookGenericWebServiceArgs']] generic_web_service: Configuration for a generic web service.
                Structure is documented below.
-        :param pulumi.Input[str] name: The unique identifier of the webhook. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-               ID>/webhooks/<Webhook ID>.
+        :param pulumi.Input[str] name: The unique identifier of the webhook.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
         :param pulumi.Input[str] parent: The agent to create a webhook for.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
         :param pulumi.Input[str] security_settings: Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
         :param pulumi.Input[pulumi.InputType['CxWebhookServiceDirectoryArgs']] service_directory: Configuration for a Service Directory service.
                Structure is documented below.
-        :param pulumi.Input[str] start_flow: Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-               be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow
-               ID>.
+        :param pulumi.Input[str] start_flow: Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param pulumi.Input[str] timeout: Webhook execution timeout.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -653,7 +647,7 @@ class CxWebhook(pulumi.CustomResource):
     @pulumi.getter(name="genericWebService")
     def generic_web_service(self) -> pulumi.Output[Optional['outputs.CxWebhookGenericWebService']]:
         """
-        The name of Service Directory service.
+        Configuration for a generic web service.
         Structure is documented below.
         """
         return pulumi.get(self, "generic_web_service")
@@ -662,8 +656,8 @@ class CxWebhook(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The unique identifier of the webhook. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-        ID>/webhooks/<Webhook ID>.
+        The unique identifier of the webhook.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
         """
         return pulumi.get(self, "name")
 
@@ -697,9 +691,7 @@ class CxWebhook(pulumi.CustomResource):
     @pulumi.getter(name="startFlow")
     def start_flow(self) -> pulumi.Output[str]:
         """
-        Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-        be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow
-        ID>.
+        Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         """
         return pulumi.get(self, "start_flow")
 

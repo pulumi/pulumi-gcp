@@ -14,8 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterVerticalPodAutoscaling
     {
         /// <summary>
-        /// Enable the PodSecurityPolicy controller for this cluster.
-        /// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        /// Enables vertical pod autoscaling
         /// </summary>
         public readonly bool Enabled;
 

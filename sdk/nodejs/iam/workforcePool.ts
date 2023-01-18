@@ -105,7 +105,8 @@ export class WorkforcePool extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Output only. The resource name of the pool. Format: 'locations/{location}/workforcePools/{workforcePoolId}'
+     * Output only. The resource name of the pool.
+     * Format: `locations/{location}/workforcePools/{workforcePoolId}`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -121,13 +122,16 @@ export class WorkforcePool extends pulumi.CustomResource {
      */
     public readonly sessionDuration!: pulumi.Output<string | undefined>;
     /**
-     * Output only. The state of the pool. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The pool is active, and may be
-     * used in Google Cloud policies. * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after
-     * approximately 30 days. You can restore a soft-deleted pool using
+     * Output only. The state of the pool.
+     * * STATE_UNSPECIFIED: State unspecified.
+     * * ACTIVE: The pool is active, and may be used in Google Cloud policies.
+     * * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted
+     * after approximately 30 days. You can restore a soft-deleted pool using
      * [workforcePools.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePool).
-     * You cannot reuse the ID of a soft-deleted pool until it is permanently deleted. While a pool is deleted, you cannot use
-     * it to exchange tokens, or use existing tokens to access resources. If the pool is undeleted, existing tokens grant
-     * access again.
+     * You cannot reuse the ID of a soft-deleted pool until it is permanently deleted.
+     * While a pool is deleted, you cannot use it to exchange tokens, or use
+     * existing tokens to access resources. If the pool is undeleted, existing
+     * tokens grant access again.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
@@ -207,7 +211,8 @@ export interface WorkforcePoolState {
      */
     location?: pulumi.Input<string>;
     /**
-     * Output only. The resource name of the pool. Format: 'locations/{location}/workforcePools/{workforcePoolId}'
+     * Output only. The resource name of the pool.
+     * Format: `locations/{location}/workforcePools/{workforcePoolId}`
      */
     name?: pulumi.Input<string>;
     /**
@@ -223,13 +228,16 @@ export interface WorkforcePoolState {
      */
     sessionDuration?: pulumi.Input<string>;
     /**
-     * Output only. The state of the pool. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The pool is active, and may be
-     * used in Google Cloud policies. * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted after
-     * approximately 30 days. You can restore a soft-deleted pool using
+     * Output only. The state of the pool.
+     * * STATE_UNSPECIFIED: State unspecified.
+     * * ACTIVE: The pool is active, and may be used in Google Cloud policies.
+     * * DELETED: The pool is soft-deleted. Soft-deleted pools are permanently deleted
+     * after approximately 30 days. You can restore a soft-deleted pool using
      * [workforcePools.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePool).
-     * You cannot reuse the ID of a soft-deleted pool until it is permanently deleted. While a pool is deleted, you cannot use
-     * it to exchange tokens, or use existing tokens to access resources. If the pool is undeleted, existing tokens grant
-     * access again.
+     * You cannot reuse the ID of a soft-deleted pool until it is permanently deleted.
+     * While a pool is deleted, you cannot use it to exchange tokens, or use
+     * existing tokens to access resources. If the pool is undeleted, existing
+     * tokens grant access again.
      */
     state?: pulumi.Input<string>;
     /**

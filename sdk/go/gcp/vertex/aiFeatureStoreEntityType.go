@@ -148,8 +148,7 @@ import (
 type AiFeatureStoreEntityType struct {
 	pulumi.CustomResourceState
 
-	// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-	// nine fractional digits.
+	// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -165,8 +164,7 @@ type AiFeatureStoreEntityType struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The region of the EntityType.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-	// to nine fractional digits.
+	// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -202,8 +200,7 @@ func GetAiFeatureStoreEntityType(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AiFeatureStoreEntityType resources.
 type aiFeatureStoreEntityTypeState struct {
-	// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-	// nine fractional digits.
+	// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime *string `pulumi:"createTime"`
 	// Used to perform consistent read-modify-write updates.
 	Etag *string `pulumi:"etag"`
@@ -219,14 +216,12 @@ type aiFeatureStoreEntityTypeState struct {
 	Name *string `pulumi:"name"`
 	// The region of the EntityType.
 	Region *string `pulumi:"region"`
-	// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-	// to nine fractional digits.
+	// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type AiFeatureStoreEntityTypeState struct {
-	// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-	// nine fractional digits.
+	// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringPtrInput
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringPtrInput
@@ -242,8 +237,7 @@ type AiFeatureStoreEntityTypeState struct {
 	Name pulumi.StringPtrInput
 	// The region of the EntityType.
 	Region pulumi.StringPtrInput
-	// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-	// to nine fractional digits.
+	// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -365,8 +359,7 @@ func (o AiFeatureStoreEntityTypeOutput) ToAiFeatureStoreEntityTypeOutputWithCont
 	return o
 }
 
-// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-// nine fractional digits.
+// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 func (o AiFeatureStoreEntityTypeOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureStoreEntityType) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -405,8 +398,7 @@ func (o AiFeatureStoreEntityTypeOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureStoreEntityType) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-// to nine fractional digits.
+// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 func (o AiFeatureStoreEntityTypeOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureStoreEntityType) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

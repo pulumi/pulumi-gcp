@@ -53,16 +53,26 @@ class GetAppleAppResult:
     @property
     @pulumi.getter(name="appId")
     def app_id(self) -> str:
+        """
+        Immutable. The globally unique, Firebase-assigned identifier of the App.
+        This identifier should be treated as an opaque token, as the data format is not specified.
+        """
         return pulumi.get(self, "app_id")
 
     @property
     @pulumi.getter(name="appStoreId")
     def app_store_id(self) -> str:
+        """
+        The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
+        """
         return pulumi.get(self, "app_store_id")
 
     @property
     @pulumi.getter(name="bundleId")
     def bundle_id(self) -> str:
+        """
+        The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
+        """
         return pulumi.get(self, "bundle_id")
 
     @property
@@ -73,6 +83,9 @@ class GetAppleAppResult:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
+        """
+        The user-assigned display name of the App.
+        """
         return pulumi.get(self, "display_name")
 
     @property
@@ -86,6 +99,10 @@ class GetAppleAppResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The fully qualified resource name of the App, for example:
+        projects/projectId/iosApps/appId
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -96,6 +113,9 @@ class GetAppleAppResult:
     @property
     @pulumi.getter(name="teamId")
     def team_id(self) -> str:
+        """
+        The Apple Developer Team ID associated with the App in the App Store.
+        """
         return pulumi.get(self, "team_id")
 
 

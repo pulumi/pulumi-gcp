@@ -113,16 +113,16 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:apigee/syncAuthorization:SyncAuthorization")
 public class SyncAuthorization extends com.pulumi.resources.CustomResource {
     /**
-     * Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting
-     * each other. Used internally during updates.
+     * Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting each other.
+     * Used internally during updates.
      * 
      */
     @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
-     * @return Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting
-     * each other. Used internally during updates.
+     * @return Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting each other.
+     * Used internally during updates.
      * 
      */
     public Output<String> etag() {

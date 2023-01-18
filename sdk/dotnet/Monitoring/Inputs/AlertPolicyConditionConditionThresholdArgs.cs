@@ -129,7 +129,18 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public Input<string>? EvaluationMissingData { get; set; }
 
         /// <summary>
-        /// A logs-based filter.
+        /// A filter that identifies which time series
+        /// should be compared with the threshold.The
+        /// filter is similar to the one that is
+        /// specified in the
+        /// MetricService.ListTimeSeries request (that
+        /// call is useful to verify the time series
+        /// that will be retrieved / processed) and must
+        /// specify the metric type and optionally may
+        /// contain restrictions on resource type,
+        /// resource labels, and metric labels. This
+        /// field may not exceed 2048 Unicode characters
+        /// in length.
         /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }

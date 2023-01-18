@@ -209,8 +209,7 @@ class _ZoneState:
         :param pulumi.Input['ZoneResourceSpecArgs'] resource_spec: Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
         :param pulumi.Input[str] state: Output only. Current state of the zone. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
         :param pulumi.Input[str] type: Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED
-        :param pulumi.Input[str] uid: Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and
-               re-created with the same name.
+        :param pulumi.Input[str] uid: Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
         :param pulumi.Input[str] update_time: Output only. The time when the zone was last updated.
         """
         if asset_statuses is not None:
@@ -404,8 +403,7 @@ class _ZoneState:
     @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and
-        re-created with the same name.
+        Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
         """
         return pulumi.get(self, "uid")
 
@@ -665,8 +663,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ZoneResourceSpecArgs']] resource_spec: Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
         :param pulumi.Input[str] state: Output only. Current state of the zone. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
         :param pulumi.Input[str] type: Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED
-        :param pulumi.Input[str] uid: Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and
-               re-created with the same name.
+        :param pulumi.Input[str] uid: Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
         :param pulumi.Input[str] update_time: Output only. The time when the zone was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -798,8 +795,7 @@ class Zone(pulumi.CustomResource):
     @pulumi.getter
     def uid(self) -> pulumi.Output[str]:
         """
-        Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and
-        re-created with the same name.
+        Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
         """
         return pulumi.get(self, "uid")
 

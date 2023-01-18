@@ -66,9 +66,9 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewInstanceGroupNamedPort(ctx, "myPort", &compute.InstanceGroupNamedPortArgs{
-//				Group: myCluster.NodePools.ApplyT(func(nodePools []container.ClusterNodePool) (string, error) {
-//					return nodePools[0].InstanceGroupUrls[0], nil
-//				}).(pulumi.StringOutput),
+//				Group: myCluster.NodePools.ApplyT(func(nodePools []container.ClusterNodePool) (*string, error) {
+//					return &nodePools[0].InstanceGroupUrls[0], nil
+//				}).(pulumi.StringPtrOutput),
 //				Zone: pulumi.String("us-central1-a"),
 //				Port: pulumi.Int(8080),
 //			})
@@ -76,9 +76,9 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewInstanceGroupNamedPort(ctx, "myPorts", &compute.InstanceGroupNamedPortArgs{
-//				Group: myCluster.NodePools.ApplyT(func(nodePools []container.ClusterNodePool) (string, error) {
-//					return nodePools[0].InstanceGroupUrls[0], nil
-//				}).(pulumi.StringOutput),
+//				Group: myCluster.NodePools.ApplyT(func(nodePools []container.ClusterNodePool) (*string, error) {
+//					return &nodePools[0].InstanceGroupUrls[0], nil
+//				}).(pulumi.StringPtrOutput),
 //				Zone: pulumi.String("us-central1-a"),
 //				Port: pulumi.Int(4443),
 //			})

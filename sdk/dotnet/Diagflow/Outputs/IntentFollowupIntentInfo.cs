@@ -13,6 +13,10 @@ namespace Pulumi.Gcp.Diagflow.Outputs
     [OutputType]
     public sealed class IntentFollowupIntentInfo
     {
+        /// <summary>
+        /// The unique identifier of the followup intent.
+        /// Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
+        /// </summary>
         public readonly string? FollowupIntentName;
         /// <summary>
         /// The unique identifier of the parent intent in the chain of followup intents.

@@ -122,11 +122,15 @@ type WorkflowTemplate struct {
 	DagTimeout pulumi.StringPtrOutput `pulumi:"dagTimeout"`
 	// Required. The Directed Acyclic Graph of Jobs to submit.
 	Jobs WorkflowTemplateJobArrayOutput `pulumi:"jobs"`
+	// Optional. The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
+	// (Optional)
+	// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+	// (Optional)
 	// Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
+	// Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
 	Parameters WorkflowTemplateParameterArrayOutput `pulumi:"parameters"`
@@ -186,11 +190,15 @@ type workflowTemplateState struct {
 	DagTimeout *string `pulumi:"dagTimeout"`
 	// Required. The Directed Acyclic Graph of Jobs to submit.
 	Jobs []WorkflowTemplateJob `pulumi:"jobs"`
+	// Optional. The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
+	// (Optional)
+	// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+	// (Optional)
 	// Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
-	// Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
+	// Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
 	Name *string `pulumi:"name"`
 	// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
 	Parameters []WorkflowTemplateParameter `pulumi:"parameters"`
@@ -213,11 +221,15 @@ type WorkflowTemplateState struct {
 	DagTimeout pulumi.StringPtrInput
 	// Required. The Directed Acyclic Graph of Jobs to submit.
 	Jobs WorkflowTemplateJobArrayInput
+	// Optional. The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
+	// (Optional)
+	// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+	// (Optional)
 	// Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
-	// Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
+	// Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
 	Name pulumi.StringPtrInput
 	// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
 	Parameters WorkflowTemplateParameterArrayInput
@@ -242,11 +254,15 @@ type workflowTemplateArgs struct {
 	DagTimeout *string `pulumi:"dagTimeout"`
 	// Required. The Directed Acyclic Graph of Jobs to submit.
 	Jobs []WorkflowTemplateJob `pulumi:"jobs"`
+	// Optional. The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
+	// (Optional)
+	// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+	// (Optional)
 	// Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location string `pulumi:"location"`
-	// Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
+	// Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
 	Name *string `pulumi:"name"`
 	// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
 	Parameters []WorkflowTemplateParameter `pulumi:"parameters"`
@@ -266,11 +282,15 @@ type WorkflowTemplateArgs struct {
 	DagTimeout pulumi.StringPtrInput
 	// Required. The Directed Acyclic Graph of Jobs to submit.
 	Jobs WorkflowTemplateJobArrayInput
+	// Optional. The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
+	// (Optional)
+	// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+	// (Optional)
 	// Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringInput
-	// Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
+	// Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
 	Name pulumi.StringPtrInput
 	// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
 	Parameters WorkflowTemplateParameterArrayInput
@@ -386,6 +406,10 @@ func (o WorkflowTemplateOutput) Jobs() WorkflowTemplateJobArrayOutput {
 	return o.ApplyT(func(v *WorkflowTemplate) WorkflowTemplateJobArrayOutput { return v.Jobs }).(WorkflowTemplateJobArrayOutput)
 }
 
+// Optional. The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
+// (Optional)
+// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+// (Optional)
 // Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
 func (o WorkflowTemplateOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkflowTemplate) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
@@ -396,7 +420,7 @@ func (o WorkflowTemplateOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkflowTemplate) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
+// Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
 func (o WorkflowTemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkflowTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

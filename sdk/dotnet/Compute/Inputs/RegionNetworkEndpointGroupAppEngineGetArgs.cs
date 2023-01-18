@@ -21,17 +21,21 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? Service { get; set; }
 
         /// <summary>
-        /// A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
-        /// on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
-        /// The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
-        /// App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
+        /// A template to parse service and version fields from a request URL.
+        /// URL mask allows for routing to multiple App Engine services without
+        /// having to create multiple Network Endpoint Groups and backend services.
+        /// For example, the request URLs "foo1-dot-appname.appspot.com/v1" and
+        /// "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with
+        /// URL mask "-dot-appname.appspot.com/". The URL mask will parse
+        /// them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
         /// </summary>
         [Input("urlMask")]
         public Input<string>? UrlMask { get; set; }
 
         /// <summary>
-        /// The optional resource version. The version identified by this value is platform-specific and is follows:
-        /// API Gateway: Unused, App Engine: The service version, Cloud Functions: Unused, Cloud Run: The service tag
+        /// Optional serving version.
+        /// The version must be 1-63 characters long, and comply with RFC1035.
+        /// Example value: "v1", "v2".
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

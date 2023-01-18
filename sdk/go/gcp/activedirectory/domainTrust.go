@@ -118,7 +118,7 @@ func NewDomainTrust(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'TrustType'")
 	}
 	if args.TrustHandshakeSecret != nil {
-		args.TrustHandshakeSecret = pulumi.ToSecret(args.TrustHandshakeSecret).(pulumi.StringOutput)
+		args.TrustHandshakeSecret = pulumi.ToSecret(args.TrustHandshakeSecret).(pulumi.StringInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"trustHandshakeSecret",

@@ -63,16 +63,18 @@ public final class OccurenceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The note kind which explicitly denotes which of the occurrence details are specified. This field can be used as a filter
-     * in list requests.
+     * The note kind which explicitly denotes which of the occurrence
+     * details are specified. This field can be used as a filter in list
+     * requests.
      * 
      */
     @Import(name="kind")
     private @Nullable Output<String> kind;
 
     /**
-     * @return The note kind which explicitly denotes which of the occurrence details are specified. This field can be used as a filter
-     * in list requests.
+     * @return The note kind which explicitly denotes which of the occurrence
+     * details are specified. This field can be used as a filter in list
+     * requests.
      * 
      */
     public Optional<Output<String>> kind() {
@@ -270,8 +272,9 @@ public final class OccurenceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kind The note kind which explicitly denotes which of the occurrence details are specified. This field can be used as a filter
-         * in list requests.
+         * @param kind The note kind which explicitly denotes which of the occurrence
+         * details are specified. This field can be used as a filter in list
+         * requests.
          * 
          * @return builder
          * 
@@ -282,8 +285,9 @@ public final class OccurenceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kind The note kind which explicitly denotes which of the occurrence details are specified. This field can be used as a filter
-         * in list requests.
+         * @param kind The note kind which explicitly denotes which of the occurrence
+         * details are specified. This field can be used as a filter in list
+         * requests.
          * 
          * @return builder
          * 

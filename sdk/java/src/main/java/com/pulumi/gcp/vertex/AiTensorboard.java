@@ -140,32 +140,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:vertex/aiTensorboard:AiTensorboard")
 public class AiTensorboard extends com.pulumi.resources.CustomResource {
     /**
-     * Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not
-     * end with a &#39;/&#39;.
+     * Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not end with a &#39;/&#39;.
      * 
      */
     @Export(name="blobStoragePathPrefix", type=String.class, parameters={})
     private Output<String> blobStoragePathPrefix;
 
     /**
-     * @return Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not
-     * end with a &#39;/&#39;.
+     * @return Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not end with a &#39;/&#39;.
      * 
      */
     public Output<String> blobStoragePathPrefix() {
         return this.blobStoragePathPrefix;
     }
     /**
-     * The timestamp of when the Tensorboard was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
-     * nine fractional digits.
+     * The timestamp of when the Tensorboard was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
-     * @return The timestamp of when the Tensorboard was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
-     * nine fractional digits.
+     * @return The timestamp of when the Tensorboard was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     public Output<String> createTime() {
@@ -288,16 +284,14 @@ public class AiTensorboard extends com.pulumi.resources.CustomResource {
         return this.runCount;
     }
     /**
-     * The timestamp of when the Tensorboard was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up
-     * to nine fractional digits.
+     * The timestamp of when the Tensorboard was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**
-     * @return The timestamp of when the Tensorboard was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up
-     * to nine fractional digits.
+     * @return The timestamp of when the Tensorboard was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     public Output<String> updateTime() {

@@ -16,16 +16,16 @@ public final class AppleAppState extends com.pulumi.resources.ResourceArgs {
     public static final AppleAppState Empty = new AppleAppState();
 
     /**
-     * The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-     * the data format is not specified.
+     * The globally unique, Firebase-assigned identifier of the App.
+     * This identifier should be treated as an opaque token, as the data format is not specified.
      * 
      */
     @Import(name="appId")
     private @Nullable Output<String> appId;
 
     /**
-     * @return The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-     * the data format is not specified.
+     * @return The globally unique, Firebase-assigned identifier of the App.
+     * This identifier should be treated as an opaque token, as the data format is not specified.
      * 
      */
     public Optional<Output<String>> appId() {
@@ -97,14 +97,16 @@ public final class AppleAppState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The fully qualified resource name of the App, for example: projects/projectId/iosApps/appId
+     * The fully qualified resource name of the App, for example:
+     * projects/projectId/iosApps/appId
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The fully qualified resource name of the App, for example: projects/projectId/iosApps/appId
+     * @return The fully qualified resource name of the App, for example:
+     * projects/projectId/iosApps/appId
      * 
      */
     public Optional<Output<String>> name() {
@@ -175,8 +177,8 @@ public final class AppleAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appId The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-         * the data format is not specified.
+         * @param appId The globally unique, Firebase-assigned identifier of the App.
+         * This identifier should be treated as an opaque token, as the data format is not specified.
          * 
          * @return builder
          * 
@@ -187,8 +189,8 @@ public final class AppleAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appId The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-         * the data format is not specified.
+         * @param appId The globally unique, Firebase-assigned identifier of the App.
+         * This identifier should be treated as an opaque token, as the data format is not specified.
          * 
          * @return builder
          * 
@@ -286,7 +288,8 @@ public final class AppleAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The fully qualified resource name of the App, for example: projects/projectId/iosApps/appId
+         * @param name The fully qualified resource name of the App, for example:
+         * projects/projectId/iosApps/appId
          * 
          * @return builder
          * 
@@ -297,7 +300,8 @@ public final class AppleAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The fully qualified resource name of the App, for example: projects/projectId/iosApps/appId
+         * @param name The fully qualified resource name of the App, for example:
+         * projects/projectId/iosApps/appId
          * 
          * @return builder
          * 

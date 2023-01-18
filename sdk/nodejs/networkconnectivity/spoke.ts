@@ -150,8 +150,7 @@ export class Spoke extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is
-     * deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+     * Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
      */
     public /*out*/ readonly uniqueId!: pulumi.Output<string>;
     /**
@@ -261,8 +260,7 @@ export interface SpokeState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is
-     * deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+     * Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
      */
     uniqueId?: pulumi.Input<string>;
     /**

@@ -9,17 +9,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceTemplateShieldedInstanceConfig {
+    /**
+     * @return - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+     * 
+     */
     private Boolean enableIntegrityMonitoring;
+    /**
+     * @return - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+     * 
+     */
     private Boolean enableSecureBoot;
+    /**
+     * @return - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+     * 
+     */
     private Boolean enableVtpm;
 
     private GetInstanceTemplateShieldedInstanceConfig() {}
+    /**
+     * @return - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+     * 
+     */
     public Boolean enableIntegrityMonitoring() {
         return this.enableIntegrityMonitoring;
     }
+    /**
+     * @return - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+     * 
+     */
     public Boolean enableSecureBoot() {
         return this.enableSecureBoot;
     }
+    /**
+     * @return - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+     * 
+     */
     public Boolean enableVtpm() {
         return this.enableVtpm;
     }

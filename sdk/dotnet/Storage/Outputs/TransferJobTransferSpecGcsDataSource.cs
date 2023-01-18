@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Storage.Outputs
     public sealed class TransferJobTransferSpecGcsDataSource
     {
         /// <summary>
-        /// S3 Bucket name.
+        /// Google Cloud Storage bucket name.
         /// </summary>
         public readonly string BucketName;
         /// <summary>

@@ -111,14 +111,16 @@ public class Source extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
-     * The resource name of this source, in the format &#39;organizations/{{organization}}/sources/{{source}}&#39;.
+     * The resource name of this source, in the format
+     * `organizations/{{organization}}/sources/{{source}}`.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The resource name of this source, in the format &#39;organizations/{{organization}}/sources/{{source}}&#39;.
+     * @return The resource name of this source, in the format
+     * `organizations/{{organization}}/sources/{{source}}`.
      * 
      */
     public Output<String> name() {

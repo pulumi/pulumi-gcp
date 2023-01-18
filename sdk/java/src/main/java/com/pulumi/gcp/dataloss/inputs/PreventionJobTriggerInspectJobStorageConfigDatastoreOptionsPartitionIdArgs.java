@@ -31,14 +31,14 @@ public final class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPa
     }
 
     /**
-     * The Google Cloud Platform project ID of the project containing the table.
+     * The ID of the project to which the entities belong.
      * 
      */
     @Import(name="projectId", required=true)
     private Output<String> projectId;
 
     /**
-     * @return The Google Cloud Platform project ID of the project containing the table.
+     * @return The ID of the project to which the entities belong.
      * 
      */
     public Output<String> projectId() {
@@ -92,7 +92,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPa
         }
 
         /**
-         * @param projectId The Google Cloud Platform project ID of the project containing the table.
+         * @param projectId The ID of the project to which the entities belong.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPa
         }
 
         /**
-         * @param projectId The Google Cloud Platform project ID of the project containing the table.
+         * @param projectId The ID of the project to which the entities belong.
          * 
          * @return builder
          * 

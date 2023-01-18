@@ -41,14 +41,14 @@ public final class JobSparksqlConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+     * A mapping of property names to values, used to configure Spark SQL&#39;s SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
      * 
      */
     @Import(name="properties")
     private @Nullable Output<Map<String,String>> properties;
 
     /**
-     * @return A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+     * @return A mapping of property names to values, used to configure Spark SQL&#39;s SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
      * 
      */
     public Optional<Output<Map<String,String>>> properties() {
@@ -174,7 +174,7 @@ public final class JobSparksqlConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param properties A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+         * @param properties A mapping of property names to values, used to configure Spark SQL&#39;s SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class JobSparksqlConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param properties A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+         * @param properties A mapping of property names to values, used to configure Spark SQL&#39;s SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
          * 
          * @return builder
          * 

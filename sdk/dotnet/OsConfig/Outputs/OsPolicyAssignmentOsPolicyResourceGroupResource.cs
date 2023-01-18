@@ -18,11 +18,11 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExec? Exec;
         /// <summary>
-        /// A remote or local source.
+        /// File resource
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceFile? File;
         /// <summary>
-        /// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+        /// Required. The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
         /// </summary>
         public readonly string Id;
         /// <summary>

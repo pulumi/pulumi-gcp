@@ -55,9 +55,13 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.RegionUrlMapDefaultRouteAction?> DefaultRouteAction { get; private set; } = null!;
 
         /// <summary>
-        /// A reference to a RegionBackendService resource. This will be used if
-        /// none of the pathRules defined by this PathMatcher is matched by
-        /// the URL's path portion.
+        /// The full or partial URL of the defaultService resource to which traffic is directed if
+        /// none of the hostRules match. If defaultRouteAction is additionally specified, advanced
+        /// routing actions like URL Rewrites, etc. take effect prior to sending the request to the
+        /// backend. However, if defaultService is specified, defaultRouteAction cannot contain any
+        /// weightedBackendServices. Conversely, if routeAction specifies any
+        /// weightedBackendServices, service must not be specified.  Only one of defaultService,
+        /// defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set.
         /// </summary>
         [Output("defaultService")]
         public Output<string?> DefaultService { get; private set; } = null!;
@@ -72,13 +76,15 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.RegionUrlMapDefaultUrlRedirect?> DefaultUrlRedirect { get; private set; } = null!;
 
         /// <summary>
-        /// Description of this test case.
+        /// An optional description of this resource. Provide this property when
+        /// you create the resource.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Fingerprint of this resource. This field is used internally during updates of this resource.
+        /// Fingerprint of this resource. This field is used internally during
+        /// updates of this resource.
         /// </summary>
         [Output("fingerprint")]
         public Output<string> Fingerprint { get; private set; } = null!;
@@ -97,15 +103,20 @@ namespace Pulumi.Gcp.Compute
         public Output<int> MapId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the query parameter to match. The query parameter must exist in the
-        /// request, in the absence of which the request match fails.
+        /// Name of the resource. Provided by the client when the resource is
+        /// created. The name must be 1-63 characters long, and comply with
+        /// RFC1035. Specifically, the name must be 1-63 characters long and match
+        /// the regular expression `a-z?` which means the
+        /// first character must be a lowercase letter, and all following
+        /// characters must be a dash, lowercase letter, or digit, except the last
+        /// character, which cannot be a dash.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the PathMatcher to use to match the path portion of
-        /// the URL if the hostRule matches the URL's host portion.
+        /// The list of named PathMatchers to use against the URL.
+        /// Structure is documented below.
         /// </summary>
         [Output("pathMatchers")]
         public Output<ImmutableArray<Outputs.RegionUrlMapPathMatcher>> PathMatchers { get; private set; } = null!;
@@ -195,9 +206,13 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionUrlMapDefaultRouteActionArgs>? DefaultRouteAction { get; set; }
 
         /// <summary>
-        /// A reference to a RegionBackendService resource. This will be used if
-        /// none of the pathRules defined by this PathMatcher is matched by
-        /// the URL's path portion.
+        /// The full or partial URL of the defaultService resource to which traffic is directed if
+        /// none of the hostRules match. If defaultRouteAction is additionally specified, advanced
+        /// routing actions like URL Rewrites, etc. take effect prior to sending the request to the
+        /// backend. However, if defaultService is specified, defaultRouteAction cannot contain any
+        /// weightedBackendServices. Conversely, if routeAction specifies any
+        /// weightedBackendServices, service must not be specified.  Only one of defaultService,
+        /// defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set.
         /// </summary>
         [Input("defaultService")]
         public Input<string>? DefaultService { get; set; }
@@ -212,7 +227,8 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionUrlMapDefaultUrlRedirectArgs>? DefaultUrlRedirect { get; set; }
 
         /// <summary>
-        /// Description of this test case.
+        /// An optional description of this resource. Provide this property when
+        /// you create the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -231,8 +247,13 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// The name of the query parameter to match. The query parameter must exist in the
-        /// request, in the absence of which the request match fails.
+        /// Name of the resource. Provided by the client when the resource is
+        /// created. The name must be 1-63 characters long, and comply with
+        /// RFC1035. Specifically, the name must be 1-63 characters long and match
+        /// the regular expression `a-z?` which means the
+        /// first character must be a lowercase letter, and all following
+        /// characters must be a dash, lowercase letter, or digit, except the last
+        /// character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -241,8 +262,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.RegionUrlMapPathMatcherArgs>? _pathMatchers;
 
         /// <summary>
-        /// The name of the PathMatcher to use to match the path portion of
-        /// the URL if the hostRule matches the URL's host portion.
+        /// The list of named PathMatchers to use against the URL.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RegionUrlMapPathMatcherArgs> PathMatchers
         {
@@ -303,9 +324,13 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionUrlMapDefaultRouteActionGetArgs>? DefaultRouteAction { get; set; }
 
         /// <summary>
-        /// A reference to a RegionBackendService resource. This will be used if
-        /// none of the pathRules defined by this PathMatcher is matched by
-        /// the URL's path portion.
+        /// The full or partial URL of the defaultService resource to which traffic is directed if
+        /// none of the hostRules match. If defaultRouteAction is additionally specified, advanced
+        /// routing actions like URL Rewrites, etc. take effect prior to sending the request to the
+        /// backend. However, if defaultService is specified, defaultRouteAction cannot contain any
+        /// weightedBackendServices. Conversely, if routeAction specifies any
+        /// weightedBackendServices, service must not be specified.  Only one of defaultService,
+        /// defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set.
         /// </summary>
         [Input("defaultService")]
         public Input<string>? DefaultService { get; set; }
@@ -320,13 +345,15 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionUrlMapDefaultUrlRedirectGetArgs>? DefaultUrlRedirect { get; set; }
 
         /// <summary>
-        /// Description of this test case.
+        /// An optional description of this resource. Provide this property when
+        /// you create the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Fingerprint of this resource. This field is used internally during updates of this resource.
+        /// Fingerprint of this resource. This field is used internally during
+        /// updates of this resource.
         /// </summary>
         [Input("fingerprint")]
         public Input<string>? Fingerprint { get; set; }
@@ -351,8 +378,13 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? MapId { get; set; }
 
         /// <summary>
-        /// The name of the query parameter to match. The query parameter must exist in the
-        /// request, in the absence of which the request match fails.
+        /// Name of the resource. Provided by the client when the resource is
+        /// created. The name must be 1-63 characters long, and comply with
+        /// RFC1035. Specifically, the name must be 1-63 characters long and match
+        /// the regular expression `a-z?` which means the
+        /// first character must be a lowercase letter, and all following
+        /// characters must be a dash, lowercase letter, or digit, except the last
+        /// character, which cannot be a dash.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -361,8 +393,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.RegionUrlMapPathMatcherGetArgs>? _pathMatchers;
 
         /// <summary>
-        /// The name of the PathMatcher to use to match the path portion of
-        /// the URL if the hostRule matches the URL's host portion.
+        /// The list of named PathMatchers to use against the URL.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RegionUrlMapPathMatcherGetArgs> PathMatchers
         {

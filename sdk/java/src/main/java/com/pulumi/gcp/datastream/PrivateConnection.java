@@ -104,6 +104,7 @@ public class PrivateConnection extends com.pulumi.resources.CustomResource {
     }
     /**
      * The PrivateConnection error in case of failure.
+     * Structure is documented below.
      * 
      */
     @Export(name="errors", type=List.class, parameters={PrivateConnectionError.class})
@@ -111,6 +112,7 @@ public class PrivateConnection extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The PrivateConnection error in case of failure.
+     * Structure is documented below.
      * 
      */
     public Output<List<PrivateConnectionError>> errors() {

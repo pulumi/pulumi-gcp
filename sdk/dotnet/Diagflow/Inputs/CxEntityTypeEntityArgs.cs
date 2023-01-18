@@ -26,7 +26,9 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         }
 
         /// <summary>
-        /// The word or phrase to be excluded.
+        /// The primary value associated with this entity entry. For example, if the entity type is vegetable, the value could be scallions.
+        /// For KIND_MAP entity types: A canonical value to be used in place of synonyms.
+        /// For KIND_LIST entity types: A string that can contain references to other entity types (with or without aliases).
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

@@ -13,15 +13,16 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The queryParameterMatch matches if the value of the parameter exactly matches
-        /// the contents of exactMatch. Only one of presentMatch, exactMatch and regexMatch
-        /// must be set.
+        /// The value should exactly match contents of exactMatch. Only one of exactMatch,
+        /// prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
         /// </summary>
         [Input("exactMatch")]
         public Input<string>? ExactMatch { get; set; }
 
         /// <summary>
-        /// The name of the header.
+        /// The name of the HTTP header to match. For matching against the HTTP request's
+        /// authority, use a headerMatch with the header name ":authority". For matching a
+        /// request's method, use the headerName ":method".
         /// </summary>
         [Input("headerName", required: true)]
         public Input<string> HeaderName { get; set; } = null!;
@@ -43,9 +44,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? PrefixMatch { get; set; }
 
         /// <summary>
-        /// Specifies that the queryParameterMatch matches if the request contains the query
-        /// parameter, irrespective of whether the parameter has a value or not. Only one of
-        /// presentMatch, exactMatch and regexMatch must be set.
+        /// A header with the contents of headerName must exist. The match takes place
+        /// whether or not the request's header has a value or not. Only one of exactMatch,
+        /// prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
         /// </summary>
         [Input("presentMatch")]
         public Input<bool>? PresentMatch { get; set; }
@@ -66,10 +67,13 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<Inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs>? RangeMatch { get; set; }
 
         /// <summary>
-        /// The queryParameterMatch matches if the value of the parameter matches the
-        /// regular expression specified by regexMatch. For the regular expression grammar,
-        /// please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch,
-        /// exactMatch and regexMatch must be set.
+        /// The value of the header must match the regular expression specified in
+        /// regexMatch. For regular expression grammar, please see:
+        /// en.cppreference.com/w/cpp/regex/ecmascript  For matching against a port
+        /// specified in the HTTP request, use a headerMatch with headerName set to PORT and
+        /// a regular expression that satisfies the RFC2616 Host header's port specifier.
+        /// Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
+        /// rangeMatch must be set.
         /// </summary>
         [Input("regexMatch")]
         public Input<string>? RegexMatch { get; set; }

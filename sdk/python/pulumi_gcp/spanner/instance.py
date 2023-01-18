@@ -206,7 +206,7 @@ class _InstanceState:
                in terraform.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] state: Instance status: 'CREATING' or 'READY'.
+        :param pulumi.Input[str] state: Instance status: `CREATING` or `READY`.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -340,7 +340,7 @@ class _InstanceState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        Instance status: 'CREATING' or 'READY'.
+        Instance status: `CREATING` or `READY`.
         """
         return pulumi.get(self, "state")
 
@@ -625,7 +625,7 @@ class Instance(pulumi.CustomResource):
                in terraform.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] state: Instance status: 'CREATING' or 'READY'.
+        :param pulumi.Input[str] state: Instance status: `CREATING` or `READY`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -723,7 +723,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        Instance status: 'CREATING' or 'READY'.
+        Instance status: `CREATING` or `READY`.
         """
         return pulumi.get(self, "state")
 

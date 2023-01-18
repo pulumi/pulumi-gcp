@@ -110,15 +110,13 @@ class _AiFeatureStoreEntityTypeFeatureState:
                  value_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AiFeatureStoreEntityTypeFeature resources.
-        :param pulumi.Input[str] create_time: The timestamp of when the entity type was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-               nine fractional digits.
+        :param pulumi.Input[str] create_time: The timestamp of when the entity type was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[str] description: Description of the feature.
         :param pulumi.Input[str] entitytype: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the feature.
         :param pulumi.Input[str] name: The name of the feature. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
-        :param pulumi.Input[str] update_time: The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution
-               and up to nine fractional digits.
+        :param pulumi.Input[str] update_time: The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[str] value_type: Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
         """
         if create_time is not None:
@@ -142,8 +140,7 @@ class _AiFeatureStoreEntityTypeFeatureState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The timestamp of when the entity type was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-        nine fractional digits.
+        The timestamp of when the entity type was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "create_time")
 
@@ -215,8 +212,7 @@ class _AiFeatureStoreEntityTypeFeatureState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution
-        and up to nine fractional digits.
+        The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "update_time")
 
@@ -500,15 +496,13 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: The timestamp of when the entity type was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-               nine fractional digits.
+        :param pulumi.Input[str] create_time: The timestamp of when the entity type was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[str] description: Description of the feature.
         :param pulumi.Input[str] entitytype: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the feature.
         :param pulumi.Input[str] name: The name of the feature. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
-        :param pulumi.Input[str] update_time: The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution
-               and up to nine fractional digits.
+        :param pulumi.Input[str] update_time: The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[str] value_type: Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -529,8 +523,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The timestamp of when the entity type was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-        nine fractional digits.
+        The timestamp of when the entity type was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "create_time")
 
@@ -578,8 +571,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution
-        and up to nine fractional digits.
+        The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "update_time")
 

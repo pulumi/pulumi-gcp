@@ -35,14 +35,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs extends c
     }
 
     /**
-     * A remote or local source.
+     * File resource
      * 
      */
     @Import(name="file")
     private @Nullable Output<OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs> file;
 
     /**
-     * @return A remote or local source.
+     * @return File resource
      * 
      */
     public Optional<Output<OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs>> file() {
@@ -50,14 +50,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs extends c
     }
 
     /**
-     * Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+     * Required. The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
      * 
      */
     @Import(name="id", required=true)
     private Output<String> id;
 
     /**
-     * @return Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+     * @return Required. The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
      * 
      */
     public Output<String> id() {
@@ -144,7 +144,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs extends c
         }
 
         /**
-         * @param file A remote or local source.
+         * @param file File resource
          * 
          * @return builder
          * 
@@ -155,7 +155,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs extends c
         }
 
         /**
-         * @param file A remote or local source.
+         * @param file File resource
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs extends c
         }
 
         /**
-         * @param id Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+         * @param id Required. The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
          * 
          * @return builder
          * 
@@ -176,7 +176,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs extends c
         }
 
         /**
-         * @param id Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+         * @param id Required. The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
          * 
          * @return builder
          * 

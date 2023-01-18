@@ -329,8 +329,7 @@ namespace Pulumi.Gcp.Datastream
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The geographic location where the dataset should reside.
-        /// See https://cloud.google.com/bigquery/docs/locations for supported locations.
+        /// The name of the location this stream is located in.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -458,8 +457,7 @@ namespace Pulumi.Gcp.Datastream
         }
 
         /// <summary>
-        /// The geographic location where the dataset should reside.
-        /// See https://cloud.google.com/bigquery/docs/locations for supported locations.
+        /// The name of the location this stream is located in.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -537,8 +535,7 @@ namespace Pulumi.Gcp.Datastream
         }
 
         /// <summary>
-        /// The geographic location where the dataset should reside.
-        /// See https://cloud.google.com/bigquery/docs/locations for supported locations.
+        /// The name of the location this stream is located in.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

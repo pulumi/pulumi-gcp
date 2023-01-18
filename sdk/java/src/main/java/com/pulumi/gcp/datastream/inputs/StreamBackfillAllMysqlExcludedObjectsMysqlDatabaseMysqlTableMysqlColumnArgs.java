@@ -65,7 +65,6 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
     }
 
     /**
-     * - 
      * Column length.
      * 
      */
@@ -73,8 +72,7 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
     private @Nullable Output<Integer> length;
 
     /**
-     * @return -
-     * Column length.
+     * @return Column length.
      * 
      */
     public Optional<Output<Integer>> length() {
@@ -222,8 +220,7 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
         }
 
         /**
-         * @param length -
-         * Column length.
+         * @param length Column length.
          * 
          * @return builder
          * 
@@ -234,8 +231,7 @@ public final class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableM
         }
 
         /**
-         * @param length -
-         * Column length.
+         * @param length Column length.
          * 
          * @return builder
          * 

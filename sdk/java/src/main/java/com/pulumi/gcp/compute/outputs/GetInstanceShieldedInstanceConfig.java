@@ -9,17 +9,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceShieldedInstanceConfig {
+    /**
+     * @return - Whether integrity monitoring is enabled for the instance.
+     * 
+     */
     private Boolean enableIntegrityMonitoring;
+    /**
+     * @return - Whether secure boot is enabled for the instance.
+     * 
+     */
     private Boolean enableSecureBoot;
+    /**
+     * @return - Whether the instance uses vTPM.
+     * 
+     */
     private Boolean enableVtpm;
 
     private GetInstanceShieldedInstanceConfig() {}
+    /**
+     * @return - Whether integrity monitoring is enabled for the instance.
+     * 
+     */
     public Boolean enableIntegrityMonitoring() {
         return this.enableIntegrityMonitoring;
     }
+    /**
+     * @return - Whether secure boot is enabled for the instance.
+     * 
+     */
     public Boolean enableSecureBoot() {
         return this.enableSecureBoot;
     }
+    /**
+     * @return - Whether the instance uses vTPM.
+     * 
+     */
     public Boolean enableVtpm() {
         return this.enableVtpm;
     }

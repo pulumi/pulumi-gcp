@@ -189,11 +189,9 @@ import * as utilities from "../utilities";
  * });
  * const service_perimeter = new gcp.accesscontextmanager.ServicePerimeter("service-perimeter", {
  *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
- *     // Service 'storage.googleapis.com' will be in dry-run mode.
  *     spec: {
  *         restrictedServices: ["storage.googleapis.com"],
  *     },
- *     // Service 'bigquery.googleapis.com' will be restricted.
  *     status: {
  *         restrictedServices: ["bigquery.googleapis.com"],
  *     },

@@ -19,7 +19,6 @@ public final class ServicePerimetersServicePerimeterArgs extends com.pulumi.reso
     public static final ServicePerimetersServicePerimeterArgs Empty = new ServicePerimetersServicePerimeterArgs();
 
     /**
-     * - 
      * Time the AccessPolicy was created in UTC.
      * 
      */
@@ -27,8 +26,7 @@ public final class ServicePerimetersServicePerimeterArgs extends com.pulumi.reso
     private @Nullable Output<String> createTime;
 
     /**
-     * @return -
-     * Time the AccessPolicy was created in UTC.
+     * @return Time the AccessPolicy was created in UTC.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -176,7 +174,6 @@ public final class ServicePerimetersServicePerimeterArgs extends com.pulumi.reso
     }
 
     /**
-     * - 
      * Time the AccessPolicy was updated in UTC.
      * 
      */
@@ -184,8 +181,7 @@ public final class ServicePerimetersServicePerimeterArgs extends com.pulumi.reso
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return -
-     * Time the AccessPolicy was updated in UTC.
+     * @return Time the AccessPolicy was updated in UTC.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -256,8 +252,7 @@ public final class ServicePerimetersServicePerimeterArgs extends com.pulumi.reso
         }
 
         /**
-         * @param createTime -
-         * Time the AccessPolicy was created in UTC.
+         * @param createTime Time the AccessPolicy was created in UTC.
          * 
          * @return builder
          * 
@@ -268,8 +263,7 @@ public final class ServicePerimetersServicePerimeterArgs extends com.pulumi.reso
         }
 
         /**
-         * @param createTime -
-         * Time the AccessPolicy was created in UTC.
+         * @param createTime Time the AccessPolicy was created in UTC.
          * 
          * @return builder
          * 
@@ -455,8 +449,7 @@ public final class ServicePerimetersServicePerimeterArgs extends com.pulumi.reso
         }
 
         /**
-         * @param updateTime -
-         * Time the AccessPolicy was updated in UTC.
+         * @param updateTime Time the AccessPolicy was updated in UTC.
          * 
          * @return builder
          * 
@@ -467,8 +460,7 @@ public final class ServicePerimetersServicePerimeterArgs extends com.pulumi.reso
         }
 
         /**
-         * @param updateTime -
-         * Time the AccessPolicy was updated in UTC.
+         * @param updateTime Time the AccessPolicy was updated in UTC.
          * 
          * @return builder
          * 

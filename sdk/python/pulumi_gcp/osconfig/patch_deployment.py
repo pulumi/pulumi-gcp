@@ -205,18 +205,17 @@ class _PatchDeploymentState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering PatchDeployment resources.
-        :param pulumi.Input[str] create_time: Time the patch deployment was created. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu" format,
-               accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] create_time: Time the patch deployment was created. Timestamp is in RFC3339 text format.
+               A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] description: Description of the patch deployment. Length of the description is limited to 1024 characters.
         :param pulumi.Input[str] duration: Duration of the patch. After the duration ends, the patch times out.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         :param pulumi.Input['PatchDeploymentInstanceFilterArgs'] instance_filter: VM instances to patch.
                Structure is documented below.
-        :param pulumi.Input[str] last_execute_time: -
-               The time the last patch job ran successfully.
+        :param pulumi.Input[str] last_execute_time: The time the last patch job ran successfully.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[str] name: Unique name for the patch deployment resource in a project. The patch deployment name is in the form:
-               projects/{project_id}/patchDeployments/{patchDeploymentId}.
+        :param pulumi.Input[str] name: Unique name for the patch deployment resource in a project.
+               The patch deployment name is in the form: projects/{project_id}/patchDeployments/{patchDeploymentId}.
         :param pulumi.Input['PatchDeploymentOneTimeScheduleArgs'] one_time_schedule: Schedule a one-time execution.
                Structure is documented below.
         :param pulumi.Input['PatchDeploymentPatchConfigArgs'] patch_config: Patch configuration that is applied.
@@ -233,8 +232,8 @@ class _PatchDeploymentState:
                Structure is documented below.
         :param pulumi.Input['PatchDeploymentRolloutArgs'] rollout: Rollout strategy of the patch job.
                Structure is documented below.
-        :param pulumi.Input[str] update_time: Time the patch deployment was last updated. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu"
-               format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] update_time: Time the patch deployment was last updated. Timestamp is in RFC3339 text format.
+               A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -267,8 +266,8 @@ class _PatchDeploymentState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Time the patch deployment was created. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu" format,
-        accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        Time the patch deployment was created. Timestamp is in RFC3339 text format.
+        A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "create_time")
 
@@ -318,7 +317,6 @@ class _PatchDeploymentState:
     @pulumi.getter(name="lastExecuteTime")
     def last_execute_time(self) -> Optional[pulumi.Input[str]]:
         """
-        -
         The time the last patch job ran successfully.
         A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """
@@ -332,8 +330,8 @@ class _PatchDeploymentState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique name for the patch deployment resource in a project. The patch deployment name is in the form:
-        projects/{project_id}/patchDeployments/{patchDeploymentId}.
+        Unique name for the patch deployment resource in a project.
+        The patch deployment name is in the form: projects/{project_id}/patchDeployments/{patchDeploymentId}.
         """
         return pulumi.get(self, "name")
 
@@ -427,8 +425,8 @@ class _PatchDeploymentState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Time the patch deployment was last updated. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu"
-        format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        Time the patch deployment was last updated. Timestamp is in RFC3339 text format.
+        A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "update_time")
 
@@ -1060,18 +1058,17 @@ class PatchDeployment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Time the patch deployment was created. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu" format,
-               accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] create_time: Time the patch deployment was created. Timestamp is in RFC3339 text format.
+               A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] description: Description of the patch deployment. Length of the description is limited to 1024 characters.
         :param pulumi.Input[str] duration: Duration of the patch. After the duration ends, the patch times out.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         :param pulumi.Input[pulumi.InputType['PatchDeploymentInstanceFilterArgs']] instance_filter: VM instances to patch.
                Structure is documented below.
-        :param pulumi.Input[str] last_execute_time: -
-               The time the last patch job ran successfully.
+        :param pulumi.Input[str] last_execute_time: The time the last patch job ran successfully.
                A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[str] name: Unique name for the patch deployment resource in a project. The patch deployment name is in the form:
-               projects/{project_id}/patchDeployments/{patchDeploymentId}.
+        :param pulumi.Input[str] name: Unique name for the patch deployment resource in a project.
+               The patch deployment name is in the form: projects/{project_id}/patchDeployments/{patchDeploymentId}.
         :param pulumi.Input[pulumi.InputType['PatchDeploymentOneTimeScheduleArgs']] one_time_schedule: Schedule a one-time execution.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['PatchDeploymentPatchConfigArgs']] patch_config: Patch configuration that is applied.
@@ -1088,8 +1085,8 @@ class PatchDeployment(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['PatchDeploymentRolloutArgs']] rollout: Rollout strategy of the patch job.
                Structure is documented below.
-        :param pulumi.Input[str] update_time: Time the patch deployment was last updated. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu"
-               format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] update_time: Time the patch deployment was last updated. Timestamp is in RFC3339 text format.
+               A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1114,8 +1111,8 @@ class PatchDeployment(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        Time the patch deployment was created. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu" format,
-        accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        Time the patch deployment was created. Timestamp is in RFC3339 text format.
+        A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "create_time")
 
@@ -1149,7 +1146,6 @@ class PatchDeployment(pulumi.CustomResource):
     @pulumi.getter(name="lastExecuteTime")
     def last_execute_time(self) -> pulumi.Output[str]:
         """
-        -
         The time the last patch job ran successfully.
         A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """
@@ -1159,8 +1155,8 @@ class PatchDeployment(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Unique name for the patch deployment resource in a project. The patch deployment name is in the form:
-        projects/{project_id}/patchDeployments/{patchDeploymentId}.
+        Unique name for the patch deployment resource in a project.
+        The patch deployment name is in the form: projects/{project_id}/patchDeployments/{patchDeploymentId}.
         """
         return pulumi.get(self, "name")
 
@@ -1226,8 +1222,8 @@ class PatchDeployment(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        Time the patch deployment was last updated. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu"
-        format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+        Time the patch deployment was last updated. Timestamp is in RFC3339 text format.
+        A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "update_time")
 

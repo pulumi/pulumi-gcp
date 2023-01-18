@@ -167,14 +167,23 @@ func (o JobBinaryAuthorizationPtrOutput) UseDefault() pulumi.BoolPtrOutput {
 }
 
 type JobCondition struct {
-	ExecutionReason    *string `pulumi:"executionReason"`
+	// A reason for the execution condition.
+	ExecutionReason *string `pulumi:"executionReason"`
+	// Last time the condition transitioned from one status to another.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	LastTransitionTime *string `pulumi:"lastTransitionTime"`
-	Message            *string `pulumi:"message"`
-	Reason             *string `pulumi:"reason"`
-	RevisionReason     *string `pulumi:"revisionReason"`
-	Severity           *string `pulumi:"severity"`
-	State              *string `pulumi:"state"`
-	Type               *string `pulumi:"type"`
+	// Human readable message indicating details about the current status.
+	Message *string `pulumi:"message"`
+	// A common (service-level) reason for this condition.
+	Reason *string `pulumi:"reason"`
+	// A reason for the revision condition.
+	RevisionReason *string `pulumi:"revisionReason"`
+	// How to interpret failures of this condition, one of Error, Warning, Info
+	Severity *string `pulumi:"severity"`
+	// State of the condition.
+	State *string `pulumi:"state"`
+	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+	Type *string `pulumi:"type"`
 }
 
 // JobConditionInput is an input type that accepts JobConditionArgs and JobConditionOutput values.
@@ -189,14 +198,23 @@ type JobConditionInput interface {
 }
 
 type JobConditionArgs struct {
-	ExecutionReason    pulumi.StringPtrInput `pulumi:"executionReason"`
+	// A reason for the execution condition.
+	ExecutionReason pulumi.StringPtrInput `pulumi:"executionReason"`
+	// Last time the condition transitioned from one status to another.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	LastTransitionTime pulumi.StringPtrInput `pulumi:"lastTransitionTime"`
-	Message            pulumi.StringPtrInput `pulumi:"message"`
-	Reason             pulumi.StringPtrInput `pulumi:"reason"`
-	RevisionReason     pulumi.StringPtrInput `pulumi:"revisionReason"`
-	Severity           pulumi.StringPtrInput `pulumi:"severity"`
-	State              pulumi.StringPtrInput `pulumi:"state"`
-	Type               pulumi.StringPtrInput `pulumi:"type"`
+	// Human readable message indicating details about the current status.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// A common (service-level) reason for this condition.
+	Reason pulumi.StringPtrInput `pulumi:"reason"`
+	// A reason for the revision condition.
+	RevisionReason pulumi.StringPtrInput `pulumi:"revisionReason"`
+	// How to interpret failures of this condition, one of Error, Warning, Info
+	Severity pulumi.StringPtrInput `pulumi:"severity"`
+	// State of the condition.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (JobConditionArgs) ElementType() reflect.Type {
@@ -250,34 +268,43 @@ func (o JobConditionOutput) ToJobConditionOutputWithContext(ctx context.Context)
 	return o
 }
 
+// A reason for the execution condition.
 func (o JobConditionOutput) ExecutionReason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCondition) *string { return v.ExecutionReason }).(pulumi.StringPtrOutput)
 }
 
+// Last time the condition transitioned from one status to another.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o JobConditionOutput) LastTransitionTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCondition) *string { return v.LastTransitionTime }).(pulumi.StringPtrOutput)
 }
 
+// Human readable message indicating details about the current status.
 func (o JobConditionOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCondition) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
+// A common (service-level) reason for this condition.
 func (o JobConditionOutput) Reason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCondition) *string { return v.Reason }).(pulumi.StringPtrOutput)
 }
 
+// A reason for the revision condition.
 func (o JobConditionOutput) RevisionReason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCondition) *string { return v.RevisionReason }).(pulumi.StringPtrOutput)
 }
 
+// How to interpret failures of this condition, one of Error, Warning, Info
 func (o JobConditionOutput) Severity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCondition) *string { return v.Severity }).(pulumi.StringPtrOutput)
 }
 
+// State of the condition.
 func (o JobConditionOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCondition) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
+// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
 func (o JobConditionOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCondition) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -303,9 +330,13 @@ func (o JobConditionArrayOutput) Index(i pulumi.IntInput) JobConditionOutput {
 }
 
 type JobLatestCreatedExecution struct {
+	// Completion timestamp of the execution.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CompletionTime *string `pulumi:"completionTime"`
-	CreateTime     *string `pulumi:"createTime"`
-	// Volume's name.
+	// Creation timestamp of the execution.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	CreateTime *string `pulumi:"createTime"`
+	// Name of the Job.
 	Name *string `pulumi:"name"`
 }
 
@@ -321,9 +352,13 @@ type JobLatestCreatedExecutionInput interface {
 }
 
 type JobLatestCreatedExecutionArgs struct {
+	// Completion timestamp of the execution.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CompletionTime pulumi.StringPtrInput `pulumi:"completionTime"`
-	CreateTime     pulumi.StringPtrInput `pulumi:"createTime"`
-	// Volume's name.
+	// Creation timestamp of the execution.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// Name of the Job.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -378,15 +413,19 @@ func (o JobLatestCreatedExecutionOutput) ToJobLatestCreatedExecutionOutputWithCo
 	return o
 }
 
+// Completion timestamp of the execution.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o JobLatestCreatedExecutionOutput) CompletionTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobLatestCreatedExecution) *string { return v.CompletionTime }).(pulumi.StringPtrOutput)
 }
 
+// Creation timestamp of the execution.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o JobLatestCreatedExecutionOutput) CreateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobLatestCreatedExecution) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
 }
 
-// Volume's name.
+// Name of the Job.
 func (o JobLatestCreatedExecutionOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobLatestCreatedExecution) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -412,7 +451,7 @@ func (o JobLatestCreatedExecutionArrayOutput) Index(i pulumi.IntInput) JobLatest
 }
 
 type JobTemplate struct {
-	// KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
+	// KRM-style labels for the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Specifies the maximum desired number of tasks the execution should run at given time. Must be <= taskCount. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
 	Parallelism *int `pulumi:"parallelism"`
@@ -435,7 +474,7 @@ type JobTemplateInput interface {
 }
 
 type JobTemplateArgs struct {
-	// KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
+	// KRM-style labels for the resource.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Specifies the maximum desired number of tasks the execution should run at given time. Must be <= taskCount. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
 	Parallelism pulumi.IntPtrInput `pulumi:"parallelism"`
@@ -523,7 +562,7 @@ func (o JobTemplateOutput) ToJobTemplatePtrOutputWithContext(ctx context.Context
 	}).(JobTemplatePtrOutput)
 }
 
-// KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
+// KRM-style labels for the resource.
 func (o JobTemplateOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobTemplate) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -568,7 +607,7 @@ func (o JobTemplatePtrOutput) Elem() JobTemplateOutput {
 	}).(JobTemplateOutput)
 }
 
-// KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
+// KRM-style labels for the resource.
 func (o JobTemplatePtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *JobTemplate) map[string]string {
 		if v == nil {
@@ -912,7 +951,7 @@ type JobTemplateTemplateContainer struct {
 	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	// Structure is documented below.
 	LivenessProbe *JobTemplateTemplateContainerLivenessProbe `pulumi:"livenessProbe"`
-	// Volume's name.
+	// Name of the container specified as a DNS_LABEL.
 	Name *string `pulumi:"name"`
 	// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
 	// If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
@@ -955,7 +994,7 @@ type JobTemplateTemplateContainerArgs struct {
 	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	// Structure is documented below.
 	LivenessProbe JobTemplateTemplateContainerLivenessProbePtrInput `pulumi:"livenessProbe"`
-	// Volume's name.
+	// Name of the container specified as a DNS_LABEL.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
 	// If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
@@ -1054,7 +1093,7 @@ func (o JobTemplateTemplateContainerOutput) LivenessProbe() JobTemplateTemplateC
 	}).(JobTemplateTemplateContainerLivenessProbePtrOutput)
 }
 
-// Volume's name.
+// Name of the container specified as a DNS_LABEL.
 func (o JobTemplateTemplateContainerOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainer) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -1110,9 +1149,9 @@ func (o JobTemplateTemplateContainerArrayOutput) Index(i pulumi.IntInput) JobTem
 }
 
 type JobTemplateTemplateContainerEnv struct {
-	// Volume's name.
+	// Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
 	Name string `pulumi:"name"`
-	// The header field value
+	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
 	Value *string `pulumi:"value"`
 	// Source for the environment variable's value.
 	// Structure is documented below.
@@ -1131,9 +1170,9 @@ type JobTemplateTemplateContainerEnvInput interface {
 }
 
 type JobTemplateTemplateContainerEnvArgs struct {
-	// Volume's name.
+	// Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The header field value
+	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
 	Value pulumi.StringPtrInput `pulumi:"value"`
 	// Source for the environment variable's value.
 	// Structure is documented below.
@@ -1191,12 +1230,12 @@ func (o JobTemplateTemplateContainerEnvOutput) ToJobTemplateTemplateContainerEnv
 	return o
 }
 
-// Volume's name.
+// Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
 func (o JobTemplateTemplateContainerEnvOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainerEnv) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The header field value
+// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
 func (o JobTemplateTemplateContainerEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainerEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -1373,9 +1412,9 @@ func (o JobTemplateTemplateContainerEnvValueSourcePtrOutput) SecretKeyRef() JobT
 }
 
 type JobTemplateTemplateContainerEnvValueSourceSecretKeyRef struct {
-	// The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+	// The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
 	Secret string `pulumi:"secret"`
-	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
 	Version string `pulumi:"version"`
 }
 
@@ -1391,9 +1430,9 @@ type JobTemplateTemplateContainerEnvValueSourceSecretKeyRefInput interface {
 }
 
 type JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs struct {
-	// The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+	// The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
 	Secret pulumi.StringInput `pulumi:"secret"`
-	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -1474,12 +1513,12 @@ func (o JobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput) ToJobTempl
 	}).(JobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutput)
 }
 
-// The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+// The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
 func (o JobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainerEnvValueSourceSecretKeyRef) string { return v.Secret }).(pulumi.StringOutput)
 }
 
-// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
 func (o JobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainerEnvValueSourceSecretKeyRef) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -1508,7 +1547,7 @@ func (o JobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutput) Elem() 
 	}).(JobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput)
 }
 
-// The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+// The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
 func (o JobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutput) Secret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTemplateTemplateContainerEnvValueSourceSecretKeyRef) *string {
 		if v == nil {
@@ -1518,7 +1557,7 @@ func (o JobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutput) Secret(
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
 func (o JobTemplateTemplateContainerEnvValueSourceSecretKeyRefPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTemplateTemplateContainerEnvValueSourceSecretKeyRef) *string {
 		if v == nil {
@@ -1776,7 +1815,7 @@ type JobTemplateTemplateContainerLivenessProbeHttpGet struct {
 	// Custom headers to set in the request. HTTP allows repeated headers.
 	// Structure is documented below.
 	HttpHeaders []JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
-	// The relative path of the secret in the container.
+	// Path to access on the HTTP server. Defaults to '/'.
 	Path *string `pulumi:"path"`
 }
 
@@ -1795,7 +1834,7 @@ type JobTemplateTemplateContainerLivenessProbeHttpGetArgs struct {
 	// Custom headers to set in the request. HTTP allows repeated headers.
 	// Structure is documented below.
 	HttpHeaders JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
-	// The relative path of the secret in the container.
+	// Path to access on the HTTP server. Defaults to '/'.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 }
 
@@ -1884,7 +1923,7 @@ func (o JobTemplateTemplateContainerLivenessProbeHttpGetOutput) HttpHeaders() Jo
 	}).(JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput)
 }
 
-// The relative path of the secret in the container.
+// Path to access on the HTTP server. Defaults to '/'.
 func (o JobTemplateTemplateContainerLivenessProbeHttpGetOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainerLivenessProbeHttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -1924,7 +1963,7 @@ func (o JobTemplateTemplateContainerLivenessProbeHttpGetPtrOutput) HttpHeaders()
 	}).(JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput)
 }
 
-// The relative path of the secret in the container.
+// Path to access on the HTTP server. Defaults to '/'.
 func (o JobTemplateTemplateContainerLivenessProbeHttpGetPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTemplateTemplateContainerLivenessProbeHttpGet) *string {
 		if v == nil {
@@ -1935,7 +1974,7 @@ func (o JobTemplateTemplateContainerLivenessProbeHttpGetPtrOutput) Path() pulumi
 }
 
 type JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeader struct {
-	// Volume's name.
+	// The header field name
 	Name string `pulumi:"name"`
 	// The header field value
 	Value *string `pulumi:"value"`
@@ -1953,7 +1992,7 @@ type JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderInput interface {
 }
 
 type JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderArgs struct {
-	// Volume's name.
+	// The header field name
 	Name pulumi.StringInput `pulumi:"name"`
 	// The header field value
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -2010,7 +2049,7 @@ func (o JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ToJobT
 	return o
 }
 
-// Volume's name.
+// The header field name
 func (o JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainerLivenessProbeHttpGetHttpHeader) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2180,7 +2219,7 @@ func (o JobTemplateTemplateContainerLivenessProbeTcpSocketPtrOutput) Port() pulu
 type JobTemplateTemplateContainerPort struct {
 	// Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
 	ContainerPort *int `pulumi:"containerPort"`
-	// Volume's name.
+	// If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
 	Name *string `pulumi:"name"`
 }
 
@@ -2198,7 +2237,7 @@ type JobTemplateTemplateContainerPortInput interface {
 type JobTemplateTemplateContainerPortArgs struct {
 	// Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
 	ContainerPort pulumi.IntPtrInput `pulumi:"containerPort"`
-	// Volume's name.
+	// If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -2258,7 +2297,7 @@ func (o JobTemplateTemplateContainerPortOutput) ContainerPort() pulumi.IntPtrOut
 	return o.ApplyT(func(v JobTemplateTemplateContainerPort) *int { return v.ContainerPort }).(pulumi.IntPtrOutput)
 }
 
-// Volume's name.
+// If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
 func (o JobTemplateTemplateContainerPortOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainerPort) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -2668,7 +2707,7 @@ type JobTemplateTemplateContainerStartupProbeHttpGet struct {
 	// Custom headers to set in the request. HTTP allows repeated headers.
 	// Structure is documented below.
 	HttpHeaders []JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
-	// The relative path of the secret in the container.
+	// Path to access on the HTTP server. Defaults to '/'.
 	Path *string `pulumi:"path"`
 }
 
@@ -2687,7 +2726,7 @@ type JobTemplateTemplateContainerStartupProbeHttpGetArgs struct {
 	// Custom headers to set in the request. HTTP allows repeated headers.
 	// Structure is documented below.
 	HttpHeaders JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
-	// The relative path of the secret in the container.
+	// Path to access on the HTTP server. Defaults to '/'.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 }
 
@@ -2776,7 +2815,7 @@ func (o JobTemplateTemplateContainerStartupProbeHttpGetOutput) HttpHeaders() Job
 	}).(JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput)
 }
 
-// The relative path of the secret in the container.
+// Path to access on the HTTP server. Defaults to '/'.
 func (o JobTemplateTemplateContainerStartupProbeHttpGetOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainerStartupProbeHttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -2816,7 +2855,7 @@ func (o JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput) HttpHeaders() 
 	}).(JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput)
 }
 
-// The relative path of the secret in the container.
+// Path to access on the HTTP server. Defaults to '/'.
 func (o JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTemplateTemplateContainerStartupProbeHttpGet) *string {
 		if v == nil {
@@ -2827,7 +2866,7 @@ func (o JobTemplateTemplateContainerStartupProbeHttpGetPtrOutput) Path() pulumi.
 }
 
 type JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader struct {
-	// Volume's name.
+	// The header field name
 	Name string `pulumi:"name"`
 	// The header field value
 	Value *string `pulumi:"value"`
@@ -2845,7 +2884,7 @@ type JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderInput interface {
 }
 
 type JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs struct {
-	// Volume's name.
+	// The header field name
 	Name pulumi.StringInput `pulumi:"name"`
 	// The header field value
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -2902,7 +2941,7 @@ func (o JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ToJobTe
 	return o
 }
 
-// Volume's name.
+// The header field name
 func (o JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainerStartupProbeHttpGetHttpHeader) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -3072,7 +3111,7 @@ func (o JobTemplateTemplateContainerStartupProbeTcpSocketPtrOutput) Port() pulum
 type JobTemplateTemplateContainerVolumeMount struct {
 	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
 	MountPath string `pulumi:"mountPath"`
-	// Volume's name.
+	// This must match the Name of a Volume.
 	Name string `pulumi:"name"`
 }
 
@@ -3090,7 +3129,7 @@ type JobTemplateTemplateContainerVolumeMountInput interface {
 type JobTemplateTemplateContainerVolumeMountArgs struct {
 	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
 	MountPath pulumi.StringInput `pulumi:"mountPath"`
-	// Volume's name.
+	// This must match the Name of a Volume.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -3150,7 +3189,7 @@ func (o JobTemplateTemplateContainerVolumeMountOutput) MountPath() pulumi.String
 	return o.ApplyT(func(v JobTemplateTemplateContainerVolumeMount) string { return v.MountPath }).(pulumi.StringOutput)
 }
 
-// Volume's name.
+// This must match the Name of a Volume.
 func (o JobTemplateTemplateContainerVolumeMountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainerVolumeMount) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -3181,7 +3220,8 @@ type JobTemplateTemplateVolume struct {
 	CloudSqlInstance *JobTemplateTemplateVolumeCloudSqlInstance `pulumi:"cloudSqlInstance"`
 	// Volume's name.
 	Name string `pulumi:"name"`
-	// The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+	// Structure is documented below.
 	Secret *JobTemplateTemplateVolumeSecret `pulumi:"secret"`
 }
 
@@ -3202,7 +3242,8 @@ type JobTemplateTemplateVolumeArgs struct {
 	CloudSqlInstance JobTemplateTemplateVolumeCloudSqlInstancePtrInput `pulumi:"cloudSqlInstance"`
 	// Volume's name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+	// Structure is documented below.
 	Secret JobTemplateTemplateVolumeSecretPtrInput `pulumi:"secret"`
 }
 
@@ -3270,7 +3311,8 @@ func (o JobTemplateTemplateVolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTemplateTemplateVolume) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+// Structure is documented below.
 func (o JobTemplateTemplateVolumeOutput) Secret() JobTemplateTemplateVolumeSecretPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplateVolume) *JobTemplateTemplateVolumeSecret { return v.Secret }).(JobTemplateTemplateVolumeSecretPtrOutput)
 }
@@ -3887,14 +3929,23 @@ func (o JobTemplateTemplateVpcAccessPtrOutput) Egress() pulumi.StringPtrOutput {
 }
 
 type JobTerminalCondition struct {
-	ExecutionReason    *string `pulumi:"executionReason"`
+	// A reason for the execution condition.
+	ExecutionReason *string `pulumi:"executionReason"`
+	// Last time the condition transitioned from one status to another.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	LastTransitionTime *string `pulumi:"lastTransitionTime"`
-	Message            *string `pulumi:"message"`
-	Reason             *string `pulumi:"reason"`
-	RevisionReason     *string `pulumi:"revisionReason"`
-	Severity           *string `pulumi:"severity"`
-	State              *string `pulumi:"state"`
-	Type               *string `pulumi:"type"`
+	// Human readable message indicating details about the current status.
+	Message *string `pulumi:"message"`
+	// A common (service-level) reason for this condition.
+	Reason *string `pulumi:"reason"`
+	// A reason for the revision condition.
+	RevisionReason *string `pulumi:"revisionReason"`
+	// How to interpret failures of this condition, one of Error, Warning, Info
+	Severity *string `pulumi:"severity"`
+	// State of the condition.
+	State *string `pulumi:"state"`
+	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+	Type *string `pulumi:"type"`
 }
 
 // JobTerminalConditionInput is an input type that accepts JobTerminalConditionArgs and JobTerminalConditionOutput values.
@@ -3909,14 +3960,23 @@ type JobTerminalConditionInput interface {
 }
 
 type JobTerminalConditionArgs struct {
-	ExecutionReason    pulumi.StringPtrInput `pulumi:"executionReason"`
+	// A reason for the execution condition.
+	ExecutionReason pulumi.StringPtrInput `pulumi:"executionReason"`
+	// Last time the condition transitioned from one status to another.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	LastTransitionTime pulumi.StringPtrInput `pulumi:"lastTransitionTime"`
-	Message            pulumi.StringPtrInput `pulumi:"message"`
-	Reason             pulumi.StringPtrInput `pulumi:"reason"`
-	RevisionReason     pulumi.StringPtrInput `pulumi:"revisionReason"`
-	Severity           pulumi.StringPtrInput `pulumi:"severity"`
-	State              pulumi.StringPtrInput `pulumi:"state"`
-	Type               pulumi.StringPtrInput `pulumi:"type"`
+	// Human readable message indicating details about the current status.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// A common (service-level) reason for this condition.
+	Reason pulumi.StringPtrInput `pulumi:"reason"`
+	// A reason for the revision condition.
+	RevisionReason pulumi.StringPtrInput `pulumi:"revisionReason"`
+	// How to interpret failures of this condition, one of Error, Warning, Info
+	Severity pulumi.StringPtrInput `pulumi:"severity"`
+	// State of the condition.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (JobTerminalConditionArgs) ElementType() reflect.Type {
@@ -3970,34 +4030,43 @@ func (o JobTerminalConditionOutput) ToJobTerminalConditionOutputWithContext(ctx 
 	return o
 }
 
+// A reason for the execution condition.
 func (o JobTerminalConditionOutput) ExecutionReason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTerminalCondition) *string { return v.ExecutionReason }).(pulumi.StringPtrOutput)
 }
 
+// Last time the condition transitioned from one status to another.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o JobTerminalConditionOutput) LastTransitionTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTerminalCondition) *string { return v.LastTransitionTime }).(pulumi.StringPtrOutput)
 }
 
+// Human readable message indicating details about the current status.
 func (o JobTerminalConditionOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTerminalCondition) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
+// A common (service-level) reason for this condition.
 func (o JobTerminalConditionOutput) Reason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTerminalCondition) *string { return v.Reason }).(pulumi.StringPtrOutput)
 }
 
+// A reason for the revision condition.
 func (o JobTerminalConditionOutput) RevisionReason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTerminalCondition) *string { return v.RevisionReason }).(pulumi.StringPtrOutput)
 }
 
+// How to interpret failures of this condition, one of Error, Warning, Info
 func (o JobTerminalConditionOutput) Severity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTerminalCondition) *string { return v.Severity }).(pulumi.StringPtrOutput)
 }
 
+// State of the condition.
 func (o JobTerminalConditionOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTerminalCondition) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
+// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
 func (o JobTerminalConditionOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTerminalCondition) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -4179,13 +4248,21 @@ func (o ServiceBinaryAuthorizationPtrOutput) UseDefault() pulumi.BoolPtrOutput {
 }
 
 type ServiceCondition struct {
-	ExecutionReason    *string `pulumi:"executionReason"`
+	// A reason for the execution condition.
+	ExecutionReason *string `pulumi:"executionReason"`
+	// Last time the condition transitioned from one status to another.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	LastTransitionTime *string `pulumi:"lastTransitionTime"`
-	Message            *string `pulumi:"message"`
-	Reason             *string `pulumi:"reason"`
-	RevisionReason     *string `pulumi:"revisionReason"`
-	Severity           *string `pulumi:"severity"`
-	State              *string `pulumi:"state"`
+	// Human readable message indicating details about the current status.
+	Message *string `pulumi:"message"`
+	// A common (service-level) reason for this condition.
+	Reason *string `pulumi:"reason"`
+	// A reason for the revision condition.
+	RevisionReason *string `pulumi:"revisionReason"`
+	// How to interpret failures of this condition, one of Error, Warning, Info
+	Severity *string `pulumi:"severity"`
+	// State of the condition.
+	State *string `pulumi:"state"`
 	// The allocation type for this traffic target.
 	// Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
 	Type *string `pulumi:"type"`
@@ -4203,13 +4280,21 @@ type ServiceConditionInput interface {
 }
 
 type ServiceConditionArgs struct {
-	ExecutionReason    pulumi.StringPtrInput `pulumi:"executionReason"`
+	// A reason for the execution condition.
+	ExecutionReason pulumi.StringPtrInput `pulumi:"executionReason"`
+	// Last time the condition transitioned from one status to another.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	LastTransitionTime pulumi.StringPtrInput `pulumi:"lastTransitionTime"`
-	Message            pulumi.StringPtrInput `pulumi:"message"`
-	Reason             pulumi.StringPtrInput `pulumi:"reason"`
-	RevisionReason     pulumi.StringPtrInput `pulumi:"revisionReason"`
-	Severity           pulumi.StringPtrInput `pulumi:"severity"`
-	State              pulumi.StringPtrInput `pulumi:"state"`
+	// Human readable message indicating details about the current status.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// A common (service-level) reason for this condition.
+	Reason pulumi.StringPtrInput `pulumi:"reason"`
+	// A reason for the revision condition.
+	RevisionReason pulumi.StringPtrInput `pulumi:"revisionReason"`
+	// How to interpret failures of this condition, one of Error, Warning, Info
+	Severity pulumi.StringPtrInput `pulumi:"severity"`
+	// State of the condition.
+	State pulumi.StringPtrInput `pulumi:"state"`
 	// The allocation type for this traffic target.
 	// Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -4266,30 +4351,38 @@ func (o ServiceConditionOutput) ToServiceConditionOutputWithContext(ctx context.
 	return o
 }
 
+// A reason for the execution condition.
 func (o ServiceConditionOutput) ExecutionReason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceCondition) *string { return v.ExecutionReason }).(pulumi.StringPtrOutput)
 }
 
+// Last time the condition transitioned from one status to another.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o ServiceConditionOutput) LastTransitionTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceCondition) *string { return v.LastTransitionTime }).(pulumi.StringPtrOutput)
 }
 
+// Human readable message indicating details about the current status.
 func (o ServiceConditionOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceCondition) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
+// A common (service-level) reason for this condition.
 func (o ServiceConditionOutput) Reason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceCondition) *string { return v.Reason }).(pulumi.StringPtrOutput)
 }
 
+// A reason for the revision condition.
 func (o ServiceConditionOutput) RevisionReason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceCondition) *string { return v.RevisionReason }).(pulumi.StringPtrOutput)
 }
 
+// How to interpret failures of this condition, one of Error, Warning, Info
 func (o ServiceConditionOutput) Severity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceCondition) *string { return v.Severity }).(pulumi.StringPtrOutput)
 }
 
+// State of the condition.
 func (o ServiceConditionOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceCondition) *string { return v.State }).(pulumi.StringPtrOutput)
 }
@@ -4329,11 +4422,11 @@ type ServiceTemplate struct {
 	// The sandbox environment to host this Revision.
 	// Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
 	ExecutionEnvironment *string `pulumi:"executionEnvironment"`
-	// Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
+	// KRM-style labels for the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Sets the maximum number of requests that each serving instance can receive.
 	MaxInstanceRequestConcurrency *int `pulumi:"maxInstanceRequestConcurrency"`
-	// Revision to which to send this portion of traffic, if traffic allocation is by revision.
+	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
 	Revision *string `pulumi:"revision"`
 	// Scaling settings for this Revision.
 	// Structure is documented below.
@@ -4371,11 +4464,11 @@ type ServiceTemplateArgs struct {
 	// The sandbox environment to host this Revision.
 	// Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
 	ExecutionEnvironment pulumi.StringPtrInput `pulumi:"executionEnvironment"`
-	// Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
+	// KRM-style labels for the resource.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Sets the maximum number of requests that each serving instance can receive.
 	MaxInstanceRequestConcurrency pulumi.IntPtrInput `pulumi:"maxInstanceRequestConcurrency"`
-	// Revision to which to send this portion of traffic, if traffic allocation is by revision.
+	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
 	Revision pulumi.StringPtrInput `pulumi:"revision"`
 	// Scaling settings for this Revision.
 	// Structure is documented below.
@@ -4487,7 +4580,7 @@ func (o ServiceTemplateOutput) ExecutionEnvironment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplate) *string { return v.ExecutionEnvironment }).(pulumi.StringPtrOutput)
 }
 
-// Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
+// KRM-style labels for the resource.
 func (o ServiceTemplateOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServiceTemplate) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -4497,7 +4590,7 @@ func (o ServiceTemplateOutput) MaxInstanceRequestConcurrency() pulumi.IntPtrOutp
 	return o.ApplyT(func(v ServiceTemplate) *int { return v.MaxInstanceRequestConcurrency }).(pulumi.IntPtrOutput)
 }
 
-// Revision to which to send this portion of traffic, if traffic allocation is by revision.
+// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
 func (o ServiceTemplateOutput) Revision() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplate) *string { return v.Revision }).(pulumi.StringPtrOutput)
 }
@@ -4587,7 +4680,7 @@ func (o ServiceTemplatePtrOutput) ExecutionEnvironment() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
+// KRM-style labels for the resource.
 func (o ServiceTemplatePtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceTemplate) map[string]string {
 		if v == nil {
@@ -4607,7 +4700,7 @@ func (o ServiceTemplatePtrOutput) MaxInstanceRequestConcurrency() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// Revision to which to send this portion of traffic, if traffic allocation is by revision.
+// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
 func (o ServiceTemplatePtrOutput) Revision() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplate) *string {
 		if v == nil {
@@ -4684,7 +4777,7 @@ type ServiceTemplateContainer struct {
 	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	// Structure is documented below.
 	LivenessProbe *ServiceTemplateContainerLivenessProbe `pulumi:"livenessProbe"`
-	// Volume's name.
+	// Name of the container specified as a DNS_LABEL.
 	Name *string `pulumi:"name"`
 	// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
 	// If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
@@ -4727,7 +4820,7 @@ type ServiceTemplateContainerArgs struct {
 	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	// Structure is documented below.
 	LivenessProbe ServiceTemplateContainerLivenessProbePtrInput `pulumi:"livenessProbe"`
-	// Volume's name.
+	// Name of the container specified as a DNS_LABEL.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
 	// If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
@@ -4824,7 +4917,7 @@ func (o ServiceTemplateContainerOutput) LivenessProbe() ServiceTemplateContainer
 	return o.ApplyT(func(v ServiceTemplateContainer) *ServiceTemplateContainerLivenessProbe { return v.LivenessProbe }).(ServiceTemplateContainerLivenessProbePtrOutput)
 }
 
-// Volume's name.
+// Name of the container specified as a DNS_LABEL.
 func (o ServiceTemplateContainerOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainer) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -4880,9 +4973,9 @@ func (o ServiceTemplateContainerArrayOutput) Index(i pulumi.IntInput) ServiceTem
 }
 
 type ServiceTemplateContainerEnv struct {
-	// Volume's name.
+	// Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
 	Name string `pulumi:"name"`
-	// The header field value
+	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
 	Value *string `pulumi:"value"`
 	// Source for the environment variable's value.
 	// Structure is documented below.
@@ -4901,9 +4994,9 @@ type ServiceTemplateContainerEnvInput interface {
 }
 
 type ServiceTemplateContainerEnvArgs struct {
-	// Volume's name.
+	// Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The header field value
+	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
 	Value pulumi.StringPtrInput `pulumi:"value"`
 	// Source for the environment variable's value.
 	// Structure is documented below.
@@ -4961,12 +5054,12 @@ func (o ServiceTemplateContainerEnvOutput) ToServiceTemplateContainerEnvOutputWi
 	return o
 }
 
-// Volume's name.
+// Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
 func (o ServiceTemplateContainerEnvOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerEnv) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The header field value
+// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
 func (o ServiceTemplateContainerEnvOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -5141,9 +5234,9 @@ func (o ServiceTemplateContainerEnvValueSourcePtrOutput) SecretKeyRef() ServiceT
 }
 
 type ServiceTemplateContainerEnvValueSourceSecretKeyRef struct {
-	// The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+	// The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
 	Secret string `pulumi:"secret"`
-	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
 	Version *string `pulumi:"version"`
 }
 
@@ -5159,9 +5252,9 @@ type ServiceTemplateContainerEnvValueSourceSecretKeyRefInput interface {
 }
 
 type ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs struct {
-	// The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+	// The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
 	Secret pulumi.StringInput `pulumi:"secret"`
-	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -5242,12 +5335,12 @@ func (o ServiceTemplateContainerEnvValueSourceSecretKeyRefOutput) ToServiceTempl
 	}).(ServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutput)
 }
 
-// The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+// The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
 func (o ServiceTemplateContainerEnvValueSourceSecretKeyRefOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerEnvValueSourceSecretKeyRef) string { return v.Secret }).(pulumi.StringOutput)
 }
 
-// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
 func (o ServiceTemplateContainerEnvValueSourceSecretKeyRefOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerEnvValueSourceSecretKeyRef) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -5276,7 +5369,7 @@ func (o ServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutput) Elem() Serv
 	}).(ServiceTemplateContainerEnvValueSourceSecretKeyRefOutput)
 }
 
-// The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+// The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
 func (o ServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutput) Secret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateContainerEnvValueSourceSecretKeyRef) *string {
 		if v == nil {
@@ -5286,7 +5379,7 @@ func (o ServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutput) Secret() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
 func (o ServiceTemplateContainerEnvValueSourceSecretKeyRefPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateContainerEnvValueSourceSecretKeyRef) *string {
 		if v == nil {
@@ -5544,7 +5637,7 @@ type ServiceTemplateContainerLivenessProbeHttpGet struct {
 	// Custom headers to set in the request. HTTP allows repeated headers.
 	// Structure is documented below.
 	HttpHeaders []ServiceTemplateContainerLivenessProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
-	// The relative path of the secret in the container.
+	// Path to access on the HTTP server. Defaults to '/'.
 	Path *string `pulumi:"path"`
 }
 
@@ -5563,7 +5656,7 @@ type ServiceTemplateContainerLivenessProbeHttpGetArgs struct {
 	// Custom headers to set in the request. HTTP allows repeated headers.
 	// Structure is documented below.
 	HttpHeaders ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
-	// The relative path of the secret in the container.
+	// Path to access on the HTTP server. Defaults to '/'.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 }
 
@@ -5652,7 +5745,7 @@ func (o ServiceTemplateContainerLivenessProbeHttpGetOutput) HttpHeaders() Servic
 	}).(ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput)
 }
 
-// The relative path of the secret in the container.
+// Path to access on the HTTP server. Defaults to '/'.
 func (o ServiceTemplateContainerLivenessProbeHttpGetOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerLivenessProbeHttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -5692,7 +5785,7 @@ func (o ServiceTemplateContainerLivenessProbeHttpGetPtrOutput) HttpHeaders() Ser
 	}).(ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput)
 }
 
-// The relative path of the secret in the container.
+// Path to access on the HTTP server. Defaults to '/'.
 func (o ServiceTemplateContainerLivenessProbeHttpGetPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateContainerLivenessProbeHttpGet) *string {
 		if v == nil {
@@ -5703,7 +5796,7 @@ func (o ServiceTemplateContainerLivenessProbeHttpGetPtrOutput) Path() pulumi.Str
 }
 
 type ServiceTemplateContainerLivenessProbeHttpGetHttpHeader struct {
-	// Volume's name.
+	// The header field name
 	Name string `pulumi:"name"`
 	// The header field value
 	Value *string `pulumi:"value"`
@@ -5721,7 +5814,7 @@ type ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderInput interface {
 }
 
 type ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs struct {
-	// Volume's name.
+	// The header field name
 	Name pulumi.StringInput `pulumi:"name"`
 	// The header field value
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -5778,7 +5871,7 @@ func (o ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) ToServiceT
 	return o
 }
 
-// Volume's name.
+// The header field name
 func (o ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerLivenessProbeHttpGetHttpHeader) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -5948,7 +6041,7 @@ func (o ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput) Port() pulumi.I
 type ServiceTemplateContainerPort struct {
 	// Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
 	ContainerPort *int `pulumi:"containerPort"`
-	// Volume's name.
+	// If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
 	Name *string `pulumi:"name"`
 }
 
@@ -5966,7 +6059,7 @@ type ServiceTemplateContainerPortInput interface {
 type ServiceTemplateContainerPortArgs struct {
 	// Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
 	ContainerPort pulumi.IntPtrInput `pulumi:"containerPort"`
-	// Volume's name.
+	// If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -6026,7 +6119,7 @@ func (o ServiceTemplateContainerPortOutput) ContainerPort() pulumi.IntPtrOutput 
 	return o.ApplyT(func(v ServiceTemplateContainerPort) *int { return v.ContainerPort }).(pulumi.IntPtrOutput)
 }
 
-// Volume's name.
+// If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
 func (o ServiceTemplateContainerPortOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerPort) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -6455,7 +6548,7 @@ type ServiceTemplateContainerStartupProbeHttpGet struct {
 	// Custom headers to set in the request. HTTP allows repeated headers.
 	// Structure is documented below.
 	HttpHeaders []ServiceTemplateContainerStartupProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
-	// The relative path of the secret in the container.
+	// Path to access on the HTTP server. Defaults to '/'.
 	Path *string `pulumi:"path"`
 }
 
@@ -6474,7 +6567,7 @@ type ServiceTemplateContainerStartupProbeHttpGetArgs struct {
 	// Custom headers to set in the request. HTTP allows repeated headers.
 	// Structure is documented below.
 	HttpHeaders ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
-	// The relative path of the secret in the container.
+	// Path to access on the HTTP server. Defaults to '/'.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 }
 
@@ -6563,7 +6656,7 @@ func (o ServiceTemplateContainerStartupProbeHttpGetOutput) HttpHeaders() Service
 	}).(ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput)
 }
 
-// The relative path of the secret in the container.
+// Path to access on the HTTP server. Defaults to '/'.
 func (o ServiceTemplateContainerStartupProbeHttpGetOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerStartupProbeHttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -6603,7 +6696,7 @@ func (o ServiceTemplateContainerStartupProbeHttpGetPtrOutput) HttpHeaders() Serv
 	}).(ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput)
 }
 
-// The relative path of the secret in the container.
+// Path to access on the HTTP server. Defaults to '/'.
 func (o ServiceTemplateContainerStartupProbeHttpGetPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateContainerStartupProbeHttpGet) *string {
 		if v == nil {
@@ -6614,7 +6707,7 @@ func (o ServiceTemplateContainerStartupProbeHttpGetPtrOutput) Path() pulumi.Stri
 }
 
 type ServiceTemplateContainerStartupProbeHttpGetHttpHeader struct {
-	// Volume's name.
+	// The header field name
 	Name string `pulumi:"name"`
 	// The header field value
 	Value *string `pulumi:"value"`
@@ -6632,7 +6725,7 @@ type ServiceTemplateContainerStartupProbeHttpGetHttpHeaderInput interface {
 }
 
 type ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs struct {
-	// Volume's name.
+	// The header field name
 	Name pulumi.StringInput `pulumi:"name"`
 	// The header field value
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -6689,7 +6782,7 @@ func (o ServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput) ToServiceTe
 	return o
 }
 
-// Volume's name.
+// The header field name
 func (o ServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerStartupProbeHttpGetHttpHeader) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -6859,7 +6952,7 @@ func (o ServiceTemplateContainerStartupProbeTcpSocketPtrOutput) Port() pulumi.In
 type ServiceTemplateContainerVolumeMount struct {
 	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
 	MountPath string `pulumi:"mountPath"`
-	// Volume's name.
+	// This must match the Name of a Volume.
 	Name string `pulumi:"name"`
 }
 
@@ -6877,7 +6970,7 @@ type ServiceTemplateContainerVolumeMountInput interface {
 type ServiceTemplateContainerVolumeMountArgs struct {
 	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
 	MountPath pulumi.StringInput `pulumi:"mountPath"`
-	// Volume's name.
+	// This must match the Name of a Volume.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -6937,7 +7030,7 @@ func (o ServiceTemplateContainerVolumeMountOutput) MountPath() pulumi.StringOutp
 	return o.ApplyT(func(v ServiceTemplateContainerVolumeMount) string { return v.MountPath }).(pulumi.StringOutput)
 }
 
-// Volume's name.
+// This must match the Name of a Volume.
 func (o ServiceTemplateContainerVolumeMountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerVolumeMount) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -7124,7 +7217,8 @@ type ServiceTemplateVolume struct {
 	CloudSqlInstance *ServiceTemplateVolumeCloudSqlInstance `pulumi:"cloudSqlInstance"`
 	// Volume's name.
 	Name string `pulumi:"name"`
-	// The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+	// Structure is documented below.
 	Secret *ServiceTemplateVolumeSecret `pulumi:"secret"`
 }
 
@@ -7145,7 +7239,8 @@ type ServiceTemplateVolumeArgs struct {
 	CloudSqlInstance ServiceTemplateVolumeCloudSqlInstancePtrInput `pulumi:"cloudSqlInstance"`
 	// Volume's name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+	// Structure is documented below.
 	Secret ServiceTemplateVolumeSecretPtrInput `pulumi:"secret"`
 }
 
@@ -7211,7 +7306,8 @@ func (o ServiceTemplateVolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceTemplateVolume) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+// Structure is documented below.
 func (o ServiceTemplateVolumeOutput) Secret() ServiceTemplateVolumeSecretPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateVolume) *ServiceTemplateVolumeSecret { return v.Secret }).(ServiceTemplateVolumeSecretPtrOutput)
 }
@@ -7828,13 +7924,21 @@ func (o ServiceTemplateVpcAccessPtrOutput) Egress() pulumi.StringPtrOutput {
 }
 
 type ServiceTerminalCondition struct {
-	ExecutionReason    *string `pulumi:"executionReason"`
+	// A reason for the execution condition.
+	ExecutionReason *string `pulumi:"executionReason"`
+	// Last time the condition transitioned from one status to another.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	LastTransitionTime *string `pulumi:"lastTransitionTime"`
-	Message            *string `pulumi:"message"`
-	Reason             *string `pulumi:"reason"`
-	RevisionReason     *string `pulumi:"revisionReason"`
-	Severity           *string `pulumi:"severity"`
-	State              *string `pulumi:"state"`
+	// Human readable message indicating details about the current status.
+	Message *string `pulumi:"message"`
+	// A common (service-level) reason for this condition.
+	Reason *string `pulumi:"reason"`
+	// A reason for the revision condition.
+	RevisionReason *string `pulumi:"revisionReason"`
+	// How to interpret failures of this condition, one of Error, Warning, Info
+	Severity *string `pulumi:"severity"`
+	// State of the condition.
+	State *string `pulumi:"state"`
 	// The allocation type for this traffic target.
 	// Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
 	Type *string `pulumi:"type"`
@@ -7852,13 +7956,21 @@ type ServiceTerminalConditionInput interface {
 }
 
 type ServiceTerminalConditionArgs struct {
-	ExecutionReason    pulumi.StringPtrInput `pulumi:"executionReason"`
+	// A reason for the execution condition.
+	ExecutionReason pulumi.StringPtrInput `pulumi:"executionReason"`
+	// Last time the condition transitioned from one status to another.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	LastTransitionTime pulumi.StringPtrInput `pulumi:"lastTransitionTime"`
-	Message            pulumi.StringPtrInput `pulumi:"message"`
-	Reason             pulumi.StringPtrInput `pulumi:"reason"`
-	RevisionReason     pulumi.StringPtrInput `pulumi:"revisionReason"`
-	Severity           pulumi.StringPtrInput `pulumi:"severity"`
-	State              pulumi.StringPtrInput `pulumi:"state"`
+	// Human readable message indicating details about the current status.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// A common (service-level) reason for this condition.
+	Reason pulumi.StringPtrInput `pulumi:"reason"`
+	// A reason for the revision condition.
+	RevisionReason pulumi.StringPtrInput `pulumi:"revisionReason"`
+	// How to interpret failures of this condition, one of Error, Warning, Info
+	Severity pulumi.StringPtrInput `pulumi:"severity"`
+	// State of the condition.
+	State pulumi.StringPtrInput `pulumi:"state"`
 	// The allocation type for this traffic target.
 	// Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -7915,30 +8027,38 @@ func (o ServiceTerminalConditionOutput) ToServiceTerminalConditionOutputWithCont
 	return o
 }
 
+// A reason for the execution condition.
 func (o ServiceTerminalConditionOutput) ExecutionReason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTerminalCondition) *string { return v.ExecutionReason }).(pulumi.StringPtrOutput)
 }
 
+// Last time the condition transitioned from one status to another.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o ServiceTerminalConditionOutput) LastTransitionTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTerminalCondition) *string { return v.LastTransitionTime }).(pulumi.StringPtrOutput)
 }
 
+// Human readable message indicating details about the current status.
 func (o ServiceTerminalConditionOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTerminalCondition) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
+// A common (service-level) reason for this condition.
 func (o ServiceTerminalConditionOutput) Reason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTerminalCondition) *string { return v.Reason }).(pulumi.StringPtrOutput)
 }
 
+// A reason for the revision condition.
 func (o ServiceTerminalConditionOutput) RevisionReason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTerminalCondition) *string { return v.RevisionReason }).(pulumi.StringPtrOutput)
 }
 
+// How to interpret failures of this condition, one of Error, Warning, Info
 func (o ServiceTerminalConditionOutput) Severity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTerminalCondition) *string { return v.Severity }).(pulumi.StringPtrOutput)
 }
 
+// State of the condition.
 func (o ServiceTerminalConditionOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTerminalCondition) *string { return v.State }).(pulumi.StringPtrOutput)
 }
@@ -8099,6 +8219,8 @@ func (o ServiceTrafficArrayOutput) Index(i pulumi.IntInput) ServiceTrafficOutput
 type ServiceTrafficStatus struct {
 	// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
 	Percent *int `pulumi:"percent"`
+	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+	// (Optional)
 	// Revision to which to send this portion of traffic, if traffic allocation is by revision.
 	Revision *string `pulumi:"revision"`
 	// Indicates a string to be part of the URI to exclusively reference this target.
@@ -8106,7 +8228,8 @@ type ServiceTrafficStatus struct {
 	// The allocation type for this traffic target.
 	// Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
 	Type *string `pulumi:"type"`
-	Uri  *string `pulumi:"uri"`
+	// Displays the target URI.
+	Uri *string `pulumi:"uri"`
 }
 
 // ServiceTrafficStatusInput is an input type that accepts ServiceTrafficStatusArgs and ServiceTrafficStatusOutput values.
@@ -8123,6 +8246,8 @@ type ServiceTrafficStatusInput interface {
 type ServiceTrafficStatusArgs struct {
 	// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
 	Percent pulumi.IntPtrInput `pulumi:"percent"`
+	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+	// (Optional)
 	// Revision to which to send this portion of traffic, if traffic allocation is by revision.
 	Revision pulumi.StringPtrInput `pulumi:"revision"`
 	// Indicates a string to be part of the URI to exclusively reference this target.
@@ -8130,7 +8255,8 @@ type ServiceTrafficStatusArgs struct {
 	// The allocation type for this traffic target.
 	// Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	Uri  pulumi.StringPtrInput `pulumi:"uri"`
+	// Displays the target URI.
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
 }
 
 func (ServiceTrafficStatusArgs) ElementType() reflect.Type {
@@ -8189,6 +8315,8 @@ func (o ServiceTrafficStatusOutput) Percent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTrafficStatus) *int { return v.Percent }).(pulumi.IntPtrOutput)
 }
 
+// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+// (Optional)
 // Revision to which to send this portion of traffic, if traffic allocation is by revision.
 func (o ServiceTrafficStatusOutput) Revision() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTrafficStatus) *string { return v.Revision }).(pulumi.StringPtrOutput)
@@ -8205,6 +8333,7 @@ func (o ServiceTrafficStatusOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTrafficStatus) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// Displays the target URI.
 func (o ServiceTrafficStatusOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTrafficStatus) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }

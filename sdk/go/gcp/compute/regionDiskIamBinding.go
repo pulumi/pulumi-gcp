@@ -38,7 +38,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 //				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
+//					{
 //						Role: "roles/viewer",
 //						Members: []string{
 //							"user:jane@example.com",
@@ -52,7 +52,7 @@ import (
 //			_, err = compute.NewDiskIamPolicy(ctx, "policy", &compute.DiskIamPolicyArgs{
 //				Project:    pulumi.Any(google_compute_disk.Default.Project),
 //				Zone:       pulumi.Any(google_compute_disk.Default.Zone),
-//				PolicyData: pulumi.String(admin.PolicyData),
+//				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

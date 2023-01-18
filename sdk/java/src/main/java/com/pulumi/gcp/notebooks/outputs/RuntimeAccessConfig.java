@@ -19,8 +19,7 @@ public final class RuntimeAccessConfig {
      */
     private @Nullable String accessType;
     /**
-     * @return -
-     * The proxy endpoint that is used to access the runtime.
+     * @return The proxy endpoint that is used to access the runtime.
      * 
      */
     private @Nullable String proxyUri;
@@ -42,8 +41,7 @@ public final class RuntimeAccessConfig {
         return Optional.ofNullable(this.accessType);
     }
     /**
-     * @return -
-     * The proxy endpoint that is used to access the runtime.
+     * @return The proxy endpoint that is used to access the runtime.
      * 
      */
     public Optional<String> proxyUri() {

@@ -1583,7 +1583,8 @@ type EdgeCacheServiceRouting struct {
 	// The list of hostRules to match against. These rules define which hostnames the EdgeCacheService will match against, and which route configurations apply.
 	// Structure is documented below.
 	HostRules []EdgeCacheServiceRoutingHostRule `pulumi:"hostRules"`
-	// The name of the pathMatcher associated with this hostRule.
+	// The list of pathMatchers referenced via name by hostRules. PathMatcher is used to match the path portion of the URL when a HostRule matches the URL's host portion.
+	// Structure is documented below.
 	PathMatchers []EdgeCacheServiceRoutingPathMatcher `pulumi:"pathMatchers"`
 }
 
@@ -1602,7 +1603,8 @@ type EdgeCacheServiceRoutingArgs struct {
 	// The list of hostRules to match against. These rules define which hostnames the EdgeCacheService will match against, and which route configurations apply.
 	// Structure is documented below.
 	HostRules EdgeCacheServiceRoutingHostRuleArrayInput `pulumi:"hostRules"`
-	// The name of the pathMatcher associated with this hostRule.
+	// The list of pathMatchers referenced via name by hostRules. PathMatcher is used to match the path portion of the URL when a HostRule matches the URL's host portion.
+	// Structure is documented below.
 	PathMatchers EdgeCacheServiceRoutingPathMatcherArrayInput `pulumi:"pathMatchers"`
 }
 
@@ -1689,7 +1691,8 @@ func (o EdgeCacheServiceRoutingOutput) HostRules() EdgeCacheServiceRoutingHostRu
 	return o.ApplyT(func(v EdgeCacheServiceRouting) []EdgeCacheServiceRoutingHostRule { return v.HostRules }).(EdgeCacheServiceRoutingHostRuleArrayOutput)
 }
 
-// The name of the pathMatcher associated with this hostRule.
+// The list of pathMatchers referenced via name by hostRules. PathMatcher is used to match the path portion of the URL when a HostRule matches the URL's host portion.
+// Structure is documented below.
 func (o EdgeCacheServiceRoutingOutput) PathMatchers() EdgeCacheServiceRoutingPathMatcherArrayOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRouting) []EdgeCacheServiceRoutingPathMatcher { return v.PathMatchers }).(EdgeCacheServiceRoutingPathMatcherArrayOutput)
 }
@@ -1729,7 +1732,8 @@ func (o EdgeCacheServiceRoutingPtrOutput) HostRules() EdgeCacheServiceRoutingHos
 	}).(EdgeCacheServiceRoutingHostRuleArrayOutput)
 }
 
-// The name of the pathMatcher associated with this hostRule.
+// The list of pathMatchers referenced via name by hostRules. PathMatcher is used to match the path portion of the URL when a HostRule matches the URL's host portion.
+// Structure is documented below.
 func (o EdgeCacheServiceRoutingPtrOutput) PathMatchers() EdgeCacheServiceRoutingPathMatcherArrayOutput {
 	return o.ApplyT(func(v *EdgeCacheServiceRouting) []EdgeCacheServiceRoutingPathMatcher {
 		if v == nil {
@@ -1740,7 +1744,7 @@ func (o EdgeCacheServiceRoutingPtrOutput) PathMatchers() EdgeCacheServiceRouting
 }
 
 type EdgeCacheServiceRoutingHostRule struct {
-	// A human-readable description of the resource.
+	// A human-readable description of the hostRule.
 	Description *string `pulumi:"description"`
 	// The list of host patterns to match.
 	// Host patterns must be valid hostnames. Ports are not allowed. Wildcard hosts are supported in the suffix or prefix form. * matches any string of ([a-z0-9-.]*). It does not match the empty string.
@@ -1770,7 +1774,7 @@ type EdgeCacheServiceRoutingHostRuleInput interface {
 }
 
 type EdgeCacheServiceRoutingHostRuleArgs struct {
-	// A human-readable description of the resource.
+	// A human-readable description of the hostRule.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The list of host patterns to match.
 	// Host patterns must be valid hostnames. Ports are not allowed. Wildcard hosts are supported in the suffix or prefix form. * matches any string of ([a-z0-9-.]*). It does not match the empty string.
@@ -1839,7 +1843,7 @@ func (o EdgeCacheServiceRoutingHostRuleOutput) ToEdgeCacheServiceRoutingHostRule
 	return o
 }
 
-// A human-readable description of the resource.
+// A human-readable description of the hostRule.
 func (o EdgeCacheServiceRoutingHostRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingHostRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1887,7 +1891,7 @@ func (o EdgeCacheServiceRoutingHostRuleArrayOutput) Index(i pulumi.IntInput) Edg
 type EdgeCacheServiceRoutingPathMatcher struct {
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
-	// The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+	// The name to which this PathMatcher is referred by the HostRule.
 	Name string `pulumi:"name"`
 	// The routeRules to match against. routeRules support advanced routing behaviour, and can match on paths, headers and query parameters, as well as status codes and HTTP methods.
 	// Structure is documented below.
@@ -1908,7 +1912,7 @@ type EdgeCacheServiceRoutingPathMatcherInput interface {
 type EdgeCacheServiceRoutingPathMatcherArgs struct {
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+	// The name to which this PathMatcher is referred by the HostRule.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The routeRules to match against. routeRules support advanced routing behaviour, and can match on paths, headers and query parameters, as well as status codes and HTTP methods.
 	// Structure is documented below.
@@ -1971,7 +1975,7 @@ func (o EdgeCacheServiceRoutingPathMatcherOutput) Description() pulumi.StringPtr
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcher) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+// The name to which this PathMatcher is referred by the HostRule.
 func (o EdgeCacheServiceRoutingPathMatcherOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcher) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2005,7 +2009,7 @@ func (o EdgeCacheServiceRoutingPathMatcherArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type EdgeCacheServiceRoutingPathMatcherRouteRule struct {
-	// A human-readable description of the resource.
+	// A human-readable description of the routeRule.
 	Description *string `pulumi:"description"`
 	// The header actions, including adding & removing headers, for requests that match this route.
 	// Structure is documented below.
@@ -2042,7 +2046,7 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleInput interface {
 }
 
 type EdgeCacheServiceRoutingPathMatcherRouteRuleArgs struct {
-	// A human-readable description of the resource.
+	// A human-readable description of the routeRule.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The header actions, including adding & removing headers, for requests that match this route.
 	// Structure is documented below.
@@ -2118,7 +2122,7 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleOutput) ToEdgeCacheServiceRou
 	return o
 }
 
-// A human-readable description of the resource.
+// A human-readable description of the routeRule.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -2413,8 +2417,7 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionPtrOutput) Respon
 }
 
 type EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd struct {
-	// Headers to remove from the response prior to sending it back to the client.
-	// Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+	// The name of the header to add.
 	HeaderName string `pulumi:"headerName"`
 	// The value of the header to add.
 	HeaderValue string `pulumi:"headerValue"`
@@ -2434,8 +2437,7 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddIn
 }
 
 type EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgs struct {
-	// Headers to remove from the response prior to sending it back to the client.
-	// Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+	// The name of the header to add.
 	HeaderName pulumi.StringInput `pulumi:"headerName"`
 	// The value of the header to add.
 	HeaderValue pulumi.StringInput `pulumi:"headerValue"`
@@ -2494,8 +2496,7 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAd
 	return o
 }
 
-// Headers to remove from the response prior to sending it back to the client.
-// Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+// The name of the header to add.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddOutput) HeaderName() pulumi.StringOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd) string {
 		return v.HeaderName
@@ -2537,8 +2538,7 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAd
 }
 
 type EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove struct {
-	// Headers to remove from the response prior to sending it back to the client.
-	// Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+	// The name of the header to remove.
 	HeaderName string `pulumi:"headerName"`
 }
 
@@ -2554,8 +2554,7 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemov
 }
 
 type EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArgs struct {
-	// Headers to remove from the response prior to sending it back to the client.
-	// Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+	// The name of the header to remove.
 	HeaderName pulumi.StringInput `pulumi:"headerName"`
 }
 
@@ -2610,8 +2609,7 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRe
 	return o
 }
 
-// Headers to remove from the response prior to sending it back to the client.
-// Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+// The name of the header to remove.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveOutput) HeaderName() pulumi.StringOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove) string {
 		return v.HeaderName
@@ -2639,8 +2637,7 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRe
 }
 
 type EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd struct {
-	// Headers to remove from the response prior to sending it back to the client.
-	// Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+	// The name of the header to add.
 	HeaderName string `pulumi:"headerName"`
 	// The value of the header to add.
 	HeaderValue string `pulumi:"headerValue"`
@@ -2660,8 +2657,7 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddI
 }
 
 type EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgs struct {
-	// Headers to remove from the response prior to sending it back to the client.
-	// Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+	// The name of the header to add.
 	HeaderName pulumi.StringInput `pulumi:"headerName"`
 	// The value of the header to add.
 	HeaderValue pulumi.StringInput `pulumi:"headerValue"`
@@ -2720,8 +2716,7 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToA
 	return o
 }
 
-// Headers to remove from the response prior to sending it back to the client.
-// Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+// The name of the header to add.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddOutput) HeaderName() pulumi.StringOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd) string {
 		return v.HeaderName
@@ -2881,7 +2876,7 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule struct {
 	// have at most 5 wildcard operators and at most 5 variable
 	// captures in total.
 	PathTemplateMatch *string `pulumi:"pathTemplateMatch"`
-	// The value of the header must start with the contents of prefixMatch.
+	// For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /.
 	PrefixMatch *string `pulumi:"prefixMatch"`
 	// Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request.
 	// Structure is documented below.
@@ -2916,7 +2911,7 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgs struct {
 	// have at most 5 wildcard operators and at most 5 variable
 	// captures in total.
 	PathTemplateMatch pulumi.StringPtrInput `pulumi:"pathTemplateMatch"`
-	// The value of the header must start with the contents of prefixMatch.
+	// For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /.
 	PrefixMatch pulumi.StringPtrInput `pulumi:"prefixMatch"`
 	// Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request.
 	// Structure is documented below.
@@ -3004,7 +2999,7 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleOutput) PathTemplate
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule) *string { return v.PathTemplateMatch }).(pulumi.StringPtrOutput)
 }
 
-// The value of the header must start with the contents of prefixMatch.
+// For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleOutput) PrefixMatch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule) *string { return v.PrefixMatch }).(pulumi.StringPtrOutput)
 }
@@ -3038,17 +3033,16 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArrayOutput) Index(i
 }
 
 type EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch struct {
-	// The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch.
+	// The value of the header should exactly match contents of exactMatch.
 	ExactMatch *string `pulumi:"exactMatch"`
-	// Headers to remove from the response prior to sending it back to the client.
-	// Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+	// The header name to match on.
 	HeaderName string `pulumi:"headerName"`
 	// If set to false (default), the headerMatch is considered a match if the match criteria above are met.
 	// If set to true, the headerMatch is considered a match if the match criteria above are NOT met.
 	InvertMatch *bool `pulumi:"invertMatch"`
 	// The value of the header must start with the contents of prefixMatch.
 	PrefixMatch *string `pulumi:"prefixMatch"`
-	// Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not.
+	// A header with the contents of headerName must exist. The match takes place whether or not the request's header has a value.
 	PresentMatch *bool `pulumi:"presentMatch"`
 	// The value of the header must end with the contents of suffixMatch.
 	SuffixMatch *string `pulumi:"suffixMatch"`
@@ -3066,17 +3060,16 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchInput interf
 }
 
 type EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgs struct {
-	// The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch.
+	// The value of the header should exactly match contents of exactMatch.
 	ExactMatch pulumi.StringPtrInput `pulumi:"exactMatch"`
-	// Headers to remove from the response prior to sending it back to the client.
-	// Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+	// The header name to match on.
 	HeaderName pulumi.StringInput `pulumi:"headerName"`
 	// If set to false (default), the headerMatch is considered a match if the match criteria above are met.
 	// If set to true, the headerMatch is considered a match if the match criteria above are NOT met.
 	InvertMatch pulumi.BoolPtrInput `pulumi:"invertMatch"`
 	// The value of the header must start with the contents of prefixMatch.
 	PrefixMatch pulumi.StringPtrInput `pulumi:"prefixMatch"`
-	// Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not.
+	// A header with the contents of headerName must exist. The match takes place whether or not the request's header has a value.
 	PresentMatch pulumi.BoolPtrInput `pulumi:"presentMatch"`
 	// The value of the header must end with the contents of suffixMatch.
 	SuffixMatch pulumi.StringPtrInput `pulumi:"suffixMatch"`
@@ -3133,13 +3126,12 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchOutput) T
 	return o
 }
 
-// The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch.
+// The value of the header should exactly match contents of exactMatch.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchOutput) ExactMatch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch) *string { return v.ExactMatch }).(pulumi.StringPtrOutput)
 }
 
-// Headers to remove from the response prior to sending it back to the client.
-// Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+// The header name to match on.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchOutput) HeaderName() pulumi.StringOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch) string { return v.HeaderName }).(pulumi.StringOutput)
 }
@@ -3155,7 +3147,7 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchOutput) P
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch) *string { return v.PrefixMatch }).(pulumi.StringPtrOutput)
 }
 
-// Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not.
+// A header with the contents of headerName must exist. The match takes place whether or not the request's header has a value.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchOutput) PresentMatch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch) *bool { return v.PresentMatch }).(pulumi.BoolPtrOutput)
 }
@@ -4045,25 +4037,10 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignature
 	Actions string `pulumi:"actions"`
 	// The parameters to copy from the verified token to the generated token.
 	// Only the following parameters may be copied:
-	// * `PathGlobs`
-	// * `paths`
-	// * `acl`
-	// * `URLPrefix`
-	// * `IPRanges`
-	// * `SessionID`
-	// * `id`
-	// * `Data`
-	// * `data`
-	// * `payload`
-	// * `Headers`
-	//   You may specify up to 6 parameters to copy.  A given parameter is be copied only if the parameter exists in the verified token.  Parameter names are matched exactly as specified.  The order of the parameters does not matter.  Duplicates are not allowed.
-	//   This field may only be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.
 	CopiedParameters []string `pulumi:"copiedParameters"`
 	// The keyset to use for signature generation.
 	// The following are both valid paths to an EdgeCacheKeyset resource:
 	// * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
-	// * `yourKeyset`
-	//   This must be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.  This field may not be specified otherwise.
 	Keyset *string `pulumi:"keyset"`
 	// The query parameter in which to put the generated token.
 	// If not specified, defaults to `edge-cache-token`.
@@ -4095,25 +4072,10 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignature
 	Actions pulumi.StringInput `pulumi:"actions"`
 	// The parameters to copy from the verified token to the generated token.
 	// Only the following parameters may be copied:
-	// * `PathGlobs`
-	// * `paths`
-	// * `acl`
-	// * `URLPrefix`
-	// * `IPRanges`
-	// * `SessionID`
-	// * `id`
-	// * `Data`
-	// * `data`
-	// * `payload`
-	// * `Headers`
-	//   You may specify up to 6 parameters to copy.  A given parameter is be copied only if the parameter exists in the verified token.  Parameter names are matched exactly as specified.  The order of the parameters does not matter.  Duplicates are not allowed.
-	//   This field may only be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.
 	CopiedParameters pulumi.StringArrayInput `pulumi:"copiedParameters"`
 	// The keyset to use for signature generation.
 	// The following are both valid paths to an EdgeCacheKeyset resource:
 	// * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
-	// * `yourKeyset`
-	//   This must be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.  This field may not be specified otherwise.
 	Keyset pulumi.StringPtrInput `pulumi:"keyset"`
 	// The query parameter in which to put the generated token.
 	// If not specified, defaults to `edge-cache-token`.
@@ -4215,19 +4177,6 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignat
 
 // The parameters to copy from the verified token to the generated token.
 // Only the following parameters may be copied:
-//   - `PathGlobs`
-//   - `paths`
-//   - `acl`
-//   - `URLPrefix`
-//   - `IPRanges`
-//   - `SessionID`
-//   - `id`
-//   - `Data`
-//   - `data`
-//   - `payload`
-//   - `Headers`
-//     You may specify up to 6 parameters to copy.  A given parameter is be copied only if the parameter exists in the verified token.  Parameter names are matched exactly as specified.  The order of the parameters does not matter.  Duplicates are not allowed.
-//     This field may only be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput) CopiedParameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures) []string {
 		return v.CopiedParameters
@@ -4236,9 +4185,7 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignat
 
 // The keyset to use for signature generation.
 // The following are both valid paths to an EdgeCacheKeyset resource:
-//   - `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
-//   - `yourKeyset`
-//     This must be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.  This field may not be specified otherwise.
+// * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput) Keyset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures) *string {
 		return v.Keyset
@@ -4303,19 +4250,6 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignat
 
 // The parameters to copy from the verified token to the generated token.
 // Only the following parameters may be copied:
-//   - `PathGlobs`
-//   - `paths`
-//   - `acl`
-//   - `URLPrefix`
-//   - `IPRanges`
-//   - `SessionID`
-//   - `id`
-//   - `Data`
-//   - `data`
-//   - `payload`
-//   - `Headers`
-//     You may specify up to 6 parameters to copy.  A given parameter is be copied only if the parameter exists in the verified token.  Parameter names are matched exactly as specified.  The order of the parameters does not matter.  Duplicates are not allowed.
-//     This field may only be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput) CopiedParameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures) []string {
 		if v == nil {
@@ -4327,9 +4261,7 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignat
 
 // The keyset to use for signature generation.
 // The following are both valid paths to an EdgeCacheKeyset resource:
-//   - `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
-//   - `yourKeyset`
-//     This must be specified when the GENERATE_COOKIE or GENERATE_TOKEN_HLS_COOKIELESS actions are specified.  This field may not be specified otherwise.
+// * `projects/project/locations/global/edgeCacheKeysets/yourKeyset`
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput) Keyset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures) *string {
 		if v == nil {
@@ -4709,10 +4641,9 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenO
 	// You may specify up to 3 signature algorithms to use.
 	// Each value may be one of `ED25519`, `HMAC_SHA_256`, and `HMAC_SHA1`.
 	AllowedSignatureAlgorithms []string `pulumi:"allowedSignatureAlgorithms"`
-	// The query parameter in which to put the generated token.
-	// If not specified, defaults to `edge-cache-token`.
-	// If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
-	// This field may only be set when the GENERATE_TOKEN_HLS_COOKIELESS or PROPAGATE_TOKEN_HLS_COOKIELESS actions are specified.
+	// The query parameter in which to find the token.
+	// The name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+	// Defaults to `edge-cache-token`.
 	TokenQueryParameter *string `pulumi:"tokenQueryParameter"`
 }
 
@@ -4733,10 +4664,9 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenO
 	// You may specify up to 3 signature algorithms to use.
 	// Each value may be one of `ED25519`, `HMAC_SHA_256`, and `HMAC_SHA1`.
 	AllowedSignatureAlgorithms pulumi.StringArrayInput `pulumi:"allowedSignatureAlgorithms"`
-	// The query parameter in which to put the generated token.
-	// If not specified, defaults to `edge-cache-token`.
-	// If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
-	// This field may only be set when the GENERATE_TOKEN_HLS_COOKIELESS or PROPAGATE_TOKEN_HLS_COOKIELESS actions are specified.
+	// The query parameter in which to find the token.
+	// The name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+	// Defaults to `edge-cache-token`.
 	TokenQueryParameter pulumi.StringPtrInput `pulumi:"tokenQueryParameter"`
 }
 
@@ -4827,10 +4757,9 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTok
 	}).(pulumi.StringArrayOutput)
 }
 
-// The query parameter in which to put the generated token.
-// If not specified, defaults to `edge-cache-token`.
-// If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
-// This field may only be set when the GENERATE_TOKEN_HLS_COOKIELESS or PROPAGATE_TOKEN_HLS_COOKIELESS actions are specified.
+// The query parameter in which to find the token.
+// The name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+// Defaults to `edge-cache-token`.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput) TokenQueryParameter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions) *string {
 		return v.TokenQueryParameter
@@ -4874,10 +4803,9 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTok
 	}).(pulumi.StringArrayOutput)
 }
 
-// The query parameter in which to put the generated token.
-// If not specified, defaults to `edge-cache-token`.
-// If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
-// This field may only be set when the GENERATE_TOKEN_HLS_COOKIELESS or PROPAGATE_TOKEN_HLS_COOKIELESS actions are specified.
+// The query parameter in which to find the token.
+// The name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+// Defaults to `edge-cache-token`.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput) TokenQueryParameter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions) *string {
 		if v == nil {
@@ -5406,8 +5334,6 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect struct {
 	PrefixRedirect *string `pulumi:"prefixRedirect"`
 	// The HTTP Status code to use for this RedirectAction.
 	// The supported values are:
-	// - `MOVED_PERMANENTLY_DEFAULT`, which is the default value and corresponds to 301.
-	// - `FOUND`, which corresponds to 302.
 	RedirectResponseCode *string `pulumi:"redirectResponseCode"`
 	// If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
 	StripQuery *bool `pulumi:"stripQuery"`
@@ -5439,8 +5365,6 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs struct {
 	PrefixRedirect pulumi.StringPtrInput `pulumi:"prefixRedirect"`
 	// The HTTP Status code to use for this RedirectAction.
 	// The supported values are:
-	// - `MOVED_PERMANENTLY_DEFAULT`, which is the default value and corresponds to 301.
-	// - `FOUND`, which corresponds to 302.
 	RedirectResponseCode pulumi.StringPtrInput `pulumi:"redirectResponseCode"`
 	// If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
 	StripQuery pulumi.BoolPtrInput `pulumi:"stripQuery"`
@@ -5549,8 +5473,6 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectOutput) PrefixRedi
 
 // The HTTP Status code to use for this RedirectAction.
 // The supported values are:
-// - `MOVED_PERMANENTLY_DEFAULT`, which is the default value and corresponds to 301.
-// - `FOUND`, which corresponds to 302.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectOutput) RedirectResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect) *string { return v.RedirectResponseCode }).(pulumi.StringPtrOutput)
 }
@@ -5630,8 +5552,6 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutput) PrefixR
 
 // The HTTP Status code to use for this RedirectAction.
 // The supported values are:
-// - `MOVED_PERMANENTLY_DEFAULT`, which is the default value and corresponds to 301.
-// - `FOUND`, which corresponds to 302.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutput) RedirectResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect) *string {
 		if v == nil {

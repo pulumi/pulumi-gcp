@@ -124,12 +124,12 @@ import (
 type OsPolicyAssignment struct {
 	pulumi.CustomResourceState
 
-	// Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS
-	// policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for
-	// this field.
+	// Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
 	Baseline pulumi.BoolOutput `pulumi:"baseline"`
 	// Output only. Indicates that this revision deletes the OS policy assignment.
 	Deleted pulumi.BoolOutput `pulumi:"deleted"`
+	// Policy description. Length of the description is limited to 1024 characters.
+	// (Optional)
 	// OS policy assignment description. Length of the description is limited to 1024 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The etag for this OS policy assignment. If this is provided on update, it must match the server's etag.
@@ -138,24 +138,21 @@ type OsPolicyAssignment struct {
 	InstanceFilter OsPolicyAssignmentInstanceFilterOutput `pulumi:"instanceFilter"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Required. The name of the repository.
+	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Required. List of OS policies to be applied to the VMs.
 	OsPolicies OsPolicyAssignmentOsPolicyArrayOutput `pulumi:"osPolicies"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the
-	// `rollout_state` is one of: * IN_PROGRESS * CANCELLING
+	// Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the `rolloutState` is one of: * IN_PROGRESS * CANCELLING
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// Output only. The timestamp that the revision was created.
 	RevisionCreateTime pulumi.StringOutput `pulumi:"revisionCreateTime"`
-	// Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy
-	// assignment
+	// Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
 	RevisionId pulumi.StringOutput `pulumi:"revisionId"`
 	// Required. Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instanceFilter - osPolicies 3) OSPolicyAssignment is deleted.
 	Rollout OsPolicyAssignmentRolloutOutput `pulumi:"rollout"`
-	// Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING,
-	// CANCELLED, SUCCEEDED
+	// Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING, CANCELLED, SUCCEEDED
 	RolloutState pulumi.StringOutput `pulumi:"rolloutState"`
 	// Set to true to skip awaiting rollout during resource creation and update.
 	SkipAwaitRollout pulumi.BoolPtrOutput `pulumi:"skipAwaitRollout"`
@@ -204,12 +201,12 @@ func GetOsPolicyAssignment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OsPolicyAssignment resources.
 type osPolicyAssignmentState struct {
-	// Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS
-	// policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for
-	// this field.
+	// Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
 	Baseline *bool `pulumi:"baseline"`
 	// Output only. Indicates that this revision deletes the OS policy assignment.
 	Deleted *bool `pulumi:"deleted"`
+	// Policy description. Length of the description is limited to 1024 characters.
+	// (Optional)
 	// OS policy assignment description. Length of the description is limited to 1024 characters.
 	Description *string `pulumi:"description"`
 	// The etag for this OS policy assignment. If this is provided on update, it must match the server's etag.
@@ -218,24 +215,21 @@ type osPolicyAssignmentState struct {
 	InstanceFilter *OsPolicyAssignmentInstanceFilter `pulumi:"instanceFilter"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
-	// Required. The name of the repository.
+	// Resource name.
 	Name *string `pulumi:"name"`
 	// Required. List of OS policies to be applied to the VMs.
 	OsPolicies []OsPolicyAssignmentOsPolicy `pulumi:"osPolicies"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
-	// Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the
-	// `rollout_state` is one of: * IN_PROGRESS * CANCELLING
+	// Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the `rolloutState` is one of: * IN_PROGRESS * CANCELLING
 	Reconciling *bool `pulumi:"reconciling"`
 	// Output only. The timestamp that the revision was created.
 	RevisionCreateTime *string `pulumi:"revisionCreateTime"`
-	// Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy
-	// assignment
+	// Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
 	RevisionId *string `pulumi:"revisionId"`
 	// Required. Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instanceFilter - osPolicies 3) OSPolicyAssignment is deleted.
 	Rollout *OsPolicyAssignmentRollout `pulumi:"rollout"`
-	// Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING,
-	// CANCELLED, SUCCEEDED
+	// Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING, CANCELLED, SUCCEEDED
 	RolloutState *string `pulumi:"rolloutState"`
 	// Set to true to skip awaiting rollout during resource creation and update.
 	SkipAwaitRollout *bool `pulumi:"skipAwaitRollout"`
@@ -244,12 +238,12 @@ type osPolicyAssignmentState struct {
 }
 
 type OsPolicyAssignmentState struct {
-	// Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS
-	// policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for
-	// this field.
+	// Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
 	Baseline pulumi.BoolPtrInput
 	// Output only. Indicates that this revision deletes the OS policy assignment.
 	Deleted pulumi.BoolPtrInput
+	// Policy description. Length of the description is limited to 1024 characters.
+	// (Optional)
 	// OS policy assignment description. Length of the description is limited to 1024 characters.
 	Description pulumi.StringPtrInput
 	// The etag for this OS policy assignment. If this is provided on update, it must match the server's etag.
@@ -258,24 +252,21 @@ type OsPolicyAssignmentState struct {
 	InstanceFilter OsPolicyAssignmentInstanceFilterPtrInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
-	// Required. The name of the repository.
+	// Resource name.
 	Name pulumi.StringPtrInput
 	// Required. List of OS policies to be applied to the VMs.
 	OsPolicies OsPolicyAssignmentOsPolicyArrayInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
-	// Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the
-	// `rollout_state` is one of: * IN_PROGRESS * CANCELLING
+	// Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the `rolloutState` is one of: * IN_PROGRESS * CANCELLING
 	Reconciling pulumi.BoolPtrInput
 	// Output only. The timestamp that the revision was created.
 	RevisionCreateTime pulumi.StringPtrInput
-	// Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy
-	// assignment
+	// Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
 	RevisionId pulumi.StringPtrInput
 	// Required. Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instanceFilter - osPolicies 3) OSPolicyAssignment is deleted.
 	Rollout OsPolicyAssignmentRolloutPtrInput
-	// Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING,
-	// CANCELLED, SUCCEEDED
+	// Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING, CANCELLED, SUCCEEDED
 	RolloutState pulumi.StringPtrInput
 	// Set to true to skip awaiting rollout during resource creation and update.
 	SkipAwaitRollout pulumi.BoolPtrInput
@@ -288,13 +279,15 @@ func (OsPolicyAssignmentState) ElementType() reflect.Type {
 }
 
 type osPolicyAssignmentArgs struct {
+	// Policy description. Length of the description is limited to 1024 characters.
+	// (Optional)
 	// OS policy assignment description. Length of the description is limited to 1024 characters.
 	Description *string `pulumi:"description"`
 	// Required. Filter to select VMs.
 	InstanceFilter OsPolicyAssignmentInstanceFilter `pulumi:"instanceFilter"`
 	// The location for the resource
 	Location string `pulumi:"location"`
-	// Required. The name of the repository.
+	// Resource name.
 	Name *string `pulumi:"name"`
 	// Required. List of OS policies to be applied to the VMs.
 	OsPolicies []OsPolicyAssignmentOsPolicy `pulumi:"osPolicies"`
@@ -308,13 +301,15 @@ type osPolicyAssignmentArgs struct {
 
 // The set of arguments for constructing a OsPolicyAssignment resource.
 type OsPolicyAssignmentArgs struct {
+	// Policy description. Length of the description is limited to 1024 characters.
+	// (Optional)
 	// OS policy assignment description. Length of the description is limited to 1024 characters.
 	Description pulumi.StringPtrInput
 	// Required. Filter to select VMs.
 	InstanceFilter OsPolicyAssignmentInstanceFilterInput
 	// The location for the resource
 	Location pulumi.StringInput
-	// Required. The name of the repository.
+	// Resource name.
 	Name pulumi.StringPtrInput
 	// Required. List of OS policies to be applied to the VMs.
 	OsPolicies OsPolicyAssignmentOsPolicyArrayInput
@@ -413,9 +408,7 @@ func (o OsPolicyAssignmentOutput) ToOsPolicyAssignmentOutputWithContext(ctx cont
 	return o
 }
 
-// Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS
-// policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for
-// this field.
+// Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
 func (o OsPolicyAssignmentOutput) Baseline() pulumi.BoolOutput {
 	return o.ApplyT(func(v *OsPolicyAssignment) pulumi.BoolOutput { return v.Baseline }).(pulumi.BoolOutput)
 }
@@ -425,6 +418,8 @@ func (o OsPolicyAssignmentOutput) Deleted() pulumi.BoolOutput {
 	return o.ApplyT(func(v *OsPolicyAssignment) pulumi.BoolOutput { return v.Deleted }).(pulumi.BoolOutput)
 }
 
+// Policy description. Length of the description is limited to 1024 characters.
+// (Optional)
 // OS policy assignment description. Length of the description is limited to 1024 characters.
 func (o OsPolicyAssignmentOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignment) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -445,7 +440,7 @@ func (o OsPolicyAssignmentOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *OsPolicyAssignment) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Required. The name of the repository.
+// Resource name.
 func (o OsPolicyAssignmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OsPolicyAssignment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -460,8 +455,7 @@ func (o OsPolicyAssignmentOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *OsPolicyAssignment) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the
-// `rollout_state` is one of: * IN_PROGRESS * CANCELLING
+// Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the `rolloutState` is one of: * IN_PROGRESS * CANCELLING
 func (o OsPolicyAssignmentOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *OsPolicyAssignment) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }
@@ -471,8 +465,7 @@ func (o OsPolicyAssignmentOutput) RevisionCreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *OsPolicyAssignment) pulumi.StringOutput { return v.RevisionCreateTime }).(pulumi.StringOutput)
 }
 
-// Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy
-// assignment
+// Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
 func (o OsPolicyAssignmentOutput) RevisionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OsPolicyAssignment) pulumi.StringOutput { return v.RevisionId }).(pulumi.StringOutput)
 }
@@ -482,8 +475,7 @@ func (o OsPolicyAssignmentOutput) Rollout() OsPolicyAssignmentRolloutOutput {
 	return o.ApplyT(func(v *OsPolicyAssignment) OsPolicyAssignmentRolloutOutput { return v.Rollout }).(OsPolicyAssignmentRolloutOutput)
 }
 
-// Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING,
-// CANCELLED, SUCCEEDED
+// Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING, CANCELLED, SUCCEEDED
 func (o OsPolicyAssignmentOutput) RolloutState() pulumi.StringOutput {
 	return o.ApplyT(func(v *OsPolicyAssignment) pulumi.StringOutput { return v.RolloutState }).(pulumi.StringOutput)
 }

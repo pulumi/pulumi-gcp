@@ -137,8 +137,9 @@ export class Intent extends pulumi.CustomResource {
      */
     public readonly events!: pulumi.Output<string[] | undefined>;
     /**
-     * Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only
-     * in the output.
+     * Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
+     * only in the output.
+     * Structure is documented below.
      */
     public /*out*/ readonly followupIntentInfos!: pulumi.Output<outputs.diagflow.IntentFollowupIntentInfo[]>;
     /**
@@ -157,7 +158,8 @@ export class Intent extends pulumi.CustomResource {
      */
     public readonly mlDisabled!: pulumi.Output<boolean>;
     /**
-     * The unique identifier of this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
+     * The unique identifier of this intent.
+     * Format: projects/<Project ID>/agent/intents/<Intent ID>.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -182,8 +184,9 @@ export class Intent extends pulumi.CustomResource {
      */
     public readonly resetContexts!: pulumi.Output<boolean>;
     /**
-     * The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents
-     * chain for this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
+     * The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup
+     * intents chain for this intent.
+     * Format: projects/<Project ID>/agent/intents/<Intent ID>.
      */
     public /*out*/ readonly rootFollowupIntentName!: pulumi.Output<string>;
     /**
@@ -275,8 +278,9 @@ export interface IntentState {
      */
     events?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only
-     * in the output.
+     * Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
+     * only in the output.
+     * Structure is documented below.
      */
     followupIntentInfos?: pulumi.Input<pulumi.Input<inputs.diagflow.IntentFollowupIntentInfo>[]>;
     /**
@@ -295,7 +299,8 @@ export interface IntentState {
      */
     mlDisabled?: pulumi.Input<boolean>;
     /**
-     * The unique identifier of this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
+     * The unique identifier of this intent.
+     * Format: projects/<Project ID>/agent/intents/<Intent ID>.
      */
     name?: pulumi.Input<string>;
     /**
@@ -320,8 +325,9 @@ export interface IntentState {
      */
     resetContexts?: pulumi.Input<boolean>;
     /**
-     * The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents
-     * chain for this intent. Format: projects/<Project ID>/agent/intents/<Intent ID>.
+     * The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup
+     * intents chain for this intent.
+     * Format: projects/<Project ID>/agent/intents/<Intent ID>.
      */
     rootFollowupIntentName?: pulumi.Input<string>;
     /**

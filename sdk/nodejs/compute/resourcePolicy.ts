@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *         snapshotProperties: {
  *             guestFlush: true,
  *             labels: {
- *                 my_label: "value",
+ *                 myLabel: "value",
  *             },
  *             storageLocations: "us",
  *         },
@@ -115,7 +115,7 @@ import * as utilities from "../utilities";
  *             chainName: "test-schedule-chain-name",
  *             guestFlush: true,
  *             labels: {
- *                 my_label: "value",
+ *                 myLabel: "value",
  *             },
  *             storageLocations: "us",
  *         },

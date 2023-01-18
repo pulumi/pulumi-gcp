@@ -17,17 +17,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my_pubsub_topic = pulumi.output(gcp.pubsub.getTopic({
+ * const my-pubsub-topic = gcp.pubsub.getTopic({
  *     name: "my-pubsub-topic",
- * }));
+ * });
  * ```
  */
 export function getTopic(args: GetTopicArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:pubsub/getTopic:getTopic", {
         "name": args.name,
         "project": args.project,
@@ -65,9 +62,24 @@ export interface GetTopicResult {
     readonly project?: string;
     readonly schemaSettings: outputs.pubsub.GetTopicSchemaSetting[];
 }
-
+/**
+ * Get information about a Google Cloud Pub/Sub Topic. For more information see
+ * the [official documentation](https://cloud.google.com/pubsub/docs/)
+ * and [API](https://cloud.google.com/pubsub/docs/apis).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-pubsub-topic = gcp.pubsub.getTopic({
+ *     name: "my-pubsub-topic",
+ * });
+ * ```
+ */
 export function getTopicOutput(args: GetTopicOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicResult> {
-    return pulumi.output(args).apply(a => getTopic(a, opts))
+    return pulumi.output(args).apply((a: any) => getTopic(a, opts))
 }
 
 /**

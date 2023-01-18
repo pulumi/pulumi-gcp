@@ -52,7 +52,6 @@ public final class DeviceGatewayConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * - 
      * The ID of the gateway the device accessed most recently.
      * 
      */
@@ -60,8 +59,7 @@ public final class DeviceGatewayConfigArgs extends com.pulumi.resources.Resource
     private @Nullable Output<String> lastAccessedGatewayId;
 
     /**
-     * @return -
-     * The ID of the gateway the device accessed most recently.
+     * @return The ID of the gateway the device accessed most recently.
      * 
      */
     public Optional<Output<String>> lastAccessedGatewayId() {
@@ -69,7 +67,6 @@ public final class DeviceGatewayConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * - 
      * The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
      * 
      */
@@ -77,8 +74,7 @@ public final class DeviceGatewayConfigArgs extends com.pulumi.resources.Resource
     private @Nullable Output<String> lastAccessedGatewayTime;
 
     /**
-     * @return -
-     * The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
+     * @return The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
      * 
      */
     public Optional<Output<String>> lastAccessedGatewayTime() {
@@ -161,8 +157,7 @@ public final class DeviceGatewayConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param lastAccessedGatewayId -
-         * The ID of the gateway the device accessed most recently.
+         * @param lastAccessedGatewayId The ID of the gateway the device accessed most recently.
          * 
          * @return builder
          * 
@@ -173,8 +168,7 @@ public final class DeviceGatewayConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param lastAccessedGatewayId -
-         * The ID of the gateway the device accessed most recently.
+         * @param lastAccessedGatewayId The ID of the gateway the device accessed most recently.
          * 
          * @return builder
          * 
@@ -184,8 +178,7 @@ public final class DeviceGatewayConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param lastAccessedGatewayTime -
-         * The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
+         * @param lastAccessedGatewayTime The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
          * 
          * @return builder
          * 
@@ -196,8 +189,7 @@ public final class DeviceGatewayConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param lastAccessedGatewayTime -
-         * The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
+         * @param lastAccessedGatewayTime The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
          * 
          * @return builder
          * 

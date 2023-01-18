@@ -20,8 +20,7 @@ namespace Pulumi.Gcp.Iam.Inputs
         public Input<Inputs.DenyPolicyRuleDenyRuleGetArgs>? DenyRule { get; set; }
 
         /// <summary>
-        /// Description of the expression. This is a longer text which describes the expression,
-        /// e.g. when hovered over it in a UI.
+        /// The description of the rule.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

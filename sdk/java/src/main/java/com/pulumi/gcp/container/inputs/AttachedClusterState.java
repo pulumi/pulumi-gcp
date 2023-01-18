@@ -68,16 +68,18 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Output only. The region where this cluster runs. For EKS clusters, this is an AWS region. For AKS clusters, this is an
-     * Azure region.
+     * Output only. The region where this cluster runs.
+     * For EKS clusters, this is an AWS region. For AKS clusters,
+     * this is an Azure region.
      * 
      */
     @Import(name="clusterRegion")
     private @Nullable Output<String> clusterRegion;
 
     /**
-     * @return Output only. The region where this cluster runs. For EKS clusters, this is an AWS region. For AKS clusters, this is an
-     * Azure region.
+     * @return Output only. The region where this cluster runs.
+     * For EKS clusters, this is an AWS region. For AKS clusters,
+     * this is an Azure region.
      * 
      */
     public Optional<Output<String>> clusterRegion() {
@@ -135,6 +137,7 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
     /**
      * A set of errors found in the cluster.
+     * Structure is documented below.
      * 
      */
     @Import(name="errors")
@@ -142,6 +145,7 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return A set of errors found in the cluster.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<AttachedClusterErrorArgs>>> errors() {
@@ -293,7 +297,7 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The ID of the project in which the resource belongs.
+     * The number of the Fleet host project where this cluster will be registered.
      * If it is not provided, the provider project is used.
      * 
      */
@@ -301,7 +305,7 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
     private @Nullable Output<String> project;
 
     /**
-     * @return The ID of the project in which the resource belongs.
+     * @return The number of the Fleet host project where this cluster will be registered.
      * If it is not provided, the provider project is used.
      * 
      */
@@ -325,16 +329,18 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING,
-     * ERROR, DEGRADED
+     * The current state of the cluster. Possible values:
+     * STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
+     * DEGRADED
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING,
-     * ERROR, DEGRADED
+     * @return The current state of the cluster. Possible values:
+     * STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
+     * DEGRADED
      * 
      */
     public Optional<Output<String>> state() {
@@ -373,6 +379,7 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
     /**
      * Workload Identity settings.
+     * Structure is documented below.
      * 
      */
     @Import(name="workloadIdentityConfigs")
@@ -380,6 +387,7 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Workload Identity settings.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<AttachedClusterWorkloadIdentityConfigArgs>>> workloadIdentityConfigs() {
@@ -485,8 +493,9 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param clusterRegion Output only. The region where this cluster runs. For EKS clusters, this is an AWS region. For AKS clusters, this is an
-         * Azure region.
+         * @param clusterRegion Output only. The region where this cluster runs.
+         * For EKS clusters, this is an AWS region. For AKS clusters,
+         * this is an Azure region.
          * 
          * @return builder
          * 
@@ -497,8 +506,9 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param clusterRegion Output only. The region where this cluster runs. For EKS clusters, this is an AWS region. For AKS clusters, this is an
-         * Azure region.
+         * @param clusterRegion Output only. The region where this cluster runs.
+         * For EKS clusters, this is an AWS region. For AKS clusters,
+         * this is an Azure region.
          * 
          * @return builder
          * 
@@ -576,6 +586,7 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param errors A set of errors found in the cluster.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -587,6 +598,7 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param errors A set of errors found in the cluster.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -597,6 +609,7 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param errors A set of errors found in the cluster.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -798,7 +811,7 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param project The ID of the project in which the resource belongs.
+         * @param project The number of the Fleet host project where this cluster will be registered.
          * If it is not provided, the provider project is used.
          * 
          * @return builder
@@ -810,7 +823,7 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param project The ID of the project in which the resource belongs.
+         * @param project The number of the Fleet host project where this cluster will be registered.
          * If it is not provided, the provider project is used.
          * 
          * @return builder
@@ -842,8 +855,9 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param state The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING,
-         * ERROR, DEGRADED
+         * @param state The current state of the cluster. Possible values:
+         * STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
+         * DEGRADED
          * 
          * @return builder
          * 
@@ -854,8 +868,9 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param state The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING,
-         * ERROR, DEGRADED
+         * @param state The current state of the cluster. Possible values:
+         * STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
+         * DEGRADED
          * 
          * @return builder
          * 
@@ -908,6 +923,7 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param workloadIdentityConfigs Workload Identity settings.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -919,6 +935,7 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param workloadIdentityConfigs Workload Identity settings.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -929,6 +946,7 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param workloadIdentityConfigs Workload Identity settings.
+         * Structure is documented below.
          * 
          * @return builder
          * 

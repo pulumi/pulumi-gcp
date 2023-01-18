@@ -165,7 +165,7 @@ type Instance struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Instance status: 'CREATING' or 'READY'.
+	// Instance status: `CREATING` or `READY`.
 	State pulumi.StringOutput `pulumi:"state"`
 }
 
@@ -233,7 +233,7 @@ type instanceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Instance status: 'CREATING' or 'READY'.
+	// Instance status: `CREATING` or `READY`.
 	State *string `pulumi:"state"`
 }
 
@@ -267,7 +267,7 @@ type InstanceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Instance status: 'CREATING' or 'READY'.
+	// Instance status: `CREATING` or `READY`.
 	State pulumi.StringPtrInput
 }
 
@@ -480,7 +480,7 @@ func (o InstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Instance status: 'CREATING' or 'READY'.
+// Instance status: `CREATING` or `READY`.
 func (o InstanceOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

@@ -27,11 +27,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getTrigger(args: GetTriggerArgs, opts?: pulumi.InvokeOptions): Promise<GetTriggerResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:cloudbuild/getTrigger:getTrigger", {
         "location": args.location,
         "project": args.project,
@@ -89,9 +86,28 @@ export interface GetTriggerResult {
     readonly triggerTemplates: outputs.cloudbuild.GetTriggerTriggerTemplate[];
     readonly webhookConfigs: outputs.cloudbuild.GetTriggerWebhookConfig[];
 }
-
+/**
+ * To get more information about Cloudbuild Trigger, see:
+ *
+ * * [API documentation](https://cloud.google.com/build/docs/api/reference/rest/v1/projects.triggers)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const name = gcp.cloudbuild.getTrigger({
+ *     project: "your-project-id",
+ *     triggerId: google_cloudbuild_trigger["filename-trigger"].trigger_id,
+ *     location: "location of trigger build",
+ * });
+ * ```
+ */
 export function getTriggerOutput(args: GetTriggerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTriggerResult> {
-    return pulumi.output(args).apply(a => getTrigger(a, opts))
+    return pulumi.output(args).apply((a: any) => getTrigger(a, opts))
 }
 
 /**

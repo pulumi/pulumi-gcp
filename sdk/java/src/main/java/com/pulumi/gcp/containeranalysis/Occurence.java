@@ -176,16 +176,18 @@ public class Occurence extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The note kind which explicitly denotes which of the occurrence details are specified. This field can be used as a filter
-     * in list requests.
+     * The note kind which explicitly denotes which of the occurrence
+     * details are specified. This field can be used as a filter in list
+     * requests.
      * 
      */
     @Export(name="kind", type=String.class, parameters={})
     private Output<String> kind;
 
     /**
-     * @return The note kind which explicitly denotes which of the occurrence details are specified. This field can be used as a filter
-     * in list requests.
+     * @return The note kind which explicitly denotes which of the occurrence
+     * details are specified. This field can be used as a filter in list
+     * requests.
      * 
      */
     public Output<String> kind() {

@@ -13,7 +13,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RegionUrlMapHostRule {
     /**
-     * @return Description of this test case.
+     * @return An optional description of this HostRule. Provide this property
+     * when you create the resource.
      * 
      */
     private @Nullable String description;
@@ -34,7 +35,8 @@ public final class RegionUrlMapHostRule {
 
     private RegionUrlMapHostRule() {}
     /**
-     * @return Description of this test case.
+     * @return An optional description of this HostRule. Provide this property
+     * when you create the resource.
      * 
      */
     public Optional<String> description() {

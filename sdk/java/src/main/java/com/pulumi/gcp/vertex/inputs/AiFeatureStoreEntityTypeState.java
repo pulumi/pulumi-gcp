@@ -18,16 +18,14 @@ public final class AiFeatureStoreEntityTypeState extends com.pulumi.resources.Re
     public static final AiFeatureStoreEntityTypeState Empty = new AiFeatureStoreEntityTypeState();
 
     /**
-     * The timestamp of when the featurestore was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
-     * nine fractional digits.
+     * The timestamp of when the featurestore was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return The timestamp of when the featurestore was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
-     * nine fractional digits.
+     * @return The timestamp of when the featurestore was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -129,16 +127,14 @@ public final class AiFeatureStoreEntityTypeState extends com.pulumi.resources.Re
     }
 
     /**
-     * The timestamp of when the featurestore was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up
-     * to nine fractional digits.
+     * The timestamp of when the featurestore was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return The timestamp of when the featurestore was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up
-     * to nine fractional digits.
+     * @return The timestamp of when the featurestore was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -177,8 +173,7 @@ public final class AiFeatureStoreEntityTypeState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param createTime The timestamp of when the featurestore was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
-         * nine fractional digits.
+         * @param createTime The timestamp of when the featurestore was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
          * 
          * @return builder
          * 
@@ -189,8 +184,7 @@ public final class AiFeatureStoreEntityTypeState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param createTime The timestamp of when the featurestore was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
-         * nine fractional digits.
+         * @param createTime The timestamp of when the featurestore was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
          * 
          * @return builder
          * 
@@ -330,8 +324,7 @@ public final class AiFeatureStoreEntityTypeState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param updateTime The timestamp of when the featurestore was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up
-         * to nine fractional digits.
+         * @param updateTime The timestamp of when the featurestore was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
          * 
          * @return builder
          * 
@@ -342,8 +335,7 @@ public final class AiFeatureStoreEntityTypeState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param updateTime The timestamp of when the featurestore was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up
-         * to nine fractional digits.
+         * @param updateTime The timestamp of when the featurestore was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
          * 
          * @return builder
          * 

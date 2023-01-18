@@ -50,11 +50,8 @@ import * as utilities from "../utilities";
  */
 export function getNotificationChannel(args?: GetNotificationChannelArgs, opts?: pulumi.InvokeOptions): Promise<GetNotificationChannelResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:monitoring/getNotificationChannel:getNotificationChannel", {
         "displayName": args.displayName,
         "labels": args.labels,
@@ -96,25 +93,85 @@ export interface GetNotificationChannelArgs {
  * A collection of values returned by getNotificationChannel.
  */
 export interface GetNotificationChannelResult {
+    /**
+     * An optional human-readable description of this notification channel.
+     */
     readonly description: string;
     readonly displayName?: string;
+    /**
+     * Whether notifications are forwarded to the described channel.
+     */
     readonly enabled: boolean;
     readonly forceDelete: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Configuration fields that define the channel and its behavior.
+     */
     readonly labels?: {[key: string]: string};
+    /**
+     * The full REST resource name for this channel. The syntax is:
+     * `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`.
+     */
     readonly name: string;
     readonly project?: string;
     readonly sensitiveLabels: outputs.monitoring.GetNotificationChannelSensitiveLabel[];
     readonly type?: string;
+    /**
+     * User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field.
+     */
     readonly userLabels?: {[key: string]: string};
+    /**
+     * Indicates whether this channel has been verified or not.
+     */
     readonly verificationStatus: string;
 }
-
+/**
+ * A NotificationChannel is a medium through which an alert is delivered
+ * when a policy violation is detected. Examples of channels include email, SMS,
+ * and third-party messaging applications. Fields containing sensitive information
+ * like authentication tokens or contact info are only partially populated on retrieval.
+ *
+ * To get more information about NotificationChannel, see:
+ *
+ * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannels)
+ * * How-to Guides
+ *     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
+ *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+ *
+ * ## Example Usage
+ * ### Notification Channel Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = gcp.monitoring.getNotificationChannel({
+ *     displayName: "Test Notification Channel",
+ * });
+ * const alertPolicy = new gcp.monitoring.AlertPolicy("alertPolicy", {
+ *     displayName: "My Alert Policy",
+ *     notificationChannels: [basic.then(basic => basic.name)],
+ *     combiner: "OR",
+ *     conditions: [{
+ *         displayName: "test condition",
+ *         conditionThreshold: {
+ *             filter: "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
+ *             duration: "60s",
+ *             comparison: "COMPARISON_GT",
+ *             aggregations: [{
+ *                 alignmentPeriod: "60s",
+ *                 perSeriesAligner: "ALIGN_RATE",
+ *             }],
+ *         },
+ *     }],
+ * });
+ * ```
+ */
 export function getNotificationChannelOutput(args?: GetNotificationChannelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNotificationChannelResult> {
-    return pulumi.output(args).apply(a => getNotificationChannel(a, opts))
+    return pulumi.output(args).apply((a: any) => getNotificationChannel(a, opts))
 }
 
 /**

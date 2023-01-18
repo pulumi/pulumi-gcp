@@ -43,10 +43,10 @@ public final class TriggerBuildStep {
      */
     private @Nullable String entrypoint;
     /**
-     * @return A list of global environment variable definitions that will exist for all build steps
-     * in this build. If a variable is defined in both globally and in a build step,
-     * the variable will use the build step value.
-     * The elements are of the form &#34;KEY=VALUE&#34; for the environment variable &#34;KEY&#34; being given the value &#34;VALUE&#34;.
+     * @return A list of environment variable definitions to be used when
+     * running a step.
+     * The elements are of the form &#34;KEY=VALUE&#34; for the environment variable
+     * &#34;KEY&#34; being given the value &#34;VALUE&#34;.
      * 
      */
     private @Nullable List<String> envs;
@@ -57,9 +57,19 @@ public final class TriggerBuildStep {
      */
     private @Nullable String id;
     /**
-     * @return Name of the volume to mount.
-     * Volume names must be unique per build step and must be valid names for Docker volumes.
-     * Each named volume must be used by at least two build steps.
+     * @return The name of the container image that will run this particular build step.
+     * If the image is available in the host&#39;s Docker daemon&#39;s cache, it will be
+     * run directly. If not, the host will attempt to pull the image first, using
+     * the builder service account&#39;s credentials if necessary.
+     * The Docker daemon&#39;s cache will already have the latest versions of all of
+     * the officially supported build steps (see https://github.com/GoogleCloudPlatform/cloud-builders
+     * for images and examples).
+     * The Docker daemon will also have cached many of the layers for some popular
+     * images, like &#34;ubuntu&#34;, &#34;debian&#34;, but they will be refreshed at the time
+     * you attempt to use them.
+     * If you built an image in a previous build step, it will be stored in the
+     * host&#39;s Docker daemon&#39;s cache and is available to use as the name for a
+     * later build step.
      * 
      */
     private String name;
@@ -70,9 +80,10 @@ public final class TriggerBuildStep {
      */
     private @Nullable String script;
     /**
-     * @return A list of global environment variables, which are encrypted using a Cloud Key Management
-     * Service crypto key. These values must be specified in the build&#39;s Secret. These variables
-     * will be available to all build steps in this build.
+     * @return A list of environment variables which are encrypted using
+     * a Cloud Key
+     * Management Service crypto key. These values must be specified in
+     * the build&#39;s `Secret`.
      * 
      */
     private @Nullable List<String> secretEnvs;
@@ -85,19 +96,18 @@ public final class TriggerBuildStep {
      */
     private @Nullable String timeout;
     /**
-     * @return -
-     * Output only. Stores timing information for pushing all artifact objects.
-     * Structure is documented below.
+     * @return Output only. Stores timing information for executing this
+     * build step.
      * 
      */
     private @Nullable String timing;
     /**
-     * @return Global list of volumes to mount for ALL build steps
-     * Each volume is created as an empty volume prior to starting the build process.
-     * Upon completion of the build, volumes and their contents are discarded. Global
-     * volume names and paths cannot conflict with the volumes defined a build step.
-     * Using a global volume in a build with only one step is not valid as it is indicative
-     * of a build request with an incorrect configuration.
+     * @return List of volumes to mount into the build step.
+     * Each volume is created as an empty volume prior to execution of the
+     * build step. Upon completion of the build, volumes and their contents
+     * are discarded.
+     * Using a named volume in only one step is not valid as it is
+     * indicative of a build request with an incorrect configuration.
      * Structure is documented below.
      * 
      */
@@ -149,10 +159,10 @@ public final class TriggerBuildStep {
         return Optional.ofNullable(this.entrypoint);
     }
     /**
-     * @return A list of global environment variable definitions that will exist for all build steps
-     * in this build. If a variable is defined in both globally and in a build step,
-     * the variable will use the build step value.
-     * The elements are of the form &#34;KEY=VALUE&#34; for the environment variable &#34;KEY&#34; being given the value &#34;VALUE&#34;.
+     * @return A list of environment variable definitions to be used when
+     * running a step.
+     * The elements are of the form &#34;KEY=VALUE&#34; for the environment variable
+     * &#34;KEY&#34; being given the value &#34;VALUE&#34;.
      * 
      */
     public List<String> envs() {
@@ -167,9 +177,19 @@ public final class TriggerBuildStep {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return Name of the volume to mount.
-     * Volume names must be unique per build step and must be valid names for Docker volumes.
-     * Each named volume must be used by at least two build steps.
+     * @return The name of the container image that will run this particular build step.
+     * If the image is available in the host&#39;s Docker daemon&#39;s cache, it will be
+     * run directly. If not, the host will attempt to pull the image first, using
+     * the builder service account&#39;s credentials if necessary.
+     * The Docker daemon&#39;s cache will already have the latest versions of all of
+     * the officially supported build steps (see https://github.com/GoogleCloudPlatform/cloud-builders
+     * for images and examples).
+     * The Docker daemon will also have cached many of the layers for some popular
+     * images, like &#34;ubuntu&#34;, &#34;debian&#34;, but they will be refreshed at the time
+     * you attempt to use them.
+     * If you built an image in a previous build step, it will be stored in the
+     * host&#39;s Docker daemon&#39;s cache and is available to use as the name for a
+     * later build step.
      * 
      */
     public String name() {
@@ -184,9 +204,10 @@ public final class TriggerBuildStep {
         return Optional.ofNullable(this.script);
     }
     /**
-     * @return A list of global environment variables, which are encrypted using a Cloud Key Management
-     * Service crypto key. These values must be specified in the build&#39;s Secret. These variables
-     * will be available to all build steps in this build.
+     * @return A list of environment variables which are encrypted using
+     * a Cloud Key
+     * Management Service crypto key. These values must be specified in
+     * the build&#39;s `Secret`.
      * 
      */
     public List<String> secretEnvs() {
@@ -203,21 +224,20 @@ public final class TriggerBuildStep {
         return Optional.ofNullable(this.timeout);
     }
     /**
-     * @return -
-     * Output only. Stores timing information for pushing all artifact objects.
-     * Structure is documented below.
+     * @return Output only. Stores timing information for executing this
+     * build step.
      * 
      */
     public Optional<String> timing() {
         return Optional.ofNullable(this.timing);
     }
     /**
-     * @return Global list of volumes to mount for ALL build steps
-     * Each volume is created as an empty volume prior to starting the build process.
-     * Upon completion of the build, volumes and their contents are discarded. Global
-     * volume names and paths cannot conflict with the volumes defined a build step.
-     * Using a global volume in a build with only one step is not valid as it is indicative
-     * of a build request with an incorrect configuration.
+     * @return List of volumes to mount into the build step.
+     * Each volume is created as an empty volume prior to execution of the
+     * build step. Upon completion of the build, volumes and their contents
+     * are discarded.
+     * Using a named volume in only one step is not valid as it is
+     * indicative of a build request with an incorrect configuration.
      * Structure is documented below.
      * 
      */

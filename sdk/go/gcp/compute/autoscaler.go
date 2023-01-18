@@ -54,7 +54,7 @@ import (
 //				},
 //				Disks: compute.InstanceTemplateDiskArray{
 //					&compute.InstanceTemplateDiskArgs{
-//						SourceImage: pulumi.String(debian9.Id),
+//						SourceImage: *pulumi.String(debian9.Id),
 //					},
 //				},
 //				NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
@@ -150,7 +150,7 @@ import (
 //				},
 //				Disks: compute.InstanceTemplateDiskArray{
 //					&compute.InstanceTemplateDiskArgs{
-//						SourceImage: pulumi.String(debian9.Id),
+//						SourceImage: *pulumi.String(debian9.Id),
 //					},
 //				},
 //				NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
@@ -252,18 +252,22 @@ type Autoscaler struct {
 	AutoscalingPolicy AutoscalerAutoscalingPolicyOutput `pulumi:"autoscalingPolicy"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
+	// A description of a scaling schedule.
+	// (Optional)
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The identifier for this object. Format specified above.
+	// Name of the resource. The name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// Fraction of backend capacity utilization (set in HTTP(s) load
-	// balancing configuration) that autoscaler should maintain. Must
-	// be a positive float value. If not defined, the default is 0.8.
+	// URL of the managed instance group that this autoscaler will scale.
 	Target pulumi.StringOutput `pulumi:"target"`
 	// URL of the zone where the instance group resides.
 	Zone pulumi.StringOutput `pulumi:"zone"`
@@ -319,18 +323,22 @@ type autoscalerState struct {
 	AutoscalingPolicy *AutoscalerAutoscalingPolicy `pulumi:"autoscalingPolicy"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
+	// A description of a scaling schedule.
+	// (Optional)
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
-	// The identifier for this object. Format specified above.
+	// Name of the resource. The name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// Fraction of backend capacity utilization (set in HTTP(s) load
-	// balancing configuration) that autoscaler should maintain. Must
-	// be a positive float value. If not defined, the default is 0.8.
+	// URL of the managed instance group that this autoscaler will scale.
 	Target *string `pulumi:"target"`
 	// URL of the zone where the instance group resides.
 	Zone *string `pulumi:"zone"`
@@ -346,18 +354,22 @@ type AutoscalerState struct {
 	AutoscalingPolicy AutoscalerAutoscalingPolicyPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
+	// A description of a scaling schedule.
+	// (Optional)
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
-	// The identifier for this object. Format specified above.
+	// Name of the resource. The name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// Fraction of backend capacity utilization (set in HTTP(s) load
-	// balancing configuration) that autoscaler should maintain. Must
-	// be a positive float value. If not defined, the default is 0.8.
+	// URL of the managed instance group that this autoscaler will scale.
 	Target pulumi.StringPtrInput
 	// URL of the zone where the instance group resides.
 	Zone pulumi.StringPtrInput
@@ -375,16 +387,20 @@ type autoscalerArgs struct {
 	// on cpuUtilization to 0.6 or 60%.
 	// Structure is documented below.
 	AutoscalingPolicy AutoscalerAutoscalingPolicy `pulumi:"autoscalingPolicy"`
+	// A description of a scaling schedule.
+	// (Optional)
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
-	// The identifier for this object. Format specified above.
+	// Name of the resource. The name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Fraction of backend capacity utilization (set in HTTP(s) load
-	// balancing configuration) that autoscaler should maintain. Must
-	// be a positive float value. If not defined, the default is 0.8.
+	// URL of the managed instance group that this autoscaler will scale.
 	Target string `pulumi:"target"`
 	// URL of the zone where the instance group resides.
 	Zone *string `pulumi:"zone"`
@@ -399,16 +415,20 @@ type AutoscalerArgs struct {
 	// on cpuUtilization to 0.6 or 60%.
 	// Structure is documented below.
 	AutoscalingPolicy AutoscalerAutoscalingPolicyInput
+	// A description of a scaling schedule.
+	// (Optional)
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
-	// The identifier for this object. Format specified above.
+	// Name of the resource. The name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Fraction of backend capacity utilization (set in HTTP(s) load
-	// balancing configuration) that autoscaler should maintain. Must
-	// be a positive float value. If not defined, the default is 0.8.
+	// URL of the managed instance group that this autoscaler will scale.
 	Target pulumi.StringInput
 	// URL of the zone where the instance group resides.
 	Zone pulumi.StringPtrInput
@@ -516,12 +536,18 @@ func (o AutoscalerOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Autoscaler) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
 
+// A description of a scaling schedule.
+// (Optional)
 // An optional description of this resource.
 func (o AutoscalerOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Autoscaler) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The identifier for this object. Format specified above.
+// Name of the resource. The name must be 1-63 characters long and match
+// the regular expression `a-z?` which means the
+// first character must be a lowercase letter, and all following
+// characters must be a dash, lowercase letter, or digit, except the last
+// character, which cannot be a dash.
 func (o AutoscalerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Autoscaler) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -537,9 +563,7 @@ func (o AutoscalerOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *Autoscaler) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// Fraction of backend capacity utilization (set in HTTP(s) load
-// balancing configuration) that autoscaler should maintain. Must
-// be a positive float value. If not defined, the default is 0.8.
+// URL of the managed instance group that this autoscaler will scale.
 func (o AutoscalerOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v *Autoscaler) pulumi.StringOutput { return v.Target }).(pulumi.StringOutput)
 }

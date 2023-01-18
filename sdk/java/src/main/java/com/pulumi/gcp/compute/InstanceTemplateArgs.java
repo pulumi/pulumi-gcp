@@ -160,16 +160,16 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A set of ket/value label pairs to assign to disk created from
-     * this template
+     * A set of key/value label pairs to assign to instances
+     * created from this template.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return A set of ket/value label pairs to assign to disk created from
-     * this template
+     * @return A set of key/value label pairs to assign to instances
+     * created from this template.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -695,8 +695,8 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param labels A set of ket/value label pairs to assign to disk created from
-         * this template
+         * @param labels A set of key/value label pairs to assign to instances
+         * created from this template.
          * 
          * @return builder
          * 
@@ -707,8 +707,8 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param labels A set of ket/value label pairs to assign to disk created from
-         * this template
+         * @param labels A set of key/value label pairs to assign to instances
+         * created from this template.
          * 
          * @return builder
          * 

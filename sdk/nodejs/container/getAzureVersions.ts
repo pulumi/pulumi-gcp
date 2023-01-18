@@ -22,11 +22,8 @@ import * as utilities from "../utilities";
  */
 export function getAzureVersions(args?: GetAzureVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetAzureVersionsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:container/getAzureVersions:getAzureVersions", {
         "location": args.location,
         "project": args.project,
@@ -67,9 +64,24 @@ export interface GetAzureVersionsResult {
      */
     readonly validVersions: string[];
 }
-
+/**
+ * Provides access to available Kubernetes versions in a location for a given project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const central1b = gcp.container.getAzureVersions({
+ *     location: "us-west1",
+ *     project: "my-project",
+ * });
+ * export const firstAvailableVersion = data.google_container_azure_versions.versions.valid_versions[0];
+ * ```
+ */
 export function getAzureVersionsOutput(args?: GetAzureVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzureVersionsResult> {
-    return pulumi.output(args).apply(a => getAzureVersions(a, opts))
+    return pulumi.output(args).apply((a: any) => getAzureVersions(a, opts))
 }
 
 /**

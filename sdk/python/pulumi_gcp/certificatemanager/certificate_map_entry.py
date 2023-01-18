@@ -182,8 +182,9 @@ class _CertificateMapEntryState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] certificates: A set of Certificates defines for the given hostname.
                There can be defined up to fifteen certificates in each Certificate Map Entry.
                Each certificate must match pattern projects/*/locations/*/certificates/*.
-        :param pulumi.Input[str] create_time: Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-               to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] create_time: Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
+               with nanosecond resolution and up to nine fractional digits.
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[str] hostname: A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
                for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
@@ -199,8 +200,9 @@ class _CertificateMapEntryState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: A serving state of this Certificate Map Entry.
-        :param pulumi.Input[str] update_time: Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-               to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] update_time: Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
+               with nanosecond resolution and up to nine fractional digits.
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         if certificates is not None:
             pulumi.set(__self__, "certificates", certificates)
@@ -243,8 +245,9 @@ class _CertificateMapEntryState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-        to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
+        with nanosecond resolution and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "create_time")
 
@@ -359,8 +362,9 @@ class _CertificateMapEntryState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-        to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
+        with nanosecond resolution and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "update_time")
 
@@ -613,8 +617,9 @@ class CertificateMapEntry(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] certificates: A set of Certificates defines for the given hostname.
                There can be defined up to fifteen certificates in each Certificate Map Entry.
                Each certificate must match pattern projects/*/locations/*/certificates/*.
-        :param pulumi.Input[str] create_time: Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-               to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] create_time: Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
+               with nanosecond resolution and up to nine fractional digits.
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[str] hostname: A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com)
                for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for
@@ -630,8 +635,9 @@ class CertificateMapEntry(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: A serving state of this Certificate Map Entry.
-        :param pulumi.Input[str] update_time: Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-               to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] update_time: Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
+               with nanosecond resolution and up to nine fractional digits.
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -664,8 +670,9 @@ class CertificateMapEntry(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-        to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
+        with nanosecond resolution and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "create_time")
 
@@ -744,8 +751,9 @@ class CertificateMapEntry(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-        to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
+        with nanosecond resolution and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "update_time")
 

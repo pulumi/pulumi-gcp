@@ -13,7 +13,14 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class ServiceAttachmentConnectedEndpoint
     {
+        /// <summary>
+        /// The URL of the consumer forwarding rule.
+        /// </summary>
         public readonly string? Endpoint;
+        /// <summary>
+        /// The status of the connection from the consumer forwarding rule to
+        /// this service attachment.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

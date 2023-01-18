@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
     public sealed class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name describing the field.
+        /// Name of the information type.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

@@ -76,16 +76,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:certificatemanager/certificateMap:CertificateMap")
 public class CertificateMap extends com.pulumi.resources.CustomResource {
     /**
-     * Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds with up to
-     * nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC &#34;Zulu&#34; format,
+     * accurate to nanoseconds with up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
-     * @return Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds with up to
-     * nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * @return Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC &#34;Zulu&#34; format,
+     * accurate to nanoseconds with up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     public Output<String> createTime() {
@@ -107,6 +109,7 @@ public class CertificateMap extends com.pulumi.resources.CustomResource {
     }
     /**
      * A list of target proxies that use this Certificate Map
+     * Structure is documented below.
      * 
      */
     @Export(name="gclbTargets", type=List.class, parameters={CertificateMapGclbTarget.class})
@@ -114,6 +117,7 @@ public class CertificateMap extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A list of target proxies that use this Certificate Map
+     * Structure is documented below.
      * 
      */
     public Output<List<CertificateMapGclbTarget>> gclbTargets() {
@@ -166,16 +170,18 @@ public class CertificateMap extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds with up to
-     * nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC &#34;Zulu&#34; format,
+     * accurate to nanoseconds with up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**
-     * @return Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds with up to
-     * nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * @return Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC &#34;Zulu&#34; format,
+     * accurate to nanoseconds with up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     public Output<String> updateTime() {

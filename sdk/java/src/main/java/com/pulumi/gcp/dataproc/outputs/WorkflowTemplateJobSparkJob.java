@@ -30,7 +30,7 @@ public final class WorkflowTemplateJobSparkJob {
      */
     private @Nullable List<String> fileUris;
     /**
-     * @return Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+     * @return Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
      * 
      */
     private @Nullable List<String> jarFileUris;
@@ -50,7 +50,7 @@ public final class WorkflowTemplateJobSparkJob {
      */
     private @Nullable String mainJarFileUri;
     /**
-     * @return Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+     * @return Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
      * 
      */
     private @Nullable Map<String,String> properties;
@@ -78,7 +78,7 @@ public final class WorkflowTemplateJobSparkJob {
         return this.fileUris == null ? List.of() : this.fileUris;
     }
     /**
-     * @return Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+     * @return Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
      * 
      */
     public List<String> jarFileUris() {
@@ -106,7 +106,7 @@ public final class WorkflowTemplateJobSparkJob {
         return Optional.ofNullable(this.mainJarFileUri);
     }
     /**
-     * @return Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+     * @return Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
      * 
      */
     public Map<String,String> properties() {

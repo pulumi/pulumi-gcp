@@ -13,34 +13,37 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RegionUrlMapPathMatcherRouteRuleUrlRedirect {
     /**
-     * @return The host that will be used in the redirect response instead of the one that was
-     * supplied in the request. The value must be between 1 and 255 characters.
+     * @return The host that will be used in the redirect response instead of the one
+     * that was supplied in the request. The value must be between 1 and 255
+     * characters.
      * 
      */
     private @Nullable String hostRedirect;
     /**
-     * @return If set to true, the URL scheme in the redirected request is set to https. If set to
-     * false, the URL scheme of the redirected request will remain the same as that of the
-     * request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
-     * true for TargetHttpsProxy is not permitted. The default is set to false.
+     * @return If set to true, the URL scheme in the redirected request is set to https.
+     * If set to false, the URL scheme of the redirected request will remain the
+     * same as that of the request. This must only be set for UrlMaps used in
+     * TargetHttpProxys. Setting this true for TargetHttpsProxy is not
+     * permitted. The default is set to false.
      * 
      */
     private @Nullable Boolean httpsRedirect;
     /**
-     * @return The path that will be used in the redirect response instead of the one that was
-     * supplied in the request. pathRedirect cannot be supplied together with
-     * prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
-     * original request will be used for the redirect. The value must be between 1 and 1024
-     * characters.
+     * @return The path that will be used in the redirect response instead of the one
+     * that was supplied in the request. pathRedirect cannot be supplied
+     * together with prefixRedirect. Supply one alone or neither. If neither is
+     * supplied, the path of the original request will be used for the redirect.
+     * The value must be between 1 and 1024 characters.
      * 
      */
     private @Nullable String pathRedirect;
     /**
-     * @return The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
-     * retaining the remaining portion of the URL before redirecting the request.
-     * prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
-     * neither. If neither is supplied, the path of the original request will be used for
-     * the redirect. The value must be between 1 and 1024 characters.
+     * @return The prefix that replaces the prefixMatch specified in the
+     * HttpRouteRuleMatch, retaining the remaining portion of the URL before
+     * redirecting the request. prefixRedirect cannot be supplied together with
+     * pathRedirect. Supply one alone or neither. If neither is supplied, the
+     * path of the original request will be used for the redirect. The value
+     * must be between 1 and 1024 characters.
      * 
      */
     private @Nullable String prefixRedirect;
@@ -57,9 +60,9 @@ public final class RegionUrlMapPathMatcherRouteRuleUrlRedirect {
      */
     private @Nullable String redirectResponseCode;
     /**
-     * @return If set to true, any accompanying query portion of the original URL is removed prior
-     * to redirecting the request. If set to false, the query portion of the original URL is
-     * retained.
+     * @return If set to true, any accompanying query portion of the original URL is removed
+     * prior to redirecting the request. If set to false, the query portion of the
+     * original URL is retained.
      * This field is required to ensure an empty block is not set. The normal default value is false.
      * 
      */
@@ -67,40 +70,43 @@ public final class RegionUrlMapPathMatcherRouteRuleUrlRedirect {
 
     private RegionUrlMapPathMatcherRouteRuleUrlRedirect() {}
     /**
-     * @return The host that will be used in the redirect response instead of the one that was
-     * supplied in the request. The value must be between 1 and 255 characters.
+     * @return The host that will be used in the redirect response instead of the one
+     * that was supplied in the request. The value must be between 1 and 255
+     * characters.
      * 
      */
     public Optional<String> hostRedirect() {
         return Optional.ofNullable(this.hostRedirect);
     }
     /**
-     * @return If set to true, the URL scheme in the redirected request is set to https. If set to
-     * false, the URL scheme of the redirected request will remain the same as that of the
-     * request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
-     * true for TargetHttpsProxy is not permitted. The default is set to false.
+     * @return If set to true, the URL scheme in the redirected request is set to https.
+     * If set to false, the URL scheme of the redirected request will remain the
+     * same as that of the request. This must only be set for UrlMaps used in
+     * TargetHttpProxys. Setting this true for TargetHttpsProxy is not
+     * permitted. The default is set to false.
      * 
      */
     public Optional<Boolean> httpsRedirect() {
         return Optional.ofNullable(this.httpsRedirect);
     }
     /**
-     * @return The path that will be used in the redirect response instead of the one that was
-     * supplied in the request. pathRedirect cannot be supplied together with
-     * prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
-     * original request will be used for the redirect. The value must be between 1 and 1024
-     * characters.
+     * @return The path that will be used in the redirect response instead of the one
+     * that was supplied in the request. pathRedirect cannot be supplied
+     * together with prefixRedirect. Supply one alone or neither. If neither is
+     * supplied, the path of the original request will be used for the redirect.
+     * The value must be between 1 and 1024 characters.
      * 
      */
     public Optional<String> pathRedirect() {
         return Optional.ofNullable(this.pathRedirect);
     }
     /**
-     * @return The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
-     * retaining the remaining portion of the URL before redirecting the request.
-     * prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
-     * neither. If neither is supplied, the path of the original request will be used for
-     * the redirect. The value must be between 1 and 1024 characters.
+     * @return The prefix that replaces the prefixMatch specified in the
+     * HttpRouteRuleMatch, retaining the remaining portion of the URL before
+     * redirecting the request. prefixRedirect cannot be supplied together with
+     * pathRedirect. Supply one alone or neither. If neither is supplied, the
+     * path of the original request will be used for the redirect. The value
+     * must be between 1 and 1024 characters.
      * 
      */
     public Optional<String> prefixRedirect() {
@@ -121,9 +127,9 @@ public final class RegionUrlMapPathMatcherRouteRuleUrlRedirect {
         return Optional.ofNullable(this.redirectResponseCode);
     }
     /**
-     * @return If set to true, any accompanying query portion of the original URL is removed prior
-     * to redirecting the request. If set to false, the query portion of the original URL is
-     * retained.
+     * @return If set to true, any accompanying query portion of the original URL is removed
+     * prior to redirecting the request. If set to false, the query portion of the
+     * original URL is retained.
      * This field is required to ensure an empty block is not set. The normal default value is false.
      * 
      */

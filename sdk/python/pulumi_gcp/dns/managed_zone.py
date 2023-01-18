@@ -304,7 +304,8 @@ class _ManagedZoneState:
         Input properties used for looking up and filtering ManagedZone resources.
         :param pulumi.Input['ManagedZoneCloudLoggingConfigArgs'] cloud_logging_config: Cloud logging configuration
                Structure is documented below.
-        :param pulumi.Input[str] creation_time: The time that this resource was created on the server. This is in RFC3339 text format.
+        :param pulumi.Input[str] creation_time: The time that this resource was created on the server.
+               This is in RFC3339 text format.
         :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".
         :param pulumi.Input['ManagedZoneDnssecConfigArgs'] dnssec_config: DNSSEC configuration
@@ -318,7 +319,8 @@ class _ManagedZoneState:
         :param pulumi.Input[int] managed_zone_id: Unique identifier for the resource; defined by the server.
         :param pulumi.Input[str] name: User assigned name for this resource.
                Must be unique within the project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: Delegate your managed_zone to these virtual name servers; defined by the server
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: Delegate your managed_zone to these virtual name servers;
+               defined by the server
         :param pulumi.Input['ManagedZonePeeringConfigArgs'] peering_config: The presence of this field indicates that DNS Peering is enabled for this
                zone. The value of this field contains the network to peer with.
                Structure is documented below.
@@ -391,7 +393,8 @@ class _ManagedZoneState:
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The time that this resource was created on the server. This is in RFC3339 text format.
+        The time that this resource was created on the server.
+        This is in RFC3339 text format.
         """
         return pulumi.get(self, "creation_time")
 
@@ -504,7 +507,8 @@ class _ManagedZoneState:
     @pulumi.getter(name="nameServers")
     def name_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Delegate your managed_zone to these virtual name servers; defined by the server
+        Delegate your managed_zone to these virtual name servers;
+        defined by the server
         """
         return pulumi.get(self, "name_servers")
 
@@ -1203,7 +1207,8 @@ class ManagedZone(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ManagedZoneCloudLoggingConfigArgs']] cloud_logging_config: Cloud logging configuration
                Structure is documented below.
-        :param pulumi.Input[str] creation_time: The time that this resource was created on the server. This is in RFC3339 text format.
+        :param pulumi.Input[str] creation_time: The time that this resource was created on the server.
+               This is in RFC3339 text format.
         :param pulumi.Input[str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".
         :param pulumi.Input[pulumi.InputType['ManagedZoneDnssecConfigArgs']] dnssec_config: DNSSEC configuration
@@ -1217,7 +1222,8 @@ class ManagedZone(pulumi.CustomResource):
         :param pulumi.Input[int] managed_zone_id: Unique identifier for the resource; defined by the server.
         :param pulumi.Input[str] name: User assigned name for this resource.
                Must be unique within the project.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: Delegate your managed_zone to these virtual name servers; defined by the server
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: Delegate your managed_zone to these virtual name servers;
+               defined by the server
         :param pulumi.Input[pulumi.InputType['ManagedZonePeeringConfigArgs']] peering_config: The presence of this field indicates that DNS Peering is enabled for this
                zone. The value of this field contains the network to peer with.
                Structure is documented below.
@@ -1272,7 +1278,8 @@ class ManagedZone(pulumi.CustomResource):
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> pulumi.Output[str]:
         """
-        The time that this resource was created on the server. This is in RFC3339 text format.
+        The time that this resource was created on the server.
+        This is in RFC3339 text format.
         """
         return pulumi.get(self, "creation_time")
 
@@ -1349,7 +1356,8 @@ class ManagedZone(pulumi.CustomResource):
     @pulumi.getter(name="nameServers")
     def name_servers(self) -> pulumi.Output[Sequence[str]]:
         """
-        Delegate your managed_zone to these virtual name servers; defined by the server
+        Delegate your managed_zone to these virtual name servers;
+        defined by the server
         """
         return pulumi.get(self, "name_servers")
 

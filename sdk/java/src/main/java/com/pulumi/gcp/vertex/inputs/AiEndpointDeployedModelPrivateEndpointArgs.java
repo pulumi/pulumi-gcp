@@ -15,30 +15,62 @@ public final class AiEndpointDeployedModelPrivateEndpointArgs extends com.pulumi
 
     public static final AiEndpointDeployedModelPrivateEndpointArgs Empty = new AiEndpointDeployedModelPrivateEndpointArgs();
 
+    /**
+     * Output only. Http(s) path to send explain requests.
+     * 
+     */
     @Import(name="explainHttpUri")
     private @Nullable Output<String> explainHttpUri;
 
+    /**
+     * @return Output only. Http(s) path to send explain requests.
+     * 
+     */
     public Optional<Output<String>> explainHttpUri() {
         return Optional.ofNullable(this.explainHttpUri);
     }
 
+    /**
+     * Output only. Http(s) path to send health check requests.
+     * 
+     */
     @Import(name="healthHttpUri")
     private @Nullable Output<String> healthHttpUri;
 
+    /**
+     * @return Output only. Http(s) path to send health check requests.
+     * 
+     */
     public Optional<Output<String>> healthHttpUri() {
         return Optional.ofNullable(this.healthHttpUri);
     }
 
+    /**
+     * Output only. Http(s) path to send prediction requests.
+     * 
+     */
     @Import(name="predictHttpUri")
     private @Nullable Output<String> predictHttpUri;
 
+    /**
+     * @return Output only. Http(s) path to send prediction requests.
+     * 
+     */
     public Optional<Output<String>> predictHttpUri() {
         return Optional.ofNullable(this.predictHttpUri);
     }
 
+    /**
+     * Output only. The name of the service attachment resource. Populated if private service connect is enabled.
+     * 
+     */
     @Import(name="serviceAttachment")
     private @Nullable Output<String> serviceAttachment;
 
+    /**
+     * @return Output only. The name of the service attachment resource. Populated if private service connect is enabled.
+     * 
+     */
     public Optional<Output<String>> serviceAttachment() {
         return Optional.ofNullable(this.serviceAttachment);
     }
@@ -70,38 +102,86 @@ public final class AiEndpointDeployedModelPrivateEndpointArgs extends com.pulumi
             $ = new AiEndpointDeployedModelPrivateEndpointArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param explainHttpUri Output only. Http(s) path to send explain requests.
+         * 
+         * @return builder
+         * 
+         */
         public Builder explainHttpUri(@Nullable Output<String> explainHttpUri) {
             $.explainHttpUri = explainHttpUri;
             return this;
         }
 
+        /**
+         * @param explainHttpUri Output only. Http(s) path to send explain requests.
+         * 
+         * @return builder
+         * 
+         */
         public Builder explainHttpUri(String explainHttpUri) {
             return explainHttpUri(Output.of(explainHttpUri));
         }
 
+        /**
+         * @param healthHttpUri Output only. Http(s) path to send health check requests.
+         * 
+         * @return builder
+         * 
+         */
         public Builder healthHttpUri(@Nullable Output<String> healthHttpUri) {
             $.healthHttpUri = healthHttpUri;
             return this;
         }
 
+        /**
+         * @param healthHttpUri Output only. Http(s) path to send health check requests.
+         * 
+         * @return builder
+         * 
+         */
         public Builder healthHttpUri(String healthHttpUri) {
             return healthHttpUri(Output.of(healthHttpUri));
         }
 
+        /**
+         * @param predictHttpUri Output only. Http(s) path to send prediction requests.
+         * 
+         * @return builder
+         * 
+         */
         public Builder predictHttpUri(@Nullable Output<String> predictHttpUri) {
             $.predictHttpUri = predictHttpUri;
             return this;
         }
 
+        /**
+         * @param predictHttpUri Output only. Http(s) path to send prediction requests.
+         * 
+         * @return builder
+         * 
+         */
         public Builder predictHttpUri(String predictHttpUri) {
             return predictHttpUri(Output.of(predictHttpUri));
         }
 
+        /**
+         * @param serviceAttachment Output only. The name of the service attachment resource. Populated if private service connect is enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceAttachment(@Nullable Output<String> serviceAttachment) {
             $.serviceAttachment = serviceAttachment;
             return this;
         }
 
+        /**
+         * @param serviceAttachment Output only. The name of the service attachment resource. Populated if private service connect is enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceAttachment(String serviceAttachment) {
             return serviceAttachment(Output.of(serviceAttachment));
         }

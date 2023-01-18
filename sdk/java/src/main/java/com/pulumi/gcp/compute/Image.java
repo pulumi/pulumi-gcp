@@ -138,14 +138,16 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/image:Image")
 public class Image extends com.pulumi.resources.CustomResource {
     /**
-     * Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
+     * Size of the image tar.gz archive stored in Google Cloud Storage (in
+     * bytes).
      * 
      */
     @Export(name="archiveSizeBytes", type=Integer.class, parameters={})
     private Output<Integer> archiveSizeBytes;
 
     /**
-     * @return Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
+     * @return Size of the image tar.gz archive stored in Google Cloud Storage (in
+     * bytes).
      * 
      */
     public Output<Integer> archiveSizeBytes() {
@@ -258,14 +260,16 @@ public class Image extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.imageEncryptionKey);
     }
     /**
-     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * The fingerprint used for optimistic locking of this resource. Used
+     * internally during updates.
      * 
      */
     @Export(name="labelFingerprint", type=String.class, parameters={})
     private Output<String> labelFingerprint;
 
     /**
-     * @return The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * @return The fingerprint used for optimistic locking of this resource. Used
+     * internally during updates.
      * 
      */
     public Output<String> labelFingerprint() {

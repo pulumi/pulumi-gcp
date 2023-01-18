@@ -56,7 +56,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultNotificationChannel = new gcp.monitoring.NotificationChannel("default", {
+ * const _default = new gcp.monitoring.NotificationChannel("default", {
  *     displayName: "Test Slack Channel",
  *     labels: {
  *         channel_name: "#foobar",
@@ -134,8 +134,9 @@ export class NotificationChannel extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The full REST resource name for this channel. The syntax is: projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The
-     * [CHANNEL_ID] is automatically assigned by the server on creation.
+     * The full REST resource name for this channel. The syntax is:
+     * projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
+     * The [CHANNEL_ID] is automatically assigned by the server on creation.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -162,13 +163,7 @@ export class NotificationChannel extends pulumi.CustomResource {
      */
     public readonly userLabels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel
-     * operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is
-     * non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel
-     * works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require
-     * verification or that this specific channel has been exempted from verification because it was created prior to
-     * verification being required for channels of this type.This field cannot be modified using a standard
-     * UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
+     * Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require verification or that this specific channel has been exempted from verification because it was created prior to verification being required for channels of this type.This field cannot be modified using a standard UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
      */
     public /*out*/ readonly verificationStatus!: pulumi.Output<string>;
 
@@ -252,8 +247,9 @@ export interface NotificationChannelState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The full REST resource name for this channel. The syntax is: projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The
-     * [CHANNEL_ID] is automatically assigned by the server on creation.
+     * The full REST resource name for this channel. The syntax is:
+     * projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
+     * The [CHANNEL_ID] is automatically assigned by the server on creation.
      */
     name?: pulumi.Input<string>;
     /**
@@ -280,13 +276,7 @@ export interface NotificationChannelState {
      */
     userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel
-     * operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is
-     * non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel
-     * works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require
-     * verification or that this specific channel has been exempted from verification because it was created prior to
-     * verification being required for channels of this type.This field cannot be modified using a standard
-     * UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
+     * Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require verification or that this specific channel has been exempted from verification because it was created prior to verification being required for channels of this type.This field cannot be modified using a standard UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
      */
     verificationStatus?: pulumi.Input<string>;
 }

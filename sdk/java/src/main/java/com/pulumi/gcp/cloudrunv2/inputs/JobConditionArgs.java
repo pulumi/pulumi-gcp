@@ -15,58 +15,124 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobConditionArgs Empty = new JobConditionArgs();
 
+    /**
+     * A reason for the execution condition.
+     * 
+     */
     @Import(name="executionReason")
     private @Nullable Output<String> executionReason;
 
+    /**
+     * @return A reason for the execution condition.
+     * 
+     */
     public Optional<Output<String>> executionReason() {
         return Optional.ofNullable(this.executionReason);
     }
 
+    /**
+     * Last time the condition transitioned from one status to another.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
     @Import(name="lastTransitionTime")
     private @Nullable Output<String> lastTransitionTime;
 
+    /**
+     * @return Last time the condition transitioned from one status to another.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
     public Optional<Output<String>> lastTransitionTime() {
         return Optional.ofNullable(this.lastTransitionTime);
     }
 
+    /**
+     * Human readable message indicating details about the current status.
+     * 
+     */
     @Import(name="message")
     private @Nullable Output<String> message;
 
+    /**
+     * @return Human readable message indicating details about the current status.
+     * 
+     */
     public Optional<Output<String>> message() {
         return Optional.ofNullable(this.message);
     }
 
+    /**
+     * A common (service-level) reason for this condition.
+     * 
+     */
     @Import(name="reason")
     private @Nullable Output<String> reason;
 
+    /**
+     * @return A common (service-level) reason for this condition.
+     * 
+     */
     public Optional<Output<String>> reason() {
         return Optional.ofNullable(this.reason);
     }
 
+    /**
+     * A reason for the revision condition.
+     * 
+     */
     @Import(name="revisionReason")
     private @Nullable Output<String> revisionReason;
 
+    /**
+     * @return A reason for the revision condition.
+     * 
+     */
     public Optional<Output<String>> revisionReason() {
         return Optional.ofNullable(this.revisionReason);
     }
 
+    /**
+     * How to interpret failures of this condition, one of Error, Warning, Info
+     * 
+     */
     @Import(name="severity")
     private @Nullable Output<String> severity;
 
+    /**
+     * @return How to interpret failures of this condition, one of Error, Warning, Info
+     * 
+     */
     public Optional<Output<String>> severity() {
         return Optional.ofNullable(this.severity);
     }
 
+    /**
+     * State of the condition.
+     * 
+     */
     @Import(name="state")
     private @Nullable Output<String> state;
 
+    /**
+     * @return State of the condition.
+     * 
+     */
     public Optional<Output<String>> state() {
         return Optional.ofNullable(this.state);
     }
 
+    /**
+     * type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * &#34;Ready&#34;: True when the Resource is ready.
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * &#34;Ready&#34;: True when the Resource is ready.
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -102,74 +168,172 @@ public final class JobConditionArgs extends com.pulumi.resources.ResourceArgs {
             $ = new JobConditionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param executionReason A reason for the execution condition.
+         * 
+         * @return builder
+         * 
+         */
         public Builder executionReason(@Nullable Output<String> executionReason) {
             $.executionReason = executionReason;
             return this;
         }
 
+        /**
+         * @param executionReason A reason for the execution condition.
+         * 
+         * @return builder
+         * 
+         */
         public Builder executionReason(String executionReason) {
             return executionReason(Output.of(executionReason));
         }
 
+        /**
+         * @param lastTransitionTime Last time the condition transitioned from one status to another.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lastTransitionTime(@Nullable Output<String> lastTransitionTime) {
             $.lastTransitionTime = lastTransitionTime;
             return this;
         }
 
+        /**
+         * @param lastTransitionTime Last time the condition transitioned from one status to another.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lastTransitionTime(String lastTransitionTime) {
             return lastTransitionTime(Output.of(lastTransitionTime));
         }
 
+        /**
+         * @param message Human readable message indicating details about the current status.
+         * 
+         * @return builder
+         * 
+         */
         public Builder message(@Nullable Output<String> message) {
             $.message = message;
             return this;
         }
 
+        /**
+         * @param message Human readable message indicating details about the current status.
+         * 
+         * @return builder
+         * 
+         */
         public Builder message(String message) {
             return message(Output.of(message));
         }
 
+        /**
+         * @param reason A common (service-level) reason for this condition.
+         * 
+         * @return builder
+         * 
+         */
         public Builder reason(@Nullable Output<String> reason) {
             $.reason = reason;
             return this;
         }
 
+        /**
+         * @param reason A common (service-level) reason for this condition.
+         * 
+         * @return builder
+         * 
+         */
         public Builder reason(String reason) {
             return reason(Output.of(reason));
         }
 
+        /**
+         * @param revisionReason A reason for the revision condition.
+         * 
+         * @return builder
+         * 
+         */
         public Builder revisionReason(@Nullable Output<String> revisionReason) {
             $.revisionReason = revisionReason;
             return this;
         }
 
+        /**
+         * @param revisionReason A reason for the revision condition.
+         * 
+         * @return builder
+         * 
+         */
         public Builder revisionReason(String revisionReason) {
             return revisionReason(Output.of(revisionReason));
         }
 
+        /**
+         * @param severity How to interpret failures of this condition, one of Error, Warning, Info
+         * 
+         * @return builder
+         * 
+         */
         public Builder severity(@Nullable Output<String> severity) {
             $.severity = severity;
             return this;
         }
 
+        /**
+         * @param severity How to interpret failures of this condition, one of Error, Warning, Info
+         * 
+         * @return builder
+         * 
+         */
         public Builder severity(String severity) {
             return severity(Output.of(severity));
         }
 
+        /**
+         * @param state State of the condition.
+         * 
+         * @return builder
+         * 
+         */
         public Builder state(@Nullable Output<String> state) {
             $.state = state;
             return this;
         }
 
+        /**
+         * @param state State of the condition.
+         * 
+         * @return builder
+         * 
+         */
         public Builder state(String state) {
             return state(Output.of(state));
         }
 
+        /**
+         * @param type type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * &#34;Ready&#34;: True when the Resource is ready.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * &#34;Ready&#34;: True when the Resource is ready.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

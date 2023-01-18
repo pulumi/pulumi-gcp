@@ -216,16 +216,14 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and
-     * re-created with the same name.
+     * Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
      * 
      */
     @Import(name="uid")
     private @Nullable Output<String> uid;
 
     /**
-     * @return Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and
-     * re-created with the same name.
+     * @return Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
      * 
      */
     public Optional<Output<String>> uid() {
@@ -569,8 +567,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uid Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and
-         * re-created with the same name.
+         * @param uid Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
          * 
          * @return builder
          * 
@@ -581,8 +578,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uid Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and
-         * re-created with the same name.
+         * @param uid Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
          * 
          * @return builder
          * 

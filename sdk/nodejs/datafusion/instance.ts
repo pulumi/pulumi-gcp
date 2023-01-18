@@ -22,8 +22,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basicInstance = new gcp.datafusion.Instance("basic_instance", {
- *     // Mark for testing to avoid service networking connection usage that is not cleaned up
+ * const basicInstance = new gcp.datafusion.Instance("basicInstance", {
  *     options: {
  *         prober_test_run: "true",
  *     },
@@ -97,9 +96,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const enterpriseInstance = new gcp.datafusion.Instance("enterprise_instance", {
+ * const enterpriseInstance = new gcp.datafusion.Instance("enterpriseInstance", {
  *     enableRbac: true,
- *     // Mark for testing to avoid service networking connection usage that is not cleaned up
  *     options: {
  *         prober_test_run: "true",
  *     },
@@ -279,9 +277,13 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly serviceEndpoint!: pulumi.Output<string>;
     /**
-     * The current state of this Data Fusion instance. - CREATING: Instance is being created - RUNNING: Instance is running and
-     * ready for requests - FAILED: Instance creation failed - DELETING: Instance is being deleted - UPGRADING: Instance is
-     * being upgraded - RESTARTING: Instance is being restarted
+     * The current state of this Data Fusion instance.
+     * * CREATING: Instance is being created
+     * * RUNNING: Instance is running and ready for requests
+     * * FAILED: Instance creation failed
+     * * DELETING: Instance is being deleted
+     * * UPGRADING: Instance is being upgraded
+     * * RESTARTING: Instance is being restarted
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
@@ -497,9 +499,13 @@ export interface InstanceState {
      */
     serviceEndpoint?: pulumi.Input<string>;
     /**
-     * The current state of this Data Fusion instance. - CREATING: Instance is being created - RUNNING: Instance is running and
-     * ready for requests - FAILED: Instance creation failed - DELETING: Instance is being deleted - UPGRADING: Instance is
-     * being upgraded - RESTARTING: Instance is being restarted
+     * The current state of this Data Fusion instance.
+     * * CREATING: Instance is being created
+     * * RUNNING: Instance is running and ready for requests
+     * * FAILED: Instance creation failed
+     * * DELETING: Instance is being deleted
+     * * UPGRADING: Instance is being upgraded
+     * * RESTARTING: Instance is being restarted
      */
     state?: pulumi.Input<string>;
     /**

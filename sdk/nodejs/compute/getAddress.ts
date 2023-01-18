@@ -28,11 +28,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAddress(args: GetAddressArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getAddress:getAddress", {
         "name": args.name,
         "project": args.project,
@@ -84,9 +81,31 @@ export interface GetAddressResult {
      */
     readonly status: string;
 }
-
+/**
+ * Get the IP address from a static address. For more information see
+ * the official [API](https://cloud.google.com/compute/docs/reference/latest/addresses/get) documentation.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myAddress = gcp.compute.getAddress({
+ *     name: "foobar",
+ * });
+ * const prod = new gcp.dns.ManagedZone("prod", {dnsName: "prod.mydomain.com."});
+ * const frontend = new gcp.dns.RecordSet("frontend", {
+ *     name: pulumi.interpolate`frontend.${prod.dnsName}`,
+ *     type: "A",
+ *     ttl: 300,
+ *     managedZone: prod.name,
+ *     rrdatas: [myAddress.then(myAddress => myAddress.address)],
+ * });
+ * ```
+ */
 export function getAddressOutput(args: GetAddressOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAddressResult> {
-    return pulumi.output(args).apply(a => getAddress(a, opts))
+    return pulumi.output(args).apply((a: any) => getAddress(a, opts))
 }
 
 /**

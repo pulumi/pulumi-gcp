@@ -13,6 +13,10 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     [OutputType]
     public sealed class CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage
     {
+        /// <summary>
+        /// Describes high-level ways in which a key may be used.
+        /// Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption> KeyUsageOptions;
 
         [OutputConstructor]

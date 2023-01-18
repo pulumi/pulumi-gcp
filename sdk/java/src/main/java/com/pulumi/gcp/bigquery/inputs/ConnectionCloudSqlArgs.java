@@ -32,14 +32,14 @@ public final class ConnectionCloudSqlArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Cloud Spanner database in the form `project/instance/database&#39;
+     * Database name.
      * 
      */
     @Import(name="database", required=true)
     private Output<String> database;
 
     /**
-     * @return Cloud Spanner database in the form `project/instance/database&#39;
+     * @return Database name.
      * 
      */
     public Output<String> database() {
@@ -129,7 +129,7 @@ public final class ConnectionCloudSqlArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param database Cloud Spanner database in the form `project/instance/database&#39;
+         * @param database Database name.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class ConnectionCloudSqlArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param database Cloud Spanner database in the form `project/instance/database&#39;
+         * @param database Database name.
          * 
          * @return builder
          * 

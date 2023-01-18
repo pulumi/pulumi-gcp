@@ -102,8 +102,7 @@ export class DataPolicy extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Resource name of this data policy, in the format of
-     * projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
+     * Resource name of this data policy, in the format of projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -186,8 +185,7 @@ export interface DataPolicyState {
      */
     location?: pulumi.Input<string>;
     /**
-     * Resource name of this data policy, in the format of
-     * projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
+     * Resource name of this data policy, in the format of projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
      */
     name?: pulumi.Input<string>;
     /**

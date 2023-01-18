@@ -41,11 +41,8 @@ import * as utilities from "../utilities";
  */
 export function getNetblockIPRanges(args?: GetNetblockIPRangesArgs, opts?: pulumi.InvokeOptions): Promise<GetNetblockIPRangesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", {
         "rangeType": args.rangeType,
     }, opts);
@@ -83,9 +80,43 @@ export interface GetNetblockIPRangesResult {
     readonly id: string;
     readonly rangeType?: string;
 }
-
+/**
+ * Use this data source to get the IP addresses from different special IP ranges on Google Cloud Platform.
+ *
+ * ## Example Usage
+ * ### Cloud Ranges
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const netblock = gcp.compute.getNetblockIPRanges({});
+ * export const cidrBlocks = netblock.then(netblock => netblock.cidrBlocks);
+ * export const cidrBlocksIpv4 = netblock.then(netblock => netblock.cidrBlocksIpv4s);
+ * export const cidrBlocksIpv6 = netblock.then(netblock => netblock.cidrBlocksIpv6s);
+ * ```
+ * ### Allow Health Checks
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const legacy-hcs = gcp.compute.getNetblockIPRanges({
+ *     rangeType: "legacy-health-checkers",
+ * });
+ * const _default = new gcp.compute.Network("default", {});
+ * const allow_hcs = new gcp.compute.Firewall("allow-hcs", {
+ *     network: _default.name,
+ *     allows: [{
+ *         protocol: "tcp",
+ *         ports: ["80"],
+ *     }],
+ *     sourceRanges: legacy_hcs.then(legacy_hcs => legacy_hcs.cidrBlocksIpv4s),
+ * });
+ * ```
+ */
 export function getNetblockIPRangesOutput(args?: GetNetblockIPRangesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetblockIPRangesResult> {
-    return pulumi.output(args).apply(a => getNetblockIPRanges(a, opts))
+    return pulumi.output(args).apply((a: any) => getNetblockIPRanges(a, opts))
 }
 
 /**

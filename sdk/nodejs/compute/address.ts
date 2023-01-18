@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const ipAddress = new gcp.compute.Address("ip_address", {});
+ * const ipAddress = new gcp.compute.Address("ipAddress", {});
  * ```
  * ### Address With Subnetwork
  *
@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const internalWithGceEndpoint = new gcp.compute.Address("internal_with_gce_endpoint", {
+ * const internalWithGceEndpoint = new gcp.compute.Address("internalWithGceEndpoint", {
  *     addressType: "INTERNAL",
  *     purpose: "GCE_ENDPOINT",
  * });

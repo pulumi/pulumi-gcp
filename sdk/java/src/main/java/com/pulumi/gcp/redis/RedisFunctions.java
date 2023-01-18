@@ -25,7 +25,7 @@ public final class RedisFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.redis.RedisFunctions;
-     * import com.pulumi.gcp.compute.inputs.GetInstanceArgs;
+     * import com.pulumi.gcp.redis.inputs.GetInstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -65,7 +65,7 @@ public final class RedisFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.redis.RedisFunctions;
-     * import com.pulumi.gcp.compute.inputs.GetInstanceArgs;
+     * import com.pulumi.gcp.redis.inputs.GetInstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -105,7 +105,7 @@ public final class RedisFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.redis.RedisFunctions;
-     * import com.pulumi.gcp.compute.inputs.GetInstanceArgs;
+     * import com.pulumi.gcp.redis.inputs.GetInstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -145,7 +145,7 @@ public final class RedisFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.redis.RedisFunctions;
-     * import com.pulumi.gcp.compute.inputs.GetInstanceArgs;
+     * import com.pulumi.gcp.redis.inputs.GetInstanceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

@@ -63,6 +63,9 @@ class GetNotificationChannelResult:
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        An optional human-readable description of this notification channel.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -73,6 +76,9 @@ class GetNotificationChannelResult:
     @property
     @pulumi.getter
     def enabled(self) -> bool:
+        """
+        Whether notifications are forwarded to the described channel.
+        """
         return pulumi.get(self, "enabled")
 
     @property
@@ -91,11 +97,18 @@ class GetNotificationChannelResult:
     @property
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, str]]:
+        """
+        Configuration fields that define the channel and its behavior.
+        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The full REST resource name for this channel. The syntax is:
+        `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`.
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -116,11 +129,17 @@ class GetNotificationChannelResult:
     @property
     @pulumi.getter(name="userLabels")
     def user_labels(self) -> Optional[Mapping[str, str]]:
+        """
+        User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field.
+        """
         return pulumi.get(self, "user_labels")
 
     @property
     @pulumi.getter(name="verificationStatus")
     def verification_status(self) -> str:
+        """
+        Indicates whether this channel has been verified or not.
+        """
         return pulumi.get(self, "verification_status")
 
 

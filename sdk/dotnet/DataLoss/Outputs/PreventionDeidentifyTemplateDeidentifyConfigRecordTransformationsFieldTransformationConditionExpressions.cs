@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     public sealed class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions
     {
         /// <summary>
-        /// A collection of conditions.
+        /// Conditions to apply to the expression.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions? Conditions;

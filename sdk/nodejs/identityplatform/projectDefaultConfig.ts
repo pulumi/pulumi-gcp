@@ -22,24 +22,22 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultProjectDefaultConfig = new gcp.identityplatform.ProjectDefaultConfig("default", {
- *     signIn: {
- *         allowDuplicateEmails: true,
- *         anonymous: {
- *             enabled: true,
- *         },
- *         email: {
- *             enabled: true,
- *             passwordRequired: false,
- *         },
- *         phoneNumber: {
- *             enabled: true,
- *             testPhoneNumbers: {
- *                 "+11231231234": "000000",
- *             },
+ * const _default = new gcp.identityplatform.ProjectDefaultConfig("default", {signIn: {
+ *     allowDuplicateEmails: true,
+ *     anonymous: {
+ *         enabled: true,
+ *     },
+ *     email: {
+ *         enabled: true,
+ *         passwordRequired: false,
+ *     },
+ *     phoneNumber: {
+ *         enabled: true,
+ *         testPhoneNumbers: {
+ *             "+11231231234": "000000",
  *         },
  *     },
- * });
+ * }});
  * ```
  *
  * ## Import

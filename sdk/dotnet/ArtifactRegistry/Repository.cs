@@ -153,7 +153,8 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public Output<Outputs.RepositoryMavenConfig?> MavenConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1"
+        /// The name of the repository, for example:
+        /// "projects/p1/locations/us-central1/repositories/repo1"
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -363,7 +364,8 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public Input<Inputs.RepositoryMavenConfigGetArgs>? MavenConfig { get; set; }
 
         /// <summary>
-        /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1"
+        /// The name of the repository, for example:
+        /// "projects/p1/locations/us-central1/repositories/repo1"
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

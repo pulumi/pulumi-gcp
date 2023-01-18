@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
     public sealed class FunctionBuildConfig
     {
         /// <summary>
-        /// -
         /// The Cloud Build name of the latest successful
         /// deployment of the function.
         /// </summary>
@@ -32,7 +31,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
         /// </summary>
         public readonly string? EntryPoint;
         /// <summary>
-        /// Environment variables that shall be available during function execution.
+        /// User-provided build-time environment variables for the function.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? EnvironmentVariables;
         /// <summary>

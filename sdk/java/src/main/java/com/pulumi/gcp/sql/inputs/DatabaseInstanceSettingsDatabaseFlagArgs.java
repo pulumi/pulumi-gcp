@@ -14,14 +14,14 @@ public final class DatabaseInstanceSettingsDatabaseFlagArgs extends com.pulumi.r
     public static final DatabaseInstanceSettingsDatabaseFlagArgs Empty = new DatabaseInstanceSettingsDatabaseFlagArgs();
 
     /**
-     * A name for this whitelist entry.
+     * Name of the flag.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return A name for this whitelist entry.
+     * @return Name of the flag.
      * 
      */
     public Output<String> name() {
@@ -29,18 +29,14 @@ public final class DatabaseInstanceSettingsDatabaseFlagArgs extends com.pulumi.r
     }
 
     /**
-     * A CIDR notation IPv4 or IPv6 address that is allowed to
-     * access this instance. Must be set even if other two attributes are not for
-     * the whitelist to become active.
+     * Value of the flag.
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return A CIDR notation IPv4 or IPv6 address that is allowed to
-     * access this instance. Must be set even if other two attributes are not for
-     * the whitelist to become active.
+     * @return Value of the flag.
      * 
      */
     public Output<String> value() {
@@ -73,7 +69,7 @@ public final class DatabaseInstanceSettingsDatabaseFlagArgs extends com.pulumi.r
         }
 
         /**
-         * @param name A name for this whitelist entry.
+         * @param name Name of the flag.
          * 
          * @return builder
          * 
@@ -84,7 +80,7 @@ public final class DatabaseInstanceSettingsDatabaseFlagArgs extends com.pulumi.r
         }
 
         /**
-         * @param name A name for this whitelist entry.
+         * @param name Name of the flag.
          * 
          * @return builder
          * 
@@ -94,9 +90,7 @@ public final class DatabaseInstanceSettingsDatabaseFlagArgs extends com.pulumi.r
         }
 
         /**
-         * @param value A CIDR notation IPv4 or IPv6 address that is allowed to
-         * access this instance. Must be set even if other two attributes are not for
-         * the whitelist to become active.
+         * @param value Value of the flag.
          * 
          * @return builder
          * 
@@ -107,9 +101,7 @@ public final class DatabaseInstanceSettingsDatabaseFlagArgs extends com.pulumi.r
         }
 
         /**
-         * @param value A CIDR notation IPv4 or IPv6 address that is allowed to
-         * access this instance. Must be set even if other two attributes are not for
-         * the whitelist to become active.
+         * @param value Value of the flag.
          * 
          * @return builder
          * 

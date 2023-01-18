@@ -40,8 +40,7 @@ public final class FunctionServiceConfig {
      */
     private @Nullable Map<String,String> environmentVariables;
     /**
-     * @return -
-     * URIs of the Service deployed
+     * @return URIs of the Service deployed
      * 
      */
     private @Nullable String gcfUri;
@@ -99,8 +98,7 @@ public final class FunctionServiceConfig {
      */
     private @Nullable Integer timeoutSeconds;
     /**
-     * @return -
-     * URI of the Service deployed.
+     * @return URI of the Service deployed.
      * 
      */
     private @Nullable String uri;
@@ -148,8 +146,7 @@ public final class FunctionServiceConfig {
         return this.environmentVariables == null ? Map.of() : this.environmentVariables;
     }
     /**
-     * @return -
-     * URIs of the Service deployed
+     * @return URIs of the Service deployed
      * 
      */
     public Optional<String> gcfUri() {
@@ -227,8 +224,7 @@ public final class FunctionServiceConfig {
         return Optional.ofNullable(this.timeoutSeconds);
     }
     /**
-     * @return -
-     * URI of the Service deployed.
+     * @return URI of the Service deployed.
      * 
      */
     public Optional<String> uri() {

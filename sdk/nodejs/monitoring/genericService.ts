@@ -26,10 +26,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myService = new gcp.monitoring.GenericService("my_service", {
+ * const myService = new gcp.monitoring.GenericService("myService", {
  *     basicService: {
  *         serviceLabels: {
- *             module_id: "another-module-id",
+ *             moduleId: "another-module-id",
  *         },
  *         serviceType: "APP_ENGINE",
  *     },
@@ -98,7 +98,8 @@ export class GenericService extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
-     * The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+     * The full resource name for this service. The syntax is:
+     * projects/[PROJECT_ID]/services/[SERVICE_ID].
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -113,6 +114,7 @@ export class GenericService extends pulumi.CustomResource {
     public readonly serviceId!: pulumi.Output<string>;
     /**
      * Configuration for how to query telemetry on a Service.
+     * Structure is documented below.
      */
     public /*out*/ readonly telemetries!: pulumi.Output<outputs.monitoring.GenericServiceTelemetry[]>;
     /**
@@ -179,7 +181,8 @@ export interface GenericServiceState {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The full resource name for this service. The syntax is: projects/[PROJECT_ID]/services/[SERVICE_ID].
+     * The full resource name for this service. The syntax is:
+     * projects/[PROJECT_ID]/services/[SERVICE_ID].
      */
     name?: pulumi.Input<string>;
     /**
@@ -194,6 +197,7 @@ export interface GenericServiceState {
     serviceId?: pulumi.Input<string>;
     /**
      * Configuration for how to query telemetry on a Service.
+     * Structure is documented below.
      */
     telemetries?: pulumi.Input<pulumi.Input<inputs.monitoring.GenericServiceTelemetry>[]>;
     /**

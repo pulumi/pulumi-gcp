@@ -13,8 +13,7 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterMonitoringConfigManagedPrometheusGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable the PodSecurityPolicy controller for this cluster.
-        /// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        /// Whether or not the managed collection is enabled.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;

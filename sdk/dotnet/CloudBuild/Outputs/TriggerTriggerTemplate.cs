@@ -14,25 +14,19 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     public sealed class TriggerTriggerTemplate
     {
         /// <summary>
-        /// Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-        /// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-        /// described at https://github.com/google/re2/wiki/Syntax
+        /// Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+        /// This field is a regular expression.
         /// </summary>
         public readonly string? BranchName;
         /// <summary>
-        /// Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+        /// Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
         /// </summary>
         public readonly string? CommitSha;
         /// <summary>
-        /// Working directory to use when running this step's container.
-        /// If this value is a relative path, it is relative to the build's working
-        /// directory. If this value is absolute, it may be outside the build's working
-        /// directory, in which case the contents of the path may not be persisted
-        /// across build step executions, unless a `volume` for that path is specified.
-        /// If the build specifies a `RepoSource` with `dir` and a step with a
-        /// `dir`,
-        /// which specifies an absolute path, the `RepoSource` `dir` is ignored
-        /// for the step's execution.
+        /// Directory, relative to the source root, in which to run the build.
+        /// This must be a relative path. If a step's dir is specified and
+        /// is an absolute path, this value is ignored for that step's
+        /// execution.
         /// </summary>
         public readonly string? Dir;
         /// <summary>
@@ -40,18 +34,17 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// </summary>
         public readonly bool? InvertRegex;
         /// <summary>
-        /// ID of the project that owns the Cloud Source Repository.
-        /// If omitted, the project ID requesting the build is assumed.
+        /// ID of the project that owns the Cloud Source Repository. If
+        /// omitted, the project ID requesting the build is assumed.
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>
-        /// Name of the Cloud Source Repository.
+        /// Name of the Cloud Source Repository. If omitted, the name "default" is assumed.
         /// </summary>
         public readonly string? RepoName;
         /// <summary>
-        /// Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
-        /// The syntax of the regular expressions accepted is the syntax accepted by RE2 and
-        /// described at https://github.com/google/re2/wiki/Syntax
+        /// Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+        /// This field is a regular expression.
         /// </summary>
         public readonly string? TagName;
 

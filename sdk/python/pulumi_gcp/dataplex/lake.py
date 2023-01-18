@@ -161,11 +161,9 @@ class _LakeState:
         :param pulumi.Input[Sequence[pulumi.Input['LakeMetastoreStatusArgs']]] metastore_statuses: Output only. Metastore status of the lake.
         :param pulumi.Input[str] name: The name of the lake.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[str] service_account: Output only. Service account associated with this lake. This service account must be authorized to access or operate on
-               resources managed by the lake.
+        :param pulumi.Input[str] service_account: Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
         :param pulumi.Input[str] state: Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
-        :param pulumi.Input[str] uid: Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and
-               re-created with the same name.
+        :param pulumi.Input[str] uid: Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
         :param pulumi.Input[str] update_time: Output only. The time when the lake was last updated.
         """
         if asset_statuses is not None:
@@ -321,8 +319,7 @@ class _LakeState:
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Service account associated with this lake. This service account must be authorized to access or operate on
-        resources managed by the lake.
+        Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
         """
         return pulumi.get(self, "service_account")
 
@@ -346,8 +343,7 @@ class _LakeState:
     @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and
-        re-created with the same name.
+        Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
         """
         return pulumi.get(self, "uid")
 
@@ -557,11 +553,9 @@ class Lake(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LakeMetastoreStatusArgs']]]] metastore_statuses: Output only. Metastore status of the lake.
         :param pulumi.Input[str] name: The name of the lake.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[str] service_account: Output only. Service account associated with this lake. This service account must be authorized to access or operate on
-               resources managed by the lake.
+        :param pulumi.Input[str] service_account: Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
         :param pulumi.Input[str] state: Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
-        :param pulumi.Input[str] uid: Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and
-               re-created with the same name.
+        :param pulumi.Input[str] uid: Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
         :param pulumi.Input[str] update_time: Output only. The time when the lake was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -668,8 +662,7 @@ class Lake(pulumi.CustomResource):
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> pulumi.Output[str]:
         """
-        Output only. Service account associated with this lake. This service account must be authorized to access or operate on
-        resources managed by the lake.
+        Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
         """
         return pulumi.get(self, "service_account")
 
@@ -685,8 +678,7 @@ class Lake(pulumi.CustomResource):
     @pulumi.getter
     def uid(self) -> pulumi.Output[str]:
         """
-        Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and
-        re-created with the same name.
+        Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
         """
         return pulumi.get(self, "uid")
 

@@ -20,14 +20,14 @@ public final class ClusterClusterConfigMasterConfigArgs extends com.pulumi.resou
     public static final ClusterClusterConfigMasterConfigArgs Empty = new ClusterClusterConfigMasterConfigArgs();
 
     /**
-     * The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
+     * The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
      * 
      */
     @Import(name="accelerators")
     private @Nullable Output<List<ClusterClusterConfigMasterConfigAcceleratorArgs>> accelerators;
 
     /**
-     * @return The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
+     * @return The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
      * 
      */
     public Optional<Output<List<ClusterClusterConfigMasterConfigAcceleratorArgs>>> accelerators() {
@@ -75,7 +75,7 @@ public final class ClusterClusterConfigMasterConfigArgs extends com.pulumi.resou
 
     /**
      * The name of a Google Compute Engine machine type
-     * to create for the worker nodes. If not specified, GCP will default to a predetermined
+     * to create for the master. If not specified, GCP will default to a predetermined
      * computed value (currently `n1-standard-4`).
      * 
      */
@@ -84,7 +84,7 @@ public final class ClusterClusterConfigMasterConfigArgs extends com.pulumi.resou
 
     /**
      * @return The name of a Google Compute Engine machine type
-     * to create for the worker nodes. If not specified, GCP will default to a predetermined
+     * to create for the master. If not specified, GCP will default to a predetermined
      * computed value (currently `n1-standard-4`).
      * 
      */
@@ -114,16 +114,16 @@ public final class ClusterClusterConfigMasterConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * Specifies the number of preemptible nodes to create.
-     * Defaults to 0.
+     * Specifies the number of master nodes to create.
+     * If not specified, GCP will default to a predetermined computed value (currently 1).
      * 
      */
     @Import(name="numInstances")
     private @Nullable Output<Integer> numInstances;
 
     /**
-     * @return Specifies the number of preemptible nodes to create.
-     * Defaults to 0.
+     * @return Specifies the number of master nodes to create.
+     * If not specified, GCP will default to a predetermined computed value (currently 1).
      * 
      */
     public Optional<Output<Integer>> numInstances() {
@@ -161,7 +161,7 @@ public final class ClusterClusterConfigMasterConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param accelerators The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
+         * @param accelerators The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class ClusterClusterConfigMasterConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param accelerators The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
+         * @param accelerators The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class ClusterClusterConfigMasterConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param accelerators The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
+         * @param accelerators The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class ClusterClusterConfigMasterConfigArgs extends com.pulumi.resou
 
         /**
          * @param machineType The name of a Google Compute Engine machine type
-         * to create for the worker nodes. If not specified, GCP will default to a predetermined
+         * to create for the master. If not specified, GCP will default to a predetermined
          * computed value (currently `n1-standard-4`).
          * 
          * @return builder
@@ -263,7 +263,7 @@ public final class ClusterClusterConfigMasterConfigArgs extends com.pulumi.resou
 
         /**
          * @param machineType The name of a Google Compute Engine machine type
-         * to create for the worker nodes. If not specified, GCP will default to a predetermined
+         * to create for the master. If not specified, GCP will default to a predetermined
          * computed value (currently `n1-standard-4`).
          * 
          * @return builder
@@ -301,8 +301,8 @@ public final class ClusterClusterConfigMasterConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param numInstances Specifies the number of preemptible nodes to create.
-         * Defaults to 0.
+         * @param numInstances Specifies the number of master nodes to create.
+         * If not specified, GCP will default to a predetermined computed value (currently 1).
          * 
          * @return builder
          * 
@@ -313,8 +313,8 @@ public final class ClusterClusterConfigMasterConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param numInstances Specifies the number of preemptible nodes to create.
-         * Defaults to 0.
+         * @param numInstances Specifies the number of master nodes to create.
+         * If not specified, GCP will default to a predetermined computed value (currently 1).
          * 
          * @return builder
          * 

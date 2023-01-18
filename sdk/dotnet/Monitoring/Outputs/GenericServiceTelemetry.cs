@@ -13,6 +13,11 @@ namespace Pulumi.Gcp.Monitoring.Outputs
     [OutputType]
     public sealed class GenericServiceTelemetry
     {
+        /// <summary>
+        /// The full name of the resource that defines this service.
+        /// Formatted as described in
+        /// https://cloud.google.com/apis/design/resource_names.
+        /// </summary>
         public readonly string? ResourceName;
 
         [OutputConstructor]

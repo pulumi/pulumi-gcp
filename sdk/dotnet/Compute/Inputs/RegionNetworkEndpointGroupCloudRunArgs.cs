@@ -13,9 +13,9 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class RegionNetworkEndpointGroupCloudRunArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional serving service.
-        /// The service name must be 1-63 characters long, and comply with RFC1035.
-        /// Example value: "default", "my-service".
+        /// Cloud Run service is the main resource of Cloud Run.
+        /// The service must be 1-63 characters long, and comply with RFC1035.
+        /// Example value: "run-service".
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }
@@ -30,10 +30,13 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? Tag { get; set; }
 
         /// <summary>
-        /// A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
-        /// on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
-        /// The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
-        /// App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
+        /// A template to parse service and tag fields from a request URL.
+        /// URL mask allows for routing to multiple Run services without having
+        /// to create multiple network endpoint groups and backend services.
+        /// For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2"
+        /// an be backed by the same Serverless Network Endpoint Group (NEG) with
+        /// URL mask ".domain.com/". The URL mask will parse them to { service="bar1", tag="foo1" }
+        /// and { service="bar2", tag="foo2" } respectively.
         /// </summary>
         [Input("urlMask")]
         public Input<string>? UrlMask { get; set; }

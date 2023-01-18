@@ -55,14 +55,16 @@ public final class MetricArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A human-readable description for the label.
+     * A description of this metric, which is used in documentation. The maximum length of the
+     * description is 8000 characters.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return A human-readable description for the label.
+     * @return A description of this metric, which is used in documentation. The maximum length of the
+     * description is 8000 characters.
      * 
      */
     public Optional<Output<String>> description() {
@@ -278,7 +280,8 @@ public final class MetricArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description A human-readable description for the label.
+         * @param description A description of this metric, which is used in documentation. The maximum length of the
+         * description is 8000 characters.
          * 
          * @return builder
          * 
@@ -289,7 +292,8 @@ public final class MetricArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description A human-readable description for the label.
+         * @param description A description of this metric, which is used in documentation. The maximum length of the
+         * description is 8000 characters.
          * 
          * @return builder
          * 

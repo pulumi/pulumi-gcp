@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourcePkg
     {
         /// <summary>
-        /// An Apt Repository.
+        /// A package managed by Apt.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt? Apt;
         /// <summary>
@@ -38,11 +38,11 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm? Rpm;
         /// <summary>
-        /// A Yum Repository.
+        /// A package managed by YUM.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum? Yum;
         /// <summary>
-        /// A Zypper Repository.
+        /// A package managed by Zypper.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper? Zypper;
 

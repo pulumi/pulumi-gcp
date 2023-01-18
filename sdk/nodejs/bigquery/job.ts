@@ -243,12 +243,10 @@ export class Job extends pulumi.CustomResource {
 
     /**
      * Copies a table.
-     * Structure is documented below.
      */
     public readonly copy!: pulumi.Output<outputs.bigquery.JobCopy | undefined>;
     /**
      * Configures an extract job.
-     * Structure is documented below.
      */
     public readonly extract!: pulumi.Output<outputs.bigquery.JobExtract | undefined>;
     /**
@@ -269,7 +267,6 @@ export class Job extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Configures a load job.
-     * Structure is documented below.
      */
     public readonly load!: pulumi.Output<outputs.bigquery.JobLoad | undefined>;
     /**
@@ -283,11 +280,11 @@ export class Job extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * Configures a query job.
-     * Structure is documented below.
      */
     public readonly query!: pulumi.Output<outputs.bigquery.JobQuery | undefined>;
     /**
      * The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+     * Structure is documented below.
      */
     public /*out*/ readonly statuses!: pulumi.Output<outputs.bigquery.JobStatus[]>;
     /**
@@ -349,12 +346,10 @@ export class Job extends pulumi.CustomResource {
 export interface JobState {
     /**
      * Copies a table.
-     * Structure is documented below.
      */
     copy?: pulumi.Input<inputs.bigquery.JobCopy>;
     /**
      * Configures an extract job.
-     * Structure is documented below.
      */
     extract?: pulumi.Input<inputs.bigquery.JobExtract>;
     /**
@@ -375,7 +370,6 @@ export interface JobState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Configures a load job.
-     * Structure is documented below.
      */
     load?: pulumi.Input<inputs.bigquery.JobLoad>;
     /**
@@ -389,11 +383,11 @@ export interface JobState {
     project?: pulumi.Input<string>;
     /**
      * Configures a query job.
-     * Structure is documented below.
      */
     query?: pulumi.Input<inputs.bigquery.JobQuery>;
     /**
      * The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+     * Structure is documented below.
      */
     statuses?: pulumi.Input<pulumi.Input<inputs.bigquery.JobStatus>[]>;
     /**
@@ -408,12 +402,10 @@ export interface JobState {
 export interface JobArgs {
     /**
      * Copies a table.
-     * Structure is documented below.
      */
     copy?: pulumi.Input<inputs.bigquery.JobCopy>;
     /**
      * Configures an extract job.
-     * Structure is documented below.
      */
     extract?: pulumi.Input<inputs.bigquery.JobExtract>;
     /**
@@ -430,7 +422,6 @@ export interface JobArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Configures a load job.
-     * Structure is documented below.
      */
     load?: pulumi.Input<inputs.bigquery.JobLoad>;
     /**
@@ -444,7 +435,6 @@ export interface JobArgs {
     project?: pulumi.Input<string>;
     /**
      * Configures a query job.
-     * Structure is documented below.
      */
     query?: pulumi.Input<inputs.bigquery.JobQuery>;
 }

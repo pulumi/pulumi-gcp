@@ -14,14 +14,12 @@ namespace Pulumi.Gcp.AppEngine.Outputs
     public sealed class FlexibleAppVersionHandler
     {
         /// <summary>
-        /// Action to take when users access resources that require authentication.
-        /// Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+        /// Actions to take when the user is not logged in.
         /// Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
         /// </summary>
         public readonly string? AuthFailAction;
         /// <summary>
-        /// Level of login required to access this resource.
-        /// Default value is `LOGIN_OPTIONAL`.
+        /// Methods to restrict access to a URL based on login status.
         /// Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
         /// </summary>
         public readonly string? Login;
@@ -31,7 +29,9 @@ namespace Pulumi.Gcp.AppEngine.Outputs
         /// </summary>
         public readonly string? RedirectHttpResponseCode;
         /// <summary>
-        /// Path to the script from the application root directory.
+        /// Executes a script to handle the requests that match this URL pattern.
+        /// Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.FlexibleAppVersionHandlerScript? Script;
         /// <summary>

@@ -16,121 +16,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/dlp/docs/creating-templates-inspect)
  *
  * ## Example Usage
- * ### Dlp Inspect Template Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const basic = new gcp.dataloss.PreventionInspectTemplate("basic", {
- *     description: "My description",
- *     displayName: "display_name",
- *     inspectConfig: {
- *         infoTypes: [
- *             {
- *                 name: "EMAIL_ADDRESS",
- *             },
- *             {
- *                 name: "PERSON_NAME",
- *             },
- *             {
- *                 name: "LAST_NAME",
- *             },
- *             {
- *                 name: "DOMAIN_NAME",
- *             },
- *             {
- *                 name: "PHONE_NUMBER",
- *             },
- *             {
- *                 name: "FIRST_NAME",
- *             },
- *         ],
- *         limits: {
- *             maxFindingsPerInfoTypes: [
- *                 {
- *                     infoType: {
- *                         name: "PERSON_NAME",
- *                     },
- *                     maxFindings: 75,
- *                 },
- *                 {
- *                     infoType: {
- *                         name: "LAST_NAME",
- *                     },
- *                     maxFindings: 80,
- *                 },
- *             ],
- *             maxFindingsPerItem: 10,
- *             maxFindingsPerRequest: 50,
- *         },
- *         minLikelihood: "UNLIKELY",
- *         ruleSets: [
- *             {
- *                 infoTypes: [{
- *                     name: "EMAIL_ADDRESS",
- *                 }],
- *                 rules: [{
- *                     exclusionRule: {
- *                         matchingType: "MATCHING_TYPE_FULL_MATCH",
- *                         regex: {
- *                             pattern: ".+@example.com",
- *                         },
- *                     },
- *                 }],
- *             },
- *             {
- *                 infoTypes: [
- *                     {
- *                         name: "EMAIL_ADDRESS",
- *                     },
- *                     {
- *                         name: "DOMAIN_NAME",
- *                     },
- *                     {
- *                         name: "PHONE_NUMBER",
- *                     },
- *                     {
- *                         name: "PERSON_NAME",
- *                     },
- *                     {
- *                         name: "FIRST_NAME",
- *                     },
- *                 ],
- *                 rules: [{
- *                     exclusionRule: {
- *                         dictionary: {
- *                             wordList: {
- *                                 words: ["TEST"],
- *                             },
- *                         },
- *                         matchingType: "MATCHING_TYPE_PARTIAL_MATCH",
- *                     },
- *                 }],
- *             },
- *             {
- *                 infoTypes: [{
- *                     name: "PERSON_NAME",
- *                 }],
- *                 rules: [{
- *                     hotwordRule: {
- *                         hotwordRegex: {
- *                             pattern: "patient",
- *                         },
- *                         likelihoodAdjustment: {
- *                             fixedLikelihood: "VERY_LIKELY",
- *                         },
- *                         proximity: {
- *                             windowBefore: 50,
- *                         },
- *                     },
- *                 }],
- *             },
- *         ],
- *     },
- *     parent: "projects/my-project-name",
- * });
- * ```
  * ### Dlp Inspect Template Custom Type
  *
  * ```typescript
@@ -250,6 +135,21 @@ export class PreventionInspectTemplate extends pulumi.CustomResource {
      */
     public readonly inspectConfig!: pulumi.Output<outputs.dataloss.PreventionInspectTemplateInspectConfig | undefined>;
     /**
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+     * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
      * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
      * or `projects/project-id/storedInfoTypes/432452342`.
      */
@@ -315,6 +215,21 @@ export interface PreventionInspectTemplateState {
      */
     inspectConfig?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfig>;
     /**
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+     * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
      * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
      * or `projects/project-id/storedInfoTypes/432452342`.
      */

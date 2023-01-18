@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CertificateMapGclbTargetIpConfig {
+    /**
+     * @return An external IP address
+     * 
+     */
     private @Nullable String ipAddress;
+    /**
+     * @return A list of ports
+     * 
+     */
     private @Nullable List<Integer> ports;
 
     private CertificateMapGclbTargetIpConfig() {}
+    /**
+     * @return An external IP address
+     * 
+     */
     public Optional<String> ipAddress() {
         return Optional.ofNullable(this.ipAddress);
     }
+    /**
+     * @return A list of ports
+     * 
+     */
     public List<Integer> ports() {
         return this.ports == null ? List.of() : this.ports;
     }

@@ -87,8 +87,8 @@ type Fulfillment struct {
 	// Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
 	// Structure is documented below.
 	GenericWebService FulfillmentGenericWebServicePtrOutput `pulumi:"genericWebService"`
-	// The unique identifier of the fulfillment. Format: projects/<Project ID>/agent/fulfillment - projects/<Project
-	// ID>/locations/<Location ID>/agent/fulfillment
+	// The unique identifier of the fulfillment.
+	// Format: projects/<Project ID>/agent/fulfillment - projects/<Project ID>/locations/<Location ID>/agent/fulfillment
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -137,8 +137,8 @@ type fulfillmentState struct {
 	// Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
 	// Structure is documented below.
 	GenericWebService *FulfillmentGenericWebService `pulumi:"genericWebService"`
-	// The unique identifier of the fulfillment. Format: projects/<Project ID>/agent/fulfillment - projects/<Project
-	// ID>/locations/<Location ID>/agent/fulfillment
+	// The unique identifier of the fulfillment.
+	// Format: projects/<Project ID>/agent/fulfillment - projects/<Project ID>/locations/<Location ID>/agent/fulfillment
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -156,8 +156,8 @@ type FulfillmentState struct {
 	// Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
 	// Structure is documented below.
 	GenericWebService FulfillmentGenericWebServicePtrInput
-	// The unique identifier of the fulfillment. Format: projects/<Project ID>/agent/fulfillment - projects/<Project
-	// ID>/locations/<Location ID>/agent/fulfillment
+	// The unique identifier of the fulfillment.
+	// Format: projects/<Project ID>/agent/fulfillment - projects/<Project ID>/locations/<Location ID>/agent/fulfillment
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -310,8 +310,8 @@ func (o FulfillmentOutput) GenericWebService() FulfillmentGenericWebServicePtrOu
 	return o.ApplyT(func(v *Fulfillment) FulfillmentGenericWebServicePtrOutput { return v.GenericWebService }).(FulfillmentGenericWebServicePtrOutput)
 }
 
-// The unique identifier of the fulfillment. Format: projects/<Project ID>/agent/fulfillment - projects/<Project
-// ID>/locations/<Location ID>/agent/fulfillment
+// The unique identifier of the fulfillment.
+// Format: projects/<Project ID>/agent/fulfillment - projects/<Project ID>/locations/<Location ID>/agent/fulfillment
 func (o FulfillmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Fulfillment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

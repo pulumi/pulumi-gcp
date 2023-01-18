@@ -69,8 +69,9 @@ class _CryptoKeyVersionState:
         """
         Input properties used for looking up and filtering CryptoKeyVersion resources.
         :param pulumi.Input[str] algorithm: The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
-        :param pulumi.Input[Sequence[pulumi.Input['CryptoKeyVersionAttestationArgs']]] attestations: Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the
-               key as stored on the HSM, independently of Google. Only provided for key versions with protectionLevel HSM.
+        :param pulumi.Input[Sequence[pulumi.Input['CryptoKeyVersionAttestationArgs']]] attestations: Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+               Only provided for key versions with protectionLevel HSM.
+               Structure is documented below.
         :param pulumi.Input[str] crypto_key: The name of the cryptoKey associated with the CryptoKeyVersions.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
         :param pulumi.Input[str] generate_time: The time this CryptoKeyVersion key material was generated
@@ -110,8 +111,9 @@ class _CryptoKeyVersionState:
     @pulumi.getter
     def attestations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CryptoKeyVersionAttestationArgs']]]]:
         """
-        Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the
-        key as stored on the HSM, independently of Google. Only provided for key versions with protectionLevel HSM.
+        Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+        Only provided for key versions with protectionLevel HSM.
+        Structure is documented below.
         """
         return pulumi.get(self, "attestations")
 
@@ -329,8 +331,9 @@ class CryptoKeyVersion(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] algorithm: The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CryptoKeyVersionAttestationArgs']]]] attestations: Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the
-               key as stored on the HSM, independently of Google. Only provided for key versions with protectionLevel HSM.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CryptoKeyVersionAttestationArgs']]]] attestations: Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+               Only provided for key versions with protectionLevel HSM.
+               Structure is documented below.
         :param pulumi.Input[str] crypto_key: The name of the cryptoKey associated with the CryptoKeyVersions.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
         :param pulumi.Input[str] generate_time: The time this CryptoKeyVersion key material was generated
@@ -364,8 +367,9 @@ class CryptoKeyVersion(pulumi.CustomResource):
     @pulumi.getter
     def attestations(self) -> pulumi.Output[Sequence['outputs.CryptoKeyVersionAttestation']]:
         """
-        Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the
-        key as stored on the HSM, independently of Google. Only provided for key versions with protectionLevel HSM.
+        Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+        Only provided for key versions with protectionLevel HSM.
+        Structure is documented below.
         """
         return pulumi.get(self, "attestations")
 

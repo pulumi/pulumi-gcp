@@ -90,7 +90,8 @@ class _SourceState:
                can't share the same display name. The display name must start and end
                with a letter or digit, may contain letters, digits, spaces, hyphens,
                and underscores, and can be no longer than 32 characters.
-        :param pulumi.Input[str] name: The resource name of this source, in the format 'organizations/{{organization}}/sources/{{source}}'.
+        :param pulumi.Input[str] name: The resource name of this source, in the format
+               `organizations/{{organization}}/sources/{{source}}`.
         :param pulumi.Input[str] organization: The organization whose Cloud Security Command Center the Source
                lives in.
         """
@@ -135,7 +136,8 @@ class _SourceState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name of this source, in the format 'organizations/{{organization}}/sources/{{source}}'.
+        The resource name of this source, in the format
+        `organizations/{{organization}}/sources/{{source}}`.
         """
         return pulumi.get(self, "name")
 
@@ -319,7 +321,8 @@ class Source(pulumi.CustomResource):
                can't share the same display name. The display name must start and end
                with a letter or digit, may contain letters, digits, spaces, hyphens,
                and underscores, and can be no longer than 32 characters.
-        :param pulumi.Input[str] name: The resource name of this source, in the format 'organizations/{{organization}}/sources/{{source}}'.
+        :param pulumi.Input[str] name: The resource name of this source, in the format
+               `organizations/{{organization}}/sources/{{source}}`.
         :param pulumi.Input[str] organization: The organization whose Cloud Security Command Center the Source
                lives in.
         """
@@ -357,7 +360,8 @@ class Source(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name of this source, in the format 'organizations/{{organization}}/sources/{{source}}'.
+        The resource name of this source, in the format
+        `organizations/{{organization}}/sources/{{source}}`.
         """
         return pulumi.get(self, "name")
 

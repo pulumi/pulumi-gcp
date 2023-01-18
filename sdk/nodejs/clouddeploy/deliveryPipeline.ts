@@ -144,8 +144,7 @@ export class DeliveryPipeline extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete
-     * requests to ensure the client has an up-to-date value before proceeding.
+     * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
@@ -252,8 +251,7 @@ export interface DeliveryPipelineState {
      */
     description?: pulumi.Input<string>;
     /**
-     * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete
-     * requests to ensure the client has an up-to-date value before proceeding.
+     * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
     etag?: pulumi.Input<string>;
     /**

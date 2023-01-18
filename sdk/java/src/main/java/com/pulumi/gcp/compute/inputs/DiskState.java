@@ -142,14 +142,16 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * The fingerprint used for optimistic locking of this resource.  Used
+     * internally during updates.
      * 
      */
     @Import(name="labelFingerprint")
     private @Nullable Output<String> labelFingerprint;
 
     /**
-     * @return The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * @return The fingerprint used for optimistic locking of this resource.  Used
+     * internally during updates.
      * 
      */
     public Optional<Output<String>> labelFingerprint() {
@@ -374,28 +376,20 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The source snapshot used to create this disk. You can provide this as
-     * a partial or full URL to the resource. If the snapshot is in another
-     * project than this disk, you must supply a full URL. For example, the
-     * following are valid values:
-     * * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
-     * * `projects/project/global/snapshots/snapshot`
-     * * `global/snapshots/snapshot`
-     * * `snapshot`
+     * The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
+     * snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
+     * * &#39;https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot&#39; *
+     *   &#39;projects/project/global/snapshots/snapshot&#39; * &#39;global/snapshots/snapshot&#39; * &#39;snapshot&#39;
      * 
      */
     @Import(name="snapshot")
     private @Nullable Output<String> snapshot;
 
     /**
-     * @return The source snapshot used to create this disk. You can provide this as
-     * a partial or full URL to the resource. If the snapshot is in another
-     * project than this disk, you must supply a full URL. For example, the
-     * following are valid values:
-     * * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
-     * * `projects/project/global/snapshots/snapshot`
-     * * `global/snapshots/snapshot`
-     * * `snapshot`
+     * @return The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
+     * snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
+     * * &#39;https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot&#39; *
+     *   &#39;projects/project/global/snapshots/snapshot&#39; * &#39;global/snapshots/snapshot&#39; * &#39;snapshot&#39;
      * 
      */
     public Optional<Output<String>> snapshot() {
@@ -432,16 +426,18 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
-     * the current or a previous instance of a given disk name.
+     * The ID value of the disk used to create this image. This value may
+     * be used to determine whether the image was taken from the current
+     * or a previous instance of a given disk name.
      * 
      */
     @Import(name="sourceDiskId")
     private @Nullable Output<String> sourceDiskId;
 
     /**
-     * @return The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
-     * the current or a previous instance of a given disk name.
+     * @return The ID value of the disk used to create this image. This value may
+     * be used to determine whether the image was taken from the current
+     * or a previous instance of a given disk name.
      * 
      */
     public Optional<Output<String>> sourceDiskId() {
@@ -468,18 +464,22 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID value of the image used to create this disk. This value identifies the exact image that was used to create this
-     * persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated
-     * under the same name, the source image ID would identify the exact version of the image that was used.
+     * The ID value of the image used to create this disk. This value
+     * identifies the exact image that was used to create this persistent
+     * disk. For example, if you created the persistent disk from an image
+     * that was later deleted and recreated under the same name, the source
+     * image ID would identify the exact version of the image that was used.
      * 
      */
     @Import(name="sourceImageId")
     private @Nullable Output<String> sourceImageId;
 
     /**
-     * @return The ID value of the image used to create this disk. This value identifies the exact image that was used to create this
-     * persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated
-     * under the same name, the source image ID would identify the exact version of the image that was used.
+     * @return The ID value of the image used to create this disk. This value
+     * identifies the exact image that was used to create this persistent
+     * disk. For example, if you created the persistent disk from an image
+     * that was later deleted and recreated under the same name, the source
+     * image ID would identify the exact version of the image that was used.
      * 
      */
     public Optional<Output<String>> sourceImageId() {
@@ -508,18 +508,24 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
-     * this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
-     * recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
+     * The unique ID of the snapshot used to create this disk. This value
+     * identifies the exact snapshot that was used to create this persistent
+     * disk. For example, if you created the persistent disk from a snapshot
+     * that was later deleted and recreated under the same name, the source
+     * snapshot ID would identify the exact version of the snapshot that was
+     * used.
      * 
      */
     @Import(name="sourceSnapshotId")
     private @Nullable Output<String> sourceSnapshotId;
 
     /**
-     * @return The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
-     * this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
-     * recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
+     * @return The unique ID of the snapshot used to create this disk. This value
+     * identifies the exact snapshot that was used to create this persistent
+     * disk. For example, if you created the persistent disk from a snapshot
+     * that was later deleted and recreated under the same name, the source
+     * snapshot ID would identify the exact version of the snapshot that was
+     * used.
      * 
      */
     public Optional<Output<String>> sourceSnapshotId() {
@@ -544,14 +550,16 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance
+     * Links to the users of the disk (attached instances) in form:
+     * project/zones/zone/instances/instance
      * 
      */
     @Import(name="users")
     private @Nullable Output<List<String>> users;
 
     /**
-     * @return Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance
+     * @return Links to the users of the disk (attached instances) in form:
+     * project/zones/zone/instances/instance
      * 
      */
     public Optional<Output<List<String>>> users() {
@@ -773,7 +781,8 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labelFingerprint The fingerprint used for optimistic locking of this resource. Used internally during updates.
+         * @param labelFingerprint The fingerprint used for optimistic locking of this resource.  Used
+         * internally during updates.
          * 
          * @return builder
          * 
@@ -784,7 +793,8 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labelFingerprint The fingerprint used for optimistic locking of this resource. Used internally during updates.
+         * @param labelFingerprint The fingerprint used for optimistic locking of this resource.  Used
+         * internally during updates.
          * 
          * @return builder
          * 
@@ -1092,14 +1102,10 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snapshot The source snapshot used to create this disk. You can provide this as
-         * a partial or full URL to the resource. If the snapshot is in another
-         * project than this disk, you must supply a full URL. For example, the
-         * following are valid values:
-         * * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
-         * * `projects/project/global/snapshots/snapshot`
-         * * `global/snapshots/snapshot`
-         * * `snapshot`
+         * @param snapshot The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
+         * snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
+         * * &#39;https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot&#39; *
+         *   &#39;projects/project/global/snapshots/snapshot&#39; * &#39;global/snapshots/snapshot&#39; * &#39;snapshot&#39;
          * 
          * @return builder
          * 
@@ -1110,14 +1116,10 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snapshot The source snapshot used to create this disk. You can provide this as
-         * a partial or full URL to the resource. If the snapshot is in another
-         * project than this disk, you must supply a full URL. For example, the
-         * following are valid values:
-         * * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
-         * * `projects/project/global/snapshots/snapshot`
-         * * `global/snapshots/snapshot`
-         * * `snapshot`
+         * @param snapshot The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
+         * snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
+         * * &#39;https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot&#39; *
+         *   &#39;projects/project/global/snapshots/snapshot&#39; * &#39;global/snapshots/snapshot&#39; * &#39;snapshot&#39;
          * 
          * @return builder
          * 
@@ -1162,8 +1164,9 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceDiskId The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
-         * the current or a previous instance of a given disk name.
+         * @param sourceDiskId The ID value of the disk used to create this image. This value may
+         * be used to determine whether the image was taken from the current
+         * or a previous instance of a given disk name.
          * 
          * @return builder
          * 
@@ -1174,8 +1177,9 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceDiskId The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
-         * the current or a previous instance of a given disk name.
+         * @param sourceDiskId The ID value of the disk used to create this image. This value may
+         * be used to determine whether the image was taken from the current
+         * or a previous instance of a given disk name.
          * 
          * @return builder
          * 
@@ -1210,9 +1214,11 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceImageId The ID value of the image used to create this disk. This value identifies the exact image that was used to create this
-         * persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated
-         * under the same name, the source image ID would identify the exact version of the image that was used.
+         * @param sourceImageId The ID value of the image used to create this disk. This value
+         * identifies the exact image that was used to create this persistent
+         * disk. For example, if you created the persistent disk from an image
+         * that was later deleted and recreated under the same name, the source
+         * image ID would identify the exact version of the image that was used.
          * 
          * @return builder
          * 
@@ -1223,9 +1229,11 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceImageId The ID value of the image used to create this disk. This value identifies the exact image that was used to create this
-         * persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated
-         * under the same name, the source image ID would identify the exact version of the image that was used.
+         * @param sourceImageId The ID value of the image used to create this disk. This value
+         * identifies the exact image that was used to create this persistent
+         * disk. For example, if you created the persistent disk from an image
+         * that was later deleted and recreated under the same name, the source
+         * image ID would identify the exact version of the image that was used.
          * 
          * @return builder
          * 
@@ -1262,9 +1270,12 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceSnapshotId The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
-         * this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
-         * recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
+         * @param sourceSnapshotId The unique ID of the snapshot used to create this disk. This value
+         * identifies the exact snapshot that was used to create this persistent
+         * disk. For example, if you created the persistent disk from a snapshot
+         * that was later deleted and recreated under the same name, the source
+         * snapshot ID would identify the exact version of the snapshot that was
+         * used.
          * 
          * @return builder
          * 
@@ -1275,9 +1286,12 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceSnapshotId The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
-         * this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
-         * recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
+         * @param sourceSnapshotId The unique ID of the snapshot used to create this disk. This value
+         * identifies the exact snapshot that was used to create this persistent
+         * disk. For example, if you created the persistent disk from a snapshot
+         * that was later deleted and recreated under the same name, the source
+         * snapshot ID would identify the exact version of the snapshot that was
+         * used.
          * 
          * @return builder
          * 
@@ -1310,7 +1324,8 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param users Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance
+         * @param users Links to the users of the disk (attached instances) in form:
+         * project/zones/zone/instances/instance
          * 
          * @return builder
          * 
@@ -1321,7 +1336,8 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param users Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance
+         * @param users Links to the users of the disk (attached instances) in form:
+         * project/zones/zone/instances/instance
          * 
          * @return builder
          * 
@@ -1331,7 +1347,8 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param users Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance
+         * @param users Links to the users of the disk (attached instances) in form:
+         * project/zones/zone/instances/instance
          * 
          * @return builder
          * 

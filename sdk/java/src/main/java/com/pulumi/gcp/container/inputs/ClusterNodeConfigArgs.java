@@ -95,14 +95,24 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+     * Parameters for the Google Container Filesystem (GCFS).
+     * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = &#34;COS_CONTAINERD&#34;` and `node_version` from GKE versions 1.19 or later to use it.
+     * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+     * A `machine_type` that has more than 16 GiB of memory is also recommended.
+     * GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
+     * Structure is documented below.
      * 
      */
     @Import(name="gcfsConfig")
     private @Nullable Output<ClusterNodeConfigGcfsConfigArgs> gcfsConfig;
 
     /**
-     * @return ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+     * @return Parameters for the Google Container Filesystem (GCFS).
+     * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = &#34;COS_CONTAINERD&#34;` and `node_version` from GKE versions 1.19 or later to use it.
+     * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+     * A `machine_type` that has more than 16 GiB of memory is also recommended.
+     * GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
+     * Structure is documented below.
      * 
      */
     public Optional<Output<ClusterNodeConfigGcfsConfigArgs>> gcfsConfig() {
@@ -220,14 +230,16 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+     * The amount of local SSD disks that will be
+     * attached to each cluster node. Defaults to 0.
      * 
      */
     @Import(name="localSsdCount")
     private @Nullable Output<Integer> localSsdCount;
 
     /**
-     * @return Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+     * @return The amount of local SSD disks that will be
+     * attached to each cluster node. Defaults to 0.
      * 
      */
     public Optional<Output<Integer>> localSsdCount() {
@@ -235,14 +247,14 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
+     * Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
      * 
      */
     @Import(name="loggingVariant")
     private @Nullable Output<String> loggingVariant;
 
     /**
-     * @return The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
+     * @return Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
      * 
      */
     public Optional<Output<String>> loggingVariant() {
@@ -458,14 +470,16 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * ) - List of network tags applied to auto-provisioned node pools.
+     * The list of instance tags applied to all nodes. Tags are used to identify
+     * valid sources or targets for network firewalls.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return ) - List of network tags applied to auto-provisioned node pools.
+     * @return The list of instance tags applied to all nodes. Tags are used to identify
+     * valid sources or targets for network firewalls.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -658,7 +672,12 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param gcfsConfig ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+         * @param gcfsConfig Parameters for the Google Container Filesystem (GCFS).
+         * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = &#34;COS_CONTAINERD&#34;` and `node_version` from GKE versions 1.19 or later to use it.
+         * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+         * A `machine_type` that has more than 16 GiB of memory is also recommended.
+         * GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -669,7 +688,12 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param gcfsConfig ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+         * @param gcfsConfig Parameters for the Google Container Filesystem (GCFS).
+         * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = &#34;COS_CONTAINERD&#34;` and `node_version` from GKE versions 1.19 or later to use it.
+         * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+         * A `machine_type` that has more than 16 GiB of memory is also recommended.
+         * GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -836,7 +860,8 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param localSsdCount Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+         * @param localSsdCount The amount of local SSD disks that will be
+         * attached to each cluster node. Defaults to 0.
          * 
          * @return builder
          * 
@@ -847,7 +872,8 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param localSsdCount Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+         * @param localSsdCount The amount of local SSD disks that will be
+         * attached to each cluster node. Defaults to 0.
          * 
          * @return builder
          * 
@@ -857,7 +883,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param loggingVariant The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
+         * @param loggingVariant Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
          * 
          * @return builder
          * 
@@ -868,7 +894,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param loggingVariant The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
+         * @param loggingVariant Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
          * 
          * @return builder
          * 
@@ -1166,7 +1192,8 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tags ) - List of network tags applied to auto-provisioned node pools.
+         * @param tags The list of instance tags applied to all nodes. Tags are used to identify
+         * valid sources or targets for network firewalls.
          * 
          * @return builder
          * 
@@ -1177,7 +1204,8 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tags ) - List of network tags applied to auto-provisioned node pools.
+         * @param tags The list of instance tags applied to all nodes. Tags are used to identify
+         * valid sources or targets for network firewalls.
          * 
          * @return builder
          * 
@@ -1187,7 +1215,8 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tags ) - List of network tags applied to auto-provisioned node pools.
+         * @param tags The list of instance tags applied to all nodes. Tags are used to identify
+         * valid sources or targets for network firewalls.
          * 
          * @return builder
          * 

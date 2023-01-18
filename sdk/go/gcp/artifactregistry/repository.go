@@ -153,7 +153,8 @@ type Repository struct {
 	// format type.
 	// Structure is documented below.
 	MavenConfig RepositoryMavenConfigPtrOutput `pulumi:"mavenConfig"`
-	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1"
+	// The name of the repository, for example:
+	// "projects/p1/locations/us-central1/repositories/repo1"
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -227,7 +228,8 @@ type repositoryState struct {
 	// format type.
 	// Structure is documented below.
 	MavenConfig *RepositoryMavenConfig `pulumi:"mavenConfig"`
-	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1"
+	// The name of the repository, for example:
+	// "projects/p1/locations/us-central1/repositories/repo1"
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -267,7 +269,8 @@ type RepositoryState struct {
 	// format type.
 	// Structure is documented below.
 	MavenConfig RepositoryMavenConfigPtrInput
-	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1"
+	// The name of the repository, for example:
+	// "projects/p1/locations/us-central1/repositories/repo1"
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -487,7 +490,8 @@ func (o RepositoryOutput) MavenConfig() RepositoryMavenConfigPtrOutput {
 	return o.ApplyT(func(v *Repository) RepositoryMavenConfigPtrOutput { return v.MavenConfig }).(RepositoryMavenConfigPtrOutput)
 }
 
-// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1"
+// The name of the repository, for example:
+// "projects/p1/locations/us-central1/repositories/repo1"
 func (o RepositoryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

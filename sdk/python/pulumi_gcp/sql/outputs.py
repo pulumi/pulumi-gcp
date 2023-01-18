@@ -1026,10 +1026,8 @@ class DatabaseInstanceSettingsDatabaseFlag(dict):
                  name: str,
                  value: str):
         """
-        :param str name: A name for this whitelist entry.
-        :param str value: A CIDR notation IPv4 or IPv6 address that is allowed to
-               access this instance. Must be set even if other two attributes are not for
-               the whitelist to become active.
+        :param str name: Name of the flag.
+        :param str value: Value of the flag.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -1038,7 +1036,7 @@ class DatabaseInstanceSettingsDatabaseFlag(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        A name for this whitelist entry.
+        Name of the flag.
         """
         return pulumi.get(self, "name")
 
@@ -1046,9 +1044,7 @@ class DatabaseInstanceSettingsDatabaseFlag(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        A CIDR notation IPv4 or IPv6 address that is allowed to
-        access this instance. Must be set even if other two attributes are not for
-        the whitelist to become active.
+        Value of the flag.
         """
         return pulumi.get(self, "value")
 
@@ -1238,7 +1234,7 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
                  private_network: Optional[str] = None,
                  require_ssl: Optional[bool] = None):
         """
-        :param str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        :param str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
         :param bool ipv4_enabled: Whether this Cloud SQL instance should be assigned
                a public IPV4 address. At least `ipv4_enabled` must be enabled or a
                `private_network` must be configured.
@@ -1264,7 +1260,7 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
     @pulumi.getter(name="allocatedIpRange")
     def allocated_ip_range(self) -> Optional[str]:
         """
-        The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
         """
         return pulumi.get(self, "allocated_ip_range")
 

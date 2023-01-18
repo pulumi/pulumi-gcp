@@ -15,15 +15,22 @@ public final class InstanceServerCaCertArgs extends com.pulumi.resources.Resourc
 
     public static final InstanceServerCaCertArgs Empty = new InstanceServerCaCertArgs();
 
+    /**
+     * The certificate data in PEM format.
+     * 
+     */
     @Import(name="cert")
     private @Nullable Output<String> cert;
 
+    /**
+     * @return The certificate data in PEM format.
+     * 
+     */
     public Optional<Output<String>> cert() {
         return Optional.ofNullable(this.cert);
     }
 
     /**
-     * - 
      * Output only. The time when the policy was created.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits.
@@ -33,8 +40,7 @@ public final class InstanceServerCaCertArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> createTime;
 
     /**
-     * @return -
-     * Output only. The time when the policy was created.
+     * @return Output only. The time when the policy was created.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits.
      * 
@@ -43,23 +49,47 @@ public final class InstanceServerCaCertArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.createTime);
     }
 
+    /**
+     * The time when the certificate expires.
+     * 
+     */
     @Import(name="expireTime")
     private @Nullable Output<String> expireTime;
 
+    /**
+     * @return The time when the certificate expires.
+     * 
+     */
     public Optional<Output<String>> expireTime() {
         return Optional.ofNullable(this.expireTime);
     }
 
+    /**
+     * Serial number, as extracted from the certificate.
+     * 
+     */
     @Import(name="serialNumber")
     private @Nullable Output<String> serialNumber;
 
+    /**
+     * @return Serial number, as extracted from the certificate.
+     * 
+     */
     public Optional<Output<String>> serialNumber() {
         return Optional.ofNullable(this.serialNumber);
     }
 
+    /**
+     * Sha1 Fingerprint of the certificate.
+     * 
+     */
     @Import(name="sha1Fingerprint")
     private @Nullable Output<String> sha1Fingerprint;
 
+    /**
+     * @return Sha1 Fingerprint of the certificate.
+     * 
+     */
     public Optional<Output<String>> sha1Fingerprint() {
         return Optional.ofNullable(this.sha1Fingerprint);
     }
@@ -92,18 +122,29 @@ public final class InstanceServerCaCertArgs extends com.pulumi.resources.Resourc
             $ = new InstanceServerCaCertArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cert The certificate data in PEM format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cert(@Nullable Output<String> cert) {
             $.cert = cert;
             return this;
         }
 
+        /**
+         * @param cert The certificate data in PEM format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cert(String cert) {
             return cert(Output.of(cert));
         }
 
         /**
-         * @param createTime -
-         * Output only. The time when the policy was created.
+         * @param createTime Output only. The time when the policy was created.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
          * resolution and up to nine fractional digits.
          * 
@@ -116,8 +157,7 @@ public final class InstanceServerCaCertArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param createTime -
-         * Output only. The time when the policy was created.
+         * @param createTime Output only. The time when the policy was created.
          * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
          * resolution and up to nine fractional digits.
          * 
@@ -128,29 +168,65 @@ public final class InstanceServerCaCertArgs extends com.pulumi.resources.Resourc
             return createTime(Output.of(createTime));
         }
 
+        /**
+         * @param expireTime The time when the certificate expires.
+         * 
+         * @return builder
+         * 
+         */
         public Builder expireTime(@Nullable Output<String> expireTime) {
             $.expireTime = expireTime;
             return this;
         }
 
+        /**
+         * @param expireTime The time when the certificate expires.
+         * 
+         * @return builder
+         * 
+         */
         public Builder expireTime(String expireTime) {
             return expireTime(Output.of(expireTime));
         }
 
+        /**
+         * @param serialNumber Serial number, as extracted from the certificate.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serialNumber(@Nullable Output<String> serialNumber) {
             $.serialNumber = serialNumber;
             return this;
         }
 
+        /**
+         * @param serialNumber Serial number, as extracted from the certificate.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serialNumber(String serialNumber) {
             return serialNumber(Output.of(serialNumber));
         }
 
+        /**
+         * @param sha1Fingerprint Sha1 Fingerprint of the certificate.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sha1Fingerprint(@Nullable Output<String> sha1Fingerprint) {
             $.sha1Fingerprint = sha1Fingerprint;
             return this;
         }
 
+        /**
+         * @param sha1Fingerprint Sha1 Fingerprint of the certificate.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sha1Fingerprint(String sha1Fingerprint) {
             return sha1Fingerprint(Output.of(sha1Fingerprint));
         }

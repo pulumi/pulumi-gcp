@@ -95,8 +95,7 @@ type DataPolicy struct {
 	DataPolicyType pulumi.StringOutput `pulumi:"dataPolicyType"`
 	// The name of the location of the data policy.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Resource name of this data policy, in the format of
-	// projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
+	// Resource name of this data policy, in the format of projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Policy tag resource name, in the format of projects/{project_number}/locations/{locationId}/taxonomies/{taxonomyId}/policyTags/{policyTag_id}.
 	PolicyTag pulumi.StringOutput `pulumi:"policyTag"`
@@ -156,8 +155,7 @@ type dataPolicyState struct {
 	DataPolicyType *string `pulumi:"dataPolicyType"`
 	// The name of the location of the data policy.
 	Location *string `pulumi:"location"`
-	// Resource name of this data policy, in the format of
-	// projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
+	// Resource name of this data policy, in the format of projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
 	Name *string `pulumi:"name"`
 	// Policy tag resource name, in the format of projects/{project_number}/locations/{locationId}/taxonomies/{taxonomyId}/policyTags/{policyTag_id}.
 	PolicyTag *string `pulumi:"policyTag"`
@@ -177,8 +175,7 @@ type DataPolicyState struct {
 	DataPolicyType pulumi.StringPtrInput
 	// The name of the location of the data policy.
 	Location pulumi.StringPtrInput
-	// Resource name of this data policy, in the format of
-	// projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
+	// Resource name of this data policy, in the format of projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
 	Name pulumi.StringPtrInput
 	// Policy tag resource name, in the format of projects/{project_number}/locations/{locationId}/taxonomies/{taxonomyId}/policyTags/{policyTag_id}.
 	PolicyTag pulumi.StringPtrInput
@@ -337,8 +334,7 @@ func (o DataPolicyOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataPolicy) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name of this data policy, in the format of
-// projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
+// Resource name of this data policy, in the format of projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
 func (o DataPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

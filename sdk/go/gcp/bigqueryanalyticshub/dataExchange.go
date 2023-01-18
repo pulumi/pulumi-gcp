@@ -93,7 +93,8 @@ type DataExchange struct {
 	ListingCount pulumi.IntOutput `pulumi:"listingCount"`
 	// The name of the location this data exchange.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The resource name of the data exchange, for example: "projects/myproject/locations/US/dataExchanges/123"
+	// The resource name of the data exchange, for example:
+	// "projects/myproject/locations/US/dataExchanges/123"
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Email or URL of the primary point of contact of the data exchange.
 	PrimaryContact pulumi.StringPtrOutput `pulumi:"primaryContact"`
@@ -154,7 +155,8 @@ type dataExchangeState struct {
 	ListingCount *int `pulumi:"listingCount"`
 	// The name of the location this data exchange.
 	Location *string `pulumi:"location"`
-	// The resource name of the data exchange, for example: "projects/myproject/locations/US/dataExchanges/123"
+	// The resource name of the data exchange, for example:
+	// "projects/myproject/locations/US/dataExchanges/123"
 	Name *string `pulumi:"name"`
 	// Email or URL of the primary point of contact of the data exchange.
 	PrimaryContact *string `pulumi:"primaryContact"`
@@ -178,7 +180,8 @@ type DataExchangeState struct {
 	ListingCount pulumi.IntPtrInput
 	// The name of the location this data exchange.
 	Location pulumi.StringPtrInput
-	// The resource name of the data exchange, for example: "projects/myproject/locations/US/dataExchanges/123"
+	// The resource name of the data exchange, for example:
+	// "projects/myproject/locations/US/dataExchanges/123"
 	Name pulumi.StringPtrInput
 	// Email or URL of the primary point of contact of the data exchange.
 	PrimaryContact pulumi.StringPtrInput
@@ -354,7 +357,8 @@ func (o DataExchangeOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataExchange) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The resource name of the data exchange, for example: "projects/myproject/locations/US/dataExchanges/123"
+// The resource name of the data exchange, for example:
+// "projects/myproject/locations/US/dataExchanges/123"
 func (o DataExchangeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataExchange) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

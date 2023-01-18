@@ -20,9 +20,17 @@ public final class RegionAutoscalerAutoscalingPolicyCpuUtilization {
      */
     private @Nullable String predictiveMethod;
     /**
-     * @return Fraction of backend capacity utilization (set in HTTP(s) load
-     * balancing configuration) that autoscaler should maintain. Must
-     * be a positive float value. If not defined, the default is 0.8.
+     * @return The target CPU utilization that the autoscaler should maintain.
+     * Must be a float value in the range (0, 1]. If not specified, the
+     * default is 0.6.
+     * If the CPU level is below the target utilization, the autoscaler
+     * scales down the number of instances until it reaches the minimum
+     * number of instances you specified or until the average CPU of
+     * your instances reaches the target utilization.
+     * If the average CPU is above the target utilization, the autoscaler
+     * scales up until it reaches the maximum number of instances you
+     * specified or until the average utilization reaches the target
+     * utilization.
      * 
      */
     private Double target;
@@ -38,9 +46,17 @@ public final class RegionAutoscalerAutoscalingPolicyCpuUtilization {
         return Optional.ofNullable(this.predictiveMethod);
     }
     /**
-     * @return Fraction of backend capacity utilization (set in HTTP(s) load
-     * balancing configuration) that autoscaler should maintain. Must
-     * be a positive float value. If not defined, the default is 0.8.
+     * @return The target CPU utilization that the autoscaler should maintain.
+     * Must be a float value in the range (0, 1]. If not specified, the
+     * default is 0.6.
+     * If the CPU level is below the target utilization, the autoscaler
+     * scales down the number of instances until it reaches the minimum
+     * number of instances you specified or until the average CPU of
+     * your instances reaches the target utilization.
+     * If the average CPU is above the target utilization, the autoscaler
+     * scales up until it reaches the maximum number of instances you
+     * specified or until the average utilization reaches the target
+     * utilization.
      * 
      */
     public Double target() {

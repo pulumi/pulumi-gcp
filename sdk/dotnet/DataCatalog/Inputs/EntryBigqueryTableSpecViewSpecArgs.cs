@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
 
     public sealed class EntryBigqueryTableSpecViewSpecArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The query that defines the table view.
+        /// </summary>
         [Input("viewQuery")]
         public Input<string>? ViewQuery { get; set; }
 

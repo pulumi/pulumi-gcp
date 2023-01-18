@@ -198,9 +198,7 @@ namespace Pulumi.Gcp.Alloydb
         public Output<Outputs.InstanceReadPoolConfig?> ReadPoolConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Set to true if the current state of Instance does not match the user's intended state, and the service is actively
-        /// updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover
-        /// or maintenance.
+        /// Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
         /// </summary>
         [Output("reconciling")]
         public Output<bool> Reconciling { get; private set; } = null!;
@@ -474,9 +472,7 @@ namespace Pulumi.Gcp.Alloydb
         public Input<Inputs.InstanceReadPoolConfigGetArgs>? ReadPoolConfig { get; set; }
 
         /// <summary>
-        /// Set to true if the current state of Instance does not match the user's intended state, and the service is actively
-        /// updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover
-        /// or maintenance.
+        /// Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
         /// </summary>
         [Input("reconciling")]
         public Input<bool>? Reconciling { get; set; }

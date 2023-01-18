@@ -12,16 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterIdentityServiceConfig {
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Whether to enable the Identity Service component. It is disabled by default. Set `enabled=true` to enable.
      * 
      */
     private @Nullable Boolean enabled;
 
     private ClusterIdentityServiceConfig() {}
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Whether to enable the Identity Service component. It is disabled by default. Set `enabled=true` to enable.
      * 
      */
     public Optional<Boolean> enabled() {

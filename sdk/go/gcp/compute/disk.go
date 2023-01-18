@@ -128,7 +128,8 @@ type Disk struct {
 	//
 	// Deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
 	Interface pulumi.StringPtrOutput `pulumi:"interface"`
-	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+	// The fingerprint used for optimistic locking of this resource.  Used
+	// internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// Labels to apply to this disk.  A list of key->value pairs.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -178,14 +179,10 @@ type Disk struct {
 	// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
 	// and recreating.
 	Size pulumi.IntOutput `pulumi:"size"`
-	// The source snapshot used to create this disk. You can provide this as
-	// a partial or full URL to the resource. If the snapshot is in another
-	// project than this disk, you must supply a full URL. For example, the
-	// following are valid values:
-	// * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
-	// * `projects/project/global/snapshots/snapshot`
-	// * `global/snapshots/snapshot`
-	// * `snapshot`
+	// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
+	// snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
+	// * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
+	//   'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
 	Snapshot pulumi.StringPtrOutput `pulumi:"snapshot"`
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
@@ -196,30 +193,37 @@ type Disk struct {
 	// * zones/{zone}/disks/{disk}
 	// * regions/{region}/disks/{disk}
 	SourceDisk pulumi.StringPtrOutput `pulumi:"sourceDisk"`
-	// The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
-	// the current or a previous instance of a given disk name.
+	// The ID value of the disk used to create this image. This value may
+	// be used to determine whether the image was taken from the current
+	// or a previous instance of a given disk name.
 	SourceDiskId pulumi.StringOutput `pulumi:"sourceDiskId"`
 	// The customer-supplied encryption key of the source image. Required if
 	// the source image is protected by a customer-supplied encryption key.
 	// Structure is documented below.
 	SourceImageEncryptionKey DiskSourceImageEncryptionKeyPtrOutput `pulumi:"sourceImageEncryptionKey"`
-	// The ID value of the image used to create this disk. This value identifies the exact image that was used to create this
-	// persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated
-	// under the same name, the source image ID would identify the exact version of the image that was used.
+	// The ID value of the image used to create this disk. This value
+	// identifies the exact image that was used to create this persistent
+	// disk. For example, if you created the persistent disk from an image
+	// that was later deleted and recreated under the same name, the source
+	// image ID would identify the exact version of the image that was used.
 	SourceImageId pulumi.StringOutput `pulumi:"sourceImageId"`
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
 	// key.
 	// Structure is documented below.
 	SourceSnapshotEncryptionKey DiskSourceSnapshotEncryptionKeyPtrOutput `pulumi:"sourceSnapshotEncryptionKey"`
-	// The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
-	// this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
-	// recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
+	// The unique ID of the snapshot used to create this disk. This value
+	// identifies the exact snapshot that was used to create this persistent
+	// disk. For example, if you created the persistent disk from a snapshot
+	// that was later deleted and recreated under the same name, the source
+	// snapshot ID would identify the exact version of the snapshot that was
+	// used.
 	SourceSnapshotId pulumi.StringOutput `pulumi:"sourceSnapshotId"`
 	// URL of the disk type resource describing which disk type to use to
 	// create the disk. Provide this when creating the disk.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
-	// Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance
+	// Links to the users of the disk (attached instances) in form:
+	// project/zones/zone/instances/instance
 	Users pulumi.StringArrayOutput `pulumi:"users"`
 	// A reference to the zone where the disk resides.
 	Zone pulumi.StringOutput `pulumi:"zone"`
@@ -284,7 +288,8 @@ type diskState struct {
 	//
 	// Deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
 	Interface *string `pulumi:"interface"`
-	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+	// The fingerprint used for optimistic locking of this resource.  Used
+	// internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// Labels to apply to this disk.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
@@ -334,14 +339,10 @@ type diskState struct {
 	// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
 	// and recreating.
 	Size *int `pulumi:"size"`
-	// The source snapshot used to create this disk. You can provide this as
-	// a partial or full URL to the resource. If the snapshot is in another
-	// project than this disk, you must supply a full URL. For example, the
-	// following are valid values:
-	// * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
-	// * `projects/project/global/snapshots/snapshot`
-	// * `global/snapshots/snapshot`
-	// * `snapshot`
+	// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
+	// snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
+	// * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
+	//   'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
 	Snapshot *string `pulumi:"snapshot"`
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
@@ -352,30 +353,37 @@ type diskState struct {
 	// * zones/{zone}/disks/{disk}
 	// * regions/{region}/disks/{disk}
 	SourceDisk *string `pulumi:"sourceDisk"`
-	// The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
-	// the current or a previous instance of a given disk name.
+	// The ID value of the disk used to create this image. This value may
+	// be used to determine whether the image was taken from the current
+	// or a previous instance of a given disk name.
 	SourceDiskId *string `pulumi:"sourceDiskId"`
 	// The customer-supplied encryption key of the source image. Required if
 	// the source image is protected by a customer-supplied encryption key.
 	// Structure is documented below.
 	SourceImageEncryptionKey *DiskSourceImageEncryptionKey `pulumi:"sourceImageEncryptionKey"`
-	// The ID value of the image used to create this disk. This value identifies the exact image that was used to create this
-	// persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated
-	// under the same name, the source image ID would identify the exact version of the image that was used.
+	// The ID value of the image used to create this disk. This value
+	// identifies the exact image that was used to create this persistent
+	// disk. For example, if you created the persistent disk from an image
+	// that was later deleted and recreated under the same name, the source
+	// image ID would identify the exact version of the image that was used.
 	SourceImageId *string `pulumi:"sourceImageId"`
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
 	// key.
 	// Structure is documented below.
 	SourceSnapshotEncryptionKey *DiskSourceSnapshotEncryptionKey `pulumi:"sourceSnapshotEncryptionKey"`
-	// The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
-	// this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
-	// recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
+	// The unique ID of the snapshot used to create this disk. This value
+	// identifies the exact snapshot that was used to create this persistent
+	// disk. For example, if you created the persistent disk from a snapshot
+	// that was later deleted and recreated under the same name, the source
+	// snapshot ID would identify the exact version of the snapshot that was
+	// used.
 	SourceSnapshotId *string `pulumi:"sourceSnapshotId"`
 	// URL of the disk type resource describing which disk type to use to
 	// create the disk. Provide this when creating the disk.
 	Type *string `pulumi:"type"`
-	// Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance
+	// Links to the users of the disk (attached instances) in form:
+	// project/zones/zone/instances/instance
 	Users []string `pulumi:"users"`
 	// A reference to the zone where the disk resides.
 	Zone *string `pulumi:"zone"`
@@ -412,7 +420,8 @@ type DiskState struct {
 	//
 	// Deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
 	Interface pulumi.StringPtrInput
-	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+	// The fingerprint used for optimistic locking of this resource.  Used
+	// internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
 	// Labels to apply to this disk.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
@@ -462,14 +471,10 @@ type DiskState struct {
 	// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
 	// and recreating.
 	Size pulumi.IntPtrInput
-	// The source snapshot used to create this disk. You can provide this as
-	// a partial or full URL to the resource. If the snapshot is in another
-	// project than this disk, you must supply a full URL. For example, the
-	// following are valid values:
-	// * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
-	// * `projects/project/global/snapshots/snapshot`
-	// * `global/snapshots/snapshot`
-	// * `snapshot`
+	// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
+	// snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
+	// * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
+	//   'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
 	Snapshot pulumi.StringPtrInput
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
@@ -480,30 +485,37 @@ type DiskState struct {
 	// * zones/{zone}/disks/{disk}
 	// * regions/{region}/disks/{disk}
 	SourceDisk pulumi.StringPtrInput
-	// The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
-	// the current or a previous instance of a given disk name.
+	// The ID value of the disk used to create this image. This value may
+	// be used to determine whether the image was taken from the current
+	// or a previous instance of a given disk name.
 	SourceDiskId pulumi.StringPtrInput
 	// The customer-supplied encryption key of the source image. Required if
 	// the source image is protected by a customer-supplied encryption key.
 	// Structure is documented below.
 	SourceImageEncryptionKey DiskSourceImageEncryptionKeyPtrInput
-	// The ID value of the image used to create this disk. This value identifies the exact image that was used to create this
-	// persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated
-	// under the same name, the source image ID would identify the exact version of the image that was used.
+	// The ID value of the image used to create this disk. This value
+	// identifies the exact image that was used to create this persistent
+	// disk. For example, if you created the persistent disk from an image
+	// that was later deleted and recreated under the same name, the source
+	// image ID would identify the exact version of the image that was used.
 	SourceImageId pulumi.StringPtrInput
 	// The customer-supplied encryption key of the source snapshot. Required
 	// if the source snapshot is protected by a customer-supplied encryption
 	// key.
 	// Structure is documented below.
 	SourceSnapshotEncryptionKey DiskSourceSnapshotEncryptionKeyPtrInput
-	// The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
-	// this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
-	// recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
+	// The unique ID of the snapshot used to create this disk. This value
+	// identifies the exact snapshot that was used to create this persistent
+	// disk. For example, if you created the persistent disk from a snapshot
+	// that was later deleted and recreated under the same name, the source
+	// snapshot ID would identify the exact version of the snapshot that was
+	// used.
 	SourceSnapshotId pulumi.StringPtrInput
 	// URL of the disk type resource describing which disk type to use to
 	// create the disk. Provide this when creating the disk.
 	Type pulumi.StringPtrInput
-	// Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance
+	// Links to the users of the disk (attached instances) in form:
+	// project/zones/zone/instances/instance
 	Users pulumi.StringArrayInput
 	// A reference to the zone where the disk resides.
 	Zone pulumi.StringPtrInput
@@ -584,14 +596,10 @@ type diskArgs struct {
 	// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
 	// and recreating.
 	Size *int `pulumi:"size"`
-	// The source snapshot used to create this disk. You can provide this as
-	// a partial or full URL to the resource. If the snapshot is in another
-	// project than this disk, you must supply a full URL. For example, the
-	// following are valid values:
-	// * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
-	// * `projects/project/global/snapshots/snapshot`
-	// * `global/snapshots/snapshot`
-	// * `snapshot`
+	// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
+	// snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
+	// * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
+	//   'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
 	Snapshot *string `pulumi:"snapshot"`
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
@@ -690,14 +698,10 @@ type DiskArgs struct {
 	// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
 	// and recreating.
 	Size pulumi.IntPtrInput
-	// The source snapshot used to create this disk. You can provide this as
-	// a partial or full URL to the resource. If the snapshot is in another
-	// project than this disk, you must supply a full URL. For example, the
-	// following are valid values:
-	// * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
-	// * `projects/project/global/snapshots/snapshot`
-	// * `global/snapshots/snapshot`
-	// * `snapshot`
+	// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
+	// snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
+	// * 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
+	//   'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
 	Snapshot pulumi.StringPtrInput
 	// The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
 	// For example, the following are valid values:
@@ -856,7 +860,8 @@ func (o DiskOutput) Interface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.Interface }).(pulumi.StringPtrOutput)
 }
 
-// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+// The fingerprint used for optimistic locking of this resource.  Used
+// internally during updates.
 func (o DiskOutput) LabelFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.LabelFingerprint }).(pulumi.StringOutput)
 }
@@ -942,14 +947,10 @@ func (o DiskOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *Disk) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }
 
-// The source snapshot used to create this disk. You can provide this as
-// a partial or full URL to the resource. If the snapshot is in another
-// project than this disk, you must supply a full URL. For example, the
-// following are valid values:
-// * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
-// * `projects/project/global/snapshots/snapshot`
-// * `global/snapshots/snapshot`
-// * `snapshot`
+// The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. If the
+// snapshot is in another project than this disk, you must supply a full URL. For example, the following are valid values:
+//   - 'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
+//     'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
 func (o DiskOutput) Snapshot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.Snapshot }).(pulumi.StringPtrOutput)
 }
@@ -966,8 +967,9 @@ func (o DiskOutput) SourceDisk() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.SourceDisk }).(pulumi.StringPtrOutput)
 }
 
-// The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
-// the current or a previous instance of a given disk name.
+// The ID value of the disk used to create this image. This value may
+// be used to determine whether the image was taken from the current
+// or a previous instance of a given disk name.
 func (o DiskOutput) SourceDiskId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.SourceDiskId }).(pulumi.StringOutput)
 }
@@ -979,9 +981,11 @@ func (o DiskOutput) SourceImageEncryptionKey() DiskSourceImageEncryptionKeyPtrOu
 	return o.ApplyT(func(v *Disk) DiskSourceImageEncryptionKeyPtrOutput { return v.SourceImageEncryptionKey }).(DiskSourceImageEncryptionKeyPtrOutput)
 }
 
-// The ID value of the image used to create this disk. This value identifies the exact image that was used to create this
-// persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated
-// under the same name, the source image ID would identify the exact version of the image that was used.
+// The ID value of the image used to create this disk. This value
+// identifies the exact image that was used to create this persistent
+// disk. For example, if you created the persistent disk from an image
+// that was later deleted and recreated under the same name, the source
+// image ID would identify the exact version of the image that was used.
 func (o DiskOutput) SourceImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.SourceImageId }).(pulumi.StringOutput)
 }
@@ -994,9 +998,12 @@ func (o DiskOutput) SourceSnapshotEncryptionKey() DiskSourceSnapshotEncryptionKe
 	return o.ApplyT(func(v *Disk) DiskSourceSnapshotEncryptionKeyPtrOutput { return v.SourceSnapshotEncryptionKey }).(DiskSourceSnapshotEncryptionKeyPtrOutput)
 }
 
-// The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
-// this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
-// recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
+// The unique ID of the snapshot used to create this disk. This value
+// identifies the exact snapshot that was used to create this persistent
+// disk. For example, if you created the persistent disk from a snapshot
+// that was later deleted and recreated under the same name, the source
+// snapshot ID would identify the exact version of the snapshot that was
+// used.
 func (o DiskOutput) SourceSnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.SourceSnapshotId }).(pulumi.StringOutput)
 }
@@ -1007,7 +1014,8 @@ func (o DiskOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance
+// Links to the users of the disk (attached instances) in form:
+// project/zones/zone/instances/instance
 func (o DiskOutput) Users() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringArrayOutput { return v.Users }).(pulumi.StringArrayOutput)
 }

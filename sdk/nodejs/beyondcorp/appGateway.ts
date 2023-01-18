@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const appGateway = new gcp.beyondcorp.AppGateway("app_gateway", {
+ * const appGateway = new gcp.beyondcorp.AppGateway("appGateway", {
  *     hostType: "GCP_REGIONAL_MIG",
  *     region: "us-central1",
  *     type: "TCP_PROXY",
@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const appGateway = new gcp.beyondcorp.AppGateway("app_gateway", {
+ * const appGateway = new gcp.beyondcorp.AppGateway("appGateway", {
  *     displayName: "some display name",
  *     hostType: "GCP_REGIONAL_MIG",
  *     labels: {
@@ -98,6 +98,7 @@ export class AppGateway extends pulumi.CustomResource {
 
     /**
      * A list of connections allocated for the Gateway.
+     * Structure is documented below.
      */
     public /*out*/ readonly allocatedConnections!: pulumi.Output<outputs.beyondcorp.AppGatewayAllocatedConnection[]>;
     /**
@@ -189,6 +190,7 @@ export class AppGateway extends pulumi.CustomResource {
 export interface AppGatewayState {
     /**
      * A list of connections allocated for the Gateway.
+     * Structure is documented below.
      */
     allocatedConnections?: pulumi.Input<pulumi.Input<inputs.beyondcorp.AppGatewayAllocatedConnection>[]>;
     /**

@@ -14,24 +14,14 @@ public final class ClusterGatewayApiConfigArgs extends com.pulumi.resources.Reso
     public static final ClusterGatewayApiConfigArgs Empty = new ClusterGatewayApiConfigArgs();
 
     /**
-     * The selected release channel.
-     * Accepted values are:
-     * * UNSPECIFIED: Not set.
-     * * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
-     * * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
-     * * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+     * Which Gateway Api channel should be used. `CHANNEL_DISABLED` or `CHANNEL_STANDARD`.
      * 
      */
     @Import(name="channel", required=true)
     private Output<String> channel;
 
     /**
-     * @return The selected release channel.
-     * Accepted values are:
-     * * UNSPECIFIED: Not set.
-     * * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
-     * * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
-     * * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+     * @return Which Gateway Api channel should be used. `CHANNEL_DISABLED` or `CHANNEL_STANDARD`.
      * 
      */
     public Output<String> channel() {
@@ -63,12 +53,7 @@ public final class ClusterGatewayApiConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param channel The selected release channel.
-         * Accepted values are:
-         * * UNSPECIFIED: Not set.
-         * * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
-         * * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
-         * * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+         * @param channel Which Gateway Api channel should be used. `CHANNEL_DISABLED` or `CHANNEL_STANDARD`.
          * 
          * @return builder
          * 
@@ -79,12 +64,7 @@ public final class ClusterGatewayApiConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param channel The selected release channel.
-         * Accepted values are:
-         * * UNSPECIFIED: Not set.
-         * * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
-         * * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
-         * * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+         * @param channel Which Gateway Api channel should be used. `CHANNEL_DISABLED` or `CHANNEL_STANDARD`.
          * 
          * @return builder
          * 

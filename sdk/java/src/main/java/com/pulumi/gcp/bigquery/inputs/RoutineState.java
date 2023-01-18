@@ -36,14 +36,16 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The time when this routine was created, in milliseconds since the epoch.
+     * The time when this routine was created, in milliseconds since the
+     * epoch.
      * 
      */
     @Import(name="creationTime")
     private @Nullable Output<Integer> creationTime;
 
     /**
-     * @return The time when this routine was created, in milliseconds since the epoch.
+     * @return The time when this routine was created, in milliseconds since the
+     * epoch.
      * 
      */
     public Optional<Output<Integer>> creationTime() {
@@ -149,14 +151,16 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The time when this routine was modified, in milliseconds since the epoch.
+     * The time when this routine was modified, in milliseconds since the
+     * epoch.
      * 
      */
     @Import(name="lastModifiedTime")
     private @Nullable Output<Integer> lastModifiedTime;
 
     /**
-     * @return The time when this routine was modified, in milliseconds since the epoch.
+     * @return The time when this routine was modified, in milliseconds since the
+     * epoch.
      * 
      */
     public Optional<Output<Integer>> lastModifiedTime() {
@@ -336,7 +340,8 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param creationTime The time when this routine was created, in milliseconds since the epoch.
+         * @param creationTime The time when this routine was created, in milliseconds since the
+         * epoch.
          * 
          * @return builder
          * 
@@ -347,7 +352,8 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param creationTime The time when this routine was created, in milliseconds since the epoch.
+         * @param creationTime The time when this routine was created, in milliseconds since the
+         * epoch.
          * 
          * @return builder
          * 
@@ -502,7 +508,8 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lastModifiedTime The time when this routine was modified, in milliseconds since the epoch.
+         * @param lastModifiedTime The time when this routine was modified, in milliseconds since the
+         * epoch.
          * 
          * @return builder
          * 
@@ -513,7 +520,8 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lastModifiedTime The time when this routine was modified, in milliseconds since the epoch.
+         * @param lastModifiedTime The time when this routine was modified, in milliseconds since the
+         * epoch.
          * 
          * @return builder
          * 

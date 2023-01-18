@@ -14,16 +14,14 @@ public final class ClusterVerticalPodAutoscalingArgs extends com.pulumi.resource
     public static final ClusterVerticalPodAutoscalingArgs Empty = new ClusterVerticalPodAutoscalingArgs();
 
     /**
-     * Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * Enables vertical pod autoscaling
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Enables vertical pod autoscaling
      * 
      */
     public Output<Boolean> enabled() {
@@ -55,8 +53,7 @@ public final class ClusterVerticalPodAutoscalingArgs extends com.pulumi.resource
         }
 
         /**
-         * @param enabled Enable the PodSecurityPolicy controller for this cluster.
-         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         * @param enabled Enables vertical pod autoscaling
          * 
          * @return builder
          * 
@@ -67,8 +64,7 @@ public final class ClusterVerticalPodAutoscalingArgs extends com.pulumi.resource
         }
 
         /**
-         * @param enabled Enable the PodSecurityPolicy controller for this cluster.
-         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         * @param enabled Enables vertical pod autoscaling
          * 
          * @return builder
          * 

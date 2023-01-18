@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _jarFileUris;
 
         /// <summary>
-        /// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        /// Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
         /// </summary>
         public InputList<string> JarFileUris
         {
@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputMap<string>? _properties;
 
         /// <summary>
-        /// Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+        /// Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
         /// </summary>
         public InputMap<string> Properties
         {
@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         }
 
         /// <summary>
-        /// The HCFS URI of the script that contains SQL queries.
+        /// The HCFS URI of the script that contains the Pig queries.
         /// </summary>
         [Input("queryFileUri")]
         public Input<string>? QueryFileUri { get; set; }
@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputMap<string>? _scriptVariables;
 
         /// <summary>
-        /// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
+        /// Optional. Mapping of query variable names to values (equivalent to the Pig command: `name=`).
         /// </summary>
         public InputMap<string> ScriptVariables
         {

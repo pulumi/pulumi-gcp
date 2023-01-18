@@ -79,7 +79,7 @@ public final class CxWebhookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of Service Directory service.
+     * Configuration for a generic web service.
      * Structure is documented below.
      * 
      */
@@ -87,7 +87,7 @@ public final class CxWebhookArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<CxWebhookGenericWebServiceArgs> genericWebService;
 
     /**
-     * @return The name of Service Directory service.
+     * @return Configuration for a generic web service.
      * Structure is documented below.
      * 
      */
@@ -276,7 +276,7 @@ public final class CxWebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param genericWebService The name of Service Directory service.
+         * @param genericWebService Configuration for a generic web service.
          * Structure is documented below.
          * 
          * @return builder
@@ -288,7 +288,7 @@ public final class CxWebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param genericWebService The name of Service Directory service.
+         * @param genericWebService Configuration for a generic web service.
          * Structure is documented below.
          * 
          * @return builder

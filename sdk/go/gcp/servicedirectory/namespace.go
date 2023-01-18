@@ -84,7 +84,8 @@ type Namespace struct {
 	// A full list of valid locations can be found by running
 	// `gcloud beta service-directory locations list`.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The resource name for the namespace in the format 'projects/*/locations/*/namespaces/*'.
+	// The resource name for the namespace
+	// in the format `projects/*/locations/*/namespaces/*`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Resource ID must be 1-63 characters long, including digits,
 	// lowercase letters or the hyphen character.
@@ -137,7 +138,8 @@ type namespaceState struct {
 	// A full list of valid locations can be found by running
 	// `gcloud beta service-directory locations list`.
 	Location *string `pulumi:"location"`
-	// The resource name for the namespace in the format 'projects/*/locations/*/namespaces/*'.
+	// The resource name for the namespace
+	// in the format `projects/*/locations/*/namespaces/*`.
 	Name *string `pulumi:"name"`
 	// The Resource ID must be 1-63 characters long, including digits,
 	// lowercase letters or the hyphen character.
@@ -156,7 +158,8 @@ type NamespaceState struct {
 	// A full list of valid locations can be found by running
 	// `gcloud beta service-directory locations list`.
 	Location pulumi.StringPtrInput
-	// The resource name for the namespace in the format 'projects/*/locations/*/namespaces/*'.
+	// The resource name for the namespace
+	// in the format `projects/*/locations/*/namespaces/*`.
 	Name pulumi.StringPtrInput
 	// The Resource ID must be 1-63 characters long, including digits,
 	// lowercase letters or the hyphen character.
@@ -306,7 +309,8 @@ func (o NamespaceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The resource name for the namespace in the format 'projects/*/locations/*/namespaces/*'.
+// The resource name for the namespace
+// in the format `projects/*/locations/*/namespaces/*`.
 func (o NamespaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

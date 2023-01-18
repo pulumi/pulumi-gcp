@@ -20,12 +20,12 @@ public final class OsPolicyAssignmentOsPolicy {
      */
     private @Nullable Boolean allowNoResourceGroupMatch;
     /**
-     * @return OS policy assignment description. Length of the description is limited to 1024 characters.
+     * @return Policy description. Length of the description is limited to 1024 characters.
      * 
      */
     private @Nullable String description;
     /**
-     * @return Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+     * @return Required. The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
      * 
      */
     private String id;
@@ -49,14 +49,14 @@ public final class OsPolicyAssignmentOsPolicy {
         return Optional.ofNullable(this.allowNoResourceGroupMatch);
     }
     /**
-     * @return OS policy assignment description. Length of the description is limited to 1024 characters.
+     * @return Policy description. Length of the description is limited to 1024 characters.
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+     * @return Required. The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
      * 
      */
     public String id() {

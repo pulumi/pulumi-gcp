@@ -1250,16 +1250,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.removeDefaultNodePool);
     }
     /**
-     * The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
-     * for how these labels are applied to clusters, node pools and nodes.
+     * The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
      * 
      */
     @Export(name="resourceLabels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> resourceLabels;
 
     /**
-     * @return The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
-     * for how these labels are applied to clusters, node pools and nodes.
+     * @return The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
      * 
      */
     public Output<Optional<Map<String,String>>> resourceLabels() {

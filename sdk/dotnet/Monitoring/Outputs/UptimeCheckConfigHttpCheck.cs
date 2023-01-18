@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// </summary>
         public readonly string? Path;
         /// <summary>
-        /// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
+        /// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
         /// </summary>
         public readonly int? Port;
         /// <summary>

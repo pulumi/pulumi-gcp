@@ -14,16 +14,14 @@ public final class ClusterNodePoolNodeConfigGvnicArgs extends com.pulumi.resourc
     public static final ClusterNodePoolNodeConfigGvnicArgs Empty = new ClusterNodePoolNodeConfigGvnicArgs();
 
     /**
-     * Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * Whether or not the Google Virtual NIC (gVNIC) is enabled
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Whether or not the Google Virtual NIC (gVNIC) is enabled
      * 
      */
     public Output<Boolean> enabled() {
@@ -55,8 +53,7 @@ public final class ClusterNodePoolNodeConfigGvnicArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param enabled Enable the PodSecurityPolicy controller for this cluster.
-         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         * @param enabled Whether or not the Google Virtual NIC (gVNIC) is enabled
          * 
          * @return builder
          * 
@@ -67,8 +64,7 @@ public final class ClusterNodePoolNodeConfigGvnicArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param enabled Enable the PodSecurityPolicy controller for this cluster.
-         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         * @param enabled Whether or not the Google Virtual NIC (gVNIC) is enabled
          * 
          * @return builder
          * 

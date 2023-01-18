@@ -120,6 +120,7 @@ type Device struct {
 	// If a device is blocked, connections or requests from this device will fail.
 	Blocked pulumi.BoolPtrOutput `pulumi:"blocked"`
 	// The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
+	// Structure is documented below.
 	Configs DeviceConfigArrayOutput `pulumi:"configs"`
 	// The credentials used to authenticate this device.
 	// Structure is documented below.
@@ -132,6 +133,7 @@ type Device struct {
 	// The last time a cloud-to-device config version was sent to the device.
 	LastConfigSendTime pulumi.StringOutput `pulumi:"lastConfigSendTime"`
 	// The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
+	// Structure is documented below.
 	LastErrorStatuses DeviceLastErrorStatusArrayOutput `pulumi:"lastErrorStatuses"`
 	// The time the most recent error occurred, such as a failure to publish to Cloud Pub/Sub.
 	LastErrorTime pulumi.StringOutput `pulumi:"lastErrorTime"`
@@ -148,12 +150,13 @@ type Device struct {
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// A unique name for the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally
-	// unique.
+	// A server-defined unique numeric ID for the device.
+	// This is a more compact way to identify devices, and it is globally unique.
 	NumId pulumi.StringOutput `pulumi:"numId"`
 	// The name of the device registry where this device should be created.
 	Registry pulumi.StringOutput `pulumi:"registry"`
 	// The state most recently received from the device.
+	// Structure is documented below.
 	States DeviceStateTypeArrayOutput `pulumi:"states"`
 }
 
@@ -192,6 +195,7 @@ type deviceState struct {
 	// If a device is blocked, connections or requests from this device will fail.
 	Blocked *bool `pulumi:"blocked"`
 	// The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
+	// Structure is documented below.
 	Configs []DeviceConfig `pulumi:"configs"`
 	// The credentials used to authenticate this device.
 	// Structure is documented below.
@@ -204,6 +208,7 @@ type deviceState struct {
 	// The last time a cloud-to-device config version was sent to the device.
 	LastConfigSendTime *string `pulumi:"lastConfigSendTime"`
 	// The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
+	// Structure is documented below.
 	LastErrorStatuses []DeviceLastErrorStatus `pulumi:"lastErrorStatuses"`
 	// The time the most recent error occurred, such as a failure to publish to Cloud Pub/Sub.
 	LastErrorTime *string `pulumi:"lastErrorTime"`
@@ -220,12 +225,13 @@ type deviceState struct {
 	Metadata map[string]string `pulumi:"metadata"`
 	// A unique name for the resource.
 	Name *string `pulumi:"name"`
-	// A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally
-	// unique.
+	// A server-defined unique numeric ID for the device.
+	// This is a more compact way to identify devices, and it is globally unique.
 	NumId *string `pulumi:"numId"`
 	// The name of the device registry where this device should be created.
 	Registry *string `pulumi:"registry"`
 	// The state most recently received from the device.
+	// Structure is documented below.
 	States []DeviceStateType `pulumi:"states"`
 }
 
@@ -233,6 +239,7 @@ type DeviceState struct {
 	// If a device is blocked, connections or requests from this device will fail.
 	Blocked pulumi.BoolPtrInput
 	// The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
+	// Structure is documented below.
 	Configs DeviceConfigArrayInput
 	// The credentials used to authenticate this device.
 	// Structure is documented below.
@@ -245,6 +252,7 @@ type DeviceState struct {
 	// The last time a cloud-to-device config version was sent to the device.
 	LastConfigSendTime pulumi.StringPtrInput
 	// The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
+	// Structure is documented below.
 	LastErrorStatuses DeviceLastErrorStatusArrayInput
 	// The time the most recent error occurred, such as a failure to publish to Cloud Pub/Sub.
 	LastErrorTime pulumi.StringPtrInput
@@ -261,12 +269,13 @@ type DeviceState struct {
 	Metadata pulumi.StringMapInput
 	// A unique name for the resource.
 	Name pulumi.StringPtrInput
-	// A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally
-	// unique.
+	// A server-defined unique numeric ID for the device.
+	// This is a more compact way to identify devices, and it is globally unique.
 	NumId pulumi.StringPtrInput
 	// The name of the device registry where this device should be created.
 	Registry pulumi.StringPtrInput
 	// The state most recently received from the device.
+	// Structure is documented below.
 	States DeviceStateTypeArrayInput
 }
 
@@ -408,6 +417,7 @@ func (o DeviceOutput) Blocked() pulumi.BoolPtrOutput {
 }
 
 // The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
+// Structure is documented below.
 func (o DeviceOutput) Configs() DeviceConfigArrayOutput {
 	return o.ApplyT(func(v *Device) DeviceConfigArrayOutput { return v.Configs }).(DeviceConfigArrayOutput)
 }
@@ -435,6 +445,7 @@ func (o DeviceOutput) LastConfigSendTime() pulumi.StringOutput {
 }
 
 // The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
+// Structure is documented below.
 func (o DeviceOutput) LastErrorStatuses() DeviceLastErrorStatusArrayOutput {
 	return o.ApplyT(func(v *Device) DeviceLastErrorStatusArrayOutput { return v.LastErrorStatuses }).(DeviceLastErrorStatusArrayOutput)
 }
@@ -475,8 +486,8 @@ func (o DeviceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally
-// unique.
+// A server-defined unique numeric ID for the device.
+// This is a more compact way to identify devices, and it is globally unique.
 func (o DeviceOutput) NumId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.NumId }).(pulumi.StringOutput)
 }
@@ -487,6 +498,7 @@ func (o DeviceOutput) Registry() pulumi.StringOutput {
 }
 
 // The state most recently received from the device.
+// Structure is documented below.
 func (o DeviceOutput) States() DeviceStateTypeArrayOutput {
 	return o.ApplyT(func(v *Device) DeviceStateTypeArrayOutput { return v.States }).(DeviceStateTypeArrayOutput)
 }

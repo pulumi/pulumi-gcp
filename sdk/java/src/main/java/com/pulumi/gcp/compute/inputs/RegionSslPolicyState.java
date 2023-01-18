@@ -89,14 +89,16 @@ public final class RegionSslPolicyState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+     * Fingerprint of this resource. A hash of the contents stored in this
+     * object. This field is used in optimistic locking.
      * 
      */
     @Import(name="fingerprint")
     private @Nullable Output<String> fingerprint;
 
     /**
-     * @return Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+     * @return Fingerprint of this resource. A hash of the contents stored in this
+     * object. This field is used in optimistic locking.
      * 
      */
     public Optional<Output<String>> fingerprint() {
@@ -386,7 +388,8 @@ public final class RegionSslPolicyState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param fingerprint Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+         * @param fingerprint Fingerprint of this resource. A hash of the contents stored in this
+         * object. This field is used in optimistic locking.
          * 
          * @return builder
          * 
@@ -397,7 +400,8 @@ public final class RegionSslPolicyState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param fingerprint Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+         * @param fingerprint Fingerprint of this resource. A hash of the contents stored in this
+         * object. This field is used in optimistic locking.
          * 
          * @return builder
          * 

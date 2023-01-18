@@ -19,7 +19,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate {
      */
     private @Nullable List<String> args;
     /**
-     * @return A remote or local source.
+     * @return A remote or local file.
      * 
      */
     private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile file;
@@ -48,7 +48,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate {
         return this.args == null ? List.of() : this.args;
     }
     /**
-     * @return A remote or local source.
+     * @return A remote or local file.
      * 
      */
     public Optional<OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile> file() {

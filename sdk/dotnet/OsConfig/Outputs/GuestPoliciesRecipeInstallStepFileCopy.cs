@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         /// </summary>
         public readonly string ArtifactId;
         /// <summary>
-        /// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+        /// The absolute path on the instance to put the file.
         /// </summary>
         public readonly string Destination;
         /// <summary>

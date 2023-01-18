@@ -143,7 +143,16 @@ class _PreventionJobTriggerState:
         :param pulumi.Input['PreventionJobTriggerInspectJobArgs'] inspect_job: Controls what and how to inspect for findings.
                Structure is documented below.
         :param pulumi.Input[str] last_run_time: The timestamp of the last time this trigger executed.
-        :param pulumi.Input[str] name: Name of a BigQuery field to be returned with the findings.
+        :param pulumi.Input[str] name: Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
+               For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
+               modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
+               field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
+               For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
+               timestamp property does not exist or its value is empty or invalid.
+               (Required)
+               The name of the Datastore kind.
+               (Required)
+               Name of a BigQuery field to be returned with the findings.
         :param pulumi.Input[str] parent: The parent of the trigger, either in the format `projects/{{project}}`
                or `projects/{{project}}/locations/{{location}}`
         :param pulumi.Input[str] status: Whether the trigger is currently active.
@@ -222,6 +231,15 @@ class _PreventionJobTriggerState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
+        Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
+        For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
+        modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
+        field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
+        For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
+        timestamp property does not exist or its value is empty or invalid.
+        (Required)
+        The name of the Datastore kind.
+        (Required)
         Name of a BigQuery field to be returned with the findings.
         """
         return pulumi.get(self, "name")
@@ -653,7 +671,16 @@ class PreventionJobTrigger(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['PreventionJobTriggerInspectJobArgs']] inspect_job: Controls what and how to inspect for findings.
                Structure is documented below.
         :param pulumi.Input[str] last_run_time: The timestamp of the last time this trigger executed.
-        :param pulumi.Input[str] name: Name of a BigQuery field to be returned with the findings.
+        :param pulumi.Input[str] name: Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
+               For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
+               modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
+               field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
+               For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
+               timestamp property does not exist or its value is empty or invalid.
+               (Required)
+               The name of the Datastore kind.
+               (Required)
+               Name of a BigQuery field to be returned with the findings.
         :param pulumi.Input[str] parent: The parent of the trigger, either in the format `projects/{{project}}`
                or `projects/{{project}}/locations/{{location}}`
         :param pulumi.Input[str] status: Whether the trigger is currently active.
@@ -713,6 +740,15 @@ class PreventionJobTrigger(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
+        Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
+        For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
+        modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
+        field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
+        For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
+        timestamp property does not exist or its value is empty or invalid.
+        (Required)
+        The name of the Datastore kind.
+        (Required)
         Name of a BigQuery field to be returned with the findings.
         """
         return pulumi.get(self, "name")

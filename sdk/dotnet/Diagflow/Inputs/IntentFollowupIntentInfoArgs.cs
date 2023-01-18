@@ -12,6 +12,10 @@ namespace Pulumi.Gcp.Diagflow.Inputs
 
     public sealed class IntentFollowupIntentInfoArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The unique identifier of the followup intent.
+        /// Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
+        /// </summary>
         [Input("followupIntentName")]
         public Input<string>? FollowupIntentName { get; set; }
 

@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterNodePoolPlacementPolicy
     {
         /// <summary>
-        /// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        /// Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
+        /// `SYSTEM_ONLY` (Only system components are monitored and logged) is only available in GKE versions 1.15 and later.
         /// </summary>
         public readonly string Type;
 

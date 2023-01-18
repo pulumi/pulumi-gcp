@@ -26,8 +26,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// will be the count of values x in the Distribution such
         /// that range.min &lt;= x &lt;= range.max. inclusive of min and
         /// max. Open ranges can be defined by setting
-        /// just one of min or max. Summed value `X` should satisfy
-        /// `range.min &lt;= X &lt;= range.max` for a good window.
+        /// just one of min or max.
         /// Structure is documented below.
         /// </summary>
         [Input("range", required: true)]

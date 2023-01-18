@@ -16,16 +16,16 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     public static final DatabaseInstanceState Empty = new DatabaseInstanceState();
 
     /**
-     * The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances or
-     * https://{instance-id}.{region}.firebasedatabase.app in other regions.
+     * The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
+     * or https://{instance-id}.{region}.firebasedatabase.app in other regions.
      * 
      */
     @Import(name="databaseUrl")
     private @Nullable Output<String> databaseUrl;
 
     /**
-     * @return The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances or
-     * https://{instance-id}.{region}.firebasedatabase.app in other regions.
+     * @return The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
+     * or https://{instance-id}.{region}.firebasedatabase.app in other regions.
      * 
      */
     public Optional<Output<String>> databaseUrl() {
@@ -65,9 +65,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The fully-qualified resource name of the Firebase Realtime Database, in the format:
-     * projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID PROJECT_NUMBER: The Firebase project&#39;s
-     * [&#39;ProjectNumber&#39;](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+     * The fully-qualified resource name of the Firebase Realtime Database, in the
+     * format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
+     * PROJECT_NUMBER: The Firebase project&#39;s [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
      * Learn more about using project identifiers in Google&#39;s [AIP 2510 standard](https://google.aip.dev/cloud/2510).
      * 
      */
@@ -75,9 +75,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> name;
 
     /**
-     * @return The fully-qualified resource name of the Firebase Realtime Database, in the format:
-     * projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID PROJECT_NUMBER: The Firebase project&#39;s
-     * [&#39;ProjectNumber&#39;](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+     * @return The fully-qualified resource name of the Firebase Realtime Database, in the
+     * format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
+     * PROJECT_NUMBER: The Firebase project&#39;s [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
      * Learn more about using project identifiers in Google&#39;s [AIP 2510 standard](https://google.aip.dev/cloud/2510).
      * 
      */
@@ -189,8 +189,8 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param databaseUrl The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances or
-         * https://{instance-id}.{region}.firebasedatabase.app in other regions.
+         * @param databaseUrl The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
+         * or https://{instance-id}.{region}.firebasedatabase.app in other regions.
          * 
          * @return builder
          * 
@@ -201,8 +201,8 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param databaseUrl The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances or
-         * https://{instance-id}.{region}.firebasedatabase.app in other regions.
+         * @param databaseUrl The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
+         * or https://{instance-id}.{region}.firebasedatabase.app in other regions.
          * 
          * @return builder
          * 
@@ -256,9 +256,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The fully-qualified resource name of the Firebase Realtime Database, in the format:
-         * projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID PROJECT_NUMBER: The Firebase project&#39;s
-         * [&#39;ProjectNumber&#39;](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+         * @param name The fully-qualified resource name of the Firebase Realtime Database, in the
+         * format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
+         * PROJECT_NUMBER: The Firebase project&#39;s [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
          * Learn more about using project identifiers in Google&#39;s [AIP 2510 standard](https://google.aip.dev/cloud/2510).
          * 
          * @return builder
@@ -270,9 +270,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The fully-qualified resource name of the Firebase Realtime Database, in the format:
-         * projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID PROJECT_NUMBER: The Firebase project&#39;s
-         * [&#39;ProjectNumber&#39;](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+         * @param name The fully-qualified resource name of the Firebase Realtime Database, in the
+         * format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
+         * PROJECT_NUMBER: The Firebase project&#39;s [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
          * Learn more about using project identifiers in Google&#39;s [AIP 2510 standard](https://google.aip.dev/cloud/2510).
          * 
          * @return builder

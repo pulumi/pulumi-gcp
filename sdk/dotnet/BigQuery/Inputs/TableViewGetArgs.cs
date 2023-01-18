@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.BigQuery.Inputs
     public sealed class TableViewGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A query whose result is persisted.
+        /// A query that BigQuery executes when the view is referenced.
         /// </summary>
         [Input("query", required: true)]
         public Input<string> Query { get; set; } = null!;

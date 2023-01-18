@@ -213,7 +213,8 @@ class _RepositoryState:
                Provides additional configuration details for repositories of the maven
                format type.
                Structure is documented below.
-        :param pulumi.Input[str] name: The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1"
+        :param pulumi.Input[str] name: The name of the repository, for example:
+               "projects/p1/locations/us-central1/repositories/repo1"
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
@@ -344,7 +345,8 @@ class _RepositoryState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1"
+        The name of the repository, for example:
+        "projects/p1/locations/us-central1/repositories/repo1"
         """
         return pulumi.get(self, "name")
 
@@ -656,7 +658,8 @@ class Repository(pulumi.CustomResource):
                Provides additional configuration details for repositories of the maven
                format type.
                Structure is documented below.
-        :param pulumi.Input[str] name: The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1"
+        :param pulumi.Input[str] name: The name of the repository, for example:
+               "projects/p1/locations/us-central1/repositories/repo1"
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
@@ -753,7 +756,8 @@ class Repository(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1"
+        The name of the repository, for example:
+        "projects/p1/locations/us-central1/repositories/repo1"
         """
         return pulumi.get(self, "name")
 

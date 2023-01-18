@@ -155,16 +155,14 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or
-     * system actions like failover or maintenance.
+     * If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
      * 
      */
     @Import(name="reconciling")
     private @Nullable Output<Boolean> reconciling;
 
     /**
-     * @return If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or
-     * system actions like failover or maintenance.
+     * @return If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
      * 
      */
     public Optional<Output<Boolean>> reconciling() {
@@ -187,16 +185,14 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is
-     * retained until it is deleted.
+     * Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
      * 
      */
     @Import(name="uid")
     private @Nullable Output<String> uid;
 
     /**
-     * @return Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is
-     * retained until it is deleted.
+     * @return Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
      * 
      */
     public Optional<Output<String>> uid() {
@@ -446,8 +442,7 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reconciling If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or
-         * system actions like failover or maintenance.
+         * @param reconciling If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
          * 
          * @return builder
          * 
@@ -458,8 +453,7 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reconciling If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or
-         * system actions like failover or maintenance.
+         * @param reconciling If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
          * 
          * @return builder
          * 
@@ -490,8 +484,7 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uid Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is
-         * retained until it is deleted.
+         * @param uid Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
          * 
          * @return builder
          * 
@@ -502,8 +495,7 @@ public final class BackupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uid Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is
-         * retained until it is deleted.
+         * @param uid Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
          * 
          * @return builder
          * 

@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly ImmutableArray<string> FileUris;
         /// <summary>
-        /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        /// HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
         /// </summary>
         public readonly ImmutableArray<string> JarFileUris;
         public readonly Outputs.JobHadoopConfigLoggingConfig? LoggingConfig;
@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly string? MainJarFileUri;
         /// <summary>
-        /// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+        /// A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site` and classes in user code..
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Properties;
 

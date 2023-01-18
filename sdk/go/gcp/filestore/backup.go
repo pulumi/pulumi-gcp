@@ -131,8 +131,7 @@ type Backup struct {
 	SourceInstanceTier pulumi.StringOutput `pulumi:"sourceInstanceTier"`
 	// The backup state.
 	State pulumi.StringOutput `pulumi:"state"`
-	// The size of the storage used by the backup. As backups share storage, this number is expected to change with backup
-	// creation/deletion.
+	// The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
 	StorageBytes pulumi.StringOutput `pulumi:"storageBytes"`
 }
 
@@ -207,8 +206,7 @@ type backupState struct {
 	SourceInstanceTier *string `pulumi:"sourceInstanceTier"`
 	// The backup state.
 	State *string `pulumi:"state"`
-	// The size of the storage used by the backup. As backups share storage, this number is expected to change with backup
-	// creation/deletion.
+	// The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
 	StorageBytes *string `pulumi:"storageBytes"`
 }
 
@@ -246,8 +244,7 @@ type BackupState struct {
 	SourceInstanceTier pulumi.StringPtrInput
 	// The backup state.
 	State pulumi.StringPtrInput
-	// The size of the storage used by the backup. As backups share storage, this number is expected to change with backup
-	// creation/deletion.
+	// The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
 	StorageBytes pulumi.StringPtrInput
 }
 
@@ -463,8 +460,7 @@ func (o BackupOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// The size of the storage used by the backup. As backups share storage, this number is expected to change with backup
-// creation/deletion.
+// The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
 func (o BackupOutput) StorageBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.StorageBytes }).(pulumi.StringOutput)
 }

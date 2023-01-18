@@ -206,10 +206,10 @@ func NewRegionSslCertificate(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'PrivateKey'")
 	}
 	if args.Certificate != nil {
-		args.Certificate = pulumi.ToSecret(args.Certificate).(pulumi.StringOutput)
+		args.Certificate = pulumi.ToSecret(args.Certificate).(pulumi.StringInput)
 	}
 	if args.PrivateKey != nil {
-		args.PrivateKey = pulumi.ToSecret(args.PrivateKey).(pulumi.StringOutput)
+		args.PrivateKey = pulumi.ToSecret(args.PrivateKey).(pulumi.StringInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"certificate",

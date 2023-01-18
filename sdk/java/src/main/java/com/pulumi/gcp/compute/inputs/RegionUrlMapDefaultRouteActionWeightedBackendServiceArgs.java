@@ -18,18 +18,14 @@ public final class RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs exte
     public static final RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs Empty = new RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs();
 
     /**
-     * The full or partial URL to the RegionBackendService resource being mirrored to.
-     * The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
-     * Serverless NEG backends are not currently supported as a mirrored backend service.
+     * The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
      * 
      */
     @Import(name="backendService")
     private @Nullable Output<String> backendService;
 
     /**
-     * @return The full or partial URL to the RegionBackendService resource being mirrored to.
-     * The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
-     * Serverless NEG backends are not currently supported as a mirrored backend service.
+     * @return The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
      * 
      */
     public Optional<Output<String>> backendService() {
@@ -105,9 +101,7 @@ public final class RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs exte
         }
 
         /**
-         * @param backendService The full or partial URL to the RegionBackendService resource being mirrored to.
-         * The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
-         * Serverless NEG backends are not currently supported as a mirrored backend service.
+         * @param backendService The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
          * 
          * @return builder
          * 
@@ -118,9 +112,7 @@ public final class RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs exte
         }
 
         /**
-         * @param backendService The full or partial URL to the RegionBackendService resource being mirrored to.
-         * The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
-         * Serverless NEG backends are not currently supported as a mirrored backend service.
+         * @param backendService The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
          * 
          * @return builder
          * 

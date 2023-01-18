@@ -65,7 +65,7 @@ import (
 //						AuthorizedKey: pulumi.String("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers"),
 //					},
 //					SubnetId: pulumi.String("/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default"),
-//					Version:  pulumi.String(versions.ValidVersions[0]),
+//					Version:  *pulumi.String(versions.ValidVersions[0]),
 //				},
 //				Fleet: &container.AzureClusterFleetArgs{
 //					Project: pulumi.String("my-project-number"),
@@ -113,7 +113,7 @@ import (
 //					MaxPodsPerNode: pulumi.Int(110),
 //				},
 //				SubnetId: pulumi.String("/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default"),
-//				Version:  pulumi.String(versions.ValidVersions[0]),
+//				Version:  *pulumi.String(versions.ValidVersions[0]),
 //				Annotations: pulumi.StringMap{
 //					"annotation-one": pulumi.String("value-one"),
 //				},
@@ -164,8 +164,7 @@ type AzureNodePool struct {
 	Config AzureNodePoolConfigOutput `pulumi:"config"`
 	// Output only. The time at which this node pool was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-	// and delete requests to ensure the client has an up-to-date value before proceeding.
+	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -177,8 +176,7 @@ type AzureNodePool struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Output only. If set, there are currently pending changes to the node pool.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
-	// Output only. The current state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-	// STOPPING, ERROR, DEGRADED
+	// Output only. The current state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
 	State pulumi.StringOutput `pulumi:"state"`
 	// The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
 	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
@@ -252,8 +250,7 @@ type azureNodePoolState struct {
 	Config *AzureNodePoolConfig `pulumi:"config"`
 	// Output only. The time at which this node pool was created.
 	CreateTime *string `pulumi:"createTime"`
-	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-	// and delete requests to ensure the client has an up-to-date value before proceeding.
+	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
@@ -265,8 +262,7 @@ type azureNodePoolState struct {
 	Project *string `pulumi:"project"`
 	// Output only. If set, there are currently pending changes to the node pool.
 	Reconciling *bool `pulumi:"reconciling"`
-	// Output only. The current state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-	// STOPPING, ERROR, DEGRADED
+	// Output only. The current state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
 	State *string `pulumi:"state"`
 	// The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
 	SubnetId *string `pulumi:"subnetId"`
@@ -291,8 +287,7 @@ type AzureNodePoolState struct {
 	Config AzureNodePoolConfigPtrInput
 	// Output only. The time at which this node pool was created.
 	CreateTime pulumi.StringPtrInput
-	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-	// and delete requests to ensure the client has an up-to-date value before proceeding.
+	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
@@ -304,8 +299,7 @@ type AzureNodePoolState struct {
 	Project pulumi.StringPtrInput
 	// Output only. If set, there are currently pending changes to the node pool.
 	Reconciling pulumi.BoolPtrInput
-	// Output only. The current state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-	// STOPPING, ERROR, DEGRADED
+	// Output only. The current state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
 	State pulumi.StringPtrInput
 	// The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
 	SubnetId pulumi.StringPtrInput
@@ -489,8 +483,7 @@ func (o AzureNodePoolOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureNodePool) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-// and delete requests to ensure the client has an up-to-date value before proceeding.
+// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 func (o AzureNodePoolOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureNodePool) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
@@ -520,8 +513,7 @@ func (o AzureNodePoolOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AzureNodePool) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }
 
-// Output only. The current state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-// STOPPING, ERROR, DEGRADED
+// Output only. The current state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
 func (o AzureNodePoolOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureNodePool) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

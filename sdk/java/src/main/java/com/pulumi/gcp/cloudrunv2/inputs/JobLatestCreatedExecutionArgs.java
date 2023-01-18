@@ -15,29 +15,49 @@ public final class JobLatestCreatedExecutionArgs extends com.pulumi.resources.Re
 
     public static final JobLatestCreatedExecutionArgs Empty = new JobLatestCreatedExecutionArgs();
 
+    /**
+     * Completion timestamp of the execution.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
     @Import(name="completionTime")
     private @Nullable Output<String> completionTime;
 
+    /**
+     * @return Completion timestamp of the execution.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
     public Optional<Output<String>> completionTime() {
         return Optional.ofNullable(this.completionTime);
     }
 
+    /**
+     * Creation timestamp of the execution.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
+    /**
+     * @return Creation timestamp of the execution.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
     }
 
     /**
-     * Volume&#39;s name.
+     * Name of the Job.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Volume&#39;s name.
+     * @return Name of the Job.
      * 
      */
     public Optional<Output<String>> name() {
@@ -70,26 +90,54 @@ public final class JobLatestCreatedExecutionArgs extends com.pulumi.resources.Re
             $ = new JobLatestCreatedExecutionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param completionTime Completion timestamp of the execution.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder completionTime(@Nullable Output<String> completionTime) {
             $.completionTime = completionTime;
             return this;
         }
 
+        /**
+         * @param completionTime Completion timestamp of the execution.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder completionTime(String completionTime) {
             return completionTime(Output.of(completionTime));
         }
 
+        /**
+         * @param createTime Creation timestamp of the execution.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createTime(@Nullable Output<String> createTime) {
             $.createTime = createTime;
             return this;
         }
 
+        /**
+         * @param createTime Creation timestamp of the execution.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
         }
 
         /**
-         * @param name Volume&#39;s name.
+         * @param name Name of the Job.
          * 
          * @return builder
          * 
@@ -100,7 +148,7 @@ public final class JobLatestCreatedExecutionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param name Volume&#39;s name.
+         * @param name Name of the Job.
          * 
          * @return builder
          * 

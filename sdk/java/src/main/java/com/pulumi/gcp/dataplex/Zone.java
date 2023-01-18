@@ -280,16 +280,14 @@ public class Zone extends com.pulumi.resources.CustomResource {
         return this.type;
     }
     /**
-     * Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and
-     * re-created with the same name.
+     * Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
      * 
      */
     @Export(name="uid", type=String.class, parameters={})
     private Output<String> uid;
 
     /**
-     * @return Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and
-     * re-created with the same name.
+     * @return Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
      * 
      */
     public Output<String> uid() {

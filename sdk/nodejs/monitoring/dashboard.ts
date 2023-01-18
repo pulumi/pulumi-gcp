@@ -20,8 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const dashboard = new gcp.monitoring.Dashboard("dashboard", {
- *     dashboardJson: `{
+ * const dashboard = new gcp.monitoring.Dashboard("dashboard", {dashboardJson: `{
  *   "displayName": "Demo Dashboard",
  *   "gridLayout": {
  *     "widgets": [
@@ -32,8 +31,8 @@ import * as utilities from "../utilities";
  *   }
  * }
  *
- * `,
- * });
+ *
+ * `});
  * ```
  * ### Monitoring Dashboard GridLayout
  *
@@ -41,8 +40,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const dashboard = new gcp.monitoring.Dashboard("dashboard", {
- *     dashboardJson: `{
+ * const dashboard = new gcp.monitoring.Dashboard("dashboard", {dashboardJson: `{
  *   "displayName": "Grid Layout Example",
  *   "gridLayout": {
  *     "columns": "2",
@@ -53,7 +51,7 @@ import * as utilities from "../utilities";
  *           "dataSets": [{
  *             "timeSeriesQuery": {
  *               "timeSeriesFilter": {
- *                 "filter": "metric.type=\\"agent.googleapis.com/nginx/connections/accepted_count\\"",
+ *                 "filter": "metric.type=\"agent.googleapis.com/nginx/connections/accepted_count\"",
  *                 "aggregation": {
  *                   "perSeriesAligner": "ALIGN_RATE"
  *                 }
@@ -81,7 +79,7 @@ import * as utilities from "../utilities";
  *           "dataSets": [{
  *             "timeSeriesQuery": {
  *               "timeSeriesFilter": {
- *                 "filter": "metric.type=\\"agent.googleapis.com/nginx/connections/accepted_count\\"",
+ *                 "filter": "metric.type=\"agent.googleapis.com/nginx/connections/accepted_count\"",
  *                 "aggregation": {
  *                   "perSeriesAligner": "ALIGN_RATE"
  *                 }
@@ -101,8 +99,8 @@ import * as utilities from "../utilities";
  *   }
  * }
  *
- * `,
- * });
+ *
+ * `});
  * ```
  *
  * ## Import

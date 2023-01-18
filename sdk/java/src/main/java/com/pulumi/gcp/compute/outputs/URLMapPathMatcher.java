@@ -41,22 +41,21 @@ public final class URLMapPathMatcher {
      */
     private @Nullable URLMapPathMatcherDefaultUrlRedirect defaultUrlRedirect;
     /**
-     * @return Description of this test case.
+     * @return An optional description of this resource. Provide this property when you create
+     * the resource.
      * 
      */
     private @Nullable String description;
     /**
      * @return Specifies changes to request and response headers that need to take effect for
-     * the selected backendService.
-     * headerAction specified here take effect before headerAction in the enclosing
-     * HttpRouteRule, PathMatcher and UrlMap.
+     * the selected backendService. HeaderAction specified here are applied after the
+     * matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap
      * Structure is documented below.
      * 
      */
     private @Nullable URLMapPathMatcherHeaderAction headerAction;
     /**
-     * @return The name of the query parameter to match. The query parameter must exist in the
-     * request, in the absence of which the request match fails.
+     * @return The name to which this PathMatcher is referred by the HostRule.
      * 
      */
     private String name;
@@ -114,7 +113,8 @@ public final class URLMapPathMatcher {
         return Optional.ofNullable(this.defaultUrlRedirect);
     }
     /**
-     * @return Description of this test case.
+     * @return An optional description of this resource. Provide this property when you create
+     * the resource.
      * 
      */
     public Optional<String> description() {
@@ -122,9 +122,8 @@ public final class URLMapPathMatcher {
     }
     /**
      * @return Specifies changes to request and response headers that need to take effect for
-     * the selected backendService.
-     * headerAction specified here take effect before headerAction in the enclosing
-     * HttpRouteRule, PathMatcher and UrlMap.
+     * the selected backendService. HeaderAction specified here are applied after the
+     * matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap
      * Structure is documented below.
      * 
      */
@@ -132,8 +131,7 @@ public final class URLMapPathMatcher {
         return Optional.ofNullable(this.headerAction);
     }
     /**
-     * @return The name of the query parameter to match. The query parameter must exist in the
-     * request, in the absence of which the request match fails.
+     * @return The name to which this PathMatcher is referred by the HostRule.
      * 
      */
     public String name() {

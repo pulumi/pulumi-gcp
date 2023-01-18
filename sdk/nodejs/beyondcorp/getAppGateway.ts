@@ -15,17 +15,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my_beyondcorp_app_gateway = pulumi.output(gcp.beyondcorp.getAppGateway({
+ * const my-beyondcorp-app-gateway = gcp.beyondcorp.getAppGateway({
  *     name: "my-beyondcorp-app-gateway",
- * }));
+ * });
  * ```
  */
 export function getAppGateway(args: GetAppGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetAppGatewayResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:beyondcorp/getAppGateway:getAppGateway", {
         "name": args.name,
         "project": args.project,
@@ -72,9 +69,22 @@ export interface GetAppGatewayResult {
     readonly type: string;
     readonly uri: string;
 }
-
+/**
+ * Get information about a Google BeyondCorp App Gateway.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-beyondcorp-app-gateway = gcp.beyondcorp.getAppGateway({
+ *     name: "my-beyondcorp-app-gateway",
+ * });
+ * ```
+ */
 export function getAppGatewayOutput(args: GetAppGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppGatewayResult> {
-    return pulumi.output(args).apply(a => getAppGateway(a, opts))
+    return pulumi.output(args).apply((a: any) => getAppGateway(a, opts))
 }
 
 /**

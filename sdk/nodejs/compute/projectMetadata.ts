@@ -21,13 +21,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultProjectMetadata = new gcp.compute.ProjectMetadata("default", {
- *     metadata: {
- *         "13": "42",
- *         fizz: "buzz",
- *         foo: "bar",
- *     },
- * });
+ * const _default = new gcp.compute.ProjectMetadata("default", {metadata: {
+ *     "13": "42",
+ *     fizz: "buzz",
+ *     foo: "bar",
+ * }});
  * ```
  * ### Adding An SSH Key
  *
@@ -38,13 +36,12 @@ import * as utilities from "../utilities";
  * //A key set in project metadata is propagated to every instance in the project.
  * //This resource configuration is prone to causing frequent diffs as Google adds SSH Keys when the SSH Button is pressed in the console.
  * //It is better to use OS Login instead.
- * const mySshKey = new gcp.compute.ProjectMetadata("my_ssh_key", {
- *     metadata: {
- *         "ssh-keys": `      dev:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT dev
+ * const mySshKey = new gcp.compute.ProjectMetadata("mySshKey", {metadata: {
+ *     "ssh-keys": `      dev:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT dev
  *       foo:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT bar
- *     `,
- *     },
- * });
+ *     
+ * `,
+ * }});
  * ```
  *
  * ## Import

@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AiMetadataStoreState {
+    /**
+     * @return The disk utilization of the MetadataStore in bytes.
+     * 
+     */
     private @Nullable String diskUtilizationBytes;
 
     private AiMetadataStoreState() {}
+    /**
+     * @return The disk utilization of the MetadataStore in bytes.
+     * 
+     */
     public Optional<String> diskUtilizationBytes() {
         return Optional.ofNullable(this.diskUtilizationBytes);
     }

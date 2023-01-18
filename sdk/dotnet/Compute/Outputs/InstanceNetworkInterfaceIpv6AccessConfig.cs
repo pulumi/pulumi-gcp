@@ -16,12 +16,17 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string? ExternalIpv6;
         public readonly string? ExternalIpv6PrefixLength;
         /// <summary>
-        /// The service-level to be provided for IPv6 traffic when the
+        /// The [networking tier][network-tier] used for configuring this instance.
+        /// This field can take the following values: PREMIUM, FIXED_STANDARD or STANDARD. If this field is
+        /// not specified, it is assumed to be PREMIUM.
         /// subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
         /// </summary>
         public readonly string NetworkTier;
         /// <summary>
-        /// The domain name to be used when creating DNSv6
+        /// The DNS domain name for the public PTR record.
+        /// To set this field on an instance, you must be verified as the owner of the domain.
+        /// See [the docs](https://cloud.google.com/compute/docs/instances/create-ptr-record) for how
+        /// to become verified as a domain owner.
         /// records for the external IPv6 ranges..
         /// </summary>
         public readonly string? PublicPtrDomainName;

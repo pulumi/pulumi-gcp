@@ -66,6 +66,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// read-write mode.
         /// </summary>
         public readonly string Mode;
+        /// <summary>
+        /// (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+        /// </summary>
         public readonly ImmutableArray<string> ResourcePolicies;
         /// <summary>
         /// The name (**not self_link**)

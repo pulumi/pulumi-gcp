@@ -86,8 +86,7 @@ type ReservationAssignment struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The reservation for the resource
 	Reservation pulumi.StringOutput `pulumi:"reservation"`
-	// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some
-	// capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+	// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
 	State pulumi.StringOutput `pulumi:"state"`
 }
 
@@ -141,8 +140,7 @@ type reservationAssignmentState struct {
 	Project *string `pulumi:"project"`
 	// The reservation for the resource
 	Reservation *string `pulumi:"reservation"`
-	// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some
-	// capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+	// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
 	State *string `pulumi:"state"`
 }
 
@@ -159,8 +157,7 @@ type ReservationAssignmentState struct {
 	Project pulumi.StringPtrInput
 	// The reservation for the resource
 	Reservation pulumi.StringPtrInput
-	// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some
-	// capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+	// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
 	State pulumi.StringPtrInput
 }
 
@@ -312,8 +309,7 @@ func (o ReservationAssignmentOutput) Reservation() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReservationAssignment) pulumi.StringOutput { return v.Reservation }).(pulumi.StringOutput)
 }
 
-// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some
-// capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
 func (o ReservationAssignmentOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReservationAssignment) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

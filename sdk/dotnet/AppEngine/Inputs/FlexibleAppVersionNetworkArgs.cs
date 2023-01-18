@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public Input<string>? InstanceTag { get; set; }
 
         /// <summary>
-        /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        /// Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

@@ -230,8 +230,8 @@ class _CertificateState:
                a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
                argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
                should be set to `my-ca`.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionArgs']]] certificate_descriptions: Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-               this field is present.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionArgs']]] certificate_descriptions: Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
+               Structure is documented below.
         :param pulumi.Input[str] certificate_template: The resource name for a CertificateTemplate used to issue this certificate,
                in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified,
                the caller must have the necessary permission to use this template. If this is
@@ -239,9 +239,9 @@ class _CertificateState:
                as the Certificate.
         :param pulumi.Input['CertificateConfigArgs'] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
-        :param pulumi.Input[str] create_time: The time that this resource was created on the server. This is in RFC3339 text format.
-        :param pulumi.Input[str] issuer_certificate_authority: The resource name of the issuing CertificateAuthority in the format
-               'projects/*/locations/*/caPools/*/certificateAuthorities/*'.
+        :param pulumi.Input[str] create_time: The time that this resource was created on the server.
+               This is in RFC3339 text format.
+        :param pulumi.Input[str] issuer_certificate_authority: The resource name of the issuing CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata to apply to this resource.
         :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
                "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
@@ -250,16 +250,18 @@ class _CertificateState:
                running `gcloud privateca locations list`.
         :param pulumi.Input[str] name: The name for this Certificate.
         :param pulumi.Input[str] pem_certificate: Output only. The pem-encoded, signed X.509 certificate.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_certificate_chains: The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
-               5246.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_certificates: Required. Expected to be in leaf-to-root order according to RFC 5246.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_certificate_chains: The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_certificates: (Deprecated)
+               Required. Expected to be in leaf-to-root order according to RFC 5246.
         :param pulumi.Input[str] pem_csr: Immutable. A pem-encoded X.509 certificate signing request (CSR).
         :param pulumi.Input[str] pool: The name of the CaPool this Certificate belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input['CertificateRevocationDetailArgs']]] revocation_details: Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-               this field is present.
-        :param pulumi.Input[str] update_time: Output only. The time at which this CertificateAuthority was updated. This is in RFC3339 text format.
+        :param pulumi.Input[Sequence[pulumi.Input['CertificateRevocationDetailArgs']]] revocation_details: Output only. Details regarding the revocation of this Certificate. This Certificate is
+               considered revoked if and only if this field is present.
+               Structure is documented below.
+        :param pulumi.Input[str] update_time: Output only. The time at which this CertificateAuthority was updated.
+               This is in RFC3339 text format.
         """
         if certificate_authority is not None:
             pulumi.set(__self__, "certificate_authority", certificate_authority)
@@ -320,8 +322,8 @@ class _CertificateState:
     @pulumi.getter(name="certificateDescriptions")
     def certificate_descriptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionArgs']]]]:
         """
-        Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-        this field is present.
+        Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
+        Structure is documented below.
         """
         return pulumi.get(self, "certificate_descriptions")
 
@@ -362,7 +364,8 @@ class _CertificateState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The time that this resource was created on the server. This is in RFC3339 text format.
+        The time that this resource was created on the server.
+        This is in RFC3339 text format.
         """
         return pulumi.get(self, "create_time")
 
@@ -374,8 +377,7 @@ class _CertificateState:
     @pulumi.getter(name="issuerCertificateAuthority")
     def issuer_certificate_authority(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name of the issuing CertificateAuthority in the format
-        'projects/*/locations/*/caPools/*/certificateAuthorities/*'.
+        The resource name of the issuing CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
         """
         return pulumi.get(self, "issuer_certificate_authority")
 
@@ -450,8 +452,7 @@ class _CertificateState:
     @pulumi.getter(name="pemCertificateChains")
     def pem_certificate_chains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
-        5246.
+        The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
         """
         return pulumi.get(self, "pem_certificate_chains")
 
@@ -463,6 +464,7 @@ class _CertificateState:
     @pulumi.getter(name="pemCertificates")
     def pem_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
+        (Deprecated)
         Required. Expected to be in leaf-to-root order according to RFC 5246.
         """
         return pulumi.get(self, "pem_certificates")
@@ -512,8 +514,9 @@ class _CertificateState:
     @pulumi.getter(name="revocationDetails")
     def revocation_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateRevocationDetailArgs']]]]:
         """
-        Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-        this field is present.
+        Output only. Details regarding the revocation of this Certificate. This Certificate is
+        considered revoked if and only if this field is present.
+        Structure is documented below.
         """
         return pulumi.get(self, "revocation_details")
 
@@ -525,7 +528,8 @@ class _CertificateState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The time at which this CertificateAuthority was updated. This is in RFC3339 text format.
+        Output only. The time at which this CertificateAuthority was updated.
+        This is in RFC3339 text format.
         """
         return pulumi.get(self, "update_time")
 
@@ -1392,8 +1396,8 @@ class Certificate(pulumi.CustomResource):
                a Certificate Authority with resource name `projects/my-project/locations/us-central1/caPools/my-pool/certificateAuthorities/my-ca`,
                argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificate_authority`
                should be set to `my-ca`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateCertificateDescriptionArgs']]]] certificate_descriptions: Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-               this field is present.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateCertificateDescriptionArgs']]]] certificate_descriptions: Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
+               Structure is documented below.
         :param pulumi.Input[str] certificate_template: The resource name for a CertificateTemplate used to issue this certificate,
                in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified,
                the caller must have the necessary permission to use this template. If this is
@@ -1401,9 +1405,9 @@ class Certificate(pulumi.CustomResource):
                as the Certificate.
         :param pulumi.Input[pulumi.InputType['CertificateConfigArgs']] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
-        :param pulumi.Input[str] create_time: The time that this resource was created on the server. This is in RFC3339 text format.
-        :param pulumi.Input[str] issuer_certificate_authority: The resource name of the issuing CertificateAuthority in the format
-               'projects/*/locations/*/caPools/*/certificateAuthorities/*'.
+        :param pulumi.Input[str] create_time: The time that this resource was created on the server.
+               This is in RFC3339 text format.
+        :param pulumi.Input[str] issuer_certificate_authority: The resource name of the issuing CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata to apply to this resource.
         :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
                "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
@@ -1412,16 +1416,18 @@ class Certificate(pulumi.CustomResource):
                running `gcloud privateca locations list`.
         :param pulumi.Input[str] name: The name for this Certificate.
         :param pulumi.Input[str] pem_certificate: Output only. The pem-encoded, signed X.509 certificate.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_certificate_chains: The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
-               5246.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_certificates: Required. Expected to be in leaf-to-root order according to RFC 5246.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_certificate_chains: The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_certificates: (Deprecated)
+               Required. Expected to be in leaf-to-root order according to RFC 5246.
         :param pulumi.Input[str] pem_csr: Immutable. A pem-encoded X.509 certificate signing request (CSR).
         :param pulumi.Input[str] pool: The name of the CaPool this Certificate belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateRevocationDetailArgs']]]] revocation_details: Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-               this field is present.
-        :param pulumi.Input[str] update_time: Output only. The time at which this CertificateAuthority was updated. This is in RFC3339 text format.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificateRevocationDetailArgs']]]] revocation_details: Output only. Details regarding the revocation of this Certificate. This Certificate is
+               considered revoked if and only if this field is present.
+               Structure is documented below.
+        :param pulumi.Input[str] update_time: Output only. The time at which this CertificateAuthority was updated.
+               This is in RFC3339 text format.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1462,8 +1468,8 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter(name="certificateDescriptions")
     def certificate_descriptions(self) -> pulumi.Output[Sequence['outputs.CertificateCertificateDescription']]:
         """
-        Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-        this field is present.
+        Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
+        Structure is documented below.
         """
         return pulumi.get(self, "certificate_descriptions")
 
@@ -1492,7 +1498,8 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The time that this resource was created on the server. This is in RFC3339 text format.
+        The time that this resource was created on the server.
+        This is in RFC3339 text format.
         """
         return pulumi.get(self, "create_time")
 
@@ -1500,8 +1507,7 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter(name="issuerCertificateAuthority")
     def issuer_certificate_authority(self) -> pulumi.Output[str]:
         """
-        The resource name of the issuing CertificateAuthority in the format
-        'projects/*/locations/*/caPools/*/certificateAuthorities/*'.
+        The resource name of the issuing CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
         """
         return pulumi.get(self, "issuer_certificate_authority")
 
@@ -1552,8 +1558,7 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter(name="pemCertificateChains")
     def pem_certificate_chains(self) -> pulumi.Output[Sequence[str]]:
         """
-        The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
-        5246.
+        The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
         """
         return pulumi.get(self, "pem_certificate_chains")
 
@@ -1561,6 +1566,7 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter(name="pemCertificates")
     def pem_certificates(self) -> pulumi.Output[Sequence[str]]:
         """
+        (Deprecated)
         Required. Expected to be in leaf-to-root order according to RFC 5246.
         """
         return pulumi.get(self, "pem_certificates")
@@ -1594,8 +1600,9 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter(name="revocationDetails")
     def revocation_details(self) -> pulumi.Output[Sequence['outputs.CertificateRevocationDetail']]:
         """
-        Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-        this field is present.
+        Output only. Details regarding the revocation of this Certificate. This Certificate is
+        considered revoked if and only if this field is present.
+        Structure is documented below.
         """
         return pulumi.get(self, "revocation_details")
 
@@ -1603,7 +1610,8 @@ class Certificate(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        Output only. The time at which this CertificateAuthority was updated. This is in RFC3339 text format.
+        Output only. The time at which this CertificateAuthority was updated.
+        This is in RFC3339 text format.
         """
         return pulumi.get(self, "update_time")
 

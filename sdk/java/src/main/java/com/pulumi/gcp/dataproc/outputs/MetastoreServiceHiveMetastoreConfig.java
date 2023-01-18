@@ -17,8 +17,8 @@ import javax.annotation.Nullable;
 public final class MetastoreServiceHiveMetastoreConfig {
     private @Nullable List<MetastoreServiceHiveMetastoreConfigAuxiliaryVersion> auxiliaryVersions;
     /**
-     * @return A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version&#39;s overrides.
-     * If keys are present in both the auxiliary version&#39;s overrides and the primary version&#39;s overrides, the value from the auxiliary version&#39;s overrides takes precedence.
+     * @return A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
+     * The mappings override system defaults (some keys cannot be overridden)
      * 
      */
     private @Nullable Map<String,String> configOverrides;
@@ -30,7 +30,7 @@ public final class MetastoreServiceHiveMetastoreConfig {
      */
     private @Nullable MetastoreServiceHiveMetastoreConfigKerberosConfig kerberosConfig;
     /**
-     * @return The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service&#39;s version.
+     * @return The Hive metastore schema version.
      * 
      */
     private String version;
@@ -40,8 +40,8 @@ public final class MetastoreServiceHiveMetastoreConfig {
         return this.auxiliaryVersions == null ? List.of() : this.auxiliaryVersions;
     }
     /**
-     * @return A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version&#39;s overrides.
-     * If keys are present in both the auxiliary version&#39;s overrides and the primary version&#39;s overrides, the value from the auxiliary version&#39;s overrides takes precedence.
+     * @return A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
+     * The mappings override system defaults (some keys cannot be overridden)
      * 
      */
     public Map<String,String> configOverrides() {
@@ -59,7 +59,7 @@ public final class MetastoreServiceHiveMetastoreConfig {
         return Optional.ofNullable(this.kerberosConfig);
     }
     /**
-     * @return The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service&#39;s version.
+     * @return The Hive metastore schema version.
      * 
      */
     public String version() {

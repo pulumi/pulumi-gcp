@@ -69,16 +69,16 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would
-     * be chosen for an Active Directory set up on an internal network.
+     * The fully-qualified domain name of the exposed domain used by clients to connect to the service.
+     * Similar to what would be chosen for an Active Directory set up on an internal network.
      * 
      */
     @Import(name="fqdn")
     private @Nullable Output<String> fqdn;
 
     /**
-     * @return The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would
-     * be chosen for an Active Directory set up on an internal network.
+     * @return The fully-qualified domain name of the exposed domain used by clients to connect to the service.
+     * Similar to what would be chosen for an Active Directory set up on an internal network.
      * 
      */
     public Optional<Output<String>> fqdn() {
@@ -118,14 +118,14 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The unique name of the domain using the format: &#39;projects/{project}/locations/global/domains/{domainName}&#39;.
+     * The unique name of the domain using the format: `projects/{project}/locations/global/domains/{domainName}`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The unique name of the domain using the format: &#39;projects/{project}/locations/global/domains/{domainName}&#39;.
+     * @return The unique name of the domain using the format: `projects/{project}/locations/global/domains/{domainName}`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -279,8 +279,8 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fqdn The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would
-         * be chosen for an Active Directory set up on an internal network.
+         * @param fqdn The fully-qualified domain name of the exposed domain used by clients to connect to the service.
+         * Similar to what would be chosen for an Active Directory set up on an internal network.
          * 
          * @return builder
          * 
@@ -291,8 +291,8 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fqdn The fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would
-         * be chosen for an Active Directory set up on an internal network.
+         * @param fqdn The fully-qualified domain name of the exposed domain used by clients to connect to the service.
+         * Similar to what would be chosen for an Active Directory set up on an internal network.
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The unique name of the domain using the format: &#39;projects/{project}/locations/global/domains/{domainName}&#39;.
+         * @param name The unique name of the domain using the format: `projects/{project}/locations/global/domains/{domainName}`.
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The unique name of the domain using the format: &#39;projects/{project}/locations/global/domains/{domainName}&#39;.
+         * @param name The unique name of the domain using the format: `projects/{project}/locations/global/domains/{domainName}`.
          * 
          * @return builder
          * 

@@ -96,16 +96,18 @@ public class CryptoKeyVersion extends com.pulumi.resources.CustomResource {
         return this.algorithm;
     }
     /**
-     * Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the
-     * key as stored on the HSM, independently of Google. Only provided for key versions with protectionLevel HSM.
+     * Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+     * Only provided for key versions with protectionLevel HSM.
+     * Structure is documented below.
      * 
      */
     @Export(name="attestations", type=List.class, parameters={CryptoKeyVersionAttestation.class})
     private Output<List<CryptoKeyVersionAttestation>> attestations;
 
     /**
-     * @return Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the
-     * key as stored on the HSM, independently of Google. Only provided for key versions with protectionLevel HSM.
+     * @return Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+     * Only provided for key versions with protectionLevel HSM.
+     * Structure is documented below.
      * 
      */
     public Output<List<CryptoKeyVersionAttestation>> attestations() {

@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InboundSamlConfigSpConfigSpCertificate {
     /**
-     * @return -
+     * @return The IdP&#39;s x509 certificate.
      * The x509 certificate
      * 
      */
@@ -20,7 +20,7 @@ public final class InboundSamlConfigSpConfigSpCertificate {
 
     private InboundSamlConfigSpConfigSpCertificate() {}
     /**
-     * @return -
+     * @return The IdP&#39;s x509 certificate.
      * The x509 certificate
      * 
      */

@@ -16,14 +16,14 @@ public final class ProjectDefaultConfigSignInEmailArgs extends com.pulumi.resour
     public static final ProjectDefaultConfigSignInEmailArgs Empty = new ProjectDefaultConfigSignInEmailArgs();
 
     /**
-     * Whether anonymous user auth is enabled for the project or not.
+     * Whether email auth is enabled for the project or not.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether anonymous user auth is enabled for the project or not.
+     * @return Whether email auth is enabled for the project or not.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -75,7 +75,7 @@ public final class ProjectDefaultConfigSignInEmailArgs extends com.pulumi.resour
         }
 
         /**
-         * @param enabled Whether anonymous user auth is enabled for the project or not.
+         * @param enabled Whether email auth is enabled for the project or not.
          * 
          * @return builder
          * 
@@ -86,7 +86,7 @@ public final class ProjectDefaultConfigSignInEmailArgs extends com.pulumi.resour
         }
 
         /**
-         * @param enabled Whether anonymous user auth is enabled for the project or not.
+         * @param enabled Whether email auth is enabled for the project or not.
          * 
          * @return builder
          * 

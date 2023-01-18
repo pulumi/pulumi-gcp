@@ -79,6 +79,10 @@ public final class GetInstanceTemplateDisk {
      * 
      */
     private String mode;
+    /**
+     * @return (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+     * 
+     */
     private List<String> resourcePolicies;
     /**
      * @return The name (**not self_link**)
@@ -191,6 +195,10 @@ public final class GetInstanceTemplateDisk {
     public String mode() {
         return this.mode;
     }
+    /**
+     * @return (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+     * 
+     */
     public List<String> resourcePolicies() {
         return this.resourcePolicies;
     }

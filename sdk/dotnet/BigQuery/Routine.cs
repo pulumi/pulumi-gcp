@@ -164,7 +164,8 @@ namespace Pulumi.Gcp.BigQuery
         public Output<ImmutableArray<Outputs.RoutineArgument>> Arguments { get; private set; } = null!;
 
         /// <summary>
-        /// The time when this routine was created, in milliseconds since the epoch.
+        /// The time when this routine was created, in milliseconds since the
+        /// epoch.
         /// </summary>
         [Output("creationTime")]
         public Output<int> CreationTime { get; private set; } = null!;
@@ -210,7 +211,8 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string?> Language { get; private set; } = null!;
 
         /// <summary>
-        /// The time when this routine was modified, in milliseconds since the epoch.
+        /// The time when this routine was modified, in milliseconds since the
+        /// epoch.
         /// </summary>
         [Output("lastModifiedTime")]
         public Output<int> LastModifiedTime { get; private set; } = null!;
@@ -428,7 +430,8 @@ namespace Pulumi.Gcp.BigQuery
         }
 
         /// <summary>
-        /// The time when this routine was created, in milliseconds since the epoch.
+        /// The time when this routine was created, in milliseconds since the
+        /// epoch.
         /// </summary>
         [Input("creationTime")]
         public Input<int>? CreationTime { get; set; }
@@ -480,7 +483,8 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Language { get; set; }
 
         /// <summary>
-        /// The time when this routine was modified, in milliseconds since the epoch.
+        /// The time when this routine was modified, in milliseconds since the
+        /// epoch.
         /// </summary>
         [Input("lastModifiedTime")]
         public Input<int>? LastModifiedTime { get; set; }

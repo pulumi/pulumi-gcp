@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AppGatewayAllocatedConnection {
+    /**
+     * @return The ingress port of an allocated connection.
+     * 
+     */
     private @Nullable Integer ingressPort;
+    /**
+     * @return The PSC uri of an allocated connection.
+     * 
+     */
     private @Nullable String pscUri;
 
     private AppGatewayAllocatedConnection() {}
+    /**
+     * @return The ingress port of an allocated connection.
+     * 
+     */
     public Optional<Integer> ingressPort() {
         return Optional.ofNullable(this.ingressPort);
     }
+    /**
+     * @return The PSC uri of an allocated connection.
+     * 
+     */
     public Optional<String> pscUri() {
         return Optional.ofNullable(this.pscUri);
     }

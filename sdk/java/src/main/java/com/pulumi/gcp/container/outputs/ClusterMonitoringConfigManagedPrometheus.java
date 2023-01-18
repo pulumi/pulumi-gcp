@@ -10,16 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class ClusterMonitoringConfigManagedPrometheus {
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Whether or not the managed collection is enabled.
      * 
      */
     private Boolean enabled;
 
     private ClusterMonitoringConfigManagedPrometheus() {}
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Whether or not the managed collection is enabled.
      * 
      */
     public Boolean enabled() {

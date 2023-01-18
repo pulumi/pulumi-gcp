@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGameServerDeploymentRolloutGameServerConfigOverride {
+    /**
+     * @return Version of the configuration.
+     * 
+     */
     private String configVersion;
+    /**
+     * @return Selection by realms.  Structure is documented below.
+     * 
+     */
     private List<GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector> realmsSelectors;
 
     private GetGameServerDeploymentRolloutGameServerConfigOverride() {}
+    /**
+     * @return Version of the configuration.
+     * 
+     */
     public String configVersion() {
         return this.configVersion;
     }
+    /**
+     * @return Selection by realms.  Structure is documented below.
+     * 
+     */
     public List<GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector> realmsSelectors() {
         return this.realmsSelectors;
     }

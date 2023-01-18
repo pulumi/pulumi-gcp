@@ -153,7 +153,7 @@ namespace Pulumi.Gcp.Diagflow
     public partial class CxPage : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The human-readable name of the parameter, unique within the form.
+        /// The human-readable name of the page, unique within the agent.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -197,7 +197,7 @@ namespace Pulumi.Gcp.Diagflow
         public Output<string?> LanguageCode { get; private set; } = null!;
 
         /// <summary>
-        /// -
+        /// The unique identifier of this transition route.
         /// The unique identifier of this event handler.
         /// </summary>
         [Output("name")]
@@ -280,7 +280,7 @@ namespace Pulumi.Gcp.Diagflow
     public sealed class CxPageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The human-readable name of the parameter, unique within the form.
+        /// The human-readable name of the page, unique within the agent.
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
@@ -380,7 +380,7 @@ namespace Pulumi.Gcp.Diagflow
     public sealed class CxPageState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The human-readable name of the parameter, unique within the form.
+        /// The human-readable name of the page, unique within the agent.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -430,7 +430,7 @@ namespace Pulumi.Gcp.Diagflow
         public Input<string>? LanguageCode { get; set; }
 
         /// <summary>
-        /// -
+        /// The unique identifier of this transition route.
         /// The unique identifier of this event handler.
         /// </summary>
         [Input("name")]

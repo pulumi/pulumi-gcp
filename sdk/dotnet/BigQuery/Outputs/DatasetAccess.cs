@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
     public sealed class DatasetAccess
     {
         /// <summary>
-        /// The dataset this entry applies to
+        /// Grants all resources of particular types in a particular dataset read access to the current dataset.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.DatasetAccessDataset? Dataset;

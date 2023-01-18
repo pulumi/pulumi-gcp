@@ -332,8 +332,8 @@ export class Tag extends pulumi.CustomResource {
     /**
      * The resource name of the tag in URL format. Example:
      * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
-     * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id} where tag_id is a system-generated
-     * identifier. Note that this Tag may not actually be stored in the location in this name.
+     * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id}
+     * where tagId is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -411,8 +411,8 @@ export interface TagState {
     /**
      * The resource name of the tag in URL format. Example:
      * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
-     * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id} where tag_id is a system-generated
-     * identifier. Note that this Tag may not actually be stored in the location in this name.
+     * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id}
+     * where tagId is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name.
      */
     name?: pulumi.Input<string>;
     /**

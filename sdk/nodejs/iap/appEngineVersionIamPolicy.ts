@@ -70,12 +70,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.iap.AppEngineVersionIamBinding("binding", {
- *     appId: google_app_engine_standard_app_version_version.project,
+ *     appId: google_app_engine_standard_app_version.version.project,
  *     members: ["user:jane@example.com"],
- *     project: google_app_engine_standard_app_version_version.project,
+ *     project: google_app_engine_standard_app_version.version.project,
  *     role: "roles/iap.httpsResourceAccessor",
- *     service: google_app_engine_standard_app_version_version.service,
- *     versionId: google_app_engine_standard_app_version_version.versionId,
+ *     service: google_app_engine_standard_app_version.version.service,
+ *     versionId: google_app_engine_standard_app_version.version.version_id,
  * });
  * ```
  *
@@ -86,17 +86,17 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const binding = new gcp.iap.AppEngineVersionIamBinding("binding", {
- *     appId: google_app_engine_standard_app_version_version.project,
+ *     appId: google_app_engine_standard_app_version.version.project,
  *     condition: {
  *         description: "Expiring at midnight of 2019-12-31",
  *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
  *         title: "expires_after_2019_12_31",
  *     },
  *     members: ["user:jane@example.com"],
- *     project: google_app_engine_standard_app_version_version.project,
+ *     project: google_app_engine_standard_app_version.version.project,
  *     role: "roles/iap.httpsResourceAccessor",
- *     service: google_app_engine_standard_app_version_version.service,
- *     versionId: google_app_engine_standard_app_version_version.versionId,
+ *     service: google_app_engine_standard_app_version.version.service,
+ *     versionId: google_app_engine_standard_app_version.version.version_id,
  * });
  * ```
  * ## google\_iap\_app\_engine\_version\_iam\_member
@@ -106,12 +106,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.iap.AppEngineVersionIamMember("member", {
- *     appId: google_app_engine_standard_app_version_version.project,
+ *     appId: google_app_engine_standard_app_version.version.project,
  *     member: "user:jane@example.com",
- *     project: google_app_engine_standard_app_version_version.project,
+ *     project: google_app_engine_standard_app_version.version.project,
  *     role: "roles/iap.httpsResourceAccessor",
- *     service: google_app_engine_standard_app_version_version.service,
- *     versionId: google_app_engine_standard_app_version_version.versionId,
+ *     service: google_app_engine_standard_app_version.version.service,
+ *     versionId: google_app_engine_standard_app_version.version.version_id,
  * });
  * ```
  *
@@ -122,17 +122,17 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const member = new gcp.iap.AppEngineVersionIamMember("member", {
- *     appId: google_app_engine_standard_app_version_version.project,
+ *     appId: google_app_engine_standard_app_version.version.project,
  *     condition: {
  *         description: "Expiring at midnight of 2019-12-31",
  *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
  *         title: "expires_after_2019_12_31",
  *     },
  *     member: "user:jane@example.com",
- *     project: google_app_engine_standard_app_version_version.project,
+ *     project: google_app_engine_standard_app_version.version.project,
  *     role: "roles/iap.httpsResourceAccessor",
- *     service: google_app_engine_standard_app_version_version.service,
- *     versionId: google_app_engine_standard_app_version_version.versionId,
+ *     service: google_app_engine_standard_app_version.version.service,
+ *     versionId: google_app_engine_standard_app_version.version.version_id,
  * });
  * ```
  *

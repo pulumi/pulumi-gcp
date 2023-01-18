@@ -224,6 +224,15 @@ type PreventionJobTrigger struct {
 	InspectJob PreventionJobTriggerInspectJobPtrOutput `pulumi:"inspectJob"`
 	// The timestamp of the last time this trigger executed.
 	LastRunTime pulumi.StringOutput `pulumi:"lastRunTime"`
+	// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
+	// For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
+	// modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
+	// field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
+	// For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
+	// timestamp property does not exist or its value is empty or invalid.
+	// (Required)
+	// The name of the Datastore kind.
+	// (Required)
 	// Name of a BigQuery field to be returned with the findings.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent of the trigger, either in the format `projects/{{project}}`
@@ -282,6 +291,15 @@ type preventionJobTriggerState struct {
 	InspectJob *PreventionJobTriggerInspectJob `pulumi:"inspectJob"`
 	// The timestamp of the last time this trigger executed.
 	LastRunTime *string `pulumi:"lastRunTime"`
+	// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
+	// For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
+	// modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
+	// field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
+	// For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
+	// timestamp property does not exist or its value is empty or invalid.
+	// (Required)
+	// The name of the Datastore kind.
+	// (Required)
 	// Name of a BigQuery field to be returned with the findings.
 	Name *string `pulumi:"name"`
 	// The parent of the trigger, either in the format `projects/{{project}}`
@@ -306,6 +324,15 @@ type PreventionJobTriggerState struct {
 	InspectJob PreventionJobTriggerInspectJobPtrInput
 	// The timestamp of the last time this trigger executed.
 	LastRunTime pulumi.StringPtrInput
+	// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
+	// For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
+	// modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
+	// field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
+	// For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
+	// timestamp property does not exist or its value is empty or invalid.
+	// (Required)
+	// The name of the Datastore kind.
+	// (Required)
 	// Name of a BigQuery field to be returned with the findings.
 	Name pulumi.StringPtrInput
 	// The parent of the trigger, either in the format `projects/{{project}}`
@@ -473,6 +500,15 @@ func (o PreventionJobTriggerOutput) LastRunTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionJobTrigger) pulumi.StringOutput { return v.LastRunTime }).(pulumi.StringOutput)
 }
 
+// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
+// For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
+// modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
+// field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
+// For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
+// timestamp property does not exist or its value is empty or invalid.
+// (Required)
+// The name of the Datastore kind.
+// (Required)
 // Name of a BigQuery field to be returned with the findings.
 func (o PreventionJobTriggerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionJobTrigger) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)

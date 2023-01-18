@@ -63,7 +63,7 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         public Input<Inputs.JobTemplateTemplateContainerLivenessProbeArgs>? LivenessProbe { get; set; }
 
         /// <summary>
-        /// Volume's name.
+        /// Name of the container specified as a DNS_LABEL.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -162,7 +162,8 @@ namespace Pulumi.Gcp.Compute
         public Output<int> DiskSizeGb { get; private set; } = null!;
 
         /// <summary>
-        /// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        /// The fingerprint used for optimistic locking of this resource. Used
+        /// internally during updates.
         /// </summary>
         [Output("labelFingerprint")]
         public Output<string> LabelFingerprint { get; private set; } = null!;
@@ -174,9 +175,10 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses
-        /// attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied
-        /// encryption key.
+        /// A list of public visible licenses that apply to this snapshot. This
+        /// can be because the original image had licenses attached (such as a
+        /// Windows image).  snapshotEncryptionKey nested object Encrypts the
+        /// snapshot using a customer-supplied encryption key.
         /// </summary>
         [Output("licenses")]
         public Output<ImmutableArray<string>> Licenses { get; private set; } = null!;
@@ -244,7 +246,8 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.SnapshotSourceDiskEncryptionKey?> SourceDiskEncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
+        /// A size of the storage used by the snapshot. As snapshots share
+        /// storage, this number is expected to change with snapshot
         /// creation/deletion.
         /// </summary>
         [Output("storageBytes")]
@@ -443,7 +446,8 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? DiskSizeGb { get; set; }
 
         /// <summary>
-        /// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        /// The fingerprint used for optimistic locking of this resource. Used
+        /// internally during updates.
         /// </summary>
         [Input("labelFingerprint")]
         public Input<string>? LabelFingerprint { get; set; }
@@ -464,9 +468,10 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _licenses;
 
         /// <summary>
-        /// A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses
-        /// attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied
-        /// encryption key.
+        /// A list of public visible licenses that apply to this snapshot. This
+        /// can be because the original image had licenses attached (such as a
+        /// Windows image).  snapshotEncryptionKey nested object Encrypts the
+        /// snapshot using a customer-supplied encryption key.
         /// </summary>
         public InputList<string> Licenses
         {
@@ -537,7 +542,8 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.SnapshotSourceDiskEncryptionKeyGetArgs>? SourceDiskEncryptionKey { get; set; }
 
         /// <summary>
-        /// A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
+        /// A size of the storage used by the snapshot. As snapshots share
+        /// storage, this number is expected to change with snapshot
         /// creation/deletion.
         /// </summary>
         [Input("storageBytes")]

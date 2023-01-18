@@ -268,8 +268,9 @@ namespace Pulumi.Gcp.Notebooks
         public Output<Outputs.RuntimeAccessConfig?> AccessConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The health state of this runtime. For a list of possible output values, see
-        /// 'https://cloud.google.com/vertex-ai/docs/workbench/ reference/rest/v1/projects.locations.runtimes#healthstate'.
+        /// The health state of this runtime. For a list of possible output
+        /// values, see `https://cloud.google.com/vertex-ai/docs/workbench/
+        /// reference/rest/v1/projects.locations.runtimes#healthstate`.
         /// </summary>
         [Output("healthState")]
         public Output<string> HealthState { get; private set; } = null!;
@@ -281,7 +282,9 @@ namespace Pulumi.Gcp.Notebooks
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Contains Runtime daemon metrics such as Service status and JupyterLab status
+        /// Contains Runtime daemon metrics such as Service status and JupyterLab
+        /// status
+        /// Structure is documented below.
         /// </summary>
         [Output("metrics")]
         public Output<ImmutableArray<Outputs.RuntimeMetric>> Metrics { get; private set; } = null!;
@@ -421,8 +424,9 @@ namespace Pulumi.Gcp.Notebooks
         public Input<Inputs.RuntimeAccessConfigGetArgs>? AccessConfig { get; set; }
 
         /// <summary>
-        /// The health state of this runtime. For a list of possible output values, see
-        /// 'https://cloud.google.com/vertex-ai/docs/workbench/ reference/rest/v1/projects.locations.runtimes#healthstate'.
+        /// The health state of this runtime. For a list of possible output
+        /// values, see `https://cloud.google.com/vertex-ai/docs/workbench/
+        /// reference/rest/v1/projects.locations.runtimes#healthstate`.
         /// </summary>
         [Input("healthState")]
         public Input<string>? HealthState { get; set; }
@@ -437,7 +441,9 @@ namespace Pulumi.Gcp.Notebooks
         private InputList<Inputs.RuntimeMetricGetArgs>? _metrics;
 
         /// <summary>
-        /// Contains Runtime daemon metrics such as Service status and JupyterLab status
+        /// Contains Runtime daemon metrics such as Service status and JupyterLab
+        /// status
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RuntimeMetricGetArgs> Metrics
         {

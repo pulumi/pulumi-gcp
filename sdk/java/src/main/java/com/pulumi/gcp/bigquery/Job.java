@@ -341,7 +341,6 @@ import javax.annotation.Nullable;
 public class Job extends com.pulumi.resources.CustomResource {
     /**
      * Copies a table.
-     * Structure is documented below.
      * 
      */
     @Export(name="copy", type=JobCopy.class, parameters={})
@@ -349,7 +348,6 @@ public class Job extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Copies a table.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<JobCopy>> copy() {
@@ -357,7 +355,6 @@ public class Job extends com.pulumi.resources.CustomResource {
     }
     /**
      * Configures an extract job.
-     * Structure is documented below.
      * 
      */
     @Export(name="extract", type=JobExtract.class, parameters={})
@@ -365,7 +362,6 @@ public class Job extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Configures an extract job.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<JobExtract>> extract() {
@@ -429,7 +425,6 @@ public class Job extends com.pulumi.resources.CustomResource {
     }
     /**
      * Configures a load job.
-     * Structure is documented below.
      * 
      */
     @Export(name="load", type=JobLoad.class, parameters={})
@@ -437,7 +432,6 @@ public class Job extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Configures a load job.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<JobLoad>> load() {
@@ -475,7 +469,6 @@ public class Job extends com.pulumi.resources.CustomResource {
     }
     /**
      * Configures a query job.
-     * Structure is documented below.
      * 
      */
     @Export(name="query", type=JobQuery.class, parameters={})
@@ -483,7 +476,6 @@ public class Job extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Configures a query job.
-     * Structure is documented below.
      * 
      */
     public Output<Optional<JobQuery>> query() {
@@ -491,6 +483,7 @@ public class Job extends com.pulumi.resources.CustomResource {
     }
     /**
      * The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+     * Structure is documented below.
      * 
      */
     @Export(name="statuses", type=List.class, parameters={JobStatus.class})
@@ -498,6 +491,7 @@ public class Job extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+     * Structure is documented below.
      * 
      */
     public Output<List<JobStatus>> statuses() {

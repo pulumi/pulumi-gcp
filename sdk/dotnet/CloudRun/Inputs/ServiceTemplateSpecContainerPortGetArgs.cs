@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public Input<int>? ContainerPort { get; set; }
 
         /// <summary>
-        /// Volume's name.
+        /// If specified, used to specify which protocol to use. Allowed values are "http1" (HTTP/1) and "h2c" (HTTP/2 end-to-end). Defaults to "http1".
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

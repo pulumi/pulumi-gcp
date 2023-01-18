@@ -21,17 +21,17 @@ public final class WorkflowTemplateJobHiveJob {
      */
     private @Nullable Boolean continueOnFailure;
     /**
-     * @return Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+     * @return Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
      * 
      */
     private @Nullable List<String> jarFileUris;
     /**
-     * @return Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+     * @return Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
      * 
      */
     private @Nullable Map<String,String> properties;
     /**
-     * @return The HCFS URI of the script that contains SQL queries.
+     * @return The HCFS URI of the script that contains Hive queries.
      * 
      */
     private @Nullable String queryFileUri;
@@ -41,7 +41,7 @@ public final class WorkflowTemplateJobHiveJob {
      */
     private @Nullable WorkflowTemplateJobHiveJobQueryList queryList;
     /**
-     * @return Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name=&#34;value&#34;;`).
+     * @return Optional. Mapping of query variable names to values (equivalent to the Hive command: `SET name=&#34;value&#34;;`).
      * 
      */
     private @Nullable Map<String,String> scriptVariables;
@@ -55,21 +55,21 @@ public final class WorkflowTemplateJobHiveJob {
         return Optional.ofNullable(this.continueOnFailure);
     }
     /**
-     * @return Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+     * @return Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
      * 
      */
     public List<String> jarFileUris() {
         return this.jarFileUris == null ? List.of() : this.jarFileUris;
     }
     /**
-     * @return Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+     * @return Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
      * 
      */
     public Map<String,String> properties() {
         return this.properties == null ? Map.of() : this.properties;
     }
     /**
-     * @return The HCFS URI of the script that contains SQL queries.
+     * @return The HCFS URI of the script that contains Hive queries.
      * 
      */
     public Optional<String> queryFileUri() {
@@ -83,7 +83,7 @@ public final class WorkflowTemplateJobHiveJob {
         return Optional.ofNullable(this.queryList);
     }
     /**
-     * @return Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name=&#34;value&#34;;`).
+     * @return Optional. Mapping of query variable names to values (equivalent to the Hive command: `SET name=&#34;value&#34;;`).
      * 
      */
     public Map<String,String> scriptVariables() {

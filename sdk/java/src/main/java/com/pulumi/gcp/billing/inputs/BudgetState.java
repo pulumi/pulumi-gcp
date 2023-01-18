@@ -108,7 +108,8 @@ public final class BudgetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Resource name of the budget. The resource name implies the scope of a budget. Values are of the form
+     * Resource name of the budget. The resource name
+     * implies the scope of a budget. Values are of the form
      * billingAccounts/{billingAccountId}/budgets/{budgetId}.
      * 
      */
@@ -116,7 +117,8 @@ public final class BudgetState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return Resource name of the budget. The resource name implies the scope of a budget. Values are of the form
+     * @return Resource name of the budget. The resource name
+     * implies the scope of a budget. Values are of the form
      * billingAccounts/{billingAccountId}/budgets/{budgetId}.
      * 
      */
@@ -293,7 +295,8 @@ public final class BudgetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Resource name of the budget. The resource name implies the scope of a budget. Values are of the form
+         * @param name Resource name of the budget. The resource name
+         * implies the scope of a budget. Values are of the form
          * billingAccounts/{billingAccountId}/budgets/{budgetId}.
          * 
          * @return builder
@@ -305,7 +308,8 @@ public final class BudgetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Resource name of the budget. The resource name implies the scope of a budget. Values are of the form
+         * @param name Resource name of the budget. The resource name
+         * implies the scope of a budget. Values are of the form
          * billingAccounts/{billingAccountId}/budgets/{budgetId}.
          * 
          * @return builder

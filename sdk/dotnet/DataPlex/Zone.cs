@@ -154,8 +154,7 @@ namespace Pulumi.Gcp.DataPlex
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and
-        /// re-created with the same name.
+        /// Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
@@ -377,8 +376,7 @@ namespace Pulumi.Gcp.DataPlex
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and
-        /// re-created with the same name.
+        /// Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }

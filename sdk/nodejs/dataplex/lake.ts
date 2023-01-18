@@ -112,8 +112,7 @@ export class Lake extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Output only. Service account associated with this lake. This service account must be authorized to access or operate on
-     * resources managed by the lake.
+     * Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
      */
     public /*out*/ readonly serviceAccount!: pulumi.Output<string>;
     /**
@@ -121,8 +120,7 @@ export class Lake extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and
-     * re-created with the same name.
+     * Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
     /**
@@ -227,8 +225,7 @@ export interface LakeState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Output only. Service account associated with this lake. This service account must be authorized to access or operate on
-     * resources managed by the lake.
+     * Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
      */
     serviceAccount?: pulumi.Input<string>;
     /**
@@ -236,8 +233,7 @@ export interface LakeState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and
-     * re-created with the same name.
+     * Output only. System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
      */
     uid?: pulumi.Input<string>;
     /**

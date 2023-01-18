@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const fullAgent = new gcp.diagflow.Agent("full_agent", {
+ * const fullAgent = new gcp.diagflow.Agent("fullAgent", {
  *     apiVersion: "API_VERSION_V2_BETA_1",
  *     avatarUri: "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
  *     classificationThreshold: 0.3,
@@ -95,8 +95,8 @@ export class Agent extends pulumi.CustomResource {
      */
     public readonly avatarUri!: pulumi.Output<string | undefined>;
     /**
-     * The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar, the
-     * [avatarUri] field can be used.
+     * The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar,
+     * the [avatarUri] field can be used.
      */
     public /*out*/ readonly avatarUriBackend!: pulumi.Output<string>;
     /**
@@ -234,8 +234,8 @@ export interface AgentState {
      */
     avatarUri?: pulumi.Input<string>;
     /**
-     * The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar, the
-     * [avatarUri] field can be used.
+     * The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar,
+     * the [avatarUri] field can be used.
      */
     avatarUriBackend?: pulumi.Input<string>;
     /**

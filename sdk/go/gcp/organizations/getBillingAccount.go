@@ -34,7 +34,7 @@ import (
 //			_, err = organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
 //				ProjectId:      pulumi.String("your-project-id"),
 //				OrgId:          pulumi.String("1234567"),
-//				BillingAccount: pulumi.String(acct.Id),
+//				BillingAccount: *pulumi.String(acct.Id),
 //			})
 //			if err != nil {
 //				return err

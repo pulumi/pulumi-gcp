@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PrivateConnectionError {
+    /**
+     * @return A list of messages that carry the error details.
+     * 
+     */
     private @Nullable Map<String,String> details;
+    /**
+     * @return A message containing more information about the error that occurred.
+     * 
+     */
     private @Nullable String message;
 
     private PrivateConnectionError() {}
+    /**
+     * @return A list of messages that carry the error details.
+     * 
+     */
     public Map<String,String> details() {
         return this.details == null ? Map.of() : this.details;
     }
+    /**
+     * @return A message containing more information about the error that occurred.
+     * 
+     */
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }

@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultEdgeCacheKeyset = new gcp.networkservices.EdgeCacheKeyset("default", {
+ * const _default = new gcp.networkservices.EdgeCacheKeyset("default", {
  *     description: "The default keyset",
  *     publicKeys: [
  *         {

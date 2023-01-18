@@ -16,49 +16,49 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobPigConfig {
     /**
-     * @return Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+     * @return Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
      * 
      */
     private @Nullable Boolean continueOnFailure;
     /**
-     * @return HCFS URIs of jar files to be added to the Spark CLASSPATH.
+     * @return HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
      * 
      */
     private @Nullable List<String> jarFileUris;
     private @Nullable JobPigConfigLoggingConfig loggingConfig;
     /**
-     * @return A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+     * @return A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site.xml`, `/etc/pig/conf/pig.properties`, and classes in user code.
      * 
      */
     private @Nullable Map<String,String> properties;
     /**
-     * @return The HCFS URI of the script that contains SQL queries.
+     * @return HCFS URI of file containing Hive script to execute as the job.
      * Conflicts with `query_list`
      * 
      */
     private @Nullable String queryFileUri;
     /**
-     * @return The list of SQL queries or statements to execute as part of the job.
+     * @return The list of Hive queries or statements to execute as part of the job.
      * Conflicts with `query_file_uri`
      * 
      */
     private @Nullable List<String> queryLists;
     /**
-     * @return Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name=&#34;value&#34;;`).
+     * @return Mapping of query variable names to values (equivalent to the Pig command: `name=[value]`).
      * 
      */
     private @Nullable Map<String,String> scriptVariables;
 
     private JobPigConfig() {}
     /**
-     * @return Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+     * @return Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries. Defaults to false.
      * 
      */
     public Optional<Boolean> continueOnFailure() {
         return Optional.ofNullable(this.continueOnFailure);
     }
     /**
-     * @return HCFS URIs of jar files to be added to the Spark CLASSPATH.
+     * @return HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
      * 
      */
     public List<String> jarFileUris() {
@@ -68,14 +68,14 @@ public final class JobPigConfig {
         return Optional.ofNullable(this.loggingConfig);
     }
     /**
-     * @return A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+     * @return A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site.xml`, `/etc/pig/conf/pig.properties`, and classes in user code.
      * 
      */
     public Map<String,String> properties() {
         return this.properties == null ? Map.of() : this.properties;
     }
     /**
-     * @return The HCFS URI of the script that contains SQL queries.
+     * @return HCFS URI of file containing Hive script to execute as the job.
      * Conflicts with `query_list`
      * 
      */
@@ -83,7 +83,7 @@ public final class JobPigConfig {
         return Optional.ofNullable(this.queryFileUri);
     }
     /**
-     * @return The list of SQL queries or statements to execute as part of the job.
+     * @return The list of Hive queries or statements to execute as part of the job.
      * Conflicts with `query_file_uri`
      * 
      */
@@ -91,7 +91,7 @@ public final class JobPigConfig {
         return this.queryLists == null ? List.of() : this.queryLists;
     }
     /**
-     * @return Mapping of query variable names to values (equivalent to the Spark SQL command: `SET name=&#34;value&#34;;`).
+     * @return Mapping of query variable names to values (equivalent to the Pig command: `name=[value]`).
      * 
      */
     public Map<String,String> scriptVariables() {

@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector {
+    /**
+     * @return List of realms to match against.
+     * 
+     */
     private List<String> realms;
 
     private GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector() {}
+    /**
+     * @return List of realms to match against.
+     * 
+     */
     public List<String> realms() {
         return this.realms;
     }

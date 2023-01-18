@@ -89,16 +89,17 @@ type FolderSink struct {
 
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions FolderSinkBigqueryOptionsOutput `pulumi:"bigqueryOptions"`
-	// A description of this exclusion.
+	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
 	Destination pulumi.StringOutput `pulumi:"destination"`
-	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
+	// If set to True, then this sink is disabled and it does not export any log entries.
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions FolderSinkExclusionArrayOutput `pulumi:"exclusions"`
-	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
+	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter pulumi.StringPtrOutput `pulumi:"filter"`
 	// The folder to be exported to the sink. Note that either `[FOLDER_ID]` or `folders/[FOLDER_ID]` is
@@ -107,7 +108,7 @@ type FolderSink struct {
 	// Whether or not to include children folders in the sink export. If true, logs
 	// associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
 	IncludeChildren pulumi.BoolPtrOutput `pulumi:"includeChildren"`
-	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+	// The name of the logging sink.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The identity associated with this sink. This identity must be granted write access to the
 	// configured `destination`.
@@ -151,16 +152,17 @@ func GetFolderSink(ctx *pulumi.Context,
 type folderSinkState struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions *FolderSinkBigqueryOptions `pulumi:"bigqueryOptions"`
-	// A description of this exclusion.
+	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description *string `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
 	Destination *string `pulumi:"destination"`
-	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
+	// If set to True, then this sink is disabled and it does not export any log entries.
 	Disabled *bool `pulumi:"disabled"`
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions []FolderSinkExclusion `pulumi:"exclusions"`
-	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
+	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter *string `pulumi:"filter"`
 	// The folder to be exported to the sink. Note that either `[FOLDER_ID]` or `folders/[FOLDER_ID]` is
@@ -169,7 +171,7 @@ type folderSinkState struct {
 	// Whether or not to include children folders in the sink export. If true, logs
 	// associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
 	IncludeChildren *bool `pulumi:"includeChildren"`
-	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+	// The name of the logging sink.
 	Name *string `pulumi:"name"`
 	// The identity associated with this sink. This identity must be granted write access to the
 	// configured `destination`.
@@ -179,16 +181,17 @@ type folderSinkState struct {
 type FolderSinkState struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions FolderSinkBigqueryOptionsPtrInput
-	// A description of this exclusion.
+	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
 	Destination pulumi.StringPtrInput
-	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
+	// If set to True, then this sink is disabled and it does not export any log entries.
 	Disabled pulumi.BoolPtrInput
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions FolderSinkExclusionArrayInput
-	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
+	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter pulumi.StringPtrInput
 	// The folder to be exported to the sink. Note that either `[FOLDER_ID]` or `folders/[FOLDER_ID]` is
@@ -197,7 +200,7 @@ type FolderSinkState struct {
 	// Whether or not to include children folders in the sink export. If true, logs
 	// associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
 	IncludeChildren pulumi.BoolPtrInput
-	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+	// The name of the logging sink.
 	Name pulumi.StringPtrInput
 	// The identity associated with this sink. This identity must be granted write access to the
 	// configured `destination`.
@@ -211,16 +214,17 @@ func (FolderSinkState) ElementType() reflect.Type {
 type folderSinkArgs struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions *FolderSinkBigqueryOptions `pulumi:"bigqueryOptions"`
-	// A description of this exclusion.
+	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description *string `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
 	Destination string `pulumi:"destination"`
-	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
+	// If set to True, then this sink is disabled and it does not export any log entries.
 	Disabled *bool `pulumi:"disabled"`
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions []FolderSinkExclusion `pulumi:"exclusions"`
-	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
+	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter *string `pulumi:"filter"`
 	// The folder to be exported to the sink. Note that either `[FOLDER_ID]` or `folders/[FOLDER_ID]` is
@@ -229,7 +233,7 @@ type folderSinkArgs struct {
 	// Whether or not to include children folders in the sink export. If true, logs
 	// associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
 	IncludeChildren *bool `pulumi:"includeChildren"`
-	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+	// The name of the logging sink.
 	Name *string `pulumi:"name"`
 }
 
@@ -237,16 +241,17 @@ type folderSinkArgs struct {
 type FolderSinkArgs struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions FolderSinkBigqueryOptionsPtrInput
-	// A description of this exclusion.
+	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
 	Destination pulumi.StringInput
-	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
+	// If set to True, then this sink is disabled and it does not export any log entries.
 	Disabled pulumi.BoolPtrInput
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions FolderSinkExclusionArrayInput
-	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
+	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter pulumi.StringPtrInput
 	// The folder to be exported to the sink. Note that either `[FOLDER_ID]` or `folders/[FOLDER_ID]` is
@@ -255,7 +260,7 @@ type FolderSinkArgs struct {
 	// Whether or not to include children folders in the sink export. If true, logs
 	// associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
 	IncludeChildren pulumi.BoolPtrInput
-	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+	// The name of the logging sink.
 	Name pulumi.StringPtrInput
 }
 
@@ -351,7 +356,7 @@ func (o FolderSinkOutput) BigqueryOptions() FolderSinkBigqueryOptionsOutput {
 	return o.ApplyT(func(v *FolderSink) FolderSinkBigqueryOptionsOutput { return v.BigqueryOptions }).(FolderSinkBigqueryOptionsOutput)
 }
 
-// A description of this exclusion.
+// A description of this sink. The maximum length of the description is 8000 characters.
 func (o FolderSinkOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FolderSink) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -362,7 +367,7 @@ func (o FolderSinkOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderSink) pulumi.StringOutput { return v.Destination }).(pulumi.StringOutput)
 }
 
-// If set to True, then this exclusion is disabled and it does not exclude any log entries.
+// If set to True, then this sink is disabled and it does not export any log entries.
 func (o FolderSinkOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FolderSink) pulumi.BoolPtrOutput { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
@@ -372,7 +377,8 @@ func (o FolderSinkOutput) Exclusions() FolderSinkExclusionArrayOutput {
 	return o.ApplyT(func(v *FolderSink) FolderSinkExclusionArrayOutput { return v.Exclusions }).(FolderSinkExclusionArrayOutput)
 }
 
-// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+// The filter to apply when exporting logs. Only log entries that match the filter are exported.
+// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 // write a filter.
 func (o FolderSinkOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FolderSink) pulumi.StringPtrOutput { return v.Filter }).(pulumi.StringPtrOutput)
@@ -390,7 +396,7 @@ func (o FolderSinkOutput) IncludeChildren() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FolderSink) pulumi.BoolPtrOutput { return v.IncludeChildren }).(pulumi.BoolPtrOutput)
 }
 
-// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+// The name of the logging sink.
 func (o FolderSinkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderSink) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

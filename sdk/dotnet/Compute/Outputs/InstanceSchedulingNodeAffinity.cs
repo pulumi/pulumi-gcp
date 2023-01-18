@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class InstanceSchedulingNodeAffinity
     {
         /// <summary>
-        /// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+        /// The key for the node affinity label.
         /// </summary>
         public readonly string Key;
         /// <summary>
@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string Operator;
         /// <summary>
-        /// Corresponds to the label values of a reservation resource.
+        /// The values for the node affinity label.
         /// </summary>
         public readonly ImmutableArray<string> Values;
 

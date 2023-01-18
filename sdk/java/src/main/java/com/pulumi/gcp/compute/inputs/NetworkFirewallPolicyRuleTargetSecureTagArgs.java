@@ -31,7 +31,6 @@ public final class NetworkFirewallPolicyRuleTargetSecureTagArgs extends com.pulu
     }
 
     /**
-     * - 
      * [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
      * 
      */
@@ -39,8 +38,7 @@ public final class NetworkFirewallPolicyRuleTargetSecureTagArgs extends com.pulu
     private @Nullable Output<String> state;
 
     /**
-     * @return -
-     * [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+     * @return [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
      * 
      */
     public Optional<Output<String>> state() {
@@ -94,8 +92,7 @@ public final class NetworkFirewallPolicyRuleTargetSecureTagArgs extends com.pulu
         }
 
         /**
-         * @param state -
-         * [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+         * @param state [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
          * 
          * @return builder
          * 
@@ -106,8 +103,7 @@ public final class NetworkFirewallPolicyRuleTargetSecureTagArgs extends com.pulu
         }
 
         /**
-         * @param state -
-         * [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+         * @param state [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
          * 
          * @return builder
          * 

@@ -149,16 +149,16 @@ public class Fulfillment extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.genericWebService);
     }
     /**
-     * The unique identifier of the fulfillment. Format: projects/&lt;Project ID&gt;/agent/fulfillment - projects/&lt;Project
-     * ID&gt;/locations/&lt;Location ID&gt;/agent/fulfillment
+     * The unique identifier of the fulfillment.
+     * Format: projects/&lt;Project ID&gt;/agent/fulfillment - projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agent/fulfillment
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The unique identifier of the fulfillment. Format: projects/&lt;Project ID&gt;/agent/fulfillment - projects/&lt;Project
-     * ID&gt;/locations/&lt;Location ID&gt;/agent/fulfillment
+     * @return The unique identifier of the fulfillment.
+     * Format: projects/&lt;Project ID&gt;/agent/fulfillment - projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agent/fulfillment
      * 
      */
     public Output<String> name() {

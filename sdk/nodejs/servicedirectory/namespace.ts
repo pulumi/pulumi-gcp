@@ -90,7 +90,8 @@ export class Namespace extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * The resource name for the namespace in the format 'projects/*&#47;locations/*&#47;namespaces/*'.
+     * The resource name for the namespace
+     * in the format `projects/*&#47;locations/*&#47;namespaces/*`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -158,7 +159,8 @@ export interface NamespaceState {
      */
     location?: pulumi.Input<string>;
     /**
-     * The resource name for the namespace in the format 'projects/*&#47;locations/*&#47;namespaces/*'.
+     * The resource name for the namespace
+     * in the format `projects/*&#47;locations/*&#47;namespaces/*`.
      */
     name?: pulumi.Input<string>;
     /**

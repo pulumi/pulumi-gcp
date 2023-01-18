@@ -54,8 +54,8 @@ namespace Pulumi.Gcp.Tags
     public partial class TagKey : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Output only. Creation time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-        /// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// Output only. Creation time.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -107,8 +107,8 @@ namespace Pulumi.Gcp.Tags
         public Output<string> ShortName { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Update time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
-        /// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// Output only. Update time.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -208,8 +208,8 @@ namespace Pulumi.Gcp.Tags
     public sealed class TagKeyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. Creation time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-        /// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// Output only. Creation time.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -267,8 +267,8 @@ namespace Pulumi.Gcp.Tags
         public Input<string>? ShortName { get; set; }
 
         /// <summary>
-        /// Output only. Update time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
-        /// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// Output only. Update time.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

@@ -32,6 +32,8 @@ public final class ServiceTrafficStatusArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+     * (Optional)
      * Revision to which to send this portion of traffic, if traffic allocation is by revision.
      * 
      */
@@ -39,7 +41,9 @@ public final class ServiceTrafficStatusArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> revision;
 
     /**
-     * @return Revision to which to send this portion of traffic, if traffic allocation is by revision.
+     * @return The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+     * (Optional)
+     * Revision to which to send this portion of traffic, if traffic allocation is by revision.
      * 
      */
     public Optional<Output<String>> revision() {
@@ -78,9 +82,17 @@ public final class ServiceTrafficStatusArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * Displays the target URI.
+     * 
+     */
     @Import(name="uri")
     private @Nullable Output<String> uri;
 
+    /**
+     * @return Displays the target URI.
+     * 
+     */
     public Optional<Output<String>> uri() {
         return Optional.ofNullable(this.uri);
     }
@@ -135,7 +147,9 @@ public final class ServiceTrafficStatusArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param revision Revision to which to send this portion of traffic, if traffic allocation is by revision.
+         * @param revision The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+         * (Optional)
+         * Revision to which to send this portion of traffic, if traffic allocation is by revision.
          * 
          * @return builder
          * 
@@ -146,7 +160,9 @@ public final class ServiceTrafficStatusArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param revision Revision to which to send this portion of traffic, if traffic allocation is by revision.
+         * @param revision The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+         * (Optional)
+         * Revision to which to send this portion of traffic, if traffic allocation is by revision.
          * 
          * @return builder
          * 
@@ -199,11 +215,23 @@ public final class ServiceTrafficStatusArgs extends com.pulumi.resources.Resourc
             return type(Output.of(type));
         }
 
+        /**
+         * @param uri Displays the target URI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder uri(@Nullable Output<String> uri) {
             $.uri = uri;
             return this;
         }
 
+        /**
+         * @param uri Displays the target URI.
+         * 
+         * @return builder
+         * 
+         */
         public Builder uri(String uri) {
             return uri(Output.of(uri));
         }

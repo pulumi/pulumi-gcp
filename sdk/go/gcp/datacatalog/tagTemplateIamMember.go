@@ -38,7 +38,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 //				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
+//					{
 //						Role: "roles/viewer",
 //						Members: []string{
 //							"user:jane@example.com",
@@ -51,7 +51,7 @@ import (
 //			}
 //			_, err = datacatalog.NewTagTemplateIamPolicy(ctx, "policy", &datacatalog.TagTemplateIamPolicyArgs{
 //				TagTemplate: pulumi.Any(google_data_catalog_tag_template.Basic_tag_template.Name),
-//				PolicyData:  pulumi.String(admin.PolicyData),
+//				PolicyData:  *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

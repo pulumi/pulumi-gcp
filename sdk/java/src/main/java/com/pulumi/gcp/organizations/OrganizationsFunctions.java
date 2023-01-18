@@ -451,21 +451,201 @@ public final class OrganizationsFunctions {
     public static CompletableFuture<GetBillingAccountResult> getBillingAccountPlain(GetBillingAccountPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:organizations/getBillingAccount:getBillingAccount", TypeShape.of(GetBillingAccountResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = OrganizationsFunctions.getClientConfig();
+     * 
+     *         ctx.export(&#34;project&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()));
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetClientConfigResult> getClientConfig() {
         return getClientConfig(InvokeArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = OrganizationsFunctions.getClientConfig();
+     * 
+     *         ctx.export(&#34;project&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()));
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetClientConfigResult> getClientConfigPlain() {
         return getClientConfigPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = OrganizationsFunctions.getClientConfig();
+     * 
+     *         ctx.export(&#34;project&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()));
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetClientConfigResult> getClientConfig(InvokeArgs args) {
         return getClientConfig(args, InvokeOptions.Empty);
     }
+    /**
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = OrganizationsFunctions.getClientConfig();
+     * 
+     *         ctx.export(&#34;project&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()));
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetClientConfigResult> getClientConfigPlain(InvokeArgs args) {
         return getClientConfigPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = OrganizationsFunctions.getClientConfig();
+     * 
+     *         ctx.export(&#34;project&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()));
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetClientConfigResult> getClientConfig(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:organizations/getClientConfig:getClientConfig", TypeShape.of(GetClientConfigResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = OrganizationsFunctions.getClientConfig();
+     * 
+     *         ctx.export(&#34;project&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()));
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetClientConfigResult> getClientConfigPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:organizations/getClientConfig:getClientConfig", TypeShape.of(GetClientConfigResult.class), args, Utilities.withVersion(options));
     }
@@ -483,6 +663,33 @@ public final class OrganizationsFunctions {
      * receive an error otherwise. The provider uses this scope by default.
      * 
      * ## Example Usage
+     * ### Exporting An Email
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+     * 
+     *         ctx.export(&#34;my-email&#34;, me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfo() {
@@ -502,6 +709,33 @@ public final class OrganizationsFunctions {
      * receive an error otherwise. The provider uses this scope by default.
      * 
      * ## Example Usage
+     * ### Exporting An Email
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+     * 
+     *         ctx.export(&#34;my-email&#34;, me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfoPlain() {
@@ -521,6 +755,33 @@ public final class OrganizationsFunctions {
      * receive an error otherwise. The provider uses this scope by default.
      * 
      * ## Example Usage
+     * ### Exporting An Email
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+     * 
+     *         ctx.export(&#34;my-email&#34;, me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfo(InvokeArgs args) {
@@ -540,6 +801,33 @@ public final class OrganizationsFunctions {
      * receive an error otherwise. The provider uses this scope by default.
      * 
      * ## Example Usage
+     * ### Exporting An Email
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+     * 
+     *         ctx.export(&#34;my-email&#34;, me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfoPlain(InvokeArgs args) {
@@ -559,6 +847,33 @@ public final class OrganizationsFunctions {
      * receive an error otherwise. The provider uses this scope by default.
      * 
      * ## Example Usage
+     * ### Exporting An Email
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+     * 
+     *         ctx.export(&#34;my-email&#34;, me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfo(InvokeArgs args, InvokeOptions options) {
@@ -578,6 +893,33 @@ public final class OrganizationsFunctions {
      * receive an error otherwise. The provider uses this scope by default.
      * 
      * ## Example Usage
+     * ### Exporting An Email
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+     * 
+     *         ctx.export(&#34;my-email&#34;, me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfoPlain(InvokeArgs args, InvokeOptions options) {

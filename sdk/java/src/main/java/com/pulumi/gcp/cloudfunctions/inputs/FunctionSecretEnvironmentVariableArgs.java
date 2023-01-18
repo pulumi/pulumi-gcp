@@ -61,14 +61,14 @@ public final class FunctionSecretEnvironmentVariableArgs extends com.pulumi.reso
     }
 
     /**
-     * Version of the secret (version number or the string &#34;latest&#34;). It is preferable to use &#34;latest&#34; version with secret volumes as secret value changes are reflected immediately.
+     * Version of the secret (version number or the string &#34;latest&#34;). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
      * 
      */
     @Import(name="version", required=true)
     private Output<String> version;
 
     /**
-     * @return Version of the secret (version number or the string &#34;latest&#34;). It is preferable to use &#34;latest&#34; version with secret volumes as secret value changes are reflected immediately.
+     * @return Version of the secret (version number or the string &#34;latest&#34;). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
      * 
      */
     public Output<String> version() {
@@ -166,7 +166,7 @@ public final class FunctionSecretEnvironmentVariableArgs extends com.pulumi.reso
         }
 
         /**
-         * @param version Version of the secret (version number or the string &#34;latest&#34;). It is preferable to use &#34;latest&#34; version with secret volumes as secret value changes are reflected immediately.
+         * @param version Version of the secret (version number or the string &#34;latest&#34;). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class FunctionSecretEnvironmentVariableArgs extends com.pulumi.reso
         }
 
         /**
-         * @param version Version of the secret (version number or the string &#34;latest&#34;). It is preferable to use &#34;latest&#34; version with secret volumes as secret value changes are reflected immediately.
+         * @param version Version of the secret (version number or the string &#34;latest&#34;). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
          * 
          * @return builder
          * 

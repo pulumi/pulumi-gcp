@@ -11,7 +11,6 @@ import (
 )
 
 type FunctionBuildConfig struct {
-	// -
 	// The Cloud Build name of the latest successful
 	// deployment of the function.
 	Build *string `pulumi:"build"`
@@ -23,7 +22,7 @@ type FunctionBuildConfig struct {
 	// will try to use function named "function". For Node.js this is name of a
 	// function exported by the module specified in source_location.
 	EntryPoint *string `pulumi:"entryPoint"`
-	// Environment variables that shall be available during function execution.
+	// User-provided build-time environment variables for the function.
 	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
 	// The runtime in which to run the function. Required when deploying a new
 	// function, optional when updating an existing function.
@@ -47,7 +46,6 @@ type FunctionBuildConfigInput interface {
 }
 
 type FunctionBuildConfigArgs struct {
-	// -
 	// The Cloud Build name of the latest successful
 	// deployment of the function.
 	Build pulumi.StringPtrInput `pulumi:"build"`
@@ -59,7 +57,7 @@ type FunctionBuildConfigArgs struct {
 	// will try to use function named "function". For Node.js this is name of a
 	// function exported by the module specified in source_location.
 	EntryPoint pulumi.StringPtrInput `pulumi:"entryPoint"`
-	// Environment variables that shall be available during function execution.
+	// User-provided build-time environment variables for the function.
 	EnvironmentVariables pulumi.StringMapInput `pulumi:"environmentVariables"`
 	// The runtime in which to run the function. Required when deploying a new
 	// function, optional when updating an existing function.
@@ -148,7 +146,6 @@ func (o FunctionBuildConfigOutput) ToFunctionBuildConfigPtrOutputWithContext(ctx
 	}).(FunctionBuildConfigPtrOutput)
 }
 
-// -
 // The Cloud Build name of the latest successful
 // deployment of the function.
 func (o FunctionBuildConfigOutput) Build() pulumi.StringPtrOutput {
@@ -169,7 +166,7 @@ func (o FunctionBuildConfigOutput) EntryPoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionBuildConfig) *string { return v.EntryPoint }).(pulumi.StringPtrOutput)
 }
 
-// Environment variables that shall be available during function execution.
+// User-provided build-time environment variables for the function.
 func (o FunctionBuildConfigOutput) EnvironmentVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v FunctionBuildConfig) map[string]string { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
 }
@@ -215,7 +212,6 @@ func (o FunctionBuildConfigPtrOutput) Elem() FunctionBuildConfigOutput {
 	}).(FunctionBuildConfigOutput)
 }
 
-// -
 // The Cloud Build name of the latest successful
 // deployment of the function.
 func (o FunctionBuildConfigPtrOutput) Build() pulumi.StringPtrOutput {
@@ -251,7 +247,7 @@ func (o FunctionBuildConfigPtrOutput) EntryPoint() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Environment variables that shall be available during function execution.
+// User-provided build-time environment variables for the function.
 func (o FunctionBuildConfigPtrOutput) EnvironmentVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *FunctionBuildConfig) map[string]string {
 		if v == nil {
@@ -467,7 +463,8 @@ type FunctionBuildConfigSourceRepoSource struct {
 	// Only trigger a build if the revision regex does
 	// NOT match the revision regex.
 	InvertRegex *bool `pulumi:"invertRegex"`
-	// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+	// ID of the project that owns the Cloud Source Repository. If omitted, the
+	// project ID requesting the build is assumed.
 	ProjectId *string `pulumi:"projectId"`
 	// Name of the Cloud Source Repository.
 	RepoName *string `pulumi:"repoName"`
@@ -496,7 +493,8 @@ type FunctionBuildConfigSourceRepoSourceArgs struct {
 	// Only trigger a build if the revision regex does
 	// NOT match the revision regex.
 	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
-	// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+	// ID of the project that owns the Cloud Source Repository. If omitted, the
+	// project ID requesting the build is assumed.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 	// Name of the Cloud Source Repository.
 	RepoName pulumi.StringPtrInput `pulumi:"repoName"`
@@ -602,7 +600,8 @@ func (o FunctionBuildConfigSourceRepoSourceOutput) InvertRegex() pulumi.BoolPtrO
 	return o.ApplyT(func(v FunctionBuildConfigSourceRepoSource) *bool { return v.InvertRegex }).(pulumi.BoolPtrOutput)
 }
 
-// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+// ID of the project that owns the Cloud Source Repository. If omitted, the
+// project ID requesting the build is assumed.
 func (o FunctionBuildConfigSourceRepoSourceOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionBuildConfigSourceRepoSource) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
@@ -682,7 +681,8 @@ func (o FunctionBuildConfigSourceRepoSourcePtrOutput) InvertRegex() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+// ID of the project that owns the Cloud Source Repository. If omitted, the
+// project ID requesting the build is assumed.
 func (o FunctionBuildConfigSourceRepoSourcePtrOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FunctionBuildConfigSourceRepoSource) *string {
 		if v == nil {
@@ -906,7 +906,6 @@ type FunctionEventTrigger struct {
 	RetryPolicy *string `pulumi:"retryPolicy"`
 	// The email of the service account for this function.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
-	// -
 	// Output only. The resource name of the Eventarc trigger.
 	Trigger *string `pulumi:"trigger"`
 	// The region that the trigger will be in. The trigger will only receive
@@ -942,7 +941,6 @@ type FunctionEventTriggerArgs struct {
 	RetryPolicy pulumi.StringPtrInput `pulumi:"retryPolicy"`
 	// The email of the service account for this function.
 	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
-	// -
 	// Output only. The resource name of the Eventarc trigger.
 	Trigger pulumi.StringPtrInput `pulumi:"trigger"`
 	// The region that the trigger will be in. The trigger will only receive
@@ -1058,7 +1056,6 @@ func (o FunctionEventTriggerOutput) ServiceAccountEmail() pulumi.StringPtrOutput
 	return o.ApplyT(func(v FunctionEventTrigger) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
 }
 
-// -
 // Output only. The resource name of the Eventarc trigger.
 func (o FunctionEventTriggerOutput) Trigger() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionEventTrigger) *string { return v.Trigger }).(pulumi.StringPtrOutput)
@@ -1150,7 +1147,6 @@ func (o FunctionEventTriggerPtrOutput) ServiceAccountEmail() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // Output only. The resource name of the Eventarc trigger.
 func (o FunctionEventTriggerPtrOutput) Trigger() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FunctionEventTrigger) *string {
@@ -1647,7 +1643,6 @@ type FunctionServiceConfig struct {
 	AvailableMemory *string `pulumi:"availableMemory"`
 	// Environment variables that shall be available during function execution.
 	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
-	// -
 	// URIs of the Service deployed
 	GcfUri *string `pulumi:"gcfUri"`
 	// Available ingress settings. Defaults to "ALLOW_ALL" if unspecified.
@@ -1676,7 +1671,6 @@ type FunctionServiceConfig struct {
 	// can be terminated if the function is not completed at the end of the
 	// timeout period. Defaults to 60 seconds.
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
-	// -
 	// URI of the Service deployed.
 	Uri *string `pulumi:"uri"`
 	// The Serverless VPC Access connector that this cloud function can connect to.
@@ -1708,7 +1702,6 @@ type FunctionServiceConfigArgs struct {
 	AvailableMemory pulumi.StringPtrInput `pulumi:"availableMemory"`
 	// Environment variables that shall be available during function execution.
 	EnvironmentVariables pulumi.StringMapInput `pulumi:"environmentVariables"`
-	// -
 	// URIs of the Service deployed
 	GcfUri pulumi.StringPtrInput `pulumi:"gcfUri"`
 	// Available ingress settings. Defaults to "ALLOW_ALL" if unspecified.
@@ -1737,7 +1730,6 @@ type FunctionServiceConfigArgs struct {
 	// can be terminated if the function is not completed at the end of the
 	// timeout period. Defaults to 60 seconds.
 	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
-	// -
 	// URI of the Service deployed.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
 	// The Serverless VPC Access connector that this cloud function can connect to.
@@ -1846,7 +1838,6 @@ func (o FunctionServiceConfigOutput) EnvironmentVariables() pulumi.StringMapOutp
 	return o.ApplyT(func(v FunctionServiceConfig) map[string]string { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
 }
 
-// -
 // URIs of the Service deployed
 func (o FunctionServiceConfigOutput) GcfUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionServiceConfig) *string { return v.GcfUri }).(pulumi.StringPtrOutput)
@@ -1907,7 +1898,6 @@ func (o FunctionServiceConfigOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FunctionServiceConfig) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
 }
 
-// -
 // URI of the Service deployed.
 func (o FunctionServiceConfigOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionServiceConfig) *string { return v.Uri }).(pulumi.StringPtrOutput)
@@ -1990,7 +1980,6 @@ func (o FunctionServiceConfigPtrOutput) EnvironmentVariables() pulumi.StringMapO
 	}).(pulumi.StringMapOutput)
 }
 
-// -
 // URIs of the Service deployed
 func (o FunctionServiceConfigPtrOutput) GcfUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FunctionServiceConfig) *string {
@@ -2099,7 +2088,6 @@ func (o FunctionServiceConfigPtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// -
 // URI of the Service deployed.
 func (o FunctionServiceConfigPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FunctionServiceConfig) *string {
@@ -2138,7 +2126,7 @@ type FunctionServiceConfigSecretEnvironmentVariable struct {
 	ProjectId string `pulumi:"projectId"`
 	// Name of the secret in secret manager (not the full resource name).
 	Secret string `pulumi:"secret"`
-	// Version of the secret (version number or the string 'latest'). It is preferable to use latest version with secret volumes as secret value changes are reflected immediately.
+	// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
 	Version string `pulumi:"version"`
 }
 
@@ -2160,7 +2148,7 @@ type FunctionServiceConfigSecretEnvironmentVariableArgs struct {
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 	// Name of the secret in secret manager (not the full resource name).
 	Secret pulumi.StringInput `pulumi:"secret"`
-	// Version of the secret (version number or the string 'latest'). It is preferable to use latest version with secret volumes as secret value changes are reflected immediately.
+	// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -2230,7 +2218,7 @@ func (o FunctionServiceConfigSecretEnvironmentVariableOutput) Secret() pulumi.St
 	return o.ApplyT(func(v FunctionServiceConfigSecretEnvironmentVariable) string { return v.Secret }).(pulumi.StringOutput)
 }
 
-// Version of the secret (version number or the string 'latest'). It is preferable to use latest version with secret volumes as secret value changes are reflected immediately.
+// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
 func (o FunctionServiceConfigSecretEnvironmentVariableOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionServiceConfigSecretEnvironmentVariable) string { return v.Version }).(pulumi.StringOutput)
 }

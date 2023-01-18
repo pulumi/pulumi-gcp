@@ -21,12 +21,12 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResource {
      */
     private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExec exec;
     /**
-     * @return A remote or local source.
+     * @return File resource
      * 
      */
     private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceFile file;
     /**
-     * @return Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+     * @return Required. The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
      * 
      */
     private String id;
@@ -50,14 +50,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResource {
         return Optional.ofNullable(this.exec);
     }
     /**
-     * @return A remote or local source.
+     * @return File resource
      * 
      */
     public Optional<OsPolicyAssignmentOsPolicyResourceGroupResourceFile> file() {
         return Optional.ofNullable(this.file);
     }
     /**
-     * @return Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+     * @return Required. The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
      * 
      */
     public String id() {

@@ -13,10 +13,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
     public sealed class GuestPoliciesPackageRepositoryGooGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-        /// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-        /// This means that requests to create multiple recipes with the same name and version are rejected since they
-        /// could potentially have conflicting assignments.
+        /// The name of the repository.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

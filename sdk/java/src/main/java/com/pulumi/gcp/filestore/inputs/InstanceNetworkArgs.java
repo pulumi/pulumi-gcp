@@ -40,7 +40,6 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * - 
      * A list of IPv4 or IPv6 addresses.
      * 
      */
@@ -48,8 +47,7 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<List<String>> ipAddresses;
 
     /**
-     * @return -
-     * A list of IPv4 or IPv6 addresses.
+     * @return A list of IPv4 or IPv6 addresses.
      * 
      */
     public Optional<Output<List<String>>> ipAddresses() {
@@ -167,8 +165,7 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ipAddresses -
-         * A list of IPv4 or IPv6 addresses.
+         * @param ipAddresses A list of IPv4 or IPv6 addresses.
          * 
          * @return builder
          * 
@@ -179,8 +176,7 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ipAddresses -
-         * A list of IPv4 or IPv6 addresses.
+         * @param ipAddresses A list of IPv4 or IPv6 addresses.
          * 
          * @return builder
          * 
@@ -190,8 +186,7 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ipAddresses -
-         * A list of IPv4 or IPv6 addresses.
+         * @param ipAddresses A list of IPv4 or IPv6 addresses.
          * 
          * @return builder
          * 

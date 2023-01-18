@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AlertPolicyCreationRecord {
+    /**
+     * @return When the change occurred.
+     * 
+     */
     private @Nullable String mutateTime;
+    /**
+     * @return The email address of the user making the change.
+     * 
+     */
     private @Nullable String mutatedBy;
 
     private AlertPolicyCreationRecord() {}
+    /**
+     * @return When the change occurred.
+     * 
+     */
     public Optional<String> mutateTime() {
         return Optional.ofNullable(this.mutateTime);
     }
+    /**
+     * @return The email address of the user making the change.
+     * 
+     */
     public Optional<String> mutatedBy() {
         return Optional.ofNullable(this.mutatedBy);
     }

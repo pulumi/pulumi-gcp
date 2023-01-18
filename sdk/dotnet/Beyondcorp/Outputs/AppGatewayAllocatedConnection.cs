@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Beyondcorp.Outputs
     [OutputType]
     public sealed class AppGatewayAllocatedConnection
     {
+        /// <summary>
+        /// The ingress port of an allocated connection.
+        /// </summary>
         public readonly int? IngressPort;
+        /// <summary>
+        /// The PSC uri of an allocated connection.
+        /// </summary>
         public readonly string? PscUri;
 
         [OutputConstructor]

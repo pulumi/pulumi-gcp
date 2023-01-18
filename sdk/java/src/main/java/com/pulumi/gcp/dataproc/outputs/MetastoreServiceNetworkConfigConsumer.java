@@ -12,8 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class MetastoreServiceNetworkConfigConsumer {
     /**
-     * @return -
-     * The URI of the endpoint used to access the metastore service.
+     * @return The URI of the endpoint used to access the metastore service.
      * 
      */
     private @Nullable String endpointUri;
@@ -28,8 +27,7 @@ public final class MetastoreServiceNetworkConfigConsumer {
 
     private MetastoreServiceNetworkConfigConsumer() {}
     /**
-     * @return -
-     * The URI of the endpoint used to access the metastore service.
+     * @return The URI of the endpoint used to access the metastore service.
      * 
      */
     public Optional<String> endpointUri() {

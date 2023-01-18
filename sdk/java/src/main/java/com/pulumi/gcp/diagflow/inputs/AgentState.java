@@ -65,16 +65,16 @@ public final class AgentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The URI of the agent&#39;s avatar as returned from the API. Output only. To provide an image URL for the agent avatar, the
-     * [avatarUri] field can be used.
+     * The URI of the agent&#39;s avatar as returned from the API. Output only. To provide an image URL for the agent avatar,
+     * the [avatarUri] field can be used.
      * 
      */
     @Import(name="avatarUriBackend")
     private @Nullable Output<String> avatarUriBackend;
 
     /**
-     * @return The URI of the agent&#39;s avatar as returned from the API. Output only. To provide an image URL for the agent avatar, the
-     * [avatarUri] field can be used.
+     * @return The URI of the agent&#39;s avatar as returned from the API. Output only. To provide an image URL for the agent avatar,
+     * the [avatarUri] field can be used.
      * 
      */
     public Optional<Output<String>> avatarUriBackend() {
@@ -360,8 +360,8 @@ public final class AgentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param avatarUriBackend The URI of the agent&#39;s avatar as returned from the API. Output only. To provide an image URL for the agent avatar, the
-         * [avatarUri] field can be used.
+         * @param avatarUriBackend The URI of the agent&#39;s avatar as returned from the API. Output only. To provide an image URL for the agent avatar,
+         * the [avatarUri] field can be used.
          * 
          * @return builder
          * 
@@ -372,8 +372,8 @@ public final class AgentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param avatarUriBackend The URI of the agent&#39;s avatar as returned from the API. Output only. To provide an image URL for the agent avatar, the
-         * [avatarUri] field can be used.
+         * @param avatarUriBackend The URI of the agent&#39;s avatar as returned from the API. Output only. To provide an image URL for the agent avatar,
+         * the [avatarUri] field can be used.
          * 
          * @return builder
          * 

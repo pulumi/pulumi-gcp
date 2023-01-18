@@ -14,12 +14,10 @@ namespace Pulumi.Gcp.DataCatalog.Outputs
     public sealed class EntryGcsFilesetSpecSampleGcsFileSpec
     {
         /// <summary>
-        /// -
         /// The full file path
         /// </summary>
         public readonly string? FilePath;
         /// <summary>
-        /// -
         /// The size of the file, in bytes.
         /// </summary>
         public readonly int? SizeBytes;

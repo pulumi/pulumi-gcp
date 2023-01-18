@@ -37,17 +37,33 @@ type GetWebAppConfigArgs struct {
 
 // A collection of values returned by getWebAppConfig.
 type GetWebAppConfigResult struct {
-	ApiKey      string `pulumi:"apiKey"`
-	AuthDomain  string `pulumi:"authDomain"`
+	// The API key associated with the web App.
+	ApiKey string `pulumi:"apiKey"`
+	// The domain Firebase Auth configures for OAuth redirects, in the format:
+	// projectId.firebaseapp.com
+	AuthDomain string `pulumi:"authDomain"`
+	// The default Firebase Realtime Database URL.
 	DatabaseUrl string `pulumi:"databaseUrl"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                string  `pulumi:"id"`
-	LocationId        string  `pulumi:"locationId"`
-	MeasurementId     string  `pulumi:"measurementId"`
+	Id string `pulumi:"id"`
+	// The ID of the project's default GCP resource location. The location is one of the available GCP resource
+	// locations.
+	// This field is omitted if the default GCP resource location has not been finalized yet. To set your project's
+	// default GCP resource location, call defaultLocation.finalize after you add Firebase services to your project.
+	LocationId string `pulumi:"locationId"`
+	// The unique Google-assigned identifier of the Google Analytics web stream associated with the Firebase Web App.
+	// Firebase SDKs use this ID to interact with Google Analytics APIs.
+	// This field is only present if the App is linked to a web stream in a Google Analytics App + Web property.
+	// Learn more about this ID and Google Analytics web streams in the Analytics documentation.
+	// To generate a measurementId and link the Web App with a Google Analytics web stream,
+	// call projects.addGoogleAnalytics.
+	MeasurementId string `pulumi:"measurementId"`
+	// The sender ID for use with Firebase Cloud Messaging.
 	MessagingSenderId string  `pulumi:"messagingSenderId"`
 	Project           *string `pulumi:"project"`
-	StorageBucket     string  `pulumi:"storageBucket"`
-	WebAppId          string  `pulumi:"webAppId"`
+	// The default Cloud Storage for Firebase storage bucket name.
+	StorageBucket string `pulumi:"storageBucket"`
+	WebAppId      string `pulumi:"webAppId"`
 }
 
 func GetWebAppConfigOutput(ctx *pulumi.Context, args GetWebAppConfigOutputArgs, opts ...pulumi.InvokeOption) GetWebAppConfigResultOutput {
@@ -91,14 +107,18 @@ func (o GetWebAppConfigResultOutput) ToGetWebAppConfigResultOutputWithContext(ct
 	return o
 }
 
+// The API key associated with the web App.
 func (o GetWebAppConfigResultOutput) ApiKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebAppConfigResult) string { return v.ApiKey }).(pulumi.StringOutput)
 }
 
+// The domain Firebase Auth configures for OAuth redirects, in the format:
+// projectId.firebaseapp.com
 func (o GetWebAppConfigResultOutput) AuthDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebAppConfigResult) string { return v.AuthDomain }).(pulumi.StringOutput)
 }
 
+// The default Firebase Realtime Database URL.
 func (o GetWebAppConfigResultOutput) DatabaseUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebAppConfigResult) string { return v.DatabaseUrl }).(pulumi.StringOutput)
 }
@@ -108,14 +128,25 @@ func (o GetWebAppConfigResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebAppConfigResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The ID of the project's default GCP resource location. The location is one of the available GCP resource
+// locations.
+// This field is omitted if the default GCP resource location has not been finalized yet. To set your project's
+// default GCP resource location, call defaultLocation.finalize after you add Firebase services to your project.
 func (o GetWebAppConfigResultOutput) LocationId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebAppConfigResult) string { return v.LocationId }).(pulumi.StringOutput)
 }
 
+// The unique Google-assigned identifier of the Google Analytics web stream associated with the Firebase Web App.
+// Firebase SDKs use this ID to interact with Google Analytics APIs.
+// This field is only present if the App is linked to a web stream in a Google Analytics App + Web property.
+// Learn more about this ID and Google Analytics web streams in the Analytics documentation.
+// To generate a measurementId and link the Web App with a Google Analytics web stream,
+// call projects.addGoogleAnalytics.
 func (o GetWebAppConfigResultOutput) MeasurementId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebAppConfigResult) string { return v.MeasurementId }).(pulumi.StringOutput)
 }
 
+// The sender ID for use with Firebase Cloud Messaging.
 func (o GetWebAppConfigResultOutput) MessagingSenderId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebAppConfigResult) string { return v.MessagingSenderId }).(pulumi.StringOutput)
 }
@@ -124,6 +155,7 @@ func (o GetWebAppConfigResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWebAppConfigResult) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
+// The default Cloud Storage for Firebase storage bucket name.
 func (o GetWebAppConfigResultOutput) StorageBucket() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebAppConfigResult) string { return v.StorageBucket }).(pulumi.StringOutput)
 }

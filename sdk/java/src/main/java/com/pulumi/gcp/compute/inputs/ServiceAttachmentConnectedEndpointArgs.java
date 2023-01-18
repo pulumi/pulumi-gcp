@@ -15,16 +15,34 @@ public final class ServiceAttachmentConnectedEndpointArgs extends com.pulumi.res
 
     public static final ServiceAttachmentConnectedEndpointArgs Empty = new ServiceAttachmentConnectedEndpointArgs();
 
+    /**
+     * The URL of the consumer forwarding rule.
+     * 
+     */
     @Import(name="endpoint")
     private @Nullable Output<String> endpoint;
 
+    /**
+     * @return The URL of the consumer forwarding rule.
+     * 
+     */
     public Optional<Output<String>> endpoint() {
         return Optional.ofNullable(this.endpoint);
     }
 
+    /**
+     * The status of the connection from the consumer forwarding rule to
+     * this service attachment.
+     * 
+     */
     @Import(name="status")
     private @Nullable Output<String> status;
 
+    /**
+     * @return The status of the connection from the consumer forwarding rule to
+     * this service attachment.
+     * 
+     */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
@@ -54,20 +72,46 @@ public final class ServiceAttachmentConnectedEndpointArgs extends com.pulumi.res
             $ = new ServiceAttachmentConnectedEndpointArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param endpoint The URL of the consumer forwarding rule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpoint(@Nullable Output<String> endpoint) {
             $.endpoint = endpoint;
             return this;
         }
 
+        /**
+         * @param endpoint The URL of the consumer forwarding rule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpoint(String endpoint) {
             return endpoint(Output.of(endpoint));
         }
 
+        /**
+         * @param status The status of the connection from the consumer forwarding rule to
+         * this service attachment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status The status of the connection from the consumer forwarding rule to
+         * this service attachment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(String status) {
             return status(Output.of(status));
         }

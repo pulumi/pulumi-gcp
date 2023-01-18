@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.BigQuery.Inputs
     public sealed class DatasetAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dataset this entry applies to
+        /// Grants all resources of particular types in a particular dataset read access to the current dataset.
         /// Structure is documented below.
         /// </summary>
         [Input("dataset")]

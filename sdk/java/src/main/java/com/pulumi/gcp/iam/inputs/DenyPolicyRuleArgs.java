@@ -34,16 +34,14 @@ public final class DenyPolicyRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Description of the expression. This is a longer text which describes the expression,
-     * e.g. when hovered over it in a UI.
+     * The description of the rule.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the expression. This is a longer text which describes the expression,
-     * e.g. when hovered over it in a UI.
+     * @return The description of the rule.
      * 
      */
     public Optional<Output<String>> description() {
@@ -99,8 +97,7 @@ public final class DenyPolicyRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description Description of the expression. This is a longer text which describes the expression,
-         * e.g. when hovered over it in a UI.
+         * @param description The description of the rule.
          * 
          * @return builder
          * 
@@ -111,8 +108,7 @@ public final class DenyPolicyRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description Description of the expression. This is a longer text which describes the expression,
-         * e.g. when hovered over it in a UI.
+         * @param description The description of the rule.
          * 
          * @return builder
          * 

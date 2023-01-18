@@ -433,6 +433,12 @@ namespace Pulumi.Gcp.NetworkServices
     public partial class EdgeCacheService : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// A human-readable description of the hostRule.
+        /// (Optional)
+        /// A human-readable description of the resource.
+        /// (Optional)
+        /// A human-readable description of the routeRule.
+        /// (Optional)
         /// A human-readable description of the resource.
         /// </summary>
         [Output("description")]
@@ -491,7 +497,9 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<Outputs.EdgeCacheServiceLogConfig?> LogConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+        /// Name of the resource; provided by the client when the resource is created.
+        /// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+        /// and all following characters must be a dash, underscore, letter or digit.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -572,6 +580,12 @@ namespace Pulumi.Gcp.NetworkServices
     public sealed class EdgeCacheServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// A human-readable description of the hostRule.
+        /// (Optional)
+        /// A human-readable description of the resource.
+        /// (Optional)
+        /// A human-readable description of the routeRule.
+        /// (Optional)
         /// A human-readable description of the resource.
         /// </summary>
         [Input("description")]
@@ -630,7 +644,9 @@ namespace Pulumi.Gcp.NetworkServices
         public Input<Inputs.EdgeCacheServiceLogConfigArgs>? LogConfig { get; set; }
 
         /// <summary>
-        /// The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+        /// Name of the resource; provided by the client when the resource is created.
+        /// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+        /// and all following characters must be a dash, underscore, letter or digit.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -673,6 +689,12 @@ namespace Pulumi.Gcp.NetworkServices
     public sealed class EdgeCacheServiceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// A human-readable description of the hostRule.
+        /// (Optional)
+        /// A human-readable description of the resource.
+        /// (Optional)
+        /// A human-readable description of the routeRule.
+        /// (Optional)
         /// A human-readable description of the resource.
         /// </summary>
         [Input("description")]
@@ -755,7 +777,9 @@ namespace Pulumi.Gcp.NetworkServices
         public Input<Inputs.EdgeCacheServiceLogConfigGetArgs>? LogConfig { get; set; }
 
         /// <summary>
-        /// The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+        /// Name of the resource; provided by the client when the resource is created.
+        /// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+        /// and all following characters must be a dash, underscore, letter or digit.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

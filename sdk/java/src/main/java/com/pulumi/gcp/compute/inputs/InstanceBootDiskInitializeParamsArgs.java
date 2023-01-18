@@ -84,14 +84,14 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
     }
 
     /**
-     * The type of reservation from which this instance can consume resources.
+     * The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of reservation from which this instance can consume resources.
+     * @return The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
      * 
      */
     public Optional<Output<String>> type() {
@@ -209,7 +209,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param type The type of reservation from which this instance can consume resources.
+         * @param type The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param type The type of reservation from which this instance can consume resources.
+         * @param type The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
          * 
          * @return builder
          * 

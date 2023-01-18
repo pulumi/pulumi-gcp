@@ -37,11 +37,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const example = new gcp.compute.Image("example", {
- *     rawDisk: {
- *         source: "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
- *     },
- * });
+ * const example = new gcp.compute.Image("example", {rawDisk: {
+ *     source: "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
+ * }});
  * ```
  * ### Image Guest Os
  *
@@ -109,7 +107,8 @@ export class Image extends pulumi.CustomResource {
     }
 
     /**
-     * Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
+     * Size of the image tar.gz archive stored in Google Cloud Storage (in
+     * bytes).
      */
     public /*out*/ readonly archiveSizeBytes!: pulumi.Output<number>;
     /**
@@ -148,7 +147,8 @@ export class Image extends pulumi.CustomResource {
      */
     public readonly imageEncryptionKey!: pulumi.Output<outputs.compute.ImageImageEncryptionKey | undefined>;
     /**
-     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * The fingerprint used for optimistic locking of this resource. Used
+     * internally during updates.
      */
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
     /**
@@ -269,7 +269,8 @@ export class Image extends pulumi.CustomResource {
  */
 export interface ImageState {
     /**
-     * Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
+     * Size of the image tar.gz archive stored in Google Cloud Storage (in
+     * bytes).
      */
     archiveSizeBytes?: pulumi.Input<number>;
     /**
@@ -308,7 +309,8 @@ export interface ImageState {
      */
     imageEncryptionKey?: pulumi.Input<inputs.compute.ImageImageEncryptionKey>;
     /**
-     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * The fingerprint used for optimistic locking of this resource. Used
+     * internally during updates.
      */
     labelFingerprint?: pulumi.Input<string>;
     /**

@@ -168,16 +168,6 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
      * provider should not be accepted.
      * The expression must output a boolean representing whether to allow the federation.
      * The following keywords may be referenced in the expressions:
-     * * `assertion`: JSON representing the authentication credential issued by the provider.
-     * * `google`: The Google attributes mapped from the assertion in the `attributeMappings`.
-     * `google.profile_photo` and `google.display_name` are not supported.
-     * * `attribute`: The custom attributes mapped from the assertion in the `attributeMappings`.
-     * The maximum length of the attribute condition expression is 4096 characters.
-     * If unspecified, all valid authentication credentials will be accepted.
-     * The following example shows how to only allow credentials with a mapped `google.groups` value of `admins`:
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
      */
     public readonly attributeCondition!: pulumi.Output<string | undefined>;
     /**
@@ -243,8 +233,8 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Output only. The resource name of the provider. Format:
-     * 'locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}'
+     * Output only. The resource name of the provider.
+     * Format: `locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -264,9 +254,11 @@ export class WorkforcePoolProvider extends pulumi.CustomResource {
      */
     public readonly saml!: pulumi.Output<outputs.iam.WorkforcePoolProviderSaml | undefined>;
     /**
-     * The current state of the provider. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The provider is active and may be
-     * used to validate authentication credentials. * DELETED: The provider is soft-deleted. Soft-deleted providers are
-     * permanently deleted after approximately 30 days. You can restore a soft-deleted provider using
+     * The current state of the provider.
+     * * STATE_UNSPECIFIED: State unspecified.
+     * * ACTIVE: The provider is active and may be used to validate authentication credentials.
+     * * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently
+     * deleted after approximately 30 days. You can restore a soft-deleted provider using
      * [providers.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePoolProvider).
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
@@ -342,16 +334,6 @@ export interface WorkforcePoolProviderState {
      * provider should not be accepted.
      * The expression must output a boolean representing whether to allow the federation.
      * The following keywords may be referenced in the expressions:
-     * * `assertion`: JSON representing the authentication credential issued by the provider.
-     * * `google`: The Google attributes mapped from the assertion in the `attributeMappings`.
-     * `google.profile_photo` and `google.display_name` are not supported.
-     * * `attribute`: The custom attributes mapped from the assertion in the `attributeMappings`.
-     * The maximum length of the attribute condition expression is 4096 characters.
-     * If unspecified, all valid authentication credentials will be accepted.
-     * The following example shows how to only allow credentials with a mapped `google.groups` value of `admins`:
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
      */
     attributeCondition?: pulumi.Input<string>;
     /**
@@ -417,8 +399,8 @@ export interface WorkforcePoolProviderState {
      */
     location?: pulumi.Input<string>;
     /**
-     * Output only. The resource name of the provider. Format:
-     * 'locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}'
+     * Output only. The resource name of the provider.
+     * Format: `locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}`
      */
     name?: pulumi.Input<string>;
     /**
@@ -438,9 +420,11 @@ export interface WorkforcePoolProviderState {
      */
     saml?: pulumi.Input<inputs.iam.WorkforcePoolProviderSaml>;
     /**
-     * The current state of the provider. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The provider is active and may be
-     * used to validate authentication credentials. * DELETED: The provider is soft-deleted. Soft-deleted providers are
-     * permanently deleted after approximately 30 days. You can restore a soft-deleted provider using
+     * The current state of the provider.
+     * * STATE_UNSPECIFIED: State unspecified.
+     * * ACTIVE: The provider is active and may be used to validate authentication credentials.
+     * * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently
+     * deleted after approximately 30 days. You can restore a soft-deleted provider using
      * [providers.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePoolProvider).
      */
     state?: pulumi.Input<string>;
@@ -463,16 +447,6 @@ export interface WorkforcePoolProviderArgs {
      * provider should not be accepted.
      * The expression must output a boolean representing whether to allow the federation.
      * The following keywords may be referenced in the expressions:
-     * * `assertion`: JSON representing the authentication credential issued by the provider.
-     * * `google`: The Google attributes mapped from the assertion in the `attributeMappings`.
-     * `google.profile_photo` and `google.display_name` are not supported.
-     * * `attribute`: The custom attributes mapped from the assertion in the `attributeMappings`.
-     * The maximum length of the attribute condition expression is 4096 characters.
-     * If unspecified, all valid authentication credentials will be accepted.
-     * The following example shows how to only allow credentials with a mapped `google.groups` value of `admins`:
-     * ```typescript
-     * import * as pulumi from "@pulumi/pulumi";
-     * ```
      */
     attributeCondition?: pulumi.Input<string>;
     /**

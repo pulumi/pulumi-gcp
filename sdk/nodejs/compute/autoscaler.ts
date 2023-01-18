@@ -207,11 +207,17 @@ export class Autoscaler extends pulumi.CustomResource {
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
+     * A description of a scaling schedule.
+     * (Optional)
      * An optional description of this resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The identifier for this object. Format specified above.
+     * Name of the resource. The name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -224,9 +230,7 @@ export class Autoscaler extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * Fraction of backend capacity utilization (set in HTTP(s) load
-     * balancing configuration) that autoscaler should maintain. Must
-     * be a positive float value. If not defined, the default is 0.8.
+     * URL of the managed instance group that this autoscaler will scale.
      */
     public readonly target!: pulumi.Output<string>;
     /**
@@ -297,11 +301,17 @@ export interface AutoscalerState {
      */
     creationTimestamp?: pulumi.Input<string>;
     /**
+     * A description of a scaling schedule.
+     * (Optional)
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
     /**
-     * The identifier for this object. Format specified above.
+     * Name of the resource. The name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
     /**
@@ -314,9 +324,7 @@ export interface AutoscalerState {
      */
     selfLink?: pulumi.Input<string>;
     /**
-     * Fraction of backend capacity utilization (set in HTTP(s) load
-     * balancing configuration) that autoscaler should maintain. Must
-     * be a positive float value. If not defined, the default is 0.8.
+     * URL of the managed instance group that this autoscaler will scale.
      */
     target?: pulumi.Input<string>;
     /**
@@ -339,11 +347,17 @@ export interface AutoscalerArgs {
      */
     autoscalingPolicy: pulumi.Input<inputs.compute.AutoscalerAutoscalingPolicy>;
     /**
+     * A description of a scaling schedule.
+     * (Optional)
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
     /**
-     * The identifier for this object. Format specified above.
+     * Name of the resource. The name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
     /**
@@ -352,9 +366,7 @@ export interface AutoscalerArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * Fraction of backend capacity utilization (set in HTTP(s) load
-     * balancing configuration) that autoscaler should maintain. Must
-     * be a positive float value. If not defined, the default is 0.8.
+     * URL of the managed instance group that this autoscaler will scale.
      */
     target: pulumi.Input<string>;
     /**

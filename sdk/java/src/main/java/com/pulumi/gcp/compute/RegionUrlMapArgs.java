@@ -45,18 +45,26 @@ public final class RegionUrlMapArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A reference to a RegionBackendService resource. This will be used if
-     * none of the pathRules defined by this PathMatcher is matched by
-     * the URL&#39;s path portion.
+     * The full or partial URL of the defaultService resource to which traffic is directed if
+     * none of the hostRules match. If defaultRouteAction is additionally specified, advanced
+     * routing actions like URL Rewrites, etc. take effect prior to sending the request to the
+     * backend. However, if defaultService is specified, defaultRouteAction cannot contain any
+     * weightedBackendServices. Conversely, if routeAction specifies any
+     * weightedBackendServices, service must not be specified.  Only one of defaultService,
+     * defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set.
      * 
      */
     @Import(name="defaultService")
     private @Nullable Output<String> defaultService;
 
     /**
-     * @return A reference to a RegionBackendService resource. This will be used if
-     * none of the pathRules defined by this PathMatcher is matched by
-     * the URL&#39;s path portion.
+     * @return The full or partial URL of the defaultService resource to which traffic is directed if
+     * none of the hostRules match. If defaultRouteAction is additionally specified, advanced
+     * routing actions like URL Rewrites, etc. take effect prior to sending the request to the
+     * backend. However, if defaultService is specified, defaultRouteAction cannot contain any
+     * weightedBackendServices. Conversely, if routeAction specifies any
+     * weightedBackendServices, service must not be specified.  Only one of defaultService,
+     * defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set.
      * 
      */
     public Optional<Output<String>> defaultService() {
@@ -85,14 +93,16 @@ public final class RegionUrlMapArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of this test case.
+     * An optional description of this resource. Provide this property when
+     * you create the resource.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of this test case.
+     * @return An optional description of this resource. Provide this property when
+     * you create the resource.
      * 
      */
     public Optional<Output<String>> description() {
@@ -117,16 +127,26 @@ public final class RegionUrlMapArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the query parameter to match. The query parameter must exist in the
-     * request, in the absence of which the request match fails.
+     * Name of the resource. Provided by the client when the resource is
+     * created. The name must be 1-63 characters long, and comply with
+     * RFC1035. Specifically, the name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the query parameter to match. The query parameter must exist in the
-     * request, in the absence of which the request match fails.
+     * @return Name of the resource. Provided by the client when the resource is
+     * created. The name must be 1-63 characters long, and comply with
+     * RFC1035. Specifically, the name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      * 
      */
     public Optional<Output<String>> name() {
@@ -134,16 +154,16 @@ public final class RegionUrlMapArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the PathMatcher to use to match the path portion of
-     * the URL if the hostRule matches the URL&#39;s host portion.
+     * The list of named PathMatchers to use against the URL.
+     * Structure is documented below.
      * 
      */
     @Import(name="pathMatchers")
     private @Nullable Output<List<RegionUrlMapPathMatcherArgs>> pathMatchers;
 
     /**
-     * @return The name of the PathMatcher to use to match the path portion of
-     * the URL if the hostRule matches the URL&#39;s host portion.
+     * @return The list of named PathMatchers to use against the URL.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<RegionUrlMapPathMatcherArgs>>> pathMatchers() {
@@ -266,9 +286,13 @@ public final class RegionUrlMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultService A reference to a RegionBackendService resource. This will be used if
-         * none of the pathRules defined by this PathMatcher is matched by
-         * the URL&#39;s path portion.
+         * @param defaultService The full or partial URL of the defaultService resource to which traffic is directed if
+         * none of the hostRules match. If defaultRouteAction is additionally specified, advanced
+         * routing actions like URL Rewrites, etc. take effect prior to sending the request to the
+         * backend. However, if defaultService is specified, defaultRouteAction cannot contain any
+         * weightedBackendServices. Conversely, if routeAction specifies any
+         * weightedBackendServices, service must not be specified.  Only one of defaultService,
+         * defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set.
          * 
          * @return builder
          * 
@@ -279,9 +303,13 @@ public final class RegionUrlMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultService A reference to a RegionBackendService resource. This will be used if
-         * none of the pathRules defined by this PathMatcher is matched by
-         * the URL&#39;s path portion.
+         * @param defaultService The full or partial URL of the defaultService resource to which traffic is directed if
+         * none of the hostRules match. If defaultRouteAction is additionally specified, advanced
+         * routing actions like URL Rewrites, etc. take effect prior to sending the request to the
+         * backend. However, if defaultService is specified, defaultRouteAction cannot contain any
+         * weightedBackendServices. Conversely, if routeAction specifies any
+         * weightedBackendServices, service must not be specified.  Only one of defaultService,
+         * defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set.
          * 
          * @return builder
          * 
@@ -318,7 +346,8 @@ public final class RegionUrlMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of this test case.
+         * @param description An optional description of this resource. Provide this property when
+         * you create the resource.
          * 
          * @return builder
          * 
@@ -329,7 +358,8 @@ public final class RegionUrlMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of this test case.
+         * @param description An optional description of this resource. Provide this property when
+         * you create the resource.
          * 
          * @return builder
          * 
@@ -373,8 +403,13 @@ public final class RegionUrlMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the query parameter to match. The query parameter must exist in the
-         * request, in the absence of which the request match fails.
+         * @param name Name of the resource. Provided by the client when the resource is
+         * created. The name must be 1-63 characters long, and comply with
+         * RFC1035. Specifically, the name must be 1-63 characters long and match
+         * the regular expression `a-z?` which means the
+         * first character must be a lowercase letter, and all following
+         * characters must be a dash, lowercase letter, or digit, except the last
+         * character, which cannot be a dash.
          * 
          * @return builder
          * 
@@ -385,8 +420,13 @@ public final class RegionUrlMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the query parameter to match. The query parameter must exist in the
-         * request, in the absence of which the request match fails.
+         * @param name Name of the resource. Provided by the client when the resource is
+         * created. The name must be 1-63 characters long, and comply with
+         * RFC1035. Specifically, the name must be 1-63 characters long and match
+         * the regular expression `a-z?` which means the
+         * first character must be a lowercase letter, and all following
+         * characters must be a dash, lowercase letter, or digit, except the last
+         * character, which cannot be a dash.
          * 
          * @return builder
          * 
@@ -396,8 +436,8 @@ public final class RegionUrlMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pathMatchers The name of the PathMatcher to use to match the path portion of
-         * the URL if the hostRule matches the URL&#39;s host portion.
+         * @param pathMatchers The list of named PathMatchers to use against the URL.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -408,8 +448,8 @@ public final class RegionUrlMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pathMatchers The name of the PathMatcher to use to match the path portion of
-         * the URL if the hostRule matches the URL&#39;s host portion.
+         * @param pathMatchers The list of named PathMatchers to use against the URL.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -419,8 +459,8 @@ public final class RegionUrlMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pathMatchers The name of the PathMatcher to use to match the path portion of
-         * the URL if the hostRule matches the URL&#39;s host portion.
+         * @param pathMatchers The list of named PathMatchers to use against the URL.
+         * Structure is documented below.
          * 
          * @return builder
          * 

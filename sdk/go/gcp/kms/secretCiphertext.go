@@ -124,10 +124,10 @@ func NewSecretCiphertext(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Plaintext'")
 	}
 	if args.AdditionalAuthenticatedData != nil {
-		args.AdditionalAuthenticatedData = pulumi.ToSecret(args.AdditionalAuthenticatedData).(pulumi.StringPtrOutput)
+		args.AdditionalAuthenticatedData = pulumi.ToSecret(args.AdditionalAuthenticatedData).(pulumi.StringPtrInput)
 	}
 	if args.Plaintext != nil {
-		args.Plaintext = pulumi.ToSecret(args.Plaintext).(pulumi.StringOutput)
+		args.Plaintext = pulumi.ToSecret(args.Plaintext).(pulumi.StringInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"additionalAuthenticatedData",

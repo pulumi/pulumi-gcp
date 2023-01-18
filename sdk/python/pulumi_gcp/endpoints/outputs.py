@@ -81,6 +81,12 @@ class ServiceApi(dict):
                  name: Optional[str] = None,
                  syntax: Optional[str] = None,
                  version: Optional[str] = None):
+        """
+        :param Sequence['ServiceApiMethodArgs'] methods: A list of Method objects; structure is documented below.
+        :param str name: The simple name of the endpoint as described in the config.
+        :param str syntax: `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+        :param str version: A version string for this api. If specified, will have the form major-version.minor-version, e.g. `1.10`.
+        """
         if methods is not None:
             pulumi.set(__self__, "methods", methods)
         if name is not None:
@@ -93,21 +99,33 @@ class ServiceApi(dict):
     @property
     @pulumi.getter
     def methods(self) -> Optional[Sequence['outputs.ServiceApiMethod']]:
+        """
+        A list of Method objects; structure is documented below.
+        """
         return pulumi.get(self, "methods")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        The simple name of the endpoint as described in the config.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def syntax(self) -> Optional[str]:
+        """
+        `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+        """
         return pulumi.get(self, "syntax")
 
     @property
     @pulumi.getter
     def version(self) -> Optional[str]:
+        """
+        A version string for this api. If specified, will have the form major-version.minor-version, e.g. `1.10`.
+        """
         return pulumi.get(self, "version")
 
 
@@ -137,6 +155,12 @@ class ServiceApiMethod(dict):
                  request_type: Optional[str] = None,
                  response_type: Optional[str] = None,
                  syntax: Optional[str] = None):
+        """
+        :param str name: The simple name of the endpoint as described in the config.
+        :param str request_type: The type URL for the request to this API.
+        :param str response_type: The type URL for the response from this API.
+        :param str syntax: `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+        """
         if name is not None:
             pulumi.set(__self__, "name", name)
         if request_type is not None:
@@ -149,21 +173,33 @@ class ServiceApiMethod(dict):
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        The simple name of the endpoint as described in the config.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="requestType")
     def request_type(self) -> Optional[str]:
+        """
+        The type URL for the request to this API.
+        """
         return pulumi.get(self, "request_type")
 
     @property
     @pulumi.getter(name="responseType")
     def response_type(self) -> Optional[str]:
+        """
+        The type URL for the response from this API.
+        """
         return pulumi.get(self, "response_type")
 
     @property
     @pulumi.getter
     def syntax(self) -> Optional[str]:
+        """
+        `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+        """
         return pulumi.get(self, "syntax")
 
 
@@ -172,6 +208,10 @@ class ServiceEndpoint(dict):
     def __init__(__self__, *,
                  address: Optional[str] = None,
                  name: Optional[str] = None):
+        """
+        :param str address: The FQDN of the endpoint as described in the config.
+        :param str name: The simple name of the endpoint as described in the config.
+        """
         if address is not None:
             pulumi.set(__self__, "address", address)
         if name is not None:
@@ -180,11 +220,17 @@ class ServiceEndpoint(dict):
     @property
     @pulumi.getter
     def address(self) -> Optional[str]:
+        """
+        The FQDN of the endpoint as described in the config.
+        """
         return pulumi.get(self, "address")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        The simple name of the endpoint as described in the config.
+        """
         return pulumi.get(self, "name")
 
 

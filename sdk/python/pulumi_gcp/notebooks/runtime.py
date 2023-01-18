@@ -140,10 +140,13 @@ class _RuntimeState:
         Input properties used for looking up and filtering Runtime resources.
         :param pulumi.Input['RuntimeAccessConfigArgs'] access_config: The config settings for accessing runtime.
                Structure is documented below.
-        :param pulumi.Input[str] health_state: The health state of this runtime. For a list of possible output values, see
-               'https://cloud.google.com/vertex-ai/docs/workbench/ reference/rest/v1/projects.locations.runtimes#healthstate'.
+        :param pulumi.Input[str] health_state: The health state of this runtime. For a list of possible output
+               values, see `https://cloud.google.com/vertex-ai/docs/workbench/
+               reference/rest/v1/projects.locations.runtimes#healthstate`.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
-        :param pulumi.Input[Sequence[pulumi.Input['RuntimeMetricArgs']]] metrics: Contains Runtime daemon metrics such as Service status and JupyterLab status
+        :param pulumi.Input[Sequence[pulumi.Input['RuntimeMetricArgs']]] metrics: Contains Runtime daemon metrics such as Service status and JupyterLab
+               status
+               Structure is documented below.
         :param pulumi.Input[str] name: The name specified for the Notebook runtime.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -189,8 +192,9 @@ class _RuntimeState:
     @pulumi.getter(name="healthState")
     def health_state(self) -> Optional[pulumi.Input[str]]:
         """
-        The health state of this runtime. For a list of possible output values, see
-        'https://cloud.google.com/vertex-ai/docs/workbench/ reference/rest/v1/projects.locations.runtimes#healthstate'.
+        The health state of this runtime. For a list of possible output
+        values, see `https://cloud.google.com/vertex-ai/docs/workbench/
+        reference/rest/v1/projects.locations.runtimes#healthstate`.
         """
         return pulumi.get(self, "health_state")
 
@@ -214,7 +218,9 @@ class _RuntimeState:
     @pulumi.getter
     def metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeMetricArgs']]]]:
         """
-        Contains Runtime daemon metrics such as Service status and JupyterLab status
+        Contains Runtime daemon metrics such as Service status and JupyterLab
+        status
+        Structure is documented below.
         """
         return pulumi.get(self, "metrics")
 
@@ -740,10 +746,13 @@ class Runtime(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['RuntimeAccessConfigArgs']] access_config: The config settings for accessing runtime.
                Structure is documented below.
-        :param pulumi.Input[str] health_state: The health state of this runtime. For a list of possible output values, see
-               'https://cloud.google.com/vertex-ai/docs/workbench/ reference/rest/v1/projects.locations.runtimes#healthstate'.
+        :param pulumi.Input[str] health_state: The health state of this runtime. For a list of possible output
+               values, see `https://cloud.google.com/vertex-ai/docs/workbench/
+               reference/rest/v1/projects.locations.runtimes#healthstate`.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuntimeMetricArgs']]]] metrics: Contains Runtime daemon metrics such as Service status and JupyterLab status
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuntimeMetricArgs']]]] metrics: Contains Runtime daemon metrics such as Service status and JupyterLab
+               status
+               Structure is documented below.
         :param pulumi.Input[str] name: The name specified for the Notebook runtime.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -781,8 +790,9 @@ class Runtime(pulumi.CustomResource):
     @pulumi.getter(name="healthState")
     def health_state(self) -> pulumi.Output[str]:
         """
-        The health state of this runtime. For a list of possible output values, see
-        'https://cloud.google.com/vertex-ai/docs/workbench/ reference/rest/v1/projects.locations.runtimes#healthstate'.
+        The health state of this runtime. For a list of possible output
+        values, see `https://cloud.google.com/vertex-ai/docs/workbench/
+        reference/rest/v1/projects.locations.runtimes#healthstate`.
         """
         return pulumi.get(self, "health_state")
 
@@ -798,7 +808,9 @@ class Runtime(pulumi.CustomResource):
     @pulumi.getter
     def metrics(self) -> pulumi.Output[Sequence['outputs.RuntimeMetric']]:
         """
-        Contains Runtime daemon metrics such as Service status and JupyterLab status
+        Contains Runtime daemon metrics such as Service status and JupyterLab
+        status
+        Structure is documented below.
         """
         return pulumi.get(self, "metrics")
 

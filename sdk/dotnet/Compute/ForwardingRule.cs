@@ -91,7 +91,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> BackendService { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] Creation timestamp in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
@@ -243,8 +243,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> PscConnectionId { get; private set; } = null!;
 
         /// <summary>
-        /// The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
-        /// CLOSED
+        /// The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED, CLOSED
         /// </summary>
         [Output("pscConnectionStatus")]
         public Output<string> PscConnectionStatus { get; private set; } = null!;
@@ -286,8 +285,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> ServiceLabel { get; private set; } = null!;
 
         /// <summary>
-        /// [Output Only] The internal fully qualified service name for this Forwarding Rule. This field is only used for internal
-        /// load balancing.
+        /// The internal fully qualified service name for this Forwarding Rule.
+        /// This field is only used for INTERNAL load balancing.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -619,7 +618,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? BackendService { get; set; }
 
         /// <summary>
-        /// [Output Only] Creation timestamp in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+        /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Input("creationTimestamp")]
         public Input<string>? CreationTimestamp { get; set; }
@@ -783,8 +782,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? PscConnectionId { get; set; }
 
         /// <summary>
-        /// The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
-        /// CLOSED
+        /// The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED, CLOSED
         /// </summary>
         [Input("pscConnectionStatus")]
         public Input<string>? PscConnectionStatus { get; set; }
@@ -832,8 +830,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? ServiceLabel { get; set; }
 
         /// <summary>
-        /// [Output Only] The internal fully qualified service name for this Forwarding Rule. This field is only used for internal
-        /// load balancing.
+        /// The internal fully qualified service name for this Forwarding Rule.
+        /// This field is only used for INTERNAL load balancing.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

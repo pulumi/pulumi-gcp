@@ -16,7 +16,6 @@ public final class AzureClusterFleetArgs extends com.pulumi.resources.ResourceAr
     public static final AzureClusterFleetArgs Empty = new AzureClusterFleetArgs();
 
     /**
-     * - 
      * The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/&lt;project-number&gt;/locations/global/membership/&lt;cluster-id&gt;.
      * 
      */
@@ -24,8 +23,7 @@ public final class AzureClusterFleetArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> membership;
 
     /**
-     * @return -
-     * The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/&lt;project-number&gt;/locations/global/membership/&lt;cluster-id&gt;.
+     * @return The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/&lt;project-number&gt;/locations/global/membership/&lt;cluster-id&gt;.
      * 
      */
     public Optional<Output<String>> membership() {
@@ -33,14 +31,14 @@ public final class AzureClusterFleetArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The project for the resource
+     * The number of the Fleet host project where this cluster will be registered.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The number of the Fleet host project where this cluster will be registered.
      * 
      */
     public Optional<Output<String>> project() {
@@ -73,8 +71,7 @@ public final class AzureClusterFleetArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param membership -
-         * The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/&lt;project-number&gt;/locations/global/membership/&lt;cluster-id&gt;.
+         * @param membership The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/&lt;project-number&gt;/locations/global/membership/&lt;cluster-id&gt;.
          * 
          * @return builder
          * 
@@ -85,8 +82,7 @@ public final class AzureClusterFleetArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param membership -
-         * The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/&lt;project-number&gt;/locations/global/membership/&lt;cluster-id&gt;.
+         * @param membership The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/&lt;project-number&gt;/locations/global/membership/&lt;cluster-id&gt;.
          * 
          * @return builder
          * 
@@ -96,7 +92,7 @@ public final class AzureClusterFleetArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The number of the Fleet host project where this cluster will be registered.
          * 
          * @return builder
          * 
@@ -107,7 +103,7 @@ public final class AzureClusterFleetArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The number of the Fleet host project where this cluster will be registered.
          * 
          * @return builder
          * 

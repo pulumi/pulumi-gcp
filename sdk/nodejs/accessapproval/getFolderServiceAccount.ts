@@ -30,11 +30,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getFolderServiceAccount(args: GetFolderServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderServiceAccountResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:accessapproval/getFolderServiceAccount:getFolderServiceAccount", {
         "folderId": args.folderId,
     }, opts);
@@ -69,9 +66,33 @@ export interface GetFolderServiceAccountResult {
      */
     readonly name: string;
 }
-
+/**
+ * Get the email address of a folder's Access Approval service account.
+ *
+ * Each Google Cloud folder has a unique service account used by Access Approval.
+ * When using Access Approval with a
+ * [custom signing key](https://cloud.google.com/cloud-provider-access-management/access-approval/docs/review-approve-access-requests-custom-keys),
+ * this account needs to be granted the `cloudkms.signerVerifier` IAM role on the
+ * Cloud KMS key used to sign approvals.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const serviceAccount = gcp.accessapproval.getFolderServiceAccount({
+ *     folderId: "my-folder",
+ * });
+ * const iam = new gcp.kms.CryptoKeyIAMMember("iam", {
+ *     cryptoKeyId: google_kms_crypto_key.crypto_key.id,
+ *     role: "roles/cloudkms.signerVerifier",
+ *     member: serviceAccount.then(serviceAccount => `serviceAccount:${serviceAccount.accountEmail}`),
+ * });
+ * ```
+ */
 export function getFolderServiceAccountOutput(args: GetFolderServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFolderServiceAccountResult> {
-    return pulumi.output(args).apply(a => getFolderServiceAccount(a, opts))
+    return pulumi.output(args).apply((a: any) => getFolderServiceAccount(a, opts))
 }
 
 /**

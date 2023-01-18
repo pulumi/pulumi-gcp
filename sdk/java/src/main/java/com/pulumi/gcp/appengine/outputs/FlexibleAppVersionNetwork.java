@@ -24,7 +24,7 @@ public final class FlexibleAppVersionNetwork {
      */
     private @Nullable String instanceTag;
     /**
-     * @return Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+     * @return Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
      * 
      */
     private String name;
@@ -59,7 +59,7 @@ public final class FlexibleAppVersionNetwork {
         return Optional.ofNullable(this.instanceTag);
     }
     /**
-     * @return Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+     * @return Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
      * 
      */
     public String name() {

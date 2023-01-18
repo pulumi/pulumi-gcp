@@ -231,18 +231,18 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
         return this.enrolledServices;
     }
     /**
-     * If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-     * this Organization (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the correct permissions on
-     * it, etc.).
+     * If the field is true, that indicates that there is some configuration issue with the active_key_version
+     * configured on this Organization (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the
+     * correct permissions on it, etc.).
      * 
      */
     @Export(name="invalidKeyVersion", type=Boolean.class, parameters={})
     private Output<Boolean> invalidKeyVersion;
 
     /**
-     * @return If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-     * this Organization (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the correct permissions on
-     * it, etc.).
+     * @return If the field is true, that indicates that there is some configuration issue with the active_key_version
+     * configured on this Organization (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the
+     * correct permissions on it, etc.).
      * 
      */
     public Output<Boolean> invalidKeyVersion() {

@@ -20,7 +20,8 @@ public final class ResourcePolicySnapshotSchedulePolicy {
      */
     private @Nullable ResourcePolicySnapshotSchedulePolicyRetentionPolicy retentionPolicy;
     /**
-     * @return Specifies the frequency for the operation, using the unix-cron format.
+     * @return Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
+     * Structure is documented below.
      * 
      */
     private ResourcePolicySnapshotSchedulePolicySchedule schedule;
@@ -41,7 +42,8 @@ public final class ResourcePolicySnapshotSchedulePolicy {
         return Optional.ofNullable(this.retentionPolicy);
     }
     /**
-     * @return Specifies the frequency for the operation, using the unix-cron format.
+     * @return Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
+     * Structure is documented below.
      * 
      */
     public ResourcePolicySnapshotSchedulePolicySchedule schedule() {

@@ -14,8 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterNotificationConfigPubsub {
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Whether or not the notification config is enabled
      * 
      */
     private Boolean enabled;
@@ -32,8 +31,7 @@ public final class ClusterNotificationConfigPubsub {
 
     private ClusterNotificationConfigPubsub() {}
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Whether or not the notification config is enabled
      * 
      */
     public Boolean enabled() {

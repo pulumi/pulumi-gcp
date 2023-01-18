@@ -41,8 +41,13 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly string? MinCpuPlatform;
         /// <summary>
-        /// Specifies the number of preemptible nodes to create.
-        /// Defaults to 0.
+        /// Specifies the number of worker nodes to create.
+        /// If not specified, GCP will default to a predetermined computed value (currently 2).
+        /// There is currently a beta feature which allows you to run a
+        /// [Single Node Cluster](https://cloud.google.com/dataproc/docs/concepts/single-node-clusters).
+        /// In order to take advantage of this you need to set
+        /// `"dataproc:dataproc.allow.zero.workers" = "true"` in
+        /// `cluster_config.software_config.properties`
         /// </summary>
         public readonly int? NumInstances;
 

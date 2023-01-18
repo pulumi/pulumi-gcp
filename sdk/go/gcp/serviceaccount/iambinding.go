@@ -41,7 +41,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 //				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
+//					{
 //						Role: "roles/iam.serviceAccountUser",
 //						Members: []string{
 //							"user:jane@example.com",
@@ -61,7 +61,7 @@ import (
 //			}
 //			_, err = serviceAccount.NewIAMPolicy(ctx, "admin-account-iam", &serviceAccount.IAMPolicyArgs{
 //				ServiceAccountId: sa.Name,
-//				PolicyData:       pulumi.String(admin.PolicyData),
+//				PolicyData:       *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
@@ -185,7 +185,7 @@ import (
 //				return err
 //			}
 //			_, err = serviceAccount.NewIAMMember(ctx, "gce-default-account-iam", &serviceAccount.IAMMemberArgs{
-//				ServiceAccountId: pulumi.String(_default.Name),
+//				ServiceAccountId: *pulumi.String(_default.Name),
 //				Role:             pulumi.String("roles/iam.serviceAccountUser"),
 //				Member: sa.Email.ApplyT(func(email string) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", email), nil

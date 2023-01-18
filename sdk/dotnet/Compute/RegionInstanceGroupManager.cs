@@ -209,7 +209,10 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> ListManagedInstancesResults { get; private set; } = null!;
 
         /// <summary>
-        /// - Version name.
+        /// The name of the instance group manager. Must be 1-63
+        /// characters long and comply with
+        /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+        /// include lowercase letters, numbers, and hyphens.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -273,7 +276,9 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<string>> TargetPools { get; private set; } = null!;
 
         /// <summary>
-        /// - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+        /// The target number of running instances for this managed
+        /// instance group. This value should always be explicitly set unless this resource is attached to
+        /// an autoscaler, in which case it should never be set. Defaults to `0`.
         /// </summary>
         [Output("targetSize")]
         public Output<int> TargetSize { get; private set; } = null!;
@@ -420,7 +425,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? ListManagedInstancesResults { get; set; }
 
         /// <summary>
-        /// - Version name.
+        /// The name of the instance group manager. Must be 1-63
+        /// characters long and comply with
+        /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+        /// include lowercase letters, numbers, and hyphens.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -502,7 +510,9 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+        /// The target number of running instances for this managed
+        /// instance group. This value should always be explicitly set unless this resource is attached to
+        /// an autoscaler, in which case it should never be set. Defaults to `0`.
         /// </summary>
         [Input("targetSize")]
         public Input<int>? TargetSize { get; set; }
@@ -629,7 +639,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? ListManagedInstancesResults { get; set; }
 
         /// <summary>
-        /// - Version name.
+        /// The name of the instance group manager. Must be 1-63
+        /// characters long and comply with
+        /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+        /// include lowercase letters, numbers, and hyphens.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -729,7 +742,9 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+        /// The target number of running instances for this managed
+        /// instance group. This value should always be explicitly set unless this resource is attached to
+        /// an autoscaler, in which case it should never be set. Defaults to `0`.
         /// </summary>
         [Input("targetSize")]
         public Input<int>? TargetSize { get; set; }

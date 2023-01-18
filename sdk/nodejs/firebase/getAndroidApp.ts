@@ -5,11 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 export function getAndroidApp(args: GetAndroidAppArgs, opts?: pulumi.InvokeOptions): Promise<GetAndroidAppResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:firebase/getAndroidApp:getAndroidApp", {
         "appId": args.appId,
     }, opts);
@@ -29,23 +26,46 @@ export interface GetAndroidAppArgs {
  * A collection of values returned by getAndroidApp.
  */
 export interface GetAndroidAppResult {
+    /**
+     * Immutable. The globally unique, Firebase-assigned identifier of the AndroidApp.
+     * This identifier should be treated as an opaque token, as the data format is not specified.
+     */
     readonly appId: string;
     readonly deletionPolicy: string;
+    /**
+     * The user-assigned display name of the AndroidApp.
+     */
     readonly displayName: string;
+    /**
+     * This checksum is computed by the server based on the value of other fields, and it may be sent
+     * with update requests to ensure the client has an up-to-date value before proceeding.
+     */
     readonly etag: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The fully qualified resource name of the AndroidApp, for example:
+     * projects/projectId/androidApps/appId
+     */
     readonly name: string;
+    /**
+     * The canonical package name of the Android app as would appear in the Google Play Developer Console.
+     */
     readonly packageName: string;
     readonly project: string;
+    /**
+     * The SHA1 certificate hashes for the AndroidApp.
+     */
     readonly sha1Hashes: string[];
+    /**
+     * The SHA256 certificate hashes for the AndroidApp.
+     */
     readonly sha256Hashes: string[];
 }
-
 export function getAndroidAppOutput(args: GetAndroidAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAndroidAppResult> {
-    return pulumi.output(args).apply(a => getAndroidApp(a, opts))
+    return pulumi.output(args).apply((a: any) => getAndroidApp(a, opts))
 }
 
 /**

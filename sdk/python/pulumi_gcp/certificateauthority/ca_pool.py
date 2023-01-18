@@ -25,7 +25,8 @@ class CaPoolArgs:
                  publishing_options: Optional[pulumi.Input['CaPoolPublishingOptionsArgs']] = None):
         """
         The set of arguments for constructing a CaPool resource.
-        :param pulumi.Input[str] location: String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+        :param pulumi.Input[str] location: Location of the CaPool. A full list of valid locations can be found by
+               running `gcloud privateca locations list`.
         :param pulumi.Input[str] tier: The Tier of this CaPool.
                Possible values are `ENTERPRISE` and `DEVOPS`.
         :param pulumi.Input['CaPoolIssuancePolicyArgs'] issuance_policy: The IssuancePolicy to control how Certificates will be issued from this CaPool.
@@ -56,7 +57,8 @@ class CaPoolArgs:
     @pulumi.getter
     def location(self) -> pulumi.Input[str]:
         """
-        String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+        Location of the CaPool. A full list of valid locations can be found by
+        running `gcloud privateca locations list`.
         """
         return pulumi.get(self, "location")
 
@@ -160,7 +162,8 @@ class _CaPoolState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
                "1.3kg", "count": "3" }.
-        :param pulumi.Input[str] location: String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+        :param pulumi.Input[str] location: Location of the CaPool. A full list of valid locations can be found by
+               running `gcloud privateca locations list`.
         :param pulumi.Input[str] name: The name for this CaPool.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -215,7 +218,8 @@ class _CaPoolState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+        Location of the CaPool. A full list of valid locations can be found by
+        running `gcloud privateca locations list`.
         """
         return pulumi.get(self, "location")
 
@@ -335,7 +339,8 @@ class CaPool(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
                "1.3kg", "count": "3" }.
-        :param pulumi.Input[str] location: String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+        :param pulumi.Input[str] location: Location of the CaPool. A full list of valid locations can be found by
+               running `gcloud privateca locations list`.
         :param pulumi.Input[str] name: The name for this CaPool.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -461,7 +466,8 @@ class CaPool(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
                "1.3kg", "count": "3" }.
-        :param pulumi.Input[str] location: String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+        :param pulumi.Input[str] location: Location of the CaPool. A full list of valid locations can be found by
+               running `gcloud privateca locations list`.
         :param pulumi.Input[str] name: The name for this CaPool.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -506,7 +512,8 @@ class CaPool(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         """
-        String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+        Location of the CaPool. A full list of valid locations can be found by
+        running `gcloud privateca locations list`.
         """
         return pulumi.get(self, "location")
 

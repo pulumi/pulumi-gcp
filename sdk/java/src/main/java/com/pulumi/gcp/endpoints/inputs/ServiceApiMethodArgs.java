@@ -15,30 +15,62 @@ public final class ServiceApiMethodArgs extends com.pulumi.resources.ResourceArg
 
     public static final ServiceApiMethodArgs Empty = new ServiceApiMethodArgs();
 
+    /**
+     * The simple name of the endpoint as described in the config.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return The simple name of the endpoint as described in the config.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The type URL for the request to this API.
+     * 
+     */
     @Import(name="requestType")
     private @Nullable Output<String> requestType;
 
+    /**
+     * @return The type URL for the request to this API.
+     * 
+     */
     public Optional<Output<String>> requestType() {
         return Optional.ofNullable(this.requestType);
     }
 
+    /**
+     * The type URL for the response from this API.
+     * 
+     */
     @Import(name="responseType")
     private @Nullable Output<String> responseType;
 
+    /**
+     * @return The type URL for the response from this API.
+     * 
+     */
     public Optional<Output<String>> responseType() {
         return Optional.ofNullable(this.responseType);
     }
 
+    /**
+     * `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+     * 
+     */
     @Import(name="syntax")
     private @Nullable Output<String> syntax;
 
+    /**
+     * @return `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+     * 
+     */
     public Optional<Output<String>> syntax() {
         return Optional.ofNullable(this.syntax);
     }
@@ -70,38 +102,86 @@ public final class ServiceApiMethodArgs extends com.pulumi.resources.ResourceArg
             $ = new ServiceApiMethodArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name The simple name of the endpoint as described in the config.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The simple name of the endpoint as described in the config.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param requestType The type URL for the request to this API.
+         * 
+         * @return builder
+         * 
+         */
         public Builder requestType(@Nullable Output<String> requestType) {
             $.requestType = requestType;
             return this;
         }
 
+        /**
+         * @param requestType The type URL for the request to this API.
+         * 
+         * @return builder
+         * 
+         */
         public Builder requestType(String requestType) {
             return requestType(Output.of(requestType));
         }
 
+        /**
+         * @param responseType The type URL for the response from this API.
+         * 
+         * @return builder
+         * 
+         */
         public Builder responseType(@Nullable Output<String> responseType) {
             $.responseType = responseType;
             return this;
         }
 
+        /**
+         * @param responseType The type URL for the response from this API.
+         * 
+         * @return builder
+         * 
+         */
         public Builder responseType(String responseType) {
             return responseType(Output.of(responseType));
         }
 
+        /**
+         * @param syntax `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder syntax(@Nullable Output<String> syntax) {
             $.syntax = syntax;
             return this;
         }
 
+        /**
+         * @param syntax `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder syntax(String syntax) {
             return syntax(Output.of(syntax));
         }

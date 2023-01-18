@@ -93,7 +93,7 @@ export class Client extends pulumi.CustomResource {
      */
     public readonly brand!: pulumi.Output<string>;
     /**
-     * Output only. Unique identifier of the OAuth client.
+     * The OAuth2 ID of the client.
      */
     public /*out*/ readonly clientId!: pulumi.Output<string>;
     /**
@@ -102,6 +102,7 @@ export class Client extends pulumi.CustomResource {
     public readonly displayName!: pulumi.Output<string>;
     /**
      * Output only. Client secret of the OAuth client.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      */
     public /*out*/ readonly secret!: pulumi.Output<string>;
 
@@ -153,7 +154,7 @@ export interface ClientState {
      */
     brand?: pulumi.Input<string>;
     /**
-     * Output only. Unique identifier of the OAuth client.
+     * The OAuth2 ID of the client.
      */
     clientId?: pulumi.Input<string>;
     /**
@@ -162,6 +163,7 @@ export interface ClientState {
     displayName?: pulumi.Input<string>;
     /**
      * Output only. Client secret of the OAuth client.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      */
     secret?: pulumi.Input<string>;
 }

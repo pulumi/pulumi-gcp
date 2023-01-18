@@ -15,14 +15,14 @@ public final class WorkflowTemplateParameterValidationValuesArgs extends com.pul
     public static final WorkflowTemplateParameterValidationValuesArgs Empty = new WorkflowTemplateParameterValidationValuesArgs();
 
     /**
-     * Optional. Corresponds to the label values of reservation resource.
+     * Required. List of allowed values for the parameter.
      * 
      */
     @Import(name="values", required=true)
     private Output<List<String>> values;
 
     /**
-     * @return Optional. Corresponds to the label values of reservation resource.
+     * @return Required. List of allowed values for the parameter.
      * 
      */
     public Output<List<String>> values() {
@@ -54,7 +54,7 @@ public final class WorkflowTemplateParameterValidationValuesArgs extends com.pul
         }
 
         /**
-         * @param values Optional. Corresponds to the label values of reservation resource.
+         * @param values Required. List of allowed values for the parameter.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class WorkflowTemplateParameterValidationValuesArgs extends com.pul
         }
 
         /**
-         * @param values Optional. Corresponds to the label values of reservation resource.
+         * @param values Required. List of allowed values for the parameter.
          * 
          * @return builder
          * 
@@ -75,7 +75,7 @@ public final class WorkflowTemplateParameterValidationValuesArgs extends com.pul
         }
 
         /**
-         * @param values Optional. Corresponds to the label values of reservation resource.
+         * @param values Required. List of allowed values for the parameter.
          * 
          * @return builder
          * 

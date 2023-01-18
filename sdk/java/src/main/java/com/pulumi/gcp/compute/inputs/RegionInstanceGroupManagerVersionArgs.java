@@ -17,14 +17,14 @@ public final class RegionInstanceGroupManagerVersionArgs extends com.pulumi.reso
     public static final RegionInstanceGroupManagerVersionArgs Empty = new RegionInstanceGroupManagerVersionArgs();
 
     /**
-     * - The full URL to an instance template from which all new instances of this version will be created.
+     * The full URL to an instance template from which all new instances of this version will be created.
      * 
      */
     @Import(name="instanceTemplate", required=true)
     private Output<String> instanceTemplate;
 
     /**
-     * @return - The full URL to an instance template from which all new instances of this version will be created.
+     * @return The full URL to an instance template from which all new instances of this version will be created.
      * 
      */
     public Output<String> instanceTemplate() {
@@ -32,14 +32,14 @@ public final class RegionInstanceGroupManagerVersionArgs extends com.pulumi.reso
     }
 
     /**
-     * - Version name.
+     * Version name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return - Version name.
+     * @return Version name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -47,14 +47,14 @@ public final class RegionInstanceGroupManagerVersionArgs extends com.pulumi.reso
     }
 
     /**
-     * - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+     * The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
      * 
      */
     @Import(name="targetSize")
     private @Nullable Output<RegionInstanceGroupManagerVersionTargetSizeArgs> targetSize;
 
     /**
-     * @return - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+     * @return The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
      * 
      */
     public Optional<Output<RegionInstanceGroupManagerVersionTargetSizeArgs>> targetSize() {
@@ -88,7 +88,7 @@ public final class RegionInstanceGroupManagerVersionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param instanceTemplate - The full URL to an instance template from which all new instances of this version will be created.
+         * @param instanceTemplate The full URL to an instance template from which all new instances of this version will be created.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class RegionInstanceGroupManagerVersionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param instanceTemplate - The full URL to an instance template from which all new instances of this version will be created.
+         * @param instanceTemplate The full URL to an instance template from which all new instances of this version will be created.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class RegionInstanceGroupManagerVersionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param name - Version name.
+         * @param name Version name.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class RegionInstanceGroupManagerVersionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param name - Version name.
+         * @param name Version name.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class RegionInstanceGroupManagerVersionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param targetSize - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+         * @param targetSize The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class RegionInstanceGroupManagerVersionArgs extends com.pulumi.reso
         }
 
         /**
-         * @param targetSize - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+         * @param targetSize The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
          * 
          * @return builder
          * 

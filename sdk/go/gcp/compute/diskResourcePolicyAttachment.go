@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			ssd, err := compute.NewDisk(ctx, "ssd", &compute.DiskArgs{
-//				Image: pulumi.String(myImage.SelfLink),
+//				Image: *pulumi.String(myImage.SelfLink),
 //				Size:  pulumi.Int(50),
 //				Type:  pulumi.String("pd-ssd"),
 //				Zone:  pulumi.String("us-central1-a"),

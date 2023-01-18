@@ -15,10 +15,9 @@ public final class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInf
     public static final PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs Empty = new PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs();
 
     /**
-     * CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
-     * infoTypes and that infoType is specified in `info_types` field. Specifying the latter adds findings to the
-     * one detected by the system. If built-in info type is not specified in `info_types` list then the name is
-     * treated as a custom info type.
+     * Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
+     * not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
+     * specified in another InfoTypeLimit.
      * Structure is documented below.
      * 
      */
@@ -26,10 +25,9 @@ public final class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInf
     private Output<PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs> infoType;
 
     /**
-     * @return CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
-     * infoTypes and that infoType is specified in `info_types` field. Specifying the latter adds findings to the
-     * one detected by the system. If built-in info type is not specified in `info_types` list then the name is
-     * treated as a custom info type.
+     * @return Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
+     * not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
+     * specified in another InfoTypeLimit.
      * Structure is documented below.
      * 
      */
@@ -78,10 +76,9 @@ public final class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInf
         }
 
         /**
-         * @param infoType CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
-         * infoTypes and that infoType is specified in `info_types` field. Specifying the latter adds findings to the
-         * one detected by the system. If built-in info type is not specified in `info_types` list then the name is
-         * treated as a custom info type.
+         * @param infoType Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
+         * not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
+         * specified in another InfoTypeLimit.
          * Structure is documented below.
          * 
          * @return builder
@@ -93,10 +90,9 @@ public final class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInf
         }
 
         /**
-         * @param infoType CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
-         * infoTypes and that infoType is specified in `info_types` field. Specifying the latter adds findings to the
-         * one detected by the system. If built-in info type is not specified in `info_types` list then the name is
-         * treated as a custom info type.
+         * @param infoType Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
+         * not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
+         * specified in another InfoTypeLimit.
          * Structure is documented below.
          * 
          * @return builder

@@ -17,7 +17,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRe
      */
     private @Nullable String sha256Checksum;
     /**
-     * @return Required. URI for this repository.
+     * @return Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
      * 
      */
     private String uri;
@@ -31,7 +31,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRe
         return Optional.ofNullable(this.sha256Checksum);
     }
     /**
-     * @return Required. URI for this repository.
+     * @return Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
      * 
      */
     public String uri() {

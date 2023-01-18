@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.NetworkConnectivity.Inputs
         private InputList<string>? _uris;
 
         /// <summary>
-        /// The URIs of linked VPN tunnel resources.
+        /// The URIs of linked interconnect attachment resources
         /// </summary>
         public InputList<string> Uris
         {

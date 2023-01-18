@@ -15,30 +15,64 @@ public final class DomainMappingStatusConditionArgs extends com.pulumi.resources
 
     public static final DomainMappingStatusConditionArgs Empty = new DomainMappingStatusConditionArgs();
 
+    /**
+     * Human readable message indicating details about the current status.
+     * 
+     */
     @Import(name="message")
     private @Nullable Output<String> message;
 
+    /**
+     * @return Human readable message indicating details about the current status.
+     * 
+     */
     public Optional<Output<String>> message() {
         return Optional.ofNullable(this.message);
     }
 
+    /**
+     * One-word CamelCase reason for the condition&#39;s current status.
+     * 
+     */
     @Import(name="reason")
     private @Nullable Output<String> reason;
 
+    /**
+     * @return One-word CamelCase reason for the condition&#39;s current status.
+     * 
+     */
     public Optional<Output<String>> reason() {
         return Optional.ofNullable(this.reason);
     }
 
+    /**
+     * Status of the condition, one of True, False, Unknown.
+     * 
+     */
     @Import(name="status")
     private @Nullable Output<String> status;
 
+    /**
+     * @return Status of the condition, one of True, False, Unknown.
+     * 
+     */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * Resource record type. Example: `AAAA`.
+     * Possible values are `A`, `AAAA`, and `CNAME`.
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return Resource record type. Example: `AAAA`.
+     * Possible values are `A`, `AAAA`, and `CNAME`.
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -70,38 +104,88 @@ public final class DomainMappingStatusConditionArgs extends com.pulumi.resources
             $ = new DomainMappingStatusConditionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param message Human readable message indicating details about the current status.
+         * 
+         * @return builder
+         * 
+         */
         public Builder message(@Nullable Output<String> message) {
             $.message = message;
             return this;
         }
 
+        /**
+         * @param message Human readable message indicating details about the current status.
+         * 
+         * @return builder
+         * 
+         */
         public Builder message(String message) {
             return message(Output.of(message));
         }
 
+        /**
+         * @param reason One-word CamelCase reason for the condition&#39;s current status.
+         * 
+         * @return builder
+         * 
+         */
         public Builder reason(@Nullable Output<String> reason) {
             $.reason = reason;
             return this;
         }
 
+        /**
+         * @param reason One-word CamelCase reason for the condition&#39;s current status.
+         * 
+         * @return builder
+         * 
+         */
         public Builder reason(String reason) {
             return reason(Output.of(reason));
         }
 
+        /**
+         * @param status Status of the condition, one of True, False, Unknown.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status Status of the condition, one of True, False, Unknown.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(String status) {
             return status(Output.of(status));
         }
 
+        /**
+         * @param type Resource record type. Example: `AAAA`.
+         * Possible values are `A`, `AAAA`, and `CNAME`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type Resource record type. Example: `AAAA`.
+         * Possible values are `A`, `AAAA`, and `CNAME`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

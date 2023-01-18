@@ -30,14 +30,20 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArg
     }
 
     /**
-     * The start time of the schedule. The timestamp is an RFC3339 string.
+     * Time within the window to start the operations.
+     * It must be in an hourly format &#34;HH:MM&#34;,
+     * where HH : [00-23] and MM : [00] GMT.
+     * eg: 21:00
      * 
      */
     @Import(name="startTime", required=true)
     private Output<String> startTime;
 
     /**
-     * @return The start time of the schedule. The timestamp is an RFC3339 string.
+     * @return Time within the window to start the operations.
+     * It must be in an hourly format &#34;HH:MM&#34;,
+     * where HH : [00-23] and MM : [00] GMT.
+     * eg: 21:00
      * 
      */
     public Output<String> startTime() {
@@ -91,7 +97,10 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArg
         }
 
         /**
-         * @param startTime The start time of the schedule. The timestamp is an RFC3339 string.
+         * @param startTime Time within the window to start the operations.
+         * It must be in an hourly format &#34;HH:MM&#34;,
+         * where HH : [00-23] and MM : [00] GMT.
+         * eg: 21:00
          * 
          * @return builder
          * 
@@ -102,7 +111,10 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArg
         }
 
         /**
-         * @param startTime The start time of the schedule. The timestamp is an RFC3339 string.
+         * @param startTime Time within the window to start the operations.
+         * It must be in an hourly format &#34;HH:MM&#34;,
+         * where HH : [00-23] and MM : [00] GMT.
+         * eg: 21:00
          * 
          * @return builder
          * 

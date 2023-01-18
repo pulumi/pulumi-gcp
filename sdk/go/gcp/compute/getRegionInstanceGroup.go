@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = compute.GetRegionInstanceGroup(ctx, &compute.GetRegionInstanceGroupArgs{
+//			_, err := compute.GetRegionInstanceGroup(ctx, &compute.GetRegionInstanceGroupArgs{
 //				Name: pulumi.StringRef("instance-group-name"),
 //			}, nil)
 //			if err != nil {

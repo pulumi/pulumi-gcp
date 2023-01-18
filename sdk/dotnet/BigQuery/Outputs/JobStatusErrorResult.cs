@@ -17,7 +17,13 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// The geographic location of the job. The default value is US.
         /// </summary>
         public readonly string? Location;
+        /// <summary>
+        /// A human-readable description of the error.
+        /// </summary>
         public readonly string? Message;
+        /// <summary>
+        /// A short error code that summarizes the error.
+        /// </summary>
         public readonly string? Reason;
 
         [OutputConstructor]

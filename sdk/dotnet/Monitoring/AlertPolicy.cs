@@ -144,18 +144,19 @@ namespace Pulumi.Gcp.Monitoring
         public Output<ImmutableArray<Outputs.AlertPolicyCondition>> Conditions { get; private set; } = null!;
 
         /// <summary>
-        /// A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
-        /// ignored.
+        /// A read-only record of the creation of the alerting policy.
+        /// If provided in a call to create or update, this field will
+        /// be ignored.
+        /// Structure is documented below.
         /// </summary>
         [Output("creationRecords")]
         public Output<ImmutableArray<Outputs.AlertPolicyCreationRecord>> CreationRecords { get; private set; } = null!;
 
         /// <summary>
-        /// A short name or phrase used to identify the
-        /// condition in dashboards, notifications, and
-        /// incidents. To avoid confusion, don't use the same
-        /// display name for multiple conditions in the same
-        /// policy.
+        /// A short name or phrase used to identify the policy in
+        /// dashboards, notifications, and incidents. To avoid confusion, don't use
+        /// the same display name for multiple policies in the same project. The
+        /// name is limited to 512 Unicode characters.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -178,7 +179,6 @@ namespace Pulumi.Gcp.Monitoring
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// -
         /// The unique resource name for this condition.
         /// Its syntax is:
         /// projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
@@ -296,11 +296,10 @@ namespace Pulumi.Gcp.Monitoring
         }
 
         /// <summary>
-        /// A short name or phrase used to identify the
-        /// condition in dashboards, notifications, and
-        /// incidents. To avoid confusion, don't use the same
-        /// display name for multiple conditions in the same
-        /// policy.
+        /// A short name or phrase used to identify the policy in
+        /// dashboards, notifications, and incidents. To avoid confusion, don't use
+        /// the same display name for multiple policies in the same project. The
+        /// name is limited to 512 Unicode characters.
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
@@ -406,8 +405,10 @@ namespace Pulumi.Gcp.Monitoring
         private InputList<Inputs.AlertPolicyCreationRecordGetArgs>? _creationRecords;
 
         /// <summary>
-        /// A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be
-        /// ignored.
+        /// A read-only record of the creation of the alerting policy.
+        /// If provided in a call to create or update, this field will
+        /// be ignored.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AlertPolicyCreationRecordGetArgs> CreationRecords
         {
@@ -416,11 +417,10 @@ namespace Pulumi.Gcp.Monitoring
         }
 
         /// <summary>
-        /// A short name or phrase used to identify the
-        /// condition in dashboards, notifications, and
-        /// incidents. To avoid confusion, don't use the same
-        /// display name for multiple conditions in the same
-        /// policy.
+        /// A short name or phrase used to identify the policy in
+        /// dashboards, notifications, and incidents. To avoid confusion, don't use
+        /// the same display name for multiple policies in the same project. The
+        /// name is limited to 512 Unicode characters.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -443,7 +443,6 @@ namespace Pulumi.Gcp.Monitoring
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// -
         /// The unique resource name for this condition.
         /// Its syntax is:
         /// projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]

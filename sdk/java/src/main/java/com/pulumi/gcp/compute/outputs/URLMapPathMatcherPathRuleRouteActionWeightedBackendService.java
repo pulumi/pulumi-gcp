@@ -14,7 +14,9 @@ import javax.annotation.Nullable;
 @CustomType
 public final class URLMapPathMatcherPathRuleRouteActionWeightedBackendService {
     /**
-     * @return The full or partial URL to the BackendService resource being mirrored to.
+     * @return The full or partial URL to the default BackendService resource. Before forwarding the
+     * request to backendService, the loadbalancer applies any relevant headerActions
+     * specified as part of this backendServiceWeight.
      * 
      */
     private String backendService;
@@ -40,7 +42,9 @@ public final class URLMapPathMatcherPathRuleRouteActionWeightedBackendService {
 
     private URLMapPathMatcherPathRuleRouteActionWeightedBackendService() {}
     /**
-     * @return The full or partial URL to the BackendService resource being mirrored to.
+     * @return The full or partial URL to the default BackendService resource. Before forwarding the
+     * request to backendService, the loadbalancer applies any relevant headerActions
+     * specified as part of this backendServiceWeight.
      * 
      */
     public String backendService() {

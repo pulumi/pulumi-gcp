@@ -16,7 +16,6 @@ namespace Pulumi.Gcp.CertificateManager.Inputs
         private InputList<Inputs.CertificateManagedAuthorizationAttemptInfoArgs>? _authorizationAttemptInfos;
 
         /// <summary>
-        /// -
         /// Detailed state of the latest authorization attempt for each domain
         /// specified for this Managed Certificate.
         /// Structure is documented below.
@@ -56,7 +55,6 @@ namespace Pulumi.Gcp.CertificateManager.Inputs
         private InputList<Inputs.CertificateManagedProvisioningIssueArgs>? _provisioningIssues;
 
         /// <summary>
-        /// -
         /// Information about issues with provisioning this Managed Certificate.
         /// Structure is documented below.
         /// </summary>
@@ -67,7 +65,6 @@ namespace Pulumi.Gcp.CertificateManager.Inputs
         }
 
         /// <summary>
-        /// -
         /// State of the domain for managed certificate issuance.
         /// </summary>
         [Input("state")]

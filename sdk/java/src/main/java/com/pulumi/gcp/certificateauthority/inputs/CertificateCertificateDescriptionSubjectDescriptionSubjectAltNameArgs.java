@@ -17,9 +17,19 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
 
     public static final CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs Empty = new CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs();
 
+    /**
+     * Contains additional subject alternative name values.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="customSans")
     private @Nullable Output<List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs>> customSans;
 
+    /**
+     * @return Contains additional subject alternative name values.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs>>> customSans() {
         return Optional.ofNullable(this.customSans);
     }
@@ -112,15 +122,36 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
             $ = new CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param customSans Contains additional subject alternative name values.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder customSans(@Nullable Output<List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs>> customSans) {
             $.customSans = customSans;
             return this;
         }
 
+        /**
+         * @param customSans Contains additional subject alternative name values.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder customSans(List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs> customSans) {
             return customSans(Output.of(customSans));
         }
 
+        /**
+         * @param customSans Contains additional subject alternative name values.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder customSans(CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs... customSans) {
             return customSans(List.of(customSans));
         }

@@ -114,8 +114,7 @@ type Zone struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and
-	// re-created with the same name.
+	// Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Output only. The time when the zone was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -191,8 +190,7 @@ type zoneState struct {
 	State *string `pulumi:"state"`
 	// Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED
 	Type *string `pulumi:"type"`
-	// Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and
-	// re-created with the same name.
+	// Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
 	Uid *string `pulumi:"uid"`
 	// Output only. The time when the zone was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -225,8 +223,7 @@ type ZoneState struct {
 	State pulumi.StringPtrInput
 	// Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED
 	Type pulumi.StringPtrInput
-	// Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and
-	// re-created with the same name.
+	// Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
 	Uid pulumi.StringPtrInput
 	// Output only. The time when the zone was last updated.
 	UpdateTime pulumi.StringPtrInput
@@ -435,8 +432,7 @@ func (o ZoneOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and
-// re-created with the same name.
+// Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
 func (o ZoneOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }

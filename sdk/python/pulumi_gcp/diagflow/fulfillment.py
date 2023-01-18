@@ -123,8 +123,8 @@ class _FulfillmentState:
                Structure is documented below.
         :param pulumi.Input['FulfillmentGenericWebServiceArgs'] generic_web_service: Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
                Structure is documented below.
-        :param pulumi.Input[str] name: The unique identifier of the fulfillment. Format: projects/<Project ID>/agent/fulfillment - projects/<Project
-               ID>/locations/<Location ID>/agent/fulfillment
+        :param pulumi.Input[str] name: The unique identifier of the fulfillment.
+               Format: projects/<Project ID>/agent/fulfillment - projects/<Project ID>/locations/<Location ID>/agent/fulfillment
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -195,8 +195,8 @@ class _FulfillmentState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique identifier of the fulfillment. Format: projects/<Project ID>/agent/fulfillment - projects/<Project
-        ID>/locations/<Location ID>/agent/fulfillment
+        The unique identifier of the fulfillment.
+        Format: projects/<Project ID>/agent/fulfillment - projects/<Project ID>/locations/<Location ID>/agent/fulfillment
         """
         return pulumi.get(self, "name")
 
@@ -396,8 +396,8 @@ class Fulfillment(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['FulfillmentGenericWebServiceArgs']] generic_web_service: Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
                Structure is documented below.
-        :param pulumi.Input[str] name: The unique identifier of the fulfillment. Format: projects/<Project ID>/agent/fulfillment - projects/<Project
-               ID>/locations/<Location ID>/agent/fulfillment
+        :param pulumi.Input[str] name: The unique identifier of the fulfillment.
+               Format: projects/<Project ID>/agent/fulfillment - projects/<Project ID>/locations/<Location ID>/agent/fulfillment
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -451,8 +451,8 @@ class Fulfillment(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The unique identifier of the fulfillment. Format: projects/<Project ID>/agent/fulfillment - projects/<Project
-        ID>/locations/<Location ID>/agent/fulfillment
+        The unique identifier of the fulfillment.
+        Format: projects/<Project ID>/agent/fulfillment - projects/<Project ID>/locations/<Location ID>/agent/fulfillment
         """
         return pulumi.get(self, "name")
 

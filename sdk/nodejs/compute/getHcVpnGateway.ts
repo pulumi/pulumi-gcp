@@ -15,17 +15,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const gateway = pulumi.output(gcp.compute.getHcVpnGateway({
+ * const gateway = gcp.compute.getHcVpnGateway({
  *     name: "foobar",
- * }));
+ * });
  * ```
  */
 export function getHcVpnGateway(args: GetHcVpnGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetHcVpnGatewayResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getHcVpnGateway:getHcVpnGateway", {
         "name": args.name,
         "project": args.project,
@@ -69,9 +66,22 @@ export interface GetHcVpnGatewayResult {
     readonly selfLink: string;
     readonly vpnInterfaces: outputs.compute.GetHcVpnGatewayVpnInterface[];
 }
-
+/**
+ * Get a HA VPN Gateway within GCE from its name.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const gateway = gcp.compute.getHcVpnGateway({
+ *     name: "foobar",
+ * });
+ * ```
+ */
 export function getHcVpnGatewayOutput(args: GetHcVpnGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHcVpnGatewayResult> {
-    return pulumi.output(args).apply(a => getHcVpnGateway(a, opts))
+    return pulumi.output(args).apply((a: any) => getHcVpnGateway(a, opts))
 }
 
 /**

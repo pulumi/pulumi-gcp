@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const organizationAccessApproval = new gcp.organizations.AccessApprovalSettings("organization_access_approval", {
+ * const organizationAccessApproval = new gcp.organizations.AccessApprovalSettings("organizationAccessApproval", {
  *     enrolledServices: [
  *         {
  *             cloudProduct: "appengine.googleapis.com",
@@ -142,9 +142,9 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
      */
     public readonly enrolledServices!: pulumi.Output<outputs.organizations.AccessApprovalSettingsEnrolledService[]>;
     /**
-     * If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-     * this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on
-     * it, etc.).
+     * If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
+     * configured on this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the
+     * correct permissions on it, etc.).
      */
     public /*out*/ readonly invalidKeyVersion!: pulumi.Output<boolean>;
     /**
@@ -231,9 +231,9 @@ export interface AccessApprovalSettingsState {
      */
     enrolledServices?: pulumi.Input<pulumi.Input<inputs.organizations.AccessApprovalSettingsEnrolledService>[]>;
     /**
-     * If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-     * this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on
-     * it, etc.).
+     * If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
+     * configured on this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the
+     * correct permissions on it, etc.).
      */
     invalidKeyVersion?: pulumi.Input<boolean>;
     /**

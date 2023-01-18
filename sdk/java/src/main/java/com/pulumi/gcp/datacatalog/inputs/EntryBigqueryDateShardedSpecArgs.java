@@ -16,23 +16,51 @@ public final class EntryBigqueryDateShardedSpecArgs extends com.pulumi.resources
 
     public static final EntryBigqueryDateShardedSpecArgs Empty = new EntryBigqueryDateShardedSpecArgs();
 
+    /**
+     * The Data Catalog resource name of the dataset entry the current table belongs to, for example,
+     * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}
+     * 
+     */
     @Import(name="dataset")
     private @Nullable Output<String> dataset;
 
+    /**
+     * @return The Data Catalog resource name of the dataset entry the current table belongs to, for example,
+     * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}
+     * 
+     */
     public Optional<Output<String>> dataset() {
         return Optional.ofNullable(this.dataset);
     }
 
+    /**
+     * Total number of shards.
+     * 
+     */
     @Import(name="shardCount")
     private @Nullable Output<Integer> shardCount;
 
+    /**
+     * @return Total number of shards.
+     * 
+     */
     public Optional<Output<Integer>> shardCount() {
         return Optional.ofNullable(this.shardCount);
     }
 
+    /**
+     * The table name prefix of the shards. The name of any given shard is [tablePrefix]YYYYMMDD,
+     * for example, for shard MyTable20180101, the tablePrefix is MyTable.
+     * 
+     */
     @Import(name="tablePrefix")
     private @Nullable Output<String> tablePrefix;
 
+    /**
+     * @return The table name prefix of the shards. The name of any given shard is [tablePrefix]YYYYMMDD,
+     * for example, for shard MyTable20180101, the tablePrefix is MyTable.
+     * 
+     */
     public Optional<Output<String>> tablePrefix() {
         return Optional.ofNullable(this.tablePrefix);
     }
@@ -63,29 +91,69 @@ public final class EntryBigqueryDateShardedSpecArgs extends com.pulumi.resources
             $ = new EntryBigqueryDateShardedSpecArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dataset The Data Catalog resource name of the dataset entry the current table belongs to, for example,
+         * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataset(@Nullable Output<String> dataset) {
             $.dataset = dataset;
             return this;
         }
 
+        /**
+         * @param dataset The Data Catalog resource name of the dataset entry the current table belongs to, for example,
+         * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataset(String dataset) {
             return dataset(Output.of(dataset));
         }
 
+        /**
+         * @param shardCount Total number of shards.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shardCount(@Nullable Output<Integer> shardCount) {
             $.shardCount = shardCount;
             return this;
         }
 
+        /**
+         * @param shardCount Total number of shards.
+         * 
+         * @return builder
+         * 
+         */
         public Builder shardCount(Integer shardCount) {
             return shardCount(Output.of(shardCount));
         }
 
+        /**
+         * @param tablePrefix The table name prefix of the shards. The name of any given shard is [tablePrefix]YYYYMMDD,
+         * for example, for shard MyTable20180101, the tablePrefix is MyTable.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tablePrefix(@Nullable Output<String> tablePrefix) {
             $.tablePrefix = tablePrefix;
             return this;
         }
 
+        /**
+         * @param tablePrefix The table name prefix of the shards. The name of any given shard is [tablePrefix]YYYYMMDD,
+         * for example, for shard MyTable20180101, the tablePrefix is MyTable.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tablePrefix(String tablePrefix) {
             return tablePrefix(Output.of(tablePrefix));
         }

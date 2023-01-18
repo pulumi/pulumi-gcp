@@ -48,7 +48,6 @@ public final class RegionBackendServiceIapArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * - 
      * OAuth2 Client Secret SHA-256 for IAP
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
@@ -57,8 +56,7 @@ public final class RegionBackendServiceIapArgs extends com.pulumi.resources.Reso
     private @Nullable Output<String> oauth2ClientSecretSha256;
 
     /**
-     * @return -
-     * OAuth2 Client Secret SHA-256 for IAP
+     * @return OAuth2 Client Secret SHA-256 for IAP
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
@@ -137,8 +135,7 @@ public final class RegionBackendServiceIapArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param oauth2ClientSecretSha256 -
-         * OAuth2 Client Secret SHA-256 for IAP
+         * @param oauth2ClientSecretSha256 OAuth2 Client Secret SHA-256 for IAP
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
@@ -150,8 +147,7 @@ public final class RegionBackendServiceIapArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param oauth2ClientSecretSha256 -
-         * OAuth2 Client Secret SHA-256 for IAP
+         * @param oauth2ClientSecretSha256 OAuth2 Client Secret SHA-256 for IAP
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder

@@ -16,8 +16,16 @@ public final class AssetDiscoveryStatus {
     private @Nullable String lastRunDuration;
     private @Nullable String lastRunTime;
     private @Nullable String message;
+    /**
+     * @return Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+     * 
+     */
     private @Nullable String state;
     private @Nullable List<AssetDiscoveryStatusStat> stats;
+    /**
+     * @return Output only. The time when the asset was last updated.
+     * 
+     */
     private @Nullable String updateTime;
 
     private AssetDiscoveryStatus() {}
@@ -30,12 +38,20 @@ public final class AssetDiscoveryStatus {
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
+    /**
+     * @return Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+     * 
+     */
     public Optional<String> state() {
         return Optional.ofNullable(this.state);
     }
     public List<AssetDiscoveryStatusStat> stats() {
         return this.stats == null ? List.of() : this.stats;
     }
+    /**
+     * @return Output only. The time when the asset was last updated.
+     * 
+     */
     public Optional<String> updateTime() {
         return Optional.ofNullable(this.updateTime);
     }

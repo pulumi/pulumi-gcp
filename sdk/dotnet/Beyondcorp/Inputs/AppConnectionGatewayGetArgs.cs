@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.Beyondcorp.Inputs
         public Input<string> AppGateway { get; set; } = null!;
 
         /// <summary>
-        /// -
         /// Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
         /// </summary>
         [Input("ingressPort")]
@@ -34,7 +33,6 @@ namespace Pulumi.Gcp.Beyondcorp.Inputs
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// -
         /// Server-defined URI for this resource.
         /// </summary>
         [Input("uri")]

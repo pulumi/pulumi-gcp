@@ -332,12 +332,18 @@ class AttachedClusterAuthorization(dict):
 class AttachedClusterError(dict):
     def __init__(__self__, *,
                  message: Optional[str] = None):
+        """
+        :param str message: Human-friendly description of the error.
+        """
         if message is not None:
             pulumi.set(__self__, "message", message)
 
     @property
     @pulumi.getter
     def message(self) -> Optional[str]:
+        """
+        Human-friendly description of the error.
+        """
         return pulumi.get(self, "message")
 
 
@@ -349,8 +355,7 @@ class AttachedClusterFleet(dict):
         """
         :param str project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param str membership: -
-               The name of the managed Hub Membership resource associated to this
+        :param str membership: The name of the managed Hub Membership resource associated to this
                cluster. Membership names are formatted as
                projects/<project-number>/locations/global/membership/<cluster-id>.
         """
@@ -371,7 +376,6 @@ class AttachedClusterFleet(dict):
     @pulumi.getter
     def membership(self) -> Optional[str]:
         """
-        -
         The name of the managed Hub Membership resource associated to this
         cluster. Membership names are formatted as
         projects/<project-number>/locations/global/membership/<cluster-id>.
@@ -586,6 +590,12 @@ class AttachedClusterWorkloadIdentityConfig(dict):
                  identity_provider: Optional[str] = None,
                  issuer_uri: Optional[str] = None,
                  workload_pool: Optional[str] = None):
+        """
+        :param str identity_provider: The ID of the OIDC Identity Provider (IdP) associated to
+               the Workload Identity Pool.
+        :param str issuer_uri: The OIDC issuer URL for this cluster.
+        :param str workload_pool: The Workload Identity Pool associated to the cluster.
+        """
         if identity_provider is not None:
             pulumi.set(__self__, "identity_provider", identity_provider)
         if issuer_uri is not None:
@@ -596,16 +606,26 @@ class AttachedClusterWorkloadIdentityConfig(dict):
     @property
     @pulumi.getter(name="identityProvider")
     def identity_provider(self) -> Optional[str]:
+        """
+        The ID of the OIDC Identity Provider (IdP) associated to
+        the Workload Identity Pool.
+        """
         return pulumi.get(self, "identity_provider")
 
     @property
     @pulumi.getter(name="issuerUri")
     def issuer_uri(self) -> Optional[str]:
+        """
+        The OIDC issuer URL for this cluster.
+        """
         return pulumi.get(self, "issuer_uri")
 
     @property
     @pulumi.getter(name="workloadPool")
     def workload_pool(self) -> Optional[str]:
+        """
+        The Workload Identity Pool associated to the cluster.
+        """
         return pulumi.get(self, "workload_pool")
 
 
@@ -941,7 +961,7 @@ class AwsClusterControlPlaneConfigEncryption(dict):
     def __init__(__self__, *,
                  kms_key_arn: str):
         """
-        :param str kms_key_arn: Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+        :param str kms_key_arn: The ARN of the AWS KMS key used to encrypt cluster configuration.
         """
         pulumi.set(__self__, "kms_key_arn", kms_key_arn)
 
@@ -949,7 +969,7 @@ class AwsClusterControlPlaneConfigEncryption(dict):
     @pulumi.getter(name="kmsKeyArn")
     def kms_key_arn(self) -> str:
         """
-        Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+        The ARN of the AWS KMS key used to encrypt cluster configuration.
         """
         return pulumi.get(self, "kms_key_arn")
 
@@ -976,7 +996,7 @@ class AwsClusterControlPlaneDatabaseEncryption(dict):
     def __init__(__self__, *,
                  kms_key_arn: str):
         """
-        :param str kms_key_arn: Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+        :param str kms_key_arn: The ARN of the AWS KMS key used to encrypt cluster secrets.
         """
         pulumi.set(__self__, "kms_key_arn", kms_key_arn)
 
@@ -984,7 +1004,7 @@ class AwsClusterControlPlaneDatabaseEncryption(dict):
     @pulumi.getter(name="kmsKeyArn")
     def kms_key_arn(self) -> str:
         """
-        Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+        The ARN of the AWS KMS key used to encrypt cluster secrets.
         """
         return pulumi.get(self, "kms_key_arn")
 
@@ -1249,9 +1269,8 @@ class AwsClusterFleet(dict):
                  membership: Optional[str] = None,
                  project: Optional[str] = None):
         """
-        :param str membership: -
-               The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/<project-number>/locations/global/membership/<cluster-id>.
-        :param str project: The project for the resource
+        :param str membership: The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/<project-number>/locations/global/membership/<cluster-id>.
+        :param str project: The number of the Fleet host project where this cluster will be registered.
         """
         if membership is not None:
             pulumi.set(__self__, "membership", membership)
@@ -1262,7 +1281,6 @@ class AwsClusterFleet(dict):
     @pulumi.getter
     def membership(self) -> Optional[str]:
         """
-        -
         The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/<project-number>/locations/global/membership/<cluster-id>.
         """
         return pulumi.get(self, "membership")
@@ -1271,7 +1289,7 @@ class AwsClusterFleet(dict):
     @pulumi.getter
     def project(self) -> Optional[str]:
         """
-        The project for the resource
+        The number of the Fleet host project where this cluster will be registered.
         """
         return pulumi.get(self, "project")
 
@@ -1755,7 +1773,7 @@ class AwsNodePoolConfigConfigEncryption(dict):
     def __init__(__self__, *,
                  kms_key_arn: str):
         """
-        :param str kms_key_arn: Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+        :param str kms_key_arn: The ARN of the AWS KMS key used to encrypt node pool configuration.
         """
         pulumi.set(__self__, "kms_key_arn", kms_key_arn)
 
@@ -1763,7 +1781,7 @@ class AwsNodePoolConfigConfigEncryption(dict):
     @pulumi.getter(name="kmsKeyArn")
     def kms_key_arn(self) -> str:
         """
-        Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
+        The ARN of the AWS KMS key used to encrypt node pool configuration.
         """
         return pulumi.get(self, "kms_key_arn")
 
@@ -2120,7 +2138,7 @@ class AzureClusterControlPlane(dict):
                  vm_size: Optional[str] = None):
         """
         :param 'AzureClusterControlPlaneSshConfigArgs' ssh_config: SSH configuration for how to access the underlying control plane machines.
-        :param str subnet_id: For a given replica, the ARM ID of the subnet where the control plane VM is deployed. Make sure it's a subnet under the virtual network in the cluster configuration.
+        :param str subnet_id: The ARM ID of the subnet where the control plane VMs are deployed. Example: `/subscriptions//resourceGroups//providers/Microsoft.Network/virtualNetworks//subnets/default`.
         :param str version: The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
         :param 'AzureClusterControlPlaneDatabaseEncryptionArgs' database_encryption: Optional. Configuration related to application-layer secrets encryption.
         :param 'AzureClusterControlPlaneMainVolumeArgs' main_volume: Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. When unspecified, it defaults to a 8-GiB Azure Disk.
@@ -2160,7 +2178,7 @@ class AzureClusterControlPlane(dict):
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> str:
         """
-        For a given replica, the ARM ID of the subnet where the control plane VM is deployed. Make sure it's a subnet under the virtual network in the cluster configuration.
+        The ARM ID of the subnet where the control plane VMs are deployed. Example: `/subscriptions//resourceGroups//providers/Microsoft.Network/virtualNetworks//subnets/default`.
         """
         return pulumi.get(self, "subnet_id")
 
@@ -2473,9 +2491,8 @@ class AzureClusterFleet(dict):
                  membership: Optional[str] = None,
                  project: Optional[str] = None):
         """
-        :param str membership: -
-               The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/<project-number>/locations/global/membership/<cluster-id>.
-        :param str project: The project for the resource
+        :param str membership: The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/<project-number>/locations/global/membership/<cluster-id>.
+        :param str project: The number of the Fleet host project where this cluster will be registered.
         """
         if membership is not None:
             pulumi.set(__self__, "membership", membership)
@@ -2486,7 +2503,6 @@ class AzureClusterFleet(dict):
     @pulumi.getter
     def membership(self) -> Optional[str]:
         """
-        -
         The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/<project-number>/locations/global/membership/<cluster-id>.
         """
         return pulumi.get(self, "membership")
@@ -2495,7 +2511,7 @@ class AzureClusterFleet(dict):
     @pulumi.getter
     def project(self) -> Optional[str]:
         """
-        The project for the resource
+        The number of the Fleet host project where this cluster will be registered.
         """
         return pulumi.get(self, "project")
 
@@ -3227,8 +3243,7 @@ class ClusterAddonsConfigCloudrunConfig(dict):
                  disabled: bool,
                  load_balancer_type: Optional[str] = None):
         """
-        :param bool disabled: The status of the Istio addon, which makes it easy to set up Istio for services in a
-               cluster. It is disabled by default. Set `disabled = false` to enable.
+        :param bool disabled: The status of the CloudRun addon. It is disabled by default. Set `disabled=false` to enable.
         :param str load_balancer_type: The load balancer type of CloudRun ingress service. It is external load balancer by default.
                Set `load_balancer_type=LOAD_BALANCER_TYPE_INTERNAL` to configure it as internal load balancer.
         """
@@ -3240,8 +3255,7 @@ class ClusterAddonsConfigCloudrunConfig(dict):
     @pulumi.getter
     def disabled(self) -> bool:
         """
-        The status of the Istio addon, which makes it easy to set up Istio for services in a
-        cluster. It is disabled by default. Set `disabled = false` to enable.
+        The status of the CloudRun addon. It is disabled by default. Set `disabled=false` to enable.
         """
         return pulumi.get(self, "disabled")
 
@@ -3260,8 +3274,10 @@ class ClusterAddonsConfigConfigConnectorConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
-        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
+        :param bool enabled: Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+               for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
                If enabled, pods must be valid under a PodSecurityPolicy to be created.
+               not.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -3269,8 +3285,10 @@ class ClusterAddonsConfigConfigConnectorConfig(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Enable the PodSecurityPolicy controller for this cluster.
+        Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+        for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
         If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        not.
         """
         return pulumi.get(self, "enabled")
 
@@ -3280,8 +3298,10 @@ class ClusterAddonsConfigDnsCacheConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
-        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
+        :param bool enabled: Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+               for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
                If enabled, pods must be valid under a PodSecurityPolicy to be created.
+               not.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -3289,8 +3309,10 @@ class ClusterAddonsConfigDnsCacheConfig(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Enable the PodSecurityPolicy controller for this cluster.
+        Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+        for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
         If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        not.
         """
         return pulumi.get(self, "enabled")
 
@@ -3300,8 +3322,10 @@ class ClusterAddonsConfigGcePersistentDiskCsiDriverConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
-        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
+        :param bool enabled: Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+               for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
                If enabled, pods must be valid under a PodSecurityPolicy to be created.
+               not.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -3309,8 +3333,10 @@ class ClusterAddonsConfigGcePersistentDiskCsiDriverConfig(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Enable the PodSecurityPolicy controller for this cluster.
+        Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+        for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
         If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        not.
         """
         return pulumi.get(self, "enabled")
 
@@ -3320,8 +3346,10 @@ class ClusterAddonsConfigGcpFilestoreCsiDriverConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
-        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
+        :param bool enabled: Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+               for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
                If enabled, pods must be valid under a PodSecurityPolicy to be created.
+               not.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -3329,8 +3357,10 @@ class ClusterAddonsConfigGcpFilestoreCsiDriverConfig(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Enable the PodSecurityPolicy controller for this cluster.
+        Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+        for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
         If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        not.
         """
         return pulumi.get(self, "enabled")
 
@@ -3340,8 +3370,10 @@ class ClusterAddonsConfigGkeBackupAgentConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
-        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
+        :param bool enabled: Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+               for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
                If enabled, pods must be valid under a PodSecurityPolicy to be created.
+               not.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -3349,8 +3381,10 @@ class ClusterAddonsConfigGkeBackupAgentConfig(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Enable the PodSecurityPolicy controller for this cluster.
+        Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+        for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
         If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        not.
         """
         return pulumi.get(self, "enabled")
 
@@ -3360,8 +3394,7 @@ class ClusterAddonsConfigHorizontalPodAutoscaling(dict):
     def __init__(__self__, *,
                  disabled: bool):
         """
-        :param bool disabled: The status of the Istio addon, which makes it easy to set up Istio for services in a
-               cluster. It is disabled by default. Set `disabled = false` to enable.
+        :param bool disabled: Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
         """
         pulumi.set(__self__, "disabled", disabled)
 
@@ -3369,8 +3402,7 @@ class ClusterAddonsConfigHorizontalPodAutoscaling(dict):
     @pulumi.getter
     def disabled(self) -> bool:
         """
-        The status of the Istio addon, which makes it easy to set up Istio for services in a
-        cluster. It is disabled by default. Set `disabled = false` to enable.
+        Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
         """
         return pulumi.get(self, "disabled")
 
@@ -3380,8 +3412,7 @@ class ClusterAddonsConfigHttpLoadBalancing(dict):
     def __init__(__self__, *,
                  disabled: bool):
         """
-        :param bool disabled: The status of the Istio addon, which makes it easy to set up Istio for services in a
-               cluster. It is disabled by default. Set `disabled = false` to enable.
+        :param bool disabled: Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
         """
         pulumi.set(__self__, "disabled", disabled)
 
@@ -3389,8 +3420,7 @@ class ClusterAddonsConfigHttpLoadBalancing(dict):
     @pulumi.getter
     def disabled(self) -> bool:
         """
-        The status of the Istio addon, which makes it easy to set up Istio for services in a
-        cluster. It is disabled by default. Set `disabled = false` to enable.
+        Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
         """
         return pulumi.get(self, "disabled")
 
@@ -3432,8 +3462,10 @@ class ClusterAddonsConfigKalmConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
-        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
+        :param bool enabled: Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+               for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
                If enabled, pods must be valid under a PodSecurityPolicy to be created.
+               not.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -3441,8 +3473,10 @@ class ClusterAddonsConfigKalmConfig(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Enable the PodSecurityPolicy controller for this cluster.
+        Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+        for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
         If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        not.
         """
         return pulumi.get(self, "enabled")
 
@@ -3452,8 +3486,7 @@ class ClusterAddonsConfigNetworkPolicyConfig(dict):
     def __init__(__self__, *,
                  disabled: bool):
         """
-        :param bool disabled: The status of the Istio addon, which makes it easy to set up Istio for services in a
-               cluster. It is disabled by default. Set `disabled = false` to enable.
+        :param bool disabled: Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
         """
         pulumi.set(__self__, "disabled", disabled)
 
@@ -3461,8 +3494,7 @@ class ClusterAddonsConfigNetworkPolicyConfig(dict):
     @pulumi.getter
     def disabled(self) -> bool:
         """
-        The status of the Istio addon, which makes it easy to set up Istio for services in a
-        cluster. It is disabled by default. Set `disabled = false` to enable.
+        Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
         """
         return pulumi.get(self, "disabled")
 
@@ -3525,8 +3557,7 @@ class ClusterBinaryAuthorization(dict):
                  enabled: Optional[bool] = None,
                  evaluation_mode: Optional[str] = None):
         """
-        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
-               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        :param bool enabled: Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
         :param str evaluation_mode: Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
                and `PROJECT_SINGLETON_POLICY_ENFORCE`. `PROJECT_SINGLETON_POLICY_ENFORCE` is functionally equivalent to the
                deprecated `enable_binary_authorization` parameter being set to `true`.
@@ -3540,8 +3571,7 @@ class ClusterBinaryAuthorization(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Enable the PodSecurityPolicy controller for this cluster.
-        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
         """
         return pulumi.get(self, "enabled")
 
@@ -3592,8 +3622,8 @@ class ClusterClusterAutoscaling(dict):
                options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
                feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
                when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
-        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
-               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        :param bool enabled: Whether node auto-provisioning is enabled. Must be supplied for GKE Standard clusters, `true` is implied
+               for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
         :param Sequence['ClusterClusterAutoscalingResourceLimitArgs'] resource_limits: Global constraints for machine resources in the
                cluster. Configuring the `cpu` and `memory` types is required if node
                auto-provisioning is enabled. These limits will apply to node pool autoscaling
@@ -3633,8 +3663,8 @@ class ClusterClusterAutoscaling(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Enable the PodSecurityPolicy controller for this cluster.
-        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        Whether node auto-provisioning is enabled. Must be supplied for GKE Standard clusters, `true` is implied
+        for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
         """
         return pulumi.get(self, "enabled")
 
@@ -3697,23 +3727,16 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
                  shielded_instance_config: Optional['outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig'] = None,
                  upgrade_settings: Optional['outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings'] = None):
         """
-        :param str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+        :param str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         :param int disk_size: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. Defaults to `100`
-        :param str disk_type: Type of the disk attached to each node
-               (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
-        :param str image_type: The image type to use for this node. Note that changing the image type
-               will delete and recreate all nodes in the node pool.
+        :param str disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced'). Defaults to `pd-standard`
+        :param str image_type: The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. __NOTE__ : COS AND UBUNTU are deprecated as of `GKE 1.24`
         :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgs' management: NodeManagement configuration for this NodePool. Structure is documented below.
-        :param str min_cpu_platform: Minimum CPU platform to be used by this instance.
-               The instance may be scheduled on the specified or newer CPU platform. Applicable
-               values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
-               [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-               for more information.
-        :param Sequence[str] oauth_scopes: The set of Google API scopes to be made available
-               on all of the node VMs under the "default" service account.
-               Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
-        :param str service_account: The service account to be used by the Node VMs.
-               If not specified, the "default" service account is used.
+        :param str min_cpu_platform: Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
+               specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such
+               as "Intel Haswell" or "Intel Sandy Bridge".
+        :param Sequence[str] oauth_scopes: Scopes that are used by NAP and GKE Autopilot when creating node pools. Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+        :param str service_account: The Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
         :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArgs' shielded_instance_config: Shielded Instance options. Structure is documented below.
         :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs' upgrade_settings: Specifies the upgrade settings for NAP created node pools. Structure is documented below.
         """
@@ -3742,7 +3765,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
     @pulumi.getter(name="bootDiskKmsKey")
     def boot_disk_kms_key(self) -> Optional[str]:
         """
-        The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+        The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         """
         return pulumi.get(self, "boot_disk_kms_key")
 
@@ -3758,8 +3781,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
     @pulumi.getter(name="diskType")
     def disk_type(self) -> Optional[str]:
         """
-        Type of the disk attached to each node
-        (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+        Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced'). Defaults to `pd-standard`
         """
         return pulumi.get(self, "disk_type")
 
@@ -3767,8 +3789,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
     @pulumi.getter(name="imageType")
     def image_type(self) -> Optional[str]:
         """
-        The image type to use for this node. Note that changing the image type
-        will delete and recreate all nodes in the node pool.
+        The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. __NOTE__ : COS AND UBUNTU are deprecated as of `GKE 1.24`
         """
         return pulumi.get(self, "image_type")
 
@@ -3784,11 +3805,9 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
     @pulumi.getter(name="minCpuPlatform")
     def min_cpu_platform(self) -> Optional[str]:
         """
-        Minimum CPU platform to be used by this instance.
-        The instance may be scheduled on the specified or newer CPU platform. Applicable
-        values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
-        [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
-        for more information.
+        Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
+        specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such
+        as "Intel Haswell" or "Intel Sandy Bridge".
         """
         return pulumi.get(self, "min_cpu_platform")
 
@@ -3796,9 +3815,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
     @pulumi.getter(name="oauthScopes")
     def oauth_scopes(self) -> Optional[Sequence[str]]:
         """
-        The set of Google API scopes to be made available
-        on all of the node VMs under the "default" service account.
-        Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+        Scopes that are used by NAP and GKE Autopilot when creating node pools. Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
         """
         return pulumi.get(self, "oauth_scopes")
 
@@ -3806,8 +3823,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> Optional[str]:
         """
-        The service account to be used by the Node VMs.
-        If not specified, the "default" service account is used.
+        The Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
         """
         return pulumi.get(self, "service_account")
 
@@ -4084,6 +4100,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenS
                  standard_rollout_policy: Optional['outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy'] = None):
         """
         :param str node_pool_soak_duration: Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs' standard_rollout_policy: Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
         """
         if node_pool_soak_duration is not None:
             pulumi.set(__self__, "node_pool_soak_duration", node_pool_soak_duration)
@@ -4101,6 +4118,9 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenS
     @property
     @pulumi.getter(name="standardRolloutPolicy")
     def standard_rollout_policy(self) -> Optional['outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy']:
+        """
+        Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+        """
         return pulumi.get(self, "standard_rollout_policy")
 
 
@@ -4133,6 +4153,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenS
                  batch_soak_duration: Optional[str] = None):
         """
         :param int batch_node_count: Number of blue nodes to drain in a batch. Only one of the batch_percentage or batch_node_count can be specified.
+        :param float batch_percentage: Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0). Only one of the batch_percentage or batch_node_count can be specified.
         :param str batch_soak_duration: Soak time after each batch gets drained. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".`.
         """
         if batch_node_count is not None:
@@ -4153,6 +4174,9 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenS
     @property
     @pulumi.getter(name="batchPercentage")
     def batch_percentage(self) -> Optional[float]:
+        """
+        Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0). Only one of the batch_percentage or batch_node_count can be specified.
+        """
         return pulumi.get(self, "batch_percentage")
 
     @property
@@ -4232,7 +4256,8 @@ class ClusterClusterTelemetry(dict):
     def __init__(__self__, *,
                  type: str):
         """
-        :param str type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        :param str type: Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
+               `SYSTEM_ONLY` (Only system components are monitored and logged) is only available in GKE versions 1.15 and later.
         """
         pulumi.set(__self__, "type", type)
 
@@ -4240,7 +4265,8 @@ class ClusterClusterTelemetry(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
+        `SYSTEM_ONLY` (Only system components are monitored and logged) is only available in GKE versions 1.15 and later.
         """
         return pulumi.get(self, "type")
 
@@ -4250,8 +4276,7 @@ class ClusterConfidentialNodes(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
-        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
-               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        :param bool enabled: Enable Confidential Nodes for this cluster.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -4259,8 +4284,7 @@ class ClusterConfidentialNodes(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Enable the PodSecurityPolicy controller for this cluster.
-        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        Enable Confidential Nodes for this cluster.
         """
         return pulumi.get(self, "enabled")
 
@@ -4270,8 +4294,7 @@ class ClusterCostManagementConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
-        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
-               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        :param bool enabled: Whether to enable the [cost allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -4279,8 +4302,7 @@ class ClusterCostManagementConfig(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Enable the PodSecurityPolicy controller for this cluster.
-        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        Whether to enable the [cost allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
         """
         return pulumi.get(self, "enabled")
 
@@ -4337,8 +4359,7 @@ class ClusterDefaultSnatStatus(dict):
     def __init__(__self__, *,
                  disabled: bool):
         """
-        :param bool disabled: The status of the Istio addon, which makes it easy to set up Istio for services in a
-               cluster. It is disabled by default. Set `disabled = false` to enable.
+        :param bool disabled: Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
         """
         pulumi.set(__self__, "disabled", disabled)
 
@@ -4346,8 +4367,7 @@ class ClusterDefaultSnatStatus(dict):
     @pulumi.getter
     def disabled(self) -> bool:
         """
-        The status of the Istio addon, which makes it easy to set up Istio for services in a
-        cluster. It is disabled by default. Set `disabled = false` to enable.
+        Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
         """
         return pulumi.get(self, "disabled")
 
@@ -4421,12 +4441,7 @@ class ClusterGatewayApiConfig(dict):
     def __init__(__self__, *,
                  channel: str):
         """
-        :param str channel: The selected release channel.
-               Accepted values are:
-               * UNSPECIFIED: Not set.
-               * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
-               * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
-               * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+        :param str channel: Which Gateway Api channel should be used. `CHANNEL_DISABLED` or `CHANNEL_STANDARD`.
         """
         pulumi.set(__self__, "channel", channel)
 
@@ -4434,12 +4449,7 @@ class ClusterGatewayApiConfig(dict):
     @pulumi.getter
     def channel(self) -> str:
         """
-        The selected release channel.
-        Accepted values are:
-        * UNSPECIFIED: Not set.
-        * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
-        * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
-        * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+        Which Gateway Api channel should be used. `CHANNEL_DISABLED` or `CHANNEL_STANDARD`.
         """
         return pulumi.get(self, "channel")
 
@@ -4449,8 +4459,7 @@ class ClusterIdentityServiceConfig(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None):
         """
-        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
-               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        :param bool enabled: Whether to enable the Identity Service component. It is disabled by default. Set `enabled=true` to enable.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -4459,8 +4468,7 @@ class ClusterIdentityServiceConfig(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Enable the PodSecurityPolicy controller for this cluster.
-        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        Whether to enable the Identity Service component. It is disabled by default. Set `enabled=true` to enable.
         """
         return pulumi.get(self, "enabled")
 
@@ -4591,7 +4599,8 @@ class ClusterLoggingConfig(dict):
     def __init__(__self__, *,
                  enable_components: Sequence[str]):
         """
-        :param Sequence[str] enable_components: The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, and `SCHEDULER`. In beta provider, `WORKLOADS` is supported on top of those 4 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
+        :param Sequence[str] enable_components: The GKE components exposing logs. Supported values include:
+               `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
         """
         pulumi.set(__self__, "enable_components", enable_components)
 
@@ -4599,7 +4608,8 @@ class ClusterLoggingConfig(dict):
     @pulumi.getter(name="enableComponents")
     def enable_components(self) -> Sequence[str]:
         """
-        The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, and `SCHEDULER`. In beta provider, `WORKLOADS` is supported on top of those 4 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
+        The GKE components exposing logs. Supported values include:
+        `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
         """
         return pulumi.get(self, "enable_components")
 
@@ -5124,8 +5134,7 @@ class ClusterMonitoringConfigManagedPrometheus(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
-        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
-               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        :param bool enabled: Whether or not the managed collection is enabled.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -5133,8 +5142,7 @@ class ClusterMonitoringConfigManagedPrometheus(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Enable the PodSecurityPolicy controller for this cluster.
-        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        Whether or not the managed collection is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -5145,8 +5153,7 @@ class ClusterNetworkPolicy(dict):
                  enabled: bool,
                  provider: Optional[str] = None):
         """
-        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
-               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        :param bool enabled: Whether network policy is enabled on the cluster.
         :param str provider: The selected network policy provider. Defaults to PROVIDER_UNSPECIFIED.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -5157,8 +5164,7 @@ class ClusterNetworkPolicy(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Enable the PodSecurityPolicy controller for this cluster.
-        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        Whether network policy is enabled on the cluster.
         """
         return pulumi.get(self, "enabled")
 
@@ -5266,7 +5272,12 @@ class ClusterNodeConfig(dict):
         :param str disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
         :param 'ClusterNodeConfigEphemeralStorageConfigArgs' ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-        :param 'ClusterNodeConfigGcfsConfigArgs' gcfs_config: ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+        :param 'ClusterNodeConfigGcfsConfigArgs' gcfs_config: Parameters for the Google Container Filesystem (GCFS).
+               If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
+               For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+               A `machine_type` that has more than 16 GiB of memory is also recommended.
+               GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
+               Structure is documented below.
         :param Sequence['ClusterNodeConfigGuestAcceleratorArgs'] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
                Structure documented below.
         :param 'ClusterNodeConfigGvnicArgs' gvnic: Google Virtual NIC (gVNIC) is a virtual network interface.
@@ -5283,8 +5294,9 @@ class ClusterNodeConfig(dict):
         :param 'ClusterNodeConfigLinuxNodeConfigArgs' linux_node_config: Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Note that validations happen all server side. All attributes are optional.
                Structure is documented below.
-        :param int local_ssd_count: Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
-        :param str logging_variant: The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
+        :param int local_ssd_count: The amount of local SSD disks that will be
+               attached to each cluster node. Defaults to 0.
+        :param str logging_variant: Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
         :param str machine_type: The name of a Google Compute Engine machine type.
                Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
                [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
@@ -5314,7 +5326,8 @@ class ClusterNodeConfig(dict):
         :param bool spot: A boolean that represents whether the underlying node VMs are spot.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
                for more information. Defaults to false.
-        :param Sequence[str] tags: ) - List of network tags applied to auto-provisioned node pools.
+        :param Sequence[str] tags: The list of instance tags applied to all nodes. Tags are used to identify
+               valid sources or targets for network firewalls.
         :param Sequence['ClusterNodeConfigTaintArgs'] taints: A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
                to apply to nodes. GKE's API can only set this field on cluster creation.
                However, GKE will add taints to your nodes if you enable certain features such
@@ -5421,7 +5434,12 @@ class ClusterNodeConfig(dict):
     @pulumi.getter(name="gcfsConfig")
     def gcfs_config(self) -> Optional['outputs.ClusterNodeConfigGcfsConfig']:
         """
-        ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+        Parameters for the Google Container Filesystem (GCFS).
+        If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
+        For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+        A `machine_type` that has more than 16 GiB of memory is also recommended.
+        GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
+        Structure is documented below.
         """
         return pulumi.get(self, "gcfs_config")
 
@@ -5487,7 +5505,8 @@ class ClusterNodeConfig(dict):
     @pulumi.getter(name="localSsdCount")
     def local_ssd_count(self) -> Optional[int]:
         """
-        Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+        The amount of local SSD disks that will be
+        attached to each cluster node. Defaults to 0.
         """
         return pulumi.get(self, "local_ssd_count")
 
@@ -5495,7 +5514,7 @@ class ClusterNodeConfig(dict):
     @pulumi.getter(name="loggingVariant")
     def logging_variant(self) -> Optional[str]:
         """
-        The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
+        Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
         """
         return pulumi.get(self, "logging_variant")
 
@@ -5614,7 +5633,8 @@ class ClusterNodeConfig(dict):
     @pulumi.getter
     def tags(self) -> Optional[Sequence[str]]:
         """
-        ) - List of network tags applied to auto-provisioned node pools.
+        The list of instance tags applied to all nodes. Tags are used to identify
+        valid sources or targets for network firewalls.
         """
         return pulumi.get(self, "tags")
 
@@ -5683,8 +5703,7 @@ class ClusterNodeConfigGcfsConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
-        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
-               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        :param bool enabled: Whether or not the Google Container Filesystem (GCFS) is enabled
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -5692,8 +5711,7 @@ class ClusterNodeConfigGcfsConfig(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Enable the PodSecurityPolicy controller for this cluster.
-        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        Whether or not the Google Container Filesystem (GCFS) is enabled
         """
         return pulumi.get(self, "enabled")
 
@@ -5827,8 +5845,7 @@ class ClusterNodeConfigGvnic(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
-        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
-               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        :param bool enabled: Whether or not the Google Virtual NIC (gVNIC) is enabled
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -5836,8 +5853,7 @@ class ClusterNodeConfigGvnic(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Enable the PodSecurityPolicy controller for this cluster.
-        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        Whether or not the Google Virtual NIC (gVNIC) is enabled
         """
         return pulumi.get(self, "enabled")
 
@@ -6095,7 +6111,7 @@ class ClusterNodeConfigTaint(dict):
                  value: str):
         """
         :param str effect: Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
-        :param str key: The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
+        :param str key: Key for taint.
         :param str value: Value for taint.
         """
         pulumi.set(__self__, "effect", effect)
@@ -6114,7 +6130,7 @@ class ClusterNodeConfigTaint(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
+        Key for taint.
         """
         return pulumi.get(self, "key")
 
@@ -6589,8 +6605,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
-        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
-               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        :param bool enabled: Whether or not the Google Container Filesystem (GCFS) is enabled
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -6598,8 +6613,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Enable the PodSecurityPolicy controller for this cluster.
-        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        Whether or not the Google Container Filesystem (GCFS) is enabled
         """
         return pulumi.get(self, "enabled")
 
@@ -6833,7 +6847,12 @@ class ClusterNodePoolNodeConfig(dict):
         :param str disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
         :param 'ClusterNodePoolNodeConfigEphemeralStorageConfigArgs' ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-        :param 'ClusterNodePoolNodeConfigGcfsConfigArgs' gcfs_config: ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+        :param 'ClusterNodePoolNodeConfigGcfsConfigArgs' gcfs_config: Parameters for the Google Container Filesystem (GCFS).
+               If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
+               For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+               A `machine_type` that has more than 16 GiB of memory is also recommended.
+               GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
+               Structure is documented below.
         :param Sequence['ClusterNodePoolNodeConfigGuestAcceleratorArgs'] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
                Structure documented below.
         :param 'ClusterNodePoolNodeConfigGvnicArgs' gvnic: Google Virtual NIC (gVNIC) is a virtual network interface.
@@ -6850,8 +6869,9 @@ class ClusterNodePoolNodeConfig(dict):
         :param 'ClusterNodePoolNodeConfigLinuxNodeConfigArgs' linux_node_config: Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Note that validations happen all server side. All attributes are optional.
                Structure is documented below.
-        :param int local_ssd_count: Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
-        :param str logging_variant: The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
+        :param int local_ssd_count: The amount of local SSD disks that will be
+               attached to each cluster node. Defaults to 0.
+        :param str logging_variant: Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
         :param str machine_type: The name of a Google Compute Engine machine type.
                Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
                [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
@@ -6881,7 +6901,8 @@ class ClusterNodePoolNodeConfig(dict):
         :param bool spot: A boolean that represents whether the underlying node VMs are spot.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
                for more information. Defaults to false.
-        :param Sequence[str] tags: ) - List of network tags applied to auto-provisioned node pools.
+        :param Sequence[str] tags: The list of instance tags applied to all nodes. Tags are used to identify
+               valid sources or targets for network firewalls.
         :param Sequence['ClusterNodePoolNodeConfigTaintArgs'] taints: A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
                to apply to nodes. GKE's API can only set this field on cluster creation.
                However, GKE will add taints to your nodes if you enable certain features such
@@ -6988,7 +7009,12 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter(name="gcfsConfig")
     def gcfs_config(self) -> Optional['outputs.ClusterNodePoolNodeConfigGcfsConfig']:
         """
-        ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+        Parameters for the Google Container Filesystem (GCFS).
+        If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
+        For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
+        A `machine_type` that has more than 16 GiB of memory is also recommended.
+        GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
+        Structure is documented below.
         """
         return pulumi.get(self, "gcfs_config")
 
@@ -7054,7 +7080,8 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter(name="localSsdCount")
     def local_ssd_count(self) -> Optional[int]:
         """
-        Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+        The amount of local SSD disks that will be
+        attached to each cluster node. Defaults to 0.
         """
         return pulumi.get(self, "local_ssd_count")
 
@@ -7062,7 +7089,7 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter(name="loggingVariant")
     def logging_variant(self) -> Optional[str]:
         """
-        The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
+        Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
         """
         return pulumi.get(self, "logging_variant")
 
@@ -7181,7 +7208,8 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter
     def tags(self) -> Optional[Sequence[str]]:
         """
-        ) - List of network tags applied to auto-provisioned node pools.
+        The list of instance tags applied to all nodes. Tags are used to identify
+        valid sources or targets for network firewalls.
         """
         return pulumi.get(self, "tags")
 
@@ -7250,8 +7278,7 @@ class ClusterNodePoolNodeConfigGcfsConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
-        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
-               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        :param bool enabled: Whether or not the Google Container Filesystem (GCFS) is enabled
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -7259,8 +7286,7 @@ class ClusterNodePoolNodeConfigGcfsConfig(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Enable the PodSecurityPolicy controller for this cluster.
-        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        Whether or not the Google Container Filesystem (GCFS) is enabled
         """
         return pulumi.get(self, "enabled")
 
@@ -7394,8 +7420,7 @@ class ClusterNodePoolNodeConfigGvnic(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
-        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
-               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        :param bool enabled: Whether or not the Google Virtual NIC (gVNIC) is enabled
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -7403,8 +7428,7 @@ class ClusterNodePoolNodeConfigGvnic(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Enable the PodSecurityPolicy controller for this cluster.
-        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        Whether or not the Google Virtual NIC (gVNIC) is enabled
         """
         return pulumi.get(self, "enabled")
 
@@ -7662,7 +7686,7 @@ class ClusterNodePoolNodeConfigTaint(dict):
                  value: str):
         """
         :param str effect: Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
-        :param str key: The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
+        :param str key: Key for taint.
         :param str value: Value for taint.
         """
         pulumi.set(__self__, "effect", effect)
@@ -7681,7 +7705,7 @@ class ClusterNodePoolNodeConfigTaint(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
+        Key for taint.
         """
         return pulumi.get(self, "key")
 
@@ -7725,7 +7749,8 @@ class ClusterNodePoolPlacementPolicy(dict):
     def __init__(__self__, *,
                  type: str):
         """
-        :param str type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        :param str type: Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
+               `SYSTEM_ONLY` (Only system components are monitored and logged) is only available in GKE versions 1.15 and later.
         """
         pulumi.set(__self__, "type", type)
 
@@ -7733,7 +7758,8 @@ class ClusterNodePoolPlacementPolicy(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
+        `SYSTEM_ONLY` (Only system components are monitored and logged) is only available in GKE versions 1.15 and later.
         """
         return pulumi.get(self, "type")
 
@@ -7839,6 +7865,7 @@ class ClusterNodePoolUpgradeSettingsBlueGreenSettings(dict):
                  standard_rollout_policy: 'outputs.ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy',
                  node_pool_soak_duration: Optional[str] = None):
         """
+        :param 'ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs' standard_rollout_policy: Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
         :param str node_pool_soak_duration: Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         """
         pulumi.set(__self__, "standard_rollout_policy", standard_rollout_policy)
@@ -7848,6 +7875,9 @@ class ClusterNodePoolUpgradeSettingsBlueGreenSettings(dict):
     @property
     @pulumi.getter(name="standardRolloutPolicy")
     def standard_rollout_policy(self) -> 'outputs.ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy':
+        """
+        Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+        """
         return pulumi.get(self, "standard_rollout_policy")
 
     @property
@@ -7888,6 +7918,7 @@ class ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy(dict)
                  batch_soak_duration: Optional[str] = None):
         """
         :param int batch_node_count: Number of blue nodes to drain in a batch. Only one of the batch_percentage or batch_node_count can be specified.
+        :param float batch_percentage: Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0). Only one of the batch_percentage or batch_node_count can be specified.
         :param str batch_soak_duration: Soak time after each batch gets drained. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".`.
         """
         if batch_node_count is not None:
@@ -7908,6 +7939,9 @@ class ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy(dict)
     @property
     @pulumi.getter(name="batchPercentage")
     def batch_percentage(self) -> Optional[float]:
+        """
+        Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0). Only one of the batch_percentage or batch_node_count can be specified.
+        """
         return pulumi.get(self, "batch_percentage")
 
     @property
@@ -7944,8 +7978,7 @@ class ClusterNotificationConfigPubsub(dict):
                  filter: Optional['outputs.ClusterNotificationConfigPubsubFilter'] = None,
                  topic: Optional[str] = None):
         """
-        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
-               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        :param bool enabled: Whether or not the notification config is enabled
         :param 'ClusterNotificationConfigPubsubFilterArgs' filter: Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
         :param str topic: The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
         """
@@ -7959,8 +7992,7 @@ class ClusterNotificationConfigPubsub(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Enable the PodSecurityPolicy controller for this cluster.
-        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        Whether or not the notification config is enabled
         """
         return pulumi.get(self, "enabled")
 
@@ -8203,8 +8235,8 @@ class ClusterPrivateClusterConfigMasterGlobalAccessConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
-        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
-               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        :param bool enabled: Whether the cluster master is accessible globally or
+               not.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -8212,8 +8244,8 @@ class ClusterPrivateClusterConfigMasterGlobalAccessConfig(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Enable the PodSecurityPolicy controller for this cluster.
-        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        Whether the cluster master is accessible globally or
+        not.
         """
         return pulumi.get(self, "enabled")
 
@@ -8353,8 +8385,7 @@ class ClusterServiceExternalIpsConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
-        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
-               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        :param bool enabled: Controls whether external ips specified by a service will be allowed. It is enabled by default.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -8362,8 +8393,7 @@ class ClusterServiceExternalIpsConfig(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Enable the PodSecurityPolicy controller for this cluster.
-        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        Controls whether external ips specified by a service will be allowed. It is enabled by default.
         """
         return pulumi.get(self, "enabled")
 
@@ -8394,8 +8424,10 @@ class ClusterTpuConfig(dict):
                  ipv4_cidr_block: Optional[str] = None,
                  use_service_networking: Optional[bool] = None):
         """
-        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
+        :param bool enabled: Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+               for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
                If enabled, pods must be valid under a PodSecurityPolicy to be created.
+               not.
         """
         pulumi.set(__self__, "enabled", enabled)
         if ipv4_cidr_block is not None:
@@ -8407,8 +8439,10 @@ class ClusterTpuConfig(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Enable the PodSecurityPolicy controller for this cluster.
+        Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+        for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
         If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        not.
         """
         return pulumi.get(self, "enabled")
 
@@ -8428,8 +8462,7 @@ class ClusterVerticalPodAutoscaling(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
-        :param bool enabled: Enable the PodSecurityPolicy controller for this cluster.
-               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        :param bool enabled: Enables vertical pod autoscaling
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -8437,8 +8470,7 @@ class ClusterVerticalPodAutoscaling(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Enable the PodSecurityPolicy controller for this cluster.
-        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        Enables vertical pod autoscaling
         """
         return pulumi.get(self, "enabled")
 

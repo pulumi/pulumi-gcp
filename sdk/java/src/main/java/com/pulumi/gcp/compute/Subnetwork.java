@@ -347,34 +347,36 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
         return this.fingerprint;
     }
     /**
-     * The gateway address for default routes to reach destination addresses outside this subnetwork.
+     * The gateway address for default routes to reach destination addresses
+     * outside this subnetwork.
      * 
      */
     @Export(name="gatewayAddress", type=String.class, parameters={})
     private Output<String> gatewayAddress;
 
     /**
-     * @return The gateway address for default routes to reach destination addresses outside this subnetwork.
+     * @return The gateway address for default routes to reach destination addresses
+     * outside this subnetwork.
      * 
      */
     public Output<String> gatewayAddress() {
         return this.gatewayAddress;
     }
     /**
-     * The range of IP addresses belonging to this subnetwork secondary
-     * range. Provide this property when you create the subnetwork.
-     * Ranges must be unique and non-overlapping with all primary and
-     * secondary IP ranges within a network. Only IPv4 is supported.
+     * The range of internal addresses that are owned by this subnetwork.
+     * Provide this property when you create the subnetwork. For example,
+     * 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
+     * non-overlapping within a network. Only IPv4 is supported.
      * 
      */
     @Export(name="ipCidrRange", type=String.class, parameters={})
     private Output<String> ipCidrRange;
 
     /**
-     * @return The range of IP addresses belonging to this subnetwork secondary
-     * range. Provide this property when you create the subnetwork.
-     * Ranges must be unique and non-overlapping with all primary and
-     * secondary IP ranges within a network. Only IPv4 is supported.
+     * @return The range of internal addresses that are owned by this subnetwork.
+     * Provide this property when you create the subnetwork. For example,
+     * 10.0.0.0/8 or 192.168.0.0/16. Ranges must be unique and
+     * non-overlapping within a network. Only IPv4 is supported.
      * 
      */
     public Output<String> ipCidrRange() {

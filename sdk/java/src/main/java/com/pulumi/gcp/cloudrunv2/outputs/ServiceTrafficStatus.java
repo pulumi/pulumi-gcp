@@ -18,7 +18,9 @@ public final class ServiceTrafficStatus {
      */
     private @Nullable Integer percent;
     /**
-     * @return Revision to which to send this portion of traffic, if traffic allocation is by revision.
+     * @return The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+     * (Optional)
+     * Revision to which to send this portion of traffic, if traffic allocation is by revision.
      * 
      */
     private @Nullable String revision;
@@ -33,6 +35,10 @@ public final class ServiceTrafficStatus {
      * 
      */
     private @Nullable String type;
+    /**
+     * @return Displays the target URI.
+     * 
+     */
     private @Nullable String uri;
 
     private ServiceTrafficStatus() {}
@@ -44,7 +50,9 @@ public final class ServiceTrafficStatus {
         return Optional.ofNullable(this.percent);
     }
     /**
-     * @return Revision to which to send this portion of traffic, if traffic allocation is by revision.
+     * @return The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+     * (Optional)
+     * Revision to which to send this portion of traffic, if traffic allocation is by revision.
      * 
      */
     public Optional<String> revision() {
@@ -65,6 +73,10 @@ public final class ServiceTrafficStatus {
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return Displays the target URI.
+     * 
+     */
     public Optional<String> uri() {
         return Optional.ofNullable(this.uri);
     }

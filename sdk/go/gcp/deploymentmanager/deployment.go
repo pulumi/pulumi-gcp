@@ -120,10 +120,10 @@ type Deployment struct {
 	// Key-value pairs to apply to this labels.
 	// Structure is documented below.
 	Labels DeploymentLabelArrayOutput `pulumi:"labels"`
-	// Output only. URL of the manifest representing the last manifest that was successfully deployed.
+	// Output only. URL of the manifest representing the last manifest that
+	// was successfully deployed.
 	Manifest pulumi.StringOutput `pulumi:"manifest"`
-	// The name of the template to import, as declared in the YAML
-	// configuration.
+	// Unique name for the deployment
 	Name pulumi.StringOutput `pulumi:"name"`
 	// If set to true, a deployment is created with "shell" resources
 	// that are not actually instantiated. This allows you to preview a
@@ -201,10 +201,10 @@ type deploymentState struct {
 	// Key-value pairs to apply to this labels.
 	// Structure is documented below.
 	Labels []DeploymentLabel `pulumi:"labels"`
-	// Output only. URL of the manifest representing the last manifest that was successfully deployed.
+	// Output only. URL of the manifest representing the last manifest that
+	// was successfully deployed.
 	Manifest *string `pulumi:"manifest"`
-	// The name of the template to import, as declared in the YAML
-	// configuration.
+	// Unique name for the deployment
 	Name *string `pulumi:"name"`
 	// If set to true, a deployment is created with "shell" resources
 	// that are not actually instantiated. This allows you to preview a
@@ -251,10 +251,10 @@ type DeploymentState struct {
 	// Key-value pairs to apply to this labels.
 	// Structure is documented below.
 	Labels DeploymentLabelArrayInput
-	// Output only. URL of the manifest representing the last manifest that was successfully deployed.
+	// Output only. URL of the manifest representing the last manifest that
+	// was successfully deployed.
 	Manifest pulumi.StringPtrInput
-	// The name of the template to import, as declared in the YAML
-	// configuration.
+	// Unique name for the deployment
 	Name pulumi.StringPtrInput
 	// If set to true, a deployment is created with "shell" resources
 	// that are not actually instantiated. This allows you to preview a
@@ -303,8 +303,7 @@ type deploymentArgs struct {
 	// Key-value pairs to apply to this labels.
 	// Structure is documented below.
 	Labels []DeploymentLabel `pulumi:"labels"`
-	// The name of the template to import, as declared in the YAML
-	// configuration.
+	// Unique name for the deployment
 	Name *string `pulumi:"name"`
 	// If set to true, a deployment is created with "shell" resources
 	// that are not actually instantiated. This allows you to preview a
@@ -348,8 +347,7 @@ type DeploymentArgs struct {
 	// Key-value pairs to apply to this labels.
 	// Structure is documented below.
 	Labels DeploymentLabelArrayInput
-	// The name of the template to import, as declared in the YAML
-	// configuration.
+	// Unique name for the deployment
 	Name pulumi.StringPtrInput
 	// If set to true, a deployment is created with "shell" resources
 	// that are not actually instantiated. This allows you to preview a
@@ -495,13 +493,13 @@ func (o DeploymentOutput) Labels() DeploymentLabelArrayOutput {
 	return o.ApplyT(func(v *Deployment) DeploymentLabelArrayOutput { return v.Labels }).(DeploymentLabelArrayOutput)
 }
 
-// Output only. URL of the manifest representing the last manifest that was successfully deployed.
+// Output only. URL of the manifest representing the last manifest that
+// was successfully deployed.
 func (o DeploymentOutput) Manifest() pulumi.StringOutput {
 	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.Manifest }).(pulumi.StringOutput)
 }
 
-// The name of the template to import, as declared in the YAML
-// configuration.
+// Unique name for the deployment
 func (o DeploymentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = logging.GetProjectCmekSettings(ctx, &logging.GetProjectCmekSettingsArgs{
+//			_, err := logging.GetProjectCmekSettings(ctx, &logging.GetProjectCmekSettingsArgs{
 //				Project: "my-project-name",
 //			}, nil)
 //			if err != nil {

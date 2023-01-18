@@ -279,7 +279,8 @@ namespace Pulumi.Gcp.Compute
         public Output<int?> MinPortsPerVm { get; private set; } = null!;
 
         /// <summary>
-        /// Self-link of subnetwork to NAT
+        /// Name of the NAT service. The name must be 1-63 characters long and
+        /// comply with RFC1035.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -474,7 +475,8 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? MinPortsPerVm { get; set; }
 
         /// <summary>
-        /// Self-link of subnetwork to NAT
+        /// Name of the NAT service. The name must be 1-63 characters long and
+        /// comply with RFC1035.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -649,7 +651,8 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? MinPortsPerVm { get; set; }
 
         /// <summary>
-        /// Self-link of subnetwork to NAT
+        /// Name of the NAT service. The name must be 1-63 characters long and
+        /// comply with RFC1035.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

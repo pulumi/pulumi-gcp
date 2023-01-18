@@ -32,7 +32,6 @@ public final class AppConnectionGatewayArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * - 
      * Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
      * 
      */
@@ -40,8 +39,7 @@ public final class AppConnectionGatewayArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<Integer> ingressPort;
 
     /**
-     * @return -
-     * Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
+     * @return Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
      * 
      */
     public Optional<Output<Integer>> ingressPort() {
@@ -68,7 +66,6 @@ public final class AppConnectionGatewayArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * - 
      * Server-defined URI for this resource.
      * 
      */
@@ -76,8 +73,7 @@ public final class AppConnectionGatewayArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> uri;
 
     /**
-     * @return -
-     * Server-defined URI for this resource.
+     * @return Server-defined URI for this resource.
      * 
      */
     public Optional<Output<String>> uri() {
@@ -133,8 +129,7 @@ public final class AppConnectionGatewayArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ingressPort -
-         * Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
+         * @param ingressPort Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
          * 
          * @return builder
          * 
@@ -145,8 +140,7 @@ public final class AppConnectionGatewayArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ingressPort -
-         * Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
+         * @param ingressPort Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
          * 
          * @return builder
          * 
@@ -181,8 +175,7 @@ public final class AppConnectionGatewayArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param uri -
-         * Server-defined URI for this resource.
+         * @param uri Server-defined URI for this resource.
          * 
          * @return builder
          * 
@@ -193,8 +186,7 @@ public final class AppConnectionGatewayArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param uri -
-         * Server-defined URI for this resource.
+         * @param uri Server-defined URI for this resource.
          * 
          * @return builder
          * 

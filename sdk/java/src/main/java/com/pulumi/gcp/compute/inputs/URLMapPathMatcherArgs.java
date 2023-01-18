@@ -83,14 +83,16 @@ public final class URLMapPathMatcherArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Description of this test case.
+     * An optional description of this resource. Provide this property when you create
+     * the resource.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of this test case.
+     * @return An optional description of this resource. Provide this property when you create
+     * the resource.
      * 
      */
     public Optional<Output<String>> description() {
@@ -99,9 +101,8 @@ public final class URLMapPathMatcherArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * Specifies changes to request and response headers that need to take effect for
-     * the selected backendService.
-     * headerAction specified here take effect before headerAction in the enclosing
-     * HttpRouteRule, PathMatcher and UrlMap.
+     * the selected backendService. HeaderAction specified here are applied after the
+     * matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap
      * Structure is documented below.
      * 
      */
@@ -110,9 +111,8 @@ public final class URLMapPathMatcherArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Specifies changes to request and response headers that need to take effect for
-     * the selected backendService.
-     * headerAction specified here take effect before headerAction in the enclosing
-     * HttpRouteRule, PathMatcher and UrlMap.
+     * the selected backendService. HeaderAction specified here are applied after the
+     * matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap
      * Structure is documented below.
      * 
      */
@@ -121,16 +121,14 @@ public final class URLMapPathMatcherArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The name of the query parameter to match. The query parameter must exist in the
-     * request, in the absence of which the request match fails.
+     * The name to which this PathMatcher is referred by the HostRule.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the query parameter to match. The query parameter must exist in the
-     * request, in the absence of which the request match fails.
+     * @return The name to which this PathMatcher is referred by the HostRule.
      * 
      */
     public Output<String> name() {
@@ -302,7 +300,8 @@ public final class URLMapPathMatcherArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description Description of this test case.
+         * @param description An optional description of this resource. Provide this property when you create
+         * the resource.
          * 
          * @return builder
          * 
@@ -313,7 +312,8 @@ public final class URLMapPathMatcherArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description Description of this test case.
+         * @param description An optional description of this resource. Provide this property when you create
+         * the resource.
          * 
          * @return builder
          * 
@@ -324,9 +324,8 @@ public final class URLMapPathMatcherArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param headerAction Specifies changes to request and response headers that need to take effect for
-         * the selected backendService.
-         * headerAction specified here take effect before headerAction in the enclosing
-         * HttpRouteRule, PathMatcher and UrlMap.
+         * the selected backendService. HeaderAction specified here are applied after the
+         * matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap
          * Structure is documented below.
          * 
          * @return builder
@@ -339,9 +338,8 @@ public final class URLMapPathMatcherArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param headerAction Specifies changes to request and response headers that need to take effect for
-         * the selected backendService.
-         * headerAction specified here take effect before headerAction in the enclosing
-         * HttpRouteRule, PathMatcher and UrlMap.
+         * the selected backendService. HeaderAction specified here are applied after the
+         * matching HttpRouteRule HeaderAction and before the HeaderAction in the UrlMap
          * Structure is documented below.
          * 
          * @return builder
@@ -352,8 +350,7 @@ public final class URLMapPathMatcherArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The name of the query parameter to match. The query parameter must exist in the
-         * request, in the absence of which the request match fails.
+         * @param name The name to which this PathMatcher is referred by the HostRule.
          * 
          * @return builder
          * 
@@ -364,8 +361,7 @@ public final class URLMapPathMatcherArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The name of the query parameter to match. The query parameter must exist in the
-         * request, in the absence of which the request match fails.
+         * @param name The name to which this PathMatcher is referred by the HostRule.
          * 
          * @return builder
          * 

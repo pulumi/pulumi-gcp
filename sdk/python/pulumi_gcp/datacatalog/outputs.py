@@ -57,6 +57,13 @@ class EntryBigqueryDateShardedSpec(dict):
                  dataset: Optional[str] = None,
                  shard_count: Optional[int] = None,
                  table_prefix: Optional[str] = None):
+        """
+        :param str dataset: The Data Catalog resource name of the dataset entry the current table belongs to, for example,
+               projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}
+        :param int shard_count: Total number of shards.
+        :param str table_prefix: The table name prefix of the shards. The name of any given shard is [tablePrefix]YYYYMMDD,
+               for example, for shard MyTable20180101, the tablePrefix is MyTable.
+        """
         if dataset is not None:
             pulumi.set(__self__, "dataset", dataset)
         if shard_count is not None:
@@ -67,16 +74,27 @@ class EntryBigqueryDateShardedSpec(dict):
     @property
     @pulumi.getter
     def dataset(self) -> Optional[str]:
+        """
+        The Data Catalog resource name of the dataset entry the current table belongs to, for example,
+        projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}
+        """
         return pulumi.get(self, "dataset")
 
     @property
     @pulumi.getter(name="shardCount")
     def shard_count(self) -> Optional[int]:
+        """
+        Total number of shards.
+        """
         return pulumi.get(self, "shard_count")
 
     @property
     @pulumi.getter(name="tablePrefix")
     def table_prefix(self) -> Optional[str]:
+        """
+        The table name prefix of the shards. The name of any given shard is [tablePrefix]YYYYMMDD,
+        for example, for shard MyTable20180101, the tablePrefix is MyTable.
+        """
         return pulumi.get(self, "table_prefix")
 
 
@@ -107,6 +125,13 @@ class EntryBigqueryTableSpec(dict):
                  table_source_type: Optional[str] = None,
                  table_specs: Optional[Sequence['outputs.EntryBigqueryTableSpecTableSpec']] = None,
                  view_specs: Optional[Sequence['outputs.EntryBigqueryTableSpecViewSpec']] = None):
+        """
+        :param str table_source_type: The table source type.
+        :param Sequence['EntryBigqueryTableSpecTableSpecArgs'] table_specs: Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
+               Structure is documented below.
+        :param Sequence['EntryBigqueryTableSpecViewSpecArgs'] view_specs: Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
+               Structure is documented below.
+        """
         if table_source_type is not None:
             pulumi.set(__self__, "table_source_type", table_source_type)
         if table_specs is not None:
@@ -117,16 +142,27 @@ class EntryBigqueryTableSpec(dict):
     @property
     @pulumi.getter(name="tableSourceType")
     def table_source_type(self) -> Optional[str]:
+        """
+        The table source type.
+        """
         return pulumi.get(self, "table_source_type")
 
     @property
     @pulumi.getter(name="tableSpecs")
     def table_specs(self) -> Optional[Sequence['outputs.EntryBigqueryTableSpecTableSpec']]:
+        """
+        Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
+        Structure is documented below.
+        """
         return pulumi.get(self, "table_specs")
 
     @property
     @pulumi.getter(name="viewSpecs")
     def view_specs(self) -> Optional[Sequence['outputs.EntryBigqueryTableSpecViewSpec']]:
+        """
+        Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
+        Structure is documented below.
+        """
         return pulumi.get(self, "view_specs")
 
 
@@ -151,12 +187,24 @@ class EntryBigqueryTableSpecTableSpec(dict):
 
     def __init__(__self__, *,
                  grouped_entry: Optional[str] = None):
+        """
+        :param str grouped_entry: If the table is a dated shard, i.e., with name pattern [prefix]YYYYMMDD, groupedEntry is the
+               Data Catalog resource name of the date sharded grouped entry, for example,
+               projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}.
+               Otherwise, groupedEntry is empty.
+        """
         if grouped_entry is not None:
             pulumi.set(__self__, "grouped_entry", grouped_entry)
 
     @property
     @pulumi.getter(name="groupedEntry")
     def grouped_entry(self) -> Optional[str]:
+        """
+        If the table is a dated shard, i.e., with name pattern [prefix]YYYYMMDD, groupedEntry is the
+        Data Catalog resource name of the date sharded grouped entry, for example,
+        projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}.
+        Otherwise, groupedEntry is empty.
+        """
         return pulumi.get(self, "grouped_entry")
 
 
@@ -181,12 +229,18 @@ class EntryBigqueryTableSpecViewSpec(dict):
 
     def __init__(__self__, *,
                  view_query: Optional[str] = None):
+        """
+        :param str view_query: The query that defines the table view.
+        """
         if view_query is not None:
             pulumi.set(__self__, "view_query", view_query)
 
     @property
     @pulumi.getter(name="viewQuery")
     def view_query(self) -> Optional[str]:
+        """
+        The query that defines the table view.
+        """
         return pulumi.get(self, "view_query")
 
 
@@ -226,8 +280,7 @@ class EntryGcsFilesetSpec(dict):
                * gs://bucket_name/[a-m].txt: matches files that contain a, b, ... or m followed by .txt in bucket_name
                * gs://bucket_name/a/*/b: matches all files in bucket_name that match a/*/b pattern, such as a/c/b, a/d/b
                * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt
-        :param Sequence['EntryGcsFilesetSpecSampleGcsFileSpecArgs'] sample_gcs_file_specs: -
-               Sample files contained in this fileset, not all files contained in this fileset are represented here.
+        :param Sequence['EntryGcsFilesetSpecSampleGcsFileSpecArgs'] sample_gcs_file_specs: Sample files contained in this fileset, not all files contained in this fileset are represented here.
                Structure is documented below.
         """
         pulumi.set(__self__, "file_patterns", file_patterns)
@@ -256,7 +309,6 @@ class EntryGcsFilesetSpec(dict):
     @pulumi.getter(name="sampleGcsFileSpecs")
     def sample_gcs_file_specs(self) -> Optional[Sequence['outputs.EntryGcsFilesetSpecSampleGcsFileSpec']]:
         """
-        -
         Sample files contained in this fileset, not all files contained in this fileset are represented here.
         Structure is documented below.
         """
@@ -288,10 +340,8 @@ class EntryGcsFilesetSpecSampleGcsFileSpec(dict):
                  file_path: Optional[str] = None,
                  size_bytes: Optional[int] = None):
         """
-        :param str file_path: -
-               The full file path
-        :param int size_bytes: -
-               The size of the file, in bytes.
+        :param str file_path: The full file path
+        :param int size_bytes: The size of the file, in bytes.
         """
         if file_path is not None:
             pulumi.set(__self__, "file_path", file_path)
@@ -302,7 +352,6 @@ class EntryGcsFilesetSpecSampleGcsFileSpec(dict):
     @pulumi.getter(name="filePath")
     def file_path(self) -> Optional[str]:
         """
-        -
         The full file path
         """
         return pulumi.get(self, "file_path")
@@ -311,7 +360,6 @@ class EntryGcsFilesetSpecSampleGcsFileSpec(dict):
     @pulumi.getter(name="sizeBytes")
     def size_bytes(self) -> Optional[int]:
         """
-        -
         The size of the file, in bytes.
         """
         return pulumi.get(self, "size_bytes")
@@ -468,12 +516,10 @@ class TagField(dict):
         """
         :param str field_name: The identifier for this object. Format specified above.
         :param bool bool_value: Holds the value for a tag field with boolean type.
-        :param str display_name: -
-               The display name of this field
+        :param str display_name: The display name of this field
         :param float double_value: Holds the value for a tag field with double type.
         :param str enum_value: Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
-        :param int order: -
-               The order of this field with respect to other fields in this tag. For example, a higher value can indicate
+        :param int order: The order of this field with respect to other fields in this tag. For example, a higher value can indicate
                a more important field. The value can be negative. Multiple fields can have the same order, and field orders
                within a tag do not have to be sequential.
         :param str string_value: Holds the value for a tag field with string type.
@@ -515,7 +561,6 @@ class TagField(dict):
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[str]:
         """
-        -
         The display name of this field
         """
         return pulumi.get(self, "display_name")
@@ -540,7 +585,6 @@ class TagField(dict):
     @pulumi.getter
     def order(self) -> Optional[int]:
         """
-        -
         The order of this field with respect to other fields in this tag. For example, a higher value can indicate
         a more important field. The value can be negative. Multiple fields can have the same order, and field orders
         within a tag do not have to be sequential.
@@ -600,10 +644,9 @@ class TagTemplateField(dict):
         :param 'TagTemplateFieldTypeArgs' type: The type of value this tag field can contain.
                Structure is documented below.
         :param str description: A description for this field.
-        :param str display_name: The display name for this template.
+        :param str display_name: The display name for this field.
         :param bool is_required: Whether this is a required field. Defaults to false.
-        :param str name: -
-               The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
+        :param str name: The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
         :param int order: The order of this field with respect to other fields in this tag template.
                A higher value indicates a more important field. The value can be negative.
                Multiple fields can have the same order, and field orders within a tag do not have to be sequential.
@@ -650,7 +693,7 @@ class TagTemplateField(dict):
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[str]:
         """
-        The display name for this template.
+        The display name for this field.
         """
         return pulumi.get(self, "display_name")
 
@@ -666,7 +709,6 @@ class TagTemplateField(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        -
         The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
         """
         return pulumi.get(self, "name")

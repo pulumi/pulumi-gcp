@@ -233,8 +233,13 @@ type GlobalForwardingRule struct {
 	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	// Structure is documented below.
 	MetadataFilters GlobalForwardingRuleMetadataFilterArrayOutput `pulumi:"metadataFilters"`
-	// Name of the metadata label. The length must be between
-	// 1 and 1024 characters, inclusive.
+	// Name of the resource; provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// This field is not used for external load balancing.
 	// For INTERNAL_SELF_MANAGED load balancing, this field
@@ -369,8 +374,13 @@ type globalForwardingRuleState struct {
 	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	// Structure is documented below.
 	MetadataFilters []GlobalForwardingRuleMetadataFilter `pulumi:"metadataFilters"`
-	// Name of the metadata label. The length must be between
-	// 1 and 1024 characters, inclusive.
+	// Name of the resource; provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// This field is not used for external load balancing.
 	// For INTERNAL_SELF_MANAGED load balancing, this field
@@ -474,8 +484,13 @@ type GlobalForwardingRuleState struct {
 	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	// Structure is documented below.
 	MetadataFilters GlobalForwardingRuleMetadataFilterArrayInput
-	// Name of the metadata label. The length must be between
-	// 1 and 1024 characters, inclusive.
+	// Name of the resource; provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// This field is not used for external load balancing.
 	// For INTERNAL_SELF_MANAGED load balancing, this field
@@ -581,8 +596,13 @@ type globalForwardingRuleArgs struct {
 	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	// Structure is documented below.
 	MetadataFilters []GlobalForwardingRuleMetadataFilter `pulumi:"metadataFilters"`
-	// Name of the metadata label. The length must be between
-	// 1 and 1024 characters, inclusive.
+	// Name of the resource; provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// This field is not used for external load balancing.
 	// For INTERNAL_SELF_MANAGED load balancing, this field
@@ -678,8 +698,13 @@ type GlobalForwardingRuleArgs struct {
 	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	// Structure is documented below.
 	MetadataFilters GlobalForwardingRuleMetadataFilterArrayInput
-	// Name of the metadata label. The length must be between
-	// 1 and 1024 characters, inclusive.
+	// Name of the resource; provided by the client when the resource is
+	// created. The name must be 1-63 characters long, and comply with
+	// RFC1035. Specifically, the name must be 1-63 characters long and match
+	// the regular expression `a-z?` which means the
+	// first character must be a lowercase letter, and all following
+	// characters must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// This field is not used for external load balancing.
 	// For INTERNAL_SELF_MANAGED load balancing, this field
@@ -886,8 +911,13 @@ func (o GlobalForwardingRuleOutput) MetadataFilters() GlobalForwardingRuleMetada
 	return o.ApplyT(func(v *GlobalForwardingRule) GlobalForwardingRuleMetadataFilterArrayOutput { return v.MetadataFilters }).(GlobalForwardingRuleMetadataFilterArrayOutput)
 }
 
-// Name of the metadata label. The length must be between
-// 1 and 1024 characters, inclusive.
+// Name of the resource; provided by the client when the resource is
+// created. The name must be 1-63 characters long, and comply with
+// RFC1035. Specifically, the name must be 1-63 characters long and match
+// the regular expression `a-z?` which means the
+// first character must be a lowercase letter, and all following
+// characters must be a dash, lowercase letter, or digit, except the last
+// character, which cannot be a dash.
 func (o GlobalForwardingRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

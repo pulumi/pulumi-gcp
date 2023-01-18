@@ -48,24 +48,26 @@ public final class HostingSiteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. The fully-qualified resource name of the Hosting site, in the format:
-     * projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project&#39;s
-     * [&#39;ProjectNumber&#39;](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
-     * ***(recommended)*** or its
-     * [&#39;ProjectId&#39;](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
-     * Learn more about using project identifiers in Google&#39;s [AIP 2510 standard](https://google.aip.dev/cloud/2510).
+     * Output only. The fully-qualified resource name of the Hosting site, in the
+     * format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
+     * Firebase project&#39;s
+     * [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
+     * [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
+     * Learn more about using project identifiers in Google&#39;s
+     * [AIP 2510 standard](https://google.aip.dev/cloud/2510).
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Output only. The fully-qualified resource name of the Hosting site, in the format:
-     * projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project&#39;s
-     * [&#39;ProjectNumber&#39;](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
-     * ***(recommended)*** or its
-     * [&#39;ProjectId&#39;](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
-     * Learn more about using project identifiers in Google&#39;s [AIP 2510 standard](https://google.aip.dev/cloud/2510).
+     * @return Output only. The fully-qualified resource name of the Hosting site, in the
+     * format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
+     * Firebase project&#39;s
+     * [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
+     * [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
+     * Learn more about using project identifiers in Google&#39;s
+     * [AIP 2510 standard](https://google.aip.dev/cloud/2510).
      * 
      */
     public Optional<Output<String>> name() {
@@ -181,12 +183,13 @@ public final class HostingSiteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Output only. The fully-qualified resource name of the Hosting site, in the format:
-         * projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project&#39;s
-         * [&#39;ProjectNumber&#39;](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
-         * ***(recommended)*** or its
-         * [&#39;ProjectId&#39;](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
-         * Learn more about using project identifiers in Google&#39;s [AIP 2510 standard](https://google.aip.dev/cloud/2510).
+         * @param name Output only. The fully-qualified resource name of the Hosting site, in the
+         * format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
+         * Firebase project&#39;s
+         * [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
+         * [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
+         * Learn more about using project identifiers in Google&#39;s
+         * [AIP 2510 standard](https://google.aip.dev/cloud/2510).
          * 
          * @return builder
          * 
@@ -197,12 +200,13 @@ public final class HostingSiteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Output only. The fully-qualified resource name of the Hosting site, in the format:
-         * projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project&#39;s
-         * [&#39;ProjectNumber&#39;](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
-         * ***(recommended)*** or its
-         * [&#39;ProjectId&#39;](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
-         * Learn more about using project identifiers in Google&#39;s [AIP 2510 standard](https://google.aip.dev/cloud/2510).
+         * @param name Output only. The fully-qualified resource name of the Hosting site, in the
+         * format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
+         * Firebase project&#39;s
+         * [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
+         * [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
+         * Learn more about using project identifiers in Google&#39;s
+         * [AIP 2510 standard](https://google.aip.dev/cloud/2510).
          * 
          * @return builder
          * 

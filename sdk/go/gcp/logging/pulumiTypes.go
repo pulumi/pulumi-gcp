@@ -1628,9 +1628,10 @@ type MetricMetricDescriptor struct {
 	// `INT64`, `DOUBLE`, or `DISTRIBUTION`. The supported units are a subset of
 	// [The Unified Code for Units of Measure](http://unitsofmeasure.org/ucum.html) standard
 	Unit *string `pulumi:"unit"`
-	// The type of data that can be assigned to the label.
-	// Default value is `STRING`.
-	// Possible values are `BOOL`, `INT64`, and `STRING`.
+	// Whether the measurement is an integer, a floating-point number, etc.
+	// Some combinations of metricKind and valueType might not be supported.
+	// For counter metrics, set this to INT64.
+	// Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, and `MONEY`.
 	ValueType string `pulumi:"valueType"`
 }
 
@@ -1665,9 +1666,10 @@ type MetricMetricDescriptorArgs struct {
 	// `INT64`, `DOUBLE`, or `DISTRIBUTION`. The supported units are a subset of
 	// [The Unified Code for Units of Measure](http://unitsofmeasure.org/ucum.html) standard
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
-	// The type of data that can be assigned to the label.
-	// Default value is `STRING`.
-	// Possible values are `BOOL`, `INT64`, and `STRING`.
+	// Whether the measurement is an integer, a floating-point number, etc.
+	// Some combinations of metricKind and valueType might not be supported.
+	// For counter metrics, set this to INT64.
+	// Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, and `MONEY`.
 	ValueType pulumi.StringInput `pulumi:"valueType"`
 }
 
@@ -1779,9 +1781,10 @@ func (o MetricMetricDescriptorOutput) Unit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricMetricDescriptor) *string { return v.Unit }).(pulumi.StringPtrOutput)
 }
 
-// The type of data that can be assigned to the label.
-// Default value is `STRING`.
-// Possible values are `BOOL`, `INT64`, and `STRING`.
+// Whether the measurement is an integer, a floating-point number, etc.
+// Some combinations of metricKind and valueType might not be supported.
+// For counter metrics, set this to INT64.
+// Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, and `MONEY`.
 func (o MetricMetricDescriptorOutput) ValueType() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricMetricDescriptor) string { return v.ValueType }).(pulumi.StringOutput)
 }
@@ -1861,9 +1864,10 @@ func (o MetricMetricDescriptorPtrOutput) Unit() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The type of data that can be assigned to the label.
-// Default value is `STRING`.
-// Possible values are `BOOL`, `INT64`, and `STRING`.
+// Whether the measurement is an integer, a floating-point number, etc.
+// Some combinations of metricKind and valueType might not be supported.
+// For counter metrics, set this to INT64.
+// Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, and `MONEY`.
 func (o MetricMetricDescriptorPtrOutput) ValueType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricMetricDescriptor) *string {
 		if v == nil {

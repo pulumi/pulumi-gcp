@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TriggerDestinationCloudRunService {
     /**
-     * @return Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: &#34;/route&#34;, &#34;route&#34;, &#34;route/subroute&#34;.
+     * @return Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: &#34;/route&#34;, &#34;route&#34;, &#34;route/subroute&#34;.
      * 
      */
     private @Nullable String path;
@@ -22,14 +22,14 @@ public final class TriggerDestinationCloudRunService {
      */
     private @Nullable String region;
     /**
-     * @return Required. Name of the GKE service.
+     * @return Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
      * 
      */
     private String service;
 
     private TriggerDestinationCloudRunService() {}
     /**
-     * @return Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: &#34;/route&#34;, &#34;route&#34;, &#34;route/subroute&#34;.
+     * @return Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: &#34;/route&#34;, &#34;route&#34;, &#34;route/subroute&#34;.
      * 
      */
     public Optional<String> path() {
@@ -43,7 +43,7 @@ public final class TriggerDestinationCloudRunService {
         return Optional.ofNullable(this.region);
     }
     /**
-     * @return Required. Name of the GKE service.
+     * @return Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
      * 
      */
     public String service() {

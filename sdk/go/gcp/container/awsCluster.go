@@ -90,7 +90,7 @@ import (
 //					Tags: pulumi.StringMap{
 //						"owner": pulumi.String("emailAddress:my@service-account.com"),
 //					},
-//					Version: pulumi.String(versions.ValidVersions[0]),
+//					Version: *pulumi.String(versions.ValidVersions[0]),
 //				},
 //				Description: pulumi.String("A sample aws cluster"),
 //				Fleet: &container.AwsClusterFleetArgs{
@@ -155,8 +155,7 @@ type AwsCluster struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Output only. The endpoint of the cluster's API server.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
-	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-	// and delete requests to ensure the client has an up-to-date value before proceeding.
+	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Fleet configuration.
 	Fleet AwsClusterFleetOutput `pulumi:"fleet"`
@@ -168,12 +167,13 @@ type AwsCluster struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Cluster-wide networking configuration.
 	Networking AwsClusterNetworkingOutput `pulumi:"networking"`
+	// The number of the Fleet host project where this cluster will be registered.
+	// (Optional)
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Output only. If set, there are currently changes in flight to the cluster.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
-	// Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-	// STOPPING, ERROR, DEGRADED
+	// Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
 	State pulumi.StringOutput `pulumi:"state"`
 	// Output only. A globally unique identifier for the cluster.
 	Uid pulumi.StringOutput `pulumi:"uid"`
@@ -244,8 +244,7 @@ type awsClusterState struct {
 	Description *string `pulumi:"description"`
 	// Output only. The endpoint of the cluster's API server.
 	Endpoint *string `pulumi:"endpoint"`
-	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-	// and delete requests to ensure the client has an up-to-date value before proceeding.
+	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// Fleet configuration.
 	Fleet *AwsClusterFleet `pulumi:"fleet"`
@@ -257,12 +256,13 @@ type awsClusterState struct {
 	Name *string `pulumi:"name"`
 	// Cluster-wide networking configuration.
 	Networking *AwsClusterNetworking `pulumi:"networking"`
+	// The number of the Fleet host project where this cluster will be registered.
+	// (Optional)
 	// The project for the resource
 	Project *string `pulumi:"project"`
 	// Output only. If set, there are currently changes in flight to the cluster.
 	Reconciling *bool `pulumi:"reconciling"`
-	// Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-	// STOPPING, ERROR, DEGRADED
+	// Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
 	State *string `pulumi:"state"`
 	// Output only. A globally unique identifier for the cluster.
 	Uid *string `pulumi:"uid"`
@@ -287,8 +287,7 @@ type AwsClusterState struct {
 	Description pulumi.StringPtrInput
 	// Output only. The endpoint of the cluster's API server.
 	Endpoint pulumi.StringPtrInput
-	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-	// and delete requests to ensure the client has an up-to-date value before proceeding.
+	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// Fleet configuration.
 	Fleet AwsClusterFleetPtrInput
@@ -300,12 +299,13 @@ type AwsClusterState struct {
 	Name pulumi.StringPtrInput
 	// Cluster-wide networking configuration.
 	Networking AwsClusterNetworkingPtrInput
+	// The number of the Fleet host project where this cluster will be registered.
+	// (Optional)
 	// The project for the resource
 	Project pulumi.StringPtrInput
 	// Output only. If set, there are currently changes in flight to the cluster.
 	Reconciling pulumi.BoolPtrInput
-	// Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-	// STOPPING, ERROR, DEGRADED
+	// Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
 	State pulumi.StringPtrInput
 	// Output only. A globally unique identifier for the cluster.
 	Uid pulumi.StringPtrInput
@@ -340,6 +340,8 @@ type awsClusterArgs struct {
 	Name *string `pulumi:"name"`
 	// Cluster-wide networking configuration.
 	Networking AwsClusterNetworking `pulumi:"networking"`
+	// The number of the Fleet host project where this cluster will be registered.
+	// (Optional)
 	// The project for the resource
 	Project *string `pulumi:"project"`
 }
@@ -366,6 +368,8 @@ type AwsClusterArgs struct {
 	Name pulumi.StringPtrInput
 	// Cluster-wide networking configuration.
 	Networking AwsClusterNetworkingInput
+	// The number of the Fleet host project where this cluster will be registered.
+	// (Optional)
 	// The project for the resource
 	Project pulumi.StringPtrInput
 }
@@ -492,8 +496,7 @@ func (o AwsClusterOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsCluster) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
 }
 
-// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-// and delete requests to ensure the client has an up-to-date value before proceeding.
+// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 func (o AwsClusterOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsCluster) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
@@ -523,6 +526,8 @@ func (o AwsClusterOutput) Networking() AwsClusterNetworkingOutput {
 	return o.ApplyT(func(v *AwsCluster) AwsClusterNetworkingOutput { return v.Networking }).(AwsClusterNetworkingOutput)
 }
 
+// The number of the Fleet host project where this cluster will be registered.
+// (Optional)
 // The project for the resource
 func (o AwsClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsCluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
@@ -533,8 +538,7 @@ func (o AwsClusterOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AwsCluster) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }
 
-// Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-// STOPPING, ERROR, DEGRADED
+// Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
 func (o AwsClusterOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsCluster) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

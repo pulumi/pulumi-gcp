@@ -195,7 +195,8 @@ type Routine struct {
 	// Input/output argument of a function or a stored procedure.
 	// Structure is documented below.
 	Arguments RoutineArgumentArrayOutput `pulumi:"arguments"`
-	// The time when this routine was created, in milliseconds since the epoch.
+	// The time when this routine was created, in milliseconds since the
+	// epoch.
 	CreationTime pulumi.IntOutput `pulumi:"creationTime"`
 	// The ID of the dataset containing this routine
 	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
@@ -213,7 +214,8 @@ type Routine struct {
 	// The language of the routine.
 	// Possible values are `SQL` and `JAVASCRIPT`.
 	Language pulumi.StringPtrOutput `pulumi:"language"`
-	// The time when this routine was modified, in milliseconds since the epoch.
+	// The time when this routine was modified, in milliseconds since the
+	// epoch.
 	LastModifiedTime pulumi.IntOutput `pulumi:"lastModifiedTime"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -281,7 +283,8 @@ type routineState struct {
 	// Input/output argument of a function or a stored procedure.
 	// Structure is documented below.
 	Arguments []RoutineArgument `pulumi:"arguments"`
-	// The time when this routine was created, in milliseconds since the epoch.
+	// The time when this routine was created, in milliseconds since the
+	// epoch.
 	CreationTime *int `pulumi:"creationTime"`
 	// The ID of the dataset containing this routine
 	DatasetId *string `pulumi:"datasetId"`
@@ -299,7 +302,8 @@ type routineState struct {
 	// The language of the routine.
 	// Possible values are `SQL` and `JAVASCRIPT`.
 	Language *string `pulumi:"language"`
-	// The time when this routine was modified, in milliseconds since the epoch.
+	// The time when this routine was modified, in milliseconds since the
+	// epoch.
 	LastModifiedTime *int `pulumi:"lastModifiedTime"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -330,7 +334,8 @@ type RoutineState struct {
 	// Input/output argument of a function or a stored procedure.
 	// Structure is documented below.
 	Arguments RoutineArgumentArrayInput
-	// The time when this routine was created, in milliseconds since the epoch.
+	// The time when this routine was created, in milliseconds since the
+	// epoch.
 	CreationTime pulumi.IntPtrInput
 	// The ID of the dataset containing this routine
 	DatasetId pulumi.StringPtrInput
@@ -348,7 +353,8 @@ type RoutineState struct {
 	// The language of the routine.
 	// Possible values are `SQL` and `JAVASCRIPT`.
 	Language pulumi.StringPtrInput
-	// The time when this routine was modified, in milliseconds since the epoch.
+	// The time when this routine was modified, in milliseconds since the
+	// epoch.
 	LastModifiedTime pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -563,7 +569,8 @@ func (o RoutineOutput) Arguments() RoutineArgumentArrayOutput {
 	return o.ApplyT(func(v *Routine) RoutineArgumentArrayOutput { return v.Arguments }).(RoutineArgumentArrayOutput)
 }
 
-// The time when this routine was created, in milliseconds since the epoch.
+// The time when this routine was created, in milliseconds since the
+// epoch.
 func (o RoutineOutput) CreationTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *Routine) pulumi.IntOutput { return v.CreationTime }).(pulumi.IntOutput)
 }
@@ -602,7 +609,8 @@ func (o RoutineOutput) Language() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Routine) pulumi.StringPtrOutput { return v.Language }).(pulumi.StringPtrOutput)
 }
 
-// The time when this routine was modified, in milliseconds since the epoch.
+// The time when this routine was modified, in milliseconds since the
+// epoch.
 func (o RoutineOutput) LastModifiedTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *Routine) pulumi.IntOutput { return v.LastModifiedTime }).(pulumi.IntOutput)
 }

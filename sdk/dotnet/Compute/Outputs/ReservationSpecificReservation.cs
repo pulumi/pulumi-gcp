@@ -18,7 +18,6 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly int Count;
         /// <summary>
-        /// -
         /// How many instances are in use.
         /// </summary>
         public readonly int? InUseCount;

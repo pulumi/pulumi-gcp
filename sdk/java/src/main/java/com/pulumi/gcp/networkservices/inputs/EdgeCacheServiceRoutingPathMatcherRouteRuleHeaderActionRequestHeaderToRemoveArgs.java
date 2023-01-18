@@ -14,16 +14,14 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionReques
     public static final EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArgs Empty = new EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArgs();
 
     /**
-     * Headers to remove from the response prior to sending it back to the client.
-     * Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+     * The name of the header to remove.
      * 
      */
     @Import(name="headerName", required=true)
     private Output<String> headerName;
 
     /**
-     * @return Headers to remove from the response prior to sending it back to the client.
-     * Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+     * @return The name of the header to remove.
      * 
      */
     public Output<String> headerName() {
@@ -55,8 +53,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionReques
         }
 
         /**
-         * @param headerName Headers to remove from the response prior to sending it back to the client.
-         * Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+         * @param headerName The name of the header to remove.
          * 
          * @return builder
          * 
@@ -67,8 +64,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionReques
         }
 
         /**
-         * @param headerName Headers to remove from the response prior to sending it back to the client.
-         * Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+         * @param headerName The name of the header to remove.
          * 
          * @return builder
          * 

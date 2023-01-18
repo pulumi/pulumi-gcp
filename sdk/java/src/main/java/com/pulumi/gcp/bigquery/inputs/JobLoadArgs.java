@@ -115,7 +115,7 @@ public final class JobLoadArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The destination table.
+     * The destination table to load the data into.
      * Structure is documented below.
      * 
      */
@@ -123,7 +123,7 @@ public final class JobLoadArgs extends com.pulumi.resources.ResourceArgs {
     private Output<JobLoadDestinationTableArgs> destinationTable;
 
     /**
-     * @return The destination table.
+     * @return The destination table to load the data into.
      * Structure is documented below.
      * 
      */
@@ -151,16 +151,22 @@ public final class JobLoadArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
-     * Default is &#39;,&#39;
+     * The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character.
+     * To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts
+     * the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the
+     * data in its raw, binary state. BigQuery also supports the escape sequence &#34;\t&#34; to specify a tab separator.
+     * The default value is a comma (&#39;,&#39;).
      * 
      */
     @Import(name="fieldDelimiter")
     private @Nullable Output<String> fieldDelimiter;
 
     /**
-     * @return When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
-     * Default is &#39;,&#39;
+     * @return The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character.
+     * To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts
+     * the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the
+     * data in its raw, binary state. BigQuery also supports the escape sequence &#34;\t&#34; to specify a tab separator.
+     * The default value is a comma (&#39;,&#39;).
      * 
      */
     public Optional<Output<String>> fieldDelimiter() {
@@ -602,7 +608,7 @@ public final class JobLoadArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destinationTable The destination table.
+         * @param destinationTable The destination table to load the data into.
          * Structure is documented below.
          * 
          * @return builder
@@ -614,7 +620,7 @@ public final class JobLoadArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destinationTable The destination table.
+         * @param destinationTable The destination table to load the data into.
          * Structure is documented below.
          * 
          * @return builder
@@ -650,8 +656,11 @@ public final class JobLoadArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fieldDelimiter When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
-         * Default is &#39;,&#39;
+         * @param fieldDelimiter The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character.
+         * To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts
+         * the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the
+         * data in its raw, binary state. BigQuery also supports the escape sequence &#34;\t&#34; to specify a tab separator.
+         * The default value is a comma (&#39;,&#39;).
          * 
          * @return builder
          * 
@@ -662,8 +671,11 @@ public final class JobLoadArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fieldDelimiter When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
-         * Default is &#39;,&#39;
+         * @param fieldDelimiter The separator for fields in a CSV file. The separator can be any ISO-8859-1 single-byte character.
+         * To use a character in the range 128-255, you must encode the character as UTF8. BigQuery converts
+         * the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the
+         * data in its raw, binary state. BigQuery also supports the escape sequence &#34;\t&#34; to specify a tab separator.
+         * The default value is a comma (&#39;,&#39;).
          * 
          * @return builder
          * 

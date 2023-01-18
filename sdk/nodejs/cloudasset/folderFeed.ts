@@ -106,7 +106,8 @@ export class FolderFeed extends pulumi.CustomResource {
      */
     public readonly folder!: pulumi.Output<string>;
     /**
-     * The ID of the folder where this feed has been created. Both [FOLDER_NUMBER] and folders/[FOLDER_NUMBER] are accepted.
+     * The ID of the folder where this feed has been created. Both [FOLDER_NUMBER]
+     * and folders/[FOLDER_NUMBER] are accepted.
      */
     public /*out*/ readonly folderId!: pulumi.Output<string>;
     /**
@@ -220,7 +221,8 @@ export interface FolderFeedState {
      */
     folder?: pulumi.Input<string>;
     /**
-     * The ID of the folder where this feed has been created. Both [FOLDER_NUMBER] and folders/[FOLDER_NUMBER] are accepted.
+     * The ID of the folder where this feed has been created. Both [FOLDER_NUMBER]
+     * and folders/[FOLDER_NUMBER] are accepted.
      */
     folderId?: pulumi.Input<string>;
     /**

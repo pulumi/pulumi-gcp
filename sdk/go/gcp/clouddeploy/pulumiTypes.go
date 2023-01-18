@@ -115,7 +115,8 @@ func (o DeliveryPipelineConditionArrayOutput) Index(i pulumi.IntInput) DeliveryP
 }
 
 type DeliveryPipelineConditionPipelineReadyCondition struct {
-	Status     *bool   `pulumi:"status"`
+	Status *bool `pulumi:"status"`
+	// Output only. Most recent time at which the pipeline was updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
@@ -131,7 +132,8 @@ type DeliveryPipelineConditionPipelineReadyConditionInput interface {
 }
 
 type DeliveryPipelineConditionPipelineReadyConditionArgs struct {
-	Status     pulumi.BoolPtrInput   `pulumi:"status"`
+	Status pulumi.BoolPtrInput `pulumi:"status"`
+	// Output only. Most recent time at which the pipeline was updated.
 	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
 }
 
@@ -190,6 +192,7 @@ func (o DeliveryPipelineConditionPipelineReadyConditionOutput) Status() pulumi.B
 	return o.ApplyT(func(v DeliveryPipelineConditionPipelineReadyCondition) *bool { return v.Status }).(pulumi.BoolPtrOutput)
 }
 
+// Output only. Most recent time at which the pipeline was updated.
 func (o DeliveryPipelineConditionPipelineReadyConditionOutput) UpdateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeliveryPipelineConditionPipelineReadyCondition) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
 }
@@ -217,7 +220,8 @@ func (o DeliveryPipelineConditionPipelineReadyConditionArrayOutput) Index(i pulu
 type DeliveryPipelineConditionTargetsPresentCondition struct {
 	MissingTargets []string `pulumi:"missingTargets"`
 	Status         *bool    `pulumi:"status"`
-	UpdateTime     *string  `pulumi:"updateTime"`
+	// Output only. Most recent time at which the pipeline was updated.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // DeliveryPipelineConditionTargetsPresentConditionInput is an input type that accepts DeliveryPipelineConditionTargetsPresentConditionArgs and DeliveryPipelineConditionTargetsPresentConditionOutput values.
@@ -234,7 +238,8 @@ type DeliveryPipelineConditionTargetsPresentConditionInput interface {
 type DeliveryPipelineConditionTargetsPresentConditionArgs struct {
 	MissingTargets pulumi.StringArrayInput `pulumi:"missingTargets"`
 	Status         pulumi.BoolPtrInput     `pulumi:"status"`
-	UpdateTime     pulumi.StringPtrInput   `pulumi:"updateTime"`
+	// Output only. Most recent time at which the pipeline was updated.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
 }
 
 func (DeliveryPipelineConditionTargetsPresentConditionArgs) ElementType() reflect.Type {
@@ -296,6 +301,7 @@ func (o DeliveryPipelineConditionTargetsPresentConditionOutput) Status() pulumi.
 	return o.ApplyT(func(v DeliveryPipelineConditionTargetsPresentCondition) *bool { return v.Status }).(pulumi.BoolPtrOutput)
 }
 
+// Output only. Most recent time at which the pipeline was updated.
 func (o DeliveryPipelineConditionTargetsPresentConditionOutput) UpdateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeliveryPipelineConditionTargetsPresentCondition) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
 }

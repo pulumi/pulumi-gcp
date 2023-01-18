@@ -13,11 +13,8 @@ import * as utilities from "../utilities";
  * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
  */
 export function getCaCerts(args: GetCaCertsArgs, opts?: pulumi.InvokeOptions): Promise<GetCaCertsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:sql/getCaCerts:getCaCerts", {
         "instance": args.instance,
         "project": args.project,
@@ -57,9 +54,14 @@ export interface GetCaCertsResult {
     readonly instance: string;
     readonly project: string;
 }
-
+/**
+ * Get all of the trusted Certificate Authorities (CAs) for the specified SQL database instance. For more information see the
+ * [official documentation](https://cloud.google.com/sql/)
+ * and
+ * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
+ */
 export function getCaCertsOutput(args: GetCaCertsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCaCertsResult> {
-    return pulumi.output(args).apply(a => getCaCerts(a, opts))
+    return pulumi.output(args).apply((a: any) => getCaCerts(a, opts))
 }
 
 /**

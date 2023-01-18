@@ -147,8 +147,7 @@ type Spoke struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
 	State pulumi.StringOutput `pulumi:"state"`
-	// Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is
-	// deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+	// Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
 	UniqueId pulumi.StringOutput `pulumi:"uniqueId"`
 	// Output only. The time the spoke was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -211,8 +210,7 @@ type spokeState struct {
 	Project *string `pulumi:"project"`
 	// Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
 	State *string `pulumi:"state"`
-	// Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is
-	// deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+	// Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
 	UniqueId *string `pulumi:"uniqueId"`
 	// Output only. The time the spoke was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -241,8 +239,7 @@ type SpokeState struct {
 	Project pulumi.StringPtrInput
 	// Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
 	State pulumi.StringPtrInput
-	// Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is
-	// deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+	// Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
 	UniqueId pulumi.StringPtrInput
 	// Output only. The time the spoke was last updated.
 	UpdateTime pulumi.StringPtrInput
@@ -437,8 +434,7 @@ func (o SpokeOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is
-// deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+// Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
 func (o SpokeOutput) UniqueId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.UniqueId }).(pulumi.StringOutput)
 }

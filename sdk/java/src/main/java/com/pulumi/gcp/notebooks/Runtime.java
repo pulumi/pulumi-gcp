@@ -344,16 +344,18 @@ public class Runtime extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.accessConfig);
     }
     /**
-     * The health state of this runtime. For a list of possible output values, see
-     * &#39;https://cloud.google.com/vertex-ai/docs/workbench/ reference/rest/v1/projects.locations.runtimes#healthstate&#39;.
+     * The health state of this runtime. For a list of possible output
+     * values, see `https://cloud.google.com/vertex-ai/docs/workbench/
+     * reference/rest/v1/projects.locations.runtimes#healthstate`.
      * 
      */
     @Export(name="healthState", type=String.class, parameters={})
     private Output<String> healthState;
 
     /**
-     * @return The health state of this runtime. For a list of possible output values, see
-     * &#39;https://cloud.google.com/vertex-ai/docs/workbench/ reference/rest/v1/projects.locations.runtimes#healthstate&#39;.
+     * @return The health state of this runtime. For a list of possible output
+     * values, see `https://cloud.google.com/vertex-ai/docs/workbench/
+     * reference/rest/v1/projects.locations.runtimes#healthstate`.
      * 
      */
     public Output<String> healthState() {
@@ -374,14 +376,18 @@ public class Runtime extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * Contains Runtime daemon metrics such as Service status and JupyterLab status
+     * Contains Runtime daemon metrics such as Service status and JupyterLab
+     * status
+     * Structure is documented below.
      * 
      */
     @Export(name="metrics", type=List.class, parameters={RuntimeMetric.class})
     private Output<List<RuntimeMetric>> metrics;
 
     /**
-     * @return Contains Runtime daemon metrics such as Service status and JupyterLab status
+     * @return Contains Runtime daemon metrics such as Service status and JupyterLab
+     * status
+     * Structure is documented below.
      * 
      */
     public Output<List<RuntimeMetric>> metrics() {

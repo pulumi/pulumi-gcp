@@ -74,7 +74,8 @@ type SecretVersion struct {
 	DestroyTime pulumi.StringOutput `pulumi:"destroyTime"`
 	// The current state of the SecretVersion.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// The resource name of the SecretVersion. Format: 'projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}'
+	// The resource name of the SecretVersion. Format:
+	// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Secret Manager secret resource
 	Secret pulumi.StringOutput `pulumi:"secret"`
@@ -99,7 +100,7 @@ func NewSecretVersion(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'SecretData'")
 	}
 	if args.SecretData != nil {
-		args.SecretData = pulumi.ToSecret(args.SecretData).(pulumi.StringOutput)
+		args.SecretData = pulumi.ToSecret(args.SecretData).(pulumi.StringInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"secretData",
@@ -133,7 +134,8 @@ type secretVersionState struct {
 	DestroyTime *string `pulumi:"destroyTime"`
 	// The current state of the SecretVersion.
 	Enabled *bool `pulumi:"enabled"`
-	// The resource name of the SecretVersion. Format: 'projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}'
+	// The resource name of the SecretVersion. Format:
+	// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
 	Name *string `pulumi:"name"`
 	// Secret Manager secret resource
 	Secret *string `pulumi:"secret"`
@@ -151,7 +153,8 @@ type SecretVersionState struct {
 	DestroyTime pulumi.StringPtrInput
 	// The current state of the SecretVersion.
 	Enabled pulumi.BoolPtrInput
-	// The resource name of the SecretVersion. Format: 'projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}'
+	// The resource name of the SecretVersion. Format:
+	// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
 	Name pulumi.StringPtrInput
 	// Secret Manager secret resource
 	Secret pulumi.StringPtrInput
@@ -289,7 +292,8 @@ func (o SecretVersionOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SecretVersion) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The resource name of the SecretVersion. Format: 'projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}'
+// The resource name of the SecretVersion. Format:
+// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
 func (o SecretVersionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretVersion) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

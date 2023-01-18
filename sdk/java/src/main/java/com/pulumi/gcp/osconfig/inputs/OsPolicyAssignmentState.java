@@ -21,18 +21,14 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
     public static final OsPolicyAssignmentState Empty = new OsPolicyAssignmentState();
 
     /**
-     * Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS
-     * policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for
-     * this field.
+     * Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
      * 
      */
     @Import(name="baseline")
     private @Nullable Output<Boolean> baseline;
 
     /**
-     * @return Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS
-     * policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for
-     * this field.
+     * @return Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
      * 
      */
     public Optional<Output<Boolean>> baseline() {
@@ -55,6 +51,8 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
     }
 
     /**
+     * Policy description. Length of the description is limited to 1024 characters.
+     * (Optional)
      * OS policy assignment description. Length of the description is limited to 1024 characters.
      * 
      */
@@ -62,7 +60,9 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
     private @Nullable Output<String> description;
 
     /**
-     * @return OS policy assignment description. Length of the description is limited to 1024 characters.
+     * @return Policy description. Length of the description is limited to 1024 characters.
+     * (Optional)
+     * OS policy assignment description. Length of the description is limited to 1024 characters.
      * 
      */
     public Optional<Output<String>> description() {
@@ -115,14 +115,14 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Required. The name of the repository.
+     * Resource name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Required. The name of the repository.
+     * @return Resource name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -160,16 +160,14 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the
-     * `rollout_state` is one of: * IN_PROGRESS * CANCELLING
+     * Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the `rollout_state` is one of: * IN_PROGRESS * CANCELLING
      * 
      */
     @Import(name="reconciling")
     private @Nullable Output<Boolean> reconciling;
 
     /**
-     * @return Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the
-     * `rollout_state` is one of: * IN_PROGRESS * CANCELLING
+     * @return Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the `rollout_state` is one of: * IN_PROGRESS * CANCELLING
      * 
      */
     public Optional<Output<Boolean>> reconciling() {
@@ -192,16 +190,14 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy
-     * assignment
+     * Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
      * 
      */
     @Import(name="revisionId")
     private @Nullable Output<String> revisionId;
 
     /**
-     * @return Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy
-     * assignment
+     * @return Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
      * 
      */
     public Optional<Output<String>> revisionId() {
@@ -224,16 +220,14 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING,
-     * CANCELLED, SUCCEEDED
+     * Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING, CANCELLED, SUCCEEDED
      * 
      */
     @Import(name="rolloutState")
     private @Nullable Output<String> rolloutState;
 
     /**
-     * @return Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING,
-     * CANCELLED, SUCCEEDED
+     * @return Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING, CANCELLED, SUCCEEDED
      * 
      */
     public Optional<Output<String>> rolloutState() {
@@ -310,9 +304,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param baseline Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS
-         * policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for
-         * this field.
+         * @param baseline Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
          * 
          * @return builder
          * 
@@ -323,9 +315,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param baseline Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS
-         * policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for
-         * this field.
+         * @param baseline Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
          * 
          * @return builder
          * 
@@ -356,7 +346,9 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param description OS policy assignment description. Length of the description is limited to 1024 characters.
+         * @param description Policy description. Length of the description is limited to 1024 characters.
+         * (Optional)
+         * OS policy assignment description. Length of the description is limited to 1024 characters.
          * 
          * @return builder
          * 
@@ -367,7 +359,9 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param description OS policy assignment description. Length of the description is limited to 1024 characters.
+         * @param description Policy description. Length of the description is limited to 1024 characters.
+         * (Optional)
+         * OS policy assignment description. Length of the description is limited to 1024 characters.
          * 
          * @return builder
          * 
@@ -440,7 +434,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name Required. The name of the repository.
+         * @param name Resource name.
          * 
          * @return builder
          * 
@@ -451,7 +445,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name Required. The name of the repository.
+         * @param name Resource name.
          * 
          * @return builder
          * 
@@ -513,8 +507,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param reconciling Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the
-         * `rollout_state` is one of: * IN_PROGRESS * CANCELLING
+         * @param reconciling Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the `rollout_state` is one of: * IN_PROGRESS * CANCELLING
          * 
          * @return builder
          * 
@@ -525,8 +518,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param reconciling Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the
-         * `rollout_state` is one of: * IN_PROGRESS * CANCELLING
+         * @param reconciling Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the `rollout_state` is one of: * IN_PROGRESS * CANCELLING
          * 
          * @return builder
          * 
@@ -557,8 +549,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param revisionId Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy
-         * assignment
+         * @param revisionId Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
          * 
          * @return builder
          * 
@@ -569,8 +560,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param revisionId Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy
-         * assignment
+         * @param revisionId Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
          * 
          * @return builder
          * 
@@ -601,8 +591,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param rolloutState Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING,
-         * CANCELLED, SUCCEEDED
+         * @param rolloutState Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING, CANCELLED, SUCCEEDED
          * 
          * @return builder
          * 
@@ -613,8 +602,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param rolloutState Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING,
-         * CANCELLED, SUCCEEDED
+         * @param rolloutState Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING, CANCELLED, SUCCEEDED
          * 
          * @return builder
          * 

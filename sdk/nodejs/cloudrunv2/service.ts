@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultService = new gcp.cloudrunv2.Service("default", {
+ * const _default = new gcp.cloudrunv2.Service("default", {
  *     ingress: "INGRESS_TRAFFIC_ALL",
  *     location: "us-central1",
  *     template: {
@@ -148,7 +148,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultService = new gcp.cloudrunv2.Service("default", {
+ * const _default = new gcp.cloudrunv2.Service("default", {
  *     location: "us-central1",
  *     template: {
  *         containers: [{
@@ -282,9 +282,8 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly clientVersion!: pulumi.Output<string | undefined>;
     /**
-     * The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the
-     * Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation
-     * process in Cloud Run.
+     * The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+     * Structure is documented below.
      */
     public /*out*/ readonly conditions!: pulumi.Output<outputs.cloudrunv2.ServiceCondition[]>;
     /**
@@ -292,13 +291,11 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during
-     * updates.
+     * A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this
-     * is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
+     * A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
      */
     public /*out*/ readonly generation!: pulumi.Output<string>;
     /**
@@ -307,17 +304,17 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly ingress!: pulumi.Output<string>;
     /**
+     * KRM-style labels for the resource.
+     * (Optional)
      * Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Name of the last created revision. See comments in reconciling for additional information on reconciliation process in
-     * Cloud Run.
+     * Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
      */
     public /*out*/ readonly latestCreatedRevision!: pulumi.Output<string>;
     /**
-     * Name of the latest revision that is serving traffic. See comments in reconciling for additional information on
-     * reconciliation process in Cloud Run.
+     * Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
      */
     public /*out*/ readonly latestReadyRevision!: pulumi.Output<string>;
     /**
@@ -330,13 +327,11 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string | undefined>;
     /**
-     * Volume's name.
+     * Name of the Service.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The generation of this Service currently serving traffic. See comments in reconciling for additional information on
-     * reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its
-     * JSON representation will be a string instead of an integer.
+     * The generation of this Service currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
      */
     public /*out*/ readonly observedGeneration!: pulumi.Output<string>;
     /**
@@ -345,17 +340,10 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Returns true if the Service is currently being acted upon by the system to bring it into the desired state. When a new
-     * Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring
-     * the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process,
-     * observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the
-     * intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation
-     * succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be
-     * found in terminalCondition.state. If reconciliation succeeded, the following fields will match: traffic and
-     * trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision. If reconciliation
-     * failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision,
-     * or empty for newly created Services. Additional information on the failure can be found in terminalCondition and
-     * conditions.
+     * Returns true if the Service is currently being acted upon by the system to bring it into the desired state.
+     * When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
+     * If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
+     * If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
@@ -364,13 +352,13 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly template!: pulumi.Output<outputs.cloudrunv2.ServiceTemplate>;
     /**
-     * The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach
-     * a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+     * The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+     * Structure is documented below.
      */
     public /*out*/ readonly terminalConditions!: pulumi.Output<outputs.cloudrunv2.ServiceTerminalCondition[]>;
     /**
-     * Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on
-     * reconciliation process in Cloud Run.
+     * Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+     * Structure is documented below.
      */
     public /*out*/ readonly trafficStatuses!: pulumi.Output<outputs.cloudrunv2.ServiceTrafficStatus[]>;
     /**
@@ -379,12 +367,11 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly traffics!: pulumi.Output<outputs.cloudrunv2.ServiceTraffic[]>;
     /**
-     * Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until
-     * the resource is deleted.
+     * Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
     /**
-     * The main URI in which this Service is serving traffic.
+     * Displays the target URI.
      */
     public /*out*/ readonly uri!: pulumi.Output<string>;
 
@@ -476,9 +463,8 @@ export interface ServiceState {
      */
     clientVersion?: pulumi.Input<string>;
     /**
-     * The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the
-     * Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation
-     * process in Cloud Run.
+     * The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+     * Structure is documented below.
      */
     conditions?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceCondition>[]>;
     /**
@@ -486,13 +472,11 @@ export interface ServiceState {
      */
     description?: pulumi.Input<string>;
     /**
-     * A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during
-     * updates.
+     * A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
      */
     etag?: pulumi.Input<string>;
     /**
-     * A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this
-     * is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
+     * A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
      */
     generation?: pulumi.Input<string>;
     /**
@@ -501,17 +485,17 @@ export interface ServiceState {
      */
     ingress?: pulumi.Input<string>;
     /**
+     * KRM-style labels for the resource.
+     * (Optional)
      * Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Name of the last created revision. See comments in reconciling for additional information on reconciliation process in
-     * Cloud Run.
+     * Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
      */
     latestCreatedRevision?: pulumi.Input<string>;
     /**
-     * Name of the latest revision that is serving traffic. See comments in reconciling for additional information on
-     * reconciliation process in Cloud Run.
+     * Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
      */
     latestReadyRevision?: pulumi.Input<string>;
     /**
@@ -524,13 +508,11 @@ export interface ServiceState {
      */
     location?: pulumi.Input<string>;
     /**
-     * Volume's name.
+     * Name of the Service.
      */
     name?: pulumi.Input<string>;
     /**
-     * The generation of this Service currently serving traffic. See comments in reconciling for additional information on
-     * reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its
-     * JSON representation will be a string instead of an integer.
+     * The generation of this Service currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
      */
     observedGeneration?: pulumi.Input<string>;
     /**
@@ -539,17 +521,10 @@ export interface ServiceState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Returns true if the Service is currently being acted upon by the system to bring it into the desired state. When a new
-     * Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring
-     * the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process,
-     * observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the
-     * intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation
-     * succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be
-     * found in terminalCondition.state. If reconciliation succeeded, the following fields will match: traffic and
-     * trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision. If reconciliation
-     * failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision,
-     * or empty for newly created Services. Additional information on the failure can be found in terminalCondition and
-     * conditions.
+     * Returns true if the Service is currently being acted upon by the system to bring it into the desired state.
+     * When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
+     * If reconciliation succeeded, the following fields will match: traffic and trafficStatuses, observedGeneration and generation, latestReadyRevision and latestCreatedRevision.
+     * If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
      */
     reconciling?: pulumi.Input<boolean>;
     /**
@@ -558,13 +533,13 @@ export interface ServiceState {
      */
     template?: pulumi.Input<inputs.cloudrunv2.ServiceTemplate>;
     /**
-     * The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach
-     * a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+     * The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+     * Structure is documented below.
      */
     terminalConditions?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceTerminalCondition>[]>;
     /**
-     * Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on
-     * reconciliation process in Cloud Run.
+     * Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
+     * Structure is documented below.
      */
     trafficStatuses?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceTrafficStatus>[]>;
     /**
@@ -573,12 +548,11 @@ export interface ServiceState {
      */
     traffics?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceTraffic>[]>;
     /**
-     * Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until
-     * the resource is deleted.
+     * Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      */
     uid?: pulumi.Input<string>;
     /**
-     * The main URI in which this Service is serving traffic.
+     * Displays the target URI.
      */
     uri?: pulumi.Input<string>;
 }
@@ -610,6 +584,8 @@ export interface ServiceArgs {
      */
     ingress?: pulumi.Input<string>;
     /**
+     * KRM-style labels for the resource.
+     * (Optional)
      * Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -623,7 +599,7 @@ export interface ServiceArgs {
      */
     location?: pulumi.Input<string>;
     /**
-     * Volume's name.
+     * Name of the Service.
      */
     name?: pulumi.Input<string>;
     /**

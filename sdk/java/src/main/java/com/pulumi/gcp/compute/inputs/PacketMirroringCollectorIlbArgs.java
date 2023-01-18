@@ -14,14 +14,14 @@ public final class PacketMirroringCollectorIlbArgs extends com.pulumi.resources.
     public static final PacketMirroringCollectorIlbArgs Empty = new PacketMirroringCollectorIlbArgs();
 
     /**
-     * The URL of the instances where this rule should be active.
+     * The URL of the forwarding rule.
      * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
-     * @return The URL of the instances where this rule should be active.
+     * @return The URL of the forwarding rule.
      * 
      */
     public Output<String> url() {
@@ -53,7 +53,7 @@ public final class PacketMirroringCollectorIlbArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param url The URL of the instances where this rule should be active.
+         * @param url The URL of the forwarding rule.
          * 
          * @return builder
          * 
@@ -64,7 +64,7 @@ public final class PacketMirroringCollectorIlbArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param url The URL of the instances where this rule should be active.
+         * @param url The URL of the forwarding rule.
          * 
          * @return builder
          * 

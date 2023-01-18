@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class InstanceGroupManagerNamedPort {
     /**
-     * @return - Version name.
+     * @return The name of the port.
      * 
      */
     private String name;
@@ -24,7 +24,7 @@ public final class InstanceGroupManagerNamedPort {
 
     private InstanceGroupManagerNamedPort() {}
     /**
-     * @return - Version name.
+     * @return The name of the port.
      * 
      */
     public String name() {

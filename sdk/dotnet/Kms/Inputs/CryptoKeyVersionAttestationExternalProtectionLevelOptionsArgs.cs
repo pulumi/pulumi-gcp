@@ -12,9 +12,15 @@ namespace Pulumi.Gcp.Kms.Inputs
 
     public sealed class CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
+        /// </summary>
         [Input("ekmConnectionKeyPath")]
         public Input<string>? EkmConnectionKeyPath { get; set; }
 
+        /// <summary>
+        /// The URI for an external resource that this CryptoKeyVersion represents.
+        /// </summary>
         [Input("externalKeyUri")]
         public Input<string>? ExternalKeyUri { get; set; }
 

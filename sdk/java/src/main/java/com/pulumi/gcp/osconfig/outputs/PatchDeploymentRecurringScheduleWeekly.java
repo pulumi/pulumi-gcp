@@ -10,7 +10,7 @@ import java.util.Objects;
 @CustomType
 public final class PatchDeploymentRecurringScheduleWeekly {
     /**
-     * @return A day of the week.
+     * @return IANA Time Zone Database time zone, e.g. &#34;America/New_York&#34;.
      * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
      * 
      */
@@ -18,7 +18,7 @@ public final class PatchDeploymentRecurringScheduleWeekly {
 
     private PatchDeploymentRecurringScheduleWeekly() {}
     /**
-     * @return A day of the week.
+     * @return IANA Time Zone Database time zone, e.g. &#34;America/New_York&#34;.
      * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
      * 
      */

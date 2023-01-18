@@ -27,16 +27,24 @@ type LookupAppleAppArgs struct {
 
 // A collection of values returned by getAppleApp.
 type LookupAppleAppResult struct {
-	AppId          string `pulumi:"appId"`
-	AppStoreId     string `pulumi:"appStoreId"`
+	// Immutable. The globally unique, Firebase-assigned identifier of the App.
+	// This identifier should be treated as an opaque token, as the data format is not specified.
+	AppId string `pulumi:"appId"`
+	// The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
+	AppStoreId string `pulumi:"appStoreId"`
+	// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
 	BundleId       string `pulumi:"bundleId"`
 	DeletionPolicy string `pulumi:"deletionPolicy"`
-	DisplayName    string `pulumi:"displayName"`
+	// The user-assigned display name of the App.
+	DisplayName string `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id      string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The fully qualified resource name of the App, for example:
+	// projects/projectId/iosApps/appId
 	Name    string `pulumi:"name"`
 	Project string `pulumi:"project"`
-	TeamId  string `pulumi:"teamId"`
+	// The Apple Developer Team ID associated with the App in the App Store.
+	TeamId string `pulumi:"teamId"`
 }
 
 func LookupAppleAppOutput(ctx *pulumi.Context, args LookupAppleAppOutputArgs, opts ...pulumi.InvokeOption) LookupAppleAppResultOutput {
@@ -77,14 +85,18 @@ func (o LookupAppleAppResultOutput) ToLookupAppleAppResultOutputWithContext(ctx 
 	return o
 }
 
+// Immutable. The globally unique, Firebase-assigned identifier of the App.
+// This identifier should be treated as an opaque token, as the data format is not specified.
 func (o LookupAppleAppResultOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppleAppResult) string { return v.AppId }).(pulumi.StringOutput)
 }
 
+// The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
 func (o LookupAppleAppResultOutput) AppStoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppleAppResult) string { return v.AppStoreId }).(pulumi.StringOutput)
 }
 
+// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
 func (o LookupAppleAppResultOutput) BundleId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppleAppResult) string { return v.BundleId }).(pulumi.StringOutput)
 }
@@ -93,6 +105,7 @@ func (o LookupAppleAppResultOutput) DeletionPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppleAppResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
+// The user-assigned display name of the App.
 func (o LookupAppleAppResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppleAppResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -102,6 +115,8 @@ func (o LookupAppleAppResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppleAppResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The fully qualified resource name of the App, for example:
+// projects/projectId/iosApps/appId
 func (o LookupAppleAppResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppleAppResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -110,6 +125,7 @@ func (o LookupAppleAppResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppleAppResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// The Apple Developer Team ID associated with the App in the App Store.
 func (o LookupAppleAppResultOutput) TeamId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppleAppResult) string { return v.TeamId }).(pulumi.StringOutput)
 }

@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public Input<string>? GpgKey { get; set; }
 
         /// <summary>
-        /// URI from which to fetch the object. It should contain both the protocol and path following the format {protocol}://{location}.
+        /// URI for this repository.
         /// </summary>
         [Input("uri", required: true)]
         public Input<string> Uri { get; set; } = null!;

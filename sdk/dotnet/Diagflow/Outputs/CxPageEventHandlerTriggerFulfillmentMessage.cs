@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.Diagflow.Outputs
     public sealed class CxPageEventHandlerTriggerFulfillmentMessage
     {
         /// <summary>
-        /// A collection of text responses.
+        /// The text response message.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.CxPageEventHandlerTriggerFulfillmentMessageText? Text;
 

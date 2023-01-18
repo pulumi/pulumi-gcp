@@ -109,13 +109,11 @@ export class AiTensorboard extends pulumi.CustomResource {
     }
 
     /**
-     * Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not
-     * end with a '/'.
+     * Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not end with a '/'.
      */
     public /*out*/ readonly blobStoragePathPrefix!: pulumi.Output<string>;
     /**
-     * The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-     * nine fractional digits.
+     * The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -153,8 +151,7 @@ export class AiTensorboard extends pulumi.CustomResource {
      */
     public /*out*/ readonly runCount!: pulumi.Output<string>;
     /**
-     * The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-     * to nine fractional digits.
+     * The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -209,13 +206,11 @@ export class AiTensorboard extends pulumi.CustomResource {
  */
 export interface AiTensorboardState {
     /**
-     * Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not
-     * end with a '/'.
+     * Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not end with a '/'.
      */
     blobStoragePathPrefix?: pulumi.Input<string>;
     /**
-     * The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-     * nine fractional digits.
+     * The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -253,8 +248,7 @@ export interface AiTensorboardState {
      */
     runCount?: pulumi.Input<string>;
     /**
-     * The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-     * to nine fractional digits.
+     * The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     updateTime?: pulumi.Input<string>;
 }

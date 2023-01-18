@@ -27,17 +27,19 @@ class JobArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Job resource.
-        :param pulumi.Input['JobTemplateArgs'] template: Describes the task(s) that will be created when executing an execution
+        :param pulumi.Input['JobTemplateArgs'] template: The template used to create executions for this Job.
                Structure is documented below.
         :param pulumi.Input['JobBinaryAuthorizationArgs'] binary_authorization: Settings for the Binary Authorization feature.
                Structure is documented below.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: KRM-style labels for the resource.
+               (Optional)
+               KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
         :param pulumi.Input[str] launch_stage: The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
                Possible values are `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
         :param pulumi.Input[str] location: The location of the cloud run job
-        :param pulumi.Input[str] name: Volume's name.
+        :param pulumi.Input[str] name: Name of the Job.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -63,7 +65,7 @@ class JobArgs:
     @pulumi.getter
     def template(self) -> pulumi.Input['JobTemplateArgs']:
         """
-        Describes the task(s) that will be created when executing an execution
+        The template used to create executions for this Job.
         Structure is documented below.
         """
         return pulumi.get(self, "template")
@@ -113,6 +115,8 @@ class JobArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
+        KRM-style labels for the resource.
+        (Optional)
         KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
         """
         return pulumi.get(self, "labels")
@@ -150,7 +154,7 @@ class JobArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Volume's name.
+        Name of the Job.
         """
         return pulumi.get(self, "name")
 
@@ -199,39 +203,32 @@ class _JobState:
                Structure is documented below.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
-        :param pulumi.Input[Sequence[pulumi.Input['JobConditionArgs']]] conditions: The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job
-               does not reach its desired state. See comments in reconciling for additional information on 'reconciliation' process in
-               Cloud Run.
-        :param pulumi.Input[str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during
-               updates.
+        :param pulumi.Input[Sequence[pulumi.Input['JobConditionArgs']]] conditions: The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
+               Structure is documented below.
+        :param pulumi.Input[str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         :param pulumi.Input[int] execution_count: Number of executions created for this job.
         :param pulumi.Input[str] generation: A number that monotonically increases every time the user modifies the desired state.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: KRM-style labels for the resource.
+               (Optional)
+               KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
         :param pulumi.Input[Sequence[pulumi.Input['JobLatestCreatedExecutionArgs']]] latest_created_executions: Name of the last created execution.
+               Structure is documented below.
         :param pulumi.Input[str] launch_stage: The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
                Possible values are `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
         :param pulumi.Input[str] location: The location of the cloud run job
-        :param pulumi.Input[str] name: Volume's name.
-        :param pulumi.Input[str] observed_generation: The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud
-               Run.
+        :param pulumi.Input[str] name: Name of the Job.
+        :param pulumi.Input[str] observed_generation: The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud Run.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[bool] reconciling: Returns true if the Job is currently being acted upon by the system to bring it into the desired state. When a new Job
-               is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to
-               the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and
-               latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is
-               over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job,
-               or there was an error, and reconciliation failed. This state can be found in terminalCondition.state. If reconciliation
-               succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and
-               latestCreatedExecution. If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state
-               of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in
-               terminalCondition and conditions
-        :param pulumi.Input['JobTemplateArgs'] template: Describes the task(s) that will be created when executing an execution
+        :param pulumi.Input[bool] reconciling: Returns true if the Job is currently being acted upon by the system to bring it into the desired state.
+               When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
+               If reconciliation succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and latestCreatedExecution.
+               If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
+        :param pulumi.Input['JobTemplateArgs'] template: The template used to create executions for this Job.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['JobTerminalConditionArgs']]] terminal_conditions: The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the
-               desired state
-        :param pulumi.Input[str] uid: Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged
-               until the resource is deleted.
+        :param pulumi.Input[Sequence[pulumi.Input['JobTerminalConditionArgs']]] terminal_conditions: The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
+               Structure is documented below.
+        :param pulumi.Input[str] uid: Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         """
         if binary_authorization is not None:
             pulumi.set(__self__, "binary_authorization", binary_authorization)
@@ -311,9 +308,8 @@ class _JobState:
     @pulumi.getter
     def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobConditionArgs']]]]:
         """
-        The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job
-        does not reach its desired state. See comments in reconciling for additional information on 'reconciliation' process in
-        Cloud Run.
+        The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
+        Structure is documented below.
         """
         return pulumi.get(self, "conditions")
 
@@ -325,8 +321,7 @@ class _JobState:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during
-        updates.
+        A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         """
         return pulumi.get(self, "etag")
 
@@ -362,6 +357,8 @@ class _JobState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
+        KRM-style labels for the resource.
+        (Optional)
         KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
         """
         return pulumi.get(self, "labels")
@@ -375,6 +372,7 @@ class _JobState:
     def latest_created_executions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobLatestCreatedExecutionArgs']]]]:
         """
         Name of the last created execution.
+        Structure is documented below.
         """
         return pulumi.get(self, "latest_created_executions")
 
@@ -411,7 +409,7 @@ class _JobState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Volume's name.
+        Name of the Job.
         """
         return pulumi.get(self, "name")
 
@@ -423,8 +421,7 @@ class _JobState:
     @pulumi.getter(name="observedGeneration")
     def observed_generation(self) -> Optional[pulumi.Input[str]]:
         """
-        The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud
-        Run.
+        The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud Run.
         """
         return pulumi.get(self, "observed_generation")
 
@@ -449,16 +446,10 @@ class _JobState:
     @pulumi.getter
     def reconciling(self) -> Optional[pulumi.Input[bool]]:
         """
-        Returns true if the Job is currently being acted upon by the system to bring it into the desired state. When a new Job
-        is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to
-        the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and
-        latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is
-        over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job,
-        or there was an error, and reconciliation failed. This state can be found in terminalCondition.state. If reconciliation
-        succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and
-        latestCreatedExecution. If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state
-        of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in
-        terminalCondition and conditions
+        Returns true if the Job is currently being acted upon by the system to bring it into the desired state.
+        When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
+        If reconciliation succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and latestCreatedExecution.
+        If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
         """
         return pulumi.get(self, "reconciling")
 
@@ -470,7 +461,7 @@ class _JobState:
     @pulumi.getter
     def template(self) -> Optional[pulumi.Input['JobTemplateArgs']]:
         """
-        Describes the task(s) that will be created when executing an execution
+        The template used to create executions for this Job.
         Structure is documented below.
         """
         return pulumi.get(self, "template")
@@ -483,8 +474,8 @@ class _JobState:
     @pulumi.getter(name="terminalConditions")
     def terminal_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTerminalConditionArgs']]]]:
         """
-        The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the
-        desired state
+        The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
+        Structure is documented below.
         """
         return pulumi.get(self, "terminal_conditions")
 
@@ -496,8 +487,7 @@ class _JobState:
     @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[str]]:
         """
-        Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged
-        until the resource is deleted.
+        Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         """
         return pulumi.get(self, "uid")
 
@@ -746,14 +736,16 @@ class Job(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: KRM-style labels for the resource.
+               (Optional)
+               KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
         :param pulumi.Input[str] launch_stage: The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
                Possible values are `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
         :param pulumi.Input[str] location: The location of the cloud run job
-        :param pulumi.Input[str] name: Volume's name.
+        :param pulumi.Input[str] name: Name of the Job.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['JobTemplateArgs']] template: Describes the task(s) that will be created when executing an execution
+        :param pulumi.Input[pulumi.InputType['JobTemplateArgs']] template: The template used to create executions for this Job.
                Structure is documented below.
         """
         ...
@@ -1073,39 +1065,32 @@ class Job(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobConditionArgs']]]] conditions: The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job
-               does not reach its desired state. See comments in reconciling for additional information on 'reconciliation' process in
-               Cloud Run.
-        :param pulumi.Input[str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during
-               updates.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobConditionArgs']]]] conditions: The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
+               Structure is documented below.
+        :param pulumi.Input[str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         :param pulumi.Input[int] execution_count: Number of executions created for this job.
         :param pulumi.Input[str] generation: A number that monotonically increases every time the user modifies the desired state.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: KRM-style labels for the resource.
+               (Optional)
+               KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobLatestCreatedExecutionArgs']]]] latest_created_executions: Name of the last created execution.
+               Structure is documented below.
         :param pulumi.Input[str] launch_stage: The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
                Possible values are `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
         :param pulumi.Input[str] location: The location of the cloud run job
-        :param pulumi.Input[str] name: Volume's name.
-        :param pulumi.Input[str] observed_generation: The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud
-               Run.
+        :param pulumi.Input[str] name: Name of the Job.
+        :param pulumi.Input[str] observed_generation: The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud Run.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[bool] reconciling: Returns true if the Job is currently being acted upon by the system to bring it into the desired state. When a new Job
-               is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to
-               the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and
-               latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is
-               over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job,
-               or there was an error, and reconciliation failed. This state can be found in terminalCondition.state. If reconciliation
-               succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and
-               latestCreatedExecution. If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state
-               of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in
-               terminalCondition and conditions
-        :param pulumi.Input[pulumi.InputType['JobTemplateArgs']] template: Describes the task(s) that will be created when executing an execution
+        :param pulumi.Input[bool] reconciling: Returns true if the Job is currently being acted upon by the system to bring it into the desired state.
+               When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
+               If reconciliation succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and latestCreatedExecution.
+               If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
+        :param pulumi.Input[pulumi.InputType['JobTemplateArgs']] template: The template used to create executions for this Job.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTerminalConditionArgs']]]] terminal_conditions: The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the
-               desired state
-        :param pulumi.Input[str] uid: Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged
-               until the resource is deleted.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTerminalConditionArgs']]]] terminal_conditions: The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
+               Structure is documented below.
+        :param pulumi.Input[str] uid: Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1160,9 +1145,8 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def conditions(self) -> pulumi.Output[Sequence['outputs.JobCondition']]:
         """
-        The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job
-        does not reach its desired state. See comments in reconciling for additional information on 'reconciliation' process in
-        Cloud Run.
+        The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
+        Structure is documented below.
         """
         return pulumi.get(self, "conditions")
 
@@ -1170,8 +1154,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during
-        updates.
+        A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         """
         return pulumi.get(self, "etag")
 
@@ -1195,6 +1178,8 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
+        KRM-style labels for the resource.
+        (Optional)
         KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
         """
         return pulumi.get(self, "labels")
@@ -1204,6 +1189,7 @@ class Job(pulumi.CustomResource):
     def latest_created_executions(self) -> pulumi.Output[Sequence['outputs.JobLatestCreatedExecution']]:
         """
         Name of the last created execution.
+        Structure is documented below.
         """
         return pulumi.get(self, "latest_created_executions")
 
@@ -1228,7 +1214,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Volume's name.
+        Name of the Job.
         """
         return pulumi.get(self, "name")
 
@@ -1236,8 +1222,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="observedGeneration")
     def observed_generation(self) -> pulumi.Output[str]:
         """
-        The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud
-        Run.
+        The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud Run.
         """
         return pulumi.get(self, "observed_generation")
 
@@ -1254,16 +1239,10 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def reconciling(self) -> pulumi.Output[bool]:
         """
-        Returns true if the Job is currently being acted upon by the system to bring it into the desired state. When a new Job
-        is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to
-        the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and
-        latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is
-        over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job,
-        or there was an error, and reconciliation failed. This state can be found in terminalCondition.state. If reconciliation
-        succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and
-        latestCreatedExecution. If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state
-        of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in
-        terminalCondition and conditions
+        Returns true if the Job is currently being acted upon by the system to bring it into the desired state.
+        When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
+        If reconciliation succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and latestCreatedExecution.
+        If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
         """
         return pulumi.get(self, "reconciling")
 
@@ -1271,7 +1250,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def template(self) -> pulumi.Output['outputs.JobTemplate']:
         """
-        Describes the task(s) that will be created when executing an execution
+        The template used to create executions for this Job.
         Structure is documented below.
         """
         return pulumi.get(self, "template")
@@ -1280,8 +1259,8 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="terminalConditions")
     def terminal_conditions(self) -> pulumi.Output[Sequence['outputs.JobTerminalCondition']]:
         """
-        The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the
-        desired state
+        The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
+        Structure is documented below.
         """
         return pulumi.get(self, "terminal_conditions")
 
@@ -1289,8 +1268,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def uid(self) -> pulumi.Output[str]:
         """
-        Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged
-        until the resource is deleted.
+        Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         """
         return pulumi.get(self, "uid")
 

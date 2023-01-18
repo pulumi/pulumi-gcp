@@ -116,8 +116,7 @@ namespace Pulumi.Gcp.Firebaserules
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated
-        /// from this Release.
+        /// Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
         /// </summary>
         [Output("disabled")]
         public Output<bool> Disabled { get; private set; } = null!;
@@ -225,8 +224,7 @@ namespace Pulumi.Gcp.Firebaserules
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated
-        /// from this Release.
+        /// Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }

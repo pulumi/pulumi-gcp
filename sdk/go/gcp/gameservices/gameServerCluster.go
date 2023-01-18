@@ -59,8 +59,9 @@ type GameServerCluster struct {
 	// Location of the Cluster.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The resource id of the game server cluster, eg:
-	// 'projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}'. For example,
-	// 'projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster'.
+	// `projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}`.
+	// For example,
+	// `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -121,8 +122,9 @@ type gameServerClusterState struct {
 	// Location of the Cluster.
 	Location *string `pulumi:"location"`
 	// The resource id of the game server cluster, eg:
-	// 'projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}'. For example,
-	// 'projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster'.
+	// `projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}`.
+	// For example,
+	// `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -146,8 +148,9 @@ type GameServerClusterState struct {
 	// Location of the Cluster.
 	Location pulumi.StringPtrInput
 	// The resource id of the game server cluster, eg:
-	// 'projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}'. For example,
-	// 'projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster'.
+	// `projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}`.
+	// For example,
+	// `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -319,8 +322,9 @@ func (o GameServerClusterOutput) Location() pulumi.StringPtrOutput {
 }
 
 // The resource id of the game server cluster, eg:
-// 'projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}'. For example,
-// 'projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster'.
+// `projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}`.
+// For example,
+// `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
 func (o GameServerClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GameServerCluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

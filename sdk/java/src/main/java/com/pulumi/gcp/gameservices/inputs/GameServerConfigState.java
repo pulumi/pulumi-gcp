@@ -84,6 +84,9 @@ public final class GameServerConfigState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The labels associated with this game server config. Each label is a
+     * key-value pair.
+     * (Optional)
      * Set of labels to group by.
      * 
      */
@@ -91,7 +94,10 @@ public final class GameServerConfigState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Set of labels to group by.
+     * @return The labels associated with this game server config. Each label is a
+     * key-value pair.
+     * (Optional)
+     * Set of labels to group by.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -114,6 +120,8 @@ public final class GameServerConfigState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The name of the FleetConfig.
+     * (Required)
      * The name of the ScalingConfig
      * 
      */
@@ -121,7 +129,9 @@ public final class GameServerConfigState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the ScalingConfig
+     * @return The name of the FleetConfig.
+     * (Required)
+     * The name of the ScalingConfig
      * 
      */
     public Optional<Output<String>> name() {
@@ -295,7 +305,10 @@ public final class GameServerConfigState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param labels Set of labels to group by.
+         * @param labels The labels associated with this game server config. Each label is a
+         * key-value pair.
+         * (Optional)
+         * Set of labels to group by.
          * 
          * @return builder
          * 
@@ -306,7 +319,10 @@ public final class GameServerConfigState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param labels Set of labels to group by.
+         * @param labels The labels associated with this game server config. Each label is a
+         * key-value pair.
+         * (Optional)
+         * Set of labels to group by.
          * 
          * @return builder
          * 
@@ -337,7 +353,9 @@ public final class GameServerConfigState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The name of the ScalingConfig
+         * @param name The name of the FleetConfig.
+         * (Required)
+         * The name of the ScalingConfig
          * 
          * @return builder
          * 
@@ -348,7 +366,9 @@ public final class GameServerConfigState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The name of the ScalingConfig
+         * @param name The name of the FleetConfig.
+         * (Required)
+         * The name of the ScalingConfig
          * 
          * @return builder
          * 

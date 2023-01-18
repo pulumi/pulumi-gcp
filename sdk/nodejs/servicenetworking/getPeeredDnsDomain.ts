@@ -5,11 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 export function getPeeredDnsDomain(args: GetPeeredDnsDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetPeeredDnsDomainResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain", {
         "name": args.name,
         "network": args.network,
@@ -43,9 +40,8 @@ export interface GetPeeredDnsDomainResult {
     readonly project: string;
     readonly service: string;
 }
-
 export function getPeeredDnsDomainOutput(args: GetPeeredDnsDomainOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPeeredDnsDomainResult> {
-    return pulumi.output(args).apply(a => getPeeredDnsDomain(a, opts))
+    return pulumi.output(args).apply((a: any) => getPeeredDnsDomain(a, opts))
 }
 
 /**

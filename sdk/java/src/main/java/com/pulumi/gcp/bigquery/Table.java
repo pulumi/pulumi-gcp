@@ -427,34 +427,14 @@ public class Table extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.rangePartitioning);
     }
     /**
-     * A JSON schema for the external table. Schema is required
-     * for CSV and JSON formats if autodetect is not on. Schema is disallowed
-     * for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
-     * ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
-     * string will create a diff, even if the JSON itself hasn&#39;t changed.
-     * Furthermore drift for this field cannot not be detected because BigQuery
-     * only uses this schema to compute the effective schema for the table, therefore
-     * any changes on the configured value will force the table to be recreated.
-     * This schema is effectively only applied when creating a table from an external
-     * datasource, after creation the computed schema will be stored in
-     * `google_bigquery_table.schema`
+     * A JSON schema for the table.
      * 
      */
     @Export(name="schema", type=String.class, parameters={})
     private Output<String> schema;
 
     /**
-     * @return A JSON schema for the external table. Schema is required
-     * for CSV and JSON formats if autodetect is not on. Schema is disallowed
-     * for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
-     * ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
-     * string will create a diff, even if the JSON itself hasn&#39;t changed.
-     * Furthermore drift for this field cannot not be detected because BigQuery
-     * only uses this schema to compute the effective schema for the table, therefore
-     * any changes on the configured value will force the table to be recreated.
-     * This schema is effectively only applied when creating a table from an external
-     * datasource, after creation the computed schema will be stored in
-     * `google_bigquery_table.schema`
+     * @return A JSON schema for the table.
      * 
      */
     public Output<String> schema() {

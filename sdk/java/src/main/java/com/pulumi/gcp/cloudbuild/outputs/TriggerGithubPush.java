@@ -18,7 +18,7 @@ public final class TriggerGithubPush {
      */
     private @Nullable String branch;
     /**
-     * @return Only trigger a build if the revision regex does NOT match the revision regex.
+     * @return When true, only trigger a build if the revision regex does NOT match the git_ref regex.
      * 
      */
     private @Nullable Boolean invertRegex;
@@ -37,7 +37,7 @@ public final class TriggerGithubPush {
         return Optional.ofNullable(this.branch);
     }
     /**
-     * @return Only trigger a build if the revision regex does NOT match the revision regex.
+     * @return When true, only trigger a build if the revision regex does NOT match the git_ref regex.
      * 
      */
     public Optional<Boolean> invertRegex() {

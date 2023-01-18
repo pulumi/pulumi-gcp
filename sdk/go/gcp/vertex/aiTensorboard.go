@@ -134,11 +134,9 @@ import (
 type AiTensorboard struct {
 	pulumi.CustomResourceState
 
-	// Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not
-	// end with a '/'.
+	// Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not end with a '/'.
 	BlobStoragePathPrefix pulumi.StringOutput `pulumi:"blobStoragePathPrefix"`
-	// The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-	// nine fractional digits.
+	// The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Description of this Tensorboard.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -158,8 +156,7 @@ type AiTensorboard struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The number of Runs stored in this Tensorboard.
 	RunCount pulumi.StringOutput `pulumi:"runCount"`
-	// The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-	// to nine fractional digits.
+	// The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -195,11 +192,9 @@ func GetAiTensorboard(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AiTensorboard resources.
 type aiTensorboardState struct {
-	// Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not
-	// end with a '/'.
+	// Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not end with a '/'.
 	BlobStoragePathPrefix *string `pulumi:"blobStoragePathPrefix"`
-	// The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-	// nine fractional digits.
+	// The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime *string `pulumi:"createTime"`
 	// Description of this Tensorboard.
 	Description *string `pulumi:"description"`
@@ -219,17 +214,14 @@ type aiTensorboardState struct {
 	Region *string `pulumi:"region"`
 	// The number of Runs stored in this Tensorboard.
 	RunCount *string `pulumi:"runCount"`
-	// The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-	// to nine fractional digits.
+	// The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type AiTensorboardState struct {
-	// Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not
-	// end with a '/'.
+	// Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not end with a '/'.
 	BlobStoragePathPrefix pulumi.StringPtrInput
-	// The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-	// nine fractional digits.
+	// The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringPtrInput
 	// Description of this Tensorboard.
 	Description pulumi.StringPtrInput
@@ -249,8 +241,7 @@ type AiTensorboardState struct {
 	Region pulumi.StringPtrInput
 	// The number of Runs stored in this Tensorboard.
 	RunCount pulumi.StringPtrInput
-	// The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-	// to nine fractional digits.
+	// The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -380,14 +371,12 @@ func (o AiTensorboardOutput) ToAiTensorboardOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not
-// end with a '/'.
+// Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not end with a '/'.
 func (o AiTensorboardOutput) BlobStoragePathPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiTensorboard) pulumi.StringOutput { return v.BlobStoragePathPrefix }).(pulumi.StringOutput)
 }
 
-// The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-// nine fractional digits.
+// The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 func (o AiTensorboardOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiTensorboard) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -434,8 +423,7 @@ func (o AiTensorboardOutput) RunCount() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiTensorboard) pulumi.StringOutput { return v.RunCount }).(pulumi.StringOutput)
 }
 
-// The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-// to nine fractional digits.
+// The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 func (o AiTensorboardOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiTensorboard) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

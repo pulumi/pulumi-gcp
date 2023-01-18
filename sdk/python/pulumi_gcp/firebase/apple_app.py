@@ -133,15 +133,16 @@ class _AppleAppState:
                  team_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AppleApp resources.
-        :param pulumi.Input[str] app_id: The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-               the data format is not specified.
+        :param pulumi.Input[str] app_id: The globally unique, Firebase-assigned identifier of the App.
+               This identifier should be treated as an opaque token, as the data format is not specified.
         :param pulumi.Input[str] app_store_id: The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
         :param pulumi.Input[str] bundle_id: The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
         :param pulumi.Input[str] deletion_policy: (Optional) Set to 'ABANDON' to allow the AppleApp to be untracked from terraform state rather than deleted upon
                'terraform destroy'. This is useful because the AppleApp may be serving traffic. Set to 'DELETE' to delete the AppleApp.
                Default to 'DELETE'.
         :param pulumi.Input[str] display_name: The user-assigned display name of the App.
-        :param pulumi.Input[str] name: The fully qualified resource name of the App, for example: projects/projectId/iosApps/appId
+        :param pulumi.Input[str] name: The fully qualified resource name of the App, for example:
+               projects/projectId/iosApps/appId
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] team_id: The Apple Developer Team ID associated with the App in the App Store.
@@ -167,8 +168,8 @@ class _AppleAppState:
     @pulumi.getter(name="appId")
     def app_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-        the data format is not specified.
+        The globally unique, Firebase-assigned identifier of the App.
+        This identifier should be treated as an opaque token, as the data format is not specified.
         """
         return pulumi.get(self, "app_id")
 
@@ -230,7 +231,8 @@ class _AppleAppState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The fully qualified resource name of the App, for example: projects/projectId/iosApps/appId
+        The fully qualified resource name of the App, for example:
+        projects/projectId/iosApps/appId
         """
         return pulumi.get(self, "name")
 
@@ -457,15 +459,16 @@ class AppleApp(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] app_id: The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-               the data format is not specified.
+        :param pulumi.Input[str] app_id: The globally unique, Firebase-assigned identifier of the App.
+               This identifier should be treated as an opaque token, as the data format is not specified.
         :param pulumi.Input[str] app_store_id: The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
         :param pulumi.Input[str] bundle_id: The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
         :param pulumi.Input[str] deletion_policy: (Optional) Set to 'ABANDON' to allow the AppleApp to be untracked from terraform state rather than deleted upon
                'terraform destroy'. This is useful because the AppleApp may be serving traffic. Set to 'DELETE' to delete the AppleApp.
                Default to 'DELETE'.
         :param pulumi.Input[str] display_name: The user-assigned display name of the App.
-        :param pulumi.Input[str] name: The fully qualified resource name of the App, for example: projects/projectId/iosApps/appId
+        :param pulumi.Input[str] name: The fully qualified resource name of the App, for example:
+               projects/projectId/iosApps/appId
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] team_id: The Apple Developer Team ID associated with the App in the App Store.
@@ -488,8 +491,8 @@ class AppleApp(pulumi.CustomResource):
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Output[str]:
         """
-        The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-        the data format is not specified.
+        The globally unique, Firebase-assigned identifier of the App.
+        This identifier should be treated as an opaque token, as the data format is not specified.
         """
         return pulumi.get(self, "app_id")
 
@@ -531,7 +534,8 @@ class AppleApp(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The fully qualified resource name of the App, for example: projects/projectId/iosApps/appId
+        The fully qualified resource name of the App, for example:
+        projects/projectId/iosApps/appId
         """
         return pulumi.get(self, "name")
 

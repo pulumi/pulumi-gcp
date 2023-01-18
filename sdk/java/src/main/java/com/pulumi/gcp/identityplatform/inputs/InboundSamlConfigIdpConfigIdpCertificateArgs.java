@@ -16,16 +16,14 @@ public final class InboundSamlConfigIdpConfigIdpCertificateArgs extends com.pulu
     public static final InboundSamlConfigIdpConfigIdpCertificateArgs Empty = new InboundSamlConfigIdpConfigIdpCertificateArgs();
 
     /**
-     * - 
-     * The x509 certificate
+     * The IdP&#39;s x509 certificate.
      * 
      */
     @Import(name="x509Certificate")
     private @Nullable Output<String> x509Certificate;
 
     /**
-     * @return -
-     * The x509 certificate
+     * @return The IdP&#39;s x509 certificate.
      * 
      */
     public Optional<Output<String>> x509Certificate() {
@@ -57,8 +55,7 @@ public final class InboundSamlConfigIdpConfigIdpCertificateArgs extends com.pulu
         }
 
         /**
-         * @param x509Certificate -
-         * The x509 certificate
+         * @param x509Certificate The IdP&#39;s x509 certificate.
          * 
          * @return builder
          * 
@@ -69,8 +66,7 @@ public final class InboundSamlConfigIdpConfigIdpCertificateArgs extends com.pulu
         }
 
         /**
-         * @param x509Certificate -
-         * The x509 certificate
+         * @param x509Certificate The IdP&#39;s x509 certificate.
          * 
          * @return builder
          * 

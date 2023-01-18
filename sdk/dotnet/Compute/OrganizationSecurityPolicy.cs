@@ -68,7 +68,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Fingerprint of this resource. This field is used internally during updates of this resource.
+        /// Fingerprint of this resource. This field is used internally during
+        /// updates of this resource.
         /// </summary>
         [Output("fingerprint")]
         public Output<string> Fingerprint { get; private set; } = null!;
@@ -192,7 +193,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Fingerprint of this resource. This field is used internally during updates of this resource.
+        /// Fingerprint of this resource. This field is used internally during
+        /// updates of this resource.
         /// </summary>
         [Input("fingerprint")]
         public Input<string>? Fingerprint { get; set; }

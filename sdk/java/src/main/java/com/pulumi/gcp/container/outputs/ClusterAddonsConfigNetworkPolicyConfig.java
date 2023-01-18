@@ -10,16 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class ClusterAddonsConfigNetworkPolicyConfig {
     /**
-     * @return The status of the Istio addon, which makes it easy to set up Istio for services in a
-     * cluster. It is disabled by default. Set `disabled = false` to enable.
+     * @return Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
      * 
      */
     private Boolean disabled;
 
     private ClusterAddonsConfigNetworkPolicyConfig() {}
     /**
-     * @return The status of the Istio addon, which makes it easy to set up Istio for services in a
-     * cluster. It is disabled by default. Set `disabled = false` to enable.
+     * @return Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
      * 
      */
     public Boolean disabled() {

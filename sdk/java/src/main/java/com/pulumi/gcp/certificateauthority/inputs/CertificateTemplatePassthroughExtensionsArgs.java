@@ -18,14 +18,14 @@ public final class CertificateTemplatePassthroughExtensionsArgs extends com.pulu
     public static final CertificateTemplatePassthroughExtensionsArgs Empty = new CertificateTemplatePassthroughExtensionsArgs();
 
     /**
-     * Optional. Describes custom X.509 extensions.
+     * Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
      * 
      */
     @Import(name="additionalExtensions")
     private @Nullable Output<List<CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs>> additionalExtensions;
 
     /**
-     * @return Optional. Describes custom X.509 extensions.
+     * @return Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
      * 
      */
     public Optional<Output<List<CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs>>> additionalExtensions() {
@@ -73,7 +73,7 @@ public final class CertificateTemplatePassthroughExtensionsArgs extends com.pulu
         }
 
         /**
-         * @param additionalExtensions Optional. Describes custom X.509 extensions.
+         * @param additionalExtensions Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class CertificateTemplatePassthroughExtensionsArgs extends com.pulu
         }
 
         /**
-         * @param additionalExtensions Optional. Describes custom X.509 extensions.
+         * @param additionalExtensions Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class CertificateTemplatePassthroughExtensionsArgs extends com.pulu
         }
 
         /**
-         * @param additionalExtensions Optional. Describes custom X.509 extensions.
+         * @param additionalExtensions Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
          * 
          * @return builder
          * 

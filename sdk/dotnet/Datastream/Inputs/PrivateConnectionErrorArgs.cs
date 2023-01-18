@@ -14,12 +14,19 @@ namespace Pulumi.Gcp.Datastream.Inputs
     {
         [Input("details")]
         private InputMap<string>? _details;
+
+        /// <summary>
+        /// A list of messages that carry the error details.
+        /// </summary>
         public InputMap<string> Details
         {
             get => _details ?? (_details = new InputMap<string>());
             set => _details = value;
         }
 
+        /// <summary>
+        /// A message containing more information about the error that occurred.
+        /// </summary>
         [Input("message")]
         public Input<string>? Message { get; set; }
 

@@ -82,7 +82,8 @@ namespace Pulumi.Gcp.ServiceDirectory
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name for the namespace in the format 'projects/*/locations/*/namespaces/*'.
+        /// The resource name for the namespace
+        /// in the format `projects/*/locations/*/namespaces/*`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -214,7 +215,8 @@ namespace Pulumi.Gcp.ServiceDirectory
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The resource name for the namespace in the format 'projects/*/locations/*/namespaces/*'.
+        /// The resource name for the namespace
+        /// in the format `projects/*/locations/*/namespaces/*`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

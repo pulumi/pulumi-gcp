@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultJob = new gcp.cloudrunv2.Job("default", {
+ * const _default = new gcp.cloudrunv2.Job("default", {
  *     launchStage: "BETA",
  *     location: "us-central1",
  *     template: {
@@ -146,7 +146,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultJob = new gcp.cloudrunv2.Job("default", {
+ * const _default = new gcp.cloudrunv2.Job("default", {
  *     launchStage: "BETA",
  *     location: "us-central1",
  *     template: {
@@ -283,14 +283,12 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly clientVersion!: pulumi.Output<string | undefined>;
     /**
-     * The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job
-     * does not reach its desired state. See comments in reconciling for additional information on 'reconciliation' process in
-     * Cloud Run.
+     * The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
+     * Structure is documented below.
      */
     public /*out*/ readonly conditions!: pulumi.Output<outputs.cloudrunv2.JobCondition[]>;
     /**
-     * A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during
-     * updates.
+     * A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
@@ -302,11 +300,14 @@ export class Job extends pulumi.CustomResource {
      */
     public /*out*/ readonly generation!: pulumi.Output<string>;
     /**
+     * KRM-style labels for the resource.
+     * (Optional)
      * KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Name of the last created execution.
+     * Structure is documented below.
      */
     public /*out*/ readonly latestCreatedExecutions!: pulumi.Output<outputs.cloudrunv2.JobLatestCreatedExecution[]>;
     /**
@@ -319,12 +320,11 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string | undefined>;
     /**
-     * Volume's name.
+     * Name of the Job.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud
-     * Run.
+     * The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud Run.
      */
     public /*out*/ readonly observedGeneration!: pulumi.Output<string>;
     /**
@@ -333,31 +333,24 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Returns true if the Job is currently being acted upon by the system to bring it into the desired state. When a new Job
-     * is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to
-     * the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and
-     * latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is
-     * over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job,
-     * or there was an error, and reconciliation failed. This state can be found in terminalCondition.state. If reconciliation
-     * succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and
-     * latestCreatedExecution. If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state
-     * of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in
-     * terminalCondition and conditions
+     * Returns true if the Job is currently being acted upon by the system to bring it into the desired state.
+     * When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
+     * If reconciliation succeeded, the following fields will match: observedGeneration and generation, latestSucceededExecution and latestCreatedExecution.
+     * If reconciliation failed, observedGeneration and latestSucceededExecution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
-     * Describes the task(s) that will be created when executing an execution
+     * The template used to create executions for this Job.
      * Structure is documented below.
      */
     public readonly template!: pulumi.Output<outputs.cloudrunv2.JobTemplate>;
     /**
-     * The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the
-     * desired state
+     * The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
+     * Structure is documented below.
      */
     public /*out*/ readonly terminalConditions!: pulumi.Output<outputs.cloudrunv2.JobTerminalCondition[]>;
     /**
-     * Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged
-     * until the resource is deleted.
+     * Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
 
@@ -439,14 +432,12 @@ export interface JobState {
      */
     clientVersion?: pulumi.Input<string>;
     /**
-     * The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job
-     * does not reach its desired state. See comments in reconciling for additional information on 'reconciliation' process in
-     * Cloud Run.
+     * The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
+     * Structure is documented below.
      */
     conditions?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.JobCondition>[]>;
     /**
-     * A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during
-     * updates.
+     * A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
      */
     etag?: pulumi.Input<string>;
     /**
@@ -458,11 +449,14 @@ export interface JobState {
      */
     generation?: pulumi.Input<string>;
     /**
+     * KRM-style labels for the resource.
+     * (Optional)
      * KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of the last created execution.
+     * Structure is documented below.
      */
     latestCreatedExecutions?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.JobLatestCreatedExecution>[]>;
     /**
@@ -475,12 +469,11 @@ export interface JobState {
      */
     location?: pulumi.Input<string>;
     /**
-     * Volume's name.
+     * Name of the Job.
      */
     name?: pulumi.Input<string>;
     /**
-     * The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud
-     * Run.
+     * The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud Run.
      */
     observedGeneration?: pulumi.Input<string>;
     /**
@@ -489,31 +482,24 @@ export interface JobState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Returns true if the Job is currently being acted upon by the system to bring it into the desired state. When a new Job
-     * is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to
-     * the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and
-     * latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is
-     * over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job,
-     * or there was an error, and reconciliation failed. This state can be found in terminalCondition.state. If reconciliation
-     * succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and
-     * latestCreatedExecution. If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state
-     * of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in
-     * terminalCondition and conditions
+     * Returns true if the Job is currently being acted upon by the system to bring it into the desired state.
+     * When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
+     * If reconciliation succeeded, the following fields will match: observedGeneration and generation, latestSucceededExecution and latestCreatedExecution.
+     * If reconciliation failed, observedGeneration and latestSucceededExecution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
      */
     reconciling?: pulumi.Input<boolean>;
     /**
-     * Describes the task(s) that will be created when executing an execution
+     * The template used to create executions for this Job.
      * Structure is documented below.
      */
     template?: pulumi.Input<inputs.cloudrunv2.JobTemplate>;
     /**
-     * The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the
-     * desired state
+     * The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
+     * Structure is documented below.
      */
     terminalConditions?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.JobTerminalCondition>[]>;
     /**
-     * Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged
-     * until the resource is deleted.
+     * Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      */
     uid?: pulumi.Input<string>;
 }
@@ -536,6 +522,8 @@ export interface JobArgs {
      */
     clientVersion?: pulumi.Input<string>;
     /**
+     * KRM-style labels for the resource.
+     * (Optional)
      * KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -549,7 +537,7 @@ export interface JobArgs {
      */
     location?: pulumi.Input<string>;
     /**
-     * Volume's name.
+     * Name of the Job.
      */
     name?: pulumi.Input<string>;
     /**
@@ -558,7 +546,7 @@ export interface JobArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * Describes the task(s) that will be created when executing an execution
+     * The template used to create executions for this Job.
      * Structure is documented below.
      */
     template: pulumi.Input<inputs.cloudrunv2.JobTemplate>;

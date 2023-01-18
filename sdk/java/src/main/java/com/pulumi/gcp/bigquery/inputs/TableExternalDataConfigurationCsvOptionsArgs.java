@@ -113,18 +113,16 @@ public final class TableExternalDataConfigurationCsvOptionsArgs extends com.pulu
     }
 
     /**
-     * The number of rows at the top of the sheet
-     * that BigQuery will skip when reading the data. At least one of `range` or
-     * `skip_leading_rows` must be set.
+     * The number of rows at the top of a CSV
+     * file that BigQuery will skip when reading the data.
      * 
      */
     @Import(name="skipLeadingRows")
     private @Nullable Output<Integer> skipLeadingRows;
 
     /**
-     * @return The number of rows at the top of the sheet
-     * that BigQuery will skip when reading the data. At least one of `range` or
-     * `skip_leading_rows` must be set.
+     * @return The number of rows at the top of a CSV
+     * file that BigQuery will skip when reading the data.
      * 
      */
     public Optional<Output<Integer>> skipLeadingRows() {
@@ -286,9 +284,8 @@ public final class TableExternalDataConfigurationCsvOptionsArgs extends com.pulu
         }
 
         /**
-         * @param skipLeadingRows The number of rows at the top of the sheet
-         * that BigQuery will skip when reading the data. At least one of `range` or
-         * `skip_leading_rows` must be set.
+         * @param skipLeadingRows The number of rows at the top of a CSV
+         * file that BigQuery will skip when reading the data.
          * 
          * @return builder
          * 
@@ -299,9 +296,8 @@ public final class TableExternalDataConfigurationCsvOptionsArgs extends com.pulu
         }
 
         /**
-         * @param skipLeadingRows The number of rows at the top of the sheet
-         * that BigQuery will skip when reading the data. At least one of `range` or
-         * `skip_leading_rows` must be set.
+         * @param skipLeadingRows The number of rows at the top of a CSV
+         * file that BigQuery will skip when reading the data.
          * 
          * @return builder
          * 

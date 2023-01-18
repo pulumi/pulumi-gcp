@@ -13,10 +13,10 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class RegionUrlMapPathMatcherRouteRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies changes to request and response headers that need to take effect for the selected backendService.
-        /// headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
-        /// headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
-        /// Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+        /// Specifies changes to request and response headers that need to take effect for
+        /// the selected backendService. The headerAction specified here are applied before
+        /// the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].r
+        /// outeAction.weightedBackendService.backendServiceWeightAction[].headerAction
         /// Structure is documented below.
         /// </summary>
         [Input("headerAction")]
@@ -54,9 +54,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int> Priority { get; set; } = null!;
 
         /// <summary>
-        /// In response to a matching path, the load balancer performs advanced routing
+        /// In response to a matching matchRule, the load balancer performs advanced routing
         /// actions like URL rewrites, header transformations, etc. prior to forwarding the
-        /// request to the selected backend. If routeAction specifies any
+        /// request to the selected backend. If  routeAction specifies any
         /// weightedBackendServices, service must not be set. Conversely if service is set,
         /// routeAction cannot contain any  weightedBackendServices. Only one of routeAction
         /// or urlRedirect must be set.
@@ -66,15 +66,21 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<Inputs.RegionUrlMapPathMatcherRouteRuleRouteActionArgs>? RouteAction { get; set; }
 
         /// <summary>
-        /// A reference to expected RegionBackendService resource the given URL should be mapped to.
+        /// The region backend service resource to which traffic is
+        /// directed if this rule is matched. If routeAction is additionally specified,
+        /// advanced routing actions like URL Rewrites, etc. take effect prior to sending
+        /// the request to the backend. However, if service is specified, routeAction cannot
+        /// contain any weightedBackendService s. Conversely, if routeAction specifies any
+        /// weightedBackendServices, service must not be specified. Only one of urlRedirect,
+        /// service or routeAction.weightedBackendService must be set.
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }
 
         /// <summary>
-        /// When a path pattern is matched, the request is redirected to a URL specified
-        /// by urlRedirect. If urlRedirect is specified, service or routeAction must not
-        /// be set.
+        /// When this rule is matched, the request is redirected to a URL specified by
+        /// urlRedirect. If urlRedirect is specified, service or routeAction must not be
+        /// set.
         /// Structure is documented below.
         /// </summary>
         [Input("urlRedirect")]

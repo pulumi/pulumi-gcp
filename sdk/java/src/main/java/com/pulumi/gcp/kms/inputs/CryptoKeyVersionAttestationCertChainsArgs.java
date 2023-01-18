@@ -15,23 +15,47 @@ public final class CryptoKeyVersionAttestationCertChainsArgs extends com.pulumi.
 
     public static final CryptoKeyVersionAttestationCertChainsArgs Empty = new CryptoKeyVersionAttestationCertChainsArgs();
 
+    /**
+     * Cavium certificate chain corresponding to the attestation.
+     * 
+     */
     @Import(name="caviumCerts")
     private @Nullable Output<String> caviumCerts;
 
+    /**
+     * @return Cavium certificate chain corresponding to the attestation.
+     * 
+     */
     public Optional<Output<String>> caviumCerts() {
         return Optional.ofNullable(this.caviumCerts);
     }
 
+    /**
+     * Google card certificate chain corresponding to the attestation.
+     * 
+     */
     @Import(name="googleCardCerts")
     private @Nullable Output<String> googleCardCerts;
 
+    /**
+     * @return Google card certificate chain corresponding to the attestation.
+     * 
+     */
     public Optional<Output<String>> googleCardCerts() {
         return Optional.ofNullable(this.googleCardCerts);
     }
 
+    /**
+     * Google partition certificate chain corresponding to the attestation.
+     * 
+     */
     @Import(name="googlePartitionCerts")
     private @Nullable Output<String> googlePartitionCerts;
 
+    /**
+     * @return Google partition certificate chain corresponding to the attestation.
+     * 
+     */
     public Optional<Output<String>> googlePartitionCerts() {
         return Optional.ofNullable(this.googlePartitionCerts);
     }
@@ -62,29 +86,65 @@ public final class CryptoKeyVersionAttestationCertChainsArgs extends com.pulumi.
             $ = new CryptoKeyVersionAttestationCertChainsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param caviumCerts Cavium certificate chain corresponding to the attestation.
+         * 
+         * @return builder
+         * 
+         */
         public Builder caviumCerts(@Nullable Output<String> caviumCerts) {
             $.caviumCerts = caviumCerts;
             return this;
         }
 
+        /**
+         * @param caviumCerts Cavium certificate chain corresponding to the attestation.
+         * 
+         * @return builder
+         * 
+         */
         public Builder caviumCerts(String caviumCerts) {
             return caviumCerts(Output.of(caviumCerts));
         }
 
+        /**
+         * @param googleCardCerts Google card certificate chain corresponding to the attestation.
+         * 
+         * @return builder
+         * 
+         */
         public Builder googleCardCerts(@Nullable Output<String> googleCardCerts) {
             $.googleCardCerts = googleCardCerts;
             return this;
         }
 
+        /**
+         * @param googleCardCerts Google card certificate chain corresponding to the attestation.
+         * 
+         * @return builder
+         * 
+         */
         public Builder googleCardCerts(String googleCardCerts) {
             return googleCardCerts(Output.of(googleCardCerts));
         }
 
+        /**
+         * @param googlePartitionCerts Google partition certificate chain corresponding to the attestation.
+         * 
+         * @return builder
+         * 
+         */
         public Builder googlePartitionCerts(@Nullable Output<String> googlePartitionCerts) {
             $.googlePartitionCerts = googlePartitionCerts;
             return this;
         }
 
+        /**
+         * @param googlePartitionCerts Google partition certificate chain corresponding to the attestation.
+         * 
+         * @return builder
+         * 
+         */
         public Builder googlePartitionCerts(String googlePartitionCerts) {
             return googlePartitionCerts(Output.of(googlePartitionCerts));
         }

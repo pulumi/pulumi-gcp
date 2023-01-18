@@ -82,7 +82,8 @@ namespace Pulumi.Gcp.DataCatalog
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name of this taxonomy, whose format is: "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
+        /// Resource name of this taxonomy, whose format is:
+        /// "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -230,7 +231,8 @@ namespace Pulumi.Gcp.DataCatalog
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Resource name of this taxonomy, whose format is: "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
+        /// Resource name of this taxonomy, whose format is:
+        /// "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -14,14 +14,14 @@ public final class JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs ex
     public static final JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs Empty = new JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs();
 
     /**
-     * The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+     * The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
      * 
      */
     @Import(name="secret", required=true)
     private Output<String> secret;
 
     /**
-     * @return The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+     * @return The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
      * 
      */
     public Output<String> secret() {
@@ -29,14 +29,14 @@ public final class JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs ex
     }
 
     /**
-     * The Cloud Secret Manager secret version. Can be &#39;latest&#39; for the latest value or an integer for a specific version
+     * The Cloud Secret Manager secret version. Can be &#39;latest&#39; for the latest value or an integer for a specific version.
      * 
      */
     @Import(name="version", required=true)
     private Output<String> version;
 
     /**
-     * @return The Cloud Secret Manager secret version. Can be &#39;latest&#39; for the latest value or an integer for a specific version
+     * @return The Cloud Secret Manager secret version. Can be &#39;latest&#39; for the latest value or an integer for a specific version.
      * 
      */
     public Output<String> version() {
@@ -69,7 +69,7 @@ public final class JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs ex
         }
 
         /**
-         * @param secret The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+         * @param secret The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs ex
         }
 
         /**
-         * @param secret The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+         * @param secret The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs ex
         }
 
         /**
-         * @param version The Cloud Secret Manager secret version. Can be &#39;latest&#39; for the latest value or an integer for a specific version
+         * @param version The Cloud Secret Manager secret version. Can be &#39;latest&#39; for the latest value or an integer for a specific version.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs ex
         }
 
         /**
-         * @param version The Cloud Secret Manager secret version. Can be &#39;latest&#39; for the latest value or an integer for a specific version
+         * @param version The Cloud Secret Manager secret version. Can be &#39;latest&#39; for the latest value or an integer for a specific version.
          * 
          * @return builder
          * 

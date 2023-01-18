@@ -16,14 +16,14 @@ public final class StandardAppVersionLibraryArgs extends com.pulumi.resources.Re
     public static final StandardAppVersionLibraryArgs Empty = new StandardAppVersionLibraryArgs();
 
     /**
-     * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+     * Name of the library. Example &#34;django&#34;.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+     * @return Name of the library. Example &#34;django&#34;.
      * 
      */
     public Optional<Output<String>> name() {
@@ -71,7 +71,7 @@ public final class StandardAppVersionLibraryArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param name Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+         * @param name Name of the library. Example &#34;django&#34;.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class StandardAppVersionLibraryArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param name Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+         * @param name Name of the library. Example &#34;django&#34;.
          * 
          * @return builder
          * 

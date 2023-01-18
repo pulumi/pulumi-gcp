@@ -19,18 +19,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myKeyRing = pulumi.output(gcp.kms.getKMSKeyRing({
+ * const myKeyRing = gcp.kms.getKMSKeyRing({
  *     location: "us-central1",
  *     name: "my-key-ring",
- * }));
+ * });
  * ```
  */
 export function getKMSKeyRing(args: GetKMSKeyRingArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSKeyRingResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:kms/getKMSKeyRing:getKMSKeyRing", {
         "location": args.location,
         "name": args.name,
@@ -71,9 +68,29 @@ export interface GetKMSKeyRingResult {
     readonly name: string;
     readonly project?: string;
 }
-
+/**
+ * Provides access to Google Cloud Platform KMS KeyRing. For more information see
+ * [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key_ring)
+ * and
+ * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings).
+ *
+ * A KeyRing is a grouping of CryptoKeys for organizational purposes. A KeyRing belongs to a Google Cloud Platform Project
+ * and resides in a specific location.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myKeyRing = gcp.kms.getKMSKeyRing({
+ *     location: "us-central1",
+ *     name: "my-key-ring",
+ * });
+ * ```
+ */
 export function getKMSKeyRingOutput(args: GetKMSKeyRingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKMSKeyRingResult> {
-    return pulumi.output(args).apply(a => getKMSKeyRing(a, opts))
+    return pulumi.output(args).apply((a: any) => getKMSKeyRing(a, opts))
 }
 
 /**

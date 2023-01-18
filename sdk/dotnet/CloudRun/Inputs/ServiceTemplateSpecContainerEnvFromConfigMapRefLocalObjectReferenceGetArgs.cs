@@ -13,7 +13,9 @@ namespace Pulumi.Gcp.CloudRun.Inputs
     public sealed class ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Volume's name.
+        /// Name of the referent.
+        /// More info:
+        /// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

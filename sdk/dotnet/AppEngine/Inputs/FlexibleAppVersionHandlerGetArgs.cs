@@ -13,16 +13,14 @@ namespace Pulumi.Gcp.AppEngine.Inputs
     public sealed class FlexibleAppVersionHandlerGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Action to take when users access resources that require authentication.
-        /// Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+        /// Actions to take when the user is not logged in.
         /// Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
         /// </summary>
         [Input("authFailAction")]
         public Input<string>? AuthFailAction { get; set; }
 
         /// <summary>
-        /// Level of login required to access this resource.
-        /// Default value is `LOGIN_OPTIONAL`.
+        /// Methods to restrict access to a URL based on login status.
         /// Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
         /// </summary>
         [Input("login")]
@@ -36,7 +34,9 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public Input<string>? RedirectHttpResponseCode { get; set; }
 
         /// <summary>
-        /// Path to the script from the application root directory.
+        /// Executes a script to handle the requests that match this URL pattern.
+        /// Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
+        /// Structure is documented below.
         /// </summary>
         [Input("script")]
         public Input<Inputs.FlexibleAppVersionHandlerScriptGetArgs>? Script { get; set; }

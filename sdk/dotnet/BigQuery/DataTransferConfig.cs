@@ -128,9 +128,10 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string?> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the transfer config. Transfer config names have the form
-        /// projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is not
-        /// required. The name is ignored when creating a transfer config.
+        /// The resource name of the transfer config. Transfer config names have the
+        /// form projects/{projectId}/locations/{location}/transferConfigs/{configId}.
+        /// Where configId is usually a uuid, but this is not required.
+        /// The name is ignored when creating a transfer config.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -422,9 +423,10 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The resource name of the transfer config. Transfer config names have the form
-        /// projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is not
-        /// required. The name is ignored when creating a transfer config.
+        /// The resource name of the transfer config. Transfer config names have the
+        /// form projects/{projectId}/locations/{location}/transferConfigs/{configId}.
+        /// Where configId is usually a uuid, but this is not required.
+        /// The name is ignored when creating a transfer config.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

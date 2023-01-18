@@ -68,12 +68,14 @@ import (
 type CertificateMapResource struct {
 	pulumi.CustomResourceState
 
-	// Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format, accurate to nanoseconds with up to
-	// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
+	// accurate to nanoseconds with up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A list of target proxies that use this Certificate Map
+	// Structure is documented below.
 	GclbTargets CertificateMapGclbTargetArrayOutput `pulumi:"gclbTargets"`
 	// Set of labels associated with a Certificate Map resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -83,8 +85,9 @@ type CertificateMapResource struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format, accurate to nanoseconds with up to
-	// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
+	// accurate to nanoseconds with up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -117,12 +120,14 @@ func GetCertificateMapResource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CertificateMapResource resources.
 type certificateMapResourceState struct {
-	// Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format, accurate to nanoseconds with up to
-	// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
+	// accurate to nanoseconds with up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime *string `pulumi:"createTime"`
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
 	// A list of target proxies that use this Certificate Map
+	// Structure is documented below.
 	GclbTargets []CertificateMapGclbTarget `pulumi:"gclbTargets"`
 	// Set of labels associated with a Certificate Map resource.
 	Labels map[string]string `pulumi:"labels"`
@@ -132,18 +137,21 @@ type certificateMapResourceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format, accurate to nanoseconds with up to
-	// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
+	// accurate to nanoseconds with up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type CertificateMapResourceState struct {
-	// Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format, accurate to nanoseconds with up to
-	// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
+	// accurate to nanoseconds with up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringPtrInput
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
 	// A list of target proxies that use this Certificate Map
+	// Structure is documented below.
 	GclbTargets CertificateMapGclbTargetArrayInput
 	// Set of labels associated with a Certificate Map resource.
 	Labels pulumi.StringMapInput
@@ -153,8 +161,9 @@ type CertificateMapResourceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format, accurate to nanoseconds with up to
-	// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
+	// accurate to nanoseconds with up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -276,8 +285,9 @@ func (o CertificateMapResourceOutput) ToCertificateMapResourceOutputWithContext(
 	return o
 }
 
-// Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format, accurate to nanoseconds with up to
-// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+// Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
+// accurate to nanoseconds with up to nine fractional digits.
+// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o CertificateMapResourceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateMapResource) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -288,6 +298,7 @@ func (o CertificateMapResourceOutput) Description() pulumi.StringPtrOutput {
 }
 
 // A list of target proxies that use this Certificate Map
+// Structure is documented below.
 func (o CertificateMapResourceOutput) GclbTargets() CertificateMapGclbTargetArrayOutput {
 	return o.ApplyT(func(v *CertificateMapResource) CertificateMapGclbTargetArrayOutput { return v.GclbTargets }).(CertificateMapGclbTargetArrayOutput)
 }
@@ -309,8 +320,9 @@ func (o CertificateMapResourceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateMapResource) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format, accurate to nanoseconds with up to
-// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+// Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
+// accurate to nanoseconds with up to nine fractional digits.
+// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o CertificateMapResourceOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateMapResource) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

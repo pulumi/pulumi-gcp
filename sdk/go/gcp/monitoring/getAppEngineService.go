@@ -109,13 +109,17 @@ type GetAppEngineServiceArgs struct {
 
 // A collection of values returned by getAppEngineService.
 type GetAppEngineServiceResult struct {
+	// Name used for UI elements listing this (Monitoring) Service.
 	DisplayName string `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string                         `pulumi:"id"`
-	ModuleId    string                         `pulumi:"moduleId"`
-	Name        string                         `pulumi:"name"`
-	Project     *string                        `pulumi:"project"`
-	ServiceId   string                         `pulumi:"serviceId"`
+	Id       string `pulumi:"id"`
+	ModuleId string `pulumi:"moduleId"`
+	// The full REST resource name for this channel. The syntax is:
+	// `projects/[PROJECT_ID]/services/[SERVICE_ID]`.
+	Name      string  `pulumi:"name"`
+	Project   *string `pulumi:"project"`
+	ServiceId string  `pulumi:"serviceId"`
+	// Configuration for how to query telemetry on the Service. Structure is documented below.
 	Telemetries []GetAppEngineServiceTelemetry `pulumi:"telemetries"`
 	UserLabels  map[string]string              `pulumi:"userLabels"`
 }
@@ -162,6 +166,7 @@ func (o GetAppEngineServiceResultOutput) ToGetAppEngineServiceResultOutputWithCo
 	return o
 }
 
+// Name used for UI elements listing this (Monitoring) Service.
 func (o GetAppEngineServiceResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppEngineServiceResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -175,6 +180,8 @@ func (o GetAppEngineServiceResultOutput) ModuleId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppEngineServiceResult) string { return v.ModuleId }).(pulumi.StringOutput)
 }
 
+// The full REST resource name for this channel. The syntax is:
+// `projects/[PROJECT_ID]/services/[SERVICE_ID]`.
 func (o GetAppEngineServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppEngineServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -187,6 +194,7 @@ func (o GetAppEngineServiceResultOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppEngineServiceResult) string { return v.ServiceId }).(pulumi.StringOutput)
 }
 
+// Configuration for how to query telemetry on the Service. Structure is documented below.
 func (o GetAppEngineServiceResultOutput) Telemetries() GetAppEngineServiceTelemetryArrayOutput {
 	return o.ApplyT(func(v GetAppEngineServiceResult) []GetAppEngineServiceTelemetry { return v.Telemetries }).(GetAppEngineServiceTelemetryArrayOutput)
 }

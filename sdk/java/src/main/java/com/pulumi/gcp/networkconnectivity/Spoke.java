@@ -281,16 +281,14 @@ public class Spoke extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is
-     * deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+     * Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
      * 
      */
     @Export(name="uniqueId", type=String.class, parameters={})
     private Output<String> uniqueId;
 
     /**
-     * @return Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is
-     * deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+     * @return Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
      * 
      */
     public Output<String> uniqueId() {

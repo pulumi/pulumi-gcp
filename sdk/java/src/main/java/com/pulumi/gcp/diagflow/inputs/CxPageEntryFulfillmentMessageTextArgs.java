@@ -18,7 +18,6 @@ public final class CxPageEntryFulfillmentMessageTextArgs extends com.pulumi.reso
     public static final CxPageEntryFulfillmentMessageTextArgs Empty = new CxPageEntryFulfillmentMessageTextArgs();
 
     /**
-     * - 
      * Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
      * 
      */
@@ -26,8 +25,7 @@ public final class CxPageEntryFulfillmentMessageTextArgs extends com.pulumi.reso
     private @Nullable Output<Boolean> allowPlaybackInterruption;
 
     /**
-     * @return -
-     * Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
+     * @return Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
      * 
      */
     public Optional<Output<Boolean>> allowPlaybackInterruption() {
@@ -75,8 +73,7 @@ public final class CxPageEntryFulfillmentMessageTextArgs extends com.pulumi.reso
         }
 
         /**
-         * @param allowPlaybackInterruption -
-         * Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
+         * @param allowPlaybackInterruption Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
          * 
          * @return builder
          * 
@@ -87,8 +84,7 @@ public final class CxPageEntryFulfillmentMessageTextArgs extends com.pulumi.reso
         }
 
         /**
-         * @param allowPlaybackInterruption -
-         * Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
+         * @param allowPlaybackInterruption Whether the playback of this message can be interrupted by the end user&#39;s speech and the client can then starts the next Dialogflow request.
          * 
          * @return builder
          * 

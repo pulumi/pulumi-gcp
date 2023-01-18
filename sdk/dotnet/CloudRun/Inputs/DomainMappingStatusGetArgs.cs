@@ -14,20 +14,40 @@ namespace Pulumi.Gcp.CloudRun.Inputs
     {
         [Input("conditions")]
         private InputList<Inputs.DomainMappingStatusConditionGetArgs>? _conditions;
+
+        /// <summary>
+        /// Array of observed DomainMappingConditions, indicating the current state
+        /// of the DomainMapping.
+        /// Structure is documented below.
+        /// </summary>
         public InputList<Inputs.DomainMappingStatusConditionGetArgs> Conditions
         {
             get => _conditions ?? (_conditions = new InputList<Inputs.DomainMappingStatusConditionGetArgs>());
             set => _conditions = value;
         }
 
+        /// <summary>
+        /// The name of the route that the mapping currently points to.
+        /// </summary>
         [Input("mappedRouteName")]
         public Input<string>? MappedRouteName { get; set; }
 
+        /// <summary>
+        /// ObservedGeneration is the 'Generation' of the DomainMapping that
+        /// was last processed by the controller.
+        /// </summary>
         [Input("observedGeneration")]
         public Input<int>? ObservedGeneration { get; set; }
 
         [Input("resourceRecords")]
         private InputList<Inputs.DomainMappingStatusResourceRecordGetArgs>? _resourceRecords;
+
+        /// <summary>
+        /// The resource records required to configure this domain mapping. These
+        /// records must be added to the domain's DNS configuration in order to
+        /// serve the application via this domain mapping.
+        /// Structure is documented below.
+        /// </summary>
         public InputList<Inputs.DomainMappingStatusResourceRecordGetArgs> ResourceRecords
         {
             get => _resourceRecords ?? (_resourceRecords = new InputList<Inputs.DomainMappingStatusResourceRecordGetArgs>());

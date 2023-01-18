@@ -18,7 +18,6 @@ namespace Pulumi.Gcp.Beyondcorp.Outputs
         /// </summary>
         public readonly string AppGateway;
         /// <summary>
-        /// -
         /// Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
         /// </summary>
         public readonly int? IngressPort;
@@ -29,7 +28,6 @@ namespace Pulumi.Gcp.Beyondcorp.Outputs
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// -
         /// Server-defined URI for this resource.
         /// </summary>
         public readonly string? Uri;

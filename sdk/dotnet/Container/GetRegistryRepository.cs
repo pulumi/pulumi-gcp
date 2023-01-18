@@ -75,9 +75,15 @@ namespace Pulumi.Gcp.Container
 
     public sealed class GetRegistryRepositoryArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The project ID that this repository is attached to.  If not provided, provider project will be used instead.
+        /// </summary>
         [Input("project")]
         public string? Project { get; set; }
 
+        /// <summary>
+        /// The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
+        /// </summary>
         [Input("region")]
         public string? Region { get; set; }
 
@@ -89,9 +95,15 @@ namespace Pulumi.Gcp.Container
 
     public sealed class GetRegistryRepositoryInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The project ID that this repository is attached to.  If not provided, provider project will be used instead.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
@@ -111,6 +123,9 @@ namespace Pulumi.Gcp.Container
         public readonly string Id;
         public readonly string Project;
         public readonly string? Region;
+        /// <summary>
+        /// The URL at which the repository can be accessed.
+        /// </summary>
         public readonly string RepositoryUrl;
 
         [OutputConstructor]

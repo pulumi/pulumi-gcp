@@ -21,9 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const prod_ssl_policy = new gcp.compute.SSLPolicy("prod-ssl-policy", {
- *     profile: "MODERN",
- * });
+ * const prod_ssl_policy = new gcp.compute.SSLPolicy("prod-ssl-policy", {profile: "MODERN"});
  * const nonprod_ssl_policy = new gcp.compute.SSLPolicy("nonprod-ssl-policy", {
  *     minTlsVersion: "TLS_1_2",
  *     profile: "MODERN",
@@ -107,7 +105,8 @@ export class SSLPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly enabledFeatures!: pulumi.Output<string[]>;
     /**
-     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+     * Fingerprint of this resource. A hash of the contents stored in this
+     * object. This field is used in optimistic locking.
      */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
@@ -219,7 +218,8 @@ export interface SSLPolicyState {
      */
     enabledFeatures?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+     * Fingerprint of this resource. A hash of the contents stored in this
+     * object. This field is used in optimistic locking.
      */
     fingerprint?: pulumi.Input<string>;
     /**

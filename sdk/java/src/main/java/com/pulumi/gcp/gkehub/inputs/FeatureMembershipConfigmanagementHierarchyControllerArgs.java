@@ -46,14 +46,14 @@ public final class FeatureMembershipConfigmanagementHierarchyControllerArgs exte
     }
 
     /**
-     * Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+     * Whether Hierarchy Controller is enabled in this cluster.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+     * @return Whether Hierarchy Controller is enabled in this cluster.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -129,7 +129,7 @@ public final class FeatureMembershipConfigmanagementHierarchyControllerArgs exte
         }
 
         /**
-         * @param enabled Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+         * @param enabled Whether Hierarchy Controller is enabled in this cluster.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class FeatureMembershipConfigmanagementHierarchyControllerArgs exte
         }
 
         /**
-         * @param enabled Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+         * @param enabled Whether Hierarchy Controller is enabled in this cluster.
          * 
          * @return builder
          * 

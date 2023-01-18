@@ -18,6 +18,10 @@ public final class GetRegistryRepositoryResult {
     private String id;
     private String project;
     private @Nullable String region;
+    /**
+     * @return The URL at which the repository can be accessed.
+     * 
+     */
     private String repositoryUrl;
 
     private GetRegistryRepositoryResult() {}
@@ -34,6 +38,10 @@ public final class GetRegistryRepositoryResult {
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
+    /**
+     * @return The URL at which the repository can be accessed.
+     * 
+     */
     public String repositoryUrl() {
         return this.repositoryUrl;
     }

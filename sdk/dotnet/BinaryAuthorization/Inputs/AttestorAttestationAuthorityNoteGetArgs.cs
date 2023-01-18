@@ -13,7 +13,6 @@ namespace Pulumi.Gcp.BinaryAuthorization.Inputs
     public sealed class AttestorAttestationAuthorityNoteGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// -
         /// This field will contain the service account email address that
         /// this Attestor will use as the principal when querying Container
         /// Analysis. Attestor administrators must grant this service account

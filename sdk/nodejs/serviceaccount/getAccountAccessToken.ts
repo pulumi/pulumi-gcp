@@ -11,11 +11,8 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
  */
 export function getAccountAccessToken(args: GetAccountAccessTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountAccessTokenResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken", {
         "delegates": args.delegates,
         "lifetime": args.lifetime,
@@ -63,9 +60,14 @@ export interface GetAccountAccessTokenResult {
     readonly scopes: string[];
     readonly targetServiceAccount: string;
 }
-
+/**
+ * This data source provides a google `oauth2` `accessToken` for a different service account than the one initially running the script.
+ *
+ * For more information see
+ * [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
+ */
 export function getAccountAccessTokenOutput(args: GetAccountAccessTokenOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountAccessTokenResult> {
-    return pulumi.output(args).apply(a => getAccountAccessToken(a, opts))
+    return pulumi.output(args).apply((a: any) => getAccountAccessToken(a, opts))
 }
 
 /**

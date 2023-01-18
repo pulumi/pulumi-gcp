@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         private InputList<string>? _excludes;
 
         /// <summary>
-        /// List of KBs to exclude from update.
+        /// List of packages to exclude from update. These packages will be excluded.
         /// </summary>
         public InputList<string> Excludes
         {

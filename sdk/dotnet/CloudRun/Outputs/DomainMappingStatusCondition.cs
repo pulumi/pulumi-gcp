@@ -13,9 +13,22 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     [OutputType]
     public sealed class DomainMappingStatusCondition
     {
+        /// <summary>
+        /// Human readable message indicating details about the current status.
+        /// </summary>
         public readonly string? Message;
+        /// <summary>
+        /// One-word CamelCase reason for the condition's current status.
+        /// </summary>
         public readonly string? Reason;
+        /// <summary>
+        /// Status of the condition, one of True, False, Unknown.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// Resource record type. Example: `AAAA`.
+        /// Possible values are `A`, `AAAA`, and `CNAME`.
+        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

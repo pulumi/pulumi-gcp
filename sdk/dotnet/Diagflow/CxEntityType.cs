@@ -155,8 +155,8 @@ namespace Pulumi.Gcp.Diagflow
         public Output<string?> LanguageCode { get; private set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the entity type. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent
-        /// ID&gt;/entityTypes/&lt;Entity Type ID&gt;.
+        /// The unique identifier of the entity type.
+        /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/entityTypes/&lt;Entity Type ID&gt;.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -378,8 +378,8 @@ namespace Pulumi.Gcp.Diagflow
         public Input<string>? LanguageCode { get; set; }
 
         /// <summary>
-        /// The unique identifier of the entity type. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent
-        /// ID&gt;/entityTypes/&lt;Entity Type ID&gt;.
+        /// The unique identifier of the entity type.
+        /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/entityTypes/&lt;Entity Type ID&gt;.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

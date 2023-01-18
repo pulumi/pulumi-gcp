@@ -38,20 +38,18 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
     }
 
     /**
-     * The query parameter in which to put the generated token.
-     * If not specified, defaults to `edge-cache-token`.
-     * If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
-     * This field may only be set when the GENERATE_TOKEN_HLS_COOKIELESS or PROPAGATE_TOKEN_HLS_COOKIELESS actions are specified.
+     * The query parameter in which to find the token.
+     * The name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+     * Defaults to `edge-cache-token`.
      * 
      */
     @Import(name="tokenQueryParameter")
     private @Nullable Output<String> tokenQueryParameter;
 
     /**
-     * @return The query parameter in which to put the generated token.
-     * If not specified, defaults to `edge-cache-token`.
-     * If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
-     * This field may only be set when the GENERATE_TOKEN_HLS_COOKIELESS or PROPAGATE_TOKEN_HLS_COOKIELESS actions are specified.
+     * @return The query parameter in which to find the token.
+     * The name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+     * Defaults to `edge-cache-token`.
      * 
      */
     public Optional<Output<String>> tokenQueryParameter() {
@@ -124,10 +122,9 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
         }
 
         /**
-         * @param tokenQueryParameter The query parameter in which to put the generated token.
-         * If not specified, defaults to `edge-cache-token`.
-         * If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
-         * This field may only be set when the GENERATE_TOKEN_HLS_COOKIELESS or PROPAGATE_TOKEN_HLS_COOKIELESS actions are specified.
+         * @param tokenQueryParameter The query parameter in which to find the token.
+         * The name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+         * Defaults to `edge-cache-token`.
          * 
          * @return builder
          * 
@@ -138,10 +135,9 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
         }
 
         /**
-         * @param tokenQueryParameter The query parameter in which to put the generated token.
-         * If not specified, defaults to `edge-cache-token`.
-         * If specified, the name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
-         * This field may only be set when the GENERATE_TOKEN_HLS_COOKIELESS or PROPAGATE_TOKEN_HLS_COOKIELESS actions are specified.
+         * @param tokenQueryParameter The query parameter in which to find the token.
+         * The name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
+         * Defaults to `edge-cache-token`.
          * 
          * @return builder
          * 

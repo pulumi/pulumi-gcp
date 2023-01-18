@@ -52,7 +52,7 @@ import (
 //				MachineType: pulumi.String("e2-medium"),
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-//						Image: pulumi.String(debian9.Id),
+//						Image: *pulumi.String(debian9.Id),
 //					},
 //				},
 //				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
@@ -71,7 +71,7 @@ import (
 //				MachineType: pulumi.String("e2-medium"),
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-//						Image: pulumi.String(debian9.Id),
+//						Image: *pulumi.String(debian9.Id),
 //					},
 //				},
 //				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{

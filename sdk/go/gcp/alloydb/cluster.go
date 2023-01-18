@@ -161,22 +161,23 @@ type Cluster struct {
 	// Structure is documented below.
 	AutomatedBackupPolicy ClusterAutomatedBackupPolicyPtrOutput `pulumi:"automatedBackupPolicy"`
 	// Cluster created from backup.
+	// Structure is documented below.
 	BackupSources ClusterBackupSourceArrayOutput `pulumi:"backupSources"`
 	// The ID of the alloydb cluster.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This
-	// field cannot be changed after cluster creation.
+	// The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
 	DatabaseVersion pulumi.StringOutput `pulumi:"databaseVersion"`
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Initial user to setup during cluster creation.
 	// Structure is documented below.
 	InitialUser ClusterInitialUserPtrOutput `pulumi:"initialUser"`
-	// Labels to apply to backups created using this configuration.
+	// User-defined labels for the alloydb cluster.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+	// The location where the alloydb cluster should reside.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Cluster created via DMS migration.
+	// Structure is documented below.
 	MigrationSources ClusterMigrationSourceArrayOutput `pulumi:"migrationSources"`
 	// The name of the cluster resource.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -230,22 +231,23 @@ type clusterState struct {
 	// Structure is documented below.
 	AutomatedBackupPolicy *ClusterAutomatedBackupPolicy `pulumi:"automatedBackupPolicy"`
 	// Cluster created from backup.
+	// Structure is documented below.
 	BackupSources []ClusterBackupSource `pulumi:"backupSources"`
 	// The ID of the alloydb cluster.
 	ClusterId *string `pulumi:"clusterId"`
-	// The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This
-	// field cannot be changed after cluster creation.
+	// The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
 	DatabaseVersion *string `pulumi:"databaseVersion"`
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName *string `pulumi:"displayName"`
 	// Initial user to setup during cluster creation.
 	// Structure is documented below.
 	InitialUser *ClusterInitialUser `pulumi:"initialUser"`
-	// Labels to apply to backups created using this configuration.
+	// User-defined labels for the alloydb cluster.
 	Labels map[string]string `pulumi:"labels"`
-	// The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+	// The location where the alloydb cluster should reside.
 	Location *string `pulumi:"location"`
 	// Cluster created via DMS migration.
+	// Structure is documented below.
 	MigrationSources []ClusterMigrationSource `pulumi:"migrationSources"`
 	// The name of the cluster resource.
 	Name *string `pulumi:"name"`
@@ -265,22 +267,23 @@ type ClusterState struct {
 	// Structure is documented below.
 	AutomatedBackupPolicy ClusterAutomatedBackupPolicyPtrInput
 	// Cluster created from backup.
+	// Structure is documented below.
 	BackupSources ClusterBackupSourceArrayInput
 	// The ID of the alloydb cluster.
 	ClusterId pulumi.StringPtrInput
-	// The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This
-	// field cannot be changed after cluster creation.
+	// The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
 	DatabaseVersion pulumi.StringPtrInput
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName pulumi.StringPtrInput
 	// Initial user to setup during cluster creation.
 	// Structure is documented below.
 	InitialUser ClusterInitialUserPtrInput
-	// Labels to apply to backups created using this configuration.
+	// User-defined labels for the alloydb cluster.
 	Labels pulumi.StringMapInput
-	// The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+	// The location where the alloydb cluster should reside.
 	Location pulumi.StringPtrInput
 	// Cluster created via DMS migration.
+	// Structure is documented below.
 	MigrationSources ClusterMigrationSourceArrayInput
 	// The name of the cluster resource.
 	Name pulumi.StringPtrInput
@@ -310,9 +313,9 @@ type clusterArgs struct {
 	// Initial user to setup during cluster creation.
 	// Structure is documented below.
 	InitialUser *ClusterInitialUser `pulumi:"initialUser"`
-	// Labels to apply to backups created using this configuration.
+	// User-defined labels for the alloydb cluster.
 	Labels map[string]string `pulumi:"labels"`
-	// The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+	// The location where the alloydb cluster should reside.
 	Location *string `pulumi:"location"`
 	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
 	// "projects/{projectNumber}/global/networks/{network_id}".
@@ -335,9 +338,9 @@ type ClusterArgs struct {
 	// Initial user to setup during cluster creation.
 	// Structure is documented below.
 	InitialUser ClusterInitialUserPtrInput
-	// Labels to apply to backups created using this configuration.
+	// User-defined labels for the alloydb cluster.
 	Labels pulumi.StringMapInput
-	// The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+	// The location where the alloydb cluster should reside.
 	Location pulumi.StringPtrInput
 	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
 	// "projects/{projectNumber}/global/networks/{network_id}".
@@ -442,6 +445,7 @@ func (o ClusterOutput) AutomatedBackupPolicy() ClusterAutomatedBackupPolicyPtrOu
 }
 
 // Cluster created from backup.
+// Structure is documented below.
 func (o ClusterOutput) BackupSources() ClusterBackupSourceArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterBackupSourceArrayOutput { return v.BackupSources }).(ClusterBackupSourceArrayOutput)
 }
@@ -451,8 +455,7 @@ func (o ClusterOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This
-// field cannot be changed after cluster creation.
+// The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
 func (o ClusterOutput) DatabaseVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DatabaseVersion }).(pulumi.StringOutput)
 }
@@ -468,17 +471,18 @@ func (o ClusterOutput) InitialUser() ClusterInitialUserPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterInitialUserPtrOutput { return v.InitialUser }).(ClusterInitialUserPtrOutput)
 }
 
-// Labels to apply to backups created using this configuration.
+// User-defined labels for the alloydb cluster.
 func (o ClusterOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+// The location where the alloydb cluster should reside.
 func (o ClusterOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // Cluster created via DMS migration.
+// Structure is documented below.
 func (o ClusterOutput) MigrationSources() ClusterMigrationSourceArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterMigrationSourceArrayOutput { return v.MigrationSources }).(ClusterMigrationSourceArrayOutput)
 }

@@ -20,6 +20,8 @@ public final class CertificateTemplateArgs extends com.pulumi.resources.Resource
     public static final CertificateTemplateArgs Empty = new CertificateTemplateArgs();
 
     /**
+     * Optional. A human-readable description of scenarios this template is intended for.
+     * (Optional)
      * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
      */
@@ -27,7 +29,9 @@ public final class CertificateTemplateArgs extends com.pulumi.resources.Resource
     private @Nullable Output<String> description;
 
     /**
-     * @return Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+     * @return Optional. A human-readable description of scenarios this template is intended for.
+     * (Optional)
+     * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
      */
     public Optional<Output<String>> description() {
@@ -65,14 +69,14 @@ public final class CertificateTemplateArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+     * The location for the resource
      * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
-     * @return Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+     * @return The location for the resource
      * 
      */
     public Output<String> location() {
@@ -171,7 +175,9 @@ public final class CertificateTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param description Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         * @param description Optional. A human-readable description of scenarios this template is intended for.
+         * (Optional)
+         * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
          * 
          * @return builder
          * 
@@ -182,7 +188,9 @@ public final class CertificateTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param description Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         * @param description Optional. A human-readable description of scenarios this template is intended for.
+         * (Optional)
+         * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
          * 
          * @return builder
          * 
@@ -234,7 +242,7 @@ public final class CertificateTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param location Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+         * @param location The location for the resource
          * 
          * @return builder
          * 
@@ -245,7 +253,7 @@ public final class CertificateTemplateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param location Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+         * @param location The location for the resource
          * 
          * @return builder
          * 

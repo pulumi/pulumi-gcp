@@ -38,14 +38,12 @@ namespace Pulumi.Gcp.ActiveDirectory
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Unique name of the peering in this scope including projects and location using the form:
-        /// projects/{projectId}/locations/global/peerings/{peeringId}.
+        /// Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// -
         /// (Required)
         /// </summary>
         [Output("peeringId")]
@@ -141,7 +139,6 @@ namespace Pulumi.Gcp.ActiveDirectory
         }
 
         /// <summary>
-        /// -
         /// (Required)
         /// </summary>
         [Input("peeringId", required: true)]
@@ -199,14 +196,12 @@ namespace Pulumi.Gcp.ActiveDirectory
         }
 
         /// <summary>
-        /// Unique name of the peering in this scope including projects and location using the form:
-        /// projects/{projectId}/locations/global/peerings/{peeringId}.
+        /// Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// -
         /// (Required)
         /// </summary>
         [Input("peeringId")]

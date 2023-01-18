@@ -174,11 +174,10 @@ import (
 type AiIndex struct {
 	pulumi.CustomResourceState
 
-	// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-	// fractional digits.
+	// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had
-	// been undeployed first.
+	// The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
+	// Structure is documented below.
 	DeployedIndexes AiIndexDeployedIndexArrayOutput `pulumi:"deployedIndexes"`
 	// The description of the Index.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -187,6 +186,7 @@ type AiIndex struct {
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Stats of the index resource.
+	// Structure is documented below.
 	IndexStats AiIndexIndexStatArrayOutput `pulumi:"indexStats"`
 	// The update method to use with this Index. The value must be the followings. If not set, BATCH_UPDATE will be used by default.
 	// * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
@@ -197,8 +197,7 @@ type AiIndex struct {
 	// An additional information about the Index
 	// Structure is documented below.
 	Metadata AiIndexMetadataPtrOutput `pulumi:"metadata"`
-	// Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific
-	// to it. Unset if the Index does not have any additional information.
+	// Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
 	MetadataSchemaUri pulumi.StringOutput `pulumi:"metadataSchemaUri"`
 	// The resource name of the Index.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -207,8 +206,7 @@ type AiIndex struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The region of the index. eg us-central1
 	Region pulumi.StringPtrOutput `pulumi:"region"`
-	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-	// fractional digits.
+	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -244,11 +242,10 @@ func GetAiIndex(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AiIndex resources.
 type aiIndexState struct {
-	// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-	// fractional digits.
+	// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime *string `pulumi:"createTime"`
-	// The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had
-	// been undeployed first.
+	// The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
+	// Structure is documented below.
 	DeployedIndexes []AiIndexDeployedIndex `pulumi:"deployedIndexes"`
 	// The description of the Index.
 	Description *string `pulumi:"description"`
@@ -257,6 +254,7 @@ type aiIndexState struct {
 	// Used to perform consistent read-modify-write updates.
 	Etag *string `pulumi:"etag"`
 	// Stats of the index resource.
+	// Structure is documented below.
 	IndexStats []AiIndexIndexStat `pulumi:"indexStats"`
 	// The update method to use with this Index. The value must be the followings. If not set, BATCH_UPDATE will be used by default.
 	// * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
@@ -267,8 +265,7 @@ type aiIndexState struct {
 	// An additional information about the Index
 	// Structure is documented below.
 	Metadata *AiIndexMetadata `pulumi:"metadata"`
-	// Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific
-	// to it. Unset if the Index does not have any additional information.
+	// Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
 	MetadataSchemaUri *string `pulumi:"metadataSchemaUri"`
 	// The resource name of the Index.
 	Name *string `pulumi:"name"`
@@ -277,17 +274,15 @@ type aiIndexState struct {
 	Project *string `pulumi:"project"`
 	// The region of the index. eg us-central1
 	Region *string `pulumi:"region"`
-	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-	// fractional digits.
+	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type AiIndexState struct {
-	// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-	// fractional digits.
+	// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringPtrInput
-	// The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had
-	// been undeployed first.
+	// The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
+	// Structure is documented below.
 	DeployedIndexes AiIndexDeployedIndexArrayInput
 	// The description of the Index.
 	Description pulumi.StringPtrInput
@@ -296,6 +291,7 @@ type AiIndexState struct {
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringPtrInput
 	// Stats of the index resource.
+	// Structure is documented below.
 	IndexStats AiIndexIndexStatArrayInput
 	// The update method to use with this Index. The value must be the followings. If not set, BATCH_UPDATE will be used by default.
 	// * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
@@ -306,8 +302,7 @@ type AiIndexState struct {
 	// An additional information about the Index
 	// Structure is documented below.
 	Metadata AiIndexMetadataPtrInput
-	// Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific
-	// to it. Unset if the Index does not have any additional information.
+	// Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
 	MetadataSchemaUri pulumi.StringPtrInput
 	// The resource name of the Index.
 	Name pulumi.StringPtrInput
@@ -316,8 +311,7 @@ type AiIndexState struct {
 	Project pulumi.StringPtrInput
 	// The region of the index. eg us-central1
 	Region pulumi.StringPtrInput
-	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-	// fractional digits.
+	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -455,14 +449,13 @@ func (o AiIndexOutput) ToAiIndexOutputWithContext(ctx context.Context) AiIndexOu
 	return o
 }
 
-// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-// fractional digits.
+// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 func (o AiIndexOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiIndex) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had
-// been undeployed first.
+// The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
+// Structure is documented below.
 func (o AiIndexOutput) DeployedIndexes() AiIndexDeployedIndexArrayOutput {
 	return o.ApplyT(func(v *AiIndex) AiIndexDeployedIndexArrayOutput { return v.DeployedIndexes }).(AiIndexDeployedIndexArrayOutput)
 }
@@ -483,6 +476,7 @@ func (o AiIndexOutput) Etag() pulumi.StringOutput {
 }
 
 // Stats of the index resource.
+// Structure is documented below.
 func (o AiIndexOutput) IndexStats() AiIndexIndexStatArrayOutput {
 	return o.ApplyT(func(v *AiIndex) AiIndexIndexStatArrayOutput { return v.IndexStats }).(AiIndexIndexStatArrayOutput)
 }
@@ -505,8 +499,7 @@ func (o AiIndexOutput) Metadata() AiIndexMetadataPtrOutput {
 	return o.ApplyT(func(v *AiIndex) AiIndexMetadataPtrOutput { return v.Metadata }).(AiIndexMetadataPtrOutput)
 }
 
-// Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific
-// to it. Unset if the Index does not have any additional information.
+// Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
 func (o AiIndexOutput) MetadataSchemaUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiIndex) pulumi.StringOutput { return v.MetadataSchemaUri }).(pulumi.StringOutput)
 }
@@ -527,8 +520,7 @@ func (o AiIndexOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiIndex) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-// fractional digits.
+// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 func (o AiIndexOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiIndex) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

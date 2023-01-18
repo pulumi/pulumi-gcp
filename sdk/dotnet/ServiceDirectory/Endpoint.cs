@@ -167,7 +167,8 @@ namespace Pulumi.Gcp.ServiceDirectory
         public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name for the endpoint in the format 'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
+        /// The resource name for the endpoint in the format
+        /// `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -321,7 +322,8 @@ namespace Pulumi.Gcp.ServiceDirectory
         }
 
         /// <summary>
-        /// The resource name for the endpoint in the format 'projects/*/locations/*/namespaces/*/services/*/endpoints/*'.
+        /// The resource name for the endpoint in the format
+        /// `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public Input<string>? NamespaceId { get; set; }
 
         /// <summary>
-        /// The Google Cloud Platform project ID of the project containing the table.
+        /// The ID of the project to which the entities belong.
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;

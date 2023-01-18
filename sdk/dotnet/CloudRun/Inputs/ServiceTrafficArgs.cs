@@ -40,7 +40,6 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public Input<string>? Tag { get; set; }
 
         /// <summary>
-        /// -
         /// URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
         /// and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
         /// but may not contain anything else (e.g. basic auth, url path, etc.)

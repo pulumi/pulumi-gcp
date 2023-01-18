@@ -23,8 +23,8 @@ public final class RegionBackendServiceConsistentHashHttpCookie {
      */
     private @Nullable String path;
     /**
-     * @return The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
-     * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+     * @return Lifetime of the cookie.
+     * Structure is documented below.
      * 
      */
     private @Nullable RegionBackendServiceConsistentHashHttpCookieTtl ttl;
@@ -45,8 +45,8 @@ public final class RegionBackendServiceConsistentHashHttpCookie {
         return Optional.ofNullable(this.path);
     }
     /**
-     * @return The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
-     * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+     * @return Lifetime of the cookie.
+     * Structure is documented below.
      * 
      */
     public Optional<RegionBackendServiceConsistentHashHttpCookieTtl> ttl() {

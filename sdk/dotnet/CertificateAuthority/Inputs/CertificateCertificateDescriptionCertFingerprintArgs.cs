@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
 
     public sealed class CertificateCertificateDescriptionCertFingerprintArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
+        /// </summary>
         [Input("sha256Hash")]
         public Input<string>? Sha256Hash { get; set; }
 

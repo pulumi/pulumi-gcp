@@ -24,8 +24,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// </summary>
         public readonly string? Intent;
         /// <summary>
-        /// -
-        /// The unique identifier of this event handler.
+        /// The unique identifier of this transition route.
         /// </summary>
         public readonly string? Name;
         /// <summary>

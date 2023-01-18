@@ -93,14 +93,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:tags/tagBinding:TagBinding")
 public class TagBinding extends com.pulumi.resources.CustomResource {
     /**
-     * The generated id for the TagBinding. This is a string of the form: &#39;tagBindings/{full-resource-name}/{tag-value-name}&#39;
+     * The generated id for the TagBinding. This is a string of the form: `tagBindings/{full-resource-name}/{tag-value-name}`
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The generated id for the TagBinding. This is a string of the form: &#39;tagBindings/{full-resource-name}/{tag-value-name}&#39;
+     * @return The generated id for the TagBinding. This is a string of the form: `tagBindings/{full-resource-name}/{tag-value-name}`
      * 
      */
     public Output<String> name() {

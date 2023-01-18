@@ -40,11 +40,13 @@ import (
 type KeyRingImportJob struct {
 	pulumi.CustomResourceState
 
-	// Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this
-	// statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen
-	// ImportMethod is one with a protection level of HSM.
+	// Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
+	// Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+	// Only present if the chosen ImportMethod is one with a protection level of HSM.
+	// Structure is documented below.
 	Attestations KeyRingImportJobAttestationArrayOutput `pulumi:"attestations"`
-	// The time at which this resource is scheduled for expiration and can no longer be used. This is in RFC3339 text format.
+	// The time at which this resource is scheduled for expiration and can no longer be used.
+	// This is in RFC3339 text format.
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
 	// It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
 	ImportJobId pulumi.StringOutput `pulumi:"importJobId"`
@@ -60,7 +62,8 @@ type KeyRingImportJob struct {
 	// versionTemplate on the CryptoKey you attempt to import into.
 	// Possible values are `SOFTWARE`, `HSM`, and `EXTERNAL`.
 	ProtectionLevel pulumi.StringOutput `pulumi:"protectionLevel"`
-	// The public key with which to wrap key material prior to import. Only returned if state is 'ACTIVE'.
+	// The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
+	// Structure is documented below.
 	PublicKeys KeyRingImportJobPublicKeyArrayOutput `pulumi:"publicKeys"`
 	// The current state of the ImportJob, indicating if it can be used.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -107,11 +110,13 @@ func GetKeyRingImportJob(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KeyRingImportJob resources.
 type keyRingImportJobState struct {
-	// Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this
-	// statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen
-	// ImportMethod is one with a protection level of HSM.
+	// Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
+	// Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+	// Only present if the chosen ImportMethod is one with a protection level of HSM.
+	// Structure is documented below.
 	Attestations []KeyRingImportJobAttestation `pulumi:"attestations"`
-	// The time at which this resource is scheduled for expiration and can no longer be used. This is in RFC3339 text format.
+	// The time at which this resource is scheduled for expiration and can no longer be used.
+	// This is in RFC3339 text format.
 	ExpireTime *string `pulumi:"expireTime"`
 	// It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
 	ImportJobId *string `pulumi:"importJobId"`
@@ -127,18 +132,21 @@ type keyRingImportJobState struct {
 	// versionTemplate on the CryptoKey you attempt to import into.
 	// Possible values are `SOFTWARE`, `HSM`, and `EXTERNAL`.
 	ProtectionLevel *string `pulumi:"protectionLevel"`
-	// The public key with which to wrap key material prior to import. Only returned if state is 'ACTIVE'.
+	// The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
+	// Structure is documented below.
 	PublicKeys []KeyRingImportJobPublicKey `pulumi:"publicKeys"`
 	// The current state of the ImportJob, indicating if it can be used.
 	State *string `pulumi:"state"`
 }
 
 type KeyRingImportJobState struct {
-	// Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this
-	// statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen
-	// ImportMethod is one with a protection level of HSM.
+	// Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
+	// Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+	// Only present if the chosen ImportMethod is one with a protection level of HSM.
+	// Structure is documented below.
 	Attestations KeyRingImportJobAttestationArrayInput
-	// The time at which this resource is scheduled for expiration and can no longer be used. This is in RFC3339 text format.
+	// The time at which this resource is scheduled for expiration and can no longer be used.
+	// This is in RFC3339 text format.
 	ExpireTime pulumi.StringPtrInput
 	// It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
 	ImportJobId pulumi.StringPtrInput
@@ -154,7 +162,8 @@ type KeyRingImportJobState struct {
 	// versionTemplate on the CryptoKey you attempt to import into.
 	// Possible values are `SOFTWARE`, `HSM`, and `EXTERNAL`.
 	ProtectionLevel pulumi.StringPtrInput
-	// The public key with which to wrap key material prior to import. Only returned if state is 'ACTIVE'.
+	// The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
+	// Structure is documented below.
 	PublicKeys KeyRingImportJobPublicKeyArrayInput
 	// The current state of the ImportJob, indicating if it can be used.
 	State pulumi.StringPtrInput
@@ -282,14 +291,16 @@ func (o KeyRingImportJobOutput) ToKeyRingImportJobOutputWithContext(ctx context.
 	return o
 }
 
-// Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this
-// statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen
-// ImportMethod is one with a protection level of HSM.
+// Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
+// Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+// Only present if the chosen ImportMethod is one with a protection level of HSM.
+// Structure is documented below.
 func (o KeyRingImportJobOutput) Attestations() KeyRingImportJobAttestationArrayOutput {
 	return o.ApplyT(func(v *KeyRingImportJob) KeyRingImportJobAttestationArrayOutput { return v.Attestations }).(KeyRingImportJobAttestationArrayOutput)
 }
 
-// The time at which this resource is scheduled for expiration and can no longer be used. This is in RFC3339 text format.
+// The time at which this resource is scheduled for expiration and can no longer be used.
+// This is in RFC3339 text format.
 func (o KeyRingImportJobOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeyRingImportJob) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
 }
@@ -323,7 +334,8 @@ func (o KeyRingImportJobOutput) ProtectionLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeyRingImportJob) pulumi.StringOutput { return v.ProtectionLevel }).(pulumi.StringOutput)
 }
 
-// The public key with which to wrap key material prior to import. Only returned if state is 'ACTIVE'.
+// The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
+// Structure is documented below.
 func (o KeyRingImportJobOutput) PublicKeys() KeyRingImportJobPublicKeyArrayOutput {
 	return o.ApplyT(func(v *KeyRingImportJob) KeyRingImportJobPublicKeyArrayOutput { return v.PublicKeys }).(KeyRingImportJobPublicKeyArrayOutput)
 }

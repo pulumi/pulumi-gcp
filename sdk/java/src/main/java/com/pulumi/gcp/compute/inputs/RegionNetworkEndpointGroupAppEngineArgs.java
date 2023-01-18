@@ -35,20 +35,26 @@ public final class RegionNetworkEndpointGroupAppEngineArgs extends com.pulumi.re
     }
 
     /**
-     * A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
-     * on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
-     * The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
-     * App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
+     * A template to parse service and version fields from a request URL.
+     * URL mask allows for routing to multiple App Engine services without
+     * having to create multiple Network Endpoint Groups and backend services.
+     * For example, the request URLs &#34;foo1-dot-appname.appspot.com/v1&#34; and
+     * &#34;foo1-dot-appname.appspot.com/v2&#34; can be backed by the same Serverless NEG with
+     * URL mask &#34;-dot-appname.appspot.com/&#34;. The URL mask will parse
+     * them to { service = &#34;foo1&#34;, version = &#34;v1&#34; } and { service = &#34;foo1&#34;, version = &#34;v2&#34; } respectively.
      * 
      */
     @Import(name="urlMask")
     private @Nullable Output<String> urlMask;
 
     /**
-     * @return A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
-     * on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
-     * The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
-     * App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
+     * @return A template to parse service and version fields from a request URL.
+     * URL mask allows for routing to multiple App Engine services without
+     * having to create multiple Network Endpoint Groups and backend services.
+     * For example, the request URLs &#34;foo1-dot-appname.appspot.com/v1&#34; and
+     * &#34;foo1-dot-appname.appspot.com/v2&#34; can be backed by the same Serverless NEG with
+     * URL mask &#34;-dot-appname.appspot.com/&#34;. The URL mask will parse
+     * them to { service = &#34;foo1&#34;, version = &#34;v1&#34; } and { service = &#34;foo1&#34;, version = &#34;v2&#34; } respectively.
      * 
      */
     public Optional<Output<String>> urlMask() {
@@ -56,16 +62,18 @@ public final class RegionNetworkEndpointGroupAppEngineArgs extends com.pulumi.re
     }
 
     /**
-     * The optional resource version. The version identified by this value is platform-specific and is follows:
-     * API Gateway: Unused, App Engine: The service version, Cloud Functions: Unused, Cloud Run: The service tag
+     * Optional serving version.
+     * The version must be 1-63 characters long, and comply with RFC1035.
+     * Example value: &#34;v1&#34;, &#34;v2&#34;.
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return The optional resource version. The version identified by this value is platform-specific and is follows:
-     * API Gateway: Unused, App Engine: The service version, Cloud Functions: Unused, Cloud Run: The service tag
+     * @return Optional serving version.
+     * The version must be 1-63 characters long, and comply with RFC1035.
+     * Example value: &#34;v1&#34;, &#34;v2&#34;.
      * 
      */
     public Optional<Output<String>> version() {
@@ -124,10 +132,13 @@ public final class RegionNetworkEndpointGroupAppEngineArgs extends com.pulumi.re
         }
 
         /**
-         * @param urlMask A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
-         * on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
-         * The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
-         * App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
+         * @param urlMask A template to parse service and version fields from a request URL.
+         * URL mask allows for routing to multiple App Engine services without
+         * having to create multiple Network Endpoint Groups and backend services.
+         * For example, the request URLs &#34;foo1-dot-appname.appspot.com/v1&#34; and
+         * &#34;foo1-dot-appname.appspot.com/v2&#34; can be backed by the same Serverless NEG with
+         * URL mask &#34;-dot-appname.appspot.com/&#34;. The URL mask will parse
+         * them to { service = &#34;foo1&#34;, version = &#34;v1&#34; } and { service = &#34;foo1&#34;, version = &#34;v2&#34; } respectively.
          * 
          * @return builder
          * 
@@ -138,10 +149,13 @@ public final class RegionNetworkEndpointGroupAppEngineArgs extends com.pulumi.re
         }
 
         /**
-         * @param urlMask A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
-         * on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
-         * The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
-         * App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
+         * @param urlMask A template to parse service and version fields from a request URL.
+         * URL mask allows for routing to multiple App Engine services without
+         * having to create multiple Network Endpoint Groups and backend services.
+         * For example, the request URLs &#34;foo1-dot-appname.appspot.com/v1&#34; and
+         * &#34;foo1-dot-appname.appspot.com/v2&#34; can be backed by the same Serverless NEG with
+         * URL mask &#34;-dot-appname.appspot.com/&#34;. The URL mask will parse
+         * them to { service = &#34;foo1&#34;, version = &#34;v1&#34; } and { service = &#34;foo1&#34;, version = &#34;v2&#34; } respectively.
          * 
          * @return builder
          * 
@@ -151,8 +165,9 @@ public final class RegionNetworkEndpointGroupAppEngineArgs extends com.pulumi.re
         }
 
         /**
-         * @param version The optional resource version. The version identified by this value is platform-specific and is follows:
-         * API Gateway: Unused, App Engine: The service version, Cloud Functions: Unused, Cloud Run: The service tag
+         * @param version Optional serving version.
+         * The version must be 1-63 characters long, and comply with RFC1035.
+         * Example value: &#34;v1&#34;, &#34;v2&#34;.
          * 
          * @return builder
          * 
@@ -163,8 +178,9 @@ public final class RegionNetworkEndpointGroupAppEngineArgs extends com.pulumi.re
         }
 
         /**
-         * @param version The optional resource version. The version identified by this value is platform-specific and is follows:
-         * API Gateway: Unused, App Engine: The service version, Cloud Functions: Unused, Cloud Run: The service tag
+         * @param version Optional serving version.
+         * The version must be 1-63 characters long, and comply with RFC1035.
+         * Example value: &#34;v1&#34;, &#34;v2&#34;.
          * 
          * @return builder
          * 

@@ -66,7 +66,7 @@ namespace Pulumi.Gcp.AppEngine
         public Output<string> DomainName { get; private set; } = null!;
 
         /// <summary>
-        /// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
+        /// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -90,6 +90,7 @@ namespace Pulumi.Gcp.AppEngine
         /// <summary>
         /// The resource records required to configure this domain mapping. These records must be added to the domain's DNS
         /// configuration in order to serve the application via this domain mapping.
+        /// Structure is documented below.
         /// </summary>
         [Output("resourceRecords")]
         public Output<ImmutableArray<Outputs.DomainMappingResourceRecord>> ResourceRecords { get; private set; } = null!;
@@ -191,7 +192,7 @@ namespace Pulumi.Gcp.AppEngine
         public Input<string>? DomainName { get; set; }
 
         /// <summary>
-        /// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
+        /// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -218,6 +219,7 @@ namespace Pulumi.Gcp.AppEngine
         /// <summary>
         /// The resource records required to configure this domain mapping. These records must be added to the domain's DNS
         /// configuration in order to serve the application via this domain mapping.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.DomainMappingResourceRecordGetArgs> ResourceRecords
         {

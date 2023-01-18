@@ -45,6 +45,11 @@ class GetGameServerDeploymentRolloutResult:
     @property
     @pulumi.getter(name="defaultGameServerConfig")
     def default_game_server_config(self) -> str:
+        """
+        This field points to the game server config that is
+        applied by default to all realms and clusters. For example,
+        `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+        """
         return pulumi.get(self, "default_game_server_config")
 
     @property
@@ -55,6 +60,12 @@ class GetGameServerDeploymentRolloutResult:
     @property
     @pulumi.getter(name="gameServerConfigOverrides")
     def game_server_config_overrides(self) -> Sequence['outputs.GetGameServerDeploymentRolloutGameServerConfigOverrideResult']:
+        """
+        The game_server_config_overrides contains the per game server config
+        overrides. The overrides are processed in the order they are listed. As
+        soon as a match is found for a cluster, the rest of the list is not
+        processed.  Structure is documented below.
+        """
         return pulumi.get(self, "game_server_config_overrides")
 
     @property
@@ -68,6 +79,10 @@ class GetGameServerDeploymentRolloutResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The resource id of the game server deployment
+        eg: `projects/my-project/locations/global/gameServerDeployments/my-deployment/rollout`.
+        """
         return pulumi.get(self, "name")
 
     @property

@@ -24,7 +24,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Copies a table.
-     * Structure is documented below.
      * 
      */
     @Import(name="copy")
@@ -32,7 +31,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Copies a table.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<JobCopyArgs>> copy() {
@@ -41,7 +39,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Configures an extract job.
-     * Structure is documented below.
      * 
      */
     @Import(name="extract")
@@ -49,7 +46,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Configures an extract job.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<JobExtractArgs>> extract() {
@@ -118,7 +114,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Configures a load job.
-     * Structure is documented below.
      * 
      */
     @Import(name="load")
@@ -126,7 +121,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Configures a load job.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<JobLoadArgs>> load() {
@@ -167,7 +161,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Configures a query job.
-     * Structure is documented below.
      * 
      */
     @Import(name="query")
@@ -175,7 +168,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Configures a query job.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<JobQueryArgs>> query() {
@@ -184,6 +176,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+     * Structure is documented below.
      * 
      */
     @Import(name="statuses")
@@ -191,6 +184,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<JobStatusArgs>>> statuses() {
@@ -249,7 +243,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param copy Copies a table.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -261,7 +254,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param copy Copies a table.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -272,7 +264,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param extract Configures an extract job.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -284,7 +275,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param extract Configures an extract job.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -379,7 +369,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param load Configures a load job.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -391,7 +380,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param load Configures a load job.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -446,7 +434,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param query Configures a query job.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -458,7 +445,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param query Configures a query job.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -469,6 +455,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param statuses The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -480,6 +467,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param statuses The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -490,6 +478,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param statuses The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+         * Structure is documented below.
          * 
          * @return builder
          * 

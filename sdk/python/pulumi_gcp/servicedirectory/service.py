@@ -86,7 +86,8 @@ class _ServiceState:
                by service clients. The entire metadata dictionary may contain
                up to 2000 characters, spread across all key-value pairs.
                Metadata that goes beyond any these limits will be rejected.
-        :param pulumi.Input[str] name: The resource name for the service in the format 'projects/*/locations/*/namespaces/*/services/*'.
+        :param pulumi.Input[str] name: The resource name for the service in the
+               format `projects/*/locations/*/namespaces/*/services/*`.
         :param pulumi.Input[str] namespace: The resource name of the namespace this service will belong to.
         :param pulumi.Input[str] service_id: The Resource ID must be 1-63 characters long, including digits,
                lowercase letters or the hyphen character.
@@ -119,7 +120,8 @@ class _ServiceState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name for the service in the format 'projects/*/locations/*/namespaces/*/services/*'.
+        The resource name for the service in the
+        format `projects/*/locations/*/namespaces/*/services/*`.
         """
         return pulumi.get(self, "name")
 
@@ -330,7 +332,8 @@ class Service(pulumi.CustomResource):
                by service clients. The entire metadata dictionary may contain
                up to 2000 characters, spread across all key-value pairs.
                Metadata that goes beyond any these limits will be rejected.
-        :param pulumi.Input[str] name: The resource name for the service in the format 'projects/*/locations/*/namespaces/*/services/*'.
+        :param pulumi.Input[str] name: The resource name for the service in the
+               format `projects/*/locations/*/namespaces/*/services/*`.
         :param pulumi.Input[str] namespace: The resource name of the namespace this service will belong to.
         :param pulumi.Input[str] service_id: The Resource ID must be 1-63 characters long, including digits,
                lowercase letters or the hyphen character.
@@ -360,7 +363,8 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name for the service in the format 'projects/*/locations/*/namespaces/*/services/*'.
+        The resource name for the service in the
+        format `projects/*/locations/*/namespaces/*/services/*`.
         """
         return pulumi.get(self, "name")
 

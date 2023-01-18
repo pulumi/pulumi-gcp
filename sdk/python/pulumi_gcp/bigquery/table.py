@@ -63,17 +63,7 @@ class TableArgs:
                is not provided, the provider project is used.
         :param pulumi.Input['TableRangePartitioningArgs'] range_partitioning: If specified, configures range-based
                partitioning for this table. Structure is documented below.
-        :param pulumi.Input[str] schema: A JSON schema for the external table. Schema is required
-               for CSV and JSON formats if autodetect is not on. Schema is disallowed
-               for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
-               ~>**NOTE:** Because this field expects a JSON string, any changes to the
-               string will create a diff, even if the JSON itself hasn't changed.
-               Furthermore drift for this field cannot not be detected because BigQuery
-               only uses this schema to compute the effective schema for the table, therefore
-               any changes on the configured value will force the table to be recreated.
-               This schema is effectively only applied when creating a table from an external
-               datasource, after creation the computed schema will be stored in
-               `google_bigquery_table.schema`
+        :param pulumi.Input[str] schema: A JSON schema for the table.
         :param pulumi.Input['TableTimePartitioningArgs'] time_partitioning: If specified, configures time-based
                partitioning for this table. Structure is documented below.
         :param pulumi.Input['TableViewArgs'] view: If specified, configures this table as a view.
@@ -286,17 +276,7 @@ class TableArgs:
     @pulumi.getter
     def schema(self) -> Optional[pulumi.Input[str]]:
         """
-        A JSON schema for the external table. Schema is required
-        for CSV and JSON formats if autodetect is not on. Schema is disallowed
-        for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
-        ~>**NOTE:** Because this field expects a JSON string, any changes to the
-        string will create a diff, even if the JSON itself hasn't changed.
-        Furthermore drift for this field cannot not be detected because BigQuery
-        only uses this schema to compute the effective schema for the table, therefore
-        any changes on the configured value will force the table to be recreated.
-        This schema is effectively only applied when creating a table from an external
-        datasource, after creation the computed schema will be stored in
-        `google_bigquery_table.schema`
+        A JSON schema for the table.
         """
         return pulumi.get(self, "schema")
 
@@ -395,17 +375,7 @@ class _TableState:
                is not provided, the provider project is used.
         :param pulumi.Input['TableRangePartitioningArgs'] range_partitioning: If specified, configures range-based
                partitioning for this table. Structure is documented below.
-        :param pulumi.Input[str] schema: A JSON schema for the external table. Schema is required
-               for CSV and JSON formats if autodetect is not on. Schema is disallowed
-               for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
-               ~>**NOTE:** Because this field expects a JSON string, any changes to the
-               string will create a diff, even if the JSON itself hasn't changed.
-               Furthermore drift for this field cannot not be detected because BigQuery
-               only uses this schema to compute the effective schema for the table, therefore
-               any changes on the configured value will force the table to be recreated.
-               This schema is effectively only applied when creating a table from an external
-               datasource, after creation the computed schema will be stored in
-               `google_bigquery_table.schema`
+        :param pulumi.Input[str] schema: A JSON schema for the table.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
@@ -714,17 +684,7 @@ class _TableState:
     @pulumi.getter
     def schema(self) -> Optional[pulumi.Input[str]]:
         """
-        A JSON schema for the external table. Schema is required
-        for CSV and JSON formats if autodetect is not on. Schema is disallowed
-        for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
-        ~>**NOTE:** Because this field expects a JSON string, any changes to the
-        string will create a diff, even if the JSON itself hasn't changed.
-        Furthermore drift for this field cannot not be detected because BigQuery
-        only uses this schema to compute the effective schema for the table, therefore
-        any changes on the configured value will force the table to be recreated.
-        This schema is effectively only applied when creating a table from an external
-        datasource, after creation the computed schema will be stored in
-        `google_bigquery_table.schema`
+        A JSON schema for the table.
         """
         return pulumi.get(self, "schema")
 
@@ -925,17 +885,7 @@ class Table(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']] range_partitioning: If specified, configures range-based
                partitioning for this table. Structure is documented below.
-        :param pulumi.Input[str] schema: A JSON schema for the external table. Schema is required
-               for CSV and JSON formats if autodetect is not on. Schema is disallowed
-               for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
-               ~>**NOTE:** Because this field expects a JSON string, any changes to the
-               string will create a diff, even if the JSON itself hasn't changed.
-               Furthermore drift for this field cannot not be detected because BigQuery
-               only uses this schema to compute the effective schema for the table, therefore
-               any changes on the configured value will force the table to be recreated.
-               This schema is effectively only applied when creating a table from an external
-               datasource, after creation the computed schema will be stored in
-               `google_bigquery_table.schema`
+        :param pulumi.Input[str] schema: A JSON schema for the table.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
         :param pulumi.Input[pulumi.InputType['TableTimePartitioningArgs']] time_partitioning: If specified, configures time-based
@@ -1171,17 +1121,7 @@ class Table(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']] range_partitioning: If specified, configures range-based
                partitioning for this table. Structure is documented below.
-        :param pulumi.Input[str] schema: A JSON schema for the external table. Schema is required
-               for CSV and JSON formats if autodetect is not on. Schema is disallowed
-               for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
-               ~>**NOTE:** Because this field expects a JSON string, any changes to the
-               string will create a diff, even if the JSON itself hasn't changed.
-               Furthermore drift for this field cannot not be detected because BigQuery
-               only uses this schema to compute the effective schema for the table, therefore
-               any changes on the configured value will force the table to be recreated.
-               This schema is effectively only applied when creating a table from an external
-               datasource, after creation the computed schema will be stored in
-               `google_bigquery_table.schema`
+        :param pulumi.Input[str] schema: A JSON schema for the table.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
@@ -1394,17 +1334,7 @@ class Table(pulumi.CustomResource):
     @pulumi.getter
     def schema(self) -> pulumi.Output[str]:
         """
-        A JSON schema for the external table. Schema is required
-        for CSV and JSON formats if autodetect is not on. Schema is disallowed
-        for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
-        ~>**NOTE:** Because this field expects a JSON string, any changes to the
-        string will create a diff, even if the JSON itself hasn't changed.
-        Furthermore drift for this field cannot not be detected because BigQuery
-        only uses this schema to compute the effective schema for the table, therefore
-        any changes on the configured value will force the table to be recreated.
-        This schema is effectively only applied when creating a table from an external
-        datasource, after creation the computed schema will be stored in
-        `google_bigquery_table.schema`
+        A JSON schema for the table.
         """
         return pulumi.get(self, "schema")
 

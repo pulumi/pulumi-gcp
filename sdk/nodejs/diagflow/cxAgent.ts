@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const fullAgent = new gcp.diagflow.CxAgent("full_agent", {
+ * const fullAgent = new gcp.diagflow.CxAgent("fullAgent", {
  *     avatarUri: "https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png",
  *     defaultLanguageCode: "en",
  *     description: "Example description.",
@@ -137,9 +137,7 @@ export class CxAgent extends pulumi.CustomResource {
      */
     public readonly speechToTextSettings!: pulumi.Output<outputs.diagflow.CxAgentSpeechToTextSettings | undefined>;
     /**
-     * Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-     * be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow
-     * ID>.
+     * Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
      */
     public /*out*/ readonly startFlow!: pulumi.Output<string>;
     /**
@@ -268,9 +266,7 @@ export interface CxAgentState {
      */
     speechToTextSettings?: pulumi.Input<inputs.diagflow.CxAgentSpeechToTextSettings>;
     /**
-     * Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-     * be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow
-     * ID>.
+     * Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
      */
     startFlow?: pulumi.Input<string>;
     /**

@@ -146,6 +146,12 @@ class AuthorityAccessUrl(dict):
     def __init__(__self__, *,
                  ca_certificate_access_url: Optional[str] = None,
                  crl_access_urls: Optional[Sequence[str]] = None):
+        """
+        :param str ca_certificate_access_url: The URL where this CertificateAuthority's CA certificate is published. This will only be
+               set for CAs that have been activated.
+        :param Sequence[str] crl_access_urls: The URL where this CertificateAuthority's CRLs are published. This will only be set for
+               CAs that have been activated.
+        """
         if ca_certificate_access_url is not None:
             pulumi.set(__self__, "ca_certificate_access_url", ca_certificate_access_url)
         if crl_access_urls is not None:
@@ -154,11 +160,19 @@ class AuthorityAccessUrl(dict):
     @property
     @pulumi.getter(name="caCertificateAccessUrl")
     def ca_certificate_access_url(self) -> Optional[str]:
+        """
+        The URL where this CertificateAuthority's CA certificate is published. This will only be
+        set for CAs that have been activated.
+        """
         return pulumi.get(self, "ca_certificate_access_url")
 
     @property
     @pulumi.getter(name="crlAccessUrls")
     def crl_access_urls(self) -> Optional[Sequence[str]]:
+        """
+        The URL where this CertificateAuthority's CRLs are published. This will only be set for
+        CAs that have been activated.
+        """
         return pulumi.get(self, "crl_access_urls")
 
 
@@ -2581,7 +2595,22 @@ class CertificateCertificateDescription(dict):
                  subject_key_ids: Optional[Sequence['outputs.CertificateCertificateDescriptionSubjectKeyId']] = None,
                  x509_descriptions: Optional[Sequence['outputs.CertificateCertificateDescriptionX509Description']] = None):
         """
+        :param Sequence[str] aia_issuing_certificate_urls: Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
+        :param Sequence['CertificateCertificateDescriptionAuthorityKeyIdArgs'] authority_key_ids: Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+               Structure is documented below.
+        :param Sequence['CertificateCertificateDescriptionCertFingerprintArgs'] cert_fingerprints: The hash of the x.509 certificate.
+               Structure is documented below.
+        :param Sequence['CertificateCertificateDescriptionConfigValueArgs'] config_values: (Deprecated)
+               Describes some of the technical fields in a certificate.
+               Structure is documented below.
+        :param Sequence[str] crl_distribution_points: Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
         :param Sequence['CertificateCertificateDescriptionPublicKeyArgs'] public_keys: A PublicKey describes a public key.
+               Structure is documented below.
+        :param Sequence['CertificateCertificateDescriptionSubjectDescriptionArgs'] subject_descriptions: Describes some of the values in a certificate that are related to the subject and lifetime.
+               Structure is documented below.
+        :param Sequence['CertificateCertificateDescriptionSubjectKeyIdArgs'] subject_key_ids: Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+               Structure is documented below.
+        :param Sequence['CertificateCertificateDescriptionX509DescriptionArgs'] x509_descriptions: A structured description of the issued X.509 certificate.
                Structure is documented below.
         """
         if aia_issuing_certificate_urls is not None:
@@ -2606,26 +2635,45 @@ class CertificateCertificateDescription(dict):
     @property
     @pulumi.getter(name="aiaIssuingCertificateUrls")
     def aia_issuing_certificate_urls(self) -> Optional[Sequence[str]]:
+        """
+        Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
+        """
         return pulumi.get(self, "aia_issuing_certificate_urls")
 
     @property
     @pulumi.getter(name="authorityKeyIds")
     def authority_key_ids(self) -> Optional[Sequence['outputs.CertificateCertificateDescriptionAuthorityKeyId']]:
+        """
+        Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+        Structure is documented below.
+        """
         return pulumi.get(self, "authority_key_ids")
 
     @property
     @pulumi.getter(name="certFingerprints")
     def cert_fingerprints(self) -> Optional[Sequence['outputs.CertificateCertificateDescriptionCertFingerprint']]:
+        """
+        The hash of the x.509 certificate.
+        Structure is documented below.
+        """
         return pulumi.get(self, "cert_fingerprints")
 
     @property
     @pulumi.getter(name="configValues")
     def config_values(self) -> Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValue']]:
+        """
+        (Deprecated)
+        Describes some of the technical fields in a certificate.
+        Structure is documented below.
+        """
         return pulumi.get(self, "config_values")
 
     @property
     @pulumi.getter(name="crlDistributionPoints")
     def crl_distribution_points(self) -> Optional[Sequence[str]]:
+        """
+        Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+        """
         return pulumi.get(self, "crl_distribution_points")
 
     @property
@@ -2640,16 +2688,28 @@ class CertificateCertificateDescription(dict):
     @property
     @pulumi.getter(name="subjectDescriptions")
     def subject_descriptions(self) -> Optional[Sequence['outputs.CertificateCertificateDescriptionSubjectDescription']]:
+        """
+        Describes some of the values in a certificate that are related to the subject and lifetime.
+        Structure is documented below.
+        """
         return pulumi.get(self, "subject_descriptions")
 
     @property
     @pulumi.getter(name="subjectKeyIds")
     def subject_key_ids(self) -> Optional[Sequence['outputs.CertificateCertificateDescriptionSubjectKeyId']]:
+        """
+        Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+        Structure is documented below.
+        """
         return pulumi.get(self, "subject_key_ids")
 
     @property
     @pulumi.getter(name="x509Descriptions")
     def x509_descriptions(self) -> Optional[Sequence['outputs.CertificateCertificateDescriptionX509Description']]:
+        """
+        A structured description of the issued X.509 certificate.
+        Structure is documented below.
+        """
         return pulumi.get(self, "x509_descriptions")
 
 
@@ -2674,12 +2734,18 @@ class CertificateCertificateDescriptionAuthorityKeyId(dict):
 
     def __init__(__self__, *,
                  key_id: Optional[str] = None):
+        """
+        :param str key_id: Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
+        """
         if key_id is not None:
             pulumi.set(__self__, "key_id", key_id)
 
     @property
     @pulumi.getter(name="keyId")
     def key_id(self) -> Optional[str]:
+        """
+        Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
+        """
         return pulumi.get(self, "key_id")
 
 
@@ -2704,12 +2770,18 @@ class CertificateCertificateDescriptionCertFingerprint(dict):
 
     def __init__(__self__, *,
                  sha256_hash: Optional[str] = None):
+        """
+        :param str sha256_hash: The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
+        """
         if sha256_hash is not None:
             pulumi.set(__self__, "sha256_hash", sha256_hash)
 
     @property
     @pulumi.getter(name="sha256Hash")
     def sha256_hash(self) -> Optional[str]:
+        """
+        The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
+        """
         return pulumi.get(self, "sha256_hash")
 
 
@@ -2842,12 +2914,20 @@ class CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage(dict):
 
     def __init__(__self__, *,
                  key_usage_options: Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption']] = None):
+        """
+        :param Sequence['CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArgs'] key_usage_options: Describes high-level ways in which a key may be used.
+               Structure is documented below.
+        """
         if key_usage_options is not None:
             pulumi.set(__self__, "key_usage_options", key_usage_options)
 
     @property
     @pulumi.getter(name="keyUsageOptions")
     def key_usage_options(self) -> Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption']]:
+        """
+        Describes high-level ways in which a key may be used.
+        Structure is documented below.
+        """
         return pulumi.get(self, "key_usage_options")
 
 
@@ -3126,12 +3206,20 @@ class CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsag
 
     def __init__(__self__, *,
                  obect_ids: Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId']] = None):
+        """
+        :param Sequence['CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArgs'] obect_ids: Required. Describes how some of the technical fields in a certificate should be populated.
+               Structure is documented below.
+        """
         if obect_ids is not None:
             pulumi.set(__self__, "obect_ids", obect_ids)
 
     @property
     @pulumi.getter(name="obectIds")
     def obect_ids(self) -> Optional[Sequence['outputs.CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId']]:
+        """
+        Required. Describes how some of the technical fields in a certificate should be populated.
+        Structure is documented below.
+        """
         return pulumi.get(self, "obect_ids")
 
 
@@ -3158,6 +3246,10 @@ class CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsag
                  object_id_paths: Optional[Sequence[int]] = None):
         """
         :param Sequence[int] object_id_paths: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+               (Required)
+               An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+               (Required)
+               An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         """
         if object_id_paths is not None:
             pulumi.set(__self__, "object_id_paths", object_id_paths)
@@ -3166,6 +3258,10 @@ class CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsag
     @pulumi.getter(name="objectIdPaths")
     def object_id_paths(self) -> Optional[Sequence[int]]:
         """
+        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        (Required)
+        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        (Required)
         An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         """
         return pulumi.get(self, "object_id_paths")
@@ -3237,9 +3333,12 @@ class CertificateCertificateDescriptionSubjectDescription(dict):
                  subject_alt_names: Optional[Sequence['outputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltName']] = None,
                  subjects: Optional[Sequence['outputs.CertificateCertificateDescriptionSubjectDescriptionSubject']] = None):
         """
+        :param str hex_serial_number: The serial number encoded in lowercase hexadecimal.
         :param str lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
                "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
                fractional digits, terminated by 's'. Example: "3.5s".
+        :param str not_after_time: The time at which the certificate expires.
+        :param str not_before_time: The time at which the certificate becomes valid.
         :param Sequence['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs'] subject_alt_names: The subject alternative name fields.
                Structure is documented below.
         :param Sequence['CertificateCertificateDescriptionSubjectDescriptionSubjectArgs'] subjects: Contains distinguished name fields such as the location and organization.
@@ -3261,6 +3360,9 @@ class CertificateCertificateDescriptionSubjectDescription(dict):
     @property
     @pulumi.getter(name="hexSerialNumber")
     def hex_serial_number(self) -> Optional[str]:
+        """
+        The serial number encoded in lowercase hexadecimal.
+        """
         return pulumi.get(self, "hex_serial_number")
 
     @property
@@ -3276,11 +3378,17 @@ class CertificateCertificateDescriptionSubjectDescription(dict):
     @property
     @pulumi.getter(name="notAfterTime")
     def not_after_time(self) -> Optional[str]:
+        """
+        The time at which the certificate expires.
+        """
         return pulumi.get(self, "not_after_time")
 
     @property
     @pulumi.getter(name="notBeforeTime")
     def not_before_time(self) -> Optional[str]:
+        """
+        The time at which the certificate becomes valid.
+        """
         return pulumi.get(self, "not_before_time")
 
     @property
@@ -3462,6 +3570,8 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltName(dict):
                  ip_addresses: Optional[Sequence[str]] = None,
                  uris: Optional[Sequence[str]] = None):
         """
+        :param Sequence['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs'] custom_sans: Contains additional subject alternative name values.
+               Structure is documented below.
         :param Sequence[str] dns_names: Contains only valid, fully-qualified host names.
         :param Sequence[str] email_addresses: Contains only valid RFC 2822 E-mail addresses.
         :param Sequence[str] ip_addresses: Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
@@ -3481,6 +3591,10 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltName(dict):
     @property
     @pulumi.getter(name="customSans")
     def custom_sans(self) -> Optional[Sequence['outputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan']]:
+        """
+        Contains additional subject alternative name values.
+        Structure is documented below.
+        """
         return pulumi.get(self, "custom_sans")
 
     @property
@@ -3542,6 +3656,8 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
         """
         :param bool critical: Indicates whether or not this extension is critical (i.e., if the client does not know how to
                handle this extension, the client should consider this to be an error).
+        :param Sequence['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs'] obect_ids: Required. Describes how some of the technical fields in a certificate should be populated.
+               Structure is documented below.
         :param str value: The value of this X.509 extension. A base64-encoded string.
         """
         if critical is not None:
@@ -3563,6 +3679,10 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
     @property
     @pulumi.getter(name="obectIds")
     def obect_ids(self) -> Optional[Sequence['outputs.CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId']]:
+        """
+        Required. Describes how some of the technical fields in a certificate should be populated.
+        Structure is documented below.
+        """
         return pulumi.get(self, "obect_ids")
 
     @property
@@ -3597,6 +3717,10 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
                  object_id_paths: Optional[Sequence[int]] = None):
         """
         :param Sequence[int] object_id_paths: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+               (Required)
+               An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+               (Required)
+               An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         """
         if object_id_paths is not None:
             pulumi.set(__self__, "object_id_paths", object_id_paths)
@@ -3605,6 +3729,10 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
     @pulumi.getter(name="objectIdPaths")
     def object_id_paths(self) -> Optional[Sequence[int]]:
         """
+        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        (Required)
+        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        (Required)
         An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         """
         return pulumi.get(self, "object_id_paths")
@@ -3631,12 +3759,18 @@ class CertificateCertificateDescriptionSubjectKeyId(dict):
 
     def __init__(__self__, *,
                  key_id: Optional[str] = None):
+        """
+        :param str key_id: Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
+        """
         if key_id is not None:
             pulumi.set(__self__, "key_id", key_id)
 
     @property
     @pulumi.getter(name="keyId")
     def key_id(self) -> Optional[str]:
+        """
+        Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
+        """
         return pulumi.get(self, "key_id")
 
 
@@ -5341,6 +5475,10 @@ class CertificateRevocationDetail(dict):
     def __init__(__self__, *,
                  revocation_state: Optional[str] = None,
                  revocation_time: Optional[str] = None):
+        """
+        :param str revocation_state: Indicates why a Certificate was revoked.
+        :param str revocation_time: The time at which this Certificate was revoked.
+        """
         if revocation_state is not None:
             pulumi.set(__self__, "revocation_state", revocation_state)
         if revocation_time is not None:
@@ -5349,11 +5487,17 @@ class CertificateRevocationDetail(dict):
     @property
     @pulumi.getter(name="revocationState")
     def revocation_state(self) -> Optional[str]:
+        """
+        Indicates why a Certificate was revoked.
+        """
         return pulumi.get(self, "revocation_state")
 
     @property
     @pulumi.getter(name="revocationTime")
     def revocation_time(self) -> Optional[str]:
+        """
+        The time at which this Certificate was revoked.
+        """
         return pulumi.get(self, "revocation_time")
 
 
@@ -5581,7 +5725,7 @@ class CertificateTemplatePassthroughExtensions(dict):
                  additional_extensions: Optional[Sequence['outputs.CertificateTemplatePassthroughExtensionsAdditionalExtension']] = None,
                  known_extensions: Optional[Sequence[str]] = None):
         """
-        :param Sequence['CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs'] additional_extensions: Optional. Describes custom X.509 extensions.
+        :param Sequence['CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs'] additional_extensions: Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
         :param Sequence[str] known_extensions: Optional. A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
         """
         if additional_extensions is not None:
@@ -5593,7 +5737,7 @@ class CertificateTemplatePassthroughExtensions(dict):
     @pulumi.getter(name="additionalExtensions")
     def additional_extensions(self) -> Optional[Sequence['outputs.CertificateTemplatePassthroughExtensionsAdditionalExtension']]:
         """
-        Optional. Describes custom X.509 extensions.
+        Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
         """
         return pulumi.get(self, "additional_extensions")
 

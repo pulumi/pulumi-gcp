@@ -28,14 +28,13 @@ class MetricDescriptorArgs:
                  unit: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a MetricDescriptor resource.
-        :param pulumi.Input[str] description: A human-readable description for the label.
+        :param pulumi.Input[str] description: A detailed description of the metric, which can be used in documentation.
         :param pulumi.Input[str] display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
         :param pulumi.Input[str] metric_kind: Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
                Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
         :param pulumi.Input[str] type: The metric type, including its DNS name prefix. The type is not URL-encoded. All service defined metrics must be prefixed with the service name, in the format of {service name}/{relative metric name}, such as cloudsql.googleapis.com/database/cpu/utilization. The relative metric name must have only upper and lower-case letters, digits, '/' and underscores '_' are allowed. Additionally, the maximum number of characters allowed for the relative_metric_name is 100. All user-defined metric types have the DNS name custom.googleapis.com, external.googleapis.com, or logging.googleapis.com/user/.
-        :param pulumi.Input[str] value_type: The type of data that can be assigned to the label.
-               Default value is `STRING`.
-               Possible values are `STRING`, `BOOL`, and `INT64`.
+        :param pulumi.Input[str] value_type: Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
+               Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
         :param pulumi.Input[Sequence[pulumi.Input['MetricDescriptorLabelArgs']]] labels: The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
                Structure is documented below.
         :param pulumi.Input[str] launch_stage: The launch stage of the metric definition.
@@ -82,7 +81,7 @@ class MetricDescriptorArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[str]:
         """
-        A human-readable description for the label.
+        A detailed description of the metric, which can be used in documentation.
         """
         return pulumi.get(self, "description")
 
@@ -131,9 +130,8 @@ class MetricDescriptorArgs:
     @pulumi.getter(name="valueType")
     def value_type(self) -> pulumi.Input[str]:
         """
-        The type of data that can be assigned to the label.
-        Default value is `STRING`.
-        Possible values are `STRING`, `BOOL`, and `INT64`.
+        Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
+        Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
         """
         return pulumi.get(self, "value_type")
 
@@ -239,7 +237,7 @@ class _MetricDescriptorState:
                  value_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MetricDescriptor resources.
-        :param pulumi.Input[str] description: A human-readable description for the label.
+        :param pulumi.Input[str] description: A detailed description of the metric, which can be used in documentation.
         :param pulumi.Input[str] display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
         :param pulumi.Input[Sequence[pulumi.Input['MetricDescriptorLabelArgs']]] labels: The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
                Structure is documented below.
@@ -249,10 +247,7 @@ class _MetricDescriptorState:
                Structure is documented below.
         :param pulumi.Input[str] metric_kind: Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
                Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] monitored_resource_types: If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that
-               is associated with this metric type can only be associated with one of the monitored resource types listed here. This
-               field allows time series to be associated with the intersection of this metric type and the monitored resource types in
-               this list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] monitored_resource_types: If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. This field allows time series to be associated with the intersection of this metric type and the monitored resource types in this list.
         :param pulumi.Input[str] name: The resource name of the metric descriptor.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -274,9 +269,8 @@ class _MetricDescriptorState:
                The supported units are a subset of The Unified Code for Units of Measure standard.
                More info can be found in the API documentation
                (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
-        :param pulumi.Input[str] value_type: The type of data that can be assigned to the label.
-               Default value is `STRING`.
-               Possible values are `STRING`, `BOOL`, and `INT64`.
+        :param pulumi.Input[str] value_type: Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
+               Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -307,7 +301,7 @@ class _MetricDescriptorState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A human-readable description for the label.
+        A detailed description of the metric, which can be used in documentation.
         """
         return pulumi.get(self, "description")
 
@@ -383,10 +377,7 @@ class _MetricDescriptorState:
     @pulumi.getter(name="monitoredResourceTypes")
     def monitored_resource_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that
-        is associated with this metric type can only be associated with one of the monitored resource types listed here. This
-        field allows time series to be associated with the intersection of this metric type and the monitored resource types in
-        this list.
+        If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. This field allows time series to be associated with the intersection of this metric type and the monitored resource types in this list.
         """
         return pulumi.get(self, "monitored_resource_types")
 
@@ -463,9 +454,8 @@ class _MetricDescriptorState:
     @pulumi.getter(name="valueType")
     def value_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of data that can be assigned to the label.
-        Default value is `STRING`.
-        Possible values are `STRING`, `BOOL`, and `INT64`.
+        Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
+        Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
         """
         return pulumi.get(self, "value_type")
 
@@ -560,7 +550,7 @@ class MetricDescriptor(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A human-readable description for the label.
+        :param pulumi.Input[str] description: A detailed description of the metric, which can be used in documentation.
         :param pulumi.Input[str] display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricDescriptorLabelArgs']]]] labels: The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
                Structure is documented below.
@@ -590,9 +580,8 @@ class MetricDescriptor(pulumi.CustomResource):
                The supported units are a subset of The Unified Code for Units of Measure standard.
                More info can be found in the API documentation
                (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
-        :param pulumi.Input[str] value_type: The type of data that can be assigned to the label.
-               Default value is `STRING`.
-               Possible values are `STRING`, `BOOL`, and `INT64`.
+        :param pulumi.Input[str] value_type: Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
+               Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
         """
         ...
     @overload
@@ -753,7 +742,7 @@ class MetricDescriptor(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: A human-readable description for the label.
+        :param pulumi.Input[str] description: A detailed description of the metric, which can be used in documentation.
         :param pulumi.Input[str] display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricDescriptorLabelArgs']]]] labels: The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
                Structure is documented below.
@@ -763,10 +752,7 @@ class MetricDescriptor(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] metric_kind: Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
                Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] monitored_resource_types: If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that
-               is associated with this metric type can only be associated with one of the monitored resource types listed here. This
-               field allows time series to be associated with the intersection of this metric type and the monitored resource types in
-               this list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] monitored_resource_types: If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. This field allows time series to be associated with the intersection of this metric type and the monitored resource types in this list.
         :param pulumi.Input[str] name: The resource name of the metric descriptor.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -788,9 +774,8 @@ class MetricDescriptor(pulumi.CustomResource):
                The supported units are a subset of The Unified Code for Units of Measure standard.
                More info can be found in the API documentation
                (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
-        :param pulumi.Input[str] value_type: The type of data that can be assigned to the label.
-               Default value is `STRING`.
-               Possible values are `STRING`, `BOOL`, and `INT64`.
+        :param pulumi.Input[str] value_type: Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
+               Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -814,7 +799,7 @@ class MetricDescriptor(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        A human-readable description for the label.
+        A detailed description of the metric, which can be used in documentation.
         """
         return pulumi.get(self, "description")
 
@@ -866,10 +851,7 @@ class MetricDescriptor(pulumi.CustomResource):
     @pulumi.getter(name="monitoredResourceTypes")
     def monitored_resource_types(self) -> pulumi.Output[Sequence[str]]:
         """
-        If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that
-        is associated with this metric type can only be associated with one of the monitored resource types listed here. This
-        field allows time series to be associated with the intersection of this metric type and the monitored resource types in
-        this list.
+        If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. This field allows time series to be associated with the intersection of this metric type and the monitored resource types in this list.
         """
         return pulumi.get(self, "monitored_resource_types")
 
@@ -926,9 +908,8 @@ class MetricDescriptor(pulumi.CustomResource):
     @pulumi.getter(name="valueType")
     def value_type(self) -> pulumi.Output[str]:
         """
-        The type of data that can be assigned to the label.
-        Default value is `STRING`.
-        Possible values are `STRING`, `BOOL`, and `INT64`.
+        Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
+        Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
         """
         return pulumi.get(self, "value_type")
 

@@ -25,17 +25,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my_project_service = pulumi.output(gcp.projects.getProjectService({
+ * const my-project-service = gcp.projects.getProjectService({
  *     service: "my-project-service",
- * }));
+ * });
  * ```
  */
 export function getProjectService(args: GetProjectServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectServiceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:projects/getProjectService:getProjectService", {
         "project": args.project,
         "service": args.service,
@@ -70,9 +67,34 @@ export interface GetProjectServiceResult {
     readonly project?: string;
     readonly service: string;
 }
-
+/**
+ * Verify the API service for the Google Cloud Platform project to see if it is enabled or not.
+ *
+ * For a list of services available, visit the [API library page](https://console.cloud.google.com/apis/library)
+ * or run `gcloud services list --available`.
+ *
+ * This datasource requires the [Service Usage API](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com)
+ * to use.
+ *
+ * To get more information about `gcp.projects.Service`, see:
+ *
+ * * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
+ * * How-to Guides
+ *     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-project-service = gcp.projects.getProjectService({
+ *     service: "my-project-service",
+ * });
+ * ```
+ */
 export function getProjectServiceOutput(args: GetProjectServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectServiceResult> {
-    return pulumi.output(args).apply(a => getProjectService(a, opts))
+    return pulumi.output(args).apply((a: any) => getProjectService(a, opts))
 }
 
 /**

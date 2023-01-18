@@ -15,17 +15,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my_forwarding_rule = pulumi.output(gcp.compute.getForwardingRule({
+ * const my-forwarding-rule = gcp.compute.getForwardingRule({
  *     name: "forwarding-rule-us-east1",
- * }));
+ * });
  * ```
  */
 export function getForwardingRule(args: GetForwardingRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetForwardingRuleResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getForwardingRule:getForwardingRule", {
         "name": args.name,
         "project": args.project,
@@ -88,9 +85,22 @@ export interface GetForwardingRuleResult {
     readonly subnetwork: string;
     readonly target: string;
 }
-
+/**
+ * Get a forwarding rule within GCE from its name.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-forwarding-rule = gcp.compute.getForwardingRule({
+ *     name: "forwarding-rule-us-east1",
+ * });
+ * ```
+ */
 export function getForwardingRuleOutput(args: GetForwardingRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetForwardingRuleResult> {
-    return pulumi.output(args).apply(a => getForwardingRule(a, opts))
+    return pulumi.output(args).apply((a: any) => getForwardingRule(a, opts))
 }
 
 /**

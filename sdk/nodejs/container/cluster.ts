@@ -53,17 +53,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultAccount = new gcp.serviceAccount.Account("default", {
+ * const _default = new gcp.serviceaccount.Account("default", {
  *     accountId: "service-account-id",
  *     displayName: "Service Account",
  * });
  * const primary = new gcp.container.Cluster("primary", {
  *     enableAutopilot: true,
  *     location: "us-central1-a",
- * }, { timeouts: {
- *     create: "30m",
- *     update: "40m",
- * } });
+ * });
  * ```
  *
  * ## Import
@@ -455,8 +452,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly removeDefaultNodePool!: pulumi.Output<boolean | undefined>;
     /**
-     * The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
-     * for how these labels are applied to clusters, node pools and nodes.
+     * The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
      */
     public readonly resourceLabels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -1009,8 +1005,7 @@ export interface ClusterState {
      */
     removeDefaultNodePool?: pulumi.Input<boolean>;
     /**
-     * The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
-     * for how these labels are applied to clusters, node pools and nodes.
+     * The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
      */
     resourceLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -1394,8 +1389,7 @@ export interface ClusterArgs {
      */
     removeDefaultNodePool?: pulumi.Input<boolean>;
     /**
-     * The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
-     * for how these labels are applied to clusters, node pools and nodes.
+     * The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
      */
     resourceLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

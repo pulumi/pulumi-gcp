@@ -45,8 +45,7 @@ class RepositoryGitRemoteSettings(dict):
         :param str authentication_token_secret_version: The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format projects/*/secrets/*/versions/*.
         :param str default_branch: The Git remote's default branch name.
         :param str url: The Git remote's URL.
-        :param str token_status: -
-               Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
+        :param str token_status: Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
         """
         pulumi.set(__self__, "authentication_token_secret_version", authentication_token_secret_version)
         pulumi.set(__self__, "default_branch", default_branch)
@@ -82,7 +81,6 @@ class RepositoryGitRemoteSettings(dict):
     @pulumi.getter(name="tokenStatus")
     def token_status(self) -> Optional[str]:
         """
-        -
         Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
         """
         return pulumi.get(self, "token_status")

@@ -80,13 +80,11 @@ class AppConnectionGateway(dict):
                  uri: Optional[str] = None):
         """
         :param str app_gateway: AppGateway name in following format: projects/{project_id}/locations/{locationId}/appgateways/{gateway_id}.
-        :param int ingress_port: -
-               Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
+        :param int ingress_port: Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
         :param str type: The type of hosting used by the gateway. Refer to
                https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
                for a list of possible values.
-        :param str uri: -
-               Server-defined URI for this resource.
+        :param str uri: Server-defined URI for this resource.
         """
         pulumi.set(__self__, "app_gateway", app_gateway)
         if ingress_port is not None:
@@ -108,7 +106,6 @@ class AppConnectionGateway(dict):
     @pulumi.getter(name="ingressPort")
     def ingress_port(self) -> Optional[int]:
         """
-        -
         Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
         """
         return pulumi.get(self, "ingress_port")
@@ -127,7 +124,6 @@ class AppConnectionGateway(dict):
     @pulumi.getter
     def uri(self) -> Optional[str]:
         """
-        -
         Server-defined URI for this resource.
         """
         return pulumi.get(self, "uri")
@@ -212,6 +208,10 @@ class AppGatewayAllocatedConnection(dict):
     def __init__(__self__, *,
                  ingress_port: Optional[int] = None,
                  psc_uri: Optional[str] = None):
+        """
+        :param int ingress_port: The ingress port of an allocated connection.
+        :param str psc_uri: The PSC uri of an allocated connection.
+        """
         if ingress_port is not None:
             pulumi.set(__self__, "ingress_port", ingress_port)
         if psc_uri is not None:
@@ -220,11 +220,17 @@ class AppGatewayAllocatedConnection(dict):
     @property
     @pulumi.getter(name="ingressPort")
     def ingress_port(self) -> Optional[int]:
+        """
+        The ingress port of an allocated connection.
+        """
         return pulumi.get(self, "ingress_port")
 
     @property
     @pulumi.getter(name="pscUri")
     def psc_uri(self) -> Optional[str]:
+        """
+        The PSC uri of an allocated connection.
+        """
         return pulumi.get(self, "psc_uri")
 
 

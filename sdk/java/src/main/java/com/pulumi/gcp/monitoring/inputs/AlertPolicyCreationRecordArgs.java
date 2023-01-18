@@ -15,16 +15,32 @@ public final class AlertPolicyCreationRecordArgs extends com.pulumi.resources.Re
 
     public static final AlertPolicyCreationRecordArgs Empty = new AlertPolicyCreationRecordArgs();
 
+    /**
+     * When the change occurred.
+     * 
+     */
     @Import(name="mutateTime")
     private @Nullable Output<String> mutateTime;
 
+    /**
+     * @return When the change occurred.
+     * 
+     */
     public Optional<Output<String>> mutateTime() {
         return Optional.ofNullable(this.mutateTime);
     }
 
+    /**
+     * The email address of the user making the change.
+     * 
+     */
     @Import(name="mutatedBy")
     private @Nullable Output<String> mutatedBy;
 
+    /**
+     * @return The email address of the user making the change.
+     * 
+     */
     public Optional<Output<String>> mutatedBy() {
         return Optional.ofNullable(this.mutatedBy);
     }
@@ -54,20 +70,44 @@ public final class AlertPolicyCreationRecordArgs extends com.pulumi.resources.Re
             $ = new AlertPolicyCreationRecordArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param mutateTime When the change occurred.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mutateTime(@Nullable Output<String> mutateTime) {
             $.mutateTime = mutateTime;
             return this;
         }
 
+        /**
+         * @param mutateTime When the change occurred.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mutateTime(String mutateTime) {
             return mutateTime(Output.of(mutateTime));
         }
 
+        /**
+         * @param mutatedBy The email address of the user making the change.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mutatedBy(@Nullable Output<String> mutatedBy) {
             $.mutatedBy = mutatedBy;
             return this;
         }
 
+        /**
+         * @param mutatedBy The email address of the user making the change.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mutatedBy(String mutatedBy) {
             return mutatedBy(Output.of(mutatedBy));
         }

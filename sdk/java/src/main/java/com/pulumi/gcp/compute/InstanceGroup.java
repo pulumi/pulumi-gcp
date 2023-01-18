@@ -237,14 +237,20 @@ public class InstanceGroup extends com.pulumi.resources.CustomResource {
         return this.instances;
     }
     /**
-     * The name which the port will be mapped to.
+     * The name of the instance group. Must be 1-63
+     * characters long and comply with
+     * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+     * include lowercase letters, numbers, and hyphens.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The name which the port will be mapped to.
+     * @return The name of the instance group. Must be 1-63
+     * characters long and comply with
+     * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+     * include lowercase letters, numbers, and hyphens.
      * 
      */
     public Output<String> name() {

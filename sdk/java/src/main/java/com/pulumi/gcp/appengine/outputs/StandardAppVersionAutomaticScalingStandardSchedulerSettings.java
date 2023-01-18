@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class StandardAppVersionAutomaticScalingStandardSchedulerSettings {
     /**
-     * @return Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
+     * @return Maximum number of instances to run for this version. Set to zero to disable maxInstances configuration.
      * 
      */
     private @Nullable Integer maxInstances;
@@ -35,7 +35,7 @@ public final class StandardAppVersionAutomaticScalingStandardSchedulerSettings {
 
     private StandardAppVersionAutomaticScalingStandardSchedulerSettings() {}
     /**
-     * @return Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
+     * @return Maximum number of instances to run for this version. Set to zero to disable maxInstances configuration.
      * 
      */
     public Optional<Integer> maxInstances() {

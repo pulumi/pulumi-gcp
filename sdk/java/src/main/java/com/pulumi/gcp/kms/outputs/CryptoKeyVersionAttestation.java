@@ -13,21 +13,57 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CryptoKeyVersionAttestation {
+    /**
+     * @return The certificate chains needed to validate the attestation
+     * Structure is documented below.
+     * 
+     */
     private @Nullable CryptoKeyVersionAttestationCertChains certChains;
+    /**
+     * @return The attestation data provided by the HSM when the key operation was performed.
+     * 
+     */
     private @Nullable String content;
+    /**
+     * @return ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable CryptoKeyVersionAttestationExternalProtectionLevelOptions externalProtectionLevelOptions;
+    /**
+     * @return The format of the attestation data.
+     * 
+     */
     private @Nullable String format;
 
     private CryptoKeyVersionAttestation() {}
+    /**
+     * @return The certificate chains needed to validate the attestation
+     * Structure is documented below.
+     * 
+     */
     public Optional<CryptoKeyVersionAttestationCertChains> certChains() {
         return Optional.ofNullable(this.certChains);
     }
+    /**
+     * @return The attestation data provided by the HSM when the key operation was performed.
+     * 
+     */
     public Optional<String> content() {
         return Optional.ofNullable(this.content);
     }
+    /**
+     * @return ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+     * Structure is documented below.
+     * 
+     */
     public Optional<CryptoKeyVersionAttestationExternalProtectionLevelOptions> externalProtectionLevelOptions() {
         return Optional.ofNullable(this.externalProtectionLevelOptions);
     }
+    /**
+     * @return The format of the attestation data.
+     * 
+     */
     public Optional<String> format() {
         return Optional.ofNullable(this.format);
     }

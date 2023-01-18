@@ -75,7 +75,7 @@ type DomainMapping struct {
 
 	// Relative name of the domain serving the application. Example: example.com.
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
-	// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
+	// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Whether the domain creation should override any existing mappings for this domain.
 	// By default, overrides are rejected.
@@ -87,6 +87,7 @@ type DomainMapping struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS
 	// configuration in order to serve the application via this domain mapping.
+	// Structure is documented below.
 	ResourceRecords DomainMappingResourceRecordArrayOutput `pulumi:"resourceRecords"`
 	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
 	// Structure is documented below.
@@ -127,7 +128,7 @@ func GetDomainMapping(ctx *pulumi.Context,
 type domainMappingState struct {
 	// Relative name of the domain serving the application. Example: example.com.
 	DomainName *string `pulumi:"domainName"`
-	// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
+	// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
 	Name *string `pulumi:"name"`
 	// Whether the domain creation should override any existing mappings for this domain.
 	// By default, overrides are rejected.
@@ -139,6 +140,7 @@ type domainMappingState struct {
 	Project *string `pulumi:"project"`
 	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS
 	// configuration in order to serve the application via this domain mapping.
+	// Structure is documented below.
 	ResourceRecords []DomainMappingResourceRecord `pulumi:"resourceRecords"`
 	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
 	// Structure is documented below.
@@ -148,7 +150,7 @@ type domainMappingState struct {
 type DomainMappingState struct {
 	// Relative name of the domain serving the application. Example: example.com.
 	DomainName pulumi.StringPtrInput
-	// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
+	// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
 	Name pulumi.StringPtrInput
 	// Whether the domain creation should override any existing mappings for this domain.
 	// By default, overrides are rejected.
@@ -160,6 +162,7 @@ type DomainMappingState struct {
 	Project pulumi.StringPtrInput
 	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS
 	// configuration in order to serve the application via this domain mapping.
+	// Structure is documented below.
 	ResourceRecords DomainMappingResourceRecordArrayInput
 	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
 	// Structure is documented below.
@@ -295,7 +298,7 @@ func (o DomainMappingOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainMapping) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
 }
 
-// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
+// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
 func (o DomainMappingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainMapping) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -316,6 +319,7 @@ func (o DomainMappingOutput) Project() pulumi.StringOutput {
 
 // The resource records required to configure this domain mapping. These records must be added to the domain's DNS
 // configuration in order to serve the application via this domain mapping.
+// Structure is documented below.
 func (o DomainMappingOutput) ResourceRecords() DomainMappingResourceRecordArrayOutput {
 	return o.ApplyT(func(v *DomainMapping) DomainMappingResourceRecordArrayOutput { return v.ResourceRecords }).(DomainMappingResourceRecordArrayOutput)
 }

@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly Outputs.WorkflowTemplateParameterValidationRegex? Regex;
         /// <summary>
-        /// Optional. Corresponds to the label values of reservation resource.
+        /// Validation based on a list of allowed values.
         /// </summary>
         public readonly Outputs.WorkflowTemplateParameterValidationValues? Values;
 

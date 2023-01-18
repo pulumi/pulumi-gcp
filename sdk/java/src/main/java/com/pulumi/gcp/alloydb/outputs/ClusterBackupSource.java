@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterBackupSource {
+    /**
+     * @return The name of the backup resource.
+     * 
+     */
     private @Nullable String backupName;
 
     private ClusterBackupSource() {}
+    /**
+     * @return The name of the backup resource.
+     * 
+     */
     public Optional<String> backupName() {
         return Optional.ofNullable(this.backupName);
     }

@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.AzureClusterControlPlaneSshConfig SshConfig;
         /// <summary>
-        /// For a given replica, the ARM ID of the subnet where the control plane VM is deployed. Make sure it's a subnet under the virtual network in the cluster configuration.
+        /// The ARM ID of the subnet where the control plane VMs are deployed. Example: `/subscriptions//resourceGroups//providers/Microsoft.Network/virtualNetworks//subnets/default`.
         /// </summary>
         public readonly string SubnetId;
         /// <summary>

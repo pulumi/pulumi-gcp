@@ -33,14 +33,14 @@ public final class ZoneDiscoverySpecCsvOptionsArgs extends com.pulumi.resources.
     }
 
     /**
-     * Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+     * Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
      * 
      */
     @Import(name="disableTypeInference")
     private @Nullable Output<Boolean> disableTypeInference;
 
     /**
-     * @return Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+     * @return Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
      * 
      */
     public Optional<Output<Boolean>> disableTypeInference() {
@@ -126,7 +126,7 @@ public final class ZoneDiscoverySpecCsvOptionsArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param disableTypeInference Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+         * @param disableTypeInference Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class ZoneDiscoverySpecCsvOptionsArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param disableTypeInference Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+         * @param disableTypeInference Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
          * 
          * @return builder
          * 

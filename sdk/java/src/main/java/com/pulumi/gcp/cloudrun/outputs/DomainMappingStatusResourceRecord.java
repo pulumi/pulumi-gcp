@@ -16,7 +16,17 @@ public final class DomainMappingStatusResourceRecord {
      * 
      */
     private @Nullable String name;
+    /**
+     * @return Data for this record. Values vary by record type, as defined in RFC 1035
+     * (section 5) and RFC 1034 (section 3.6.1).
+     * 
+     */
     private @Nullable String rrdata;
+    /**
+     * @return Resource record type. Example: `AAAA`.
+     * Possible values are `A`, `AAAA`, and `CNAME`.
+     * 
+     */
     private @Nullable String type;
 
     private DomainMappingStatusResourceRecord() {}
@@ -27,9 +37,19 @@ public final class DomainMappingStatusResourceRecord {
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return Data for this record. Values vary by record type, as defined in RFC 1035
+     * (section 5) and RFC 1034 (section 3.6.1).
+     * 
+     */
     public Optional<String> rrdata() {
         return Optional.ofNullable(this.rrdata);
     }
+    /**
+     * @return Resource record type. Example: `AAAA`.
+     * Possible values are `A`, `AAAA`, and `CNAME`.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

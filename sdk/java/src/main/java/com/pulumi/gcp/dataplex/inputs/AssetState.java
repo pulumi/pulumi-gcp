@@ -158,14 +158,14 @@ public final class AssetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+     * The name of the asset.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+     * @return The name of the asset.
      * 
      */
     public Optional<Output<String>> name() {
@@ -248,16 +248,14 @@ public final class AssetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and
-     * re-created with the same name.
+     * Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
      * 
      */
     @Import(name="uid")
     private @Nullable Output<String> uid;
 
     /**
-     * @return Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and
-     * re-created with the same name.
+     * @return Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
      * 
      */
     public Optional<Output<String>> uid() {
@@ -519,7 +517,7 @@ public final class AssetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+         * @param name The name of the asset.
          * 
          * @return builder
          * 
@@ -530,7 +528,7 @@ public final class AssetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+         * @param name The name of the asset.
          * 
          * @return builder
          * 
@@ -665,8 +663,7 @@ public final class AssetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uid Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and
-         * re-created with the same name.
+         * @param uid Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
          * 
          * @return builder
          * 
@@ -677,8 +674,7 @@ public final class AssetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uid Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and
-         * re-created with the same name.
+         * @param uid Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
          * 
          * @return builder
          * 

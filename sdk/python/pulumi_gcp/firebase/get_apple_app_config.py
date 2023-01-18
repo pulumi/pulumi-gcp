@@ -46,11 +46,17 @@ class GetAppleAppConfigResult:
     @property
     @pulumi.getter(name="configFileContents")
     def config_file_contents(self) -> str:
+        """
+        The content of the XML configuration file as a base64-encoded string.
+        """
         return pulumi.get(self, "config_file_contents")
 
     @property
     @pulumi.getter(name="configFilename")
     def config_filename(self) -> str:
+        """
+        The filename that the configuration artifact for the IosApp is typically saved as.
+        """
         return pulumi.get(self, "config_filename")
 
     @property

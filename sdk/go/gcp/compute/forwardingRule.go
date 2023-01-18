@@ -96,7 +96,7 @@ type ForwardingRule struct {
 	// A BackendService to receive the matched traffic. This is used only
 	// for INTERNAL load balancing.
 	BackendService pulumi.StringPtrOutput `pulumi:"backendService"`
-	// [Output Only] Creation timestamp in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
@@ -188,8 +188,7 @@ type ForwardingRule struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The PSC connection id of the PSC Forwarding Rule.
 	PscConnectionId pulumi.StringOutput `pulumi:"pscConnectionId"`
-	// The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
-	// CLOSED
+	// The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED, CLOSED
 	PscConnectionStatus pulumi.StringOutput `pulumi:"pscConnectionStatus"`
 	// A reference to the region where the regional forwarding rule resides.
 	// This field is not applicable to global forwarding rules.
@@ -211,8 +210,8 @@ type ForwardingRule struct {
 	// character, which cannot be a dash.
 	// This field is only used for INTERNAL load balancing.
 	ServiceLabel pulumi.StringPtrOutput `pulumi:"serviceLabel"`
-	// [Output Only] The internal fully qualified service name for this Forwarding Rule. This field is only used for internal
-	// load balancing.
+	// The internal fully qualified service name for this Forwarding Rule.
+	// This field is only used for INTERNAL load balancing.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// The subnetwork that the load balanced IP should belong to for this
 	// Forwarding Rule.  This field is only used for INTERNAL load balancing.
@@ -270,7 +269,7 @@ type forwardingRuleState struct {
 	// A BackendService to receive the matched traffic. This is used only
 	// for INTERNAL load balancing.
 	BackendService *string `pulumi:"backendService"`
-	// [Output Only] Creation timestamp in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
@@ -362,8 +361,7 @@ type forwardingRuleState struct {
 	Project *string `pulumi:"project"`
 	// The PSC connection id of the PSC Forwarding Rule.
 	PscConnectionId *string `pulumi:"pscConnectionId"`
-	// The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
-	// CLOSED
+	// The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED, CLOSED
 	PscConnectionStatus *string `pulumi:"pscConnectionStatus"`
 	// A reference to the region where the regional forwarding rule resides.
 	// This field is not applicable to global forwarding rules.
@@ -385,8 +383,8 @@ type forwardingRuleState struct {
 	// character, which cannot be a dash.
 	// This field is only used for INTERNAL load balancing.
 	ServiceLabel *string `pulumi:"serviceLabel"`
-	// [Output Only] The internal fully qualified service name for this Forwarding Rule. This field is only used for internal
-	// load balancing.
+	// The internal fully qualified service name for this Forwarding Rule.
+	// This field is only used for INTERNAL load balancing.
 	ServiceName *string `pulumi:"serviceName"`
 	// The subnetwork that the load balanced IP should belong to for this
 	// Forwarding Rule.  This field is only used for INTERNAL load balancing.
@@ -416,7 +414,7 @@ type ForwardingRuleState struct {
 	// A BackendService to receive the matched traffic. This is used only
 	// for INTERNAL load balancing.
 	BackendService pulumi.StringPtrInput
-	// [Output Only] Creation timestamp in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
@@ -508,8 +506,7 @@ type ForwardingRuleState struct {
 	Project pulumi.StringPtrInput
 	// The PSC connection id of the PSC Forwarding Rule.
 	PscConnectionId pulumi.StringPtrInput
-	// The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
-	// CLOSED
+	// The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED, CLOSED
 	PscConnectionStatus pulumi.StringPtrInput
 	// A reference to the region where the regional forwarding rule resides.
 	// This field is not applicable to global forwarding rules.
@@ -531,8 +528,8 @@ type ForwardingRuleState struct {
 	// character, which cannot be a dash.
 	// This field is only used for INTERNAL load balancing.
 	ServiceLabel pulumi.StringPtrInput
-	// [Output Only] The internal fully qualified service name for this Forwarding Rule. This field is only used for internal
-	// load balancing.
+	// The internal fully qualified service name for this Forwarding Rule.
+	// This field is only used for INTERNAL load balancing.
 	ServiceName pulumi.StringPtrInput
 	// The subnetwork that the load balanced IP should belong to for this
 	// Forwarding Rule.  This field is only used for INTERNAL load balancing.
@@ -926,7 +923,7 @@ func (o ForwardingRuleOutput) BackendService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringPtrOutput { return v.BackendService }).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] Creation timestamp in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+// Creation timestamp in RFC3339 text format.
 func (o ForwardingRuleOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
@@ -1063,8 +1060,7 @@ func (o ForwardingRuleOutput) PscConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.PscConnectionId }).(pulumi.StringOutput)
 }
 
-// The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
-// CLOSED
+// The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED, CLOSED
 func (o ForwardingRuleOutput) PscConnectionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.PscConnectionStatus }).(pulumi.StringOutput)
 }
@@ -1103,8 +1099,8 @@ func (o ForwardingRuleOutput) ServiceLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringPtrOutput { return v.ServiceLabel }).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] The internal fully qualified service name for this Forwarding Rule. This field is only used for internal
-// load balancing.
+// The internal fully qualified service name for this Forwarding Rule.
+// This field is only used for INTERNAL load balancing.
 func (o ForwardingRuleOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

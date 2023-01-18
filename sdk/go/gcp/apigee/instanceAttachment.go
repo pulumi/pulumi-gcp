@@ -159,7 +159,7 @@ type InstanceAttachment struct {
 	// The Apigee instance associated with the Apigee environment,
 	// in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// The name of the newly created attachment (output parameter).
+	// The name of the newly created  attachment (output parameter).
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -203,7 +203,7 @@ type instanceAttachmentState struct {
 	// The Apigee instance associated with the Apigee environment,
 	// in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
 	InstanceId *string `pulumi:"instanceId"`
-	// The name of the newly created attachment (output parameter).
+	// The name of the newly created  attachment (output parameter).
 	Name *string `pulumi:"name"`
 }
 
@@ -213,7 +213,7 @@ type InstanceAttachmentState struct {
 	// The Apigee instance associated with the Apigee environment,
 	// in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
 	InstanceId pulumi.StringPtrInput
-	// The name of the newly created attachment (output parameter).
+	// The name of the newly created  attachment (output parameter).
 	Name pulumi.StringPtrInput
 }
 
@@ -336,7 +336,7 @@ func (o InstanceAttachmentOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceAttachment) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The name of the newly created attachment (output parameter).
+// The name of the newly created  attachment (output parameter).
 func (o InstanceAttachmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceAttachment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

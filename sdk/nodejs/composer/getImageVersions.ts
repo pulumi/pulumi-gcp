@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  *     config: {
  *         softwareConfig: {
- *             imageVersion: all.then(all => all.imageVersions?[0]?.imageVersionId),
+ *             imageVersion: all.then(all => all.imageVersions?.[0]?.imageVersionId),
  *         },
  *     },
  * });
@@ -28,11 +28,8 @@ import * as utilities from "../utilities";
  */
 export function getImageVersions(args?: GetImageVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetImageVersionsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:composer/getImageVersions:getImageVersions", {
         "project": args.project,
         "region": args.region,
@@ -70,9 +67,28 @@ export interface GetImageVersionsResult {
     readonly project: string;
     readonly region: string;
 }
-
+/**
+ * Provides access to available Cloud Composer versions in a region for a given project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const all = gcp.composer.getImageVersions({});
+ * const test = new gcp.composer.Environment("test", {
+ *     region: "us-central1",
+ *     config: {
+ *         softwareConfig: {
+ *             imageVersion: all.then(all => all.imageVersions?.[0]?.imageVersionId),
+ *         },
+ *     },
+ * });
+ * ```
+ */
 export function getImageVersionsOutput(args?: GetImageVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageVersionsResult> {
-    return pulumi.output(args).apply(a => getImageVersions(a, opts))
+    return pulumi.output(args).apply((a: any) => getImageVersions(a, opts))
 }
 
 /**

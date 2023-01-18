@@ -13,12 +13,31 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     [OutputType]
     public sealed class ServiceStatus
     {
+        /// <summary>
+        /// Array of observed Service Conditions, indicating the current ready state of the service.
+        /// Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.ServiceStatusCondition> Conditions;
+        /// <summary>
+        /// From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created
+        /// from this Service's Configuration. It might not be ready yet, for that use
+        /// LatestReadyRevisionName.
+        /// </summary>
         public readonly string? LatestCreatedRevisionName;
+        /// <summary>
+        /// From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision
+        /// stamped out from this Service's Configuration that has had its "Ready" condition become
+        /// "True".
+        /// </summary>
         public readonly string? LatestReadyRevisionName;
+        /// <summary>
+        /// ObservedGeneration is the 'Generation' of the Route that was last processed by the
+        /// controller.
+        /// Clients polling for completed reconciliation should poll until observedGeneration =
+        /// metadata.generation and the Ready condition's status is True or False.
+        /// </summary>
         public readonly int? ObservedGeneration;
         /// <summary>
-        /// -
         /// URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
         /// and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
         /// but may not contain anything else (e.g. basic auth, url path, etc.)

@@ -291,16 +291,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A set of key/value label pairs assigned to the disk. This\
-     * field is only applicable for persistent disks.
+     * A map of key/value label pairs to assign to the instance.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return A set of key/value label pairs assigned to the disk. This\
-     * field is only applicable for persistent disks.
+     * @return A map of key/value label pairs to assign to the instance.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -502,14 +500,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * -- A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      * 
      */
     @Import(name="resourcePolicies")
     private @Nullable Output<String> resourcePolicies;
 
     /**
-     * @return -- A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * @return - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      * 
      */
     public Optional<Output<String>> resourcePolicies() {
@@ -1085,8 +1083,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels A set of key/value label pairs assigned to the disk. This\
-         * field is only applicable for persistent disks.
+         * @param labels A map of key/value label pairs to assign to the instance.
          * 
          * @return builder
          * 
@@ -1097,8 +1094,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels A set of key/value label pairs assigned to the disk. This\
-         * field is only applicable for persistent disks.
+         * @param labels A map of key/value label pairs to assign to the instance.
          * 
          * @return builder
          * 
@@ -1373,7 +1369,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourcePolicies -- A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+         * @param resourcePolicies - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
          * 
          * @return builder
          * 
@@ -1384,7 +1380,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourcePolicies -- A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+         * @param resourcePolicies - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
          * 
          * @return builder
          * 

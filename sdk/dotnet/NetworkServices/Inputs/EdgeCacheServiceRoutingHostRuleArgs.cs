@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
     public sealed class EdgeCacheServiceRoutingHostRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A human-readable description of the resource.
+        /// A human-readable description of the hostRule.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

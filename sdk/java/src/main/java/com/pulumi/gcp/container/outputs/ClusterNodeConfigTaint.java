@@ -15,7 +15,7 @@ public final class ClusterNodeConfigTaint {
      */
     private String effect;
     /**
-     * @return The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify &#34;compute.googleapis.com/reservation-name&#34; as the key and specify the name of your reservation as its value.
+     * @return Key for taint.
      * 
      */
     private String key;
@@ -34,7 +34,7 @@ public final class ClusterNodeConfigTaint {
         return this.effect;
     }
     /**
-     * @return The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify &#34;compute.googleapis.com/reservation-name&#34; as the key and specify the name of your reservation as its value.
+     * @return Key for taint.
      * 
      */
     public String key() {

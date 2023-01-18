@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  *     oidcConfig: {
  *         issuerUrl: "https://oidc.issuer.url",
  *     },
- *     platformVersion: versions.then(versions => versions.validVersions?[0]),
+ *     platformVersion: versions.then(versions => versions.validVersions?.[0]),
  *     fleet: {
  *         project: project.then(project => `projects/${project.number}`),
  *     },
@@ -102,8 +102,9 @@ export class AttachedCluster extends pulumi.CustomResource {
      */
     public readonly authorization!: pulumi.Output<outputs.container.AttachedClusterAuthorization | undefined>;
     /**
-     * Output only. The region where this cluster runs. For EKS clusters, this is an AWS region. For AKS clusters, this is an
-     * Azure region.
+     * Output only. The region where this cluster runs.
+     * For EKS clusters, this is an AWS region. For AKS clusters,
+     * this is an Azure region.
      */
     public /*out*/ readonly clusterRegion!: pulumi.Output<string>;
     /**
@@ -122,6 +123,7 @@ export class AttachedCluster extends pulumi.CustomResource {
     public readonly distribution!: pulumi.Output<string>;
     /**
      * A set of errors found in the cluster.
+     * Structure is documented below.
      */
     public /*out*/ readonly errors!: pulumi.Output<outputs.container.AttachedClusterError[]>;
     /**
@@ -169,7 +171,7 @@ export class AttachedCluster extends pulumi.CustomResource {
      */
     public readonly platformVersion!: pulumi.Output<string>;
     /**
-     * The ID of the project in which the resource belongs.
+     * The number of the Fleet host project where this cluster will be registered.
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
@@ -178,8 +180,9 @@ export class AttachedCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
-     * The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING,
-     * ERROR, DEGRADED
+     * The current state of the cluster. Possible values:
+     * STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
+     * DEGRADED
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
@@ -192,6 +195,7 @@ export class AttachedCluster extends pulumi.CustomResource {
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
      * Workload Identity settings.
+     * Structure is documented below.
      */
     public /*out*/ readonly workloadIdentityConfigs!: pulumi.Output<outputs.container.AttachedClusterWorkloadIdentityConfig[]>;
 
@@ -292,8 +296,9 @@ export interface AttachedClusterState {
      */
     authorization?: pulumi.Input<inputs.container.AttachedClusterAuthorization>;
     /**
-     * Output only. The region where this cluster runs. For EKS clusters, this is an AWS region. For AKS clusters, this is an
-     * Azure region.
+     * Output only. The region where this cluster runs.
+     * For EKS clusters, this is an AWS region. For AKS clusters,
+     * this is an Azure region.
      */
     clusterRegion?: pulumi.Input<string>;
     /**
@@ -312,6 +317,7 @@ export interface AttachedClusterState {
     distribution?: pulumi.Input<string>;
     /**
      * A set of errors found in the cluster.
+     * Structure is documented below.
      */
     errors?: pulumi.Input<pulumi.Input<inputs.container.AttachedClusterError>[]>;
     /**
@@ -359,7 +365,7 @@ export interface AttachedClusterState {
      */
     platformVersion?: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs.
+     * The number of the Fleet host project where this cluster will be registered.
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
@@ -368,8 +374,9 @@ export interface AttachedClusterState {
      */
     reconciling?: pulumi.Input<boolean>;
     /**
-     * The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING,
-     * ERROR, DEGRADED
+     * The current state of the cluster. Possible values:
+     * STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
+     * DEGRADED
      */
     state?: pulumi.Input<string>;
     /**
@@ -382,6 +389,7 @@ export interface AttachedClusterState {
     updateTime?: pulumi.Input<string>;
     /**
      * Workload Identity settings.
+     * Structure is documented below.
      */
     workloadIdentityConfigs?: pulumi.Input<pulumi.Input<inputs.container.AttachedClusterWorkloadIdentityConfig>[]>;
 }
@@ -455,7 +463,7 @@ export interface AttachedClusterArgs {
      */
     platformVersion: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs.
+     * The number of the Fleet host project where this cluster will be registered.
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;

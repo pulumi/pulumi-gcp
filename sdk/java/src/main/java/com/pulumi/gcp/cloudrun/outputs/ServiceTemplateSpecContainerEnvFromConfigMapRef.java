@@ -13,20 +13,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceTemplateSpecContainerEnvFromConfigMapRef {
     /**
-     * @return The Secret to select from.
+     * @return The ConfigMap to select from.
      * Structure is documented below.
      * 
      */
     private @Nullable ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference localObjectReference;
     /**
-     * @return Specify whether the Secret must be defined
+     * @return Specify whether the ConfigMap must be defined
      * 
      */
     private @Nullable Boolean optional;
 
     private ServiceTemplateSpecContainerEnvFromConfigMapRef() {}
     /**
-     * @return The Secret to select from.
+     * @return The ConfigMap to select from.
      * Structure is documented below.
      * 
      */
@@ -34,7 +34,7 @@ public final class ServiceTemplateSpecContainerEnvFromConfigMapRef {
         return Optional.ofNullable(this.localObjectReference);
     }
     /**
-     * @return Specify whether the Secret must be defined
+     * @return Specify whether the ConfigMap must be defined
      * 
      */
     public Optional<Boolean> optional() {

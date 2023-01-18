@@ -17,16 +17,14 @@ public final class ClusterAddonsConfigCloudrunConfigArgs extends com.pulumi.reso
     public static final ClusterAddonsConfigCloudrunConfigArgs Empty = new ClusterAddonsConfigCloudrunConfigArgs();
 
     /**
-     * The status of the Istio addon, which makes it easy to set up Istio for services in a
-     * cluster. It is disabled by default. Set `disabled = false` to enable.
+     * The status of the CloudRun addon. It is disabled by default. Set `disabled=false` to enable.
      * 
      */
     @Import(name="disabled", required=true)
     private Output<Boolean> disabled;
 
     /**
-     * @return The status of the Istio addon, which makes it easy to set up Istio for services in a
-     * cluster. It is disabled by default. Set `disabled = false` to enable.
+     * @return The status of the CloudRun addon. It is disabled by default. Set `disabled=false` to enable.
      * 
      */
     public Output<Boolean> disabled() {
@@ -76,8 +74,7 @@ public final class ClusterAddonsConfigCloudrunConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param disabled The status of the Istio addon, which makes it easy to set up Istio for services in a
-         * cluster. It is disabled by default. Set `disabled = false` to enable.
+         * @param disabled The status of the CloudRun addon. It is disabled by default. Set `disabled=false` to enable.
          * 
          * @return builder
          * 
@@ -88,8 +85,7 @@ public final class ClusterAddonsConfigCloudrunConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param disabled The status of the Istio addon, which makes it easy to set up Istio for services in a
-         * cluster. It is disabled by default. Set `disabled = false` to enable.
+         * @param disabled The status of the CloudRun addon. It is disabled by default. Set `disabled=false` to enable.
          * 
          * @return builder
          * 

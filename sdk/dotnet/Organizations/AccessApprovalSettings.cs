@@ -165,9 +165,9 @@ namespace Pulumi.Gcp.Organizations
         public Output<ImmutableArray<Outputs.AccessApprovalSettingsEnrolledService>> EnrolledServices { get; private set; } = null!;
 
         /// <summary>
-        /// If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-        /// this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on
-        /// it, etc.).
+        /// If the field is true, that indicates that there is some configuration issue with the active_key_version
+        /// configured on this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the
+        /// correct permissions on it, etc.).
         /// </summary>
         [Output("invalidKeyVersion")]
         public Output<bool> InvalidKeyVersion { get; private set; } = null!;
@@ -325,9 +325,9 @@ namespace Pulumi.Gcp.Organizations
         }
 
         /// <summary>
-        /// If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-        /// this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on
-        /// it, etc.).
+        /// If the field is true, that indicates that there is some configuration issue with the active_key_version
+        /// configured on this Organization (e.g. it doesn't exist or the Access Approval service account doesn't have the
+        /// correct permissions on it, etc.).
         /// </summary>
         [Input("invalidKeyVersion")]
         public Input<bool>? InvalidKeyVersion { get; set; }

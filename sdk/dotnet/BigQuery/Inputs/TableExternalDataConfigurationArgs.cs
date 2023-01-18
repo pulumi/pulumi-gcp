@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.BigQuery.Inputs
     public sealed class TableExternalDataConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// - Let BigQuery try to autodetect the schema
+        /// Let BigQuery try to autodetect the schema
         /// and format of the table.
         /// </summary>
         [Input("autodetect", required: true)]

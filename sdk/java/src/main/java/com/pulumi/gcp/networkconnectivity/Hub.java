@@ -144,18 +144,14 @@ public class Hub extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The VPC network associated with this hub&#39;s spokes. All of the VPN tunnels, VLAN attachments, and router appliance
-     * instances referenced by this hub&#39;s spokes must belong to this VPC network. This field is read-only. Network Connectivity
-     * Center automatically populates it based on the set of spokes attached to the hub.
+     * The VPC network associated with this hub&#39;s spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub&#39;s spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
      * 
      */
     @Export(name="routingVpcs", type=List.class, parameters={HubRoutingVpc.class})
     private Output<List<HubRoutingVpc>> routingVpcs;
 
     /**
-     * @return The VPC network associated with this hub&#39;s spokes. All of the VPN tunnels, VLAN attachments, and router appliance
-     * instances referenced by this hub&#39;s spokes must belong to this VPC network. This field is read-only. Network Connectivity
-     * Center automatically populates it based on the set of spokes attached to the hub.
+     * @return The VPC network associated with this hub&#39;s spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub&#39;s spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
      * 
      */
     public Output<List<HubRoutingVpc>> routingVpcs() {
@@ -176,16 +172,14 @@ public class Hub extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted
-     * and another with the same name is created, the new hub is assigned a different unique_id.
+     * Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
      * 
      */
     @Export(name="uniqueId", type=String.class, parameters={})
     private Output<String> uniqueId;
 
     /**
-     * @return Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted
-     * and another with the same name is created, the new hub is assigned a different unique_id.
+     * @return Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
      * 
      */
     public Output<String> uniqueId() {

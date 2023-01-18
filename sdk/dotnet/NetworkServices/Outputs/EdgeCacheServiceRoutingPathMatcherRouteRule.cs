@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
     public sealed class EdgeCacheServiceRoutingPathMatcherRouteRule
     {
         /// <summary>
-        /// A human-readable description of the resource.
+        /// A human-readable description of the routeRule.
         /// </summary>
         public readonly string? Description;
         /// <summary>

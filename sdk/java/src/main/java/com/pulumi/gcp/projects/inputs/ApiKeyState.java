@@ -32,16 +32,14 @@ public final class ApiKeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString`
-     * method.
+     * Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
      * 
      */
     @Import(name="keyString")
     private @Nullable Output<String> keyString;
 
     /**
-     * @return Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString`
-     * method.
+     * @return Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
      * 
      */
     public Optional<Output<String>> keyString() {
@@ -159,8 +157,7 @@ public final class ApiKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyString Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString`
-         * method.
+         * @param keyString Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
          * 
          * @return builder
          * 
@@ -171,8 +168,7 @@ public final class ApiKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyString Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString`
-         * method.
+         * @param keyString Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
          * 
          * @return builder
          * 

@@ -221,7 +221,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  primitive_transformation: 'outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation',
                  info_types: Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType']] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs' primitive_transformation: Apply the transformation to the entire field.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs' primitive_transformation: Primitive transformation to apply to the infoType.
                The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
                Structure is documented below.
         :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs'] info_types: InfoTypes to apply the transformation to. Leaving this empty will apply the transformation to apply to
@@ -236,7 +236,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter(name="primitiveTransformation")
     def primitive_transformation(self) -> 'outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation':
         """
-        Apply the transformation to the entire field.
+        Primitive transformation to apply to the infoType.
         The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
         Structure is documented below.
         """
@@ -258,7 +258,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def __init__(__self__, *,
                  name: str):
         """
-        :param str name: Name describing the field.
+        :param str name: Name of the information type.
         """
         pulumi.set(__self__, "name", name)
 
@@ -266,7 +266,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter
     def name(self) -> str:
         """
-        Name describing the field.
+        Name of the information type.
         """
         return pulumi.get(self, "name")
 
@@ -533,22 +533,23 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  crypto_key: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey'] = None,
                  surrogate_info_type: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType'] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs' context: The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
-               If the context is set but:
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs' context: A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
+               If the context is not set, plaintext would be used as is for encryption. If the context is set but:
                1.  there is no record present when transforming a given value or
                2.  the field is not present when transforming a given value,
-               a default tweak will be used.
-               Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
-               The tweak is constructed as a sequence of bytes in big endian byte order such that:
-               *   a 64 bit integer is encoded followed by a single byte of value 1
-               *   a string is encoded in UTF-8 format followed by a single byte of value 2
+               plaintext would be used as is for encryption.
+               Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs' crypto_key: The key used by the encryption algorithm.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs' crypto_key: The key used by the encryption function.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs' surrogate_info_type: The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\\_type\\_name(surrogate\\_character\\_count):surrogate
-               For example, if the name of custom infoType is 'MY\\_TOKEN\\_INFO\\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\\_TOKEN\\_INFO\\_TYPE(3):abc'
-               This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text.
-               In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs' surrogate_info_type: The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate}
+               For example, if the name of custom info type is 'MY\\_TOKEN\\_INFO\\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\\_TOKEN\\_INFO\\_TYPE(3):abc'
+               This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text.
+               Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
+               In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
+               *   reverse a surrogate that does not correspond to an actual identifier
+               *   be unable to parse the surrogate and result in an error
+               Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
                Structure is documented below.
         """
         if context is not None:
@@ -562,15 +563,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter
     def context(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContext']:
         """
-        The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
-        If the context is set but:
+        A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
+        If the context is not set, plaintext would be used as is for encryption. If the context is set but:
         1.  there is no record present when transforming a given value or
         2.  the field is not present when transforming a given value,
-        a default tweak will be used.
-        Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
-        The tweak is constructed as a sequence of bytes in big endian byte order such that:
-        *   a 64 bit integer is encoded followed by a single byte of value 1
-        *   a string is encoded in UTF-8 format followed by a single byte of value 2
+        plaintext would be used as is for encryption.
+        Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s.
         Structure is documented below.
         """
         return pulumi.get(self, "context")
@@ -579,7 +577,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter(name="cryptoKey")
     def crypto_key(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey']:
         """
-        The key used by the encryption algorithm.
+        The key used by the encryption function.
         Structure is documented below.
         """
         return pulumi.get(self, "crypto_key")
@@ -588,10 +586,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter(name="surrogateInfoType")
     def surrogate_info_type(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType']:
         """
-        The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\\_type\\_name(surrogate\\_character\\_count):surrogate
-        For example, if the name of custom infoType is 'MY\\_TOKEN\\_INFO\\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\\_TOKEN\\_INFO\\_TYPE(3):abc'
-        This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text.
-        In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE
+        The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate}
+        For example, if the name of custom info type is 'MY\\_TOKEN\\_INFO\\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\\_TOKEN\\_INFO\\_TYPE(3):abc'
+        This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text.
+        Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text.
+        In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
+        *   reverse a surrogate that does not correspond to an actual identifier
+        *   be unable to parse the surrogate and result in an error
+        Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
         Structure is documented below.
         """
         return pulumi.get(self, "surrogate_info_type")
@@ -737,7 +739,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def __init__(__self__, *,
                  name: str):
         """
-        :param str name: Name describing the field.
+        :param str name: Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
         """
         pulumi.set(__self__, "name", name)
 
@@ -745,7 +747,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter
     def name(self) -> str:
         """
-        Name describing the field.
+        Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
         """
         return pulumi.get(self, "name")
 
@@ -775,7 +777,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def __init__(__self__, *,
                  name: Optional[str] = None):
         """
-        :param str name: Name describing the field.
+        :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -784,7 +786,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name describing the field.
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
         """
         return pulumi.get(self, "name")
 
@@ -1063,7 +1065,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def __init__(__self__, *,
                  name: str):
         """
-        :param str name: Name describing the field.
+        :param str name: Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
         """
         pulumi.set(__self__, "name", name)
 
@@ -1071,7 +1073,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter
     def name(self) -> str:
         """
-        Name describing the field.
+        Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
         """
         return pulumi.get(self, "name")
 
@@ -1101,7 +1103,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def __init__(__self__, *,
                  name: Optional[str] = None):
         """
-        :param str name: Name describing the field.
+        :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -1110,7 +1112,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name describing the field.
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
         """
         return pulumi.get(self, "name")
 
@@ -1476,7 +1478,10 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationArgs' primitive_transformation: Apply the transformation to the entire field.
                The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
                Structure is documented below.
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgs' condition: A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgs' condition: Only apply the transformation if the condition evaluates to true for the given RecordCondition. The conditions are allowed to reference fields that are not used in the actual transformation.
+               Example Use Cases:
+               - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range.
+               - Redact a field if the date of birth field is greater than 85.
                Structure is documented below.
         """
         pulumi.set(__self__, "fields", fields)
@@ -1508,7 +1513,10 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @pulumi.getter
     def condition(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition']:
         """
-        A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
+        Only apply the transformation if the condition evaluates to true for the given RecordCondition. The conditions are allowed to reference fields that are not used in the actual transformation.
+        Example Use Cases:
+        - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range.
+        - Redact a field if the date of birth field is greater than 85.
         Structure is documented below.
         """
         return pulumi.get(self, "condition")
@@ -1558,7 +1566,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  conditions: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions'] = None,
                  logical_operator: Optional[str] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArgs' conditions: A collection of conditions.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArgs' conditions: Conditions to apply to the expression.
                Structure is documented below.
         :param str logical_operator: The operator to apply to the result of conditions. Default and currently only supported value is AND.
                Default value is `AND`.
@@ -1573,7 +1581,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     @pulumi.getter
     def conditions(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions']:
         """
-        A collection of conditions.
+        Conditions to apply to the expression.
         Structure is documented below.
         """
         return pulumi.get(self, "conditions")
@@ -2483,7 +2491,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
                  conditions: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions'] = None,
                  logical_operator: Optional[str] = None):
         """
-        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgs' conditions: A collection of conditions.
+        :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgs' conditions: Conditions to apply to the expression.
                Structure is documented below.
         :param str logical_operator: The operator to apply to the result of conditions. Default and currently only supported value is AND.
                Default value is `AND`.
@@ -2498,7 +2506,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
     @pulumi.getter
     def conditions(self) -> Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions']:
         """
-        A collection of conditions.
+        Conditions to apply to the expression.
         Structure is documented below.
         """
         return pulumi.get(self, "conditions")
@@ -2884,10 +2892,12 @@ class PreventionInspectTemplateInspectConfig(dict):
                Each value may be one of `CONTENT_TEXT` and `CONTENT_IMAGE`.
         :param Sequence['PreventionInspectTemplateInspectConfigCustomInfoTypeArgs'] custom_info_types: Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
                Structure is documented below.
-        :param bool exclude_info_types: Set of infoTypes for which findings would affect this rule.
-               Structure is documented below.
+        :param bool exclude_info_types: When true, excludes type information of the findings.
         :param bool include_quote: When true, a contextual quote from the data that triggered a finding is included in the response.
-        :param Sequence['PreventionInspectTemplateInspectConfigInfoTypeArgs'] info_types: If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+        :param Sequence['PreventionInspectTemplateInspectConfigInfoTypeArgs'] info_types: Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
+               or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+               When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
+               By default this may be all types, but may change over time as detectors are updated.
                Structure is documented below.
         :param 'PreventionInspectTemplateInspectConfigLimitsArgs' limits: Configuration to control the number of findings returned.
                Structure is documented below.
@@ -2937,8 +2947,7 @@ class PreventionInspectTemplateInspectConfig(dict):
     @pulumi.getter(name="excludeInfoTypes")
     def exclude_info_types(self) -> Optional[bool]:
         """
-        Set of infoTypes for which findings would affect this rule.
-        Structure is documented below.
+        When true, excludes type information of the findings.
         """
         return pulumi.get(self, "exclude_info_types")
 
@@ -2954,7 +2963,10 @@ class PreventionInspectTemplateInspectConfig(dict):
     @pulumi.getter(name="infoTypes")
     def info_types(self) -> Optional[Sequence['outputs.PreventionInspectTemplateInspectConfigInfoType']]:
         """
-        If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+        Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
+        or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+        When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
+        By default this may be all types, but may change over time as detectors are updated.
         Structure is documented below.
         """
         return pulumi.get(self, "info_types")
@@ -3207,8 +3219,8 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType(dict):
     def __init__(__self__, *,
                  name: str):
         """
-        :param str name: Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-               or `projects/project-id/storedInfoTypes/432452342`.
+        :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+               listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
         """
         pulumi.set(__self__, "name", name)
 
@@ -3216,8 +3228,8 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-        or `projects/project-id/storedInfoTypes/432452342`.
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+        listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
         """
         return pulumi.get(self, "name")
 
@@ -3297,8 +3309,8 @@ class PreventionInspectTemplateInspectConfigInfoType(dict):
                  name: str,
                  version: Optional[str] = None):
         """
-        :param str name: Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-               or `projects/project-id/storedInfoTypes/432452342`.
+        :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
         :param str version: Version of the information type to use. By default, the version is set to stable
         """
         pulumi.set(__self__, "name", name)
@@ -3309,8 +3321,8 @@ class PreventionInspectTemplateInspectConfigInfoType(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-        or `projects/project-id/storedInfoTypes/432452342`.
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
         """
         return pulumi.get(self, "name")
 
@@ -3412,10 +3424,9 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType(dict):
                  info_type: 'outputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType',
                  max_findings: int):
         """
-        :param 'PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs' info_type: CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
-               infoTypes and that infoType is specified in `info_types` field. Specifying the latter adds findings to the
-               one detected by the system. If built-in info type is not specified in `info_types` list then the name is
-               treated as a custom info type.
+        :param 'PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs' info_type: Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
+               not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
+               specified in another InfoTypeLimit.
                Structure is documented below.
         :param int max_findings: Max findings limit for the given infoType.
         """
@@ -3426,10 +3437,9 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType(dict):
     @pulumi.getter(name="infoType")
     def info_type(self) -> 'outputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType':
         """
-        CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
-        infoTypes and that infoType is specified in `info_types` field. Specifying the latter adds findings to the
-        one detected by the system. If built-in info type is not specified in `info_types` list then the name is
-        treated as a custom info type.
+        Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
+        not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
+        specified in another InfoTypeLimit.
         Structure is documented below.
         """
         return pulumi.get(self, "info_type")
@@ -3448,8 +3458,8 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType
     def __init__(__self__, *,
                  name: str):
         """
-        :param str name: Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-               or `projects/project-id/storedInfoTypes/432452342`.
+        :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+               listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
         """
         pulumi.set(__self__, "name", name)
 
@@ -3457,8 +3467,8 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType
     @pulumi.getter
     def name(self) -> str:
         """
-        Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-        or `projects/project-id/storedInfoTypes/432452342`.
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+        listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
         """
         return pulumi.get(self, "name")
 
@@ -3486,7 +3496,7 @@ class PreventionInspectTemplateInspectConfigRuleSet(dict):
                  info_types: Sequence['outputs.PreventionInspectTemplateInspectConfigRuleSetInfoType'],
                  rules: Sequence['outputs.PreventionInspectTemplateInspectConfigRuleSetRule']):
         """
-        :param Sequence['PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs'] info_types: If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+        :param Sequence['PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs'] info_types: List of infoTypes this rule set is applied to.
                Structure is documented below.
         :param Sequence['PreventionInspectTemplateInspectConfigRuleSetRuleArgs'] rules: Set of rules to be applied to infoTypes. The rules are applied in order.
                Structure is documented below.
@@ -3498,7 +3508,7 @@ class PreventionInspectTemplateInspectConfigRuleSet(dict):
     @pulumi.getter(name="infoTypes")
     def info_types(self) -> Sequence['outputs.PreventionInspectTemplateInspectConfigRuleSetInfoType']:
         """
-        If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+        List of infoTypes this rule set is applied to.
         Structure is documented below.
         """
         return pulumi.get(self, "info_types")
@@ -3518,8 +3528,8 @@ class PreventionInspectTemplateInspectConfigRuleSetInfoType(dict):
     def __init__(__self__, *,
                  name: str):
         """
-        :param str name: Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-               or `projects/project-id/storedInfoTypes/432452342`.
+        :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
         """
         pulumi.set(__self__, "name", name)
 
@@ -3527,8 +3537,8 @@ class PreventionInspectTemplateInspectConfigRuleSetInfoType(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-        or `projects/project-id/storedInfoTypes/432452342`.
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
         """
         return pulumi.get(self, "name")
 
@@ -3802,8 +3812,8 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
     def __init__(__self__, *,
                  name: str):
         """
-        :param str name: Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-               or `projects/project-id/storedInfoTypes/432452342`.
+        :param str name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
         """
         pulumi.set(__self__, "name", name)
 
@@ -3811,8 +3821,8 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
     @pulumi.getter
     def name(self) -> str:
         """
-        Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
-        or `projects/project-id/storedInfoTypes/432452342`.
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
         """
         return pulumi.get(self, "name")
 
@@ -3962,9 +3972,10 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex(d
                  pattern: str,
                  group_indexes: Optional[Sequence[int]] = None):
         """
-        :param str pattern: Pattern defining the regular expression.
-               Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
-        :param Sequence[int] group_indexes: The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+        :param str pattern: Pattern defining the regular expression. Its syntax
+               (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        :param Sequence[int] group_indexes: The index of the submatch to extract as findings. When not specified,
+               the entire match is returned. No more than 3 may be included.
         """
         pulumi.set(__self__, "pattern", pattern)
         if group_indexes is not None:
@@ -3974,8 +3985,8 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex(d
     @pulumi.getter
     def pattern(self) -> str:
         """
-        Pattern defining the regular expression.
-        Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        Pattern defining the regular expression. Its syntax
+        (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
         """
         return pulumi.get(self, "pattern")
 
@@ -3983,7 +3994,8 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex(d
     @pulumi.getter(name="groupIndexes")
     def group_indexes(self) -> Optional[Sequence[int]]:
         """
-        The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+        The index of the submatch to extract as findings. When not specified,
+        the entire match is returned. No more than 3 may be included.
         """
         return pulumi.get(self, "group_indexes")
 
@@ -4642,10 +4654,9 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference(d
                  project_id: str,
                  table_id: str):
         """
-        :param str dataset_id: Dataset ID of the table.
+        :param str dataset_id: The dataset ID of the table.
         :param str project_id: The Google Cloud Platform project ID of the project containing the table.
-        :param str table_id: Name of the table. If is not set a new one will be generated for you with the following format:
-               `dlp_googleapis_yyyy_mm_dd_[dlp_job_id]`. Pacific timezone will be used for generating the date details.
+        :param str table_id: The name of the table.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "project_id", project_id)
@@ -4655,7 +4666,7 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference(d
     @pulumi.getter(name="datasetId")
     def dataset_id(self) -> str:
         """
-        Dataset ID of the table.
+        The dataset ID of the table.
         """
         return pulumi.get(self, "dataset_id")
 
@@ -4671,8 +4682,7 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference(d
     @pulumi.getter(name="tableId")
     def table_id(self) -> str:
         """
-        Name of the table. If is not set a new one will be generated for you with the following format:
-        `dlp_googleapis_yyyy_mm_dd_[dlp_job_id]`. Pacific timezone will be used for generating the date details.
+        The name of the table.
         """
         return pulumi.get(self, "table_id")
 
@@ -4726,9 +4736,8 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions(dict):
                Each value may be one of `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, and `TSV`.
         :param int files_limit_percent: Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down.
                Must be between 0 and 100, inclusively. Both 0 and 100 means no limit.
-        :param str sample_method: How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
-               rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
-               Default value is `TOP`.
+        :param str sample_method: How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
+               If not specified, scanning would start from the top.
                Possible values are `TOP` and `RANDOM_START`.
         """
         pulumi.set(__self__, "file_set", file_set)
@@ -4794,9 +4803,8 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions(dict):
     @pulumi.getter(name="sampleMethod")
     def sample_method(self) -> Optional[str]:
         """
-        How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
-        rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
-        Default value is `TOP`.
+        How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
+        If not specified, scanning would start from the top.
         Possible values are `TOP` and `RANDOM_START`.
         """
         return pulumi.get(self, "sample_method")
@@ -4988,7 +4996,7 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind(dict):
     def __init__(__self__, *,
                  name: str):
         """
-        :param str name: Name of a BigQuery field to be returned with the findings.
+        :param str name: The name of the Datastore kind.
         """
         pulumi.set(__self__, "name", name)
 
@@ -4996,7 +5004,7 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of a BigQuery field to be returned with the findings.
+        The name of the Datastore kind.
         """
         return pulumi.get(self, "name")
 
@@ -5026,7 +5034,7 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId(dic
                  project_id: str,
                  namespace_id: Optional[str] = None):
         """
-        :param str project_id: The Google Cloud Platform project ID of the project containing the table.
+        :param str project_id: The ID of the project to which the entities belong.
         :param str namespace_id: If not empty, the ID of the namespace to which the entities belong.
         """
         pulumi.set(__self__, "project_id", project_id)
@@ -5037,7 +5045,7 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId(dic
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
         """
-        The Google Cloud Platform project ID of the project containing the table.
+        The ID of the project to which the entities belong.
         """
         return pulumi.get(self, "project_id")
 
@@ -5138,7 +5146,12 @@ class PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField(di
     def __init__(__self__, *,
                  name: str):
         """
-        :param str name: Name of a BigQuery field to be returned with the findings.
+        :param str name: Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
+               For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
+               modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
+               field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
+               For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
+               timestamp property does not exist or its value is empty or invalid.
         """
         pulumi.set(__self__, "name", name)
 
@@ -5146,7 +5159,12 @@ class PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField(di
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of a BigQuery field to be returned with the findings.
+        Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
+        For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
+        modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
+        field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
+        For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
+        timestamp property does not exist or its value is empty or invalid.
         """
         return pulumi.get(self, "name")
 

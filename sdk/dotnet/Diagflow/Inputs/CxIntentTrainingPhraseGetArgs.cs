@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Diagflow.Inputs
     public sealed class CxIntentTrainingPhraseGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+        /// The unique identifier of the training phrase.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }

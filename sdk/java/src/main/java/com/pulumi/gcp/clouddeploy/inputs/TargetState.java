@@ -83,16 +83,14 @@ public final class TargetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and
-     * delete requests to ensure the client has an up-to-date value before proceeding.
+     * Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
     @Import(name="etag")
     private @Nullable Output<String> etag;
 
     /**
-     * @return Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and
-     * delete requests to ensure the client has an up-to-date value before proceeding.
+     * @return Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
     public Optional<Output<String>> etag() {
@@ -145,14 +143,14 @@ public final class TargetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+     * The location for the resource
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+     * @return The location for the resource
      * 
      */
     public Optional<Output<String>> location() {
@@ -388,8 +386,7 @@ public final class TargetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etag Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and
-         * delete requests to ensure the client has an up-to-date value before proceeding.
+         * @param etag Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
          * 
          * @return builder
          * 
@@ -400,8 +397,7 @@ public final class TargetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etag Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and
-         * delete requests to ensure the client has an up-to-date value before proceeding.
+         * @param etag Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
          * 
          * @return builder
          * 
@@ -484,7 +480,7 @@ public final class TargetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+         * @param location The location for the resource
          * 
          * @return builder
          * 
@@ -495,7 +491,7 @@ public final class TargetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+         * @param location The location for the resource
          * 
          * @return builder
          * 

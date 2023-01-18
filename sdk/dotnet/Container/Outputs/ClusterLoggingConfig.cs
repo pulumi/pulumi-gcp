@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterLoggingConfig
     {
         /// <summary>
-        /// The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, and `SCHEDULER`. In beta provider, `WORKLOADS` is supported on top of those 4 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
+        /// The GKE components exposing logs. Supported values include:
+        /// `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
         /// </summary>
         public readonly ImmutableArray<string> EnableComponents;
 

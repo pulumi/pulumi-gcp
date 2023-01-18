@@ -15,22 +15,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkflowTemplateJobHadoopJob {
     /**
-     * @return Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+     * @return Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
      * 
      */
     private @Nullable List<String> archiveUris;
     /**
-     * @return Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+     * @return Optional. The arguments to pass to the driver. Do not include arguments, such as `-libjars` or `-Dfoo=bar`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
      * 
      */
     private @Nullable List<String> args;
     /**
-     * @return Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+     * @return Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
      * 
      */
     private @Nullable List<String> fileUris;
     /**
-     * @return Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+     * @return Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
      * 
      */
     private @Nullable List<String> jarFileUris;
@@ -40,45 +40,45 @@ public final class WorkflowTemplateJobHadoopJob {
      */
     private @Nullable WorkflowTemplateJobHadoopJobLoggingConfig loggingConfig;
     /**
-     * @return The name of the driver&#39;s main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jar_file_uris`.
+     * @return The name of the driver&#39;s main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`.
      * 
      */
     private @Nullable String mainClass;
     /**
-     * @return The HCFS URI of the jar file that contains the main class.
+     * @return The HCFS URI of the jar file containing the main class. Examples: &#39;gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar&#39; &#39;hdfs:/tmp/test-samples/custom-wordcount.jar&#39; &#39;file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar&#39;
      * 
      */
     private @Nullable String mainJarFileUri;
     /**
-     * @return Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+     * @return Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
      * 
      */
     private @Nullable Map<String,String> properties;
 
     private WorkflowTemplateJobHadoopJob() {}
     /**
-     * @return Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+     * @return Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
      * 
      */
     public List<String> archiveUris() {
         return this.archiveUris == null ? List.of() : this.archiveUris;
     }
     /**
-     * @return Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+     * @return Optional. The arguments to pass to the driver. Do not include arguments, such as `-libjars` or `-Dfoo=bar`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
      * 
      */
     public List<String> args() {
         return this.args == null ? List.of() : this.args;
     }
     /**
-     * @return Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+     * @return Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
      * 
      */
     public List<String> fileUris() {
         return this.fileUris == null ? List.of() : this.fileUris;
     }
     /**
-     * @return Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+     * @return Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
      * 
      */
     public List<String> jarFileUris() {
@@ -92,21 +92,21 @@ public final class WorkflowTemplateJobHadoopJob {
         return Optional.ofNullable(this.loggingConfig);
     }
     /**
-     * @return The name of the driver&#39;s main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jar_file_uris`.
+     * @return The name of the driver&#39;s main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`.
      * 
      */
     public Optional<String> mainClass() {
         return Optional.ofNullable(this.mainClass);
     }
     /**
-     * @return The HCFS URI of the jar file that contains the main class.
+     * @return The HCFS URI of the jar file containing the main class. Examples: &#39;gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar&#39; &#39;hdfs:/tmp/test-samples/custom-wordcount.jar&#39; &#39;file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar&#39;
      * 
      */
     public Optional<String> mainJarFileUri() {
         return Optional.ofNullable(this.mainJarFileUri);
     }
     /**
-     * @return Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+     * @return Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
      * 
      */
     public Map<String,String> properties() {

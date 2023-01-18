@@ -103,10 +103,12 @@ class _KeyRingImportJobState:
                  state: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering KeyRingImportJob resources.
-        :param pulumi.Input[Sequence[pulumi.Input['KeyRingImportJobAttestationArgs']]] attestations: Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this
-               statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen
-               ImportMethod is one with a protection level of HSM.
-        :param pulumi.Input[str] expire_time: The time at which this resource is scheduled for expiration and can no longer be used. This is in RFC3339 text format.
+        :param pulumi.Input[Sequence[pulumi.Input['KeyRingImportJobAttestationArgs']]] attestations: Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
+               Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+               Only present if the chosen ImportMethod is one with a protection level of HSM.
+               Structure is documented below.
+        :param pulumi.Input[str] expire_time: The time at which this resource is scheduled for expiration and can no longer be used.
+               This is in RFC3339 text format.
         :param pulumi.Input[str] import_job_id: It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
         :param pulumi.Input[str] import_method: The wrapping method to be used for incoming key material.
                Possible values are `RSA_OAEP_3072_SHA1_AES_256` and `RSA_OAEP_4096_SHA1_AES_256`.
@@ -116,7 +118,8 @@ class _KeyRingImportJobState:
         :param pulumi.Input[str] protection_level: The protection level of the ImportJob. This must match the protectionLevel of the
                versionTemplate on the CryptoKey you attempt to import into.
                Possible values are `SOFTWARE`, `HSM`, and `EXTERNAL`.
-        :param pulumi.Input[Sequence[pulumi.Input['KeyRingImportJobPublicKeyArgs']]] public_keys: The public key with which to wrap key material prior to import. Only returned if state is 'ACTIVE'.
+        :param pulumi.Input[Sequence[pulumi.Input['KeyRingImportJobPublicKeyArgs']]] public_keys: The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
+               Structure is documented below.
         :param pulumi.Input[str] state: The current state of the ImportJob, indicating if it can be used.
         """
         if attestations is not None:
@@ -142,9 +145,10 @@ class _KeyRingImportJobState:
     @pulumi.getter
     def attestations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KeyRingImportJobAttestationArgs']]]]:
         """
-        Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this
-        statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen
-        ImportMethod is one with a protection level of HSM.
+        Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
+        Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+        Only present if the chosen ImportMethod is one with a protection level of HSM.
+        Structure is documented below.
         """
         return pulumi.get(self, "attestations")
 
@@ -156,7 +160,8 @@ class _KeyRingImportJobState:
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The time at which this resource is scheduled for expiration and can no longer be used. This is in RFC3339 text format.
+        The time at which this resource is scheduled for expiration and can no longer be used.
+        This is in RFC3339 text format.
         """
         return pulumi.get(self, "expire_time")
 
@@ -232,7 +237,8 @@ class _KeyRingImportJobState:
     @pulumi.getter(name="publicKeys")
     def public_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KeyRingImportJobPublicKeyArgs']]]]:
         """
-        The public key with which to wrap key material prior to import. Only returned if state is 'ACTIVE'.
+        The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
+        Structure is documented below.
         """
         return pulumi.get(self, "public_keys")
 
@@ -403,10 +409,12 @@ class KeyRingImportJob(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeyRingImportJobAttestationArgs']]]] attestations: Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this
-               statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen
-               ImportMethod is one with a protection level of HSM.
-        :param pulumi.Input[str] expire_time: The time at which this resource is scheduled for expiration and can no longer be used. This is in RFC3339 text format.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeyRingImportJobAttestationArgs']]]] attestations: Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
+               Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+               Only present if the chosen ImportMethod is one with a protection level of HSM.
+               Structure is documented below.
+        :param pulumi.Input[str] expire_time: The time at which this resource is scheduled for expiration and can no longer be used.
+               This is in RFC3339 text format.
         :param pulumi.Input[str] import_job_id: It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
         :param pulumi.Input[str] import_method: The wrapping method to be used for incoming key material.
                Possible values are `RSA_OAEP_3072_SHA1_AES_256` and `RSA_OAEP_4096_SHA1_AES_256`.
@@ -416,7 +424,8 @@ class KeyRingImportJob(pulumi.CustomResource):
         :param pulumi.Input[str] protection_level: The protection level of the ImportJob. This must match the protectionLevel of the
                versionTemplate on the CryptoKey you attempt to import into.
                Possible values are `SOFTWARE`, `HSM`, and `EXTERNAL`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeyRingImportJobPublicKeyArgs']]]] public_keys: The public key with which to wrap key material prior to import. Only returned if state is 'ACTIVE'.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeyRingImportJobPublicKeyArgs']]]] public_keys: The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
+               Structure is documented below.
         :param pulumi.Input[str] state: The current state of the ImportJob, indicating if it can be used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -438,9 +447,10 @@ class KeyRingImportJob(pulumi.CustomResource):
     @pulumi.getter
     def attestations(self) -> pulumi.Output[Sequence['outputs.KeyRingImportJobAttestation']]:
         """
-        Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this
-        statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen
-        ImportMethod is one with a protection level of HSM.
+        Statement that was generated and signed by the key creator (for example, an HSM) at key creation time.
+        Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+        Only present if the chosen ImportMethod is one with a protection level of HSM.
+        Structure is documented below.
         """
         return pulumi.get(self, "attestations")
 
@@ -448,7 +458,8 @@ class KeyRingImportJob(pulumi.CustomResource):
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> pulumi.Output[str]:
         """
-        The time at which this resource is scheduled for expiration and can no longer be used. This is in RFC3339 text format.
+        The time at which this resource is scheduled for expiration and can no longer be used.
+        This is in RFC3339 text format.
         """
         return pulumi.get(self, "expire_time")
 
@@ -500,7 +511,8 @@ class KeyRingImportJob(pulumi.CustomResource):
     @pulumi.getter(name="publicKeys")
     def public_keys(self) -> pulumi.Output[Sequence['outputs.KeyRingImportJobPublicKey']]:
         """
-        The public key with which to wrap key material prior to import. Only returned if state is 'ACTIVE'.
+        The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
+        Structure is documented below.
         """
         return pulumi.get(self, "public_keys")
 

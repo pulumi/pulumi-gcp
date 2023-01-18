@@ -81,7 +81,8 @@ export class SecretVersion extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * The resource name of the SecretVersion. Format: 'projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}'
+     * The resource name of the SecretVersion. Format:
+     * `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -158,7 +159,8 @@ export interface SecretVersionState {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * The resource name of the SecretVersion. Format: 'projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}'
+     * The resource name of the SecretVersion. Format:
+     * `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
      */
     name?: pulumi.Input<string>;
     /**

@@ -18,110 +18,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultCaPool = new gcp.certificateauthority.CaPool("default", {
+ * const _default = new gcp.certificateauthority.CaPool("default", {
  *     labels: {
  *         foo: "bar",
  *     },
  *     location: "us-central1",
  *     publishingOptions: {
  *         publishCaCert: true,
- *         publishCrl: true,
- *     },
- *     tier: "ENTERPRISE",
- * });
- * ```
- * ### Privateca Capool All Fields
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const defaultCaPool = new gcp.certificateauthority.CaPool("default", {
- *     issuancePolicy: {
- *         allowedIssuanceModes: {
- *             allowConfigBasedIssuance: true,
- *             allowCsrBasedIssuance: true,
- *         },
- *         allowedKeyTypes: [
- *             {
- *                 ellipticCurve: {
- *                     signatureAlgorithm: "ECDSA_P256",
- *                 },
- *             },
- *             {
- *                 rsa: {
- *                     maxModulusSize: "10",
- *                     minModulusSize: "5",
- *                 },
- *             },
- *         ],
- *         baselineValues: {
- *             additionalExtensions: [{
- *                 critical: true,
- *                 objectId: {
- *                     objectIdPaths: [
- *                         1,
- *                         7,
- *                     ],
- *                 },
- *                 value: "asdf",
- *             }],
- *             aiaOcspServers: ["example.com"],
- *             caOptions: {
- *                 isCa: true,
- *                 maxIssuerPathLength: 10,
- *             },
- *             keyUsage: {
- *                 baseKeyUsage: {
- *                     certSign: false,
- *                     contentCommitment: true,
- *                     crlSign: true,
- *                     dataEncipherment: true,
- *                     decipherOnly: true,
- *                     digitalSignature: true,
- *                     keyAgreement: true,
- *                     keyEncipherment: false,
- *                 },
- *                 extendedKeyUsage: {
- *                     clientAuth: false,
- *                     codeSigning: true,
- *                     emailProtection: true,
- *                     serverAuth: true,
- *                     timeStamping: true,
- *                 },
- *             },
- *             policyIds: [
- *                 {
- *                     objectIdPaths: [
- *                         1,
- *                         5,
- *                     ],
- *                 },
- *                 {
- *                     objectIdPaths: [
- *                         1,
- *                         5,
- *                         7,
- *                     ],
- *                 },
- *             ],
- *         },
- *         identityConstraints: {
- *             allowSubjectAltNamesPassthrough: true,
- *             allowSubjectPassthrough: true,
- *             celExpression: {
- *                 expression: "subject_alt_names.all(san, san.type == DNS || san.type == EMAIL )",
- *                 title: "My title",
- *             },
- *         },
- *         maximumLifetime: "50000s",
- *     },
- *     labels: {
- *         foo: "bar",
- *     },
- *     location: "us-central1",
- *     publishingOptions: {
- *         publishCaCert: false,
  *         publishCrl: true,
  *     },
  *     tier: "ENTERPRISE",
@@ -184,7 +87,8 @@ export class CaPool extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+     * Location of the CaPool. A full list of valid locations can be found by
+     * running `gcloud privateca locations list`.
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -264,7 +168,8 @@ export interface CaPoolState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+     * Location of the CaPool. A full list of valid locations can be found by
+     * running `gcloud privateca locations list`.
      */
     location?: pulumi.Input<string>;
     /**
@@ -304,7 +209,8 @@ export interface CaPoolArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+     * Location of the CaPool. A full list of valid locations can be found by
+     * running `gcloud privateca locations list`.
      */
     location: pulumi.Input<string>;
     /**

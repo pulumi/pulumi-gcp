@@ -16,7 +16,8 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         private InputList<int>? _groupIndexes;
 
         /// <summary>
-        /// The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+        /// The index of the submatch to extract as findings. When not specified,
+        /// the entire match is returned. No more than 3 may be included.
         /// </summary>
         public InputList<int> GroupIndexes
         {
@@ -25,8 +26,8 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         }
 
         /// <summary>
-        /// Pattern defining the regular expression.
-        /// Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+        /// Pattern defining the regular expression. Its syntax
+        /// (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
         /// </summary>
         [Input("pattern", required: true)]
         public Input<string> Pattern { get; set; } = null!;

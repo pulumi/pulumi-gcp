@@ -130,8 +130,7 @@ export class Workload extends pulumi.CustomResource {
      */
     public readonly resourceSettings!: pulumi.Output<outputs.assuredworkloads.WorkloadResourceSetting[] | undefined>;
     /**
-     * Output only. The resources associated with this workload. These resources will be created when creating the workload. If
-     * any of the projects already exist, the workload creation will fail. Always read only.
+     * Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
      */
     public /*out*/ readonly resources!: pulumi.Output<outputs.assuredworkloads.WorkloadResource[]>;
 
@@ -244,8 +243,7 @@ export interface WorkloadState {
      */
     resourceSettings?: pulumi.Input<pulumi.Input<inputs.assuredworkloads.WorkloadResourceSetting>[]>;
     /**
-     * Output only. The resources associated with this workload. These resources will be created when creating the workload. If
-     * any of the projects already exist, the workload creation will fail. Always read only.
+     * Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
      */
     resources?: pulumi.Input<pulumi.Input<inputs.assuredworkloads.WorkloadResource>[]>;
 }

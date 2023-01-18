@@ -15,19 +15,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my_subnetwork = pulumi.output(gcp.compute.getSubnetwork({
+ * const my-subnetwork = gcp.compute.getSubnetwork({
  *     name: "default-us-east1",
  *     region: "us-east1",
- * }));
+ * });
  * ```
  */
 export function getSubnetwork(args?: GetSubnetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetworkResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getSubnetwork:getSubnetwork", {
         "name": args.name,
         "project": args.project,
@@ -104,9 +101,23 @@ export interface GetSubnetworkResult {
     readonly secondaryIpRanges: outputs.compute.GetSubnetworkSecondaryIpRange[];
     readonly selfLink: string;
 }
-
+/**
+ * Get a subnetwork within GCE from its name and region.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-subnetwork = gcp.compute.getSubnetwork({
+ *     name: "default-us-east1",
+ *     region: "us-east1",
+ * });
+ * ```
+ */
 export function getSubnetworkOutput(args?: GetSubnetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetworkResult> {
-    return pulumi.output(args).apply(a => getSubnetwork(a, opts))
+    return pulumi.output(args).apply((a: any) => getSubnetwork(a, opts))
 }
 
 /**

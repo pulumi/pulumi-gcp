@@ -181,8 +181,7 @@ class _AppProfileState:
         :param pulumi.Input[bool] multi_cluster_routing_use_any: If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
                in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
                consistency to improve availability.
-        :param pulumi.Input[str] name: The unique name of the requested app profile. Values are of the form
-               'projects/<project>/instances/<instance>/appProfiles/<appProfileId>'.
+        :param pulumi.Input[str] name: The unique name of the requested app profile. Values are of the form `projects/<project>/instances/<instance>/appProfiles/<appProfileId>`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['AppProfileSingleClusterRoutingArgs'] single_cluster_routing: Use a single-cluster routing policy.
@@ -286,8 +285,7 @@ class _AppProfileState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique name of the requested app profile. Values are of the form
-        'projects/<project>/instances/<instance>/appProfiles/<appProfileId>'.
+        The unique name of the requested app profile. Values are of the form `projects/<project>/instances/<instance>/appProfiles/<appProfileId>`.
         """
         return pulumi.get(self, "name")
 
@@ -676,8 +674,7 @@ class AppProfile(pulumi.CustomResource):
         :param pulumi.Input[bool] multi_cluster_routing_use_any: If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
                in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
                consistency to improve availability.
-        :param pulumi.Input[str] name: The unique name of the requested app profile. Values are of the form
-               'projects/<project>/instances/<instance>/appProfiles/<appProfileId>'.
+        :param pulumi.Input[str] name: The unique name of the requested app profile. Values are of the form `projects/<project>/instances/<instance>/appProfiles/<appProfileId>`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['AppProfileSingleClusterRoutingArgs']] single_cluster_routing: Use a single-cluster routing policy.
@@ -753,8 +750,7 @@ class AppProfile(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The unique name of the requested app profile. Values are of the form
-        'projects/<project>/instances/<instance>/appProfiles/<appProfileId>'.
+        The unique name of the requested app profile. Values are of the form `projects/<project>/instances/<instance>/appProfiles/<appProfileId>`.
         """
         return pulumi.get(self, "name")
 

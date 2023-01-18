@@ -34,11 +34,8 @@ import * as utilities from "../utilities";
  */
 export function getEngineVersions(args?: GetEngineVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetEngineVersionsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:container/getEngineVersions:getEngineVersions", {
         "location": args.location,
         "project": args.project,
@@ -113,9 +110,36 @@ export interface GetEngineVersionsResult {
     readonly validNodeVersions: string[];
     readonly versionPrefix?: string;
 }
-
+/**
+ * Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
+ *
+ * > If you are using the `gcp.container.getEngineVersions` datasource with a
+ * regional cluster, ensure that you have provided a region as the `location` to
+ * the datasource. A region can have a different set of supported versions than
+ * its component zones, and not all zones in a region are guaranteed to
+ * support the same version.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const central1b = gcp.container.getEngineVersions({
+ *     location: "us-central1-b",
+ *     versionPrefix: "1.12.",
+ * });
+ * const foo = new gcp.container.Cluster("foo", {
+ *     location: "us-central1-b",
+ *     nodeVersion: central1b.then(central1b => central1b.latestNodeVersion),
+ *     initialNodeCount: 1,
+ * });
+ * export const stableChannelDefaultVersion = central1b.then(central1b => central1b.releaseChannelDefaultVersion?.STABLE);
+ * export const stableChannelLatestVersion = central1b.then(central1b => central1b.releaseChannelLatestVersion?.STABLE);
+ * ```
+ */
 export function getEngineVersionsOutput(args?: GetEngineVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEngineVersionsResult> {
-    return pulumi.output(args).apply(a => getEngineVersions(a, opts))
+    return pulumi.output(args).apply((a: any) => getEngineVersions(a, opts))
 }
 
 /**

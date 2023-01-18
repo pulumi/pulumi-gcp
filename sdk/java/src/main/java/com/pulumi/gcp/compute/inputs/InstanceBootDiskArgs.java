@@ -35,16 +35,16 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Name with which the attached disk will be accessible
-     * under `/dev/disk/by-id/google-*`
+     * Name with which attached disk will be accessible.
+     * On the instance, this device will be `/dev/disk/by-id/google-{{device_name}}`.
      * 
      */
     @Import(name="deviceName")
     private @Nullable Output<String> deviceName;
 
     /**
-     * @return Name with which the attached disk will be accessible
-     * under `/dev/disk/by-id/google-*`
+     * @return Name with which attached disk will be accessible.
+     * On the instance, this device will be `/dev/disk/by-id/google-{{device_name}}`.
      * 
      */
     public Optional<Output<String>> deviceName() {
@@ -55,7 +55,8 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
      * A 256-bit [customer-supplied encryption key]
      * (&lt;https://cloud.google.com/compute/docs/disks/customer-supplied-encryption&gt;),
      * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-     * to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
+     * to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw`
+     * may be set.
      * 
      */
     @Import(name="diskEncryptionKeyRaw")
@@ -65,7 +66,8 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
      * @return A 256-bit [customer-supplied encryption key]
      * (&lt;https://cloud.google.com/compute/docs/disks/customer-supplied-encryption&gt;),
      * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-     * to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
+     * to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw`
+     * may be set.
      * 
      */
     public Optional<Output<String>> diskEncryptionKeyRaw() {
@@ -118,20 +120,16 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Either &#34;READ_ONLY&#34; or &#34;READ_WRITE&#34;, defaults to &#34;READ_WRITE&#34;
-     * If you have a persistent disk with data that you want to share
-     * between multiple instances, detach it from any read-write instances and
-     * attach it to one or more instances in read-only mode.
+     * The mode in which to attach this disk, either `READ_WRITE`
+     * or `READ_ONLY`. If not specified, the default is to attach the disk in `READ_WRITE` mode.
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return Either &#34;READ_ONLY&#34; or &#34;READ_WRITE&#34;, defaults to &#34;READ_WRITE&#34;
-     * If you have a persistent disk with data that you want to share
-     * between multiple instances, detach it from any read-write instances and
-     * attach it to one or more instances in read-only mode.
+     * @return The mode in which to attach this disk, either `READ_WRITE`
+     * or `READ_ONLY`. If not specified, the default is to attach the disk in `READ_WRITE` mode.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -139,14 +137,18 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The name or self_link of the disk to attach to this instance.
+     * The name or self_link of the existing disk (such as those managed by
+     * `gcp.compute.Disk`) or disk image. To create an instance from a snapshot, first create a
+     * `gcp.compute.Disk` from a snapshot and reference it here.
      * 
      */
     @Import(name="source")
     private @Nullable Output<String> source;
 
     /**
-     * @return The name or self_link of the disk to attach to this instance.
+     * @return The name or self_link of the existing disk (such as those managed by
+     * `gcp.compute.Disk`) or disk image. To create an instance from a snapshot, first create a
+     * `gcp.compute.Disk` from a snapshot and reference it here.
      * 
      */
     public Optional<Output<String>> source() {
@@ -208,8 +210,8 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param deviceName Name with which the attached disk will be accessible
-         * under `/dev/disk/by-id/google-*`
+         * @param deviceName Name with which attached disk will be accessible.
+         * On the instance, this device will be `/dev/disk/by-id/google-{{device_name}}`.
          * 
          * @return builder
          * 
@@ -220,8 +222,8 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param deviceName Name with which the attached disk will be accessible
-         * under `/dev/disk/by-id/google-*`
+         * @param deviceName Name with which attached disk will be accessible.
+         * On the instance, this device will be `/dev/disk/by-id/google-{{device_name}}`.
          * 
          * @return builder
          * 
@@ -234,7 +236,8 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
          * @param diskEncryptionKeyRaw A 256-bit [customer-supplied encryption key]
          * (&lt;https://cloud.google.com/compute/docs/disks/customer-supplied-encryption&gt;),
          * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-         * to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
+         * to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw`
+         * may be set.
          * 
          * @return builder
          * 
@@ -248,7 +251,8 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
          * @param diskEncryptionKeyRaw A 256-bit [customer-supplied encryption key]
          * (&lt;https://cloud.google.com/compute/docs/disks/customer-supplied-encryption&gt;),
          * encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
-         * to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
+         * to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw`
+         * may be set.
          * 
          * @return builder
          * 
@@ -317,10 +321,8 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param mode Either &#34;READ_ONLY&#34; or &#34;READ_WRITE&#34;, defaults to &#34;READ_WRITE&#34;
-         * If you have a persistent disk with data that you want to share
-         * between multiple instances, detach it from any read-write instances and
-         * attach it to one or more instances in read-only mode.
+         * @param mode The mode in which to attach this disk, either `READ_WRITE`
+         * or `READ_ONLY`. If not specified, the default is to attach the disk in `READ_WRITE` mode.
          * 
          * @return builder
          * 
@@ -331,10 +333,8 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param mode Either &#34;READ_ONLY&#34; or &#34;READ_WRITE&#34;, defaults to &#34;READ_WRITE&#34;
-         * If you have a persistent disk with data that you want to share
-         * between multiple instances, detach it from any read-write instances and
-         * attach it to one or more instances in read-only mode.
+         * @param mode The mode in which to attach this disk, either `READ_WRITE`
+         * or `READ_ONLY`. If not specified, the default is to attach the disk in `READ_WRITE` mode.
          * 
          * @return builder
          * 
@@ -344,7 +344,9 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param source The name or self_link of the disk to attach to this instance.
+         * @param source The name or self_link of the existing disk (such as those managed by
+         * `gcp.compute.Disk`) or disk image. To create an instance from a snapshot, first create a
+         * `gcp.compute.Disk` from a snapshot and reference it here.
          * 
          * @return builder
          * 
@@ -355,7 +357,9 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param source The name or self_link of the disk to attach to this instance.
+         * @param source The name or self_link of the existing disk (such as those managed by
+         * `gcp.compute.Disk`) or disk image. To create an instance from a snapshot, first create a
+         * `gcp.compute.Disk` from a snapshot and reference it here.
          * 
          * @return builder
          * 

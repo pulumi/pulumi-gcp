@@ -165,8 +165,10 @@ namespace Pulumi.Gcp.Tpu
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
-        /// The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
-        /// node first reach out to the first (index 0) entry.
+        /// The network endpoints where TPU workers can be accessed and sent work.
+        /// It is recommended that Tensorflow clients of the node first reach out
+        /// to the first (index 0) entry.
+        /// Structure is documented below.
         /// </summary>
         [Output("networkEndpoints")]
         public Output<ImmutableArray<Outputs.NodeNetworkEndpoint>> NetworkEndpoints { get; private set; } = null!;
@@ -186,8 +188,10 @@ namespace Pulumi.Gcp.Tpu
         public Output<Outputs.NodeSchedulingConfig?> SchedulingConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
-        /// Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
+        /// The service account used to run the tensor flow services within the
+        /// node. To share resources, including Google Cloud Storage data, with
+        /// the Tensorflow job running in the Node, this account must have
+        /// permissions to that data.
         /// </summary>
         [Output("serviceAccount")]
         public Output<string> ServiceAccount { get; private set; } = null!;
@@ -410,8 +414,10 @@ namespace Pulumi.Gcp.Tpu
         private InputList<Inputs.NodeNetworkEndpointGetArgs>? _networkEndpoints;
 
         /// <summary>
-        /// The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the
-        /// node first reach out to the first (index 0) entry.
+        /// The network endpoints where TPU workers can be accessed and sent work.
+        /// It is recommended that Tensorflow clients of the node first reach out
+        /// to the first (index 0) entry.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.NodeNetworkEndpointGetArgs> NetworkEndpoints
         {
@@ -434,8 +440,10 @@ namespace Pulumi.Gcp.Tpu
         public Input<Inputs.NodeSchedulingConfigGetArgs>? SchedulingConfig { get; set; }
 
         /// <summary>
-        /// The service account used to run the tensor flow services within the node. To share resources, including Google Cloud
-        /// Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
+        /// The service account used to run the tensor flow services within the
+        /// node. To share resources, including Google Cloud Storage data, with
+        /// the Tensorflow job running in the Node, this account must have
+        /// permissions to that data.
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }

@@ -100,7 +100,8 @@ namespace Pulumi.Gcp.CloudAsset
         public Output<string> Folder { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the folder where this feed has been created. Both [FOLDER_NUMBER] and folders/[FOLDER_NUMBER] are accepted.
+        /// The ID of the folder where this feed has been created. Both [FOLDER_NUMBER]
+        /// and folders/[FOLDER_NUMBER] are accepted.
         /// </summary>
         [Output("folderId")]
         public Output<string> FolderId { get; private set; } = null!;
@@ -318,7 +319,8 @@ namespace Pulumi.Gcp.CloudAsset
         public Input<string>? Folder { get; set; }
 
         /// <summary>
-        /// The ID of the folder where this feed has been created. Both [FOLDER_NUMBER] and folders/[FOLDER_NUMBER] are accepted.
+        /// The ID of the folder where this feed has been created. Both [FOLDER_NUMBER]
+        /// and folders/[FOLDER_NUMBER] are accepted.
         /// </summary>
         [Input("folderId")]
         public Input<string>? FolderId { get; set; }

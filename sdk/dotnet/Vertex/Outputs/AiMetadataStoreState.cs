@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Vertex.Outputs
     [OutputType]
     public sealed class AiMetadataStoreState
     {
+        /// <summary>
+        /// The disk utilization of the MetadataStore in bytes.
+        /// </summary>
         public readonly string? DiskUtilizationBytes;
 
         [OutputConstructor]

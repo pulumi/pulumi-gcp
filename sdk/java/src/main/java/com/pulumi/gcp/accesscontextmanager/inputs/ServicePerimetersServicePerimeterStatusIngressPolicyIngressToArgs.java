@@ -18,8 +18,8 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo
     public static final ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs Empty = new ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs();
 
     /**
-     * A list of `ApiOperations` that this egress rule applies to. A request matches
-     * if it contains an operation/service in this list.
+     * A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
+     * are allowed to perform in this `ServicePerimeter`.
      * Structure is documented below.
      * 
      */
@@ -27,8 +27,8 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo
     private @Nullable Output<List<ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs>> operations;
 
     /**
-     * @return A list of `ApiOperations` that this egress rule applies to. A request matches
-     * if it contains an operation/service in this list.
+     * @return A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
+     * are allowed to perform in this `ServicePerimeter`.
      * Structure is documented below.
      * 
      */
@@ -38,10 +38,13 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo
 
     /**
      * A list of resources, currently only projects in the form
-     * `projects/&lt;projectnumber&gt;`, that match this to stanza. A request matches
-     * if it contains a resource in this list. If * is specified for resources,
-     * then this `EgressTo` rule will authorize access to all resources outside
-     * the perimeter.
+     * `projects/&lt;projectnumber&gt;`, protected by this `ServicePerimeter`
+     * that are allowed to be accessed by sources defined in the
+     * corresponding `IngressFrom`. A request matches if it contains
+     * a resource in this list. If `*` is specified for resources,
+     * then this `IngressTo` rule will authorize access to all
+     * resources inside the perimeter, provided that the request
+     * also matches the `operations` field.
      * 
      */
     @Import(name="resources")
@@ -49,10 +52,13 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo
 
     /**
      * @return A list of resources, currently only projects in the form
-     * `projects/&lt;projectnumber&gt;`, that match this to stanza. A request matches
-     * if it contains a resource in this list. If * is specified for resources,
-     * then this `EgressTo` rule will authorize access to all resources outside
-     * the perimeter.
+     * `projects/&lt;projectnumber&gt;`, protected by this `ServicePerimeter`
+     * that are allowed to be accessed by sources defined in the
+     * corresponding `IngressFrom`. A request matches if it contains
+     * a resource in this list. If `*` is specified for resources,
+     * then this `IngressTo` rule will authorize access to all
+     * resources inside the perimeter, provided that the request
+     * also matches the `operations` field.
      * 
      */
     public Optional<Output<List<String>>> resources() {
@@ -85,8 +91,8 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo
         }
 
         /**
-         * @param operations A list of `ApiOperations` that this egress rule applies to. A request matches
-         * if it contains an operation/service in this list.
+         * @param operations A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
+         * are allowed to perform in this `ServicePerimeter`.
          * Structure is documented below.
          * 
          * @return builder
@@ -98,8 +104,8 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo
         }
 
         /**
-         * @param operations A list of `ApiOperations` that this egress rule applies to. A request matches
-         * if it contains an operation/service in this list.
+         * @param operations A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
+         * are allowed to perform in this `ServicePerimeter`.
          * Structure is documented below.
          * 
          * @return builder
@@ -110,8 +116,8 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo
         }
 
         /**
-         * @param operations A list of `ApiOperations` that this egress rule applies to. A request matches
-         * if it contains an operation/service in this list.
+         * @param operations A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
+         * are allowed to perform in this `ServicePerimeter`.
          * Structure is documented below.
          * 
          * @return builder
@@ -123,10 +129,13 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo
 
         /**
          * @param resources A list of resources, currently only projects in the form
-         * `projects/&lt;projectnumber&gt;`, that match this to stanza. A request matches
-         * if it contains a resource in this list. If * is specified for resources,
-         * then this `EgressTo` rule will authorize access to all resources outside
-         * the perimeter.
+         * `projects/&lt;projectnumber&gt;`, protected by this `ServicePerimeter`
+         * that are allowed to be accessed by sources defined in the
+         * corresponding `IngressFrom`. A request matches if it contains
+         * a resource in this list. If `*` is specified for resources,
+         * then this `IngressTo` rule will authorize access to all
+         * resources inside the perimeter, provided that the request
+         * also matches the `operations` field.
          * 
          * @return builder
          * 
@@ -138,10 +147,13 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo
 
         /**
          * @param resources A list of resources, currently only projects in the form
-         * `projects/&lt;projectnumber&gt;`, that match this to stanza. A request matches
-         * if it contains a resource in this list. If * is specified for resources,
-         * then this `EgressTo` rule will authorize access to all resources outside
-         * the perimeter.
+         * `projects/&lt;projectnumber&gt;`, protected by this `ServicePerimeter`
+         * that are allowed to be accessed by sources defined in the
+         * corresponding `IngressFrom`. A request matches if it contains
+         * a resource in this list. If `*` is specified for resources,
+         * then this `IngressTo` rule will authorize access to all
+         * resources inside the perimeter, provided that the request
+         * also matches the `operations` field.
          * 
          * @return builder
          * 
@@ -152,10 +164,13 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo
 
         /**
          * @param resources A list of resources, currently only projects in the form
-         * `projects/&lt;projectnumber&gt;`, that match this to stanza. A request matches
-         * if it contains a resource in this list. If * is specified for resources,
-         * then this `EgressTo` rule will authorize access to all resources outside
-         * the perimeter.
+         * `projects/&lt;projectnumber&gt;`, protected by this `ServicePerimeter`
+         * that are allowed to be accessed by sources defined in the
+         * corresponding `IngressFrom`. A request matches if it contains
+         * a resource in this list. If `*` is specified for resources,
+         * then this `IngressTo` rule will authorize access to all
+         * resources inside the perimeter, provided that the request
+         * also matches the `operations` field.
          * 
          * @return builder
          * 

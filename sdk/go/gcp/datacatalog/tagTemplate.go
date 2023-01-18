@@ -98,6 +98,10 @@ import (
 type TagTemplate struct {
 	pulumi.CustomResourceState
 
+	// The display name for this field.
+	// (Required)
+	// The display name of the enum value.
+	// (Optional)
 	// The display name for this template.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of fieldId will be resulting in re-creating of field. The change of primitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
@@ -105,7 +109,6 @@ type TagTemplate struct {
 	Fields TagTemplateFieldArrayOutput `pulumi:"fields"`
 	// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
 	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
-	// -
 	// The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -152,6 +155,10 @@ func GetTagTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TagTemplate resources.
 type tagTemplateState struct {
+	// The display name for this field.
+	// (Required)
+	// The display name of the enum value.
+	// (Optional)
 	// The display name for this template.
 	DisplayName *string `pulumi:"displayName"`
 	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of fieldId will be resulting in re-creating of field. The change of primitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
@@ -159,7 +166,6 @@ type tagTemplateState struct {
 	Fields []TagTemplateField `pulumi:"fields"`
 	// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
 	ForceDelete *bool `pulumi:"forceDelete"`
-	// -
 	// The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -172,6 +178,10 @@ type tagTemplateState struct {
 }
 
 type TagTemplateState struct {
+	// The display name for this field.
+	// (Required)
+	// The display name of the enum value.
+	// (Optional)
 	// The display name for this template.
 	DisplayName pulumi.StringPtrInput
 	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of fieldId will be resulting in re-creating of field. The change of primitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
@@ -179,7 +189,6 @@ type TagTemplateState struct {
 	Fields TagTemplateFieldArrayInput
 	// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
 	ForceDelete pulumi.BoolPtrInput
-	// -
 	// The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -196,6 +205,10 @@ func (TagTemplateState) ElementType() reflect.Type {
 }
 
 type tagTemplateArgs struct {
+	// The display name for this field.
+	// (Required)
+	// The display name of the enum value.
+	// (Optional)
 	// The display name for this template.
 	DisplayName *string `pulumi:"displayName"`
 	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of fieldId will be resulting in re-creating of field. The change of primitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
@@ -214,6 +227,10 @@ type tagTemplateArgs struct {
 
 // The set of arguments for constructing a TagTemplate resource.
 type TagTemplateArgs struct {
+	// The display name for this field.
+	// (Required)
+	// The display name of the enum value.
+	// (Optional)
 	// The display name for this template.
 	DisplayName pulumi.StringPtrInput
 	// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of fieldId will be resulting in re-creating of field. The change of primitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
@@ -317,6 +334,10 @@ func (o TagTemplateOutput) ToTagTemplateOutputWithContext(ctx context.Context) T
 	return o
 }
 
+// The display name for this field.
+// (Required)
+// The display name of the enum value.
+// (Optional)
 // The display name for this template.
 func (o TagTemplateOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TagTemplate) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
@@ -333,7 +354,6 @@ func (o TagTemplateOutput) ForceDelete() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TagTemplate) pulumi.BoolPtrOutput { return v.ForceDelete }).(pulumi.BoolPtrOutput)
 }
 
-// -
 // The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
 func (o TagTemplateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)

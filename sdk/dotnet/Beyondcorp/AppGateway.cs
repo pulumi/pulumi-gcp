@@ -89,6 +89,7 @@ namespace Pulumi.Gcp.Beyondcorp
     {
         /// <summary>
         /// A list of connections allocated for the Gateway.
+        /// Structure is documented below.
         /// </summary>
         [Output("allocatedConnections")]
         public Output<ImmutableArray<Outputs.AppGatewayAllocatedConnection>> AllocatedConnections { get; private set; } = null!;
@@ -264,6 +265,7 @@ namespace Pulumi.Gcp.Beyondcorp
 
         /// <summary>
         /// A list of connections allocated for the Gateway.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AppGatewayAllocatedConnectionGetArgs> AllocatedConnections
         {

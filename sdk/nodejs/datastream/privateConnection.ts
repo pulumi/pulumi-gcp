@@ -87,6 +87,7 @@ export class PrivateConnection extends pulumi.CustomResource {
     public readonly displayName!: pulumi.Output<string>;
     /**
      * The PrivateConnection error in case of failure.
+     * Structure is documented below.
      */
     public /*out*/ readonly errors!: pulumi.Output<outputs.datastream.PrivateConnectionError[]>;
     /**
@@ -182,6 +183,7 @@ export interface PrivateConnectionState {
     displayName?: pulumi.Input<string>;
     /**
      * The PrivateConnection error in case of failure.
+     * Structure is documented below.
      */
     errors?: pulumi.Input<pulumi.Input<inputs.datastream.PrivateConnectionError>[]>;
     /**

@@ -72,8 +72,8 @@ export class AndroidApp extends pulumi.CustomResource {
     }
 
     /**
-     * The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
-     * token, as the data format is not specified.
+     * The globally unique, Firebase-assigned identifier of the AndroidApp.
+     * This identifier should be treated as an opaque token, as the data format is not specified.
      */
     public /*out*/ readonly appId!: pulumi.Output<string>;
     /**
@@ -87,12 +87,13 @@ export class AndroidApp extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
-     * ensure the client has an up-to-date value before proceeding.
+     * This checksum is computed by the server based on the value of other fields, and it may be sent
+     * with update requests to ensure the client has an up-to-date value before proceeding.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
+     * The fully qualified resource name of the AndroidApp, for example:
+     * projects/projectId/androidApps/appId
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -161,8 +162,8 @@ export class AndroidApp extends pulumi.CustomResource {
  */
 export interface AndroidAppState {
     /**
-     * The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
-     * token, as the data format is not specified.
+     * The globally unique, Firebase-assigned identifier of the AndroidApp.
+     * This identifier should be treated as an opaque token, as the data format is not specified.
      */
     appId?: pulumi.Input<string>;
     /**
@@ -176,12 +177,13 @@ export interface AndroidAppState {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
-     * ensure the client has an up-to-date value before proceeding.
+     * This checksum is computed by the server based on the value of other fields, and it may be sent
+     * with update requests to ensure the client has an up-to-date value before proceeding.
      */
     etag?: pulumi.Input<string>;
     /**
-     * The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
+     * The fully qualified resource name of the AndroidApp, for example:
+     * projects/projectId/androidApps/appId
      */
     name?: pulumi.Input<string>;
     /**

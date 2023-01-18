@@ -186,16 +186,14 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
         return this.ancestorHasActiveKeyVersion;
     }
     /**
-     * If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-     * of the Project.
+     * If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Project.
      * 
      */
     @Export(name="enrolledAncestor", type=Boolean.class, parameters={})
     private Output<Boolean> enrolledAncestor;
 
     /**
-     * @return If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-     * of the Project.
+     * @return If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Project.
      * 
      */
     public Output<Boolean> enrolledAncestor() {
@@ -224,20 +222,20 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
         return this.enrolledServices;
     }
     /**
-     * If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-     * this Project (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the correct permissions on it,
-     * etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-     * top-down.
+     * If the field is true, that indicates that there is some configuration issue with the active_key_version
+     * configured on this Project (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the
+     * correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+     * as key versions are inherited top-down.
      * 
      */
     @Export(name="invalidKeyVersion", type=Boolean.class, parameters={})
     private Output<Boolean> invalidKeyVersion;
 
     /**
-     * @return If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-     * this Project (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the correct permissions on it,
-     * etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-     * top-down.
+     * @return If the field is true, that indicates that there is some configuration issue with the active_key_version
+     * configured on this Project (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the
+     * correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+     * as key versions are inherited top-down.
      * 
      */
     public Output<Boolean> invalidKeyVersion() {
@@ -276,7 +274,6 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
         return this.notificationEmails;
     }
     /**
-     * - 
      * (Optional, Deprecated)
      * Deprecated in favor of `project_id`
      * 
@@ -289,8 +286,7 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
     private Output</* @Nullable */ String> project;
 
     /**
-     * @return -
-     * (Optional, Deprecated)
+     * @return (Optional, Deprecated)
      * Deprecated in favor of `project_id`
      * 
      */

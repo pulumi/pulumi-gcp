@@ -20,8 +20,9 @@ public final class TableTimePartitioning {
      */
     private @Nullable Integer expirationMs;
     /**
-     * @return The field used to determine how to create a range-based
-     * partition.
+     * @return The field used to determine how to create a time-based
+     * partition. If time-based partitioning is enabled without this value, the
+     * table is partitioned based on the load time.
      * 
      */
     private @Nullable String field;
@@ -49,8 +50,9 @@ public final class TableTimePartitioning {
         return Optional.ofNullable(this.expirationMs);
     }
     /**
-     * @return The field used to determine how to create a range-based
-     * partition.
+     * @return The field used to determine how to create a time-based
+     * partition. If time-based partitioning is enabled without this value, the
+     * table is partitioned based on the load time.
      * 
      */
     public Optional<String> field() {

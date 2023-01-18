@@ -19,14 +19,16 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
     public static final ReservationState Empty = new ReservationState();
 
     /**
-     * Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+     * Full or partial URL to a parent commitment. This field displays for
+     * reservations that are tied to a commitment.
      * 
      */
     @Import(name="commitment")
     private @Nullable Output<String> commitment;
 
     /**
-     * @return Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+     * @return Full or partial URL to a parent commitment. This field displays for
+     * reservations that are tied to a commitment.
      * 
      */
     public Optional<Output<String>> commitment() {
@@ -240,7 +242,8 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param commitment Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+         * @param commitment Full or partial URL to a parent commitment. This field displays for
+         * reservations that are tied to a commitment.
          * 
          * @return builder
          * 
@@ -251,7 +254,8 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param commitment Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+         * @param commitment Full or partial URL to a parent commitment. This field displays for
+         * reservations that are tied to a commitment.
          * 
          * @return builder
          * 

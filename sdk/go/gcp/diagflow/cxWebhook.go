@@ -97,11 +97,11 @@ type CxWebhook struct {
 	EnableSpellCorrection pulumi.BoolPtrOutput `pulumi:"enableSpellCorrection"`
 	// Determines whether this agent should log conversation queries.
 	EnableStackdriverLogging pulumi.BoolPtrOutput `pulumi:"enableStackdriverLogging"`
-	// The name of Service Directory service.
+	// Configuration for a generic web service.
 	// Structure is documented below.
 	GenericWebService CxWebhookGenericWebServicePtrOutput `pulumi:"genericWebService"`
-	// The unique identifier of the webhook. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-	// ID>/webhooks/<Webhook ID>.
+	// The unique identifier of the webhook.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The agent to create a webhook for.
 	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
@@ -111,9 +111,7 @@ type CxWebhook struct {
 	// Configuration for a Service Directory service.
 	// Structure is documented below.
 	ServiceDirectory CxWebhookServiceDirectoryPtrOutput `pulumi:"serviceDirectory"`
-	// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-	// be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow
-	// ID>.
+	// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
 	StartFlow pulumi.StringOutput `pulumi:"startFlow"`
 	// Webhook execution timeout.
 	Timeout pulumi.StringPtrOutput `pulumi:"timeout"`
@@ -159,11 +157,11 @@ type cxWebhookState struct {
 	EnableSpellCorrection *bool `pulumi:"enableSpellCorrection"`
 	// Determines whether this agent should log conversation queries.
 	EnableStackdriverLogging *bool `pulumi:"enableStackdriverLogging"`
-	// The name of Service Directory service.
+	// Configuration for a generic web service.
 	// Structure is documented below.
 	GenericWebService *CxWebhookGenericWebService `pulumi:"genericWebService"`
-	// The unique identifier of the webhook. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-	// ID>/webhooks/<Webhook ID>.
+	// The unique identifier of the webhook.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
 	Name *string `pulumi:"name"`
 	// The agent to create a webhook for.
 	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
@@ -173,9 +171,7 @@ type cxWebhookState struct {
 	// Configuration for a Service Directory service.
 	// Structure is documented below.
 	ServiceDirectory *CxWebhookServiceDirectory `pulumi:"serviceDirectory"`
-	// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-	// be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow
-	// ID>.
+	// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
 	StartFlow *string `pulumi:"startFlow"`
 	// Webhook execution timeout.
 	Timeout *string `pulumi:"timeout"`
@@ -190,11 +186,11 @@ type CxWebhookState struct {
 	EnableSpellCorrection pulumi.BoolPtrInput
 	// Determines whether this agent should log conversation queries.
 	EnableStackdriverLogging pulumi.BoolPtrInput
-	// The name of Service Directory service.
+	// Configuration for a generic web service.
 	// Structure is documented below.
 	GenericWebService CxWebhookGenericWebServicePtrInput
-	// The unique identifier of the webhook. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-	// ID>/webhooks/<Webhook ID>.
+	// The unique identifier of the webhook.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
 	Name pulumi.StringPtrInput
 	// The agent to create a webhook for.
 	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
@@ -204,9 +200,7 @@ type CxWebhookState struct {
 	// Configuration for a Service Directory service.
 	// Structure is documented below.
 	ServiceDirectory CxWebhookServiceDirectoryPtrInput
-	// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-	// be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow
-	// ID>.
+	// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
 	StartFlow pulumi.StringPtrInput
 	// Webhook execution timeout.
 	Timeout pulumi.StringPtrInput
@@ -225,7 +219,7 @@ type cxWebhookArgs struct {
 	EnableSpellCorrection *bool `pulumi:"enableSpellCorrection"`
 	// Determines whether this agent should log conversation queries.
 	EnableStackdriverLogging *bool `pulumi:"enableStackdriverLogging"`
-	// The name of Service Directory service.
+	// Configuration for a generic web service.
 	// Structure is documented below.
 	GenericWebService *CxWebhookGenericWebService `pulumi:"genericWebService"`
 	// The agent to create a webhook for.
@@ -250,7 +244,7 @@ type CxWebhookArgs struct {
 	EnableSpellCorrection pulumi.BoolPtrInput
 	// Determines whether this agent should log conversation queries.
 	EnableStackdriverLogging pulumi.BoolPtrInput
-	// The name of Service Directory service.
+	// Configuration for a generic web service.
 	// Structure is documented below.
 	GenericWebService CxWebhookGenericWebServicePtrInput
 	// The agent to create a webhook for.
@@ -372,14 +366,14 @@ func (o CxWebhookOutput) EnableStackdriverLogging() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxWebhook) pulumi.BoolPtrOutput { return v.EnableStackdriverLogging }).(pulumi.BoolPtrOutput)
 }
 
-// The name of Service Directory service.
+// Configuration for a generic web service.
 // Structure is documented below.
 func (o CxWebhookOutput) GenericWebService() CxWebhookGenericWebServicePtrOutput {
 	return o.ApplyT(func(v *CxWebhook) CxWebhookGenericWebServicePtrOutput { return v.GenericWebService }).(CxWebhookGenericWebServicePtrOutput)
 }
 
-// The unique identifier of the webhook. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-// ID>/webhooks/<Webhook ID>.
+// The unique identifier of the webhook.
+// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
 func (o CxWebhookOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxWebhook) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -401,9 +395,7 @@ func (o CxWebhookOutput) ServiceDirectory() CxWebhookServiceDirectoryPtrOutput {
 	return o.ApplyT(func(v *CxWebhook) CxWebhookServiceDirectoryPtrOutput { return v.ServiceDirectory }).(CxWebhookServiceDirectoryPtrOutput)
 }
 
-// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-// be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow
-// ID>.
+// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
 func (o CxWebhookOutput) StartFlow() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxWebhook) pulumi.StringOutput { return v.StartFlow }).(pulumi.StringOutput)
 }

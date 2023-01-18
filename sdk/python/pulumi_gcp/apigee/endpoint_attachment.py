@@ -225,6 +225,34 @@ class EndpointAttachment(pulumi.CustomResource):
             * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
 
         ## Example Usage
+        ### Apigee Endpoint Attachment Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        current = gcp.organizations.get_client_config()
+        apigee_network = gcp.compute.Network("apigeeNetwork")
+        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=apigee_network.id)
+        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
+            network=apigee_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[apigee_range.name])
+        apigee_org = gcp.apigee.Organization("apigeeOrg",
+            analytics_region="us-central1",
+            project_id=current.project,
+            authorized_network=apigee_network.id,
+            opts=pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
+        apigee_endpoint_attachment = gcp.apigee.EndpointAttachment("apigeeEndpointAttachment",
+            org_id=apigee_org.id,
+            endpoint_attachment_id="test1",
+            location="{google_compute_service_attachment location}",
+            service_attachment="{google_compute_service_attachment id}")
+        ```
 
         ## Import
 
@@ -262,6 +290,34 @@ class EndpointAttachment(pulumi.CustomResource):
             * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
 
         ## Example Usage
+        ### Apigee Endpoint Attachment Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        current = gcp.organizations.get_client_config()
+        apigee_network = gcp.compute.Network("apigeeNetwork")
+        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=apigee_network.id)
+        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
+            network=apigee_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[apigee_range.name])
+        apigee_org = gcp.apigee.Organization("apigeeOrg",
+            analytics_region="us-central1",
+            project_id=current.project,
+            authorized_network=apigee_network.id,
+            opts=pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
+        apigee_endpoint_attachment = gcp.apigee.EndpointAttachment("apigeeEndpointAttachment",
+            org_id=apigee_org.id,
+            endpoint_attachment_id="test1",
+            location="{google_compute_service_attachment location}",
+            service_attachment="{google_compute_service_attachment id}")
+        ```
 
         ## Import
 

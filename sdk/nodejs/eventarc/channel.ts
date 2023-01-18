@@ -84,8 +84,7 @@ export class Channel extends pulumi.CustomResource {
     }
 
     /**
-     * Output only. The activation token for the channel. The token must be used by the provider to register the channel for
-     * publishing.
+     * Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
      */
     public /*out*/ readonly activationToken!: pulumi.Output<string>;
     /**
@@ -109,8 +108,7 @@ export class Channel extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery.
-     * Format: `projects/{project}/topics/{topic_id}`.
+     * Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
      */
     public /*out*/ readonly pubsubTopic!: pulumi.Output<string>;
     /**
@@ -122,8 +120,7 @@ export class Channel extends pulumi.CustomResource {
      */
     public readonly thirdPartyProvider!: pulumi.Output<string | undefined>;
     /**
-     * Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain
-     * unchanged until the resource is deleted.
+     * Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
     /**
@@ -182,8 +179,7 @@ export class Channel extends pulumi.CustomResource {
  */
 export interface ChannelState {
     /**
-     * Output only. The activation token for the channel. The token must be used by the provider to register the channel for
-     * publishing.
+     * Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
      */
     activationToken?: pulumi.Input<string>;
     /**
@@ -207,8 +203,7 @@ export interface ChannelState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery.
-     * Format: `projects/{project}/topics/{topic_id}`.
+     * Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
      */
     pubsubTopic?: pulumi.Input<string>;
     /**
@@ -220,8 +215,7 @@ export interface ChannelState {
      */
     thirdPartyProvider?: pulumi.Input<string>;
     /**
-     * Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain
-     * unchanged until the resource is deleted.
+     * Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      */
     uid?: pulumi.Input<string>;
     /**

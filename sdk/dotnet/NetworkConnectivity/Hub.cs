@@ -85,9 +85,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance
-        /// instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity
-        /// Center automatically populates it based on the set of spokes attached to the hub.
+        /// The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
         /// </summary>
         [Output("routingVpcs")]
         public Output<ImmutableArray<Outputs.HubRoutingVpc>> RoutingVpcs { get; private set; } = null!;
@@ -99,8 +97,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted
-        /// and another with the same name is created, the new hub is assigned a different unique_id.
+        /// Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
         /// </summary>
         [Output("uniqueId")]
         public Output<string> UniqueId { get; private set; } = null!;
@@ -235,9 +232,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
         private InputList<Inputs.HubRoutingVpcGetArgs>? _routingVpcs;
 
         /// <summary>
-        /// The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance
-        /// instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity
-        /// Center automatically populates it based on the set of spokes attached to the hub.
+        /// The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
         /// </summary>
         public InputList<Inputs.HubRoutingVpcGetArgs> RoutingVpcs
         {
@@ -252,8 +247,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted
-        /// and another with the same name is created, the new hub is assigned a different unique_id.
+        /// Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
         /// </summary>
         [Input("uniqueId")]
         public Input<string>? UniqueId { get; set; }

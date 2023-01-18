@@ -18,13 +18,24 @@ import * as utilities from "../utilities";
  * receive an error otherwise. The provider uses this scope by default.
  *
  * ## Example Usage
+ * ### Exporting An Email
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * export = async () => {
+ *     const me = await gcp.organizations.getClientOpenIdUserInfo({});
+ *     const my_email = me.email;
+ *     return {
+ *         "my-email": my_email,
+ *     };
+ * }
+ * ```
  */
 export function getClientOpenIdUserInfo(opts?: pulumi.InvokeOptions): Promise<GetClientOpenIdUserInfoResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo", {
     }, opts);
 }

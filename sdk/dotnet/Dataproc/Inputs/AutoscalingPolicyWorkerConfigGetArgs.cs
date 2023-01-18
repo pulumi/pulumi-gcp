@@ -13,15 +13,13 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class AutoscalingPolicyWorkerConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Maximum number of instances for this group. Note that by default, clusters will not use
-        /// secondary workers. Required for secondary workers if the minimum secondary instances is set.
-        /// Bounds: [minInstances, ). Defaults to 0.
+        /// Maximum number of instances for this group.
         /// </summary>
         [Input("maxInstances", required: true)]
         public Input<int> MaxInstances { get; set; } = null!;
 
         /// <summary>
-        /// Minimum number of instances for this group. Bounds: [0, maxInstances]. Defaults to 0.
+        /// Minimum number of instances for this group. Bounds: [2, maxInstances]. Defaults to 2.
         /// </summary>
         [Input("minInstances")]
         public Input<int>? MinInstances { get; set; }

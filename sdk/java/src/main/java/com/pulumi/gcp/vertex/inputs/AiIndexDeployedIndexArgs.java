@@ -15,16 +15,32 @@ public final class AiIndexDeployedIndexArgs extends com.pulumi.resources.Resourc
 
     public static final AiIndexDeployedIndexArgs Empty = new AiIndexDeployedIndexArgs();
 
+    /**
+     * The ID of the DeployedIndex in the above IndexEndpoint.
+     * 
+     */
     @Import(name="deployedIndexId")
     private @Nullable Output<String> deployedIndexId;
 
+    /**
+     * @return The ID of the DeployedIndex in the above IndexEndpoint.
+     * 
+     */
     public Optional<Output<String>> deployedIndexId() {
         return Optional.ofNullable(this.deployedIndexId);
     }
 
+    /**
+     * A resource name of the IndexEndpoint.
+     * 
+     */
     @Import(name="indexEndpoint")
     private @Nullable Output<String> indexEndpoint;
 
+    /**
+     * @return A resource name of the IndexEndpoint.
+     * 
+     */
     public Optional<Output<String>> indexEndpoint() {
         return Optional.ofNullable(this.indexEndpoint);
     }
@@ -54,20 +70,44 @@ public final class AiIndexDeployedIndexArgs extends com.pulumi.resources.Resourc
             $ = new AiIndexDeployedIndexArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param deployedIndexId The ID of the DeployedIndex in the above IndexEndpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deployedIndexId(@Nullable Output<String> deployedIndexId) {
             $.deployedIndexId = deployedIndexId;
             return this;
         }
 
+        /**
+         * @param deployedIndexId The ID of the DeployedIndex in the above IndexEndpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deployedIndexId(String deployedIndexId) {
             return deployedIndexId(Output.of(deployedIndexId));
         }
 
+        /**
+         * @param indexEndpoint A resource name of the IndexEndpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder indexEndpoint(@Nullable Output<String> indexEndpoint) {
             $.indexEndpoint = indexEndpoint;
             return this;
         }
 
+        /**
+         * @param indexEndpoint A resource name of the IndexEndpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder indexEndpoint(String indexEndpoint) {
             return indexEndpoint(Output.of(indexEndpoint));
         }

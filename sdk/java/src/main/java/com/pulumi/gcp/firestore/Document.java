@@ -193,7 +193,7 @@ public class Document extends com.pulumi.resources.CustomResource {
     }
     /**
      * A server defined name for this index. Format:
-     * &#39;projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}&#39;
+     * `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
      * 
      */
     @Export(name="name", type=String.class, parameters={})
@@ -201,7 +201,7 @@ public class Document extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A server defined name for this index. Format:
-     * &#39;projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}&#39;
+     * `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
      * 
      */
     public Output<String> name() {

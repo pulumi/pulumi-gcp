@@ -200,15 +200,13 @@ class _AwsNodePoolState:
         :param pulumi.Input[str] cluster: The awsCluster for the resource
         :param pulumi.Input['AwsNodePoolConfigArgs'] config: The configuration of the node pool.
         :param pulumi.Input[str] create_time: Output only. The time at which this node pool was created.
-        :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-               and delete requests to ensure the client has an up-to-date value before proceeding.
+        :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input['AwsNodePoolMaxPodsConstraintArgs'] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. If set, there are currently changes in flight to the node pool.
-        :param pulumi.Input[str] state: Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING,
-               RECONCILING, STOPPING, ERROR, DEGRADED
+        :param pulumi.Input[str] state: Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         :param pulumi.Input[str] subnet_id: The subnet where the node pool node run.
         :param pulumi.Input[str] uid: Output only. A globally unique identifier for the node pool.
         :param pulumi.Input[str] update_time: Output only. The time at which this node pool was last updated.
@@ -311,8 +309,7 @@ class _AwsNodePoolState:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-        and delete requests to ensure the client has an up-to-date value before proceeding.
+        Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
 
@@ -384,8 +381,7 @@ class _AwsNodePoolState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING,
-        RECONCILING, STOPPING, ERROR, DEGRADED
+        Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         """
         return pulumi.get(self, "state")
 
@@ -859,15 +855,13 @@ class AwsNodePool(pulumi.CustomResource):
         :param pulumi.Input[str] cluster: The awsCluster for the resource
         :param pulumi.Input[pulumi.InputType['AwsNodePoolConfigArgs']] config: The configuration of the node pool.
         :param pulumi.Input[str] create_time: Output only. The time at which this node pool was created.
-        :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-               and delete requests to ensure the client has an up-to-date value before proceeding.
+        :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[pulumi.InputType['AwsNodePoolMaxPodsConstraintArgs']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. If set, there are currently changes in flight to the node pool.
-        :param pulumi.Input[str] state: Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING,
-               RECONCILING, STOPPING, ERROR, DEGRADED
+        :param pulumi.Input[str] state: Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         :param pulumi.Input[str] subnet_id: The subnet where the node pool node run.
         :param pulumi.Input[str] uid: Output only. A globally unique identifier for the node pool.
         :param pulumi.Input[str] update_time: Output only. The time at which this node pool was last updated.
@@ -939,8 +933,7 @@ class AwsNodePool(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-        and delete requests to ensure the client has an up-to-date value before proceeding.
+        Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
 
@@ -988,8 +981,7 @@ class AwsNodePool(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING,
-        RECONCILING, STOPPING, ERROR, DEGRADED
+        Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         """
         return pulumi.get(self, "state")
 

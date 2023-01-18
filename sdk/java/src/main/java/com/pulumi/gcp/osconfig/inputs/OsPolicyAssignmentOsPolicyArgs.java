@@ -34,14 +34,14 @@ public final class OsPolicyAssignmentOsPolicyArgs extends com.pulumi.resources.R
     }
 
     /**
-     * OS policy assignment description. Length of the description is limited to 1024 characters.
+     * Policy description. Length of the description is limited to 1024 characters.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return OS policy assignment description. Length of the description is limited to 1024 characters.
+     * @return Policy description. Length of the description is limited to 1024 characters.
      * 
      */
     public Optional<Output<String>> description() {
@@ -49,14 +49,14 @@ public final class OsPolicyAssignmentOsPolicyArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+     * Required. The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
      * 
      */
     @Import(name="id", required=true)
     private Output<String> id;
 
     /**
-     * @return Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+     * @return Required. The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
      * 
      */
     public Output<String> id() {
@@ -143,7 +143,7 @@ public final class OsPolicyAssignmentOsPolicyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param description OS policy assignment description. Length of the description is limited to 1024 characters.
+         * @param description Policy description. Length of the description is limited to 1024 characters.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class OsPolicyAssignmentOsPolicyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param description OS policy assignment description. Length of the description is limited to 1024 characters.
+         * @param description Policy description. Length of the description is limited to 1024 characters.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class OsPolicyAssignmentOsPolicyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param id Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+         * @param id Required. The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class OsPolicyAssignmentOsPolicyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param id Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+         * @param id Required. The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
          * 
          * @return builder
          * 

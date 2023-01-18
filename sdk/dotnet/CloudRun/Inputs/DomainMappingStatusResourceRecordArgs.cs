@@ -18,9 +18,17 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Data for this record. Values vary by record type, as defined in RFC 1035
+        /// (section 5) and RFC 1034 (section 3.6.1).
+        /// </summary>
         [Input("rrdata")]
         public Input<string>? Rrdata { get; set; }
 
+        /// <summary>
+        /// Resource record type. Example: `AAAA`.
+        /// Possible values are `A`, `AAAA`, and `CNAME`.
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

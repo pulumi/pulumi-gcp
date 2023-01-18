@@ -14,17 +14,45 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EntryBigqueryTableSpec {
+    /**
+     * @return The table source type.
+     * 
+     */
     private @Nullable String tableSourceType;
+    /**
+     * @return Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable List<EntryBigqueryTableSpecTableSpec> tableSpecs;
+    /**
+     * @return Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable List<EntryBigqueryTableSpecViewSpec> viewSpecs;
 
     private EntryBigqueryTableSpec() {}
+    /**
+     * @return The table source type.
+     * 
+     */
     public Optional<String> tableSourceType() {
         return Optional.ofNullable(this.tableSourceType);
     }
+    /**
+     * @return Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
+     * Structure is documented below.
+     * 
+     */
     public List<EntryBigqueryTableSpecTableSpec> tableSpecs() {
         return this.tableSpecs == null ? List.of() : this.tableSpecs;
     }
+    /**
+     * @return Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
+     * Structure is documented below.
+     * 
+     */
     public List<EntryBigqueryTableSpecViewSpec> viewSpecs() {
         return this.viewSpecs == null ? List.of() : this.viewSpecs;
     }

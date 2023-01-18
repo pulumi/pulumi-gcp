@@ -125,7 +125,7 @@ class FeatureMembershipConfigmanagementBinauthz(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None):
         """
-        :param bool enabled: Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+        :param bool enabled: Whether binauthz is enabled in this cluster.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -134,7 +134,7 @@ class FeatureMembershipConfigmanagementBinauthz(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+        Whether binauthz is enabled in this cluster.
         """
         return pulumi.get(self, "enabled")
 
@@ -166,10 +166,8 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
                  prevent_drift: Optional[bool] = None,
                  source_format: Optional[str] = None):
         """
-        :param 'FeatureMembershipConfigmanagementConfigSyncGitArgs' git: -
-               (Optional) Structure is documented below.
-        :param 'FeatureMembershipConfigmanagementConfigSyncOciArgs' oci: -
-               (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+        :param 'FeatureMembershipConfigmanagementConfigSyncGitArgs' git: (Optional) Structure is documented below.
+        :param 'FeatureMembershipConfigmanagementConfigSyncOciArgs' oci: (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
         :param bool prevent_drift: Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
         :param str source_format: Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
         """
@@ -186,7 +184,6 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
     @pulumi.getter
     def git(self) -> Optional['outputs.FeatureMembershipConfigmanagementConfigSyncGit']:
         """
-        -
         (Optional) Structure is documented below.
         """
         return pulumi.get(self, "git")
@@ -195,7 +192,6 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
     @pulumi.getter
     def oci(self) -> Optional['outputs.FeatureMembershipConfigmanagementConfigSyncOci']:
         """
-        -
         (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
         """
         return pulumi.get(self, "oci")
@@ -260,14 +256,14 @@ class FeatureMembershipConfigmanagementConfigSyncGit(dict):
                  sync_rev: Optional[str] = None,
                  sync_wait_secs: Optional[str] = None):
         """
-        :param str gcp_service_account_email: The GCP Service Account Email used for auth when secret_type is gcpserviceaccount.
+        :param str gcp_service_account_email: The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
         :param str https_proxy: URL for the HTTPS proxy to be used when communicating with the Git repo.
-        :param str policy_dir: The absolute path of the directory that contains the local resources. Default: the root directory of the image.
-        :param str secret_type: Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
+        :param str policy_dir: The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
+        :param str secret_type: Type of secret configured for access to the Git repo.
         :param str sync_branch: The branch of the repository to sync from. Default: master.
-        :param str sync_repo: The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
+        :param str sync_repo: The URL of the Git repository to use as the source of truth.
         :param str sync_rev: Git revision (tag or hash) to check out. Default HEAD.
-        :param str sync_wait_secs: Period in seconds(int64 format) between consecutive syncs. Default: 15.
+        :param str sync_wait_secs: Period in seconds between consecutive syncs. Default: 15.
         """
         if gcp_service_account_email is not None:
             pulumi.set(__self__, "gcp_service_account_email", gcp_service_account_email)
@@ -290,7 +286,7 @@ class FeatureMembershipConfigmanagementConfigSyncGit(dict):
     @pulumi.getter(name="gcpServiceAccountEmail")
     def gcp_service_account_email(self) -> Optional[str]:
         """
-        The GCP Service Account Email used for auth when secret_type is gcpserviceaccount.
+        The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
         """
         return pulumi.get(self, "gcp_service_account_email")
 
@@ -306,7 +302,7 @@ class FeatureMembershipConfigmanagementConfigSyncGit(dict):
     @pulumi.getter(name="policyDir")
     def policy_dir(self) -> Optional[str]:
         """
-        The absolute path of the directory that contains the local resources. Default: the root directory of the image.
+        The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
         """
         return pulumi.get(self, "policy_dir")
 
@@ -314,7 +310,7 @@ class FeatureMembershipConfigmanagementConfigSyncGit(dict):
     @pulumi.getter(name="secretType")
     def secret_type(self) -> Optional[str]:
         """
-        Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
+        Type of secret configured for access to the Git repo.
         """
         return pulumi.get(self, "secret_type")
 
@@ -330,7 +326,7 @@ class FeatureMembershipConfigmanagementConfigSyncGit(dict):
     @pulumi.getter(name="syncRepo")
     def sync_repo(self) -> Optional[str]:
         """
-        The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
+        The URL of the Git repository to use as the source of truth.
         """
         return pulumi.get(self, "sync_repo")
 
@@ -346,7 +342,7 @@ class FeatureMembershipConfigmanagementConfigSyncGit(dict):
     @pulumi.getter(name="syncWaitSecs")
     def sync_wait_secs(self) -> Optional[str]:
         """
-        Period in seconds(int64 format) between consecutive syncs. Default: 15.
+        Period in seconds between consecutive syncs. Default: 15.
         """
         return pulumi.get(self, "sync_wait_secs")
 
@@ -471,7 +467,7 @@ class FeatureMembershipConfigmanagementHierarchyController(dict):
         """
         :param bool enable_hierarchical_resource_quota: Whether hierarchical resource quota is enabled in this cluster.
         :param bool enable_pod_tree_labels: Whether pod tree labels are enabled in this cluster.
-        :param bool enabled: Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+        :param bool enabled: Whether Hierarchy Controller is enabled in this cluster.
         """
         if enable_hierarchical_resource_quota is not None:
             pulumi.set(__self__, "enable_hierarchical_resource_quota", enable_hierarchical_resource_quota)
@@ -500,7 +496,7 @@ class FeatureMembershipConfigmanagementHierarchyController(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+        Whether Hierarchy Controller is enabled in this cluster.
         """
         return pulumi.get(self, "enabled")
 
@@ -822,6 +818,9 @@ class FeatureStateState(dict):
                  code: Optional[str] = None,
                  description: Optional[str] = None,
                  update_time: Optional[str] = None):
+        """
+        :param str update_time: Output only. When the Feature resource was last updated.
+        """
         if code is not None:
             pulumi.set(__self__, "code", code)
         if description is not None:
@@ -842,6 +841,9 @@ class FeatureStateState(dict):
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[str]:
+        """
+        Output only. When the Feature resource was last updated.
+        """
         return pulumi.get(self, "update_time")
 
 

@@ -40,7 +40,7 @@ public final class InstanceBootDiskInitializeParams {
      */
     private @Nullable Integer size;
     /**
-     * @return The type of reservation from which this instance can consume resources.
+     * @return The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
      * 
      */
     private @Nullable String type;
@@ -78,7 +78,7 @@ public final class InstanceBootDiskInitializeParams {
         return Optional.ofNullable(this.size);
     }
     /**
-     * @return The type of reservation from which this instance can consume resources.
+     * @return The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
      * 
      */
     public Optional<String> type() {

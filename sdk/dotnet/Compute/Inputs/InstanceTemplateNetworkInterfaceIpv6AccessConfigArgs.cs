@@ -19,7 +19,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? ExternalIpv6PrefixLength { get; set; }
 
         /// <summary>
-        /// The service-level to be provided for IPv6 traffic when the
+        /// The [networking tier][network-tier] used for configuring
+        /// this instance template. This field can take the following values: PREMIUM,
+        /// STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
         /// subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
         /// </summary>
         [Input("networkTier", required: true)]

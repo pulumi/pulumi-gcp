@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     public sealed class FeatureMembershipConfigmanagementBinauthz
     {
         /// <summary>
-        /// Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
+        /// Whether binauthz is enabled in this cluster.
         /// </summary>
         public readonly bool? Enabled;
 

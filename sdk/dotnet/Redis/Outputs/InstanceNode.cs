@@ -14,9 +14,12 @@ namespace Pulumi.Gcp.Redis.Outputs
     public sealed class InstanceNode
     {
         /// <summary>
-        /// an identifier for the resource with format `projects/{{project}}/locations/{{region}}/instances/{{name}}`
+        /// Node identifying string. e.g. 'node-0', 'node-1'
         /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// Location of the node.
+        /// </summary>
         public readonly string? Zone;
 
         [OutputConstructor]

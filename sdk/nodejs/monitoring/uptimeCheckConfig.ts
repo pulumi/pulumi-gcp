@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *         content: "\"example\"",
  *         jsonPathMatcher: {
  *             jsonMatcher: "EXACT_MATCH",
- *             jsonPath: "$.path",
+ *             jsonPath: `$.path`,
  *         },
  *         matcher: "MATCHES_JSON_PATH",
  *     }],
@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  *     monitoredResource: {
  *         labels: {
  *             host: "192.168.1.1",
- *             project_id: "my-project-name",
+ *             projectId: "my-project-name",
  *         },
  *         type: "uptime_url",
  *     },
@@ -59,13 +59,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const statusCode = new gcp.monitoring.UptimeCheckConfig("status_code", {
+ * const statusCode = new gcp.monitoring.UptimeCheckConfig("statusCode", {
  *     checkerType: "STATIC_IP_CHECKERS",
  *     contentMatchers: [{
  *         content: "\"example\"",
  *         jsonPathMatcher: {
  *             jsonMatcher: "EXACT_MATCH",
- *             jsonPath: "$.path",
+ *             jsonPath: `$.path`,
  *         },
  *         matcher: "MATCHES_JSON_PATH",
  *     }],
@@ -91,7 +91,7 @@ import * as utilities from "../utilities";
  *     monitoredResource: {
  *         labels: {
  *             host: "192.168.1.1",
- *             project_id: "my-project-name",
+ *             projectId: "my-project-name",
  *         },
  *         type: "uptime_url",
  *     },
@@ -109,7 +109,7 @@ import * as utilities from "../utilities";
  *         content: "example",
  *         jsonPathMatcher: {
  *             jsonMatcher: "REGEX_MATCH",
- *             jsonPath: "$.path",
+ *             jsonPath: `$.path`,
  *         },
  *         matcher: "MATCHES_JSON_PATH",
  *     }],
@@ -123,7 +123,7 @@ import * as utilities from "../utilities";
  *     monitoredResource: {
  *         labels: {
  *             host: "192.168.1.1",
- *             project_id: "my-project-name",
+ *             projectId: "my-project-name",
  *         },
  *         type: "uptime_url",
  *     },
@@ -214,8 +214,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
      */
     public readonly monitoredResource!: pulumi.Output<outputs.monitoring.UptimeCheckConfigMonitoredResource | undefined>;
     /**
-     * A unique resource name for this UptimeCheckConfig. The format is
-     * projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+     * A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -332,8 +331,7 @@ export interface UptimeCheckConfigState {
      */
     monitoredResource?: pulumi.Input<inputs.monitoring.UptimeCheckConfigMonitoredResource>;
     /**
-     * A unique resource name for this UptimeCheckConfig. The format is
-     * projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+     * A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
      */
     name?: pulumi.Input<string>;
     /**

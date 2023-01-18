@@ -120,6 +120,7 @@ public class HmacKey extends com.pulumi.resources.CustomResource {
     }
     /**
      * HMAC secret key material.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     @Export(name="secret", type=String.class, parameters={})
@@ -127,6 +128,7 @@ public class HmacKey extends com.pulumi.resources.CustomResource {
 
     /**
      * @return HMAC secret key material.
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Output<String> secret() {

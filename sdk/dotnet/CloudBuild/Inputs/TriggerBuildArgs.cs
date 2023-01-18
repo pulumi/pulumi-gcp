@@ -31,9 +31,9 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
 
         /// <summary>
         /// A list of images to be pushed upon the successful completion of all build steps.
-        /// The images will be pushed using the builder service account's credentials.
+        /// The images are pushed using the builder service account's credentials.
         /// The digests of the pushed images will be stored in the Build resource's results field.
-        /// If any of the images fail to be pushed, the build is marked FAILURE.
+        /// If any of the images fail to be pushed, the build status is marked FAILURE.
         /// </summary>
         public InputList<string> Images
         {
@@ -102,7 +102,7 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         private InputMap<string>? _substitutions;
 
         /// <summary>
-        /// Substitutions to use in a triggered build. Should only be used with triggers.run
+        /// Substitutions data for Build resource.
         /// </summary>
         public InputMap<string> Substitutions
         {
@@ -123,10 +123,11 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         }
 
         /// <summary>
-        /// Time limit for executing this build step. If not defined,
-        /// the step has no
-        /// time limit and will be allowed to continue to run until either it
-        /// completes or the build itself times out.
+        /// Amount of time that this build should be allowed to run, to second granularity.
+        /// If this amount of time elapses, work on the build will cease and the build status will be TIMEOUT.
+        /// This timeout must be equal to or greater than the sum of the timeouts for build steps within the build.
+        /// The expected format is the number of seconds followed by s.
+        /// Default time is ten minutes (600s).
         /// </summary>
         [Input("timeout")]
         public Input<string>? Timeout { get; set; }

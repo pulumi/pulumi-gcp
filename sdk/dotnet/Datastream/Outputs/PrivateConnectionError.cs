@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Datastream.Outputs
     [OutputType]
     public sealed class PrivateConnectionError
     {
+        /// <summary>
+        /// A list of messages that carry the error details.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Details;
+        /// <summary>
+        /// A message containing more information about the error that occurred.
+        /// </summary>
         public readonly string? Message;
 
         [OutputConstructor]

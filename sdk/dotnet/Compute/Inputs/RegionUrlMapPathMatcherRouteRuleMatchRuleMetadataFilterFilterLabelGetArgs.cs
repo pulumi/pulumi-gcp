@@ -13,8 +13,8 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the query parameter to match. The query parameter must exist in the
-        /// request, in the absence of which the request match fails.
+        /// Name of metadata label. The name can have a maximum length of 1024 characters
+        /// and must be at least 1 character long.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

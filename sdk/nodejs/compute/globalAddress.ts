@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultGlobalAddress = new gcp.compute.GlobalAddress("default", {});
+ * const _default = new gcp.compute.GlobalAddress("default", {});
  * ```
  * ### Global Address Private Services Connect
  *

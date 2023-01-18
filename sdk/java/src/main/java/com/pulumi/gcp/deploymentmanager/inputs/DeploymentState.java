@@ -123,14 +123,16 @@ public final class DeploymentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. URL of the manifest representing the last manifest that was successfully deployed.
+     * Output only. URL of the manifest representing the last manifest that
+     * was successfully deployed.
      * 
      */
     @Import(name="manifest")
     private @Nullable Output<String> manifest;
 
     /**
-     * @return Output only. URL of the manifest representing the last manifest that was successfully deployed.
+     * @return Output only. URL of the manifest representing the last manifest that
+     * was successfully deployed.
      * 
      */
     public Optional<Output<String>> manifest() {
@@ -138,16 +140,14 @@ public final class DeploymentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the template to import, as declared in the YAML
-     * configuration.
+     * Unique name for the deployment
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the template to import, as declared in the YAML
-     * configuration.
+     * @return Unique name for the deployment
      * 
      */
     public Optional<Output<String>> name() {
@@ -413,7 +413,8 @@ public final class DeploymentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param manifest Output only. URL of the manifest representing the last manifest that was successfully deployed.
+         * @param manifest Output only. URL of the manifest representing the last manifest that
+         * was successfully deployed.
          * 
          * @return builder
          * 
@@ -424,7 +425,8 @@ public final class DeploymentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param manifest Output only. URL of the manifest representing the last manifest that was successfully deployed.
+         * @param manifest Output only. URL of the manifest representing the last manifest that
+         * was successfully deployed.
          * 
          * @return builder
          * 
@@ -434,8 +436,7 @@ public final class DeploymentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the template to import, as declared in the YAML
-         * configuration.
+         * @param name Unique name for the deployment
          * 
          * @return builder
          * 
@@ -446,8 +447,7 @@ public final class DeploymentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the template to import, as declared in the YAML
-         * configuration.
+         * @param name Unique name for the deployment
          * 
          * @return builder
          * 

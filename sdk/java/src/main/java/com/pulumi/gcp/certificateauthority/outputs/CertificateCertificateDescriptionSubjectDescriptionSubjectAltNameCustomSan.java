@@ -20,6 +20,11 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
      * 
      */
     private @Nullable Boolean critical;
+    /**
+     * @return Required. Describes how some of the technical fields in a certificate should be populated.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId> obectIds;
     /**
      * @return The value of this X.509 extension. A base64-encoded string.
@@ -36,6 +41,11 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
     public Optional<Boolean> critical() {
         return Optional.ofNullable(this.critical);
     }
+    /**
+     * @return Required. Describes how some of the technical fields in a certificate should be populated.
+     * Structure is documented below.
+     * 
+     */
     public List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId> obectIds() {
         return this.obectIds == null ? List.of() : this.obectIds;
     }

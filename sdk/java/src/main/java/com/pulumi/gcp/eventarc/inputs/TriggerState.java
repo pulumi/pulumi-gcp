@@ -81,16 +81,14 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create
-     * requests to ensure the client has an up-to-date value before proceeding.
+     * Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
     @Import(name="etag")
     private @Nullable Output<String> etag;
 
     /**
-     * @return Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create
-     * requests to ensure the client has an up-to-date value before proceeding.
+     * @return Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
     public Optional<Output<String>> etag() {
@@ -113,14 +111,14 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+     * The location for the resource
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+     * @return The location for the resource
      * 
      */
     public Optional<Output<String>> location() {
@@ -203,16 +201,14 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain
-     * unchanged until the resource is deleted.
+     * Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      * 
      */
     @Import(name="uid")
     private @Nullable Output<String> uid;
 
     /**
-     * @return Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain
-     * unchanged until the resource is deleted.
+     * @return Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      * 
      */
     public Optional<Output<String>> uid() {
@@ -356,8 +352,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etag Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create
-         * requests to ensure the client has an up-to-date value before proceeding.
+         * @param etag Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
          * 
          * @return builder
          * 
@@ -368,8 +363,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etag Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create
-         * requests to ensure the client has an up-to-date value before proceeding.
+         * @param etag Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
          * 
          * @return builder
          * 
@@ -400,7 +394,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+         * @param location The location for the resource
          * 
          * @return builder
          * 
@@ -411,7 +405,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location Required. The name of the Google Compute Engine in which the cluster resides, which can either be compute zone (for example, us-central1-a) for the zonal clusters or region (for example, us-central1) for regional clusters.
+         * @param location The location for the resource
          * 
          * @return builder
          * 
@@ -546,8 +540,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uid Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain
-         * unchanged until the resource is deleted.
+         * @param uid Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
          * 
          * @return builder
          * 
@@ -558,8 +551,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uid Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain
-         * unchanged until the resource is deleted.
+         * @param uid Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
          * 
          * @return builder
          * 

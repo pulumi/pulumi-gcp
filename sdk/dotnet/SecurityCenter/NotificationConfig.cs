@@ -80,7 +80,7 @@ namespace Pulumi.Gcp.SecurityCenter
 
         /// <summary>
         /// The resource name of this notification config, in the format
-        /// 'organizations/{{organization}}/notificationConfigs/{{config_id}}'.
+        /// `organizations/{{organization}}/notificationConfigs/{{config_id}}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -100,7 +100,8 @@ namespace Pulumi.Gcp.SecurityCenter
         public Output<string> PubsubTopic { get; private set; } = null!;
 
         /// <summary>
-        /// The service account that needs "pubsub.topics.publish" permission to publish to the Pub/Sub topic.
+        /// The service account that needs "pubsub.topics.publish" permission to
+        /// publish to the Pub/Sub topic.
         /// </summary>
         [Output("serviceAccount")]
         public Output<string> ServiceAccount { get; private set; } = null!;
@@ -213,7 +214,7 @@ namespace Pulumi.Gcp.SecurityCenter
 
         /// <summary>
         /// The resource name of this notification config, in the format
-        /// 'organizations/{{organization}}/notificationConfigs/{{config_id}}'.
+        /// `organizations/{{organization}}/notificationConfigs/{{config_id}}`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -233,7 +234,8 @@ namespace Pulumi.Gcp.SecurityCenter
         public Input<string>? PubsubTopic { get; set; }
 
         /// <summary>
-        /// The service account that needs "pubsub.topics.publish" permission to publish to the Pub/Sub topic.
+        /// The service account that needs "pubsub.topics.publish" permission to
+        /// publish to the Pub/Sub topic.
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }

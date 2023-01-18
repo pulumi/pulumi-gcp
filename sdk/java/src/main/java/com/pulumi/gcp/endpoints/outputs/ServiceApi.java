@@ -13,21 +13,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceApi {
+    /**
+     * @return A list of Method objects; structure is documented below.
+     * 
+     */
     private @Nullable List<ServiceApiMethod> methods;
+    /**
+     * @return The simple name of the endpoint as described in the config.
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+     * 
+     */
     private @Nullable String syntax;
+    /**
+     * @return A version string for this api. If specified, will have the form major-version.minor-version, e.g. `1.10`.
+     * 
+     */
     private @Nullable String version;
 
     private ServiceApi() {}
+    /**
+     * @return A list of Method objects; structure is documented below.
+     * 
+     */
     public List<ServiceApiMethod> methods() {
         return this.methods == null ? List.of() : this.methods;
     }
+    /**
+     * @return The simple name of the endpoint as described in the config.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
+     * 
+     */
     public Optional<String> syntax() {
         return Optional.ofNullable(this.syntax);
     }
+    /**
+     * @return A version string for this api. If specified, will have the form major-version.minor-version, e.g. `1.10`.
+     * 
+     */
     public Optional<String> version() {
         return Optional.ofNullable(this.version);
     }

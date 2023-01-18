@@ -361,10 +361,16 @@ func (o CryptoKeyIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type CryptoKeyVersionAttestation struct {
-	CertChains                     *CryptoKeyVersionAttestationCertChains                     `pulumi:"certChains"`
-	Content                        *string                                                    `pulumi:"content"`
+	// The certificate chains needed to validate the attestation
+	// Structure is documented below.
+	CertChains *CryptoKeyVersionAttestationCertChains `pulumi:"certChains"`
+	// The attestation data provided by the HSM when the key operation was performed.
+	Content *string `pulumi:"content"`
+	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+	// Structure is documented below.
 	ExternalProtectionLevelOptions *CryptoKeyVersionAttestationExternalProtectionLevelOptions `pulumi:"externalProtectionLevelOptions"`
-	Format                         *string                                                    `pulumi:"format"`
+	// The format of the attestation data.
+	Format *string `pulumi:"format"`
 }
 
 // CryptoKeyVersionAttestationInput is an input type that accepts CryptoKeyVersionAttestationArgs and CryptoKeyVersionAttestationOutput values.
@@ -379,10 +385,16 @@ type CryptoKeyVersionAttestationInput interface {
 }
 
 type CryptoKeyVersionAttestationArgs struct {
-	CertChains                     CryptoKeyVersionAttestationCertChainsPtrInput                     `pulumi:"certChains"`
-	Content                        pulumi.StringPtrInput                                             `pulumi:"content"`
+	// The certificate chains needed to validate the attestation
+	// Structure is documented below.
+	CertChains CryptoKeyVersionAttestationCertChainsPtrInput `pulumi:"certChains"`
+	// The attestation data provided by the HSM when the key operation was performed.
+	Content pulumi.StringPtrInput `pulumi:"content"`
+	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+	// Structure is documented below.
 	ExternalProtectionLevelOptions CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrInput `pulumi:"externalProtectionLevelOptions"`
-	Format                         pulumi.StringPtrInput                                             `pulumi:"format"`
+	// The format of the attestation data.
+	Format pulumi.StringPtrInput `pulumi:"format"`
 }
 
 func (CryptoKeyVersionAttestationArgs) ElementType() reflect.Type {
@@ -436,20 +448,26 @@ func (o CryptoKeyVersionAttestationOutput) ToCryptoKeyVersionAttestationOutputWi
 	return o
 }
 
+// The certificate chains needed to validate the attestation
+// Structure is documented below.
 func (o CryptoKeyVersionAttestationOutput) CertChains() CryptoKeyVersionAttestationCertChainsPtrOutput {
 	return o.ApplyT(func(v CryptoKeyVersionAttestation) *CryptoKeyVersionAttestationCertChains { return v.CertChains }).(CryptoKeyVersionAttestationCertChainsPtrOutput)
 }
 
+// The attestation data provided by the HSM when the key operation was performed.
 func (o CryptoKeyVersionAttestationOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CryptoKeyVersionAttestation) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
+// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+// Structure is documented below.
 func (o CryptoKeyVersionAttestationOutput) ExternalProtectionLevelOptions() CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput {
 	return o.ApplyT(func(v CryptoKeyVersionAttestation) *CryptoKeyVersionAttestationExternalProtectionLevelOptions {
 		return v.ExternalProtectionLevelOptions
 	}).(CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput)
 }
 
+// The format of the attestation data.
 func (o CryptoKeyVersionAttestationOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CryptoKeyVersionAttestation) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
@@ -475,8 +493,11 @@ func (o CryptoKeyVersionAttestationArrayOutput) Index(i pulumi.IntInput) CryptoK
 }
 
 type CryptoKeyVersionAttestationCertChains struct {
-	CaviumCerts          *string `pulumi:"caviumCerts"`
-	GoogleCardCerts      *string `pulumi:"googleCardCerts"`
+	// Cavium certificate chain corresponding to the attestation.
+	CaviumCerts *string `pulumi:"caviumCerts"`
+	// Google card certificate chain corresponding to the attestation.
+	GoogleCardCerts *string `pulumi:"googleCardCerts"`
+	// Google partition certificate chain corresponding to the attestation.
 	GooglePartitionCerts *string `pulumi:"googlePartitionCerts"`
 }
 
@@ -492,8 +513,11 @@ type CryptoKeyVersionAttestationCertChainsInput interface {
 }
 
 type CryptoKeyVersionAttestationCertChainsArgs struct {
-	CaviumCerts          pulumi.StringPtrInput `pulumi:"caviumCerts"`
-	GoogleCardCerts      pulumi.StringPtrInput `pulumi:"googleCardCerts"`
+	// Cavium certificate chain corresponding to the attestation.
+	CaviumCerts pulumi.StringPtrInput `pulumi:"caviumCerts"`
+	// Google card certificate chain corresponding to the attestation.
+	GoogleCardCerts pulumi.StringPtrInput `pulumi:"googleCardCerts"`
+	// Google partition certificate chain corresponding to the attestation.
 	GooglePartitionCerts pulumi.StringPtrInput `pulumi:"googlePartitionCerts"`
 }
 
@@ -574,14 +598,17 @@ func (o CryptoKeyVersionAttestationCertChainsOutput) ToCryptoKeyVersionAttestati
 	}).(CryptoKeyVersionAttestationCertChainsPtrOutput)
 }
 
+// Cavium certificate chain corresponding to the attestation.
 func (o CryptoKeyVersionAttestationCertChainsOutput) CaviumCerts() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CryptoKeyVersionAttestationCertChains) *string { return v.CaviumCerts }).(pulumi.StringPtrOutput)
 }
 
+// Google card certificate chain corresponding to the attestation.
 func (o CryptoKeyVersionAttestationCertChainsOutput) GoogleCardCerts() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CryptoKeyVersionAttestationCertChains) *string { return v.GoogleCardCerts }).(pulumi.StringPtrOutput)
 }
 
+// Google partition certificate chain corresponding to the attestation.
 func (o CryptoKeyVersionAttestationCertChainsOutput) GooglePartitionCerts() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CryptoKeyVersionAttestationCertChains) *string { return v.GooglePartitionCerts }).(pulumi.StringPtrOutput)
 }
@@ -610,6 +637,7 @@ func (o CryptoKeyVersionAttestationCertChainsPtrOutput) Elem() CryptoKeyVersionA
 	}).(CryptoKeyVersionAttestationCertChainsOutput)
 }
 
+// Cavium certificate chain corresponding to the attestation.
 func (o CryptoKeyVersionAttestationCertChainsPtrOutput) CaviumCerts() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CryptoKeyVersionAttestationCertChains) *string {
 		if v == nil {
@@ -619,6 +647,7 @@ func (o CryptoKeyVersionAttestationCertChainsPtrOutput) CaviumCerts() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Google card certificate chain corresponding to the attestation.
 func (o CryptoKeyVersionAttestationCertChainsPtrOutput) GoogleCardCerts() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CryptoKeyVersionAttestationCertChains) *string {
 		if v == nil {
@@ -628,6 +657,7 @@ func (o CryptoKeyVersionAttestationCertChainsPtrOutput) GoogleCardCerts() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// Google partition certificate chain corresponding to the attestation.
 func (o CryptoKeyVersionAttestationCertChainsPtrOutput) GooglePartitionCerts() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CryptoKeyVersionAttestationCertChains) *string {
 		if v == nil {
@@ -638,8 +668,10 @@ func (o CryptoKeyVersionAttestationCertChainsPtrOutput) GooglePartitionCerts() p
 }
 
 type CryptoKeyVersionAttestationExternalProtectionLevelOptions struct {
+	// The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
 	EkmConnectionKeyPath *string `pulumi:"ekmConnectionKeyPath"`
-	ExternalKeyUri       *string `pulumi:"externalKeyUri"`
+	// The URI for an external resource that this CryptoKeyVersion represents.
+	ExternalKeyUri *string `pulumi:"externalKeyUri"`
 }
 
 // CryptoKeyVersionAttestationExternalProtectionLevelOptionsInput is an input type that accepts CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs and CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput values.
@@ -654,8 +686,10 @@ type CryptoKeyVersionAttestationExternalProtectionLevelOptionsInput interface {
 }
 
 type CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs struct {
+	// The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
 	EkmConnectionKeyPath pulumi.StringPtrInput `pulumi:"ekmConnectionKeyPath"`
-	ExternalKeyUri       pulumi.StringPtrInput `pulumi:"externalKeyUri"`
+	// The URI for an external resource that this CryptoKeyVersion represents.
+	ExternalKeyUri pulumi.StringPtrInput `pulumi:"externalKeyUri"`
 }
 
 func (CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs) ElementType() reflect.Type {
@@ -735,12 +769,14 @@ func (o CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput) ToCrypt
 	}).(CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput)
 }
 
+// The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
 func (o CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput) EkmConnectionKeyPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CryptoKeyVersionAttestationExternalProtectionLevelOptions) *string {
 		return v.EkmConnectionKeyPath
 	}).(pulumi.StringPtrOutput)
 }
 
+// The URI for an external resource that this CryptoKeyVersion represents.
 func (o CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput) ExternalKeyUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CryptoKeyVersionAttestationExternalProtectionLevelOptions) *string { return v.ExternalKeyUri }).(pulumi.StringPtrOutput)
 }
@@ -769,6 +805,7 @@ func (o CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput) Elem
 	}).(CryptoKeyVersionAttestationExternalProtectionLevelOptionsOutput)
 }
 
+// The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
 func (o CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput) EkmConnectionKeyPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CryptoKeyVersionAttestationExternalProtectionLevelOptions) *string {
 		if v == nil {
@@ -778,6 +815,7 @@ func (o CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput) EkmC
 	}).(pulumi.StringPtrOutput)
 }
 
+// The URI for an external resource that this CryptoKeyVersion represents.
 func (o CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput) ExternalKeyUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CryptoKeyVersionAttestationExternalProtectionLevelOptions) *string {
 		if v == nil {
@@ -1298,8 +1336,11 @@ func (o KeyRingIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type KeyRingImportJobAttestation struct {
+	// The attestation data provided by the HSM when the key operation was performed.
+	// A base64-encoded string.
 	Content *string `pulumi:"content"`
-	Format  *string `pulumi:"format"`
+	// The format of the attestation data.
+	Format *string `pulumi:"format"`
 }
 
 // KeyRingImportJobAttestationInput is an input type that accepts KeyRingImportJobAttestationArgs and KeyRingImportJobAttestationOutput values.
@@ -1314,8 +1355,11 @@ type KeyRingImportJobAttestationInput interface {
 }
 
 type KeyRingImportJobAttestationArgs struct {
+	// The attestation data provided by the HSM when the key operation was performed.
+	// A base64-encoded string.
 	Content pulumi.StringPtrInput `pulumi:"content"`
-	Format  pulumi.StringPtrInput `pulumi:"format"`
+	// The format of the attestation data.
+	Format pulumi.StringPtrInput `pulumi:"format"`
 }
 
 func (KeyRingImportJobAttestationArgs) ElementType() reflect.Type {
@@ -1369,10 +1413,13 @@ func (o KeyRingImportJobAttestationOutput) ToKeyRingImportJobAttestationOutputWi
 	return o
 }
 
+// The attestation data provided by the HSM when the key operation was performed.
+// A base64-encoded string.
 func (o KeyRingImportJobAttestationOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyRingImportJobAttestation) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
+// The format of the attestation data.
 func (o KeyRingImportJobAttestationOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyRingImportJobAttestation) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
@@ -1398,6 +1445,8 @@ func (o KeyRingImportJobAttestationArrayOutput) Index(i pulumi.IntInput) KeyRing
 }
 
 type KeyRingImportJobPublicKey struct {
+	// The public key, encoded in PEM format. For more information, see the RFC 7468 sections
+	// for General Considerations and Textual Encoding of Subject Public Key Info.
 	Pem *string `pulumi:"pem"`
 }
 
@@ -1413,6 +1462,8 @@ type KeyRingImportJobPublicKeyInput interface {
 }
 
 type KeyRingImportJobPublicKeyArgs struct {
+	// The public key, encoded in PEM format. For more information, see the RFC 7468 sections
+	// for General Considerations and Textual Encoding of Subject Public Key Info.
 	Pem pulumi.StringPtrInput `pulumi:"pem"`
 }
 
@@ -1467,6 +1518,8 @@ func (o KeyRingImportJobPublicKeyOutput) ToKeyRingImportJobPublicKeyOutputWithCo
 	return o
 }
 
+// The public key, encoded in PEM format. For more information, see the RFC 7468 sections
+// for General Considerations and Textual Encoding of Subject Public Key Info.
 func (o KeyRingImportJobPublicKeyOutput) Pem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyRingImportJobPublicKey) *string { return v.Pem }).(pulumi.StringPtrOutput)
 }

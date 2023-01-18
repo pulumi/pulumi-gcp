@@ -37,14 +37,22 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The name of the image.
+     * , `family` or `filter` - (Required) The name of a specific image or a family.
+     * Exactly one of `name`, `family` or `filter` must be specified. If `name` is specified, it will fetch
+     * the corresponding image. If `family` is specified, it will return the latest image
+     * that is part of an image family and is not deprecated. If you specify `filter`, your
+     * filter must return exactly one image. Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
      * 
      */
     @Import(name="name")
     private @Nullable String name;
 
     /**
-     * @return The name of the image.
+     * @return , `family` or `filter` - (Required) The name of a specific image or a family.
+     * Exactly one of `name`, `family` or `filter` must be specified. If `name` is specified, it will fetch
+     * the corresponding image. If `family` is specified, it will return the latest image
+     * that is part of an image family and is not deprecated. If you specify `filter`, your
+     * filter must return exactly one image. Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
      * 
      */
     public Optional<String> name() {
@@ -114,7 +122,11 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name The name of the image.
+         * @param name , `family` or `filter` - (Required) The name of a specific image or a family.
+         * Exactly one of `name`, `family` or `filter` must be specified. If `name` is specified, it will fetch
+         * the corresponding image. If `family` is specified, it will return the latest image
+         * that is part of an image family and is not deprecated. If you specify `filter`, your
+         * filter must return exactly one image. Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
          * 
          * @return builder
          * 

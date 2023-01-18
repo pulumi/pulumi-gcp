@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetInstanceShieldedInstanceConfigResult
     {
+        /// <summary>
+        /// - Whether integrity monitoring is enabled for the instance.
+        /// </summary>
         public readonly bool EnableIntegrityMonitoring;
+        /// <summary>
+        /// - Whether secure boot is enabled for the instance.
+        /// </summary>
         public readonly bool EnableSecureBoot;
+        /// <summary>
+        /// - Whether the instance uses vTPM.
+        /// </summary>
         public readonly bool EnableVtpm;
 
         [OutputConstructor]

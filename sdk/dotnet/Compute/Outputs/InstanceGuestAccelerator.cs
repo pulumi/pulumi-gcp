@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly int Count;
         /// <summary>
-        /// The type of reservation from which this instance can consume resources.
+        /// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         /// </summary>
         public readonly string Type;
 

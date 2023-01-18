@@ -16,9 +16,19 @@ public final class CertificateCertificateDescriptionConfigValueKeyUsageUnknownEx
 
     public static final CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArgs Empty = new CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArgs();
 
+    /**
+     * Required. Describes how some of the technical fields in a certificate should be populated.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="obectIds")
     private @Nullable Output<List<CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArgs>> obectIds;
 
+    /**
+     * @return Required. Describes how some of the technical fields in a certificate should be populated.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<List<CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArgs>>> obectIds() {
         return Optional.ofNullable(this.obectIds);
     }
@@ -47,15 +57,36 @@ public final class CertificateCertificateDescriptionConfigValueKeyUsageUnknownEx
             $ = new CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param obectIds Required. Describes how some of the technical fields in a certificate should be populated.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder obectIds(@Nullable Output<List<CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArgs>> obectIds) {
             $.obectIds = obectIds;
             return this;
         }
 
+        /**
+         * @param obectIds Required. Describes how some of the technical fields in a certificate should be populated.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder obectIds(List<CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArgs> obectIds) {
             return obectIds(Output.of(obectIds));
         }
 
+        /**
+         * @param obectIds Required. Describes how some of the technical fields in a certificate should be populated.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder obectIds(CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArgs... obectIds) {
             return obectIds(List.of(obectIds));
         }

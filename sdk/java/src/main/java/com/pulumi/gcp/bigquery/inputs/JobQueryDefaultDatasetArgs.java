@@ -16,14 +16,16 @@ public final class JobQueryDefaultDatasetArgs extends com.pulumi.resources.Resou
     public static final JobQueryDefaultDatasetArgs Empty = new JobQueryDefaultDatasetArgs();
 
     /**
-     * The ID of the dataset containing this model.
+     * The dataset. Can be specified `{{dataset_id}}` if `project_id` is also set,
+     * or of the form `projects/{{project}}/datasets/{{dataset_id}}` if not.
      * 
      */
     @Import(name="datasetId", required=true)
     private Output<String> datasetId;
 
     /**
-     * @return The ID of the dataset containing this model.
+     * @return The dataset. Can be specified `{{dataset_id}}` if `project_id` is also set,
+     * or of the form `projects/{{project}}/datasets/{{dataset_id}}` if not.
      * 
      */
     public Output<String> datasetId() {
@@ -31,14 +33,14 @@ public final class JobQueryDefaultDatasetArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The ID of the project containing this model.
+     * The ID of the project containing this table.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return The ID of the project containing this model.
+     * @return The ID of the project containing this table.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -71,7 +73,8 @@ public final class JobQueryDefaultDatasetArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param datasetId The ID of the dataset containing this model.
+         * @param datasetId The dataset. Can be specified `{{dataset_id}}` if `project_id` is also set,
+         * or of the form `projects/{{project}}/datasets/{{dataset_id}}` if not.
          * 
          * @return builder
          * 
@@ -82,7 +85,8 @@ public final class JobQueryDefaultDatasetArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param datasetId The ID of the dataset containing this model.
+         * @param datasetId The dataset. Can be specified `{{dataset_id}}` if `project_id` is also set,
+         * or of the form `projects/{{project}}/datasets/{{dataset_id}}` if not.
          * 
          * @return builder
          * 
@@ -92,7 +96,7 @@ public final class JobQueryDefaultDatasetArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param projectId The ID of the project containing this model.
+         * @param projectId The ID of the project containing this table.
          * 
          * @return builder
          * 
@@ -103,7 +107,7 @@ public final class JobQueryDefaultDatasetArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param projectId The ID of the project containing this model.
+         * @param projectId The ID of the project containing this table.
          * 
          * @return builder
          * 

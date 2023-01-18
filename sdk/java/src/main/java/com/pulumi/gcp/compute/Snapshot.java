@@ -227,14 +227,16 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
         return this.diskSizeGb;
     }
     /**
-     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * The fingerprint used for optimistic locking of this resource. Used
+     * internally during updates.
      * 
      */
     @Export(name="labelFingerprint", type=String.class, parameters={})
     private Output<String> labelFingerprint;
 
     /**
-     * @return The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * @return The fingerprint used for optimistic locking of this resource. Used
+     * internally during updates.
      * 
      */
     public Output<String> labelFingerprint() {
@@ -255,18 +257,20 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
-     * A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses
-     * attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied
-     * encryption key.
+     * A list of public visible licenses that apply to this snapshot. This
+     * can be because the original image had licenses attached (such as a
+     * Windows image).  snapshotEncryptionKey nested object Encrypts the
+     * snapshot using a customer-supplied encryption key.
      * 
      */
     @Export(name="licenses", type=List.class, parameters={String.class})
     private Output<List<String>> licenses;
 
     /**
-     * @return A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses
-     * attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied
-     * encryption key.
+     * @return A list of public visible licenses that apply to this snapshot. This
+     * can be because the original image had licenses attached (such as a
+     * Windows image).  snapshotEncryptionKey nested object Encrypts the
+     * snapshot using a customer-supplied encryption key.
      * 
      */
     public Output<List<String>> licenses() {
@@ -411,7 +415,8 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sourceDiskEncryptionKey);
     }
     /**
-     * A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
+     * A size of the storage used by the snapshot. As snapshots share
+     * storage, this number is expected to change with snapshot
      * creation/deletion.
      * 
      */
@@ -419,7 +424,8 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
     private Output<Integer> storageBytes;
 
     /**
-     * @return A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
+     * @return A size of the storage used by the snapshot. As snapshots share
+     * storage, this number is expected to change with snapshot
      * creation/deletion.
      * 
      */

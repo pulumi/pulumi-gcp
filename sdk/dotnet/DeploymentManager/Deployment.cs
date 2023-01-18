@@ -121,14 +121,14 @@ namespace Pulumi.Gcp.DeploymentManager
         public Output<ImmutableArray<Outputs.DeploymentLabel>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. URL of the manifest representing the last manifest that was successfully deployed.
+        /// Output only. URL of the manifest representing the last manifest that
+        /// was successfully deployed.
         /// </summary>
         [Output("manifest")]
         public Output<string> Manifest { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the template to import, as declared in the YAML
-        /// configuration.
+        /// Unique name for the deployment
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -258,8 +258,7 @@ namespace Pulumi.Gcp.DeploymentManager
         }
 
         /// <summary>
-        /// The name of the template to import, as declared in the YAML
-        /// configuration.
+        /// Unique name for the deployment
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -351,14 +350,14 @@ namespace Pulumi.Gcp.DeploymentManager
         }
 
         /// <summary>
-        /// Output only. URL of the manifest representing the last manifest that was successfully deployed.
+        /// Output only. URL of the manifest representing the last manifest that
+        /// was successfully deployed.
         /// </summary>
         [Input("manifest")]
         public Input<string>? Manifest { get; set; }
 
         /// <summary>
-        /// The name of the template to import, as declared in the YAML
-        /// configuration.
+        /// Unique name for the deployment
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

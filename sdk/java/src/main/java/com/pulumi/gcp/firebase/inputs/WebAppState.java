@@ -17,16 +17,16 @@ public final class WebAppState extends com.pulumi.resources.ResourceArgs {
     public static final WebAppState Empty = new WebAppState();
 
     /**
-     * The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-     * the data format is not specified.
+     * The globally unique, Firebase-assigned identifier of the App.
+     * This identifier should be treated as an opaque token, as the data format is not specified.
      * 
      */
     @Import(name="appId")
     private @Nullable Output<String> appId;
 
     /**
-     * @return The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-     * the data format is not specified.
+     * @return The globally unique, Firebase-assigned identifier of the App.
+     * This identifier should be treated as an opaque token, as the data format is not specified.
      * 
      */
     public Optional<Output<String>> appId() {
@@ -34,14 +34,14 @@ public final class WebAppState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The URLs where the &#39;WebApp&#39; is hosted.
+     * The URLs where the `WebApp` is hosted.
      * 
      */
     @Import(name="appUrls")
     private @Nullable Output<List<String>> appUrls;
 
     /**
-     * @return The URLs where the &#39;WebApp&#39; is hosted.
+     * @return The URLs where the `WebApp` is hosted.
      * 
      */
     public Optional<Output<List<String>>> appUrls() {
@@ -81,14 +81,16 @@ public final class WebAppState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The fully qualified resource name of the App, for example: projects/projectId/webApps/appId
+     * The fully qualified resource name of the App, for example:
+     * projects/projectId/webApps/appId
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The fully qualified resource name of the App, for example: projects/projectId/webApps/appId
+     * @return The fully qualified resource name of the App, for example:
+     * projects/projectId/webApps/appId
      * 
      */
     public Optional<Output<String>> name() {
@@ -142,8 +144,8 @@ public final class WebAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appId The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-         * the data format is not specified.
+         * @param appId The globally unique, Firebase-assigned identifier of the App.
+         * This identifier should be treated as an opaque token, as the data format is not specified.
          * 
          * @return builder
          * 
@@ -154,8 +156,8 @@ public final class WebAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appId The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-         * the data format is not specified.
+         * @param appId The globally unique, Firebase-assigned identifier of the App.
+         * This identifier should be treated as an opaque token, as the data format is not specified.
          * 
          * @return builder
          * 
@@ -165,7 +167,7 @@ public final class WebAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appUrls The URLs where the &#39;WebApp&#39; is hosted.
+         * @param appUrls The URLs where the `WebApp` is hosted.
          * 
          * @return builder
          * 
@@ -176,7 +178,7 @@ public final class WebAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appUrls The URLs where the &#39;WebApp&#39; is hosted.
+         * @param appUrls The URLs where the `WebApp` is hosted.
          * 
          * @return builder
          * 
@@ -186,7 +188,7 @@ public final class WebAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appUrls The URLs where the &#39;WebApp&#39; is hosted.
+         * @param appUrls The URLs where the `WebApp` is hosted.
          * 
          * @return builder
          * 
@@ -240,7 +242,8 @@ public final class WebAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The fully qualified resource name of the App, for example: projects/projectId/webApps/appId
+         * @param name The fully qualified resource name of the App, for example:
+         * projects/projectId/webApps/appId
          * 
          * @return builder
          * 
@@ -251,7 +254,8 @@ public final class WebAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The fully qualified resource name of the App, for example: projects/projectId/webApps/appId
+         * @param name The fully qualified resource name of the App, for example:
+         * projects/projectId/webApps/appId
          * 
          * @return builder
          * 

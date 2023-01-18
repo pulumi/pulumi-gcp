@@ -16,14 +16,14 @@ public final class ListingDataProviderArgs extends com.pulumi.resources.Resource
     public static final ListingDataProviderArgs Empty = new ListingDataProviderArgs();
 
     /**
-     * Name of the listing publisher.
+     * Name of the data provider.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the listing publisher.
+     * @return Name of the data provider.
      * 
      */
     public Output<String> name() {
@@ -31,14 +31,14 @@ public final class ListingDataProviderArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Email or URL of the listing publisher.
+     * Email or URL of the data provider.
      * 
      */
     @Import(name="primaryContact")
     private @Nullable Output<String> primaryContact;
 
     /**
-     * @return Email or URL of the listing publisher.
+     * @return Email or URL of the data provider.
      * 
      */
     public Optional<Output<String>> primaryContact() {
@@ -71,7 +71,7 @@ public final class ListingDataProviderArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name Name of the listing publisher.
+         * @param name Name of the data provider.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ListingDataProviderArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name Name of the listing publisher.
+         * @param name Name of the data provider.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class ListingDataProviderArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param primaryContact Email or URL of the listing publisher.
+         * @param primaryContact Email or URL of the data provider.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ListingDataProviderArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param primaryContact Email or URL of the listing publisher.
+         * @param primaryContact Email or URL of the data provider.
          * 
          * @return builder
          * 

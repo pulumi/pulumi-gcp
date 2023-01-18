@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CertificateRevocationDetail {
+    /**
+     * @return Indicates why a Certificate was revoked.
+     * 
+     */
     private @Nullable String revocationState;
+    /**
+     * @return The time at which this Certificate was revoked.
+     * 
+     */
     private @Nullable String revocationTime;
 
     private CertificateRevocationDetail() {}
+    /**
+     * @return Indicates why a Certificate was revoked.
+     * 
+     */
     public Optional<String> revocationState() {
         return Optional.ofNullable(this.revocationState);
     }
+    /**
+     * @return The time at which this Certificate was revoked.
+     * 
+     */
     public Optional<String> revocationTime() {
         return Optional.ofNullable(this.revocationTime);
     }

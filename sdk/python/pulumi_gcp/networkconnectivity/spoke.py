@@ -192,8 +192,7 @@ class _SpokeState:
         :param pulumi.Input[str] name: Immutable. The name of the spoke. Spoke names must be unique.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] state: Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
-        :param pulumi.Input[str] unique_id: Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is
-               deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+        :param pulumi.Input[str] unique_id: Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
         :param pulumi.Input[str] update_time: Output only. The time the spoke was last updated.
         """
         if create_time is not None:
@@ -359,8 +358,7 @@ class _SpokeState:
     @pulumi.getter(name="uniqueId")
     def unique_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is
-        deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+        Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
         """
         return pulumi.get(self, "unique_id")
 
@@ -639,8 +637,7 @@ class Spoke(pulumi.CustomResource):
         :param pulumi.Input[str] name: Immutable. The name of the spoke. Spoke names must be unique.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] state: Output only. The current lifecycle state of this spoke. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
-        :param pulumi.Input[str] unique_id: Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is
-               deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+        :param pulumi.Input[str] unique_id: Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
         :param pulumi.Input[str] update_time: Output only. The time the spoke was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -754,8 +751,7 @@ class Spoke(pulumi.CustomResource):
     @pulumi.getter(name="uniqueId")
     def unique_id(self) -> pulumi.Output[str]:
         """
-        Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is
-        deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+        Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
         """
         return pulumi.get(self, "unique_id")
 

@@ -26,7 +26,6 @@ namespace Pulumi.Gcp.Filestore.Inputs
         private InputList<string>? _ipAddresses;
 
         /// <summary>
-        /// -
         /// A list of IPv4 or IPv6 addresses.
         /// </summary>
         public InputList<string> IpAddresses

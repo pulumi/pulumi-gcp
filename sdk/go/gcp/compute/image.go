@@ -121,7 +121,8 @@ import (
 type Image struct {
 	pulumi.CustomResourceState
 
-	// Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
+	// Size of the image tar.gz archive stored in Google Cloud Storage (in
+	// bytes).
 	ArchiveSizeBytes pulumi.IntOutput `pulumi:"archiveSizeBytes"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
@@ -146,7 +147,8 @@ type Image struct {
 	// disk from the image)
 	// Structure is documented below.
 	ImageEncryptionKey ImageImageEncryptionKeyPtrOutput `pulumi:"imageEncryptionKey"`
-	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+	// The fingerprint used for optimistic locking of this resource. Used
+	// internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// Labels to apply to this Image.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -218,7 +220,8 @@ func GetImage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Image resources.
 type imageState struct {
-	// Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
+	// Size of the image tar.gz archive stored in Google Cloud Storage (in
+	// bytes).
 	ArchiveSizeBytes *int `pulumi:"archiveSizeBytes"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
@@ -243,7 +246,8 @@ type imageState struct {
 	// disk from the image)
 	// Structure is documented below.
 	ImageEncryptionKey *ImageImageEncryptionKey `pulumi:"imageEncryptionKey"`
-	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+	// The fingerprint used for optimistic locking of this resource. Used
+	// internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// Labels to apply to this Image.
 	Labels map[string]string `pulumi:"labels"`
@@ -287,7 +291,8 @@ type imageState struct {
 }
 
 type ImageState struct {
-	// Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
+	// Size of the image tar.gz archive stored in Google Cloud Storage (in
+	// bytes).
 	ArchiveSizeBytes pulumi.IntPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
@@ -312,7 +317,8 @@ type ImageState struct {
 	// disk from the image)
 	// Structure is documented below.
 	ImageEncryptionKey ImageImageEncryptionKeyPtrInput
-	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+	// The fingerprint used for optimistic locking of this resource. Used
+	// internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
 	// Labels to apply to this Image.
 	Labels pulumi.StringMapInput
@@ -569,7 +575,8 @@ func (o ImageOutput) ToImageOutputWithContext(ctx context.Context) ImageOutput {
 	return o
 }
 
-// Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).
+// Size of the image tar.gz archive stored in Google Cloud Storage (in
+// bytes).
 func (o ImageOutput) ArchiveSizeBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v *Image) pulumi.IntOutput { return v.ArchiveSizeBytes }).(pulumi.IntOutput)
 }
@@ -615,7 +622,8 @@ func (o ImageOutput) ImageEncryptionKey() ImageImageEncryptionKeyPtrOutput {
 	return o.ApplyT(func(v *Image) ImageImageEncryptionKeyPtrOutput { return v.ImageEncryptionKey }).(ImageImageEncryptionKeyPtrOutput)
 }
 
-// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+// The fingerprint used for optimistic locking of this resource. Used
+// internally during updates.
 func (o ImageOutput) LabelFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.LabelFingerprint }).(pulumi.StringOutput)
 }

@@ -51,18 +51,24 @@ func GetRegistryImage(ctx *pulumi.Context, args *GetRegistryImageArgs, opts ...p
 
 // A collection of arguments for invoking getRegistryImage.
 type GetRegistryImageArgs struct {
-	Digest  *string `pulumi:"digest"`
-	Name    string  `pulumi:"name"`
+	// The image digest to fetch, if any.
+	Digest *string `pulumi:"digest"`
+	// The image name.
+	Name string `pulumi:"name"`
+	// The project ID that this image is attached to.  If not provider, provider project will be used instead.
 	Project *string `pulumi:"project"`
-	Region  *string `pulumi:"region"`
-	Tag     *string `pulumi:"tag"`
+	// The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
+	Region *string `pulumi:"region"`
+	// The tag to fetch, if any.
+	Tag *string `pulumi:"tag"`
 }
 
 // A collection of values returned by getRegistryImage.
 type GetRegistryImageResult struct {
 	Digest *string `pulumi:"digest"`
 	// The provider-assigned unique ID for this managed resource.
-	Id       string  `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The URL at which the image can be accessed.
 	ImageUrl string  `pulumi:"imageUrl"`
 	Name     string  `pulumi:"name"`
 	Project  string  `pulumi:"project"`
@@ -85,11 +91,16 @@ func GetRegistryImageOutput(ctx *pulumi.Context, args GetRegistryImageOutputArgs
 
 // A collection of arguments for invoking getRegistryImage.
 type GetRegistryImageOutputArgs struct {
-	Digest  pulumi.StringPtrInput `pulumi:"digest"`
-	Name    pulumi.StringInput    `pulumi:"name"`
+	// The image digest to fetch, if any.
+	Digest pulumi.StringPtrInput `pulumi:"digest"`
+	// The image name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The project ID that this image is attached to.  If not provider, provider project will be used instead.
 	Project pulumi.StringPtrInput `pulumi:"project"`
-	Region  pulumi.StringPtrInput `pulumi:"region"`
-	Tag     pulumi.StringPtrInput `pulumi:"tag"`
+	// The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The tag to fetch, if any.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
 }
 
 func (GetRegistryImageOutputArgs) ElementType() reflect.Type {
@@ -120,6 +131,7 @@ func (o GetRegistryImageResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistryImageResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The URL at which the image can be accessed.
 func (o GetRegistryImageResultOutput) ImageUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistryImageResult) string { return v.ImageUrl }).(pulumi.StringOutput)
 }

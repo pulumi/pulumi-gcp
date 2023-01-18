@@ -130,6 +130,7 @@ class _DefaultObjectAccessControlState:
         :param pulumi.Input[int] generation: The content generation of the object, if applied to an object.
         :param pulumi.Input[str] object: The name of the object, if applied to an object.
         :param pulumi.Input[Sequence[pulumi.Input['DefaultObjectAccessControlProjectTeamArgs']]] project_teams: The project team associated with the entity
+               Structure is documented below.
         :param pulumi.Input[str] role: The access permission for the entity.
                Possible values are `OWNER` and `READER`.
         """
@@ -249,6 +250,7 @@ class _DefaultObjectAccessControlState:
     def project_teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DefaultObjectAccessControlProjectTeamArgs']]]]:
         """
         The project team associated with the entity
+        Structure is documented below.
         """
         return pulumi.get(self, "project_teams")
 
@@ -473,6 +475,7 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
         :param pulumi.Input[int] generation: The content generation of the object, if applied to an object.
         :param pulumi.Input[str] object: The name of the object, if applied to an object.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DefaultObjectAccessControlProjectTeamArgs']]]] project_teams: The project team associated with the entity
+               Structure is documented below.
         :param pulumi.Input[str] role: The access permission for the entity.
                Possible values are `OWNER` and `READER`.
         """
@@ -560,6 +563,7 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
     def project_teams(self) -> pulumi.Output[Sequence['outputs.DefaultObjectAccessControlProjectTeam']]:
         """
         The project team associated with the entity
+        Structure is documented below.
         """
         return pulumi.get(self, "project_teams")
 

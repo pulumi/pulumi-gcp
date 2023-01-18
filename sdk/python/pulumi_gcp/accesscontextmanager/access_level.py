@@ -26,13 +26,13 @@ class AccessLevelArgs:
         The set of arguments for constructing a AccessLevel resource.
         :param pulumi.Input[str] parent: The AccessPolicy this AccessLevel lives in.
                Format: accessPolicies/{policy_id}
-        :param pulumi.Input[str] title: Title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
         :param pulumi.Input['AccessLevelBasicArgs'] basic: A set of predefined conditions for the access level and a combining function.
                Structure is documented below.
         :param pulumi.Input['AccessLevelCustomArgs'] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
                See CEL spec at: https://github.com/google/cel-spec.
                Structure is documented below.
-        :param pulumi.Input[str] description: Description of the expression
+        :param pulumi.Input[str] description: Description of the AccessLevel and its use. Does not affect behavior.
         :param pulumi.Input[str] name: Resource name for the Access Level. The short_name component must begin
                with a letter and only include alphanumeric and '_'.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
@@ -65,7 +65,7 @@ class AccessLevelArgs:
     @pulumi.getter
     def title(self) -> pulumi.Input[str]:
         """
-        Title for the expression, i.e. a short string describing its purpose.
+        Human readable title. Must be unique within the Policy.
         """
         return pulumi.get(self, "title")
 
@@ -104,7 +104,7 @@ class AccessLevelArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the expression
+        Description of the AccessLevel and its use. Does not affect behavior.
         """
         return pulumi.get(self, "description")
 
@@ -143,13 +143,13 @@ class _AccessLevelState:
         :param pulumi.Input['AccessLevelCustomArgs'] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
                See CEL spec at: https://github.com/google/cel-spec.
                Structure is documented below.
-        :param pulumi.Input[str] description: Description of the expression
+        :param pulumi.Input[str] description: Description of the AccessLevel and its use. Does not affect behavior.
         :param pulumi.Input[str] name: Resource name for the Access Level. The short_name component must begin
                with a letter and only include alphanumeric and '_'.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
         :param pulumi.Input[str] parent: The AccessPolicy this AccessLevel lives in.
                Format: accessPolicies/{policy_id}
-        :param pulumi.Input[str] title: Title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
         """
         if basic is not None:
             pulumi.set(__self__, "basic", basic)
@@ -195,7 +195,7 @@ class _AccessLevelState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the expression
+        Description of the AccessLevel and its use. Does not affect behavior.
         """
         return pulumi.get(self, "description")
 
@@ -234,7 +234,7 @@ class _AccessLevelState:
     @pulumi.getter
     def title(self) -> Optional[pulumi.Input[str]]:
         """
-        Title for the expression, i.e. a short string describing its purpose.
+        Human readable title. Must be unique within the Policy.
         """
         return pulumi.get(self, "title")
 
@@ -316,13 +316,13 @@ class AccessLevel(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AccessLevelCustomArgs']] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
                See CEL spec at: https://github.com/google/cel-spec.
                Structure is documented below.
-        :param pulumi.Input[str] description: Description of the expression
+        :param pulumi.Input[str] description: Description of the AccessLevel and its use. Does not affect behavior.
         :param pulumi.Input[str] name: Resource name for the Access Level. The short_name component must begin
                with a letter and only include alphanumeric and '_'.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
         :param pulumi.Input[str] parent: The AccessPolicy this AccessLevel lives in.
                Format: accessPolicies/{policy_id}
-        :param pulumi.Input[str] title: Title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
         """
         ...
     @overload
@@ -452,13 +452,13 @@ class AccessLevel(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AccessLevelCustomArgs']] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
                See CEL spec at: https://github.com/google/cel-spec.
                Structure is documented below.
-        :param pulumi.Input[str] description: Description of the expression
+        :param pulumi.Input[str] description: Description of the AccessLevel and its use. Does not affect behavior.
         :param pulumi.Input[str] name: Resource name for the Access Level. The short_name component must begin
                with a letter and only include alphanumeric and '_'.
                Format: accessPolicies/{policy_id}/accessLevels/{short_name}
         :param pulumi.Input[str] parent: The AccessPolicy this AccessLevel lives in.
                Format: accessPolicies/{policy_id}
-        :param pulumi.Input[str] title: Title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -495,7 +495,7 @@ class AccessLevel(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the expression
+        Description of the AccessLevel and its use. Does not affect behavior.
         """
         return pulumi.get(self, "description")
 
@@ -522,7 +522,7 @@ class AccessLevel(pulumi.CustomResource):
     @pulumi.getter
     def title(self) -> pulumi.Output[str]:
         """
-        Title for the expression, i.e. a short string describing its purpose.
+        Human readable title. Must be unique within the Policy.
         """
         return pulumi.get(self, "title")
 

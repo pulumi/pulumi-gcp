@@ -21,6 +21,8 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
     public static final OsPolicyAssignmentArgs Empty = new OsPolicyAssignmentArgs();
 
     /**
+     * Policy description. Length of the description is limited to 1024 characters.
+     * (Optional)
      * OS policy assignment description. Length of the description is limited to 1024 characters.
      * 
      */
@@ -28,7 +30,9 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
     private @Nullable Output<String> description;
 
     /**
-     * @return OS policy assignment description. Length of the description is limited to 1024 characters.
+     * @return Policy description. Length of the description is limited to 1024 characters.
+     * (Optional)
+     * OS policy assignment description. Length of the description is limited to 1024 characters.
      * 
      */
     public Optional<Output<String>> description() {
@@ -66,14 +70,14 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Required. The name of the repository.
+     * Resource name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Required. The name of the repository.
+     * @return Resource name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -172,7 +176,9 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param description OS policy assignment description. Length of the description is limited to 1024 characters.
+         * @param description Policy description. Length of the description is limited to 1024 characters.
+         * (Optional)
+         * OS policy assignment description. Length of the description is limited to 1024 characters.
          * 
          * @return builder
          * 
@@ -183,7 +189,9 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param description OS policy assignment description. Length of the description is limited to 1024 characters.
+         * @param description Policy description. Length of the description is limited to 1024 characters.
+         * (Optional)
+         * OS policy assignment description. Length of the description is limited to 1024 characters.
          * 
          * @return builder
          * 
@@ -235,7 +243,7 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name Required. The name of the repository.
+         * @param name Resource name.
          * 
          * @return builder
          * 
@@ -246,7 +254,7 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name Required. The name of the repository.
+         * @param name Resource name.
          * 
          * @return builder
          * 

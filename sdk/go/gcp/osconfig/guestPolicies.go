@@ -54,7 +54,7 @@ import (
 //				},
 //				BootDisk: &compute.InstanceBootDiskArgs{
 //					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-//						Image: pulumi.String(myImage.SelfLink),
+//						Image: *pulumi.String(myImage.SelfLink),
 //					},
 //				},
 //				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
@@ -258,8 +258,8 @@ type GuestPolicies struct {
 	// [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
 	// Structure is documented below.
 	Assignment GuestPoliciesAssignmentOutput `pulumi:"assignment"`
-	// Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
-	// "2014-10-02T15:01:23.045123456Z".
+	// Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+	// Example: "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Description of the guest policy. Length of the description is limited to 1024 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -272,6 +272,11 @@ type GuestPolicies struct {
 	// * Must end with a number or a letter.
 	// * Must be unique within the project.
 	GuestPolicyId pulumi.StringOutput `pulumi:"guestPolicyId"`
+	// The name of the package. A package is uniquely identified for conflict validation
+	// by checking the package name and the manager(s) that the package targets.
+	// (Required)
+	// The name of the repository.
+	// (Required)
 	// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
 	// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
 	// This means that requests to create multiple recipes with the same name and version are rejected since they
@@ -291,8 +296,8 @@ type GuestPolicies struct {
 	// A list of Recipes to install on the VM instance.
 	// Structure is documented below.
 	Recipes GuestPoliciesRecipeArrayOutput `pulumi:"recipes"`
-	// Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
-	// "2014-10-02T15:01:23.045123456Z".
+	// Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+	// Example: "2014-10-02T15:01:23.045123456Z".
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -340,8 +345,8 @@ type guestPoliciesState struct {
 	// [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
 	// Structure is documented below.
 	Assignment *GuestPoliciesAssignment `pulumi:"assignment"`
-	// Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
-	// "2014-10-02T15:01:23.045123456Z".
+	// Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+	// Example: "2014-10-02T15:01:23.045123456Z".
 	CreateTime *string `pulumi:"createTime"`
 	// Description of the guest policy. Length of the description is limited to 1024 characters.
 	Description *string `pulumi:"description"`
@@ -354,6 +359,11 @@ type guestPoliciesState struct {
 	// * Must end with a number or a letter.
 	// * Must be unique within the project.
 	GuestPolicyId *string `pulumi:"guestPolicyId"`
+	// The name of the package. A package is uniquely identified for conflict validation
+	// by checking the package name and the manager(s) that the package targets.
+	// (Required)
+	// The name of the repository.
+	// (Required)
 	// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
 	// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
 	// This means that requests to create multiple recipes with the same name and version are rejected since they
@@ -373,8 +383,8 @@ type guestPoliciesState struct {
 	// A list of Recipes to install on the VM instance.
 	// Structure is documented below.
 	Recipes []GuestPoliciesRecipe `pulumi:"recipes"`
-	// Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
-	// "2014-10-02T15:01:23.045123456Z".
+	// Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+	// Example: "2014-10-02T15:01:23.045123456Z".
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
@@ -388,8 +398,8 @@ type GuestPoliciesState struct {
 	// [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
 	// Structure is documented below.
 	Assignment GuestPoliciesAssignmentPtrInput
-	// Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
-	// "2014-10-02T15:01:23.045123456Z".
+	// Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+	// Example: "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringPtrInput
 	// Description of the guest policy. Length of the description is limited to 1024 characters.
 	Description pulumi.StringPtrInput
@@ -402,6 +412,11 @@ type GuestPoliciesState struct {
 	// * Must end with a number or a letter.
 	// * Must be unique within the project.
 	GuestPolicyId pulumi.StringPtrInput
+	// The name of the package. A package is uniquely identified for conflict validation
+	// by checking the package name and the manager(s) that the package targets.
+	// (Required)
+	// The name of the repository.
+	// (Required)
 	// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
 	// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
 	// This means that requests to create multiple recipes with the same name and version are rejected since they
@@ -421,8 +436,8 @@ type GuestPoliciesState struct {
 	// A list of Recipes to install on the VM instance.
 	// Structure is documented below.
 	Recipes GuestPoliciesRecipeArrayInput
-	// Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
-	// "2014-10-02T15:01:23.045123456Z".
+	// Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+	// Example: "2014-10-02T15:01:23.045123456Z".
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -604,8 +619,8 @@ func (o GuestPoliciesOutput) Assignment() GuestPoliciesAssignmentOutput {
 	return o.ApplyT(func(v *GuestPolicies) GuestPoliciesAssignmentOutput { return v.Assignment }).(GuestPoliciesAssignmentOutput)
 }
 
-// Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
-// "2014-10-02T15:01:23.045123456Z".
+// Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+// Example: "2014-10-02T15:01:23.045123456Z".
 func (o GuestPoliciesOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *GuestPolicies) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -630,6 +645,11 @@ func (o GuestPoliciesOutput) GuestPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GuestPolicies) pulumi.StringOutput { return v.GuestPolicyId }).(pulumi.StringOutput)
 }
 
+// The name of the package. A package is uniquely identified for conflict validation
+// by checking the package name and the manager(s) that the package targets.
+// (Required)
+// The name of the repository.
+// (Required)
 // Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
 // Names are also used to identify resources which helps to determine whether guest policies have conflicts.
 // This means that requests to create multiple recipes with the same name and version are rejected since they
@@ -664,8 +684,8 @@ func (o GuestPoliciesOutput) Recipes() GuestPoliciesRecipeArrayOutput {
 	return o.ApplyT(func(v *GuestPolicies) GuestPoliciesRecipeArrayOutput { return v.Recipes }).(GuestPoliciesRecipeArrayOutput)
 }
 
-// Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example:
-// "2014-10-02T15:01:23.045123456Z".
+// Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+// Example: "2014-10-02T15:01:23.045123456Z".
 func (o GuestPoliciesOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *GuestPolicies) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

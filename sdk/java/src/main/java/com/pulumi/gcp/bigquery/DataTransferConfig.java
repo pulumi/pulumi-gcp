@@ -211,18 +211,20 @@ public class DataTransferConfig extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.location);
     }
     /**
-     * The resource name of the transfer config. Transfer config names have the form
-     * projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is not
-     * required. The name is ignored when creating a transfer config.
+     * The resource name of the transfer config. Transfer config names have the
+     * form projects/{projectId}/locations/{location}/transferConfigs/{configId}.
+     * Where configId is usually a uuid, but this is not required.
+     * The name is ignored when creating a transfer config.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The resource name of the transfer config. Transfer config names have the form
-     * projects/{projectId}/locations/{location}/transferConfigs/{configId}. Where configId is usually a uuid, but this is not
-     * required. The name is ignored when creating a transfer config.
+     * @return The resource name of the transfer config. Transfer config names have the
+     * form projects/{projectId}/locations/{location}/transferConfigs/{configId}.
+     * Where configId is usually a uuid, but this is not required.
+     * The name is ignored when creating a transfer config.
      * 
      */
     public Output<String> name() {

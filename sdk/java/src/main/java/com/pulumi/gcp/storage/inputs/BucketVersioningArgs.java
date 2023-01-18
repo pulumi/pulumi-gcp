@@ -14,14 +14,14 @@ public final class BucketVersioningArgs extends com.pulumi.resources.ResourceArg
     public static final BucketVersioningArgs Empty = new BucketVersioningArgs();
 
     /**
-     * While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object&#39;s access pattern.
+     * While set to `true`, versioning is fully enabled for this bucket.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object&#39;s access pattern.
+     * @return While set to `true`, versioning is fully enabled for this bucket.
      * 
      */
     public Output<Boolean> enabled() {
@@ -53,7 +53,7 @@ public final class BucketVersioningArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enabled While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object&#39;s access pattern.
+         * @param enabled While set to `true`, versioning is fully enabled for this bucket.
          * 
          * @return builder
          * 
@@ -64,7 +64,7 @@ public final class BucketVersioningArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enabled While set to `true`, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object&#39;s access pattern.
+         * @param enabled While set to `true`, versioning is fully enabled for this bucket.
          * 
          * @return builder
          * 

@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public Input<string> ArtifactId { get; set; } = null!;
 
         /// <summary>
-        /// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
+        /// The absolute path on the instance to put the file.
         /// </summary>
         [Input("destination", required: true)]
         public Input<string> Destination { get; set; } = null!;

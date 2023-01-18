@@ -238,7 +238,8 @@ class _NetworkState:
                recreated to modify this field.
         :param pulumi.Input[bool] enable_ula_internal_ipv6: Enable ULA internal ipv6 on this network. Enabling this feature will assign
                a /48 from google defined ULA prefix fd20::/20.
-        :param pulumi.Input[str] gateway_ipv4: The gateway address for default routing out of the network. This value is selected by GCP.
+        :param pulumi.Input[str] gateway_ipv4: The gateway address for default routing out of the network. This value
+               is selected by GCP.
         :param pulumi.Input[str] internal_ipv6_range: When enabling ula internal ipv6, caller optionally can specify the /48 range
                they want from the google defined ULA prefix fd20::/20. The input must be a
                valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will
@@ -345,7 +346,8 @@ class _NetworkState:
     @pulumi.getter(name="gatewayIpv4")
     def gateway_ipv4(self) -> Optional[pulumi.Input[str]]:
         """
-        The gateway address for default routing out of the network. This value is selected by GCP.
+        The gateway address for default routing out of the network. This value
+        is selected by GCP.
         """
         return pulumi.get(self, "gateway_ipv4")
 
@@ -675,7 +677,8 @@ class Network(pulumi.CustomResource):
                recreated to modify this field.
         :param pulumi.Input[bool] enable_ula_internal_ipv6: Enable ULA internal ipv6 on this network. Enabling this feature will assign
                a /48 from google defined ULA prefix fd20::/20.
-        :param pulumi.Input[str] gateway_ipv4: The gateway address for default routing out of the network. This value is selected by GCP.
+        :param pulumi.Input[str] gateway_ipv4: The gateway address for default routing out of the network. This value
+               is selected by GCP.
         :param pulumi.Input[str] internal_ipv6_range: When enabling ula internal ipv6, caller optionally can specify the /48 range
                they want from the google defined ULA prefix fd20::/20. The input must be a
                valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will
@@ -760,7 +763,8 @@ class Network(pulumi.CustomResource):
     @pulumi.getter(name="gatewayIpv4")
     def gateway_ipv4(self) -> pulumi.Output[str]:
         """
-        The gateway address for default routing out of the network. This value is selected by GCP.
+        The gateway address for default routing out of the network. This value
+        is selected by GCP.
         """
         return pulumi.get(self, "gateway_ipv4")
 

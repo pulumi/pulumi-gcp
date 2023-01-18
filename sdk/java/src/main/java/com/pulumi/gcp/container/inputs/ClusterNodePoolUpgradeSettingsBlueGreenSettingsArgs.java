@@ -31,9 +31,17 @@ public final class ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs extends c
         return Optional.ofNullable(this.nodePoolSoakDuration);
     }
 
+    /**
+     * Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+     * 
+     */
     @Import(name="standardRolloutPolicy", required=true)
     private Output<ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs> standardRolloutPolicy;
 
+    /**
+     * @return Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+     * 
+     */
     public Output<ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs> standardRolloutPolicy() {
         return this.standardRolloutPolicy;
     }
@@ -84,11 +92,23 @@ public final class ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs extends c
             return nodePoolSoakDuration(Output.of(nodePoolSoakDuration));
         }
 
+        /**
+         * @param standardRolloutPolicy Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder standardRolloutPolicy(Output<ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs> standardRolloutPolicy) {
             $.standardRolloutPolicy = standardRolloutPolicy;
             return this;
         }
 
+        /**
+         * @param standardRolloutPolicy Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder standardRolloutPolicy(ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs standardRolloutPolicy) {
             return standardRolloutPolicy(Output.of(standardRolloutPolicy));
         }

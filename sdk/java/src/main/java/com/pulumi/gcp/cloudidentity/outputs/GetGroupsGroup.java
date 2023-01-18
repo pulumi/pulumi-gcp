@@ -13,11 +13,33 @@ import java.util.Objects;
 @CustomType
 public final class GetGroupsGroup {
     private String createTime;
+    /**
+     * @return An extended description to help users determine the purpose of a Group.
+     * 
+     */
     private String description;
+    /**
+     * @return The display name of the Group.
+     * 
+     */
     private String displayName;
+    /**
+     * @return EntityKey of the Group.  Structure is documented below.
+     * 
+     */
     private List<GetGroupsGroupGroupKey> groupKeys;
     private String initialGroupConfig;
+    /**
+     * @return The labels that apply to the Group.
+     * Contains &#39;cloudidentity.googleapis.com/groups.discussion_forum&#39;: &#39;&#39; if the Group is a Google Group or
+     * &#39;system/groups/external&#39;: &#39;&#39; if the Group is an external-identity-mapped group.
+     * 
+     */
     private Map<String,String> labels;
+    /**
+     * @return Resource name of the Group in the format: groups/{group_id}, where `group_id` is the unique ID assigned to the Group.
+     * 
+     */
     private String name;
     /**
      * @return The parent resource under which to list all Groups. Must be of the form identitysources/{identity_source_id} for external- identity-mapped groups or customers/{customer_id} for Google Groups.
@@ -30,21 +52,43 @@ public final class GetGroupsGroup {
     public String createTime() {
         return this.createTime;
     }
+    /**
+     * @return An extended description to help users determine the purpose of a Group.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return The display name of the Group.
+     * 
+     */
     public String displayName() {
         return this.displayName;
     }
+    /**
+     * @return EntityKey of the Group.  Structure is documented below.
+     * 
+     */
     public List<GetGroupsGroupGroupKey> groupKeys() {
         return this.groupKeys;
     }
     public String initialGroupConfig() {
         return this.initialGroupConfig;
     }
+    /**
+     * @return The labels that apply to the Group.
+     * Contains &#39;cloudidentity.googleapis.com/groups.discussion_forum&#39;: &#39;&#39; if the Group is a Google Group or
+     * &#39;system/groups/external&#39;: &#39;&#39; if the Group is an external-identity-mapped group.
+     * 
+     */
     public Map<String,String> labels() {
         return this.labels;
     }
+    /**
+     * @return Resource name of the Group in the format: groups/{group_id}, where `group_id` is the unique ID assigned to the Group.
+     * 
+     */
     public String name() {
         return this.name;
     }

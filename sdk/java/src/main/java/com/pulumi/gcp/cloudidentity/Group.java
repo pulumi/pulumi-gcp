@@ -187,14 +187,16 @@ public class Group extends com.pulumi.resources.CustomResource {
         return this.labels;
     }
     /**
-     * Resource name of the Group in the format: groups/{group_id}, where group_id is the unique ID assigned to the Group.
+     * Resource name of the Group in the format: groups/{group_id}, where group_id
+     * is the unique ID assigned to the Group.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Resource name of the Group in the format: groups/{group_id}, where group_id is the unique ID assigned to the Group.
+     * @return Resource name of the Group in the format: groups/{group_id}, where group_id
+     * is the unique ID assigned to the Group.
      * 
      */
     public Output<String> name() {

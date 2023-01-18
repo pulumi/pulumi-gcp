@@ -29,11 +29,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDisk(args: GetDiskArgs, opts?: pulumi.InvokeOptions): Promise<GetDiskResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getDisk:getDisk", {
         "name": args.name,
         "project": args.project,
@@ -64,24 +61,46 @@ export interface GetDiskArgs {
  * A collection of values returned by getDisk.
  */
 export interface GetDiskResult {
+    /**
+     * Creation timestamp in RFC3339 text format.
+     */
     readonly creationTimestamp: string;
+    /**
+     * The optional description of this resource.
+     */
     readonly description: string;
     readonly diskEncryptionKeys: outputs.compute.GetDiskDiskEncryptionKey[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The image from which to initialize this disk.
+     */
     readonly image: string;
     readonly interface: string;
+    /**
+     * The fingerprint used for optimistic locking of this resource.  Used
+     * internally during updates.
+     */
     readonly labelFingerprint: string;
     /**
      * A map of labels applied to this disk.
      */
     readonly labels: {[key: string]: string};
+    /**
+     * Last attach timestamp in RFC3339 text format.
+     */
     readonly lastAttachTimestamp: string;
+    /**
+     * Last detach timestamp in RFC3339 text format.
+     */
     readonly lastDetachTimestamp: string;
     readonly multiWriter: boolean;
     readonly name: string;
+    /**
+     * Physical block size of the persistent disk, in bytes.
+     */
     readonly physicalBlockSizeBytes: number;
     readonly project?: string;
     readonly provisionedIops: number;
@@ -90,21 +109,80 @@ export interface GetDiskResult {
      * The URI of the created resource.
      */
     readonly selfLink: string;
+    /**
+     * Size of the persistent disk, specified in GB.
+     */
     readonly size: number;
+    /**
+     * The source snapshot used to create this disk.
+     */
     readonly snapshot: string;
     readonly sourceDisk: string;
     readonly sourceDiskId: string;
+    /**
+     * The customer-supplied encryption key of the source image.
+     */
     readonly sourceImageEncryptionKeys: outputs.compute.GetDiskSourceImageEncryptionKey[];
+    /**
+     * The ID value of the image used to create this disk. This value
+     * identifies the exact image that was used to create this persistent
+     * disk. For example, if you created the persistent disk from an image
+     * that was later deleted and recreated under the same name, the source
+     * image ID would identify the exact version of the image that was used.
+     */
     readonly sourceImageId: string;
+    /**
+     * The customer-supplied encryption key of the source snapshot.
+     */
     readonly sourceSnapshotEncryptionKeys: outputs.compute.GetDiskSourceSnapshotEncryptionKey[];
+    /**
+     * The unique ID of the snapshot used to create this disk. This value
+     * identifies the exact snapshot that was used to create this persistent
+     * disk. For example, if you created the persistent disk from a snapshot
+     * that was later deleted and recreated under the same name, the source
+     * snapshot ID would identify the exact version of the snapshot that was
+     * used.
+     */
     readonly sourceSnapshotId: string;
+    /**
+     * URL of the disk type resource describing which disk type to use to
+     * create the disk.
+     */
     readonly type: string;
+    /**
+     * Links to the users of the disk (attached instances) in form:
+     * project/zones/zone/instances/instance
+     */
     readonly users: string[];
+    /**
+     * A reference to the zone where the disk resides.
+     */
     readonly zone?: string;
 }
-
+/**
+ * Get information about a Google Compute Persistent disks.
+ *
+ * [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/latest/disks).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const persistent-boot-disk = gcp.compute.getDisk({
+ *     name: "persistent-boot-disk",
+ *     project: "example",
+ * });
+ * // ...
+ * const _default = new gcp.compute.Instance("default", {bootDisk: {
+ *     source: persistent_boot_disk.then(persistent_boot_disk => persistent_boot_disk.selfLink),
+ *     autoDelete: false,
+ * }});
+ * ```
+ */
 export function getDiskOutput(args: GetDiskOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiskResult> {
-    return pulumi.output(args).apply(a => getDisk(a, opts))
+    return pulumi.output(args).apply((a: any) => getDisk(a, opts))
 }
 
 /**

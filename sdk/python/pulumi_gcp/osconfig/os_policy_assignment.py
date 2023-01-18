@@ -30,8 +30,10 @@ class OsPolicyAssignmentArgs:
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArgs']]] os_policies: Required. List of OS policies to be applied to the VMs.
         :param pulumi.Input['OsPolicyAssignmentRolloutArgs'] rollout: Required. Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
-        :param pulumi.Input[str] description: OS policy assignment description. Length of the description is limited to 1024 characters.
-        :param pulumi.Input[str] name: Required. The name of the repository.
+        :param pulumi.Input[str] description: Policy description. Length of the description is limited to 1024 characters.
+               (Optional)
+               OS policy assignment description. Length of the description is limited to 1024 characters.
+        :param pulumi.Input[str] name: Resource name.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] skip_await_rollout: Set to true to skip awaiting rollout during resource creation and update.
         """
@@ -100,6 +102,8 @@ class OsPolicyAssignmentArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
+        Policy description. Length of the description is limited to 1024 characters.
+        (Optional)
         OS policy assignment description. Length of the description is limited to 1024 characters.
         """
         return pulumi.get(self, "description")
@@ -112,7 +116,7 @@ class OsPolicyAssignmentArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Required. The name of the repository.
+        Resource name.
         """
         return pulumi.get(self, "name")
 
@@ -166,25 +170,22 @@ class _OsPolicyAssignmentState:
                  uid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering OsPolicyAssignment resources.
-        :param pulumi.Input[bool] baseline: Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS
-               policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for
-               this field.
+        :param pulumi.Input[bool] baseline: Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
         :param pulumi.Input[bool] deleted: Output only. Indicates that this revision deletes the OS policy assignment.
-        :param pulumi.Input[str] description: OS policy assignment description. Length of the description is limited to 1024 characters.
+        :param pulumi.Input[str] description: Policy description. Length of the description is limited to 1024 characters.
+               (Optional)
+               OS policy assignment description. Length of the description is limited to 1024 characters.
         :param pulumi.Input[str] etag: The etag for this OS policy assignment. If this is provided on update, it must match the server's etag.
         :param pulumi.Input['OsPolicyAssignmentInstanceFilterArgs'] instance_filter: Required. Filter to select VMs.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[str] name: Required. The name of the repository.
+        :param pulumi.Input[str] name: Resource name.
         :param pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArgs']]] os_policies: Required. List of OS policies to be applied to the VMs.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[bool] reconciling: Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the
-               `rollout_state` is one of: * IN_PROGRESS * CANCELLING
+        :param pulumi.Input[bool] reconciling: Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the `rollout_state` is one of: * IN_PROGRESS * CANCELLING
         :param pulumi.Input[str] revision_create_time: Output only. The timestamp that the revision was created.
-        :param pulumi.Input[str] revision_id: Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy
-               assignment
+        :param pulumi.Input[str] revision_id: Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
         :param pulumi.Input['OsPolicyAssignmentRolloutArgs'] rollout: Required. Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
-        :param pulumi.Input[str] rollout_state: Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING,
-               CANCELLED, SUCCEEDED
+        :param pulumi.Input[str] rollout_state: Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING, CANCELLED, SUCCEEDED
         :param pulumi.Input[bool] skip_await_rollout: Set to true to skip awaiting rollout during resource creation and update.
         :param pulumi.Input[str] uid: Output only. Server generated unique id for the OS policy assignment resource.
         """
@@ -225,9 +226,7 @@ class _OsPolicyAssignmentState:
     @pulumi.getter
     def baseline(self) -> Optional[pulumi.Input[bool]]:
         """
-        Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS
-        policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for
-        this field.
+        Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
         """
         return pulumi.get(self, "baseline")
 
@@ -251,6 +250,8 @@ class _OsPolicyAssignmentState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
+        Policy description. Length of the description is limited to 1024 characters.
+        (Optional)
         OS policy assignment description. Length of the description is limited to 1024 characters.
         """
         return pulumi.get(self, "description")
@@ -299,7 +300,7 @@ class _OsPolicyAssignmentState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Required. The name of the repository.
+        Resource name.
         """
         return pulumi.get(self, "name")
 
@@ -335,8 +336,7 @@ class _OsPolicyAssignmentState:
     @pulumi.getter
     def reconciling(self) -> Optional[pulumi.Input[bool]]:
         """
-        Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the
-        `rollout_state` is one of: * IN_PROGRESS * CANCELLING
+        Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the `rollout_state` is one of: * IN_PROGRESS * CANCELLING
         """
         return pulumi.get(self, "reconciling")
 
@@ -360,8 +360,7 @@ class _OsPolicyAssignmentState:
     @pulumi.getter(name="revisionId")
     def revision_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy
-        assignment
+        Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
         """
         return pulumi.get(self, "revision_id")
 
@@ -385,8 +384,7 @@ class _OsPolicyAssignmentState:
     @pulumi.getter(name="rolloutState")
     def rollout_state(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING,
-        CANCELLED, SUCCEEDED
+        Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING, CANCELLED, SUCCEEDED
         """
         return pulumi.get(self, "rollout_state")
 
@@ -511,10 +509,12 @@ class OsPolicyAssignment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: OS policy assignment description. Length of the description is limited to 1024 characters.
+        :param pulumi.Input[str] description: Policy description. Length of the description is limited to 1024 characters.
+               (Optional)
+               OS policy assignment description. Length of the description is limited to 1024 characters.
         :param pulumi.Input[pulumi.InputType['OsPolicyAssignmentInstanceFilterArgs']] instance_filter: Required. Filter to select VMs.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[str] name: Required. The name of the repository.
+        :param pulumi.Input[str] name: Resource name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OsPolicyAssignmentOsPolicyArgs']]]] os_policies: Required. List of OS policies to be applied to the VMs.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[pulumi.InputType['OsPolicyAssignmentRolloutArgs']] rollout: Required. Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
@@ -691,25 +691,22 @@ class OsPolicyAssignment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] baseline: Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS
-               policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for
-               this field.
+        :param pulumi.Input[bool] baseline: Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
         :param pulumi.Input[bool] deleted: Output only. Indicates that this revision deletes the OS policy assignment.
-        :param pulumi.Input[str] description: OS policy assignment description. Length of the description is limited to 1024 characters.
+        :param pulumi.Input[str] description: Policy description. Length of the description is limited to 1024 characters.
+               (Optional)
+               OS policy assignment description. Length of the description is limited to 1024 characters.
         :param pulumi.Input[str] etag: The etag for this OS policy assignment. If this is provided on update, it must match the server's etag.
         :param pulumi.Input[pulumi.InputType['OsPolicyAssignmentInstanceFilterArgs']] instance_filter: Required. Filter to select VMs.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[str] name: Required. The name of the repository.
+        :param pulumi.Input[str] name: Resource name.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OsPolicyAssignmentOsPolicyArgs']]]] os_policies: Required. List of OS policies to be applied to the VMs.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[bool] reconciling: Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the
-               `rollout_state` is one of: * IN_PROGRESS * CANCELLING
+        :param pulumi.Input[bool] reconciling: Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the `rollout_state` is one of: * IN_PROGRESS * CANCELLING
         :param pulumi.Input[str] revision_create_time: Output only. The timestamp that the revision was created.
-        :param pulumi.Input[str] revision_id: Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy
-               assignment
+        :param pulumi.Input[str] revision_id: Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
         :param pulumi.Input[pulumi.InputType['OsPolicyAssignmentRolloutArgs']] rollout: Required. Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
-        :param pulumi.Input[str] rollout_state: Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING,
-               CANCELLED, SUCCEEDED
+        :param pulumi.Input[str] rollout_state: Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING, CANCELLED, SUCCEEDED
         :param pulumi.Input[bool] skip_await_rollout: Set to true to skip awaiting rollout during resource creation and update.
         :param pulumi.Input[str] uid: Output only. Server generated unique id for the OS policy assignment resource.
         """
@@ -739,9 +736,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
     @pulumi.getter
     def baseline(self) -> pulumi.Output[bool]:
         """
-        Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS
-        policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for
-        this field.
+        Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
         """
         return pulumi.get(self, "baseline")
 
@@ -757,6 +752,8 @@ class OsPolicyAssignment(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
+        Policy description. Length of the description is limited to 1024 characters.
+        (Optional)
         OS policy assignment description. Length of the description is limited to 1024 characters.
         """
         return pulumi.get(self, "description")
@@ -789,7 +786,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Required. The name of the repository.
+        Resource name.
         """
         return pulumi.get(self, "name")
 
@@ -813,8 +810,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
     @pulumi.getter
     def reconciling(self) -> pulumi.Output[bool]:
         """
-        Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the
-        `rollout_state` is one of: * IN_PROGRESS * CANCELLING
+        Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the `rollout_state` is one of: * IN_PROGRESS * CANCELLING
         """
         return pulumi.get(self, "reconciling")
 
@@ -830,8 +826,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
     @pulumi.getter(name="revisionId")
     def revision_id(self) -> pulumi.Output[str]:
         """
-        Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy
-        assignment
+        Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
         """
         return pulumi.get(self, "revision_id")
 
@@ -847,8 +842,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
     @pulumi.getter(name="rolloutState")
     def rollout_state(self) -> pulumi.Output[str]:
         """
-        Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING,
-        CANCELLED, SUCCEEDED
+        Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING, CANCELLED, SUCCEEDED
         """
         return pulumi.get(self, "rollout_state")
 

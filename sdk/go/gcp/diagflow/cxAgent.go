@@ -113,9 +113,7 @@ type CxAgent struct {
 	// Settings related to speech recognition.
 	// Structure is documented below.
 	SpeechToTextSettings CxAgentSpeechToTextSettingsPtrOutput `pulumi:"speechToTextSettings"`
-	// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-	// be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow
-	// ID>.
+	// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
 	StartFlow pulumi.StringOutput `pulumi:"startFlow"`
 	// The list of all languages supported by this agent (except for the default_language_code).
 	SupportedLanguageCodes pulumi.StringArrayOutput `pulumi:"supportedLanguageCodes"`
@@ -193,9 +191,7 @@ type cxAgentState struct {
 	// Settings related to speech recognition.
 	// Structure is documented below.
 	SpeechToTextSettings *CxAgentSpeechToTextSettings `pulumi:"speechToTextSettings"`
-	// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-	// be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow
-	// ID>.
+	// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
 	StartFlow *string `pulumi:"startFlow"`
 	// The list of all languages supported by this agent (except for the default_language_code).
 	SupportedLanguageCodes []string `pulumi:"supportedLanguageCodes"`
@@ -233,9 +229,7 @@ type CxAgentState struct {
 	// Settings related to speech recognition.
 	// Structure is documented below.
 	SpeechToTextSettings CxAgentSpeechToTextSettingsPtrInput
-	// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-	// be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow
-	// ID>.
+	// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
 	StartFlow pulumi.StringPtrInput
 	// The list of all languages supported by this agent (except for the default_language_code).
 	SupportedLanguageCodes pulumi.StringArrayInput
@@ -465,9 +459,7 @@ func (o CxAgentOutput) SpeechToTextSettings() CxAgentSpeechToTextSettingsPtrOutp
 	return o.ApplyT(func(v *CxAgent) CxAgentSpeechToTextSettingsPtrOutput { return v.SpeechToTextSettings }).(CxAgentSpeechToTextSettingsPtrOutput)
 }
 
-// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-// be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow
-// ID>.
+// Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
 func (o CxAgentOutput) StartFlow() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxAgent) pulumi.StringOutput { return v.StartFlow }).(pulumi.StringOutput)
 }

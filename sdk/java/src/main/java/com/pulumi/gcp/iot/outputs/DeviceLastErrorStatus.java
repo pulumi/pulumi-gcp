@@ -15,17 +15,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeviceLastErrorStatus {
+    /**
+     * @return A list of messages that carry the error details.
+     * 
+     */
     private @Nullable List<Map<String,Object>> details;
+    /**
+     * @return A developer-facing error message, which should be in English.
+     * 
+     */
     private @Nullable String message;
+    /**
+     * @return The status code, which should be an enum value of google.rpc.Code.
+     * 
+     */
     private @Nullable Integer number;
 
     private DeviceLastErrorStatus() {}
+    /**
+     * @return A list of messages that carry the error details.
+     * 
+     */
     public List<Map<String,Object>> details() {
         return this.details == null ? List.of() : this.details;
     }
+    /**
+     * @return A developer-facing error message, which should be in English.
+     * 
+     */
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
+    /**
+     * @return The status code, which should be an enum value of google.rpc.Code.
+     * 
+     */
     public Optional<Integer> number() {
         return Optional.ofNullable(this.number);
     }

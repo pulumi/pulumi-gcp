@@ -148,6 +148,9 @@ export class GameServerConfig extends pulumi.CustomResource {
      */
     public readonly fleetConfigs!: pulumi.Output<outputs.gameservices.GameServerConfigFleetConfig[]>;
     /**
+     * The labels associated with this game server config. Each label is a
+     * key-value pair.
+     * (Optional)
      * Set of labels to group by.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
@@ -156,6 +159,8 @@ export class GameServerConfig extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string | undefined>;
     /**
+     * The name of the FleetConfig.
+     * (Required)
      * The name of the ScalingConfig
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -241,6 +246,9 @@ export interface GameServerConfigState {
      */
     fleetConfigs?: pulumi.Input<pulumi.Input<inputs.gameservices.GameServerConfigFleetConfig>[]>;
     /**
+     * The labels associated with this game server config. Each label is a
+     * key-value pair.
+     * (Optional)
      * Set of labels to group by.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -249,6 +257,8 @@ export interface GameServerConfigState {
      */
     location?: pulumi.Input<string>;
     /**
+     * The name of the FleetConfig.
+     * (Required)
      * The name of the ScalingConfig
      */
     name?: pulumi.Input<string>;
@@ -287,6 +297,9 @@ export interface GameServerConfigArgs {
      */
     fleetConfigs: pulumi.Input<pulumi.Input<inputs.gameservices.GameServerConfigFleetConfig>[]>;
     /**
+     * The labels associated with this game server config. Each label is a
+     * key-value pair.
+     * (Optional)
      * Set of labels to group by.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;

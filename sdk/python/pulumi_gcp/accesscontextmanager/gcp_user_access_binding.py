@@ -75,9 +75,7 @@ class _GcpUserAccessBindingState:
         Input properties used for looking up and filtering GcpUserAccessBinding resources.
         :param pulumi.Input[str] access_levels: Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
         :param pulumi.Input[str] group_key: Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
-        :param pulumi.Input[str] name: Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved
-               characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example:
-               "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
+        :param pulumi.Input[str] name: Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
         :param pulumi.Input[str] organization_id: Required. ID of the parent organization.
         """
         if access_levels is not None:
@@ -117,9 +115,7 @@ class _GcpUserAccessBindingState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved
-        characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example:
-        "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
+        Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
         """
         return pulumi.get(self, "name")
 
@@ -255,9 +251,7 @@ class GcpUserAccessBinding(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_levels: Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
         :param pulumi.Input[str] group_key: Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
-        :param pulumi.Input[str] name: Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved
-               characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example:
-               "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
+        :param pulumi.Input[str] name: Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
         :param pulumi.Input[str] organization_id: Required. ID of the parent organization.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -290,9 +284,7 @@ class GcpUserAccessBinding(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved
-        characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example:
-        "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
+        Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
         """
         return pulumi.get(self, "name")
 

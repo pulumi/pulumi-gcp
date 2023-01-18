@@ -174,6 +174,10 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Email or URL of the primary point of contact of the listing.
+     * (Optional)
+     * Email or URL of the data provider.
+     * (Optional)
      * Email or URL of the listing publisher.
      * 
      */
@@ -181,7 +185,11 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> primaryContact;
 
     /**
-     * @return Email or URL of the listing publisher.
+     * @return Email or URL of the primary point of contact of the listing.
+     * (Optional)
+     * Email or URL of the data provider.
+     * (Optional)
+     * Email or URL of the listing publisher.
      * 
      */
     public Optional<Output<String>> primaryContact() {
@@ -499,7 +507,11 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param primaryContact Email or URL of the listing publisher.
+         * @param primaryContact Email or URL of the primary point of contact of the listing.
+         * (Optional)
+         * Email or URL of the data provider.
+         * (Optional)
+         * Email or URL of the listing publisher.
          * 
          * @return builder
          * 
@@ -510,7 +522,11 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param primaryContact Email or URL of the listing publisher.
+         * @param primaryContact Email or URL of the primary point of contact of the listing.
+         * (Optional)
+         * Email or URL of the data provider.
+         * (Optional)
+         * Email or URL of the listing publisher.
          * 
          * @return builder
          * 

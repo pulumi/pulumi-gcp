@@ -258,8 +258,7 @@ type UptimeCheckConfig struct {
 	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance aws_elb_load_balancer  k8sService  servicedirectoryService
 	// Structure is documented below.
 	MonitoredResource UptimeCheckConfigMonitoredResourcePtrOutput `pulumi:"monitoredResource"`
-	// A unique resource name for this UptimeCheckConfig. The format is
-	// projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+	// A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
 	Name pulumi.StringOutput `pulumi:"name"`
 	// How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
 	Period pulumi.StringPtrOutput `pulumi:"period"`
@@ -329,8 +328,7 @@ type uptimeCheckConfigState struct {
 	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance aws_elb_load_balancer  k8sService  servicedirectoryService
 	// Structure is documented below.
 	MonitoredResource *UptimeCheckConfigMonitoredResource `pulumi:"monitoredResource"`
-	// A unique resource name for this UptimeCheckConfig. The format is
-	// projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+	// A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
 	Name *string `pulumi:"name"`
 	// How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
 	Period *string `pulumi:"period"`
@@ -366,8 +364,7 @@ type UptimeCheckConfigState struct {
 	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance aws_elb_load_balancer  k8sService  servicedirectoryService
 	// Structure is documented below.
 	MonitoredResource UptimeCheckConfigMonitoredResourcePtrInput
-	// A unique resource name for this UptimeCheckConfig. The format is
-	// projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+	// A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
 	Name pulumi.StringPtrInput
 	// How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
 	Period pulumi.StringPtrInput
@@ -573,8 +570,7 @@ func (o UptimeCheckConfigOutput) MonitoredResource() UptimeCheckConfigMonitoredR
 	return o.ApplyT(func(v *UptimeCheckConfig) UptimeCheckConfigMonitoredResourcePtrOutput { return v.MonitoredResource }).(UptimeCheckConfigMonitoredResourcePtrOutput)
 }
 
-// A unique resource name for this UptimeCheckConfig. The format is
-// projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+// A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
 func (o UptimeCheckConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *UptimeCheckConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

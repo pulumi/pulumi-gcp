@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
     public sealed class ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Volume's name.
+        /// The header field name.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

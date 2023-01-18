@@ -71,14 +71,16 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The resource name for the endpoint in the format &#39;projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*{@literal /}endpoints/*&#39;.
+     * The resource name for the endpoint in the format
+     * `projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*{@literal /}endpoints/*`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The resource name for the endpoint in the format &#39;projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*{@literal /}endpoints/*&#39;.
+     * @return The resource name for the endpoint in the format
+     * `projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*{@literal /}endpoints/*`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -234,7 +236,8 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name for the endpoint in the format &#39;projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*{@literal /}endpoints/*&#39;.
+         * @param name The resource name for the endpoint in the format
+         * `projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*{@literal /}endpoints/*`.
          * 
          * @return builder
          * 
@@ -245,7 +248,8 @@ public final class EndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name for the endpoint in the format &#39;projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*{@literal /}endpoints/*&#39;.
+         * @param name The resource name for the endpoint in the format
+         * `projects/*{@literal /}locations/*{@literal /}namespaces/*{@literal /}services/*{@literal /}endpoints/*`.
          * 
          * @return builder
          * 

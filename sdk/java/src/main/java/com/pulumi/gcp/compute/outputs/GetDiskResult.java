@@ -18,7 +18,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDiskResult {
+    /**
+     * @return Creation timestamp in RFC3339 text format.
+     * 
+     */
     private String creationTimestamp;
+    /**
+     * @return The optional description of this resource.
+     * 
+     */
     private String description;
     private List<GetDiskDiskEncryptionKey> diskEncryptionKeys;
     /**
@@ -26,18 +34,39 @@ public final class GetDiskResult {
      * 
      */
     private String id;
+    /**
+     * @return The image from which to initialize this disk.
+     * 
+     */
     private String image;
     private String interface_;
+    /**
+     * @return The fingerprint used for optimistic locking of this resource.  Used
+     * internally during updates.
+     * 
+     */
     private String labelFingerprint;
     /**
      * @return A map of labels applied to this disk.
      * 
      */
     private Map<String,String> labels;
+    /**
+     * @return Last attach timestamp in RFC3339 text format.
+     * 
+     */
     private String lastAttachTimestamp;
+    /**
+     * @return Last detach timestamp in RFC3339 text format.
+     * 
+     */
     private String lastDetachTimestamp;
     private Boolean multiWriter;
     private String name;
+    /**
+     * @return Physical block size of the persistent disk, in bytes.
+     * 
+     */
     private Integer physicalBlockSizeBytes;
     private @Nullable String project;
     private Integer provisionedIops;
@@ -47,22 +76,77 @@ public final class GetDiskResult {
      * 
      */
     private String selfLink;
+    /**
+     * @return Size of the persistent disk, specified in GB.
+     * 
+     */
     private Integer size;
+    /**
+     * @return The source snapshot used to create this disk.
+     * 
+     */
     private String snapshot;
     private String sourceDisk;
     private String sourceDiskId;
+    /**
+     * @return The customer-supplied encryption key of the source image.
+     * 
+     */
     private List<GetDiskSourceImageEncryptionKey> sourceImageEncryptionKeys;
+    /**
+     * @return The ID value of the image used to create this disk. This value
+     * identifies the exact image that was used to create this persistent
+     * disk. For example, if you created the persistent disk from an image
+     * that was later deleted and recreated under the same name, the source
+     * image ID would identify the exact version of the image that was used.
+     * 
+     */
     private String sourceImageId;
+    /**
+     * @return The customer-supplied encryption key of the source snapshot.
+     * 
+     */
     private List<GetDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys;
+    /**
+     * @return The unique ID of the snapshot used to create this disk. This value
+     * identifies the exact snapshot that was used to create this persistent
+     * disk. For example, if you created the persistent disk from a snapshot
+     * that was later deleted and recreated under the same name, the source
+     * snapshot ID would identify the exact version of the snapshot that was
+     * used.
+     * 
+     */
     private String sourceSnapshotId;
+    /**
+     * @return URL of the disk type resource describing which disk type to use to
+     * create the disk.
+     * 
+     */
     private String type;
+    /**
+     * @return Links to the users of the disk (attached instances) in form:
+     * project/zones/zone/instances/instance
+     * 
+     */
     private List<String> users;
+    /**
+     * @return A reference to the zone where the disk resides.
+     * 
+     */
     private @Nullable String zone;
 
     private GetDiskResult() {}
+    /**
+     * @return Creation timestamp in RFC3339 text format.
+     * 
+     */
     public String creationTimestamp() {
         return this.creationTimestamp;
     }
+    /**
+     * @return The optional description of this resource.
+     * 
+     */
     public String description() {
         return this.description;
     }
@@ -76,12 +160,21 @@ public final class GetDiskResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The image from which to initialize this disk.
+     * 
+     */
     public String image() {
         return this.image;
     }
     public String interface_() {
         return this.interface_;
     }
+    /**
+     * @return The fingerprint used for optimistic locking of this resource.  Used
+     * internally during updates.
+     * 
+     */
     public String labelFingerprint() {
         return this.labelFingerprint;
     }
@@ -92,9 +185,17 @@ public final class GetDiskResult {
     public Map<String,String> labels() {
         return this.labels;
     }
+    /**
+     * @return Last attach timestamp in RFC3339 text format.
+     * 
+     */
     public String lastAttachTimestamp() {
         return this.lastAttachTimestamp;
     }
+    /**
+     * @return Last detach timestamp in RFC3339 text format.
+     * 
+     */
     public String lastDetachTimestamp() {
         return this.lastDetachTimestamp;
     }
@@ -104,6 +205,10 @@ public final class GetDiskResult {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Physical block size of the persistent disk, in bytes.
+     * 
+     */
     public Integer physicalBlockSizeBytes() {
         return this.physicalBlockSizeBytes;
     }
@@ -123,9 +228,17 @@ public final class GetDiskResult {
     public String selfLink() {
         return this.selfLink;
     }
+    /**
+     * @return Size of the persistent disk, specified in GB.
+     * 
+     */
     public Integer size() {
         return this.size;
     }
+    /**
+     * @return The source snapshot used to create this disk.
+     * 
+     */
     public String snapshot() {
         return this.snapshot;
     }
@@ -135,24 +248,63 @@ public final class GetDiskResult {
     public String sourceDiskId() {
         return this.sourceDiskId;
     }
+    /**
+     * @return The customer-supplied encryption key of the source image.
+     * 
+     */
     public List<GetDiskSourceImageEncryptionKey> sourceImageEncryptionKeys() {
         return this.sourceImageEncryptionKeys;
     }
+    /**
+     * @return The ID value of the image used to create this disk. This value
+     * identifies the exact image that was used to create this persistent
+     * disk. For example, if you created the persistent disk from an image
+     * that was later deleted and recreated under the same name, the source
+     * image ID would identify the exact version of the image that was used.
+     * 
+     */
     public String sourceImageId() {
         return this.sourceImageId;
     }
+    /**
+     * @return The customer-supplied encryption key of the source snapshot.
+     * 
+     */
     public List<GetDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys() {
         return this.sourceSnapshotEncryptionKeys;
     }
+    /**
+     * @return The unique ID of the snapshot used to create this disk. This value
+     * identifies the exact snapshot that was used to create this persistent
+     * disk. For example, if you created the persistent disk from a snapshot
+     * that was later deleted and recreated under the same name, the source
+     * snapshot ID would identify the exact version of the snapshot that was
+     * used.
+     * 
+     */
     public String sourceSnapshotId() {
         return this.sourceSnapshotId;
     }
+    /**
+     * @return URL of the disk type resource describing which disk type to use to
+     * create the disk.
+     * 
+     */
     public String type() {
         return this.type;
     }
+    /**
+     * @return Links to the users of the disk (attached instances) in form:
+     * project/zones/zone/instances/instance
+     * 
+     */
     public List<String> users() {
         return this.users;
     }
+    /**
+     * @return A reference to the zone where the disk resides.
+     * 
+     */
     public Optional<String> zone() {
         return Optional.ofNullable(this.zone);
     }

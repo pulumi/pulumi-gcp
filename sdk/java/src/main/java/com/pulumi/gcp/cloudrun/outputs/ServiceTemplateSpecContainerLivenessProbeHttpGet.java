@@ -20,10 +20,7 @@ public final class ServiceTemplateSpecContainerLivenessProbeHttpGet {
      */
     private @Nullable List<ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader> httpHeaders;
     /**
-     * @return The relative path of the file to map the key to.
-     * May not be an absolute path.
-     * May not contain the path element &#39;..&#39;.
-     * May not start with the string &#39;..&#39;.
+     * @return Path to access on the HTTP server. If set, it should not be empty string.
      * 
      */
     private @Nullable String path;
@@ -38,10 +35,7 @@ public final class ServiceTemplateSpecContainerLivenessProbeHttpGet {
         return this.httpHeaders == null ? List.of() : this.httpHeaders;
     }
     /**
-     * @return The relative path of the file to map the key to.
-     * May not be an absolute path.
-     * May not contain the path element &#39;..&#39;.
-     * May not start with the string &#39;..&#39;.
+     * @return Path to access on the HTTP server. If set, it should not be empty string.
      * 
      */
     public Optional<String> path() {

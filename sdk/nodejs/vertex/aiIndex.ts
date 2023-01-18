@@ -145,13 +145,12 @@ export class AiIndex extends pulumi.CustomResource {
     }
 
     /**
-     * The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-     * fractional digits.
+     * The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had
-     * been undeployed first.
+     * The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
+     * Structure is documented below.
      */
     public /*out*/ readonly deployedIndexes!: pulumi.Output<outputs.vertex.AiIndexDeployedIndex[]>;
     /**
@@ -168,6 +167,7 @@ export class AiIndex extends pulumi.CustomResource {
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * Stats of the index resource.
+     * Structure is documented below.
      */
     public /*out*/ readonly indexStats!: pulumi.Output<outputs.vertex.AiIndexIndexStat[]>;
     /**
@@ -186,8 +186,7 @@ export class AiIndex extends pulumi.CustomResource {
      */
     public readonly metadata!: pulumi.Output<outputs.vertex.AiIndexMetadata | undefined>;
     /**
-     * Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific
-     * to it. Unset if the Index does not have any additional information.
+     * Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
      */
     public /*out*/ readonly metadataSchemaUri!: pulumi.Output<string>;
     /**
@@ -204,8 +203,7 @@ export class AiIndex extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string | undefined>;
     /**
-     * The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-     * fractional digits.
+     * The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -266,13 +264,12 @@ export class AiIndex extends pulumi.CustomResource {
  */
 export interface AiIndexState {
     /**
-     * The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-     * fractional digits.
+     * The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had
-     * been undeployed first.
+     * The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
+     * Structure is documented below.
      */
     deployedIndexes?: pulumi.Input<pulumi.Input<inputs.vertex.AiIndexDeployedIndex>[]>;
     /**
@@ -289,6 +286,7 @@ export interface AiIndexState {
     etag?: pulumi.Input<string>;
     /**
      * Stats of the index resource.
+     * Structure is documented below.
      */
     indexStats?: pulumi.Input<pulumi.Input<inputs.vertex.AiIndexIndexStat>[]>;
     /**
@@ -307,8 +305,7 @@ export interface AiIndexState {
      */
     metadata?: pulumi.Input<inputs.vertex.AiIndexMetadata>;
     /**
-     * Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific
-     * to it. Unset if the Index does not have any additional information.
+     * Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
      */
     metadataSchemaUri?: pulumi.Input<string>;
     /**
@@ -325,8 +322,7 @@ export interface AiIndexState {
      */
     region?: pulumi.Input<string>;
     /**
-     * The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-     * fractional digits.
+     * The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     updateTime?: pulumi.Input<string>;
 }

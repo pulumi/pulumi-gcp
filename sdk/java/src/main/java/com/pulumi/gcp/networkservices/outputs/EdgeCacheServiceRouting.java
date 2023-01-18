@@ -18,7 +18,8 @@ public final class EdgeCacheServiceRouting {
      */
     private List<EdgeCacheServiceRoutingHostRule> hostRules;
     /**
-     * @return The name of the pathMatcher associated with this hostRule.
+     * @return The list of pathMatchers referenced via name by hostRules. PathMatcher is used to match the path portion of the URL when a HostRule matches the URL&#39;s host portion.
+     * Structure is documented below.
      * 
      */
     private List<EdgeCacheServiceRoutingPathMatcher> pathMatchers;
@@ -33,7 +34,8 @@ public final class EdgeCacheServiceRouting {
         return this.hostRules;
     }
     /**
-     * @return The name of the pathMatcher associated with this hostRule.
+     * @return The list of pathMatchers referenced via name by hostRules. PathMatcher is used to match the path portion of the URL when a HostRule matches the URL&#39;s host portion.
+     * Structure is documented below.
      * 
      */
     public List<EdgeCacheServiceRoutingPathMatcher> pathMatchers() {

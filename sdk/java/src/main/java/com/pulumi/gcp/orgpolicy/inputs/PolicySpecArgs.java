@@ -19,7 +19,6 @@ public final class PolicySpecArgs extends com.pulumi.resources.ResourceArgs {
     public static final PolicySpecArgs Empty = new PolicySpecArgs();
 
     /**
-     * - 
      * An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
      * 
      */
@@ -27,8 +26,7 @@ public final class PolicySpecArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> etag;
 
     /**
-     * @return -
-     * An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+     * @return An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
      * 
      */
     public Optional<Output<String>> etag() {
@@ -81,7 +79,6 @@ public final class PolicySpecArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * - 
      * Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that `Policy`.
      * 
      */
@@ -89,8 +86,7 @@ public final class PolicySpecArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return -
-     * Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that `Policy`.
+     * @return Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that `Policy`.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -126,8 +122,7 @@ public final class PolicySpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etag -
-         * An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+         * @param etag An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
          * 
          * @return builder
          * 
@@ -138,8 +133,7 @@ public final class PolicySpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etag -
-         * An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+         * @param etag An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
          * 
          * @return builder
          * 
@@ -222,8 +216,7 @@ public final class PolicySpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateTime -
-         * Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that `Policy`.
+         * @param updateTime Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that `Policy`.
          * 
          * @return builder
          * 
@@ -234,8 +227,7 @@ public final class PolicySpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateTime -
-         * Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that `Policy`.
+         * @param updateTime Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that `Policy`.
          * 
          * @return builder
          * 

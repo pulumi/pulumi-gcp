@@ -22,16 +22,13 @@ import * as utilities from "../utilities";
  *     parentId: `organizations/${_var.organization_id}`,
  * });
  * const first-folder = my_org_folders.then(my_org_folders => gcp.organizations.getFolder({
- *     folder: my_org_folders.folders?[0]?.name,
+ *     folder: my_org_folders.folders?.[0]?.name,
  * }));
  * ```
  */
 export function getFolders(args: GetFoldersArgs, opts?: pulumi.InvokeOptions): Promise<GetFoldersResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:organizations/getFolders:getFolders", {
         "parentId": args.parentId,
     }, opts);
@@ -61,9 +58,28 @@ export interface GetFoldersResult {
     readonly id: string;
     readonly parentId: string;
 }
-
+/**
+ * Retrieve information about a set of folders based on a parent ID. See the
+ * [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list)
+ * for more details.
+ *
+ * ## Example Usage
+ * ### Searching For Folders At The Root Of An Org
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-org-folders = gcp.organizations.getFolders({
+ *     parentId: `organizations/${_var.organization_id}`,
+ * });
+ * const first-folder = my_org_folders.then(my_org_folders => gcp.organizations.getFolder({
+ *     folder: my_org_folders.folders?.[0]?.name,
+ * }));
+ * ```
+ */
 export function getFoldersOutput(args: GetFoldersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFoldersResult> {
-    return pulumi.output(args).apply(a => getFolders(a, opts))
+    return pulumi.output(args).apply((a: any) => getFolders(a, opts))
 }
 
 /**

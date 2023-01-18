@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     public sealed class ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader
     {
         /// <summary>
-        /// Volume's name.
+        /// The header field name.
         /// </summary>
         public readonly string Name;
         /// <summary>

@@ -29,7 +29,8 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
         private InputList<Inputs.EdgeCacheServiceRoutingPathMatcherArgs>? _pathMatchers;
 
         /// <summary>
-        /// The name of the pathMatcher associated with this hostRule.
+        /// The list of pathMatchers referenced via name by hostRules. PathMatcher is used to match the path portion of the URL when a HostRule matches the URL's host portion.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.EdgeCacheServiceRoutingPathMatcherArgs> PathMatchers
         {

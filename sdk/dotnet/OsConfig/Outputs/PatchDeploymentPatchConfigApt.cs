@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     public sealed class PatchDeploymentPatchConfigApt
     {
         /// <summary>
-        /// List of KBs to exclude from update.
+        /// List of packages to exclude from update. These packages will be excluded.
         /// </summary>
         public readonly ImmutableArray<string> Excludes;
         /// <summary>

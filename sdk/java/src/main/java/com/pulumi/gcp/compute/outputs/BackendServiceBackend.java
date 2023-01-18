@@ -60,8 +60,11 @@ public final class BackendServiceBackend {
      */
     private String group;
     /**
-     * @return The maximum number of connections to the backend cluster.
-     * Defaults to 1024.
+     * @return The max number of simultaneous connections for the group. Can
+     * be used with either CONNECTION or UTILIZATION balancing modes.
+     * For CONNECTION mode, either maxConnections or one
+     * of maxConnectionsPerInstance or maxConnectionsPerEndpoint,
+     * as appropriate for group type, must be set.
      * 
      */
     private @Nullable Integer maxConnections;
@@ -173,8 +176,11 @@ public final class BackendServiceBackend {
         return this.group;
     }
     /**
-     * @return The maximum number of connections to the backend cluster.
-     * Defaults to 1024.
+     * @return The max number of simultaneous connections for the group. Can
+     * be used with either CONNECTION or UTILIZATION balancing modes.
+     * For CONNECTION mode, either maxConnections or one
+     * of maxConnectionsPerInstance or maxConnectionsPerEndpoint,
+     * as appropriate for group type, must be set.
      * 
      */
     public Optional<Integer> maxConnections() {

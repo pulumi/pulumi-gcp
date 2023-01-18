@@ -19,13 +19,13 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public Input<bool>? AllowNoResourceGroupMatch { get; set; }
 
         /// <summary>
-        /// OS policy assignment description. Length of the description is limited to 1024 characters.
+        /// Policy description. Length of the description is limited to 1024 characters.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+        /// Required. The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;

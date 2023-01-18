@@ -20,14 +20,18 @@ public final class ServiceAttachmentState extends com.pulumi.resources.ResourceA
     public static final ServiceAttachmentState Empty = new ServiceAttachmentState();
 
     /**
-     * An array of the consumer forwarding rules connected to this service attachment.
+     * An array of the consumer forwarding rules connected to this service
+     * attachment.
+     * Structure is documented below.
      * 
      */
     @Import(name="connectedEndpoints")
     private @Nullable Output<List<ServiceAttachmentConnectedEndpointArgs>> connectedEndpoints;
 
     /**
-     * @return An array of the consumer forwarding rules connected to this service attachment.
+     * @return An array of the consumer forwarding rules connected to this service
+     * attachment.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<ServiceAttachmentConnectedEndpointArgs>>> connectedEndpoints() {
@@ -143,14 +147,16 @@ public final class ServiceAttachmentState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Fingerprint of this resource. This field is used internally during updates of this resource.
+     * Fingerprint of this resource. This field is used internally during
+     * updates of this resource.
      * 
      */
     @Import(name="fingerprint")
     private @Nullable Output<String> fingerprint;
 
     /**
-     * @return Fingerprint of this resource. This field is used internally during updates of this resource.
+     * @return Fingerprint of this resource. This field is used internally during
+     * updates of this resource.
      * 
      */
     public Optional<Output<String>> fingerprint() {
@@ -299,7 +305,9 @@ public final class ServiceAttachmentState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param connectedEndpoints An array of the consumer forwarding rules connected to this service attachment.
+         * @param connectedEndpoints An array of the consumer forwarding rules connected to this service
+         * attachment.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -310,7 +318,9 @@ public final class ServiceAttachmentState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param connectedEndpoints An array of the consumer forwarding rules connected to this service attachment.
+         * @param connectedEndpoints An array of the consumer forwarding rules connected to this service
+         * attachment.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -320,7 +330,9 @@ public final class ServiceAttachmentState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param connectedEndpoints An array of the consumer forwarding rules connected to this service attachment.
+         * @param connectedEndpoints An array of the consumer forwarding rules connected to this service
+         * attachment.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -510,7 +522,8 @@ public final class ServiceAttachmentState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param fingerprint Fingerprint of this resource. This field is used internally during updates of this resource.
+         * @param fingerprint Fingerprint of this resource. This field is used internally during
+         * updates of this resource.
          * 
          * @return builder
          * 
@@ -521,7 +534,8 @@ public final class ServiceAttachmentState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param fingerprint Fingerprint of this resource. This field is used internally during updates of this resource.
+         * @param fingerprint Fingerprint of this resource. This field is used internally during
+         * updates of this resource.
          * 
          * @return builder
          * 

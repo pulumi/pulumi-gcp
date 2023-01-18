@@ -31,14 +31,16 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDay
     }
 
     /**
-     * The start time of the schedule. The timestamp is an RFC3339 string.
+     * Time within the window to start the operations.
+     * It must be in format &#34;HH:MM&#34;, where HH : [00-23] and MM : [00-00] GMT.
      * 
      */
     @Import(name="startTime", required=true)
     private Output<String> startTime;
 
     /**
-     * @return The start time of the schedule. The timestamp is an RFC3339 string.
+     * @return Time within the window to start the operations.
+     * It must be in format &#34;HH:MM&#34;, where HH : [00-23] and MM : [00-00] GMT.
      * 
      */
     public Output<String> startTime() {
@@ -94,7 +96,8 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDay
         }
 
         /**
-         * @param startTime The start time of the schedule. The timestamp is an RFC3339 string.
+         * @param startTime Time within the window to start the operations.
+         * It must be in format &#34;HH:MM&#34;, where HH : [00-23] and MM : [00-00] GMT.
          * 
          * @return builder
          * 
@@ -105,7 +108,8 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDay
         }
 
         /**
-         * @param startTime The start time of the schedule. The timestamp is an RFC3339 string.
+         * @param startTime Time within the window to start the operations.
+         * It must be in format &#34;HH:MM&#34;, where HH : [00-23] and MM : [00-00] GMT.
          * 
          * @return builder
          * 

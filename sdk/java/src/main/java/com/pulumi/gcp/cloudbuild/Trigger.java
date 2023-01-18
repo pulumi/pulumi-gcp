@@ -77,6 +77,7 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Cloudbuild Trigger Build
+ * 
  * ```java
  * package generated_program;
  * 
@@ -713,36 +714,30 @@ public class Trigger extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.includedFiles);
     }
     /**
-     * Cloud Storage bucket and optional object path, in the form &#34;gs://bucket/path/to/somewhere/&#34;.
-     * Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
-     * this location as a prefix.
+     * The [Cloud Build location](https://cloud.google.com/build/docs/locations) for the trigger.
+     * If not specified, &#34;global&#34; is used.
      * 
      */
     @Export(name="location", type=String.class, parameters={})
     private Output</* @Nullable */ String> location;
 
     /**
-     * @return Cloud Storage bucket and optional object path, in the form &#34;gs://bucket/path/to/somewhere/&#34;.
-     * Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
-     * this location as a prefix.
+     * @return The [Cloud Build location](https://cloud.google.com/build/docs/locations) for the trigger.
+     * If not specified, &#34;global&#34; is used.
      * 
      */
     public Output<Optional<String>> location() {
         return Codegen.optional(this.location);
     }
     /**
-     * Name of the volume to mount.
-     * Volume names must be unique per build step and must be valid names for Docker volumes.
-     * Each named volume must be used by at least two build steps.
+     * Name of the trigger. Must be unique within the project.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Name of the volume to mount.
-     * Volume names must be unique per build step and must be valid names for Docker volumes.
-     * Each named volume must be used by at least two build steps.
+     * @return Name of the trigger. Must be unique within the project.
      * 
      */
     public Output<String> name() {
@@ -831,28 +826,28 @@ public class Trigger extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sourceToBuild);
     }
     /**
-     * Substitutions to use in a triggered build. Should only be used with triggers.run
+     * Substitutions data for Build resource.
      * 
      */
     @Export(name="substitutions", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> substitutions;
 
     /**
-     * @return Substitutions to use in a triggered build. Should only be used with triggers.run
+     * @return Substitutions data for Build resource.
      * 
      */
     public Output<Optional<Map<String,String>>> substitutions() {
         return Codegen.optional(this.substitutions);
     }
     /**
-     * Tags for annotation of a Build. These are not docker tags.
+     * Tags for annotation of a BuildTrigger
      * 
      */
     @Export(name="tags", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags for annotation of a Build. These are not docker tags.
+     * @return Tags for annotation of a BuildTrigger
      * 
      */
     public Output<Optional<List<String>>> tags() {

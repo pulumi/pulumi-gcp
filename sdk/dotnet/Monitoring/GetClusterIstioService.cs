@@ -194,17 +194,27 @@ namespace Pulumi.Gcp.Monitoring
     public sealed class GetClusterIstioServiceResult
     {
         public readonly string ClusterName;
+        /// <summary>
+        /// Name used for UI elements listing this (Monitoring) Service.
+        /// </summary>
         public readonly string DisplayName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string Location;
+        /// <summary>
+        /// The full REST resource name for this channel. The syntax is:
+        /// `projects/[PROJECT_ID]/services/[SERVICE_ID]`.
+        /// </summary>
         public readonly string Name;
         public readonly string? Project;
         public readonly string ServiceId;
         public readonly string ServiceName;
         public readonly string ServiceNamespace;
+        /// <summary>
+        /// Configuration for how to query telemetry on the Service. Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterIstioServiceTelemetryResult> Telemetries;
         public readonly ImmutableDictionary<string, string> UserLabels;
 

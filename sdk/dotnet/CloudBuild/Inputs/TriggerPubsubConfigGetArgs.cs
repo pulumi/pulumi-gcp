@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         public Input<string>? ServiceAccountEmail { get; set; }
 
         /// <summary>
-        /// -
         /// Potential issues with the underlying Pub/Sub subscription configuration.
         /// Only populated on get requests.
         /// </summary>
@@ -27,7 +26,6 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// -
         /// Output only. Name of the subscription.
         /// </summary>
         [Input("subscription")]

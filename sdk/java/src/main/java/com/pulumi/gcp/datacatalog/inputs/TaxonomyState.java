@@ -76,14 +76,16 @@ public final class TaxonomyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Resource name of this taxonomy, whose format is: &#34;projects/{project}/locations/{region}/taxonomies/{taxonomy}&#34;.
+     * Resource name of this taxonomy, whose format is:
+     * &#34;projects/{project}/locations/{region}/taxonomies/{taxonomy}&#34;.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Resource name of this taxonomy, whose format is: &#34;projects/{project}/locations/{region}/taxonomies/{taxonomy}&#34;.
+     * @return Resource name of this taxonomy, whose format is:
+     * &#34;projects/{project}/locations/{region}/taxonomies/{taxonomy}&#34;.
      * 
      */
     public Optional<Output<String>> name() {
@@ -241,7 +243,8 @@ public final class TaxonomyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Resource name of this taxonomy, whose format is: &#34;projects/{project}/locations/{region}/taxonomies/{taxonomy}&#34;.
+         * @param name Resource name of this taxonomy, whose format is:
+         * &#34;projects/{project}/locations/{region}/taxonomies/{taxonomy}&#34;.
          * 
          * @return builder
          * 
@@ -252,7 +255,8 @@ public final class TaxonomyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Resource name of this taxonomy, whose format is: &#34;projects/{project}/locations/{region}/taxonomies/{taxonomy}&#34;.
+         * @param name Resource name of this taxonomy, whose format is:
+         * &#34;projects/{project}/locations/{region}/taxonomies/{taxonomy}&#34;.
          * 
          * @return builder
          * 

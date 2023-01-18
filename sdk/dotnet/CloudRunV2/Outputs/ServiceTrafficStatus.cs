@@ -18,6 +18,8 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly int? Percent;
         /// <summary>
+        /// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+        /// (Optional)
         /// Revision to which to send this portion of traffic, if traffic allocation is by revision.
         /// </summary>
         public readonly string? Revision;
@@ -30,6 +32,9 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
         /// </summary>
         public readonly string? Type;
+        /// <summary>
+        /// Displays the target URI.
+        /// </summary>
         public readonly string? Uri;
 
         [OutputConstructor]

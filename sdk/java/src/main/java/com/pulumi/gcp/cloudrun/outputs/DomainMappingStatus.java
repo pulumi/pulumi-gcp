@@ -15,21 +15,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DomainMappingStatus {
+    /**
+     * @return Array of observed DomainMappingConditions, indicating the current state
+     * of the DomainMapping.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable List<DomainMappingStatusCondition> conditions;
+    /**
+     * @return The name of the route that the mapping currently points to.
+     * 
+     */
     private @Nullable String mappedRouteName;
+    /**
+     * @return ObservedGeneration is the &#39;Generation&#39; of the DomainMapping that
+     * was last processed by the controller.
+     * 
+     */
     private @Nullable Integer observedGeneration;
+    /**
+     * @return The resource records required to configure this domain mapping. These
+     * records must be added to the domain&#39;s DNS configuration in order to
+     * serve the application via this domain mapping.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable List<DomainMappingStatusResourceRecord> resourceRecords;
 
     private DomainMappingStatus() {}
+    /**
+     * @return Array of observed DomainMappingConditions, indicating the current state
+     * of the DomainMapping.
+     * Structure is documented below.
+     * 
+     */
     public List<DomainMappingStatusCondition> conditions() {
         return this.conditions == null ? List.of() : this.conditions;
     }
+    /**
+     * @return The name of the route that the mapping currently points to.
+     * 
+     */
     public Optional<String> mappedRouteName() {
         return Optional.ofNullable(this.mappedRouteName);
     }
+    /**
+     * @return ObservedGeneration is the &#39;Generation&#39; of the DomainMapping that
+     * was last processed by the controller.
+     * 
+     */
     public Optional<Integer> observedGeneration() {
         return Optional.ofNullable(this.observedGeneration);
     }
+    /**
+     * @return The resource records required to configure this domain mapping. These
+     * records must be added to the domain&#39;s DNS configuration in order to
+     * serve the application via this domain mapping.
+     * Structure is documented below.
+     * 
+     */
     public List<DomainMappingStatusResourceRecord> resourceRecords() {
         return this.resourceRecords == null ? List.of() : this.resourceRecords;
     }

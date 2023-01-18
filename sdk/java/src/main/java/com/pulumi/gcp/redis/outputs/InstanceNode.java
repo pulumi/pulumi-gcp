@@ -12,20 +12,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceNode {
     /**
-     * @return an identifier for the resource with format `projects/{{project}}/locations/{{region}}/instances/{{name}}`
+     * @return Node identifying string. e.g. &#39;node-0&#39;, &#39;node-1&#39;
      * 
      */
     private @Nullable String id;
+    /**
+     * @return Location of the node.
+     * 
+     */
     private @Nullable String zone;
 
     private InstanceNode() {}
     /**
-     * @return an identifier for the resource with format `projects/{{project}}/locations/{{region}}/instances/{{name}}`
+     * @return Node identifying string. e.g. &#39;node-0&#39;, &#39;node-1&#39;
      * 
      */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return Location of the node.
+     * 
+     */
     public Optional<String> zone() {
         return Optional.ofNullable(this.zone);
     }

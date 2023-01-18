@@ -133,8 +133,8 @@ type CxEntityType struct {
 	// EntityType.excluded_phrases.value
 	// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode pulumi.StringPtrOutput `pulumi:"languageCode"`
-	// The unique identifier of the entity type. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-	// ID>/entityTypes/<Entity Type ID>.
+	// The unique identifier of the entity type.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID>.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The agent to create a entity type for.
 	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
@@ -209,8 +209,8 @@ type cxEntityTypeState struct {
 	// EntityType.excluded_phrases.value
 	// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode *string `pulumi:"languageCode"`
-	// The unique identifier of the entity type. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-	// ID>/entityTypes/<Entity Type ID>.
+	// The unique identifier of the entity type.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID>.
 	Name *string `pulumi:"name"`
 	// The agent to create a entity type for.
 	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
@@ -248,8 +248,8 @@ type CxEntityTypeState struct {
 	// EntityType.excluded_phrases.value
 	// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode pulumi.StringPtrInput
-	// The unique identifier of the entity type. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-	// ID>/entityTypes/<Entity Type ID>.
+	// The unique identifier of the entity type.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID>.
 	Name pulumi.StringPtrInput
 	// The agent to create a entity type for.
 	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
@@ -471,8 +471,8 @@ func (o CxEntityTypeOutput) LanguageCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxEntityType) pulumi.StringPtrOutput { return v.LanguageCode }).(pulumi.StringPtrOutput)
 }
 
-// The unique identifier of the entity type. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-// ID>/entityTypes/<Entity Type ID>.
+// The unique identifier of the entity type.
+// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID>.
 func (o CxEntityTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxEntityType) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

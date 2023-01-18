@@ -100,7 +100,7 @@ export class ForwardingRule extends pulumi.CustomResource {
      */
     public readonly backendService!: pulumi.Output<string | undefined>;
     /**
-     * [Output Only] Creation timestamp in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+     * Creation timestamp in RFC3339 text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
@@ -222,8 +222,7 @@ export class ForwardingRule extends pulumi.CustomResource {
      */
     public /*out*/ readonly pscConnectionId!: pulumi.Output<string>;
     /**
-     * The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
-     * CLOSED
+     * The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED, CLOSED
      */
     public /*out*/ readonly pscConnectionStatus!: pulumi.Output<string>;
     /**
@@ -255,8 +254,8 @@ export class ForwardingRule extends pulumi.CustomResource {
      */
     public readonly serviceLabel!: pulumi.Output<string | undefined>;
     /**
-     * [Output Only] The internal fully qualified service name for this Forwarding Rule. This field is only used for internal
-     * load balancing.
+     * The internal fully qualified service name for this Forwarding Rule.
+     * This field is only used for INTERNAL load balancing.
      */
     public /*out*/ readonly serviceName!: pulumi.Output<string>;
     /**
@@ -373,7 +372,7 @@ export interface ForwardingRuleState {
      */
     backendService?: pulumi.Input<string>;
     /**
-     * [Output Only] Creation timestamp in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+     * Creation timestamp in RFC3339 text format.
      */
     creationTimestamp?: pulumi.Input<string>;
     /**
@@ -495,8 +494,7 @@ export interface ForwardingRuleState {
      */
     pscConnectionId?: pulumi.Input<string>;
     /**
-     * The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
-     * CLOSED
+     * The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED, CLOSED
      */
     pscConnectionStatus?: pulumi.Input<string>;
     /**
@@ -528,8 +526,8 @@ export interface ForwardingRuleState {
      */
     serviceLabel?: pulumi.Input<string>;
     /**
-     * [Output Only] The internal fully qualified service name for this Forwarding Rule. This field is only used for internal
-     * load balancing.
+     * The internal fully qualified service name for this Forwarding Rule.
+     * This field is only used for INTERNAL load balancing.
      */
     serviceName?: pulumi.Input<string>;
     /**

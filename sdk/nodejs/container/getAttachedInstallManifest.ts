@@ -23,11 +23,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAttachedInstallManifest(args: GetAttachedInstallManifestArgs, opts?: pulumi.InvokeOptions): Promise<GetAttachedInstallManifestResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:container/getAttachedInstallManifest:getAttachedInstallManifest", {
         "clusterId": args.clusterId,
         "location": args.location,
@@ -76,9 +73,26 @@ export interface GetAttachedInstallManifestResult {
     readonly platformVersion: string;
     readonly project: string;
 }
-
+/**
+ * Provides access to available platform versions in a location for a given project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const manifest = gcp.container.getAttachedInstallManifest({
+ *     location: "us-west1",
+ *     project: "my-project",
+ *     clusterId: "test-cluster-1",
+ *     platformVersion: "1.25.0-gke.1",
+ * });
+ * export const installManifest = manifest;
+ * ```
+ */
 export function getAttachedInstallManifestOutput(args: GetAttachedInstallManifestOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttachedInstallManifestResult> {
-    return pulumi.output(args).apply(a => getAttachedInstallManifest(a, opts))
+    return pulumi.output(args).apply((a: any) => getAttachedInstallManifest(a, opts))
 }
 
 /**

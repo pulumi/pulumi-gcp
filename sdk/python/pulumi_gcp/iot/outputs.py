@@ -51,6 +51,13 @@ class DeviceConfig(dict):
                  cloud_update_time: Optional[str] = None,
                  device_ack_time: Optional[str] = None,
                  version: Optional[str] = None):
+        """
+        :param str binary_data: The device state data.
+        :param str cloud_update_time: The time at which this configuration version was updated in Cloud IoT Core.
+        :param str device_ack_time: The time at which Cloud IoT Core received the acknowledgment from the device,
+               indicating that the device has received this configuration version.
+        :param str version: The version of this update.
+        """
         if binary_data is not None:
             pulumi.set(__self__, "binary_data", binary_data)
         if cloud_update_time is not None:
@@ -63,21 +70,34 @@ class DeviceConfig(dict):
     @property
     @pulumi.getter(name="binaryData")
     def binary_data(self) -> Optional[str]:
+        """
+        The device state data.
+        """
         return pulumi.get(self, "binary_data")
 
     @property
     @pulumi.getter(name="cloudUpdateTime")
     def cloud_update_time(self) -> Optional[str]:
+        """
+        The time at which this configuration version was updated in Cloud IoT Core.
+        """
         return pulumi.get(self, "cloud_update_time")
 
     @property
     @pulumi.getter(name="deviceAckTime")
     def device_ack_time(self) -> Optional[str]:
+        """
+        The time at which Cloud IoT Core received the acknowledgment from the device,
+        indicating that the device has received this configuration version.
+        """
         return pulumi.get(self, "device_ack_time")
 
     @property
     @pulumi.getter
     def version(self) -> Optional[str]:
+        """
+        The version of this update.
+        """
         return pulumi.get(self, "version")
 
 
@@ -199,10 +219,8 @@ class DeviceGatewayConfig(dict):
         :param str gateway_type: Indicates whether the device is a gateway.
                Default value is `NON_GATEWAY`.
                Possible values are `GATEWAY` and `NON_GATEWAY`.
-        :param str last_accessed_gateway_id: -
-               The ID of the gateway the device accessed most recently.
-        :param str last_accessed_gateway_time: -
-               The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
+        :param str last_accessed_gateway_id: The ID of the gateway the device accessed most recently.
+        :param str last_accessed_gateway_time: The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
         """
         if gateway_auth_method is not None:
             pulumi.set(__self__, "gateway_auth_method", gateway_auth_method)
@@ -236,7 +254,6 @@ class DeviceGatewayConfig(dict):
     @pulumi.getter(name="lastAccessedGatewayId")
     def last_accessed_gateway_id(self) -> Optional[str]:
         """
-        -
         The ID of the gateway the device accessed most recently.
         """
         return pulumi.get(self, "last_accessed_gateway_id")
@@ -245,7 +262,6 @@ class DeviceGatewayConfig(dict):
     @pulumi.getter(name="lastAccessedGatewayTime")
     def last_accessed_gateway_time(self) -> Optional[str]:
         """
-        -
         The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
         """
         return pulumi.get(self, "last_accessed_gateway_time")
@@ -257,6 +273,11 @@ class DeviceLastErrorStatus(dict):
                  details: Optional[Sequence[Mapping[str, Any]]] = None,
                  message: Optional[str] = None,
                  number: Optional[int] = None):
+        """
+        :param Sequence[Mapping[str, Any]] details: A list of messages that carry the error details.
+        :param str message: A developer-facing error message, which should be in English.
+        :param int number: The status code, which should be an enum value of google.rpc.Code.
+        """
         if details is not None:
             pulumi.set(__self__, "details", details)
         if message is not None:
@@ -267,16 +288,25 @@ class DeviceLastErrorStatus(dict):
     @property
     @pulumi.getter
     def details(self) -> Optional[Sequence[Mapping[str, Any]]]:
+        """
+        A list of messages that carry the error details.
+        """
         return pulumi.get(self, "details")
 
     @property
     @pulumi.getter
     def message(self) -> Optional[str]:
+        """
+        A developer-facing error message, which should be in English.
+        """
         return pulumi.get(self, "message")
 
     @property
     @pulumi.getter
     def number(self) -> Optional[int]:
+        """
+        The status code, which should be an enum value of google.rpc.Code.
+        """
         return pulumi.get(self, "number")
 
 
@@ -304,6 +334,10 @@ class DeviceState(dict):
     def __init__(__self__, *,
                  binary_data: Optional[str] = None,
                  update_time: Optional[str] = None):
+        """
+        :param str binary_data: The device state data.
+        :param str update_time: The time at which this state version was updated in Cloud IoT Core.
+        """
         if binary_data is not None:
             pulumi.set(__self__, "binary_data", binary_data)
         if update_time is not None:
@@ -312,11 +346,17 @@ class DeviceState(dict):
     @property
     @pulumi.getter(name="binaryData")
     def binary_data(self) -> Optional[str]:
+        """
+        The device state data.
+        """
         return pulumi.get(self, "binary_data")
 
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[str]:
+        """
+        The time at which this state version was updated in Cloud IoT Core.
+        """
         return pulumi.get(self, "update_time")
 
 

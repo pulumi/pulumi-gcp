@@ -17,14 +17,14 @@ public final class ServiceTemplateContainerEnvArgs extends com.pulumi.resources.
     public static final ServiceTemplateContainerEnvArgs Empty = new ServiceTemplateContainerEnvArgs();
 
     /**
-     * Volume&#39;s name.
+     * Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Volume&#39;s name.
+     * @return Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
      * 
      */
     public Output<String> name() {
@@ -32,14 +32,14 @@ public final class ServiceTemplateContainerEnvArgs extends com.pulumi.resources.
     }
 
     /**
-     * The header field value
+     * Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to &#34;&#34;, and the maximum length is 32768 bytes
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The header field value
+     * @return Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to &#34;&#34;, and the maximum length is 32768 bytes
      * 
      */
     public Optional<Output<String>> value() {
@@ -90,7 +90,7 @@ public final class ServiceTemplateContainerEnvArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name Volume&#39;s name.
+         * @param name Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class ServiceTemplateContainerEnvArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name Volume&#39;s name.
+         * @param name Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class ServiceTemplateContainerEnvArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param value The header field value
+         * @param value Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to &#34;&#34;, and the maximum length is 32768 bytes
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class ServiceTemplateContainerEnvArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param value The header field value
+         * @param value Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to &#34;&#34;, and the maximum length is 32768 bytes
          * 
          * @return builder
          * 

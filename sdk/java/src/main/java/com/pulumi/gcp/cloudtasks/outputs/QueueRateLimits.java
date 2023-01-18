@@ -13,8 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class QueueRateLimits {
     /**
-     * @return -
-     * The max burst size.
+     * @return The max burst size.
      * Max burst size limits how fast tasks in queue are processed when many tasks are
      * in the queue and the rate is high. This field allows the queue to have a high
      * rate so processing starts shortly after a task is enqueued, but still limits
@@ -39,8 +38,7 @@ public final class QueueRateLimits {
 
     private QueueRateLimits() {}
     /**
-     * @return -
-     * The max burst size.
+     * @return The max burst size.
      * Max burst size limits how fast tasks in queue are processed when many tasks are
      * in the queue and the rate is high. This field allows the queue to have a high
      * rate so processing starts shortly after a task is enqueued, but still limits

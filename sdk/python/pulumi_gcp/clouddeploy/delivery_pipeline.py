@@ -170,8 +170,7 @@ class _DeliveryPipelineState:
         :param pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineConditionArgs']]] conditions: Output only. Information around the state of the Delivery Pipeline.
         :param pulumi.Input[str] create_time: Output only. Time at which the pipeline was created.
         :param pulumi.Input[str] description: Description of the `DeliveryPipeline`. Max length is 255 characters.
-        :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete
-               requests to ensure the client has an up-to-date value before proceeding.
+        :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\\-]{0,62}.
@@ -260,8 +259,7 @@ class _DeliveryPipelineState:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        This checksum is computed by the server based on the value of other fields, and may be sent on update and delete
-        requests to ensure the client has an up-to-date value before proceeding.
+        This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
 
@@ -658,8 +656,7 @@ class DeliveryPipeline(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeliveryPipelineConditionArgs']]]] conditions: Output only. Information around the state of the Delivery Pipeline.
         :param pulumi.Input[str] create_time: Output only. Time at which the pipeline was created.
         :param pulumi.Input[str] description: Description of the `DeliveryPipeline`. Max length is 255 characters.
-        :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete
-               requests to ensure the client has an up-to-date value before proceeding.
+        :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\\-]{0,62}.
@@ -724,8 +721,7 @@ class DeliveryPipeline(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        This checksum is computed by the server based on the value of other fields, and may be sent on update and delete
-        requests to ensure the client has an up-to-date value before proceeding.
+        This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
 

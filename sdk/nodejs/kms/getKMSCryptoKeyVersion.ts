@@ -34,11 +34,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getKMSCryptoKeyVersion(args: GetKMSCryptoKeyVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSCryptoKeyVersionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:kms/getKMSCryptoKeyVersion:getKMSCryptoKeyVersion", {
         "cryptoKey": args.cryptoKey,
         "version": args.version,
@@ -91,9 +88,35 @@ export interface GetKMSCryptoKeyVersionResult {
     readonly state: string;
     readonly version?: number;
 }
-
+/**
+ * Provides access to a Google Cloud Platform KMS CryptoKeyVersion. For more information see
+ * [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key_version)
+ * and
+ * [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions).
+ *
+ * A CryptoKeyVersion represents an individual cryptographic key, and the associated key material.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myKeyRing = gcp.kms.getKMSKeyRing({
+ *     name: "my-key-ring",
+ *     location: "us-central1",
+ * });
+ * const myCryptoKey = myKeyRing.then(myKeyRing => gcp.kms.getKMSCryptoKey({
+ *     name: "my-crypto-key",
+ *     keyRing: myKeyRing.id,
+ * }));
+ * const myCryptoKeyVersion = gcp.kms.getKMSCryptoKeyVersion({
+ *     cryptoKey: data.google_kms_crypto_key.my_key.id,
+ * });
+ * ```
+ */
 export function getKMSCryptoKeyVersionOutput(args: GetKMSCryptoKeyVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKMSCryptoKeyVersionResult> {
-    return pulumi.output(args).apply(a => getKMSCryptoKeyVersion(a, opts))
+    return pulumi.output(args).apply((a: any) => getKMSCryptoKeyVersion(a, opts))
 }
 
 /**

@@ -18,11 +18,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRule(args: GetRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetRuleResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:iam/getRule:getRule", {
         "name": args.name,
     }, opts);
@@ -60,9 +57,21 @@ export interface GetRuleResult {
      */
     readonly title: string;
 }
-
+/**
+ * Use this data source to get information about a Google IAM Role.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const roleinfo = gcp.iam.getRule({
+ *     name: "roles/compute.viewer",
+ * });
+ * export const theRolePermissions = roleinfo.then(roleinfo => roleinfo.includedPermissions);
+ * ```
+ */
 export function getRuleOutput(args: GetRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRuleResult> {
-    return pulumi.output(args).apply(a => getRule(a, opts))
+    return pulumi.output(args).apply((a: any) => getRule(a, opts))
 }
 
 /**

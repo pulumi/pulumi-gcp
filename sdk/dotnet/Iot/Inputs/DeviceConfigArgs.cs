@@ -12,15 +12,28 @@ namespace Pulumi.Gcp.Iot.Inputs
 
     public sealed class DeviceConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The device state data.
+        /// </summary>
         [Input("binaryData")]
         public Input<string>? BinaryData { get; set; }
 
+        /// <summary>
+        /// The time at which this configuration version was updated in Cloud IoT Core.
+        /// </summary>
         [Input("cloudUpdateTime")]
         public Input<string>? CloudUpdateTime { get; set; }
 
+        /// <summary>
+        /// The time at which Cloud IoT Core received the acknowledgment from the device,
+        /// indicating that the device has received this configuration version.
+        /// </summary>
         [Input("deviceAckTime")]
         public Input<string>? DeviceAckTime { get; set; }
 
+        /// <summary>
+        /// The version of this update.
+        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 

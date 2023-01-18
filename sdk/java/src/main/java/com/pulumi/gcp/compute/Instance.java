@@ -366,16 +366,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.labelFingerprint;
     }
     /**
-     * A set of key/value label pairs assigned to the disk. This\
-     * field is only applicable for persistent disks.
+     * A map of key/value label pairs to assign to the instance.
      * 
      */
     @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return A set of key/value label pairs assigned to the disk. This\
-     * field is only applicable for persistent disks.
+     * @return A map of key/value label pairs to assign to the instance.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {
@@ -566,14 +564,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.reservationAffinity;
     }
     /**
-     * -- A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      * 
      */
     @Export(name="resourcePolicies", type=String.class, parameters={})
     private Output</* @Nullable */ String> resourcePolicies;
 
     /**
-     * @return -- A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * @return - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      * 
      */
     public Output<Optional<String>> resourcePolicies() {

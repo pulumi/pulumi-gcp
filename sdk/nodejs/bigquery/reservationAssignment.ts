@@ -95,8 +95,7 @@ export class ReservationAssignment extends pulumi.CustomResource {
      */
     public readonly reservation!: pulumi.Output<string>;
     /**
-     * Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some
-     * capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+     * Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
 
@@ -173,8 +172,7 @@ export interface ReservationAssignmentState {
      */
     reservation?: pulumi.Input<string>;
     /**
-     * Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some
-     * capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+     * Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
      */
     state?: pulumi.Input<string>;
 }

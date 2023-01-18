@@ -109,9 +109,9 @@ import (
 //					Port:     4,
 //				}, nil), nil
 //			}).(compute.GetInstanceSerialPortResultOutput)
-//			ctx.Export("serialOut", serial.ApplyT(func(serial compute.GetInstanceSerialPortResult) (string, error) {
-//				return serial.Contents, nil
-//			}).(pulumi.StringOutput))
+//			ctx.Export("serialOut", serial.ApplyT(func(serial compute.GetInstanceSerialPortResult) (*string, error) {
+//				return &serial.Contents, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}

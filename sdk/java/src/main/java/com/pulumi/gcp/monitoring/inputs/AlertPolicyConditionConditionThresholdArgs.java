@@ -247,14 +247,36 @@ public final class AlertPolicyConditionConditionThresholdArgs extends com.pulumi
     }
 
     /**
-     * A logs-based filter.
+     * A filter that identifies which time series
+     * should be compared with the threshold.The
+     * filter is similar to the one that is
+     * specified in the
+     * MetricService.ListTimeSeries request (that
+     * call is useful to verify the time series
+     * that will be retrieved / processed) and must
+     * specify the metric type and optionally may
+     * contain restrictions on resource type,
+     * resource labels, and metric labels. This
+     * field may not exceed 2048 Unicode characters
+     * in length.
      * 
      */
     @Import(name="filter")
     private @Nullable Output<String> filter;
 
     /**
-     * @return A logs-based filter.
+     * @return A filter that identifies which time series
+     * should be compared with the threshold.The
+     * filter is similar to the one that is
+     * specified in the
+     * MetricService.ListTimeSeries request (that
+     * call is useful to verify the time series
+     * that will be retrieved / processed) and must
+     * specify the metric type and optionally may
+     * contain restrictions on resource type,
+     * resource labels, and metric labels. This
+     * field may not exceed 2048 Unicode characters
+     * in length.
      * 
      */
     public Optional<Output<String>> filter() {
@@ -653,7 +675,18 @@ public final class AlertPolicyConditionConditionThresholdArgs extends com.pulumi
         }
 
         /**
-         * @param filter A logs-based filter.
+         * @param filter A filter that identifies which time series
+         * should be compared with the threshold.The
+         * filter is similar to the one that is
+         * specified in the
+         * MetricService.ListTimeSeries request (that
+         * call is useful to verify the time series
+         * that will be retrieved / processed) and must
+         * specify the metric type and optionally may
+         * contain restrictions on resource type,
+         * resource labels, and metric labels. This
+         * field may not exceed 2048 Unicode characters
+         * in length.
          * 
          * @return builder
          * 
@@ -664,7 +697,18 @@ public final class AlertPolicyConditionConditionThresholdArgs extends com.pulumi
         }
 
         /**
-         * @param filter A logs-based filter.
+         * @param filter A filter that identifies which time series
+         * should be compared with the threshold.The
+         * filter is similar to the one that is
+         * specified in the
+         * MetricService.ListTimeSeries request (that
+         * call is useful to verify the time series
+         * that will be retrieved / processed) and must
+         * specify the metric type and optionally may
+         * contain restrictions on resource type,
+         * resource labels, and metric labels. This
+         * field may not exceed 2048 Unicode characters
+         * in length.
          * 
          * @return builder
          * 

@@ -133,8 +133,9 @@ type NotificationChannel struct {
 	// determine if there are upstream changes to these fields. They can also be configured via
 	// the sensitiveLabels block, but cannot be configured in both places.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The full REST resource name for this channel. The syntax is: projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The
-	// [CHANNEL_ID] is automatically assigned by the server on creation.
+	// The full REST resource name for this channel. The syntax is:
+	// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
+	// The [CHANNEL_ID] is automatically assigned by the server on creation.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -151,13 +152,7 @@ type NotificationChannel struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
 	UserLabels pulumi.StringMapOutput `pulumi:"userLabels"`
-	// Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel
-	// operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is
-	// non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel
-	// works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require
-	// verification or that this specific channel has been exempted from verification because it was created prior to
-	// verification being required for channels of this type.This field cannot be modified using a standard
-	// UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
+	// Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require verification or that this specific channel has been exempted from verification because it was created prior to verification being required for channels of this type.This field cannot be modified using a standard UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
 	VerificationStatus pulumi.StringOutput `pulumi:"verificationStatus"`
 }
 
@@ -212,8 +207,9 @@ type notificationChannelState struct {
 	// determine if there are upstream changes to these fields. They can also be configured via
 	// the sensitiveLabels block, but cannot be configured in both places.
 	Labels map[string]string `pulumi:"labels"`
-	// The full REST resource name for this channel. The syntax is: projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The
-	// [CHANNEL_ID] is automatically assigned by the server on creation.
+	// The full REST resource name for this channel. The syntax is:
+	// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
+	// The [CHANNEL_ID] is automatically assigned by the server on creation.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -230,13 +226,7 @@ type notificationChannelState struct {
 	Type *string `pulumi:"type"`
 	// User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
 	UserLabels map[string]string `pulumi:"userLabels"`
-	// Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel
-	// operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is
-	// non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel
-	// works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require
-	// verification or that this specific channel has been exempted from verification because it was created prior to
-	// verification being required for channels of this type.This field cannot be modified using a standard
-	// UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
+	// Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require verification or that this specific channel has been exempted from verification because it was created prior to verification being required for channels of this type.This field cannot be modified using a standard UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
 	VerificationStatus *string `pulumi:"verificationStatus"`
 }
 
@@ -260,8 +250,9 @@ type NotificationChannelState struct {
 	// determine if there are upstream changes to these fields. They can also be configured via
 	// the sensitiveLabels block, but cannot be configured in both places.
 	Labels pulumi.StringMapInput
-	// The full REST resource name for this channel. The syntax is: projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The
-	// [CHANNEL_ID] is automatically assigned by the server on creation.
+	// The full REST resource name for this channel. The syntax is:
+	// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
+	// The [CHANNEL_ID] is automatically assigned by the server on creation.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -278,13 +269,7 @@ type NotificationChannelState struct {
 	Type pulumi.StringPtrInput
 	// User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
 	UserLabels pulumi.StringMapInput
-	// Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel
-	// operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is
-	// non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel
-	// works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require
-	// verification or that this specific channel has been exempted from verification because it was created prior to
-	// verification being required for channels of this type.This field cannot be modified using a standard
-	// UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
+	// Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require verification or that this specific channel has been exempted from verification because it was created prior to verification being required for channels of this type.This field cannot be modified using a standard UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
 	VerificationStatus pulumi.StringPtrInput
 }
 
@@ -488,8 +473,9 @@ func (o NotificationChannelOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *NotificationChannel) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The full REST resource name for this channel. The syntax is: projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The
-// [CHANNEL_ID] is automatically assigned by the server on creation.
+// The full REST resource name for this channel. The syntax is:
+// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
+// The [CHANNEL_ID] is automatically assigned by the server on creation.
 func (o NotificationChannelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationChannel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -521,13 +507,7 @@ func (o NotificationChannelOutput) UserLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *NotificationChannel) pulumi.StringMapOutput { return v.UserLabels }).(pulumi.StringMapOutput)
 }
 
-// Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel
-// operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is
-// non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel
-// works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require
-// verification or that this specific channel has been exempted from verification because it was created prior to
-// verification being required for channels of this type.This field cannot be modified using a standard
-// UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
+// Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require verification or that this specific channel has been exempted from verification because it was created prior to verification being required for channels of this type.This field cannot be modified using a standard UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
 func (o NotificationChannelOutput) VerificationStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationChannel) pulumi.StringOutput { return v.VerificationStatus }).(pulumi.StringOutput)
 }

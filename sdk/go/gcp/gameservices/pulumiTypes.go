@@ -354,7 +354,7 @@ type GameServerConfigFleetConfig struct {
 	//   The format of the spec can be found :
 	//   `https://agones.dev/site/docs/reference/fleet/`.
 	FleetSpec string `pulumi:"fleetSpec"`
-	// The name of the ScalingConfig
+	// The name of the FleetConfig.
 	Name *string `pulumi:"name"`
 }
 
@@ -378,7 +378,7 @@ type GameServerConfigFleetConfigArgs struct {
 	//   The format of the spec can be found :
 	//   `https://agones.dev/site/docs/reference/fleet/`.
 	FleetSpec pulumi.StringInput `pulumi:"fleetSpec"`
-	// The name of the ScalingConfig
+	// The name of the FleetConfig.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -444,7 +444,7 @@ func (o GameServerConfigFleetConfigOutput) FleetSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v GameServerConfigFleetConfig) string { return v.FleetSpec }).(pulumi.StringOutput)
 }
 
-// The name of the ScalingConfig
+// The name of the FleetConfig.
 func (o GameServerConfigFleetConfigOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GameServerConfigFleetConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -1099,7 +1099,9 @@ func (o GameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorPtrOutp
 }
 
 type GetGameServerDeploymentRolloutGameServerConfigOverride struct {
-	ConfigVersion   string                                                                 `pulumi:"configVersion"`
+	// Version of the configuration.
+	ConfigVersion string `pulumi:"configVersion"`
+	// Selection by realms.  Structure is documented below.
 	RealmsSelectors []GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector `pulumi:"realmsSelectors"`
 }
 
@@ -1115,7 +1117,9 @@ type GetGameServerDeploymentRolloutGameServerConfigOverrideInput interface {
 }
 
 type GetGameServerDeploymentRolloutGameServerConfigOverrideArgs struct {
-	ConfigVersion   pulumi.StringInput                                                             `pulumi:"configVersion"`
+	// Version of the configuration.
+	ConfigVersion pulumi.StringInput `pulumi:"configVersion"`
+	// Selection by realms.  Structure is documented below.
 	RealmsSelectors GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayInput `pulumi:"realmsSelectors"`
 }
 
@@ -1170,10 +1174,12 @@ func (o GetGameServerDeploymentRolloutGameServerConfigOverrideOutput) ToGetGameS
 	return o
 }
 
+// Version of the configuration.
 func (o GetGameServerDeploymentRolloutGameServerConfigOverrideOutput) ConfigVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGameServerDeploymentRolloutGameServerConfigOverride) string { return v.ConfigVersion }).(pulumi.StringOutput)
 }
 
+// Selection by realms.  Structure is documented below.
 func (o GetGameServerDeploymentRolloutGameServerConfigOverrideOutput) RealmsSelectors() GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArrayOutput {
 	return o.ApplyT(func(v GetGameServerDeploymentRolloutGameServerConfigOverride) []GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector {
 		return v.RealmsSelectors
@@ -1201,6 +1207,7 @@ func (o GetGameServerDeploymentRolloutGameServerConfigOverrideArrayOutput) Index
 }
 
 type GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector struct {
+	// List of realms to match against.
 	Realms []string `pulumi:"realms"`
 }
 
@@ -1216,6 +1223,7 @@ type GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorInput i
 }
 
 type GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorArgs struct {
+	// List of realms to match against.
 	Realms pulumi.StringArrayInput `pulumi:"realms"`
 }
 
@@ -1270,6 +1278,7 @@ func (o GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutp
 	return o
 }
 
+// List of realms to match against.
 func (o GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorOutput) Realms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelector) []string { return v.Realms }).(pulumi.StringArrayOutput)
 }

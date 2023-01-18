@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = vpcaccess.LookupConnector(ctx, &vpcaccess.LookupConnectorArgs{
+//			_, err := vpcaccess.LookupConnector(ctx, &vpcaccess.LookupConnectorArgs{
 //				Name: "vpc-con",
 //			}, nil)
 //			if err != nil {

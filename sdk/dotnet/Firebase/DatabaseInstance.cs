@@ -132,8 +132,8 @@ namespace Pulumi.Gcp.Firebase
     public partial class DatabaseInstance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances or
-        /// https://{instance-id}.{region}.firebasedatabase.app in other regions.
+        /// The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
+        /// or https://{instance-id}.{region}.firebasedatabase.app in other regions.
         /// </summary>
         [Output("databaseUrl")]
         public Output<string> DatabaseUrl { get; private set; } = null!;
@@ -152,9 +152,9 @@ namespace Pulumi.Gcp.Firebase
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The fully-qualified resource name of the Firebase Realtime Database, in the format:
-        /// projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID PROJECT_NUMBER: The Firebase project's
-        /// ['ProjectNumber'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+        /// The fully-qualified resource name of the Firebase Realtime Database, in the
+        /// format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
+        /// PROJECT_NUMBER: The Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
         /// Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
         /// </summary>
         [Output("name")]
@@ -282,8 +282,8 @@ namespace Pulumi.Gcp.Firebase
     public sealed class DatabaseInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances or
-        /// https://{instance-id}.{region}.firebasedatabase.app in other regions.
+        /// The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
+        /// or https://{instance-id}.{region}.firebasedatabase.app in other regions.
         /// </summary>
         [Input("databaseUrl")]
         public Input<string>? DatabaseUrl { get; set; }
@@ -302,9 +302,9 @@ namespace Pulumi.Gcp.Firebase
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The fully-qualified resource name of the Firebase Realtime Database, in the format:
-        /// projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID PROJECT_NUMBER: The Firebase project's
-        /// ['ProjectNumber'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+        /// The fully-qualified resource name of the Firebase Realtime Database, in the
+        /// format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
+        /// PROJECT_NUMBER: The Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
         /// Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
         /// </summary>
         [Input("name")]

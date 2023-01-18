@@ -18,7 +18,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly int HoursInCycle;
         /// <summary>
-        /// The start time of the schedule. The timestamp is an RFC3339 string.
+        /// Time within the window to start the operations.
+        /// It must be in an hourly format "HH:MM",
+        /// where HH : [00-23] and MM : [00] GMT.
+        /// eg: 21:00
         /// </summary>
         public readonly string StartTime;
 

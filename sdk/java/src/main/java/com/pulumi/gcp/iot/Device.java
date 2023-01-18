@@ -138,6 +138,7 @@ public class Device extends com.pulumi.resources.CustomResource {
     }
     /**
      * The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
+     * Structure is documented below.
      * 
      */
     @Export(name="configs", type=List.class, parameters={DeviceConfig.class})
@@ -145,6 +146,7 @@ public class Device extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
+     * Structure is documented below.
      * 
      */
     public Output<List<DeviceConfig>> configs() {
@@ -212,6 +214,7 @@ public class Device extends com.pulumi.resources.CustomResource {
     }
     /**
      * The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
+     * Structure is documented below.
      * 
      */
     @Export(name="lastErrorStatuses", type=List.class, parameters={DeviceLastErrorStatus.class})
@@ -219,6 +222,7 @@ public class Device extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
+     * Structure is documented below.
      * 
      */
     public Output<List<DeviceLastErrorStatus>> lastErrorStatuses() {
@@ -325,16 +329,16 @@ public class Device extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally
-     * unique.
+     * A server-defined unique numeric ID for the device.
+     * This is a more compact way to identify devices, and it is globally unique.
      * 
      */
     @Export(name="numId", type=String.class, parameters={})
     private Output<String> numId;
 
     /**
-     * @return A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally
-     * unique.
+     * @return A server-defined unique numeric ID for the device.
+     * This is a more compact way to identify devices, and it is globally unique.
      * 
      */
     public Output<String> numId() {
@@ -356,6 +360,7 @@ public class Device extends com.pulumi.resources.CustomResource {
     }
     /**
      * The state most recently received from the device.
+     * Structure is documented below.
      * 
      */
     @Export(name="states", type=List.class, parameters={DeviceState.class})
@@ -363,6 +368,7 @@ public class Device extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The state most recently received from the device.
+     * Structure is documented below.
      * 
      */
     public Output<List<DeviceState>> states() {

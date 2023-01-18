@@ -14,6 +14,28 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// Returns the list of IP addresses that checkers run from. For more information see
         /// the [official documentation](https://cloud.google.com/monitoring/uptime-checks#get-ips).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ips = Gcp.Monitoring.GetUptimeCheckIPs.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ipList"] = ips.Apply(getUptimeCheckIPsResult =&gt; getUptimeCheckIPsResult.UptimeCheckIps),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetUptimeCheckIPsResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUptimeCheckIPsResult>("gcp:monitoring/getUptimeCheckIPs:getUptimeCheckIPs", InvokeArgs.Empty, options.WithDefaults());

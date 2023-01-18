@@ -19,8 +19,7 @@ public final class DenyPolicyRule {
      */
     private @Nullable DenyPolicyRuleDenyRule denyRule;
     /**
-     * @return Description of the expression. This is a longer text which describes the expression,
-     * e.g. when hovered over it in a UI.
+     * @return The description of the rule.
      * 
      */
     private @Nullable String description;
@@ -35,8 +34,7 @@ public final class DenyPolicyRule {
         return Optional.ofNullable(this.denyRule);
     }
     /**
-     * @return Description of the expression. This is a longer text which describes the expression,
-     * e.g. when hovered over it in a UI.
+     * @return The description of the rule.
      * 
      */
     public Optional<String> description() {

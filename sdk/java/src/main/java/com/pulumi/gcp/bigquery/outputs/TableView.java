@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TableView {
     /**
-     * @return A query whose result is persisted.
+     * @return A query that BigQuery executes when the view is referenced.
      * 
      */
     private String query;
@@ -26,7 +26,7 @@ public final class TableView {
 
     private TableView() {}
     /**
-     * @return A query whose result is persisted.
+     * @return A query that BigQuery executes when the view is referenced.
      * 
      */
     public String query() {

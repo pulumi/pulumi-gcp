@@ -17,7 +17,7 @@ public final class SpokeLinkedInterconnectAttachments {
      */
     private Boolean siteToSiteDataTransfer;
     /**
-     * @return The URIs of linked VPN tunnel resources.
+     * @return The URIs of linked interconnect attachment resources
      * 
      */
     private List<String> uris;
@@ -31,7 +31,7 @@ public final class SpokeLinkedInterconnectAttachments {
         return this.siteToSiteDataTransfer;
     }
     /**
-     * @return The URIs of linked VPN tunnel resources.
+     * @return The URIs of linked interconnect attachment resources
      * 
      */
     public List<String> uris() {

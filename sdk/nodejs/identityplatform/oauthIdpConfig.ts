@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const oauthIdpConfig = new gcp.identityplatform.OauthIdpConfig("oauth_idp_config", {
+ * const oauthIdpConfig = new gcp.identityplatform.OauthIdpConfig("oauthIdpConfig", {
  *     clientId: "client-id",
  *     clientSecret: "secret",
  *     displayName: "Display Name",

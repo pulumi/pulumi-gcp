@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class FlexibleAppVersionResourcesVolume {
     /**
-     * @return Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+     * @return Unique name for the volume.
      * 
      */
     private String name;
@@ -28,7 +28,7 @@ public final class FlexibleAppVersionResourcesVolume {
 
     private FlexibleAppVersionResourcesVolume() {}
     /**
-     * @return Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+     * @return Unique name for the volume.
      * 
      */
     public String name() {

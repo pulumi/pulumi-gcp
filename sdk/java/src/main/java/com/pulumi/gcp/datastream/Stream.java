@@ -361,16 +361,14 @@ public class Stream extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
-     * The geographic location where the dataset should reside.
-     * See https://cloud.google.com/bigquery/docs/locations for supported locations.
+     * The name of the location this stream is located in.
      * 
      */
     @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
-     * @return The geographic location where the dataset should reside.
-     * See https://cloud.google.com/bigquery/docs/locations for supported locations.
+     * @return The name of the location this stream is located in.
      * 
      */
     public Output<String> location() {

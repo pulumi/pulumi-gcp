@@ -16,7 +16,6 @@ public final class ConnectionAzureArgs extends com.pulumi.resources.ResourceArgs
     public static final ConnectionAzureArgs Empty = new ConnectionAzureArgs();
 
     /**
-     * - 
      * The name of the Azure Active Directory Application.
      * 
      */
@@ -24,8 +23,7 @@ public final class ConnectionAzureArgs extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> application;
 
     /**
-     * @return -
-     * The name of the Azure Active Directory Application.
+     * @return The name of the Azure Active Directory Application.
      * 
      */
     public Optional<Output<String>> application() {
@@ -33,7 +31,6 @@ public final class ConnectionAzureArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * - 
      * The client id of the Azure Active Directory Application.
      * 
      */
@@ -41,8 +38,7 @@ public final class ConnectionAzureArgs extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> clientId;
 
     /**
-     * @return -
-     * The client id of the Azure Active Directory Application.
+     * @return The client id of the Azure Active Directory Application.
      * 
      */
     public Optional<Output<String>> clientId() {
@@ -65,7 +61,6 @@ public final class ConnectionAzureArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * - 
      * The object id of the Azure Active Directory Application.
      * 
      */
@@ -73,8 +68,7 @@ public final class ConnectionAzureArgs extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> objectId;
 
     /**
-     * @return -
-     * The object id of the Azure Active Directory Application.
+     * @return The object id of the Azure Active Directory Application.
      * 
      */
     public Optional<Output<String>> objectId() {
@@ -82,7 +76,6 @@ public final class ConnectionAzureArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * - 
      * The URL user will be redirected to after granting consent during connection setup.
      * 
      */
@@ -90,8 +83,7 @@ public final class ConnectionAzureArgs extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> redirectUri;
 
     /**
-     * @return -
-     * The URL user will be redirected to after granting consent during connection setup.
+     * @return The URL user will be redirected to after granting consent during connection setup.
      * 
      */
     public Optional<Output<String>> redirectUri() {
@@ -127,8 +119,7 @@ public final class ConnectionAzureArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param application -
-         * The name of the Azure Active Directory Application.
+         * @param application The name of the Azure Active Directory Application.
          * 
          * @return builder
          * 
@@ -139,8 +130,7 @@ public final class ConnectionAzureArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param application -
-         * The name of the Azure Active Directory Application.
+         * @param application The name of the Azure Active Directory Application.
          * 
          * @return builder
          * 
@@ -150,8 +140,7 @@ public final class ConnectionAzureArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param clientId -
-         * The client id of the Azure Active Directory Application.
+         * @param clientId The client id of the Azure Active Directory Application.
          * 
          * @return builder
          * 
@@ -162,8 +151,7 @@ public final class ConnectionAzureArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param clientId -
-         * The client id of the Azure Active Directory Application.
+         * @param clientId The client id of the Azure Active Directory Application.
          * 
          * @return builder
          * 
@@ -194,8 +182,7 @@ public final class ConnectionAzureArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param objectId -
-         * The object id of the Azure Active Directory Application.
+         * @param objectId The object id of the Azure Active Directory Application.
          * 
          * @return builder
          * 
@@ -206,8 +193,7 @@ public final class ConnectionAzureArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param objectId -
-         * The object id of the Azure Active Directory Application.
+         * @param objectId The object id of the Azure Active Directory Application.
          * 
          * @return builder
          * 
@@ -217,8 +203,7 @@ public final class ConnectionAzureArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param redirectUri -
-         * The URL user will be redirected to after granting consent during connection setup.
+         * @param redirectUri The URL user will be redirected to after granting consent during connection setup.
          * 
          * @return builder
          * 
@@ -229,8 +214,7 @@ public final class ConnectionAzureArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param redirectUri -
-         * The URL user will be redirected to after granting consent during connection setup.
+         * @param redirectUri The URL user will be redirected to after granting consent during connection setup.
          * 
          * @return builder
          * 

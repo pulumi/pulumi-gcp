@@ -86,7 +86,7 @@ type NotificationConfig struct {
 	// The description of the notification config (max of 1024 characters).
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The resource name of this notification config, in the format
-	// 'organizations/{{organization}}/notificationConfigs/{{config_id}}'.
+	// `organizations/{{organization}}/notificationConfigs/{{config_id}}`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The organization whose Cloud Security Command Center the Notification
 	// Config lives in.
@@ -94,7 +94,8 @@ type NotificationConfig struct {
 	// The Pub/Sub topic to send notifications to. Its format is
 	// "projects/[projectId]/topics/[topic]".
 	PubsubTopic pulumi.StringOutput `pulumi:"pubsubTopic"`
-	// The service account that needs "pubsub.topics.publish" permission to publish to the Pub/Sub topic.
+	// The service account that needs "pubsub.topics.publish" permission to
+	// publish to the Pub/Sub topic.
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// The config for triggering streaming-based notifications.
 	// Structure is documented below.
@@ -147,7 +148,7 @@ type notificationConfigState struct {
 	// The description of the notification config (max of 1024 characters).
 	Description *string `pulumi:"description"`
 	// The resource name of this notification config, in the format
-	// 'organizations/{{organization}}/notificationConfigs/{{config_id}}'.
+	// `organizations/{{organization}}/notificationConfigs/{{config_id}}`.
 	Name *string `pulumi:"name"`
 	// The organization whose Cloud Security Command Center the Notification
 	// Config lives in.
@@ -155,7 +156,8 @@ type notificationConfigState struct {
 	// The Pub/Sub topic to send notifications to. Its format is
 	// "projects/[projectId]/topics/[topic]".
 	PubsubTopic *string `pulumi:"pubsubTopic"`
-	// The service account that needs "pubsub.topics.publish" permission to publish to the Pub/Sub topic.
+	// The service account that needs "pubsub.topics.publish" permission to
+	// publish to the Pub/Sub topic.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// The config for triggering streaming-based notifications.
 	// Structure is documented below.
@@ -168,7 +170,7 @@ type NotificationConfigState struct {
 	// The description of the notification config (max of 1024 characters).
 	Description pulumi.StringPtrInput
 	// The resource name of this notification config, in the format
-	// 'organizations/{{organization}}/notificationConfigs/{{config_id}}'.
+	// `organizations/{{organization}}/notificationConfigs/{{config_id}}`.
 	Name pulumi.StringPtrInput
 	// The organization whose Cloud Security Command Center the Notification
 	// Config lives in.
@@ -176,7 +178,8 @@ type NotificationConfigState struct {
 	// The Pub/Sub topic to send notifications to. Its format is
 	// "projects/[projectId]/topics/[topic]".
 	PubsubTopic pulumi.StringPtrInput
-	// The service account that needs "pubsub.topics.publish" permission to publish to the Pub/Sub topic.
+	// The service account that needs "pubsub.topics.publish" permission to
+	// publish to the Pub/Sub topic.
 	ServiceAccount pulumi.StringPtrInput
 	// The config for triggering streaming-based notifications.
 	// Structure is documented below.
@@ -318,7 +321,7 @@ func (o NotificationConfigOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The resource name of this notification config, in the format
-// 'organizations/{{organization}}/notificationConfigs/{{config_id}}'.
+// `organizations/{{organization}}/notificationConfigs/{{config_id}}`.
 func (o NotificationConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -335,7 +338,8 @@ func (o NotificationConfigOutput) PubsubTopic() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationConfig) pulumi.StringOutput { return v.PubsubTopic }).(pulumi.StringOutput)
 }
 
-// The service account that needs "pubsub.topics.publish" permission to publish to the Pub/Sub topic.
+// The service account that needs "pubsub.topics.publish" permission to
+// publish to the Pub/Sub topic.
 func (o NotificationConfigOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationConfig) pulumi.StringOutput { return v.ServiceAccount }).(pulumi.StringOutput)
 }

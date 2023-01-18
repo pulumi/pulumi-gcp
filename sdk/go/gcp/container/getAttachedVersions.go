@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = container.GetAttachedVersions(ctx, &container.GetAttachedVersionsArgs{
+//			_, err := container.GetAttachedVersions(ctx, &container.GetAttachedVersionsArgs{
 //				Location: "us-west1",
 //				Project:  "my-project",
 //			}, nil)

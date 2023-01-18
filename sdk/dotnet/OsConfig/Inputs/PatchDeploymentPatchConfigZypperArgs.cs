@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         private InputList<string>? _excludes;
 
         /// <summary>
-        /// List of KBs to exclude from update.
+        /// List of packages to exclude from update.
         /// </summary>
         public InputList<string> Excludes
         {
@@ -40,8 +40,8 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         private InputList<string>? _exclusivePatches;
 
         /// <summary>
-        /// An exclusive list of kbs to be updated. These are the only patches that will be updated.
-        /// This field must not be used with other patch configurations.
+        /// An exclusive list of patches to be updated. These are the only patches that will be installed using 'zypper patch patch:' command.
+        /// This field must not be used with any other patch configuration fields.
         /// </summary>
         public InputList<string> ExclusivePatches
         {

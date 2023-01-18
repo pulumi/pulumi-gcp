@@ -60,14 +60,14 @@ public final class RegionUrlMapPathMatcherArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Description of this test case.
+     * An optional description of this resource.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of this test case.
+     * @return An optional description of this resource.
      * 
      */
     public Optional<Output<String>> description() {
@@ -75,16 +75,14 @@ public final class RegionUrlMapPathMatcherArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The name of the query parameter to match. The query parameter must exist in the
-     * request, in the absence of which the request match fails.
+     * The name to which this PathMatcher is referred by the HostRule.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the query parameter to match. The query parameter must exist in the
-     * request, in the absence of which the request match fails.
+     * @return The name to which this PathMatcher is referred by the HostRule.
      * 
      */
     public Output<String> name() {
@@ -227,7 +225,7 @@ public final class RegionUrlMapPathMatcherArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param description Description of this test case.
+         * @param description An optional description of this resource.
          * 
          * @return builder
          * 
@@ -238,7 +236,7 @@ public final class RegionUrlMapPathMatcherArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param description Description of this test case.
+         * @param description An optional description of this resource.
          * 
          * @return builder
          * 
@@ -248,8 +246,7 @@ public final class RegionUrlMapPathMatcherArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name The name of the query parameter to match. The query parameter must exist in the
-         * request, in the absence of which the request match fails.
+         * @param name The name to which this PathMatcher is referred by the HostRule.
          * 
          * @return builder
          * 
@@ -260,8 +257,7 @@ public final class RegionUrlMapPathMatcherArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name The name of the query parameter to match. The query parameter must exist in the
-         * request, in the absence of which the request match fails.
+         * @param name The name to which this PathMatcher is referred by the HostRule.
          * 
          * @return builder
          * 

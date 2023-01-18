@@ -120,8 +120,7 @@ export class Connector extends pulumi.CustomResource {
      */
     public readonly minThroughput!: pulumi.Output<number | undefined>;
     /**
-     * Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
-     * https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
+     * The name of the resource (Max 25 characters).
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -227,8 +226,7 @@ export interface ConnectorState {
      */
     minThroughput?: pulumi.Input<number>;
     /**
-     * Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
-     * https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
+     * The name of the resource (Max 25 characters).
      */
     name?: pulumi.Input<string>;
     /**
@@ -288,8 +286,7 @@ export interface ConnectorArgs {
      */
     minThroughput?: pulumi.Input<number>;
     /**
-     * Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
-     * https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}"
+     * The name of the resource (Max 25 characters).
      */
     name?: pulumi.Input<string>;
     /**

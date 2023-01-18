@@ -159,16 +159,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature")
 public class AiFeatureStoreEntityTypeFeature extends com.pulumi.resources.CustomResource {
     /**
-     * The timestamp of when the entity type was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
-     * nine fractional digits.
+     * The timestamp of when the entity type was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
-     * @return The timestamp of when the entity type was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
-     * nine fractional digits.
+     * @return The timestamp of when the entity type was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     public Output<String> createTime() {
@@ -245,16 +243,14 @@ public class AiFeatureStoreEntityTypeFeature extends com.pulumi.resources.Custom
         return this.name;
     }
     /**
-     * The timestamp when the entity type was most recently updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution
-     * and up to nine fractional digits.
+     * The timestamp when the entity type was most recently updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**
-     * @return The timestamp when the entity type was most recently updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution
-     * and up to nine fractional digits.
+     * @return The timestamp when the entity type was most recently updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     public Output<String> updateTime() {

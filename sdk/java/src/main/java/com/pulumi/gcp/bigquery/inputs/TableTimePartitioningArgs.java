@@ -35,16 +35,18 @@ public final class TableTimePartitioningArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The field used to determine how to create a range-based
-     * partition.
+     * The field used to determine how to create a time-based
+     * partition. If time-based partitioning is enabled without this value, the
+     * table is partitioned based on the load time.
      * 
      */
     @Import(name="field")
     private @Nullable Output<String> field;
 
     /**
-     * @return The field used to determine how to create a range-based
-     * partition.
+     * @return The field used to determine how to create a time-based
+     * partition. If time-based partitioning is enabled without this value, the
+     * table is partitioned based on the load time.
      * 
      */
     public Optional<Output<String>> field() {
@@ -138,8 +140,9 @@ public final class TableTimePartitioningArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param field The field used to determine how to create a range-based
-         * partition.
+         * @param field The field used to determine how to create a time-based
+         * partition. If time-based partitioning is enabled without this value, the
+         * table is partitioned based on the load time.
          * 
          * @return builder
          * 
@@ -150,8 +153,9 @@ public final class TableTimePartitioningArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param field The field used to determine how to create a range-based
-         * partition.
+         * @param field The field used to determine how to create a time-based
+         * partition. If time-based partitioning is enabled without this value, the
+         * table is partitioned based on the load time.
          * 
          * @return builder
          * 

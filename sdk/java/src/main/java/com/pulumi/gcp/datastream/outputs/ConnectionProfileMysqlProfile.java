@@ -14,18 +14,18 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionProfileMysqlProfile {
     /**
-     * @return Hostname for the SSH tunnel.
+     * @return Hostname for the MySQL connection.
      * 
      */
     private String hostname;
     /**
-     * @return SSH password.
+     * @return Password for the MySQL connection.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     private String password;
     /**
-     * @return Port for the SSH tunnel.
+     * @return Port for the MySQL connection.
      * 
      */
     private @Nullable Integer port;
@@ -36,21 +36,21 @@ public final class ConnectionProfileMysqlProfile {
      */
     private @Nullable ConnectionProfileMysqlProfileSslConfig sslConfig;
     /**
-     * @return Username for the SSH tunnel.
+     * @return Username for the MySQL connection.
      * 
      */
     private String username;
 
     private ConnectionProfileMysqlProfile() {}
     /**
-     * @return Hostname for the SSH tunnel.
+     * @return Hostname for the MySQL connection.
      * 
      */
     public String hostname() {
         return this.hostname;
     }
     /**
-     * @return SSH password.
+     * @return Password for the MySQL connection.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
@@ -58,7 +58,7 @@ public final class ConnectionProfileMysqlProfile {
         return this.password;
     }
     /**
-     * @return Port for the SSH tunnel.
+     * @return Port for the MySQL connection.
      * 
      */
     public Optional<Integer> port() {
@@ -73,7 +73,7 @@ public final class ConnectionProfileMysqlProfile {
         return Optional.ofNullable(this.sslConfig);
     }
     /**
-     * @return Username for the SSH tunnel.
+     * @return Username for the MySQL connection.
      * 
      */
     public String username() {

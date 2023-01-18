@@ -17,14 +17,14 @@ public final class TriggerGithubPullRequestArgs extends com.pulumi.resources.Res
     public static final TriggerGithubPullRequestArgs Empty = new TriggerGithubPullRequestArgs();
 
     /**
-     * Regex of branches to match.  Specify only one of branch or tag.
+     * Regex of branches to match.
      * 
      */
     @Import(name="branch", required=true)
     private Output<String> branch;
 
     /**
-     * @return Regex of branches to match.  Specify only one of branch or tag.
+     * @return Regex of branches to match.
      * 
      */
     public Output<String> branch() {
@@ -49,14 +49,14 @@ public final class TriggerGithubPullRequestArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Only trigger a build if the revision regex does NOT match the revision regex.
+     * If true, branches that do NOT match the git_ref will trigger a build.
      * 
      */
     @Import(name="invertRegex")
     private @Nullable Output<Boolean> invertRegex;
 
     /**
-     * @return Only trigger a build if the revision regex does NOT match the revision regex.
+     * @return If true, branches that do NOT match the git_ref will trigger a build.
      * 
      */
     public Optional<Output<Boolean>> invertRegex() {
@@ -90,7 +90,7 @@ public final class TriggerGithubPullRequestArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param branch Regex of branches to match.  Specify only one of branch or tag.
+         * @param branch Regex of branches to match.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class TriggerGithubPullRequestArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param branch Regex of branches to match.  Specify only one of branch or tag.
+         * @param branch Regex of branches to match.
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class TriggerGithubPullRequestArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param invertRegex Only trigger a build if the revision regex does NOT match the revision regex.
+         * @param invertRegex If true, branches that do NOT match the git_ref will trigger a build.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class TriggerGithubPullRequestArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param invertRegex Only trigger a build if the revision regex does NOT match the revision regex.
+         * @param invertRegex If true, branches that do NOT match the git_ref will trigger a build.
          * 
          * @return builder
          * 

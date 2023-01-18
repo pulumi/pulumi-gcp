@@ -265,20 +265,39 @@ namespace Pulumi.Gcp.Monitoring
     [OutputType]
     public sealed class GetNotificationChannelResult
     {
+        /// <summary>
+        /// An optional human-readable description of this notification channel.
+        /// </summary>
         public readonly string Description;
         public readonly string? DisplayName;
+        /// <summary>
+        /// Whether notifications are forwarded to the described channel.
+        /// </summary>
         public readonly bool Enabled;
         public readonly bool ForceDelete;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Configuration fields that define the channel and its behavior.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
+        /// <summary>
+        /// The full REST resource name for this channel. The syntax is:
+        /// `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`.
+        /// </summary>
         public readonly string Name;
         public readonly string? Project;
         public readonly ImmutableArray<Outputs.GetNotificationChannelSensitiveLabelResult> SensitiveLabels;
         public readonly string? Type;
+        /// <summary>
+        /// User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? UserLabels;
+        /// <summary>
+        /// Indicates whether this channel has been verified or not.
+        /// </summary>
         public readonly string VerificationStatus;
 
         [OutputConstructor]

@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TableExternalDataConfiguration {
     /**
-     * @return - Let BigQuery try to autodetect the schema
+     * @return Let BigQuery try to autodetect the schema
      * and format of the table.
      * 
      */
@@ -114,7 +114,7 @@ public final class TableExternalDataConfiguration {
 
     private TableExternalDataConfiguration() {}
     /**
-     * @return - Let BigQuery try to autodetect the schema
+     * @return Let BigQuery try to autodetect the schema
      * and format of the table.
      * 
      */

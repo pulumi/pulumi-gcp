@@ -10,6 +10,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetWebAppResult {
+    /**
+     * @return Immutable. The globally unique, Firebase-assigned identifier of the App.
+     * This identifier should be treated as an opaque token, as the data format is not specified.
+     * 
+     */
     private String appId;
     private List<String> appUrls;
     private String deletionPolicy;
@@ -19,10 +24,20 @@ public final class GetWebAppResult {
      * 
      */
     private String id;
+    /**
+     * @return The fully qualified resource name of the App, for example:
+     * projects/projectId/webApps/appId
+     * 
+     */
     private String name;
     private String project;
 
     private GetWebAppResult() {}
+    /**
+     * @return Immutable. The globally unique, Firebase-assigned identifier of the App.
+     * This identifier should be treated as an opaque token, as the data format is not specified.
+     * 
+     */
     public String appId() {
         return this.appId;
     }
@@ -42,6 +57,11 @@ public final class GetWebAppResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The fully qualified resource name of the App, for example:
+     * projects/projectId/webApps/appId
+     * 
+     */
     public String name() {
         return this.name;
     }

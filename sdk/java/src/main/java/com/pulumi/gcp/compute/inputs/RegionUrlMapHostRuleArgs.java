@@ -17,14 +17,16 @@ public final class RegionUrlMapHostRuleArgs extends com.pulumi.resources.Resourc
     public static final RegionUrlMapHostRuleArgs Empty = new RegionUrlMapHostRuleArgs();
 
     /**
-     * Description of this test case.
+     * An optional description of this HostRule. Provide this property
+     * when you create the resource.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of this test case.
+     * @return An optional description of this HostRule. Provide this property
+     * when you create the resource.
      * 
      */
     public Optional<Output<String>> description() {
@@ -96,7 +98,8 @@ public final class RegionUrlMapHostRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param description Description of this test case.
+         * @param description An optional description of this HostRule. Provide this property
+         * when you create the resource.
          * 
          * @return builder
          * 
@@ -107,7 +110,8 @@ public final class RegionUrlMapHostRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param description Description of this test case.
+         * @param description An optional description of this HostRule. Provide this property
+         * when you create the resource.
          * 
          * @return builder
          * 

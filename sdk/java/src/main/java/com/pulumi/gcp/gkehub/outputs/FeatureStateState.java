@@ -13,6 +13,10 @@ import javax.annotation.Nullable;
 public final class FeatureStateState {
     private @Nullable String code;
     private @Nullable String description;
+    /**
+     * @return Output only. When the Feature resource was last updated.
+     * 
+     */
     private @Nullable String updateTime;
 
     private FeatureStateState() {}
@@ -22,6 +26,10 @@ public final class FeatureStateState {
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return Output only. When the Feature resource was last updated.
+     * 
+     */
     public Optional<String> updateTime() {
         return Optional.ofNullable(this.updateTime);
     }

@@ -16,14 +16,14 @@ public final class JobExtractSourceTableArgs extends com.pulumi.resources.Resour
     public static final JobExtractSourceTableArgs Empty = new JobExtractSourceTableArgs();
 
     /**
-     * The ID of the dataset containing this model.
+     * The ID of the dataset containing this table.
      * 
      */
     @Import(name="datasetId")
     private @Nullable Output<String> datasetId;
 
     /**
-     * @return The ID of the dataset containing this model.
+     * @return The ID of the dataset containing this table.
      * 
      */
     public Optional<Output<String>> datasetId() {
@@ -31,14 +31,14 @@ public final class JobExtractSourceTableArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The ID of the project containing this model.
+     * The ID of the project containing this table.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return The ID of the project containing this model.
+     * @return The ID of the project containing this table.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -89,7 +89,7 @@ public final class JobExtractSourceTableArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param datasetId The ID of the dataset containing this model.
+         * @param datasetId The ID of the dataset containing this table.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class JobExtractSourceTableArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param datasetId The ID of the dataset containing this model.
+         * @param datasetId The ID of the dataset containing this table.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class JobExtractSourceTableArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param projectId The ID of the project containing this model.
+         * @param projectId The ID of the project containing this table.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class JobExtractSourceTableArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param projectId The ID of the project containing this model.
+         * @param projectId The ID of the project containing this table.
          * 
          * @return builder
          * 

@@ -89,18 +89,18 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
     }
 
     /**
-     * If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-     * this Organization (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the correct permissions on
-     * it, etc.).
+     * If the field is true, that indicates that there is some configuration issue with the active_key_version
+     * configured on this Organization (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the
+     * correct permissions on it, etc.).
      * 
      */
     @Import(name="invalidKeyVersion")
     private @Nullable Output<Boolean> invalidKeyVersion;
 
     /**
-     * @return If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-     * this Organization (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the correct permissions on
-     * it, etc.).
+     * @return If the field is true, that indicates that there is some configuration issue with the active_key_version
+     * configured on this Organization (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the
+     * correct permissions on it, etc.).
      * 
      */
     public Optional<Output<Boolean>> invalidKeyVersion() {
@@ -296,9 +296,9 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param invalidKeyVersion If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-         * this Organization (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the correct permissions on
-         * it, etc.).
+         * @param invalidKeyVersion If the field is true, that indicates that there is some configuration issue with the active_key_version
+         * configured on this Organization (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the
+         * correct permissions on it, etc.).
          * 
          * @return builder
          * 
@@ -309,9 +309,9 @@ public final class AccessApprovalSettingsState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param invalidKeyVersion If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-         * this Organization (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the correct permissions on
-         * it, etc.).
+         * @param invalidKeyVersion If the field is true, that indicates that there is some configuration issue with the active_key_version
+         * configured on this Organization (e.g. it doesn&#39;t exist or the Access Approval service account doesn&#39;t have the
+         * correct permissions on it, etc.).
          * 
          * @return builder
          * 

@@ -77,7 +77,8 @@ export class OrganizationSecurityPolicy extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * Fingerprint of this resource. This field is used internally during updates of this resource.
+     * Fingerprint of this resource. This field is used internally during
+     * updates of this resource.
      */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
@@ -150,7 +151,8 @@ export interface OrganizationSecurityPolicyState {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Fingerprint of this resource. This field is used internally during updates of this resource.
+     * Fingerprint of this resource. This field is used internally during
+     * updates of this resource.
      */
     fingerprint?: pulumi.Input<string>;
     /**

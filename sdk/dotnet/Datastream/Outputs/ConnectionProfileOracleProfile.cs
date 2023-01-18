@@ -22,20 +22,20 @@ namespace Pulumi.Gcp.Datastream.Outputs
         /// </summary>
         public readonly string DatabaseService;
         /// <summary>
-        /// Hostname for the SSH tunnel.
+        /// Hostname for the Oracle connection.
         /// </summary>
         public readonly string Hostname;
         /// <summary>
-        /// SSH password.
+        /// Password for the Oracle connection.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public readonly string Password;
         /// <summary>
-        /// Port for the SSH tunnel.
+        /// Port for the Oracle connection.
         /// </summary>
         public readonly int? Port;
         /// <summary>
-        /// Username for the SSH tunnel.
+        /// Username for the Oracle connection.
         /// </summary>
         public readonly string Username;
 

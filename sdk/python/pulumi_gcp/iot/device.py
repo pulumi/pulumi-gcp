@@ -162,6 +162,7 @@ class _DeviceState:
         Input properties used for looking up and filtering Device resources.
         :param pulumi.Input[bool] blocked: If a device is blocked, connections or requests from this device will fail.
         :param pulumi.Input[Sequence[pulumi.Input['DeviceConfigArgs']]] configs: The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['DeviceCredentialArgs']]] credentials: The credentials used to authenticate this device.
                Structure is documented below.
         :param pulumi.Input['DeviceGatewayConfigArgs'] gateway_config: Gateway-related configuration and state.
@@ -169,6 +170,7 @@ class _DeviceState:
         :param pulumi.Input[str] last_config_ack_time: The last time a cloud-to-device config version acknowledgment was received from the device.
         :param pulumi.Input[str] last_config_send_time: The last time a cloud-to-device config version was sent to the device.
         :param pulumi.Input[Sequence[pulumi.Input['DeviceLastErrorStatusArgs']]] last_error_statuses: The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
+               Structure is documented below.
         :param pulumi.Input[str] last_error_time: The time the most recent error occurred, such as a failure to publish to Cloud Pub/Sub.
         :param pulumi.Input[str] last_event_time: The last time a telemetry event was received.
         :param pulumi.Input[str] last_heartbeat_time: The last time an MQTT PINGREQ was received.
@@ -177,10 +179,11 @@ class _DeviceState:
                Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key-value pairs assigned to the device.
         :param pulumi.Input[str] name: A unique name for the resource.
-        :param pulumi.Input[str] num_id: A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally
-               unique.
+        :param pulumi.Input[str] num_id: A server-defined unique numeric ID for the device.
+               This is a more compact way to identify devices, and it is globally unique.
         :param pulumi.Input[str] registry: The name of the device registry where this device should be created.
         :param pulumi.Input[Sequence[pulumi.Input['DeviceStateArgs']]] states: The state most recently received from the device.
+               Structure is documented below.
         """
         if blocked is not None:
             pulumi.set(__self__, "blocked", blocked)
@@ -234,6 +237,7 @@ class _DeviceState:
     def configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeviceConfigArgs']]]]:
         """
         The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
+        Structure is documented below.
         """
         return pulumi.get(self, "configs")
 
@@ -296,6 +300,7 @@ class _DeviceState:
     def last_error_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeviceLastErrorStatusArgs']]]]:
         """
         The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
+        Structure is documented below.
         """
         return pulumi.get(self, "last_error_statuses")
 
@@ -392,8 +397,8 @@ class _DeviceState:
     @pulumi.getter(name="numId")
     def num_id(self) -> Optional[pulumi.Input[str]]:
         """
-        A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally
-        unique.
+        A server-defined unique numeric ID for the device.
+        This is a more compact way to identify devices, and it is globally unique.
         """
         return pulumi.get(self, "num_id")
 
@@ -418,6 +423,7 @@ class _DeviceState:
     def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeviceStateArgs']]]]:
         """
         The state most recently received from the device.
+        Structure is documented below.
         """
         return pulumi.get(self, "states")
 
@@ -648,6 +654,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] blocked: If a device is blocked, connections or requests from this device will fail.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceConfigArgs']]]] configs: The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]] credentials: The credentials used to authenticate this device.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['DeviceGatewayConfigArgs']] gateway_config: Gateway-related configuration and state.
@@ -655,6 +662,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[str] last_config_ack_time: The last time a cloud-to-device config version acknowledgment was received from the device.
         :param pulumi.Input[str] last_config_send_time: The last time a cloud-to-device config version was sent to the device.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceLastErrorStatusArgs']]]] last_error_statuses: The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
+               Structure is documented below.
         :param pulumi.Input[str] last_error_time: The time the most recent error occurred, such as a failure to publish to Cloud Pub/Sub.
         :param pulumi.Input[str] last_event_time: The last time a telemetry event was received.
         :param pulumi.Input[str] last_heartbeat_time: The last time an MQTT PINGREQ was received.
@@ -663,10 +671,11 @@ class Device(pulumi.CustomResource):
                Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key-value pairs assigned to the device.
         :param pulumi.Input[str] name: A unique name for the resource.
-        :param pulumi.Input[str] num_id: A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally
-               unique.
+        :param pulumi.Input[str] num_id: A server-defined unique numeric ID for the device.
+               This is a more compact way to identify devices, and it is globally unique.
         :param pulumi.Input[str] registry: The name of the device registry where this device should be created.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceStateArgs']]]] states: The state most recently received from the device.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -704,6 +713,7 @@ class Device(pulumi.CustomResource):
     def configs(self) -> pulumi.Output[Sequence['outputs.DeviceConfig']]:
         """
         The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
+        Structure is documented below.
         """
         return pulumi.get(self, "configs")
 
@@ -746,6 +756,7 @@ class Device(pulumi.CustomResource):
     def last_error_statuses(self) -> pulumi.Output[Sequence['outputs.DeviceLastErrorStatus']]:
         """
         The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
+        Structure is documented below.
         """
         return pulumi.get(self, "last_error_statuses")
 
@@ -810,8 +821,8 @@ class Device(pulumi.CustomResource):
     @pulumi.getter(name="numId")
     def num_id(self) -> pulumi.Output[str]:
         """
-        A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally
-        unique.
+        A server-defined unique numeric ID for the device.
+        This is a more compact way to identify devices, and it is globally unique.
         """
         return pulumi.get(self, "num_id")
 
@@ -828,6 +839,7 @@ class Device(pulumi.CustomResource):
     def states(self) -> pulumi.Output[Sequence['outputs.DeviceState']]:
         """
         The state most recently received from the device.
+        Structure is documented below.
         """
         return pulumi.get(self, "states")
 

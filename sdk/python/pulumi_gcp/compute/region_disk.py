@@ -69,13 +69,10 @@ class RegionDiskArgs:
                If you specify this field along with sourceImage or sourceSnapshot,
                the value of sizeGb must not be less than the size of the sourceImage
                or the size of the snapshot.
-        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as
-               a partial or full URL to the resource. For example, the following are
-               valid values:
-               * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
-               * `projects/project/global/snapshots/snapshot`
-               * `global/snapshots/snapshot`
-               * `snapshot`
+        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
+               example, the following are valid values: *
+               'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
+               'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
                For example, the following are valid values:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
@@ -273,13 +270,10 @@ class RegionDiskArgs:
     @pulumi.getter
     def snapshot(self) -> Optional[pulumi.Input[str]]:
         """
-        The source snapshot used to create this disk. You can provide this as
-        a partial or full URL to the resource. For example, the following are
-        valid values:
-        * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
-        * `projects/project/global/snapshots/snapshot`
-        * `global/snapshots/snapshot`
-        * `snapshot`
+        The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
+        example, the following are valid values: *
+        'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
+        'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
         """
         return pulumi.get(self, "snapshot")
 
@@ -376,7 +370,8 @@ class _RegionDiskState:
                you do not need to provide a key to use the disk later.
                Structure is documented below.
         :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
+               internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
         :param pulumi.Input[str] last_attach_timestamp: Last attach timestamp in RFC3339 text format.
         :param pulumi.Input[str] last_detach_timestamp: Last detach timestamp in RFC3339 text format.
@@ -404,13 +399,10 @@ class _RegionDiskState:
                If you specify this field along with sourceImage or sourceSnapshot,
                the value of sizeGb must not be less than the size of the sourceImage
                or the size of the snapshot.
-        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as
-               a partial or full URL to the resource. For example, the following are
-               valid values:
-               * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
-               * `projects/project/global/snapshots/snapshot`
-               * `global/snapshots/snapshot`
-               * `snapshot`
+        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
+               example, the following are valid values: *
+               'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
+               'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
                For example, the following are valid values:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
@@ -419,18 +411,23 @@ class _RegionDiskState:
                * projects/{project}/regions/{region}/disks/{disk}
                * zones/{zone}/disks/{disk}
                * regions/{region}/disks/{disk}
-        :param pulumi.Input[str] source_disk_id: The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
-               the current or a previous instance of a given disk name.
+        :param pulumi.Input[str] source_disk_id: The ID value of the disk used to create this image. This value may
+               be used to determine whether the image was taken from the current
+               or a previous instance of a given disk name.
         :param pulumi.Input['RegionDiskSourceSnapshotEncryptionKeyArgs'] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.
                Structure is documented below.
-        :param pulumi.Input[str] source_snapshot_id: The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
-               this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
-               recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
+        :param pulumi.Input[str] source_snapshot_id: The unique ID of the snapshot used to create this disk. This value
+               identifies the exact snapshot that was used to create this persistent
+               disk. For example, if you created the persistent disk from a snapshot
+               that was later deleted and recreated under the same name, the source
+               snapshot ID would identify the exact version of the snapshot that was
+               used.
         :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to
                create the disk. Provide this when creating the disk.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Links to the users of the disk (attached instances) in form:
+               project/zones/zone/instances/instance
         """
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -542,7 +539,8 @@ class _RegionDiskState:
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> Optional[pulumi.Input[str]]:
         """
-        The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        The fingerprint used for optimistic locking of this resource.  Used
+        internally during updates.
         """
         return pulumi.get(self, "label_fingerprint")
 
@@ -691,13 +689,10 @@ class _RegionDiskState:
     @pulumi.getter
     def snapshot(self) -> Optional[pulumi.Input[str]]:
         """
-        The source snapshot used to create this disk. You can provide this as
-        a partial or full URL to the resource. For example, the following are
-        valid values:
-        * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
-        * `projects/project/global/snapshots/snapshot`
-        * `global/snapshots/snapshot`
-        * `snapshot`
+        The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
+        example, the following are valid values: *
+        'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
+        'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
         """
         return pulumi.get(self, "snapshot")
 
@@ -728,8 +723,9 @@ class _RegionDiskState:
     @pulumi.getter(name="sourceDiskId")
     def source_disk_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
-        the current or a previous instance of a given disk name.
+        The ID value of the disk used to create this image. This value may
+        be used to determine whether the image was taken from the current
+        or a previous instance of a given disk name.
         """
         return pulumi.get(self, "source_disk_id")
 
@@ -756,9 +752,12 @@ class _RegionDiskState:
     @pulumi.getter(name="sourceSnapshotId")
     def source_snapshot_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
-        this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
-        recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
+        The unique ID of the snapshot used to create this disk. This value
+        identifies the exact snapshot that was used to create this persistent
+        disk. For example, if you created the persistent disk from a snapshot
+        that was later deleted and recreated under the same name, the source
+        snapshot ID would identify the exact version of the snapshot that was
+        used.
         """
         return pulumi.get(self, "source_snapshot_id")
 
@@ -783,7 +782,8 @@ class _RegionDiskState:
     @pulumi.getter
     def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance
+        Links to the users of the disk (attached instances) in form:
+        project/zones/zone/instances/instance
         """
         return pulumi.get(self, "users")
 
@@ -923,13 +923,10 @@ class RegionDisk(pulumi.CustomResource):
                If you specify this field along with sourceImage or sourceSnapshot,
                the value of sizeGb must not be less than the size of the sourceImage
                or the size of the snapshot.
-        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as
-               a partial or full URL to the resource. For example, the following are
-               valid values:
-               * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
-               * `projects/project/global/snapshots/snapshot`
-               * `global/snapshots/snapshot`
-               * `snapshot`
+        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
+               example, the following are valid values: *
+               'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
+               'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
                For example, the following are valid values:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
@@ -1141,7 +1138,8 @@ class RegionDisk(pulumi.CustomResource):
                you do not need to provide a key to use the disk later.
                Structure is documented below.
         :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
+               internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
         :param pulumi.Input[str] last_attach_timestamp: Last attach timestamp in RFC3339 text format.
         :param pulumi.Input[str] last_detach_timestamp: Last detach timestamp in RFC3339 text format.
@@ -1169,13 +1167,10 @@ class RegionDisk(pulumi.CustomResource):
                If you specify this field along with sourceImage or sourceSnapshot,
                the value of sizeGb must not be less than the size of the sourceImage
                or the size of the snapshot.
-        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as
-               a partial or full URL to the resource. For example, the following are
-               valid values:
-               * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
-               * `projects/project/global/snapshots/snapshot`
-               * `global/snapshots/snapshot`
-               * `snapshot`
+        :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
+               example, the following are valid values: *
+               'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
+               'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
         :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
                For example, the following are valid values:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/disks/{disk}
@@ -1184,18 +1179,23 @@ class RegionDisk(pulumi.CustomResource):
                * projects/{project}/regions/{region}/disks/{disk}
                * zones/{zone}/disks/{disk}
                * regions/{region}/disks/{disk}
-        :param pulumi.Input[str] source_disk_id: The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
-               the current or a previous instance of a given disk name.
+        :param pulumi.Input[str] source_disk_id: The ID value of the disk used to create this image. This value may
+               be used to determine whether the image was taken from the current
+               or a previous instance of a given disk name.
         :param pulumi.Input[pulumi.InputType['RegionDiskSourceSnapshotEncryptionKeyArgs']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required
                if the source snapshot is protected by a customer-supplied encryption
                key.
                Structure is documented below.
-        :param pulumi.Input[str] source_snapshot_id: The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
-               this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
-               recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
+        :param pulumi.Input[str] source_snapshot_id: The unique ID of the snapshot used to create this disk. This value
+               identifies the exact snapshot that was used to create this persistent
+               disk. For example, if you created the persistent disk from a snapshot
+               that was later deleted and recreated under the same name, the source
+               snapshot ID would identify the exact version of the snapshot that was
+               used.
         :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to
                create the disk. Provide this when creating the disk.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Links to the users of the disk (attached instances) in form:
+               project/zones/zone/instances/instance
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1271,7 +1271,8 @@ class RegionDisk(pulumi.CustomResource):
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> pulumi.Output[str]:
         """
-        The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        The fingerprint used for optimistic locking of this resource.  Used
+        internally during updates.
         """
         return pulumi.get(self, "label_fingerprint")
 
@@ -1376,13 +1377,10 @@ class RegionDisk(pulumi.CustomResource):
     @pulumi.getter
     def snapshot(self) -> pulumi.Output[Optional[str]]:
         """
-        The source snapshot used to create this disk. You can provide this as
-        a partial or full URL to the resource. For example, the following are
-        valid values:
-        * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
-        * `projects/project/global/snapshots/snapshot`
-        * `global/snapshots/snapshot`
-        * `snapshot`
+        The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
+        example, the following are valid values: *
+        'https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot' *
+        'projects/project/global/snapshots/snapshot' * 'global/snapshots/snapshot' * 'snapshot'
         """
         return pulumi.get(self, "snapshot")
 
@@ -1405,8 +1403,9 @@ class RegionDisk(pulumi.CustomResource):
     @pulumi.getter(name="sourceDiskId")
     def source_disk_id(self) -> pulumi.Output[str]:
         """
-        The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
-        the current or a previous instance of a given disk name.
+        The ID value of the disk used to create this image. This value may
+        be used to determine whether the image was taken from the current
+        or a previous instance of a given disk name.
         """
         return pulumi.get(self, "source_disk_id")
 
@@ -1425,9 +1424,12 @@ class RegionDisk(pulumi.CustomResource):
     @pulumi.getter(name="sourceSnapshotId")
     def source_snapshot_id(self) -> pulumi.Output[str]:
         """
-        The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
-        this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
-        recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
+        The unique ID of the snapshot used to create this disk. This value
+        identifies the exact snapshot that was used to create this persistent
+        disk. For example, if you created the persistent disk from a snapshot
+        that was later deleted and recreated under the same name, the source
+        snapshot ID would identify the exact version of the snapshot that was
+        used.
         """
         return pulumi.get(self, "source_snapshot_id")
 
@@ -1444,7 +1446,8 @@ class RegionDisk(pulumi.CustomResource):
     @pulumi.getter
     def users(self) -> pulumi.Output[Sequence[str]]:
         """
-        Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance
+        Links to the users of the disk (attached instances) in form:
+        project/zones/zone/instances/instance
         """
         return pulumi.get(self, "users")
 

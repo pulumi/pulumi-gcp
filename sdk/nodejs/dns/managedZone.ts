@@ -279,7 +279,8 @@ export class ManagedZone extends pulumi.CustomResource {
      */
     public readonly cloudLoggingConfig!: pulumi.Output<outputs.dns.ManagedZoneCloudLoggingConfig>;
     /**
-     * The time that this resource was created on the server. This is in RFC3339 text format.
+     * The time that this resource was created on the server.
+     * This is in RFC3339 text format.
      */
     public /*out*/ readonly creationTime!: pulumi.Output<string>;
     /**
@@ -320,7 +321,8 @@ export class ManagedZone extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Delegate your managed_zone to these virtual name servers; defined by the server
+     * Delegate your managedZone to these virtual name servers;
+     * defined by the server
      */
     public /*out*/ readonly nameServers!: pulumi.Output<string[]>;
     /**
@@ -427,7 +429,8 @@ export interface ManagedZoneState {
      */
     cloudLoggingConfig?: pulumi.Input<inputs.dns.ManagedZoneCloudLoggingConfig>;
     /**
-     * The time that this resource was created on the server. This is in RFC3339 text format.
+     * The time that this resource was created on the server.
+     * This is in RFC3339 text format.
      */
     creationTime?: pulumi.Input<string>;
     /**
@@ -468,7 +471,8 @@ export interface ManagedZoneState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Delegate your managed_zone to these virtual name servers; defined by the server
+     * Delegate your managedZone to these virtual name servers;
+     * defined by the server
      */
     nameServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**

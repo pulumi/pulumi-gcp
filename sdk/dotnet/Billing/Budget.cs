@@ -356,7 +356,8 @@ namespace Pulumi.Gcp.Billing
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name of the budget. The resource name implies the scope of a budget. Values are of the form
+        /// Resource name of the budget. The resource name
+        /// implies the scope of a budget. Values are of the form
         /// billingAccounts/{billingAccountId}/budgets/{budgetId}.
         /// </summary>
         [Output("name")]
@@ -513,7 +514,8 @@ namespace Pulumi.Gcp.Billing
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Resource name of the budget. The resource name implies the scope of a budget. Values are of the form
+        /// Resource name of the budget. The resource name
+        /// implies the scope of a budget. Values are of the form
         /// billingAccounts/{billingAccountId}/budgets/{budgetId}.
         /// </summary>
         [Input("name")]

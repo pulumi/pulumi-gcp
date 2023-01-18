@@ -14,16 +14,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServicePerimeterStatusIngressPolicyIngressFrom {
     /**
-     * @return A list of identities that are allowed access through this `EgressPolicy`.
-     * Should be in the format of email address. The email address should
-     * represent individual user or service account only.
+     * @return A list of identities that are allowed access through this ingress policy.
+     * Should be in the format of email address. The email address should represent
+     * individual user or service account only.
      * 
      */
     private @Nullable List<String> identities;
     /**
-     * @return Specifies the type of identities that are allowed access to outside the
-     * perimeter. If left unspecified, then members of `identities` field will
-     * be allowed access.
+     * @return Specifies the type of identities that are allowed access from outside the
+     * perimeter. If left unspecified, then members of `identities` field will be
+     * allowed access.
      * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
      * 
      */
@@ -37,18 +37,18 @@ public final class ServicePerimeterStatusIngressPolicyIngressFrom {
 
     private ServicePerimeterStatusIngressPolicyIngressFrom() {}
     /**
-     * @return A list of identities that are allowed access through this `EgressPolicy`.
-     * Should be in the format of email address. The email address should
-     * represent individual user or service account only.
+     * @return A list of identities that are allowed access through this ingress policy.
+     * Should be in the format of email address. The email address should represent
+     * individual user or service account only.
      * 
      */
     public List<String> identities() {
         return this.identities == null ? List.of() : this.identities;
     }
     /**
-     * @return Specifies the type of identities that are allowed access to outside the
-     * perimeter. If left unspecified, then members of `identities` field will
-     * be allowed access.
+     * @return Specifies the type of identities that are allowed access from outside the
+     * perimeter. If left unspecified, then members of `identities` field will be
+     * allowed access.
      * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
      * 
      */

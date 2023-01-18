@@ -29,11 +29,15 @@ class RecordSetArgs:
                reside.
         :param pulumi.Input[str] name: The DNS name this record set will apply to.
         :param pulumi.Input[str] type: The DNS record set type.
-        :param pulumi.Input[str] project: The ID of the project in which the load balancer belongs.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
         :param pulumi.Input['RecordSetRoutingPolicyArgs'] routing_policy: The configuration for steering traffic based on query.
                Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: Same as `rrdatas` above.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+               data contains spaces, add surrounding \\" if you don't want your string to get split on spaces. To specify a single
+               record value longer than 255 characters such as a TXT record for DKIM, add \\"\\" inside the Terraform configuration
+               string (e.g. "first255characters\\"\\"morecharacters").
         :param pulumi.Input[int] ttl: The time-to-live of this record set (seconds).
         """
         pulumi.set(__self__, "managed_zone", managed_zone)
@@ -89,7 +93,8 @@ class RecordSetArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the project in which the load balancer belongs.
+        The ID of the project in which the resource belongs. If it
+        is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -115,7 +120,10 @@ class RecordSetArgs:
     @pulumi.getter
     def rrdatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Same as `rrdatas` above.
+        The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+        data contains spaces, add surrounding \\" if you don't want your string to get split on spaces. To specify a single
+        record value longer than 255 characters such as a TXT record for DKIM, add \\"\\" inside the Terraform configuration
+        string (e.g. "first255characters\\"\\"morecharacters").
         """
         return pulumi.get(self, "rrdatas")
 
@@ -151,11 +159,15 @@ class _RecordSetState:
         :param pulumi.Input[str] managed_zone: The name of the zone in which this record set will
                reside.
         :param pulumi.Input[str] name: The DNS name this record set will apply to.
-        :param pulumi.Input[str] project: The ID of the project in which the load balancer belongs.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
         :param pulumi.Input['RecordSetRoutingPolicyArgs'] routing_policy: The configuration for steering traffic based on query.
                Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: Same as `rrdatas` above.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+               data contains spaces, add surrounding \\" if you don't want your string to get split on spaces. To specify a single
+               record value longer than 255 characters such as a TXT record for DKIM, add \\"\\" inside the Terraform configuration
+               string (e.g. "first255characters\\"\\"morecharacters").
         :param pulumi.Input[int] ttl: The time-to-live of this record set (seconds).
         :param pulumi.Input[str] type: The DNS record set type.
         """
@@ -203,7 +215,8 @@ class _RecordSetState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the project in which the load balancer belongs.
+        The ID of the project in which the resource belongs. If it
+        is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -229,7 +242,10 @@ class _RecordSetState:
     @pulumi.getter
     def rrdatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Same as `rrdatas` above.
+        The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+        data contains spaces, add surrounding \\" if you don't want your string to get split on spaces. To specify a single
+        record value longer than 255 characters such as a TXT record for DKIM, add \\"\\" inside the Terraform configuration
+        string (e.g. "first255characters\\"\\"morecharacters").
         """
         return pulumi.get(self, "rrdatas")
 
@@ -465,11 +481,15 @@ class RecordSet(pulumi.CustomResource):
         :param pulumi.Input[str] managed_zone: The name of the zone in which this record set will
                reside.
         :param pulumi.Input[str] name: The DNS name this record set will apply to.
-        :param pulumi.Input[str] project: The ID of the project in which the load balancer belongs.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['RecordSetRoutingPolicyArgs']] routing_policy: The configuration for steering traffic based on query.
                Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: Same as `rrdatas` above.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+               data contains spaces, add surrounding \\" if you don't want your string to get split on spaces. To specify a single
+               record value longer than 255 characters such as a TXT record for DKIM, add \\"\\" inside the Terraform configuration
+               string (e.g. "first255characters\\"\\"morecharacters").
         :param pulumi.Input[int] ttl: The time-to-live of this record set (seconds).
         :param pulumi.Input[str] type: The DNS record set type.
         """
@@ -735,11 +755,15 @@ class RecordSet(pulumi.CustomResource):
         :param pulumi.Input[str] managed_zone: The name of the zone in which this record set will
                reside.
         :param pulumi.Input[str] name: The DNS name this record set will apply to.
-        :param pulumi.Input[str] project: The ID of the project in which the load balancer belongs.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['RecordSetRoutingPolicyArgs']] routing_policy: The configuration for steering traffic based on query.
                Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: Same as `rrdatas` above.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+               data contains spaces, add surrounding \\" if you don't want your string to get split on spaces. To specify a single
+               record value longer than 255 characters such as a TXT record for DKIM, add \\"\\" inside the Terraform configuration
+               string (e.g. "first255characters\\"\\"morecharacters").
         :param pulumi.Input[int] ttl: The time-to-live of this record set (seconds).
         :param pulumi.Input[str] type: The DNS record set type.
         """
@@ -777,7 +801,8 @@ class RecordSet(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The ID of the project in which the load balancer belongs.
+        The ID of the project in which the resource belongs. If it
+        is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -795,7 +820,10 @@ class RecordSet(pulumi.CustomResource):
     @pulumi.getter
     def rrdatas(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Same as `rrdatas` above.
+        The string data for the records in this record set whose meaning depends on the DNS type. For TXT record, if the string
+        data contains spaces, add surrounding \\" if you don't want your string to get split on spaces. To specify a single
+        record value longer than 255 characters such as a TXT record for DKIM, add \\"\\" inside the Terraform configuration
+        string (e.g. "first255characters\\"\\"morecharacters").
         """
         return pulumi.get(self, "rrdatas")
 

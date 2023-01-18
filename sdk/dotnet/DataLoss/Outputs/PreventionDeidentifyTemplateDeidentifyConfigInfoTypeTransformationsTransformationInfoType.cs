@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     public sealed class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType
     {
         /// <summary>
-        /// Name describing the field.
+        /// Name of the information type.
         /// </summary>
         public readonly string Name;
 

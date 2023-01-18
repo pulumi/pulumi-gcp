@@ -782,10 +782,10 @@ public class URLMap extends com.pulumi.resources.CustomResource {
         return this.creationTimestamp;
     }
     /**
-     * defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
-     * advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
-     * to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
-     * Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+     * defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
+     * like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend.
+     * If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService
+     * is set, defaultRouteAction cannot contain any weightedBackendServices.
      * Only one of defaultRouteAction or defaultUrlRedirect must be set.
      * Structure is documented below.
      * 
@@ -794,10 +794,10 @@ public class URLMap extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ URLMapDefaultRouteAction> defaultRouteAction;
 
     /**
-     * @return defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs
-     * advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request
-     * to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set.
-     * Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices.
+     * @return defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions
+     * like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend.
+     * If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService
+     * is set, defaultRouteAction cannot contain any weightedBackendServices.
      * Only one of defaultRouteAction or defaultUrlRedirect must be set.
      * Structure is documented below.
      * 
@@ -806,14 +806,14 @@ public class URLMap extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.defaultRouteAction);
     }
     /**
-     * The backend service or backend bucket to use when none of the given paths match.
+     * The backend service or backend bucket to use when none of the given rules match.
      * 
      */
     @Export(name="defaultService", type=String.class, parameters={})
     private Output</* @Nullable */ String> defaultService;
 
     /**
-     * @return The backend service or backend bucket to use when none of the given paths match.
+     * @return The backend service or backend bucket to use when none of the given rules match.
      * 
      */
     public Output<Optional<String>> defaultService() {
@@ -840,28 +840,32 @@ public class URLMap extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.defaultUrlRedirect);
     }
     /**
-     * Description of this test case.
+     * An optional description of this resource. Provide this property when you create
+     * the resource.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of this test case.
+     * @return An optional description of this resource. Provide this property when you create
+     * the resource.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+     * Fingerprint of this resource. A hash of the contents stored in this object. This
+     * field is used in optimistic locking.
      * 
      */
     @Export(name="fingerprint", type=String.class, parameters={})
     private Output<String> fingerprint;
 
     /**
-     * @return Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+     * @return Fingerprint of this resource. A hash of the contents stored in this object. This
+     * field is used in optimistic locking.
      * 
      */
     public Output<String> fingerprint() {
@@ -869,9 +873,8 @@ public class URLMap extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specifies changes to request and response headers that need to take effect for
-     * the selected backendService.
-     * headerAction specified here take effect before headerAction in the enclosing
-     * HttpRouteRule, PathMatcher and UrlMap.
+     * the selected backendService. The headerAction specified here take effect after
+     * headerAction specified under pathMatcher.
      * Structure is documented below.
      * 
      */
@@ -880,9 +883,8 @@ public class URLMap extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specifies changes to request and response headers that need to take effect for
-     * the selected backendService.
-     * headerAction specified here take effect before headerAction in the enclosing
-     * HttpRouteRule, PathMatcher and UrlMap.
+     * the selected backendService. The headerAction specified here take effect after
+     * headerAction specified under pathMatcher.
      * Structure is documented below.
      * 
      */
@@ -920,32 +922,40 @@ public class URLMap extends com.pulumi.resources.CustomResource {
         return this.mapId;
     }
     /**
-     * The name of the query parameter to match. The query parameter must exist in the
-     * request, in the absence of which the request match fails.
+     * Name of the resource. Provided by the client when the resource is created. The
+     * name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+     * name must be 1-63 characters long and match the regular expression
+     * `a-z?` which means the first character must be a lowercase
+     * letter, and all following characters must be a dash, lowercase letter, or digit,
+     * except the last character, which cannot be a dash.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The name of the query parameter to match. The query parameter must exist in the
-     * request, in the absence of which the request match fails.
+     * @return Name of the resource. Provided by the client when the resource is created. The
+     * name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+     * name must be 1-63 characters long and match the regular expression
+     * `a-z?` which means the first character must be a lowercase
+     * letter, and all following characters must be a dash, lowercase letter, or digit,
+     * except the last character, which cannot be a dash.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The name of the PathMatcher to use to match the path portion of the URL if the
-     * hostRule matches the URL&#39;s host portion.
+     * The list of named PathMatchers to use against the URL.
+     * Structure is documented below.
      * 
      */
     @Export(name="pathMatchers", type=List.class, parameters={URLMapPathMatcher.class})
     private Output</* @Nullable */ List<URLMapPathMatcher>> pathMatchers;
 
     /**
-     * @return The name of the PathMatcher to use to match the path portion of the URL if the
-     * hostRule matches the URL&#39;s host portion.
+     * @return The list of named PathMatchers to use against the URL.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<List<URLMapPathMatcher>>> pathMatchers() {

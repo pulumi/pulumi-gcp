@@ -27,12 +27,11 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly Outputs.RegionUrlMapPathMatcherDefaultUrlRedirect? DefaultUrlRedirect;
         /// <summary>
-        /// Description of this test case.
+        /// An optional description of this resource.
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// The name of the query parameter to match. The query parameter must exist in the
-        /// request, in the absence of which the request match fails.
+        /// The name to which this PathMatcher is referred by the HostRule.
         /// </summary>
         public readonly string Name;
         /// <summary>

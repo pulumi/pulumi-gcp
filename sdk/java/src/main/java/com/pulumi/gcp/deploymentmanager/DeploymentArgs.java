@@ -108,16 +108,14 @@ public final class DeploymentArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the template to import, as declared in the YAML
-     * configuration.
+     * Unique name for the deployment
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the template to import, as declared in the YAML
-     * configuration.
+     * @return Unique name for the deployment
      * 
      */
     public Optional<Output<String>> name() {
@@ -344,8 +342,7 @@ public final class DeploymentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the template to import, as declared in the YAML
-         * configuration.
+         * @param name Unique name for the deployment
          * 
          * @return builder
          * 
@@ -356,8 +353,7 @@ public final class DeploymentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the template to import, as declared in the YAML
-         * configuration.
+         * @param name Unique name for the deployment
          * 
          * @return builder
          * 

@@ -11,14 +11,16 @@ import java.util.Objects;
 @CustomType
 public final class ClusterLoggingConfig {
     /**
-     * @return The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, and `SCHEDULER`. In beta provider, `WORKLOADS` is supported on top of those 4 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
+     * @return The GKE components exposing logs. Supported values include:
+     * `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
      * 
      */
     private List<String> enableComponents;
 
     private ClusterLoggingConfig() {}
     /**
-     * @return The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, and `SCHEDULER`. In beta provider, `WORKLOADS` is supported on top of those 4 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
+     * @return The GKE components exposing logs. Supported values include:
+     * `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
      * 
      */
     public List<String> enableComponents() {

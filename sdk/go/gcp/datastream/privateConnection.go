@@ -87,6 +87,7 @@ type PrivateConnection struct {
 	// Display name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The PrivateConnection error in case of failure.
+	// Structure is documented below.
 	Errors PrivateConnectionErrorArrayOutput `pulumi:"errors"`
 	// Labels.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -151,6 +152,7 @@ type privateConnectionState struct {
 	// Display name.
 	DisplayName *string `pulumi:"displayName"`
 	// The PrivateConnection error in case of failure.
+	// Structure is documented below.
 	Errors []PrivateConnectionError `pulumi:"errors"`
 	// Labels.
 	Labels map[string]string `pulumi:"labels"`
@@ -175,6 +177,7 @@ type PrivateConnectionState struct {
 	// Display name.
 	DisplayName pulumi.StringPtrInput
 	// The PrivateConnection error in case of failure.
+	// Structure is documented below.
 	Errors PrivateConnectionErrorArrayInput
 	// Labels.
 	Labels pulumi.StringMapInput
@@ -329,6 +332,7 @@ func (o PrivateConnectionOutput) DisplayName() pulumi.StringOutput {
 }
 
 // The PrivateConnection error in case of failure.
+// Structure is documented below.
 func (o PrivateConnectionOutput) Errors() PrivateConnectionErrorArrayOutput {
 	return o.ApplyT(func(v *PrivateConnection) PrivateConnectionErrorArrayOutput { return v.Errors }).(PrivateConnectionErrorArrayOutput)
 }

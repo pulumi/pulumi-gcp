@@ -62,16 +62,14 @@ public final class PeeringState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique name of the peering in this scope including projects and location using the form:
-     * projects/{projectId}/locations/global/peerings/{peeringId}.
+     * Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Unique name of the peering in this scope including projects and location using the form:
-     * projects/{projectId}/locations/global/peerings/{peeringId}.
+     * @return Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
      * 
      */
     public Optional<Output<String>> name() {
@@ -79,7 +77,6 @@ public final class PeeringState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * - 
      * (Required)
      * 
      */
@@ -87,8 +84,7 @@ public final class PeeringState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> peeringId;
 
     /**
-     * @return -
-     * (Required)
+     * @return (Required)
      * 
      */
     public Optional<Output<String>> peeringId() {
@@ -237,8 +233,7 @@ public final class PeeringState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Unique name of the peering in this scope including projects and location using the form:
-         * projects/{projectId}/locations/global/peerings/{peeringId}.
+         * @param name Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
          * 
          * @return builder
          * 
@@ -249,8 +244,7 @@ public final class PeeringState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Unique name of the peering in this scope including projects and location using the form:
-         * projects/{projectId}/locations/global/peerings/{peeringId}.
+         * @param name Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
          * 
          * @return builder
          * 
@@ -260,8 +254,7 @@ public final class PeeringState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param peeringId -
-         * (Required)
+         * @param peeringId (Required)
          * 
          * @return builder
          * 
@@ -272,8 +265,7 @@ public final class PeeringState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param peeringId -
-         * (Required)
+         * @param peeringId (Required)
          * 
          * @return builder
          * 

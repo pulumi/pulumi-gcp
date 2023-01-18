@@ -33,7 +33,6 @@ public final class JobCopyDestinationEncryptionConfigurationArgs extends com.pul
     }
 
     /**
-     * - 
      * Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
      * 
      */
@@ -41,8 +40,7 @@ public final class JobCopyDestinationEncryptionConfigurationArgs extends com.pul
     private @Nullable Output<String> kmsKeyVersion;
 
     /**
-     * @return -
-     * Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+     * @return Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
      * 
      */
     public Optional<Output<String>> kmsKeyVersion() {
@@ -98,8 +96,7 @@ public final class JobCopyDestinationEncryptionConfigurationArgs extends com.pul
         }
 
         /**
-         * @param kmsKeyVersion -
-         * Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+         * @param kmsKeyVersion Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
          * 
          * @return builder
          * 
@@ -110,8 +107,7 @@ public final class JobCopyDestinationEncryptionConfigurationArgs extends com.pul
         }
 
         /**
-         * @param kmsKeyVersion -
-         * Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
+         * @param kmsKeyVersion Describes the Cloud KMS encryption key version used to protect destination BigQuery table.
          * 
          * @return builder
          * 

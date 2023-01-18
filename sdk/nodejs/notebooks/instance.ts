@@ -66,7 +66,7 @@ import * as utilities from "../utilities";
  *     },
  *     installGpuDriver: true,
  *     location: "us-west1-a",
- *     machineType: "n1-standard-1", // can't be e2 because of accelerator
+ *     machineType: "n1-standard-1",
  *     vmImage: {
  *         imageFamily: "tf-latest-gpu",
  *         project: "deeplearning-platform-release",
@@ -271,8 +271,8 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly postStartupScript!: pulumi.Output<string | undefined>;
     /**
-     * The name of the Google Cloud project that this VM image belongs to.
-     * Format: projects/{project_id}
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -546,8 +546,8 @@ export interface InstanceState {
      */
     postStartupScript?: pulumi.Input<string>;
     /**
-     * The name of the Google Cloud project that this VM image belongs to.
-     * Format: projects/{project_id}
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
@@ -727,8 +727,8 @@ export interface InstanceArgs {
      */
     postStartupScript?: pulumi.Input<string>;
     /**
-     * The name of the Google Cloud project that this VM image belongs to.
-     * Format: projects/{project_id}
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**

@@ -30,7 +30,8 @@ namespace Pulumi.Gcp.AppEngine.Inputs
         public Input<bool>? DisableTraceSampling { get; set; }
 
         /// <summary>
-        /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        /// Endpoints service name which is the name of the "service" resource in the Service Management API.
+        /// For example "myapi.endpoints.myproject.cloud.goog"
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

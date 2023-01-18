@@ -24,13 +24,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const note = new gcp.containeranalysis.Note("note", {
- *     attestationAuthority: {
- *         hint: {
- *             humanReadableName: "Attestor Note",
- *         },
+ * const note = new gcp.containeranalysis.Note("note", {attestationAuthority: {
+ *     hint: {
+ *         humanReadableName: "Attestor Note",
  *     },
- * });
+ * }});
  * ```
  * ### Container Analysis Note Attestation Full
  *

@@ -86,8 +86,13 @@ class GlobalForwardingRuleArgs:
                metadataFilters only applies to Loadbalancers that have their
                loadBalancingScheme set to INTERNAL_SELF_MANAGED.
                Structure is documented below.
-        :param pulumi.Input[str] name: Name of the metadata label. The length must be between
-               1 and 1024 characters, inclusive.
+        :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
+               created. The name must be 1-63 characters long, and comply with
+               RFC1035. Specifically, the name must be 1-63 characters long and match
+               the regular expression `a-z?` which means the
+               first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the last
+               character, which cannot be a dash.
         :param pulumi.Input[str] network: This field is not used for external load balancing.
                For INTERNAL_SELF_MANAGED load balancing, this field
                identifies the network that the load balanced IP should belong to
@@ -284,8 +289,13 @@ class GlobalForwardingRuleArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the metadata label. The length must be between
-        1 and 1024 characters, inclusive.
+        Name of the resource; provided by the client when the resource is
+        created. The name must be 1-63 characters long, and comply with
+        RFC1035. Specifically, the name must be 1-63 characters long and match
+        the regular expression `a-z?` which means the
+        first character must be a lowercase letter, and all following
+        characters must be a dash, lowercase letter, or digit, except the last
+        character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
 
@@ -422,8 +432,13 @@ class _GlobalForwardingRuleState:
                metadataFilters only applies to Loadbalancers that have their
                loadBalancingScheme set to INTERNAL_SELF_MANAGED.
                Structure is documented below.
-        :param pulumi.Input[str] name: Name of the metadata label. The length must be between
-               1 and 1024 characters, inclusive.
+        :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
+               created. The name must be 1-63 characters long, and comply with
+               RFC1035. Specifically, the name must be 1-63 characters long and match
+               the regular expression `a-z?` which means the
+               first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the last
+               character, which cannot be a dash.
         :param pulumi.Input[str] network: This field is not used for external load balancing.
                For INTERNAL_SELF_MANAGED load balancing, this field
                identifies the network that the load balanced IP should belong to
@@ -634,8 +649,13 @@ class _GlobalForwardingRuleState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the metadata label. The length must be between
-        1 and 1024 characters, inclusive.
+        Name of the resource; provided by the client when the resource is
+        created. The name must be 1-63 characters long, and comply with
+        RFC1035. Specifically, the name must be 1-63 characters long and match
+        the regular expression `a-z?` which means the
+        first character must be a lowercase letter, and all following
+        characters must be a dash, lowercase letter, or digit, except the last
+        character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
 
@@ -918,8 +938,13 @@ class GlobalForwardingRule(pulumi.CustomResource):
                metadataFilters only applies to Loadbalancers that have their
                loadBalancingScheme set to INTERNAL_SELF_MANAGED.
                Structure is documented below.
-        :param pulumi.Input[str] name: Name of the metadata label. The length must be between
-               1 and 1024 characters, inclusive.
+        :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
+               created. The name must be 1-63 characters long, and comply with
+               RFC1035. Specifically, the name must be 1-63 characters long and match
+               the regular expression `a-z?` which means the
+               first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the last
+               character, which cannot be a dash.
         :param pulumi.Input[str] network: This field is not used for external load balancing.
                For INTERNAL_SELF_MANAGED load balancing, this field
                identifies the network that the load balanced IP should belong to
@@ -1188,8 +1213,13 @@ class GlobalForwardingRule(pulumi.CustomResource):
                metadataFilters only applies to Loadbalancers that have their
                loadBalancingScheme set to INTERNAL_SELF_MANAGED.
                Structure is documented below.
-        :param pulumi.Input[str] name: Name of the metadata label. The length must be between
-               1 and 1024 characters, inclusive.
+        :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is
+               created. The name must be 1-63 characters long, and comply with
+               RFC1035. Specifically, the name must be 1-63 characters long and match
+               the regular expression `a-z?` which means the
+               first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the last
+               character, which cannot be a dash.
         :param pulumi.Input[str] network: This field is not used for external load balancing.
                For INTERNAL_SELF_MANAGED load balancing, this field
                identifies the network that the load balanced IP should belong to
@@ -1357,8 +1387,13 @@ class GlobalForwardingRule(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the metadata label. The length must be between
-        1 and 1024 characters, inclusive.
+        Name of the resource; provided by the client when the resource is
+        created. The name must be 1-63 characters long, and comply with
+        RFC1035. Specifically, the name must be 1-63 characters long and match
+        the regular expression `a-z?` which means the
+        first character must be a lowercase letter, and all following
+        characters must be a dash, lowercase letter, or digit, except the last
+        character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
 

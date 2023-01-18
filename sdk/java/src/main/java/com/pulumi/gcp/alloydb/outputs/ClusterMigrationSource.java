@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterMigrationSource {
+    /**
+     * @return The host and port of the on-premises instance in host:port format
+     * 
+     */
     private @Nullable String hostPort;
+    /**
+     * @return Place holder for the external source identifier(e.g DMS job name) that created the cluster.
+     * 
+     */
     private @Nullable String referenceId;
+    /**
+     * @return Type of migration source.
+     * 
+     */
     private @Nullable String sourceType;
 
     private ClusterMigrationSource() {}
+    /**
+     * @return The host and port of the on-premises instance in host:port format
+     * 
+     */
     public Optional<String> hostPort() {
         return Optional.ofNullable(this.hostPort);
     }
+    /**
+     * @return Place holder for the external source identifier(e.g DMS job name) that created the cluster.
+     * 
+     */
     public Optional<String> referenceId() {
         return Optional.ofNullable(this.referenceId);
     }
+    /**
+     * @return Type of migration source.
+     * 
+     */
     public Optional<String> sourceType() {
         return Optional.ofNullable(this.sourceType);
     }

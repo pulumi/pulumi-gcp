@@ -37,90 +37,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Cloudbuild Trigger Build
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const build_trigger = new gcp.cloudbuild.Trigger("build-trigger", {
- *     build: {
- *         artifacts: {
- *             images: ["gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"],
- *             objects: {
- *                 location: "gs://bucket/path/to/somewhere/",
- *                 paths: ["path"],
- *             },
- *         },
- *         availableSecrets: {
- *             secretManagers: [{
- *                 env: "MY_SECRET",
- *                 versionName: "projects/myProject/secrets/mySecret/versions/latest",
- *             }],
- *         },
- *         logsBucket: "gs://mybucket/logs",
- *         options: {
- *             diskSizeGb: 100,
- *             dynamicSubstitutions: true,
- *             envs: ["ekey = evalue"],
- *             logStreamingOption: "STREAM_OFF",
- *             logging: "LEGACY",
- *             machineType: "N1_HIGHCPU_8",
- *             requestedVerifyOption: "VERIFIED",
- *             secretEnvs: ["secretenv = svalue"],
- *             sourceProvenanceHashes: ["MD5"],
- *             substitutionOption: "ALLOW_LOOSE",
- *             volumes: [{
- *                 name: "v1",
- *                 path: "v1",
- *             }],
- *             workerPool: "pool",
- *         },
- *         queueTtl: "20s",
- *         secrets: [{
- *             kmsKeyName: "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
- *             secretEnv: {
- *                 PASSWORD: "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
- *             },
- *         }],
- *         source: {
- *             storageSource: {
- *                 bucket: "mybucket",
- *                 object: "source_code.tar.gz",
- *             },
- *         },
- *         steps: [
- *             {
- *                 args: [
- *                     "cp",
- *                     "gs://mybucket/remotefile.zip",
- *                     "localfile.zip",
- *                 ],
- *                 name: "gcr.io/cloud-builders/gsutil",
- *                 secretEnvs: ["MY_SECRET"],
- *                 timeout: "120s",
- *             },
- *             {
- *                 name: "ubuntu",
- *                 script: "echo hello", // using script field
- *             },
- *         ],
- *         substitutions: {
- *             _BAZ: "qux",
- *             _FOO: "bar",
- *         },
- *         tags: [
- *             "build",
- *             "newFeature",
- *         ],
- *     },
- *     location: "global",
- *     triggerTemplate: {
- *         branchName: "main",
- *         repoName: "my-repo",
- *     },
- * });
- * ```
  * ### Cloudbuild Trigger Service Account
  *
  * ```typescript
@@ -165,7 +81,7 @@ import * as utilities from "../utilities";
  *         name: "terraform-provider-google-beta",
  *         owner: "hashicorp",
  *         push: {
- *             branch: "^main$",
+ *             branch: `^main$`,
  *         },
  *     },
  *     includeBuildLogs: "INCLUDE_BUILD_LOGS_WITH_STATUS",
@@ -259,8 +175,6 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const manual_trigger = new gcp.cloudbuild.Trigger("manual-trigger", {
- *     // If this is set on a build, it will become pending when it is run, 
- *     // and will need to be explicitly approved to start.
  *     approvalConfig: {
  *         approvalRequired: true,
  *     },
@@ -401,15 +315,12 @@ export class Trigger extends pulumi.CustomResource {
      */
     public readonly includedFiles!: pulumi.Output<string[] | undefined>;
     /**
-     * Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
-     * Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
-     * this location as a prefix.
+     * The [Cloud Build location](https://cloud.google.com/build/docs/locations) for the trigger.
+     * If not specified, "global" is used.
      */
     public readonly location!: pulumi.Output<string | undefined>;
     /**
-     * Name of the volume to mount.
-     * Volume names must be unique per build step and must be valid names for Docker volumes.
-     * Each named volume must be used by at least two build steps.
+     * Name of the trigger. Must be unique within the project.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -442,11 +353,11 @@ export class Trigger extends pulumi.CustomResource {
      */
     public readonly sourceToBuild!: pulumi.Output<outputs.cloudbuild.TriggerSourceToBuild | undefined>;
     /**
-     * Substitutions to use in a triggered build. Should only be used with triggers.run
+     * Substitutions data for Build resource.
      */
     public readonly substitutions!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Tags for annotation of a Build. These are not docker tags.
+     * Tags for annotation of a BuildTrigger
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
@@ -616,15 +527,12 @@ export interface TriggerState {
      */
     includedFiles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
-     * Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
-     * this location as a prefix.
+     * The [Cloud Build location](https://cloud.google.com/build/docs/locations) for the trigger.
+     * If not specified, "global" is used.
      */
     location?: pulumi.Input<string>;
     /**
-     * Name of the volume to mount.
-     * Volume names must be unique per build step and must be valid names for Docker volumes.
-     * Each named volume must be used by at least two build steps.
+     * Name of the trigger. Must be unique within the project.
      */
     name?: pulumi.Input<string>;
     /**
@@ -657,11 +565,11 @@ export interface TriggerState {
      */
     sourceToBuild?: pulumi.Input<inputs.cloudbuild.TriggerSourceToBuild>;
     /**
-     * Substitutions to use in a triggered build. Should only be used with triggers.run
+     * Substitutions data for Build resource.
      */
     substitutions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Tags for annotation of a Build. These are not docker tags.
+     * Tags for annotation of a BuildTrigger
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -761,15 +669,12 @@ export interface TriggerArgs {
      */
     includedFiles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/".
-     * Files in the workspace matching any path pattern will be uploaded to Cloud Storage with
-     * this location as a prefix.
+     * The [Cloud Build location](https://cloud.google.com/build/docs/locations) for the trigger.
+     * If not specified, "global" is used.
      */
     location?: pulumi.Input<string>;
     /**
-     * Name of the volume to mount.
-     * Volume names must be unique per build step and must be valid names for Docker volumes.
-     * Each named volume must be used by at least two build steps.
+     * Name of the trigger. Must be unique within the project.
      */
     name?: pulumi.Input<string>;
     /**
@@ -802,11 +707,11 @@ export interface TriggerArgs {
      */
     sourceToBuild?: pulumi.Input<inputs.cloudbuild.TriggerSourceToBuild>;
     /**
-     * Substitutions to use in a triggered build. Should only be used with triggers.run
+     * Substitutions data for Build resource.
      */
     substitutions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Tags for annotation of a Build. These are not docker tags.
+     * Tags for annotation of a BuildTrigger
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.Spanner
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Instance status: 'CREATING' or 'READY'.
+        /// Instance status: `CREATING` or `READY`.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -362,7 +362,7 @@ namespace Pulumi.Gcp.Spanner
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Instance status: 'CREATING' or 'READY'.
+        /// Instance status: `CREATING` or `READY`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

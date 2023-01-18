@@ -165,14 +165,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance status: &#39;CREATING&#39; or &#39;READY&#39;.
+     * Instance status: `CREATING` or `READY`.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return Instance status: &#39;CREATING&#39; or &#39;READY&#39;.
+     * @return Instance status: `CREATING` or `READY`.
      * 
      */
     public Optional<Output<String>> state() {
@@ -406,7 +406,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state Instance status: &#39;CREATING&#39; or &#39;READY&#39;.
+         * @param state Instance status: `CREATING` or `READY`.
          * 
          * @return builder
          * 
@@ -417,7 +417,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state Instance status: &#39;CREATING&#39; or &#39;READY&#39;.
+         * @param state Instance status: `CREATING` or `READY`.
          * 
          * @return builder
          * 

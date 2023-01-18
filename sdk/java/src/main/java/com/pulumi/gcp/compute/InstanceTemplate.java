@@ -147,7 +147,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.ComputeFunctions;
- * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+ * import com.pulumi.gcp.compute.inputs.GetDefaultServiceAccountArgs;
  * import com.pulumi.gcp.compute.inputs.GetImageArgs;
  * import com.pulumi.gcp.compute.InstanceTemplate;
  * import com.pulumi.gcp.compute.InstanceTemplateArgs;
@@ -535,16 +535,16 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.instanceDescription);
     }
     /**
-     * A set of ket/value label pairs to assign to disk created from
-     * this template
+     * A set of key/value label pairs to assign to instances
+     * created from this template.
      * 
      */
     @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return A set of ket/value label pairs to assign to disk created from
-     * this template
+     * @return A set of key/value label pairs to assign to instances
+     * created from this template.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

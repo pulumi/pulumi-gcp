@@ -203,16 +203,16 @@ public class CxIntent extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.languageCode);
     }
     /**
-     * The unique identifier of the intent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent
-     * ID&gt;/intents/&lt;Intent ID&gt;.
+     * The unique identifier of the intent.
+     * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/intents/&lt;Intent ID&gt;.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The unique identifier of the intent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent
-     * ID&gt;/intents/&lt;Intent ID&gt;.
+     * @return The unique identifier of the intent.
+     * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/intents/&lt;Intent ID&gt;.
      * 
      */
     public Output<String> name() {

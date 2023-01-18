@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = cloudasset.LookupResourcesSearchAll(ctx, &cloudasset.LookupResourcesSearchAllArgs{
+//			_, err := cloudasset.LookupResourcesSearchAll(ctx, &cloudasset.LookupResourcesSearchAllArgs{
 //				Scope: "organizations/0123456789",
 //				AssetTypes: []string{
 //					"cloudresourcemanager.googleapis.com/Project",
@@ -53,7 +53,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = cloudasset.LookupResourcesSearchAll(ctx, &cloudasset.LookupResourcesSearchAllArgs{
+//			_, err := cloudasset.LookupResourcesSearchAll(ctx, &cloudasset.LookupResourcesSearchAllArgs{
 //				Scope: "organizations/0123456789",
 //				AssetTypes: []string{
 //					"serviceusage.googleapis.com/Service",
@@ -82,7 +82,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = cloudasset.LookupResourcesSearchAll(ctx, &cloudasset.LookupResourcesSearchAllArgs{
+//			_, err := cloudasset.LookupResourcesSearchAll(ctx, &cloudasset.LookupResourcesSearchAllArgs{
 //				Scope: "projects/my-project-id",
 //				AssetTypes: []string{
 //					"iam.googleapis.com/ServiceAccount",

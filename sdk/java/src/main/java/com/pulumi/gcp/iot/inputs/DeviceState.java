@@ -40,6 +40,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
+     * Structure is documented below.
      * 
      */
     @Import(name="configs")
@@ -47,6 +48,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<DeviceConfigArgs>>> configs() {
@@ -119,6 +121,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
+     * Structure is documented below.
      * 
      */
     @Import(name="lastErrorStatuses")
@@ -126,6 +129,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<DeviceLastErrorStatusArgs>>> lastErrorStatuses() {
@@ -240,16 +244,16 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally
-     * unique.
+     * A server-defined unique numeric ID for the device.
+     * This is a more compact way to identify devices, and it is globally unique.
      * 
      */
     @Import(name="numId")
     private @Nullable Output<String> numId;
 
     /**
-     * @return A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally
-     * unique.
+     * @return A server-defined unique numeric ID for the device.
+     * This is a more compact way to identify devices, and it is globally unique.
      * 
      */
     public Optional<Output<String>> numId() {
@@ -273,6 +277,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The state most recently received from the device.
+     * Structure is documented below.
      * 
      */
     @Import(name="states")
@@ -280,6 +285,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The state most recently received from the device.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<DeviceStateArgs>>> states() {
@@ -349,6 +355,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param configs The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -360,6 +367,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param configs The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -370,6 +378,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param configs The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -479,6 +488,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param lastErrorStatuses The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -490,6 +500,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param lastErrorStatuses The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -500,6 +511,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param lastErrorStatuses The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -658,8 +670,8 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param numId A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally
-         * unique.
+         * @param numId A server-defined unique numeric ID for the device.
+         * This is a more compact way to identify devices, and it is globally unique.
          * 
          * @return builder
          * 
@@ -670,8 +682,8 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param numId A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally
-         * unique.
+         * @param numId A server-defined unique numeric ID for the device.
+         * This is a more compact way to identify devices, and it is globally unique.
          * 
          * @return builder
          * 
@@ -703,6 +715,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param states The state most recently received from the device.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -714,6 +727,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param states The state most recently received from the device.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -724,6 +738,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param states The state most recently received from the device.
+         * Structure is documented below.
          * 
          * @return builder
          * 

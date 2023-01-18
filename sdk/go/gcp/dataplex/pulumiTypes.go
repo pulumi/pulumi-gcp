@@ -245,7 +245,7 @@ func (o AssetDiscoverySpecPtrOutput) Schedule() pulumi.StringPtrOutput {
 type AssetDiscoverySpecCsvOptions struct {
 	// Optional. The delimiter being used to separate values. This defaults to ','.
 	Delimiter *string `pulumi:"delimiter"`
-	// Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+	// Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
 	DisableTypeInference *bool `pulumi:"disableTypeInference"`
 	// Optional. The character encoding of the data. The default is UTF-8.
 	Encoding *string `pulumi:"encoding"`
@@ -267,7 +267,7 @@ type AssetDiscoverySpecCsvOptionsInput interface {
 type AssetDiscoverySpecCsvOptionsArgs struct {
 	// Optional. The delimiter being used to separate values. This defaults to ','.
 	Delimiter pulumi.StringPtrInput `pulumi:"delimiter"`
-	// Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+	// Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
 	DisableTypeInference pulumi.BoolPtrInput `pulumi:"disableTypeInference"`
 	// Optional. The character encoding of the data. The default is UTF-8.
 	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
@@ -357,7 +357,7 @@ func (o AssetDiscoverySpecCsvOptionsOutput) Delimiter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AssetDiscoverySpecCsvOptions) *string { return v.Delimiter }).(pulumi.StringPtrOutput)
 }
 
-// Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+// Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
 func (o AssetDiscoverySpecCsvOptionsOutput) DisableTypeInference() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AssetDiscoverySpecCsvOptions) *bool { return v.DisableTypeInference }).(pulumi.BoolPtrOutput)
 }
@@ -406,7 +406,7 @@ func (o AssetDiscoverySpecCsvOptionsPtrOutput) Delimiter() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+// Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
 func (o AssetDiscoverySpecCsvOptionsPtrOutput) DisableTypeInference() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AssetDiscoverySpecCsvOptions) *bool {
 		if v == nil {
@@ -593,12 +593,14 @@ func (o AssetDiscoverySpecJsonOptionsPtrOutput) Encoding() pulumi.StringPtrOutpu
 }
 
 type AssetDiscoveryStatus struct {
-	LastRunDuration *string                    `pulumi:"lastRunDuration"`
-	LastRunTime     *string                    `pulumi:"lastRunTime"`
-	Message         *string                    `pulumi:"message"`
-	State           *string                    `pulumi:"state"`
-	Stats           []AssetDiscoveryStatusStat `pulumi:"stats"`
-	UpdateTime      *string                    `pulumi:"updateTime"`
+	LastRunDuration *string `pulumi:"lastRunDuration"`
+	LastRunTime     *string `pulumi:"lastRunTime"`
+	Message         *string `pulumi:"message"`
+	// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+	State *string                    `pulumi:"state"`
+	Stats []AssetDiscoveryStatusStat `pulumi:"stats"`
+	// Output only. The time when the asset was last updated.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // AssetDiscoveryStatusInput is an input type that accepts AssetDiscoveryStatusArgs and AssetDiscoveryStatusOutput values.
@@ -613,12 +615,14 @@ type AssetDiscoveryStatusInput interface {
 }
 
 type AssetDiscoveryStatusArgs struct {
-	LastRunDuration pulumi.StringPtrInput              `pulumi:"lastRunDuration"`
-	LastRunTime     pulumi.StringPtrInput              `pulumi:"lastRunTime"`
-	Message         pulumi.StringPtrInput              `pulumi:"message"`
-	State           pulumi.StringPtrInput              `pulumi:"state"`
-	Stats           AssetDiscoveryStatusStatArrayInput `pulumi:"stats"`
-	UpdateTime      pulumi.StringPtrInput              `pulumi:"updateTime"`
+	LastRunDuration pulumi.StringPtrInput `pulumi:"lastRunDuration"`
+	LastRunTime     pulumi.StringPtrInput `pulumi:"lastRunTime"`
+	Message         pulumi.StringPtrInput `pulumi:"message"`
+	// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+	State pulumi.StringPtrInput              `pulumi:"state"`
+	Stats AssetDiscoveryStatusStatArrayInput `pulumi:"stats"`
+	// Output only. The time when the asset was last updated.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
 }
 
 func (AssetDiscoveryStatusArgs) ElementType() reflect.Type {
@@ -684,6 +688,7 @@ func (o AssetDiscoveryStatusOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AssetDiscoveryStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
+// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 func (o AssetDiscoveryStatusOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AssetDiscoveryStatus) *string { return v.State }).(pulumi.StringPtrOutput)
 }
@@ -692,6 +697,7 @@ func (o AssetDiscoveryStatusOutput) Stats() AssetDiscoveryStatusStatArrayOutput 
 	return o.ApplyT(func(v AssetDiscoveryStatus) []AssetDiscoveryStatusStat { return v.Stats }).(AssetDiscoveryStatusStatArrayOutput)
 }
 
+// Output only. The time when the asset was last updated.
 func (o AssetDiscoveryStatusOutput) UpdateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AssetDiscoveryStatus) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
 }
@@ -985,8 +991,10 @@ func (o AssetResourceSpecPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type AssetResourceStatus struct {
-	Message    *string `pulumi:"message"`
-	State      *string `pulumi:"state"`
+	Message *string `pulumi:"message"`
+	// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+	State *string `pulumi:"state"`
+	// Output only. The time when the asset was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
@@ -1002,8 +1010,10 @@ type AssetResourceStatusInput interface {
 }
 
 type AssetResourceStatusArgs struct {
-	Message    pulumi.StringPtrInput `pulumi:"message"`
-	State      pulumi.StringPtrInput `pulumi:"state"`
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// Output only. The time when the asset was last updated.
 	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
 }
 
@@ -1062,10 +1072,12 @@ func (o AssetResourceStatusOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AssetResourceStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
+// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 func (o AssetResourceStatusOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AssetResourceStatus) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
+// Output only. The time when the asset was last updated.
 func (o AssetResourceStatusOutput) UpdateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AssetResourceStatus) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
 }
@@ -1091,8 +1103,10 @@ func (o AssetResourceStatusArrayOutput) Index(i pulumi.IntInput) AssetResourceSt
 }
 
 type AssetSecurityStatus struct {
-	Message    *string `pulumi:"message"`
-	State      *string `pulumi:"state"`
+	Message *string `pulumi:"message"`
+	// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+	State *string `pulumi:"state"`
+	// Output only. The time when the asset was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
@@ -1108,8 +1122,10 @@ type AssetSecurityStatusInput interface {
 }
 
 type AssetSecurityStatusArgs struct {
-	Message    pulumi.StringPtrInput `pulumi:"message"`
-	State      pulumi.StringPtrInput `pulumi:"state"`
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// Output only. The time when the asset was last updated.
 	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
 }
 
@@ -1168,10 +1184,12 @@ func (o AssetSecurityStatusOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AssetSecurityStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
+// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 func (o AssetSecurityStatusOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AssetSecurityStatus) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
+// Output only. The time when the asset was last updated.
 func (o AssetSecurityStatusOutput) UpdateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AssetSecurityStatus) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
 }
@@ -1197,9 +1215,10 @@ func (o AssetSecurityStatusArrayOutput) Index(i pulumi.IntInput) AssetSecuritySt
 }
 
 type LakeAssetStatus struct {
-	ActiveAssets                 *int    `pulumi:"activeAssets"`
-	SecurityPolicyApplyingAssets *int    `pulumi:"securityPolicyApplyingAssets"`
-	UpdateTime                   *string `pulumi:"updateTime"`
+	ActiveAssets                 *int `pulumi:"activeAssets"`
+	SecurityPolicyApplyingAssets *int `pulumi:"securityPolicyApplyingAssets"`
+	// Output only. The time when the lake was last updated.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // LakeAssetStatusInput is an input type that accepts LakeAssetStatusArgs and LakeAssetStatusOutput values.
@@ -1214,9 +1233,10 @@ type LakeAssetStatusInput interface {
 }
 
 type LakeAssetStatusArgs struct {
-	ActiveAssets                 pulumi.IntPtrInput    `pulumi:"activeAssets"`
-	SecurityPolicyApplyingAssets pulumi.IntPtrInput    `pulumi:"securityPolicyApplyingAssets"`
-	UpdateTime                   pulumi.StringPtrInput `pulumi:"updateTime"`
+	ActiveAssets                 pulumi.IntPtrInput `pulumi:"activeAssets"`
+	SecurityPolicyApplyingAssets pulumi.IntPtrInput `pulumi:"securityPolicyApplyingAssets"`
+	// Output only. The time when the lake was last updated.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
 }
 
 func (LakeAssetStatusArgs) ElementType() reflect.Type {
@@ -1278,6 +1298,7 @@ func (o LakeAssetStatusOutput) SecurityPolicyApplyingAssets() pulumi.IntPtrOutpu
 	return o.ApplyT(func(v LakeAssetStatus) *int { return v.SecurityPolicyApplyingAssets }).(pulumi.IntPtrOutput)
 }
 
+// Output only. The time when the lake was last updated.
 func (o LakeAssetStatusOutput) UpdateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LakeAssetStatus) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
 }
@@ -1440,9 +1461,11 @@ func (o LakeMetastorePtrOutput) Service() pulumi.StringPtrOutput {
 }
 
 type LakeMetastoreStatus struct {
-	Endpoint   *string `pulumi:"endpoint"`
-	Message    *string `pulumi:"message"`
-	State      *string `pulumi:"state"`
+	Endpoint *string `pulumi:"endpoint"`
+	Message  *string `pulumi:"message"`
+	// Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+	State *string `pulumi:"state"`
+	// Output only. The time when the lake was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
@@ -1458,9 +1481,11 @@ type LakeMetastoreStatusInput interface {
 }
 
 type LakeMetastoreStatusArgs struct {
-	Endpoint   pulumi.StringPtrInput `pulumi:"endpoint"`
-	Message    pulumi.StringPtrInput `pulumi:"message"`
-	State      pulumi.StringPtrInput `pulumi:"state"`
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	Message  pulumi.StringPtrInput `pulumi:"message"`
+	// Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// Output only. The time when the lake was last updated.
 	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
 }
 
@@ -1523,10 +1548,12 @@ func (o LakeMetastoreStatusOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LakeMetastoreStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
+// Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 func (o LakeMetastoreStatusOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LakeMetastoreStatus) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
+// Output only. The time when the lake was last updated.
 func (o LakeMetastoreStatusOutput) UpdateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LakeMetastoreStatus) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
 }
@@ -1552,9 +1579,10 @@ func (o LakeMetastoreStatusArrayOutput) Index(i pulumi.IntInput) LakeMetastoreSt
 }
 
 type ZoneAssetStatus struct {
-	ActiveAssets                 *int    `pulumi:"activeAssets"`
-	SecurityPolicyApplyingAssets *int    `pulumi:"securityPolicyApplyingAssets"`
-	UpdateTime                   *string `pulumi:"updateTime"`
+	ActiveAssets                 *int `pulumi:"activeAssets"`
+	SecurityPolicyApplyingAssets *int `pulumi:"securityPolicyApplyingAssets"`
+	// Output only. The time when the zone was last updated.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 // ZoneAssetStatusInput is an input type that accepts ZoneAssetStatusArgs and ZoneAssetStatusOutput values.
@@ -1569,9 +1597,10 @@ type ZoneAssetStatusInput interface {
 }
 
 type ZoneAssetStatusArgs struct {
-	ActiveAssets                 pulumi.IntPtrInput    `pulumi:"activeAssets"`
-	SecurityPolicyApplyingAssets pulumi.IntPtrInput    `pulumi:"securityPolicyApplyingAssets"`
-	UpdateTime                   pulumi.StringPtrInput `pulumi:"updateTime"`
+	ActiveAssets                 pulumi.IntPtrInput `pulumi:"activeAssets"`
+	SecurityPolicyApplyingAssets pulumi.IntPtrInput `pulumi:"securityPolicyApplyingAssets"`
+	// Output only. The time when the zone was last updated.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
 }
 
 func (ZoneAssetStatusArgs) ElementType() reflect.Type {
@@ -1633,6 +1662,7 @@ func (o ZoneAssetStatusOutput) SecurityPolicyApplyingAssets() pulumi.IntPtrOutpu
 	return o.ApplyT(func(v ZoneAssetStatus) *int { return v.SecurityPolicyApplyingAssets }).(pulumi.IntPtrOutput)
 }
 
+// Output only. The time when the zone was last updated.
 func (o ZoneAssetStatusOutput) UpdateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneAssetStatus) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
 }
@@ -1892,7 +1922,7 @@ func (o ZoneDiscoverySpecPtrOutput) Schedule() pulumi.StringPtrOutput {
 type ZoneDiscoverySpecCsvOptions struct {
 	// Optional. The delimiter being used to separate values. This defaults to ','.
 	Delimiter *string `pulumi:"delimiter"`
-	// Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+	// Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
 	DisableTypeInference *bool `pulumi:"disableTypeInference"`
 	// Optional. The character encoding of the data. The default is UTF-8.
 	Encoding *string `pulumi:"encoding"`
@@ -1914,7 +1944,7 @@ type ZoneDiscoverySpecCsvOptionsInput interface {
 type ZoneDiscoverySpecCsvOptionsArgs struct {
 	// Optional. The delimiter being used to separate values. This defaults to ','.
 	Delimiter pulumi.StringPtrInput `pulumi:"delimiter"`
-	// Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+	// Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
 	DisableTypeInference pulumi.BoolPtrInput `pulumi:"disableTypeInference"`
 	// Optional. The character encoding of the data. The default is UTF-8.
 	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
@@ -2004,7 +2034,7 @@ func (o ZoneDiscoverySpecCsvOptionsOutput) Delimiter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneDiscoverySpecCsvOptions) *string { return v.Delimiter }).(pulumi.StringPtrOutput)
 }
 
-// Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+// Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
 func (o ZoneDiscoverySpecCsvOptionsOutput) DisableTypeInference() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ZoneDiscoverySpecCsvOptions) *bool { return v.DisableTypeInference }).(pulumi.BoolPtrOutput)
 }
@@ -2053,7 +2083,7 @@ func (o ZoneDiscoverySpecCsvOptionsPtrOutput) Delimiter() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
+// Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
 func (o ZoneDiscoverySpecCsvOptionsPtrOutput) DisableTypeInference() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ZoneDiscoverySpecCsvOptions) *bool {
 		if v == nil {

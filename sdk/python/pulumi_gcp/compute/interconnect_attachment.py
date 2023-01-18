@@ -422,9 +422,11 @@ class _InterconnectAttachmentState:
                an unused /29 from the supplied candidate prefix(es). The request will
                fail if all possible /29s are in use on Google's edge. If not supplied,
                Google will randomly select an unused /29 from all of link-local space.
-        :param pulumi.Input[str] cloud_router_ip_address: IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
+        :param pulumi.Input[str] cloud_router_ip_address: IPv4 address + prefix length to be configured on Cloud Router
+               Interface for this interconnect attachment.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
-        :param pulumi.Input[str] customer_router_ip_address: IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
+        :param pulumi.Input[str] customer_router_ip_address: IPv4 address + prefix length to be configured on the customer
+               router subinterface for this interconnect attachment.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] edge_availability_domain: Desired availability domain for the attachment. Only available for type
                PARTNER, at creation time. For improved reliability, customers should
@@ -445,8 +447,8 @@ class _InterconnectAttachmentState:
                Not currently available publicly.
                Default value is `NONE`.
                Possible values are `NONE` and `IPSEC`.
-        :param pulumi.Input[str] google_reference_id: Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity
-               issues.
+        :param pulumi.Input[str] google_reference_id: Google reference ID, to be used when raising support tickets with
+               Google or otherwise to debug backend connectivity issues.
         :param pulumi.Input[str] interconnect: URL of the underlying Interconnect object that this attachment's
                traffic will traverse through. Required if type is DEDICATED, must not
                be set if type is PARTNER.
@@ -474,12 +476,15 @@ class _InterconnectAttachmentState:
                `a-z?` which means the first character must be a
                lowercase letter, and all following characters must be a dash, lowercase
                letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] pairing_key: [Output only for type PARTNER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to
-               initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
-        :param pulumi.Input[str] partner_asn: [Output only for type PARTNER. Not present for DEDICATED]. Optional BGP ASN for the router that should be supplied by a
-               layer 3 Partner if they configured BGP on behalf of the customer.
-        :param pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentPrivateInterconnectInfoArgs']]] private_interconnect_infos: Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
-               to is of type DEDICATED.
+        :param pulumi.Input[str] pairing_key: [Output only for type PARTNER. Not present for DEDICATED]. The opaque
+               identifier of an PARTNER attachment used to initiate provisioning with
+               a selected partner. Of the form "XXXXX/region/domain"
+        :param pulumi.Input[str] partner_asn: [Output only for type PARTNER. Not present for DEDICATED]. Optional
+               BGP ASN for the router that should be supplied by a layer 3 Partner if
+               they configured BGP on behalf of the customer.
+        :param pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentPrivateInterconnectInfoArgs']]] private_interconnect_infos: Information specific to an InterconnectAttachment. This property
+               is populated if the interconnect that this is attached to is of type DEDICATED.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the regional interconnect attachment resides.
@@ -596,7 +601,8 @@ class _InterconnectAttachmentState:
     @pulumi.getter(name="cloudRouterIpAddress")
     def cloud_router_ip_address(self) -> Optional[pulumi.Input[str]]:
         """
-        IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
+        IPv4 address + prefix length to be configured on Cloud Router
+        Interface for this interconnect attachment.
         """
         return pulumi.get(self, "cloud_router_ip_address")
 
@@ -620,7 +626,8 @@ class _InterconnectAttachmentState:
     @pulumi.getter(name="customerRouterIpAddress")
     def customer_router_ip_address(self) -> Optional[pulumi.Input[str]]:
         """
-        IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
+        IPv4 address + prefix length to be configured on the customer
+        router subinterface for this interconnect attachment.
         """
         return pulumi.get(self, "customer_router_ip_address")
 
@@ -685,8 +692,8 @@ class _InterconnectAttachmentState:
     @pulumi.getter(name="googleReferenceId")
     def google_reference_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity
-        issues.
+        Google reference ID, to be used when raising support tickets with
+        Google or otherwise to debug backend connectivity issues.
         """
         return pulumi.get(self, "google_reference_id")
 
@@ -769,8 +776,9 @@ class _InterconnectAttachmentState:
     @pulumi.getter(name="pairingKey")
     def pairing_key(self) -> Optional[pulumi.Input[str]]:
         """
-        [Output only for type PARTNER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to
-        initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
+        [Output only for type PARTNER. Not present for DEDICATED]. The opaque
+        identifier of an PARTNER attachment used to initiate provisioning with
+        a selected partner. Of the form "XXXXX/region/domain"
         """
         return pulumi.get(self, "pairing_key")
 
@@ -782,8 +790,9 @@ class _InterconnectAttachmentState:
     @pulumi.getter(name="partnerAsn")
     def partner_asn(self) -> Optional[pulumi.Input[str]]:
         """
-        [Output only for type PARTNER. Not present for DEDICATED]. Optional BGP ASN for the router that should be supplied by a
-        layer 3 Partner if they configured BGP on behalf of the customer.
+        [Output only for type PARTNER. Not present for DEDICATED]. Optional
+        BGP ASN for the router that should be supplied by a layer 3 Partner if
+        they configured BGP on behalf of the customer.
         """
         return pulumi.get(self, "partner_asn")
 
@@ -795,8 +804,9 @@ class _InterconnectAttachmentState:
     @pulumi.getter(name="privateInterconnectInfos")
     def private_interconnect_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentPrivateInterconnectInfoArgs']]]]:
         """
-        Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
-        to is of type DEDICATED.
+        Information specific to an InterconnectAttachment. This property
+        is populated if the interconnect that this is attached to is of type DEDICATED.
+        Structure is documented below.
         """
         return pulumi.get(self, "private_interconnect_infos")
 
@@ -1261,9 +1271,11 @@ class InterconnectAttachment(pulumi.CustomResource):
                an unused /29 from the supplied candidate prefix(es). The request will
                fail if all possible /29s are in use on Google's edge. If not supplied,
                Google will randomly select an unused /29 from all of link-local space.
-        :param pulumi.Input[str] cloud_router_ip_address: IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
+        :param pulumi.Input[str] cloud_router_ip_address: IPv4 address + prefix length to be configured on Cloud Router
+               Interface for this interconnect attachment.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
-        :param pulumi.Input[str] customer_router_ip_address: IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
+        :param pulumi.Input[str] customer_router_ip_address: IPv4 address + prefix length to be configured on the customer
+               router subinterface for this interconnect attachment.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] edge_availability_domain: Desired availability domain for the attachment. Only available for type
                PARTNER, at creation time. For improved reliability, customers should
@@ -1284,8 +1296,8 @@ class InterconnectAttachment(pulumi.CustomResource):
                Not currently available publicly.
                Default value is `NONE`.
                Possible values are `NONE` and `IPSEC`.
-        :param pulumi.Input[str] google_reference_id: Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity
-               issues.
+        :param pulumi.Input[str] google_reference_id: Google reference ID, to be used when raising support tickets with
+               Google or otherwise to debug backend connectivity issues.
         :param pulumi.Input[str] interconnect: URL of the underlying Interconnect object that this attachment's
                traffic will traverse through. Required if type is DEDICATED, must not
                be set if type is PARTNER.
@@ -1313,12 +1325,15 @@ class InterconnectAttachment(pulumi.CustomResource):
                `a-z?` which means the first character must be a
                lowercase letter, and all following characters must be a dash, lowercase
                letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] pairing_key: [Output only for type PARTNER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to
-               initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
-        :param pulumi.Input[str] partner_asn: [Output only for type PARTNER. Not present for DEDICATED]. Optional BGP ASN for the router that should be supplied by a
-               layer 3 Partner if they configured BGP on behalf of the customer.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InterconnectAttachmentPrivateInterconnectInfoArgs']]]] private_interconnect_infos: Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
-               to is of type DEDICATED.
+        :param pulumi.Input[str] pairing_key: [Output only for type PARTNER. Not present for DEDICATED]. The opaque
+               identifier of an PARTNER attachment used to initiate provisioning with
+               a selected partner. Of the form "XXXXX/region/domain"
+        :param pulumi.Input[str] partner_asn: [Output only for type PARTNER. Not present for DEDICATED]. Optional
+               BGP ASN for the router that should be supplied by a layer 3 Partner if
+               they configured BGP on behalf of the customer.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InterconnectAttachmentPrivateInterconnectInfoArgs']]]] private_interconnect_infos: Information specific to an InterconnectAttachment. This property
+               is populated if the interconnect that this is attached to is of type DEDICATED.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the regional interconnect attachment resides.
@@ -1404,7 +1419,8 @@ class InterconnectAttachment(pulumi.CustomResource):
     @pulumi.getter(name="cloudRouterIpAddress")
     def cloud_router_ip_address(self) -> pulumi.Output[str]:
         """
-        IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
+        IPv4 address + prefix length to be configured on Cloud Router
+        Interface for this interconnect attachment.
         """
         return pulumi.get(self, "cloud_router_ip_address")
 
@@ -1420,7 +1436,8 @@ class InterconnectAttachment(pulumi.CustomResource):
     @pulumi.getter(name="customerRouterIpAddress")
     def customer_router_ip_address(self) -> pulumi.Output[str]:
         """
-        IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
+        IPv4 address + prefix length to be configured on the customer
+        router subinterface for this interconnect attachment.
         """
         return pulumi.get(self, "customer_router_ip_address")
 
@@ -1469,8 +1486,8 @@ class InterconnectAttachment(pulumi.CustomResource):
     @pulumi.getter(name="googleReferenceId")
     def google_reference_id(self) -> pulumi.Output[str]:
         """
-        Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity
-        issues.
+        Google reference ID, to be used when raising support tickets with
+        Google or otherwise to debug backend connectivity issues.
         """
         return pulumi.get(self, "google_reference_id")
 
@@ -1533,8 +1550,9 @@ class InterconnectAttachment(pulumi.CustomResource):
     @pulumi.getter(name="pairingKey")
     def pairing_key(self) -> pulumi.Output[str]:
         """
-        [Output only for type PARTNER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to
-        initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
+        [Output only for type PARTNER. Not present for DEDICATED]. The opaque
+        identifier of an PARTNER attachment used to initiate provisioning with
+        a selected partner. Of the form "XXXXX/region/domain"
         """
         return pulumi.get(self, "pairing_key")
 
@@ -1542,8 +1560,9 @@ class InterconnectAttachment(pulumi.CustomResource):
     @pulumi.getter(name="partnerAsn")
     def partner_asn(self) -> pulumi.Output[str]:
         """
-        [Output only for type PARTNER. Not present for DEDICATED]. Optional BGP ASN for the router that should be supplied by a
-        layer 3 Partner if they configured BGP on behalf of the customer.
+        [Output only for type PARTNER. Not present for DEDICATED]. Optional
+        BGP ASN for the router that should be supplied by a layer 3 Partner if
+        they configured BGP on behalf of the customer.
         """
         return pulumi.get(self, "partner_asn")
 
@@ -1551,8 +1570,9 @@ class InterconnectAttachment(pulumi.CustomResource):
     @pulumi.getter(name="privateInterconnectInfos")
     def private_interconnect_infos(self) -> pulumi.Output[Sequence['outputs.InterconnectAttachmentPrivateInterconnectInfo']]:
         """
-        Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
-        to is of type DEDICATED.
+        Information specific to an InterconnectAttachment. This property
+        is populated if the interconnect that this is attached to is of type DEDICATED.
+        Structure is documented below.
         """
         return pulumi.get(self, "private_interconnect_infos")
 

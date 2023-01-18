@@ -76,7 +76,8 @@ export class RegionSslPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly enabledFeatures!: pulumi.Output<string[]>;
     /**
-     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+     * Fingerprint of this resource. A hash of the contents stored in this
+     * object. This field is used in optimistic locking.
      */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
@@ -195,7 +196,8 @@ export interface RegionSslPolicyState {
      */
     enabledFeatures?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+     * Fingerprint of this resource. A hash of the contents stored in this
+     * object. This field is used in optimistic locking.
      */
     fingerprint?: pulumi.Input<string>;
     /**

@@ -36,7 +36,6 @@ namespace Pulumi.Gcp.IdentityPlatform.Inputs
         private InputList<Inputs.ProjectDefaultConfigSignInHashConfigGetArgs>? _hashConfigs;
 
         /// <summary>
-        /// -
         /// Output only. Hash config information.
         /// Structure is documented below.
         /// </summary>

@@ -63,7 +63,7 @@ import (
 //			}
 //			_, err = eventarc.NewGoogleChannelConfig(ctx, "primary", &eventarc.GoogleChannelConfigArgs{
 //				Location:      pulumi.String("us-west1"),
-//				Project:       pulumi.String(testProject.ProjectId),
+//				Project:       *pulumi.String(testProject.ProjectId),
 //				CryptoKeyName: pulumi.Any(data.Google_kms_crypto_key.Key1.Id),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				key1Binding,

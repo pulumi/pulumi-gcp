@@ -17,16 +17,16 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
     public static final AndroidAppState Empty = new AndroidAppState();
 
     /**
-     * The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
-     * token, as the data format is not specified.
+     * The globally unique, Firebase-assigned identifier of the AndroidApp.
+     * This identifier should be treated as an opaque token, as the data format is not specified.
      * 
      */
     @Import(name="appId")
     private @Nullable Output<String> appId;
 
     /**
-     * @return The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
-     * token, as the data format is not specified.
+     * @return The globally unique, Firebase-assigned identifier of the AndroidApp.
+     * This identifier should be treated as an opaque token, as the data format is not specified.
      * 
      */
     public Optional<Output<String>> appId() {
@@ -68,16 +68,16 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
-     * ensure the client has an up-to-date value before proceeding.
+     * This checksum is computed by the server based on the value of other fields, and it may be sent
+     * with update requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
     @Import(name="etag")
     private @Nullable Output<String> etag;
 
     /**
-     * @return This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
-     * ensure the client has an up-to-date value before proceeding.
+     * @return This checksum is computed by the server based on the value of other fields, and it may be sent
+     * with update requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
     public Optional<Output<String>> etag() {
@@ -85,14 +85,16 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
+     * The fully qualified resource name of the AndroidApp, for example:
+     * projects/projectId/androidApps/appId
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
+     * @return The fully qualified resource name of the AndroidApp, for example:
+     * projects/projectId/androidApps/appId
      * 
      */
     public Optional<Output<String>> name() {
@@ -196,8 +198,8 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appId The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
-         * token, as the data format is not specified.
+         * @param appId The globally unique, Firebase-assigned identifier of the AndroidApp.
+         * This identifier should be treated as an opaque token, as the data format is not specified.
          * 
          * @return builder
          * 
@@ -208,8 +210,8 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appId The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
-         * token, as the data format is not specified.
+         * @param appId The globally unique, Firebase-assigned identifier of the AndroidApp.
+         * This identifier should be treated as an opaque token, as the data format is not specified.
          * 
          * @return builder
          * 
@@ -265,8 +267,8 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etag This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
-         * ensure the client has an up-to-date value before proceeding.
+         * @param etag This checksum is computed by the server based on the value of other fields, and it may be sent
+         * with update requests to ensure the client has an up-to-date value before proceeding.
          * 
          * @return builder
          * 
@@ -277,8 +279,8 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etag This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
-         * ensure the client has an up-to-date value before proceeding.
+         * @param etag This checksum is computed by the server based on the value of other fields, and it may be sent
+         * with update requests to ensure the client has an up-to-date value before proceeding.
          * 
          * @return builder
          * 
@@ -288,7 +290,8 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
+         * @param name The fully qualified resource name of the AndroidApp, for example:
+         * projects/projectId/androidApps/appId
          * 
          * @return builder
          * 
@@ -299,7 +302,8 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
+         * @param name The fully qualified resource name of the AndroidApp, for example:
+         * projects/projectId/androidApps/appId
          * 
          * @return builder
          * 

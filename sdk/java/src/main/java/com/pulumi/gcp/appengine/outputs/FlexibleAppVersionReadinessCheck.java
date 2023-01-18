@@ -19,12 +19,12 @@ public final class FlexibleAppVersionReadinessCheck {
      */
     private @Nullable String appStartTimeout;
     /**
-     * @return Interval between health checks.
+     * @return Interval between health checks.  Default: &#34;5s&#34;.
      * 
      */
     private @Nullable String checkInterval;
     /**
-     * @return Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
+     * @return Number of consecutive failed checks required before removing traffic. Default: 2.
      * 
      */
     private @Nullable Double failureThreshold;
@@ -34,13 +34,12 @@ public final class FlexibleAppVersionReadinessCheck {
      */
     private @Nullable String host;
     /**
-     * @return Path to the static files matched by the URL pattern, from the application root directory.
-     * The path can refer to text matched in groupings in the URL pattern.
+     * @return The request path.
      * 
      */
     private String path;
     /**
-     * @return Number of consecutive successful checks required before considering the VM healthy. Default: 2.
+     * @return Number of consecutive successful checks required before receiving traffic. Default: 2.
      * 
      */
     private @Nullable Double successThreshold;
@@ -60,14 +59,14 @@ public final class FlexibleAppVersionReadinessCheck {
         return Optional.ofNullable(this.appStartTimeout);
     }
     /**
-     * @return Interval between health checks.
+     * @return Interval between health checks.  Default: &#34;5s&#34;.
      * 
      */
     public Optional<String> checkInterval() {
         return Optional.ofNullable(this.checkInterval);
     }
     /**
-     * @return Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
+     * @return Number of consecutive failed checks required before removing traffic. Default: 2.
      * 
      */
     public Optional<Double> failureThreshold() {
@@ -81,15 +80,14 @@ public final class FlexibleAppVersionReadinessCheck {
         return Optional.ofNullable(this.host);
     }
     /**
-     * @return Path to the static files matched by the URL pattern, from the application root directory.
-     * The path can refer to text matched in groupings in the URL pattern.
+     * @return The request path.
      * 
      */
     public String path() {
         return this.path;
     }
     /**
-     * @return Number of consecutive successful checks required before considering the VM healthy. Default: 2.
+     * @return Number of consecutive successful checks required before receiving traffic. Default: 2.
      * 
      */
     public Optional<Double> successThreshold() {

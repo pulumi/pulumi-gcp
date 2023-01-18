@@ -10,10 +10,9 @@ import java.util.Objects;
 @CustomType
 public final class TriggerBuildAvailableSecretsSecretManager {
     /**
-     * @return A list of global environment variable definitions that will exist for all build steps
-     * in this build. If a variable is defined in both globally and in a build step,
-     * the variable will use the build step value.
-     * The elements are of the form &#34;KEY=VALUE&#34; for the environment variable &#34;KEY&#34; being given the value &#34;VALUE&#34;.
+     * @return Environment variable name to associate with the secret. Secret environment
+     * variables must be unique across all of a build&#39;s secrets, and must be used
+     * by at least one build step.
      * 
      */
     private String env;
@@ -25,10 +24,9 @@ public final class TriggerBuildAvailableSecretsSecretManager {
 
     private TriggerBuildAvailableSecretsSecretManager() {}
     /**
-     * @return A list of global environment variable definitions that will exist for all build steps
-     * in this build. If a variable is defined in both globally and in a build step,
-     * the variable will use the build step value.
-     * The elements are of the form &#34;KEY=VALUE&#34; for the environment variable &#34;KEY&#34; being given the value &#34;VALUE&#34;.
+     * @return Environment variable name to associate with the secret. Secret environment
+     * variables must be unique across all of a build&#39;s secrets, and must be used
+     * by at least one build step.
      * 
      */
     public String env() {

@@ -113,14 +113,14 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+     * The location for the resource
      * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
-     * @return Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+     * @return The location for the resource
      * 
      */
     public Output<String> location() {
@@ -358,7 +358,7 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+         * @param location The location for the resource
          * 
          * @return builder
          * 
@@ -369,7 +369,7 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+         * @param location The location for the resource
          * 
          * @return builder
          * 

@@ -119,8 +119,8 @@ export class DatabaseInstance extends pulumi.CustomResource {
     }
 
     /**
-     * The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances or
-     * https://{instance-id}.{region}.firebasedatabase.app in other regions.
+     * The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
+     * or https://{instance-id}.{region}.firebasedatabase.app in other regions.
      */
     public /*out*/ readonly databaseUrl!: pulumi.Output<string>;
     /**
@@ -133,9 +133,9 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * The fully-qualified resource name of the Firebase Realtime Database, in the format:
-     * projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID PROJECT_NUMBER: The Firebase project's
-     * ['ProjectNumber'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+     * The fully-qualified resource name of the Firebase Realtime Database, in the
+     * format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
+     * PROJECT_NUMBER: The Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
      * Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -149,7 +149,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * The current database state. Set desired_state to :DISABLED to disable the database and :ACTIVE to reenable the database
+     * The current database state. Set desiredState to :DISABLED to disable the database and :ACTIVE to reenable the database
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
@@ -210,8 +210,8 @@ export class DatabaseInstance extends pulumi.CustomResource {
  */
 export interface DatabaseInstanceState {
     /**
-     * The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances or
-     * https://{instance-id}.{region}.firebasedatabase.app in other regions.
+     * The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
+     * or https://{instance-id}.{region}.firebasedatabase.app in other regions.
      */
     databaseUrl?: pulumi.Input<string>;
     /**
@@ -224,9 +224,9 @@ export interface DatabaseInstanceState {
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * The fully-qualified resource name of the Firebase Realtime Database, in the format:
-     * projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID PROJECT_NUMBER: The Firebase project's
-     * ['ProjectNumber'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
+     * The fully-qualified resource name of the Firebase Realtime Database, in the
+     * format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
+     * PROJECT_NUMBER: The Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
      * Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
      */
     name?: pulumi.Input<string>;
@@ -240,7 +240,7 @@ export interface DatabaseInstanceState {
      */
     region?: pulumi.Input<string>;
     /**
-     * The current database state. Set desired_state to :DISABLED to disable the database and :ACTIVE to reenable the database
+     * The current database state. Set desiredState to :DISABLED to disable the database and :ACTIVE to reenable the database
      */
     state?: pulumi.Input<string>;
     /**

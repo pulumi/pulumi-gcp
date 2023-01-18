@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = iam.GetTestablePermissions(ctx, &iam.GetTestablePermissionsArgs{
+//			_, err := iam.GetTestablePermissions(ctx, &iam.GetTestablePermissionsArgs{
 //				FullResourceName: "//cloudresourcemanager.googleapis.com/projects/my-project",
 //				Stages: []string{
 //					"GA",

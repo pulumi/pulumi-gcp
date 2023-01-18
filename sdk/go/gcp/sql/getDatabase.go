@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = sql.LookupDatabase(ctx, &sql.LookupDatabaseArgs{
+//			_, err := sql.LookupDatabase(ctx, &sql.LookupDatabaseArgs{
 //				Name:     "test-sql-database",
 //				Instance: google_sql_database_instance.Main.Name,
 //			}, nil)

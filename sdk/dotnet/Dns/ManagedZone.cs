@@ -385,7 +385,8 @@ namespace Pulumi.Gcp.Dns
         public Output<Outputs.ManagedZoneCloudLoggingConfig> CloudLoggingConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The time that this resource was created on the server. This is in RFC3339 text format.
+        /// The time that this resource was created on the server.
+        /// This is in RFC3339 text format.
         /// </summary>
         [Output("creationTime")]
         public Output<string> CreationTime { get; private set; } = null!;
@@ -444,7 +445,8 @@ namespace Pulumi.Gcp.Dns
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Delegate your managed_zone to these virtual name servers; defined by the server
+        /// Delegate your managed_zone to these virtual name servers;
+        /// defined by the server
         /// </summary>
         [Output("nameServers")]
         public Output<ImmutableArray<string>> NameServers { get; private set; } = null!;
@@ -666,7 +668,8 @@ namespace Pulumi.Gcp.Dns
         public Input<Inputs.ManagedZoneCloudLoggingConfigGetArgs>? CloudLoggingConfig { get; set; }
 
         /// <summary>
-        /// The time that this resource was created on the server. This is in RFC3339 text format.
+        /// The time that this resource was created on the server.
+        /// This is in RFC3339 text format.
         /// </summary>
         [Input("creationTime")]
         public Input<string>? CreationTime { get; set; }
@@ -734,7 +737,8 @@ namespace Pulumi.Gcp.Dns
         private InputList<string>? _nameServers;
 
         /// <summary>
-        /// Delegate your managed_zone to these virtual name servers; defined by the server
+        /// Delegate your managed_zone to these virtual name servers;
+        /// defined by the server
         /// </summary>
         public InputList<string> NameServers
         {

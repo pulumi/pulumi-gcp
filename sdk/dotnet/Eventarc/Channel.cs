@@ -85,8 +85,7 @@ namespace Pulumi.Gcp.Eventarc
     public partial class Channel : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Output only. The activation token for the channel. The token must be used by the provider to register the channel for
-        /// publishing.
+        /// Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
         /// </summary>
         [Output("activationToken")]
         public Output<string> ActivationToken { get; private set; } = null!;
@@ -122,8 +121,7 @@ namespace Pulumi.Gcp.Eventarc
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery.
-        /// Format: `projects/{project}/topics/{topic_id}`.
+        /// Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
         /// </summary>
         [Output("pubsubTopic")]
         public Output<string> PubsubTopic { get; private set; } = null!;
@@ -141,8 +139,7 @@ namespace Pulumi.Gcp.Eventarc
         public Output<string?> ThirdPartyProvider { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain
-        /// unchanged until the resource is deleted.
+        /// Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
@@ -238,8 +235,7 @@ namespace Pulumi.Gcp.Eventarc
     public sealed class ChannelState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. The activation token for the channel. The token must be used by the provider to register the channel for
-        /// publishing.
+        /// Output only. The activation token for the channel. The token must be used by the provider to register the channel for publishing.
         /// </summary>
         [Input("activationToken")]
         public Input<string>? ActivationToken { get; set; }
@@ -275,8 +271,7 @@ namespace Pulumi.Gcp.Eventarc
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery.
-        /// Format: `projects/{project}/topics/{topic_id}`.
+        /// Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
         /// </summary>
         [Input("pubsubTopic")]
         public Input<string>? PubsubTopic { get; set; }
@@ -294,8 +289,7 @@ namespace Pulumi.Gcp.Eventarc
         public Input<string>? ThirdPartyProvider { get; set; }
 
         /// <summary>
-        /// Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain
-        /// unchanged until the resource is deleted.
+        /// Output only. Server assigned unique identifier for the channel. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }

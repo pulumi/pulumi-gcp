@@ -24,8 +24,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.PreventionInspectTemplateInspectConfigCustomInfoType> CustomInfoTypes;
         /// <summary>
-        /// Set of infoTypes for which findings would affect this rule.
-        /// Structure is documented below.
+        /// When true, excludes type information of the findings.
         /// </summary>
         public readonly bool? ExcludeInfoTypes;
         /// <summary>
@@ -33,7 +32,10 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly bool? IncludeQuote;
         /// <summary>
-        /// If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+        /// Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
+        /// or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+        /// When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
+        /// By default this may be all types, but may change over time as detectors are updated.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.PreventionInspectTemplateInspectConfigInfoType> InfoTypes;

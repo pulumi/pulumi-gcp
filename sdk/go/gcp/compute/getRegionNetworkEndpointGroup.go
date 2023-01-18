@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = compute.LookupRegionNetworkEndpointGroup(ctx, &compute.LookupRegionNetworkEndpointGroupArgs{
+//			_, err := compute.LookupRegionNetworkEndpointGroup(ctx, &compute.LookupRegionNetworkEndpointGroupArgs{
 //				Name:   pulumi.StringRef("k8s1-abcdef01-myns-mysvc-8080-4b6bac43"),
 //				Region: pulumi.StringRef("us-central1"),
 //			}, nil)

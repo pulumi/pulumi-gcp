@@ -12,12 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobLoadDestinationTable {
     /**
-     * @return The ID of the dataset containing this model.
+     * @return The ID of the dataset containing this table.
      * 
      */
     private @Nullable String datasetId;
     /**
-     * @return The ID of the project containing this model.
+     * @return The ID of the project containing this table.
      * 
      */
     private @Nullable String projectId;
@@ -30,14 +30,14 @@ public final class JobLoadDestinationTable {
 
     private JobLoadDestinationTable() {}
     /**
-     * @return The ID of the dataset containing this model.
+     * @return The ID of the dataset containing this table.
      * 
      */
     public Optional<String> datasetId() {
         return Optional.ofNullable(this.datasetId);
     }
     /**
-     * @return The ID of the project containing this model.
+     * @return The ID of the project containing this table.
      * 
      */
     public Optional<String> projectId() {

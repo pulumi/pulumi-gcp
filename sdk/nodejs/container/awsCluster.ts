@@ -18,10 +18,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const versions = pulumi.output(gcp.container.getAwsVersions({
+ * const versions = gcp.container.getAwsVersions({
  *     location: "us-west1",
  *     project: "my-project-name",
- * }));
+ * });
  * const primary = new gcp.container.AwsCluster("primary", {
  *     annotations: {
  *         "label-one": "value-one",
@@ -69,7 +69,7 @@ import * as utilities from "../utilities";
  *         tags: {
  *             owner: "emailAddress:my@service-account.com",
  *         },
- *         version: versions.apply(versions => versions.validVersions[0]),
+ *         version: versions.then(versions => versions.validVersions?.[0]),
  *     },
  *     description: "A sample aws cluster",
  *     fleet: {
@@ -158,8 +158,7 @@ export class AwsCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly endpoint!: pulumi.Output<string>;
     /**
-     * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-     * and delete requests to ensure the client has an up-to-date value before proceeding.
+     * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
@@ -183,6 +182,8 @@ export class AwsCluster extends pulumi.CustomResource {
      */
     public readonly networking!: pulumi.Output<outputs.container.AwsClusterNetworking>;
     /**
+     * The number of the Fleet host project where this cluster will be registered.
+     * (Optional)
      * The project for the resource
      */
     public readonly project!: pulumi.Output<string>;
@@ -191,8 +192,7 @@ export class AwsCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
-     * Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-     * STOPPING, ERROR, DEGRADED
+     * Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
@@ -318,8 +318,7 @@ export interface AwsClusterState {
      */
     endpoint?: pulumi.Input<string>;
     /**
-     * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-     * and delete requests to ensure the client has an up-to-date value before proceeding.
+     * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
     etag?: pulumi.Input<string>;
     /**
@@ -343,6 +342,8 @@ export interface AwsClusterState {
      */
     networking?: pulumi.Input<inputs.container.AwsClusterNetworking>;
     /**
+     * The number of the Fleet host project where this cluster will be registered.
+     * (Optional)
      * The project for the resource
      */
     project?: pulumi.Input<string>;
@@ -351,8 +352,7 @@ export interface AwsClusterState {
      */
     reconciling?: pulumi.Input<boolean>;
     /**
-     * Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-     * STOPPING, ERROR, DEGRADED
+     * Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
      */
     state?: pulumi.Input<string>;
     /**
@@ -414,6 +414,8 @@ export interface AwsClusterArgs {
      */
     networking: pulumi.Input<inputs.container.AwsClusterNetworking>;
     /**
+     * The number of the Fleet host project where this cluster will be registered.
+     * (Optional)
      * The project for the resource
      */
     project?: pulumi.Input<string>;

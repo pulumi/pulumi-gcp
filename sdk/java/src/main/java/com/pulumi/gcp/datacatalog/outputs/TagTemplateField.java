@@ -20,7 +20,7 @@ public final class TagTemplateField {
      */
     private @Nullable String description;
     /**
-     * @return The display name for this template.
+     * @return The display name for this field.
      * 
      */
     private @Nullable String displayName;
@@ -35,8 +35,7 @@ public final class TagTemplateField {
      */
     private @Nullable Boolean isRequired;
     /**
-     * @return -
-     * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
+     * @return The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
      * 
      */
     private @Nullable String name;
@@ -63,7 +62,7 @@ public final class TagTemplateField {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return The display name for this template.
+     * @return The display name for this field.
      * 
      */
     public Optional<String> displayName() {
@@ -84,8 +83,7 @@ public final class TagTemplateField {
         return Optional.ofNullable(this.isRequired);
     }
     /**
-     * @return -
-     * The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
+     * @return The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
      * 
      */
     public Optional<String> name() {

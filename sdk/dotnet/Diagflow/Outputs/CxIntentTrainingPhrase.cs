@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
     public sealed class CxIntentTrainingPhrase
     {
         /// <summary>
-        /// The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+        /// The unique identifier of the training phrase.
         /// </summary>
         public readonly string? Id;
         /// <summary>

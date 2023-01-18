@@ -14,20 +14,14 @@ public final class GuestPoliciesPackageRepositoryGooArgs extends com.pulumi.reso
     public static final GuestPoliciesPackageRepositoryGooArgs Empty = new GuestPoliciesPackageRepositoryGooArgs();
 
     /**
-     * Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-     * Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-     * This means that requests to create multiple recipes with the same name and version are rejected since they
-     * could potentially have conflicting assignments.
+     * The name of the repository.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-     * Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-     * This means that requests to create multiple recipes with the same name and version are rejected since they
-     * could potentially have conflicting assignments.
+     * @return The name of the repository.
      * 
      */
     public Output<String> name() {
@@ -75,10 +69,7 @@ public final class GuestPoliciesPackageRepositoryGooArgs extends com.pulumi.reso
         }
 
         /**
-         * @param name Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-         * Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-         * This means that requests to create multiple recipes with the same name and version are rejected since they
-         * could potentially have conflicting assignments.
+         * @param name The name of the repository.
          * 
          * @return builder
          * 
@@ -89,10 +80,7 @@ public final class GuestPoliciesPackageRepositoryGooArgs extends com.pulumi.reso
         }
 
         /**
-         * @param name Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-         * Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-         * This means that requests to create multiple recipes with the same name and version are rejected since they
-         * could potentially have conflicting assignments.
+         * @param name The name of the repository.
          * 
          * @return builder
          * 

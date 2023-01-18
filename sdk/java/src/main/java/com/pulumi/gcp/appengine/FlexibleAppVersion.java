@@ -434,6 +434,13 @@ public class FlexibleAppVersion extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.manualScaling);
     }
     /**
+     * Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
+     * (Required)
+     * Unique name for the volume.
+     * (Required)
+     * Endpoints service name which is the name of the &#34;service&#34; resource in the Service Management API.
+     * For example &#34;myapi.endpoints.myproject.cloud.goog&#34;
+     * (Required)
      * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
      * 
      */
@@ -441,7 +448,14 @@ public class FlexibleAppVersion extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+     * @return Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
+     * (Required)
+     * Unique name for the volume.
+     * (Required)
+     * Endpoints service name which is the name of the &#34;service&#34; resource in the Service Management API.
+     * For example &#34;myapi.endpoints.myproject.cloud.goog&#34;
+     * (Required)
+     * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
      * 
      */
     public Output<String> name() {

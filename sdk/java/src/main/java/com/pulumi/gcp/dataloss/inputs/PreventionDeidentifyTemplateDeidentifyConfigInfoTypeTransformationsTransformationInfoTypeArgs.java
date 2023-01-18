@@ -14,14 +14,14 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     public static final PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs Empty = new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs();
 
     /**
-     * Name describing the field.
+     * Name of the information type.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name describing the field.
+     * @return Name of the information type.
      * 
      */
     public Output<String> name() {
@@ -53,7 +53,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         }
 
         /**
-         * @param name Name describing the field.
+         * @param name Name of the information type.
          * 
          * @return builder
          * 
@@ -64,7 +64,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         }
 
         /**
-         * @param name Name describing the field.
+         * @param name Name of the information type.
          * 
          * @return builder
          * 

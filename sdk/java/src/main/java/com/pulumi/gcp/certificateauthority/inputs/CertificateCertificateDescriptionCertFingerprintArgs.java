@@ -15,9 +15,17 @@ public final class CertificateCertificateDescriptionCertFingerprintArgs extends 
 
     public static final CertificateCertificateDescriptionCertFingerprintArgs Empty = new CertificateCertificateDescriptionCertFingerprintArgs();
 
+    /**
+     * The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
+     * 
+     */
     @Import(name="sha256Hash")
     private @Nullable Output<String> sha256Hash;
 
+    /**
+     * @return The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
+     * 
+     */
     public Optional<Output<String>> sha256Hash() {
         return Optional.ofNullable(this.sha256Hash);
     }
@@ -46,11 +54,23 @@ public final class CertificateCertificateDescriptionCertFingerprintArgs extends 
             $ = new CertificateCertificateDescriptionCertFingerprintArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param sha256Hash The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sha256Hash(@Nullable Output<String> sha256Hash) {
             $.sha256Hash = sha256Hash;
             return this;
         }
 
+        /**
+         * @param sha256Hash The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sha256Hash(String sha256Hash) {
             return sha256Hash(Output.of(sha256Hash));
         }

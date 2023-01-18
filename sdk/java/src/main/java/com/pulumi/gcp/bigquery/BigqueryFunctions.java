@@ -33,7 +33,7 @@ public final class BigqueryFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
-     * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+     * import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountArgs;
      * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
      * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
      * import java.util.List;
@@ -84,7 +84,7 @@ public final class BigqueryFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
-     * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+     * import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountArgs;
      * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
      * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
      * import java.util.List;
@@ -135,7 +135,7 @@ public final class BigqueryFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
-     * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+     * import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountArgs;
      * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
      * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
      * import java.util.List;
@@ -186,7 +186,7 @@ public final class BigqueryFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
-     * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+     * import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountArgs;
      * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
      * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
      * import java.util.List;
@@ -237,7 +237,7 @@ public final class BigqueryFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
-     * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+     * import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountArgs;
      * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
      * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
      * import java.util.List;
@@ -288,7 +288,7 @@ public final class BigqueryFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
-     * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+     * import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountArgs;
      * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
      * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
      * import java.util.List;

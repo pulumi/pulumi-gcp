@@ -143,7 +143,8 @@ export class Endpoint extends pulumi.CustomResource {
      */
     public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The resource name for the endpoint in the format 'projects/*&#47;locations/*&#47;namespaces/*&#47;services/*&#47;endpoints/*'.
+     * The resource name for the endpoint in the format
+     * `projects/*&#47;locations/*&#47;namespaces/*&#47;services/*&#47;endpoints/*`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -222,7 +223,8 @@ export interface EndpointState {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The resource name for the endpoint in the format 'projects/*&#47;locations/*&#47;namespaces/*&#47;services/*&#47;endpoints/*'.
+     * The resource name for the endpoint in the format
+     * `projects/*&#47;locations/*&#47;namespaces/*&#47;services/*&#47;endpoints/*`.
      */
     name?: pulumi.Input<string>;
     /**

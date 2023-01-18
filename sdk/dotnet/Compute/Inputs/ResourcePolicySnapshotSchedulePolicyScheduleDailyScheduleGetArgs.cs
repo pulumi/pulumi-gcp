@@ -19,7 +19,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int> DaysInCycle { get; set; } = null!;
 
         /// <summary>
-        /// The start time of the schedule. The timestamp is an RFC3339 string.
+        /// This must be in UTC format that resolves to one of
+        /// 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example,
+        /// both 13:00-5 and 08:00 are valid.
         /// </summary>
         [Input("startTime", required: true)]
         public Input<string> StartTime { get; set; } = null!;

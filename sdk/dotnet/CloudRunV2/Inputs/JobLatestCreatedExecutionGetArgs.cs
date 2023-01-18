@@ -12,14 +12,22 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
 
     public sealed class JobLatestCreatedExecutionGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Completion timestamp of the execution.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
         [Input("completionTime")]
         public Input<string>? CompletionTime { get; set; }
 
+        /// <summary>
+        /// Creation timestamp of the execution.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Volume's name.
+        /// Name of the Job.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

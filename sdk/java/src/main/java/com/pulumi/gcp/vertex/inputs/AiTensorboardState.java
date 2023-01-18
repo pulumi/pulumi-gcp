@@ -18,16 +18,14 @@ public final class AiTensorboardState extends com.pulumi.resources.ResourceArgs 
     public static final AiTensorboardState Empty = new AiTensorboardState();
 
     /**
-     * Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not
-     * end with a &#39;/&#39;.
+     * Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not end with a &#39;/&#39;.
      * 
      */
     @Import(name="blobStoragePathPrefix")
     private @Nullable Output<String> blobStoragePathPrefix;
 
     /**
-     * @return Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not
-     * end with a &#39;/&#39;.
+     * @return Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not end with a &#39;/&#39;.
      * 
      */
     public Optional<Output<String>> blobStoragePathPrefix() {
@@ -35,16 +33,14 @@ public final class AiTensorboardState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The timestamp of when the Tensorboard was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
-     * nine fractional digits.
+     * The timestamp of when the Tensorboard was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return The timestamp of when the Tensorboard was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
-     * nine fractional digits.
+     * @return The timestamp of when the Tensorboard was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -176,16 +172,14 @@ public final class AiTensorboardState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The timestamp of when the Tensorboard was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up
-     * to nine fractional digits.
+     * The timestamp of when the Tensorboard was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return The timestamp of when the Tensorboard was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up
-     * to nine fractional digits.
+     * @return The timestamp of when the Tensorboard was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -227,8 +221,7 @@ public final class AiTensorboardState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param blobStoragePathPrefix Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not
-         * end with a &#39;/&#39;.
+         * @param blobStoragePathPrefix Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not end with a &#39;/&#39;.
          * 
          * @return builder
          * 
@@ -239,8 +232,7 @@ public final class AiTensorboardState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param blobStoragePathPrefix Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not
-         * end with a &#39;/&#39;.
+         * @param blobStoragePathPrefix Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not end with a &#39;/&#39;.
          * 
          * @return builder
          * 
@@ -250,8 +242,7 @@ public final class AiTensorboardState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param createTime The timestamp of when the Tensorboard was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
-         * nine fractional digits.
+         * @param createTime The timestamp of when the Tensorboard was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
          * 
          * @return builder
          * 
@@ -262,8 +253,7 @@ public final class AiTensorboardState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param createTime The timestamp of when the Tensorboard was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
-         * nine fractional digits.
+         * @param createTime The timestamp of when the Tensorboard was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
          * 
          * @return builder
          * 
@@ -445,8 +435,7 @@ public final class AiTensorboardState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param updateTime The timestamp of when the Tensorboard was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up
-         * to nine fractional digits.
+         * @param updateTime The timestamp of when the Tensorboard was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
          * 
          * @return builder
          * 
@@ -457,8 +446,7 @@ public final class AiTensorboardState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param updateTime The timestamp of when the Tensorboard was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up
-         * to nine fractional digits.
+         * @param updateTime The timestamp of when the Tensorboard was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
          * 
          * @return builder
          * 

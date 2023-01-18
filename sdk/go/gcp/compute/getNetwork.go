@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+//			_, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
 //				Name: "default-us-east1",
 //			}, nil)
 //			if err != nil {

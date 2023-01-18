@@ -14,8 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterServiceExternalIpsConfig
     {
         /// <summary>
-        /// Enable the PodSecurityPolicy controller for this cluster.
-        /// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        /// Controls whether external ips specified by a service will be allowed. It is enabled by default.
         /// </summary>
         public readonly bool Enabled;
 

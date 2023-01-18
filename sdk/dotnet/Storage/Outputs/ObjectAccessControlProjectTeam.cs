@@ -13,7 +13,14 @@ namespace Pulumi.Gcp.Storage.Outputs
     [OutputType]
     public sealed class ObjectAccessControlProjectTeam
     {
+        /// <summary>
+        /// The project team associated with the entity
+        /// </summary>
         public readonly string? ProjectNumber;
+        /// <summary>
+        /// The team.
+        /// Possible values are `editors`, `owners`, and `viewers`.
+        /// </summary>
         public readonly string? Team;
 
         [OutputConstructor]

@@ -115,7 +115,6 @@ namespace Pulumi.Gcp.Memcache
         public Output<string> AuthorizedNetwork { get; private set; } = null!;
 
         /// <summary>
-        /// -
         /// Output only. The time when the policy was created.
         /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         /// resolution and up to nine fractional digits
@@ -150,6 +149,7 @@ namespace Pulumi.Gcp.Memcache
 
         /// <summary>
         /// Output only. Published maintenance schedule.
+        /// Structure is documented below.
         /// </summary>
         [Output("maintenanceSchedules")]
         public Output<ImmutableArray<Outputs.InstanceMaintenanceSchedule>> MaintenanceSchedules { get; private set; } = null!;
@@ -162,6 +162,7 @@ namespace Pulumi.Gcp.Memcache
 
         /// <summary>
         /// Additional information about the instance state, if available.
+        /// Structure is documented below.
         /// </summary>
         [Output("memcacheNodes")]
         public Output<ImmutableArray<Outputs.InstanceMemcacheNode>> MemcacheNodes { get; private set; } = null!;
@@ -378,7 +379,6 @@ namespace Pulumi.Gcp.Memcache
         public Input<string>? AuthorizedNetwork { get; set; }
 
         /// <summary>
-        /// -
         /// Output only. The time when the policy was created.
         /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
         /// resolution and up to nine fractional digits
@@ -422,6 +422,7 @@ namespace Pulumi.Gcp.Memcache
 
         /// <summary>
         /// Output only. Published maintenance schedule.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.InstanceMaintenanceScheduleGetArgs> MaintenanceSchedules
         {
@@ -440,6 +441,7 @@ namespace Pulumi.Gcp.Memcache
 
         /// <summary>
         /// Additional information about the instance state, if available.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.InstanceMemcacheNodeGetArgs> MemcacheNodes
         {

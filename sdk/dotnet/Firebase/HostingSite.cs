@@ -100,12 +100,13 @@ namespace Pulumi.Gcp.Firebase
         public Output<string> DefaultUrl { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. The fully-qualified resource name of the Hosting site, in the format:
-        /// projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's
-        /// ['ProjectNumber'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
-        /// ***(recommended)*** or its
-        /// ['ProjectId'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
-        /// Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
+        /// Output only. The fully-qualified resource name of the Hosting site, in the
+        /// format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
+        /// Firebase project's
+        /// [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
+        /// [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
+        /// Learn more about using project identifiers in Google's
+        /// [AIP 2510 standard](https://google.aip.dev/cloud/2510).
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -215,12 +216,13 @@ namespace Pulumi.Gcp.Firebase
         public Input<string>? DefaultUrl { get; set; }
 
         /// <summary>
-        /// Output only. The fully-qualified resource name of the Hosting site, in the format:
-        /// projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's
-        /// ['ProjectNumber'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
-        /// ***(recommended)*** or its
-        /// ['ProjectId'](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
-        /// Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
+        /// Output only. The fully-qualified resource name of the Hosting site, in the
+        /// format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
+        /// Firebase project's
+        /// [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
+        /// [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
+        /// Learn more about using project identifiers in Google's
+        /// [AIP 2510 standard](https://google.aip.dev/cloud/2510).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

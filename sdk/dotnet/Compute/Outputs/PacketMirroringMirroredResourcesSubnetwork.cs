@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class PacketMirroringMirroredResourcesSubnetwork
     {
         /// <summary>
-        /// The URL of the instances where this rule should be active.
+        /// The URL of the subnetwork where this rule should be active.
         /// </summary>
         public readonly string Url;
 

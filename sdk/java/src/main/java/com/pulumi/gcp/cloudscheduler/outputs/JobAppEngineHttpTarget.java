@@ -21,15 +21,16 @@ public final class JobAppEngineHttpTarget {
     private @Nullable JobAppEngineHttpTargetAppEngineRouting appEngineRouting;
     /**
      * @return HTTP request body.
-     * A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
-     * It is an error to set body on a job with an incompatible HttpMethod.
+     * A request body is allowed only if the HTTP method is POST or PUT.
+     * It will result in invalid argument error to set a body on a job with an incompatible HttpMethod.
      * A base64-encoded string.
      * 
      */
     private @Nullable String body;
     /**
-     * @return This map contains the header field names and values.
-     * Repeated headers are not supported, but a header value can contain commas.
+     * @return HTTP request headers.
+     * This map contains the header field names and values.
+     * Headers can be set when the job is created.
      * 
      */
     private @Nullable Map<String,String> headers;
@@ -59,8 +60,8 @@ public final class JobAppEngineHttpTarget {
     }
     /**
      * @return HTTP request body.
-     * A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
-     * It is an error to set body on a job with an incompatible HttpMethod.
+     * A request body is allowed only if the HTTP method is POST or PUT.
+     * It will result in invalid argument error to set a body on a job with an incompatible HttpMethod.
      * A base64-encoded string.
      * 
      */
@@ -68,8 +69,9 @@ public final class JobAppEngineHttpTarget {
         return Optional.ofNullable(this.body);
     }
     /**
-     * @return This map contains the header field names and values.
-     * Repeated headers are not supported, but a header value can contain commas.
+     * @return HTTP request headers.
+     * This map contains the header field names and values.
+     * Headers can be set when the job is created.
      * 
      */
     public Map<String,String> headers() {

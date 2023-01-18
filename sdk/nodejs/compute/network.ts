@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const vpcNetwork = new gcp.compute.Network("vpc_network", {});
+ * const vpcNetwork = new gcp.compute.Network("vpcNetwork", {});
  * ```
  * ### Network Custom Mtu
  *
@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const vpcNetwork = new gcp.compute.Network("vpc_network", {
+ * const vpcNetwork = new gcp.compute.Network("vpcNetwork", {
  *     autoCreateSubnetworks: true,
  *     mtu: 1460,
  *     project: "my-project-name",
@@ -103,7 +103,8 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly enableUlaInternalIpv6!: pulumi.Output<boolean | undefined>;
     /**
-     * The gateway address for default routing out of the network. This value is selected by GCP.
+     * The gateway address for default routing out of the network. This value
+     * is selected by GCP.
      */
     public /*out*/ readonly gatewayIpv4!: pulumi.Output<string>;
     /**
@@ -219,7 +220,8 @@ export interface NetworkState {
      */
     enableUlaInternalIpv6?: pulumi.Input<boolean>;
     /**
-     * The gateway address for default routing out of the network. This value is selected by GCP.
+     * The gateway address for default routing out of the network. This value
+     * is selected by GCP.
      */
     gatewayIpv4?: pulumi.Input<string>;
     /**

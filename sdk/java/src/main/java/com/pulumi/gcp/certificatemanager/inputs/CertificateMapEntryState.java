@@ -37,16 +37,18 @@ public final class CertificateMapEntryState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up
-     * to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC &#34;Zulu&#34; format,
+     * with nanosecond resolution and up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up
-     * to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * @return Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC &#34;Zulu&#34; format,
+     * with nanosecond resolution and up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -188,16 +190,18 @@ public final class CertificateMapEntryState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up
-     * to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC &#34;Zulu&#34; format,
+     * with nanosecond resolution and up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up
-     * to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * @return Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC &#34;Zulu&#34; format,
+     * with nanosecond resolution and up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -276,8 +280,9 @@ public final class CertificateMapEntryState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param createTime Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up
-         * to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * @param createTime Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC &#34;Zulu&#34; format,
+         * with nanosecond resolution and up to nine fractional digits.
+         * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder
          * 
@@ -288,8 +293,9 @@ public final class CertificateMapEntryState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param createTime Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up
-         * to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * @param createTime Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC &#34;Zulu&#34; format,
+         * with nanosecond resolution and up to nine fractional digits.
+         * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder
          * 
@@ -481,8 +487,9 @@ public final class CertificateMapEntryState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param updateTime Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up
-         * to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * @param updateTime Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC &#34;Zulu&#34; format,
+         * with nanosecond resolution and up to nine fractional digits.
+         * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder
          * 
@@ -493,8 +500,9 @@ public final class CertificateMapEntryState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param updateTime Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up
-         * to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * @param updateTime Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC &#34;Zulu&#34; format,
+         * with nanosecond resolution and up to nine fractional digits.
+         * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder
          * 

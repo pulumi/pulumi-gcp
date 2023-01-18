@@ -10,31 +10,76 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAndroidAppResult {
+    /**
+     * @return Immutable. The globally unique, Firebase-assigned identifier of the AndroidApp.
+     * This identifier should be treated as an opaque token, as the data format is not specified.
+     * 
+     */
     private String appId;
     private String deletionPolicy;
+    /**
+     * @return The user-assigned display name of the AndroidApp.
+     * 
+     */
     private String displayName;
+    /**
+     * @return This checksum is computed by the server based on the value of other fields, and it may be sent
+     * with update requests to ensure the client has an up-to-date value before proceeding.
+     * 
+     */
     private String etag;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return The fully qualified resource name of the AndroidApp, for example:
+     * projects/projectId/androidApps/appId
+     * 
+     */
     private String name;
+    /**
+     * @return The canonical package name of the Android app as would appear in the Google Play Developer Console.
+     * 
+     */
     private String packageName;
     private String project;
+    /**
+     * @return The SHA1 certificate hashes for the AndroidApp.
+     * 
+     */
     private List<String> sha1Hashes;
+    /**
+     * @return The SHA256 certificate hashes for the AndroidApp.
+     * 
+     */
     private List<String> sha256Hashes;
 
     private GetAndroidAppResult() {}
+    /**
+     * @return Immutable. The globally unique, Firebase-assigned identifier of the AndroidApp.
+     * This identifier should be treated as an opaque token, as the data format is not specified.
+     * 
+     */
     public String appId() {
         return this.appId;
     }
     public String deletionPolicy() {
         return this.deletionPolicy;
     }
+    /**
+     * @return The user-assigned display name of the AndroidApp.
+     * 
+     */
     public String displayName() {
         return this.displayName;
     }
+    /**
+     * @return This checksum is computed by the server based on the value of other fields, and it may be sent
+     * with update requests to ensure the client has an up-to-date value before proceeding.
+     * 
+     */
     public String etag() {
         return this.etag;
     }
@@ -45,18 +90,35 @@ public final class GetAndroidAppResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The fully qualified resource name of the AndroidApp, for example:
+     * projects/projectId/androidApps/appId
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The canonical package name of the Android app as would appear in the Google Play Developer Console.
+     * 
+     */
     public String packageName() {
         return this.packageName;
     }
     public String project() {
         return this.project;
     }
+    /**
+     * @return The SHA1 certificate hashes for the AndroidApp.
+     * 
+     */
     public List<String> sha1Hashes() {
         return this.sha1Hashes;
     }
+    /**
+     * @return The SHA256 certificate hashes for the AndroidApp.
+     * 
+     */
     public List<String> sha256Hashes() {
         return this.sha256Hashes;
     }

@@ -97,8 +97,7 @@ class _ApiKeyState:
         """
         Input properties used for looking up and filtering ApiKey resources.
         :param pulumi.Input[str] display_name: Human-readable display name of this API key. Modifiable by user.
-        :param pulumi.Input[str] key_string: Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString`
-               method.
+        :param pulumi.Input[str] key_string: Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
         :param pulumi.Input[str] name: The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input['ApiKeyRestrictionsArgs'] restrictions: Key restrictions.
@@ -133,8 +132,7 @@ class _ApiKeyState:
     @pulumi.getter(name="keyString")
     def key_string(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString`
-        method.
+        Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
         """
         return pulumi.get(self, "key_string")
 
@@ -524,8 +522,7 @@ class ApiKey(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Human-readable display name of this API key. Modifiable by user.
-        :param pulumi.Input[str] key_string: Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString`
-               method.
+        :param pulumi.Input[str] key_string: Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
         :param pulumi.Input[str] name: The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[pulumi.InputType['ApiKeyRestrictionsArgs']] restrictions: Key restrictions.
@@ -555,8 +552,7 @@ class ApiKey(pulumi.CustomResource):
     @pulumi.getter(name="keyString")
     def key_string(self) -> pulumi.Output[str]:
         """
-        Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString`
-        method.
+        Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
         """
         return pulumi.get(self, "key_string")
 

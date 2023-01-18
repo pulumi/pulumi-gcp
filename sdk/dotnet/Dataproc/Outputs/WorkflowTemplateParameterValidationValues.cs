@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class WorkflowTemplateParameterValidationValues
     {
         /// <summary>
-        /// Optional. Corresponds to the label values of reservation resource.
+        /// Required. List of allowed values for the parameter.
         /// </summary>
         public readonly ImmutableArray<string> Values;
 

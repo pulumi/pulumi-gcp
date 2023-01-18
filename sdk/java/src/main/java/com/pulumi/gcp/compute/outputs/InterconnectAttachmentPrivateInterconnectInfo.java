@@ -11,9 +11,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InterconnectAttachmentPrivateInterconnectInfo {
+    /**
+     * @return 802.1q encapsulation tag to be used for traffic between
+     * Google and the customer, going to and from this network and region.
+     * 
+     */
     private @Nullable Integer tag8021q;
 
     private InterconnectAttachmentPrivateInterconnectInfo() {}
+    /**
+     * @return 802.1q encapsulation tag to be used for traffic between
+     * Google and the customer, going to and from this network and region.
+     * 
+     */
     public Optional<Integer> tag8021q() {
         return Optional.ofNullable(this.tag8021q);
     }

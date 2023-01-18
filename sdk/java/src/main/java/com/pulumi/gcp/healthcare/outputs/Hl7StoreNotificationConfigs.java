@@ -31,6 +31,7 @@ public final class Hl7StoreNotificationConfigs {
      * was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
      * project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
      * Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+     * If a notification cannot be published to Cloud Pub/Sub, errors will be logged to Stackdriver
      * 
      */
     private String pubsubTopic;
@@ -58,6 +59,7 @@ public final class Hl7StoreNotificationConfigs {
      * was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
      * project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
      * Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+     * If a notification cannot be published to Cloud Pub/Sub, errors will be logged to Stackdriver
      * 
      */
     public String pubsubTopic() {

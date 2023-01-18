@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Kms.Outputs
     [OutputType]
     public sealed class CryptoKeyVersionAttestationExternalProtectionLevelOptions
     {
+        /// <summary>
+        /// The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
+        /// </summary>
         public readonly string? EkmConnectionKeyPath;
+        /// <summary>
+        /// The URI for an external resource that this CryptoKeyVersion represents.
+        /// </summary>
         public readonly string? ExternalKeyUri;
 
         [OutputConstructor]

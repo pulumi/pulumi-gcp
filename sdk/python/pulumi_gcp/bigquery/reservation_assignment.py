@@ -114,8 +114,7 @@ class _ReservationAssignmentState:
         :param pulumi.Input[str] name: Output only. The resource name of the assignment.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] reservation: The reservation for the resource
-        :param pulumi.Input[str] state: Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some
-               capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+        :param pulumi.Input[str] state: Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
         """
         if assignee is not None:
             pulumi.set(__self__, "assignee", assignee)
@@ -208,8 +207,7 @@ class _ReservationAssignmentState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some
-        capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+        Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
         """
         return pulumi.get(self, "state")
 
@@ -387,8 +385,7 @@ class ReservationAssignment(pulumi.CustomResource):
         :param pulumi.Input[str] name: Output only. The resource name of the assignment.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] reservation: The reservation for the resource
-        :param pulumi.Input[str] state: Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some
-               capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+        :param pulumi.Input[str] state: Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -455,8 +452,7 @@ class ReservationAssignment(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some
-        capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
+        Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
         """
         return pulumi.get(self, "state")
 

@@ -55,7 +55,8 @@ type RegionSslPolicy struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The list of features enabled in the SSL policy.
 	EnabledFeatures pulumi.StringArrayOutput `pulumi:"enabledFeatures"`
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+	// Fingerprint of this resource. A hash of the contents stored in this
+	// object. This field is used in optimistic locking.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// The minimum version of SSL protocol that can be used by the clients
 	// to establish a connection with the load balancer.
@@ -135,7 +136,8 @@ type regionSslPolicyState struct {
 	Description *string `pulumi:"description"`
 	// The list of features enabled in the SSL policy.
 	EnabledFeatures []string `pulumi:"enabledFeatures"`
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+	// Fingerprint of this resource. A hash of the contents stored in this
+	// object. This field is used in optimistic locking.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// The minimum version of SSL protocol that can be used by the clients
 	// to establish a connection with the load balancer.
@@ -184,7 +186,8 @@ type RegionSslPolicyState struct {
 	Description pulumi.StringPtrInput
 	// The list of features enabled in the SSL policy.
 	EnabledFeatures pulumi.StringArrayInput
-	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+	// Fingerprint of this resource. A hash of the contents stored in this
+	// object. This field is used in optimistic locking.
 	Fingerprint pulumi.StringPtrInput
 	// The minimum version of SSL protocol that can be used by the clients
 	// to establish a connection with the load balancer.
@@ -418,7 +421,8 @@ func (o RegionSslPolicyOutput) EnabledFeatures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RegionSslPolicy) pulumi.StringArrayOutput { return v.EnabledFeatures }).(pulumi.StringArrayOutput)
 }
 
-// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+// Fingerprint of this resource. A hash of the contents stored in this
+// object. This field is used in optimistic locking.
 func (o RegionSslPolicyOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionSslPolicy) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
 }

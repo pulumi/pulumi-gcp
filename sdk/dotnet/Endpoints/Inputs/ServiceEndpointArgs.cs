@@ -12,9 +12,15 @@ namespace Pulumi.Gcp.Endpoints.Inputs
 
     public sealed class ServiceEndpointArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The FQDN of the endpoint as described in the config.
+        /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
 
+        /// <summary>
+        /// The simple name of the endpoint as described in the config.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

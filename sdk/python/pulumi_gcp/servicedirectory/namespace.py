@@ -109,7 +109,8 @@ class _NamespaceState:
         :param pulumi.Input[str] location: The location for the Namespace.
                A full list of valid locations can be found by running
                `gcloud beta service-directory locations list`.
-        :param pulumi.Input[str] name: The resource name for the namespace in the format 'projects/*/locations/*/namespaces/*'.
+        :param pulumi.Input[str] name: The resource name for the namespace
+               in the format `projects/*/locations/*/namespaces/*`.
         :param pulumi.Input[str] namespace_id: The Resource ID must be 1-63 characters long, including digits,
                lowercase letters or the hyphen character.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -158,7 +159,8 @@ class _NamespaceState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name for the namespace in the format 'projects/*/locations/*/namespaces/*'.
+        The resource name for the namespace
+        in the format `projects/*/locations/*/namespaces/*`.
         """
         return pulumi.get(self, "name")
 
@@ -373,7 +375,8 @@ class Namespace(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location for the Namespace.
                A full list of valid locations can be found by running
                `gcloud beta service-directory locations list`.
-        :param pulumi.Input[str] name: The resource name for the namespace in the format 'projects/*/locations/*/namespaces/*'.
+        :param pulumi.Input[str] name: The resource name for the namespace
+               in the format `projects/*/locations/*/namespaces/*`.
         :param pulumi.Input[str] namespace_id: The Resource ID must be 1-63 characters long, including digits,
                lowercase letters or the hyphen character.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -414,7 +417,8 @@ class Namespace(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name for the namespace in the format 'projects/*/locations/*/namespaces/*'.
+        The resource name for the namespace
+        in the format `projects/*/locations/*/namespaces/*`.
         """
         return pulumi.get(self, "name")
 

@@ -128,8 +128,7 @@ export class AiFeatureStoreEntityTypeFeature extends pulumi.CustomResource {
     }
 
     /**
-     * The timestamp of when the entity type was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-     * nine fractional digits.
+     * The timestamp of when the entity type was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -153,8 +152,7 @@ export class AiFeatureStoreEntityTypeFeature extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution
-     * and up to nine fractional digits.
+     * The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
@@ -210,8 +208,7 @@ export class AiFeatureStoreEntityTypeFeature extends pulumi.CustomResource {
  */
 export interface AiFeatureStoreEntityTypeFeatureState {
     /**
-     * The timestamp of when the entity type was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-     * nine fractional digits.
+     * The timestamp of when the entity type was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -235,8 +232,7 @@ export interface AiFeatureStoreEntityTypeFeatureState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution
-     * and up to nine fractional digits.
+     * The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     updateTime?: pulumi.Input<string>;
     /**

@@ -10,16 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class ClusterServiceExternalIpsConfig {
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Controls whether external ips specified by a service will be allowed. It is enabled by default.
      * 
      */
     private Boolean enabled;
 
     private ClusterServiceExternalIpsConfig() {}
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Controls whether external ips specified by a service will be allowed. It is enabled by default.
      * 
      */
     public Boolean enabled() {

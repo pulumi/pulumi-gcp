@@ -16,30 +16,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/game-servers/docs)
  *
  * ## Example Usage
- * ### Game Service Cluster Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const defaultGameServerCluster = new gcp.gameservices.GameServerCluster("default", {
- *     clusterId: "",
- *     "google_game_services_realm.default.realm_id": [{
- *         connectionInfo: [{
- *             gkeClusterReference: [{
- *                 cluster: "locations/us-west1/clusters/%{agones_cluster}",
- *             }],
- *             namespace: "default",
- *         }],
- *     }],
- *     realmId: "",
- * });
- * const defaultRealm = new gcp.gameservices.Realm("default", {
- *     description: "Test Game Realm",
- *     realmId: "realm",
- *     timeZone: "PST8PDT",
- * });
- * ```
  *
  * ## Import
  *
@@ -110,8 +86,9 @@ export class GameServerCluster extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string | undefined>;
     /**
      * The resource id of the game server cluster, eg:
-     * 'projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}'. For example,
-     * 'projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster'.
+     * `projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}`.
+     * For example,
+     * `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -199,8 +176,9 @@ export interface GameServerClusterState {
     location?: pulumi.Input<string>;
     /**
      * The resource id of the game server cluster, eg:
-     * 'projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}'. For example,
-     * 'projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster'.
+     * `projects/{project_id}/locations/{location}/realms/{realm_id}/gameServerClusters/{cluster_id}`.
+     * For example,
+     * `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
      */
     name?: pulumi.Input<string>;
     /**

@@ -57,7 +57,7 @@ class _TagBindingState:
                  tag_value: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TagBinding resources.
-        :param pulumi.Input[str] name: The generated id for the TagBinding. This is a string of the form: 'tagBindings/{full-resource-name}/{tag-value-name}'
+        :param pulumi.Input[str] name: The generated id for the TagBinding. This is a string of the form: `tagBindings/{full-resource-name}/{tag-value-name}`
         :param pulumi.Input[str] parent: The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
         :param pulumi.Input[str] tag_value: The TagValue of the TagBinding. Must be of the form tagValues/456.
         """
@@ -72,7 +72,7 @@ class _TagBindingState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The generated id for the TagBinding. This is a string of the form: 'tagBindings/{full-resource-name}/{tag-value-name}'
+        The generated id for the TagBinding. This is a string of the form: `tagBindings/{full-resource-name}/{tag-value-name}`
         """
         return pulumi.get(self, "name")
 
@@ -265,7 +265,7 @@ class TagBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: The generated id for the TagBinding. This is a string of the form: 'tagBindings/{full-resource-name}/{tag-value-name}'
+        :param pulumi.Input[str] name: The generated id for the TagBinding. This is a string of the form: `tagBindings/{full-resource-name}/{tag-value-name}`
         :param pulumi.Input[str] parent: The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
         :param pulumi.Input[str] tag_value: The TagValue of the TagBinding. Must be of the form tagValues/456.
         """
@@ -282,7 +282,7 @@ class TagBinding(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The generated id for the TagBinding. This is a string of the form: 'tagBindings/{full-resource-name}/{tag-value-name}'
+        The generated id for the TagBinding. This is a string of the form: `tagBindings/{full-resource-name}/{tag-value-name}`
         """
         return pulumi.get(self, "name")
 

@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ListingDataProvider {
     /**
-     * @return Name of the listing publisher.
+     * @return Name of the data provider.
      * 
      */
     private String name;
     /**
-     * @return Email or URL of the listing publisher.
+     * @return Email or URL of the data provider.
      * 
      */
     private @Nullable String primaryContact;
 
     private ListingDataProvider() {}
     /**
-     * @return Name of the listing publisher.
+     * @return Name of the data provider.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Email or URL of the listing publisher.
+     * @return Email or URL of the data provider.
      * 
      */
     public Optional<String> primaryContact() {

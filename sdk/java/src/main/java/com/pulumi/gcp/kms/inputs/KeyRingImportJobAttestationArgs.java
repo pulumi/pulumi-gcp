@@ -15,16 +15,34 @@ public final class KeyRingImportJobAttestationArgs extends com.pulumi.resources.
 
     public static final KeyRingImportJobAttestationArgs Empty = new KeyRingImportJobAttestationArgs();
 
+    /**
+     * The attestation data provided by the HSM when the key operation was performed.
+     * A base64-encoded string.
+     * 
+     */
     @Import(name="content")
     private @Nullable Output<String> content;
 
+    /**
+     * @return The attestation data provided by the HSM when the key operation was performed.
+     * A base64-encoded string.
+     * 
+     */
     public Optional<Output<String>> content() {
         return Optional.ofNullable(this.content);
     }
 
+    /**
+     * The format of the attestation data.
+     * 
+     */
     @Import(name="format")
     private @Nullable Output<String> format;
 
+    /**
+     * @return The format of the attestation data.
+     * 
+     */
     public Optional<Output<String>> format() {
         return Optional.ofNullable(this.format);
     }
@@ -54,20 +72,46 @@ public final class KeyRingImportJobAttestationArgs extends com.pulumi.resources.
             $ = new KeyRingImportJobAttestationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param content The attestation data provided by the HSM when the key operation was performed.
+         * A base64-encoded string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder content(@Nullable Output<String> content) {
             $.content = content;
             return this;
         }
 
+        /**
+         * @param content The attestation data provided by the HSM when the key operation was performed.
+         * A base64-encoded string.
+         * 
+         * @return builder
+         * 
+         */
         public Builder content(String content) {
             return content(Output.of(content));
         }
 
+        /**
+         * @param format The format of the attestation data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder format(@Nullable Output<String> format) {
             $.format = format;
             return this;
         }
 
+        /**
+         * @param format The format of the attestation data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder format(String format) {
             return format(Output.of(format));
         }

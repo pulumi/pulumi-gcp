@@ -86,8 +86,8 @@ namespace Pulumi.Gcp.Diagflow
         public Output<string?> AvatarUri { get; private set; } = null!;
 
         /// <summary>
-        /// The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar, the
-        /// [avatarUri] field can be used.
+        /// The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar,
+        /// the [avatarUri] field can be used.
         /// </summary>
         [Output("avatarUriBackend")]
         public Output<string> AvatarUriBackend { get; private set; } = null!;
@@ -347,8 +347,8 @@ namespace Pulumi.Gcp.Diagflow
         public Input<string>? AvatarUri { get; set; }
 
         /// <summary>
-        /// The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar, the
-        /// [avatarUri] field can be used.
+        /// The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar,
+        /// the [avatarUri] field can be used.
         /// </summary>
         [Input("avatarUriBackend")]
         public Input<string>? AvatarUriBackend { get; set; }

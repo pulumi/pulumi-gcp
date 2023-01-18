@@ -155,6 +155,7 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// Cluster created from backup.
+        /// Structure is documented below.
         /// </summary>
         [Output("backupSources")]
         public Output<ImmutableArray<Outputs.ClusterBackupSource>> BackupSources { get; private set; } = null!;
@@ -166,8 +167,7 @@ namespace Pulumi.Gcp.Alloydb
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This
-        /// field cannot be changed after cluster creation.
+        /// The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
         /// </summary>
         [Output("databaseVersion")]
         public Output<string> DatabaseVersion { get; private set; } = null!;
@@ -186,19 +186,20 @@ namespace Pulumi.Gcp.Alloydb
         public Output<Outputs.ClusterInitialUser?> InitialUser { get; private set; } = null!;
 
         /// <summary>
-        /// Labels to apply to backups created using this configuration.
+        /// User-defined labels for the alloydb cluster.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+        /// The location where the alloydb cluster should reside.
         /// </summary>
         [Output("location")]
         public Output<string?> Location { get; private set; } = null!;
 
         /// <summary>
         /// Cluster created via DMS migration.
+        /// Structure is documented below.
         /// </summary>
         [Output("migrationSources")]
         public Output<ImmutableArray<Outputs.ClusterMigrationSource>> MigrationSources { get; private set; } = null!;
@@ -306,7 +307,7 @@ namespace Pulumi.Gcp.Alloydb
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Labels to apply to backups created using this configuration.
+        /// User-defined labels for the alloydb cluster.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -315,7 +316,7 @@ namespace Pulumi.Gcp.Alloydb
         }
 
         /// <summary>
-        /// The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+        /// The location where the alloydb cluster should reside.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -355,6 +356,7 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// Cluster created from backup.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ClusterBackupSourceGetArgs> BackupSources
         {
@@ -369,8 +371,7 @@ namespace Pulumi.Gcp.Alloydb
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This
-        /// field cannot be changed after cluster creation.
+        /// The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
         /// </summary>
         [Input("databaseVersion")]
         public Input<string>? DatabaseVersion { get; set; }
@@ -392,7 +393,7 @@ namespace Pulumi.Gcp.Alloydb
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Labels to apply to backups created using this configuration.
+        /// User-defined labels for the alloydb cluster.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -401,7 +402,7 @@ namespace Pulumi.Gcp.Alloydb
         }
 
         /// <summary>
-        /// The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+        /// The location where the alloydb cluster should reside.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -411,6 +412,7 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// Cluster created via DMS migration.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ClusterMigrationSourceGetArgs> MigrationSources
         {

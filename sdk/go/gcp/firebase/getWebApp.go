@@ -28,12 +28,16 @@ type LookupWebAppArgs struct {
 
 // A collection of values returned by getWebApp.
 type LookupWebAppResult struct {
+	// Immutable. The globally unique, Firebase-assigned identifier of the App.
+	// This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId          string   `pulumi:"appId"`
 	AppUrls        []string `pulumi:"appUrls"`
 	DeletionPolicy string   `pulumi:"deletionPolicy"`
 	DisplayName    string   `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id      string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The fully qualified resource name of the App, for example:
+	// projects/projectId/webApps/appId
 	Name    string `pulumi:"name"`
 	Project string `pulumi:"project"`
 }
@@ -76,6 +80,8 @@ func (o LookupWebAppResultOutput) ToLookupWebAppResultOutputWithContext(ctx cont
 	return o
 }
 
+// Immutable. The globally unique, Firebase-assigned identifier of the App.
+// This identifier should be treated as an opaque token, as the data format is not specified.
 func (o LookupWebAppResultOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppResult) string { return v.AppId }).(pulumi.StringOutput)
 }
@@ -97,6 +103,8 @@ func (o LookupWebAppResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The fully qualified resource name of the App, for example:
+// projects/projectId/webApps/appId
 func (o LookupWebAppResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppResult) string { return v.Name }).(pulumi.StringOutput)
 }

@@ -233,26 +233,20 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The source snapshot used to create this disk. You can provide this as
-     * a partial or full URL to the resource. For example, the following are
-     * valid values:
-     * * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
-     * * `projects/project/global/snapshots/snapshot`
-     * * `global/snapshots/snapshot`
-     * * `snapshot`
+     * The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
+     * example, the following are valid values: *
+     * &#39;https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot&#39; *
+     * &#39;projects/project/global/snapshots/snapshot&#39; * &#39;global/snapshots/snapshot&#39; * &#39;snapshot&#39;
      * 
      */
     @Import(name="snapshot")
     private @Nullable Output<String> snapshot;
 
     /**
-     * @return The source snapshot used to create this disk. You can provide this as
-     * a partial or full URL to the resource. For example, the following are
-     * valid values:
-     * * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
-     * * `projects/project/global/snapshots/snapshot`
-     * * `global/snapshots/snapshot`
-     * * `snapshot`
+     * @return The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
+     * example, the following are valid values: *
+     * &#39;https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot&#39; *
+     * &#39;projects/project/global/snapshots/snapshot&#39; * &#39;global/snapshots/snapshot&#39; * &#39;snapshot&#39;
      * 
      */
     public Optional<Output<String>> snapshot() {
@@ -646,13 +640,10 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snapshot The source snapshot used to create this disk. You can provide this as
-         * a partial or full URL to the resource. For example, the following are
-         * valid values:
-         * * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
-         * * `projects/project/global/snapshots/snapshot`
-         * * `global/snapshots/snapshot`
-         * * `snapshot`
+         * @param snapshot The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
+         * example, the following are valid values: *
+         * &#39;https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot&#39; *
+         * &#39;projects/project/global/snapshots/snapshot&#39; * &#39;global/snapshots/snapshot&#39; * &#39;snapshot&#39;
          * 
          * @return builder
          * 
@@ -663,13 +654,10 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snapshot The source snapshot used to create this disk. You can provide this as
-         * a partial or full URL to the resource. For example, the following are
-         * valid values:
-         * * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
-         * * `projects/project/global/snapshots/snapshot`
-         * * `global/snapshots/snapshot`
-         * * `snapshot`
+         * @param snapshot The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
+         * example, the following are valid values: *
+         * &#39;https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot&#39; *
+         * &#39;projects/project/global/snapshots/snapshot&#39; * &#39;global/snapshots/snapshot&#39; * &#39;snapshot&#39;
          * 
          * @return builder
          * 

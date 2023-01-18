@@ -68,7 +68,6 @@ public final class InstanceFileSharesArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * - 
      * The resource name of the backup, in the format
      * projects/{projectId}/locations/{locationId}/backups/{backupId},
      * that this file share has been restored from.
@@ -78,8 +77,7 @@ public final class InstanceFileSharesArgs extends com.pulumi.resources.ResourceA
     private @Nullable Output<String> sourceBackup;
 
     /**
-     * @return -
-     * The resource name of the backup, in the format
+     * @return The resource name of the backup, in the format
      * projects/{projectId}/locations/{locationId}/backups/{backupId},
      * that this file share has been restored from.
      * 
@@ -194,8 +192,7 @@ public final class InstanceFileSharesArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param sourceBackup -
-         * The resource name of the backup, in the format
+         * @param sourceBackup The resource name of the backup, in the format
          * projects/{projectId}/locations/{locationId}/backups/{backupId},
          * that this file share has been restored from.
          * 
@@ -208,8 +205,7 @@ public final class InstanceFileSharesArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param sourceBackup -
-         * The resource name of the backup, in the format
+         * @param sourceBackup The resource name of the backup, in the format
          * projects/{projectId}/locations/{locationId}/backups/{backupId},
          * that this file share has been restored from.
          * 

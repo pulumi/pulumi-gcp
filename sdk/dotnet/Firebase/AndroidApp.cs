@@ -65,8 +65,8 @@ namespace Pulumi.Gcp.Firebase
     public partial class AndroidApp : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
-        /// token, as the data format is not specified.
+        /// The globally unique, Firebase-assigned identifier of the AndroidApp.
+        /// This identifier should be treated as an opaque token, as the data format is not specified.
         /// </summary>
         [Output("appId")]
         public Output<string> AppId { get; private set; } = null!;
@@ -86,14 +86,15 @@ namespace Pulumi.Gcp.Firebase
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
-        /// ensure the client has an up-to-date value before proceeding.
+        /// This checksum is computed by the server based on the value of other fields, and it may be sent
+        /// with update requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
+        /// The fully qualified resource name of the AndroidApp, for example:
+        /// projects/projectId/androidApps/appId
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -231,8 +232,8 @@ namespace Pulumi.Gcp.Firebase
     public sealed class AndroidAppState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The globally unique, Firebase-assigned identifier of the AndroidApp. This identifier should be treated as an opaque
-        /// token, as the data format is not specified.
+        /// The globally unique, Firebase-assigned identifier of the AndroidApp.
+        /// This identifier should be treated as an opaque token, as the data format is not specified.
         /// </summary>
         [Input("appId")]
         public Input<string>? AppId { get; set; }
@@ -252,14 +253,15 @@ namespace Pulumi.Gcp.Firebase
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to
-        /// ensure the client has an up-to-date value before proceeding.
+        /// This checksum is computed by the server based on the value of other fields, and it may be sent
+        /// with update requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// The fully qualified resource name of the AndroidApp, for example: projects/projectId/androidApps/appId
+        /// The fully qualified resource name of the AndroidApp, for example:
+        /// projects/projectId/androidApps/appId
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

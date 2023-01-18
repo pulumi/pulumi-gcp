@@ -102,14 +102,16 @@ public class OrganizationSecurityPolicy extends com.pulumi.resources.CustomResou
         return this.displayName;
     }
     /**
-     * Fingerprint of this resource. This field is used internally during updates of this resource.
+     * Fingerprint of this resource. This field is used internally during
+     * updates of this resource.
      * 
      */
     @Export(name="fingerprint", type=String.class, parameters={})
     private Output<String> fingerprint;
 
     /**
-     * @return Fingerprint of this resource. This field is used internally during updates of this resource.
+     * @return Fingerprint of this resource. This field is used internally during
+     * updates of this resource.
      * 
      */
     public Output<String> fingerprint() {

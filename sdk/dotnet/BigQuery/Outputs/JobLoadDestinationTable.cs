@@ -14,11 +14,11 @@ namespace Pulumi.Gcp.BigQuery.Outputs
     public sealed class JobLoadDestinationTable
     {
         /// <summary>
-        /// The ID of the dataset containing this model.
+        /// The ID of the dataset containing this table.
         /// </summary>
         public readonly string? DatasetId;
         /// <summary>
-        /// The ID of the project containing this model.
+        /// The ID of the project containing this table.
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>

@@ -35,14 +35,14 @@ public final class OrganizationSinkArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A description of this exclusion.
+     * A description of this sink. The maximum length of the description is 8000 characters.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return A description of this exclusion.
+     * @return A description of this sink. The maximum length of the description is 8000 characters.
      * 
      */
     public Optional<Output<String>> description() {
@@ -67,14 +67,14 @@ public final class OrganizationSinkArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * If set to True, then this exclusion is disabled and it does not exclude any log entries.
+     * If set to True, then this sink is disabled and it does not export any log entries.
      * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
-     * @return If set to True, then this exclusion is disabled and it does not exclude any log entries.
+     * @return If set to True, then this sink is disabled and it does not export any log entries.
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -97,7 +97,8 @@ public final class OrganizationSinkArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+     * The filter to apply when exporting logs. Only log entries that match the filter are exported.
+     * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
      * write a filter.
      * 
      */
@@ -105,7 +106,8 @@ public final class OrganizationSinkArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<String> filter;
 
     /**
-     * @return An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+     * @return The filter to apply when exporting logs. Only log entries that match the filter are exported.
+     * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
      * write a filter.
      * 
      */
@@ -131,14 +133,14 @@ public final class OrganizationSinkArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+     * The name of the logging sink.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+     * @return The name of the logging sink.
      * 
      */
     public Optional<Output<String>> name() {
@@ -214,7 +216,7 @@ public final class OrganizationSinkArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param description A description of this exclusion.
+         * @param description A description of this sink. The maximum length of the description is 8000 characters.
          * 
          * @return builder
          * 
@@ -225,7 +227,7 @@ public final class OrganizationSinkArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param description A description of this exclusion.
+         * @param description A description of this sink. The maximum length of the description is 8000 characters.
          * 
          * @return builder
          * 
@@ -258,7 +260,7 @@ public final class OrganizationSinkArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param disabled If set to True, then this exclusion is disabled and it does not exclude any log entries.
+         * @param disabled If set to True, then this sink is disabled and it does not export any log entries.
          * 
          * @return builder
          * 
@@ -269,7 +271,7 @@ public final class OrganizationSinkArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param disabled If set to True, then this exclusion is disabled and it does not exclude any log entries.
+         * @param disabled If set to True, then this sink is disabled and it does not export any log entries.
          * 
          * @return builder
          * 
@@ -310,7 +312,8 @@ public final class OrganizationSinkArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param filter An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+         * @param filter The filter to apply when exporting logs. Only log entries that match the filter are exported.
+         * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
          * write a filter.
          * 
          * @return builder
@@ -322,7 +325,8 @@ public final class OrganizationSinkArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param filter An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+         * @param filter The filter to apply when exporting logs. Only log entries that match the filter are exported.
+         * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
          * write a filter.
          * 
          * @return builder
@@ -356,7 +360,7 @@ public final class OrganizationSinkArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+         * @param name The name of the logging sink.
          * 
          * @return builder
          * 
@@ -367,7 +371,7 @@ public final class OrganizationSinkArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+         * @param name The name of the logging sink.
          * 
          * @return builder
          * 

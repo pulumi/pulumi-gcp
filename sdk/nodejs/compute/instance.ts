@@ -176,8 +176,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
     /**
-     * A set of key/value label pairs assigned to the disk. This  
-     * field is only applicable for persistent disks.
+     * A map of key/value label pairs to assign to the instance.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -243,7 +242,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly reservationAffinity!: pulumi.Output<outputs.compute.InstanceReservationAffinity>;
     /**
-     * -- A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      */
     public readonly resourcePolicies!: pulumi.Output<string | undefined>;
     /**
@@ -466,8 +465,7 @@ export interface InstanceState {
      */
     labelFingerprint?: pulumi.Input<string>;
     /**
-     * A set of key/value label pairs assigned to the disk. This  
-     * field is only applicable for persistent disks.
+     * A map of key/value label pairs to assign to the instance.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -533,7 +531,7 @@ export interface InstanceState {
      */
     reservationAffinity?: pulumi.Input<inputs.compute.InstanceReservationAffinity>;
     /**
-     * -- A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      */
     resourcePolicies?: pulumi.Input<string>;
     /**
@@ -639,8 +637,7 @@ export interface InstanceArgs {
      */
     hostname?: pulumi.Input<string>;
     /**
-     * A set of key/value label pairs assigned to the disk. This  
-     * field is only applicable for persistent disks.
+     * A map of key/value label pairs to assign to the instance.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -702,7 +699,7 @@ export interface InstanceArgs {
      */
     reservationAffinity?: pulumi.Input<inputs.compute.InstanceReservationAffinity>;
     /**
-     * -- A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      */
     resourcePolicies?: pulumi.Input<string>;
     /**

@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class InstanceSchedulingNodeAffinity {
     /**
-     * @return Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+     * @return The key for the node affinity label.
      * 
      */
     private String key;
@@ -22,14 +22,14 @@ public final class InstanceSchedulingNodeAffinity {
      */
     private String operator;
     /**
-     * @return Corresponds to the label values of a reservation resource.
+     * @return The values for the node affinity label.
      * 
      */
     private List<String> values;
 
     private InstanceSchedulingNodeAffinity() {}
     /**
-     * @return Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+     * @return The key for the node affinity label.
      * 
      */
     public String key() {
@@ -44,7 +44,7 @@ public final class InstanceSchedulingNodeAffinity {
         return this.operator;
     }
     /**
-     * @return Corresponds to the label values of a reservation resource.
+     * @return The values for the node affinity label.
      * 
      */
     public List<String> values() {

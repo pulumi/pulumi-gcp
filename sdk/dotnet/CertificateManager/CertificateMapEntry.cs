@@ -111,8 +111,9 @@ namespace Pulumi.Gcp.CertificateManager
         public Output<ImmutableArray<string>> Certificates { get; private set; } = null!;
 
         /// <summary>
-        /// Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-        /// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
+        /// with nanosecond resolution and up to nine fractional digits.
+        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -173,8 +174,9 @@ namespace Pulumi.Gcp.CertificateManager
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-        /// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
+        /// with nanosecond resolution and up to nine fractional digits.
+        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -317,8 +319,9 @@ namespace Pulumi.Gcp.CertificateManager
         }
 
         /// <summary>
-        /// Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-        /// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// Creation timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
+        /// with nanosecond resolution and up to nine fractional digits.
+        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -385,8 +388,9 @@ namespace Pulumi.Gcp.CertificateManager
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-        /// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// Update timestamp of a Certificate Map Entry. Timestamp in RFC3339 UTC "Zulu" format,
+        /// with nanosecond resolution and up to nine fractional digits.
+        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

@@ -145,7 +145,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.authorizedNetwork;
     }
     /**
-     * - 
      * Output only. The time when the policy was created.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits
@@ -155,8 +154,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> createTime;
 
     /**
-     * @return -
-     * Output only. The time when the policy was created.
+     * @return Output only. The time when the policy was created.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
      * resolution and up to nine fractional digits
      * 
@@ -224,6 +222,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Output only. Published maintenance schedule.
+     * Structure is documented below.
      * 
      */
     @Export(name="maintenanceSchedules", type=List.class, parameters={InstanceMaintenanceSchedule.class})
@@ -231,6 +230,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Output only. Published maintenance schedule.
+     * Structure is documented below.
      * 
      */
     public Output<List<InstanceMaintenanceSchedule>> maintenanceSchedules() {
@@ -252,6 +252,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Additional information about the instance state, if available.
+     * Structure is documented below.
      * 
      */
     @Export(name="memcacheNodes", type=List.class, parameters={InstanceMemcacheNode.class})
@@ -259,6 +260,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Additional information about the instance state, if available.
+     * Structure is documented below.
      * 
      */
     public Output<List<InstanceMemcacheNode>> memcacheNodes() {

@@ -73,7 +73,8 @@ namespace Pulumi.Gcp.SecurityCenter
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of this source, in the format 'organizations/{{organization}}/sources/{{source}}'.
+        /// The resource name of this source, in the format
+        /// `organizations/{{organization}}/sources/{{source}}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -179,7 +180,8 @@ namespace Pulumi.Gcp.SecurityCenter
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The resource name of this source, in the format 'organizations/{{organization}}/sources/{{source}}'.
+        /// The resource name of this source, in the format
+        /// `organizations/{{organization}}/sources/{{source}}`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

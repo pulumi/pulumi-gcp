@@ -30,14 +30,13 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<Inputs.RegionUrlMapPathMatcherDefaultUrlRedirectArgs>? DefaultUrlRedirect { get; set; }
 
         /// <summary>
-        /// Description of this test case.
+        /// An optional description of this resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the query parameter to match. The query parameter must exist in the
-        /// request, in the absence of which the request match fails.
+        /// The name to which this PathMatcher is referred by the HostRule.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

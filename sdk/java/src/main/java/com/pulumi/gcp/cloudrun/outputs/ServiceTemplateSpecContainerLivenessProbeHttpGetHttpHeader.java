@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader {
     /**
-     * @return Volume&#39;s name.
+     * @return The header field name.
      * 
      */
     private String name;
@@ -24,7 +24,7 @@ public final class ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader {
 
     private ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader() {}
     /**
-     * @return Volume&#39;s name.
+     * @return The header field name.
      * 
      */
     public String name() {

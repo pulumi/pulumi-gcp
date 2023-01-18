@@ -133,8 +133,7 @@ type Release struct {
 
 	// Output only. Time the release was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated
-	// from this Release.
+	// Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
 	// Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -180,8 +179,7 @@ func GetRelease(ctx *pulumi.Context,
 type releaseState struct {
 	// Output only. Time the release was created.
 	CreateTime *string `pulumi:"createTime"`
-	// Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated
-	// from this Release.
+	// Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
 	Disabled *bool `pulumi:"disabled"`
 	// Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
 	Name *string `pulumi:"name"`
@@ -196,8 +194,7 @@ type releaseState struct {
 type ReleaseState struct {
 	// Output only. Time the release was created.
 	CreateTime pulumi.StringPtrInput
-	// Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated
-	// from this Release.
+	// Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
 	Disabled pulumi.BoolPtrInput
 	// Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
 	Name pulumi.StringPtrInput
@@ -324,8 +321,7 @@ func (o ReleaseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated
-// from this Release.
+// Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
 func (o ReleaseOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Release) pulumi.BoolOutput { return v.Disabled }).(pulumi.BoolOutput)
 }

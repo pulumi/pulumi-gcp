@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EntryBigqueryTableSpecViewSpec {
+    /**
+     * @return The query that defines the table view.
+     * 
+     */
     private @Nullable String viewQuery;
 
     private EntryBigqueryTableSpecViewSpec() {}
+    /**
+     * @return The query that defines the table view.
+     * 
+     */
     public Optional<String> viewQuery() {
         return Optional.ofNullable(this.viewQuery);
     }

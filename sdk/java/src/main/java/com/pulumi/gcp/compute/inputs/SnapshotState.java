@@ -91,14 +91,16 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * The fingerprint used for optimistic locking of this resource. Used
+     * internally during updates.
      * 
      */
     @Import(name="labelFingerprint")
     private @Nullable Output<String> labelFingerprint;
 
     /**
-     * @return The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * @return The fingerprint used for optimistic locking of this resource. Used
+     * internally during updates.
      * 
      */
     public Optional<Output<String>> labelFingerprint() {
@@ -121,18 +123,20 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses
-     * attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied
-     * encryption key.
+     * A list of public visible licenses that apply to this snapshot. This
+     * can be because the original image had licenses attached (such as a
+     * Windows image).  snapshotEncryptionKey nested object Encrypts the
+     * snapshot using a customer-supplied encryption key.
      * 
      */
     @Import(name="licenses")
     private @Nullable Output<List<String>> licenses;
 
     /**
-     * @return A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses
-     * attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied
-     * encryption key.
+     * @return A list of public visible licenses that apply to this snapshot. This
+     * can be because the original image had licenses attached (such as a
+     * Windows image).  snapshotEncryptionKey nested object Encrypts the
+     * snapshot using a customer-supplied encryption key.
      * 
      */
     public Optional<Output<List<String>>> licenses() {
@@ -285,7 +289,8 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
+     * A size of the storage used by the snapshot. As snapshots share
+     * storage, this number is expected to change with snapshot
      * creation/deletion.
      * 
      */
@@ -293,7 +298,8 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> storageBytes;
 
     /**
-     * @return A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
+     * @return A size of the storage used by the snapshot. As snapshots share
+     * storage, this number is expected to change with snapshot
      * creation/deletion.
      * 
      */
@@ -466,7 +472,8 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labelFingerprint The fingerprint used for optimistic locking of this resource. Used internally during updates.
+         * @param labelFingerprint The fingerprint used for optimistic locking of this resource. Used
+         * internally during updates.
          * 
          * @return builder
          * 
@@ -477,7 +484,8 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labelFingerprint The fingerprint used for optimistic locking of this resource. Used internally during updates.
+         * @param labelFingerprint The fingerprint used for optimistic locking of this resource. Used
+         * internally during updates.
          * 
          * @return builder
          * 
@@ -508,9 +516,10 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param licenses A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses
-         * attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied
-         * encryption key.
+         * @param licenses A list of public visible licenses that apply to this snapshot. This
+         * can be because the original image had licenses attached (such as a
+         * Windows image).  snapshotEncryptionKey nested object Encrypts the
+         * snapshot using a customer-supplied encryption key.
          * 
          * @return builder
          * 
@@ -521,9 +530,10 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param licenses A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses
-         * attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied
-         * encryption key.
+         * @param licenses A list of public visible licenses that apply to this snapshot. This
+         * can be because the original image had licenses attached (such as a
+         * Windows image).  snapshotEncryptionKey nested object Encrypts the
+         * snapshot using a customer-supplied encryption key.
          * 
          * @return builder
          * 
@@ -533,9 +543,10 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param licenses A list of public visible licenses that apply to this snapshot. This can be because the original image had licenses
-         * attached (such as a Windows image). snapshotEncryptionKey nested object Encrypts the snapshot using a customer-supplied
-         * encryption key.
+         * @param licenses A list of public visible licenses that apply to this snapshot. This
+         * can be because the original image had licenses attached (such as a
+         * Windows image).  snapshotEncryptionKey nested object Encrypts the
+         * snapshot using a customer-supplied encryption key.
          * 
          * @return builder
          * 
@@ -732,7 +743,8 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageBytes A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
+         * @param storageBytes A size of the storage used by the snapshot. As snapshots share
+         * storage, this number is expected to change with snapshot
          * creation/deletion.
          * 
          * @return builder
@@ -744,7 +756,8 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageBytes A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
+         * @param storageBytes A size of the storage used by the snapshot. As snapshots share
+         * storage, this number is expected to change with snapshot
          * creation/deletion.
          * 
          * @return builder

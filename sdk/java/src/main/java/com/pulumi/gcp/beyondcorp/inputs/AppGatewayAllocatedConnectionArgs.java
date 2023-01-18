@@ -16,16 +16,32 @@ public final class AppGatewayAllocatedConnectionArgs extends com.pulumi.resource
 
     public static final AppGatewayAllocatedConnectionArgs Empty = new AppGatewayAllocatedConnectionArgs();
 
+    /**
+     * The ingress port of an allocated connection.
+     * 
+     */
     @Import(name="ingressPort")
     private @Nullable Output<Integer> ingressPort;
 
+    /**
+     * @return The ingress port of an allocated connection.
+     * 
+     */
     public Optional<Output<Integer>> ingressPort() {
         return Optional.ofNullable(this.ingressPort);
     }
 
+    /**
+     * The PSC uri of an allocated connection.
+     * 
+     */
     @Import(name="pscUri")
     private @Nullable Output<String> pscUri;
 
+    /**
+     * @return The PSC uri of an allocated connection.
+     * 
+     */
     public Optional<Output<String>> pscUri() {
         return Optional.ofNullable(this.pscUri);
     }
@@ -55,20 +71,44 @@ public final class AppGatewayAllocatedConnectionArgs extends com.pulumi.resource
             $ = new AppGatewayAllocatedConnectionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ingressPort The ingress port of an allocated connection.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ingressPort(@Nullable Output<Integer> ingressPort) {
             $.ingressPort = ingressPort;
             return this;
         }
 
+        /**
+         * @param ingressPort The ingress port of an allocated connection.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ingressPort(Integer ingressPort) {
             return ingressPort(Output.of(ingressPort));
         }
 
+        /**
+         * @param pscUri The PSC uri of an allocated connection.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pscUri(@Nullable Output<String> pscUri) {
             $.pscUri = pscUri;
             return this;
         }
 
+        /**
+         * @param pscUri The PSC uri of an allocated connection.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pscUri(String pscUri) {
             return pscUri(Output.of(pscUri));
         }

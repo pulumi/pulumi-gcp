@@ -19,16 +19,18 @@ public final class CertificateMapState extends com.pulumi.resources.ResourceArgs
     public static final CertificateMapState Empty = new CertificateMapState();
 
     /**
-     * Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds with up to
-     * nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC &#34;Zulu&#34; format,
+     * accurate to nanoseconds with up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds with up to
-     * nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * @return Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC &#34;Zulu&#34; format,
+     * accurate to nanoseconds with up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -52,6 +54,7 @@ public final class CertificateMapState extends com.pulumi.resources.ResourceArgs
 
     /**
      * A list of target proxies that use this Certificate Map
+     * Structure is documented below.
      * 
      */
     @Import(name="gclbTargets")
@@ -59,6 +62,7 @@ public final class CertificateMapState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return A list of target proxies that use this Certificate Map
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<CertificateMapGclbTargetArgs>>> gclbTargets() {
@@ -115,16 +119,18 @@ public final class CertificateMapState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds with up to
-     * nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC &#34;Zulu&#34; format,
+     * accurate to nanoseconds with up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds with up to
-     * nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * @return Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC &#34;Zulu&#34; format,
+     * accurate to nanoseconds with up to nine fractional digits.
+     * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -162,8 +168,9 @@ public final class CertificateMapState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param createTime Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds with up to
-         * nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * @param createTime Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC &#34;Zulu&#34; format,
+         * accurate to nanoseconds with up to nine fractional digits.
+         * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder
          * 
@@ -174,8 +181,9 @@ public final class CertificateMapState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param createTime Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds with up to
-         * nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * @param createTime Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC &#34;Zulu&#34; format,
+         * accurate to nanoseconds with up to nine fractional digits.
+         * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder
          * 
@@ -207,6 +215,7 @@ public final class CertificateMapState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param gclbTargets A list of target proxies that use this Certificate Map
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -218,6 +227,7 @@ public final class CertificateMapState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param gclbTargets A list of target proxies that use this Certificate Map
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -228,6 +238,7 @@ public final class CertificateMapState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param gclbTargets A list of target proxies that use this Certificate Map
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -304,8 +315,9 @@ public final class CertificateMapState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param updateTime Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds with up to
-         * nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * @param updateTime Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC &#34;Zulu&#34; format,
+         * accurate to nanoseconds with up to nine fractional digits.
+         * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder
          * 
@@ -316,8 +328,9 @@ public final class CertificateMapState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param updateTime Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC &#34;Zulu&#34; format, accurate to nanoseconds with up to
-         * nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * @param updateTime Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC &#34;Zulu&#34; format,
+         * accurate to nanoseconds with up to nine fractional digits.
+         * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder
          * 

@@ -163,7 +163,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.compute.ComputeFunctions;
- * import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+ * import com.pulumi.gcp.compute.inputs.GetDefaultServiceAccountArgs;
  * import com.pulumi.gcp.serviceAccount.Account;
  * import com.pulumi.gcp.serviceAccount.AccountArgs;
  * import com.pulumi.gcp.serviceAccount.IAMMember;

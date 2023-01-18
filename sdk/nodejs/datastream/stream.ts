@@ -253,8 +253,7 @@ export class Stream extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The geographic location where the dataset should reside.
-     * See https://cloud.google.com/bigquery/docs/locations for supported locations.
+     * The name of the location this stream is located in.
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -371,8 +370,7 @@ export interface StreamState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The geographic location where the dataset should reside.
-     * See https://cloud.google.com/bigquery/docs/locations for supported locations.
+     * The name of the location this stream is located in.
      */
     location?: pulumi.Input<string>;
     /**
@@ -430,8 +428,7 @@ export interface StreamArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The geographic location where the dataset should reside.
-     * See https://cloud.google.com/bigquery/docs/locations for supported locations.
+     * The name of the location this stream is located in.
      */
     location: pulumi.Input<string>;
     /**

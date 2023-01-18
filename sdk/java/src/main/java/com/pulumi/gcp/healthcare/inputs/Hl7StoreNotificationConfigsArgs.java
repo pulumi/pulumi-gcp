@@ -53,6 +53,7 @@ public final class Hl7StoreNotificationConfigsArgs extends com.pulumi.resources.
      * was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
      * project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
      * Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+     * If a notification cannot be published to Cloud Pub/Sub, errors will be logged to Stackdriver
      * 
      */
     @Import(name="pubsubTopic", required=true)
@@ -65,6 +66,7 @@ public final class Hl7StoreNotificationConfigsArgs extends com.pulumi.resources.
      * was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
      * project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
      * Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+     * If a notification cannot be published to Cloud Pub/Sub, errors will be logged to Stackdriver
      * 
      */
     public Output<String> pubsubTopic() {
@@ -140,6 +142,7 @@ public final class Hl7StoreNotificationConfigsArgs extends com.pulumi.resources.
          * was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
          * project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
          * Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+         * If a notification cannot be published to Cloud Pub/Sub, errors will be logged to Stackdriver
          * 
          * @return builder
          * 
@@ -156,6 +159,7 @@ public final class Hl7StoreNotificationConfigsArgs extends com.pulumi.resources.
          * was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
          * project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
          * Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+         * If a notification cannot be published to Cloud Pub/Sub, errors will be logged to Stackdriver
          * 
          * @return builder
          * 

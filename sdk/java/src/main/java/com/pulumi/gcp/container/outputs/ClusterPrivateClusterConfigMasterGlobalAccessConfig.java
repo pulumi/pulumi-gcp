@@ -10,16 +10,16 @@ import java.util.Objects;
 @CustomType
 public final class ClusterPrivateClusterConfigMasterGlobalAccessConfig {
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Whether the cluster master is accessible globally or
+     * not.
      * 
      */
     private Boolean enabled;
 
     private ClusterPrivateClusterConfigMasterGlobalAccessConfig() {}
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Whether the cluster master is accessible globally or
+     * not.
      * 
      */
     public Boolean enabled() {

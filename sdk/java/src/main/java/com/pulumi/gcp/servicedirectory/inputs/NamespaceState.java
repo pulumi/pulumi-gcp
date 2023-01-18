@@ -55,14 +55,16 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The resource name for the namespace in the format &#39;projects/*{@literal /}locations/*{@literal /}namespaces/*&#39;.
+     * The resource name for the namespace
+     * in the format `projects/*{@literal /}locations/*{@literal /}namespaces/*`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The resource name for the namespace in the format &#39;projects/*{@literal /}locations/*{@literal /}namespaces/*&#39;.
+     * @return The resource name for the namespace
+     * in the format `projects/*{@literal /}locations/*{@literal /}namespaces/*`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -182,7 +184,8 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name for the namespace in the format &#39;projects/*{@literal /}locations/*{@literal /}namespaces/*&#39;.
+         * @param name The resource name for the namespace
+         * in the format `projects/*{@literal /}locations/*{@literal /}namespaces/*`.
          * 
          * @return builder
          * 
@@ -193,7 +196,8 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The resource name for the namespace in the format &#39;projects/*{@literal /}locations/*{@literal /}namespaces/*&#39;.
+         * @param name The resource name for the namespace
+         * in the format `projects/*{@literal /}locations/*{@literal /}namespaces/*`.
          * 
          * @return builder
          * 

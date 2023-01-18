@@ -15,9 +15,23 @@ public final class EntryBigqueryTableSpecTableSpecArgs extends com.pulumi.resour
 
     public static final EntryBigqueryTableSpecTableSpecArgs Empty = new EntryBigqueryTableSpecTableSpecArgs();
 
+    /**
+     * If the table is a dated shard, i.e., with name pattern [prefix]YYYYMMDD, groupedEntry is the
+     * Data Catalog resource name of the date sharded grouped entry, for example,
+     * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}.
+     * Otherwise, groupedEntry is empty.
+     * 
+     */
     @Import(name="groupedEntry")
     private @Nullable Output<String> groupedEntry;
 
+    /**
+     * @return If the table is a dated shard, i.e., with name pattern [prefix]YYYYMMDD, groupedEntry is the
+     * Data Catalog resource name of the date sharded grouped entry, for example,
+     * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}.
+     * Otherwise, groupedEntry is empty.
+     * 
+     */
     public Optional<Output<String>> groupedEntry() {
         return Optional.ofNullable(this.groupedEntry);
     }
@@ -46,11 +60,29 @@ public final class EntryBigqueryTableSpecTableSpecArgs extends com.pulumi.resour
             $ = new EntryBigqueryTableSpecTableSpecArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param groupedEntry If the table is a dated shard, i.e., with name pattern [prefix]YYYYMMDD, groupedEntry is the
+         * Data Catalog resource name of the date sharded grouped entry, for example,
+         * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}.
+         * Otherwise, groupedEntry is empty.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupedEntry(@Nullable Output<String> groupedEntry) {
             $.groupedEntry = groupedEntry;
             return this;
         }
 
+        /**
+         * @param groupedEntry If the table is a dated shard, i.e., with name pattern [prefix]YYYYMMDD, groupedEntry is the
+         * Data Catalog resource name of the date sharded grouped entry, for example,
+         * projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}.
+         * Otherwise, groupedEntry is empty.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupedEntry(String groupedEntry) {
             return groupedEntry(Output.of(groupedEntry));
         }

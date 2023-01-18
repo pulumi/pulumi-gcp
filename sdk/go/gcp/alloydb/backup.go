@@ -37,7 +37,7 @@ import (
 //			defaultCluster, err := alloydb.NewCluster(ctx, "defaultCluster", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-cluster"),
 //				Location:  pulumi.String("us-central1"),
-//				Network:   pulumi.String(defaultNetwork.Id),
+//				Network:   *pulumi.String(defaultNetwork.Id),
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
@@ -46,13 +46,13 @@ import (
 //				AddressType:  pulumi.String("INTERNAL"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      pulumi.String(defaultNetwork.Id),
+//				Network:      *pulumi.String(defaultNetwork.Id),
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
 //			}
 //			vpcConnection, err := servicenetworking.NewConnection(ctx, "vpcConnection", &servicenetworking.ConnectionArgs{
-//				Network: pulumi.String(defaultNetwork.Id),
+//				Network: *pulumi.String(defaultNetwork.Id),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					privateIpAlloc.Name,
@@ -134,13 +134,11 @@ type Backup struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or
-	// system actions like failover or maintenance.
+	// If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// The current state of the backup.
 	State pulumi.StringOutput `pulumi:"state"`
-	// Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is
-	// retained until it is deleted.
+	// Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Time the Backup was updated in UTC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -200,13 +198,11 @@ type backupState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or
-	// system actions like failover or maintenance.
+	// If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
 	Reconciling *bool `pulumi:"reconciling"`
 	// The current state of the backup.
 	State *string `pulumi:"state"`
-	// Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is
-	// retained until it is deleted.
+	// Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
 	Uid *string `pulumi:"uid"`
 	// Time the Backup was updated in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -232,13 +228,11 @@ type BackupState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or
-	// system actions like failover or maintenance.
+	// If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
 	Reconciling pulumi.BoolPtrInput
 	// The current state of the backup.
 	State pulumi.StringPtrInput
-	// Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is
-	// retained until it is deleted.
+	// Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
 	Uid pulumi.StringPtrInput
 	// Time the Backup was updated in UTC.
 	UpdateTime pulumi.StringPtrInput
@@ -414,8 +408,7 @@ func (o BackupOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or
-// system actions like failover or maintenance.
+// If true, indicates that the service is actively updating the resource. This can happen due to user-triggered updates or system actions like failover or maintenance.
 func (o BackupOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Backup) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }
@@ -425,8 +418,7 @@ func (o BackupOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is
-// retained until it is deleted.
+// Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
 func (o BackupOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }

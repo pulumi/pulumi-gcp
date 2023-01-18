@@ -204,6 +204,7 @@ public class DefaultObjectAccessControl extends com.pulumi.resources.CustomResou
     }
     /**
      * The project team associated with the entity
+     * Structure is documented below.
      * 
      */
     @Export(name="projectTeams", type=List.class, parameters={DefaultObjectAccessControlProjectTeam.class})
@@ -211,6 +212,7 @@ public class DefaultObjectAccessControl extends com.pulumi.resources.CustomResou
 
     /**
      * @return The project team associated with the entity
+     * Structure is documented below.
      * 
      */
     public Output<List<DefaultObjectAccessControlProjectTeam>> projectTeams() {

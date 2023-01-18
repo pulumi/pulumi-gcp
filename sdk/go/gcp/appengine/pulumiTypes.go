@@ -584,9 +584,13 @@ func (o ApplicationUrlDispatchRulesDispatchRuleArrayOutput) Index(i pulumi.IntIn
 }
 
 type DomainMappingResourceRecord struct {
-	Name   *string `pulumi:"name"`
+	// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
+	Name *string `pulumi:"name"`
+	// Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
 	Rrdata *string `pulumi:"rrdata"`
-	Type   *string `pulumi:"type"`
+	// Resource record type. Example: `AAAA`.
+	// Possible values are `A`, `AAAA`, and `CNAME`.
+	Type *string `pulumi:"type"`
 }
 
 // DomainMappingResourceRecordInput is an input type that accepts DomainMappingResourceRecordArgs and DomainMappingResourceRecordOutput values.
@@ -601,9 +605,13 @@ type DomainMappingResourceRecordInput interface {
 }
 
 type DomainMappingResourceRecordArgs struct {
-	Name   pulumi.StringPtrInput `pulumi:"name"`
+	// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
 	Rrdata pulumi.StringPtrInput `pulumi:"rrdata"`
-	Type   pulumi.StringPtrInput `pulumi:"type"`
+	// Resource record type. Example: `AAAA`.
+	// Possible values are `A`, `AAAA`, and `CNAME`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (DomainMappingResourceRecordArgs) ElementType() reflect.Type {
@@ -657,14 +665,18 @@ func (o DomainMappingResourceRecordOutput) ToDomainMappingResourceRecordOutputWi
 	return o
 }
 
+// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
 func (o DomainMappingResourceRecordOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainMappingResourceRecord) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
 func (o DomainMappingResourceRecordOutput) Rrdata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainMappingResourceRecord) *string { return v.Rrdata }).(pulumi.StringPtrOutput)
 }
 
+// Resource record type. Example: `AAAA`.
+// Possible values are `A`, `AAAA`, and `CNAME`.
 func (o DomainMappingResourceRecordOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainMappingResourceRecord) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -697,7 +709,6 @@ type DomainMappingSslSettings struct {
 	// authorized to administer the `AuthorizedCertificate` resource to manually map it to a DomainMapping resource.
 	// Example: 12345.
 	CertificateId *string `pulumi:"certificateId"`
-	// -
 	// ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
 	// managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the
 	// provisioning process completes, the `certificateId` field will reflect the new managed certificate and this
@@ -729,7 +740,6 @@ type DomainMappingSslSettingsArgs struct {
 	// authorized to administer the `AuthorizedCertificate` resource to manually map it to a DomainMapping resource.
 	// Example: 12345.
 	CertificateId pulumi.StringPtrInput `pulumi:"certificateId"`
-	// -
 	// ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
 	// managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the
 	// provisioning process completes, the `certificateId` field will reflect the new managed certificate and this
@@ -829,7 +839,6 @@ func (o DomainMappingSslSettingsOutput) CertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainMappingSslSettings) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
 }
 
-// -
 // ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
 // managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the
 // provisioning process completes, the `certificateId` field will reflect the new managed certificate and this
@@ -885,7 +894,6 @@ func (o DomainMappingSslSettingsPtrOutput) CertificateId() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// -
 // ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
 // managed certificate has been successfully provisioned, the previous SSL state will be preserved. Once the
 // provisioning process completes, the `certificateId` field will reflect the new managed certificate and this
@@ -2913,7 +2921,7 @@ func (o FlexibleAppVersionDeploymentContainerPtrOutput) Image() pulumi.StringPtr
 }
 
 type FlexibleAppVersionDeploymentFile struct {
-	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+	// The identifier for this object. Format specified above.
 	Name string `pulumi:"name"`
 	// SHA1 checksum of the file
 	Sha1Sum *string `pulumi:"sha1Sum"`
@@ -2933,7 +2941,7 @@ type FlexibleAppVersionDeploymentFileInput interface {
 }
 
 type FlexibleAppVersionDeploymentFileArgs struct {
-	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+	// The identifier for this object. Format specified above.
 	Name pulumi.StringInput `pulumi:"name"`
 	// SHA1 checksum of the file
 	Sha1Sum pulumi.StringPtrInput `pulumi:"sha1Sum"`
@@ -2992,7 +3000,7 @@ func (o FlexibleAppVersionDeploymentFileOutput) ToFlexibleAppVersionDeploymentFi
 	return o
 }
 
-// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+// The identifier for this object. Format specified above.
 func (o FlexibleAppVersionDeploymentFileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FlexibleAppVersionDeploymentFile) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -3193,7 +3201,8 @@ type FlexibleAppVersionEndpointsApiService struct {
 	ConfigId *string `pulumi:"configId"`
 	// Enable or disable trace sampling. By default, this is set to false for enabled.
 	DisableTraceSampling *bool `pulumi:"disableTraceSampling"`
-	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+	// Endpoints service name which is the name of the "service" resource in the Service Management API.
+	// For example "myapi.endpoints.myproject.cloud.goog"
 	Name string `pulumi:"name"`
 	// Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
 	// Default value is `FIXED`.
@@ -3222,7 +3231,8 @@ type FlexibleAppVersionEndpointsApiServiceArgs struct {
 	ConfigId pulumi.StringPtrInput `pulumi:"configId"`
 	// Enable or disable trace sampling. By default, this is set to false for enabled.
 	DisableTraceSampling pulumi.BoolPtrInput `pulumi:"disableTraceSampling"`
-	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+	// Endpoints service name which is the name of the "service" resource in the Service Management API.
+	// For example "myapi.endpoints.myproject.cloud.goog"
 	Name pulumi.StringInput `pulumi:"name"`
 	// Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
 	// Default value is `FIXED`.
@@ -3322,7 +3332,8 @@ func (o FlexibleAppVersionEndpointsApiServiceOutput) DisableTraceSampling() pulu
 	return o.ApplyT(func(v FlexibleAppVersionEndpointsApiService) *bool { return v.DisableTraceSampling }).(pulumi.BoolPtrOutput)
 }
 
-// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+// Endpoints service name which is the name of the "service" resource in the Service Management API.
+// For example "myapi.endpoints.myproject.cloud.goog"
 func (o FlexibleAppVersionEndpointsApiServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FlexibleAppVersionEndpointsApiService) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -3383,7 +3394,8 @@ func (o FlexibleAppVersionEndpointsApiServicePtrOutput) DisableTraceSampling() p
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+// Endpoints service name which is the name of the "service" resource in the Service Management API.
+// For example "myapi.endpoints.myproject.cloud.goog"
 func (o FlexibleAppVersionEndpointsApiServicePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionEndpointsApiService) *string {
 		if v == nil {
@@ -3543,18 +3555,18 @@ func (o FlexibleAppVersionEntrypointPtrOutput) Shell() pulumi.StringPtrOutput {
 }
 
 type FlexibleAppVersionHandler struct {
-	// Action to take when users access resources that require authentication.
-	// Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+	// Actions to take when the user is not logged in.
 	// Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
 	AuthFailAction *string `pulumi:"authFailAction"`
-	// Level of login required to access this resource.
-	// Default value is `LOGIN_OPTIONAL`.
+	// Methods to restrict access to a URL based on login status.
 	// Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
 	Login *string `pulumi:"login"`
 	// 30x code to use when performing redirects for the secure field.
 	// Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
 	RedirectHttpResponseCode *string `pulumi:"redirectHttpResponseCode"`
-	// Path to the script from the application root directory.
+	// Executes a script to handle the requests that match this URL pattern.
+	// Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
+	// Structure is documented below.
 	Script *FlexibleAppVersionHandlerScript `pulumi:"script"`
 	// Security (HTTPS) enforcement for this URL.
 	// Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
@@ -3580,18 +3592,18 @@ type FlexibleAppVersionHandlerInput interface {
 }
 
 type FlexibleAppVersionHandlerArgs struct {
-	// Action to take when users access resources that require authentication.
-	// Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+	// Actions to take when the user is not logged in.
 	// Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
 	AuthFailAction pulumi.StringPtrInput `pulumi:"authFailAction"`
-	// Level of login required to access this resource.
-	// Default value is `LOGIN_OPTIONAL`.
+	// Methods to restrict access to a URL based on login status.
 	// Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
 	Login pulumi.StringPtrInput `pulumi:"login"`
 	// 30x code to use when performing redirects for the secure field.
 	// Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
 	RedirectHttpResponseCode pulumi.StringPtrInput `pulumi:"redirectHttpResponseCode"`
-	// Path to the script from the application root directory.
+	// Executes a script to handle the requests that match this URL pattern.
+	// Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
+	// Structure is documented below.
 	Script FlexibleAppVersionHandlerScriptPtrInput `pulumi:"script"`
 	// Security (HTTPS) enforcement for this URL.
 	// Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
@@ -3656,15 +3668,13 @@ func (o FlexibleAppVersionHandlerOutput) ToFlexibleAppVersionHandlerOutputWithCo
 	return o
 }
 
-// Action to take when users access resources that require authentication.
-// Default value is `AUTH_FAIL_ACTION_REDIRECT`.
+// Actions to take when the user is not logged in.
 // Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
 func (o FlexibleAppVersionHandlerOutput) AuthFailAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionHandler) *string { return v.AuthFailAction }).(pulumi.StringPtrOutput)
 }
 
-// Level of login required to access this resource.
-// Default value is `LOGIN_OPTIONAL`.
+// Methods to restrict access to a URL based on login status.
 // Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
 func (o FlexibleAppVersionHandlerOutput) Login() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionHandler) *string { return v.Login }).(pulumi.StringPtrOutput)
@@ -3676,7 +3686,9 @@ func (o FlexibleAppVersionHandlerOutput) RedirectHttpResponseCode() pulumi.Strin
 	return o.ApplyT(func(v FlexibleAppVersionHandler) *string { return v.RedirectHttpResponseCode }).(pulumi.StringPtrOutput)
 }
 
-// Path to the script from the application root directory.
+// Executes a script to handle the requests that match this URL pattern.
+// Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
+// Structure is documented below.
 func (o FlexibleAppVersionHandlerOutput) Script() FlexibleAppVersionHandlerScriptPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionHandler) *FlexibleAppVersionHandlerScript { return v.Script }).(FlexibleAppVersionHandlerScriptPtrOutput)
 }
@@ -4145,8 +4157,7 @@ type FlexibleAppVersionLivenessCheck struct {
 	Host *string `pulumi:"host"`
 	// The initial delay before starting to execute the checks. Default: "300s"
 	InitialDelay *string `pulumi:"initialDelay"`
-	// Path to the static files matched by the URL pattern, from the application root directory.
-	// The path can refer to text matched in groupings in the URL pattern.
+	// The request path.
 	Path string `pulumi:"path"`
 	// Number of consecutive successful checks required before considering the VM healthy. Default: 2.
 	SuccessThreshold *float64 `pulumi:"successThreshold"`
@@ -4174,8 +4185,7 @@ type FlexibleAppVersionLivenessCheckArgs struct {
 	Host pulumi.StringPtrInput `pulumi:"host"`
 	// The initial delay before starting to execute the checks. Default: "300s"
 	InitialDelay pulumi.StringPtrInput `pulumi:"initialDelay"`
-	// Path to the static files matched by the URL pattern, from the application root directory.
-	// The path can refer to text matched in groupings in the URL pattern.
+	// The request path.
 	Path pulumi.StringInput `pulumi:"path"`
 	// Number of consecutive successful checks required before considering the VM healthy. Default: 2.
 	SuccessThreshold pulumi.Float64PtrInput `pulumi:"successThreshold"`
@@ -4280,8 +4290,7 @@ func (o FlexibleAppVersionLivenessCheckOutput) InitialDelay() pulumi.StringPtrOu
 	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) *string { return v.InitialDelay }).(pulumi.StringPtrOutput)
 }
 
-// Path to the static files matched by the URL pattern, from the application root directory.
-// The path can refer to text matched in groupings in the URL pattern.
+// The request path.
 func (o FlexibleAppVersionLivenessCheckOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v FlexibleAppVersionLivenessCheck) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -4360,8 +4369,7 @@ func (o FlexibleAppVersionLivenessCheckPtrOutput) InitialDelay() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Path to the static files matched by the URL pattern, from the application root directory.
-// The path can refer to text matched in groupings in the URL pattern.
+// The request path.
 func (o FlexibleAppVersionLivenessCheckPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionLivenessCheck) *string {
 		if v == nil {
@@ -4541,7 +4549,7 @@ type FlexibleAppVersionNetwork struct {
 	ForwardedPorts []string `pulumi:"forwardedPorts"`
 	// Tag to apply to the instance during creation.
 	InstanceTag *string `pulumi:"instanceTag"`
-	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+	// Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
 	Name string `pulumi:"name"`
 	// Enable session affinity.
 	SessionAffinity *bool `pulumi:"sessionAffinity"`
@@ -4569,7 +4577,7 @@ type FlexibleAppVersionNetworkArgs struct {
 	ForwardedPorts pulumi.StringArrayInput `pulumi:"forwardedPorts"`
 	// Tag to apply to the instance during creation.
 	InstanceTag pulumi.StringPtrInput `pulumi:"instanceTag"`
-	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+	// Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Enable session affinity.
 	SessionAffinity pulumi.BoolPtrInput `pulumi:"sessionAffinity"`
@@ -4668,7 +4676,7 @@ func (o FlexibleAppVersionNetworkOutput) InstanceTag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionNetwork) *string { return v.InstanceTag }).(pulumi.StringPtrOutput)
 }
 
-// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+// Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
 func (o FlexibleAppVersionNetworkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FlexibleAppVersionNetwork) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -4731,7 +4739,7 @@ func (o FlexibleAppVersionNetworkPtrOutput) InstanceTag() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+// Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
 func (o FlexibleAppVersionNetworkPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionNetwork) *string {
 		if v == nil {
@@ -4769,16 +4777,15 @@ type FlexibleAppVersionReadinessCheck struct {
 	// A maximum time limit on application initialization, measured from moment the application successfully
 	// replies to a healthcheck until it is ready to serve traffic. Default: "300s"
 	AppStartTimeout *string `pulumi:"appStartTimeout"`
-	// Interval between health checks.
+	// Interval between health checks.  Default: "5s".
 	CheckInterval *string `pulumi:"checkInterval"`
-	// Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
+	// Number of consecutive failed checks required before removing traffic. Default: 2.
 	FailureThreshold *float64 `pulumi:"failureThreshold"`
 	// Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
 	Host *string `pulumi:"host"`
-	// Path to the static files matched by the URL pattern, from the application root directory.
-	// The path can refer to text matched in groupings in the URL pattern.
+	// The request path.
 	Path string `pulumi:"path"`
-	// Number of consecutive successful checks required before considering the VM healthy. Default: 2.
+	// Number of consecutive successful checks required before receiving traffic. Default: 2.
 	SuccessThreshold *float64 `pulumi:"successThreshold"`
 	// Time before the check is considered failed. Default: "4s"
 	Timeout *string `pulumi:"timeout"`
@@ -4799,16 +4806,15 @@ type FlexibleAppVersionReadinessCheckArgs struct {
 	// A maximum time limit on application initialization, measured from moment the application successfully
 	// replies to a healthcheck until it is ready to serve traffic. Default: "300s"
 	AppStartTimeout pulumi.StringPtrInput `pulumi:"appStartTimeout"`
-	// Interval between health checks.
+	// Interval between health checks.  Default: "5s".
 	CheckInterval pulumi.StringPtrInput `pulumi:"checkInterval"`
-	// Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
+	// Number of consecutive failed checks required before removing traffic. Default: 2.
 	FailureThreshold pulumi.Float64PtrInput `pulumi:"failureThreshold"`
 	// Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
 	Host pulumi.StringPtrInput `pulumi:"host"`
-	// Path to the static files matched by the URL pattern, from the application root directory.
-	// The path can refer to text matched in groupings in the URL pattern.
+	// The request path.
 	Path pulumi.StringInput `pulumi:"path"`
-	// Number of consecutive successful checks required before considering the VM healthy. Default: 2.
+	// Number of consecutive successful checks required before receiving traffic. Default: 2.
 	SuccessThreshold pulumi.Float64PtrInput `pulumi:"successThreshold"`
 	// Time before the check is considered failed. Default: "4s"
 	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
@@ -4897,12 +4903,12 @@ func (o FlexibleAppVersionReadinessCheckOutput) AppStartTimeout() pulumi.StringP
 	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *string { return v.AppStartTimeout }).(pulumi.StringPtrOutput)
 }
 
-// Interval between health checks.
+// Interval between health checks.  Default: "5s".
 func (o FlexibleAppVersionReadinessCheckOutput) CheckInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *string { return v.CheckInterval }).(pulumi.StringPtrOutput)
 }
 
-// Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
+// Number of consecutive failed checks required before removing traffic. Default: 2.
 func (o FlexibleAppVersionReadinessCheckOutput) FailureThreshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *float64 { return v.FailureThreshold }).(pulumi.Float64PtrOutput)
 }
@@ -4912,13 +4918,12 @@ func (o FlexibleAppVersionReadinessCheckOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
-// Path to the static files matched by the URL pattern, from the application root directory.
-// The path can refer to text matched in groupings in the URL pattern.
+// The request path.
 func (o FlexibleAppVersionReadinessCheckOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// Number of consecutive successful checks required before considering the VM healthy. Default: 2.
+// Number of consecutive successful checks required before receiving traffic. Default: 2.
 func (o FlexibleAppVersionReadinessCheckOutput) SuccessThreshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionReadinessCheck) *float64 { return v.SuccessThreshold }).(pulumi.Float64PtrOutput)
 }
@@ -4963,7 +4968,7 @@ func (o FlexibleAppVersionReadinessCheckPtrOutput) AppStartTimeout() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Interval between health checks.
+// Interval between health checks.  Default: "5s".
 func (o FlexibleAppVersionReadinessCheckPtrOutput) CheckInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionReadinessCheck) *string {
 		if v == nil {
@@ -4973,7 +4978,7 @@ func (o FlexibleAppVersionReadinessCheckPtrOutput) CheckInterval() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
+// Number of consecutive failed checks required before removing traffic. Default: 2.
 func (o FlexibleAppVersionReadinessCheckPtrOutput) FailureThreshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionReadinessCheck) *float64 {
 		if v == nil {
@@ -4993,8 +4998,7 @@ func (o FlexibleAppVersionReadinessCheckPtrOutput) Host() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Path to the static files matched by the URL pattern, from the application root directory.
-// The path can refer to text matched in groupings in the URL pattern.
+// The request path.
 func (o FlexibleAppVersionReadinessCheckPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionReadinessCheck) *string {
 		if v == nil {
@@ -5004,7 +5008,7 @@ func (o FlexibleAppVersionReadinessCheckPtrOutput) Path() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Number of consecutive successful checks required before considering the VM healthy. Default: 2.
+// Number of consecutive successful checks required before receiving traffic. Default: 2.
 func (o FlexibleAppVersionReadinessCheckPtrOutput) SuccessThreshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionReadinessCheck) *float64 {
 		if v == nil {
@@ -5223,7 +5227,7 @@ func (o FlexibleAppVersionResourcesPtrOutput) Volumes() FlexibleAppVersionResour
 }
 
 type FlexibleAppVersionResourcesVolume struct {
-	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+	// Unique name for the volume.
 	Name string `pulumi:"name"`
 	// Volume size in gigabytes.
 	SizeGb int `pulumi:"sizeGb"`
@@ -5243,7 +5247,7 @@ type FlexibleAppVersionResourcesVolumeInput interface {
 }
 
 type FlexibleAppVersionResourcesVolumeArgs struct {
-	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+	// Unique name for the volume.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Volume size in gigabytes.
 	SizeGb pulumi.IntInput `pulumi:"sizeGb"`
@@ -5302,7 +5306,7 @@ func (o FlexibleAppVersionResourcesVolumeOutput) ToFlexibleAppVersionResourcesVo
 	return o
 }
 
-// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+// Unique name for the volume.
 func (o FlexibleAppVersionResourcesVolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FlexibleAppVersionResourcesVolume) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -5870,7 +5874,7 @@ func (o StandardAppVersionAutomaticScalingPtrOutput) StandardSchedulerSettings()
 }
 
 type StandardAppVersionAutomaticScalingStandardSchedulerSettings struct {
-	// Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
+	// Maximum number of instances to run for this version. Set to zero to disable maxInstances configuration.
 	MaxInstances *int `pulumi:"maxInstances"`
 	// Minimum number of instances to run for this version. Set to zero to disable minInstances configuration.
 	MinInstances *int `pulumi:"minInstances"`
@@ -5892,7 +5896,7 @@ type StandardAppVersionAutomaticScalingStandardSchedulerSettingsInput interface 
 }
 
 type StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs struct {
-	// Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
+	// Maximum number of instances to run for this version. Set to zero to disable maxInstances configuration.
 	MaxInstances pulumi.IntPtrInput `pulumi:"maxInstances"`
 	// Minimum number of instances to run for this version. Set to zero to disable minInstances configuration.
 	MinInstances pulumi.IntPtrInput `pulumi:"minInstances"`
@@ -5979,7 +5983,7 @@ func (o StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput) ToSta
 	}).(StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput)
 }
 
-// Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
+// Maximum number of instances to run for this version. Set to zero to disable maxInstances configuration.
 func (o StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput) MaxInstances() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionAutomaticScalingStandardSchedulerSettings) *int { return v.MaxInstances }).(pulumi.IntPtrOutput)
 }
@@ -6027,7 +6031,7 @@ func (o StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput) El
 	}).(StandardAppVersionAutomaticScalingStandardSchedulerSettingsOutput)
 }
 
-// Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
+// Maximum number of instances to run for this version. Set to zero to disable maxInstances configuration.
 func (o StandardAppVersionAutomaticScalingStandardSchedulerSettingsPtrOutput) MaxInstances() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *StandardAppVersionAutomaticScalingStandardSchedulerSettings) *int {
 		if v == nil {
@@ -6396,7 +6400,7 @@ func (o StandardAppVersionDeploymentPtrOutput) Zip() StandardAppVersionDeploymen
 }
 
 type StandardAppVersionDeploymentFile struct {
-	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+	// The identifier for this object. Format specified above.
 	Name string `pulumi:"name"`
 	// SHA1 checksum of the file
 	Sha1Sum *string `pulumi:"sha1Sum"`
@@ -6416,7 +6420,7 @@ type StandardAppVersionDeploymentFileInput interface {
 }
 
 type StandardAppVersionDeploymentFileArgs struct {
-	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+	// The identifier for this object. Format specified above.
 	Name pulumi.StringInput `pulumi:"name"`
 	// SHA1 checksum of the file
 	Sha1Sum pulumi.StringPtrInput `pulumi:"sha1Sum"`
@@ -6475,7 +6479,7 @@ func (o StandardAppVersionDeploymentFileOutput) ToStandardAppVersionDeploymentFi
 	return o
 }
 
-// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+// The identifier for this object. Format specified above.
 func (o StandardAppVersionDeploymentFileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v StandardAppVersionDeploymentFile) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -7387,7 +7391,7 @@ func (o StandardAppVersionHandlerStaticFilesPtrOutput) UploadPathRegex() pulumi.
 }
 
 type StandardAppVersionLibrary struct {
-	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+	// Name of the library. Example "django".
 	Name *string `pulumi:"name"`
 	// Version of the library to select, or "latest".
 	Version *string `pulumi:"version"`
@@ -7405,7 +7409,7 @@ type StandardAppVersionLibraryInput interface {
 }
 
 type StandardAppVersionLibraryArgs struct {
-	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+	// Name of the library. Example "django".
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Version of the library to select, or "latest".
 	Version pulumi.StringPtrInput `pulumi:"version"`
@@ -7462,7 +7466,7 @@ func (o StandardAppVersionLibraryOutput) ToStandardAppVersionLibraryOutputWithCo
 	return o
 }
 
-// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+// Name of the library. Example "django".
 func (o StandardAppVersionLibraryOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionLibrary) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

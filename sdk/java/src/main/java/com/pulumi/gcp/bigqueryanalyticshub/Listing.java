@@ -248,6 +248,8 @@ public class Listing extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
+     * Name of the data provider.
+     * (Required)
      * Name of the listing publisher.
      * 
      */
@@ -255,13 +257,19 @@ public class Listing extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Name of the listing publisher.
+     * @return Name of the data provider.
+     * (Required)
+     * Name of the listing publisher.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
+     * Email or URL of the primary point of contact of the listing.
+     * (Optional)
+     * Email or URL of the data provider.
+     * (Optional)
      * Email or URL of the listing publisher.
      * 
      */
@@ -269,7 +277,11 @@ public class Listing extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> primaryContact;
 
     /**
-     * @return Email or URL of the listing publisher.
+     * @return Email or URL of the primary point of contact of the listing.
+     * (Optional)
+     * Email or URL of the data provider.
+     * (Optional)
+     * Email or URL of the listing publisher.
      * 
      */
     public Output<Optional<String>> primaryContact() {

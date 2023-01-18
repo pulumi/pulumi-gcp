@@ -73,16 +73,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:vertex/aiMetadataStore:AiMetadataStore")
 public class AiMetadataStore extends com.pulumi.resources.CustomResource {
     /**
-     * The timestamp of when the MetadataStore was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
-     * nine fractional digits.
+     * The timestamp of when the MetadataStore was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
-     * @return The timestamp of when the MetadataStore was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to
-     * nine fractional digits.
+     * @return The timestamp of when the MetadataStore was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     public Output<String> createTime() {
@@ -164,6 +162,7 @@ public class AiMetadataStore extends com.pulumi.resources.CustomResource {
     }
     /**
      * State information of the MetadataStore.
+     * Structure is documented below.
      * 
      */
     @Export(name="states", type=List.class, parameters={AiMetadataStoreState.class})
@@ -171,22 +170,21 @@ public class AiMetadataStore extends com.pulumi.resources.CustomResource {
 
     /**
      * @return State information of the MetadataStore.
+     * Structure is documented below.
      * 
      */
     public Output<List<AiMetadataStoreState>> states() {
         return this.states;
     }
     /**
-     * The timestamp of when the MetadataStore was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up
-     * to nine fractional digits.
+     * The timestamp of when the MetadataStore was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**
-     * @return The timestamp of when the MetadataStore was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up
-     * to nine fractional digits.
+     * @return The timestamp of when the MetadataStore was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
     public Output<String> updateTime() {

@@ -17,6 +17,10 @@ public final class ClusterNodePoolUpgradeSettingsBlueGreenSettings {
      * 
      */
     private @Nullable String nodePoolSoakDuration;
+    /**
+     * @return Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+     * 
+     */
     private ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy standardRolloutPolicy;
 
     private ClusterNodePoolUpgradeSettingsBlueGreenSettings() {}
@@ -27,6 +31,10 @@ public final class ClusterNodePoolUpgradeSettingsBlueGreenSettings {
     public Optional<String> nodePoolSoakDuration() {
         return Optional.ofNullable(this.nodePoolSoakDuration);
     }
+    /**
+     * @return Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
+     * 
+     */
     public ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy standardRolloutPolicy() {
         return this.standardRolloutPolicy;
     }

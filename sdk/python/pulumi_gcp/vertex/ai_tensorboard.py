@@ -136,10 +136,8 @@ class _AiTensorboardState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AiTensorboard resources.
-        :param pulumi.Input[str] blob_storage_path_prefix: Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not
-               end with a '/'.
-        :param pulumi.Input[str] create_time: The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-               nine fractional digits.
+        :param pulumi.Input[str] blob_storage_path_prefix: Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not end with a '/'.
+        :param pulumi.Input[str] create_time: The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[str] description: Description of this Tensorboard.
         :param pulumi.Input[str] display_name: User provided name of this Tensorboard.
         :param pulumi.Input['AiTensorboardEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
@@ -150,8 +148,7 @@ class _AiTensorboardState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the tensorboard. eg us-central1
         :param pulumi.Input[str] run_count: The number of Runs stored in this Tensorboard.
-        :param pulumi.Input[str] update_time: The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-               to nine fractional digits.
+        :param pulumi.Input[str] update_time: The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         if blob_storage_path_prefix is not None:
             pulumi.set(__self__, "blob_storage_path_prefix", blob_storage_path_prefix)
@@ -180,8 +177,7 @@ class _AiTensorboardState:
     @pulumi.getter(name="blobStoragePathPrefix")
     def blob_storage_path_prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not
-        end with a '/'.
+        Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not end with a '/'.
         """
         return pulumi.get(self, "blob_storage_path_prefix")
 
@@ -193,8 +189,7 @@ class _AiTensorboardState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-        nine fractional digits.
+        The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "create_time")
 
@@ -304,8 +299,7 @@ class _AiTensorboardState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-        to nine fractional digits.
+        The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "update_time")
 
@@ -554,10 +548,8 @@ class AiTensorboard(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] blob_storage_path_prefix: Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not
-               end with a '/'.
-        :param pulumi.Input[str] create_time: The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-               nine fractional digits.
+        :param pulumi.Input[str] blob_storage_path_prefix: Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not end with a '/'.
+        :param pulumi.Input[str] create_time: The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[str] description: Description of this Tensorboard.
         :param pulumi.Input[str] display_name: User provided name of this Tensorboard.
         :param pulumi.Input[pulumi.InputType['AiTensorboardEncryptionSpecArgs']] encryption_spec: Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
@@ -568,8 +560,7 @@ class AiTensorboard(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the tensorboard. eg us-central1
         :param pulumi.Input[str] run_count: The number of Runs stored in this Tensorboard.
-        :param pulumi.Input[str] update_time: The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-               to nine fractional digits.
+        :param pulumi.Input[str] update_time: The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -592,8 +583,7 @@ class AiTensorboard(pulumi.CustomResource):
     @pulumi.getter(name="blobStoragePathPrefix")
     def blob_storage_path_prefix(self) -> pulumi.Output[str]:
         """
-        Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not
-        end with a '/'.
+        Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not end with a '/'.
         """
         return pulumi.get(self, "blob_storage_path_prefix")
 
@@ -601,8 +591,7 @@ class AiTensorboard(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-        nine fractional digits.
+        The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "create_time")
 
@@ -676,8 +665,7 @@ class AiTensorboard(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-        to nine fractional digits.
+        The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "update_time")
 

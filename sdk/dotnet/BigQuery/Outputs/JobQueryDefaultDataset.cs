@@ -14,11 +14,12 @@ namespace Pulumi.Gcp.BigQuery.Outputs
     public sealed class JobQueryDefaultDataset
     {
         /// <summary>
-        /// The ID of the dataset containing this model.
+        /// The dataset. Can be specified `{{dataset_id}}` if `project_id` is also set,
+        /// or of the form `projects/{{project}}/datasets/{{dataset_id}}` if not.
         /// </summary>
         public readonly string DatasetId;
         /// <summary>
-        /// The ID of the project containing this model.
+        /// The ID of the project containing this table.
         /// </summary>
         public readonly string? ProjectId;
 

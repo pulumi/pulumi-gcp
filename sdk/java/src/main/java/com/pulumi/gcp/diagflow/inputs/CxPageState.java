@@ -21,14 +21,14 @@ public final class CxPageState extends com.pulumi.resources.ResourceArgs {
     public static final CxPageState Empty = new CxPageState();
 
     /**
-     * The human-readable name of the parameter, unique within the form.
+     * The human-readable name of the page, unique within the agent.
      * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
-     * @return The human-readable name of the parameter, unique within the form.
+     * @return The human-readable name of the page, unique within the agent.
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -124,7 +124,7 @@ public final class CxPageState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * - 
+     * The unique identifier of this transition route.
      * The unique identifier of this event handler.
      * 
      */
@@ -132,7 +132,7 @@ public final class CxPageState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return -
+     * @return The unique identifier of this transition route.
      * The unique identifier of this event handler.
      * 
      */
@@ -242,7 +242,7 @@ public final class CxPageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName The human-readable name of the parameter, unique within the form.
+         * @param displayName The human-readable name of the page, unique within the agent.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class CxPageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param displayName The human-readable name of the parameter, unique within the form.
+         * @param displayName The human-readable name of the page, unique within the agent.
          * 
          * @return builder
          * 
@@ -386,7 +386,7 @@ public final class CxPageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name -
+         * @param name The unique identifier of this transition route.
          * The unique identifier of this event handler.
          * 
          * @return builder
@@ -398,7 +398,7 @@ public final class CxPageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name -
+         * @param name The unique identifier of this transition route.
          * The unique identifier of this event handler.
          * 
          * @return builder

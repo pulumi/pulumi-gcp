@@ -44,7 +44,9 @@ public final class RegionAutoscalerAutoscalingPolicyMetric {
      */
     private @Nullable String filter;
     /**
-     * @return The identifier for this object. Format specified above.
+     * @return The identifier (type) of the Stackdriver Monitoring metric.
+     * The metric cannot have negative values.
+     * The metric must have a value type of INT64 or DOUBLE.
      * 
      */
     private String name;
@@ -67,9 +69,14 @@ public final class RegionAutoscalerAutoscalingPolicyMetric {
      */
     private @Nullable Double singleInstanceAssignment;
     /**
-     * @return Fraction of backend capacity utilization (set in HTTP(s) load
-     * balancing configuration) that autoscaler should maintain. Must
-     * be a positive float value. If not defined, the default is 0.8.
+     * @return The target value of the metric that autoscaler should
+     * maintain. This must be a positive value. A utilization
+     * metric scales number of virtual machines handling requests
+     * to increase or decrease proportionally to the metric.
+     * For example, a good metric to use as a utilizationTarget is
+     * www.googleapis.com/compute/instance/network/received_bytes_count.
+     * The autoscaler will work to keep this value constant for each
+     * of the instances.
      * 
      */
     private @Nullable Double target;
@@ -116,7 +123,9 @@ public final class RegionAutoscalerAutoscalingPolicyMetric {
         return Optional.ofNullable(this.filter);
     }
     /**
-     * @return The identifier for this object. Format specified above.
+     * @return The identifier (type) of the Stackdriver Monitoring metric.
+     * The metric cannot have negative values.
+     * The metric must have a value type of INT64 or DOUBLE.
      * 
      */
     public String name() {
@@ -143,9 +152,14 @@ public final class RegionAutoscalerAutoscalingPolicyMetric {
         return Optional.ofNullable(this.singleInstanceAssignment);
     }
     /**
-     * @return Fraction of backend capacity utilization (set in HTTP(s) load
-     * balancing configuration) that autoscaler should maintain. Must
-     * be a positive float value. If not defined, the default is 0.8.
+     * @return The target value of the metric that autoscaler should
+     * maintain. This must be a positive value. A utilization
+     * metric scales number of virtual machines handling requests
+     * to increase or decrease proportionally to the metric.
+     * For example, a good metric to use as a utilizationTarget is
+     * www.googleapis.com/compute/instance/network/received_bytes_count.
+     * The autoscaler will work to keep this value constant for each
+     * of the instances.
      * 
      */
     public Optional<Double> target() {

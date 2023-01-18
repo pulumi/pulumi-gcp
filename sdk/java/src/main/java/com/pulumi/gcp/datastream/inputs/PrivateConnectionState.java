@@ -36,6 +36,7 @@ public final class PrivateConnectionState extends com.pulumi.resources.ResourceA
 
     /**
      * The PrivateConnection error in case of failure.
+     * Structure is documented below.
      * 
      */
     @Import(name="errors")
@@ -43,6 +44,7 @@ public final class PrivateConnectionState extends com.pulumi.resources.ResourceA
 
     /**
      * @return The PrivateConnection error in case of failure.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<PrivateConnectionErrorArgs>>> errors() {
@@ -215,6 +217,7 @@ public final class PrivateConnectionState extends com.pulumi.resources.ResourceA
 
         /**
          * @param errors The PrivateConnection error in case of failure.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -226,6 +229,7 @@ public final class PrivateConnectionState extends com.pulumi.resources.ResourceA
 
         /**
          * @param errors The PrivateConnection error in case of failure.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -236,6 +240,7 @@ public final class PrivateConnectionState extends com.pulumi.resources.ResourceA
 
         /**
          * @param errors The PrivateConnection error in case of failure.
+         * Structure is documented below.
          * 
          * @return builder
          * 

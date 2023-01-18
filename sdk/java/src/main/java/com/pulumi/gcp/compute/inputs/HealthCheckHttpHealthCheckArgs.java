@@ -17,7 +17,7 @@ public final class HealthCheckHttpHealthCheckArgs extends com.pulumi.resources.R
     public static final HealthCheckHttpHealthCheckArgs Empty = new HealthCheckHttpHealthCheckArgs();
 
     /**
-     * The value of the host header in the HTTP2 health check request.
+     * The value of the host header in the HTTP health check request.
      * If left empty (default value), the public IP on behalf of which this health
      * check is performed will be used.
      * 
@@ -26,7 +26,7 @@ public final class HealthCheckHttpHealthCheckArgs extends com.pulumi.resources.R
     private @Nullable Output<String> host;
 
     /**
-     * @return The value of the host header in the HTTP2 health check request.
+     * @return The value of the host header in the HTTP health check request.
      * If left empty (default value), the public IP on behalf of which this health
      * check is performed will be used.
      * 
@@ -36,18 +36,16 @@ public final class HealthCheckHttpHealthCheckArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The port number for the health check request.
-     * Must be specified if portName and portSpecification are not set
-     * or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+     * The TCP port number for the HTTP health check request.
+     * The default value is 80.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return The port number for the health check request.
-     * Must be specified if portName and portSpecification are not set
-     * or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+     * @return The TCP port number for the HTTP health check request.
+     * The default value is 80.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -74,15 +72,6 @@ public final class HealthCheckHttpHealthCheckArgs extends com.pulumi.resources.R
     /**
      * Specifies how port is selected for health checking, can be one of the
      * following values:
-     * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
-     * * `USE_NAMED_PORT`: The `portName` is used for health checking.
-     * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
-     *   network endpoint is used for health checking. For other backends, the
-     *   port or named port specified in the Backend Service is used for health
-     *   checking.
-     *   If not specified, gRPC health check follows behavior specified in `port` and
-     *   `portName` fields.
-     *   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
      * 
      */
     @Import(name="portSpecification")
@@ -91,15 +80,6 @@ public final class HealthCheckHttpHealthCheckArgs extends com.pulumi.resources.R
     /**
      * @return Specifies how port is selected for health checking, can be one of the
      * following values:
-     * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
-     * * `USE_NAMED_PORT`: The `portName` is used for health checking.
-     * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
-     *   network endpoint is used for health checking. For other backends, the
-     *   port or named port specified in the Backend Service is used for health
-     *   checking.
-     *   If not specified, gRPC health check follows behavior specified in `port` and
-     *   `portName` fields.
-     *   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
      * 
      */
     public Optional<Output<String>> portSpecification() {
@@ -128,7 +108,7 @@ public final class HealthCheckHttpHealthCheckArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The request path of the HTTP2 health check request.
+     * The request path of the HTTP health check request.
      * The default value is /.
      * 
      */
@@ -136,7 +116,7 @@ public final class HealthCheckHttpHealthCheckArgs extends com.pulumi.resources.R
     private @Nullable Output<String> requestPath;
 
     /**
-     * @return The request path of the HTTP2 health check request.
+     * @return The request path of the HTTP health check request.
      * The default value is /.
      * 
      */
@@ -194,7 +174,7 @@ public final class HealthCheckHttpHealthCheckArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param host The value of the host header in the HTTP2 health check request.
+         * @param host The value of the host header in the HTTP health check request.
          * If left empty (default value), the public IP on behalf of which this health
          * check is performed will be used.
          * 
@@ -207,7 +187,7 @@ public final class HealthCheckHttpHealthCheckArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param host The value of the host header in the HTTP2 health check request.
+         * @param host The value of the host header in the HTTP health check request.
          * If left empty (default value), the public IP on behalf of which this health
          * check is performed will be used.
          * 
@@ -219,9 +199,8 @@ public final class HealthCheckHttpHealthCheckArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param port The port number for the health check request.
-         * Must be specified if portName and portSpecification are not set
-         * or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+         * @param port The TCP port number for the HTTP health check request.
+         * The default value is 80.
          * 
          * @return builder
          * 
@@ -232,9 +211,8 @@ public final class HealthCheckHttpHealthCheckArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param port The port number for the health check request.
-         * Must be specified if portName and portSpecification are not set
-         * or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
+         * @param port The TCP port number for the HTTP health check request.
+         * The default value is 80.
          * 
          * @return builder
          * 
@@ -269,15 +247,6 @@ public final class HealthCheckHttpHealthCheckArgs extends com.pulumi.resources.R
         /**
          * @param portSpecification Specifies how port is selected for health checking, can be one of the
          * following values:
-         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
-         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
-         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
-         *   network endpoint is used for health checking. For other backends, the
-         *   port or named port specified in the Backend Service is used for health
-         *   checking.
-         *   If not specified, gRPC health check follows behavior specified in `port` and
-         *   `portName` fields.
-         *   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
          * 
          * @return builder
          * 
@@ -290,15 +259,6 @@ public final class HealthCheckHttpHealthCheckArgs extends com.pulumi.resources.R
         /**
          * @param portSpecification Specifies how port is selected for health checking, can be one of the
          * following values:
-         * * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
-         * * `USE_NAMED_PORT`: The `portName` is used for health checking.
-         * * `USE_SERVING_PORT`: For NetworkEndpointGroup, the port specified for each
-         *   network endpoint is used for health checking. For other backends, the
-         *   port or named port specified in the Backend Service is used for health
-         *   checking.
-         *   If not specified, gRPC health check follows behavior specified in `port` and
-         *   `portName` fields.
-         *   Possible values are `USE_FIXED_PORT`, `USE_NAMED_PORT`, and `USE_SERVING_PORT`.
          * 
          * @return builder
          * 
@@ -335,7 +295,7 @@ public final class HealthCheckHttpHealthCheckArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param requestPath The request path of the HTTP2 health check request.
+         * @param requestPath The request path of the HTTP health check request.
          * The default value is /.
          * 
          * @return builder
@@ -347,7 +307,7 @@ public final class HealthCheckHttpHealthCheckArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param requestPath The request path of the HTTP2 health check request.
+         * @param requestPath The request path of the HTTP health check request.
          * The default value is /.
          * 
          * @return builder

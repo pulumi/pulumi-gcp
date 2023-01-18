@@ -109,7 +109,8 @@ type Network struct {
 	// Enable ULA internal ipv6 on this network. Enabling this feature will assign
 	// a /48 from google defined ULA prefix fd20::/20.
 	EnableUlaInternalIpv6 pulumi.BoolPtrOutput `pulumi:"enableUlaInternalIpv6"`
-	// The gateway address for default routing out of the network. This value is selected by GCP.
+	// The gateway address for default routing out of the network. This value
+	// is selected by GCP.
 	GatewayIpv4 pulumi.StringOutput `pulumi:"gatewayIpv4"`
 	// When enabling ula internal ipv6, caller optionally can specify the /48 range
 	// they want from the google defined ULA prefix fd20::/20. The input must be a
@@ -186,7 +187,8 @@ type networkState struct {
 	// Enable ULA internal ipv6 on this network. Enabling this feature will assign
 	// a /48 from google defined ULA prefix fd20::/20.
 	EnableUlaInternalIpv6 *bool `pulumi:"enableUlaInternalIpv6"`
-	// The gateway address for default routing out of the network. This value is selected by GCP.
+	// The gateway address for default routing out of the network. This value
+	// is selected by GCP.
 	GatewayIpv4 *string `pulumi:"gatewayIpv4"`
 	// When enabling ula internal ipv6, caller optionally can specify the /48 range
 	// they want from the google defined ULA prefix fd20::/20. The input must be a
@@ -235,7 +237,8 @@ type NetworkState struct {
 	// Enable ULA internal ipv6 on this network. Enabling this feature will assign
 	// a /48 from google defined ULA prefix fd20::/20.
 	EnableUlaInternalIpv6 pulumi.BoolPtrInput
-	// The gateway address for default routing out of the network. This value is selected by GCP.
+	// The gateway address for default routing out of the network. This value
+	// is selected by GCP.
 	GatewayIpv4 pulumi.StringPtrInput
 	// When enabling ula internal ipv6, caller optionally can specify the /48 range
 	// they want from the google defined ULA prefix fd20::/20. The input must be a
@@ -477,7 +480,8 @@ func (o NetworkOutput) EnableUlaInternalIpv6() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.BoolPtrOutput { return v.EnableUlaInternalIpv6 }).(pulumi.BoolPtrOutput)
 }
 
-// The gateway address for default routing out of the network. This value is selected by GCP.
+// The gateway address for default routing out of the network. This value
+// is selected by GCP.
 func (o NetworkOutput) GatewayIpv4() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.GatewayIpv4 }).(pulumi.StringOutput)
 }

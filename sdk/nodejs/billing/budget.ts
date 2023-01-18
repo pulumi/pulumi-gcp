@@ -266,7 +266,8 @@ export class Budget extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
-     * Resource name of the budget. The resource name implies the scope of a budget. Values are of the form
+     * Resource name of the budget. The resource name
+     * implies the scope of a budget. Values are of the form
      * billingAccounts/{billingAccountId}/budgets/{budgetId}.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -350,7 +351,8 @@ export interface BudgetState {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Resource name of the budget. The resource name implies the scope of a budget. Values are of the form
+     * Resource name of the budget. The resource name
+     * implies the scope of a budget. Values are of the form
      * billingAccounts/{billingAccountId}/budgets/{budgetId}.
      */
     name?: pulumi.Input<string>;

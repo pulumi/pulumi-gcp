@@ -25,6 +25,154 @@ import javax.annotation.Nullable;
  *     * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
  * 
  * ## Example Usage
+ * ### Apigee Organization Cloud Basic
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.servicenetworking.Connection;
+ * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
+ * import com.pulumi.gcp.apigee.Organization;
+ * import com.pulumi.gcp.apigee.OrganizationArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var current = OrganizationsFunctions.getClientConfig();
+ * 
+ *         var apigeeNetwork = new Network(&#34;apigeeNetwork&#34;);
+ * 
+ *         var apigeeRange = new GlobalAddress(&#34;apigeeRange&#34;, GlobalAddressArgs.builder()        
+ *             .purpose(&#34;VPC_PEERING&#34;)
+ *             .addressType(&#34;INTERNAL&#34;)
+ *             .prefixLength(16)
+ *             .network(apigeeNetwork.id())
+ *             .build());
+ * 
+ *         var apigeeVpcConnection = new Connection(&#34;apigeeVpcConnection&#34;, ConnectionArgs.builder()        
+ *             .network(apigeeNetwork.id())
+ *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .reservedPeeringRanges(apigeeRange.name())
+ *             .build());
+ * 
+ *         var org = new Organization(&#34;org&#34;, OrganizationArgs.builder()        
+ *             .analyticsRegion(&#34;us-central1&#34;)
+ *             .projectId(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()))
+ *             .authorizedNetwork(apigeeNetwork.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(apigeeVpcConnection)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Apigee Organization Cloud Full
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.servicenetworking.Connection;
+ * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
+ * import com.pulumi.gcp.kms.KeyRing;
+ * import com.pulumi.gcp.kms.KeyRingArgs;
+ * import com.pulumi.gcp.kms.CryptoKey;
+ * import com.pulumi.gcp.kms.CryptoKeyArgs;
+ * import com.pulumi.gcp.projects.ServiceIdentity;
+ * import com.pulumi.gcp.projects.ServiceIdentityArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+ * import com.pulumi.gcp.apigee.Organization;
+ * import com.pulumi.gcp.apigee.OrganizationArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var current = OrganizationsFunctions.getClientConfig();
+ * 
+ *         var apigeeNetwork = new Network(&#34;apigeeNetwork&#34;);
+ * 
+ *         var apigeeRange = new GlobalAddress(&#34;apigeeRange&#34;, GlobalAddressArgs.builder()        
+ *             .purpose(&#34;VPC_PEERING&#34;)
+ *             .addressType(&#34;INTERNAL&#34;)
+ *             .prefixLength(16)
+ *             .network(apigeeNetwork.id())
+ *             .build());
+ * 
+ *         var apigeeVpcConnection = new Connection(&#34;apigeeVpcConnection&#34;, ConnectionArgs.builder()        
+ *             .network(apigeeNetwork.id())
+ *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .reservedPeeringRanges(apigeeRange.name())
+ *             .build());
+ * 
+ *         var apigeeKeyring = new KeyRing(&#34;apigeeKeyring&#34;, KeyRingArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .build());
+ * 
+ *         var apigeeKey = new CryptoKey(&#34;apigeeKey&#34;, CryptoKeyArgs.builder()        
+ *             .keyRing(apigeeKeyring.id())
+ *             .build());
+ * 
+ *         var apigeeSa = new ServiceIdentity(&#34;apigeeSa&#34;, ServiceIdentityArgs.builder()        
+ *             .project(google_project.project().project_id())
+ *             .service(google_project_service.apigee().service())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var apigeeSaKeyuser = new CryptoKeyIAMBinding(&#34;apigeeSaKeyuser&#34;, CryptoKeyIAMBindingArgs.builder()        
+ *             .cryptoKeyId(apigeeKey.id())
+ *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
+ *             .members(apigeeSa.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .build());
+ * 
+ *         var org = new Organization(&#34;org&#34;, OrganizationArgs.builder()        
+ *             .analyticsRegion(&#34;us-central1&#34;)
+ *             .displayName(&#34;apigee-org&#34;)
+ *             .description(&#34;Auto-provisioned Apigee Org.&#34;)
+ *             .projectId(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()))
+ *             .authorizedNetwork(apigeeNetwork.id())
+ *             .runtimeDatabaseEncryptionKeyName(apigeeKey.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     apigeeVpcConnection,
+ *                     apigeeSaKeyuser)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -88,16 +236,16 @@ public class Organization extends com.pulumi.resources.CustomResource {
         return this.billingType;
     }
     /**
-     * Output only. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when &#39;RuntimeType&#39;
-     * is CLOUD. A base64-encoded string.
+     * Output only. Base64-encoded public certificate for the root CA of the Apigee organization.
+     * Valid only when `RuntimeType` is CLOUD. A base64-encoded string.
      * 
      */
     @Export(name="caCertificate", type=String.class, parameters={})
     private Output<String> caCertificate;
 
     /**
-     * @return Output only. Base64-encoded public certificate for the root CA of the Apigee organization. Valid only when &#39;RuntimeType&#39;
-     * is CLOUD. A base64-encoded string.
+     * @return Output only. Base64-encoded public certificate for the root CA of the Apigee organization.
+     * Valid only when `RuntimeType` is CLOUD. A base64-encoded string.
      * 
      */
     public Output<String> caCertificate() {
@@ -238,16 +386,16 @@ public class Organization extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.runtimeType);
     }
     /**
-     * Output only. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation
-     * purposes only) or paid (full subscription has been purchased).
+     * Output only. Subscription type of the Apigee organization.
+     * Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased).
      * 
      */
     @Export(name="subscriptionType", type=String.class, parameters={})
     private Output<String> subscriptionType;
 
     /**
-     * @return Output only. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation
-     * purposes only) or paid (full subscription has been purchased).
+     * @return Output only. Subscription type of the Apigee organization.
+     * Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased).
      * 
      */
     public Output<String> subscriptionType() {

@@ -13,7 +13,8 @@ namespace Pulumi.Gcp.Diagflow.Inputs
     public sealed class CxFlowEventHandlerTriggerFulfillmentMessageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A collection of text responses.
+        /// The text response message.
+        /// Structure is documented below.
         /// </summary>
         [Input("text")]
         public Input<Inputs.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs>? Text { get; set; }

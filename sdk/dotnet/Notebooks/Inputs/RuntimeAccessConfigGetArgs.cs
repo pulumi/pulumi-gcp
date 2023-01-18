@@ -21,7 +21,6 @@ namespace Pulumi.Gcp.Notebooks.Inputs
         public Input<string>? AccessType { get; set; }
 
         /// <summary>
-        /// -
         /// The proxy endpoint that is used to access the runtime.
         /// </summary>
         [Input("proxyUri")]

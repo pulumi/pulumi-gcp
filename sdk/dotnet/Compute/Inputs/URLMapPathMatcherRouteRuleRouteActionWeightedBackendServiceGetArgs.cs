@@ -13,7 +13,9 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The full or partial URL to the BackendService resource being mirrored to.
+        /// The full or partial URL to the default BackendService resource. Before forwarding the
+        /// request to backendService, the loadbalancer applies any relevant headerActions
+        /// specified as part of this backendServiceWeight.
         /// </summary>
         [Input("backendService", required: true)]
         public Input<string> BackendService { get; set; } = null!;

@@ -221,26 +221,6 @@ type WorkforcePoolProvider struct {
 	// provider should not be accepted.
 	// The expression must output a boolean representing whether to allow the federation.
 	// The following keywords may be referenced in the expressions:
-	// * `assertion`: JSON representing the authentication credential issued by the provider.
-	// * `google`: The Google attributes mapped from the assertion in the `attributeMappings`.
-	//   `google.profile_photo` and `google.display_name` are not supported.
-	// * `attribute`: The custom attributes mapped from the assertion in the `attributeMappings`.
-	//   The maximum length of the attribute condition expression is 4096 characters.
-	//   If unspecified, all valid authentication credentials will be accepted.
-	//   The following example shows how to only allow credentials with a mapped `google.groups` value of `admins`:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	AttributeCondition pulumi.StringPtrOutput `pulumi:"attributeCondition"`
 	// Maps attributes from the authentication credentials issued by an external identity provider
 	// to Google Cloud attributes, such as `subject` and `segment`.
@@ -304,8 +284,8 @@ type WorkforcePoolProvider struct {
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// The location for the resource.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Output only. The resource name of the provider. Format:
-	// 'locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}'
+	// Output only. The resource name of the provider.
+	// Format: `locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Represents an OpenId Connect 1.0 identity provider.
 	// Structure is documented below.
@@ -317,10 +297,12 @@ type WorkforcePoolProvider struct {
 	// Represents a SAML identity provider.
 	// Structure is documented below.
 	Saml WorkforcePoolProviderSamlPtrOutput `pulumi:"saml"`
-	// The current state of the provider. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The provider is active and may be
-	// used to validate authentication credentials. * DELETED: The provider is soft-deleted. Soft-deleted providers are
-	// permanently deleted after approximately 30 days. You can restore a soft-deleted provider using
-	// [providers.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePoolProvider).
+	// The current state of the provider.
+	// * STATE_UNSPECIFIED: State unspecified.
+	// * ACTIVE: The provider is active and may be used to validate authentication credentials.
+	// * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently
+	//   deleted after approximately 30 days. You can restore a soft-deleted provider using
+	//   [providers.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePoolProvider).
 	State pulumi.StringOutput `pulumi:"state"`
 	// The ID to use for the pool, which becomes the final component of the resource name.
 	// The IDs must be a globally unique string of 6 to 63 lowercase letters, digits, or hyphens.
@@ -372,26 +354,6 @@ type workforcePoolProviderState struct {
 	// provider should not be accepted.
 	// The expression must output a boolean representing whether to allow the federation.
 	// The following keywords may be referenced in the expressions:
-	// * `assertion`: JSON representing the authentication credential issued by the provider.
-	// * `google`: The Google attributes mapped from the assertion in the `attributeMappings`.
-	//   `google.profile_photo` and `google.display_name` are not supported.
-	// * `attribute`: The custom attributes mapped from the assertion in the `attributeMappings`.
-	//   The maximum length of the attribute condition expression is 4096 characters.
-	//   If unspecified, all valid authentication credentials will be accepted.
-	//   The following example shows how to only allow credentials with a mapped `google.groups` value of `admins`:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	AttributeCondition *string `pulumi:"attributeCondition"`
 	// Maps attributes from the authentication credentials issued by an external identity provider
 	// to Google Cloud attributes, such as `subject` and `segment`.
@@ -455,8 +417,8 @@ type workforcePoolProviderState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The location for the resource.
 	Location *string `pulumi:"location"`
-	// Output only. The resource name of the provider. Format:
-	// 'locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}'
+	// Output only. The resource name of the provider.
+	// Format: `locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}`
 	Name *string `pulumi:"name"`
 	// Represents an OpenId Connect 1.0 identity provider.
 	// Structure is documented below.
@@ -468,10 +430,12 @@ type workforcePoolProviderState struct {
 	// Represents a SAML identity provider.
 	// Structure is documented below.
 	Saml *WorkforcePoolProviderSaml `pulumi:"saml"`
-	// The current state of the provider. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The provider is active and may be
-	// used to validate authentication credentials. * DELETED: The provider is soft-deleted. Soft-deleted providers are
-	// permanently deleted after approximately 30 days. You can restore a soft-deleted provider using
-	// [providers.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePoolProvider).
+	// The current state of the provider.
+	// * STATE_UNSPECIFIED: State unspecified.
+	// * ACTIVE: The provider is active and may be used to validate authentication credentials.
+	// * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently
+	//   deleted after approximately 30 days. You can restore a soft-deleted provider using
+	//   [providers.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePoolProvider).
 	State *string `pulumi:"state"`
 	// The ID to use for the pool, which becomes the final component of the resource name.
 	// The IDs must be a globally unique string of 6 to 63 lowercase letters, digits, or hyphens.
@@ -486,26 +450,6 @@ type WorkforcePoolProviderState struct {
 	// provider should not be accepted.
 	// The expression must output a boolean representing whether to allow the federation.
 	// The following keywords may be referenced in the expressions:
-	// * `assertion`: JSON representing the authentication credential issued by the provider.
-	// * `google`: The Google attributes mapped from the assertion in the `attributeMappings`.
-	//   `google.profile_photo` and `google.display_name` are not supported.
-	// * `attribute`: The custom attributes mapped from the assertion in the `attributeMappings`.
-	//   The maximum length of the attribute condition expression is 4096 characters.
-	//   If unspecified, all valid authentication credentials will be accepted.
-	//   The following example shows how to only allow credentials with a mapped `google.groups` value of `admins`:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	AttributeCondition pulumi.StringPtrInput
 	// Maps attributes from the authentication credentials issued by an external identity provider
 	// to Google Cloud attributes, such as `subject` and `segment`.
@@ -569,8 +513,8 @@ type WorkforcePoolProviderState struct {
 	DisplayName pulumi.StringPtrInput
 	// The location for the resource.
 	Location pulumi.StringPtrInput
-	// Output only. The resource name of the provider. Format:
-	// 'locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}'
+	// Output only. The resource name of the provider.
+	// Format: `locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}`
 	Name pulumi.StringPtrInput
 	// Represents an OpenId Connect 1.0 identity provider.
 	// Structure is documented below.
@@ -582,10 +526,12 @@ type WorkforcePoolProviderState struct {
 	// Represents a SAML identity provider.
 	// Structure is documented below.
 	Saml WorkforcePoolProviderSamlPtrInput
-	// The current state of the provider. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The provider is active and may be
-	// used to validate authentication credentials. * DELETED: The provider is soft-deleted. Soft-deleted providers are
-	// permanently deleted after approximately 30 days. You can restore a soft-deleted provider using
-	// [providers.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePoolProvider).
+	// The current state of the provider.
+	// * STATE_UNSPECIFIED: State unspecified.
+	// * ACTIVE: The provider is active and may be used to validate authentication credentials.
+	// * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently
+	//   deleted after approximately 30 days. You can restore a soft-deleted provider using
+	//   [providers.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePoolProvider).
 	State pulumi.StringPtrInput
 	// The ID to use for the pool, which becomes the final component of the resource name.
 	// The IDs must be a globally unique string of 6 to 63 lowercase letters, digits, or hyphens.
@@ -604,26 +550,6 @@ type workforcePoolProviderArgs struct {
 	// provider should not be accepted.
 	// The expression must output a boolean representing whether to allow the federation.
 	// The following keywords may be referenced in the expressions:
-	// * `assertion`: JSON representing the authentication credential issued by the provider.
-	// * `google`: The Google attributes mapped from the assertion in the `attributeMappings`.
-	//   `google.profile_photo` and `google.display_name` are not supported.
-	// * `attribute`: The custom attributes mapped from the assertion in the `attributeMappings`.
-	//   The maximum length of the attribute condition expression is 4096 characters.
-	//   If unspecified, all valid authentication credentials will be accepted.
-	//   The following example shows how to only allow credentials with a mapped `google.groups` value of `admins`:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	AttributeCondition *string `pulumi:"attributeCondition"`
 	// Maps attributes from the authentication credentials issued by an external identity provider
 	// to Google Cloud attributes, such as `subject` and `segment`.
@@ -711,26 +637,6 @@ type WorkforcePoolProviderArgs struct {
 	// provider should not be accepted.
 	// The expression must output a boolean representing whether to allow the federation.
 	// The following keywords may be referenced in the expressions:
-	// * `assertion`: JSON representing the authentication credential issued by the provider.
-	// * `google`: The Google attributes mapped from the assertion in the `attributeMappings`.
-	//   `google.profile_photo` and `google.display_name` are not supported.
-	// * `attribute`: The custom attributes mapped from the assertion in the `attributeMappings`.
-	//   The maximum length of the attribute condition expression is 4096 characters.
-	//   If unspecified, all valid authentication credentials will be accepted.
-	//   The following example shows how to only allow credentials with a mapped `google.groups` value of `admins`:
-	// ```go
-	// package main
-	//
-	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	// )
-	//
-	// func main() {
-	// 	pulumi.Run(func(ctx *pulumi.Context) error {
-	// 		return nil
-	// 	})
-	// }
-	// ```
 	AttributeCondition pulumi.StringPtrInput
 	// Maps attributes from the authentication credentials issued by an external identity provider
 	// to Google Cloud attributes, such as `subject` and `segment`.
@@ -903,30 +809,6 @@ func (o WorkforcePoolProviderOutput) ToWorkforcePoolProviderOutputWithContext(ct
 // provider should not be accepted.
 // The expression must output a boolean representing whether to allow the federation.
 // The following keywords may be referenced in the expressions:
-//   - `assertion`: JSON representing the authentication credential issued by the provider.
-//   - `google`: The Google attributes mapped from the assertion in the `attributeMappings`.
-//     `google.profile_photo` and `google.display_name` are not supported.
-//   - `attribute`: The custom attributes mapped from the assertion in the `attributeMappings`.
-//     The maximum length of the attribute condition expression is 4096 characters.
-//     If unspecified, all valid authentication credentials will be accepted.
-//     The following example shows how to only allow credentials with a mapped `google.groups` value of `admins`:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
 func (o WorkforcePoolProviderOutput) AttributeCondition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkforcePoolProvider) pulumi.StringPtrOutput { return v.AttributeCondition }).(pulumi.StringPtrOutput)
 }
@@ -1012,8 +894,8 @@ func (o WorkforcePoolProviderOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkforcePoolProvider) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Output only. The resource name of the provider. Format:
-// 'locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}'
+// Output only. The resource name of the provider.
+// Format: `locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}`
 func (o WorkforcePoolProviderOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkforcePoolProvider) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -1037,10 +919,12 @@ func (o WorkforcePoolProviderOutput) Saml() WorkforcePoolProviderSamlPtrOutput {
 	return o.ApplyT(func(v *WorkforcePoolProvider) WorkforcePoolProviderSamlPtrOutput { return v.Saml }).(WorkforcePoolProviderSamlPtrOutput)
 }
 
-// The current state of the provider. * STATE_UNSPECIFIED: State unspecified. * ACTIVE: The provider is active and may be
-// used to validate authentication credentials. * DELETED: The provider is soft-deleted. Soft-deleted providers are
-// permanently deleted after approximately 30 days. You can restore a soft-deleted provider using
-// [providers.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePoolProvider).
+// The current state of the provider.
+//   - STATE_UNSPECIFIED: State unspecified.
+//   - ACTIVE: The provider is active and may be used to validate authentication credentials.
+//   - DELETED: The provider is soft-deleted. Soft-deleted providers are permanently
+//     deleted after approximately 30 days. You can restore a soft-deleted provider using
+//     [providers.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePoolProvider).
 func (o WorkforcePoolProviderOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkforcePoolProvider) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

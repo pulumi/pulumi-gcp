@@ -16,16 +16,32 @@ public final class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec
 
     public static final AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs Empty = new AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs();
 
+    /**
+     * The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
+     * 
+     */
     @Import(name="metricName")
     private @Nullable Output<String> metricName;
 
+    /**
+     * @return The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
+     * 
+     */
     public Optional<Output<String>> metricName() {
         return Optional.ofNullable(this.metricName);
     }
 
+    /**
+     * The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
+     * 
+     */
     @Import(name="target")
     private @Nullable Output<Integer> target;
 
+    /**
+     * @return The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
+     * 
+     */
     public Optional<Output<Integer>> target() {
         return Optional.ofNullable(this.target);
     }
@@ -55,20 +71,44 @@ public final class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec
             $ = new AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param metricName The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
+         * 
+         * @return builder
+         * 
+         */
         public Builder metricName(@Nullable Output<String> metricName) {
             $.metricName = metricName;
             return this;
         }
 
+        /**
+         * @param metricName The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
+         * 
+         * @return builder
+         * 
+         */
         public Builder metricName(String metricName) {
             return metricName(Output.of(metricName));
         }
 
+        /**
+         * @param target The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
+         * 
+         * @return builder
+         * 
+         */
         public Builder target(@Nullable Output<Integer> target) {
             $.target = target;
             return this;
         }
 
+        /**
+         * @param target The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
+         * 
+         * @return builder
+         * 
+         */
         public Builder target(Integer target) {
             return target(Output.of(target));
         }

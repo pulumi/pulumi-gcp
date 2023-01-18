@@ -171,14 +171,16 @@ public final class FolderFeedState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the folder where this feed has been created. Both [FOLDER_NUMBER] and folders/[FOLDER_NUMBER] are accepted.
+     * The ID of the folder where this feed has been created. Both [FOLDER_NUMBER]
+     * and folders/[FOLDER_NUMBER] are accepted.
      * 
      */
     @Import(name="folderId")
     private @Nullable Output<String> folderId;
 
     /**
-     * @return The ID of the folder where this feed has been created. Both [FOLDER_NUMBER] and folders/[FOLDER_NUMBER] are accepted.
+     * @return The ID of the folder where this feed has been created. Both [FOLDER_NUMBER]
+     * and folders/[FOLDER_NUMBER] are accepted.
      * 
      */
     public Optional<Output<String>> folderId() {
@@ -461,7 +463,8 @@ public final class FolderFeedState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param folderId The ID of the folder where this feed has been created. Both [FOLDER_NUMBER] and folders/[FOLDER_NUMBER] are accepted.
+         * @param folderId The ID of the folder where this feed has been created. Both [FOLDER_NUMBER]
+         * and folders/[FOLDER_NUMBER] are accepted.
          * 
          * @return builder
          * 
@@ -472,7 +475,8 @@ public final class FolderFeedState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param folderId The ID of the folder where this feed has been created. Both [FOLDER_NUMBER] and folders/[FOLDER_NUMBER] are accepted.
+         * @param folderId The ID of the folder where this feed has been created. Both [FOLDER_NUMBER]
+         * and folders/[FOLDER_NUMBER] are accepted.
          * 
          * @return builder
          * 

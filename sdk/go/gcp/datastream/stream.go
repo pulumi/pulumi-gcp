@@ -297,8 +297,7 @@ type Stream struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Labels.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The geographic location where the dataset should reside.
-	// See https://cloud.google.com/bigquery/docs/locations for supported locations.
+	// The name of the location this stream is located in.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The stream's name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -372,8 +371,7 @@ type streamState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Labels.
 	Labels map[string]string `pulumi:"labels"`
-	// The geographic location where the dataset should reside.
-	// See https://cloud.google.com/bigquery/docs/locations for supported locations.
+	// The name of the location this stream is located in.
 	Location *string `pulumi:"location"`
 	// The stream's name.
 	Name *string `pulumi:"name"`
@@ -404,8 +402,7 @@ type StreamState struct {
 	DisplayName pulumi.StringPtrInput
 	// Labels.
 	Labels pulumi.StringMapInput
-	// The geographic location where the dataset should reside.
-	// See https://cloud.google.com/bigquery/docs/locations for supported locations.
+	// The name of the location this stream is located in.
 	Location pulumi.StringPtrInput
 	// The stream's name.
 	Name pulumi.StringPtrInput
@@ -440,8 +437,7 @@ type streamArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// Labels.
 	Labels map[string]string `pulumi:"labels"`
-	// The geographic location where the dataset should reside.
-	// See https://cloud.google.com/bigquery/docs/locations for supported locations.
+	// The name of the location this stream is located in.
 	Location string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -469,8 +465,7 @@ type StreamArgs struct {
 	DisplayName pulumi.StringInput
 	// Labels.
 	Labels pulumi.StringMapInput
-	// The geographic location where the dataset should reside.
-	// See https://cloud.google.com/bigquery/docs/locations for supported locations.
+	// The name of the location this stream is located in.
 	Location pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -601,8 +596,7 @@ func (o StreamOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The geographic location where the dataset should reside.
-// See https://cloud.google.com/bigquery/docs/locations for supported locations.
+// The name of the location this stream is located in.
 func (o StreamOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

@@ -128,6 +128,7 @@ export class Cluster extends pulumi.CustomResource {
     public readonly automatedBackupPolicy!: pulumi.Output<outputs.alloydb.ClusterAutomatedBackupPolicy | undefined>;
     /**
      * Cluster created from backup.
+     * Structure is documented below.
      */
     public /*out*/ readonly backupSources!: pulumi.Output<outputs.alloydb.ClusterBackupSource[]>;
     /**
@@ -135,8 +136,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly clusterId!: pulumi.Output<string>;
     /**
-     * The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This
-     * field cannot be changed after cluster creation.
+     * The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
      */
     public /*out*/ readonly databaseVersion!: pulumi.Output<string>;
     /**
@@ -149,15 +149,16 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly initialUser!: pulumi.Output<outputs.alloydb.ClusterInitialUser | undefined>;
     /**
-     * Labels to apply to backups created using this configuration.
+     * User-defined labels for the alloydb cluster.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+     * The location where the alloydb cluster should reside.
      */
     public readonly location!: pulumi.Output<string | undefined>;
     /**
      * Cluster created via DMS migration.
+     * Structure is documented below.
      */
     public /*out*/ readonly migrationSources!: pulumi.Output<outputs.alloydb.ClusterMigrationSource[]>;
     /**
@@ -244,6 +245,7 @@ export interface ClusterState {
     automatedBackupPolicy?: pulumi.Input<inputs.alloydb.ClusterAutomatedBackupPolicy>;
     /**
      * Cluster created from backup.
+     * Structure is documented below.
      */
     backupSources?: pulumi.Input<pulumi.Input<inputs.alloydb.ClusterBackupSource>[]>;
     /**
@@ -251,8 +253,7 @@ export interface ClusterState {
      */
     clusterId?: pulumi.Input<string>;
     /**
-     * The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This
-     * field cannot be changed after cluster creation.
+     * The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
      */
     databaseVersion?: pulumi.Input<string>;
     /**
@@ -265,15 +266,16 @@ export interface ClusterState {
      */
     initialUser?: pulumi.Input<inputs.alloydb.ClusterInitialUser>;
     /**
-     * Labels to apply to backups created using this configuration.
+     * User-defined labels for the alloydb cluster.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+     * The location where the alloydb cluster should reside.
      */
     location?: pulumi.Input<string>;
     /**
      * Cluster created via DMS migration.
+     * Structure is documented below.
      */
     migrationSources?: pulumi.Input<pulumi.Input<inputs.alloydb.ClusterMigrationSource>[]>;
     /**
@@ -320,11 +322,11 @@ export interface ClusterArgs {
      */
     initialUser?: pulumi.Input<inputs.alloydb.ClusterInitialUser>;
     /**
-     * Labels to apply to backups created using this configuration.
+     * User-defined labels for the alloydb cluster.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+     * The location where the alloydb cluster should reside.
      */
     location?: pulumi.Input<string>;
     /**

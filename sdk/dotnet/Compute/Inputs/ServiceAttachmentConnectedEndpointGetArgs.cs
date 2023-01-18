@@ -12,9 +12,16 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class ServiceAttachmentConnectedEndpointGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The URL of the consumer forwarding rule.
+        /// </summary>
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
 
+        /// <summary>
+        /// The status of the connection from the consumer forwarding rule to
+        /// this service attachment.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 

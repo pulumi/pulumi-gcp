@@ -29,6 +29,13 @@ class DeviceConfigArgs:
                  cloud_update_time: Optional[pulumi.Input[str]] = None,
                  device_ack_time: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] binary_data: The device state data.
+        :param pulumi.Input[str] cloud_update_time: The time at which this configuration version was updated in Cloud IoT Core.
+        :param pulumi.Input[str] device_ack_time: The time at which Cloud IoT Core received the acknowledgment from the device,
+               indicating that the device has received this configuration version.
+        :param pulumi.Input[str] version: The version of this update.
+        """
         if binary_data is not None:
             pulumi.set(__self__, "binary_data", binary_data)
         if cloud_update_time is not None:
@@ -41,6 +48,9 @@ class DeviceConfigArgs:
     @property
     @pulumi.getter(name="binaryData")
     def binary_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        The device state data.
+        """
         return pulumi.get(self, "binary_data")
 
     @binary_data.setter
@@ -50,6 +60,9 @@ class DeviceConfigArgs:
     @property
     @pulumi.getter(name="cloudUpdateTime")
     def cloud_update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time at which this configuration version was updated in Cloud IoT Core.
+        """
         return pulumi.get(self, "cloud_update_time")
 
     @cloud_update_time.setter
@@ -59,6 +72,10 @@ class DeviceConfigArgs:
     @property
     @pulumi.getter(name="deviceAckTime")
     def device_ack_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time at which Cloud IoT Core received the acknowledgment from the device,
+        indicating that the device has received this configuration version.
+        """
         return pulumi.get(self, "device_ack_time")
 
     @device_ack_time.setter
@@ -68,6 +85,9 @@ class DeviceConfigArgs:
     @property
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of this update.
+        """
         return pulumi.get(self, "version")
 
     @version.setter
@@ -167,10 +187,8 @@ class DeviceGatewayConfigArgs:
         :param pulumi.Input[str] gateway_type: Indicates whether the device is a gateway.
                Default value is `NON_GATEWAY`.
                Possible values are `GATEWAY` and `NON_GATEWAY`.
-        :param pulumi.Input[str] last_accessed_gateway_id: -
-               The ID of the gateway the device accessed most recently.
-        :param pulumi.Input[str] last_accessed_gateway_time: -
-               The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
+        :param pulumi.Input[str] last_accessed_gateway_id: The ID of the gateway the device accessed most recently.
+        :param pulumi.Input[str] last_accessed_gateway_time: The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
         """
         if gateway_auth_method is not None:
             pulumi.set(__self__, "gateway_auth_method", gateway_auth_method)
@@ -212,7 +230,6 @@ class DeviceGatewayConfigArgs:
     @pulumi.getter(name="lastAccessedGatewayId")
     def last_accessed_gateway_id(self) -> Optional[pulumi.Input[str]]:
         """
-        -
         The ID of the gateway the device accessed most recently.
         """
         return pulumi.get(self, "last_accessed_gateway_id")
@@ -225,7 +242,6 @@ class DeviceGatewayConfigArgs:
     @pulumi.getter(name="lastAccessedGatewayTime")
     def last_accessed_gateway_time(self) -> Optional[pulumi.Input[str]]:
         """
-        -
         The most recent time at which the device accessed the gateway specified in last_accessed_gateway.
         """
         return pulumi.get(self, "last_accessed_gateway_time")
@@ -241,6 +257,11 @@ class DeviceLastErrorStatusArgs:
                  details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
                  message: Optional[pulumi.Input[str]] = None,
                  number: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] details: A list of messages that carry the error details.
+        :param pulumi.Input[str] message: A developer-facing error message, which should be in English.
+        :param pulumi.Input[int] number: The status code, which should be an enum value of google.rpc.Code.
+        """
         if details is not None:
             pulumi.set(__self__, "details", details)
         if message is not None:
@@ -251,6 +272,9 @@ class DeviceLastErrorStatusArgs:
     @property
     @pulumi.getter
     def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
+        """
+        A list of messages that carry the error details.
+        """
         return pulumi.get(self, "details")
 
     @details.setter
@@ -260,6 +284,9 @@ class DeviceLastErrorStatusArgs:
     @property
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        A developer-facing error message, which should be in English.
+        """
         return pulumi.get(self, "message")
 
     @message.setter
@@ -269,6 +296,9 @@ class DeviceLastErrorStatusArgs:
     @property
     @pulumi.getter
     def number(self) -> Optional[pulumi.Input[int]]:
+        """
+        The status code, which should be an enum value of google.rpc.Code.
+        """
         return pulumi.get(self, "number")
 
     @number.setter
@@ -281,6 +311,10 @@ class DeviceStateArgs:
     def __init__(__self__, *,
                  binary_data: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] binary_data: The device state data.
+        :param pulumi.Input[str] update_time: The time at which this state version was updated in Cloud IoT Core.
+        """
         if binary_data is not None:
             pulumi.set(__self__, "binary_data", binary_data)
         if update_time is not None:
@@ -289,6 +323,9 @@ class DeviceStateArgs:
     @property
     @pulumi.getter(name="binaryData")
     def binary_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        The device state data.
+        """
         return pulumi.get(self, "binary_data")
 
     @binary_data.setter
@@ -298,6 +335,9 @@ class DeviceStateArgs:
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time at which this state version was updated in Cloud IoT Core.
+        """
         return pulumi.get(self, "update_time")
 
     @update_time.setter

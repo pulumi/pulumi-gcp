@@ -16,23 +16,31 @@ public final class InstanceNodeArgs extends com.pulumi.resources.ResourceArgs {
     public static final InstanceNodeArgs Empty = new InstanceNodeArgs();
 
     /**
-     * an identifier for the resource with format `projects/{{project}}/locations/{{region}}/instances/{{name}}`
+     * Node identifying string. e.g. &#39;node-0&#39;, &#39;node-1&#39;
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return an identifier for the resource with format `projects/{{project}}/locations/{{region}}/instances/{{name}}`
+     * @return Node identifying string. e.g. &#39;node-0&#39;, &#39;node-1&#39;
      * 
      */
     public Optional<Output<String>> id() {
         return Optional.ofNullable(this.id);
     }
 
+    /**
+     * Location of the node.
+     * 
+     */
     @Import(name="zone")
     private @Nullable Output<String> zone;
 
+    /**
+     * @return Location of the node.
+     * 
+     */
     public Optional<Output<String>> zone() {
         return Optional.ofNullable(this.zone);
     }
@@ -63,7 +71,7 @@ public final class InstanceNodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param id an identifier for the resource with format `projects/{{project}}/locations/{{region}}/instances/{{name}}`
+         * @param id Node identifying string. e.g. &#39;node-0&#39;, &#39;node-1&#39;
          * 
          * @return builder
          * 
@@ -74,7 +82,7 @@ public final class InstanceNodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param id an identifier for the resource with format `projects/{{project}}/locations/{{region}}/instances/{{name}}`
+         * @param id Node identifying string. e.g. &#39;node-0&#39;, &#39;node-1&#39;
          * 
          * @return builder
          * 
@@ -83,11 +91,23 @@ public final class InstanceNodeArgs extends com.pulumi.resources.ResourceArgs {
             return id(Output.of(id));
         }
 
+        /**
+         * @param zone Location of the node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder zone(@Nullable Output<String> zone) {
             $.zone = zone;
             return this;
         }
 
+        /**
+         * @param zone Location of the node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder zone(String zone) {
             return zone(Output.of(zone));
         }

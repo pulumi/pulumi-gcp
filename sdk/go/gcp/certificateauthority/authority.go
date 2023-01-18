@@ -314,14 +314,16 @@ type Authority struct {
 	pulumi.CustomResourceState
 
 	// URLs for accessing content published by this CA, such as the CA certificate and CRLs.
+	// Structure is documented below.
 	AccessUrls AuthorityAccessUrlArrayOutput `pulumi:"accessUrls"`
 	// The user provided Resource ID for this Certificate Authority.
 	CertificateAuthorityId pulumi.StringOutput `pulumi:"certificateAuthorityId"`
 	// The config used to create a self-signed X.509 certificate or CSR.
 	// Structure is documented below.
 	Config AuthorityConfigOutput `pulumi:"config"`
-	// The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-	// resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// The time at which this CertificateAuthority was created.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
 	// state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
@@ -353,13 +355,15 @@ type Authority struct {
 	// Location of the CertificateAuthority. A full list of valid locations can be found by
 	// running `gcloud privateca locations list`.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The resource name for this CertificateAuthority in the format projects/*/locations/*/certificateAuthorities/*.
+	// The resource name for this CertificateAuthority in the format
+	// projects/*/locations/*/certificateAuthorities/*.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
 	PemCaCertificate pulumi.StringPtrOutput `pulumi:"pemCaCertificate"`
-	// This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such
-	// that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
-	// current CertificateAuthority's certificate.
+	// This CertificateAuthority's certificate chain, including the current
+	// CertificateAuthority's certificate. Ordered such that the root issuer is the final
+	// element (consistent with RFC 5246). For a self-signed CA, this will only list the current
+	// CertificateAuthority's certificate.
 	PemCaCertificates pulumi.StringArrayOutput `pulumi:"pemCaCertificates"`
 	// The name of the CaPool this Certificate Authority belongs to.
 	Pool pulumi.StringOutput `pulumi:"pool"`
@@ -383,8 +387,9 @@ type Authority struct {
 	// Default value is `SELF_SIGNED`.
 	// Possible values are `SELF_SIGNED` and `SUBORDINATE`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
-	// The time at which this CertificateAuthority was updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-	// resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// The time at which this CertificateAuthority was updated.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -433,14 +438,16 @@ func GetAuthority(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Authority resources.
 type authorityState struct {
 	// URLs for accessing content published by this CA, such as the CA certificate and CRLs.
+	// Structure is documented below.
 	AccessUrls []AuthorityAccessUrl `pulumi:"accessUrls"`
 	// The user provided Resource ID for this Certificate Authority.
 	CertificateAuthorityId *string `pulumi:"certificateAuthorityId"`
 	// The config used to create a self-signed X.509 certificate or CSR.
 	// Structure is documented below.
 	Config *AuthorityConfig `pulumi:"config"`
-	// The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-	// resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// The time at which this CertificateAuthority was created.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime *string `pulumi:"createTime"`
 	// Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
 	// state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
@@ -472,13 +479,15 @@ type authorityState struct {
 	// Location of the CertificateAuthority. A full list of valid locations can be found by
 	// running `gcloud privateca locations list`.
 	Location *string `pulumi:"location"`
-	// The resource name for this CertificateAuthority in the format projects/*/locations/*/certificateAuthorities/*.
+	// The resource name for this CertificateAuthority in the format
+	// projects/*/locations/*/certificateAuthorities/*.
 	Name *string `pulumi:"name"`
 	// The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
 	PemCaCertificate *string `pulumi:"pemCaCertificate"`
-	// This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such
-	// that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
-	// current CertificateAuthority's certificate.
+	// This CertificateAuthority's certificate chain, including the current
+	// CertificateAuthority's certificate. Ordered such that the root issuer is the final
+	// element (consistent with RFC 5246). For a self-signed CA, this will only list the current
+	// CertificateAuthority's certificate.
 	PemCaCertificates []string `pulumi:"pemCaCertificates"`
 	// The name of the CaPool this Certificate Authority belongs to.
 	Pool *string `pulumi:"pool"`
@@ -502,21 +511,24 @@ type authorityState struct {
 	// Default value is `SELF_SIGNED`.
 	// Possible values are `SELF_SIGNED` and `SUBORDINATE`.
 	Type *string `pulumi:"type"`
-	// The time at which this CertificateAuthority was updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-	// resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// The time at which this CertificateAuthority was updated.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type AuthorityState struct {
 	// URLs for accessing content published by this CA, such as the CA certificate and CRLs.
+	// Structure is documented below.
 	AccessUrls AuthorityAccessUrlArrayInput
 	// The user provided Resource ID for this Certificate Authority.
 	CertificateAuthorityId pulumi.StringPtrInput
 	// The config used to create a self-signed X.509 certificate or CSR.
 	// Structure is documented below.
 	Config AuthorityConfigPtrInput
-	// The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-	// resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// The time at which this CertificateAuthority was created.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringPtrInput
 	// Whether or not to allow Terraform to destroy the CertificateAuthority. Unless this field is set to false in Terraform
 	// state, a 'terraform destroy' or 'terraform apply' that would delete the instance will fail.
@@ -548,13 +560,15 @@ type AuthorityState struct {
 	// Location of the CertificateAuthority. A full list of valid locations can be found by
 	// running `gcloud privateca locations list`.
 	Location pulumi.StringPtrInput
-	// The resource name for this CertificateAuthority in the format projects/*/locations/*/certificateAuthorities/*.
+	// The resource name for this CertificateAuthority in the format
+	// projects/*/locations/*/certificateAuthorities/*.
 	Name pulumi.StringPtrInput
 	// The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
 	PemCaCertificate pulumi.StringPtrInput
-	// This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such
-	// that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
-	// current CertificateAuthority's certificate.
+	// This CertificateAuthority's certificate chain, including the current
+	// CertificateAuthority's certificate. Ordered such that the root issuer is the final
+	// element (consistent with RFC 5246). For a self-signed CA, this will only list the current
+	// CertificateAuthority's certificate.
 	PemCaCertificates pulumi.StringArrayInput
 	// The name of the CaPool this Certificate Authority belongs to.
 	Pool pulumi.StringPtrInput
@@ -578,8 +592,9 @@ type AuthorityState struct {
 	// Default value is `SELF_SIGNED`.
 	// Possible values are `SELF_SIGNED` and `SUBORDINATE`.
 	Type pulumi.StringPtrInput
-	// The time at which this CertificateAuthority was updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-	// resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// The time at which this CertificateAuthority was updated.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -796,6 +811,7 @@ func (o AuthorityOutput) ToAuthorityOutputWithContext(ctx context.Context) Autho
 }
 
 // URLs for accessing content published by this CA, such as the CA certificate and CRLs.
+// Structure is documented below.
 func (o AuthorityOutput) AccessUrls() AuthorityAccessUrlArrayOutput {
 	return o.ApplyT(func(v *Authority) AuthorityAccessUrlArrayOutput { return v.AccessUrls }).(AuthorityAccessUrlArrayOutput)
 }
@@ -811,8 +827,9 @@ func (o AuthorityOutput) Config() AuthorityConfigOutput {
 	return o.ApplyT(func(v *Authority) AuthorityConfigOutput { return v.Config }).(AuthorityConfigOutput)
 }
 
-// The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-// resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+// The time at which this CertificateAuthority was created.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o AuthorityOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Authority) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -871,7 +888,8 @@ func (o AuthorityOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Authority) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The resource name for this CertificateAuthority in the format projects/*/locations/*/certificateAuthorities/*.
+// The resource name for this CertificateAuthority in the format
+// projects/*/locations/*/certificateAuthorities/*.
 func (o AuthorityOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Authority) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -881,9 +899,10 @@ func (o AuthorityOutput) PemCaCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Authority) pulumi.StringPtrOutput { return v.PemCaCertificate }).(pulumi.StringPtrOutput)
 }
 
-// This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such
-// that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
-// current CertificateAuthority's certificate.
+// This CertificateAuthority's certificate chain, including the current
+// CertificateAuthority's certificate. Ordered such that the root issuer is the final
+// element (consistent with RFC 5246). For a self-signed CA, this will only list the current
+// CertificateAuthority's certificate.
 func (o AuthorityOutput) PemCaCertificates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Authority) pulumi.StringArrayOutput { return v.PemCaCertificates }).(pulumi.StringArrayOutput)
 }
@@ -928,8 +947,9 @@ func (o AuthorityOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Authority) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The time at which this CertificateAuthority was updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-// resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+// The time at which this CertificateAuthority was updated.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o AuthorityOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Authority) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

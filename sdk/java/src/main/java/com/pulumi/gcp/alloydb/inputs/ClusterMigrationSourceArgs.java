@@ -15,23 +15,47 @@ public final class ClusterMigrationSourceArgs extends com.pulumi.resources.Resou
 
     public static final ClusterMigrationSourceArgs Empty = new ClusterMigrationSourceArgs();
 
+    /**
+     * The host and port of the on-premises instance in host:port format
+     * 
+     */
     @Import(name="hostPort")
     private @Nullable Output<String> hostPort;
 
+    /**
+     * @return The host and port of the on-premises instance in host:port format
+     * 
+     */
     public Optional<Output<String>> hostPort() {
         return Optional.ofNullable(this.hostPort);
     }
 
+    /**
+     * Place holder for the external source identifier(e.g DMS job name) that created the cluster.
+     * 
+     */
     @Import(name="referenceId")
     private @Nullable Output<String> referenceId;
 
+    /**
+     * @return Place holder for the external source identifier(e.g DMS job name) that created the cluster.
+     * 
+     */
     public Optional<Output<String>> referenceId() {
         return Optional.ofNullable(this.referenceId);
     }
 
+    /**
+     * Type of migration source.
+     * 
+     */
     @Import(name="sourceType")
     private @Nullable Output<String> sourceType;
 
+    /**
+     * @return Type of migration source.
+     * 
+     */
     public Optional<Output<String>> sourceType() {
         return Optional.ofNullable(this.sourceType);
     }
@@ -62,29 +86,65 @@ public final class ClusterMigrationSourceArgs extends com.pulumi.resources.Resou
             $ = new ClusterMigrationSourceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param hostPort The host and port of the on-premises instance in host:port format
+         * 
+         * @return builder
+         * 
+         */
         public Builder hostPort(@Nullable Output<String> hostPort) {
             $.hostPort = hostPort;
             return this;
         }
 
+        /**
+         * @param hostPort The host and port of the on-premises instance in host:port format
+         * 
+         * @return builder
+         * 
+         */
         public Builder hostPort(String hostPort) {
             return hostPort(Output.of(hostPort));
         }
 
+        /**
+         * @param referenceId Place holder for the external source identifier(e.g DMS job name) that created the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder referenceId(@Nullable Output<String> referenceId) {
             $.referenceId = referenceId;
             return this;
         }
 
+        /**
+         * @param referenceId Place holder for the external source identifier(e.g DMS job name) that created the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder referenceId(String referenceId) {
             return referenceId(Output.of(referenceId));
         }
 
+        /**
+         * @param sourceType Type of migration source.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceType(@Nullable Output<String> sourceType) {
             $.sourceType = sourceType;
             return this;
         }
 
+        /**
+         * @param sourceType Type of migration source.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceType(String sourceType) {
             return sourceType(Output.of(sourceType));
         }

@@ -51,7 +51,9 @@ import (
 type ServiceAttachment struct {
 	pulumi.CustomResourceState
 
-	// An array of the consumer forwarding rules connected to this service attachment.
+	// An array of the consumer forwarding rules connected to this service
+	// attachment.
+	// Structure is documented below.
 	ConnectedEndpoints ServiceAttachmentConnectedEndpointArrayOutput `pulumi:"connectedEndpoints"`
 	// The connection preference to use for this service attachment. Valid
 	// values include "ACCEPT_AUTOMATIC", "ACCEPT_MANUAL".
@@ -74,7 +76,8 @@ type ServiceAttachment struct {
 	// address data in TCP connections that traverse proxies on their way to
 	// destination servers.
 	EnableProxyProtocol pulumi.BoolOutput `pulumi:"enableProxyProtocol"`
-	// Fingerprint of this resource. This field is used internally during updates of this resource.
+	// Fingerprint of this resource. This field is used internally during
+	// updates of this resource.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -138,7 +141,9 @@ func GetServiceAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServiceAttachment resources.
 type serviceAttachmentState struct {
-	// An array of the consumer forwarding rules connected to this service attachment.
+	// An array of the consumer forwarding rules connected to this service
+	// attachment.
+	// Structure is documented below.
 	ConnectedEndpoints []ServiceAttachmentConnectedEndpoint `pulumi:"connectedEndpoints"`
 	// The connection preference to use for this service attachment. Valid
 	// values include "ACCEPT_AUTOMATIC", "ACCEPT_MANUAL".
@@ -161,7 +166,8 @@ type serviceAttachmentState struct {
 	// address data in TCP connections that traverse proxies on their way to
 	// destination servers.
 	EnableProxyProtocol *bool `pulumi:"enableProxyProtocol"`
-	// Fingerprint of this resource. This field is used internally during updates of this resource.
+	// Fingerprint of this resource. This field is used internally during
+	// updates of this resource.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -185,7 +191,9 @@ type serviceAttachmentState struct {
 }
 
 type ServiceAttachmentState struct {
-	// An array of the consumer forwarding rules connected to this service attachment.
+	// An array of the consumer forwarding rules connected to this service
+	// attachment.
+	// Structure is documented below.
 	ConnectedEndpoints ServiceAttachmentConnectedEndpointArrayInput
 	// The connection preference to use for this service attachment. Valid
 	// values include "ACCEPT_AUTOMATIC", "ACCEPT_MANUAL".
@@ -208,7 +216,8 @@ type ServiceAttachmentState struct {
 	// address data in TCP connections that traverse proxies on their way to
 	// destination servers.
 	EnableProxyProtocol pulumi.BoolPtrInput
-	// Fingerprint of this resource. This field is used internally during updates of this resource.
+	// Fingerprint of this resource. This field is used internally during
+	// updates of this resource.
 	Fingerprint pulumi.StringPtrInput
 	// Name of the resource. The name must be 1-63 characters long, and
 	// comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -405,7 +414,9 @@ func (o ServiceAttachmentOutput) ToServiceAttachmentOutputWithContext(ctx contex
 	return o
 }
 
-// An array of the consumer forwarding rules connected to this service attachment.
+// An array of the consumer forwarding rules connected to this service
+// attachment.
+// Structure is documented below.
 func (o ServiceAttachmentOutput) ConnectedEndpoints() ServiceAttachmentConnectedEndpointArrayOutput {
 	return o.ApplyT(func(v *ServiceAttachment) ServiceAttachmentConnectedEndpointArrayOutput { return v.ConnectedEndpoints }).(ServiceAttachmentConnectedEndpointArrayOutput)
 }
@@ -451,7 +462,8 @@ func (o ServiceAttachmentOutput) EnableProxyProtocol() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ServiceAttachment) pulumi.BoolOutput { return v.EnableProxyProtocol }).(pulumi.BoolOutput)
 }
 
-// Fingerprint of this resource. This field is used internally during updates of this resource.
+// Fingerprint of this resource. This field is used internally during
+// updates of this resource.
 func (o ServiceAttachmentOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceAttachment) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
 }

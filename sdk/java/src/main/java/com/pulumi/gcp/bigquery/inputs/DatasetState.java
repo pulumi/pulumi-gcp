@@ -39,14 +39,16 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The time when this dataset was created, in milliseconds since the epoch.
+     * The time when this dataset was created, in milliseconds since the
+     * epoch.
      * 
      */
     @Import(name="creationTime")
     private @Nullable Output<Integer> creationTime;
 
     /**
-     * @return The time when this dataset was created, in milliseconds since the epoch.
+     * @return The time when this dataset was created, in milliseconds since the
+     * epoch.
      * 
      */
     public Optional<Output<Integer>> creationTime() {
@@ -54,14 +56,18 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the dataset containing this table.
+     * A unique ID for this dataset, without the project name. The ID
+     * must contain only letters (a-z, A-Z), numbers (0-9), or
+     * underscores (_). The maximum length is 1,024 characters.
      * 
      */
     @Import(name="datasetId")
     private @Nullable Output<String> datasetId;
 
     /**
-     * @return The ID of the dataset containing this table.
+     * @return A unique ID for this dataset, without the project name. The ID
+     * must contain only letters (a-z, A-Z), numbers (0-9), or
+     * underscores (_). The maximum length is 1,024 characters.
      * 
      */
     public Optional<Output<String>> datasetId() {
@@ -205,14 +211,16 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+     * The date when this dataset or any of its tables was last modified, in
+     * milliseconds since the epoch.
      * 
      */
     @Import(name="lastModifiedTime")
     private @Nullable Output<Integer> lastModifiedTime;
 
     /**
-     * @return The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+     * @return The date when this dataset or any of its tables was last modified, in
+     * milliseconds since the epoch.
      * 
      */
     public Optional<Output<Integer>> lastModifiedTime() {
@@ -357,7 +365,8 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param creationTime The time when this dataset was created, in milliseconds since the epoch.
+         * @param creationTime The time when this dataset was created, in milliseconds since the
+         * epoch.
          * 
          * @return builder
          * 
@@ -368,7 +377,8 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param creationTime The time when this dataset was created, in milliseconds since the epoch.
+         * @param creationTime The time when this dataset was created, in milliseconds since the
+         * epoch.
          * 
          * @return builder
          * 
@@ -378,7 +388,9 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param datasetId The ID of the dataset containing this table.
+         * @param datasetId A unique ID for this dataset, without the project name. The ID
+         * must contain only letters (a-z, A-Z), numbers (0-9), or
+         * underscores (_). The maximum length is 1,024 characters.
          * 
          * @return builder
          * 
@@ -389,7 +401,9 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param datasetId The ID of the dataset containing this table.
+         * @param datasetId A unique ID for this dataset, without the project name. The ID
+         * must contain only letters (a-z, A-Z), numbers (0-9), or
+         * underscores (_). The maximum length is 1,024 characters.
          * 
          * @return builder
          * 
@@ -583,7 +597,8 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lastModifiedTime The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+         * @param lastModifiedTime The date when this dataset or any of its tables was last modified, in
+         * milliseconds since the epoch.
          * 
          * @return builder
          * 
@@ -594,7 +609,8 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lastModifiedTime The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+         * @param lastModifiedTime The date when this dataset or any of its tables was last modified, in
+         * milliseconds since the epoch.
          * 
          * @return builder
          * 

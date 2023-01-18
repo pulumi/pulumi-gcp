@@ -46,13 +46,13 @@ import * as utilities from "../utilities";
  *     fields: "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
  *     project: "my-project-name",
  * });
- * const subDocument = new gcp.firestore.Document("sub_document", {
+ * const subDocument = new gcp.firestore.Document("subDocument", {
  *     collection: pulumi.interpolate`${mydoc.path}/subdocs`,
  *     documentId: "bitcoinkey",
  *     fields: "{\"something\":{\"mapValue\":{\"fields\":{\"ayo\":{\"stringValue\":\"val2\"}}}}}",
  *     project: "my-project-name",
  * });
- * const subSubDocument = new gcp.firestore.Document("sub_sub_document", {
+ * const subSubDocument = new gcp.firestore.Document("subSubDocument", {
  *     collection: pulumi.interpolate`${subDocument.path}/subsubdocs`,
  *     documentId: "asecret",
  *     fields: "{\"something\":{\"mapValue\":{\"fields\":{\"secret\":{\"stringValue\":\"hithere\"}}}}}",
@@ -118,7 +118,7 @@ export class Document extends pulumi.CustomResource {
     public readonly fields!: pulumi.Output<string>;
     /**
      * A server defined name for this index. Format:
-     * 'projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}'
+     * `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -209,7 +209,7 @@ export interface DocumentState {
     fields?: pulumi.Input<string>;
     /**
      * A server defined name for this index. Format:
-     * 'projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}'
+     * `projects/{{project_id}}/databases/{{database_id}}/documents/{{path}}/{{document_id}}`
      */
     name?: pulumi.Input<string>;
     /**

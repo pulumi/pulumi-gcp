@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RegionInstanceGroupManagerVersion {
     /**
-     * @return - The full URL to an instance template from which all new instances of this version will be created.
+     * @return The full URL to an instance template from which all new instances of this version will be created.
      * 
      */
     private String instanceTemplate;
     /**
-     * @return - Version name.
+     * @return Version name.
      * 
      */
     private @Nullable String name;
     /**
-     * @return - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+     * @return The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
      * 
      */
     private @Nullable RegionInstanceGroupManagerVersionTargetSize targetSize;
 
     private RegionInstanceGroupManagerVersion() {}
     /**
-     * @return - The full URL to an instance template from which all new instances of this version will be created.
+     * @return The full URL to an instance template from which all new instances of this version will be created.
      * 
      */
     public String instanceTemplate() {
         return this.instanceTemplate;
     }
     /**
-     * @return - Version name.
+     * @return Version name.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return - The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+     * @return The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
      * 
      */
     public Optional<RegionInstanceGroupManagerVersionTargetSize> targetSize() {

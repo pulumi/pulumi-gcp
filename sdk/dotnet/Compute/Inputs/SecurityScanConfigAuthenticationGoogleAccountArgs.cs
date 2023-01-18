@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the custom account. The credential is stored encrypted
+        /// The password of the Google account. The credential is stored encrypted
         /// in GCP.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         }
 
         /// <summary>
-        /// The user name of the custom account.
+        /// The user name of the Google account.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;

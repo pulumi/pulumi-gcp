@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// total count of all values aggregated in the Distribution.
         /// Defines a distribution TimeSeries filter and thresholds used for
         /// measuring good service and total service.
+        /// Exactly one of `distribution_cut` or `good_total_ratio` can be set.
         /// Structure is documented below.
         /// </summary>
         [Input("distributionCut")]
@@ -29,6 +30,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// Must specify exactly two of good, bad, and total service filters.
         /// The relationship good_service + bad_service = total_service
         /// will be assumed.
+        /// Exactly one of `distribution_cut` or `good_total_ratio` can be set.
         /// Structure is documented below.
         /// </summary>
         [Input("goodTotalRatio")]

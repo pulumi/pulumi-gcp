@@ -64,8 +64,8 @@ class _SyncAuthorizationState:
                  name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SyncAuthorization resources.
-        :param pulumi.Input[str] etag: Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting
-               each other. Used internally during updates.
+        :param pulumi.Input[str] etag: Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting each other.
+               Used internally during updates.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: Array of service accounts to grant access to control plane resources, each specified using the following format: `serviceAccount:service-account-name`.
                The `service-account-name` is formatted like an email address. For example: my-synchronizer-manager-serviceAccount@my_project_id.iam.gserviceaccount.com
                You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
@@ -83,8 +83,8 @@ class _SyncAuthorizationState:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting
-        each other. Used internally during updates.
+        Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting each other.
+        Used internally during updates.
         """
         return pulumi.get(self, "etag")
 
@@ -295,8 +295,8 @@ class SyncAuthorization(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] etag: Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting
-               each other. Used internally during updates.
+        :param pulumi.Input[str] etag: Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting each other.
+               Used internally during updates.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: Array of service accounts to grant access to control plane resources, each specified using the following format: `serviceAccount:service-account-name`.
                The `service-account-name` is formatted like an email address. For example: my-synchronizer-manager-serviceAccount@my_project_id.iam.gserviceaccount.com
                You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
@@ -316,8 +316,8 @@ class SyncAuthorization(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting
-        each other. Used internally during updates.
+        Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting each other.
+        Used internally during updates.
         """
         return pulumi.get(self, "etag")
 

@@ -28,8 +28,8 @@ public final class GuestPoliciesPackageRepositoryYum {
      */
     private @Nullable List<String> gpgKeys;
     /**
-     * @return Id of the artifact, which the installation and update steps of this recipe can reference.
-     * Artifacts in a recipe cannot have the same id.
+     * @return A one word, unique name for this repository. This is the repo id in the Yum config file and also the displayName
+     * if displayName is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
      * 
      */
     private String id;
@@ -57,8 +57,8 @@ public final class GuestPoliciesPackageRepositoryYum {
         return this.gpgKeys == null ? List.of() : this.gpgKeys;
     }
     /**
-     * @return Id of the artifact, which the installation and update steps of this recipe can reference.
-     * Artifacts in a recipe cannot have the same id.
+     * @return A one word, unique name for this repository. This is the repo id in the Yum config file and also the displayName
+     * if displayName is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
      * 
      */
     public String id() {

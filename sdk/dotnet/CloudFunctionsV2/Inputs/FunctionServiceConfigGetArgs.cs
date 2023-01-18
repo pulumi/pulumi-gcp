@@ -45,7 +45,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
         }
 
         /// <summary>
-        /// -
         /// URIs of the Service deployed
         /// </summary>
         [Input("gcfUri")]
@@ -126,7 +125,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
         public Input<int>? TimeoutSeconds { get; set; }
 
         /// <summary>
-        /// -
         /// URI of the Service deployed.
         /// </summary>
         [Input("uri")]

@@ -202,14 +202,16 @@ public class RegionDisk extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.interface_);
     }
     /**
-     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * The fingerprint used for optimistic locking of this resource.  Used
+     * internally during updates.
      * 
      */
     @Export(name="labelFingerprint", type=String.class, parameters={})
     private Output<String> labelFingerprint;
 
     /**
-     * @return The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * @return The fingerprint used for optimistic locking of this resource.  Used
+     * internally during updates.
      * 
      */
     public Output<String> labelFingerprint() {
@@ -390,26 +392,20 @@ public class RegionDisk extends com.pulumi.resources.CustomResource {
         return this.size;
     }
     /**
-     * The source snapshot used to create this disk. You can provide this as
-     * a partial or full URL to the resource. For example, the following are
-     * valid values:
-     * * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
-     * * `projects/project/global/snapshots/snapshot`
-     * * `global/snapshots/snapshot`
-     * * `snapshot`
+     * The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
+     * example, the following are valid values: *
+     * &#39;https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot&#39; *
+     * &#39;projects/project/global/snapshots/snapshot&#39; * &#39;global/snapshots/snapshot&#39; * &#39;snapshot&#39;
      * 
      */
     @Export(name="snapshot", type=String.class, parameters={})
     private Output</* @Nullable */ String> snapshot;
 
     /**
-     * @return The source snapshot used to create this disk. You can provide this as
-     * a partial or full URL to the resource. For example, the following are
-     * valid values:
-     * * `https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot`
-     * * `projects/project/global/snapshots/snapshot`
-     * * `global/snapshots/snapshot`
-     * * `snapshot`
+     * @return The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For
+     * example, the following are valid values: *
+     * &#39;https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot&#39; *
+     * &#39;projects/project/global/snapshots/snapshot&#39; * &#39;global/snapshots/snapshot&#39; * &#39;snapshot&#39;
      * 
      */
     public Output<Optional<String>> snapshot() {
@@ -444,16 +440,18 @@ public class RegionDisk extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sourceDisk);
     }
     /**
-     * The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
-     * the current or a previous instance of a given disk name.
+     * The ID value of the disk used to create this image. This value may
+     * be used to determine whether the image was taken from the current
+     * or a previous instance of a given disk name.
      * 
      */
     @Export(name="sourceDiskId", type=String.class, parameters={})
     private Output<String> sourceDiskId;
 
     /**
-     * @return The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from
-     * the current or a previous instance of a given disk name.
+     * @return The ID value of the disk used to create this image. This value may
+     * be used to determine whether the image was taken from the current
+     * or a previous instance of a given disk name.
      * 
      */
     public Output<String> sourceDiskId() {
@@ -480,18 +478,24 @@ public class RegionDisk extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sourceSnapshotEncryptionKey);
     }
     /**
-     * The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
-     * this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
-     * recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
+     * The unique ID of the snapshot used to create this disk. This value
+     * identifies the exact snapshot that was used to create this persistent
+     * disk. For example, if you created the persistent disk from a snapshot
+     * that was later deleted and recreated under the same name, the source
+     * snapshot ID would identify the exact version of the snapshot that was
+     * used.
      * 
      */
     @Export(name="sourceSnapshotId", type=String.class, parameters={})
     private Output<String> sourceSnapshotId;
 
     /**
-     * @return The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create
-     * this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and
-     * recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
+     * @return The unique ID of the snapshot used to create this disk. This value
+     * identifies the exact snapshot that was used to create this persistent
+     * disk. For example, if you created the persistent disk from a snapshot
+     * that was later deleted and recreated under the same name, the source
+     * snapshot ID would identify the exact version of the snapshot that was
+     * used.
      * 
      */
     public Output<String> sourceSnapshotId() {
@@ -514,14 +518,16 @@ public class RegionDisk extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.type);
     }
     /**
-     * Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance
+     * Links to the users of the disk (attached instances) in form:
+     * project/zones/zone/instances/instance
      * 
      */
     @Export(name="users", type=List.class, parameters={String.class})
     private Output<List<String>> users;
 
     /**
-     * @return Links to the users of the disk (attached instances) in form: project/zones/zone/instances/instance
+     * @return Links to the users of the disk (attached instances) in form:
+     * project/zones/zone/instances/instance
      * 
      */
     public Output<List<String>> users() {

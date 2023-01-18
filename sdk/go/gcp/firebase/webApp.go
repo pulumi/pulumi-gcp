@@ -45,17 +45,18 @@ import (
 type WebApp struct {
 	pulumi.CustomResourceState
 
-	// The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-	// the data format is not specified.
+	// The globally unique, Firebase-assigned identifier of the App.
+	// This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId pulumi.StringOutput `pulumi:"appId"`
-	// The URLs where the 'WebApp' is hosted.
+	// The URLs where the `WebApp` is hosted.
 	AppUrls pulumi.StringArrayOutput `pulumi:"appUrls"`
 	// Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
 	// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
 	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the App.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// The fully qualified resource name of the App, for example: projects/projectId/webApps/appId
+	// The fully qualified resource name of the App, for example:
+	// projects/projectId/webApps/appId
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -94,17 +95,18 @@ func GetWebApp(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WebApp resources.
 type webAppState struct {
-	// The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-	// the data format is not specified.
+	// The globally unique, Firebase-assigned identifier of the App.
+	// This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId *string `pulumi:"appId"`
-	// The URLs where the 'WebApp' is hosted.
+	// The URLs where the `WebApp` is hosted.
 	AppUrls []string `pulumi:"appUrls"`
 	// Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
 	// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the App.
 	DisplayName *string `pulumi:"displayName"`
-	// The fully qualified resource name of the App, for example: projects/projectId/webApps/appId
+	// The fully qualified resource name of the App, for example:
+	// projects/projectId/webApps/appId
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -112,17 +114,18 @@ type webAppState struct {
 }
 
 type WebAppState struct {
-	// The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-	// the data format is not specified.
+	// The globally unique, Firebase-assigned identifier of the App.
+	// This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId pulumi.StringPtrInput
-	// The URLs where the 'WebApp' is hosted.
+	// The URLs where the `WebApp` is hosted.
 	AppUrls pulumi.StringArrayInput
 	// Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
 	// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
 	DeletionPolicy pulumi.StringPtrInput
 	// The user-assigned display name of the App.
 	DisplayName pulumi.StringPtrInput
-	// The fully qualified resource name of the App, for example: projects/projectId/webApps/appId
+	// The fully qualified resource name of the App, for example:
+	// projects/projectId/webApps/appId
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -243,13 +246,13 @@ func (o WebAppOutput) ToWebAppOutputWithContext(ctx context.Context) WebAppOutpu
 	return o
 }
 
-// The globally unique, Firebase-assigned identifier of the App. This identifier should be treated as an opaque token, as
-// the data format is not specified.
+// The globally unique, Firebase-assigned identifier of the App.
+// This identifier should be treated as an opaque token, as the data format is not specified.
 func (o WebAppOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebApp) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
 }
 
-// The URLs where the 'WebApp' is hosted.
+// The URLs where the `WebApp` is hosted.
 func (o WebAppOutput) AppUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WebApp) pulumi.StringArrayOutput { return v.AppUrls }).(pulumi.StringArrayOutput)
 }
@@ -265,7 +268,8 @@ func (o WebAppOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebApp) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// The fully qualified resource name of the App, for example: projects/projectId/webApps/appId
+// The fully qualified resource name of the App, for example:
+// projects/projectId/webApps/appId
 func (o WebAppOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebApp) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

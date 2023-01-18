@@ -22,9 +22,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const cache = new gcp.redis.Instance("cache", {
- *     memorySizeGb: 1,
- * });
+ * const cache = new gcp.redis.Instance("cache", {memorySizeGb: 1});
  * ```
  * ### Redis Instance Full
  *
@@ -243,16 +241,17 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly connectMode!: pulumi.Output<string | undefined>;
     /**
-     * -
      * Output only. The time when the policy was created.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
      * resolution and up to nine fractional digits.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
-     * [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
-     * [alternativeLocationId] and can change after a failover event.
+     * The current zone where the Redis endpoint is placed.
+     * For Basic Tier instances, this will always be the same as the
+     * [locationId] provided by the user at creation time. For Standard Tier
+     * instances, this can be either [locationId] or [alternativeLocationId]
+     * and can change after a failover event.
      */
     public /*out*/ readonly currentLocationId!: pulumi.Output<string>;
     /**
@@ -265,7 +264,8 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
-     * Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
+     * Hostname or IP address of the exposed Redis endpoint used by clients
+     * to connect to the service.
      */
     public /*out*/ readonly host!: pulumi.Output<string>;
     /**
@@ -300,6 +300,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * Output only. Info per node.
+     * Structure is documented below.
      */
     public /*out*/ readonly nodes!: pulumi.Output<outputs.redis.InstanceNode[]>;
     /**
@@ -308,9 +309,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly persistenceConfig!: pulumi.Output<outputs.redis.InstancePersistenceConfig>;
     /**
-     * Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
-     * "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
-     * operation.
+     * Output only. Cloud IAM identity used by import / export operations
+     * to transfer data to/from Cloud Storage. Format is "serviceAccount:".
+     * The value may change over time for a given instance so should be
+     * checked before each import/export operation.
      */
     public /*out*/ readonly persistenceIamIdentity!: pulumi.Output<string>;
     /**
@@ -323,14 +325,14 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy
-     * replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write
-     * requests must target 'host'.
+     * Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
+     * Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
+     * will exhibit some lag behind the primary. Write requests must target 'host'.
      */
     public /*out*/ readonly readEndpoint!: pulumi.Output<string>;
     /**
-     * Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
-     * 'port'.
+     * Output only. The port number of the exposed readonly redis endpoint. Standard tier only.
+     * Write requests should target 'port'.
      */
     public /*out*/ readonly readEndpointPort!: pulumi.Output<number>;
     /**
@@ -383,6 +385,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly secondaryIpRange!: pulumi.Output<string>;
     /**
      * List of server CA certificates for the instance.
+     * Structure is documented below.
      */
     public /*out*/ readonly serverCaCerts!: pulumi.Output<outputs.redis.InstanceServerCaCert[]>;
     /**
@@ -527,16 +530,17 @@ export interface InstanceState {
      */
     connectMode?: pulumi.Input<string>;
     /**
-     * -
      * Output only. The time when the policy was created.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
      * resolution and up to nine fractional digits.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The current zone where the Redis endpoint is placed. For Basic Tier instances, this will always be the same as the
-     * [locationId] provided by the user at creation time. For Standard Tier instances, this can be either [locationId] or
-     * [alternativeLocationId] and can change after a failover event.
+     * The current zone where the Redis endpoint is placed.
+     * For Basic Tier instances, this will always be the same as the
+     * [locationId] provided by the user at creation time. For Standard Tier
+     * instances, this can be either [locationId] or [alternativeLocationId]
+     * and can change after a failover event.
      */
     currentLocationId?: pulumi.Input<string>;
     /**
@@ -549,7 +553,8 @@ export interface InstanceState {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Hostname or IP address of the exposed Redis endpoint used by clients to connect to the service.
+     * Hostname or IP address of the exposed Redis endpoint used by clients
+     * to connect to the service.
      */
     host?: pulumi.Input<string>;
     /**
@@ -584,6 +589,7 @@ export interface InstanceState {
     name?: pulumi.Input<string>;
     /**
      * Output only. Info per node.
+     * Structure is documented below.
      */
     nodes?: pulumi.Input<pulumi.Input<inputs.redis.InstanceNode>[]>;
     /**
@@ -592,9 +598,10 @@ export interface InstanceState {
      */
     persistenceConfig?: pulumi.Input<inputs.redis.InstancePersistenceConfig>;
     /**
-     * Output only. Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is
-     * "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export
-     * operation.
+     * Output only. Cloud IAM identity used by import / export operations
+     * to transfer data to/from Cloud Storage. Format is "serviceAccount:".
+     * The value may change over time for a given instance so should be
+     * checked before each import/export operation.
      */
     persistenceIamIdentity?: pulumi.Input<string>;
     /**
@@ -607,14 +614,14 @@ export interface InstanceState {
      */
     project?: pulumi.Input<string>;
     /**
-     * Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only. Targets all healthy
-     * replica nodes in instance. Replication is asynchronous and replica nodes will exhibit some lag behind the primary. Write
-     * requests must target 'host'.
+     * Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
+     * Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
+     * will exhibit some lag behind the primary. Write requests must target 'host'.
      */
     readEndpoint?: pulumi.Input<string>;
     /**
-     * Output only. The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target
-     * 'port'.
+     * Output only. The port number of the exposed readonly redis endpoint. Standard tier only.
+     * Write requests should target 'port'.
      */
     readEndpointPort?: pulumi.Input<number>;
     /**
@@ -667,6 +674,7 @@ export interface InstanceState {
     secondaryIpRange?: pulumi.Input<string>;
     /**
      * List of server CA certificates for the instance.
+     * Structure is documented below.
      */
     serverCaCerts?: pulumi.Input<pulumi.Input<inputs.redis.InstanceServerCaCert>[]>;
     /**

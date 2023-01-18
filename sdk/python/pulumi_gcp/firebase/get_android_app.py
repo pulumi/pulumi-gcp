@@ -56,6 +56,10 @@ class GetAndroidAppResult:
     @property
     @pulumi.getter(name="appId")
     def app_id(self) -> str:
+        """
+        Immutable. The globally unique, Firebase-assigned identifier of the AndroidApp.
+        This identifier should be treated as an opaque token, as the data format is not specified.
+        """
         return pulumi.get(self, "app_id")
 
     @property
@@ -66,11 +70,18 @@ class GetAndroidAppResult:
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
+        """
+        The user-assigned display name of the AndroidApp.
+        """
         return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter
     def etag(self) -> str:
+        """
+        This checksum is computed by the server based on the value of other fields, and it may be sent
+        with update requests to ensure the client has an up-to-date value before proceeding.
+        """
         return pulumi.get(self, "etag")
 
     @property
@@ -84,11 +95,18 @@ class GetAndroidAppResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The fully qualified resource name of the AndroidApp, for example:
+        projects/projectId/androidApps/appId
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="packageName")
     def package_name(self) -> str:
+        """
+        The canonical package name of the Android app as would appear in the Google Play Developer Console.
+        """
         return pulumi.get(self, "package_name")
 
     @property
@@ -99,11 +117,17 @@ class GetAndroidAppResult:
     @property
     @pulumi.getter(name="sha1Hashes")
     def sha1_hashes(self) -> Sequence[str]:
+        """
+        The SHA1 certificate hashes for the AndroidApp.
+        """
         return pulumi.get(self, "sha1_hashes")
 
     @property
     @pulumi.getter(name="sha256Hashes")
     def sha256_hashes(self) -> Sequence[str]:
+        """
+        The SHA256 certificate hashes for the AndroidApp.
+        """
         return pulumi.get(self, "sha256_hashes")
 
 

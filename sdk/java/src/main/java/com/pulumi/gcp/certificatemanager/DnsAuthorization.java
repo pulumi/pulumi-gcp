@@ -21,6 +21,48 @@ import javax.annotation.Nullable;
  * DnsAuthorization represents a HTTP-reachable backend for a DnsAuthorization.
  * 
  * ## Example Usage
+ * ### Certificate Manager Dns Authorization Basic
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.certificatemanager.DnsAuthorization;
+ * import com.pulumi.gcp.certificatemanager.DnsAuthorizationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new DnsAuthorization(&#34;default&#34;, DnsAuthorizationArgs.builder()        
+ *             .description(&#34;The default dnss&#34;)
+ *             .domain(&#34;%{random_suffix}.hashicorptest.com&#34;)
+ *             .build());
+ * 
+ *         ctx.export(&#34;recordNameToInsert&#34;, Map.ofEntries(
+ *             Map.entry(&#34;google_certificate_manager_dns_authorization.default.dns_resource_record.0.name&#34;, ),
+ *             Map.entry(&#34;value&#34;, &#34;&#34;)
+ *         ));
+ *         ctx.export(&#34;recordTypeToInsert&#34;, Map.ofEntries(
+ *             Map.entry(&#34;google_certificate_manager_dns_authorization.default.dns_resource_record.0.type&#34;, ),
+ *             Map.entry(&#34;value&#34;, &#34;&#34;)
+ *         ));
+ *         ctx.export(&#34;recordDataToInsert&#34;, Map.ofEntries(
+ *             Map.entry(&#34;google_certificate_manager_dns_authorization.default.dns_resource_record.0.data&#34;, ),
+ *             Map.entry(&#34;value&#34;, &#34;&#34;)
+ *         ));
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -56,16 +98,20 @@ public class DnsAuthorization extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The structure describing the DNS Resource Record that needs to be added to DNS configuration for the authorization to be
-     * usable by certificate.
+     * The structure describing the DNS Resource Record that needs to be added
+     * to DNS configuration for the authorization to be usable by
+     * certificate.
+     * Structure is documented below.
      * 
      */
     @Export(name="dnsResourceRecords", type=List.class, parameters={DnsAuthorizationDnsResourceRecord.class})
     private Output<List<DnsAuthorizationDnsResourceRecord>> dnsResourceRecords;
 
     /**
-     * @return The structure describing the DNS Resource Record that needs to be added to DNS configuration for the authorization to be
-     * usable by certificate.
+     * @return The structure describing the DNS Resource Record that needs to be added
+     * to DNS configuration for the authorization to be usable by
+     * certificate.
+     * Structure is documented below.
      * 
      */
     public Output<List<DnsAuthorizationDnsResourceRecord>> dnsResourceRecords() {

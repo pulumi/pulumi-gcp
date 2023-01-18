@@ -16,7 +16,6 @@ public final class AttachedClusterFleetArgs extends com.pulumi.resources.Resourc
     public static final AttachedClusterFleetArgs Empty = new AttachedClusterFleetArgs();
 
     /**
-     * - 
      * The name of the managed Hub Membership resource associated to this
      * cluster. Membership names are formatted as
      * projects/&lt;project-number&gt;/locations/global/membership/&lt;cluster-id&gt;.
@@ -26,8 +25,7 @@ public final class AttachedClusterFleetArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> membership;
 
     /**
-     * @return -
-     * The name of the managed Hub Membership resource associated to this
+     * @return The name of the managed Hub Membership resource associated to this
      * cluster. Membership names are formatted as
      * projects/&lt;project-number&gt;/locations/global/membership/&lt;cluster-id&gt;.
      * 
@@ -79,8 +77,7 @@ public final class AttachedClusterFleetArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param membership -
-         * The name of the managed Hub Membership resource associated to this
+         * @param membership The name of the managed Hub Membership resource associated to this
          * cluster. Membership names are formatted as
          * projects/&lt;project-number&gt;/locations/global/membership/&lt;cluster-id&gt;.
          * 
@@ -93,8 +90,7 @@ public final class AttachedClusterFleetArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param membership -
-         * The name of the managed Hub Membership resource associated to this
+         * @param membership The name of the managed Hub Membership resource associated to this
          * cluster. Membership names are formatted as
          * projects/&lt;project-number&gt;/locations/global/membership/&lt;cluster-id&gt;.
          * 

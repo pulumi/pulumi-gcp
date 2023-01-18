@@ -406,53 +406,46 @@ type Job struct {
 	Client pulumi.StringPtrOutput `pulumi:"client"`
 	// Arbitrary version identifier for the API client.
 	ClientVersion pulumi.StringPtrOutput `pulumi:"clientVersion"`
-	// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job
-	// does not reach its desired state. See comments in reconciling for additional information on 'reconciliation' process in
-	// Cloud Run.
+	// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
+	// Structure is documented below.
 	Conditions JobConditionArrayOutput `pulumi:"conditions"`
-	// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during
-	// updates.
+	// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Number of executions created for this job.
 	ExecutionCount pulumi.IntOutput `pulumi:"executionCount"`
 	// A number that monotonically increases every time the user modifies the desired state.
 	Generation pulumi.StringOutput `pulumi:"generation"`
+	// KRM-style labels for the resource.
+	// (Optional)
 	// KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of the last created execution.
+	// Structure is documented below.
 	LatestCreatedExecutions JobLatestCreatedExecutionArrayOutput `pulumi:"latestCreatedExecutions"`
 	// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
 	// Possible values are `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
 	LaunchStage pulumi.StringOutput `pulumi:"launchStage"`
 	// The location of the cloud run job
 	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// Volume's name.
+	// Name of the Job.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud
-	// Run.
+	// The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	ObservedGeneration pulumi.StringOutput `pulumi:"observedGeneration"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Returns true if the Job is currently being acted upon by the system to bring it into the desired state. When a new Job
-	// is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to
-	// the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and
-	// latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is
-	// over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job,
-	// or there was an error, and reconciliation failed. This state can be found in terminalCondition.state. If reconciliation
-	// succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and
-	// latestCreatedExecution. If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state
-	// of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in
-	// terminalCondition and conditions
+	// Returns true if the Job is currently being acted upon by the system to bring it into the desired state.
+	// When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
+	// If reconciliation succeeded, the following fields will match: observedGeneration and generation, latestSucceededExecution and latestCreatedExecution.
+	// If reconciliation failed, observedGeneration and latestSucceededExecution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
-	// Describes the task(s) that will be created when executing an execution
+	// The template used to create executions for this Job.
 	// Structure is documented below.
 	Template JobTemplateOutput `pulumi:"template"`
-	// The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the
-	// desired state
+	// The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
+	// Structure is documented below.
 	TerminalConditions JobTerminalConditionArrayOutput `pulumi:"terminalConditions"`
-	// Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged
-	// until the resource is deleted.
+	// Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 }
 
@@ -495,53 +488,46 @@ type jobState struct {
 	Client *string `pulumi:"client"`
 	// Arbitrary version identifier for the API client.
 	ClientVersion *string `pulumi:"clientVersion"`
-	// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job
-	// does not reach its desired state. See comments in reconciling for additional information on 'reconciliation' process in
-	// Cloud Run.
+	// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
+	// Structure is documented below.
 	Conditions []JobCondition `pulumi:"conditions"`
-	// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during
-	// updates.
+	// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
 	Etag *string `pulumi:"etag"`
 	// Number of executions created for this job.
 	ExecutionCount *int `pulumi:"executionCount"`
 	// A number that monotonically increases every time the user modifies the desired state.
 	Generation *string `pulumi:"generation"`
+	// KRM-style labels for the resource.
+	// (Optional)
 	// KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the last created execution.
+	// Structure is documented below.
 	LatestCreatedExecutions []JobLatestCreatedExecution `pulumi:"latestCreatedExecutions"`
 	// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
 	// Possible values are `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
 	LaunchStage *string `pulumi:"launchStage"`
 	// The location of the cloud run job
 	Location *string `pulumi:"location"`
-	// Volume's name.
+	// Name of the Job.
 	Name *string `pulumi:"name"`
-	// The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud
-	// Run.
+	// The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	ObservedGeneration *string `pulumi:"observedGeneration"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Returns true if the Job is currently being acted upon by the system to bring it into the desired state. When a new Job
-	// is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to
-	// the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and
-	// latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is
-	// over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job,
-	// or there was an error, and reconciliation failed. This state can be found in terminalCondition.state. If reconciliation
-	// succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and
-	// latestCreatedExecution. If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state
-	// of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in
-	// terminalCondition and conditions
+	// Returns true if the Job is currently being acted upon by the system to bring it into the desired state.
+	// When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
+	// If reconciliation succeeded, the following fields will match: observedGeneration and generation, latestSucceededExecution and latestCreatedExecution.
+	// If reconciliation failed, observedGeneration and latestSucceededExecution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
 	Reconciling *bool `pulumi:"reconciling"`
-	// Describes the task(s) that will be created when executing an execution
+	// The template used to create executions for this Job.
 	// Structure is documented below.
 	Template *JobTemplate `pulumi:"template"`
-	// The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the
-	// desired state
+	// The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
+	// Structure is documented below.
 	TerminalConditions []JobTerminalCondition `pulumi:"terminalConditions"`
-	// Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged
-	// until the resource is deleted.
+	// Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid *string `pulumi:"uid"`
 }
 
@@ -553,53 +539,46 @@ type JobState struct {
 	Client pulumi.StringPtrInput
 	// Arbitrary version identifier for the API client.
 	ClientVersion pulumi.StringPtrInput
-	// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job
-	// does not reach its desired state. See comments in reconciling for additional information on 'reconciliation' process in
-	// Cloud Run.
+	// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
+	// Structure is documented below.
 	Conditions JobConditionArrayInput
-	// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during
-	// updates.
+	// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
 	Etag pulumi.StringPtrInput
 	// Number of executions created for this job.
 	ExecutionCount pulumi.IntPtrInput
 	// A number that monotonically increases every time the user modifies the desired state.
 	Generation pulumi.StringPtrInput
+	// KRM-style labels for the resource.
+	// (Optional)
 	// KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
 	Labels pulumi.StringMapInput
 	// Name of the last created execution.
+	// Structure is documented below.
 	LatestCreatedExecutions JobLatestCreatedExecutionArrayInput
 	// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
 	// Possible values are `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
 	LaunchStage pulumi.StringPtrInput
 	// The location of the cloud run job
 	Location pulumi.StringPtrInput
-	// Volume's name.
+	// Name of the Job.
 	Name pulumi.StringPtrInput
-	// The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud
-	// Run.
+	// The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	ObservedGeneration pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Returns true if the Job is currently being acted upon by the system to bring it into the desired state. When a new Job
-	// is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to
-	// the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and
-	// latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is
-	// over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job,
-	// or there was an error, and reconciliation failed. This state can be found in terminalCondition.state. If reconciliation
-	// succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and
-	// latestCreatedExecution. If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state
-	// of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in
-	// terminalCondition and conditions
+	// Returns true if the Job is currently being acted upon by the system to bring it into the desired state.
+	// When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
+	// If reconciliation succeeded, the following fields will match: observedGeneration and generation, latestSucceededExecution and latestCreatedExecution.
+	// If reconciliation failed, observedGeneration and latestSucceededExecution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
 	Reconciling pulumi.BoolPtrInput
-	// Describes the task(s) that will be created when executing an execution
+	// The template used to create executions for this Job.
 	// Structure is documented below.
 	Template JobTemplatePtrInput
-	// The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the
-	// desired state
+	// The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
+	// Structure is documented below.
 	TerminalConditions JobTerminalConditionArrayInput
-	// Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged
-	// until the resource is deleted.
+	// Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid pulumi.StringPtrInput
 }
 
@@ -615,6 +594,8 @@ type jobArgs struct {
 	Client *string `pulumi:"client"`
 	// Arbitrary version identifier for the API client.
 	ClientVersion *string `pulumi:"clientVersion"`
+	// KRM-style labels for the resource.
+	// (Optional)
 	// KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
 	Labels map[string]string `pulumi:"labels"`
 	// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
@@ -622,12 +603,12 @@ type jobArgs struct {
 	LaunchStage *string `pulumi:"launchStage"`
 	// The location of the cloud run job
 	Location *string `pulumi:"location"`
-	// Volume's name.
+	// Name of the Job.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Describes the task(s) that will be created when executing an execution
+	// The template used to create executions for this Job.
 	// Structure is documented below.
 	Template JobTemplate `pulumi:"template"`
 }
@@ -641,6 +622,8 @@ type JobArgs struct {
 	Client pulumi.StringPtrInput
 	// Arbitrary version identifier for the API client.
 	ClientVersion pulumi.StringPtrInput
+	// KRM-style labels for the resource.
+	// (Optional)
 	// KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
 	Labels pulumi.StringMapInput
 	// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
@@ -648,12 +631,12 @@ type JobArgs struct {
 	LaunchStage pulumi.StringPtrInput
 	// The location of the cloud run job
 	Location pulumi.StringPtrInput
-	// Volume's name.
+	// Name of the Job.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Describes the task(s) that will be created when executing an execution
+	// The template used to create executions for this Job.
 	// Structure is documented below.
 	Template JobTemplateInput
 }
@@ -761,15 +744,13 @@ func (o JobOutput) ClientVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.ClientVersion }).(pulumi.StringPtrOutput)
 }
 
-// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job
-// does not reach its desired state. See comments in reconciling for additional information on 'reconciliation' process in
-// Cloud Run.
+// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
+// Structure is documented below.
 func (o JobOutput) Conditions() JobConditionArrayOutput {
 	return o.ApplyT(func(v *Job) JobConditionArrayOutput { return v.Conditions }).(JobConditionArrayOutput)
 }
 
-// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during
-// updates.
+// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
 func (o JobOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
@@ -784,12 +765,15 @@ func (o JobOutput) Generation() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Generation }).(pulumi.StringOutput)
 }
 
+// KRM-style labels for the resource.
+// (Optional)
 // KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
 func (o JobOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // Name of the last created execution.
+// Structure is documented below.
 func (o JobOutput) LatestCreatedExecutions() JobLatestCreatedExecutionArrayOutput {
 	return o.ApplyT(func(v *Job) JobLatestCreatedExecutionArrayOutput { return v.LatestCreatedExecutions }).(JobLatestCreatedExecutionArrayOutput)
 }
@@ -805,13 +789,12 @@ func (o JobOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// Volume's name.
+// Name of the Job.
 func (o JobOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud
-// Run.
+// The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 func (o JobOutput) ObservedGeneration() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.ObservedGeneration }).(pulumi.StringOutput)
 }
@@ -822,34 +805,27 @@ func (o JobOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Returns true if the Job is currently being acted upon by the system to bring it into the desired state. When a new Job
-// is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to
-// the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and
-// latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is
-// over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job,
-// or there was an error, and reconciliation failed. This state can be found in terminalCondition.state. If reconciliation
-// succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and
-// latestCreatedExecution. If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state
-// of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in
-// terminalCondition and conditions
+// Returns true if the Job is currently being acted upon by the system to bring it into the desired state.
+// When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
+// If reconciliation succeeded, the following fields will match: observedGeneration and generation, latestSucceededExecution and latestCreatedExecution.
+// If reconciliation failed, observedGeneration and latestSucceededExecution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
 func (o JobOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }
 
-// Describes the task(s) that will be created when executing an execution
+// The template used to create executions for this Job.
 // Structure is documented below.
 func (o JobOutput) Template() JobTemplateOutput {
 	return o.ApplyT(func(v *Job) JobTemplateOutput { return v.Template }).(JobTemplateOutput)
 }
 
-// The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the
-// desired state
+// The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
+// Structure is documented below.
 func (o JobOutput) TerminalConditions() JobTerminalConditionArrayOutput {
 	return o.ApplyT(func(v *Job) JobTerminalConditionArrayOutput { return v.TerminalConditions }).(JobTerminalConditionArrayOutput)
 }
 
-// Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged
-// until the resource is deleted.
+// Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 func (o JobOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }

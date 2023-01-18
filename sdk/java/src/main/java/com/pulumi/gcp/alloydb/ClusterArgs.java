@@ -85,14 +85,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Labels to apply to backups created using this configuration.
+     * User-defined labels for the alloydb cluster.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Labels to apply to backups created using this configuration.
+     * @return User-defined labels for the alloydb cluster.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -100,14 +100,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+     * The location where the alloydb cluster should reside.
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+     * @return The location where the alloydb cluster should reside.
      * 
      */
     public Optional<Output<String>> location() {
@@ -270,7 +270,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Labels to apply to backups created using this configuration.
+         * @param labels User-defined labels for the alloydb cluster.
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Labels to apply to backups created using this configuration.
+         * @param labels User-defined labels for the alloydb cluster.
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+         * @param location The location where the alloydb cluster should reside.
          * 
          * @return builder
          * 
@@ -302,7 +302,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+         * @param location The location where the alloydb cluster should reside.
          * 
          * @return builder
          * 

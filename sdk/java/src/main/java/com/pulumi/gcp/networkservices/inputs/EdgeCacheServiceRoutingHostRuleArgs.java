@@ -17,14 +17,14 @@ public final class EdgeCacheServiceRoutingHostRuleArgs extends com.pulumi.resour
     public static final EdgeCacheServiceRoutingHostRuleArgs Empty = new EdgeCacheServiceRoutingHostRuleArgs();
 
     /**
-     * A human-readable description of the resource.
+     * A human-readable description of the hostRule.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return A human-readable description of the resource.
+     * @return A human-readable description of the hostRule.
      * 
      */
     public Optional<Output<String>> description() {
@@ -108,7 +108,7 @@ public final class EdgeCacheServiceRoutingHostRuleArgs extends com.pulumi.resour
         }
 
         /**
-         * @param description A human-readable description of the resource.
+         * @param description A human-readable description of the hostRule.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class EdgeCacheServiceRoutingHostRuleArgs extends com.pulumi.resour
         }
 
         /**
-         * @param description A human-readable description of the resource.
+         * @param description A human-readable description of the hostRule.
          * 
          * @return builder
          * 

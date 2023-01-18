@@ -44,13 +44,15 @@ type CertificateTemplate struct {
 
 	// Output only. The time at which this CertificateTemplate was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Optional. A human-readable description of scenarios this template is intended for.
+	// (Optional)
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
 	IdentityConstraints CertificateTemplateIdentityConstraintsPtrOutput `pulumi:"identityConstraints"`
 	// Optional. Labels with user-defined metadata.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -98,13 +100,15 @@ func GetCertificateTemplate(ctx *pulumi.Context,
 type certificateTemplateState struct {
 	// Output only. The time at which this CertificateTemplate was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Optional. A human-readable description of scenarios this template is intended for.
+	// (Optional)
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description *string `pulumi:"description"`
 	// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
 	IdentityConstraints *CertificateTemplateIdentityConstraints `pulumi:"identityConstraints"`
 	// Optional. Labels with user-defined metadata.
 	Labels map[string]string `pulumi:"labels"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	// The location for the resource
 	Location *string `pulumi:"location"`
 	// The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
 	Name *string `pulumi:"name"`
@@ -121,13 +125,15 @@ type certificateTemplateState struct {
 type CertificateTemplateState struct {
 	// Output only. The time at which this CertificateTemplate was created.
 	CreateTime pulumi.StringPtrInput
+	// Optional. A human-readable description of scenarios this template is intended for.
+	// (Optional)
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description pulumi.StringPtrInput
 	// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
 	IdentityConstraints CertificateTemplateIdentityConstraintsPtrInput
 	// Optional. Labels with user-defined metadata.
 	Labels pulumi.StringMapInput
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	// The location for the resource
 	Location pulumi.StringPtrInput
 	// The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
 	Name pulumi.StringPtrInput
@@ -146,13 +152,15 @@ func (CertificateTemplateState) ElementType() reflect.Type {
 }
 
 type certificateTemplateArgs struct {
+	// Optional. A human-readable description of scenarios this template is intended for.
+	// (Optional)
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description *string `pulumi:"description"`
 	// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
 	IdentityConstraints *CertificateTemplateIdentityConstraints `pulumi:"identityConstraints"`
 	// Optional. Labels with user-defined metadata.
 	Labels map[string]string `pulumi:"labels"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	// The location for the resource
 	Location string `pulumi:"location"`
 	// The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
 	Name *string `pulumi:"name"`
@@ -166,13 +174,15 @@ type certificateTemplateArgs struct {
 
 // The set of arguments for constructing a CertificateTemplate resource.
 type CertificateTemplateArgs struct {
+	// Optional. A human-readable description of scenarios this template is intended for.
+	// (Optional)
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description pulumi.StringPtrInput
 	// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
 	IdentityConstraints CertificateTemplateIdentityConstraintsPtrInput
 	// Optional. Labels with user-defined metadata.
 	Labels pulumi.StringMapInput
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	// The location for the resource
 	Location pulumi.StringInput
 	// The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
 	Name pulumi.StringPtrInput
@@ -276,6 +286,8 @@ func (o CertificateTemplateOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateTemplate) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Optional. A human-readable description of scenarios this template is intended for.
+// (Optional)
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o CertificateTemplateOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateTemplate) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -293,7 +305,7 @@ func (o CertificateTemplateOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CertificateTemplate) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+// The location for the resource
 func (o CertificateTemplateOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateTemplate) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

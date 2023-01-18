@@ -36,11 +36,12 @@ class JobAppEngineHttpTargetArgs:
         :param pulumi.Input['JobAppEngineHttpTargetAppEngineRoutingArgs'] app_engine_routing: App Engine Routing setting for the job.
                Structure is documented below.
         :param pulumi.Input[str] body: HTTP request body.
-               A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
-               It is an error to set body on a job with an incompatible HttpMethod.
+               A request body is allowed only if the HTTP method is POST or PUT.
+               It will result in invalid argument error to set a body on a job with an incompatible HttpMethod.
                A base64-encoded string.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: This map contains the header field names and values.
-               Repeated headers are not supported, but a header value can contain commas.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: HTTP request headers.
+               This map contains the header field names and values.
+               Headers can be set when the job is created.
         :param pulumi.Input[str] http_method: Which HTTP method to use for the request.
         """
         pulumi.set(__self__, "relative_uri", relative_uri)
@@ -87,8 +88,8 @@ class JobAppEngineHttpTargetArgs:
     def body(self) -> Optional[pulumi.Input[str]]:
         """
         HTTP request body.
-        A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
-        It is an error to set body on a job with an incompatible HttpMethod.
+        A request body is allowed only if the HTTP method is POST or PUT.
+        It will result in invalid argument error to set a body on a job with an incompatible HttpMethod.
         A base64-encoded string.
         """
         return pulumi.get(self, "body")
@@ -101,8 +102,9 @@ class JobAppEngineHttpTargetArgs:
     @pulumi.getter
     def headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
+        HTTP request headers.
         This map contains the header field names and values.
-        Repeated headers are not supported, but a header value can contain commas.
+        Headers can be set when the job is created.
         """
         return pulumi.get(self, "headers")
 

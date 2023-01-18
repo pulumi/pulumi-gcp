@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.GameServices.Outputs
     [OutputType]
     public sealed class GetGameServerDeploymentRolloutGameServerConfigOverrideResult
     {
+        /// <summary>
+        /// Version of the configuration.
+        /// </summary>
         public readonly string ConfigVersion;
+        /// <summary>
+        /// Selection by realms.  Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGameServerDeploymentRolloutGameServerConfigOverrideRealmsSelectorResult> RealmsSelectors;
 
         [OutputConstructor]

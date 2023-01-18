@@ -94,6 +94,7 @@ export class Device extends pulumi.CustomResource {
     public readonly blocked!: pulumi.Output<boolean | undefined>;
     /**
      * The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
+     * Structure is documented below.
      */
     public /*out*/ readonly configs!: pulumi.Output<outputs.iot.DeviceConfig[]>;
     /**
@@ -116,6 +117,7 @@ export class Device extends pulumi.CustomResource {
     public /*out*/ readonly lastConfigSendTime!: pulumi.Output<string>;
     /**
      * The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
+     * Structure is documented below.
      */
     public /*out*/ readonly lastErrorStatuses!: pulumi.Output<outputs.iot.DeviceLastErrorStatus[]>;
     /**
@@ -148,8 +150,8 @@ export class Device extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally
-     * unique.
+     * A server-defined unique numeric ID for the device.
+     * This is a more compact way to identify devices, and it is globally unique.
      */
     public /*out*/ readonly numId!: pulumi.Output<string>;
     /**
@@ -158,6 +160,7 @@ export class Device extends pulumi.CustomResource {
     public readonly registry!: pulumi.Output<string>;
     /**
      * The state most recently received from the device.
+     * Structure is documented below.
      */
     public /*out*/ readonly states!: pulumi.Output<outputs.iot.DeviceState[]>;
 
@@ -229,6 +232,7 @@ export interface DeviceState {
     blocked?: pulumi.Input<boolean>;
     /**
      * The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
+     * Structure is documented below.
      */
     configs?: pulumi.Input<pulumi.Input<inputs.iot.DeviceConfig>[]>;
     /**
@@ -251,6 +255,7 @@ export interface DeviceState {
     lastConfigSendTime?: pulumi.Input<string>;
     /**
      * The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
+     * Structure is documented below.
      */
     lastErrorStatuses?: pulumi.Input<pulumi.Input<inputs.iot.DeviceLastErrorStatus>[]>;
     /**
@@ -283,8 +288,8 @@ export interface DeviceState {
      */
     name?: pulumi.Input<string>;
     /**
-     * A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally
-     * unique.
+     * A server-defined unique numeric ID for the device.
+     * This is a more compact way to identify devices, and it is globally unique.
      */
     numId?: pulumi.Input<string>;
     /**
@@ -293,6 +298,7 @@ export interface DeviceState {
     registry?: pulumi.Input<string>;
     /**
      * The state most recently received from the device.
+     * Structure is documented below.
      */
     states?: pulumi.Input<pulumi.Input<inputs.iot.DeviceState>[]>;
 }

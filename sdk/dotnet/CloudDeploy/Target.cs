@@ -139,8 +139,7 @@ namespace Pulumi.Gcp.CloudDeploy
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and
-        /// delete requests to ensure the client has an up-to-date value before proceeding.
+        /// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -164,7 +163,7 @@ namespace Pulumi.Gcp.CloudDeploy
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+        /// The location for the resource
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -312,7 +311,7 @@ namespace Pulumi.Gcp.CloudDeploy
         }
 
         /// <summary>
-        /// Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+        /// The location for the resource
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -380,8 +379,7 @@ namespace Pulumi.Gcp.CloudDeploy
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and
-        /// delete requests to ensure the client has an up-to-date value before proceeding.
+        /// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
@@ -417,7 +415,7 @@ namespace Pulumi.Gcp.CloudDeploy
         }
 
         /// <summary>
-        /// Required. The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+        /// The location for the resource
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

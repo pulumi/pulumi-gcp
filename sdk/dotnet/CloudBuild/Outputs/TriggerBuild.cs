@@ -25,9 +25,9 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         public readonly Outputs.TriggerBuildAvailableSecrets? AvailableSecrets;
         /// <summary>
         /// A list of images to be pushed upon the successful completion of all build steps.
-        /// The images will be pushed using the builder service account's credentials.
+        /// The images are pushed using the builder service account's credentials.
         /// The digests of the pushed images will be stored in the Build resource's results field.
-        /// If any of the images fail to be pushed, the build is marked FAILURE.
+        /// If any of the images fail to be pushed, the build status is marked FAILURE.
         /// </summary>
         public readonly ImmutableArray<string> Images;
         /// <summary>
@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.TriggerBuildStep> Steps;
         /// <summary>
-        /// Substitutions to use in a triggered build. Should only be used with triggers.run
+        /// Substitutions data for Build resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Substitutions;
         /// <summary>
@@ -72,10 +72,11 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// Time limit for executing this build step. If not defined,
-        /// the step has no
-        /// time limit and will be allowed to continue to run until either it
-        /// completes or the build itself times out.
+        /// Amount of time that this build should be allowed to run, to second granularity.
+        /// If this amount of time elapses, work on the build will cease and the build status will be TIMEOUT.
+        /// This timeout must be equal to or greater than the sum of the timeouts for build steps within the build.
+        /// The expected format is the number of seconds followed by s.
+        /// Default time is ten minutes (600s).
         /// </summary>
         public readonly string? Timeout;
 

@@ -16,16 +16,14 @@ public final class TriggerWebhookConfigArgs extends com.pulumi.resources.Resourc
     public static final TriggerWebhookConfigArgs Empty = new TriggerWebhookConfigArgs();
 
     /**
-     * Secrets to decrypt using Cloud Key Management Service.
-     * Structure is documented below.
+     * Resource name for the secret required as a URL parameter.
      * 
      */
     @Import(name="secret", required=true)
     private Output<String> secret;
 
     /**
-     * @return Secrets to decrypt using Cloud Key Management Service.
-     * Structure is documented below.
+     * @return Resource name for the secret required as a URL parameter.
      * 
      */
     public Output<String> secret() {
@@ -33,7 +31,6 @@ public final class TriggerWebhookConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * - 
      * Potential issues with the underlying Pub/Sub subscription configuration.
      * Only populated on get requests.
      * 
@@ -42,8 +39,7 @@ public final class TriggerWebhookConfigArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> state;
 
     /**
-     * @return -
-     * Potential issues with the underlying Pub/Sub subscription configuration.
+     * @return Potential issues with the underlying Pub/Sub subscription configuration.
      * Only populated on get requests.
      * 
      */
@@ -77,8 +73,7 @@ public final class TriggerWebhookConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param secret Secrets to decrypt using Cloud Key Management Service.
-         * Structure is documented below.
+         * @param secret Resource name for the secret required as a URL parameter.
          * 
          * @return builder
          * 
@@ -89,8 +84,7 @@ public final class TriggerWebhookConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param secret Secrets to decrypt using Cloud Key Management Service.
-         * Structure is documented below.
+         * @param secret Resource name for the secret required as a URL parameter.
          * 
          * @return builder
          * 
@@ -100,8 +94,7 @@ public final class TriggerWebhookConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param state -
-         * Potential issues with the underlying Pub/Sub subscription configuration.
+         * @param state Potential issues with the underlying Pub/Sub subscription configuration.
          * Only populated on get requests.
          * 
          * @return builder
@@ -113,8 +106,7 @@ public final class TriggerWebhookConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param state -
-         * Potential issues with the underlying Pub/Sub subscription configuration.
+         * @param state Potential issues with the underlying Pub/Sub subscription configuration.
          * Only populated on get requests.
          * 
          * @return builder

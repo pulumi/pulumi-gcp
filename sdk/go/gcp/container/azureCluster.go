@@ -65,7 +65,7 @@ import (
 //						AuthorizedKey: pulumi.String("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers"),
 //					},
 //					SubnetId: pulumi.String("/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default"),
-//					Version:  pulumi.String(versions.ValidVersions[0]),
+//					Version:  *pulumi.String(versions.ValidVersions[0]),
 //				},
 //				Fleet: &container.AzureClusterFleetArgs{
 //					Project: pulumi.String("my-project-number"),
@@ -132,8 +132,7 @@ type AzureCluster struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Output only. The endpoint of the cluster's API server.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
-	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-	// and delete requests to ensure the client has an up-to-date value before proceeding.
+	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Fleet configuration.
 	Fleet AzureClusterFleetOutput `pulumi:"fleet"`
@@ -145,14 +144,15 @@ type AzureCluster struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Cluster-wide networking configuration.
 	Networking AzureClusterNetworkingOutput `pulumi:"networking"`
+	// The number of the Fleet host project where this cluster will be registered.
+	// (Optional)
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Output only. If set, there are currently changes in flight to the cluster.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
-	// The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+	// The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-	// STOPPING, ERROR, DEGRADED
+	// Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
 	State pulumi.StringOutput `pulumi:"state"`
 	// Output only. A globally unique identifier for the cluster.
 	Uid pulumi.StringOutput `pulumi:"uid"`
@@ -231,8 +231,7 @@ type azureClusterState struct {
 	Description *string `pulumi:"description"`
 	// Output only. The endpoint of the cluster's API server.
 	Endpoint *string `pulumi:"endpoint"`
-	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-	// and delete requests to ensure the client has an up-to-date value before proceeding.
+	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// Fleet configuration.
 	Fleet *AzureClusterFleet `pulumi:"fleet"`
@@ -244,14 +243,15 @@ type azureClusterState struct {
 	Name *string `pulumi:"name"`
 	// Cluster-wide networking configuration.
 	Networking *AzureClusterNetworking `pulumi:"networking"`
+	// The number of the Fleet host project where this cluster will be registered.
+	// (Optional)
 	// The project for the resource
 	Project *string `pulumi:"project"`
 	// Output only. If set, there are currently changes in flight to the cluster.
 	Reconciling *bool `pulumi:"reconciling"`
-	// The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+	// The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-	// STOPPING, ERROR, DEGRADED
+	// Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
 	State *string `pulumi:"state"`
 	// Output only. A globally unique identifier for the cluster.
 	Uid *string `pulumi:"uid"`
@@ -278,8 +278,7 @@ type AzureClusterState struct {
 	Description pulumi.StringPtrInput
 	// Output only. The endpoint of the cluster's API server.
 	Endpoint pulumi.StringPtrInput
-	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-	// and delete requests to ensure the client has an up-to-date value before proceeding.
+	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// Fleet configuration.
 	Fleet AzureClusterFleetPtrInput
@@ -291,14 +290,15 @@ type AzureClusterState struct {
 	Name pulumi.StringPtrInput
 	// Cluster-wide networking configuration.
 	Networking AzureClusterNetworkingPtrInput
+	// The number of the Fleet host project where this cluster will be registered.
+	// (Optional)
 	// The project for the resource
 	Project pulumi.StringPtrInput
 	// Output only. If set, there are currently changes in flight to the cluster.
 	Reconciling pulumi.BoolPtrInput
-	// The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+	// The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
 	ResourceGroupId pulumi.StringPtrInput
-	// Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-	// STOPPING, ERROR, DEGRADED
+	// Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
 	State pulumi.StringPtrInput
 	// Output only. A globally unique identifier for the cluster.
 	Uid pulumi.StringPtrInput
@@ -335,9 +335,11 @@ type azureClusterArgs struct {
 	Name *string `pulumi:"name"`
 	// Cluster-wide networking configuration.
 	Networking AzureClusterNetworking `pulumi:"networking"`
+	// The number of the Fleet host project where this cluster will be registered.
+	// (Optional)
 	// The project for the resource
 	Project *string `pulumi:"project"`
-	// The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+	// The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 }
 
@@ -365,9 +367,11 @@ type AzureClusterArgs struct {
 	Name pulumi.StringPtrInput
 	// Cluster-wide networking configuration.
 	Networking AzureClusterNetworkingInput
+	// The number of the Fleet host project where this cluster will be registered.
+	// (Optional)
 	// The project for the resource
 	Project pulumi.StringPtrInput
-	// The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+	// The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
 	ResourceGroupId pulumi.StringInput
 }
 
@@ -498,8 +502,7 @@ func (o AzureClusterOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureCluster) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
 }
 
-// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-// and delete requests to ensure the client has an up-to-date value before proceeding.
+// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 func (o AzureClusterOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureCluster) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
@@ -529,6 +532,8 @@ func (o AzureClusterOutput) Networking() AzureClusterNetworkingOutput {
 	return o.ApplyT(func(v *AzureCluster) AzureClusterNetworkingOutput { return v.Networking }).(AzureClusterNetworkingOutput)
 }
 
+// The number of the Fleet host project where this cluster will be registered.
+// (Optional)
 // The project for the resource
 func (o AzureClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureCluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
@@ -539,13 +544,12 @@ func (o AzureClusterOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AzureCluster) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }
 
-// The ARM ID the of the resource group containing proxy keyvault. Resource group ids are formatted as `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>`
+// The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
 func (o AzureClusterOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureCluster) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-// STOPPING, ERROR, DEGRADED
+// Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
 func (o AzureClusterOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureCluster) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

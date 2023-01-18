@@ -13,14 +13,12 @@ namespace Pulumi.Gcp.Notebooks.Inputs
     public sealed class RuntimeVirtualMachineGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// -
         /// The unique identifier of the Managed Compute Engine instance.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// -
         /// The user-friendly name of the Managed Compute Engine instance.
         /// </summary>
         [Input("instanceName")]

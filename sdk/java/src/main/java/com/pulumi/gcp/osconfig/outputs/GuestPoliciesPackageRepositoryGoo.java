@@ -10,10 +10,7 @@ import java.util.Objects;
 @CustomType
 public final class GuestPoliciesPackageRepositoryGoo {
     /**
-     * @return Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-     * Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-     * This means that requests to create multiple recipes with the same name and version are rejected since they
-     * could potentially have conflicting assignments.
+     * @return The name of the repository.
      * 
      */
     private String name;
@@ -25,10 +22,7 @@ public final class GuestPoliciesPackageRepositoryGoo {
 
     private GuestPoliciesPackageRepositoryGoo() {}
     /**
-     * @return Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-     * Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-     * This means that requests to create multiple recipes with the same name and version are rejected since they
-     * could potentially have conflicting assignments.
+     * @return The name of the repository.
      * 
      */
     public String name() {

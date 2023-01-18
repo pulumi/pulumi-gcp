@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = sourcerepo.LookupRepository(ctx, &sourcerepo.LookupRepositoryArgs{
+//			_, err := sourcerepo.LookupRepository(ctx, &sourcerepo.LookupRepositoryArgs{
 //				Name: "my-repository",
 //			}, nil)
 //			if err != nil {

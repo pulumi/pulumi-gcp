@@ -17,21 +17,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const perms = pulumi.output(gcp.iam.getTestablePermissions({
+ * const perms = gcp.iam.getTestablePermissions({
  *     fullResourceName: "//cloudresourcemanager.googleapis.com/projects/my-project",
  *     stages: [
  *         "GA",
  *         "BETA",
  *     ],
- * }));
+ * });
  * ```
  */
 export function getTestablePermissions(args: GetTestablePermissionsArgs, opts?: pulumi.InvokeOptions): Promise<GetTestablePermissionsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:iam/getTestablePermissions:getTestablePermissions", {
         "customSupportLevel": args.customSupportLevel,
         "fullResourceName": args.fullResourceName,
@@ -76,9 +73,28 @@ export interface GetTestablePermissionsResult {
     readonly permissions: outputs.iam.GetTestablePermissionsPermission[];
     readonly stages?: string[];
 }
-
+/**
+ * Retrieve a list of testable permissions for a resource. Testable permissions mean the permissions that user can add or remove in a role at a given resource. The resource can be referenced either via the full resource name or via a URI.
+ *
+ * ## Example Usage
+ *
+ * Retrieve all the supported permissions able to be set on `my-project` that are in either GA or BETA. This is useful for dynamically constructing custom roles.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const perms = gcp.iam.getTestablePermissions({
+ *     fullResourceName: "//cloudresourcemanager.googleapis.com/projects/my-project",
+ *     stages: [
+ *         "GA",
+ *         "BETA",
+ *     ],
+ * });
+ * ```
+ */
 export function getTestablePermissionsOutput(args: GetTestablePermissionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTestablePermissionsResult> {
-    return pulumi.output(args).apply(a => getTestablePermissions(a, opts))
+    return pulumi.output(args).apply((a: any) => getTestablePermissions(a, opts))
 }
 
 /**

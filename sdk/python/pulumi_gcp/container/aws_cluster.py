@@ -39,7 +39,9 @@ class AwsClusterArgs:
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input['AwsClusterLoggingConfigArgs'] logging_config: (Beta only) Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
+               (Optional)
+               The project for the resource
         """
         pulumi.set(__self__, "authorization", authorization)
         pulumi.set(__self__, "aws_region", aws_region)
@@ -182,6 +184,8 @@ class AwsClusterArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
+        The number of the Fleet host project where this cluster will be registered.
+        (Optional)
         The project for the resource
         """
         return pulumi.get(self, "project")
@@ -222,17 +226,17 @@ class _AwsClusterState:
         :param pulumi.Input[str] create_time: Output only. The time at which this cluster was created.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[str] endpoint: Output only. The endpoint of the cluster's API server.
-        :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-               and delete requests to ensure the client has an up-to-date value before proceeding.
+        :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input['AwsClusterFleetArgs'] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input['AwsClusterLoggingConfigArgs'] logging_config: (Beta only) Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input['AwsClusterNetworkingArgs'] networking: Cluster-wide networking configuration.
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
+               (Optional)
+               The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. If set, there are currently changes in flight to the cluster.
-        :param pulumi.Input[str] state: Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-               STOPPING, ERROR, DEGRADED
+        :param pulumi.Input[str] state: Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         :param pulumi.Input[str] uid: Output only. A globally unique identifier for the cluster.
         :param pulumi.Input[str] update_time: Output only. The time at which this cluster was last updated.
         :param pulumi.Input[Sequence[pulumi.Input['AwsClusterWorkloadIdentityConfigArgs']]] workload_identity_configs: Output only. Workload Identity settings.
@@ -364,8 +368,7 @@ class _AwsClusterState:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-        and delete requests to ensure the client has an up-to-date value before proceeding.
+        Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
 
@@ -437,6 +440,8 @@ class _AwsClusterState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
+        The number of the Fleet host project where this cluster will be registered.
+        (Optional)
         The project for the resource
         """
         return pulumi.get(self, "project")
@@ -461,8 +466,7 @@ class _AwsClusterState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-        STOPPING, ERROR, DEGRADED
+        Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         """
         return pulumi.get(self, "state")
 
@@ -628,7 +632,9 @@ class AwsCluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AwsClusterLoggingConfigArgs']] logging_config: (Beta only) Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[pulumi.InputType['AwsClusterNetworkingArgs']] networking: Cluster-wide networking configuration.
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
+               (Optional)
+               The project for the resource
         """
         ...
     @overload
@@ -837,17 +843,17 @@ class AwsCluster(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Output only. The time at which this cluster was created.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[str] endpoint: Output only. The endpoint of the cluster's API server.
-        :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-               and delete requests to ensure the client has an up-to-date value before proceeding.
+        :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[pulumi.InputType['AwsClusterFleetArgs']] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[pulumi.InputType['AwsClusterLoggingConfigArgs']] logging_config: (Beta only) Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[pulumi.InputType['AwsClusterNetworkingArgs']] networking: Cluster-wide networking configuration.
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
+               (Optional)
+               The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. If set, there are currently changes in flight to the cluster.
-        :param pulumi.Input[str] state: Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-               STOPPING, ERROR, DEGRADED
+        :param pulumi.Input[str] state: Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         :param pulumi.Input[str] uid: Output only. A globally unique identifier for the cluster.
         :param pulumi.Input[str] update_time: Output only. The time at which this cluster was last updated.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AwsClusterWorkloadIdentityConfigArgs']]]] workload_identity_configs: Output only. Workload Identity settings.
@@ -937,8 +943,7 @@ class AwsCluster(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update
-        and delete requests to ensure the client has an up-to-date value before proceeding.
+        Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
 
@@ -986,6 +991,8 @@ class AwsCluster(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
+        The number of the Fleet host project where this cluster will be registered.
+        (Optional)
         The project for the resource
         """
         return pulumi.get(self, "project")
@@ -1002,8 +1009,7 @@ class AwsCluster(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING,
-        STOPPING, ERROR, DEGRADED
+        Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         """
         return pulumi.get(self, "state")
 

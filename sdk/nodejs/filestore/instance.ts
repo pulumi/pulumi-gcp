@@ -147,7 +147,8 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+     * Server-specified ETag for the instance resource to prevent
+     * simultaneous updates from overwriting each other.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
@@ -169,7 +170,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * The name of the fileshare (16 characters or less)
+     * The resource name of the instance.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -189,7 +190,6 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly tier!: pulumi.Output<string>;
     /**
-     * -
      * (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
      *
@@ -264,7 +264,8 @@ export interface InstanceState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+     * Server-specified ETag for the instance resource to prevent
+     * simultaneous updates from overwriting each other.
      */
     etag?: pulumi.Input<string>;
     /**
@@ -286,7 +287,7 @@ export interface InstanceState {
      */
     location?: pulumi.Input<string>;
     /**
-     * The name of the fileshare (16 characters or less)
+     * The resource name of the instance.
      */
     name?: pulumi.Input<string>;
     /**
@@ -306,7 +307,6 @@ export interface InstanceState {
      */
     tier?: pulumi.Input<string>;
     /**
-     * -
      * (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
      *
@@ -342,7 +342,7 @@ export interface InstanceArgs {
      */
     location?: pulumi.Input<string>;
     /**
-     * The name of the fileshare (16 characters or less)
+     * The resource name of the instance.
      */
     name?: pulumi.Input<string>;
     /**
@@ -362,7 +362,6 @@ export interface InstanceArgs {
      */
     tier: pulumi.Input<string>;
     /**
-     * -
      * (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
      *

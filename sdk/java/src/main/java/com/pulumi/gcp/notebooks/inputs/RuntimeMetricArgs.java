@@ -16,9 +16,19 @@ public final class RuntimeMetricArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RuntimeMetricArgs Empty = new RuntimeMetricArgs();
 
+    /**
+     * Contains runtime daemon metrics, such as OS and kernels and
+     * sessions stats.
+     * 
+     */
     @Import(name="systemMetrics")
     private @Nullable Output<Map<String,String>> systemMetrics;
 
+    /**
+     * @return Contains runtime daemon metrics, such as OS and kernels and
+     * sessions stats.
+     * 
+     */
     public Optional<Output<Map<String,String>>> systemMetrics() {
         return Optional.ofNullable(this.systemMetrics);
     }
@@ -47,11 +57,25 @@ public final class RuntimeMetricArgs extends com.pulumi.resources.ResourceArgs {
             $ = new RuntimeMetricArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param systemMetrics Contains runtime daemon metrics, such as OS and kernels and
+         * sessions stats.
+         * 
+         * @return builder
+         * 
+         */
         public Builder systemMetrics(@Nullable Output<Map<String,String>> systemMetrics) {
             $.systemMetrics = systemMetrics;
             return this;
         }
 
+        /**
+         * @param systemMetrics Contains runtime daemon metrics, such as OS and kernels and
+         * sessions stats.
+         * 
+         * @return builder
+         * 
+         */
         public Builder systemMetrics(Map<String,String> systemMetrics) {
             return systemMetrics(Output.of(systemMetrics));
         }

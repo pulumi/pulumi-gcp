@@ -14,8 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterIdentityServiceConfig
     {
         /// <summary>
-        /// Enable the PodSecurityPolicy controller for this cluster.
-        /// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        /// Whether to enable the Identity Service component. It is disabled by default. Set `enabled=true` to enable.
         /// </summary>
         public readonly bool? Enabled;
 

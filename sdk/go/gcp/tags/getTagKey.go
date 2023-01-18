@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = tags.LookupTagKey(ctx, &tags.LookupTagKeyArgs{
+//			_, err := tags.LookupTagKey(ctx, &tags.LookupTagKeyArgs{
 //				Parent:    "organizations/12345",
 //				ShortName: "environment",
 //			}, nil)
@@ -57,15 +57,21 @@ type LookupTagKeyArgs struct {
 
 // A collection of values returned by getTagKey.
 type LookupTagKeyResult struct {
+	// Creation time.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime  string `pulumi:"createTime"`
 	Description string `pulumi:"description"`
 	// an identifier for the resource with format `tagKeys/{{name}}`
-	Id             string `pulumi:"id"`
-	Name           string `pulumi:"name"`
+	Id string `pulumi:"id"`
+	// The generated numeric id for the TagKey.
+	Name string `pulumi:"name"`
+	// Namespaced name of the TagKey.
 	NamespacedName string `pulumi:"namespacedName"`
 	Parent         string `pulumi:"parent"`
 	ShortName      string `pulumi:"shortName"`
-	UpdateTime     string `pulumi:"updateTime"`
+	// Update time.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	UpdateTime string `pulumi:"updateTime"`
 }
 
 func LookupTagKeyOutput(ctx *pulumi.Context, args LookupTagKeyOutputArgs, opts ...pulumi.InvokeOption) LookupTagKeyResultOutput {
@@ -108,6 +114,8 @@ func (o LookupTagKeyResultOutput) ToLookupTagKeyResultOutputWithContext(ctx cont
 	return o
 }
 
+// Creation time.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o LookupTagKeyResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagKeyResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -121,10 +129,12 @@ func (o LookupTagKeyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagKeyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The generated numeric id for the TagKey.
 func (o LookupTagKeyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagKeyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Namespaced name of the TagKey.
 func (o LookupTagKeyResultOutput) NamespacedName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagKeyResult) string { return v.NamespacedName }).(pulumi.StringOutput)
 }
@@ -137,6 +147,8 @@ func (o LookupTagKeyResultOutput) ShortName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagKeyResult) string { return v.ShortName }).(pulumi.StringOutput)
 }
 
+// Update time.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o LookupTagKeyResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagKeyResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }

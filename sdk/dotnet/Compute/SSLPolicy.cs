@@ -106,7 +106,8 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<string>> EnabledFeatures { get; private set; } = null!;
 
         /// <summary>
-        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+        /// Fingerprint of this resource. A hash of the contents stored in this
+        /// object. This field is used in optimistic locking.
         /// </summary>
         [Output("fingerprint")]
         public Output<string> Fingerprint { get; private set; } = null!;
@@ -326,7 +327,8 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+        /// Fingerprint of this resource. A hash of the contents stored in this
+        /// object. This field is used in optimistic locking.
         /// </summary>
         [Input("fingerprint")]
         public Input<string>? Fingerprint { get; set; }

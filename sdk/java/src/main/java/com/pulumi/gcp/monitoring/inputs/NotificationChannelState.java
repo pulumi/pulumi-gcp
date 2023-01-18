@@ -112,16 +112,18 @@ public final class NotificationChannelState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The full REST resource name for this channel. The syntax is: projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The
-     * [CHANNEL_ID] is automatically assigned by the server on creation.
+     * The full REST resource name for this channel. The syntax is:
+     * projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
+     * The [CHANNEL_ID] is automatically assigned by the server on creation.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The full REST resource name for this channel. The syntax is: projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The
-     * [CHANNEL_ID] is automatically assigned by the server on creation.
+     * @return The full REST resource name for this channel. The syntax is:
+     * projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
+     * The [CHANNEL_ID] is automatically assigned by the server on creation.
      * 
      */
     public Optional<Output<String>> name() {
@@ -203,26 +205,14 @@ public final class NotificationChannelState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel
-     * operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is
-     * non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel
-     * works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require
-     * verification or that this specific channel has been exempted from verification because it was created prior to
-     * verification being required for channels of this type.This field cannot be modified using a standard
-     * UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
+     * Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require verification or that this specific channel has been exempted from verification because it was created prior to verification being required for channels of this type.This field cannot be modified using a standard UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
      * 
      */
     @Import(name="verificationStatus")
     private @Nullable Output<String> verificationStatus;
 
     /**
-     * @return Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel
-     * operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is
-     * non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel
-     * works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require
-     * verification or that this specific channel has been exempted from verification because it was created prior to
-     * verification being required for channels of this type.This field cannot be modified using a standard
-     * UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
+     * @return Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require verification or that this specific channel has been exempted from verification because it was created prior to verification being required for channels of this type.This field cannot be modified using a standard UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
      * 
      */
     public Optional<Output<String>> verificationStatus() {
@@ -387,8 +377,9 @@ public final class NotificationChannelState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name The full REST resource name for this channel. The syntax is: projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The
-         * [CHANNEL_ID] is automatically assigned by the server on creation.
+         * @param name The full REST resource name for this channel. The syntax is:
+         * projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
+         * The [CHANNEL_ID] is automatically assigned by the server on creation.
          * 
          * @return builder
          * 
@@ -399,8 +390,9 @@ public final class NotificationChannelState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name The full REST resource name for this channel. The syntax is: projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The
-         * [CHANNEL_ID] is automatically assigned by the server on creation.
+         * @param name The full REST resource name for this channel. The syntax is:
+         * projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
+         * The [CHANNEL_ID] is automatically assigned by the server on creation.
          * 
          * @return builder
          * 
@@ -508,13 +500,7 @@ public final class NotificationChannelState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param verificationStatus Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel
-         * operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is
-         * non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel
-         * works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require
-         * verification or that this specific channel has been exempted from verification because it was created prior to
-         * verification being required for channels of this type.This field cannot be modified using a standard
-         * UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
+         * @param verificationStatus Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require verification or that this specific channel has been exempted from verification because it was created prior to verification being required for channels of this type.This field cannot be modified using a standard UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
          * 
          * @return builder
          * 
@@ -525,13 +511,7 @@ public final class NotificationChannelState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param verificationStatus Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel
-         * operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is
-         * non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel
-         * works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require
-         * verification or that this specific channel has been exempted from verification because it was created prior to
-         * verification being required for channels of this type.This field cannot be modified using a standard
-         * UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
+         * @param verificationStatus Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require verification or that this specific channel has been exempted from verification because it was created prior to verification being required for channels of this type.This field cannot be modified using a standard UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
          * 
          * @return builder
          * 

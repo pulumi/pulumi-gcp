@@ -17,16 +17,16 @@ public final class SyncAuthorizationState extends com.pulumi.resources.ResourceA
     public static final SyncAuthorizationState Empty = new SyncAuthorizationState();
 
     /**
-     * Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting
-     * each other. Used internally during updates.
+     * Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting each other.
+     * Used internally during updates.
      * 
      */
     @Import(name="etag")
     private @Nullable Output<String> etag;
 
     /**
-     * @return Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting
-     * each other. Used internally during updates.
+     * @return Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting each other.
+     * Used internally during updates.
      * 
      */
     public Optional<Output<String>> etag() {
@@ -96,8 +96,8 @@ public final class SyncAuthorizationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param etag Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting
-         * each other. Used internally during updates.
+         * @param etag Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting each other.
+         * Used internally during updates.
          * 
          * @return builder
          * 
@@ -108,8 +108,8 @@ public final class SyncAuthorizationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param etag Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting
-         * each other. Used internally during updates.
+         * @param etag Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting each other.
+         * Used internally during updates.
          * 
          * @return builder
          * 

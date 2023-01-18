@@ -92,8 +92,7 @@ type EntryGroup struct {
 	// The id of the entry group to create. The id must begin with a letter or underscore,
 	// contain only English letters, numbers and underscores, and be at most 64 characters.
 	EntryGroupId pulumi.StringOutput `pulumi:"entryGroupId"`
-	// The resource name of the entry group in URL format. Example:
-	// projects/{project}/locations/{location}/entryGroups/{entryGroupId}
+	// The resource name of the entry group in URL format. Example: projects/{project}/locations/{location}/entryGroups/{entryGroupId}
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -141,8 +140,7 @@ type entryGroupState struct {
 	// The id of the entry group to create. The id must begin with a letter or underscore,
 	// contain only English letters, numbers and underscores, and be at most 64 characters.
 	EntryGroupId *string `pulumi:"entryGroupId"`
-	// The resource name of the entry group in URL format. Example:
-	// projects/{project}/locations/{location}/entryGroups/{entryGroupId}
+	// The resource name of the entry group in URL format. Example: projects/{project}/locations/{location}/entryGroups/{entryGroupId}
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -159,8 +157,7 @@ type EntryGroupState struct {
 	// The id of the entry group to create. The id must begin with a letter or underscore,
 	// contain only English letters, numbers and underscores, and be at most 64 characters.
 	EntryGroupId pulumi.StringPtrInput
-	// The resource name of the entry group in URL format. Example:
-	// projects/{project}/locations/{location}/entryGroups/{entryGroupId}
+	// The resource name of the entry group in URL format. Example: projects/{project}/locations/{location}/entryGroups/{entryGroupId}
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -307,8 +304,7 @@ func (o EntryGroupOutput) EntryGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntryGroup) pulumi.StringOutput { return v.EntryGroupId }).(pulumi.StringOutput)
 }
 
-// The resource name of the entry group in URL format. Example:
-// projects/{project}/locations/{location}/entryGroups/{entryGroupId}
+// The resource name of the entry group in URL format. Example: projects/{project}/locations/{location}/entryGroups/{entryGroupId}
 func (o EntryGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntryGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

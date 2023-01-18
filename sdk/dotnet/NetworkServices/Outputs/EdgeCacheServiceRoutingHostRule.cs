@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
     public sealed class EdgeCacheServiceRoutingHostRule
     {
         /// <summary>
-        /// A human-readable description of the resource.
+        /// A human-readable description of the hostRule.
         /// </summary>
         public readonly string? Description;
         /// <summary>

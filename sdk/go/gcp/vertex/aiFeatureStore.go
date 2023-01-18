@@ -123,8 +123,7 @@ import (
 type AiFeatureStore struct {
 	pulumi.CustomResourceState
 
-	// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-	// nine fractional digits.
+	// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// If set, both of the online and offline data storage will be secured by this key.
 	// Structure is documented below.
@@ -145,8 +144,7 @@ type AiFeatureStore struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The region of the dataset. eg us-central1
 	Region pulumi.StringOutput `pulumi:"region"`
-	// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-	// to nine fractional digits.
+	// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -179,8 +177,7 @@ func GetAiFeatureStore(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AiFeatureStore resources.
 type aiFeatureStoreState struct {
-	// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-	// nine fractional digits.
+	// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime *string `pulumi:"createTime"`
 	// If set, both of the online and offline data storage will be secured by this key.
 	// Structure is documented below.
@@ -201,14 +198,12 @@ type aiFeatureStoreState struct {
 	Project *string `pulumi:"project"`
 	// The region of the dataset. eg us-central1
 	Region *string `pulumi:"region"`
-	// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-	// to nine fractional digits.
+	// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type AiFeatureStoreState struct {
-	// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-	// nine fractional digits.
+	// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringPtrInput
 	// If set, both of the online and offline data storage will be secured by this key.
 	// Structure is documented below.
@@ -229,8 +224,7 @@ type AiFeatureStoreState struct {
 	Project pulumi.StringPtrInput
 	// The region of the dataset. eg us-central1
 	Region pulumi.StringPtrInput
-	// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-	// to nine fractional digits.
+	// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -366,8 +360,7 @@ func (o AiFeatureStoreOutput) ToAiFeatureStoreOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-// nine fractional digits.
+// The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 func (o AiFeatureStoreOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureStore) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -415,8 +408,7 @@ func (o AiFeatureStoreOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureStore) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-// to nine fractional digits.
+// The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 func (o AiFeatureStoreOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureStore) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

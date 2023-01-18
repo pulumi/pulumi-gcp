@@ -30,7 +30,7 @@ public final class JobHadoopConfig {
      */
     private @Nullable List<String> fileUris;
     /**
-     * @return HCFS URIs of jar files to be added to the Spark CLASSPATH.
+     * @return HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
      * 
      */
     private @Nullable List<String> jarFileUris;
@@ -46,7 +46,7 @@ public final class JobHadoopConfig {
      */
     private @Nullable String mainJarFileUri;
     /**
-     * @return A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+     * @return A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site` and classes in user code..
      * 
      */
     private @Nullable Map<String,String> properties;
@@ -74,7 +74,7 @@ public final class JobHadoopConfig {
         return this.fileUris == null ? List.of() : this.fileUris;
     }
     /**
-     * @return HCFS URIs of jar files to be added to the Spark CLASSPATH.
+     * @return HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
      * 
      */
     public List<String> jarFileUris() {
@@ -98,7 +98,7 @@ public final class JobHadoopConfig {
         return Optional.ofNullable(this.mainJarFileUri);
     }
     /**
-     * @return A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
+     * @return A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site` and classes in user code..
      * 
      */
     public Map<String,String> properties() {

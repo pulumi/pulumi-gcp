@@ -33,14 +33,14 @@ public final class EdgeCacheServiceRoutingPathMatcherArgs extends com.pulumi.res
     }
 
     /**
-     * The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+     * The name to which this PathMatcher is referred by the HostRule.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+     * @return The name to which this PathMatcher is referred by the HostRule.
      * 
      */
     public Output<String> name() {
@@ -112,7 +112,7 @@ public final class EdgeCacheServiceRoutingPathMatcherArgs extends com.pulumi.res
         }
 
         /**
-         * @param name The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+         * @param name The name to which this PathMatcher is referred by the HostRule.
          * 
          * @return builder
          * 
@@ -123,7 +123,7 @@ public final class EdgeCacheServiceRoutingPathMatcherArgs extends com.pulumi.res
         }
 
         /**
-         * @param name The name of the query parameter to match. The query parameter must exist in the request, in the absence of which the request match fails.
+         * @param name The name to which this PathMatcher is referred by the HostRule.
          * 
          * @return builder
          * 

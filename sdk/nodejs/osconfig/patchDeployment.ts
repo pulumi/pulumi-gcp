@@ -292,8 +292,8 @@ export class PatchDeployment extends pulumi.CustomResource {
     }
 
     /**
-     * Time the patch deployment was created. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu" format,
-     * accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+     * Time the patch deployment was created. Timestamp is in RFC3339 text format.
+     * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -311,14 +311,13 @@ export class PatchDeployment extends pulumi.CustomResource {
      */
     public readonly instanceFilter!: pulumi.Output<outputs.osconfig.PatchDeploymentInstanceFilter>;
     /**
-     * -
      * The time the last patch job ran successfully.
      * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
     public /*out*/ readonly lastExecuteTime!: pulumi.Output<string>;
     /**
-     * Unique name for the patch deployment resource in a project. The patch deployment name is in the form:
-     * projects/{project_id}/patchDeployments/{patchDeploymentId}.
+     * Unique name for the patch deployment resource in a project.
+     * The patch deployment name is in the form: projects/{project_id}/patchDeployments/{patchDeploymentId}.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -356,8 +355,8 @@ export class PatchDeployment extends pulumi.CustomResource {
      */
     public readonly rollout!: pulumi.Output<outputs.osconfig.PatchDeploymentRollout | undefined>;
     /**
-     * Time the patch deployment was last updated. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu"
-     * format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+     * Time the patch deployment was last updated. Timestamp is in RFC3339 text format.
+     * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -419,8 +418,8 @@ export class PatchDeployment extends pulumi.CustomResource {
  */
 export interface PatchDeploymentState {
     /**
-     * Time the patch deployment was created. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu" format,
-     * accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+     * Time the patch deployment was created. Timestamp is in RFC3339 text format.
+     * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -438,14 +437,13 @@ export interface PatchDeploymentState {
      */
     instanceFilter?: pulumi.Input<inputs.osconfig.PatchDeploymentInstanceFilter>;
     /**
-     * -
      * The time the last patch job ran successfully.
      * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
     lastExecuteTime?: pulumi.Input<string>;
     /**
-     * Unique name for the patch deployment resource in a project. The patch deployment name is in the form:
-     * projects/{project_id}/patchDeployments/{patchDeploymentId}.
+     * Unique name for the patch deployment resource in a project.
+     * The patch deployment name is in the form: projects/{project_id}/patchDeployments/{patchDeploymentId}.
      */
     name?: pulumi.Input<string>;
     /**
@@ -483,8 +481,8 @@ export interface PatchDeploymentState {
      */
     rollout?: pulumi.Input<inputs.osconfig.PatchDeploymentRollout>;
     /**
-     * Time the patch deployment was last updated. Timestamp is in RFC3339 text format. A timestamp in RFC3339 UTC "Zulu"
-     * format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+     * Time the patch deployment was last updated. Timestamp is in RFC3339 text format.
+     * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
     updateTime?: pulumi.Input<string>;
 }

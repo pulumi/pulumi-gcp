@@ -12,25 +12,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceMemcacheNode {
+    /**
+     * @return Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
+     * 
+     */
     private @Nullable String host;
+    /**
+     * @return Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
+     * 
+     */
     private @Nullable String nodeId;
+    /**
+     * @return The port number of the Memcached server on this node.
+     * 
+     */
     private @Nullable Integer port;
+    /**
+     * @return Current state of the Memcached node.
+     * 
+     */
     private @Nullable String state;
+    /**
+     * @return Location (GCP Zone) for the Memcached node.
+     * 
+     */
     private @Nullable String zone;
 
     private InstanceMemcacheNode() {}
+    /**
+     * @return Hostname or IP address of the Memcached node used by the clients to connect to the Memcached server on this node.
+     * 
+     */
     public Optional<String> host() {
         return Optional.ofNullable(this.host);
     }
+    /**
+     * @return Identifier of the Memcached node. The node id does not include project or location like the Memcached instance name.
+     * 
+     */
     public Optional<String> nodeId() {
         return Optional.ofNullable(this.nodeId);
     }
+    /**
+     * @return The port number of the Memcached server on this node.
+     * 
+     */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }
+    /**
+     * @return Current state of the Memcached node.
+     * 
+     */
     public Optional<String> state() {
         return Optional.ofNullable(this.state);
     }
+    /**
+     * @return Location (GCP Zone) for the Memcached node.
+     * 
+     */
     public Optional<String> zone() {
         return Optional.ofNullable(this.zone);
     }

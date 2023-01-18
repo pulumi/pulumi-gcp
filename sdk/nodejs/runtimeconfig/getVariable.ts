@@ -11,18 +11,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const run_service = pulumi.output(gcp.runtimeconfig.getVariable({
+ * const run-service = gcp.runtimeconfig.getVariable({
  *     name: "prod-variables/hostname",
  *     parent: "my-service",
- * }));
+ * });
  * ```
  */
 export function getVariable(args: GetVariableArgs, opts?: pulumi.InvokeOptions): Promise<GetVariableResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:runtimeconfig/getVariable:getVariable", {
         "name": args.name,
         "parent": args.parent,
@@ -64,9 +61,21 @@ export interface GetVariableResult {
     readonly updateTime: string;
     readonly value: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const run-service = gcp.runtimeconfig.getVariable({
+ *     name: "prod-variables/hostname",
+ *     parent: "my-service",
+ * });
+ * ```
+ */
 export function getVariableOutput(args: GetVariableOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVariableResult> {
-    return pulumi.output(args).apply(a => getVariable(a, opts))
+    return pulumi.output(args).apply((a: any) => getVariable(a, opts))
 }
 
 /**

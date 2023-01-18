@@ -36,8 +36,8 @@ public final class JobAppEngineHttpTargetArgs extends com.pulumi.resources.Resou
 
     /**
      * HTTP request body.
-     * A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
-     * It is an error to set body on a job with an incompatible HttpMethod.
+     * A request body is allowed only if the HTTP method is POST or PUT.
+     * It will result in invalid argument error to set a body on a job with an incompatible HttpMethod.
      * A base64-encoded string.
      * 
      */
@@ -46,8 +46,8 @@ public final class JobAppEngineHttpTargetArgs extends com.pulumi.resources.Resou
 
     /**
      * @return HTTP request body.
-     * A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
-     * It is an error to set body on a job with an incompatible HttpMethod.
+     * A request body is allowed only if the HTTP method is POST or PUT.
+     * It will result in invalid argument error to set a body on a job with an incompatible HttpMethod.
      * A base64-encoded string.
      * 
      */
@@ -56,16 +56,18 @@ public final class JobAppEngineHttpTargetArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * HTTP request headers.
      * This map contains the header field names and values.
-     * Repeated headers are not supported, but a header value can contain commas.
+     * Headers can be set when the job is created.
      * 
      */
     @Import(name="headers")
     private @Nullable Output<Map<String,String>> headers;
 
     /**
-     * @return This map contains the header field names and values.
-     * Repeated headers are not supported, but a header value can contain commas.
+     * @return HTTP request headers.
+     * This map contains the header field names and values.
+     * Headers can be set when the job is created.
      * 
      */
     public Optional<Output<Map<String,String>>> headers() {
@@ -163,8 +165,8 @@ public final class JobAppEngineHttpTargetArgs extends com.pulumi.resources.Resou
 
         /**
          * @param body HTTP request body.
-         * A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
-         * It is an error to set body on a job with an incompatible HttpMethod.
+         * A request body is allowed only if the HTTP method is POST or PUT.
+         * It will result in invalid argument error to set a body on a job with an incompatible HttpMethod.
          * A base64-encoded string.
          * 
          * @return builder
@@ -177,8 +179,8 @@ public final class JobAppEngineHttpTargetArgs extends com.pulumi.resources.Resou
 
         /**
          * @param body HTTP request body.
-         * A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
-         * It is an error to set body on a job with an incompatible HttpMethod.
+         * A request body is allowed only if the HTTP method is POST or PUT.
+         * It will result in invalid argument error to set a body on a job with an incompatible HttpMethod.
          * A base64-encoded string.
          * 
          * @return builder
@@ -189,8 +191,9 @@ public final class JobAppEngineHttpTargetArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param headers This map contains the header field names and values.
-         * Repeated headers are not supported, but a header value can contain commas.
+         * @param headers HTTP request headers.
+         * This map contains the header field names and values.
+         * Headers can be set when the job is created.
          * 
          * @return builder
          * 
@@ -201,8 +204,9 @@ public final class JobAppEngineHttpTargetArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param headers This map contains the header field names and values.
-         * Repeated headers are not supported, but a header value can contain commas.
+         * @param headers HTTP request headers.
+         * This map contains the header field names and values.
+         * Headers can be set when the job is created.
          * 
          * @return builder
          * 

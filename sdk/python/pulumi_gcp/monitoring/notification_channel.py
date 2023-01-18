@@ -226,8 +226,9 @@ class _NotificationChannelState:
                Labels with sensitive data are obfuscated by the API and therefore the provider cannot
                determine if there are upstream changes to these fields. They can also be configured via
                the sensitive_labels block, but cannot be configured in both places.
-        :param pulumi.Input[str] name: The full REST resource name for this channel. The syntax is: projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The
-               [CHANNEL_ID] is automatically assigned by the server on creation.
+        :param pulumi.Input[str] name: The full REST resource name for this channel. The syntax is:
+               projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
+               The [CHANNEL_ID] is automatically assigned by the server on creation.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['NotificationChannelSensitiveLabelsArgs'] sensitive_labels: Different notification type behaviors are configured primarily using the the `labels` field on this
@@ -239,13 +240,7 @@ class _NotificationChannelState:
                Structure is documented below.
         :param pulumi.Input[str] type: The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
-        :param pulumi.Input[str] verification_status: Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel
-               operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is
-               non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel
-               works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require
-               verification or that this specific channel has been exempted from verification because it was created prior to
-               verification being required for channels of this type.This field cannot be modified using a standard
-               UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
+        :param pulumi.Input[str] verification_status: Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require verification or that this specific channel has been exempted from verification because it was created prior to verification being required for channels of this type.This field cannot be modified using a standard UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -343,8 +338,9 @@ class _NotificationChannelState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The full REST resource name for this channel. The syntax is: projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The
-        [CHANNEL_ID] is automatically assigned by the server on creation.
+        The full REST resource name for this channel. The syntax is:
+        projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
+        The [CHANNEL_ID] is automatically assigned by the server on creation.
         """
         return pulumi.get(self, "name")
 
@@ -411,13 +407,7 @@ class _NotificationChannelState:
     @pulumi.getter(name="verificationStatus")
     def verification_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel
-        operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is
-        non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel
-        works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require
-        verification or that this specific channel has been exempted from verification because it was created prior to
-        verification being required for channels of this type.This field cannot be modified using a standard
-        UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
+        Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require verification or that this specific channel has been exempted from verification because it was created prior to verification being required for channels of this type.This field cannot be modified using a standard UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
         """
         return pulumi.get(self, "verification_status")
 
@@ -699,8 +689,9 @@ class NotificationChannel(pulumi.CustomResource):
                Labels with sensitive data are obfuscated by the API and therefore the provider cannot
                determine if there are upstream changes to these fields. They can also be configured via
                the sensitive_labels block, but cannot be configured in both places.
-        :param pulumi.Input[str] name: The full REST resource name for this channel. The syntax is: projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The
-               [CHANNEL_ID] is automatically assigned by the server on creation.
+        :param pulumi.Input[str] name: The full REST resource name for this channel. The syntax is:
+               projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
+               The [CHANNEL_ID] is automatically assigned by the server on creation.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['NotificationChannelSensitiveLabelsArgs']] sensitive_labels: Different notification type behaviors are configured primarily using the the `labels` field on this
@@ -712,13 +703,7 @@ class NotificationChannel(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] type: The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
-        :param pulumi.Input[str] verification_status: Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel
-               operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is
-               non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel
-               works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require
-               verification or that this specific channel has been exempted from verification because it was created prior to
-               verification being required for channels of this type.This field cannot be modified using a standard
-               UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
+        :param pulumi.Input[str] verification_status: Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require verification or that this specific channel has been exempted from verification because it was created prior to verification being required for channels of this type.This field cannot be modified using a standard UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -790,8 +775,9 @@ class NotificationChannel(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The full REST resource name for this channel. The syntax is: projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The
-        [CHANNEL_ID] is automatically assigned by the server on creation.
+        The full REST resource name for this channel. The syntax is:
+        projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
+        The [CHANNEL_ID] is automatically assigned by the server on creation.
         """
         return pulumi.get(self, "name")
 
@@ -838,13 +824,7 @@ class NotificationChannel(pulumi.CustomResource):
     @pulumi.getter(name="verificationStatus")
     def verification_status(self) -> pulumi.Output[str]:
         """
-        Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel
-        operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is
-        non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel
-        works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require
-        verification or that this specific channel has been exempted from verification because it was created prior to
-        verification being required for channels of this type.This field cannot be modified using a standard
-        UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
+        Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require verification or that this specific channel has been exempted from verification because it was created prior to verification being required for channels of this type.This field cannot be modified using a standard UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
         """
         return pulumi.get(self, "verification_status")
 

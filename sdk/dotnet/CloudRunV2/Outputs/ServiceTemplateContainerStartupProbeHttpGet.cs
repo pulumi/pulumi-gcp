@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceTemplateContainerStartupProbeHttpGetHttpHeader> HttpHeaders;
         /// <summary>
-        /// The relative path of the secret in the container.
+        /// Path to access on the HTTP server. Defaults to '/'.
         /// </summary>
         public readonly string? Path;
 

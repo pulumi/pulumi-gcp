@@ -133,8 +133,7 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
      */
     public /*out*/ readonly ancestorHasActiveKeyVersion!: pulumi.Output<boolean>;
     /**
-     * If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-     * of the Folder.
+     * If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Folder.
      */
     public /*out*/ readonly enrolledAncestor!: pulumi.Output<boolean>;
     /**
@@ -150,10 +149,10 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
      */
     public readonly folderId!: pulumi.Output<string>;
     /**
-     * If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-     * this Folder (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on it,
-     * etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-     * top-down.
+     * If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
+     * configured on this Folder (e.g. it doesn't exist or the Access Approval service account doesn't have the
+     * correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+     * as key versions are inherited top-down.
      */
     public /*out*/ readonly invalidKeyVersion!: pulumi.Output<boolean>;
     /**
@@ -225,8 +224,7 @@ export interface AccessApprovalSettingsState {
      */
     ancestorHasActiveKeyVersion?: pulumi.Input<boolean>;
     /**
-     * If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
-     * of the Folder.
+     * If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Folder.
      */
     enrolledAncestor?: pulumi.Input<boolean>;
     /**
@@ -242,10 +240,10 @@ export interface AccessApprovalSettingsState {
      */
     folderId?: pulumi.Input<string>;
     /**
-     * If the field is true, that indicates that there is some configuration issue with the active_key_version configured on
-     * this Folder (e.g. it doesn't exist or the Access Approval service account doesn't have the correct permissions on it,
-     * etc.) This key version is not necessarily the effective key version at this level, as key versions are inherited
-     * top-down.
+     * If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
+     * configured on this Folder (e.g. it doesn't exist or the Access Approval service account doesn't have the
+     * correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
+     * as key versions are inherited top-down.
      */
     invalidKeyVersion?: pulumi.Input<boolean>;
     /**

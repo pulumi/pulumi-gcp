@@ -17,14 +17,14 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMat
     public static final EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgs Empty = new EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgs();
 
     /**
-     * The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch.
+     * The value of the header should exactly match contents of exactMatch.
      * 
      */
     @Import(name="exactMatch")
     private @Nullable Output<String> exactMatch;
 
     /**
-     * @return The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch.
+     * @return The value of the header should exactly match contents of exactMatch.
      * 
      */
     public Optional<Output<String>> exactMatch() {
@@ -32,16 +32,14 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMat
     }
 
     /**
-     * Headers to remove from the response prior to sending it back to the client.
-     * Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+     * The header name to match on.
      * 
      */
     @Import(name="headerName", required=true)
     private Output<String> headerName;
 
     /**
-     * @return Headers to remove from the response prior to sending it back to the client.
-     * Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+     * @return The header name to match on.
      * 
      */
     public Output<String> headerName() {
@@ -81,14 +79,14 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMat
     }
 
     /**
-     * Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not.
+     * A header with the contents of headerName must exist. The match takes place whether or not the request&#39;s header has a value.
      * 
      */
     @Import(name="presentMatch")
     private @Nullable Output<Boolean> presentMatch;
 
     /**
-     * @return Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not.
+     * @return A header with the contents of headerName must exist. The match takes place whether or not the request&#39;s header has a value.
      * 
      */
     public Optional<Output<Boolean>> presentMatch() {
@@ -140,7 +138,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMat
         }
 
         /**
-         * @param exactMatch The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch.
+         * @param exactMatch The value of the header should exactly match contents of exactMatch.
          * 
          * @return builder
          * 
@@ -151,7 +149,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMat
         }
 
         /**
-         * @param exactMatch The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch.
+         * @param exactMatch The value of the header should exactly match contents of exactMatch.
          * 
          * @return builder
          * 
@@ -161,8 +159,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMat
         }
 
         /**
-         * @param headerName Headers to remove from the response prior to sending it back to the client.
-         * Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+         * @param headerName The header name to match on.
          * 
          * @return builder
          * 
@@ -173,8 +170,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMat
         }
 
         /**
-         * @param headerName Headers to remove from the response prior to sending it back to the client.
-         * Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+         * @param headerName The header name to match on.
          * 
          * @return builder
          * 
@@ -228,7 +224,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMat
         }
 
         /**
-         * @param presentMatch Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not.
+         * @param presentMatch A header with the contents of headerName must exist. The match takes place whether or not the request&#39;s header has a value.
          * 
          * @return builder
          * 
@@ -239,7 +235,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMat
         }
 
         /**
-         * @param presentMatch Specifies that the queryParameterMatch matches if the request contains the query parameter, irrespective of whether the parameter has a value or not.
+         * @param presentMatch A header with the contents of headerName must exist. The match takes place whether or not the request&#39;s header has a value.
          * 
          * @return builder
          * 

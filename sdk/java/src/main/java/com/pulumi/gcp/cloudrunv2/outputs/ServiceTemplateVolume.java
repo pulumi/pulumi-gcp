@@ -25,7 +25,8 @@ public final class ServiceTemplateVolume {
      */
     private String name;
     /**
-     * @return The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+     * @return Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+     * Structure is documented below.
      * 
      */
     private @Nullable ServiceTemplateVolumeSecret secret;
@@ -47,7 +48,8 @@ public final class ServiceTemplateVolume {
         return this.name;
     }
     /**
-     * @return The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+     * @return Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+     * Structure is documented below.
      * 
      */
     public Optional<ServiceTemplateVolumeSecret> secret() {

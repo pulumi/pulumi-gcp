@@ -19,7 +19,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly Outputs.ResourcePolicySnapshotSchedulePolicyRetentionPolicy? RetentionPolicy;
         /// <summary>
-        /// Specifies the frequency for the operation, using the unix-cron format.
+        /// Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ResourcePolicySnapshotSchedulePolicySchedule Schedule;
         /// <summary>

@@ -163,14 +163,16 @@ public class EntityType extends com.pulumi.resources.CustomResource {
         return this.kind;
     }
     /**
-     * The unique identifier of the entity type. Format: projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity type ID&gt;.
+     * The unique identifier of the entity type.
+     * Format: projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity type ID&gt;.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The unique identifier of the entity type. Format: projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity type ID&gt;.
+     * @return The unique identifier of the entity type.
+     * Format: projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity type ID&gt;.
      * 
      */
     public Output<String> name() {

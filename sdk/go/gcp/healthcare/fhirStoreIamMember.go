@@ -38,7 +38,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
 //				Bindings: []organizations.GetIAMPolicyBinding{
-//					organizations.GetIAMPolicyBinding{
+//					{
 //						Role: "roles/editor",
 //						Members: []string{
 //							"user:jane@example.com",
@@ -51,7 +51,7 @@ import (
 //			}
 //			_, err = healthcare.NewFhirStoreIamPolicy(ctx, "fhirStore", &healthcare.FhirStoreIamPolicyArgs{
 //				FhirStoreId: pulumi.String("your-fhir-store-id"),
-//				PolicyData:  pulumi.String(admin.PolicyData),
+//				PolicyData:  *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err

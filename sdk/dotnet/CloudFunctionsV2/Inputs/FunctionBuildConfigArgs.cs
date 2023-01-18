@@ -13,7 +13,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
     public sealed class FunctionBuildConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// -
         /// The Cloud Build name of the latest successful
         /// deployment of the function.
         /// </summary>
@@ -40,7 +39,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
         private InputMap<string>? _environmentVariables;
 
         /// <summary>
-        /// Environment variables that shall be available during function execution.
+        /// User-provided build-time environment variables for the function.
         /// </summary>
         public InputMap<string> EnvironmentVariables
         {

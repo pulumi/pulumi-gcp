@@ -18,7 +18,7 @@ public final class WorkflowTemplateParameterValidation {
      */
     private @Nullable WorkflowTemplateParameterValidationRegex regex;
     /**
-     * @return Optional. Corresponds to the label values of reservation resource.
+     * @return Validation based on a list of allowed values.
      * 
      */
     private @Nullable WorkflowTemplateParameterValidationValues values;
@@ -32,7 +32,7 @@ public final class WorkflowTemplateParameterValidation {
         return Optional.ofNullable(this.regex);
     }
     /**
-     * @return Optional. Corresponds to the label values of reservation resource.
+     * @return Validation based on a list of allowed values.
      * 
      */
     public Optional<WorkflowTemplateParameterValidationValues> values() {

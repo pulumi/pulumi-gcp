@@ -12,16 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionCloudResource {
     /**
-     * @return -
-     * The account ID of the service created for the purpose of this connection.
+     * @return The account ID of the service created for the purpose of this connection.
      * 
      */
     private @Nullable String serviceAccountId;
 
     private ConnectionCloudResource() {}
     /**
-     * @return -
-     * The account ID of the service created for the purpose of this connection.
+     * @return The account ID of the service created for the purpose of this connection.
      * 
      */
     public Optional<String> serviceAccountId() {

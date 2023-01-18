@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkg {
     /**
-     * @return An Apt Repository.
+     * @return A package managed by Apt.
      * 
      */
     private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt apt;
@@ -49,19 +49,19 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkg {
      */
     private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm rpm;
     /**
-     * @return A Yum Repository.
+     * @return A package managed by YUM.
      * 
      */
     private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum yum;
     /**
-     * @return A Zypper Repository.
+     * @return A package managed by Zypper.
      * 
      */
     private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper zypper;
 
     private OsPolicyAssignmentOsPolicyResourceGroupResourcePkg() {}
     /**
-     * @return An Apt Repository.
+     * @return A package managed by Apt.
      * 
      */
     public Optional<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt> apt() {
@@ -103,14 +103,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkg {
         return Optional.ofNullable(this.rpm);
     }
     /**
-     * @return A Yum Repository.
+     * @return A package managed by YUM.
      * 
      */
     public Optional<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum> yum() {
         return Optional.ofNullable(this.yum);
     }
     /**
-     * @return A Zypper Repository.
+     * @return A package managed by Zypper.
      * 
      */
     public Optional<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper> zypper() {

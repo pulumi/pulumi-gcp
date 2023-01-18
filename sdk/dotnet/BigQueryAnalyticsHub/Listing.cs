@@ -142,12 +142,18 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// Name of the data provider.
+        /// (Required)
         /// Name of the listing publisher.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Email or URL of the primary point of contact of the listing.
+        /// (Optional)
+        /// Email or URL of the data provider.
+        /// (Optional)
         /// Email or URL of the listing publisher.
         /// </summary>
         [Output("primaryContact")]
@@ -288,6 +294,10 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
+        /// Email or URL of the primary point of contact of the listing.
+        /// (Optional)
+        /// Email or URL of the data provider.
+        /// (Optional)
         /// Email or URL of the listing publisher.
         /// </summary>
         [Input("primaryContact")]
@@ -390,12 +400,18 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         public Input<string>? Location { get; set; }
 
         /// <summary>
+        /// Name of the data provider.
+        /// (Required)
         /// Name of the listing publisher.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Email or URL of the primary point of contact of the listing.
+        /// (Optional)
+        /// Email or URL of the data provider.
+        /// (Optional)
         /// Email or URL of the listing publisher.
         /// </summary>
         [Input("primaryContact")]

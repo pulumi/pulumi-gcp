@@ -50,13 +50,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(24),
-//				Network:      pulumi.String(vertexNetwork.Id),
+//				Network:      *pulumi.String(vertexNetwork.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			vertexVpcConnection, err := servicenetworking.NewConnection(ctx, "vertexVpcConnection", &servicenetworking.ConnectionArgs{
-//				Network: pulumi.String(vertexNetwork.Id),
+//				Network: *pulumi.String(vertexNetwork.Id),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					vertexRange.Name,
@@ -124,11 +124,10 @@ import (
 type AiEndpoint struct {
 	pulumi.CustomResourceState
 
-	// Output only. Timestamp when this Endpoint was created.
+	// Output only. Timestamp when the DeployedModel was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and
-	// EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud
-	// Console](https://console.cloud.google.com/vertex-ai/).
+	// Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
+	// Structure is documented below.
 	DeployedModels AiEndpointDeployedModelArrayOutput `pulumi:"deployedModels"`
 	// The description of the Endpoint.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -143,9 +142,7 @@ type AiEndpoint struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by
-	// CreateModelDeploymentMonitoringJob. Format:
-	// 'projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}'
+	// Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
 	ModelDeploymentMonitoringJob pulumi.StringOutput `pulumi:"modelDeploymentMonitoringJob"`
 	// The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -193,11 +190,10 @@ func GetAiEndpoint(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AiEndpoint resources.
 type aiEndpointState struct {
-	// Output only. Timestamp when this Endpoint was created.
+	// Output only. Timestamp when the DeployedModel was created.
 	CreateTime *string `pulumi:"createTime"`
-	// Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and
-	// EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud
-	// Console](https://console.cloud.google.com/vertex-ai/).
+	// Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
+	// Structure is documented below.
 	DeployedModels []AiEndpointDeployedModel `pulumi:"deployedModels"`
 	// The description of the Endpoint.
 	Description *string `pulumi:"description"`
@@ -212,9 +208,7 @@ type aiEndpointState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
-	// Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by
-	// CreateModelDeploymentMonitoringJob. Format:
-	// 'projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}'
+	// Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
 	ModelDeploymentMonitoringJob *string `pulumi:"modelDeploymentMonitoringJob"`
 	// The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
 	Name *string `pulumi:"name"`
@@ -228,11 +222,10 @@ type aiEndpointState struct {
 }
 
 type AiEndpointState struct {
-	// Output only. Timestamp when this Endpoint was created.
+	// Output only. Timestamp when the DeployedModel was created.
 	CreateTime pulumi.StringPtrInput
-	// Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and
-	// EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud
-	// Console](https://console.cloud.google.com/vertex-ai/).
+	// Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
+	// Structure is documented below.
 	DeployedModels AiEndpointDeployedModelArrayInput
 	// The description of the Endpoint.
 	Description pulumi.StringPtrInput
@@ -247,9 +240,7 @@ type AiEndpointState struct {
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
-	// Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by
-	// CreateModelDeploymentMonitoringJob. Format:
-	// 'projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}'
+	// Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
 	ModelDeploymentMonitoringJob pulumi.StringPtrInput
 	// The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
 	Name pulumi.StringPtrInput
@@ -396,14 +387,13 @@ func (o AiEndpointOutput) ToAiEndpointOutputWithContext(ctx context.Context) AiE
 	return o
 }
 
-// Output only. Timestamp when this Endpoint was created.
+// Output only. Timestamp when the DeployedModel was created.
 func (o AiEndpointOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiEndpoint) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and
-// EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud
-// Console](https://console.cloud.google.com/vertex-ai/).
+// Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
+// Structure is documented below.
 func (o AiEndpointOutput) DeployedModels() AiEndpointDeployedModelArrayOutput {
 	return o.ApplyT(func(v *AiEndpoint) AiEndpointDeployedModelArrayOutput { return v.DeployedModels }).(AiEndpointDeployedModelArrayOutput)
 }
@@ -439,9 +429,7 @@ func (o AiEndpointOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiEndpoint) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by
-// CreateModelDeploymentMonitoringJob. Format:
-// 'projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}'
+// Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
 func (o AiEndpointOutput) ModelDeploymentMonitoringJob() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiEndpoint) pulumi.StringOutput { return v.ModelDeploymentMonitoringJob }).(pulumi.StringOutput)
 }

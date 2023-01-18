@@ -78,8 +78,8 @@ import (
 type TagValue struct {
 	pulumi.CustomResourceState
 
-	// Output only. Creation time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Output only. Creation time.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// User-assigned description of the TagValue. Must not exceed 256 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -92,8 +92,8 @@ type TagValue struct {
 	// Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
 	// The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	ShortName pulumi.StringOutput `pulumi:"shortName"`
-	// Output only. Update time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
-	// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Output only. Update time.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -132,8 +132,8 @@ func GetTagValue(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TagValue resources.
 type tagValueState struct {
-	// Output only. Creation time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Output only. Creation time.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime *string `pulumi:"createTime"`
 	// User-assigned description of the TagValue. Must not exceed 256 characters.
 	Description *string `pulumi:"description"`
@@ -146,14 +146,14 @@ type tagValueState struct {
 	// Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
 	// The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	ShortName *string `pulumi:"shortName"`
-	// Output only. Update time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
-	// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Output only. Update time.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type TagValueState struct {
-	// Output only. Creation time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Output only. Creation time.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringPtrInput
 	// User-assigned description of the TagValue. Must not exceed 256 characters.
 	Description pulumi.StringPtrInput
@@ -166,8 +166,8 @@ type TagValueState struct {
 	// Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
 	// The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	ShortName pulumi.StringPtrInput
-	// Output only. Update time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
-	// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Output only. Update time.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -283,8 +283,8 @@ func (o TagValueOutput) ToTagValueOutputWithContext(ctx context.Context) TagValu
 	return o
 }
 
-// Output only. Creation time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+// Output only. Creation time.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o TagValueOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagValue) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -315,8 +315,8 @@ func (o TagValueOutput) ShortName() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagValue) pulumi.StringOutput { return v.ShortName }).(pulumi.StringOutput)
 }
 
-// Output only. Update time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
-// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+// Output only. Update time.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o TagValueOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagValue) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

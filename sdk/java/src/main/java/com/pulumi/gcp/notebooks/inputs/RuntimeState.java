@@ -38,16 +38,18 @@ public final class RuntimeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The health state of this runtime. For a list of possible output values, see
-     * &#39;https://cloud.google.com/vertex-ai/docs/workbench/ reference/rest/v1/projects.locations.runtimes#healthstate&#39;.
+     * The health state of this runtime. For a list of possible output
+     * values, see `https://cloud.google.com/vertex-ai/docs/workbench/
+     * reference/rest/v1/projects.locations.runtimes#healthstate`.
      * 
      */
     @Import(name="healthState")
     private @Nullable Output<String> healthState;
 
     /**
-     * @return The health state of this runtime. For a list of possible output values, see
-     * &#39;https://cloud.google.com/vertex-ai/docs/workbench/ reference/rest/v1/projects.locations.runtimes#healthstate&#39;.
+     * @return The health state of this runtime. For a list of possible output
+     * values, see `https://cloud.google.com/vertex-ai/docs/workbench/
+     * reference/rest/v1/projects.locations.runtimes#healthstate`.
      * 
      */
     public Optional<Output<String>> healthState() {
@@ -70,14 +72,18 @@ public final class RuntimeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Contains Runtime daemon metrics such as Service status and JupyterLab status
+     * Contains Runtime daemon metrics such as Service status and JupyterLab
+     * status
+     * Structure is documented below.
      * 
      */
     @Import(name="metrics")
     private @Nullable Output<List<RuntimeMetricArgs>> metrics;
 
     /**
-     * @return Contains Runtime daemon metrics such as Service status and JupyterLab status
+     * @return Contains Runtime daemon metrics such as Service status and JupyterLab
+     * status
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<RuntimeMetricArgs>>> metrics() {
@@ -221,8 +227,9 @@ public final class RuntimeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthState The health state of this runtime. For a list of possible output values, see
-         * &#39;https://cloud.google.com/vertex-ai/docs/workbench/ reference/rest/v1/projects.locations.runtimes#healthstate&#39;.
+         * @param healthState The health state of this runtime. For a list of possible output
+         * values, see `https://cloud.google.com/vertex-ai/docs/workbench/
+         * reference/rest/v1/projects.locations.runtimes#healthstate`.
          * 
          * @return builder
          * 
@@ -233,8 +240,9 @@ public final class RuntimeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthState The health state of this runtime. For a list of possible output values, see
-         * &#39;https://cloud.google.com/vertex-ai/docs/workbench/ reference/rest/v1/projects.locations.runtimes#healthstate&#39;.
+         * @param healthState The health state of this runtime. For a list of possible output
+         * values, see `https://cloud.google.com/vertex-ai/docs/workbench/
+         * reference/rest/v1/projects.locations.runtimes#healthstate`.
          * 
          * @return builder
          * 
@@ -265,7 +273,9 @@ public final class RuntimeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metrics Contains Runtime daemon metrics such as Service status and JupyterLab status
+         * @param metrics Contains Runtime daemon metrics such as Service status and JupyterLab
+         * status
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -276,7 +286,9 @@ public final class RuntimeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metrics Contains Runtime daemon metrics such as Service status and JupyterLab status
+         * @param metrics Contains Runtime daemon metrics such as Service status and JupyterLab
+         * status
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -286,7 +298,9 @@ public final class RuntimeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metrics Contains Runtime daemon metrics such as Service status and JupyterLab status
+         * @param metrics Contains Runtime daemon metrics such as Service status and JupyterLab
+         * status
+         * Structure is documented below.
          * 
          * @return builder
          * 

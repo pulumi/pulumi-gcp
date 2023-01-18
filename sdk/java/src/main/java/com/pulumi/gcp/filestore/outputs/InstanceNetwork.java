@@ -22,8 +22,7 @@ public final class InstanceNetwork {
      */
     private @Nullable String connectMode;
     /**
-     * @return -
-     * A list of IPv4 or IPv6 addresses.
+     * @return A list of IPv4 or IPv6 addresses.
      * 
      */
     private @Nullable List<String> ipAddresses;
@@ -60,8 +59,7 @@ public final class InstanceNetwork {
         return Optional.ofNullable(this.connectMode);
     }
     /**
-     * @return -
-     * A list of IPv4 or IPv6 addresses.
+     * @return A list of IPv4 or IPv6 addresses.
      * 
      */
     public List<String> ipAddresses() {

@@ -148,16 +148,18 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.authorization);
     }
     /**
-     * Output only. The region where this cluster runs. For EKS clusters, this is an AWS region. For AKS clusters, this is an
-     * Azure region.
+     * Output only. The region where this cluster runs.
+     * For EKS clusters, this is an AWS region. For AKS clusters,
+     * this is an Azure region.
      * 
      */
     @Export(name="clusterRegion", type=String.class, parameters={})
     private Output<String> clusterRegion;
 
     /**
-     * @return Output only. The region where this cluster runs. For EKS clusters, this is an AWS region. For AKS clusters, this is an
-     * Azure region.
+     * @return Output only. The region where this cluster runs.
+     * For EKS clusters, this is an AWS region. For AKS clusters,
+     * this is an Azure region.
      * 
      */
     public Output<String> clusterRegion() {
@@ -211,6 +213,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * A set of errors found in the cluster.
+     * Structure is documented below.
      * 
      */
     @Export(name="errors", type=List.class, parameters={AttachedClusterError.class})
@@ -218,6 +221,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A set of errors found in the cluster.
+     * Structure is documented below.
      * 
      */
     public Output<List<AttachedClusterError>> errors() {
@@ -360,7 +364,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
         return this.platformVersion;
     }
     /**
-     * The ID of the project in which the resource belongs.
+     * The number of the Fleet host project where this cluster will be registered.
      * If it is not provided, the provider project is used.
      * 
      */
@@ -368,7 +372,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
     private Output<String> project;
 
     /**
-     * @return The ID of the project in which the resource belongs.
+     * @return The number of the Fleet host project where this cluster will be registered.
      * If it is not provided, the provider project is used.
      * 
      */
@@ -390,16 +394,18 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
         return this.reconciling;
     }
     /**
-     * The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING,
-     * ERROR, DEGRADED
+     * The current state of the cluster. Possible values:
+     * STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
+     * DEGRADED
      * 
      */
     @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**
-     * @return The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING,
-     * ERROR, DEGRADED
+     * @return The current state of the cluster. Possible values:
+     * STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
+     * DEGRADED
      * 
      */
     public Output<String> state() {
@@ -435,6 +441,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * Workload Identity settings.
+     * Structure is documented below.
      * 
      */
     @Export(name="workloadIdentityConfigs", type=List.class, parameters={AttachedClusterWorkloadIdentityConfig.class})
@@ -442,6 +449,7 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Workload Identity settings.
+     * Structure is documented below.
      * 
      */
     public Output<List<AttachedClusterWorkloadIdentityConfig>> workloadIdentityConfigs() {

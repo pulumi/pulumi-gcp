@@ -18,16 +18,38 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CertificateCertificateDescription {
+    /**
+     * @return Describes lists of issuer CA certificate URLs that appear in the &#34;Authority Information Access&#34; extension in the certificate.
+     * 
+     */
     private @Nullable List<String> aiaIssuingCertificateUrls;
+    /**
+     * @return Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+     * Structure is documented below.
+     * 
+     */
     private @Nullable List<CertificateCertificateDescriptionAuthorityKeyId> authorityKeyIds;
+    /**
+     * @return The hash of the x.509 certificate.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable List<CertificateCertificateDescriptionCertFingerprint> certFingerprints;
     /**
+     * @return (Deprecated)
+     * Describes some of the technical fields in a certificate.
+     * Structure is documented below.
+     * 
      * @deprecated
      * Deprecated in favor of `x509_description`.
      * 
      */
     @Deprecated /* Deprecated in favor of `x509_description`. */
     private @Nullable List<CertificateCertificateDescriptionConfigValue> configValues;
+    /**
+     * @return Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+     * 
+     */
     private @Nullable List<String> crlDistributionPoints;
     /**
      * @return A PublicKey describes a public key.
@@ -35,21 +57,54 @@ public final class CertificateCertificateDescription {
      * 
      */
     private @Nullable List<CertificateCertificateDescriptionPublicKey> publicKeys;
+    /**
+     * @return Describes some of the values in a certificate that are related to the subject and lifetime.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable List<CertificateCertificateDescriptionSubjectDescription> subjectDescriptions;
+    /**
+     * @return Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable List<CertificateCertificateDescriptionSubjectKeyId> subjectKeyIds;
+    /**
+     * @return A structured description of the issued X.509 certificate.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable List<CertificateCertificateDescriptionX509Description> x509Descriptions;
 
     private CertificateCertificateDescription() {}
+    /**
+     * @return Describes lists of issuer CA certificate URLs that appear in the &#34;Authority Information Access&#34; extension in the certificate.
+     * 
+     */
     public List<String> aiaIssuingCertificateUrls() {
         return this.aiaIssuingCertificateUrls == null ? List.of() : this.aiaIssuingCertificateUrls;
     }
+    /**
+     * @return Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+     * Structure is documented below.
+     * 
+     */
     public List<CertificateCertificateDescriptionAuthorityKeyId> authorityKeyIds() {
         return this.authorityKeyIds == null ? List.of() : this.authorityKeyIds;
     }
+    /**
+     * @return The hash of the x.509 certificate.
+     * Structure is documented below.
+     * 
+     */
     public List<CertificateCertificateDescriptionCertFingerprint> certFingerprints() {
         return this.certFingerprints == null ? List.of() : this.certFingerprints;
     }
     /**
+     * @return (Deprecated)
+     * Describes some of the technical fields in a certificate.
+     * Structure is documented below.
+     * 
      * @deprecated
      * Deprecated in favor of `x509_description`.
      * 
@@ -58,6 +113,10 @@ public final class CertificateCertificateDescription {
     public List<CertificateCertificateDescriptionConfigValue> configValues() {
         return this.configValues == null ? List.of() : this.configValues;
     }
+    /**
+     * @return Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+     * 
+     */
     public List<String> crlDistributionPoints() {
         return this.crlDistributionPoints == null ? List.of() : this.crlDistributionPoints;
     }
@@ -69,12 +128,27 @@ public final class CertificateCertificateDescription {
     public List<CertificateCertificateDescriptionPublicKey> publicKeys() {
         return this.publicKeys == null ? List.of() : this.publicKeys;
     }
+    /**
+     * @return Describes some of the values in a certificate that are related to the subject and lifetime.
+     * Structure is documented below.
+     * 
+     */
     public List<CertificateCertificateDescriptionSubjectDescription> subjectDescriptions() {
         return this.subjectDescriptions == null ? List.of() : this.subjectDescriptions;
     }
+    /**
+     * @return Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+     * Structure is documented below.
+     * 
+     */
     public List<CertificateCertificateDescriptionSubjectKeyId> subjectKeyIds() {
         return this.subjectKeyIds == null ? List.of() : this.subjectKeyIds;
     }
+    /**
+     * @return A structured description of the issued X.509 certificate.
+     * Structure is documented below.
+     * 
+     */
     public List<CertificateCertificateDescriptionX509Description> x509Descriptions() {
         return this.x509Descriptions == null ? List.of() : this.x509Descriptions;
     }

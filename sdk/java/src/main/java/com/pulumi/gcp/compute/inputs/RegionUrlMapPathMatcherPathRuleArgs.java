@@ -67,14 +67,26 @@ public final class RegionUrlMapPathMatcherPathRuleArgs extends com.pulumi.resour
     }
 
     /**
-     * A reference to expected RegionBackendService resource the given URL should be mapped to.
+     * The region backend service resource to which traffic is
+     * directed if this rule is matched. If routeAction is additionally specified,
+     * advanced routing actions like URL Rewrites, etc. take effect prior to sending
+     * the request to the backend. However, if service is specified, routeAction cannot
+     * contain any weightedBackendService s. Conversely, if routeAction specifies any
+     * weightedBackendServices, service must not be specified. Only one of urlRedirect,
+     * service or routeAction.weightedBackendService must be set.
      * 
      */
     @Import(name="service")
     private @Nullable Output<String> service;
 
     /**
-     * @return A reference to expected RegionBackendService resource the given URL should be mapped to.
+     * @return The region backend service resource to which traffic is
+     * directed if this rule is matched. If routeAction is additionally specified,
+     * advanced routing actions like URL Rewrites, etc. take effect prior to sending
+     * the request to the backend. However, if service is specified, routeAction cannot
+     * contain any weightedBackendService s. Conversely, if routeAction specifies any
+     * weightedBackendServices, service must not be specified. Only one of urlRedirect,
+     * service or routeAction.weightedBackendService must be set.
      * 
      */
     public Optional<Output<String>> service() {
@@ -203,7 +215,13 @@ public final class RegionUrlMapPathMatcherPathRuleArgs extends com.pulumi.resour
         }
 
         /**
-         * @param service A reference to expected RegionBackendService resource the given URL should be mapped to.
+         * @param service The region backend service resource to which traffic is
+         * directed if this rule is matched. If routeAction is additionally specified,
+         * advanced routing actions like URL Rewrites, etc. take effect prior to sending
+         * the request to the backend. However, if service is specified, routeAction cannot
+         * contain any weightedBackendService s. Conversely, if routeAction specifies any
+         * weightedBackendServices, service must not be specified. Only one of urlRedirect,
+         * service or routeAction.weightedBackendService must be set.
          * 
          * @return builder
          * 
@@ -214,7 +232,13 @@ public final class RegionUrlMapPathMatcherPathRuleArgs extends com.pulumi.resour
         }
 
         /**
-         * @param service A reference to expected RegionBackendService resource the given URL should be mapped to.
+         * @param service The region backend service resource to which traffic is
+         * directed if this rule is matched. If routeAction is additionally specified,
+         * advanced routing actions like URL Rewrites, etc. take effect prior to sending
+         * the request to the backend. However, if service is specified, routeAction cannot
+         * contain any weightedBackendService s. Conversely, if routeAction specifies any
+         * weightedBackendServices, service must not be specified. Only one of urlRedirect,
+         * service or routeAction.weightedBackendService must be set.
          * 
          * @return builder
          * 

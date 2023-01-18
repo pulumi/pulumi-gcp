@@ -32,18 +32,20 @@ public final class BrandState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. Identifier of the brand, in the format &#39;projects/{project_number}/brands/{brand_id}&#39; NOTE: The name can
-     * also be expressed as &#39;projects/{project_id}/brands/{brand_id}&#39;, e.g. when importing. NOTE: The brand identification
-     * corresponds to the project number as only one brand can be created per project.
+     * Output only. Identifier of the brand, in the format `projects/{project_number}/brands/{brand_id}`
+     * NOTE: The name can also be expressed as `projects/{project_id}/brands/{brand_id}`, e.g. when importing.
+     * NOTE: The brand identification corresponds to the project number as only one
+     * brand can be created per project.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Output only. Identifier of the brand, in the format &#39;projects/{project_number}/brands/{brand_id}&#39; NOTE: The name can
-     * also be expressed as &#39;projects/{project_id}/brands/{brand_id}&#39;, e.g. when importing. NOTE: The brand identification
-     * corresponds to the project number as only one brand can be created per project.
+     * @return Output only. Identifier of the brand, in the format `projects/{project_number}/brands/{brand_id}`
+     * NOTE: The name can also be expressed as `projects/{project_id}/brands/{brand_id}`, e.g. when importing.
+     * NOTE: The brand identification corresponds to the project number as only one
+     * brand can be created per project.
      * 
      */
     public Optional<Output<String>> name() {
@@ -155,9 +157,10 @@ public final class BrandState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Output only. Identifier of the brand, in the format &#39;projects/{project_number}/brands/{brand_id}&#39; NOTE: The name can
-         * also be expressed as &#39;projects/{project_id}/brands/{brand_id}&#39;, e.g. when importing. NOTE: The brand identification
-         * corresponds to the project number as only one brand can be created per project.
+         * @param name Output only. Identifier of the brand, in the format `projects/{project_number}/brands/{brand_id}`
+         * NOTE: The name can also be expressed as `projects/{project_id}/brands/{brand_id}`, e.g. when importing.
+         * NOTE: The brand identification corresponds to the project number as only one
+         * brand can be created per project.
          * 
          * @return builder
          * 
@@ -168,9 +171,10 @@ public final class BrandState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Output only. Identifier of the brand, in the format &#39;projects/{project_number}/brands/{brand_id}&#39; NOTE: The name can
-         * also be expressed as &#39;projects/{project_id}/brands/{brand_id}&#39;, e.g. when importing. NOTE: The brand identification
-         * corresponds to the project number as only one brand can be created per project.
+         * @param name Output only. Identifier of the brand, in the format `projects/{project_number}/brands/{brand_id}`
+         * NOTE: The name can also be expressed as `projects/{project_id}/brands/{brand_id}`, e.g. when importing.
+         * NOTE: The brand identification corresponds to the project number as only one
+         * brand can be created per project.
          * 
          * @return builder
          * 

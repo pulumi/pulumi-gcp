@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err = cloudidentity.GetGroups(ctx, &cloudidentity.GetGroupsArgs{
+//			_, err := cloudidentity.GetGroups(ctx, &cloudidentity.GetGroupsArgs{
 //				Parent: "customers/A01b123xz",
 //			}, nil)
 //			if err != nil {

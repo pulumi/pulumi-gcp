@@ -18,7 +18,6 @@ namespace Pulumi.Gcp.DataCatalog.Outputs
         /// </summary>
         public readonly bool? BoolValue;
         /// <summary>
-        /// -
         /// The display name of this field
         /// </summary>
         public readonly string? DisplayName;
@@ -35,7 +34,6 @@ namespace Pulumi.Gcp.DataCatalog.Outputs
         /// </summary>
         public readonly string FieldName;
         /// <summary>
-        /// -
         /// The order of this field with respect to other fields in this tag. For example, a higher value can indicate
         /// a more important field. The value can be negative. Multiple fields can have the same order, and field orders
         /// within a tag do not have to be sequential.

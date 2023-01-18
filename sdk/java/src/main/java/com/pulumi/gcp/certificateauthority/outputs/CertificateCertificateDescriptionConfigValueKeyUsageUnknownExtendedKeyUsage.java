@@ -11,9 +11,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage {
+    /**
+     * @return Required. Describes how some of the technical fields in a certificate should be populated.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable List<CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId> obectIds;
 
     private CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage() {}
+    /**
+     * @return Required. Describes how some of the technical fields in a certificate should be populated.
+     * Structure is documented below.
+     * 
+     */
     public List<CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId> obectIds() {
         return this.obectIds == null ? List.of() : this.obectIds;
     }

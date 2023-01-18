@@ -56,11 +56,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAppEngineService(args: GetAppEngineServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetAppEngineServiceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:monitoring/getAppEngineService:getAppEngineService", {
         "moduleId": args.moduleId,
         "project": args.project,
@@ -87,21 +84,79 @@ export interface GetAppEngineServiceArgs {
  * A collection of values returned by getAppEngineService.
  */
 export interface GetAppEngineServiceResult {
+    /**
+     * Name used for UI elements listing this (Monitoring) Service.
+     */
     readonly displayName: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly moduleId: string;
+    /**
+     * The full REST resource name for this channel. The syntax is:
+     * `projects/[PROJECT_ID]/services/[SERVICE_ID]`.
+     */
     readonly name: string;
     readonly project?: string;
     readonly serviceId: string;
+    /**
+     * Configuration for how to query telemetry on the Service. Structure is documented below.
+     */
     readonly telemetries: outputs.monitoring.GetAppEngineServiceTelemetry[];
     readonly userLabels: {[key: string]: string};
 }
-
+/**
+ * A Monitoring Service is the root resource under which operational aspects of a
+ * generic service are accessible. A service is some discrete, autonomous, and
+ * network-accessible unit, designed to solve an individual concern
+ *
+ * An App Engine monitoring service is automatically created by GCP to monitor
+ * App Engine services.
+ *
+ * To get more information about Service, see:
+ *
+ * * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
+ * * How-to Guides
+ *     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+ *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+ *
+ * ## Example Usage
+ * ### Monitoring App Engine Service
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bucket = new gcp.storage.Bucket("bucket", {location: "US"});
+ * const object = new gcp.storage.BucketObject("object", {
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("./test-fixtures/appengine/hello-world.zip"),
+ * });
+ * const myapp = new gcp.appengine.StandardAppVersion("myapp", {
+ *     versionId: "v1",
+ *     service: "myapp",
+ *     runtime: "nodejs10",
+ *     entrypoint: {
+ *         shell: "node ./app.js",
+ *     },
+ *     deployment: {
+ *         zip: {
+ *             sourceUrl: pulumi.interpolate`https://storage.googleapis.com/${bucket.name}/${object.name}`,
+ *         },
+ *     },
+ *     envVariables: {
+ *         port: "8080",
+ *     },
+ *     deleteServiceOnDestroy: false,
+ * });
+ * const srv = gcp.monitoring.getAppEngineServiceOutput({
+ *     moduleId: myapp.service,
+ * });
+ * ```
+ */
 export function getAppEngineServiceOutput(args: GetAppEngineServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppEngineServiceResult> {
-    return pulumi.output(args).apply(a => getAppEngineService(a, opts))
+    return pulumi.output(args).apply((a: any) => getAppEngineService(a, opts))
 }
 
 /**

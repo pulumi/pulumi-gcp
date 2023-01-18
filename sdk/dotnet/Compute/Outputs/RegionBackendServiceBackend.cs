@@ -62,8 +62,12 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string Group;
         /// <summary>
-        /// The maximum number of connections to the backend cluster.
-        /// Defaults to 1024.
+        /// The max number of simultaneous connections for the group. Can
+        /// be used with either CONNECTION or UTILIZATION balancing modes.
+        /// Cannot be set for INTERNAL backend services.
+        /// For CONNECTION mode, either maxConnections or one
+        /// of maxConnectionsPerInstance or maxConnectionsPerEndpoint,
+        /// as appropriate for group type, must be set.
         /// </summary>
         public readonly int? MaxConnections;
         /// <summary>

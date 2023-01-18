@@ -33,7 +33,7 @@ public final class WorkflowTemplateJob {
      */
     private @Nullable WorkflowTemplateJobHiveJob hiveJob;
     /**
-     * @return Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
+     * @return Optional. The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
      * 
      */
     private @Nullable Map<String,String> labels;
@@ -99,7 +99,7 @@ public final class WorkflowTemplateJob {
         return Optional.ofNullable(this.hiveJob);
     }
     /**
-     * @return Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
+     * @return Optional. The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
      * 
      */
     public Map<String,String> labels() {

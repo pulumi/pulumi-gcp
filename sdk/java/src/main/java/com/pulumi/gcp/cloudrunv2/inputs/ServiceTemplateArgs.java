@@ -72,14 +72,14 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. Those labels are read-only, and user changes will not be preserved.
+     * KRM-style labels for the resource.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. Those labels are read-only, and user changes will not be preserved.
+     * @return KRM-style labels for the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -102,14 +102,14 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Revision to which to send this portion of traffic, if traffic allocation is by revision.
+     * The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
      * 
      */
     @Import(name="revision")
     private @Nullable Output<String> revision;
 
     /**
-     * @return Revision to which to send this portion of traffic, if traffic allocation is by revision.
+     * @return The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
      * 
      */
     public Optional<Output<String>> revision() {
@@ -312,7 +312,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param labels Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. Those labels are read-only, and user changes will not be preserved.
+         * @param labels KRM-style labels for the resource.
          * 
          * @return builder
          * 
@@ -323,7 +323,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param labels Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. Those labels are read-only, and user changes will not be preserved.
+         * @param labels KRM-style labels for the resource.
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param revision Revision to which to send this portion of traffic, if traffic allocation is by revision.
+         * @param revision The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
          * 
          * @return builder
          * 
@@ -365,7 +365,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param revision Revision to which to send this portion of traffic, if traffic allocation is by revision.
+         * @param revision The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
          * 
          * @return builder
          * 

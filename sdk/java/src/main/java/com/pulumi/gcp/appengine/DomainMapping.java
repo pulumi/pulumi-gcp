@@ -95,14 +95,14 @@ public class DomainMapping extends com.pulumi.resources.CustomResource {
         return this.domainName;
     }
     /**
-     * Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
+     * Relative name of the object affected by this record. Only applicable for CNAME records. Example: &#39;www&#39;.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
+     * @return Relative name of the object affected by this record. Only applicable for CNAME records. Example: &#39;www&#39;.
      * 
      */
     public Output<String> name() {
@@ -147,6 +147,7 @@ public class DomainMapping extends com.pulumi.resources.CustomResource {
     /**
      * The resource records required to configure this domain mapping. These records must be added to the domain&#39;s DNS
      * configuration in order to serve the application via this domain mapping.
+     * Structure is documented below.
      * 
      */
     @Export(name="resourceRecords", type=List.class, parameters={DomainMappingResourceRecord.class})
@@ -155,6 +156,7 @@ public class DomainMapping extends com.pulumi.resources.CustomResource {
     /**
      * @return The resource records required to configure this domain mapping. These records must be added to the domain&#39;s DNS
      * configuration in order to serve the application via this domain mapping.
+     * Structure is documented below.
      * 
      */
     public Output<List<DomainMappingResourceRecord>> resourceRecords() {

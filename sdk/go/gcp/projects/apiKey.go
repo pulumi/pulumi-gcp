@@ -273,8 +273,7 @@ type ApiKey struct {
 
 	// Human-readable display name of this API key. Modifiable by user.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString`
-	// method.
+	// Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
 	KeyString pulumi.StringOutput `pulumi:"keyString"`
 	// The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -321,8 +320,7 @@ func GetApiKey(ctx *pulumi.Context,
 type apiKeyState struct {
 	// Human-readable display name of this API key. Modifiable by user.
 	DisplayName *string `pulumi:"displayName"`
-	// Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString`
-	// method.
+	// Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
 	KeyString *string `pulumi:"keyString"`
 	// The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
 	Name *string `pulumi:"name"`
@@ -337,8 +335,7 @@ type apiKeyState struct {
 type ApiKeyState struct {
 	// Human-readable display name of this API key. Modifiable by user.
 	DisplayName pulumi.StringPtrInput
-	// Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString`
-	// method.
+	// Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
 	KeyString pulumi.StringPtrInput
 	// The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
 	Name pulumi.StringPtrInput
@@ -469,8 +466,7 @@ func (o ApiKeyOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiKey) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString`
-// method.
+// Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
 func (o ApiKeyOutput) KeyString() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiKey) pulumi.StringOutput { return v.KeyString }).(pulumi.StringOutput)
 }

@@ -13,7 +13,6 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class MetastoreServiceNetworkConfigConsumerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// -
         /// The URI of the endpoint used to access the metastore service.
         /// </summary>
         [Input("endpointUri")]

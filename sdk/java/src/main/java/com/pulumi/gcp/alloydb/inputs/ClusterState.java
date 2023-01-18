@@ -42,6 +42,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Cluster created from backup.
+     * Structure is documented below.
      * 
      */
     @Import(name="backupSources")
@@ -49,6 +50,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Cluster created from backup.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<ClusterBackupSourceArgs>>> backupSources() {
@@ -71,16 +73,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The database engine major version. This is an output-only field and it&#39;s populated at the Cluster creation time. This
-     * field cannot be changed after cluster creation.
+     * The database engine major version. This is an output-only field and it&#39;s populated at the Cluster creation time. This field cannot be changed after cluster creation.
      * 
      */
     @Import(name="databaseVersion")
     private @Nullable Output<String> databaseVersion;
 
     /**
-     * @return The database engine major version. This is an output-only field and it&#39;s populated at the Cluster creation time. This
-     * field cannot be changed after cluster creation.
+     * @return The database engine major version. This is an output-only field and it&#39;s populated at the Cluster creation time. This field cannot be changed after cluster creation.
      * 
      */
     public Optional<Output<String>> databaseVersion() {
@@ -120,14 +120,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Labels to apply to backups created using this configuration.
+     * User-defined labels for the alloydb cluster.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Labels to apply to backups created using this configuration.
+     * @return User-defined labels for the alloydb cluster.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -135,14 +135,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+     * The location where the alloydb cluster should reside.
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+     * @return The location where the alloydb cluster should reside.
      * 
      */
     public Optional<Output<String>> location() {
@@ -151,6 +151,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Cluster created via DMS migration.
+     * Structure is documented below.
      * 
      */
     @Import(name="migrationSources")
@@ -158,6 +159,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Cluster created via DMS migration.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<ClusterMigrationSourceArgs>>> migrationSources() {
@@ -291,6 +293,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param backupSources Cluster created from backup.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -302,6 +305,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param backupSources Cluster created from backup.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -312,6 +316,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param backupSources Cluster created from backup.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -342,8 +347,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param databaseVersion The database engine major version. This is an output-only field and it&#39;s populated at the Cluster creation time. This
-         * field cannot be changed after cluster creation.
+         * @param databaseVersion The database engine major version. This is an output-only field and it&#39;s populated at the Cluster creation time. This field cannot be changed after cluster creation.
          * 
          * @return builder
          * 
@@ -354,8 +358,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param databaseVersion The database engine major version. This is an output-only field and it&#39;s populated at the Cluster creation time. This
-         * field cannot be changed after cluster creation.
+         * @param databaseVersion The database engine major version. This is an output-only field and it&#39;s populated at the Cluster creation time. This field cannot be changed after cluster creation.
          * 
          * @return builder
          * 
@@ -409,7 +412,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Labels to apply to backups created using this configuration.
+         * @param labels User-defined labels for the alloydb cluster.
          * 
          * @return builder
          * 
@@ -420,7 +423,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labels Labels to apply to backups created using this configuration.
+         * @param labels User-defined labels for the alloydb cluster.
          * 
          * @return builder
          * 
@@ -430,7 +433,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+         * @param location The location where the alloydb cluster should reside.
          * 
          * @return builder
          * 
@@ -441,7 +444,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
+         * @param location The location where the alloydb cluster should reside.
          * 
          * @return builder
          * 
@@ -452,6 +455,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param migrationSources Cluster created via DMS migration.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -463,6 +467,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param migrationSources Cluster created via DMS migration.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -473,6 +478,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param migrationSources Cluster created via DMS migration.
+         * Structure is documented below.
          * 
          * @return builder
          * 

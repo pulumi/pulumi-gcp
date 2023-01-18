@@ -236,8 +236,7 @@ class _UptimeCheckConfigState:
                Structure is documented below.
         :param pulumi.Input['UptimeCheckConfigMonitoredResourceArgs'] monitored_resource: The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance aws_elb_load_balancer  k8s_service  servicedirectory_service
                Structure is documented below.
-        :param pulumi.Input[str] name: A unique resource name for this UptimeCheckConfig. The format is
-               projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+        :param pulumi.Input[str] name: A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
         :param pulumi.Input[str] period: How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -344,8 +343,7 @@ class _UptimeCheckConfigState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        A unique resource name for this UptimeCheckConfig. The format is
-        projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+        A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
         """
         return pulumi.get(self, "name")
 
@@ -876,8 +874,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['UptimeCheckConfigMonitoredResourceArgs']] monitored_resource: The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptime_url  gce_instance  gae_app  aws_ec2_instance aws_elb_load_balancer  k8s_service  servicedirectory_service
                Structure is documented below.
-        :param pulumi.Input[str] name: A unique resource name for this UptimeCheckConfig. The format is
-               projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+        :param pulumi.Input[str] name: A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
         :param pulumi.Input[str] period: How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -956,8 +953,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        A unique resource name for this UptimeCheckConfig. The format is
-        projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+        A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
         """
         return pulumi.get(self, "name")
 

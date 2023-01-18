@@ -75,8 +75,9 @@ type CryptoKeyVersion struct {
 
 	// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
 	Algorithm pulumi.StringOutput `pulumi:"algorithm"`
-	// Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the
-	// key as stored on the HSM, independently of Google. Only provided for key versions with protectionLevel HSM.
+	// Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+	// Only provided for key versions with protectionLevel HSM.
+	// Structure is documented below.
 	Attestations CryptoKeyVersionAttestationArrayOutput `pulumi:"attestations"`
 	// The name of the cryptoKey associated with the CryptoKeyVersions.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
@@ -126,8 +127,9 @@ func GetCryptoKeyVersion(ctx *pulumi.Context,
 type cryptoKeyVersionState struct {
 	// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
 	Algorithm *string `pulumi:"algorithm"`
-	// Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the
-	// key as stored on the HSM, independently of Google. Only provided for key versions with protectionLevel HSM.
+	// Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+	// Only provided for key versions with protectionLevel HSM.
+	// Structure is documented below.
 	Attestations []CryptoKeyVersionAttestation `pulumi:"attestations"`
 	// The name of the cryptoKey associated with the CryptoKeyVersions.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
@@ -146,8 +148,9 @@ type cryptoKeyVersionState struct {
 type CryptoKeyVersionState struct {
 	// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
 	Algorithm pulumi.StringPtrInput
-	// Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the
-	// key as stored on the HSM, independently of Google. Only provided for key versions with protectionLevel HSM.
+	// Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+	// Only provided for key versions with protectionLevel HSM.
+	// Structure is documented below.
 	Attestations CryptoKeyVersionAttestationArrayInput
 	// The name of the cryptoKey associated with the CryptoKeyVersions.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
@@ -278,8 +281,9 @@ func (o CryptoKeyVersionOutput) Algorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v *CryptoKeyVersion) pulumi.StringOutput { return v.Algorithm }).(pulumi.StringOutput)
 }
 
-// Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the
-// key as stored on the HSM, independently of Google. Only provided for key versions with protectionLevel HSM.
+// Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
+// Only provided for key versions with protectionLevel HSM.
+// Structure is documented below.
 func (o CryptoKeyVersionOutput) Attestations() CryptoKeyVersionAttestationArrayOutput {
 	return o.ApplyT(func(v *CryptoKeyVersion) CryptoKeyVersionAttestationArrayOutput { return v.Attestations }).(CryptoKeyVersionAttestationArrayOutput)
 }

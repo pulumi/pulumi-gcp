@@ -16,16 +16,14 @@ public final class ClusterIdentityServiceConfigArgs extends com.pulumi.resources
     public static final ClusterIdentityServiceConfigArgs Empty = new ClusterIdentityServiceConfigArgs();
 
     /**
-     * Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * Whether to enable the Identity Service component. It is disabled by default. Set `enabled=true` to enable.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable the PodSecurityPolicy controller for this cluster.
-     * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * @return Whether to enable the Identity Service component. It is disabled by default. Set `enabled=true` to enable.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -57,8 +55,7 @@ public final class ClusterIdentityServiceConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param enabled Enable the PodSecurityPolicy controller for this cluster.
-         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         * @param enabled Whether to enable the Identity Service component. It is disabled by default. Set `enabled=true` to enable.
          * 
          * @return builder
          * 
@@ -69,8 +66,7 @@ public final class ClusterIdentityServiceConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param enabled Enable the PodSecurityPolicy controller for this cluster.
-         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         * @param enabled Whether to enable the Identity Service component. It is disabled by default. Set `enabled=true` to enable.
          * 
          * @return builder
          * 

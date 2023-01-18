@@ -53,7 +53,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const admin = pulumi.output(gcp.organizations.getIAMPolicy({
+ * const admin = gcp.organizations.getIAMPolicy({
  *     bindings: [{
  *         condition: {
  *             description: "Expiring at midnight of 2019-12-31",
@@ -63,9 +63,9 @@ import * as utilities from "../utilities";
  *         members: ["user:jane@example.com"],
  *         role: "roles/compute.admin",
  *     }],
- * }));
+ * });
  * const project = new gcp.projects.IAMPolicy("project", {
- *     policyData: admin.policyData,
+ *     policyData: admin.then(admin => admin.policyData),
  *     project: "your-project-id",
  * });
  * ```

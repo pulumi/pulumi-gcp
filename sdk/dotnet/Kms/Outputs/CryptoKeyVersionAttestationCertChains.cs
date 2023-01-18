@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.Kms.Outputs
     [OutputType]
     public sealed class CryptoKeyVersionAttestationCertChains
     {
+        /// <summary>
+        /// Cavium certificate chain corresponding to the attestation.
+        /// </summary>
         public readonly string? CaviumCerts;
+        /// <summary>
+        /// Google card certificate chain corresponding to the attestation.
+        /// </summary>
         public readonly string? GoogleCardCerts;
+        /// <summary>
+        /// Google partition certificate chain corresponding to the attestation.
+        /// </summary>
         public readonly string? GooglePartitionCerts;
 
         [OutputConstructor]

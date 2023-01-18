@@ -205,11 +205,11 @@ func (o TriggerDestinationPtrOutput) Workflow() pulumi.StringPtrOutput {
 }
 
 type TriggerDestinationCloudRunService struct {
-	// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+	// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
 	Path *string `pulumi:"path"`
 	// Required. The region the Cloud Run service is deployed in.
 	Region *string `pulumi:"region"`
-	// Required. Name of the GKE service.
+	// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
 	Service string `pulumi:"service"`
 }
 
@@ -225,11 +225,11 @@ type TriggerDestinationCloudRunServiceInput interface {
 }
 
 type TriggerDestinationCloudRunServiceArgs struct {
-	// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+	// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// Required. The region the Cloud Run service is deployed in.
 	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Required. Name of the GKE service.
+	// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
 	Service pulumi.StringInput `pulumi:"service"`
 }
 
@@ -310,7 +310,7 @@ func (o TriggerDestinationCloudRunServiceOutput) ToTriggerDestinationCloudRunSer
 	}).(TriggerDestinationCloudRunServicePtrOutput)
 }
 
-// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
 func (o TriggerDestinationCloudRunServiceOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerDestinationCloudRunService) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -320,7 +320,7 @@ func (o TriggerDestinationCloudRunServiceOutput) Region() pulumi.StringPtrOutput
 	return o.ApplyT(func(v TriggerDestinationCloudRunService) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// Required. Name of the GKE service.
+// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
 func (o TriggerDestinationCloudRunServiceOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerDestinationCloudRunService) string { return v.Service }).(pulumi.StringOutput)
 }
@@ -349,7 +349,7 @@ func (o TriggerDestinationCloudRunServicePtrOutput) Elem() TriggerDestinationClo
 	}).(TriggerDestinationCloudRunServiceOutput)
 }
 
-// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
 func (o TriggerDestinationCloudRunServicePtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerDestinationCloudRunService) *string {
 		if v == nil {
@@ -369,7 +369,7 @@ func (o TriggerDestinationCloudRunServicePtrOutput) Region() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Name of the GKE service.
+// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
 func (o TriggerDestinationCloudRunServicePtrOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerDestinationCloudRunService) *string {
 		if v == nil {
@@ -805,7 +805,6 @@ func (o TriggerTransportArrayOutput) Index(i pulumi.IntInput) TriggerTransportOu
 }
 
 type TriggerTransportPubsub struct {
-	// -
 	// Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
 	Subscription *string `pulumi:"subscription"`
 	// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}. You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
@@ -824,7 +823,6 @@ type TriggerTransportPubsubInput interface {
 }
 
 type TriggerTransportPubsubArgs struct {
-	// -
 	// Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
 	Subscription pulumi.StringPtrInput `pulumi:"subscription"`
 	// Optional. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}. You may set an existing topic for triggers of the type google.cloud.pubsub.topic.v1.messagePublished` only. The topic you provide here will not be deleted by Eventarc at trigger deletion.
@@ -882,7 +880,6 @@ func (o TriggerTransportPubsubOutput) ToTriggerTransportPubsubOutputWithContext(
 	return o
 }
 
-// -
 // Output only. The name of the Pub/Sub subscription created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{PROJECT_ID}/subscriptions/{SUBSCRIPTION_NAME}`.
 func (o TriggerTransportPubsubOutput) Subscription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerTransportPubsub) *string { return v.Subscription }).(pulumi.StringPtrOutput)

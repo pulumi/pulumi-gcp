@@ -15,8 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CertificateManaged {
     /**
-     * @return -
-     * Detailed state of the latest authorization attempt for each domain
+     * @return Detailed state of the latest authorization attempt for each domain
      * specified for this Managed Certificate.
      * Structure is documented below.
      * 
@@ -34,23 +33,20 @@ public final class CertificateManaged {
      */
     private @Nullable List<String> domains;
     /**
-     * @return -
-     * Information about issues with provisioning this Managed Certificate.
+     * @return Information about issues with provisioning this Managed Certificate.
      * Structure is documented below.
      * 
      */
     private @Nullable List<CertificateManagedProvisioningIssue> provisioningIssues;
     /**
-     * @return -
-     * State of the domain for managed certificate issuance.
+     * @return State of the domain for managed certificate issuance.
      * 
      */
     private @Nullable String state;
 
     private CertificateManaged() {}
     /**
-     * @return -
-     * Detailed state of the latest authorization attempt for each domain
+     * @return Detailed state of the latest authorization attempt for each domain
      * specified for this Managed Certificate.
      * Structure is documented below.
      * 
@@ -74,8 +70,7 @@ public final class CertificateManaged {
         return this.domains == null ? List.of() : this.domains;
     }
     /**
-     * @return -
-     * Information about issues with provisioning this Managed Certificate.
+     * @return Information about issues with provisioning this Managed Certificate.
      * Structure is documented below.
      * 
      */
@@ -83,8 +78,7 @@ public final class CertificateManaged {
         return this.provisioningIssues == null ? List.of() : this.provisioningIssues;
     }
     /**
-     * @return -
-     * State of the domain for managed certificate issuance.
+     * @return State of the domain for managed certificate issuance.
      * 
      */
     public Optional<String> state() {

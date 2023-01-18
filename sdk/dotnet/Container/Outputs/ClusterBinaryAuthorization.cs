@@ -14,8 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterBinaryAuthorization
     {
         /// <summary>
-        /// Enable the PodSecurityPolicy controller for this cluster.
-        /// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        /// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>

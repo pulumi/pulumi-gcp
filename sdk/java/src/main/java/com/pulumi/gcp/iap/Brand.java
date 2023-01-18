@@ -111,18 +111,20 @@ public class Brand extends com.pulumi.resources.CustomResource {
         return this.applicationTitle;
     }
     /**
-     * Output only. Identifier of the brand, in the format &#39;projects/{project_number}/brands/{brand_id}&#39; NOTE: The name can
-     * also be expressed as &#39;projects/{project_id}/brands/{brand_id}&#39;, e.g. when importing. NOTE: The brand identification
-     * corresponds to the project number as only one brand can be created per project.
+     * Output only. Identifier of the brand, in the format `projects/{project_number}/brands/{brand_id}`
+     * NOTE: The name can also be expressed as `projects/{project_id}/brands/{brand_id}`, e.g. when importing.
+     * NOTE: The brand identification corresponds to the project number as only one
+     * brand can be created per project.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Output only. Identifier of the brand, in the format &#39;projects/{project_number}/brands/{brand_id}&#39; NOTE: The name can
-     * also be expressed as &#39;projects/{project_id}/brands/{brand_id}&#39;, e.g. when importing. NOTE: The brand identification
-     * corresponds to the project number as only one brand can be created per project.
+     * @return Output only. Identifier of the brand, in the format `projects/{project_number}/brands/{brand_id}`
+     * NOTE: The name can also be expressed as `projects/{project_id}/brands/{brand_id}`, e.g. when importing.
+     * NOTE: The brand identification corresponds to the project number as only one
+     * brand can be created per project.
      * 
      */
     public Output<String> name() {

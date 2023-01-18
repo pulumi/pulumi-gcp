@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TriggerGithubPullRequest {
     /**
-     * @return Regex of branches to match.  Specify only one of branch or tag.
+     * @return Regex of branches to match.
      * 
      */
     private String branch;
@@ -24,14 +24,14 @@ public final class TriggerGithubPullRequest {
      */
     private @Nullable String commentControl;
     /**
-     * @return Only trigger a build if the revision regex does NOT match the revision regex.
+     * @return If true, branches that do NOT match the git_ref will trigger a build.
      * 
      */
     private @Nullable Boolean invertRegex;
 
     private TriggerGithubPullRequest() {}
     /**
-     * @return Regex of branches to match.  Specify only one of branch or tag.
+     * @return Regex of branches to match.
      * 
      */
     public String branch() {
@@ -46,7 +46,7 @@ public final class TriggerGithubPullRequest {
         return Optional.ofNullable(this.commentControl);
     }
     /**
-     * @return Only trigger a build if the revision regex does NOT match the revision regex.
+     * @return If true, branches that do NOT match the git_ref will trigger a build.
      * 
      */
     public Optional<Boolean> invertRegex() {

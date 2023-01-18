@@ -343,6 +343,7 @@ import javax.annotation.Nullable;
 public class Authority extends com.pulumi.resources.CustomResource {
     /**
      * URLs for accessing content published by this CA, such as the CA certificate and CRLs.
+     * Structure is documented below.
      * 
      */
     @Export(name="accessUrls", type=List.class, parameters={AuthorityAccessUrl.class})
@@ -350,6 +351,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
 
     /**
      * @return URLs for accessing content published by this CA, such as the CA certificate and CRLs.
+     * Structure is documented below.
      * 
      */
     public Output<List<AuthorityAccessUrl>> accessUrls() {
@@ -386,16 +388,18 @@ public class Authority extends com.pulumi.resources.CustomResource {
         return this.config;
     }
     /**
-     * The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
-     * resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * The time at which this CertificateAuthority was created.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
+     * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
-     * @return The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
-     * resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * @return The time at which this CertificateAuthority was created.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
+     * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     public Output<String> createTime() {
@@ -542,14 +546,16 @@ public class Authority extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * The resource name for this CertificateAuthority in the format projects/*{@literal /}locations/*{@literal /}certificateAuthorities/*.
+     * The resource name for this CertificateAuthority in the format
+     * projects/*{@literal /}locations/*{@literal /}certificateAuthorities/*.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The resource name for this CertificateAuthority in the format projects/*{@literal /}locations/*{@literal /}certificateAuthorities/*.
+     * @return The resource name for this CertificateAuthority in the format
+     * projects/*{@literal /}locations/*{@literal /}certificateAuthorities/*.
      * 
      */
     public Output<String> name() {
@@ -570,18 +576,20 @@ public class Authority extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.pemCaCertificate);
     }
     /**
-     * This CertificateAuthority&#39;s certificate chain, including the current CertificateAuthority&#39;s certificate. Ordered such
-     * that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
-     * current CertificateAuthority&#39;s certificate.
+     * This CertificateAuthority&#39;s certificate chain, including the current
+     * CertificateAuthority&#39;s certificate. Ordered such that the root issuer is the final
+     * element (consistent with RFC 5246). For a self-signed CA, this will only list the current
+     * CertificateAuthority&#39;s certificate.
      * 
      */
     @Export(name="pemCaCertificates", type=List.class, parameters={String.class})
     private Output<List<String>> pemCaCertificates;
 
     /**
-     * @return This CertificateAuthority&#39;s certificate chain, including the current CertificateAuthority&#39;s certificate. Ordered such
-     * that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
-     * current CertificateAuthority&#39;s certificate.
+     * @return This CertificateAuthority&#39;s certificate chain, including the current
+     * CertificateAuthority&#39;s certificate. Ordered such that the root issuer is the final
+     * element (consistent with RFC 5246). For a self-signed CA, this will only list the current
+     * CertificateAuthority&#39;s certificate.
      * 
      */
     public Output<List<String>> pemCaCertificates() {
@@ -692,16 +700,18 @@ public class Authority extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.type);
     }
     /**
-     * The time at which this CertificateAuthority was updated. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
-     * resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * The time at which this CertificateAuthority was updated.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
+     * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**
-     * @return The time at which this CertificateAuthority was updated. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
-     * resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * @return The time at which this CertificateAuthority was updated.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
+     * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     public Output<String> updateTime() {

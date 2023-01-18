@@ -98,7 +98,8 @@ namespace Pulumi.Gcp.Monitoring
         public Output<bool?> IsCluster { get; private set; } = null!;
 
         /// <summary>
-        /// A unique identifier for this group. The format is "projects/{project_id_or_number}/groups/{group_id}".
+        /// A unique identifier for this group. The format is
+        /// "projects/{project_id_or_number}/groups/{group_id}".
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -232,7 +233,8 @@ namespace Pulumi.Gcp.Monitoring
         public Input<bool>? IsCluster { get; set; }
 
         /// <summary>
-        /// A unique identifier for this group. The format is "projects/{project_id_or_number}/groups/{group_id}".
+        /// A unique identifier for this group. The format is
+        /// "projects/{project_id_or_number}/groups/{group_id}".
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

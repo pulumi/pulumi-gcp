@@ -741,6 +741,7 @@ class Hl7StoreNotificationConfigs(dict):
                was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
                project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
                Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+               If a notification cannot be published to Cloud Pub/Sub, errors will be logged to Stackdriver
         :param str filter: Restricts notifications sent for messages matching a filter. If this is empty, all messages
                are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings
                Fields/functions available for filtering are:
@@ -765,6 +766,7 @@ class Hl7StoreNotificationConfigs(dict):
         was published. Notifications are only sent if the topic is non-empty. Topic names must be scoped to a
         project. service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com must have publisher permissions on the given
         Cloud Pub/Sub topic. Not having adequate permissions will cause the calls that send notifications to fail.
+        If a notification cannot be published to Cloud Pub/Sub, errors will be logged to Stackdriver
         """
         return pulumi.get(self, "pubsub_topic")
 

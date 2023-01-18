@@ -61,8 +61,9 @@ namespace Pulumi.Gcp.ContainerAnalysis
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The note kind which explicitly denotes which of the occurrence details are specified. This field can be used as a filter
-        /// in list requests.
+        /// The note kind which explicitly denotes which of the occurrence
+        /// details are specified. This field can be used as a filter in list
+        /// requests.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -226,8 +227,9 @@ namespace Pulumi.Gcp.ContainerAnalysis
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The note kind which explicitly denotes which of the occurrence details are specified. This field can be used as a filter
-        /// in list requests.
+        /// The note kind which explicitly denotes which of the occurrence
+        /// details are specified. This field can be used as a filter in list
+        /// requests.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }

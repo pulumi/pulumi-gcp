@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class PacketMirroringMirroredResourcesSubnetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The URL of the instances where this rule should be active.
+        /// The URL of the subnetwork where this rule should be active.
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;

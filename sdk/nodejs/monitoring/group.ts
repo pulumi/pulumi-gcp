@@ -98,7 +98,8 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly isCluster!: pulumi.Output<boolean | undefined>;
     /**
-     * A unique identifier for this group. The format is "projects/{project_id_or_number}/groups/{group_id}".
+     * A unique identifier for this group. The format is
+     * "projects/{project_id_or_number}/groups/{group_id}".
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -173,7 +174,8 @@ export interface GroupState {
      */
     isCluster?: pulumi.Input<boolean>;
     /**
-     * A unique identifier for this group. The format is "projects/{project_id_or_number}/groups/{group_id}".
+     * A unique identifier for this group. The format is
+     * "projects/{project_id_or_number}/groups/{group_id}".
      */
     name?: pulumi.Input<string>;
     /**

@@ -15,16 +15,32 @@ public final class DeviceStateArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DeviceStateArgs Empty = new DeviceStateArgs();
 
+    /**
+     * The device state data.
+     * 
+     */
     @Import(name="binaryData")
     private @Nullable Output<String> binaryData;
 
+    /**
+     * @return The device state data.
+     * 
+     */
     public Optional<Output<String>> binaryData() {
         return Optional.ofNullable(this.binaryData);
     }
 
+    /**
+     * The time at which this state version was updated in Cloud IoT Core.
+     * 
+     */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
+    /**
+     * @return The time at which this state version was updated in Cloud IoT Core.
+     * 
+     */
     public Optional<Output<String>> updateTime() {
         return Optional.ofNullable(this.updateTime);
     }
@@ -54,20 +70,44 @@ public final class DeviceStateArgs extends com.pulumi.resources.ResourceArgs {
             $ = new DeviceStateArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param binaryData The device state data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder binaryData(@Nullable Output<String> binaryData) {
             $.binaryData = binaryData;
             return this;
         }
 
+        /**
+         * @param binaryData The device state data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder binaryData(String binaryData) {
             return binaryData(Output.of(binaryData));
         }
 
+        /**
+         * @param updateTime The time at which this state version was updated in Cloud IoT Core.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateTime(@Nullable Output<String> updateTime) {
             $.updateTime = updateTime;
             return this;
         }
 
+        /**
+         * @param updateTime The time at which this state version was updated in Cloud IoT Core.
+         * 
+         * @return builder
+         * 
+         */
         public Builder updateTime(String updateTime) {
             return updateTime(Output.of(updateTime));
         }

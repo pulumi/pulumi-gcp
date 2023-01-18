@@ -555,8 +555,8 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<string?> CertificateAuthority { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-        /// this field is present.
+        /// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
+        /// Structure is documented below.
         /// </summary>
         [Output("certificateDescriptions")]
         public Output<ImmutableArray<Outputs.CertificateCertificateDescription>> CertificateDescriptions { get; private set; } = null!;
@@ -579,14 +579,14 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<Outputs.CertificateConfig?> Config { get; private set; } = null!;
 
         /// <summary>
-        /// The time that this resource was created on the server. This is in RFC3339 text format.
+        /// The time that this resource was created on the server.
+        /// This is in RFC3339 text format.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the issuing CertificateAuthority in the format
-        /// 'projects/*/locations/*/caPools/*/certificateAuthorities/*'.
+        /// The resource name of the issuing CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
         /// </summary>
         [Output("issuerCertificateAuthority")]
         public Output<string> IssuerCertificateAuthority { get; private set; } = null!;
@@ -625,13 +625,13 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<string> PemCertificate { get; private set; } = null!;
 
         /// <summary>
-        /// The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
-        /// 5246.
+        /// The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
         /// </summary>
         [Output("pemCertificateChains")]
         public Output<ImmutableArray<string>> PemCertificateChains { get; private set; } = null!;
 
         /// <summary>
+        /// (Deprecated)
         /// Required. Expected to be in leaf-to-root order according to RFC 5246.
         /// </summary>
         [Output("pemCertificates")]
@@ -657,14 +657,16 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-        /// this field is present.
+        /// Output only. Details regarding the revocation of this Certificate. This Certificate is
+        /// considered revoked if and only if this field is present.
+        /// Structure is documented below.
         /// </summary>
         [Output("revocationDetails")]
         public Output<ImmutableArray<Outputs.CertificateRevocationDetail>> RevocationDetails { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. The time at which this CertificateAuthority was updated. This is in RFC3339 text format.
+        /// Output only. The time at which this CertificateAuthority was updated.
+        /// This is in RFC3339 text format.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -814,8 +816,8 @@ namespace Pulumi.Gcp.CertificateAuthority
         private InputList<Inputs.CertificateCertificateDescriptionGetArgs>? _certificateDescriptions;
 
         /// <summary>
-        /// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-        /// this field is present.
+        /// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.CertificateCertificateDescriptionGetArgs> CertificateDescriptions
         {
@@ -841,14 +843,14 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<Inputs.CertificateConfigGetArgs>? Config { get; set; }
 
         /// <summary>
-        /// The time that this resource was created on the server. This is in RFC3339 text format.
+        /// The time that this resource was created on the server.
+        /// This is in RFC3339 text format.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The resource name of the issuing CertificateAuthority in the format
-        /// 'projects/*/locations/*/caPools/*/certificateAuthorities/*'.
+        /// The resource name of the issuing CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
         /// </summary>
         [Input("issuerCertificateAuthority")]
         public Input<string>? IssuerCertificateAuthority { get; set; }
@@ -896,8 +898,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         private InputList<string>? _pemCertificateChains;
 
         /// <summary>
-        /// The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC
-        /// 5246.
+        /// The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
         /// </summary>
         public InputList<string> PemCertificateChains
         {
@@ -909,6 +910,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         private InputList<string>? _pemCertificates;
 
         /// <summary>
+        /// (Deprecated)
         /// Required. Expected to be in leaf-to-root order according to RFC 5246.
         /// </summary>
         [Obsolete(@"Deprecated in favor of `pem_certificate_chain`.")]
@@ -941,8 +943,9 @@ namespace Pulumi.Gcp.CertificateAuthority
         private InputList<Inputs.CertificateRevocationDetailGetArgs>? _revocationDetails;
 
         /// <summary>
-        /// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if
-        /// this field is present.
+        /// Output only. Details regarding the revocation of this Certificate. This Certificate is
+        /// considered revoked if and only if this field is present.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.CertificateRevocationDetailGetArgs> RevocationDetails
         {
@@ -951,7 +954,8 @@ namespace Pulumi.Gcp.CertificateAuthority
         }
 
         /// <summary>
-        /// Output only. The time at which this CertificateAuthority was updated. This is in RFC3339 text format.
+        /// Output only. The time at which this CertificateAuthority was updated.
+        /// This is in RFC3339 text format.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

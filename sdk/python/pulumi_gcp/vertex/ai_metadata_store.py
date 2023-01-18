@@ -118,8 +118,7 @@ class _AiMetadataStoreState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AiMetadataStore resources.
-        :param pulumi.Input[str] create_time: The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-               nine fractional digits.
+        :param pulumi.Input[str] create_time: The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[str] description: Description of the MetadataStore.
         :param pulumi.Input['AiMetadataStoreEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
                Structure is documented below.
@@ -128,8 +127,8 @@ class _AiMetadataStoreState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the Metadata Store. eg us-central1
         :param pulumi.Input[Sequence[pulumi.Input['AiMetadataStoreStateArgs']]] states: State information of the MetadataStore.
-        :param pulumi.Input[str] update_time: The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-               to nine fractional digits.
+               Structure is documented below.
+        :param pulumi.Input[str] update_time: The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -152,8 +151,7 @@ class _AiMetadataStoreState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-        nine fractional digits.
+        The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "create_time")
 
@@ -228,6 +226,7 @@ class _AiMetadataStoreState:
     def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiMetadataStoreStateArgs']]]]:
         """
         State information of the MetadataStore.
+        Structure is documented below.
         """
         return pulumi.get(self, "states")
 
@@ -239,8 +238,7 @@ class _AiMetadataStoreState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-        to nine fractional digits.
+        The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "update_time")
 
@@ -404,8 +402,7 @@ class AiMetadataStore(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-               nine fractional digits.
+        :param pulumi.Input[str] create_time: The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[str] description: Description of the MetadataStore.
         :param pulumi.Input[pulumi.InputType['AiMetadataStoreEncryptionSpecArgs']] encryption_spec: Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
                Structure is documented below.
@@ -414,8 +411,8 @@ class AiMetadataStore(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the Metadata Store. eg us-central1
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AiMetadataStoreStateArgs']]]] states: State information of the MetadataStore.
-        :param pulumi.Input[str] update_time: The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-               to nine fractional digits.
+               Structure is documented below.
+        :param pulumi.Input[str] update_time: The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -435,8 +432,7 @@ class AiMetadataStore(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
-        nine fractional digits.
+        The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "create_time")
 
@@ -487,6 +483,7 @@ class AiMetadataStore(pulumi.CustomResource):
     def states(self) -> pulumi.Output[Sequence['outputs.AiMetadataStoreState']]:
         """
         State information of the MetadataStore.
+        Structure is documented below.
         """
         return pulumi.get(self, "states")
 
@@ -494,8 +491,7 @@ class AiMetadataStore(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
-        to nine fractional digits.
+        The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "update_time")
 

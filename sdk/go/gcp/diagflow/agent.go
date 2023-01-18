@@ -87,8 +87,8 @@ type Agent struct {
 	// into this field, the Dialogflow will save the image in the backend. The address of the backend image returned
 	// from the API will be shown in the [avatarUriBackend] field.
 	AvatarUri pulumi.StringPtrOutput `pulumi:"avatarUri"`
-	// The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar, the
-	// [avatarUri] field can be used.
+	// The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar,
+	// the [avatarUri] field can be used.
 	AvatarUriBackend pulumi.StringOutput `pulumi:"avatarUriBackend"`
 	// To filter out false positive results and still get variety in matched natural language inputs for your agent,
 	// you can tune the machine learning classification threshold. If the returned score value is less than the threshold
@@ -179,8 +179,8 @@ type agentState struct {
 	// into this field, the Dialogflow will save the image in the backend. The address of the backend image returned
 	// from the API will be shown in the [avatarUriBackend] field.
 	AvatarUri *string `pulumi:"avatarUri"`
-	// The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar, the
-	// [avatarUri] field can be used.
+	// The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar,
+	// the [avatarUri] field can be used.
 	AvatarUriBackend *string `pulumi:"avatarUriBackend"`
 	// To filter out false positive results and still get variety in matched natural language inputs for your agent,
 	// you can tune the machine learning classification threshold. If the returned score value is less than the threshold
@@ -234,8 +234,8 @@ type AgentState struct {
 	// into this field, the Dialogflow will save the image in the backend. The address of the backend image returned
 	// from the API will be shown in the [avatarUriBackend] field.
 	AvatarUri pulumi.StringPtrInput
-	// The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar, the
-	// [avatarUri] field can be used.
+	// The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar,
+	// the [avatarUri] field can be used.
 	AvatarUriBackend pulumi.StringPtrInput
 	// To filter out false positive results and still get variety in matched natural language inputs for your agent,
 	// you can tune the machine learning classification threshold. If the returned score value is less than the threshold
@@ -490,8 +490,8 @@ func (o AgentOutput) AvatarUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Agent) pulumi.StringPtrOutput { return v.AvatarUri }).(pulumi.StringPtrOutput)
 }
 
-// The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar, the
-// [avatarUri] field can be used.
+// The URI of the agent's avatar as returned from the API. Output only. To provide an image URL for the agent avatar,
+// the [avatarUri] field can be used.
 func (o AgentOutput) AvatarUriBackend() pulumi.StringOutput {
 	return o.ApplyT(func(v *Agent) pulumi.StringOutput { return v.AvatarUriBackend }).(pulumi.StringOutput)
 }

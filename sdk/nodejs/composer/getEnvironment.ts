@@ -10,11 +10,8 @@ import * as utilities from "../utilities";
  * Provides access to Cloud Composer environment configuration in a region for a given project.
  */
 export function getEnvironment(args: GetEnvironmentArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:composer/getEnvironment:getEnvironment", {
         "name": args.name,
         "project": args.project,
@@ -58,9 +55,11 @@ export interface GetEnvironmentResult {
     readonly project?: string;
     readonly region?: string;
 }
-
+/**
+ * Provides access to Cloud Composer environment configuration in a region for a given project.
+ */
 export function getEnvironmentOutput(args: GetEnvironmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentResult> {
-    return pulumi.output(args).apply(a => getEnvironment(a, opts))
+    return pulumi.output(args).apply((a: any) => getEnvironment(a, opts))
 }
 
 /**

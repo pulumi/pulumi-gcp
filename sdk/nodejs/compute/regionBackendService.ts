@@ -110,7 +110,6 @@ export class RegionBackendService extends pulumi.CustomResource {
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * An optional description of this resource.
-     * Provide this property when you create the resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -123,7 +122,8 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public readonly failoverPolicy!: pulumi.Output<outputs.compute.RegionBackendServiceFailoverPolicy | undefined>;
     /**
-     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+     * Fingerprint of this resource. A hash of the contents stored in this
+     * object. This field is used in optimistic locking.
      */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
@@ -151,24 +151,6 @@ export class RegionBackendService extends pulumi.CustomResource {
     /**
      * The load balancing algorithm used within the scope of the locality.
      * The possible values are:
-     * * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
-     * is selected in round robin order.
-     * * `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
-     * hosts and picks the host which has fewer active requests.
-     * * `RING_HASH`: The ring/modulo hash load balancer implements consistent
-     * hashing to backends. The algorithm has the property that the
-     * addition/removal of a host from a set of N hosts only affects
-     * 1/N of the requests.
-     * * `RANDOM`: The load balancer selects a random healthy host.
-     * * `ORIGINAL_DESTINATION`: Backend host is selected based on the client
-     * connection metadata, i.e., connections are opened
-     * to the same address as the destination address of
-     * the incoming connection before the connection
-     * was redirected to the load balancer.
-     * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
-     * Maglev is not as stable as ring hash but has faster table lookup
-     * build times and host selection times. For more information about
-     * Maglev, refer to https://ai.google/research/pubs/pub44824
      */
     public readonly localityLbPolicy!: pulumi.Output<string | undefined>;
     /**
@@ -178,7 +160,13 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public readonly logConfig!: pulumi.Output<outputs.compute.RegionBackendServiceLogConfig>;
     /**
-     * Name of the cookie.
+     * Name of the resource. Provided by the client when the resource is
+     * created. The name must be 1-63 characters long, and comply with
+     * RFC1035. Specifically, the name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -375,7 +363,6 @@ export interface RegionBackendServiceState {
     creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional description of this resource.
-     * Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
     /**
@@ -388,7 +375,8 @@ export interface RegionBackendServiceState {
      */
     failoverPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceFailoverPolicy>;
     /**
-     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
+     * Fingerprint of this resource. A hash of the contents stored in this
+     * object. This field is used in optimistic locking.
      */
     fingerprint?: pulumi.Input<string>;
     /**
@@ -416,24 +404,6 @@ export interface RegionBackendServiceState {
     /**
      * The load balancing algorithm used within the scope of the locality.
      * The possible values are:
-     * * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
-     * is selected in round robin order.
-     * * `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
-     * hosts and picks the host which has fewer active requests.
-     * * `RING_HASH`: The ring/modulo hash load balancer implements consistent
-     * hashing to backends. The algorithm has the property that the
-     * addition/removal of a host from a set of N hosts only affects
-     * 1/N of the requests.
-     * * `RANDOM`: The load balancer selects a random healthy host.
-     * * `ORIGINAL_DESTINATION`: Backend host is selected based on the client
-     * connection metadata, i.e., connections are opened
-     * to the same address as the destination address of
-     * the incoming connection before the connection
-     * was redirected to the load balancer.
-     * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
-     * Maglev is not as stable as ring hash but has faster table lookup
-     * build times and host selection times. For more information about
-     * Maglev, refer to https://ai.google/research/pubs/pub44824
      */
     localityLbPolicy?: pulumi.Input<string>;
     /**
@@ -443,7 +413,13 @@ export interface RegionBackendServiceState {
      */
     logConfig?: pulumi.Input<inputs.compute.RegionBackendServiceLogConfig>;
     /**
-     * Name of the cookie.
+     * Name of the resource. Provided by the client when the resource is
+     * created. The name must be 1-63 characters long, and comply with
+     * RFC1035. Specifically, the name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
     /**
@@ -560,7 +536,6 @@ export interface RegionBackendServiceArgs {
     consistentHash?: pulumi.Input<inputs.compute.RegionBackendServiceConsistentHash>;
     /**
      * An optional description of this resource.
-     * Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
     /**
@@ -597,24 +572,6 @@ export interface RegionBackendServiceArgs {
     /**
      * The load balancing algorithm used within the scope of the locality.
      * The possible values are:
-     * * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
-     * is selected in round robin order.
-     * * `LEAST_REQUEST`: An O(1) algorithm which selects two random healthy
-     * hosts and picks the host which has fewer active requests.
-     * * `RING_HASH`: The ring/modulo hash load balancer implements consistent
-     * hashing to backends. The algorithm has the property that the
-     * addition/removal of a host from a set of N hosts only affects
-     * 1/N of the requests.
-     * * `RANDOM`: The load balancer selects a random healthy host.
-     * * `ORIGINAL_DESTINATION`: Backend host is selected based on the client
-     * connection metadata, i.e., connections are opened
-     * to the same address as the destination address of
-     * the incoming connection before the connection
-     * was redirected to the load balancer.
-     * * `MAGLEV`: used as a drop in replacement for the ring hash load balancer.
-     * Maglev is not as stable as ring hash but has faster table lookup
-     * build times and host selection times. For more information about
-     * Maglev, refer to https://ai.google/research/pubs/pub44824
      */
     localityLbPolicy?: pulumi.Input<string>;
     /**
@@ -624,7 +581,13 @@ export interface RegionBackendServiceArgs {
      */
     logConfig?: pulumi.Input<inputs.compute.RegionBackendServiceLogConfig>;
     /**
-     * Name of the cookie.
+     * Name of the resource. Provided by the client when the resource is
+     * created. The name must be 1-63 characters long, and comply with
+     * RFC1035. Specifically, the name must be 1-63 characters long and match
+     * the regular expression `a-z?` which means the
+     * first character must be a lowercase letter, and all following
+     * characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
     /**

@@ -83,8 +83,9 @@ namespace Pulumi.Gcp.GameServices
 
         /// <summary>
         /// The resource id of the game server deployment, eg:
-        /// 'projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}'. For example,
-        /// 'projects/my-project/locations/{location}/gameServerDeployments/my-deployment'.
+        /// `projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}`.
+        /// For example,
+        /// `projects/my-project/locations/{location}/gameServerDeployments/my-deployment`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -221,8 +222,9 @@ namespace Pulumi.Gcp.GameServices
 
         /// <summary>
         /// The resource id of the game server deployment, eg:
-        /// 'projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}'. For example,
-        /// 'projects/my-project/locations/{location}/gameServerDeployments/my-deployment'.
+        /// `projects/{project_id}/locations/{location}/gameServerDeployments/{deployment_id}`.
+        /// For example,
+        /// `projects/my-project/locations/{location}/gameServerDeployments/my-deployment`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

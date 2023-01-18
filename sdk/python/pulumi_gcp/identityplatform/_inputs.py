@@ -100,8 +100,7 @@ class InboundSamlConfigIdpConfigIdpCertificateArgs:
     def __init__(__self__, *,
                  x509_certificate: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] x509_certificate: -
-               The x509 certificate
+        :param pulumi.Input[str] x509_certificate: The IdP's x509 certificate.
         """
         if x509_certificate is not None:
             pulumi.set(__self__, "x509_certificate", x509_certificate)
@@ -110,8 +109,7 @@ class InboundSamlConfigIdpConfigIdpCertificateArgs:
     @pulumi.getter(name="x509Certificate")
     def x509_certificate(self) -> Optional[pulumi.Input[str]]:
         """
-        -
-        The x509 certificate
+        The IdP's x509 certificate.
         """
         return pulumi.get(self, "x509_certificate")
 
@@ -128,8 +126,7 @@ class InboundSamlConfigSpConfigArgs:
                  sp_entity_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] callback_uri: Callback URI where responses from IDP are handled. Must start with `https://`.
-        :param pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigSpConfigSpCertificateArgs']]] sp_certificates: -
-               The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+        :param pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigSpConfigSpCertificateArgs']]] sp_certificates: The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
         :param pulumi.Input[str] sp_entity_id: Unique identifier for all SAML entities.
         """
@@ -156,7 +153,6 @@ class InboundSamlConfigSpConfigArgs:
     @pulumi.getter(name="spCertificates")
     def sp_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigSpConfigSpCertificateArgs']]]]:
         """
-        -
         The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
         Structure is documented below.
         """
@@ -184,7 +180,7 @@ class InboundSamlConfigSpConfigSpCertificateArgs:
     def __init__(__self__, *,
                  x509_certificate: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] x509_certificate: -
+        :param pulumi.Input[str] x509_certificate: The IdP's x509 certificate.
                The x509 certificate
         """
         if x509_certificate is not None:
@@ -194,7 +190,7 @@ class InboundSamlConfigSpConfigSpCertificateArgs:
     @pulumi.getter(name="x509Certificate")
     def x509_certificate(self) -> Optional[pulumi.Input[str]]:
         """
-        -
+        The IdP's x509 certificate.
         The x509 certificate
         """
         return pulumi.get(self, "x509_certificate")
@@ -218,8 +214,7 @@ class ProjectDefaultConfigSignInArgs:
                Structure is documented below.
         :param pulumi.Input['ProjectDefaultConfigSignInEmailArgs'] email: Configuration options related to authenticating a user by their email address.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ProjectDefaultConfigSignInHashConfigArgs']]] hash_configs: -
-               Output only. Hash config information.
+        :param pulumi.Input[Sequence[pulumi.Input['ProjectDefaultConfigSignInHashConfigArgs']]] hash_configs: Output only. Hash config information.
                Structure is documented below.
         :param pulumi.Input['ProjectDefaultConfigSignInPhoneNumberArgs'] phone_number: Configuration options related to authenticated a user by their phone number.
                Structure is documented below.
@@ -277,7 +272,6 @@ class ProjectDefaultConfigSignInArgs:
     @pulumi.getter(name="hashConfigs")
     def hash_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectDefaultConfigSignInHashConfigArgs']]]]:
         """
-        -
         Output only. Hash config information.
         Structure is documented below.
         """
@@ -329,7 +323,7 @@ class ProjectDefaultConfigSignInEmailArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  password_required: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[bool] enabled: Whether anonymous user auth is enabled for the project or not.
+        :param pulumi.Input[bool] enabled: Whether email auth is enabled for the project or not.
         :param pulumi.Input[bool] password_required: Whether a password is required for email auth or not. If true, both an email and
                password must be provided to sign in. If false, a user may sign in via either
                email/password or email link.
@@ -343,7 +337,7 @@ class ProjectDefaultConfigSignInEmailArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether anonymous user auth is enabled for the project or not.
+        Whether email auth is enabled for the project or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -375,16 +369,11 @@ class ProjectDefaultConfigSignInHashConfigArgs:
                  salt_separator: Optional[pulumi.Input[str]] = None,
                  signer_key: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] algorithm: -
-               Different password hash algorithms used in Identity Toolkit.
-        :param pulumi.Input[int] memory_cost: -
-               Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
-        :param pulumi.Input[int] rounds: -
-               How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
-        :param pulumi.Input[str] salt_separator: -
-               Non-printable character to be inserted between the salt and plain text password in base64.
-        :param pulumi.Input[str] signer_key: -
-               Signer key in base64.
+        :param pulumi.Input[str] algorithm: Different password hash algorithms used in Identity Toolkit.
+        :param pulumi.Input[int] memory_cost: Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
+        :param pulumi.Input[int] rounds: How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
+        :param pulumi.Input[str] salt_separator: Non-printable character to be inserted between the salt and plain text password in base64.
+        :param pulumi.Input[str] signer_key: Signer key in base64.
         """
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
@@ -401,7 +390,6 @@ class ProjectDefaultConfigSignInHashConfigArgs:
     @pulumi.getter
     def algorithm(self) -> Optional[pulumi.Input[str]]:
         """
-        -
         Different password hash algorithms used in Identity Toolkit.
         """
         return pulumi.get(self, "algorithm")
@@ -414,7 +402,6 @@ class ProjectDefaultConfigSignInHashConfigArgs:
     @pulumi.getter(name="memoryCost")
     def memory_cost(self) -> Optional[pulumi.Input[int]]:
         """
-        -
         Memory cost for hash calculation. Used by scrypt and other similar password derivation algorithms. See https://tools.ietf.org/html/rfc7914 for explanation of field.
         """
         return pulumi.get(self, "memory_cost")
@@ -427,7 +414,6 @@ class ProjectDefaultConfigSignInHashConfigArgs:
     @pulumi.getter
     def rounds(self) -> Optional[pulumi.Input[int]]:
         """
-        -
         How many rounds for hash calculation. Used by scrypt and other similar password derivation algorithms.
         """
         return pulumi.get(self, "rounds")
@@ -440,7 +426,6 @@ class ProjectDefaultConfigSignInHashConfigArgs:
     @pulumi.getter(name="saltSeparator")
     def salt_separator(self) -> Optional[pulumi.Input[str]]:
         """
-        -
         Non-printable character to be inserted between the salt and plain text password in base64.
         """
         return pulumi.get(self, "salt_separator")
@@ -453,7 +438,6 @@ class ProjectDefaultConfigSignInHashConfigArgs:
     @pulumi.getter(name="signerKey")
     def signer_key(self) -> Optional[pulumi.Input[str]]:
         """
-        -
         Signer key in base64.
         """
         return pulumi.get(self, "signer_key")
@@ -469,7 +453,7 @@ class ProjectDefaultConfigSignInPhoneNumberArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  test_phone_numbers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[bool] enabled: Whether anonymous user auth is enabled for the project or not.
+        :param pulumi.Input[bool] enabled: Whether phone number auth is enabled for the project or not.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] test_phone_numbers: A map of <test phone number, fake code> that can be used for phone auth testing.
         """
         if enabled is not None:
@@ -481,7 +465,7 @@ class ProjectDefaultConfigSignInPhoneNumberArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether anonymous user auth is enabled for the project or not.
+        Whether phone number auth is enabled for the project or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -577,8 +561,7 @@ class TenantInboundSamlConfigIdpConfigIdpCertificateArgs:
     def __init__(__self__, *,
                  x509_certificate: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] x509_certificate: -
-               The x509 certificate
+        :param pulumi.Input[str] x509_certificate: The x509 certificate
         """
         if x509_certificate is not None:
             pulumi.set(__self__, "x509_certificate", x509_certificate)
@@ -587,7 +570,6 @@ class TenantInboundSamlConfigIdpConfigIdpCertificateArgs:
     @pulumi.getter(name="x509Certificate")
     def x509_certificate(self) -> Optional[pulumi.Input[str]]:
         """
-        -
         The x509 certificate
         """
         return pulumi.get(self, "x509_certificate")
@@ -606,8 +588,7 @@ class TenantInboundSamlConfigSpConfigArgs:
         """
         :param pulumi.Input[str] callback_uri: Callback URI where responses from IDP are handled. Must start with `https://`.
         :param pulumi.Input[str] sp_entity_id: Unique identifier for all SAML entities.
-        :param pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigSpConfigSpCertificateArgs']]] sp_certificates: -
-               The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
+        :param pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigSpConfigSpCertificateArgs']]] sp_certificates: The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
         """
         pulumi.set(__self__, "callback_uri", callback_uri)
@@ -643,7 +624,6 @@ class TenantInboundSamlConfigSpConfigArgs:
     @pulumi.getter(name="spCertificates")
     def sp_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigSpConfigSpCertificateArgs']]]]:
         """
-        -
         The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
         Structure is documented below.
         """
@@ -659,7 +639,7 @@ class TenantInboundSamlConfigSpConfigSpCertificateArgs:
     def __init__(__self__, *,
                  x509_certificate: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] x509_certificate: -
+        :param pulumi.Input[str] x509_certificate: The x509 certificate
                The x509 certificate
         """
         if x509_certificate is not None:
@@ -669,7 +649,7 @@ class TenantInboundSamlConfigSpConfigSpCertificateArgs:
     @pulumi.getter(name="x509Certificate")
     def x509_certificate(self) -> Optional[pulumi.Input[str]]:
         """
-        -
+        The x509 certificate
         The x509 certificate
         """
         return pulumi.get(self, "x509_certificate")

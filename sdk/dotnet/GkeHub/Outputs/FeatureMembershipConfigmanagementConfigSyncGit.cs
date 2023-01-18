@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     public sealed class FeatureMembershipConfigmanagementConfigSyncGit
     {
         /// <summary>
-        /// The GCP Service Account Email used for auth when secret_type is gcpserviceaccount.
+        /// The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
         /// </summary>
         public readonly string? GcpServiceAccountEmail;
         /// <summary>
@@ -22,11 +22,11 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// </summary>
         public readonly string? HttpsProxy;
         /// <summary>
-        /// The absolute path of the directory that contains the local resources. Default: the root directory of the image.
+        /// The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
         /// </summary>
         public readonly string? PolicyDir;
         /// <summary>
-        /// Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
+        /// Type of secret configured for access to the Git repo.
         /// </summary>
         public readonly string? SecretType;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// </summary>
         public readonly string? SyncBranch;
         /// <summary>
-        /// The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
+        /// The URL of the Git repository to use as the source of truth.
         /// </summary>
         public readonly string? SyncRepo;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// </summary>
         public readonly string? SyncRev;
         /// <summary>
-        /// Period in seconds(int64 format) between consecutive syncs. Default: 15.
+        /// Period in seconds between consecutive syncs. Default: 15.
         /// </summary>
         public readonly string? SyncWaitSecs;
 

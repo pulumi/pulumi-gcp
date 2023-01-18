@@ -108,16 +108,14 @@ public final class ConnectorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
-     * https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}&#34;
+     * The name of the resource (Max 25 characters).
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
-     * https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}&#34;
+     * @return The name of the resource (Max 25 characters).
      * 
      */
     public Optional<Output<String>> name() {
@@ -349,8 +347,7 @@ public final class ConnectorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
-         * https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}&#34;
+         * @param name The name of the resource (Max 25 characters).
          * 
          * @return builder
          * 
@@ -361,8 +358,7 @@ public final class ConnectorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
-         * https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}&#34;
+         * @param name The name of the resource (Max 25 characters).
          * 
          * @return builder
          * 

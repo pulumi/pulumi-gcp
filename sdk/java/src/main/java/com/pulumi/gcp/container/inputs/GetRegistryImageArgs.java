@@ -15,37 +15,77 @@ public final class GetRegistryImageArgs extends com.pulumi.resources.InvokeArgs 
 
     public static final GetRegistryImageArgs Empty = new GetRegistryImageArgs();
 
+    /**
+     * The image digest to fetch, if any.
+     * 
+     */
     @Import(name="digest")
     private @Nullable Output<String> digest;
 
+    /**
+     * @return The image digest to fetch, if any.
+     * 
+     */
     public Optional<Output<String>> digest() {
         return Optional.ofNullable(this.digest);
     }
 
+    /**
+     * The image name.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return The image name.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
 
+    /**
+     * The project ID that this image is attached to.  If not provider, provider project will be used instead.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The project ID that this image is attached to.  If not provider, provider project will be used instead.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
+     * 
+     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
+    /**
+     * @return The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
+     * 
+     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
 
+    /**
+     * The tag to fetch, if any.
+     * 
+     */
     @Import(name="tag")
     private @Nullable Output<String> tag;
 
+    /**
+     * @return The tag to fetch, if any.
+     * 
+     */
     public Optional<Output<String>> tag() {
         return Optional.ofNullable(this.tag);
     }
@@ -78,47 +118,107 @@ public final class GetRegistryImageArgs extends com.pulumi.resources.InvokeArgs 
             $ = new GetRegistryImageArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param digest The image digest to fetch, if any.
+         * 
+         * @return builder
+         * 
+         */
         public Builder digest(@Nullable Output<String> digest) {
             $.digest = digest;
             return this;
         }
 
+        /**
+         * @param digest The image digest to fetch, if any.
+         * 
+         * @return builder
+         * 
+         */
         public Builder digest(String digest) {
             return digest(Output.of(digest));
         }
 
+        /**
+         * @param name The image name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The image name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param project The project ID that this image is attached to.  If not provider, provider project will be used instead.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The project ID that this image is attached to.  If not provider, provider project will be used instead.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
+        /**
+         * @param region The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
+        /**
+         * @param region The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(String region) {
             return region(Output.of(region));
         }
 
+        /**
+         * @param tag The tag to fetch, if any.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tag(@Nullable Output<String> tag) {
             $.tag = tag;
             return this;
         }
 
+        /**
+         * @param tag The tag to fetch, if any.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tag(String tag) {
             return tag(Output.of(tag));
         }

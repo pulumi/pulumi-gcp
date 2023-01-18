@@ -48,14 +48,14 @@ public final class ConnectionProfileOracleProfileArgs extends com.pulumi.resourc
     }
 
     /**
-     * Hostname for the SSH tunnel.
+     * Hostname for the Oracle connection.
      * 
      */
     @Import(name="hostname", required=true)
     private Output<String> hostname;
 
     /**
-     * @return Hostname for the SSH tunnel.
+     * @return Hostname for the Oracle connection.
      * 
      */
     public Output<String> hostname() {
@@ -63,7 +63,7 @@ public final class ConnectionProfileOracleProfileArgs extends com.pulumi.resourc
     }
 
     /**
-     * SSH password.
+     * Password for the Oracle connection.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
@@ -71,7 +71,7 @@ public final class ConnectionProfileOracleProfileArgs extends com.pulumi.resourc
     private Output<String> password;
 
     /**
-     * @return SSH password.
+     * @return Password for the Oracle connection.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
@@ -80,14 +80,14 @@ public final class ConnectionProfileOracleProfileArgs extends com.pulumi.resourc
     }
 
     /**
-     * Port for the SSH tunnel.
+     * Port for the Oracle connection.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return Port for the SSH tunnel.
+     * @return Port for the Oracle connection.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -95,14 +95,14 @@ public final class ConnectionProfileOracleProfileArgs extends com.pulumi.resourc
     }
 
     /**
-     * Username for the SSH tunnel.
+     * Username for the Oracle connection.
      * 
      */
     @Import(name="username", required=true)
     private Output<String> username;
 
     /**
-     * @return Username for the SSH tunnel.
+     * @return Username for the Oracle connection.
      * 
      */
     public Output<String> username() {
@@ -181,7 +181,7 @@ public final class ConnectionProfileOracleProfileArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param hostname Hostname for the SSH tunnel.
+         * @param hostname Hostname for the Oracle connection.
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class ConnectionProfileOracleProfileArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param hostname Hostname for the SSH tunnel.
+         * @param hostname Hostname for the Oracle connection.
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class ConnectionProfileOracleProfileArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param password SSH password.
+         * @param password Password for the Oracle connection.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
@@ -214,7 +214,7 @@ public final class ConnectionProfileOracleProfileArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param password SSH password.
+         * @param password Password for the Oracle connection.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
@@ -225,7 +225,7 @@ public final class ConnectionProfileOracleProfileArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param port Port for the SSH tunnel.
+         * @param port Port for the Oracle connection.
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class ConnectionProfileOracleProfileArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param port Port for the SSH tunnel.
+         * @param port Port for the Oracle connection.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class ConnectionProfileOracleProfileArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param username Username for the SSH tunnel.
+         * @param username Username for the Oracle connection.
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class ConnectionProfileOracleProfileArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param username Username for the SSH tunnel.
+         * @param username Username for the Oracle connection.
          * 
          * @return builder
          * 

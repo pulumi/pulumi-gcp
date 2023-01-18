@@ -174,14 +174,16 @@ public class Network extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableUlaInternalIpv6);
     }
     /**
-     * The gateway address for default routing out of the network. This value is selected by GCP.
+     * The gateway address for default routing out of the network. This value
+     * is selected by GCP.
      * 
      */
     @Export(name="gatewayIpv4", type=String.class, parameters={})
     private Output<String> gatewayIpv4;
 
     /**
-     * @return The gateway address for default routing out of the network. This value is selected by GCP.
+     * @return The gateway address for default routing out of the network. This value
+     * is selected by GCP.
      * 
      */
     public Output<String> gatewayIpv4() {

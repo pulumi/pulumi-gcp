@@ -56,8 +56,9 @@ namespace Pulumi.Gcp.CertificateManager
     public partial class CertificateMap : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format, accurate to nanoseconds with up to
-        /// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
+        /// accurate to nanoseconds with up to nine fractional digits.
+        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -70,6 +71,7 @@ namespace Pulumi.Gcp.CertificateManager
 
         /// <summary>
         /// A list of target proxies that use this Certificate Map
+        /// Structure is documented below.
         /// </summary>
         [Output("gclbTargets")]
         public Output<ImmutableArray<Outputs.CertificateMapGclbTarget>> GclbTargets { get; private set; } = null!;
@@ -95,8 +97,9 @@ namespace Pulumi.Gcp.CertificateManager
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format, accurate to nanoseconds with up to
-        /// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
+        /// accurate to nanoseconds with up to nine fractional digits.
+        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -188,8 +191,9 @@ namespace Pulumi.Gcp.CertificateManager
     public sealed class CertificateMapState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format, accurate to nanoseconds with up to
-        /// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// Creation timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
+        /// accurate to nanoseconds with up to nine fractional digits.
+        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -205,6 +209,7 @@ namespace Pulumi.Gcp.CertificateManager
 
         /// <summary>
         /// A list of target proxies that use this Certificate Map
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.CertificateMapGclbTargetGetArgs> GclbTargets
         {
@@ -239,8 +244,9 @@ namespace Pulumi.Gcp.CertificateManager
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format, accurate to nanoseconds with up to
-        /// nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
+        /// accurate to nanoseconds with up to nine fractional digits.
+        /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

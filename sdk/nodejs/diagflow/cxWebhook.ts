@@ -106,13 +106,13 @@ export class CxWebhook extends pulumi.CustomResource {
      */
     public readonly enableStackdriverLogging!: pulumi.Output<boolean | undefined>;
     /**
-     * The name of Service Directory service.
+     * Configuration for a generic web service.
      * Structure is documented below.
      */
     public readonly genericWebService!: pulumi.Output<outputs.diagflow.CxWebhookGenericWebService | undefined>;
     /**
-     * The unique identifier of the webhook. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-     * ID>/webhooks/<Webhook ID>.
+     * The unique identifier of the webhook.
+     * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -130,9 +130,7 @@ export class CxWebhook extends pulumi.CustomResource {
      */
     public readonly serviceDirectory!: pulumi.Output<outputs.diagflow.CxWebhookServiceDirectory | undefined>;
     /**
-     * Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-     * be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow
-     * ID>.
+     * Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
      */
     public /*out*/ readonly startFlow!: pulumi.Output<string>;
     /**
@@ -207,13 +205,13 @@ export interface CxWebhookState {
      */
     enableStackdriverLogging?: pulumi.Input<boolean>;
     /**
-     * The name of Service Directory service.
+     * Configuration for a generic web service.
      * Structure is documented below.
      */
     genericWebService?: pulumi.Input<inputs.diagflow.CxWebhookGenericWebService>;
     /**
-     * The unique identifier of the webhook. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent
-     * ID>/webhooks/<Webhook ID>.
+     * The unique identifier of the webhook.
+     * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
      */
     name?: pulumi.Input<string>;
     /**
@@ -231,9 +229,7 @@ export interface CxWebhookState {
      */
     serviceDirectory?: pulumi.Input<inputs.diagflow.CxWebhookServiceDirectory>;
     /**
-     * Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only
-     * be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow
-     * ID>.
+     * Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
      */
     startFlow?: pulumi.Input<string>;
     /**
@@ -263,7 +259,7 @@ export interface CxWebhookArgs {
      */
     enableStackdriverLogging?: pulumi.Input<boolean>;
     /**
-     * The name of Service Directory service.
+     * Configuration for a generic web service.
      * Structure is documented below.
      */
     genericWebService?: pulumi.Input<inputs.diagflow.CxWebhookGenericWebService>;

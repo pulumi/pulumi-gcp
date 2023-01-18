@@ -44,7 +44,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule {
      */
     private @Nullable String pathTemplateMatch;
     /**
-     * @return The value of the header must start with the contents of prefixMatch.
+     * @return For satisfying the matchRule condition, the request&#39;s path must begin with the specified prefixMatch. prefixMatch must begin with a /.
      * 
      */
     private @Nullable String prefixMatch;
@@ -93,7 +93,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule {
         return Optional.ofNullable(this.pathTemplateMatch);
     }
     /**
-     * @return The value of the header must start with the contents of prefixMatch.
+     * @return For satisfying the matchRule condition, the request&#39;s path must begin with the specified prefixMatch. prefixMatch must begin with a /.
      * 
      */
     public Optional<String> prefixMatch() {

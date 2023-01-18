@@ -222,14 +222,16 @@ public class InterconnectAttachment extends com.pulumi.resources.CustomResource 
         return Codegen.optional(this.candidateSubnets);
     }
     /**
-     * IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
+     * IPv4 address + prefix length to be configured on Cloud Router
+     * Interface for this interconnect attachment.
      * 
      */
     @Export(name="cloudRouterIpAddress", type=String.class, parameters={})
     private Output<String> cloudRouterIpAddress;
 
     /**
-     * @return IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
+     * @return IPv4 address + prefix length to be configured on Cloud Router
+     * Interface for this interconnect attachment.
      * 
      */
     public Output<String> cloudRouterIpAddress() {
@@ -250,14 +252,16 @@ public class InterconnectAttachment extends com.pulumi.resources.CustomResource 
         return this.creationTimestamp;
     }
     /**
-     * IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
+     * IPv4 address + prefix length to be configured on the customer
+     * router subinterface for this interconnect attachment.
      * 
      */
     @Export(name="customerRouterIpAddress", type=String.class, parameters={})
     private Output<String> customerRouterIpAddress;
 
     /**
-     * @return IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
+     * @return IPv4 address + prefix length to be configured on the customer
+     * router subinterface for this interconnect attachment.
      * 
      */
     public Output<String> customerRouterIpAddress() {
@@ -340,16 +344,16 @@ public class InterconnectAttachment extends com.pulumi.resources.CustomResource 
         return Codegen.optional(this.encryption);
     }
     /**
-     * Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity
-     * issues.
+     * Google reference ID, to be used when raising support tickets with
+     * Google or otherwise to debug backend connectivity issues.
      * 
      */
     @Export(name="googleReferenceId", type=String.class, parameters={})
     private Output<String> googleReferenceId;
 
     /**
-     * @return Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity
-     * issues.
+     * @return Google reference ID, to be used when raising support tickets with
+     * Google or otherwise to debug backend connectivity issues.
      * 
      */
     public Output<String> googleReferenceId() {
@@ -458,48 +462,54 @@ public class InterconnectAttachment extends com.pulumi.resources.CustomResource 
         return this.name;
     }
     /**
-     * [Output only for type PARTNER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to
-     * initiate provisioning with a selected partner. Of the form &#34;XXXXX/region/domain&#34;
+     * [Output only for type PARTNER. Not present for DEDICATED]. The opaque
+     * identifier of an PARTNER attachment used to initiate provisioning with
+     * a selected partner. Of the form &#34;XXXXX/region/domain&#34;
      * 
      */
     @Export(name="pairingKey", type=String.class, parameters={})
     private Output<String> pairingKey;
 
     /**
-     * @return [Output only for type PARTNER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to
-     * initiate provisioning with a selected partner. Of the form &#34;XXXXX/region/domain&#34;
+     * @return [Output only for type PARTNER. Not present for DEDICATED]. The opaque
+     * identifier of an PARTNER attachment used to initiate provisioning with
+     * a selected partner. Of the form &#34;XXXXX/region/domain&#34;
      * 
      */
     public Output<String> pairingKey() {
         return this.pairingKey;
     }
     /**
-     * [Output only for type PARTNER. Not present for DEDICATED]. Optional BGP ASN for the router that should be supplied by a
-     * layer 3 Partner if they configured BGP on behalf of the customer.
+     * [Output only for type PARTNER. Not present for DEDICATED]. Optional
+     * BGP ASN for the router that should be supplied by a layer 3 Partner if
+     * they configured BGP on behalf of the customer.
      * 
      */
     @Export(name="partnerAsn", type=String.class, parameters={})
     private Output<String> partnerAsn;
 
     /**
-     * @return [Output only for type PARTNER. Not present for DEDICATED]. Optional BGP ASN for the router that should be supplied by a
-     * layer 3 Partner if they configured BGP on behalf of the customer.
+     * @return [Output only for type PARTNER. Not present for DEDICATED]. Optional
+     * BGP ASN for the router that should be supplied by a layer 3 Partner if
+     * they configured BGP on behalf of the customer.
      * 
      */
     public Output<String> partnerAsn() {
         return this.partnerAsn;
     }
     /**
-     * Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
-     * to is of type DEDICATED.
+     * Information specific to an InterconnectAttachment. This property
+     * is populated if the interconnect that this is attached to is of type DEDICATED.
+     * Structure is documented below.
      * 
      */
     @Export(name="privateInterconnectInfos", type=List.class, parameters={InterconnectAttachmentPrivateInterconnectInfo.class})
     private Output<List<InterconnectAttachmentPrivateInterconnectInfo>> privateInterconnectInfos;
 
     /**
-     * @return Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached
-     * to is of type DEDICATED.
+     * @return Information specific to an InterconnectAttachment. This property
+     * is populated if the interconnect that this is attached to is of type DEDICATED.
+     * Structure is documented below.
      * 
      */
     public Output<List<InterconnectAttachmentPrivateInterconnectInfo>> privateInterconnectInfos() {

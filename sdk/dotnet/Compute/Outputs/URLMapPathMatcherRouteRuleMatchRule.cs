@@ -48,9 +48,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.URLMapPathMatcherRouteRuleMatchRuleMetadataFilter> MetadataFilters;
         /// <summary>
-        /// The value of the header must start with the contents of prefixMatch. Only one of
-        /// exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch
-        /// must be set.
+        /// For satisfying the matchRule condition, the request's path must begin with the
+        /// specified prefixMatch. prefixMatch must begin with a /. The value must be
+        /// between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or
+        /// regexMatch must be specified.
         /// </summary>
         public readonly string? PrefixMatch;
         /// <summary>
@@ -60,10 +61,11 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch> QueryParameterMatches;
         /// <summary>
-        /// The queryParameterMatch matches if the value of the parameter matches the
-        /// regular expression specified by regexMatch. For the regular expression grammar,
-        /// please see en.cppreference.com/w/cpp/regex/ecmascript  Only one of presentMatch,
-        /// exactMatch and regexMatch must be set.
+        /// For satisfying the matchRule condition, the path of the request must satisfy the
+        /// regular expression specified in regexMatch after removing any query parameters
+        /// and anchor supplied with the original URL. For regular expression grammar please
+        /// see en.cppreference.com/w/cpp/regex/ecmascript  Only one of prefixMatch,
+        /// fullPathMatch or regexMatch must be specified.
         /// </summary>
         public readonly string? RegexMatch;
 

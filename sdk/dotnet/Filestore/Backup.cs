@@ -173,8 +173,7 @@ namespace Pulumi.Gcp.Filestore
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// The size of the storage used by the backup. As backups share storage, this number is expected to change with backup
-        /// creation/deletion.
+        /// The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
         /// </summary>
         [Output("storageBytes")]
         public Output<string> StorageBytes { get; private set; } = null!;
@@ -380,8 +379,7 @@ namespace Pulumi.Gcp.Filestore
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// The size of the storage used by the backup. As backups share storage, this number is expected to change with backup
-        /// creation/deletion.
+        /// The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
         /// </summary>
         [Input("storageBytes")]
         public Input<string>? StorageBytes { get; set; }

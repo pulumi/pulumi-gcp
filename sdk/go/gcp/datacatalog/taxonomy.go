@@ -76,7 +76,8 @@ type Taxonomy struct {
 	// and spaces; not start or end with spaces; and be at most 200 bytes
 	// long when encoded in UTF-8.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Resource name of this taxonomy, whose format is: "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
+	// Resource name of this taxonomy, whose format is:
+	// "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -130,7 +131,8 @@ type taxonomyState struct {
 	// and spaces; not start or end with spaces; and be at most 200 bytes
 	// long when encoded in UTF-8.
 	DisplayName *string `pulumi:"displayName"`
-	// Resource name of this taxonomy, whose format is: "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
+	// Resource name of this taxonomy, whose format is:
+	// "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -153,7 +155,8 @@ type TaxonomyState struct {
 	// and spaces; not start or end with spaces; and be at most 200 bytes
 	// long when encoded in UTF-8.
 	DisplayName pulumi.StringPtrInput
-	// Resource name of this taxonomy, whose format is: "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
+	// Resource name of this taxonomy, whose format is:
+	// "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -318,7 +321,8 @@ func (o TaxonomyOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Taxonomy) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Resource name of this taxonomy, whose format is: "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
+// Resource name of this taxonomy, whose format is:
+// "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
 func (o TaxonomyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Taxonomy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

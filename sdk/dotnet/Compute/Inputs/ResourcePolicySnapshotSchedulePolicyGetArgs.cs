@@ -20,7 +20,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<Inputs.ResourcePolicySnapshotSchedulePolicyRetentionPolicyGetArgs>? RetentionPolicy { get; set; }
 
         /// <summary>
-        /// Specifies the frequency for the operation, using the unix-cron format.
+        /// Contains one of an `hourlySchedule`, `dailySchedule`, or `weeklySchedule`.
+        /// Structure is documented below.
         /// </summary>
         [Input("schedule", required: true)]
         public Input<Inputs.ResourcePolicySnapshotSchedulePolicyScheduleGetArgs> Schedule { get; set; } = null!;

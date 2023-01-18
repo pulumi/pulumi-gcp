@@ -24,9 +24,8 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// </summary>
         public readonly Outputs.SloWindowsBasedSliGoodTotalRatioThresholdPerformance? Performance;
         /// <summary>
-        /// A duration string, e.g. 10s.
-        /// Good service is defined to be the count of requests made to
-        /// this service that return in no more than threshold.
+        /// If window performance &gt;= threshold, the window is counted
+        /// as good.
         /// </summary>
         public readonly double? Threshold;
 

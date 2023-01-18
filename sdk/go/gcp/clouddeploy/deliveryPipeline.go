@@ -147,8 +147,7 @@ type DeliveryPipeline struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Description of the `DeliveryPipeline`. Max length is 255 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete
-	// requests to ensure the client has an up-to-date value before proceeding.
+	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -208,8 +207,7 @@ type deliveryPipelineState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Description of the `DeliveryPipeline`. Max length is 255 characters.
 	Description *string `pulumi:"description"`
-	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete
-	// requests to ensure the client has an up-to-date value before proceeding.
+	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels map[string]string `pulumi:"labels"`
@@ -238,8 +236,7 @@ type DeliveryPipelineState struct {
 	CreateTime pulumi.StringPtrInput
 	// Description of the `DeliveryPipeline`. Max length is 255 characters.
 	Description pulumi.StringPtrInput
-	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete
-	// requests to ensure the client has an up-to-date value before proceeding.
+	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels pulumi.StringMapInput
@@ -409,8 +406,7 @@ func (o DeliveryPipelineOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete
-// requests to ensure the client has an up-to-date value before proceeding.
+// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 func (o DeliveryPipelineOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }

@@ -107,7 +107,11 @@ namespace Pulumi.Gcp.Compute
         public string? Filter { get; set; }
 
         /// <summary>
-        /// The name of the image.
+        /// , `family` or `filter` - (Required) The name of a specific image or a family.
+        /// Exactly one of `name`, `family` or `filter` must be specified. If `name` is specified, it will fetch
+        /// the corresponding image. If `family` is specified, it will return the latest image
+        /// that is part of an image family and is not deprecated. If you specify `filter`, your
+        /// filter must return exactly one image. Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -138,7 +142,11 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Filter { get; set; }
 
         /// <summary>
-        /// The name of the image.
+        /// , `family` or `filter` - (Required) The name of a specific image or a family.
+        /// Exactly one of `name`, `family` or `filter` must be specified. If `name` is specified, it will fetch
+        /// the corresponding image. If `family` is specified, it will return the latest image
+        /// that is part of an image family and is not deprecated. If you specify `filter`, your
+        /// filter must return exactly one image. Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

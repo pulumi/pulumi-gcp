@@ -33,7 +33,7 @@ public final class ProjectsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.projects.ProjectsFunctions;
-     * import com.pulumi.gcp.folder.inputs.GetOrganizationPolicyArgs;
+     * import com.pulumi.gcp.projects.inputs.GetOrganizationPolicyArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -74,7 +74,7 @@ public final class ProjectsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.projects.ProjectsFunctions;
-     * import com.pulumi.gcp.folder.inputs.GetOrganizationPolicyArgs;
+     * import com.pulumi.gcp.projects.inputs.GetOrganizationPolicyArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -115,7 +115,7 @@ public final class ProjectsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.projects.ProjectsFunctions;
-     * import com.pulumi.gcp.folder.inputs.GetOrganizationPolicyArgs;
+     * import com.pulumi.gcp.projects.inputs.GetOrganizationPolicyArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -156,7 +156,7 @@ public final class ProjectsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.projects.ProjectsFunctions;
-     * import com.pulumi.gcp.folder.inputs.GetOrganizationPolicyArgs;
+     * import com.pulumi.gcp.projects.inputs.GetOrganizationPolicyArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -198,8 +198,9 @@ public final class ProjectsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.projects.ProjectsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+     * import com.pulumi.gcp.projects.inputs.GetProjectArgs;
      * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -243,8 +244,9 @@ public final class ProjectsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.projects.ProjectsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+     * import com.pulumi.gcp.projects.inputs.GetProjectArgs;
      * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -288,8 +290,9 @@ public final class ProjectsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.projects.ProjectsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+     * import com.pulumi.gcp.projects.inputs.GetProjectArgs;
      * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -333,8 +336,9 @@ public final class ProjectsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.projects.ProjectsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+     * import com.pulumi.gcp.projects.inputs.GetProjectArgs;
      * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;

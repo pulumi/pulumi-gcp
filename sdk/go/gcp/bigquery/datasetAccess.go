@@ -247,10 +247,12 @@ type DatasetAccess struct {
 	// If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
 	// stored in state as a different member type
 	ApiUpdatedMember pulumi.BoolOutput `pulumi:"apiUpdatedMember"`
-	// The dataset this entry applies to
+	// Grants all resources of particular types in a particular dataset read access to the current dataset.
 	// Structure is documented below.
 	AuthorizedDataset DatasetAccessAuthorizedDatasetPtrOutput `pulumi:"authorizedDataset"`
-	// The ID of the dataset containing this table.
+	// A unique ID for this dataset, without the project name. The ID
+	// must contain only letters (a-z, A-Z), numbers (0-9), or
+	// underscores (_). The maximum length is 1,024 characters.
 	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
 	// A domain to grant access to. Any users signed in with the
 	// domain specified will be granted the specified access
@@ -326,10 +328,12 @@ type datasetAccessState struct {
 	// If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
 	// stored in state as a different member type
 	ApiUpdatedMember *bool `pulumi:"apiUpdatedMember"`
-	// The dataset this entry applies to
+	// Grants all resources of particular types in a particular dataset read access to the current dataset.
 	// Structure is documented below.
 	AuthorizedDataset *DatasetAccessAuthorizedDataset `pulumi:"authorizedDataset"`
-	// The ID of the dataset containing this table.
+	// A unique ID for this dataset, without the project name. The ID
+	// must contain only letters (a-z, A-Z), numbers (0-9), or
+	// underscores (_). The maximum length is 1,024 characters.
 	DatasetId *string `pulumi:"datasetId"`
 	// A domain to grant access to. Any users signed in with the
 	// domain specified will be granted the specified access
@@ -374,10 +378,12 @@ type DatasetAccessState struct {
 	// If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
 	// stored in state as a different member type
 	ApiUpdatedMember pulumi.BoolPtrInput
-	// The dataset this entry applies to
+	// Grants all resources of particular types in a particular dataset read access to the current dataset.
 	// Structure is documented below.
 	AuthorizedDataset DatasetAccessAuthorizedDatasetPtrInput
-	// The ID of the dataset containing this table.
+	// A unique ID for this dataset, without the project name. The ID
+	// must contain only letters (a-z, A-Z), numbers (0-9), or
+	// underscores (_). The maximum length is 1,024 characters.
 	DatasetId pulumi.StringPtrInput
 	// A domain to grant access to. Any users signed in with the
 	// domain specified will be granted the specified access
@@ -423,10 +429,12 @@ func (DatasetAccessState) ElementType() reflect.Type {
 }
 
 type datasetAccessArgs struct {
-	// The dataset this entry applies to
+	// Grants all resources of particular types in a particular dataset read access to the current dataset.
 	// Structure is documented below.
 	AuthorizedDataset *DatasetAccessAuthorizedDataset `pulumi:"authorizedDataset"`
-	// The ID of the dataset containing this table.
+	// A unique ID for this dataset, without the project name. The ID
+	// must contain only letters (a-z, A-Z), numbers (0-9), or
+	// underscores (_). The maximum length is 1,024 characters.
 	DatasetId string `pulumi:"datasetId"`
 	// A domain to grant access to. Any users signed in with the
 	// domain specified will be granted the specified access
@@ -469,10 +477,12 @@ type datasetAccessArgs struct {
 
 // The set of arguments for constructing a DatasetAccess resource.
 type DatasetAccessArgs struct {
-	// The dataset this entry applies to
+	// Grants all resources of particular types in a particular dataset read access to the current dataset.
 	// Structure is documented below.
 	AuthorizedDataset DatasetAccessAuthorizedDatasetPtrInput
-	// The ID of the dataset containing this table.
+	// A unique ID for this dataset, without the project name. The ID
+	// must contain only letters (a-z, A-Z), numbers (0-9), or
+	// underscores (_). The maximum length is 1,024 characters.
 	DatasetId pulumi.StringInput
 	// A domain to grant access to. Any users signed in with the
 	// domain specified will be granted the specified access
@@ -606,13 +616,15 @@ func (o DatasetAccessOutput) ApiUpdatedMember() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DatasetAccess) pulumi.BoolOutput { return v.ApiUpdatedMember }).(pulumi.BoolOutput)
 }
 
-// The dataset this entry applies to
+// Grants all resources of particular types in a particular dataset read access to the current dataset.
 // Structure is documented below.
 func (o DatasetAccessOutput) AuthorizedDataset() DatasetAccessAuthorizedDatasetPtrOutput {
 	return o.ApplyT(func(v *DatasetAccess) DatasetAccessAuthorizedDatasetPtrOutput { return v.AuthorizedDataset }).(DatasetAccessAuthorizedDatasetPtrOutput)
 }
 
-// The ID of the dataset containing this table.
+// A unique ID for this dataset, without the project name. The ID
+// must contain only letters (a-z, A-Z), numbers (0-9), or
+// underscores (_). The maximum length is 1,024 characters.
 func (o DatasetAccessOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatasetAccess) pulumi.StringOutput { return v.DatasetId }).(pulumi.StringOutput)
 }

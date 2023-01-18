@@ -17,16 +17,16 @@ public final class TagKeyState extends com.pulumi.resources.ResourceArgs {
     public static final TagKeyState Empty = new TagKeyState();
 
     /**
-     * Output only. Creation time. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
-     * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * Output only. Creation time.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Output only. Creation time. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
-     * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * @return Output only. Creation time.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -147,16 +147,16 @@ public final class TagKeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. Update time. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional
-     * digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * Output only. Update time.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return Output only. Update time. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional
-     * digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * @return Output only. Update time.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -196,8 +196,8 @@ public final class TagKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime Output only. Creation time. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
-         * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * @param createTime Output only. Creation time.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder
          * 
@@ -208,8 +208,8 @@ public final class TagKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime Output only. Creation time. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine
-         * fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * @param createTime Output only. Creation time.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder
          * 
@@ -374,8 +374,8 @@ public final class TagKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateTime Output only. Update time. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional
-         * digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * @param updateTime Output only. Update time.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder
          * 
@@ -386,8 +386,8 @@ public final class TagKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateTime Output only. Update time. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional
-         * digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * @param updateTime Output only. Update time.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
          * 
          * @return builder
          * 

@@ -15,12 +15,13 @@ type JobAppEngineHttpTarget struct {
 	// Structure is documented below.
 	AppEngineRouting *JobAppEngineHttpTargetAppEngineRouting `pulumi:"appEngineRouting"`
 	// HTTP request body.
-	// A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
-	// It is an error to set body on a job with an incompatible HttpMethod.
+	// A request body is allowed only if the HTTP method is POST or PUT.
+	// It will result in invalid argument error to set a body on a job with an incompatible HttpMethod.
 	// A base64-encoded string.
 	Body *string `pulumi:"body"`
+	// HTTP request headers.
 	// This map contains the header field names and values.
-	// Repeated headers are not supported, but a header value can contain commas.
+	// Headers can be set when the job is created.
 	Headers map[string]string `pulumi:"headers"`
 	// Which HTTP method to use for the request.
 	HttpMethod *string `pulumi:"httpMethod"`
@@ -48,12 +49,13 @@ type JobAppEngineHttpTargetArgs struct {
 	// Structure is documented below.
 	AppEngineRouting JobAppEngineHttpTargetAppEngineRoutingPtrInput `pulumi:"appEngineRouting"`
 	// HTTP request body.
-	// A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
-	// It is an error to set body on a job with an incompatible HttpMethod.
+	// A request body is allowed only if the HTTP method is POST or PUT.
+	// It will result in invalid argument error to set a body on a job with an incompatible HttpMethod.
 	// A base64-encoded string.
 	Body pulumi.StringPtrInput `pulumi:"body"`
+	// HTTP request headers.
 	// This map contains the header field names and values.
-	// Repeated headers are not supported, but a header value can contain commas.
+	// Headers can be set when the job is created.
 	Headers pulumi.StringMapInput `pulumi:"headers"`
 	// Which HTTP method to use for the request.
 	HttpMethod pulumi.StringPtrInput `pulumi:"httpMethod"`
@@ -149,15 +151,16 @@ func (o JobAppEngineHttpTargetOutput) AppEngineRouting() JobAppEngineHttpTargetA
 }
 
 // HTTP request body.
-// A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
-// It is an error to set body on a job with an incompatible HttpMethod.
+// A request body is allowed only if the HTTP method is POST or PUT.
+// It will result in invalid argument error to set a body on a job with an incompatible HttpMethod.
 // A base64-encoded string.
 func (o JobAppEngineHttpTargetOutput) Body() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobAppEngineHttpTarget) *string { return v.Body }).(pulumi.StringPtrOutput)
 }
 
+// HTTP request headers.
 // This map contains the header field names and values.
-// Repeated headers are not supported, but a header value can contain commas.
+// Headers can be set when the job is created.
 func (o JobAppEngineHttpTargetOutput) Headers() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobAppEngineHttpTarget) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
 }
@@ -212,8 +215,8 @@ func (o JobAppEngineHttpTargetPtrOutput) AppEngineRouting() JobAppEngineHttpTarg
 }
 
 // HTTP request body.
-// A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
-// It is an error to set body on a job with an incompatible HttpMethod.
+// A request body is allowed only if the HTTP method is POST or PUT.
+// It will result in invalid argument error to set a body on a job with an incompatible HttpMethod.
 // A base64-encoded string.
 func (o JobAppEngineHttpTargetPtrOutput) Body() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobAppEngineHttpTarget) *string {
@@ -224,8 +227,9 @@ func (o JobAppEngineHttpTargetPtrOutput) Body() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// HTTP request headers.
 // This map contains the header field names and values.
-// Repeated headers are not supported, but a header value can contain commas.
+// Headers can be set when the job is created.
 func (o JobAppEngineHttpTargetPtrOutput) Headers() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *JobAppEngineHttpTarget) map[string]string {
 		if v == nil {

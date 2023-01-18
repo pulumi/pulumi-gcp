@@ -13,8 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd {
     /**
-     * @return Headers to remove from the response prior to sending it back to the client.
-     * Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+     * @return The name of the header to add.
      * 
      */
     private String headerName;
@@ -31,8 +30,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRespon
 
     private EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd() {}
     /**
-     * @return Headers to remove from the response prior to sending it back to the client.
-     * Response headers are only sent to the client, and do not have an effect on the cache serving the response.
+     * @return The name of the header to add.
      * 
      */
     public String headerName() {

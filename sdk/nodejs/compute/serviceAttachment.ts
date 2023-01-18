@@ -66,7 +66,9 @@ export class ServiceAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * An array of the consumer forwarding rules connected to this service attachment.
+     * An array of the consumer forwarding rules connected to this service
+     * attachment.
+     * Structure is documented below.
      */
     public /*out*/ readonly connectedEndpoints!: pulumi.Output<outputs.compute.ServiceAttachmentConnectedEndpoint[]>;
     /**
@@ -103,7 +105,8 @@ export class ServiceAttachment extends pulumi.CustomResource {
      */
     public readonly enableProxyProtocol!: pulumi.Output<boolean>;
     /**
-     * Fingerprint of this resource. This field is used internally during updates of this resource.
+     * Fingerprint of this resource. This field is used internally during
+     * updates of this resource.
      */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
@@ -204,7 +207,9 @@ export class ServiceAttachment extends pulumi.CustomResource {
  */
 export interface ServiceAttachmentState {
     /**
-     * An array of the consumer forwarding rules connected to this service attachment.
+     * An array of the consumer forwarding rules connected to this service
+     * attachment.
+     * Structure is documented below.
      */
     connectedEndpoints?: pulumi.Input<pulumi.Input<inputs.compute.ServiceAttachmentConnectedEndpoint>[]>;
     /**
@@ -241,7 +246,8 @@ export interface ServiceAttachmentState {
      */
     enableProxyProtocol?: pulumi.Input<boolean>;
     /**
-     * Fingerprint of this resource. This field is used internally during updates of this resource.
+     * Fingerprint of this resource. This field is used internally during
+     * updates of this resource.
      */
     fingerprint?: pulumi.Input<string>;
     /**

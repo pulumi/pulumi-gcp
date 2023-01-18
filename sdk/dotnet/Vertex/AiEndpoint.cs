@@ -110,15 +110,14 @@ namespace Pulumi.Gcp.Vertex
     public partial class AiEndpoint : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Output only. Timestamp when this Endpoint was created.
+        /// Output only. Timestamp when the DeployedModel was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and
-        /// EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud
-        /// Console](https://console.cloud.google.com/vertex-ai/).
+        /// Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
+        /// Structure is documented below.
         /// </summary>
         [Output("deployedModels")]
         public Output<ImmutableArray<Outputs.AiEndpointDeployedModel>> DeployedModels { get; private set; } = null!;
@@ -161,9 +160,7 @@ namespace Pulumi.Gcp.Vertex
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by
-        /// CreateModelDeploymentMonitoringJob. Format:
-        /// 'projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}'
+        /// Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
         /// </summary>
         [Output("modelDeploymentMonitoringJob")]
         public Output<string> ModelDeploymentMonitoringJob { get; private set; } = null!;
@@ -304,7 +301,7 @@ namespace Pulumi.Gcp.Vertex
     public sealed class AiEndpointState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. Timestamp when this Endpoint was created.
+        /// Output only. Timestamp when the DeployedModel was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -313,9 +310,8 @@ namespace Pulumi.Gcp.Vertex
         private InputList<Inputs.AiEndpointDeployedModelGetArgs>? _deployedModels;
 
         /// <summary>
-        /// Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and
-        /// EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud
-        /// Console](https://console.cloud.google.com/vertex-ai/).
+        /// Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AiEndpointDeployedModelGetArgs> DeployedModels
         {
@@ -367,9 +363,7 @@ namespace Pulumi.Gcp.Vertex
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by
-        /// CreateModelDeploymentMonitoringJob. Format:
-        /// 'projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}'
+        /// Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
         /// </summary>
         [Input("modelDeploymentMonitoringJob")]
         public Input<string>? ModelDeploymentMonitoringJob { get; set; }

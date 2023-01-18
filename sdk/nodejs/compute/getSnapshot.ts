@@ -19,24 +19,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * //by name 
- * const snapshot = pulumi.output(gcp.compute.getSnapshot({
+ * const snapshot = gcp.compute.getSnapshot({
  *     name: "my-snapshot",
- * }));
- * // using a filter
- * const latest_snapshot = pulumi.output(gcp.compute.getSnapshot({
+ * });
+ * const latest-snapshot = gcp.compute.getSnapshot({
  *     filter: "name != my-snapshot",
  *     mostRecent: true,
- * }));
+ * });
  * ```
  */
 export function getSnapshot(args?: GetSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getSnapshot:getSnapshot", {
         "filter": args.filter,
         "mostRecent": args.mostRecent,
@@ -98,9 +93,30 @@ export interface GetSnapshotResult {
     readonly storageLocations: string[];
     readonly zone: string;
 }
-
+/**
+ * To get more information about Snapshot, see:
+ *
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const snapshot = gcp.compute.getSnapshot({
+ *     name: "my-snapshot",
+ * });
+ * const latest-snapshot = gcp.compute.getSnapshot({
+ *     filter: "name != my-snapshot",
+ *     mostRecent: true,
+ * });
+ * ```
+ */
 export function getSnapshotOutput(args?: GetSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotResult> {
-    return pulumi.output(args).apply(a => getSnapshot(a, opts))
+    return pulumi.output(args).apply((a: any) => getSnapshot(a, opts))
 }
 
 /**

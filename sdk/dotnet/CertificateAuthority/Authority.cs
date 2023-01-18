@@ -319,6 +319,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     {
         /// <summary>
         /// URLs for accessing content published by this CA, such as the CA certificate and CRLs.
+        /// Structure is documented below.
         /// </summary>
         [Output("accessUrls")]
         public Output<ImmutableArray<Outputs.AuthorityAccessUrl>> AccessUrls { get; private set; } = null!;
@@ -337,8 +338,9 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<Outputs.AuthorityConfig> Config { get; private set; } = null!;
 
         /// <summary>
-        /// The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        /// resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// The time at which this CertificateAuthority was created.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+        /// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -406,7 +408,8 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name for this CertificateAuthority in the format projects/*/locations/*/certificateAuthorities/*.
+        /// The resource name for this CertificateAuthority in the format
+        /// projects/*/locations/*/certificateAuthorities/*.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -418,9 +421,10 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<string?> PemCaCertificate { get; private set; } = null!;
 
         /// <summary>
-        /// This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such
-        /// that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
-        /// current CertificateAuthority's certificate.
+        /// This CertificateAuthority's certificate chain, including the current
+        /// CertificateAuthority's certificate. Ordered such that the root issuer is the final
+        /// element (consistent with RFC 5246). For a self-signed CA, this will only list the current
+        /// CertificateAuthority's certificate.
         /// </summary>
         [Output("pemCaCertificates")]
         public Output<ImmutableArray<string>> PemCaCertificates { get; private set; } = null!;
@@ -472,8 +476,9 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<string?> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The time at which this CertificateAuthority was updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        /// resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// The time at which this CertificateAuthority was updated.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+        /// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -664,6 +669,7 @@ namespace Pulumi.Gcp.CertificateAuthority
 
         /// <summary>
         /// URLs for accessing content published by this CA, such as the CA certificate and CRLs.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.AuthorityAccessUrlGetArgs> AccessUrls
         {
@@ -685,8 +691,9 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<Inputs.AuthorityConfigGetArgs>? Config { get; set; }
 
         /// <summary>
-        /// The time at which this CertificateAuthority was created. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        /// resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// The time at which this CertificateAuthority was created.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+        /// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -760,7 +767,8 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The resource name for this CertificateAuthority in the format projects/*/locations/*/certificateAuthorities/*.
+        /// The resource name for this CertificateAuthority in the format
+        /// projects/*/locations/*/certificateAuthorities/*.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -775,9 +783,10 @@ namespace Pulumi.Gcp.CertificateAuthority
         private InputList<string>? _pemCaCertificates;
 
         /// <summary>
-        /// This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such
-        /// that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the
-        /// current CertificateAuthority's certificate.
+        /// This CertificateAuthority's certificate chain, including the current
+        /// CertificateAuthority's certificate. Ordered such that the root issuer is the final
+        /// element (consistent with RFC 5246). For a self-signed CA, this will only list the current
+        /// CertificateAuthority's certificate.
         /// </summary>
         public InputList<string> PemCaCertificates
         {
@@ -832,8 +841,9 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The time at which this CertificateAuthority was updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        /// resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// The time at which this CertificateAuthority was updated.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+        /// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

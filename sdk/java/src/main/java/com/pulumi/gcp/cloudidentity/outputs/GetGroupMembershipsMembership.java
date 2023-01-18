@@ -19,12 +19,20 @@ public final class GetGroupMembershipsMembership {
      * 
      */
     private String group;
+    /**
+     * @return EntityKey of the member.  Structure is documented below.
+     * 
+     */
     private List<GetGroupMembershipsMembershipMemberKey> memberKeys;
     /**
      * @return The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
      * 
      */
     private String name;
+    /**
+     * @return EntityKey of the member.  Structure is documented below.
+     * 
+     */
     private List<GetGroupMembershipsMembershipPreferredMemberKey> preferredMemberKeys;
     /**
      * @return The MembershipRoles that apply to the Membership. Structure is documented below.
@@ -45,6 +53,10 @@ public final class GetGroupMembershipsMembership {
     public String group() {
         return this.group;
     }
+    /**
+     * @return EntityKey of the member.  Structure is documented below.
+     * 
+     */
     public List<GetGroupMembershipsMembershipMemberKey> memberKeys() {
         return this.memberKeys;
     }
@@ -55,6 +67,10 @@ public final class GetGroupMembershipsMembership {
     public String name() {
         return this.name;
     }
+    /**
+     * @return EntityKey of the member.  Structure is documented below.
+     * 
+     */
     public List<GetGroupMembershipsMembershipPreferredMemberKey> preferredMemberKeys() {
         return this.preferredMemberKeys;
     }

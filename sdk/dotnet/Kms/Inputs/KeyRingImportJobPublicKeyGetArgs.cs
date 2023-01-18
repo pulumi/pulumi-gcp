@@ -12,6 +12,10 @@ namespace Pulumi.Gcp.Kms.Inputs
 
     public sealed class KeyRingImportJobPublicKeyGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The public key, encoded in PEM format. For more information, see the RFC 7468 sections
+        /// for General Considerations and Textual Encoding of Subject Public Key Info.
+        /// </summary>
         [Input("pem")]
         public Input<string>? Pem { get; set; }
 

@@ -27,7 +27,8 @@ namespace Pulumi.Gcp.AppEngine.Outputs
         /// </summary>
         public readonly bool? DisableTraceSampling;
         /// <summary>
-        /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        /// Endpoints service name which is the name of the "service" resource in the Service Management API.
+        /// For example "myapi.endpoints.myproject.cloud.goog"
         /// </summary>
         public readonly string Name;
         /// <summary>

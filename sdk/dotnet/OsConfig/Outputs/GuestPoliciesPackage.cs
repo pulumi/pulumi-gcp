@@ -14,12 +14,7 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     public sealed class GuestPoliciesPackage
     {
         /// <summary>
-        /// Default is INSTALLED. The desired state the agent should maintain for this recipe.
-        /// INSTALLED: The software recipe is installed on the instance but won't be updated to new versions.
-        /// INSTALLED_KEEP_UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version,
-        /// if a higher version of the recipe is assigned to this instance.
-        /// REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
-        /// Default value is `INSTALLED`.
+        /// The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
         /// Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
         /// </summary>
         public readonly string? DesiredState;
@@ -34,10 +29,8 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         /// </summary>
         public readonly string? Manager;
         /// <summary>
-        /// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
-        /// Names are also used to identify resources which helps to determine whether guest policies have conflicts.
-        /// This means that requests to create multiple recipes with the same name and version are rejected since they
-        /// could potentially have conflicting assignments.
+        /// The name of the package. A package is uniquely identified for conflict validation
+        /// by checking the package name and the manager(s) that the package targets.
         /// </summary>
         public readonly string Name;
 

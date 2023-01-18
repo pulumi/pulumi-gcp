@@ -11,8 +11,12 @@ import (
 )
 
 type AuthorityAccessUrl struct {
-	CaCertificateAccessUrl *string  `pulumi:"caCertificateAccessUrl"`
-	CrlAccessUrls          []string `pulumi:"crlAccessUrls"`
+	// The URL where this CertificateAuthority's CA certificate is published. This will only be
+	// set for CAs that have been activated.
+	CaCertificateAccessUrl *string `pulumi:"caCertificateAccessUrl"`
+	// The URL where this CertificateAuthority's CRLs are published. This will only be set for
+	// CAs that have been activated.
+	CrlAccessUrls []string `pulumi:"crlAccessUrls"`
 }
 
 // AuthorityAccessUrlInput is an input type that accepts AuthorityAccessUrlArgs and AuthorityAccessUrlOutput values.
@@ -27,8 +31,12 @@ type AuthorityAccessUrlInput interface {
 }
 
 type AuthorityAccessUrlArgs struct {
-	CaCertificateAccessUrl pulumi.StringPtrInput   `pulumi:"caCertificateAccessUrl"`
-	CrlAccessUrls          pulumi.StringArrayInput `pulumi:"crlAccessUrls"`
+	// The URL where this CertificateAuthority's CA certificate is published. This will only be
+	// set for CAs that have been activated.
+	CaCertificateAccessUrl pulumi.StringPtrInput `pulumi:"caCertificateAccessUrl"`
+	// The URL where this CertificateAuthority's CRLs are published. This will only be set for
+	// CAs that have been activated.
+	CrlAccessUrls pulumi.StringArrayInput `pulumi:"crlAccessUrls"`
 }
 
 func (AuthorityAccessUrlArgs) ElementType() reflect.Type {
@@ -82,10 +90,14 @@ func (o AuthorityAccessUrlOutput) ToAuthorityAccessUrlOutputWithContext(ctx cont
 	return o
 }
 
+// The URL where this CertificateAuthority's CA certificate is published. This will only be
+// set for CAs that have been activated.
 func (o AuthorityAccessUrlOutput) CaCertificateAccessUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AuthorityAccessUrl) *string { return v.CaCertificateAccessUrl }).(pulumi.StringPtrOutput)
 }
 
+// The URL where this CertificateAuthority's CRLs are published. This will only be set for
+// CAs that have been activated.
 func (o AuthorityAccessUrlOutput) CrlAccessUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AuthorityAccessUrl) []string { return v.CrlAccessUrls }).(pulumi.StringArrayOutput)
 }
@@ -6199,18 +6211,34 @@ func (o CaPoolPublishingOptionsPtrOutput) PublishCrl() pulumi.BoolPtrOutput {
 }
 
 type CertificateCertificateDescription struct {
-	AiaIssuingCertificateUrls []string                                           `pulumi:"aiaIssuingCertificateUrls"`
-	AuthorityKeyIds           []CertificateCertificateDescriptionAuthorityKeyId  `pulumi:"authorityKeyIds"`
-	CertFingerprints          []CertificateCertificateDescriptionCertFingerprint `pulumi:"certFingerprints"`
+	// Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
+	AiaIssuingCertificateUrls []string `pulumi:"aiaIssuingCertificateUrls"`
+	// Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+	// Structure is documented below.
+	AuthorityKeyIds []CertificateCertificateDescriptionAuthorityKeyId `pulumi:"authorityKeyIds"`
+	// The hash of the x.509 certificate.
+	// Structure is documented below.
+	CertFingerprints []CertificateCertificateDescriptionCertFingerprint `pulumi:"certFingerprints"`
+	// (Deprecated)
+	// Describes some of the technical fields in a certificate.
+	// Structure is documented below.
+	//
 	// Deprecated: Deprecated in favor of `x509_description`.
-	ConfigValues          []CertificateCertificateDescriptionConfigValue `pulumi:"configValues"`
-	CrlDistributionPoints []string                                       `pulumi:"crlDistributionPoints"`
+	ConfigValues []CertificateCertificateDescriptionConfigValue `pulumi:"configValues"`
+	// Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+	CrlDistributionPoints []string `pulumi:"crlDistributionPoints"`
 	// A PublicKey describes a public key.
 	// Structure is documented below.
-	PublicKeys          []CertificateCertificateDescriptionPublicKey          `pulumi:"publicKeys"`
+	PublicKeys []CertificateCertificateDescriptionPublicKey `pulumi:"publicKeys"`
+	// Describes some of the values in a certificate that are related to the subject and lifetime.
+	// Structure is documented below.
 	SubjectDescriptions []CertificateCertificateDescriptionSubjectDescription `pulumi:"subjectDescriptions"`
-	SubjectKeyIds       []CertificateCertificateDescriptionSubjectKeyId       `pulumi:"subjectKeyIds"`
-	X509Descriptions    []CertificateCertificateDescriptionX509Description    `pulumi:"x509Descriptions"`
+	// Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+	// Structure is documented below.
+	SubjectKeyIds []CertificateCertificateDescriptionSubjectKeyId `pulumi:"subjectKeyIds"`
+	// A structured description of the issued X.509 certificate.
+	// Structure is documented below.
+	X509Descriptions []CertificateCertificateDescriptionX509Description `pulumi:"x509Descriptions"`
 }
 
 // CertificateCertificateDescriptionInput is an input type that accepts CertificateCertificateDescriptionArgs and CertificateCertificateDescriptionOutput values.
@@ -6225,18 +6253,34 @@ type CertificateCertificateDescriptionInput interface {
 }
 
 type CertificateCertificateDescriptionArgs struct {
-	AiaIssuingCertificateUrls pulumi.StringArrayInput                                    `pulumi:"aiaIssuingCertificateUrls"`
-	AuthorityKeyIds           CertificateCertificateDescriptionAuthorityKeyIdArrayInput  `pulumi:"authorityKeyIds"`
-	CertFingerprints          CertificateCertificateDescriptionCertFingerprintArrayInput `pulumi:"certFingerprints"`
+	// Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
+	AiaIssuingCertificateUrls pulumi.StringArrayInput `pulumi:"aiaIssuingCertificateUrls"`
+	// Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+	// Structure is documented below.
+	AuthorityKeyIds CertificateCertificateDescriptionAuthorityKeyIdArrayInput `pulumi:"authorityKeyIds"`
+	// The hash of the x.509 certificate.
+	// Structure is documented below.
+	CertFingerprints CertificateCertificateDescriptionCertFingerprintArrayInput `pulumi:"certFingerprints"`
+	// (Deprecated)
+	// Describes some of the technical fields in a certificate.
+	// Structure is documented below.
+	//
 	// Deprecated: Deprecated in favor of `x509_description`.
-	ConfigValues          CertificateCertificateDescriptionConfigValueArrayInput `pulumi:"configValues"`
-	CrlDistributionPoints pulumi.StringArrayInput                                `pulumi:"crlDistributionPoints"`
+	ConfigValues CertificateCertificateDescriptionConfigValueArrayInput `pulumi:"configValues"`
+	// Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
+	CrlDistributionPoints pulumi.StringArrayInput `pulumi:"crlDistributionPoints"`
 	// A PublicKey describes a public key.
 	// Structure is documented below.
-	PublicKeys          CertificateCertificateDescriptionPublicKeyArrayInput          `pulumi:"publicKeys"`
+	PublicKeys CertificateCertificateDescriptionPublicKeyArrayInput `pulumi:"publicKeys"`
+	// Describes some of the values in a certificate that are related to the subject and lifetime.
+	// Structure is documented below.
 	SubjectDescriptions CertificateCertificateDescriptionSubjectDescriptionArrayInput `pulumi:"subjectDescriptions"`
-	SubjectKeyIds       CertificateCertificateDescriptionSubjectKeyIdArrayInput       `pulumi:"subjectKeyIds"`
-	X509Descriptions    CertificateCertificateDescriptionX509DescriptionArrayInput    `pulumi:"x509Descriptions"`
+	// Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+	// Structure is documented below.
+	SubjectKeyIds CertificateCertificateDescriptionSubjectKeyIdArrayInput `pulumi:"subjectKeyIds"`
+	// A structured description of the issued X.509 certificate.
+	// Structure is documented below.
+	X509Descriptions CertificateCertificateDescriptionX509DescriptionArrayInput `pulumi:"x509Descriptions"`
 }
 
 func (CertificateCertificateDescriptionArgs) ElementType() reflect.Type {
@@ -6290,22 +6334,31 @@ func (o CertificateCertificateDescriptionOutput) ToCertificateCertificateDescrip
 	return o
 }
 
+// Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
 func (o CertificateCertificateDescriptionOutput) AiaIssuingCertificateUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CertificateCertificateDescription) []string { return v.AiaIssuingCertificateUrls }).(pulumi.StringArrayOutput)
 }
 
+// Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
+// Structure is documented below.
 func (o CertificateCertificateDescriptionOutput) AuthorityKeyIds() CertificateCertificateDescriptionAuthorityKeyIdArrayOutput {
 	return o.ApplyT(func(v CertificateCertificateDescription) []CertificateCertificateDescriptionAuthorityKeyId {
 		return v.AuthorityKeyIds
 	}).(CertificateCertificateDescriptionAuthorityKeyIdArrayOutput)
 }
 
+// The hash of the x.509 certificate.
+// Structure is documented below.
 func (o CertificateCertificateDescriptionOutput) CertFingerprints() CertificateCertificateDescriptionCertFingerprintArrayOutput {
 	return o.ApplyT(func(v CertificateCertificateDescription) []CertificateCertificateDescriptionCertFingerprint {
 		return v.CertFingerprints
 	}).(CertificateCertificateDescriptionCertFingerprintArrayOutput)
 }
 
+// (Deprecated)
+// Describes some of the technical fields in a certificate.
+// Structure is documented below.
+//
 // Deprecated: Deprecated in favor of `x509_description`.
 func (o CertificateCertificateDescriptionOutput) ConfigValues() CertificateCertificateDescriptionConfigValueArrayOutput {
 	return o.ApplyT(func(v CertificateCertificateDescription) []CertificateCertificateDescriptionConfigValue {
@@ -6313,6 +6366,7 @@ func (o CertificateCertificateDescriptionOutput) ConfigValues() CertificateCerti
 	}).(CertificateCertificateDescriptionConfigValueArrayOutput)
 }
 
+// Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
 func (o CertificateCertificateDescriptionOutput) CrlDistributionPoints() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CertificateCertificateDescription) []string { return v.CrlDistributionPoints }).(pulumi.StringArrayOutput)
 }
@@ -6325,18 +6379,24 @@ func (o CertificateCertificateDescriptionOutput) PublicKeys() CertificateCertifi
 	}).(CertificateCertificateDescriptionPublicKeyArrayOutput)
 }
 
+// Describes some of the values in a certificate that are related to the subject and lifetime.
+// Structure is documented below.
 func (o CertificateCertificateDescriptionOutput) SubjectDescriptions() CertificateCertificateDescriptionSubjectDescriptionArrayOutput {
 	return o.ApplyT(func(v CertificateCertificateDescription) []CertificateCertificateDescriptionSubjectDescription {
 		return v.SubjectDescriptions
 	}).(CertificateCertificateDescriptionSubjectDescriptionArrayOutput)
 }
 
+// Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
+// Structure is documented below.
 func (o CertificateCertificateDescriptionOutput) SubjectKeyIds() CertificateCertificateDescriptionSubjectKeyIdArrayOutput {
 	return o.ApplyT(func(v CertificateCertificateDescription) []CertificateCertificateDescriptionSubjectKeyId {
 		return v.SubjectKeyIds
 	}).(CertificateCertificateDescriptionSubjectKeyIdArrayOutput)
 }
 
+// A structured description of the issued X.509 certificate.
+// Structure is documented below.
 func (o CertificateCertificateDescriptionOutput) X509Descriptions() CertificateCertificateDescriptionX509DescriptionArrayOutput {
 	return o.ApplyT(func(v CertificateCertificateDescription) []CertificateCertificateDescriptionX509Description {
 		return v.X509Descriptions
@@ -6364,6 +6424,7 @@ func (o CertificateCertificateDescriptionArrayOutput) Index(i pulumi.IntInput) C
 }
 
 type CertificateCertificateDescriptionAuthorityKeyId struct {
+	// Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
 	KeyId *string `pulumi:"keyId"`
 }
 
@@ -6379,6 +6440,7 @@ type CertificateCertificateDescriptionAuthorityKeyIdInput interface {
 }
 
 type CertificateCertificateDescriptionAuthorityKeyIdArgs struct {
+	// Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
 	KeyId pulumi.StringPtrInput `pulumi:"keyId"`
 }
 
@@ -6433,6 +6495,7 @@ func (o CertificateCertificateDescriptionAuthorityKeyIdOutput) ToCertificateCert
 	return o
 }
 
+// Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
 func (o CertificateCertificateDescriptionAuthorityKeyIdOutput) KeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionAuthorityKeyId) *string { return v.KeyId }).(pulumi.StringPtrOutput)
 }
@@ -6458,6 +6521,7 @@ func (o CertificateCertificateDescriptionAuthorityKeyIdArrayOutput) Index(i pulu
 }
 
 type CertificateCertificateDescriptionCertFingerprint struct {
+	// The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
 	Sha256Hash *string `pulumi:"sha256Hash"`
 }
 
@@ -6473,6 +6537,7 @@ type CertificateCertificateDescriptionCertFingerprintInput interface {
 }
 
 type CertificateCertificateDescriptionCertFingerprintArgs struct {
+	// The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
 	Sha256Hash pulumi.StringPtrInput `pulumi:"sha256Hash"`
 }
 
@@ -6527,6 +6592,7 @@ func (o CertificateCertificateDescriptionCertFingerprintOutput) ToCertificateCer
 	return o
 }
 
+// The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
 func (o CertificateCertificateDescriptionCertFingerprintOutput) Sha256Hash() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionCertFingerprint) *string { return v.Sha256Hash }).(pulumi.StringPtrOutput)
 }
@@ -6784,6 +6850,8 @@ func (o CertificateCertificateDescriptionConfigValueKeyUsageArrayOutput) Index(i
 }
 
 type CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage struct {
+	// Describes high-level ways in which a key may be used.
+	// Structure is documented below.
 	KeyUsageOptions []CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption `pulumi:"keyUsageOptions"`
 }
 
@@ -6799,6 +6867,8 @@ type CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageInput inter
 }
 
 type CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageArgs struct {
+	// Describes high-level ways in which a key may be used.
+	// Structure is documented below.
 	KeyUsageOptions CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArrayInput `pulumi:"keyUsageOptions"`
 }
 
@@ -6853,6 +6923,8 @@ func (o CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageOutput) 
 	return o
 }
 
+// Describes high-level ways in which a key may be used.
+// Structure is documented below.
 func (o CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageOutput) KeyUsageOptions() CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOptionArrayOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsage) []CertificateCertificateDescriptionConfigValueKeyUsageBaseKeyUsageKeyUsageOption {
 		return v.KeyUsageOptions
@@ -7221,6 +7293,8 @@ func (o CertificateCertificateDescriptionConfigValueKeyUsageExtendedKeyUsageArra
 }
 
 type CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage struct {
+	// Required. Describes how some of the technical fields in a certificate should be populated.
+	// Structure is documented below.
 	ObectIds []CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId `pulumi:"obectIds"`
 }
 
@@ -7236,6 +7310,8 @@ type CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage
 }
 
 type CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageArgs struct {
+	// Required. Describes how some of the technical fields in a certificate should be populated.
+	// Structure is documented below.
 	ObectIds CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArrayInput `pulumi:"obectIds"`
 }
 
@@ -7290,6 +7366,8 @@ func (o CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUs
 	return o
 }
 
+// Required. Describes how some of the technical fields in a certificate should be populated.
+// Structure is documented below.
 func (o CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageOutput) ObectIds() CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArrayOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage) []CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId {
 		return v.ObectIds
@@ -7318,6 +7396,10 @@ func (o CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUs
 
 type CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId struct {
 	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+	// (Required)
+	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+	// (Required)
+	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 	ObjectIdPaths []int `pulumi:"objectIdPaths"`
 }
 
@@ -7333,6 +7415,10 @@ type CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage
 }
 
 type CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArgs struct {
+	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+	// (Required)
+	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+	// (Required)
 	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 	ObjectIdPaths pulumi.IntArrayInput `pulumi:"objectIdPaths"`
 }
@@ -7388,6 +7474,10 @@ func (o CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUs
 	return o
 }
 
+// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+// (Required)
+// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+// (Required)
 // An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 func (o CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdOutput) ObjectIdPaths() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId) []int {
@@ -7525,12 +7615,15 @@ func (o CertificateCertificateDescriptionPublicKeyArrayOutput) Index(i pulumi.In
 }
 
 type CertificateCertificateDescriptionSubjectDescription struct {
+	// The serial number encoded in lowercase hexadecimal.
 	HexSerialNumber *string `pulumi:"hexSerialNumber"`
 	// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
 	// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
 	// fractional digits, terminated by 's'. Example: "3.5s".
-	Lifetime      *string `pulumi:"lifetime"`
-	NotAfterTime  *string `pulumi:"notAfterTime"`
+	Lifetime *string `pulumi:"lifetime"`
+	// The time at which the certificate expires.
+	NotAfterTime *string `pulumi:"notAfterTime"`
+	// The time at which the certificate becomes valid.
 	NotBeforeTime *string `pulumi:"notBeforeTime"`
 	// The subject alternative name fields.
 	// Structure is documented below.
@@ -7552,12 +7645,15 @@ type CertificateCertificateDescriptionSubjectDescriptionInput interface {
 }
 
 type CertificateCertificateDescriptionSubjectDescriptionArgs struct {
+	// The serial number encoded in lowercase hexadecimal.
 	HexSerialNumber pulumi.StringPtrInput `pulumi:"hexSerialNumber"`
 	// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
 	// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
 	// fractional digits, terminated by 's'. Example: "3.5s".
-	Lifetime      pulumi.StringPtrInput `pulumi:"lifetime"`
-	NotAfterTime  pulumi.StringPtrInput `pulumi:"notAfterTime"`
+	Lifetime pulumi.StringPtrInput `pulumi:"lifetime"`
+	// The time at which the certificate expires.
+	NotAfterTime pulumi.StringPtrInput `pulumi:"notAfterTime"`
+	// The time at which the certificate becomes valid.
 	NotBeforeTime pulumi.StringPtrInput `pulumi:"notBeforeTime"`
 	// The subject alternative name fields.
 	// Structure is documented below.
@@ -7618,6 +7714,7 @@ func (o CertificateCertificateDescriptionSubjectDescriptionOutput) ToCertificate
 	return o
 }
 
+// The serial number encoded in lowercase hexadecimal.
 func (o CertificateCertificateDescriptionSubjectDescriptionOutput) HexSerialNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescription) *string { return v.HexSerialNumber }).(pulumi.StringPtrOutput)
 }
@@ -7629,10 +7726,12 @@ func (o CertificateCertificateDescriptionSubjectDescriptionOutput) Lifetime() pu
 	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescription) *string { return v.Lifetime }).(pulumi.StringPtrOutput)
 }
 
+// The time at which the certificate expires.
 func (o CertificateCertificateDescriptionSubjectDescriptionOutput) NotAfterTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescription) *string { return v.NotAfterTime }).(pulumi.StringPtrOutput)
 }
 
+// The time at which the certificate becomes valid.
 func (o CertificateCertificateDescriptionSubjectDescriptionOutput) NotBeforeTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescription) *string { return v.NotBeforeTime }).(pulumi.StringPtrOutput)
 }
@@ -7836,6 +7935,8 @@ func (o CertificateCertificateDescriptionSubjectDescriptionSubjectArrayOutput) I
 }
 
 type CertificateCertificateDescriptionSubjectDescriptionSubjectAltName struct {
+	// Contains additional subject alternative name values.
+	// Structure is documented below.
 	CustomSans []CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan `pulumi:"customSans"`
 	// Contains only valid, fully-qualified host names.
 	DnsNames []string `pulumi:"dnsNames"`
@@ -7859,6 +7960,8 @@ type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameInput inte
 }
 
 type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs struct {
+	// Contains additional subject alternative name values.
+	// Structure is documented below.
 	CustomSans CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayInput `pulumi:"customSans"`
 	// Contains only valid, fully-qualified host names.
 	DnsNames pulumi.StringArrayInput `pulumi:"dnsNames"`
@@ -7921,6 +8024,8 @@ func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput)
 	return o
 }
 
+// Contains additional subject alternative name values.
+// Structure is documented below.
 func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput) CustomSans() CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescriptionSubjectAltName) []CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan {
 		return v.CustomSans
@@ -7974,7 +8079,9 @@ func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArrayOu
 type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan struct {
 	// Indicates whether or not this extension is critical (i.e., if the client does not know how to
 	// handle this extension, the client should consider this to be an error).
-	Critical *bool                                                                               `pulumi:"critical"`
+	Critical *bool `pulumi:"critical"`
+	// Required. Describes how some of the technical fields in a certificate should be populated.
+	// Structure is documented below.
 	ObectIds []CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId `pulumi:"obectIds"`
 	// The value of this X.509 extension. A base64-encoded string.
 	Value *string `pulumi:"value"`
@@ -7994,7 +8101,9 @@ type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanI
 type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs struct {
 	// Indicates whether or not this extension is critical (i.e., if the client does not know how to
 	// handle this extension, the client should consider this to be an error).
-	Critical pulumi.BoolPtrInput                                                                         `pulumi:"critical"`
+	Critical pulumi.BoolPtrInput `pulumi:"critical"`
+	// Required. Describes how some of the technical fields in a certificate should be populated.
+	// Structure is documented below.
 	ObectIds CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArrayInput `pulumi:"obectIds"`
 	// The value of this X.509 extension. A base64-encoded string.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -8059,6 +8168,8 @@ func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomS
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Required. Describes how some of the technical fields in a certificate should be populated.
+// Structure is documented below.
 func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutput) ObectIds() CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArrayOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan) []CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId {
 		return v.ObectIds
@@ -8094,6 +8205,10 @@ func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomS
 
 type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId struct {
 	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+	// (Required)
+	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+	// (Required)
+	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 	ObjectIdPaths []int `pulumi:"objectIdPaths"`
 }
 
@@ -8109,6 +8224,10 @@ type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanO
 }
 
 type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs struct {
+	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+	// (Required)
+	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+	// (Required)
 	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 	ObjectIdPaths pulumi.IntArrayInput `pulumi:"objectIdPaths"`
 }
@@ -8165,6 +8284,10 @@ func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomS
 }
 
 // An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+// (Required)
+// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+// (Required)
+// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdOutput) ObjectIdPaths() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId) []int {
 		return v.ObjectIdPaths
@@ -8192,6 +8315,7 @@ func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomS
 }
 
 type CertificateCertificateDescriptionSubjectKeyId struct {
+	// Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
 	KeyId *string `pulumi:"keyId"`
 }
 
@@ -8207,6 +8331,7 @@ type CertificateCertificateDescriptionSubjectKeyIdInput interface {
 }
 
 type CertificateCertificateDescriptionSubjectKeyIdArgs struct {
+	// Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
 	KeyId pulumi.StringPtrInput `pulumi:"keyId"`
 }
 
@@ -8261,6 +8386,7 @@ func (o CertificateCertificateDescriptionSubjectKeyIdOutput) ToCertificateCertif
 	return o
 }
 
+// Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
 func (o CertificateCertificateDescriptionSubjectKeyIdOutput) KeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectKeyId) *string { return v.KeyId }).(pulumi.StringPtrOutput)
 }
@@ -11941,8 +12067,10 @@ func (o CertificateConfigX509ConfigPolicyIdArrayOutput) Index(i pulumi.IntInput)
 }
 
 type CertificateRevocationDetail struct {
+	// Indicates why a Certificate was revoked.
 	RevocationState *string `pulumi:"revocationState"`
-	RevocationTime  *string `pulumi:"revocationTime"`
+	// The time at which this Certificate was revoked.
+	RevocationTime *string `pulumi:"revocationTime"`
 }
 
 // CertificateRevocationDetailInput is an input type that accepts CertificateRevocationDetailArgs and CertificateRevocationDetailOutput values.
@@ -11957,8 +12085,10 @@ type CertificateRevocationDetailInput interface {
 }
 
 type CertificateRevocationDetailArgs struct {
+	// Indicates why a Certificate was revoked.
 	RevocationState pulumi.StringPtrInput `pulumi:"revocationState"`
-	RevocationTime  pulumi.StringPtrInput `pulumi:"revocationTime"`
+	// The time at which this Certificate was revoked.
+	RevocationTime pulumi.StringPtrInput `pulumi:"revocationTime"`
 }
 
 func (CertificateRevocationDetailArgs) ElementType() reflect.Type {
@@ -12012,10 +12142,12 @@ func (o CertificateRevocationDetailOutput) ToCertificateRevocationDetailOutputWi
 	return o
 }
 
+// Indicates why a Certificate was revoked.
 func (o CertificateRevocationDetailOutput) RevocationState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateRevocationDetail) *string { return v.RevocationState }).(pulumi.StringPtrOutput)
 }
 
+// The time at which this Certificate was revoked.
 func (o CertificateRevocationDetailOutput) RevocationTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateRevocationDetail) *string { return v.RevocationTime }).(pulumi.StringPtrOutput)
 }
@@ -12762,7 +12894,7 @@ func (o CertificateTemplateIdentityConstraintsCelExpressionPtrOutput) Title() pu
 }
 
 type CertificateTemplatePassthroughExtensions struct {
-	// Optional. Describes custom X.509 extensions.
+	// Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with knownExtensions to determine the full set of X.509 extensions.
 	AdditionalExtensions []CertificateTemplatePassthroughExtensionsAdditionalExtension `pulumi:"additionalExtensions"`
 	// Optional. A set of named X.509 extensions. Will be combined with additionalExtensions to determine the full set of X.509 extensions.
 	KnownExtensions []string `pulumi:"knownExtensions"`
@@ -12780,7 +12912,7 @@ type CertificateTemplatePassthroughExtensionsInput interface {
 }
 
 type CertificateTemplatePassthroughExtensionsArgs struct {
-	// Optional. Describes custom X.509 extensions.
+	// Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with knownExtensions to determine the full set of X.509 extensions.
 	AdditionalExtensions CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayInput `pulumi:"additionalExtensions"`
 	// Optional. A set of named X.509 extensions. Will be combined with additionalExtensions to determine the full set of X.509 extensions.
 	KnownExtensions pulumi.StringArrayInput `pulumi:"knownExtensions"`
@@ -12863,7 +12995,7 @@ func (o CertificateTemplatePassthroughExtensionsOutput) ToCertificateTemplatePas
 	}).(CertificateTemplatePassthroughExtensionsPtrOutput)
 }
 
-// Optional. Describes custom X.509 extensions.
+// Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with knownExtensions to determine the full set of X.509 extensions.
 func (o CertificateTemplatePassthroughExtensionsOutput) AdditionalExtensions() CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutput {
 	return o.ApplyT(func(v CertificateTemplatePassthroughExtensions) []CertificateTemplatePassthroughExtensionsAdditionalExtension {
 		return v.AdditionalExtensions
@@ -12899,7 +13031,7 @@ func (o CertificateTemplatePassthroughExtensionsPtrOutput) Elem() CertificateTem
 	}).(CertificateTemplatePassthroughExtensionsOutput)
 }
 
-// Optional. Describes custom X.509 extensions.
+// Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with knownExtensions to determine the full set of X.509 extensions.
 func (o CertificateTemplatePassthroughExtensionsPtrOutput) AdditionalExtensions() CertificateTemplatePassthroughExtensionsAdditionalExtensionArrayOutput {
 	return o.ApplyT(func(v *CertificateTemplatePassthroughExtensions) []CertificateTemplatePassthroughExtensionsAdditionalExtension {
 		if v == nil {

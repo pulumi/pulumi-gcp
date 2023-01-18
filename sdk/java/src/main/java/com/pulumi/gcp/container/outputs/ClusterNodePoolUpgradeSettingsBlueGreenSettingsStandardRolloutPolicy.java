@@ -18,6 +18,10 @@ public final class ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRollou
      * 
      */
     private @Nullable Integer batchNodeCount;
+    /**
+     * @return Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0). Only one of the batch_percentage or batch_node_count can be specified.
+     * 
+     */
     private @Nullable Double batchPercentage;
     /**
      * @return Soak time after each batch gets drained. A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.`.
@@ -33,6 +37,10 @@ public final class ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRollou
     public Optional<Integer> batchNodeCount() {
         return Optional.ofNullable(this.batchNodeCount);
     }
+    /**
+     * @return Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0). Only one of the batch_percentage or batch_node_count can be specified.
+     * 
+     */
     public Optional<Double> batchPercentage() {
         return Optional.ofNullable(this.batchPercentage);
     }

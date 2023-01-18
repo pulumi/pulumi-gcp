@@ -77,7 +77,8 @@ namespace Pulumi.Gcp.SecretManager
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the SecretVersion. Format: 'projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}'
+        /// The resource name of the SecretVersion. Format:
+        /// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -207,7 +208,8 @@ namespace Pulumi.Gcp.SecretManager
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The resource name of the SecretVersion. Format: 'projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}'
+        /// The resource name of the SecretVersion. Format:
+        /// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

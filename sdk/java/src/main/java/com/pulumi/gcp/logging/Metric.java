@@ -253,14 +253,16 @@ public class Metric extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.bucketOptions);
     }
     /**
-     * A human-readable description for the label.
+     * A description of this metric, which is used in documentation. The maximum length of the
+     * description is 8000 characters.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return A human-readable description for the label.
+     * @return A description of this metric, which is used in documentation. The maximum length of the
+     * description is 8000 characters.
      * 
      */
     public Output<Optional<String>> description() {

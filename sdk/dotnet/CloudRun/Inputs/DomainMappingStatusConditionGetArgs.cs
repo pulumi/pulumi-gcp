@@ -12,15 +12,28 @@ namespace Pulumi.Gcp.CloudRun.Inputs
 
     public sealed class DomainMappingStatusConditionGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Human readable message indicating details about the current status.
+        /// </summary>
         [Input("message")]
         public Input<string>? Message { get; set; }
 
+        /// <summary>
+        /// One-word CamelCase reason for the condition's current status.
+        /// </summary>
         [Input("reason")]
         public Input<string>? Reason { get; set; }
 
+        /// <summary>
+        /// Status of the condition, one of True, False, Unknown.
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        /// <summary>
+        /// Resource record type. Example: `AAAA`.
+        /// Possible values are `A`, `AAAA`, and `CNAME`.
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

@@ -145,16 +145,14 @@ public class Release extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated
-     * from this Release.
+     * Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
      * 
      */
     @Export(name="disabled", type=Boolean.class, parameters={})
     private Output<Boolean> disabled;
 
     /**
-     * @return Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated
-     * from this Release.
+     * @return Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
      * 
      */
     public Output<Boolean> disabled() {

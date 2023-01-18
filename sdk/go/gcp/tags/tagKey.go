@@ -66,8 +66,8 @@ import (
 type TagKey struct {
 	pulumi.CustomResourceState
 
-	// Output only. Creation time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Output only. Creation time.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// User-assigned description of the TagKey. Must not exceed 256 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -87,8 +87,8 @@ type TagKey struct {
 	// Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
 	// The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	ShortName pulumi.StringOutput `pulumi:"shortName"`
-	// Output only. Update time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
-	// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Output only. Update time.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -127,8 +127,8 @@ func GetTagKey(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TagKey resources.
 type tagKeyState struct {
-	// Output only. Creation time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Output only. Creation time.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime *string `pulumi:"createTime"`
 	// User-assigned description of the TagKey. Must not exceed 256 characters.
 	Description *string `pulumi:"description"`
@@ -148,14 +148,14 @@ type tagKeyState struct {
 	// Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
 	// The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	ShortName *string `pulumi:"shortName"`
-	// Output only. Update time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
-	// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Output only. Update time.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type TagKeyState struct {
-	// Output only. Creation time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Output only. Creation time.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringPtrInput
 	// User-assigned description of the TagKey. Must not exceed 256 characters.
 	Description pulumi.StringPtrInput
@@ -175,8 +175,8 @@ type TagKeyState struct {
 	// Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
 	// The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	ShortName pulumi.StringPtrInput
-	// Output only. Update time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
-	// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	// Output only. Update time.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -306,8 +306,8 @@ func (o TagKeyOutput) ToTagKeyOutputWithContext(ctx context.Context) TagKeyOutpu
 	return o
 }
 
-// Output only. Creation time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
-// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+// Output only. Creation time.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o TagKeyOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagKey) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -351,8 +351,8 @@ func (o TagKeyOutput) ShortName() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagKey) pulumi.StringOutput { return v.ShortName }).(pulumi.StringOutput)
 }
 
-// Output only. Update time. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
-// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+// Output only. Update time.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o TagKeyOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagKey) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

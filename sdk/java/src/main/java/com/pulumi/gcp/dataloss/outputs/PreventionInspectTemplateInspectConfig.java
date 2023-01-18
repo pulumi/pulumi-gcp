@@ -30,8 +30,7 @@ public final class PreventionInspectTemplateInspectConfig {
      */
     private @Nullable List<PreventionInspectTemplateInspectConfigCustomInfoType> customInfoTypes;
     /**
-     * @return Set of infoTypes for which findings would affect this rule.
-     * Structure is documented below.
+     * @return When true, excludes type information of the findings.
      * 
      */
     private @Nullable Boolean excludeInfoTypes;
@@ -41,7 +40,10 @@ public final class PreventionInspectTemplateInspectConfig {
      */
     private @Nullable Boolean includeQuote;
     /**
-     * @return If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+     * @return Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
+     * or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+     * When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
+     * By default this may be all types, but may change over time as detectors are updated.
      * Structure is documented below.
      * 
      */
@@ -85,8 +87,7 @@ public final class PreventionInspectTemplateInspectConfig {
         return this.customInfoTypes == null ? List.of() : this.customInfoTypes;
     }
     /**
-     * @return Set of infoTypes for which findings would affect this rule.
-     * Structure is documented below.
+     * @return When true, excludes type information of the findings.
      * 
      */
     public Optional<Boolean> excludeInfoTypes() {
@@ -100,7 +101,10 @@ public final class PreventionInspectTemplateInspectConfig {
         return Optional.ofNullable(this.includeQuote);
     }
     /**
-     * @return If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+     * @return Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
+     * or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+     * When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
+     * By default this may be all types, but may change over time as detectors are updated.
      * Structure is documented below.
      * 
      */

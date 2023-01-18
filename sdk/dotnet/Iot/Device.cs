@@ -97,6 +97,7 @@ namespace Pulumi.Gcp.Iot
 
         /// <summary>
         /// The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
+        /// Structure is documented below.
         /// </summary>
         [Output("configs")]
         public Output<ImmutableArray<Outputs.DeviceConfig>> Configs { get; private set; } = null!;
@@ -129,6 +130,7 @@ namespace Pulumi.Gcp.Iot
 
         /// <summary>
         /// The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
+        /// Structure is documented below.
         /// </summary>
         [Output("lastErrorStatuses")]
         public Output<ImmutableArray<Outputs.DeviceLastErrorStatus>> LastErrorStatuses { get; private set; } = null!;
@@ -177,8 +179,8 @@ namespace Pulumi.Gcp.Iot
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally
-        /// unique.
+        /// A server-defined unique numeric ID for the device.
+        /// This is a more compact way to identify devices, and it is globally unique.
         /// </summary>
         [Output("numId")]
         public Output<string> NumId { get; private set; } = null!;
@@ -191,6 +193,7 @@ namespace Pulumi.Gcp.Iot
 
         /// <summary>
         /// The state most recently received from the device.
+        /// Structure is documented below.
         /// </summary>
         [Output("states")]
         public Output<ImmutableArray<Outputs.DeviceState>> States { get; private set; } = null!;
@@ -317,6 +320,7 @@ namespace Pulumi.Gcp.Iot
 
         /// <summary>
         /// The most recent device configuration, which is eventually sent from Cloud IoT Core to the device.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.DeviceConfigGetArgs> Configs
         {
@@ -361,6 +365,7 @@ namespace Pulumi.Gcp.Iot
 
         /// <summary>
         /// The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.DeviceLastErrorStatusGetArgs> LastErrorStatuses
         {
@@ -418,8 +423,8 @@ namespace Pulumi.Gcp.Iot
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally
-        /// unique.
+        /// A server-defined unique numeric ID for the device.
+        /// This is a more compact way to identify devices, and it is globally unique.
         /// </summary>
         [Input("numId")]
         public Input<string>? NumId { get; set; }
@@ -435,6 +440,7 @@ namespace Pulumi.Gcp.Iot
 
         /// <summary>
         /// The state most recently received from the device.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.DeviceStateGetArgs> States
         {
